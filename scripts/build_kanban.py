@@ -280,8 +280,9 @@ def simplify_desc(desc):
     s = s.replace("未收到作答", "没交").replace("完全", "")                 # 15
     s = re.sub(r"至[^：]*?：", "", s)                                      # 16
     s = re.sub(r"([没交没发])[-+]\d+$", r"\1", s)                          # 17
-    s = re.sub(r"\s+", " ", s).strip()                                    # 18a
-    s = re.sub(r"^[：:、，,]+", "", s).strip()                             # 18b
+    s = re.sub(r"【[^【】]*】", "", s)                                     # 18 去掉【规则归类】等方头括号备注
+    s = re.sub(r"\s+", " ", s).strip()                                    # 19a
+    s = re.sub(r"^[：:、，,]+", "", s).strip()                             # 19b
     return s
 
 
@@ -577,7 +578,7 @@ def main():
                     cls = "plus" if e["pts"] >= 0 else "minus"
                     dt = e["md_date"] + (f" {e['hhmm']}" if e["hhmm"] else "")
                     rh.append(
-                        f'<tr><td class="dt">{dt}</td><td class="desc">{esc(e["desc"])}</td>'
+                        f'<tr><td class="dt">{dt}</td><td class="desc">{esc(simplify_desc(e["desc"]))}</td>'
                         f'<td class="{cls}">{pts_str(e["pts"], "−")}</td><td>{e["balance"]}</td></tr>'
                     )
                 rows_html = "\n          ".join(rh)
