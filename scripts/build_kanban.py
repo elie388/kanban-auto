@@ -279,7 +279,7 @@ def simplify_desc(desc):
     s = s.replace("（六）", "").replace("(六)", "")                        # 14
     s = s.replace("未收到作答", "没交").replace("完全", "")                 # 15
     s = re.sub(r"至[^：]*?：", "", s)                                      # 16
-    s = re.sub(r"([没交没发])[-+]\d+$", r"\1", s)                          # 17
+    s = re.sub(r"(没交|没发)[-+]\d+$", r"\1", s)                          # 17
     s = re.sub(r"【[^【】]*】", "", s)                                     # 18 去掉【规则归类】等方头括号备注
     s = re.sub(r"\s+", " ", s).strip()                                    # 19a
     s = re.sub(r"^[：:、，,]+", "", s).strip()                             # 19b
@@ -533,7 +533,7 @@ def main():
                 ttime = f'<span class="ttime">{e["hhmm"]}</span>' if e["hhmm"] else '<span class="ttime ttime-empty"></span>'
                 parts.append(
                     f'<div class="ticker-item">{ttime}'
-                    f'<span class="tcontent">{esc(simplify_desc(e["desc"]))} <span class="{cls}">{pts_str(e["pts"], "-")}</span></span></div>'
+                    f'<span class="tmatter">{esc(simplify_desc(e["desc"]))}</span><span class="tpts {cls}">{pts_str(e["pts"], "-")}</span></div>'
                 )
             n = len(parts)
             if n == 0:
