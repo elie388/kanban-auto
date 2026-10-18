@@ -1,0 +1,83 @@
+name: 积分看板自动更新
+
+# 用户时间表（北京时间 CST = UTC+8，cron 用 UTC）：
+# - 上学工作日：19:00-23:00 CST（11:00-15:00 UTC），每15分钟，周一到周五
+#   实际触发：11:00-14:45 每15分钟 + 15:00 收尾一次（= CST 19:00-22:45 + 23:00）
+# - 上学周末：09:00-23:00 CST（01:00-15:00 UTC），每15分钟，周六周日
+#   实际触发：01:00-14:45 每15分钟 + 15:00 收尾一次（= CST 09:00-22:45 + 23:00）
+# - 假期：同周末时间表。假期的工作日仍会按工作日 cron 触发（接受额度浪费，不改代码）
+# - 寒暑假时间用户另行通知后调整
+# 月消耗约 700-1400 分钟，在 2000 免费额度内
+
+on:
+  schedule:
+    # 工作日 CST 19:00-22:45（UTC 11:00-14:45），每15分钟
+    - cron: '*/15 11-14 * * 1-5'
+    # 工作日 CST 23:00 收尾一次（UTC 15:00）
+    - cron: '0 15 * * 1-5'
+    # 周末 CST 09:00-22:45（UTC 01:00-14:45），每15分钟
+    - cron: '*/15 1-14 * * 0,6'
+    # 周末 CST 23:00 收尾一次（UTC 15:00）
+    - cron: '0 15 * * 0,6'
+  workflow_dispatch:  # 允许手动触发
+
+# 防并发：上一次未跑完时排队，不并行
+concurrency:
+  group: kanban-update
+  cancel-in-progress: false
+
+# DeepSeek 安全加固：显式最小化权限（默认 GITHUB_TOKEN 只读）
+permissions:
+  contents: read  # 仅需读代码；本 workflow 不推送
+
+jobs:
+  update-kanban:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # job 级别再次收紧（防御纵深）
+    permissions:
+      contents: read
+
+    steps:
+      # 第三方 action 固定到 commit SHA（防 tag 劫持，DeepSeek 加固）
+      # SHA 已用 git ls-remote 核验（2026-10-18）
+      - name: 检出代码
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+
+      - name: 设置 Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38  # v5.4.0
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          pip install "cryptography==42.0.5" "paramiko==3.4.0"
+
+      - name: 从 Google Drive 拉取积分台账
+        env:
+          GDRIVE_SA_JSON: ${{ secrets.GDRIVE_SA_JSON }}
+          GDRIVE_FILE_ID: ${{ secrets.GDRIVE_FILE_ID }}
+        run: |
+          python3 scripts/fetch_ledger.py
+
+      - name: 重新生成看板 HTML
+        run: |
+          python3 scripts/build_wrapper.py
+
+      - name: SFTP/FTPS 上传到香港空间
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+          FTP_MODE: ${{ secrets.FTP_MODE }}  # 可选：sftp/ftps/auto，默认 auto
+        run: |
+          python3 scripts/deploy_ftp.py
+
+      - name: 上传日志（调试用，不含看板数据）
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: kanban-debug-logs
+          path: |
+            fetch_ledger.log
+          retention-days: 3

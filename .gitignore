@@ -1,0 +1,17 @@
+index.html
+scripts/_build_patched.py
+scripts/积分记录.md
+scripts/.ftp_last_hash
+scripts/.kanban.last_build.json
+scripts/build_kanban.log
+ledger/
+__pycache__/
+*.pyc
+# 凭证类：绝不入库（DeepSeek 安全要求 2026-10-18）
+*service-account*.json
+*credentials*.json
+sa-*.json
+delta-essence-*.json
+*.pem
+*.key
+.env

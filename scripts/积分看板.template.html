@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<!-- TEMPLATE: 积分看板.template.html —— 动态区用注释占位符，生成器 build_kanban.py 填充。勿直接改产物文件。 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实时积分</title>
+<style>
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #F5F3EB; margin: 0; padding: 16px; color: #30343B; }
+  .page { max-width: 860px; margin: 0 auto; }
+  h1 { text-align: center; font-size: 44px; margin: 8px 0 4px; }
+  .date { text-align: center; color: #6B6F76; font-size: 19px; margin-bottom: 22px; }
+  .cards { display: flex; flex-wrap: nowrap; gap: 18px; margin-bottom: 26px; }
+  .card { flex: 1 1 0; min-width: 0; border-radius: 24px; padding: 30px 22px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.10); color: #fff; background-size: auto, cover; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: transform .18s ease, box-shadow .18s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.18); }
+  .card:focus { outline: none; }
+  .card:focus-visible { outline: 3px solid rgba(255,255,255,.75); outline-offset: 2px; transform: translateY(-3px); }
+  .history-tools { text-align: center; margin-bottom: 12px; }
+  .history-reset { font-size: 18px; color: #8a6d1b; background: #fff7e6; border: 2px solid #ffe0b2; border-radius: 12px; padding: 8px 22px; cursor: pointer; }
+  .card.g5 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23ffffff' fill-opacity='0.10'/%3E%3Ccircle cx='58' cy='34' r='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3Ccircle cx='34' cy='66' r='3' fill='%23ffffff' fill-opacity='0.09'/%3E%3Cpath d='M72 62 l2.2 5.4 5.4 2.2 -5.4 2.2 -2.2 5.4 -2.2 -5.4 -5.4 -2.2 5.4 -2.2z' fill='%23ffffff' fill-opacity='0.09'/%3E%3C/svg%3E"), linear-gradient(135deg, #8e24aa, #d81b60); }
+  .card.g6 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23ffffff' fill-opacity='0.10'/%3E%3Ccircle cx='58' cy='34' r='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3Ccircle cx='34' cy='66' r='3' fill='%23ffffff' fill-opacity='0.09'/%3E%3Cpath d='M72 62 l2.2 5.4 5.4 2.2 -5.4 2.2 -2.2 5.4 -2.2 -5.4 -5.4 -2.2 5.4 -2.2z' fill='%23ffffff' fill-opacity='0.09'/%3E%3C/svg%3E"), linear-gradient(135deg, #1565c0, #00acc1); }
+  .card .grade { font-size: 26px; font-weight: bold; margin-bottom: 10px; }
+  .card .score { font-size: 80px; font-weight: bold; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+  /* S-1（DeepSeek仲裁2026-10-18，返工修正版）：排布余量只能加在 .digit 视口，不得加到 span——
+     span 高必须与 JS 位移步长 translateY(calc(-1em * target)) 严格同源（=1em），否则累计错位 */
+  .score .digit { display: inline-block; height: 1.05em; line-height: 1; overflow: hidden; vertical-align: top; padding-top: .02em; }
+  .score .digit-strip { display: flex; flex-direction: column; will-change: auto; }
+  .score .digit-strip > span { display: block; height: 1em; line-height: 1; text-align: center; }
+  .score .digit-sign { display: inline-block; height: 1em; line-height: 1; vertical-align: top; }
+  .card .unit { font-size: 20px; opacity: 0.92; }
+  .card .next { margin-top: 14px; font-size: 17px; line-height: 1.6; background: rgba(255,255,255,0.28); border-radius: 14px; padding: 10px 12px; max-width: 100%; word-break: break-word; overflow-wrap: anywhere; }
+  /* B-1（DeepSeek仲裁2026-10-18）：.next 断行保护，防320px撑破圆角 */
+  .section { background: #fff; border-radius: 24px; padding: 24px 28px; margin-bottom: 22px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); border: 3px solid #fff7e6; }
+  .section h2 { font-size: 28px; margin: 0 0 14px; border-bottom: 3px solid #ffe9b8; padding-bottom: 10px; }
+  .collapse-btn { display: block; width: 100%; text-align: center; font-size: 28px; font-weight: bold; font-family: inherit; color: #30343B; background: none; border: none; border-bottom: 3px solid #ffe9b8; padding: 8px 0 10px; margin: 0 0 14px; cursor: pointer; min-height: 44px; }
+  /* I-1（DeepSeek仲裁2026-10-18）：触摸目标≥44px（Apple HIG/WCAG 2.5.5） */
+  .collapse-body[hidden] { display: none; }
+  table { width: 100%; border-collapse: collapse; font-size: 19px; }
+  th, td { text-align: left; padding: 11px 8px; border-bottom: 2px solid #f5efe0; }
+  th { color: #8a6d1b; font-weight: bold; font-size: 17px; }
+  .plus { color: #1b8a2f; font-weight: bold; font-size: 21px; white-space: nowrap; }
+  .minus { white-space: nowrap; }
+  td.plus, td.minus { min-width: 90px; white-space: nowrap; }
+  .minus { color: #d32f2f; font-weight: bold; font-size: 21px; }
+  .badge { display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 6px; min-width: 0; background: #fff3e0; color: #e65100; border-radius: 14px; padding: 10px 8px; font-size: 17px; border: 2px solid #ffcc80; line-height: 1.5; }
+  .badge-main { display: flex; flex-direction: row; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 6px; min-width: 0; }
+  .badge-icon { flex: 0 0 auto; font-size: 20px; line-height: 1; }
+  .badge-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: keep-all; overflow-wrap: normal; }
+  .badge-score { flex: 0 0 auto; white-space: nowrap; word-break: keep-all; overflow-wrap: normal; font-size: 15px; color: #bf360c; max-width: 50%; overflow: hidden; text-overflow: ellipsis; }
+  /* B-2（DeepSeek仲裁2026-10-18）：score 设50%上限防吃光；name 优先收缩（flex:0 1 auto已设） */
+  .badge-grid { display: flex; flex-direction: column; gap: 10px; }
+  .badge-grade-label { font-size: 20px; font-weight: bold; margin: 10px 0 8px; text-align: center; }
+  .badge-empty { text-align: center; color: #a08030; font-size: 18px; padding: 18px 8px; background: #fff8e1; border-radius: 14px; border: 2px dashed #ffcc80; margin-bottom: 6px; }
+  .badge-count { background: #e65100; color: #fff; font-size: 14px; border-radius: 10px; padding: 1px 8px; margin-left: 4px; vertical-align: 2px; }
+  .badge-detail { display: block; font-size: 13px; font-weight: normal; color: #8a6d1b; margin-top: 0; line-height: 1.6; word-break: break-word; text-align: center; }
+  .badge-detail[hidden] { display: none; }
+  .badge-detail.is-open { animation: detail-fade 160ms ease-out; }
+  @keyframes detail-fade { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 640px) { .badge-grid { gap: 8px; } .badge { font-size: 15px; padding: 8px 6px; } }
+  @media (max-width: 380px) { .badge { font-size: 14px; padding: 7px 6px; } .badge-main { gap: 4px; } }
+  .note { font-size: 17px; color: #6B6F76; margin-top: 14px; line-height: 1.8; }
+  .history { table-layout: fixed; width: 100%; }
+  .history th:nth-child(1), .history td.dt { width: 112px; max-width: 112px; text-align: center; }
+  .history th:nth-child(3), .history td.plus, .history td.minus { width: 60px; max-width: 60px; min-width: 0; }
+  .history th:nth-child(4), .history tr > td:last-child { width: 52px; max-width: 52px; }
+  .history td.desc { max-width: none; line-height: 1.65; }
+  .ticker-section { background: #fff; border-radius: 24px; padding: 24px 28px; margin-bottom: 22px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); border: 3px solid #e1f5fe; }
+  .ticker-section[hidden] { display: none !important; }
+  .ticker-section h2 { font-size: 28px; margin: 0 0 14px; border-bottom: 3px solid #b3e5fc; padding-bottom: 10px; text-align: center; }
+  .ticker-cols { display: flex; flex-direction: column; gap: 18px; }
+  .ticker-col { flex: 1 1 0; min-width: 0; }
+  .ticker-col h3 { font-size: 22px; margin: 0 0 10px; text-align: center; }
+  .ticker-viewport { height: 156px; overflow: hidden; position: relative; }
+  .ticker-viewport::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 28px; background: linear-gradient(to bottom, rgba(255,255,255,0), #fff); pointer-events: none; }
+  .ticker-list { will-change: transform; }
+  <!--MARQUEE_ANIM-->
+  .ticker-viewport:hover .ticker-list { animation-play-state: paused; }
+  .ticker-item { display: flex; align-items: center; height: 52px; font-size: 20px; border-bottom: 2px solid #f0ede4; padding: 0 12px; }
+  .ticker-item .ttime { flex: 0 0 auto; min-width: 68px; text-align: center; background: #e1f5fe; color: #0277bd; font-size: 16px; font-weight: bold; border-radius: 10px; padding: 3px 12px; margin-right: 10px; }
+  .ticker-item .ttime-empty { visibility: hidden; }
+  .ticker-item .tcontent { margin-left: auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ticker-item .tplus { color: #1b8a2f; font-weight: bold; font-size: 22px; }
+  .ticker-item .tminus { color: #d32f2f; font-weight: bold; font-size: 22px; }
+  .ticker-item.ticker-empty { justify-content: center; }
+  <!--MARQUEE_KEYFRAMES-->
+  .grade-cols { display: flex; gap: 18px; }
+  .grade-col { flex: 1; min-width: 0; background: #fffdf6; border-radius: 18px; padding: 16px 14px; border: 2px dashed #ffe0b2; }
+  .grade-col h3 { font-size: 22px; margin: 0 0 10px; text-align: center; }
+  .grade-col table { font-size: 17px; }
+  .grade-col th, .grade-col td { padding: 9px 6px; }
+  .grade-col .dt { white-space: nowrap; font-size: 15px; color: #8a7a4a; }
+  .grade-col .plus, .grade-col .minus { font-size: 19px; }
+  @media (max-width: 768px) {
+    .page { max-width: 100%; }
+    .section { padding: 20px 20px; }
+    .ticker-section { padding: 20px 20px; }
+    .grade-cols { flex-direction: column; gap: 12px; }
+  }
+  /* S-4（DeepSeek仲裁2026-10-18）：641-768区间两列挤压，@768也改纵向 */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    body { padding: 12px; }
+    .page { max-width: 100%; }
+    .section, .ticker-section { padding: 22px 24px; }
+  }
+  /* I-2（DeepSeek仲裁2026-10-18）：769-1023区间专属规则，消除与768以下全宽切换的跳变 */
+  @media (max-width: 640px) {
+    body { padding: 10px; }
+    h1 { font-size: 36px; }
+    .date { font-size: 17px; margin-bottom: 16px; }
+    .section { padding: 16px 14px; margin-bottom: 16px; border-radius: 18px; }
+    .section h2 { font-size: 24px; }
+    .ticker-section { padding: 16px 14px; margin-bottom: 16px; border-radius: 18px; }
+    .ticker-section h2 { font-size: 24px; }
+    .collapse-btn { font-size: 24px; min-height: 44px; }
+    table { font-size: 17px; }
+    th, td { padding: 9px 6px; }
+    th { font-size: 15px; }
+    .plus, .minus { font-size: 19px; }
+    /* S-2（DeepSeek仲裁2026-10-18）：删除与 width/max-width 矛盾的 min-width:64px */
+    .ticker-cols { gap: 10px; }
+    .ticker-col h3 { font-size: 18px; }
+    .ticker-item { font-size: 16px; }
+    .ticker-item .ttime { font-size: 13px; padding: 2px 8px; margin-right: 6px; }
+    .ticker-item .tplus, .ticker-item .tminus { font-size: 19px; }
+    .grade-cols { flex-direction: column; gap: 12px; }
+    .grade-col { padding: 12px 10px; }
+    .grade-col table { font-size: 16px; }
+    .grade-col th, .grade-col td { padding: 8px 4px; }
+    .grade-col .dt { font-size: 13px; }
+    .grade-col .plus, .grade-col .minus { font-size: 18px; }
+    .history th:nth-child(1), .history td.dt { width: 96px; max-width: 96px; }
+    .history th:nth-child(3), .history td.plus, .history td.minus { width: 52px; max-width: 52px; }
+    .history th:nth-child(4), .history tr > td:last-child { width: 46px; max-width: 46px; }
+    .note { font-size: 15px; }
+    .footer { font-size: 13px; }
+    .cards { gap: 10px; margin-bottom: 20px; }
+    .card { padding: 18px 10px; border-radius: 18px; }
+    .card .grade { font-size: 19px; }
+    .card .score { font-size: 52px; }
+    .card .unit { font-size: 16px; }
+    .card .next { font-size: 13px; padding: 8px 8px; }
+  }
+  @media (max-width: 380px) {
+    body { padding: 8px; }
+    h1 { font-size: 32px; }
+    .section { padding: 14px 12px; }
+    .ticker-section { padding: 14px 12px; }
+    table { font-size: 16px; }
+    td.plus, td.minus { min-width: 58px; }
+    .plus, .minus { font-size: 18px; }
+    .history th:nth-child(1), .history td.dt { width: 88px; max-width: 88px; }
+    .grade-col .dt { font-size: 12px; }
+    .ticker-item { font-size: 15px; padding: 0 8px; }
+    /* I-5（DeepSeek仲裁2026-10-18）：只缩ttime，不改item高（viewport 156px=52×3不动，避S-5联动坑） */
+    .ticker-item .ttime { min-width: 56px; padding: 2px 6px; font-size: 12px; margin-right: 5px; }
+    .card { padding: 12px 5px; }
+    .card .score { font-size: 44px; }
+    .card .grade { font-size: 15px; }
+    /* B-1（DeepSeek仲裁2026-10-18）：320px下.next靠断行消化，不缩score到40、不缩next到11（可读底线12px） */
+    .card .next { font-size: 12px; padding: 5px 3px; line-height: 1.35; word-break: break-word; overflow-wrap: anywhere; }
+    /* S-3（DeepSeek仲裁2026-10-18）：delta-tag 320px压字 */
+    .delta-tag { font-size: 13px; padding: 1px 6px; right: 6px; top: 4px; }
+    /* B-3（DeepSeek仲裁2026-10-18，方案A）：历史表纵向卡片化；label文案与thead表头同字（日期时间/事项/积分/余额） */
+    .history tr:first-child { display: none; }
+    .history, .history tbody, .history tr, .history td { display: block; width: 100% !important; max-width: none !important; min-width: 0 !important; }
+    .history tr { padding: 10px 12px; border-bottom: 1px solid rgba(48,52,59,.12); }
+    .history tr:last-child { border-bottom: none; }
+    .history td { border: none; padding: 2px 0; line-height: 1.5; }
+    .history td.dt::before { content: "日期时间："; font-weight: 600; color: #30343B; }
+    .history td.desc::before { content: "事项："; font-weight: 600; color: #30343B; }
+    .history td.plus::before, .history td.minus::before { content: "积分："; font-weight: 600; color: #30343B; }
+    .history tr > td:last-child::before { content: "余额："; font-weight: 600; color: #30343B; }
+    .history td.desc { max-width: none; line-height: 1.5; word-break: break-word; overflow-wrap: anywhere; }
+  }
+  @media (min-width: 1024px) {
+    .page { max-width: 900px; }
+    .section { padding: 26px 32px; }
+    .ticker-section { padding: 26px 32px; }
+  }
+  .footer { text-align: center; color: #999; font-size: 15px; margin: 26px 0 8px; }
+  /* === 方案A：目标进度条「今日冲刺」 === */
+  .progress-wrap { margin: 8px 0 4px; }
+  .progress-track { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.25); overflow: hidden; }
+  .progress-fill { height: 100%; width: 100%; transform-origin: left center; transform: scaleX(0); background: linear-gradient(90deg, #7BB661, #4E9F3D); transition: transform .9s cubic-bezier(.22,.61,.36,1); will-change: transform; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 6px; }
+  .progress-num b { color: #fff; }
+  .progress-wrap.progress-done .progress-fill { animation: progressBreathe 0.6s ease-in-out 2; }
+  /* S-4（DeepSeek仲裁2026-10-18）：原 filter:brightness 在低端机/微信内嵌有抖动风险，改 opacity 脉冲 */
+  @keyframes progressBreathe { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
+  /* === 方案B：徽章解锁弹跳入场 + 微光 === */
+  /* B-1（DeepSeek仲裁2026-10-18）：统一用 data-new 属性选择器，去掉对 .is-new 类的双契约依赖 */
+  /* 阻塞1修复（2026-10-18审查报告3）：.badge 去掉 overflow:hidden，保证键盘聚焦outline可见（WCAG 2.4.7）；
+     高光裁剪改由内层 .badge-clip 承接，::after 迁移到 .badge-clip 上 */
+  .badge { position: relative; }
+  .badge:focus-visible { outline: 3px solid #e65100; outline-offset: 2px; }
+  .badge-clip { display: block; position: relative; overflow: hidden; border-radius: inherit; }
+  .badge[data-new="true"].badge-bounce { animation: badgeBounce .65s cubic-bezier(.34,1.56,.64,1); transform-origin: center center; }
+  .badge[data-new="true"] { will-change: transform; }
+  @keyframes badgeBounce { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+  .badge[data-new="true"].badge-bounce .badge-clip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.75) 50%, transparent 70%); transform: translateX(-120%); animation: badgeShine .9s ease .15s; pointer-events: none; }
+  @keyframes badgeShine { to { transform: translateX(120%); } }
+  /* === 方案C：兑换区可兑换脉冲 + 差一点提示 === */
+  /* I-2（DeepSeek仲裁2026-10-18）：按年级分治，不用 maxBalance；五年级紫色系呼应🟣，六年级蓝色系呼应🔵 */
+  .redeem-row.almost-shake td { animation: almostShake .5s ease 1; }
+  @keyframes almostShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
+  .redeem-row.can-redeem-g5 td { background: rgba(156,39,176,.10); --pring: rgba(156,39,176,.55); animation: redeemPulse 1.6s ease-in-out 2; }
+  .redeem-row.can-redeem-g6 td { background: rgba(2,119,189,.10); --pring: rgba(2,119,189,.55); animation: redeemPulse 1.6s ease-in-out 2; }
+  .redeem-row.can-redeem-g5.can-redeem-g6 td { background: rgba(123,182,97,.10); --pring: rgba(78,159,61,.55); }
+  @keyframes redeemPulse { 0%,100% { box-shadow: inset 0 0 0 0 transparent; } 50% { box-shadow: inset 0 0 0 2px var(--pring); } }
+  .redeem-row .almost-tip { color: #B4762A; font-size: 13px; margin-left: 6px; white-space: nowrap; }
+  .redeem-row .tier-err { color: #C62828; font-size: 13px; margin-left: 6px; white-space: nowrap; }
+  .tier-warn { color: #C62828; font-size: 15px; margin: 8px 0; }
+  /* === 方案D：折叠内容上滑淡入 === */
+  .collapse-body.slide-in > * { animation: slideInContent .25s ease-out; }
+  @keyframes slideInContent { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  /* === 方案E：数字到位确认微动 + N标签 === */
+  .card .score.settle { animation: settlePop .4s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes settlePop { 0% { transform: translateY(0); } 35% { transform: translateY(-2px); } 100% { transform: translateY(0); } }
+  .delta-tag { position: absolute; top: 8px; right: 12px; background: rgba(255,255,255,0.9); color: #2E7D5B; font-size: 16px; font-weight: bold; border-radius: 12px; padding: 2px 10px; opacity: 0; transform: translateY(-4px); transition: opacity .3s ease, transform .3s ease; pointer-events: none; }
+  .delta-tag.show { opacity: 1; transform: translateY(0); }
+  .card { position: relative; }
+  /* === 全局：减弱动态效果降级 === */
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  /* S-6（DeepSeek仲裁2026-10-18）：reduced-motion 下同步清理合成层，不白占内存 */
+  @media (prefers-reduced-motion: reduce) { .progress-fill, .badge[data-new="true"] { will-change: auto !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>🏆 实时积分 🏆</h1>
+  <div class="date"><!--PAGE_DATE--><span id="clock"></span></div>
+
+  <!--BALANCE_CARDS-->
+
+  <!--TICKER_SECTION_OPEN-->
+    <h2>✨ 今日积分明细 ✨</h2>
+    <div class="ticker-cols">
+      <div class="ticker-col">
+        <h3>🟣 五年级</h3>
+        <div class="ticker-viewport">
+          <div class="ticker-list ticker-list-g5">
+            <!--MARQUEE_G5-->
+          </div>
+        </div>
+      </div>
+      <div class="ticker-col">
+        <h3>🔵 六年级</h3>
+        <div class="ticker-viewport">
+          <div class="ticker-list ticker-list-g6">
+            <!--MARQUEE_G6-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <!--STATIC_EARN_START-->
+<button type="button" class="collapse-btn" aria-expanded="false" data-target="earn-body">📈 怎么赚分 📈</button>
+    <div class="collapse-body" id="earn-body" hidden>
+    <table>
+      <tr><th>事项</th><th>积分</th></tr>
+      <tr><td>当天作业截止前交齐</td><td class="plus">+10</td></tr>
+      <tr><td>正确率全对</td><td class="plus">+10</td></tr>
+      <tr><td>正确率90%以上</td><td class="plus">+6</td></tr>
+      <tr><td>正确率80%以上</td><td class="plus">+3</td></tr>
+      <tr><td>订正一次改对（每题）</td><td class="plus">+2</td></tr>
+      <tr><td>订正当天发回</td><td class="plus">+2</td></tr>
+      <tr><td>书写零问题（每科）</td><td class="plus">+2</td></tr>
+      <tr><td>进步奖</td><td class="plus">+5</td></tr>
+      <tr><td>突破奖</td><td class="plus">+8</td></tr>
+      <tr><td>连续3天全对</td><td class="plus">+15</td></tr>
+      <tr><td>连续5天按时</td><td class="plus">+10</td></tr>
+      <tr><td>练习按时发回</td><td class="plus">+5</td></tr>
+      <tr><td>练习全对</td><td class="plus">+5</td></tr>
+      <tr><td>练习正确率90%以上</td><td class="plus">+3</td></tr>
+      <tr><td>练习正确率80%以上</td><td class="plus">+1</td></tr>
+      <tr><td>英语口语、语文背诵按时发回</td><td class="plus">+5</td></tr>
+      <tr><td>语文背诵达标（流利无错漏）</td><td class="plus">+3</td></tr>
+      <tr><td>英语写作重写按时发回</td><td class="plus">+5</td></tr>
+      <tr><td>英语写作重写达标</td><td class="plus">+3</td></tr>
+      <tr><td>53天天练交一页</td><td class="plus">+3</td></tr>
+      <tr><td>53天天练单页全对</td><td class="plus">+2</td></tr>
+      <tr><td>家务：洗碗</td><td class="plus">+5</td></tr>
+      <tr><td>家务：扫地</td><td class="plus">+3</td></tr>
+      <tr><td>家务：拖地</td><td class="plus">+3</td></tr>
+      <tr><td>家务：晾衣服</td><td class="plus">+3</td></tr>
+      <tr><td>家务：晾袜子</td><td class="plus">+3</td></tr>
+      <tr><td>家务：整理桌面</td><td class="plus">+2</td></tr>
+      <tr><td>家务连做3天</td><td class="plus">+5</td></tr>
+    </table>
+<!--STATIC_EARN_END-->
+    </div>
+  </div>
+
+  <div class="section">
+    <!--STATIC_DEDUCT_START-->
+<button type="button" class="collapse-btn" aria-expanded="false" data-target="deduct-body">📉 哪些会扣分 📉</button>
+    <div class="collapse-body" id="deduct-body" hidden>
+    <table>
+      <tr><th>事项</th><th>积分</th></tr>
+      <tr><td>当天没交</td><td class="minus">−10</td></tr>
+      <tr><td>白卷</td><td class="minus">−10</td></tr>
+      <tr><td>漏科目</td><td class="minus">−5</td></tr>
+      <tr><td>订正超期</td><td class="minus">−5</td></tr>
+      <tr><td>补做超期</td><td class="minus">−5</td></tr>
+      <tr><td>练习超期没交</td><td class="minus">−3</td></tr>
+      <tr><td>练习完全没交</td><td class="minus">−5</td></tr>
+      <tr><td>53天天练缺一页</td><td class="minus">−3</td></tr>
+      <tr><td>53天天练白卷</td><td class="minus">−3</td></tr>
+      <tr><td>连续2天家务未做</td><td class="minus">−5</td></tr>
+      <tr><td>连续3天起每天</td><td class="minus">−10</td></tr>
+      <tr><td>单科3处以上潦草</td><td class="minus">−2</td></tr>
+      <tr><td>整页难辨</td><td class="minus">−5</td></tr>
+    </table>
+<!--STATIC_DEDUCT_END-->
+    </div>
+  </div>
+
+  <div class="section">
+    <!--STATIC_REDEEM_START-->
+<button type="button" class="collapse-btn" aria-expanded="false" data-target="redeem-body">🎁 积分兑换 🎁</button>
+    <div class="collapse-body" id="redeem-body" hidden>
+    <table>
+      <tr><th>积分</th><th>兑换内容</th></tr>
+      <tr><td class="plus">70分</td><td>30分钟《我的世界》</td></tr>
+      <tr><td class="plus">100分</td><td>1小时《我的世界》</td></tr>
+      <tr><td class="plus">150分</td><td>1小时《和平精英》<br>或2小时《我的世界》</td></tr>
+      <tr><td class="plus">250分</td><td>2小时《和平精英》</td></tr>
+      <tr><td class="plus">600分</td><td>达成愿望1次<br>（等额50元，可兑现金）</td></tr>
+      <tr><td class="plus">1000分</td><td>达成愿望1次<br>（等额100元，可兑现金）</td></tr>
+    </table>
+    <div class="note">📌 上学日兑换游戏加收 15% 手续费。</div>
+    <div class="note">📌 积分赠送收 10% 手续费。</div>
+<!--STATIC_REDEEM_END-->
+    </div>
+  </div>
+
+  <div class="section">
+    <!--徽章区动态生成（2026-10-18用户定：每周更新，只显示当周获得，分年级；DeepSeek仲裁确认）-->
+    <!--旧STATIC_BADGE静态区已作废：9徽章硬编码改为按台账badge_key每周动态过滤-->
+    <button type="button" class="collapse-btn" aria-expanded="false" data-target="badge-body">🏅 徽章成就 🏅</button>
+    <div class="collapse-body" id="badge-body" hidden>
+    <div class="badge-grade-label">🟣 五年级</div>
+    <!--BADGE_GRID_G5-->
+    <div class="badge-grade-label">🔵 六年级</div>
+    <!--BADGE_GRID_G6-->
+    </div>
+  </div>
+
+  <div class="section" id="history-section">
+    <button type="button" class="collapse-btn" aria-expanded="false" data-target="history-body">🧾 积分明细 🧾</button>
+    <div class="collapse-body" id="history-body" hidden>
+    <div class="history-tools"><button type="button" id="history-reset" class="history-reset" hidden>显示全部年级</button></div>
+    <div class="grade-cols">
+      <div class="grade-col" data-grade="五年级">
+        <h3>🟣 五年级</h3>
+        <table class="history">
+          <tr><th>日期时间</th><th>事项</th><th>积分</th><th>余额</th></tr>
+          <!--RECENT_TABLE_G5-->
+        </table>
+      </div>
+      <div class="grade-col" data-grade="六年级">
+        <h3>🔵 六年级</h3>
+        <table class="history">
+          <tr><th>日期时间</th><th>事项</th><th>积分</th><th>余额</th></tr>
+          <!--RECENT_TABLE_G6-->
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+<script>
+(function () {
+  // 每天轮换的渐变配色（按日期取模，保证同一天两卡不同色、每天都换）
+  var PALETTES = [
+    ["#8e24aa", "#d81b60"],  // 紫→玫红
+    ["#1565c0", "#00acc1"],  // 蓝→青
+    ["#ef6c00", "#ffb300"],  // 橙→金黄
+    ["#2e7d32", "#26a69a"],  // 绿→青绿
+    ["#4527a0", "#7b1fa2"],  // 靛蓝→紫
+    ["#c2185b", "#ff7043"],  // 桃红→橙红
+    ["#00838f", "#43a047"],  // 深青→绿
+    ["#6a1b9a", "#3949ab"]   // 深紫→宝蓝
+  ];
+  // 不明显的淡纹理：小圆点 + 小星星，白色低透明度，不干扰文字
+  var TEXTURE = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23ffffff' fill-opacity='0.10'/%3E%3Ccircle cx='58' cy='34' r='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3Ccircle cx='34' cy='66' r='3' fill='%23ffffff' fill-opacity='0.09'/%3E%3Cpath d='M72 62 l2.2 5.4 5.4 2.2 -5.4 2.2 -2.2 5.4 -2.2 -5.4 -5.4 -2.2 5.4 -2.2z' fill='%23ffffff' fill-opacity='0.09'/%3E%3C/svg%3E\")";
+  try {
+    var now = new Date();
+    var dayIndex = now.getDate() % PALETTES.length;
+    var g5 = document.querySelector(".card.g5");
+    var g6 = document.querySelector(".card.g6");
+    if (g5) {
+      var p = PALETTES[dayIndex];
+      g5.style.backgroundImage = TEXTURE + ", linear-gradient(135deg, " + p[0] + ", " + p[1] + ")";
+    }
+    if (g6) {
+      var q = PALETTES[(dayIndex + 3) % PALETTES.length]; // 错开3位，保证与五年级不同色
+      g6.style.backgroundImage = TEXTURE + ", linear-gradient(135deg, " + q[0] + ", " + q[1] + ")";
+    }
+  } catch (e) { /* 无JS时保留CSS默认配色 */ }
+
+  // 折叠/展开："怎么赚分""哪些会扣分"点击按钮才显示（两按钮完全独立，互不干扰）
+  (function () {
+    var buttons = document.querySelectorAll('.collapse-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      (function (btn) {
+        if (btn.getAttribute('data-bound') === '1') return; // 防重复绑定：脚本若被执行两次也不重复挂监听
+        btn.setAttribute('data-bound', '1');
+        var body = document.getElementById(btn.getAttribute('data-target')); // 绑定时一次性解析，只认自己的 body
+        if (!body) return;
+        var arrow = btn.querySelector('.arrow');
+        function render() {
+          var collapsed = body.hasAttribute('hidden');
+          btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+          if (arrow) arrow.textContent = collapsed ? '\u25B6' : '\u25BC';
+        }
+        btn.addEventListener('click', function () {
+          body.toggleAttribute('hidden'); // 只翻转自己绑定的 body，绝不碰另一个
+          render();
+        });
+        render(); // 初始化：箭头与 hidden 状态对齐
+      })(buttons[i]);
+    }
+  })();
+
+  // 余额卡片点击 → 展开"积分变动"并跳转到对应年级明细（3天内）；再点一次恢复全部
+  (function () {
+    var current = 'all'; // 当前过滤状态：'all' | '五年级' | '六年级'
+    var body = document.getElementById('history-body');
+    var btn = document.querySelector('.collapse-btn[data-target="history-body"]');
+    var reset = document.getElementById('history-reset');
+    var sec = document.getElementById('history-section');
+    function show(grade) {
+      if (!body) return;
+      if (body.hasAttribute('hidden') && btn) btn.click(); // 复用折叠逻辑展开（箭头自动同步）
+      var cols = body.querySelectorAll('.grade-col');
+      for (var i = 0; i < cols.length; i++) {
+        var match = (grade === 'all') || (cols[i].getAttribute('data-grade') === grade);
+        if (match) cols[i].removeAttribute('hidden');
+        else cols[i].setAttribute('hidden', '');
+      }
+      if (reset) {
+        if (grade === 'all') reset.setAttribute('hidden', '');
+        else reset.removeAttribute('hidden');
+      }
+      current = grade;
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function onCard(card) {
+      var grade = card.getAttribute('data-grade');
+      if (current === grade) show('all'); // 已是该年级过滤 → 恢复全部
+      else show(grade);
+    }
+    var cards = document.querySelectorAll('.card[data-grade]');
+    for (var j = 0; j < cards.length; j++) {
+      (function (card) {
+        card.addEventListener('click', function () { onCard(card); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onCard(card); }
+        });
+      })(cards[j]);
+    }
+    if (reset) reset.addEventListener('click', function () { show('all'); });
+  })();
+
+  // S-6（DeepSeek仲裁2026-10-18）：减弱动态效果开关全局只定义一次，各 IIFE 复用；
+  // 须在所有使用它的 IIFE 执行前定义（脚本顶部）
+  var REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // 余额数码轮（方案C）：页面加载时每张卡从0滚动到目标值；个位先动，逐位错峰
+  (function () {
+    var DURATION = 900, STAGGER_DIGIT = 120, STAGGER_CARD = 250;
+
+    function setStatic(scoreEl) {
+      // 无动画：直接定格到目标位（减弱动态效果 / 兜底收尾共用）
+      var digits = scoreEl.querySelectorAll('.digit');
+      for (var i = 0; i < digits.length; i++) {
+        var strip = digits[i].querySelector('.digit-strip');
+        var target = digits[i].getAttribute('data-target');
+        strip.style.transition = 'none';
+        strip.style.transform = 'translateY(calc(-1em * ' + target + '))';
+        strip.style.willChange = 'auto';
+      }
+      scoreEl.setAttribute('data-rolling', '0');
+    }
+
+    function finishScore(scoreEl) {
+      if (scoreEl.getAttribute('data-rolling') !== '1') return; // 幂等：transitionend与兜底timer只收尾一次
+      setStatic(scoreEl);
+    }
+
+    function rollScore(scoreEl, startDelay) {
+      if (scoreEl.getAttribute('data-rolling') === '1') return; // 防重入
+      var digits = scoreEl.querySelectorAll('.digit');
+      var n = digits.length;
+      if (!n) return;
+      if (REDUCE_MOTION.matches) { setStatic(scoreEl); return; }
+      scoreEl.setAttribute('data-rolling', '1');
+      // 先无动画复位到0
+      for (var r = 0; r < n; r++) {
+        var st0 = digits[r].querySelector('.digit-strip');
+        st0.style.transition = 'none';
+        st0.style.transform = 'translateY(0)';
+      }
+      void scoreEl.offsetHeight; // 强制reflow，让复位先生效
+      // S-1（DeepSeek仲裁2026-10-18）：计数 strip 的 transitionend，全部完成后尽早调 finishScore
+      // （data-rolling=0 以真实动画结束为准，比兜底 timer 早约120ms；兜底 timer 保留防 transition 不触发）
+      var doneCount = 0;
+      for (var i = 0; i < n; i++) {
+        (function (idx) {
+          var d = digits[idx];
+          var target = d.getAttribute('data-target');
+          var strip = d.querySelector('.digit-strip');
+          var delay = startDelay + (n - 1 - idx) * STAGGER_DIGIT; // 个位先动
+          strip.style.willChange = 'transform'; // 按需开合成层
+          strip.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(.22,.61,.36,1) ' + delay + 'ms';
+          strip.style.transform = 'translateY(calc(-1em * ' + target + '))';
+          strip.addEventListener('transitionend', function handler(e) {
+            e.stopPropagation(); // 不冒泡到.card，避免干扰点击跳转
+            strip.style.transition = 'none';
+            strip.style.transform = 'translateY(calc(-1em * ' + target + '))'; // 硬赋值兜底
+            strip.style.willChange = 'auto'; // 用完即清，不占GPU显存
+            strip.removeEventListener('transitionend', handler);
+            doneCount++;
+            if (doneCount === n) finishScore(scoreEl); // 幂等：与兜底 timer 只收尾一次
+          });
+        })(i);
+      }
+      // 兜底：transitionend未触发时强制收尾（最晚位 delay + 时长 + 余量）
+      var totalMs = startDelay + (n - 1) * STAGGER_DIGIT + DURATION + 120;
+      setTimeout(function () { finishScore(scoreEl); }, totalMs);
+    }
+
+    // 运行中用户切换系统"减弱动态效果"：立即定格（S-6：全局唯一 change 监听）
+    if (REDUCE_MOTION.addEventListener) {
+      REDUCE_MOTION.addEventListener('change', function () {
+        if (REDUCE_MOTION.matches) {
+          var scores = document.querySelectorAll('.card .score[data-value]');
+          for (var i = 0; i < scores.length; i++) finishScore(scores[i]);
+        }
+      });
+    }
+
+    // 页面加载自动播放：五年级先动，六年级错峰250ms
+    var scores = document.querySelectorAll('.card .score[data-value]');
+    for (var i = 0; i < scores.length; i++) {
+      rollScore(scores[i], i * STAGGER_CARD);
+    }
+  })();
+
+  // === 方案A+E：进度条 + 数字到位微动（监听数码轮完成） ===
+  (function () {
+    if (REDUCE_MOTION.matches) return;
+    // 监听每张卡片的数码轮完成事件
+    document.querySelectorAll('.card').forEach(function (card) {
+      var scoreEl = card.querySelector('.score');
+      if (!scoreEl) return;
+      // 用 MutationObserver 监听 data-rolling 从 1 变为 0（滚动完成）
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (m) {
+          if (m.attributeName === 'data-rolling' && scoreEl.getAttribute('data-rolling') === '0') {
+            // 方案E：数字到位微动
+            scoreEl.classList.add('settle');
+            scoreEl.addEventListener('animationend', function handler(e) {
+              if (e.animationName === 'settlePop') {
+                scoreEl.classList.remove('settle');
+                scoreEl.removeEventListener('animationend', handler);
+              }
+            });
+            // 方案A：进度条填充
+            var wrap = card.querySelector('.progress-wrap');
+            if (wrap && !wrap.dataset.played) {
+              wrap.dataset.played = '1';
+              var fill = wrap.querySelector('.progress-fill');
+              var pct = parseFloat(fill.style.getPropertyValue('--pct')) || 0;
+              requestAnimationFrame(function () {
+                fill.style.transform = 'scaleX(' + (pct / 100) + ')';
+                if (pct >= 100) wrap.classList.add('progress-done');
+              });
+            }
+            // 方案E：+N标签（今日得分为正时）
+            var delta = card.querySelector('.delta-tag');
+            if (delta && !delta.dataset.shown) {
+              delta.dataset.shown = '1';
+              setTimeout(function () {
+                delta.classList.add('show');
+                setTimeout(function () { delta.classList.remove('show'); }, 1400);
+              }, 200);
+            }
+            observer.disconnect();
+          }
+        });
+      });
+      observer.observe(scoreEl, { attributes: true, attributeFilter: ['data-rolling'] });
+    });
+  })();
+
+  // === 方案B：徽章解锁弹跳入场（IntersectionObserver） ===
+  (function () {
+    if (REDUCE_MOTION.matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && e.target.hasAttribute('data-new')) {
+          e.target.classList.add('badge-bounce');
+          e.target.addEventListener('animationend', function handler(ev) {
+            if (ev.animationName === 'badgeBounce') {
+              e.target.classList.remove('badge-bounce');
+              // B-1（DeepSeek仲裁2026-10-18）：用完即摘——摘除 data-new，保证只弹跳一次，不反复触发
+              e.target.removeAttribute('data-new');
+              e.target.removeEventListener('animationend', handler);
+            }
+          });
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.badge[data-new="true"]').forEach(function (el) { io.observe(el); });
+  })();
+
+  // === 徽章明细展开（2026-10-18：每周徽章动态区，点击徽章展开当周获得明细） ===
+  // 2026-10-18审查报告3修复：阻塞2（明细aria-hidden与hidden同步）、重要1（动画中点击先收尾动画）、重要2（rAF内校验aria-expanded防连点竞态）
+  (function () {
+    document.querySelectorAll('.badge .badge-detail').forEach(function (d) {
+      var badge = d.closest('.badge');
+      if (!badge) return;
+      badge.addEventListener('click', function () {
+        // 重要1：弹跳动画播放中被点击，先强行收尾动画再展开，避免明细被scale缩放+高光横穿
+        if (badge.classList.contains('badge-bounce')) {
+          badge.classList.remove('badge-bounce');
+          badge.removeAttribute('data-new');
+        }
+        var expanded = badge.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          d.classList.remove('is-open');
+          d.setAttribute('hidden', '');
+          d.setAttribute('aria-hidden', 'true');
+          badge.setAttribute('aria-expanded', 'false');
+        } else {
+          d.removeAttribute('hidden');
+          d.removeAttribute('aria-hidden');
+          // 双帧rAF确保iPad上hidden摘除后layout完成再加动画类
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              // 重要2：快速连点时若已收起，不再加动画类（防状态不一致）
+              if (badge.getAttribute('aria-expanded') === 'true') {
+                d.classList.add('is-open');
+              } else {
+                d.classList.remove('is-open');
+              }
+            });
+          });
+          badge.setAttribute('aria-expanded', 'true');
+        }
+      });
+      badge.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); badge.click(); }
+      });
+    });
+  })();
+
+  // === 方案C：兑换区脉冲（等数码轮完成后触发，2秒兜底） ===
+  (function () {
+    if (REDUCE_MOTION.matches) return;
+    var triggered = false;
+    function addAlmostTip(row, diff, grade) {
+      // I-2：almost 提示标注年级
+      var key = grade === '五年级' ? 'almost-g5' : 'almost-g6';
+      row.classList.add(key);
+      var firstTd = row.querySelector('td');
+      if (firstTd) {
+        var tip = document.createElement('span');
+        tip.className = 'almost-tip';
+        tip.textContent = '还差' + diff + '分（' + grade + '）';
+        firstTd.appendChild(tip);
+      }
+    }
+    function triggerRedeem() {
+      if (triggered) return;
+      triggered = true;
+      // I-2（DeepSeek仲裁2026-10-18）：按年级分别取余额，不用 maxBalance——
+      // 低余额年级不应看到自己够不着的档位在脉冲
+      var balances = {}; // grade -> int
+      document.querySelectorAll('.card[data-grade] .score[data-value]').forEach(function (scoreEl) {
+        var card = scoreEl.closest('.card');
+        var v = parseInt(scoreEl.getAttribute('data-value'), 10);
+        if (card && !isNaN(v)) balances[card.getAttribute('data-grade')] = v;
+      });
+      var grades = Object.keys(balances);
+      if (!grades.length) return;
+      var redeemBody = document.getElementById('redeem-body');
+      if (!redeemBody) return;
+      var rows = redeemBody.querySelectorAll('table tr');
+      var ALMOST_RATIO = 0.85;
+      var invalid = 0;
+      for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        // I-1（DeepSeek仲裁2026-10-18）：档位单一数据源 = HTML 表格本身（用户逐字确认的文案）；
+        // 从首个 td.plus（如"70分"）实时解析 cost；解析失败不静默跳过
+        var firstTd = row.querySelector('td.plus');
+        var cost = firstTd ? parseInt(firstTd.textContent, 10) : NaN;
+        if (isNaN(cost)) {
+          invalid++;
+          row.classList.add('redeem-row', 'redeem-row-invalid');
+          if (firstTd && !firstTd.querySelector('.tier-err')) {
+            var err = document.createElement('span');
+            err.className = 'tier-err';
+            err.textContent = '⚠️档位解析失败';
+            firstTd.appendChild(err);
+          }
+          continue;
+        }
+        row.classList.add('redeem-row');
+        var b5 = balances['五年级'], b6 = balances['六年级'];
+        if (typeof b5 === 'number') {
+          if (b5 >= cost) row.classList.add('can-redeem-g5');
+          else if (b5 >= cost * ALMOST_RATIO) addAlmostTip(row, cost - b5, '五年级');
+        }
+        if (typeof b6 === 'number') {
+          if (b6 >= cost) row.classList.add('can-redeem-g6');
+          else if (b6 >= cost * ALMOST_RATIO) addAlmostTip(row, cost - b6, '六年级');
+        }
+        // 摇摆动画仅当该行没有任何年级可兑换时加（避免与 pulse 动画打架；CSS 中 pulse 后定义优先）
+        if (!row.classList.contains('can-redeem-g5') && !row.classList.contains('can-redeem-g6') &&
+            (row.classList.contains('almost-g5') || row.classList.contains('almost-g6'))) {
+          row.classList.add('almost-shake');
+        }
+      }
+      if (invalid > 0) {
+        // I-1：整表解析失败可见报错，不静默降级（console 仅附加日志）
+        console.warn('[kanban] 兑换档位解析失败 ' + invalid + ' 行');
+        var warn = document.createElement('div');
+        warn.className = 'tier-warn';
+        warn.textContent = '⚠️ 兑换档位解析异常（' + invalid + ' 行），请检查表格后刷新页面';
+        redeemBody.insertBefore(warn, redeemBody.firstChild);
+      }
+    }
+    // 监听数码轮完成（data-rolling变为0），比硬编码1秒更可靠
+    var checkCount = 0;
+    var checker = setInterval(function () {
+      checkCount++;
+      var allDone = true;
+      var scores = document.querySelectorAll('.card .score[data-value]');
+      if (scores.length === 0) allDone = false;
+      scores.forEach(function (s) {
+        if (s.getAttribute('data-rolling') === '1') allDone = false;
+      });
+      if (allDone || checkCount >= 20) { // 2秒兜底（20*100ms）
+        clearInterval(checker);
+        // 再延迟300ms确保视觉不打架
+        setTimeout(triggerRedeem, 300);
+      }
+    }, 100);
+  })();
+
+  // === 方案D：折叠内容上滑淡入 ===
+  (function () {
+    if (REDUCE_MOTION.matches) return;
+    document.querySelectorAll('.collapse-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = document.getElementById(btn.getAttribute('data-target'));
+        if (!target) return;
+        // 延迟一帧，等hidden移除后加slide-in类触发动画
+        setTimeout(function () {
+          if (!target.hasAttribute('hidden')) {
+            // 先移除再添加，确保快速连续点击时动画重播
+            target.classList.remove('slide-in');
+            void target.offsetWidth; // 强制reflow
+            target.classList.add('slide-in');
+            setTimeout(function () { target.classList.remove('slide-in'); }, 300);
+          }
+        }, 10);
+      });
+    });
+  })();
+
+  // 实时时钟：每秒更新，显示在日期后面
+  (function () {
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    function tick() {
+      var el = document.getElementById("clock");
+      if (!el) return;
+      var d = new Date();
+      el.textContent = pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+})();
+</script>
+</body>
+</html>
