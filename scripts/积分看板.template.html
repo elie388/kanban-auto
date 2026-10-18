@@ -205,6 +205,10 @@
   @keyframes badgeShine { to { transform: translateX(120%); } }
   /* === 方案C：兑换区可兑换脉冲 + 差一点提示 === */
   /* I-2（DeepSeek仲裁2026-10-18）：按年级分治，不用 maxBalance；五年级紫色系呼应🟣，六年级蓝色系呼应🔵 */
+  .grade-badge { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 12px; font-size: 13px; font-weight: bold; border: 2px solid; vertical-align: middle; }
+  .redeem-row.can-redeem-g5 .grade-badge { color: #7b1fa2; border-color: #7b1fa2; background: rgba(123,31,162,.08); }
+  .redeem-row.can-redeem-g6 .grade-badge { color: #0277bd; border-color: #0277bd; background: rgba(2,119,189,.08); }
+  .redeem-row.can-redeem-g5.can-redeem-g6 .grade-badge { color: #2e7d32; border-color: #2e7d32; background: rgba(46,125,50,.08); }
   .redeem-row.almost-shake td { animation: almostShake .5s ease 1; }
   @keyframes almostShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
   .redeem-row.can-redeem-g5 td { background: rgba(156,39,176,.10); --pring: rgba(156,39,176,.55); animation: redeemPulse 1.6s ease-in-out infinite; }
@@ -718,13 +722,22 @@
         }
         row.classList.add('redeem-row');
         var b5 = balances['五年级'], b6 = balances['六年级'];
+        var can5 = false, can6 = false;
         if (typeof b5 === 'number') {
-          if (b5 >= cost) row.classList.add('can-redeem-g5');
+          if (b5 >= cost) { row.classList.add('can-redeem-g5'); can5 = true; }
           else if (b5 >= cost * ALMOST_RATIO) addAlmostTip(row, cost - b5, '五年级');
         }
         if (typeof b6 === 'number') {
-          if (b6 >= cost) row.classList.add('can-redeem-g6');
+          if (b6 >= cost) { row.classList.add('can-redeem-g6'); can6 = true; }
           else if (b6 >= cost * ALMOST_RATIO) addAlmostTip(row, cost - b6, '六年级');
+        }
+        // 年级徽章：显示哪个年级可兑换
+        if (can5 || can6) {
+          var badge = document.createElement('span');
+          badge.className = 'grade-badge';
+          badge.textContent = can5 && can6 ? '五 / 六' : (can5 ? '五年级' : '六年级');
+          var firstCell = row.querySelector('td');
+          if (firstCell) firstCell.appendChild(badge);
         }
         // 摇摆动画仅当该行没有任何年级可兑换时加（避免与 pulse 动画打架；CSS 中 pulse 后定义优先）
         if (!row.classList.contains('can-redeem-g5') && !row.classList.contains('can-redeem-g6') &&
