@@ -205,7 +205,8 @@
   @keyframes badgeShine { to { transform: translateX(120%); } }
   /* === 方案C：兑换区可兑换脉冲 + 差一点提示 === */
   /* I-2（DeepSeek仲裁2026-10-18）：按年级分治，不用 maxBalance；五年级紫色系呼应🟣，六年级蓝色系呼应🔵 */
-  .grade-badge { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 12px; font-size: 13px; font-weight: bold; border: 2px solid; vertical-align: middle; text-align: center; line-height: 1.4; }
+  .grade-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 13px; font-weight: bold; border: 2px solid; vertical-align: middle; text-align: center; line-height: 1.4; }
+  .grade-cell { text-align: center; }
   .redeem-row.can-redeem-g5 .grade-badge { color: #7b1fa2; border-color: #7b1fa2; background: rgba(123,31,162,.08); }
   .redeem-row.can-redeem-g6 .grade-badge { color: #0277bd; border-color: #0277bd; background: rgba(2,119,189,.08); }
   .redeem-row.can-redeem-g5.can-redeem-g6 .grade-badge { color: #2e7d32; border-color: #2e7d32; background: rgba(46,125,50,.08); }
@@ -330,13 +331,13 @@
 <button type="button" class="collapse-btn" aria-expanded="false" data-target="redeem-body">🎁 积分兑换 🎁</button>
     <div class="collapse-body" id="redeem-body" hidden>
     <table>
-      <tr><th>积分</th><th>兑换内容</th></tr>
-      <tr><td class="plus">70分</td><td>30分钟《我的世界》</td></tr>
-      <tr><td class="plus">100分</td><td>1小时《我的世界》</td></tr>
-      <tr><td class="plus">150分</td><td>1小时《和平精英》<br>或2小时《我的世界》</td></tr>
-      <tr><td class="plus">250分</td><td>2小时《和平精英》</td></tr>
-      <tr><td class="plus">600分</td><td>达成愿望1次<br>（等额50元，可兑现金）</td></tr>
-      <tr><td class="plus">1000分</td><td>达成愿望1次<br>（等额100元，可兑现金）</td></tr>
+      <tr><th>积分</th><th>兑换内容</th><th>可兑换年级</th></tr>
+      <tr><td class="plus">70分</td><td>30分钟《我的世界》</td><td class="grade-cell"></td></tr>
+      <tr><td class="plus">100分</td><td>1小时《我的世界》</td><td class="grade-cell"></td></tr>
+      <tr><td class="plus">150分</td><td>1小时《和平精英》<br>或2小时《我的世界》</td><td class="grade-cell"></td></tr>
+      <tr><td class="plus">250分</td><td>2小时《和平精英》</td><td class="grade-cell"></td></tr>
+      <tr><td class="plus">600分</td><td>达成愿望1次<br>（等额50元，可兑现金）</td><td class="grade-cell"></td></tr>
+      <tr><td class="plus">1000分</td><td>达成愿望1次<br>（等额100元，可兑现金）</td><td class="grade-cell"></td></tr>
     </table>
     <div class="note">📌 上学日兑换游戏加收 15% 手续费。</div>
     <div class="note">📌 积分赠送收 10% 手续费。</div>
@@ -737,8 +738,8 @@
           badge.className = 'grade-badge';
           if (can5 && can6) { badge.innerHTML = '五年级<br>六年级'; }
           else { badge.textContent = can5 ? '五年级' : '六年级'; }
-          var firstCell = row.querySelector('td');
-          if (firstCell) firstCell.appendChild(badge);
+          var gradeCell = row.querySelector('.grade-cell');
+          if (gradeCell) gradeCell.appendChild(badge);
         }
         // 摇摆动画仅当该行没有任何年级可兑换时加（避免与 pulse 动画打架；CSS 中 pulse 后定义优先）
         if (!row.classList.contains('can-redeem-g5') && !row.classList.contains('can-redeem-g6') &&
