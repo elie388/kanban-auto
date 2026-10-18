@@ -37,6 +37,11 @@
   .collapse-btn { display: block; width: 100%; text-align: center; font-size: 28px; font-weight: bold; font-family: inherit; color: #30343B; background: none; border: none; border-bottom: 3px solid #ffe9b8; padding: 8px 0 10px; margin: 0 0 14px; cursor: pointer; min-height: 44px; }
   /* I-1（DeepSeek仲裁2026-10-18）：触摸目标≥44px（Apple HIG/WCAG 2.5.5） */
   .collapse-body[hidden] { display: none; }
+  /* 赚分/扣分区两栏居中（2026-10-19用户定） */
+  #earn-body table, #deduct-body table { column-count: 2; column-gap: 32px; }
+  #earn-body tr, #deduct-body tr { break-inside: avoid; }
+  #earn-body table, #deduct-body table { text-align: center; }
+  #earn-body th, #earn-body td, #deduct-body th, #deduct-body td { text-align: center; }
   table { width: 100%; border-collapse: collapse; font-size: 19px; }
   th, td { text-align: left; padding: 11px 8px; border-bottom: 2px solid #f5efe0; }
   th { color: #8a6d1b; font-weight: bold; font-size: 17px; }
