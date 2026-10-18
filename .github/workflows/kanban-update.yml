@@ -8,6 +8,11 @@ name: 积分看板自动更新
 # - 假期：同周末时间表。假期的工作日仍会按工作日 cron 触发（接受额度浪费，不改代码）
 # - 寒暑假时间用户另行通知后调整
 # 月消耗约 700-1400 分钟，在 2000 免费额度内
+#
+# 2026-10-18 迁移记录（用户批准）：
+#   香港免费空间架构性不支持 SFTP/FTPS（仅明文 FTP，安全原因禁用），
+#   部署通道由"FTP 上传"改为"GitHub Pages"。
+#   自动更新逻辑不变：定时触发 → Drive 拉取台账 → 重新生成 HTML → 发布。
 
 on:
   schedule:
@@ -26,18 +31,16 @@ concurrency:
   group: kanban-update
   cancel-in-progress: false
 
-# DeepSeek 安全加固：显式最小化权限（默认 GITHUB_TOKEN 只读）
+# DeepSeek 安全加固：默认最小权限，各 job 按需声明
 permissions:
-  contents: read  # 仅需读代码；本 workflow 不推送
+  contents: read
 
 jobs:
-  update-kanban:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    # job 级别再次收紧（防御纵深）
     permissions:
-      contents: read
-
+      contents: read  # 仅需检出代码
     steps:
       # 第三方 action 固定到 commit SHA（防 tag 劫持，DeepSeek 加固）
       # SHA 已用 git ls-remote 核验（2026-10-18）
@@ -51,7 +54,7 @@ jobs:
 
       - name: 安装依赖
         run: |
-          pip install "cryptography==42.0.5" "paramiko==3.4.0"
+          pip install "cryptography==42.0.5"
 
       - name: 从 Google Drive 拉取积分台账
         env:
@@ -60,24 +63,33 @@ jobs:
         run: |
           python3 scripts/fetch_ledger.py
 
-      - name: 重新生成看板 HTML
+      - name: 重新生成看板 HTML（含完整性校验）
         run: |
           python3 scripts/build_wrapper.py
+          mkdir -p public
+          mv index.html public/index.html
+          ls -la public/
 
-      - name: SFTP/FTPS 上传到香港空间
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASS: ${{ secrets.FTP_PASS }}
-          FTP_MODE: ${{ secrets.FTP_MODE }}  # 可选：sftp/ftps/auto，默认 auto
-        run: |
-          python3 scripts/deploy_ftp.py
-
-      - name: 上传日志（调试用，不含看板数据）
-        if: failure()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+      - name: 上传 Pages 产物
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3
         with:
-          name: kanban-debug-logs
-          path: |
-            fetch_ledger.log
-          retention-days: 3
+          path: public/
+        # 说明：upload-pages-artifact 仅打包 public/index.html，
+        # 不含脚本/日志/台账；失败时不上传调试产物（防 PII 外泄，
+        # DeepSeek 安全要求 2026-10-18）。调试看 Actions 日志
+        #（私有仓库，仅协作者可见）。
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pages: write      # 部署到 GitHub Pages 所需
+      id-token: write   # deploy-pages OIDC 认证所需
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4

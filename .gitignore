@@ -15,3 +15,5 @@ delta-essence-*.json
 *.pem
 *.key
 .env
+public/
+fetch_ledger.log

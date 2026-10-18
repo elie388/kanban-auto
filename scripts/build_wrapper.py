@@ -71,7 +71,32 @@ def main():
     if not os.path.exists(out):
         print(f"ERROR: 产物未生成 {out}", file=sys.stderr)
         sys.exit(1)
+
+    # 完整性校验（DeepSeek 安全要求 2026-10-18）：部署前必须确认看板完整，
+    # 防止截断/残缺的 HTML 被发布到 GitHub Pages
+    _verify_output(out)
+
     print(f"OK: {out} ({os.path.getsize(out)} bytes)")
+
+
+def _verify_output(path: str) -> None:
+    """校验生成的 index.html 完整可用，任一失败即退出非零（阻断部署）。"""
+    size = os.path.getsize(path)
+    # 1. 体积下限：正常看板约 57KB，低于 10KB 视为异常
+    if size < 10_000:
+        print(f"ERROR: 完整性校验失败：文件过小 ({size} bytes)，疑似生成异常", file=sys.stderr)
+        sys.exit(1)
+    with open(path, encoding="utf-8") as f:
+        content = f.read()
+    # 2. 文档闭合：必须以 </html> 结尾，防止截断
+    if not content.rstrip().endswith("</html>"):
+        print("ERROR: 完整性校验失败：文档未以 </html> 闭合，疑似截断", file=sys.stderr)
+        sys.exit(1)
+    # 3. 关键标记：标题必须存在，防止模板渲染失败出空白页
+    if "实时积分" not in content:
+        print("ERROR: 完整性校验失败：缺少'实时积分'标题标记，疑似渲染失败", file=sys.stderr)
+        sys.exit(1)
+    print(f"完整性校验通过：{size} bytes，文档闭合，标题标记正常")
 
 
 if __name__ == "__main__":
