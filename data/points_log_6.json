@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-19T20:38:14+08:00",
+  "generated_at": "2026-10-19T21:02:25+08:00",
   "window": {
     "days": 30,
     "max_items": 20
@@ -9,6 +9,8 @@
   "items": [
     {
       "date": "10-19",
+      "time": "20:00",
+      "time_source": "deadline",
       "reason": "第六期英语阅读写作练习没交",
       "pts": -5,
       "sign": "minus",
@@ -16,6 +18,8 @@
     },
     {
       "date": "10-18",
+      "time": null,
+      "time_source": null,
       "reason": "冲正",
       "pts": -4,
       "sign": "minus",
@@ -23,6 +27,8 @@
     },
     {
       "date": "10-18",
+      "time": null,
+      "time_source": null,
       "reason": "英语周试卷Q25订正一次改对",
       "pts": 2,
       "sign": "plus",
@@ -30,6 +36,8 @@
     },
     {
       "date": "10-18",
+      "time": "16:16",
+      "time_source": "submit",
       "reason": "英语周试卷Q25订正当天发回",
       "pts": 2,
       "sign": "plus",
@@ -37,6 +45,8 @@
     },
     {
       "date": "10-18",
+      "time": "16:16",
+      "time_source": "submit",
       "reason": "英语周试卷写作补写按时发回",
       "pts": 2,
       "sign": "plus",
@@ -44,6 +54,8 @@
     },
     {
       "date": "10-18",
+      "time": "15:25",
+      "time_source": "submit",
       "reason": "英语周试卷按时发回",
       "pts": 5,
       "sign": "plus",
@@ -51,6 +63,8 @@
     },
     {
       "date": "10-18",
+      "time": null,
+      "time_source": null,
       "reason": "英语周试卷正确率96.6%",
       "pts": 3,
       "sign": "plus",
@@ -58,6 +72,8 @@
     },
     {
       "date": "10-18",
+      "time": "15:22",
+      "time_source": "submit",
       "reason": "语文周试卷按时发回",
       "pts": 5,
       "sign": "plus",
@@ -65,6 +81,8 @@
     },
     {
       "date": "10-18",
+      "time": "16:45",
+      "time_source": "submit",
       "reason": "数学周试卷按时发回",
       "pts": 5,
       "sign": "plus",
@@ -72,6 +90,8 @@
     },
     {
       "date": "10-18",
+      "time": null,
+      "time_source": null,
       "reason": "数学周试卷正确率92.1%",
       "pts": 3,
       "sign": "plus",
@@ -79,6 +99,8 @@
     },
     {
       "date": "10-18",
+      "time": null,
+      "time_source": null,
       "reason": "晾衣服",
       "pts": 3,
       "sign": "plus",
@@ -86,6 +108,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "家长奖励",
       "pts": 100,
       "sign": "plus",
@@ -93,6 +117,8 @@
     },
     {
       "date": "10-17",
+      "time": "15:54",
+      "time_source": "submit",
       "reason": "15:47/15:54批次",
       "pts": 5,
       "sign": "plus",
@@ -100,6 +126,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "英语阅读写作练习第五期没交",
       "pts": -5,
       "sign": "minus",
@@ -107,6 +135,8 @@
     },
     {
       "date": "10-17",
+      "time": "20:49",
+      "time_source": "submit",
       "reason": "针对性练习按时发回",
       "pts": 5,
       "sign": "plus",
@@ -114,6 +144,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "针对性练习书面全对",
       "pts": 5,
       "sign": "plus",
@@ -121,6 +153,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "针对性练习口语录音没发",
       "pts": -5,
       "sign": "minus",
@@ -128,6 +162,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "针对性练习背诵录音没发",
       "pts": -5,
       "sign": "minus",
@@ -135,6 +171,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "英语阅读写作按时发回",
       "pts": 5,
       "sign": "plus",
@@ -142,6 +180,8 @@
     },
     {
       "date": "10-17",
+      "time": null,
+      "time_source": null,
       "reason": "英语阅读写作阅读全对",
       "pts": 5,
       "sign": "plus",
