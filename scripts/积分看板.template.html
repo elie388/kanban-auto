@@ -343,8 +343,11 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   gap: 24px;
   align-items: start;
 }
+/* 2026-10-19 文字拥挤修复（deepseek方案）：grid子项防撑破+温和换行 */
+#earn-body .col,
+#deduct-body .col { min-width: 0; }
 #earn-body td,
-#deduct-body td { overflow-wrap: anywhere; }
+#deduct-body td { overflow-wrap: break-word; word-break: normal; }
 
 
 @media (max-width: 380px) {
