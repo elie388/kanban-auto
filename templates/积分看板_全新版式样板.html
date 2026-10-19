@@ -428,6 +428,30 @@
     background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
     margin-left:8px;
   }
+  /* 2026-10-19 KB-TAG-LIVE：实时数据标签绿色呼吸动效（DeepSeek方案）
+     静态绿底常驻（.tag-live 声明晚于 .tag-demo/.bal-demo-tag，同权重后者胜）；
+     动效仅 transform/opacity；reduced-motion 下只保留静态绿底。 */
+  .tag-live{
+    background:#E6F9ED; color:#16A34A; opacity:1;
+    position:relative;
+    animation:tagLiveBreathe 1.8s ease-in-out infinite;
+  }
+  .tag-live::before{
+    content:""; position:absolute; inset:0; border-radius:999px;
+    background:#16A34A; opacity:0; pointer-events:none;
+    animation:tagLiveGlow 1.8s ease-in-out infinite;
+  }
+  @keyframes tagLiveBreathe{
+    0%,100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.06); opacity:.88; }
+  }
+  @keyframes tagLiveGlow{
+    0%,100%{ opacity:0; }
+    50%{ opacity:.12; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tag-live, .tag-live::before{ animation:none; }
+  }
   .log-updated{font-size:12px; color:var(--sub); margin-left:8px; white-space:nowrap;}
   #shop-progress{margin:0 0 12px;}
   .shop-prog-line{font-size:14px; line-height:1.9;}
@@ -998,7 +1022,7 @@
         .then(function(){
           if(ok === 2){
             var tag = document.getElementById('tasks-tag');
-            if(tag) tag.textContent = '实时数据';
+            if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
           }
         })
         .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); });
@@ -1289,6 +1313,7 @@
       card.appendChild(tag);
     }
     tag.textContent = text;
+    tag.classList.toggle('tag-live', text === '实时数据'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */
   }
 
   function loadBalance(grade, cardId){
@@ -1320,6 +1345,7 @@
       head.appendChild(tag);
     }
     tag.textContent = text;
+    tag.classList.toggle('tag-live', text === '实时数据'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */
     var upd = head.querySelector('[data-log-updated]');
     if(generatedAt){
       if(!upd){
