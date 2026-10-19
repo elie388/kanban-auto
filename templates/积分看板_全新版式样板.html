@@ -554,7 +554,7 @@
   <!-- 标题 -->
   <header class="hero">
     <h1>🌟 积分看板 🌟</h1>
-    <div class="date">2026-10-19</div>
+    <div class="date" id="board-date">2026-10-19</div>
   </header>
 
   <!-- 余额卡片 -->
@@ -660,12 +660,12 @@
 
     <div class="grade-block" aria-label="五年级成就">
       <div class="grade-head"><span class="pill-grade g5">五年级</span>成就</div>
-      <div class="rule-note">徽章系统正在建设中，颁发标准已定稿（v3.7），实际颁发记录待上线后展示。</div>
+      <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
 
     <div class="grade-block" aria-label="六年级成就">
       <div class="grade-head"><span class="pill-grade g6">六年级</span>成就</div>
-      <div class="rule-note">徽章系统正在建设中，颁发标准已定稿（v3.7），实际颁发记录待上线后展示。</div>
+      <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
       </div></div>
     </div>
@@ -680,18 +680,8 @@
     </button>
     <div class="collapse-body" id="panel-lib" role="region" aria-labelledby="btn-lib">
       <div class="collapse-inner"><div class="collapse-pad">
-        <p class="rule-note" style="margin-top:0; margin-bottom:14px;">🚀 下面每一枚徽章都还没到手——看中哪枚，就去把它拿下！</p>
-        <ul class="rule-list" aria-label="可争取徽章">
-            <li><span>🌅 早起鸟 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：连续 7 天早起</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>✍️ 默写小达人 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：默写满分 ×5</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>🏆 满分王 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：单元测试满分 ×1</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>📝 写作小能手 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：作文 A+ ×3</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>⚡ 口算闪电 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：口算全对 ×10</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>📚 阅读之星 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：读完 3 本书</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>🏆 周冠军 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：连续 5 天任务全完成</span></span><span class="rule-pts plus">+5</span></li>
-            <li><span>🌟 全能挑战者 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：集齐 3 项以上成就</span></span><span class="rule-pts plus">+5</span></li>
-          </ul>
-        <div class="rule-note">💡 每拿下1枚徽章 +5 分；同一徽章只加1次。挑1枚开始吧！</div>
+        <!-- S4（2026-10-20）：兜底不再展示 8 枚旧徽章。数据拉取失败时显示"暂不可用"。 -->
+        <p class="rule-note" style="margin-top:0; margin-bottom:14px;" id="lib-fallback">🚀 徽章目标榜数据加载中…若持续显示，请稍后刷新。</p>
       </div></div>
     </div>
   </section>
@@ -708,44 +698,9 @@
     <div id="shop-progress" aria-label="兑换进度"></div>
     <div class="shop-grid">
 
-      <div class="shop-item">
-        <div class="shop-top">
-          <span class="ic">🕹️</span>
-          <span class="nm">Minecraft 30 分钟</span>
-          <span class="cost">100 分</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="transform:scaleX(0.81)"></div></div>
-        <div class="shop-hint">五年级：还差 <b>19 分</b> 就可以兑换 Minecraft 30 分钟<br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div>
-      </div>
-
-      <div class="shop-item">
-        <div class="shop-top">
-          <span class="ic">🍦</span>
-          <span class="nm">冰淇淋一支</span>
-          <span class="cost">30 分</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill ready" style="transform:scaleX(1)"></div></div>
-        <div class="shop-hint"><span class="ok-line">积分已足够 ✅ 五年级可立即兑换</span><br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div>
-      </div>
-
-      <div class="shop-item">
-        <div class="shop-top">
-          <span class="ic">🎬</span>
-          <span class="nm">周末电影选片权</span>
-          <span class="cost">150 分</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill g6 ready" style="transform:scaleX(1)"></div></div>
-        <div class="shop-hint"><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span><br>五年级：还差 <b>69 分</b> 就可以兑换周末电影选片权</div>
-      </div>
-
-      <div class="shop-item">
-        <div class="shop-top">
-          <span class="ic">🗺️</span>
-          <span class="nm">家庭出游选址权</span>
-          <span class="cost">300 分</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill g6" style="transform:scaleX(0.93)"></div></div>
-        <div class="shop-hint">六年级：还差 <b>21 分</b> 就可以兑换家庭出游选址权</div>
+      <!-- S4（2026-10-20）：兜底不再展示错误档位。数据拉取失败时显示"暂不可用"，不误导孩子兑换。 -->
+      <div class="shop-item" id="shop-fallback">
+        <div class="shop-hint" style="text-align:center;color:var(--sub);">商店数据加载中…若持续显示，请稍后刷新。</div>
       </div>
 
       </div>
@@ -1532,7 +1487,7 @@
         block.appendChild(grid);
       }else{
         /* §6（2026-10-19）：无真实徽章台账，不编造、不沉默，显式标注建设中 */
-        block.appendChild(el('div','rule-note','徽章系统正在建设中，颁发标准已定稿（v3.7），实际颁发记录待上线后展示。'));
+        block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
       }
       pad.appendChild(block);
     });
@@ -1572,11 +1527,13 @@
       left.appendChild(tag);
       left.appendChild(el('span','lib-cond','解锁条件：' + (c.cond || '')));
       li.appendChild(left);
-      li.appendChild(el('span','rule-pts plus','+5'));
+      /* L5（2026-10-20）：+5 收敛到单一数据源（badge_goals.json 的 points 字段），不再硬编码 */
+      li.appendChild(el('span','rule-pts plus','+' + (c.points != null ? c.points : 5)));
       ul.appendChild(li);
     });
     pad.appendChild(ul);
-    pad.appendChild(el('div','rule-note','💡 每拿下1枚徽章 +5 分；同一徽章一般只加1次（满分之星除外：每次获得一个，不设上限）。'));
+    var _pts0 = (d.catalog[0] && d.catalog[0].points != null) ? d.catalog[0].points : 5;
+    pad.appendChild(el('div','rule-note','💡 每拿下1枚徽章 +' + _pts0 + ' 分；同一徽章一般只加1次（满分之星除外：每次获得一个，不设上限）。'));
     return true;
   }
 
@@ -1643,13 +1600,22 @@
   }
 
   function boot(){
-    fetchJson('badges.json').then(renderBadges).catch(function(e){ console.warn('徽章栏拉取失败，保留硬编码:', e); });
-    fetchJson('badge_goals.json').then(renderGoals).catch(function(e){ console.warn('目标榜拉取失败，保留硬编码:', e); });
-    fetchJson('shop.json').then(renderShop).catch(function(e){ console.warn('商店拉取失败，保留硬编码:', e); });
+    /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码 */
+    try{
+      var de = document.getElementById('board-date');
+      if(de){
+        var n = new Date();
+        var p = function(x){ return (x < 10 ? '0' : '') + x; };
+        de.textContent = n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate());
+      }
+    }catch(e){ /* 日期写入失败不阻断 */ }
+    fetchJson('badges.json').then(renderBadges).catch(function(e){ console.warn('徽章栏拉取失败，显示占位:', e); });
+    fetchJson('badge_goals.json').then(renderGoals).catch(function(e){ console.warn('目标榜拉取失败，显示占位:', e); });
+    fetchJson('shop.json').then(renderShop).catch(function(e){ console.warn('商店拉取失败，显示占位:', e); });
     fetchJson('rules.json').then(function(d){
       renderRules(d, 'add', 'panel-bonus');
       renderRules(d, 'deduct', 'panel-deduct');
-    }).catch(function(e){ console.warn('规则拉取失败，保留硬编码:', e); });
+    }).catch(function(e){ console.warn('规则拉取失败，显示占位:', e); });
   }
 
   if(document.readyState === 'loading'){
