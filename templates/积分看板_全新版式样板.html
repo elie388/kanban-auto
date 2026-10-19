@@ -412,6 +412,16 @@
     font-size:12px; font-weight:500; color:var(--sub);
     background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
   }
+  /* 2026-10-19 KB-STATS-AUTO：日志区块标签/更新时间/商店进度 */
+  .grade-head .tag-demo{
+    font-size:12px; font-weight:500; color:var(--sub);
+    background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
+    margin-left:8px;
+  }
+  .log-updated{font-size:12px; color:var(--sub); margin-left:8px; white-space:nowrap;}
+  #shop-progress{margin:0 0 12px;}
+  .shop-prog-line{font-size:14px; line-height:1.9;}
+  .shop-fee-note{font-size:12px; color:var(--sub); margin-top:6px;}
   .collapse-btn .cb-state{
     margin-left:auto; flex:0 0 auto;
     display:inline-flex; align-items:center; gap:6px;
@@ -604,18 +614,12 @@
 
     <div class="grade-block" aria-label="五年级成就">
       <div class="grade-head"><span class="pill-grade g5">五年级</span>成就</div>
-      <div class="badge-grid">
-        <div class="ach"><span class="ic">🌅</span><div class="tt">早起鸟</div><div class="ds">连续 7 天早起</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="早起鸟达成进度：7/7">7/7</span></div></div>
-        <div class="ach"><span class="ic">✍️</span><div class="tt">默写小达人</div><div class="ds">默写满分 ×5</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="默写小达人达成进度：5/5">5/5</span></div></div>
-      </div>
+      <div class="rule-note">徽章系统正在建设中，颁发标准已定稿（v3.7），实际颁发记录待上线后展示。</div>
     </div>
 
     <div class="grade-block" aria-label="六年级成就">
       <div class="grade-head"><span class="pill-grade g6">六年级</span>成就</div>
-      <div class="badge-grid">
-        <div class="ach"><span class="ic">⚡</span><div class="tt">口算闪电</div><div class="ds">口算全对 ×10</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="口算闪电达成进度：10/10">10/10</span></div></div>
-        <div class="ach"><span class="ic">📚</span><div class="tt">阅读之星</div><div class="ds">读完 3 本书</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="阅读之星达成进度：3/3">3/3</span></div></div>
-      </div>
+      <div class="rule-note">徽章系统正在建设中，颁发标准已定稿（v3.7），实际颁发记录待上线后展示。</div>
     </div>
       </div></div>
     </div>
@@ -655,6 +659,7 @@
     </button>
     <div class="collapse-body" id="panel-shop" role="region" aria-labelledby="btn-shop">
       <div class="collapse-inner"><div class="collapse-pad">
+    <div id="shop-progress" aria-label="兑换进度"></div>
     <div class="shop-grid">
 
       <div class="shop-item">
@@ -1063,6 +1068,7 @@
 
   /* ---------- 写终值（零动画） ---------- */
   function writeFinal(el, odo, target){
+    if(el._rollV !== undefined && el._rollV !== window.__kanbanBalanceVersion) return; /* B3：旧动画不写 */
     var cellH = measureCellH(odo);
     if(!(cellH > 0)) cellH = 16; /* 极端兜底，正常路径不该走 */
     var s = String(target).padStart(odo.children.length, '0');
@@ -1084,11 +1090,17 @@
     if(score) score.removeAttribute('aria-busy');
   }
 
+  /* ---------- B3：余额版本号令牌（fetch 回填与首次滚动的竞态防护） ---------- */
+  /* 每次 __kanbanSetBalance 调用 ++；rollOdometer 捕获启动时版本，版本变了则静默退出 */
+  if(typeof window.__kanbanBalanceVersion !== 'number') window.__kanbanBalanceVersion = 0;
+
   /* ---------- 执行滚动动画（纯 CSS transition） ---------- */
   function rollOdometer(el){
     if(!el || el.dataset.rolled === '1') return; /* 幂等：一次进入只滚一次 */
     var target = parseInt(el.getAttribute('data-target'), 10);
-    if(!isFinite(target) || target < 0) return;
+    if(!isFinite(target) || target < 0) return; /* 负数不滚：静态 −N 由模板/setFinalBalance 负责 */
+    var v = window.__kanbanBalanceVersion; /* B3：捕获启动时版本 */
+    el._rollV = v;
 
     el.dataset.rolled = '1';
     var odo = buildOdometer(el, target);
@@ -1121,7 +1133,9 @@
     /* 下一帧挂动画类 + 逐位设 delay + 写终值 transform，触发 transition。
        delay 映射：delay = (n-1-i)*STAGGER —— 最低位（最右）delay=0 先停，
        最高位（最左）delay 最大后停，里程表视觉。 */
-    requestAnimationFrame(function(){
+    el._rafId = requestAnimationFrame(function(){
+      el._rafId = 0;
+      if(v !== window.__kanbanBalanceVersion) return; /* B3：已被 fetch 回填踢出，静默退出 */
       odo.classList.add('odo--anim');
       for(var i = 0; i < n; i++){
         var strip = odo.children[i].firstChild;
@@ -1136,6 +1150,7 @@
       var done = false;
       function finish(){
         if(done) return;
+        if(v !== window.__kanbanBalanceVersion) return; /* B3：版本已变，不写旧终值 */
         done = true;
         document.removeEventListener('visibilitychange', onVis);
         if(el._finishTimer){ clearTimeout(el._finishTimer); el._finishTimer = 0; }
@@ -1149,19 +1164,40 @@
       el._finishTimer = setTimeout(finish, DURATION + (n - 1) * STAGGER + 280);
       /* 正常结束加速：最高 delay 的位（最高位 i=0）transitionend */
       var highStrip = odo.children[0].firstChild;
-      highStrip.addEventListener('transitionend', function once(){
+      function once(){
         highStrip.removeEventListener('transitionend', once);
         finish();
-      });
+      }
+      highStrip.addEventListener('transitionend', once);
+      el._transEl = highStrip; /* B3：保存句柄，供 __kanbanSetBalance 主动摘除 */
+      el._transH = once;
     });
   }
 
   /* ---------- fetch / 任务自动更新：直接写终值，不触发滚动 ---------- */
   function setFinalBalance(el, target){
     var t = parseInt(target, 10);
-    if(!el || !isFinite(t) || t < 0) return;
+    if(!el || !isFinite(t)) return;
+    /* B3：版本号令牌 ++，并主动清理旧动画（rAF/transitionend/timer） */
+    window.__kanbanBalanceVersion++;
+    el._rollV = window.__kanbanBalanceVersion;
+    if(el._rafId){ try{ cancelAnimationFrame(el._rafId); }catch(e){} el._rafId = 0; }
+    if(el._transEl && el._transH){
+      try{ el._transEl.removeEventListener('transitionend', el._transH); }catch(e){}
+      el._transEl = null; el._transH = null;
+    }
     if(el._finishTimer){ clearTimeout(el._finishTimer); el._finishTimer = 0; }
-    el.setAttribute('data-target', t);
+    el.setAttribute('data-target', String(t));
+    /* B2：负余额分支 —— 静态显示 −N（U+2212 全角减号），不走滚轮动画 */
+    if(t < 0){
+      var oldOdo = el._odo;
+      if(oldOdo && oldOdo.parentNode) oldOdo.parentNode.removeChild(oldOdo);
+      el._odo = null;
+      el.textContent = '−' + Math.abs(t);
+      el.setAttribute('aria-label', '负 ' + Math.abs(t) + ' 分');
+      el.dataset.rolled = '1';
+      return;
+    }
     var odo = el._odo;
     if(!odo){
       el.textContent = t; /* 滚轮尚未构建：直接写静态文本 */
@@ -1193,111 +1229,222 @@
 })();
 </script>
 
+
 <script>
-/* 2026-10-19：余额跟随台账（KB-BALANCE-AUTO-2026-10-19，DeepSeek方案，独立IIFE） */
+/* ============================================================
+   2026-10-19：看板真实数据（DeepSeek方案 KB-STATS-AUTO，独立IIFE）
+   - 拉取 data/stats_grade_{5,6}.json → 余额（__kanbanSetBalance 直接写终值，不重滚）
+   - 拉取 data/points_log_{5,6}.json → 积分日志（textContent 渲染，防 XSS）
+   - 拉取 data/shop_grade_{5,6}.json → 商店进度（下一档位 + 手续费小字，R1）
+   - 每区块独立判定/独立降级，任一失败不阻塞其他；只 console.warn，不弹窗
+   ============================================================ */
 (function(){
   'use strict';
-  var BALANCE_URL = 'data/balance.json';
-  var FETCH_TIMEOUT_MS = 4000;
+  var TIMEOUT_MS = 5000;
+  var vCache = {}; /* ?v= 缓存：文件名 -> 上次成功的 generated_at（§3.4） */
 
   function $(id){ return document.getElementById(id); }
 
-  function setDemoTag(cardId, show){
-    var card = $(cardId);
-    if(!card) return;
-    var tag = card.querySelector('.bal-demo-tag');
-    if(show && !tag){
-      tag = document.createElement('span');
-      tag.className = 'bal-demo-tag';
-      tag.textContent = '离线数据';
-      card.appendChild(tag);
-    }else if(!show && tag){
-      tag.parentNode.removeChild(tag);
-    }
-  }
-
-  /* 用 textContent 逐个建节点，防 XSS（DeepSeek 安全要求：只写文本节点） */
-  function renderLogs(listEl, logs){
-    while(listEl.firstChild) listEl.removeChild(listEl.firstChild);
-    for(var i = 0; i < logs.length; i++){
-      var e = logs[i];
-      var pos = e.delta >= 0;
-      var li = document.createElement('li'); li.className = 'log-item';
-      var dot = document.createElement('div');
-      dot.className = 'log-dot ' + (pos ? 'plus' : 'minus');
-      dot.textContent = pos ? '+' : '\u2212';
-      var body = document.createElement('div'); body.className = 'log-body';
-      var l1 = document.createElement('div'); l1.className = 'log-line1';
-      var reason = document.createElement('span'); reason.className = 'log-reason';
-      reason.textContent = e.desc;
-      var pts = document.createElement('span'); pts.className = 'log-pts ' + (pos ? 'plus' : 'minus');
-      pts.textContent = (pos ? '+' : '') + e.delta;
-      l1.appendChild(reason); l1.appendChild(pts);
-      var l2 = document.createElement('div'); l2.className = 'log-line2';
-      l2.textContent = e.date;
-      body.appendChild(l1); body.appendChild(l2);
-      li.appendChild(dot); li.appendChild(body);
-      listEl.appendChild(li);
-    }
-  }
-
-  function applyBalance(data){
-    var grades = (data && data.grades) || {};
-    var map = { g5: ['bal-jump-g5', 'log-g5'], g6: ['bal-jump-g6', 'log-g6'] };
-    var ok = false;
-    for(var k in map){
-      if(!Object.prototype.hasOwnProperty.call(map, k)) continue;
-      var g = grades[k];
-      if(!g || typeof g.balance !== 'number') continue;
-      var card = $(map[k][0]);
-      var num = card ? card.querySelector('.bal-num') : null;
-      if(num){
-        num.setAttribute('data-target', String(g.balance));
-        num.textContent = '0';
-        delete num.dataset.rolled; /* 允许重新播放滚动动画 */
-        setDemoTag(map[k][0], false);
-        ok = true;
-      }
-      var logBlock = $(map[k][1]);
-      var list = logBlock ? logBlock.querySelector('.log-list') : null;
-      if(list && g.recent_logs && g.recent_logs.length){
-        renderLogs(list, g.recent_logs);
-        var btn = $('btn-log');
-        var tag = btn ? btn.querySelector('.tag-demo') : null;
-        if(tag && tag.parentNode) tag.parentNode.removeChild(tag);
-      }
-    }
-    return ok;
-  }
-
-  function finish(){
-    if(window.__kanbanRolledOnce) return;
-    window.__kanbanRolledOnce = true;
-    if(typeof window.__kanbanRollAll === 'function') window.__kanbanRollAll();
-  }
-
-  function boot(){
-    /* 初始态：离线标记 + 兜底 */
-    setDemoTag('bal-jump-g5', true);
-    setDemoTag('bal-jump-g6', true);
+  function fetchJson(name){
+    var v = vCache[name];
+    var url = 'data/' + name + (v ? '?v=' + encodeURIComponent(v) : '');
     var ctrl = null, timer = 0;
     try{
       if('AbortController' in window){
         ctrl = new AbortController();
-        timer = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, FETCH_TIMEOUT_MS);
+        timer = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, TIMEOUT_MS);
       }
     }catch(e){}
-    var opts = { cache: 'no-store' };
+    var opts = { cache: 'no-cache' };
     if(ctrl) opts.signal = ctrl.signal;
-    fetch(BALANCE_URL + '?t=' + Date.now(), opts).then(function(r){
+    return fetch(url, opts).then(function(r){
       if(timer) clearTimeout(timer);
       if(!r.ok) throw new Error('http ' + r.status);
       return r.json();
     }).then(function(d){
-      applyBalance(d);
-    }).catch(function(){
-      /* 失败：保留兜底数据 + 离线标记，不阻塞页面 */
-    }).then(finish);
+      if(d && d.generated_at) vCache[name] = d.generated_at;
+      return d;
+    });
+  }
+
+  /* ---------- 余额 ---------- */
+  function setBalTag(cardId, text){
+    var card = $(cardId);
+    if(!card) return;
+    var tag = card.querySelector('.bal-demo-tag');
+    if(!tag){
+      tag = document.createElement('span');
+      tag.className = 'bal-demo-tag';
+      card.appendChild(tag);
+    }
+    tag.textContent = text;
+  }
+
+  function loadBalance(grade, cardId){
+    fetchJson('stats_grade_' + grade + '.json').then(function(d){
+      if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
+      if(typeof d.balance !== 'number' || !Number.isInteger(d.balance)) throw new Error('balance');
+      var card = $(cardId);
+      var num = card ? card.querySelector('.bal-num') : null;
+      if(!num) throw new Error('no bal-num');
+      window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
+      setBalTag(cardId, '实时数据'); /* §3.2：本区块成功即翻 */
+    }).catch(function(e){
+      setBalTag(cardId, '演示数据'); /* §3.3：失败保留模板静态真实值 */
+      if(window.console && console.warn) console.warn('余额拉取失败，保留模板静态值:', e);
+    });
+  }
+
+  /* ---------- 积分日志 ---------- */
+  function setLogTag(blockId, text, generatedAt){
+    var block = $(blockId);
+    if(!block) return;
+    var head = block.querySelector('.grade-head');
+    if(!head) return;
+    var tag = head.querySelector('[data-log-tag]');
+    if(!tag){
+      tag = document.createElement('span');
+      tag.className = 'tag-demo';
+      tag.setAttribute('data-log-tag', '1');
+      head.appendChild(tag);
+    }
+    tag.textContent = text;
+    var upd = head.querySelector('[data-log-updated]');
+    if(generatedAt){
+      if(!upd){
+        upd = document.createElement('span');
+        upd.className = 'log-updated';
+        upd.setAttribute('data-log-updated', '1');
+        head.appendChild(upd);
+      }
+      var m = String(generatedAt).match(/T(\d{2}):(\d{2})/);
+      upd.textContent = m ? ('更新于 ' + m[1] + ':' + m[2]) : ''; /* §7.6 */
+    }else if(upd){
+      upd.textContent = '';
+    }
+  }
+
+  function renderLogItems(listEl, items){
+    while(listEl.firstChild) listEl.removeChild(listEl.firstChild);
+    var valid = [];
+    for(var i = 0; i < items.length; i++){
+      var it = items[i];
+      if(!it || typeof it.reason !== 'string' || !it.reason) continue; /* §7.3 类型断言 */
+      if(typeof it.date !== 'string' || !it.date) continue;
+      if(typeof it.pts !== 'number' || !Number.isInteger(it.pts)) continue;
+      if(it.sign !== 'plus' && it.sign !== 'minus') continue;
+      valid.push(it);
+      if(valid.length >= 20) break;
+    }
+    if(!valid.length){
+      var li0 = document.createElement('li'); /* §5.5：空日志 */
+      li0.className = 'log-item';
+      var b0 = document.createElement('div'); b0.className = 'log-body';
+      var l0 = document.createElement('div'); l0.className = 'log-line1';
+      var s0 = document.createElement('span'); s0.className = 'log-reason';
+      s0.textContent = '近 30 天暂无积分记录';
+      l0.appendChild(s0); b0.appendChild(l0); li0.appendChild(b0);
+      listEl.appendChild(li0);
+      return;
+    }
+    valid.forEach(function(it){
+      var pos = it.sign === 'plus';
+      var li = document.createElement('li');
+      li.className = 'log-item';
+      var dot = document.createElement('div');
+      dot.className = 'log-dot ' + (pos ? 'plus' : 'minus');
+      dot.textContent = pos ? '+' : '−'; /* U+2212 */
+      var body = document.createElement('div'); body.className = 'log-body';
+      var l1 = document.createElement('div'); l1.className = 'log-line1';
+      var reason = document.createElement('span'); reason.className = 'log-reason';
+      reason.textContent = it.reason; /* §5.3：textContent，禁用 innerHTML */
+      var pts = document.createElement('span');
+      pts.className = 'log-pts ' + (pos ? 'plus' : 'minus');
+      pts.textContent = (pos ? '+' : '−') + Math.abs(it.pts);
+      l1.appendChild(reason); l1.appendChild(pts);
+      var l2 = document.createElement('div'); l2.className = 'log-line2';
+      l2.textContent = it.date; /* §5.4：只显示 MM-DD */
+      body.appendChild(l1); body.appendChild(l2);
+      li.appendChild(dot); li.appendChild(body);
+      listEl.appendChild(li);
+    });
+  }
+
+  function loadLog(grade, blockId){
+    fetchJson('points_log_' + grade + '.json').then(function(d){
+      if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
+      if(!Array.isArray(d.items)) throw new Error('items');
+      var block = $(blockId);
+      var list = block ? block.querySelector('.log-list') : null;
+      if(!list) throw new Error('no log-list');
+      renderLogItems(list, d.items);
+      setLogTag(blockId, '实时数据', d.generated_at); /* §3.2 */
+    }).catch(function(e){
+      setLogTag(blockId, '演示数据', null); /* §3.3：失败保留 demo */
+      if(window.console && console.warn) console.warn('日志拉取失败，保留演示数据:', e);
+    });
+  }
+
+  /* ---------- 商店进度（R1：规则手册第85行档位表） ---------- */
+  function renderShopProgress(results){
+    var box = $('shop-progress');
+    if(!box) return;
+    while(box.firstChild) box.removeChild(box.firstChild);
+    var names = {5: '五年级', 6: '六年级'};
+    [5, 6].forEach(function(grade){
+      var d = results[grade];
+      if(!d) return;
+      var line = document.createElement('div');
+      line.className = 'shop-prog-line';
+      var bal = d.current_balance;
+      var text;
+      if(bal < 0){
+        text = names[grade] + '：余额为负，请先补足'; /* R1-3 */
+      }else{
+        var tiers = d.tiers.slice().sort(function(a, b){ return a.pts - b.pts; });
+        var next = null;
+        for(var i = 0; i < tiers.length; i++){
+          if(typeof tiers[i].pts === 'number' && tiers[i].pts > bal){ next = tiers[i]; break; }
+        }
+        if(next){
+          text = names[grade] + '：当前余额' + bal + '分，还差' + (next.pts - bal) + '分就可以兑换' + next.name; /* R1-2 */
+        }else{
+          text = names[grade] + '：当前余额' + bal + '分，已可兑换全部档位';
+        }
+      }
+      line.textContent = text;
+      box.appendChild(line);
+    });
+    var fee = document.createElement('div');
+    fee.className = 'shop-fee-note';
+    fee.textContent = '（上学日/周末超22点兑换手续费15%）'; /* R1-4：档位列表下方小字≥12px */
+    box.appendChild(fee);
+  }
+
+  function loadShop(){
+    var results = {};
+    function one(grade){
+      return fetchJson('shop_grade_' + grade + '.json').then(function(d){
+        if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
+        if(!Array.isArray(d.tiers) || !d.tiers.length) throw new Error('tiers');
+        if(typeof d.current_balance !== 'number' || !Number.isInteger(d.current_balance)) throw new Error('balance');
+        results[grade] = d;
+      });
+    }
+    Promise.all([one(5), one(6)]).then(function(){
+      renderShopProgress(results);
+    }).catch(function(e){
+      if(window.console && console.warn) console.warn('商店进度拉取失败，保留原样:', e);
+    });
+  }
+
+  /* ---------- 启动 ---------- */
+  function boot(){
+    loadBalance(5, 'bal-jump-g5');
+    loadBalance(6, 'bal-jump-g6');
+    loadLog(5, 'log-g5');
+    loadLog(6, 'log-g6');
+    loadShop();
   }
 
   if(document.readyState === 'loading'){
@@ -1369,7 +1516,8 @@
         });
         block.appendChild(grid);
       }else{
-        block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
+        /* §6（2026-10-19）：无真实徽章台账，不编造、不沉默，显式标注建设中 */
+        block.appendChild(el('div','rule-note','徽章系统正在建设中，颁发标准已定稿（v3.7），实际颁发记录待上线后展示。'));
       }
       pad.appendChild(block);
     });
