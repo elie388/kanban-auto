@@ -8,8 +8,9 @@
 <style>
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #F5F3EB; margin: 0; padding: 16px; color: #30343B; }
-  .page { max-width: 860px; margin: 0 auto; }
+  html { background: #F5F3EB; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: transparent; margin: 0; padding: 16px; color: #30343B; }
+  .page { max-width: 860px; margin: 0 auto;  position: relative; z-index: 1; }
   h1 { text-align: center; font-size: 44px; margin: 8px 0 4px; }
   .date { text-align: center; color: #6B6F76; font-size: 19px; margin-bottom: 22px; }
   .refresh-bar { text-align: center; color: #9aa0a6; font-size: 13px; margin: 24px 0 8px; padding-top: 16px; border-top: 1px solid #e6e1d2; }
@@ -268,8 +269,9 @@ tbody tr:hover { background: #fff4d6; }
 .badge.unlocked { background: linear-gradient(160deg, #fff3c9, #ffe08a); box-shadow: 0 3px 10px rgba(218,165,32,0.35); }
 
 /* === 动态效果 U01-U23 2026-10-19 === */
-@media (prefers-reduced-motion: no-preference) {
-h1.title-rainbow { background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rainbowShift 8s linear infinite; }
+/* 2026-10-19修复:默认启用,降级只走 prefers-reduced-motion:reduce */
+h1.title-rainbow .h1-text { background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; animation: rainbowShift 8s linear infinite; }
+h1.title-rainbow .h1-emoji { color: initial; -webkit-text-fill-color: initial; background: none; }
 @keyframes rainbowShift { to { background-position: 200% center; } }
 @keyframes gainPulse { 0% { transform: scale(1); } 30% { transform: scale(1.15); } 100% { transform: scale(1); } }
 .card.gain-flash { animation: gainPulse 400ms ease-out; }
@@ -286,8 +288,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 @keyframes shakeBox { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
 .blindbox-shake { animation: shakeBox .5s ease-out; transform-origin: bottom center; }
 @keyframes bgFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
-.bg-particle { position: fixed; border-radius: 50%; pointer-events: none; z-index: -1; animation: bgFloat 12s ease-in-out infinite; }
-}
+.bg-particle { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; animation: bgFloat 12s ease-in-out infinite; }
 
 /* 版式排版优化 2026-10-19（DeepSeek） */
 /* 第1项：积分明细正负分流配色 */
@@ -372,10 +373,12 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 #earn-body .two-col .col-head, #deduct-body .two-col .col-head {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0,1fr) var(--score-col-w) minmax(0,1fr) var(--score-col-w);
-  column-gap: 24px;
+  /* 5轨：事项1 积分1 | 外层24px gap | 事项2 积分2 —— 与下方两张table列宽严格相等（2026-10-19 对齐修复，deepseek方案） */
+  grid-template-columns: minmax(0,1fr) var(--score-col-w) 24px minmax(0,1fr) var(--score-col-w);
+  column-gap: 0;
   align-items: center;
 }
+#earn-body .two-col .col-head > *, #deduct-body .two-col .col-head > * { min-width: 0; }
 #earn-body .col-head-item, #deduct-body .col-head-item,
 #earn-body .col-head-score, #deduct-body .col-head-score {
   line-height: 1.7; padding: 10px 8px; text-align: center;
@@ -394,7 +397,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 </head>
 <body>
 <div class="page">
-  <h1>🏆 实时积分 🏆</h1>
+  <h1><span class="h1-emoji">🏆</span> <span class="h1-text">实时积分</span> <span class="h1-emoji">🏆</span></h1>
   <div class="date"><!--PAGE_DATE--><span id="clock"></span></div>
 
   <!--BALANCE_CARDS-->
@@ -425,7 +428,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     <!--STATIC_EARN_START-->
 <button type="button" class="collapse-btn" aria-expanded="false" data-target="earn-body">🎯 加分规则 🎯</button>
     <div class="collapse-body" id="earn-body" hidden>
-          <div class="two-col"><div class="col-head" aria-hidden="true"><div class="col-head-item">事项</div><div class="col-head-score">积分</div><div class="col-head-item">事项</div><div class="col-head-score">积分</div></div><div class="col col-first"><table aria-label="事项列表"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>当天作业截止前交齐</td><td class="plus">+10</td></tr><tr><td>作业正确率全对</td><td class="plus">+10</td></tr><tr><td>作业正确率90%及以上</td><td class="plus">+6</td></tr><tr><td>作业正确率80%及以上</td><td class="plus">+3</td></tr><tr><td>订正同一道错题第一次即改对</td><td class="plus">+2/题</td></tr><tr><td>订正后作业当天提交核验</td><td class="plus">+2</td></tr><tr><td>书写整科无明显潦草</td><td class="plus">+2/科</td></tr><tr><td>进步奖</td><td class="plus">+5</td></tr><tr><td>连续3天全对</td><td class="plus">+15起</td></tr><tr><td>连续5天按时</td><td class="plus">+10起</td></tr><tr><td>突破奖</td><td class="plus">+8</td></tr><tr><td>练习按时提交</td><td class="plus">+5</td></tr><tr><td>练习全对</td><td class="plus">+5</td></tr><tr><td>练习90%及以上</td><td class="plus">+3</td></tr><tr><td>练习80%及以上</td><td class="plus">+1</td></tr><tr><td>语文背诵按时发回</td><td class="plus">+5</td></tr></table></div><div class="col"><table aria-label="事项列表（续）"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>语文背诵达标</td><td class="plus">+3</td></tr><tr><td>英语口语按时发回</td><td class="plus">+5</td></tr><tr><td>英语写作重写按时发回</td><td class="plus">+5</td></tr><tr><td>英语写作重写达标</td><td class="plus">+3</td></tr><tr><td>53天天练交一页</td><td class="plus">+3</td></tr><tr><td>53天天练该页全对</td><td class="plus">+3</td></tr><tr><td>53天天练该页90%及以上</td><td class="plus">+2</td></tr><tr><td>53天天练该页80%及以上</td><td class="plus">+1</td></tr><tr><td>周日卷三科都交</td><td class="plus">+5</td></tr><tr><td>家务洗碗</td><td class="plus">+5</td></tr><tr><td>家务扫地</td><td class="plus">+3</td></tr><tr><td>家务拖地</td><td class="plus">+3</td></tr><tr><td>家务晾衣服</td><td class="plus">+3</td></tr><tr><td>家务晾袜子</td><td class="plus">+3</td></tr><tr><td>家务整理桌面</td><td class="plus">+2</td></tr><tr><td>家务同一项连做3天</td><td class="plus">+5</td></tr></table></div></div>
+          <div class="two-col"><div class="col-head" aria-hidden="true"><div class="col-head-item">事项</div><div class="col-head-score">积分</div><div class="col-head-spacer" aria-hidden="true"></div><div class="col-head-item">事项</div><div class="col-head-score">积分</div></div><div class="col col-first"><table aria-label="事项列表"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>当天作业截止前交齐</td><td class="plus">+10</td></tr><tr><td>作业正确率全对</td><td class="plus">+10</td></tr><tr><td>作业正确率90%及以上</td><td class="plus">+6</td></tr><tr><td>作业正确率80%及以上</td><td class="plus">+3</td></tr><tr><td>订正同一道错题第一次即改对</td><td class="plus">+2/题</td></tr><tr><td>订正后作业当天提交核验</td><td class="plus">+2</td></tr><tr><td>书写整科无明显潦草</td><td class="plus">+2/科</td></tr><tr><td>进步奖</td><td class="plus">+5</td></tr><tr><td>连续3天全对</td><td class="plus">+15起</td></tr><tr><td>连续5天按时</td><td class="plus">+10起</td></tr><tr><td>突破奖</td><td class="plus">+8</td></tr><tr><td>练习按时提交</td><td class="plus">+5</td></tr><tr><td>练习全对</td><td class="plus">+5</td></tr><tr><td>练习90%及以上</td><td class="plus">+3</td></tr><tr><td>练习80%及以上</td><td class="plus">+1</td></tr><tr><td>语文背诵按时发回</td><td class="plus">+5</td></tr></table></div><div class="col"><table aria-label="事项列表（续）"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>语文背诵达标</td><td class="plus">+3</td></tr><tr><td>英语口语按时发回</td><td class="plus">+5</td></tr><tr><td>英语写作重写按时发回</td><td class="plus">+5</td></tr><tr><td>英语写作重写达标</td><td class="plus">+3</td></tr><tr><td>53天天练交一页</td><td class="plus">+3</td></tr><tr><td>53天天练该页全对</td><td class="plus">+3</td></tr><tr><td>53天天练该页90%及以上</td><td class="plus">+2</td></tr><tr><td>53天天练该页80%及以上</td><td class="plus">+1</td></tr><tr><td>周日卷三科都交</td><td class="plus">+5</td></tr><tr><td>家务洗碗</td><td class="plus">+5</td></tr><tr><td>家务扫地</td><td class="plus">+3</td></tr><tr><td>家务拖地</td><td class="plus">+3</td></tr><tr><td>家务晾衣服</td><td class="plus">+3</td></tr><tr><td>家务晾袜子</td><td class="plus">+3</td></tr><tr><td>家务整理桌面</td><td class="plus">+2</td></tr><tr><td>家务同一项连做3天</td><td class="plus">+5</td></tr></table></div></div>
     <div class="note">📌 家务每天每人合计封顶+15分。</div>
 
 <!--STATIC_EARN_END-->
@@ -436,7 +439,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     <!--STATIC_DEDUCT_START-->
 <button type="button" class="collapse-btn" aria-expanded="false" data-target="deduct-body">📉 扣分规则 📉</button>
     <div class="collapse-body" id="deduct-body" hidden>
-          <div class="two-col"><div class="col-head" aria-hidden="true"><div class="col-head-item">事项</div><div class="col-head-score">积分</div><div class="col-head-item">事项</div><div class="col-head-score">积分</div></div><div class="col col-first"><table aria-label="事项列表"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>小拖拉/抄错数字/单位错/53日期不规范/单科3处潦草/列式不规范</td><td class="minus">−2</td></tr><tr><td>高频第3次再犯</td><td class="minus">−3</td></tr><tr><td>APP未交</td><td class="minus">−3</td></tr><tr><td>漏科目</td><td class="minus">−5</td></tr><tr><td>登记本没发</td><td class="minus">−5</td></tr><tr><td>订正超期</td><td class="minus">−5</td></tr><tr><td>补做超期</td><td class="minus">−5</td></tr><tr><td>整页潦草</td><td class="minus">−5</td></tr></table></div><div class="col"><table aria-label="事项列表（续）"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>当天没交/白卷/乱画卷（单科单日封顶-10）</td><td class="minus">−10</td></tr><tr><td>练习超期</td><td class="minus">−3</td></tr><tr><td>练习没交</td><td class="minus">−5</td></tr><tr><td>53天天练缺一页/白卷</td><td class="minus">−3</td></tr><tr><td>53天天练该页正确率低于70%</td><td class="minus">−2</td></tr><tr><td>周日卷缺一科</td><td class="minus">−5</td></tr><tr><td>家务连续2天未做</td><td class="minus">−5</td></tr><tr><td>家务连续3天起每天未做</td><td class="minus">−10</td></tr></table></div></div>
+          <div class="two-col"><div class="col-head" aria-hidden="true"><div class="col-head-item">事项</div><div class="col-head-score">积分</div><div class="col-head-spacer" aria-hidden="true"></div><div class="col-head-item">事项</div><div class="col-head-score">积分</div></div><div class="col col-first"><table aria-label="事项列表"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>小拖拉/抄错数字/单位错/53日期不规范/单科3处潦草/列式不规范</td><td class="minus">−2</td></tr><tr><td>高频第3次再犯</td><td class="minus">−3</td></tr><tr><td>APP未交</td><td class="minus">−3</td></tr><tr><td>漏科目</td><td class="minus">−5</td></tr><tr><td>登记本没发</td><td class="minus">−5</td></tr><tr><td>订正超期</td><td class="minus">−5</td></tr><tr><td>补做超期</td><td class="minus">−5</td></tr><tr><td>整页潦草</td><td class="minus">−5</td></tr></table></div><div class="col"><table aria-label="事项列表（续）"><tr class="local-head"><th>事项</th><th>积分</th></tr><tr><td>当天没交/白卷/乱画卷（单科单日封顶-10）</td><td class="minus">−10</td></tr><tr><td>练习超期</td><td class="minus">−3</td></tr><tr><td>练习没交</td><td class="minus">−5</td></tr><tr><td>53天天练缺一页/白卷</td><td class="minus">−3</td></tr><tr><td>53天天练该页正确率低于70%</td><td class="minus">−2</td></tr><tr><td>周日卷缺一科</td><td class="minus">−5</td></tr><tr><td>家务连续2天未做</td><td class="minus">−5</td></tr><tr><td>家务连续3天起每天未做</td><td class="minus">−10</td></tr></table></div></div>
 <!--STATIC_DEDUCT_END-->
     </div>
   </div>
@@ -927,12 +930,15 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   // === 动态效果 2026-10-19 (U01-U23) ===
   // U01: 标题彩虹字
   (function () {
+  try {
     var h1 = document.querySelector('h1');
     if (h1) h1.classList.add('title-rainbow');
+  } catch (err) { if (window.console) console.warn('[kanban-fx]', err); }
   })();
   
   // U08: 表行多米诺滑入 - 设置 --i
   (function () {
+  try {
     var tables = document.querySelectorAll('#earn-body table, #deduct-body table');
     for (var t = 0; t < tables.length; t++) {
       var rows = tables[t].querySelectorAll('tbody tr, tr');
@@ -941,10 +947,12 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
         rows[i].classList.add('row-in');
       }
     }
+  } catch (err) { if (window.console) console.warn('[kanban-fx]', err); }
   })();
   
   // U14: 按钮水波纹
   (function () {
+  try {
     document.addEventListener('click', function (e) {
       var btn = e.target.closest('button');
       if (!btn) return;
@@ -960,10 +968,12 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
       btn.appendChild(ripple);
       setTimeout(function () { ripple.remove(); }, 600);
     });
+  } catch (err) { if (window.console) console.warn('[kanban-fx]', err); }
   })();
   
   // U16: 背景浮游粒子 (<=30个)
   (function () {
+  try {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var colors = ['#ffd54f', '#81d4fa', '#a5d6a7', '#ce93d8', '#ffab91'];
     for (var i = 0; i < 20; i++) {
@@ -979,10 +989,12 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
       p.style.animationDuration = (10 + Math.random() * 8) + 's';
       document.body.appendChild(p);
     }
+  } catch (err) { if (window.console) console.warn('[kanban-fx]', err); }
   })();
   
   // U20: 闲置检测 (30s)
   (function () {
+  try {
     var idleTimer;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function resetIdle() {
@@ -1006,6 +1018,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
       document.addEventListener(evt, resetIdle, { passive: true });
     });
     resetIdle();
+  } catch (err) { if (window.console) console.warn('[kanban-fx]', err); }
   })();
 
   // 自动刷新：每5分钟整页刷新，刷新前保存/刷新后恢复折叠展开状态
