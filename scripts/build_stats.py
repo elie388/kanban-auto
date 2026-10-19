@@ -726,6 +726,33 @@ def selftest():
     except Exception as e:
         rec("T5 §7.2 负余额", False, str(e)[:200])
 
+    # --- T6a/T6b/T6c KB-TIME G6：生效日后缺标注熔断（正向/负向/边界）---
+    # 注：用 mock_today=2026-10-25（complete_year 跨年分支会把"今天之后"的日期视为去年，
+    # 故在真实 today=10-19 时 10-20 不可达，mock 是为了让 G6 负向场景可测试）
+    try:
+        import datetime as _dt
+        mock_today = _dt.date(2026, 10, 25)
+        # T6a 负向：2026-10-20 条目缺 @HH:MM → 必须熔断
+        r = {"key": "t6a_key", "date": "10-20", "annot_time": None, "desc": "测试"}
+        try:
+            resolve_log_time(r, 5, mock_today, {})
+            rec("T6a G6负向熔断", False, "10-20缺标注未熔断")
+        except ValueError as ve:
+            assert "G6" in str(ve)
+            rec("T6a G6负向熔断", True, "熔断信息：%s" % str(ve)[:60])
+        # T6b 正向：2026-10-20 条目有 @HH:MM → 放行
+        r2 = {"key": "t6b_key", "date": "10-20", "annot_time": "19:30", "desc": "测试"}
+        t, src = resolve_log_time(r2, 5, mock_today, {})
+        assert t == "19:30" and src == "entry"
+        rec("T6b G6正向放行", True, "time=19:30, source=entry")
+        # T6c 边界：生效日当日 2026-10-19 缺标注 → 豁免放行
+        r3 = {"key": "t6c_key", "date": "10-19", "annot_time": None, "desc": "测试"}
+        t3, _ = resolve_log_time(r3, 5, mock_today, {})
+        assert t3 is None
+        rec("T6c G6边界豁免", True, "10-19缺标注豁免，time=None")
+    except Exception as e:
+        rec("T6a/T6b/T6c G6", False, str(e)[:200])
+
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
     return 1 if failed else 0
