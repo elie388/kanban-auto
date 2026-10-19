@@ -1400,7 +1400,7 @@
       left.appendChild(document.createTextNode((c.icon || '🏅') + ' ' + String(c.name).slice(0,8) + ' '));
       var tag = el('span','rule-pts');
       if(holders.length){
-        tag.textContent = holders.join('、') + '已获得 ✓';
+        tag.textContent = holders.join('、') + '已获取';
         tag.style.background = '#E7F8E7'; tag.style.color = '#1E7E34';
       }else{
         tag.textContent = '待解锁';
