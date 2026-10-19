@@ -72,6 +72,19 @@ jobs:
           cp data/tasks_daily_5.json data/tasks_daily_6.json public/data/
           ls -la public/data/
 
+      # 看板真实数据通道（KB-STATS-AUTO-2026-10-19，DeepSeek终审 B1/R1/R3）：
+      # 同步 data/stats_grade_*.json、points_log_*.json、shop_grade_*.json 进 Pages 产物。
+      # 硬断言：文件缺失/为空/schema异常/敏感词命中任一即构建失败（余额是家长最敏感字段，不允许静默坏数据）。
+      # 断言逻辑与生成端共用 scripts/_assert_lib.py（同一份词表+schema，B5双写）。
+      - name: 同步看板真实数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          cp data/stats_grade_5.json data/stats_grade_6.json public/data/
+          cp data/points_log_5.json data/points_log_6.json public/data/
+          cp data/shop_grade_5.json data/shop_grade_6.json public/data/
+          python3 scripts/workflow_assert.py
+          ls -la public/data/
+
       # 积分余额数据通道（KB-BALANCE-AUTO-2026-10-19）：
       # 本地 cron 每 5 分钟解析台账 → data/balance.json（有变更才 push）；
       # 此处同步进 Pages 产物 + schema 双保险校验（DeepSeek 方案 §八决策点4）。
