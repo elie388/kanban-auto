@@ -9,10 +9,11 @@ name: 积分看板自动更新
 # - 寒暑假时间用户另行通知后调整
 # 月消耗约 700-1400 分钟，在 2000 免费额度内
 #
-# 2026-10-18 迁移记录（用户批准）：
-#   香港免费空间架构性不支持 SFTP/FTPS（仅明文 FTP，安全原因禁用），
-#   部署通道由"FTP 上传"改为"GitHub Pages"。
-#   自动更新逻辑不变：定时触发 → Drive 拉取台账 → 重新生成 HTML → 发布。
+# 2026-10-19 迁移记录（用户批准）：
+#   新版看板（全新版式样板）上线，替换旧版。
+#   自动更新逻辑变更：定时触发 → 部署 templates/新样板（静态） + 同步 data/tasks_daily_*.json；
+#   Drive 台账拉取与旧 build_wrapper.py 生成逻辑停用（脚本保留）。
+name: 积分看板自动更新
 
 on:
   push:
@@ -49,49 +50,38 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
 
-      - name: 设置 Python
-        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38  # v5.4.0
-        with:
-          python-version: '3.11'
-
-      - name: 安装依赖
+      # 2026-10-19 新版看板上线（用户指令：删掉旧积分看板，部署全新版式样板）：
+      # 部署产物 = templates/ 下新样板 HTML（单文件，静态演示数据）；
+      # 旧 build_wrapper.py 生成逻辑停用（脚本保留为 fallback，不再调用）；
+      # Drive 台账拉取停用（新样板不消费台账）。
+      - name: 部署新版看板样板到 Pages 产物
         run: |
-          pip install "cryptography==42.0.5"
-
-      - name: 从 Google Drive 拉取积分台账
-        env:
-          GDRIVE_SA_JSON: ${{ secrets.GDRIVE_SA_JSON }}
-          GDRIVE_FILE_ID: ${{ secrets.GDRIVE_FILE_ID }}
-        run: |
-          python3 scripts/fetch_ledger.py
-
-      - name: 重新生成看板 HTML（含完整性校验）
-        run: |
-          python3 scripts/build_wrapper.py
           mkdir -p public
-          mv index.html public/index.html
+          cp "templates/积分看板_全新版式样板.html" public/index.html
+          cp CNAME public/CNAME
           ls -la public/
 
-      # 2026-10-19 今日任务自动更新（KB-TASK-AUTO-2026-10-19）：
-      # 将仓库 data/ 下的 tasks_daily_*.json 同步进 Pages 产物，供新版看板样板 fetch。
+      # 今日任务数据通道（KB-TASK-AUTO-2026-10-19）：
+      # 将仓库 data/ 下的 tasks_daily_*.json 同步进 Pages 产物，供新版看板 fetch。
       # 仅拷贝当日任务表（无积分字段），不含脚本/日志/台账。
-      # 失败处理：任一文件缺失则本步输出警告（Actions日志可见即报警），
-      # 不中断构建（index.html照常部署）；前端fetch失败时降级保留演示数据；
-      # 源JSON仍在仓库，下次触发重试，不存在静默丢数据。
+      # 硬断言：文件缺失或为空则构建失败（防静默上线坏数据）。
       - name: 同步今日任务表到 Pages 产物
         run: |
           mkdir -p public/data
-          ok=1
-          for f in tasks_daily_5.json tasks_daily_6.json; do
-            if [ -f "data/$f" ]; then
-              cp "data/$f" public/data/ && echo "已同步 data/$f"
-            else
-              echo "::warning::data/$f 不存在，跳过（前端将降级显示演示数据）"
-              ok=0
-            fi
-          done
-          ls -la public/data/ || true
-          [ "$ok" = "1" ] || echo "部分任务表缺失，已告警，构建继续"
+          test -s data/tasks_daily_5.json || { echo "::error::data/tasks_daily_5.json 缺失或为空"; exit 1; }
+          test -s data/tasks_daily_6.json || { echo "::error::data/tasks_daily_6.json 缺失或为空"; exit 1; }
+          cp data/tasks_daily_5.json data/tasks_daily_6.json public/data/
+          ls -la public/data/
+
+      # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
+      - name: 产物断言
+        run: |
+          test -f public/CNAME || { echo "::error::public/CNAME 缺失，域名将失效"; exit 1; }
+          grep -q "whyjjf.lol" public/CNAME || { echo "::error::public/CNAME 内容异常"; exit 1; }
+          test -f public/data/tasks_daily_5.json || { echo "::error::public/data/tasks_daily_5.json 缺失"; exit 1; }
+          test -f public/data/tasks_daily_6.json || { echo "::error::public/data/tasks_daily_6.json 缺失"; exit 1; }
+          grep -q "积分看板·全新版式样板" public/index.html || { echo "::error::public/index.html 非新版样板"; exit 1; }
+          echo "产物断言全部通过"
 
       - name: 上传 Pages 产物
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3

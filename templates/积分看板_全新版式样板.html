@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<!-- 积分看板·全新版式样板（2026-10-19）——演示用单文件样板，非正式版，不替换正式看板模板。 -->
+<!-- 今日任务：演示数据为离线兜底；JS 会尝试从 https://whyjjf.lol/data/tasks_daily_{5,6}.json 拉取当日 approved 任务并每5分钟刷新，成功后替换本区演示内容。 -->
+<!-- 缩放禁用：按用户2026-10-19要求，双击+捏合缩放已完全禁用（放弃WCAG 1.4.4），用途=儿童设备防误触 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover"><!-- 2026-10-19：按用户要求完全禁用缩放（双击+捏合），viewport-fit=cover配合安全区 -->
+<title>积分看板 · 样板预览</title>
+<style>
+  :root{
+    --bg1:#FFE8C2; --bg2:#FFD1DC; --bg3:#C9E7FF;
+    --g5:#FF8A5B; --g6:#6C8EFF;
+    --gold:#FFC93C; --ok:#4CD07D; --warn:#FFB020; --wait:#9AA5B1;
+    --txt:#30343B; --sub:#6B7280;
+    --card:rgba(255,255,255,.96);
+    --radius:20px; --radius-sm:12px;
+    --shadow:0 6px 18px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0; overflow-x:hidden; -webkit-text-size-adjust:100%; text-size-adjust:100%;
+    touch-action:pan-y; -ms-touch-action:pan-y; overscroll-behavior-y:contain;} /* 2026-10-19：完全禁用缩放（双击+捏合），仅保留纵向滚动 */
+  img,svg,video,canvas,table{max-width:100%; height:auto;}
+  body{
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    color:var(--txt);
+    background:
+      radial-gradient(600px 320px at 12% -40px, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(520px 280px at 92% 60px, rgba(255,255,255,.38), transparent 60%),
+      linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%);
+    line-height:1.6;
+    padding:max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:980px; margin:0 auto;}
+
+  /* 样板提示条 */
+  .demo-badge{
+    background:linear-gradient(90deg,#FF6B9D,#FFB020);
+    color:#fff; font-weight:700; text-align:center;
+    padding:10px 16px; border-radius:999px;
+    font-size:15px; margin-bottom:14px;
+    box-shadow:var(--shadow);
+    animation:float 3s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+  /* 标题区 */
+  .hero{text-align:center; margin:6px 0 18px;}
+  .hero h1{
+    font-size:clamp(24px,6.5vw,30px); /* 2026-10-19：自适应字号，替代硬编码30px */
+    margin:0 0 4px;
+    color:#E2643A; /* 不支持 background-clip:text 时的回退色 */
+    background:linear-gradient(90deg,#FF8A5B,#6C8EFF);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    font-weight:900; letter-spacing:1px;
+    filter:drop-shadow(0 2px 6px rgba(255,138,91,.28));
+  }
+  .hero .date{font-size:14px; color:var(--sub);}
+
+  /* 卡片通用 */
+  .card{
+    background:var(--card);
+    background-image:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0) 140px);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:var(--radius);
+    box-shadow:0 1px 2px rgba(48,52,59,.05), 0 10px 28px rgba(48,52,59,.08);
+    padding:18px 16px;
+    margin-bottom:16px;
+    animation:fadeUp .4s ease both;
+  }
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+  .card h2{
+    font-size:22px; margin:0 0 14px; display:flex;
+    align-items:center; gap:8px;
+  }
+  .card h2::before{
+    content:""; width:5px; align-self:stretch; border-radius:3px; flex:0 0 auto;
+    background:linear-gradient(180deg,#FF8A5B,#FFC93C);
+  }
+  .card h2 .emoji{font-size:26px;}
+  .card h2 .tag-demo{
+    margin-left:auto; font-size:12px; font-weight:500;
+    color:var(--sub); background:#F1F3F5;
+    padding:2px 10px; border-radius:999px; white-space:nowrap;
+  }
+
+  /* 余额卡片区 */
+  .balance-grid{
+    display:grid; gap:14px;
+    grid-template-columns:1fr;
+    margin-bottom:16px;
+  }
+  @media(min-width:380px){
+    .balance-grid{grid-template-columns:1fr 1fr;}
+  }
+  .bal-card{
+    border-radius:var(--radius);
+    padding:18px;
+    color:#fff;
+    box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:6px;
+    position:relative; overflow:hidden;
+    animation:fadeUp .4s ease backwards;
+    min-height:44px;
+  }
+  .bal-card::after{
+    content:""; position:absolute; right:-30px; top:-30px;
+    width:110px; height:110px; border-radius:50%;
+    background:rgba(255,255,255,.18);
+  }
+  .bal-card.g5{background:linear-gradient(135deg,#FF8A5B,#FFA96B);}
+  .bal-card.g6{background:linear-gradient(135deg,#6C8EFF,#8FA9FF);}
+  /* 2026-10-19：余额卡片可点击跳转（button重置，视觉零变化） */
+  button.bal-card{border:0; -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
+  button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
+  #log-g5, #log-g6{scroll-margin-top:12px;}
+  .bal-name{font-size:16px; font-weight:700; opacity:.95;}
+  .bal-score{font-size:40px; font-weight:900; line-height:1.1; font-variant-numeric:tabular-nums;}
+  .bal-score small{font-size:16px; font-weight:600;}
+  /* 总分滚动动画用数字包层（2026-10-19，deepseek 方案 H1+C1）：固定最小宽度防位数变化抖动 */
+  .bal-num{display:inline-block; min-width:3ch; text-align:center; font-variant-numeric:tabular-nums;}
+  /* 余额卡片总分机械滚轮 v2（2026-10-19 重写，deepseek 方案）：纯 CSS transition 驱动，合成器动画。
+     只动 transform；单格 = 1em；逐位 transition-delay，低位先停（里程表视觉） */
+  .odo{display:inline-flex; font-variant-numeric:tabular-nums; contain:layout style paint;}
+  .odo--anim{will-change:transform;}
+  .odo-slot{position:relative; display:inline-block; width:1ch; height:1em; overflow:hidden; vertical-align:baseline;}
+  .odo-strip{position:absolute; top:0; left:0; display:block; transform:translate3d(0,0,0);}
+  .odo-strip > span{display:block; height:1em; line-height:1em; text-align:center;}
+  .odo--anim .odo-strip{transition-property:transform; transition-duration:720ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
+  @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
+  .bal-sub{font-size:13px; opacity:.9;}
+
+  /* 今日任务 */
+  .task-section{margin-bottom:18px;}
+  .task-section:last-child{margin-bottom:0;}
+  .task-head{
+    font-size:16px; font-weight:800;
+    display:flex; align-items:center; gap:8px;
+    justify-content:space-between; /* 进度条右置 */
+    flex-wrap:nowrap; min-width:0; /* 小屏不换行、不溢出 */
+    margin-bottom:10px; padding-left:4px;
+  }
+  .pill-grade{
+    font-size:12px; padding:2px 10px; border-radius:999px;
+    color:#fff; font-weight:700; white-space:nowrap;
+  }
+  .pill-grade.g5{background:var(--g5);}
+  .pill-grade.g6{background:var(--g6);}
+
+  .task-list{display:flex; flex-direction:column; gap:10px;}
+  .task{
+    display:flex; align-items:center; justify-content:space-between; /* 状态右置：文字左、徽章右 */
+    gap:16px;
+    padding:12px 14px; border-radius:var(--radius-sm);
+    border:2px solid transparent;
+    background:#FAFBFC;
+    min-height:56px;
+    transition:transform .15s ease;
+  }
+  .task:active{transform:scale(.98);}
+  .task .st-badge{
+    flex:0 0 auto;
+    margin-left:auto; /* 徽章右置双保险 */
+    min-width:44px; min-height:44px; /* 触摸目标 */
+    font-size:13px; font-weight:700;
+    padding:5px 12px; border-radius:999px;
+    display:inline-flex; align-items:center; justify-content:center; gap:4px;
+    white-space:nowrap;
+  }
+  .task.pending .st-badge{background:#F1F3F5; color:#6B7280;}
+  .task.correcting{border-color:#FFD97A;}
+  .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
+  .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
+  .task .task-info{flex:1; min-width:0; text-align:left;}
+  .task .task-name{
+    font-size:16px; font-weight:700;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
+  .task.done .task-name{color:#1E9E52;}
+  .task.done{background:#F3FCF6;}
+
+  /* 荣耀徽章 */
+  .grade-block{margin-top:18px;}
+  .grade-block:first-of-type{margin-top:0;}
+  .grade-head{
+    display:flex; align-items:center; gap:10px;
+    font-size:18px; font-weight:800; color:var(--txt);
+    margin:0 0 12px; padding-left:4px;
+  }
+  .badge-grid{
+    display:grid; gap:12px;
+    grid-template-columns:repeat(2,1fr);
+  }
+  @media(min-width:768px){.badge-grid{grid-template-columns:repeat(2,1fr);}}
+  .ach{
+    background:linear-gradient(160deg,#FFF8E1,#FFFDF5);
+    border:2px dashed #FFD97A;
+    border-radius:var(--radius-sm);
+    padding:14px 10px; text-align:center;
+    box-shadow:0 2px 8px rgba(232,176,75,.14);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .ach .ic{filter:drop-shadow(0 2px 3px rgba(232,176,75,.35));}
+  .ach:active{transform:scale(.96);}
+  .ach .ic{font-size:34px; display:block; margin-bottom:4px; line-height:1.2;}
+  .ach .tt{font-size:14px; font-weight:700;}
+  .ach .ds{font-size:12px; color:var(--sub); margin-top:2px;}
+  .ach.locked{opacity:.55; filter:grayscale(.7); border-style:solid;}
+  /* 成就进度条（2026-10-19新增） */
+  .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
+  .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
+  .ach-prog-bar > i{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+  .ach-prog-num{font-size:14px; color:var(--sub); font-variant-numeric:tabular-nums; white-space:nowrap;}
+
+  /* 今日任务进度条（2026-10-19新增）：复用 ach 视觉，右置收敛 */
+  .task-prog{display:inline-flex; align-items:center; gap:8px; flex:0 1 auto; min-width:0; margin-left:auto;}
+  .task-prog-text{font-size:13px; font-weight:700; color:var(--sub); white-space:nowrap; font-variant-numeric:tabular-nums; flex:0 0 auto;}
+  .task-prog-bar{width:96px; flex:1 1 64px; min-width:64px; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
+  .task-prog-fill{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+
+
+  /* 积分商店 */
+  .shop-grid{
+    display:grid; gap:12px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:768px){.shop-grid{grid-template-columns:1fr 1fr;}}
+  .shop-item{
+    border-radius:var(--radius-sm);
+    padding:14px; background:#FAFBFC;
+    border:1px solid #EEF1F4;
+    min-height:44px;
+  }
+  .shop-top{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+  .shop-top .ic{font-size:30px; flex:0 0 auto;}
+  .shop-top .nm{font-size:16px; font-weight:800; flex:1; min-width:0;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .shop-top .cost{
+    font-size:14px; font-weight:800; color:#E25C1D;
+    background:#FFEEDD; padding:2px 10px; border-radius:999px;
+    white-space:nowrap; flex:0 0 auto;
+  }
+  .bar-track{
+    height:12px; border-radius:999px; background:#EDEFF2;
+    box-shadow:inset 0 1px 2px rgba(48,52,59,.10);
+    overflow:hidden; margin:8px 0 6px;
+  }
+  .bar-fill{
+    height:100%; border-radius:999px;
+    transform-origin:left center;
+    background:linear-gradient(90deg,#FFC93C,#FF8A5B);
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .bar-fill.g6{background:linear-gradient(90deg,#8FA9FF,#6C8EFF);}
+  .bar-fill.ready{background:linear-gradient(90deg,#4CD07D,#2FBF71);}
+  .shop-hint{font-size:13px; color:var(--sub); line-height:1.7;}
+  .shop-hint b{color:#E25C1D;}
+  .shop-hint .ok-line{color:#1E9E52; font-weight:700;}
+
+  /* 规则列表 */
+  .rule-list{list-style:none; margin:0; padding:0;}
+  .rule-list li{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:10px 0;
+    border-bottom:1px dashed #EDEFF2;
+    font-size:15px; min-height:44px;
+  }
+  .rule-list li:last-child{border-bottom:none;}
+  .rule-pts{
+    font-weight:800; font-size:14px;
+    padding:2px 10px; border-radius:999px; white-space:nowrap; flex:0 0 auto;
+  }
+  .rule-pts.plus{background:#E4F8EC; color:#1E9E52;}
+  .rule-pts.minus{background:#FFE9E9; color:#D64545;}
+  .rule-note{font-size:13px; color:var(--sub); margin-top:10px; line-height:1.7;}
+
+  /* 徽章目标榜：获得条件小字 */
+  .lib-cond{display:block; font-size:13px; font-weight:400; color:var(--sub); margin-top:2px;}
+
+  /* 日志时间线 */
+  .log-list{list-style:none; margin:0; padding:0;}
+  .log-item{
+    display:flex; gap:12px; padding:12px 0;
+    border-bottom:1px dashed #EDEFF2;
+    align-items:flex-start; min-height:44px;
+  }
+  .log-item:last-child{border-bottom:none;}
+  .log-dot{
+    flex:0 0 auto; width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:800;
+  }
+  .log-dot.plus{background:#E4F8EC; color:#1E9E52;}
+  .log-dot.minus{background:#FFE9E9; color:#D64545;}
+  .log-body{flex:1; min-width:0;}
+  .log-line1{display:flex; justify-content:space-between; gap:10px; align-items:baseline;}
+  .log-reason{font-size:15px; font-weight:600; word-break:break-word;}
+  .log-pts{font-size:15px; font-weight:800; flex:0 0 auto;}
+  .log-pts.plus{color:#1E9E52;}
+  .log-pts.minus{color:#D64545;}
+  .log-line2{font-size:12px; color:var(--sub); margin-top:2px;}
+
+  /* 页脚 */
+  .footer{
+    text-align:center; font-size:13px; color:#5A6169;
+    margin-top:10px; padding:14px;
+    background:rgba(255,255,255,.6); border-radius:var(--radius-sm);
+    line-height:1.8;
+  }
+
+  /* 2026-10-19：5分钟自刷新倒计时（DeepSeek方案） */
+  .footer .refresh-countdown{
+    margin-top:4px;
+    font-size:12px;
+    color:#8A929A;
+    text-align:center;
+    font-variant-numeric:tabular-nums; /* 数字等宽，防每秒跳动布局抖动 */
+    line-height:1.4;
+  }
+
+  /* === 2026-10-19 动效增补（DeepSeek方案，类名已按实际文件适配） === */
+  :root{
+    --ease-pop: cubic-bezier(.25,.8,.35,1);
+    --dur-fast: .18s;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    /* E1 余额数字淡入+落脚回弹（合并为单关键帧，避免transform双重动画冲突；scale峰值1.04） */
+    .bal-card .bal-score.is-in{ animation: numInPop .67s var(--ease-pop) both; }
+    @keyframes numInPop{
+      0%{ opacity:0; transform:translateY(4px) scale(1); }
+      67%{ opacity:1; transform:translateY(0) scale(1); }
+      82%{ opacity:1; transform:translateY(0) scale(1.04); }
+      100%{ opacity:1; transform:translateY(0) scale(1); }
+    }
+    /* D2 进度条生长（width型：task-prog-fill / ach-prog-bar>i） */
+    .task-prog-fill, .ach-prog-bar > i{ transform-origin: left center; }
+    .task-prog-bar.in > .task-prog-fill{ animation: barGrow .6s var(--ease-pop) both; }
+    .ach-prog-bar.in > i{ animation: barGrow .6s var(--ease-pop) both; }
+    @keyframes barGrow{ from{ transform: scaleX(0);} to{ transform: scaleX(1);} }
+    /* D3 卡片按压回弹（:active） */
+    .task, .shop-item, .ach{ -webkit-tap-highlight-color: transparent; }
+    .task:active, .shop-item:active, .ach:active{
+      transform: scale(.97);
+      transition: transform var(--dur-fast) var(--ease-pop);
+    }
+    /* D4 折叠头按压反馈 */
+    .collapse-btn:active{ transform: scale(.985); transition: transform var(--dur-fast) var(--ease-pop); }
+    /* D5 徽章呼吸微光（伪元素opacity脉动，不重绘box-shadow） */
+    .ach{ position: relative; }
+    .ach::after{
+      content:""; position:absolute; inset:0; border-radius: inherit;
+      box-shadow: 0 0 0 2px rgba(255,193,7,.55), 0 0 14px rgba(255,193,7,.35);
+      opacity:0; pointer-events:none;
+      animation: breathe 2.8s ease-in-out infinite;
+    }
+    @keyframes breathe{ 0%,100%{ opacity:0; } 50%{ opacity:1; } }
+    /* D6 今日任务错落淡入 */
+    .task-list.in .task{ animation: taskIn .4s var(--ease-pop) both; }
+    .task-list.in .task:nth-child(1){ animation-delay:0s; }
+    .task-list.in .task:nth-child(2){ animation-delay:.04s; }
+    .task-list.in .task:nth-child(3){ animation-delay:.08s; }
+    .task-list.in .task:nth-child(4){ animation-delay:.12s; }
+    @keyframes taskIn{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+    /* === 余额卡片动效 E1/E2/E3/E5/E8（2026-10-19，DeepSeek+Gemini联合方案，DeepSeek仲裁放行） === */
+    /* E2 卡片微抬升 + 装饰圆光晕呼应（hover限精确指针设备，focus-visible保证键盘可达） */
+    .bal-card{ transition:transform .18s var(--ease-pop), box-shadow .2s ease; }
+    .bal-card::after{ transition:opacity .2s ease, transform .2s ease; }
+    .bal-card:focus-visible{ transform:translateY(-3px); }
+    .bal-card:focus-visible::after{ opacity:.8; transform:scale(1.08); }
+    @media (hover:hover) and (pointer:fine){
+      .bal-card:hover{ transform:translateY(-3px); }
+      .bal-card:hover::after{ opacity:.8; transform:scale(1.08); }
+    }
+    /* E3 按压回弹（触屏/鼠标按下即时反馈） */
+    .bal-card:active{ transform:translateY(-1px) scale(.985); transition:transform .08s ease-out, box-shadow .2s ease; }
+    /* E5 两卡错峰入场（g6延迟120ms，复用fadeUp） */
+    .bal-card.g6{ animation-delay:.12s; }
+    /* E8 光泽扫过（一次性、首屏1s后触发、时长.55s；纯CSS，无JS；不循环） */
+    .bal-card::before{
+      content:""; position:absolute; top:-25%; bottom:-25%; left:0;
+      width:34%; pointer-events:none;
+      background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
+      transform:skewX(-18deg) translateX(-260%);
+      opacity:0;
+    }
+    .bal-card::before{ animation:balSheen .55s ease 1s both; }
+    @keyframes balSheen{
+      0%{ opacity:0; transform:skewX(-18deg) translateX(-260%); }
+      20%{ opacity:.9; }
+      80%{ opacity:.9; }
+      100%{ opacity:0; transform:skewX(-18deg) translateX(760%); }
+    }
+  }
+
+  /* 减少动效 */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation:none !important;
+      transition:none !important;
+    }
+  }
+
+  /* 折叠栏目：加分规则 / 扣分规则 / 积分日志（按钮点击展开） */
+  .collapse{padding:0;}
+  .collapse-btn{
+    display:flex; align-items:center; gap:8px;
+    width:100%; min-height:68px; padding:18px 16px;
+    background:none; border:0; cursor:pointer; text-align:left;
+    font-family:inherit; color:var(--txt);
+    border-radius:var(--radius);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .collapse-btn .emoji{font-size:26px;}
+  .collapse-btn .cb-title{font-size:22px; font-weight:700;}
+  .collapse-btn .tag-demo{
+    font-size:12px; font-weight:500; color:var(--sub);
+    background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
+  }
+  .collapse-btn .cb-state{
+    margin-left:auto; flex:0 0 auto;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:700; color:var(--sub);
+    background:#F1F3F5; padding:6px 12px; border-radius:999px; white-space:nowrap;
+  }
+  .collapse-btn .cb-chev{font-size:13px; transition:transform .25s ease;}
+  .collapse-btn[aria-expanded="true"] .cb-chev{transform:rotate(180deg);}
+  .collapse-btn:focus-visible{outline:3px solid var(--g6); outline-offset:-3px;}
+  .collapse-body{
+    display:grid; grid-template-rows:0fr;
+    transition:grid-template-rows .3s ease;
+  }
+  .collapse.open .collapse-body{grid-template-rows:1fr;}
+  .collapse-inner{overflow:hidden; min-height:0;}
+  .collapse-pad{padding:0 16px 18px;}
+
+  /* 2026-10-19：D1 440px；iPhone 17 Pro Max 主力档 */
+  @media(min-width:440px){
+    .card{padding:20px 18px;}
+    .bal-card{padding:20px;}
+    .bal-score{font-size:clamp(38px,9vw,44px);}
+    .task{padding:14px 16px;}
+    .demo-badge{font-size:16px;}
+  }
+  /* 2026-10-19：D2 768px；iPad mini/老iPad竖屏 */
+  @media(min-width:768px){
+    .wrap{max-width:720px;}
+    .card{padding:22px 20px;}
+  }
+  /* 2026-10-19：D3 820px；iPad 10.9竖屏 */
+  @media(min-width:820px){
+    .wrap{max-width:780px;}
+  }
+  /* 2026-10-19：D4 834px；iPad Air竖屏 */
+  @media(min-width:834px){
+    .wrap{max-width:800px;}
+    .bal-score{font-size:46px;}
+  }
+  /* 桌面端增强（2026-10-19：≥1024px 宽屏自适应） */
+  @media(min-width:1024px){
+    .wrap{max-width:980px;}
+    .badge-grid{grid-template-columns:repeat(4,1fr);}
+    .bal-card{padding:22px;}
+    .collapse-btn .cb-title{font-size:24px;}
+    /* iPad横屏/桌面：今日任务两年级并排 */
+    section[aria-label="今日任务"]{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+    section[aria-label="今日任务"] > h2{grid-column:1/-1;}
+    section[aria-label="今日任务"] > .task-section{margin-bottom:0;}
+  }
+  /* 2026-10-19：D6 1280px；桌面宽屏封顶 */
+  @media(min-width:1280px){
+    .wrap{max-width:1100px;}
+  }
+  /* 2026-10-19：精致悬停态（仅精确指针设备，触屏不受影响；transform被fadeUp填充占用处只改阴影） */
+  @media (hover:hover) and (pointer:fine){
+    .card:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.12);}
+    .ach:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(232,176,75,.28);}
+    .bal-card:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
+    .task:hover{background:#FFFFFF; box-shadow:0 4px 14px rgba(48,52,59,.08);}
+    .collapse-btn:hover .cb-state{background:#E7EAEE;}
+  }
+
+  /* 小屏微调 */
+  @media (max-width:420px){
+    .task{gap:10px;} /* 窄屏收紧行内间距 */
+    .task .st-badge{padding:5px 8px; font-size:13px;} /* 窄屏徽章轻微收紧 */
+    .task .task-name{
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; /* 窄屏单行省略，杜绝横向溢出 */
+    }
+    .task-prog{gap:6px;}
+    .task-prog-bar{width:64px; flex:1 1 56px; min-width:56px;}
+    .task-prog-text{font-size:12px;}
+  }
+  @media (max-width:379px){
+    .bal-score{font-size:34px;}
+    .card h2{font-size:20px;}
+    .task .task-name{font-size:15px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 样板提示 -->
+  <div class="demo-badge">🎨 样板预览（非正式版）</div>
+
+  <!-- 标题 -->
+  <header class="hero">
+    <h1>🌟 积分看板 🌟</h1>
+    <div class="date">2026-10-19 · 演示数据</div>
+  </header>
+
+  <!-- 余额卡片 -->
+  <section class="balance-grid" aria-label="积分余额">
+    <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看五年级积分日志">
+      <div class="bal-name">五年级</div>
+      <div class="bal-score"><span class="bal-num" data-target="81">81</span> <small>分</small></div>
+      <div class="bal-sub">继续加油攒分！</div>
+    </button>
+    <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看六年级积分日志">
+      <div class="bal-name">六年级</div>
+      <div class="bal-score"><span class="bal-num" data-target="279">279</span> <small>分</small></div>
+      <div class="bal-sub">高分冲刺中！</div>
+    </button>
+  </section>
+
+  <!-- 今日任务（显眼位：余额卡片下方第一位） -->
+  <section class="card" aria-label="今日任务">
+    <h2><span class="emoji">📝</span>今日任务<span class="tag-demo" id="tasks-tag">演示数据</span></h2>
+
+    <div class="task-section" id="tasks-g5">
+      <div class="task-head">
+        <span class="pill-grade g5">五年级</span>
+        <div class="task-prog" role="group" aria-label="五年级今日任务完成进度">
+          <span class="task-prog-text">已完成 1 / 3</span>
+          <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="已完成 1 / 3">
+            <div class="task-prog-fill" style="width:33.333%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="task-list">
+        <div class="task pending">
+                    <div class="task-info">
+            <div class="task-name">语文《53天天练》P24-25</div>
+            <div class="task-progress">进度 0 / 2 页 · 尚未开始</div>
+          </div>
+          <span class="st-badge">⭕ 未完成</span>
+        </div>
+        <div class="task correcting">
+                    <div class="task-info">
+            <div class="task-name">数学口算 20 题</div>
+            <div class="task-progress">已订正 8 / 20 题 · 继续加油</div>
+          </div>
+          <span class="st-badge">🔄 订正中</span>
+        </div>
+        <div class="task done">
+                    <div class="task-info">
+            <div class="task-name">英语背诵 U3 单词</div>
+            <div class="task-progress">全部完成 · 已提交背诵</div>
+          </div>
+          <span class="st-badge">✅ 已完成</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="task-section" id="tasks-g6">
+      <div class="task-head">
+        <span class="pill-grade g6">六年级</span>
+        <div class="task-prog" role="group" aria-label="六年级今日任务完成进度">
+          <span class="task-prog-text">已完成 1 / 3</span>
+          <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="已完成 1 / 3">
+            <div class="task-prog-fill" style="width:33.333%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="task-list">
+        <div class="task pending">
+                    <div class="task-info">
+            <div class="task-name">数学《53天天练》P30-31</div>
+            <div class="task-progress">进度 0 / 2 页 · 尚未开始</div>
+          </div>
+          <span class="st-badge">⭕ 未完成</span>
+        </div>
+        <div class="task done">
+                    <div class="task-info">
+            <div class="task-name">语文小练笔</div>
+            <div class="task-progress">全部完成 · 已提交</div>
+          </div>
+          <span class="st-badge">✅ 已完成</span>
+        </div>
+        <div class="task correcting">
+                    <div class="task-info">
+            <div class="task-name">英语阅读 P28</div>
+            <div class="task-progress">已订正 2 / 5 题 · 继续加油</div>
+          </div>
+          <span class="st-badge">🔄 订正中</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 荣耀徽章（折叠按钮） -->
+  <section class="card collapse" aria-label="荣耀徽章">
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-achieve" id="btn-achieve">
+      <span class="emoji" aria-hidden="true">🏅</span>
+      <span class="cb-title">荣耀徽章</span>
+      <span class="tag-demo">演示数据</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-achieve" role="region" aria-labelledby="btn-achieve">
+      <div class="collapse-inner"><div class="collapse-pad">
+
+    <div class="grade-block" aria-label="五年级成就">
+      <div class="grade-head"><span class="pill-grade g5">五年级</span>成就</div>
+      <div class="badge-grid">
+        <div class="ach"><span class="ic">🌅</span><div class="tt">早起鸟</div><div class="ds">连续 7 天早起</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="早起鸟达成进度：7/7">7/7</span></div></div>
+        <div class="ach"><span class="ic">✍️</span><div class="tt">默写小达人</div><div class="ds">默写满分 ×5</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="默写小达人达成进度：5/5">5/5</span></div></div>
+      </div>
+    </div>
+
+    <div class="grade-block" aria-label="六年级成就">
+      <div class="grade-head"><span class="pill-grade g6">六年级</span>成就</div>
+      <div class="badge-grid">
+        <div class="ach"><span class="ic">⚡</span><div class="tt">口算闪电</div><div class="ds">口算全对 ×10</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="口算闪电达成进度：10/10">10/10</span></div></div>
+        <div class="ach"><span class="ic">📚</span><div class="tt">阅读之星</div><div class="ds">读完 3 本书</div><div class="ach-prog"><div class="ach-prog-bar" aria-hidden="true"><i style="width:100%"></i></div><span class="ach-prog-num" aria-label="阅读之星达成进度：3/3">3/3</span></div></div>
+      </div>
+    </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 徽章目标榜（折叠按钮） -->
+  <section class="card collapse" aria-label="徽章目标榜">
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-lib" id="btn-lib">
+      <span class="emoji" aria-hidden="true">🎯</span>
+      <span class="cb-title">徽章目标榜</span>
+      <span class="tag-demo">演示数据</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-lib" role="region" aria-labelledby="btn-lib">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <p class="rule-note" style="margin-top:0; margin-bottom:14px;">🚀 下面每一枚徽章都还没到手——看中哪枚，就去把它拿下！</p>
+        <ul class="rule-list" aria-label="可争取徽章">
+            <li><span>🌅 早起鸟 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：连续 7 天早起</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>✍️ 默写小达人 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：默写满分 ×5</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>🏆 满分王 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：单元测试满分 ×1</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>📝 写作小能手 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：作文 A+ ×3</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>⚡ 口算闪电 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：口算全对 ×10</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>📚 阅读之星 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：读完 3 本书</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>🏆 周冠军 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：连续 5 天任务全完成</span></span><span class="rule-pts plus">+5</span></li>
+            <li><span>🌟 全能挑战者 <span class="rule-pts" style="background:#FFF3D6;color:#C77700;">待解锁</span><span class="lib-cond">解锁条件：集齐 3 项以上成就</span></span><span class="rule-pts plus">+5</span></li>
+          </ul>
+        <div class="rule-note">💡 每拿下1枚徽章 +5 分；同一徽章只加1次。挑1枚开始吧！</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 积分商店（折叠按钮） -->
+  <section class="card collapse" aria-label="积分商店">
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-shop" id="btn-shop">
+      <span class="emoji" aria-hidden="true">🎁</span>
+      <span class="cb-title">积分商店</span>
+      <span class="tag-demo">演示数据</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-shop" role="region" aria-labelledby="btn-shop">
+      <div class="collapse-inner"><div class="collapse-pad">
+    <div class="shop-grid">
+
+      <div class="shop-item">
+        <div class="shop-top">
+          <span class="ic">🕹️</span>
+          <span class="nm">Minecraft 30 分钟</span>
+          <span class="cost">100 分</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="transform:scaleX(0.81)"></div></div>
+        <div class="shop-hint">五年级：还差 <b>19 分</b> 就可以兑换 Minecraft 30 分钟<br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div>
+      </div>
+
+      <div class="shop-item">
+        <div class="shop-top">
+          <span class="ic">🍦</span>
+          <span class="nm">冰淇淋一支</span>
+          <span class="cost">30 分</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill ready" style="transform:scaleX(1)"></div></div>
+        <div class="shop-hint"><span class="ok-line">积分已足够 ✅ 五年级可立即兑换</span><br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div>
+      </div>
+
+      <div class="shop-item">
+        <div class="shop-top">
+          <span class="ic">🎬</span>
+          <span class="nm">周末电影选片权</span>
+          <span class="cost">150 分</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill g6 ready" style="transform:scaleX(1)"></div></div>
+        <div class="shop-hint"><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span><br>五年级：还差 <b>69 分</b> 就可以兑换周末电影选片权</div>
+      </div>
+
+      <div class="shop-item">
+        <div class="shop-top">
+          <span class="ic">🗺️</span>
+          <span class="nm">家庭出游选址权</span>
+          <span class="cost">300 分</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill g6" style="transform:scaleX(0.93)"></div></div>
+        <div class="shop-hint">六年级：还差 <b>21 分</b> 就可以兑换家庭出游选址权</div>
+      </div>
+
+      </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 加分规则（折叠按钮） -->
+  <section class="card collapse" aria-label="加分规则">
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-bonus" id="btn-bonus">
+      <span class="emoji" aria-hidden="true">🎯</span>
+      <span class="cb-title">加分规则</span>
+      <span class="tag-demo">演示数据</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-bonus" role="region" aria-labelledby="btn-bonus">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <ul class="rule-list">
+          <li><span>洗碗（家务）</span><span class="rule-pts plus">+5</span></li>
+          <li><span>53天天练 · 交一页</span><span class="rule-pts plus">+3</span></li>
+          <li><span>53天天练 · 单页全对</span><span class="rule-pts plus">+2</span></li>
+          <li><span>背诵/口语按时发回</span><span class="rule-pts plus">+5</span></li>
+          <li><span>阅读打卡</span><span class="rule-pts plus">+1</span></li>
+        </ul>
+        <div class="rule-note">💡 具体以规则手册为准，这里只列出常用几项。</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 扣分规则（折叠按钮） -->
+  <section class="card collapse" aria-label="扣分规则">
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-deduct" id="btn-deduct">
+      <span class="emoji" aria-hidden="true">📉</span>
+      <span class="cb-title">扣分规则</span>
+      <span class="tag-demo">演示数据</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-deduct" role="region" aria-labelledby="btn-deduct">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <ul class="rule-list">
+          <li><span>当天没交作业</span><span class="rule-pts minus">-10</span></li>
+          <li><span>53天天练 · 缺一页/白卷</span><span class="rule-pts minus">-3</span></li>
+          <li><span>53天天练 · 单页正确率 &lt;60%</span><span class="rule-pts minus">-2</span></li>
+          <li><span>背诵/口语完全没发</span><span class="rule-pts minus">-5</span></li>
+        </ul>
+        <div class="rule-note">💡 单科单日扣分封顶 -10，具体以规则手册为准。</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 积分日志（折叠按钮） -->
+  <section class="card collapse" aria-label="积分日志">
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
+      <span class="emoji" aria-hidden="true">🧾</span>
+      <span class="cb-title">积分日志</span>
+      <span class="tag-demo">演示数据</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <div class="grade-block" id="log-g5" aria-label="五年级积分日志">
+          <div class="grade-head"><span class="pill-grade g5">五年级</span>积分日志</div>
+          <ul class="log-list">
+            <li class="log-item">
+              <div class="log-dot plus">+</div>
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">默写满分（五年级 · 语文）</span><span class="log-pts plus">+5</span></div>
+                <div class="log-line2">2026-10-19 08:30</div>
+              </div>
+            </li>
+            <li class="log-item">
+              <div class="log-dot minus">-</div>
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">作业迟交（五年级 · 语文）</span><span class="log-pts minus">-2</span></div>
+                <div class="log-line2">2026-10-18 21:10</div>
+              </div>
+            </li>
+            <li class="log-item">
+              <div class="log-dot plus">+</div>
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">主动帮助家人（五年级）</span><span class="log-pts plus">+2</span></div>
+                <div class="log-line2">2026-10-18 18:30</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="grade-block" id="log-g6" aria-label="六年级积分日志">
+          <div class="grade-head"><span class="pill-grade g6">六年级</span>积分日志</div>
+          <ul class="log-list">
+            <li class="log-item">
+              <div class="log-dot plus">+</div>
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">口算全对（六年级 · 数学）</span><span class="log-pts plus">+3</span></div>
+                <div class="log-line2">2026-10-19 08:00</div>
+              </div>
+            </li>
+            <li class="log-item">
+              <div class="log-dot plus">+</div>
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">阅读打卡（六年级 · 课外）</span><span class="log-pts plus">+1</span></div>
+                <div class="log-line2">2026-10-18 20:00</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    🎨 本页为积分看板样板预览，全部数值为<b>演示数据</b>，不代表真实积分记录。<br>
+    正式版以积分台账与规则手册为准。
+    <div class="refresh-countdown" id="refreshCountdown" aria-live="off"></div>
+  </footer>
+
+</div>
+<script>
+/* 折叠栏目：点击按钮展开/收起详情 */
+(function(){
+  var ids = ['bonus','deduct','log','shop','achieve','lib'];
+  /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
+  ids.forEach(function(k){
+    var btn = document.getElementById('btn-' + k);
+    var card = btn && btn.closest('.collapse');
+    if(!btn || !card) return;
+    var text = btn.querySelector('.cb-text');
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      var next = !open;
+      btn.setAttribute('aria-expanded', next ? 'true' : 'false');
+      card.classList.toggle('open', next);
+      if(text) text.textContent = next ? '收起' : '点击查看';
+    });
+  });
+  /* 2026-10-19：点击余额卡片跳转到对应年级积分日志 */
+  ['bal-jump-g5','bal-jump-g6'].forEach(function(bid){
+    var card = document.getElementById(bid);
+    if(!card) return;
+    card.addEventListener('click', function(){
+      var target = document.getElementById(card.getAttribute('data-jump'));
+      if(!target) return;
+      var btnLog = document.getElementById('btn-log');
+      var panelLog = document.getElementById('panel-log');
+      /* 2026-10-19跳转位置修复：open类挂在section.card.collapse上（见折叠JS），
+         panel-log本身永远没有open类，故以 closest('.collapse') 为准，避免已展开时误收起 */
+      var collapseHost = btnLog ? btnLog.closest('.collapse') : null;
+      var needOpen = !!(collapseHost && !collapseHost.classList.contains('open'));
+      var scrollTo = function(){
+        var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView(smooth ? {behavior:'smooth', block:'start'} : {block:'start'});
+        target.setAttribute('tabindex','-1');
+        target.focus({preventScroll:true});
+        target.removeAttribute('tabindex');
+      };
+      if(needOpen && btnLog && collapseHost){
+        /* 等待.collapse-body展开动画(.3s，见CSS)完成后再定位：
+           transitionend结算 + 350ms兜底（与transition时长联动，改CSS时长需同步改此值） */
+        var body = panelLog;
+        var done = false;
+        var settle = function(){
+          if(done) return;
+          done = true;
+          if(body) body.removeEventListener('transitionend', onEnd);
+          scrollTo();
+        };
+        var onEnd = function(e){
+          if(e.target === body && e.propertyName === 'grid-template-rows'){ settle(); }
+        };
+        if(body) body.addEventListener('transitionend', onEnd);
+        btnLog.click();                       /* 复用现有折叠JS，只展开不收起 */
+        setTimeout(settle, 350);              /* 兜底：reduced-motion/过渡被中断时仍可跳转 */
+      }else{
+        scrollTo();
+      }
+    });
+  });
+})();
+</script>
+<script>
+/* 2026-10-19：iOS Safari忽略user-scalable=no，拦截捏合手势彻底禁用缩放；独立片段，与折叠JS零耦合 */
+(function(){
+  ['gesturestart','gesturechange','gestureend'].forEach(function(ev){
+    document.addEventListener(ev, function(e){ e.preventDefault(); }, {passive:false});
+  });
+  /* 仅触屏设备拦截双击，避免影响桌面端双击选中文字 */
+  if('ontouchstart' in window){
+    document.addEventListener('dblclick', function(e){ e.preventDefault(); }, {passive:false});
+  }
+})();
+</script>
+<script>
+/* 2026-10-19 动效：进入视口触发（DeepSeek方案，类名已按实际文件适配） */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var t = e.target;
+      if(t.classList.contains('bal-score')){ t.classList.add('is-in'); }
+      else { t.classList.add('in'); }
+      /* 商店进度条 .bar-fill 用inline scaleX 存目标值，用WAAPI从0播到目标值 */
+      if(t.classList.contains('bar-track')){
+        var fill = t.querySelector('.bar-fill');
+        if(fill && fill.animate){
+          var m = /scaleX\(([\d.]+)\)/.exec(fill.style.transform || '');
+          var target = m ? parseFloat(m[1]) : 1;
+          fill.animate(
+            [{transform:'scaleX(0)'},{transform:'scaleX('+target+')'}],
+            {duration:600, easing:'cubic-bezier(.25,.8,.35,1)', fill:'backwards'}
+          );
+        }
+      }
+      io.unobserve(t);
+    });
+  },{threshold:.2});
+  document.querySelectorAll('.task-prog-bar, .ach-prog-bar, .bar-track, .task-list').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.bal-card .bal-score').forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+/* 今日任务自动更新（KB-TASK-AUTO-2026-10-19，DeepSeek 方案 §5.2）：
+   从 https://whyjjf.lol/data/tasks_daily_{5,6}.json 拉取当日任务，
+   仅渲染 review_status=approved 的任务；失败则保留演示数据。 */
+(function(){
+  var DATA_BASE = 'https://whyjjf.lol/data/';
+  var REFRESH_MS = 5 * 60 * 1000;
+  var STATUS_MAP = {
+    pending:     {cls: 'pending',    badge: '⭕ 未完成'},
+    in_progress: {cls: 'correcting', badge: '🔄 订正中'},
+    done:        {cls: 'done',       badge: '✅ 已完成'}
+  };
+  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录'};
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function todayStr(){
+    try { return new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Shanghai'}); }
+    catch(e){ return ''; }
+  }
+  function renderOne(secId, data){
+    var sec = document.getElementById(secId);
+    if(!sec || !data || data.date !== todayStr()) return false;
+    var list = (data.tasks || []).filter(function(t){ return t.review_status === 'approved'; });
+    var total = list.length;
+    var done = list.filter(function(t){ return t.status === 'done'; }).length;
+    var progText = sec.querySelector('.task-prog-text');
+    var progBar = sec.querySelector('.task-prog-bar');
+    var progFill = sec.querySelector('.task-prog-fill');
+    var label = '已完成 ' + done + ' / ' + total;
+    if(progText) progText.textContent = label;
+    if(progBar){
+      progBar.setAttribute('aria-valuemax', total);
+      progBar.setAttribute('aria-valuenow', done);
+      progBar.setAttribute('aria-valuetext', label);
+    }
+    if(progFill) progFill.style.width = (total ? (done / total * 100) : 0) + '%';
+    var taskList = sec.querySelector('.task-list');
+    if(!taskList) return false;
+    var html = '';
+    if(total === 0){
+      html = '<div class="task done"><div class="task-info"><div class="task-name">今日暂无任务</div>'
+        + '<div class="task-progress">全部完成，放松一下吧</div></div>'
+        + '<span class="st-badge">\u2705 已完成</span></div>';
+    } else {
+      list.forEach(function(t){
+        var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
+        var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
+        if(t.detail) sub2 += ' · ' + esc(t.detail);
+        else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
+        html += '<div class="task ' + sm.cls + '"><div class="task-info">'
+          + '<div class="task-name">' + esc(t.title) + '</div>'
+          + '<div class="task-progress">' + sub2 + '</div></div>'
+          + '<span class="st-badge">' + sm.badge + '</span></div>';
+      });
+    }
+    taskList.innerHTML = html;
+    return true;
+  }
+  function load(){
+    var ok = 0;
+    [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
+      fetch(DATA_BASE + pair[1] + '?t=' + Date.now())
+        .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function(d){ if(renderOne(pair[0], d)) ok++; })
+        .then(function(){
+          if(ok === 2){
+            var tag = document.getElementById('tasks-tag');
+            if(tag) tag.textContent = '实时数据';
+          }
+        })
+        .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); });
+    });
+  }
+  load();
+  setInterval(load, REFRESH_MS);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) load(); });
+})();
+</script>
+<script>
+/* ============================================================
+   余额卡片总分机械滚轮 v2（2026-10-19 重写，deepseek 方案终审）
+   - 纯 CSS transition 驱动（合成器动画，iPhone Safari 不掉帧）
+   - 修 v1 bug：单格高度 = strip.scrollHeight/10（=1em），不是 slot.clientHeight/10
+   - 逐位 delay：delay = (n-1-i)*STAGGER，低位先停、高位后停（里程表视觉）
+   - will-change 只在 .odo--anim 态生效，结束类移除即释放
+   - 幂等：一次进入只滚一次；fetch 更新走 __kanbanSetBalance 直接写终值
+   - 无障碍：prefers-reduced-motion 直终值；hidden 时写终值；aria-busy 完整释放
+   ============================================================ */
+(function(){
+  'use strict';
+
+  var DURATION = 720;   /* 必须与 CSS transition-duration 一致 */
+  var STAGGER  = 55;    /* 逐位 delay 步长：低位 delay 小先停，高位 delay 大后停 */
+
+  var reduceMotion = window.matchMedia
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 测量：单格高度（关键修正：strip.scrollHeight/10 = 1em） ---------- */
+  function measureCellH(odo){
+    if(odo._cellH > 0) return odo._cellH;
+    var strip = odo.firstChild && odo.firstChild.firstChild;
+    if(!strip) return 0;
+    var h = strip.scrollHeight / 10;   /* 10 个数字条带总高 / 10 */
+    if(h > 0) odo._cellH = h;
+    return h;
+  }
+  function invalidateCellH(odo){ odo._cellH = 0; }
+
+  /* 字体加载完成后复测（字体切换可能改变 1em 实际像素） */
+  if(document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function'){
+    document.fonts.ready.then(function(){
+      var odos = document.querySelectorAll('.odo');
+      for(var i = 0; i < odos.length; i++) invalidateCellH(odos[i]);
+    });
+  }
+
+  /* ---------- 构建 DOM ---------- */
+  function buildOdometer(el, target){
+    var s = String(target);
+    el.innerHTML = '';
+    var odo = document.createElement('span');
+    odo.className = 'odo';
+    odo.setAttribute('role', 'img');
+    odo.setAttribute('aria-label', '总分 ' + s + ' 分'); /* 读屏只读终值，不读 0-9 条带 */
+    for(var i = 0; i < s.length; i++){
+      var slot = document.createElement('span');
+      slot.className = 'odo-slot';
+      var strip = document.createElement('span');
+      strip.className = 'odo-strip';
+      strip.setAttribute('aria-hidden', 'true');
+      var html = '';
+      for(var d = 0; d <= 9; d++){ html += '<span>' + d + '</span>'; }
+      strip.innerHTML = html;
+      slot.appendChild(strip);
+      odo.appendChild(slot);
+    }
+    el.appendChild(odo);
+    measureCellH(odo); /* 构建后立即测一次（字体就绪时即为准值） */
+    if('ResizeObserver' in window && !odo._ro){
+      var ro = new ResizeObserver(function(){ invalidateCellH(odo); });
+      for(var k = 0; k < odo.children.length; k++){ ro.observe(odo.children[k]); }
+      odo._ro = ro;
+    }
+    return odo;
+  }
+
+  /* ---------- 写终值（零动画） ---------- */
+  function writeFinal(el, odo, target){
+    var cellH = measureCellH(odo);
+    if(!(cellH > 0)) cellH = 16; /* 极端兜底，正常路径不该走 */
+    var s = String(target).padStart(odo.children.length, '0');
+    var score = el.closest('.bal-score');
+    odo.classList.remove('odo--anim'); /* 清动画态：will-change 即释放 */
+    for(var i = 0; i < odo.children.length; i++){
+      var strip = odo.children[i].firstChild;
+      strip.style.transition = 'none';
+      strip.style.setProperty('--odo-delay', '0ms');
+      strip.style.transform = 'translate3d(0,' + (-parseInt(s[i], 10) * cellH) + 'px,0)';
+    }
+    /* 下一帧清掉临时 transition:none，恢复 CSS 类默认（下次滚动才生效） */
+    requestAnimationFrame(function(){
+      for(var j = 0; j < odo.children.length; j++){
+        odo.children[j].firstChild.style.transition = '';
+      }
+    });
+    odo.setAttribute('aria-label', '总分 ' + target + ' 分');
+    if(score) score.removeAttribute('aria-busy');
+  }
+
+  /* ---------- 执行滚动动画（纯 CSS transition） ---------- */
+  function rollOdometer(el){
+    if(!el || el.dataset.rolled === '1') return; /* 幂等：一次进入只滚一次 */
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    if(!isFinite(target) || target < 0) return;
+
+    el.dataset.rolled = '1';
+    var odo = buildOdometer(el, target);
+    el._odo = odo;
+
+    /* 减少动态 / 无 rAF 环境：直接终值 */
+    if(reduceMotion || typeof requestAnimationFrame !== 'function'){
+      writeFinal(el, odo, target);
+      return;
+    }
+
+    var cellH = measureCellH(odo);
+    if(!(cellH > 0)){ writeFinal(el, odo, target); return; } /* 测不到就不滚，安全 */
+
+    var score = el.closest('.bal-score');
+    var digits = String(target).padStart(odo.children.length, '0');
+    var n = odo.children.length;
+
+    /* 起始态：全部在第 0 位，transition:none 保证起始不闪 */
+    for(var i = 0; i < n; i++){
+      var st0 = odo.children[i].firstChild;
+      st0.style.transition = 'none';
+      st0.style.setProperty('--odo-delay', '0ms');
+      st0.style.transform = 'translate3d(0,0,0)';
+    }
+
+    /* 强制一次 reflow，确保起始态被浏览器认账 */
+    void odo.offsetWidth;
+
+    /* 下一帧挂动画类 + 逐位设 delay + 写终值 transform，触发 transition。
+       delay 映射：delay = (n-1-i)*STAGGER —— 最低位（最右）delay=0 先停，
+       最高位（最左）delay 最大后停，里程表视觉。 */
+    requestAnimationFrame(function(){
+      odo.classList.add('odo--anim');
+      for(var i = 0; i < n; i++){
+        var strip = odo.children[i].firstChild;
+        var delayMs = (n - 1 - i) * STAGGER;
+        strip.style.transition = ''; /* 恢复 CSS 类的 transition 定义 */
+        strip.style.setProperty('--odo-delay', delayMs + 'ms');
+        strip.style.transform = 'translate3d(0,' + (-parseInt(digits[i], 10) * cellH) + 'px,0)';
+      }
+
+      if(score) score.setAttribute('aria-busy', 'true');
+
+      var done = false;
+      function finish(){
+        if(done) return;
+        done = true;
+        document.removeEventListener('visibilitychange', onVis);
+        if(el._finishTimer){ clearTimeout(el._finishTimer); el._finishTimer = 0; }
+        writeFinal(el, odo, target); /* 幂等落终值 + 释放 aria-busy */
+      }
+      function onVis(){
+        if(document.hidden){ finish(); } /* 切后台/锁屏：立即写终值 */
+      }
+      document.addEventListener('visibilitychange', onVis);
+      /* 兜底：总时长 + 余量后必定结束 */
+      el._finishTimer = setTimeout(finish, DURATION + (n - 1) * STAGGER + 280);
+      /* 正常结束加速：最高 delay 的位（最高位 i=0）transitionend */
+      var highStrip = odo.children[0].firstChild;
+      highStrip.addEventListener('transitionend', function once(){
+        highStrip.removeEventListener('transitionend', once);
+        finish();
+      });
+    });
+  }
+
+  /* ---------- fetch / 任务自动更新：直接写终值，不触发滚动 ---------- */
+  function setFinalBalance(el, target){
+    var t = parseInt(target, 10);
+    if(!el || !isFinite(t) || t < 0) return;
+    if(el._finishTimer){ clearTimeout(el._finishTimer); el._finishTimer = 0; }
+    el.setAttribute('data-target', t);
+    var odo = el._odo;
+    if(!odo){
+      el.textContent = t; /* 滚轮尚未构建：直接写静态文本 */
+      el.dataset.rolled = '1';
+      return;
+    }
+    if(String(t).length !== odo.children.length){
+      odo = buildOdometer(el, t); /* 位数变化：重建 DOM（重建 ≠ 重滚） */
+      el._odo = odo;
+    }
+    writeFinal(el, odo, t);
+    el.dataset.rolled = '1';
+  }
+  window.__kanbanSetBalance = setFinalBalance;
+
+  /* ---------- 启动：每次进入页面加载即滚 ---------- */
+  function rollAll(){
+    var nums = document.querySelectorAll('.bal-num[data-target]');
+    for(var i = 0; i < nums.length; i++) rollOdometer(nums[i]);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', rollAll, { once: true });
+  }else{
+    rollAll();
+  }
+})();
+</script>
+
+<script>
+/* 2026-10-19：5分钟自刷新 + 倒计时（DeepSeek方案，独立IIFE） */
+(function(){
+  'use strict';
+  try{
+    var REFRESH_SEC = 300; /* 5分钟 */
+    var el = document.getElementById('refreshCountdown');
+    if(!el) return;
+
+    var deadline = Date.now() + REFRESH_SEC * 1000;
+    var timer = 0;
+
+    function remainSec(){
+      /* 夹在 [0, REFRESH_SEC]，防系统时间被改导致异常 */
+      var r = Math.round((deadline - Date.now()) / 1000);
+      if(r < 0) r = 0;
+      if(r > REFRESH_SEC) r = REFRESH_SEC;
+      return r;
+    }
+
+    function render(){
+      var r = remainSec();
+      var m = Math.floor(r / 60), s = r % 60;
+      el.textContent = '数据' + m + '分' + s + '秒后更新';
+      if(r <= 0){
+        stop();
+        location.reload();
+      }
+    }
+
+    function stop(){
+      if(timer){ clearInterval(timer); timer = 0; }
+    }
+
+    function start(){
+      stop();
+      timer = setInterval(render, 1000);
+      render(); /* 立即刷新一次，避免首秒延迟 */
+    }
+
+    function recalc(){
+      /* 可见时按 deadline 重算（后台timer被节流时校正），已到期直接刷新 */
+      var r = remainSec();
+      if(r <= 0){ stop(); location.reload(); return; }
+      start();
+    }
+
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ stop(); } /* 切后台：停表省电，防节流漂移 */
+      else{ recalc(); }              /* 回前台：按 deadline 重算 */
+    });
+
+    /* bfcache 返回旧页面时重算，防倒计时错乱 */
+    window.addEventListener('pageshow', function(e){
+      if(e.persisted){ recalc(); }
+    });
+
+    window.addEventListener('pagehide', stop);
+
+    start();
+  }catch(e){ /* 静默降级：不阻断渲染 */ }
+})();
+</script>
+
+</body>
+</html>
