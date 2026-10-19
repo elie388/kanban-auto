@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- 积分看板·全新版式样板（2026-10-19）——演示用单文件样板，非正式版，不替换正式看板模板。 -->
-<!-- 今日任务：演示数据为离线兜底；JS 会尝试从 https://whyjjf.lol/data/tasks_daily_{5,6}.json 拉取当日 approved 任务并每5分钟刷新，成功后替换本区演示内容。 -->
+<!-- 积分看板 · 全新版式（2026-10-19） -->
+<!-- 今日任务：离线数据兜底；JS 会尝试从 https://whyjjf.lol/data/tasks_daily_{5,6}.json 拉取当日 approved 任务并每5分钟刷新，成功后替换本区兜底内容。 -->
 <!-- 缩放禁用：按用户2026-10-19要求，双击+捏合缩放已完全禁用（放弃WCAG 1.4.4），用途=儿童设备防误触 -->
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover"><!-- 2026-10-19：按用户要求完全禁用缩放（双击+捏合），viewport-fit=cover配合安全区 -->
-<title>积分看板 · 样板预览</title>
+<title>积分看板</title>
 <style>
   :root{
     --bg1:#FFE8C2; --bg2:#FFD1DC; --bg3:#C9E7FF;
@@ -34,17 +34,6 @@
     -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   }
   .wrap{max-width:980px; margin:0 auto;}
-
-  /* 样板提示条 */
-  .demo-badge{
-    background:linear-gradient(90deg,#FF6B9D,#FFB020);
-    color:#fff; font-weight:700; text-align:center;
-    padding:10px 16px; border-radius:999px;
-    font-size:15px; margin-bottom:14px;
-    box-shadow:var(--shadow);
-    animation:float 3s ease-in-out infinite;
-  }
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
   /* 标题区 */
   .hero{text-align:center; margin:6px 0 18px;}
@@ -113,7 +102,7 @@
   }
   .bal-card.g5{background:linear-gradient(135deg,#FF8A5B,#FFA96B);}
   .bal-card.g6{background:linear-gradient(135deg,#6C8EFF,#8FA9FF);}
-  /* 2026-10-19：余额演示数据标记（KB-BALANCE-AUTO-2026-10-19） */
+  /* 2026-10-19：余额离线数据标记（KB-BALANCE-AUTO-2026-10-19） */
   .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
     color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
   /* 2026-10-19：余额卡片可点击跳转（button重置，视觉零变化） */
@@ -446,7 +435,6 @@
     .bal-card{padding:20px;}
     .bal-score{font-size:clamp(38px,9vw,44px);}
     .task{padding:14px 16px;}
-    .demo-badge{font-size:16px;}
   }
   /* 2026-10-19：D2 768px；iPad mini/老iPad竖屏 */
   @media(min-width:768px){
@@ -507,13 +495,10 @@
 <body>
 <div class="wrap">
 
-  <!-- 样板提示 -->
-  <div class="demo-badge">🎨 样板预览（非正式版）</div>
-
   <!-- 标题 -->
   <header class="hero">
     <h1>🌟 积分看板 🌟</h1>
-    <div class="date">2026-10-19 · 演示数据</div>
+    <div class="date">2026-10-19</div>
   </header>
 
   <!-- 余额卡片 -->
@@ -532,7 +517,7 @@
 
   <!-- 今日任务（显眼位：余额卡片下方第一位） -->
   <section class="card" aria-label="今日任务">
-    <h2><span class="emoji">📝</span>今日任务<span class="tag-demo" id="tasks-tag">演示数据</span></h2>
+    <h2><span class="emoji">📝</span>今日任务<span class="tag-demo" id="tasks-tag">离线数据</span></h2>
 
     <div class="task-section" id="tasks-g5">
       <div class="task-head">
@@ -612,7 +597,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-achieve" id="btn-achieve">
       <span class="emoji" aria-hidden="true">🏅</span>
       <span class="cb-title">荣耀徽章</span>
-      <span class="tag-demo">演示数据</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-achieve" role="region" aria-labelledby="btn-achieve">
@@ -642,7 +626,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-lib" id="btn-lib">
       <span class="emoji" aria-hidden="true">🎯</span>
       <span class="cb-title">徽章目标榜</span>
-      <span class="tag-demo">演示数据</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-lib" role="region" aria-labelledby="btn-lib">
@@ -668,7 +651,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-shop" id="btn-shop">
       <span class="emoji" aria-hidden="true">🎁</span>
       <span class="cb-title">积分商店</span>
-      <span class="tag-demo">演示数据</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-shop" role="region" aria-labelledby="btn-shop">
@@ -725,7 +707,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-bonus" id="btn-bonus">
       <span class="emoji" aria-hidden="true">🎯</span>
       <span class="cb-title">加分规则</span>
-      <span class="tag-demo">演示数据</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-bonus" role="region" aria-labelledby="btn-bonus">
@@ -747,7 +728,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-deduct" id="btn-deduct">
       <span class="emoji" aria-hidden="true">📉</span>
       <span class="cb-title">扣分规则</span>
-      <span class="tag-demo">演示数据</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-deduct" role="region" aria-labelledby="btn-deduct">
@@ -768,7 +748,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
       <span class="emoji" aria-hidden="true">🧾</span>
       <span class="cb-title">积分日志</span>
-      <span class="tag-demo">演示数据</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
@@ -823,8 +802,7 @@
   </section>
 
   <footer class="footer">
-    🎨 本页为积分看板样板预览，全部数值为<b>演示数据</b>，不代表真实积分记录。<br>
-    正式版以积分台账与规则手册为准。
+    积分以积分台账为准。
     <div class="refresh-countdown" id="refreshCountdown" aria-live="off"></div>
   </footer>
 
@@ -936,7 +914,7 @@
 <script>
 /* 今日任务自动更新（KB-TASK-AUTO-2026-10-19，DeepSeek 方案 §5.2）：
    从 https://whyjjf.lol/data/tasks_daily_{5,6}.json 拉取当日任务，
-   仅渲染 review_status=approved 的任务；失败则保留演示数据。 */
+   仅渲染 review_status=approved 的任务；失败则保留兜底数据。 */
 (function(){
   var DATA_BASE = 'https://whyjjf.lol/data/';
   var REFRESH_MS = 5 * 60 * 1000;
@@ -1231,7 +1209,7 @@
     if(show && !tag){
       tag = document.createElement('span');
       tag.className = 'bal-demo-tag';
-      tag.textContent = '演示数据';
+      tag.textContent = '离线数据';
       card.appendChild(tag);
     }else if(!show && tag){
       tag.parentNode.removeChild(tag);
@@ -1299,7 +1277,7 @@
   }
 
   function boot(){
-    /* 初始演示态：标记 + 兜底 */
+    /* 初始态：离线标记 + 兜底 */
     setDemoTag('bal-jump-g5', true);
     setDemoTag('bal-jump-g6', true);
     var ctrl = null, timer = 0;
@@ -1318,7 +1296,7 @@
     }).then(function(d){
       applyBalance(d);
     }).catch(function(){
-      /* 失败：保留演示数据 + 演示标记，不阻塞页面 */
+      /* 失败：保留兜底数据 + 离线标记，不阻塞页面 */
     }).then(finish);
   }
 
