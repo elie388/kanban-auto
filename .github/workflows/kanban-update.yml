@@ -140,6 +140,12 @@ jobs:
           PYEOF
           ls -la public/data/
 
+      # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：
+      # 跨周边界定值测试必跑，防止周界回归。失败则构建失败。
+      - name: 全栏目跨周边界单测
+        run: |
+          python3 scripts/test_sections_week.py
+
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
         run: |
