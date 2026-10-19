@@ -5,6 +5,7 @@
    "id": "mc30",
    "name": "30分钟Minecraft",
    "cost": 70,
+   "icon": "🕹️",
    "by_grade": {
     "g5": {
      "balance": 127,
@@ -22,6 +23,7 @@
    "id": "mc60",
    "name": "1小时Minecraft",
    "cost": 100,
+   "icon": "🕹️",
    "by_grade": {
     "g5": {
      "balance": 127,
@@ -39,6 +41,7 @@
    "id": "hy150",
    "name": "1小时和平精英或2小时Minecraft",
    "cost": 150,
+   "icon": "🎮",
    "by_grade": {
     "g5": {
      "balance": 127,
@@ -56,6 +59,7 @@
    "id": "hy250",
    "name": "2小时和平精英",
    "cost": 250,
+   "icon": "🎮",
    "by_grade": {
     "g5": {
      "balance": 127,
@@ -73,6 +77,7 @@
    "id": "wish600",
    "name": "达成愿望1次（等额50元，可兑现金）",
    "cost": 600,
+   "icon": "🌟",
    "by_grade": {
     "g5": {
      "balance": 127,
@@ -90,6 +95,7 @@
    "id": "wish1000",
    "name": "达成愿望1次（等额100元，可兑现金）",
    "cost": 1000,
+   "icon": "💫",
    "by_grade": {
     "g5": {
      "balance": 127,
@@ -104,5 +110,5 @@
    }
   }
  ],
- "generated_at": "2026-10-19T20:28:06+08:00"
+ "generated_at": "2026-10-19T20:28:42+08:00"
 }
