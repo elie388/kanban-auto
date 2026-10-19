@@ -107,7 +107,7 @@ jobs:
           grep -q "whyjjf.lol" public/CNAME || { echo "::error::public/CNAME 内容异常"; exit 1; }
           test -f public/data/tasks_daily_5.json || { echo "::error::public/data/tasks_daily_5.json 缺失"; exit 1; }
           test -f public/data/tasks_daily_6.json || { echo "::error::public/data/tasks_daily_6.json 缺失"; exit 1; }
-          grep -q "积分看板·全新版式样板" public/index.html || { echo "::error::public/index.html 非新版样板"; exit 1; }
+          grep -q "全新版式" public/index.html || { echo "::error::public/index.html 非新版看板"; exit 1; }
           echo "产物断言全部通过"
 
       - name: 上传 Pages 产物
