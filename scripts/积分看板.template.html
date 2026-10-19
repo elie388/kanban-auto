@@ -12,10 +12,7 @@
   .page { max-width: 860px; margin: 0 auto; }
   h1 { text-align: center; font-size: 44px; margin: 8px 0 4px; }
   .date { text-align: center; color: #6B6F76; font-size: 19px; margin-bottom: 22px; }
-  .refresh-bar { text-align: center; color: #9aa0a6; font-size: 13px; margin: -14px 0 18px; }
-  .mini-btn { font-size: 13px; padding: 4px 12px; border-radius: 10px; border: 1px solid #d9d4c5; background: #fff; color: #6B6F76; cursor: pointer; margin-left: 8px; min-height: 30px; }
-  .mini-btn:hover { background: #f0ede4; }
-  .mini-btn:active { background: #e6e1d2; }
+  .refresh-bar { text-align: center; color: #9aa0a6; font-size: 13px; margin: 24px 0 8px; padding-top: 16px; border-top: 1px solid #e6e1d2; }
   .cards { display: flex; flex-wrap: nowrap; gap: 18px; margin-bottom: 26px; }
   .card { flex: 1 1 0; min-width: 0; border-radius: 24px; padding: 30px 22px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.10); color: #fff; background-size: auto, cover; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: transform .18s ease, box-shadow .18s ease; }
   .card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.18); }
@@ -376,7 +373,6 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 <div class="page">
   <h1>🏆 实时积分 🏆</h1>
   <div class="date"><!--PAGE_DATE--><span id="clock"></span></div>
-  <div class="refresh-bar"><span id="auto-refresh-tip">数据每5分钟自动更新</span><button type="button" id="manual-refresh-btn" class="mini-btn">立即刷新</button></div>
 
   <!--BALANCE_CARDS-->
 
@@ -477,6 +473,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   </div>
 
 </div>
+<div class="refresh-bar"><span id="auto-refresh-tip">数据更新中</span></div>
 <script>
 (function () {
   // 每天轮换的渐变配色（按日期取模，保证同一天两卡不同色、每天都换）
@@ -995,7 +992,6 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     var timerId = null;
     var lastTick = Date.now();
     var tipEl = document.getElementById('auto-refresh-tip');
-    var btnEl = document.getElementById('manual-refresh-btn');
 
     function saveFoldState() {
       try {
@@ -1027,14 +1023,17 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     }
     function reloadNow() { saveFoldState(); location.reload(); }
     function remainingText() {
-      if (timerId === null) return '已暂停';
+      if (timerId === null) return null;
       var left = Math.max(0, REFRESH_MS - (Date.now() - lastTick));
       var m = Math.floor(left / 60000);
       var s = Math.floor((left % 60000) / 1000);
-      return m + ':' + (s < 10 ? '0' : '') + s + ' 后刷新';
+      if (m > 0) return m + '分' + s + '秒后自动更新';
+      return s + '秒后自动更新';
     }
     function updateTip() {
-      if (tipEl) tipEl.textContent = '数据每5分钟自动更新（' + remainingText() + '）';
+      if (!tipEl) return;
+      var r = remainingText();
+      tipEl.textContent = (r === null) ? '数据更新已暂停，回到本页后恢复' : '数据' + r;
     }
     function startTimer() {
       if (timerId !== null) return;
@@ -1046,7 +1045,6 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
       if (timerId !== null) { clearInterval(timerId); timerId = null; }
       updateTip();
     }
-    if (btnEl) btnEl.addEventListener('click', reloadNow);
     restoreFoldState(); // 须在折叠初始化脚本之后执行
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'hidden') stopTimer();
