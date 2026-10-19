@@ -454,6 +454,17 @@
   .card h2 .tag-demo.tag-live{ margin-left:auto; }
   .grade-head .tag-demo.tag-live{ margin-left:auto; }
 
+  /* 2026-10-20 KB-TAG-LIVE-SIZE：栏目"实时数据"标签尺寸与余额卡统一（DeepSeek方案）
+     荣耀徽章/徽章目标榜/积分商店/积分日志 4 处 → 对齐 .bal-demo-tag（11px/1.4/1px 8px/400）。
+     override 不改原规则；仅命中带 .tag-live 的"实时数据"标签；今日任务标签命中同理属统一意图。 */
+  .card h2 .tag-demo.tag-live,
+  .grade-head .tag-demo.tag-live{
+    font-size:11px;
+    font-weight:400;
+    line-height:1.4;
+    padding:1px 8px;
+  }
+
   .tag-live::before{
     content:""; position:absolute; inset:0; border-radius:999px;
     background:#16A34A; opacity:0; pointer-events:none;
