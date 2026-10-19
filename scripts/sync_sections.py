@@ -35,7 +35,7 @@ LOG_KEEP_LINES = 2000
 # key: 台账 badge_<key> 中的拼音；cond: 解锁条件（目标榜展示用）
 BADGE_CATALOG = [
     ("quanduizhixing",   "全对之星",   "✅", "单次作业/小测全部题目正确"),
-    ("baifentupo",       "百分突破之星", "💯", "单次考试首次卷面满分"),
+    ("baifentupo",       "满分之星",     "💯", "考试100分即可获得"),
     ("zonghezhixing",    "综合之星",   "🏅", "一周内≥4类不同徽章"),
     ("tupoxiaoyongshi",  "突破小勇士", "🛡️", "同一类错题连续3次订正全对"),
     ("jianchixiaoyongshi","坚持小勇士", "🔥", "连续14天完成同一固定挑战"),
@@ -133,7 +133,8 @@ def extract_badge_events():
         m = re.search(r"## " + grade + r"\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
         if not m:
             raise ValueError("section 缺失：" + grade)
-        active = {}   # key -> event（净持有）
+        active = {}   # key -> [events]（净持有：同徽章多次获得逐条累积，不设上限）
+        seen = set()  # (key, date, clean_desc)：同一考试只记一次（防重复录入）
         earliest = {}  # key -> 最早发放日
         for line in m.group(1).split("\n"):
             mm = sb.ROW_PAT.match(line)
@@ -154,15 +155,20 @@ def extract_badge_events():
                 icon, name = meta["icon"], meta["name"]
             else:
                 icon, name = split_icon_name(desc)
+            # 去重键 = badge_key + 孩子(分节已定) + 当周(date决定) + 考试标识(key+date+事项)
+            ident = (key, date, sb.clean_desc(desc))
+            if ident in seen:
+                continue
+            seen.add(ident)
             if key not in earliest or date < earliest[key]:
                 earliest[key] = date
-            active[key] = {"key": key, "date": date, "icon": icon, "name": name}
-        # 净持有徽章，date 取最早发放日
+            active.setdefault(key, []).append(
+                {"key": key, "date": date, "icon": icon, "name": name})
+        # 净持有徽章：同徽章多次获得各自保留，按最早发放日排序
         events = []
-        for key, ev in active.items():
-            ev = dict(ev)
-            ev["date"] = earliest.get(key, ev["date"])
-            events.append(ev)
+        for key, evts in active.items():
+            for ev in evts:
+                events.append(dict(ev))
         events.sort(key=lambda e: e["date"])
         result[gk] = events
     return result
@@ -184,8 +190,18 @@ def build_badges(events, now=None):
     by_grade = {}
     for gk in ("g5", "g6"):
         week_events = [e for e in events.get(gk, []) if ws_s <= e["date"] <= we_s]
-        by_grade[gk] = [{"key": e["key"], "name": e["name"][:8], "icon": e["icon"],
-                         "date": e["date"]} for e in week_events]
+        # 同徽章当周多次获得：按 key 分组累积，输出 count（不设上限）
+        grouped = {}
+        for e in week_events:
+            grouped.setdefault(e["key"], []).append(e)
+        items = []
+        for key, evts in grouped.items():
+            evts.sort(key=lambda x: x["date"])
+            items.append({"key": key, "name": evts[0]["name"][:8],
+                          "icon": evts[0]["icon"], "date": evts[0]["date"],
+                          "count": len(evts)})
+        items.sort(key=lambda x: x["date"])
+        by_grade[gk] = items
     # B-2：周界自证元数据（下游可独立验证周界归属）
     return {"schema_version": 1,
             "week": {"start": ws_s, "end": we_s, "tz": "Asia/Shanghai",
@@ -199,9 +215,15 @@ def build_badge_goals(events):
                for k, n, i, c in BADGE_CATALOG]
     by_grade = {}
     for gk in ("g5", "g6"):
-        held = {e["key"]: e["date"] for e in events.get(gk, [])}
+        held = {}
+        cnt = {}
+        for e in events.get(gk, []):
+            if e["key"] not in held or e["date"] < held[e["key"]]:
+                held[e["key"]] = e["date"]
+            cnt[e["key"]] = cnt.get(e["key"], 0) + 1
         by_grade[gk] = [{"key": k, "obtained": k in held,
-                         "date": held.get(k, "")} for k, _, _, _ in BADGE_CATALOG]
+                         "date": held.get(k, ""), "count": cnt.get(k, 0)}
+                        for k, _, _, _ in BADGE_CATALOG]
     return {"schema_version": 1, "catalog": catalog, "by_grade": by_grade}
 
 
