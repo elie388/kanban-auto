@@ -10,9 +10,9 @@
   },
   {
    "key": "baifentupo",
-   "name": "百分突破之星",
+   "name": "满分之星",
    "icon": "💯",
-   "cond": "单次考试首次卷面满分",
+   "cond": "考试100分即可获得",
    "points": 5
   },
   {
@@ -175,246 +175,294 @@
    {
     "key": "quanduizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "baifentupo",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zonghezhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "tupoxiaoyongshi",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jianchixiaoyongshi",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "yueduzhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "yueduxiaodaren",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "hezuozhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zhoujinbuzhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "sanheyi",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jiawujielishou",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "sanribuduan",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "kousuanxiaodaren",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "shuxiezhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "dancizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "moxiezhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "sikaozhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zhenglizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jinbumiao",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "cuotizhenglizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "biaodazhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jiawuxiaobangshou",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zhengdalidaren",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jiawuzhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    }
   ],
   "g6": [
    {
     "key": "quanduizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "baifentupo",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zonghezhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "tupoxiaoyongshi",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jianchixiaoyongshi",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "yueduzhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "yueduxiaodaren",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "hezuozhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zhoujinbuzhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "sanheyi",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jiawujielishou",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "sanribuduan",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "kousuanxiaodaren",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "shuxiezhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "dancizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "moxiezhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "sikaozhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zhenglizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jinbumiao",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "cuotizhenglizhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "biaodazhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jiawuxiaobangshou",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "zhengdalidaren",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    },
    {
     "key": "jiawuzhixing",
     "obtained": false,
-    "date": ""
+    "date": "",
+    "count": 0
    }
   ]
  },
- "generated_at": "2026-10-19T20:40:09+08:00"
+ "generated_at": "2026-10-19T20:55:13+08:00"
 }
