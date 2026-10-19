@@ -59,6 +59,11 @@
     padding:18px 16px;
     margin-bottom:16px;
     animation:fadeUp .4s ease both;
+    position:relative;
+  }
+  /* 2026-10-20 折叠卡片右上角实时数据标签（DeepSeek方案） */
+  .card.collapse > .tag-live{
+    position:absolute; top:8px; right:12px; z-index:2;
   }
   @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
   .card h2{
@@ -241,7 +246,7 @@
   .shop-top .ic{font-size:30px; flex:0 0 auto;}
   .shop-top .nm{font-size:16px; font-weight:800; flex:1; min-width:0;
     display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2;
-    overflow:hidden; white-space:normal; text-overflow:clip; word-break:break-all;}
+    overflow:hidden; white-space:pre-line; text-overflow:clip; word-break:break-all;}
   .shop-top .cost{
     font-size:14px; font-weight:800; color:#E25C1D;
     background:#FFEEDD; padding:2px 10px; border-radius:999px;
@@ -412,6 +417,7 @@
   .collapse-btn{
     display:flex; align-items:center; gap:8px;
     width:100%; min-height:68px; padding:18px 16px;
+    margin-right:24px;
     background:none; border:0; cursor:pointer; text-align:left;
     font-family:inherit; color:var(--txt);
     border-radius:var(--radius);
@@ -651,6 +657,7 @@
 
   <!-- 荣耀徽章（折叠按钮） -->
   <section class="card collapse" aria-label="荣耀徽章">
+    <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-achieve" id="btn-achieve">
       <span class="emoji" aria-hidden="true">🏅</span>
       <span class="cb-title">荣耀徽章</span>
@@ -674,6 +681,7 @@
 
   <!-- 徽章目标榜（折叠按钮） -->
   <section class="card collapse" aria-label="徽章目标榜">
+    <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-lib" id="btn-lib">
       <span class="emoji" aria-hidden="true">🎯</span>
       <span class="cb-title">徽章目标榜</span>
@@ -689,6 +697,7 @@
 
   <!-- 积分商店（折叠按钮） -->
   <section class="card collapse" aria-label="积分商店">
+    <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-shop" id="btn-shop">
       <span class="emoji" aria-hidden="true">🎁</span>
       <span class="cb-title">积分商店</span>
@@ -711,6 +720,7 @@
 
   <!-- 加分规则（折叠按钮） -->
   <section class="card collapse" aria-label="加分规则">
+    <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-bonus" id="btn-bonus">
       <span class="emoji" aria-hidden="true">🎯</span>
       <span class="cb-title">加分规则</span>
@@ -732,6 +742,7 @@
 
   <!-- 扣分规则（折叠按钮） -->
   <section class="card collapse" aria-label="扣分规则">
+    <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-deduct" id="btn-deduct">
       <span class="emoji" aria-hidden="true">📉</span>
       <span class="cb-title">扣分规则</span>
@@ -751,6 +762,7 @@
 
   <!-- 积分日志（折叠按钮） -->
   <section class="card collapse" aria-label="积分日志">
+    <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
       <span class="emoji" aria-hidden="true">🧾</span>
       <span class="cb-title">积分日志</span>
