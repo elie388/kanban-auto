@@ -89,6 +89,7 @@
     border-radius:var(--radius);
     padding:18px;
     color:#fff;
+    min-width:0;
     box-shadow:var(--shadow);
     display:flex; flex-direction:column; gap:6px;
     position:relative; overflow:hidden;
@@ -185,16 +186,25 @@
   }
   .badge-grid{
     display:grid; gap:12px;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
-  @media(min-width:768px){.badge-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:768px){.badge-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
   .ach{
     background:linear-gradient(160deg,#FFF8E1,#FFFDF5);
     border:2px dashed #FFD97A;
     border-radius:var(--radius-sm);
     padding:14px 10px; text-align:center;
+    min-width:0;
     box-shadow:0 2px 8px rgba(232,176,75,.14);
     transition:transform .2s ease, box-shadow .2s ease;
+    position:relative;
+  }
+  /* 2026-10-19：同徽章当周多次获得次数角标（如 ×3），静态 pill，无动效 */
+  .ach-count{
+    position:absolute; top:6px; right:6px;
+    background:#D64545; color:#fff;
+    font-size:12px; font-weight:700; line-height:1;
+    padding:4px 8px; border-radius:999px;
   }
   .ach .ic{filter:drop-shadow(0 2px 3px rgba(232,176,75,.35));}
   .ach:active{transform:scale(.96);}
@@ -218,14 +228,14 @@
   /* 积分商店 */
   .shop-grid{
     display:grid; gap:12px;
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
   }
-  @media(min-width:768px){.shop-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:768px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
   .shop-item{
     border-radius:var(--radius-sm);
     padding:14px; background:#FAFBFC;
     border:1px solid #EEF1F4;
-    min-height:44px;
+    min-height:44px; min-width:0;
   }
   .shop-top{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
   .shop-top .ic{font-size:30px; flex:0 0 auto;}
@@ -239,17 +249,17 @@
   .bar-track{
     height:12px; border-radius:999px; background:#EDEFF2;
     box-shadow:inset 0 1px 2px rgba(48,52,59,.10);
-    overflow:hidden; margin:8px 0 6px;
+    overflow:hidden; margin:8px 0 6px; width:100%;
   }
   .bar-fill{
-    height:100%; border-radius:999px;
+    height:100%; width:100%; display:block; border-radius:999px;
     transform-origin:left center;
     background:linear-gradient(90deg,#FFC93C,#FF8A5B);
     transition:transform .5s cubic-bezier(.2,.7,.2,1);
   }
   .bar-fill.g6{background:linear-gradient(90deg,#8FA9FF,#6C8EFF);}
   .bar-fill.ready{background:linear-gradient(90deg,#4CD07D,#2FBF71);}
-  .shop-hint{font-size:13px; color:var(--sub); line-height:1.7;}
+  .shop-hint{font-size:13px; color:var(--sub); line-height:1.7; overflow-wrap:break-word; word-break:break-word;}
   .shop-hint b{color:#E25C1D;}
   .shop-hint .ok-line{color:#1E9E52; font-weight:700;}
 
@@ -433,10 +443,11 @@
   .collapse-btn:focus-visible{outline:3px solid var(--g6); outline-offset:-3px;}
   .collapse-body{
     display:grid; grid-template-rows:0fr;
+    grid-template-columns:minmax(0,1fr);
     transition:grid-template-rows .3s ease;
   }
   .collapse.open .collapse-body{grid-template-rows:1fr;}
-  .collapse-inner{overflow:hidden; min-height:0;}
+  .collapse-inner{overflow:hidden; min-height:0; min-width:0;}
   .collapse-pad{padding:0 16px 18px;}
 
   /* 2026-10-19：D1 440px；iPhone 17 Pro Max 主力档 */
@@ -1511,6 +1522,10 @@
           var ach = el('div','ach');
           ach.appendChild(el('span','ic', b.icon || '🏅'));
           ach.appendChild(el('div','tt', String(b.name).slice(0,8)));
+          /* 2026-10-19：满分之星当周多次获得显示次数角标（count>1；=1 不显示） */
+          if(b.count && b.count > 1){
+            ach.appendChild(el('span','ach-count', '×' + b.count));
+          }
           ach.appendChild(el('div','ds', '获得日期 ' + (b.date || '')));
           grid.appendChild(ach);
         });
@@ -1561,7 +1576,7 @@
       ul.appendChild(li);
     });
     pad.appendChild(ul);
-    pad.appendChild(el('div','rule-note','💡 每拿下1枚徽章 +5 分；同一徽章只加1次。'));
+    pad.appendChild(el('div','rule-note','💡 每拿下1枚徽章 +5 分；同一徽章一般只加1次（满分之星除外：每次获得一个，不设上限）。'));
     return true;
   }
 
