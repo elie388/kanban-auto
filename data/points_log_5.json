@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "grade": 5,
+  "generated_at": "2026-10-19T20:38:14+08:00",
+  "window": {
+    "days": 30,
+    "max_items": 20
+  },
+  "items": [
+    {
+      "date": "10-19",
+      "reason": "洗碗",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "家务连做第3天",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "英语Unit1完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "英语Unit1正确率84.5%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "英语书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "数学单元测试卷81分",
+      "pts": 16,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "数学练习第页完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "数学练习第页书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "reason": "第六期英语阅读写作练习没交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "reason": "扫地",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "reason": "家务连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "reason": "拖地",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "reason": "洗碗",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "reason": "家长奖励",
+      "pts": 100,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "reason": "53天天练交一页",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "reason": "53天天练正确率78.6%",
+      "pts": -1,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "reason": "订正改对2题",
+      "pts": 4,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "reason": "订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "reason": "补做按时发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    }
+  ],
+  "truncated": true,
+  "filtered_count": 0
+}
