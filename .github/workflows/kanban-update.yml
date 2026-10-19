@@ -72,6 +72,34 @@ jobs:
           cp data/tasks_daily_5.json data/tasks_daily_6.json public/data/
           ls -la public/data/
 
+      # 积分余额数据通道（KB-BALANCE-AUTO-2026-10-19）：
+      # 本地 cron 每 5 分钟解析台账 → data/balance.json（有变更才 push）；
+      # 此处同步进 Pages 产物 + schema 双保险校验（DeepSeek 方案 §八决策点4）。
+      # 软断言：缺失只告警不失败（前端有演示数据降级）。
+      - name: 同步积分余额表到 Pages 产物
+        run: |
+          mkdir -p public/data
+          if [ ! -s data/balance.json ]; then
+            echo "::warning::data/balance.json 缺失或为空，余额将显示演示数据"
+          else
+            cp data/balance.json public/data/
+            python3 - <<'PYEOF'
+          import json, sys
+          d = json.load(open('public/data/balance.json', encoding='utf-8'))
+          assert d.get('schema_version') == 1, 'schema_version 非 1'
+          assert set(d.get('grades', {}).keys()) == {'g5', 'g6'}, 'grades 键异常'
+          for gk, gv in d['grades'].items():
+              assert set(gv.keys()) == {'balance', 'recent_logs'}, gk + ' 字段异常'
+              assert isinstance(gv['balance'], int) and -999 <= gv['balance'] <= 9999, gk + ' 余额越界'
+              for e in gv['recent_logs']:
+                  assert set(e.keys()) == {'date', 'desc', 'delta', 'balance_after'}, gk + ' 日志条目异常'
+                  assert isinstance(e['delta'], int) and isinstance(e['balance_after'], int)
+                  assert '<!--' not in e['desc'], gk + ' 描述含注释残留'
+          print('balance.json schema 校验通过：g5=%d g6=%d' % (d['grades']['g5']['balance'], d['grades']['g6']['balance']))
+          PYEOF
+          fi
+          ls -la public/data/
+
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
         run: |

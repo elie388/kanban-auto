@@ -113,6 +113,9 @@
   }
   .bal-card.g5{background:linear-gradient(135deg,#FF8A5B,#FFA96B);}
   .bal-card.g6{background:linear-gradient(135deg,#6C8EFF,#8FA9FF);}
+  /* 2026-10-19：余额演示数据标记（KB-BALANCE-AUTO-2026-10-19） */
+  .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
+    color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
   /* 2026-10-19：余额卡片可点击跳转（button重置，视觉零变化） */
   button.bal-card{border:0; -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
   button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
@@ -1196,16 +1199,133 @@
   }
   window.__kanbanSetBalance = setFinalBalance;
 
-  /* ---------- 启动：每次进入页面加载即滚 ---------- */
+  /* ---------- 启动：由余额数据脚本统一调度（KB-BALANCE-AUTO-2026-10-19） ---------- */
   function rollAll(){
     var nums = document.querySelectorAll('.bal-num[data-target]');
     for(var i = 0; i < nums.length; i++) rollOdometer(nums[i]);
   }
+  window.__kanbanRollAll = rollAll;
+  /* 兜底：余额脚本缺失/异常时 6 秒后自己滚一次（幂等保护，不会重滚） */
+  setTimeout(function(){
+    if(!window.__kanbanRolledOnce && typeof window.__kanbanRollAll === 'function'){
+      window.__kanbanRolledOnce = true;
+      window.__kanbanRollAll();
+    }
+  }, 6000);
+})();
+</script>
+
+<script>
+/* 2026-10-19：余额跟随台账（KB-BALANCE-AUTO-2026-10-19，DeepSeek方案，独立IIFE） */
+(function(){
+  'use strict';
+  var BALANCE_URL = 'data/balance.json';
+  var FETCH_TIMEOUT_MS = 4000;
+
+  function $(id){ return document.getElementById(id); }
+
+  function setDemoTag(cardId, show){
+    var card = $(cardId);
+    if(!card) return;
+    var tag = card.querySelector('.bal-demo-tag');
+    if(show && !tag){
+      tag = document.createElement('span');
+      tag.className = 'bal-demo-tag';
+      tag.textContent = '演示数据';
+      card.appendChild(tag);
+    }else if(!show && tag){
+      tag.parentNode.removeChild(tag);
+    }
+  }
+
+  /* 用 textContent 逐个建节点，防 XSS（DeepSeek 安全要求：只写文本节点） */
+  function renderLogs(listEl, logs){
+    while(listEl.firstChild) listEl.removeChild(listEl.firstChild);
+    for(var i = 0; i < logs.length; i++){
+      var e = logs[i];
+      var pos = e.delta >= 0;
+      var li = document.createElement('li'); li.className = 'log-item';
+      var dot = document.createElement('div');
+      dot.className = 'log-dot ' + (pos ? 'plus' : 'minus');
+      dot.textContent = pos ? '+' : '\u2212';
+      var body = document.createElement('div'); body.className = 'log-body';
+      var l1 = document.createElement('div'); l1.className = 'log-line1';
+      var reason = document.createElement('span'); reason.className = 'log-reason';
+      reason.textContent = e.desc;
+      var pts = document.createElement('span'); pts.className = 'log-pts ' + (pos ? 'plus' : 'minus');
+      pts.textContent = (pos ? '+' : '') + e.delta;
+      l1.appendChild(reason); l1.appendChild(pts);
+      var l2 = document.createElement('div'); l2.className = 'log-line2';
+      l2.textContent = e.date;
+      body.appendChild(l1); body.appendChild(l2);
+      li.appendChild(dot); li.appendChild(body);
+      listEl.appendChild(li);
+    }
+  }
+
+  function applyBalance(data){
+    var grades = (data && data.grades) || {};
+    var map = { g5: ['bal-jump-g5', 'log-g5'], g6: ['bal-jump-g6', 'log-g6'] };
+    var ok = false;
+    for(var k in map){
+      if(!Object.prototype.hasOwnProperty.call(map, k)) continue;
+      var g = grades[k];
+      if(!g || typeof g.balance !== 'number') continue;
+      var card = $(map[k][0]);
+      var num = card ? card.querySelector('.bal-num') : null;
+      if(num){
+        num.setAttribute('data-target', String(g.balance));
+        num.textContent = '0';
+        delete num.dataset.rolled; /* 允许重新播放滚动动画 */
+        setDemoTag(map[k][0], false);
+        ok = true;
+      }
+      var logBlock = $(map[k][1]);
+      var list = logBlock ? logBlock.querySelector('.log-list') : null;
+      if(list && g.recent_logs && g.recent_logs.length){
+        renderLogs(list, g.recent_logs);
+        var btn = $('btn-log');
+        var tag = btn ? btn.querySelector('.tag-demo') : null;
+        if(tag && tag.parentNode) tag.parentNode.removeChild(tag);
+      }
+    }
+    return ok;
+  }
+
+  function finish(){
+    if(window.__kanbanRolledOnce) return;
+    window.__kanbanRolledOnce = true;
+    if(typeof window.__kanbanRollAll === 'function') window.__kanbanRollAll();
+  }
+
+  function boot(){
+    /* 初始演示态：标记 + 兜底 */
+    setDemoTag('bal-jump-g5', true);
+    setDemoTag('bal-jump-g6', true);
+    var ctrl = null, timer = 0;
+    try{
+      if('AbortController' in window){
+        ctrl = new AbortController();
+        timer = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, FETCH_TIMEOUT_MS);
+      }
+    }catch(e){}
+    var opts = { cache: 'no-store' };
+    if(ctrl) opts.signal = ctrl.signal;
+    fetch(BALANCE_URL + '?t=' + Date.now(), opts).then(function(r){
+      if(timer) clearTimeout(timer);
+      if(!r.ok) throw new Error('http ' + r.status);
+      return r.json();
+    }).then(function(d){
+      applyBalance(d);
+    }).catch(function(){
+      /* 失败：保留演示数据 + 演示标记，不阻塞页面 */
+    }).then(finish);
+  }
 
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', rollAll, { once: true });
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
   }else{
-    rollAll();
+    boot();
   }
 })();
 </script>
