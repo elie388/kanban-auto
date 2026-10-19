@@ -503,15 +503,16 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 <script>
 (function () {
   // 每天轮换的渐变配色（按日期取模，保证同一天两卡不同色、每天都换）
+  // 背景渐变配色（2026-10-19 调整）：8 套冷暖交替，i 与 i+4 恒为暖↔冷互补配对面
   var PALETTES = [
-    ["#8e24aa", "#d81b60"],  // 紫→玫红
-    ["#1565c0", "#00acc1"],  // 蓝→青
-    ["#ef6c00", "#ffb300"],  // 橙→金黄
-    ["#2e7d32", "#26a69a"],  // 绿→青绿
-    ["#4527a0", "#7b1fa2"],  // 靛蓝→紫
-    ["#c2185b", "#ff7043"],  // 桃红→橙红
-    ["#00838f", "#43a047"],  // 深青→绿
-    ["#6a1b9a", "#3949ab"]   // 深紫→宝蓝
+    ["#e53935", "#ff7043"],  // 0 红→橙红（暖）｜对面4=蓝（冷）
+    ["#1565c0", "#42a5f5"],  // 1 蓝→天蓝（冷）｜对面5=橙红（暖）
+    ["#fb8c00", "#ffd54f"],  // 2 橙→金（暖）  ｜对面6=青绿（冷）
+    ["#00897b", "#4db6ac"],  // 3 青绿→浅青（冷）｜对面7=玫红（暖）
+    ["#1e88e5", "#64b5f6"],  // 4 蓝→浅蓝（冷）｜对面0=红橙（暖）
+    ["#f4511e", "#ffab40"],  // 5 橙红→琥珀（暖）｜对面1=蓝（冷）
+    ["#2e7d32", "#66bb6a"],  // 6 深绿→草绿（冷）｜对面2=橙金（暖）
+    ["#d81b60", "#f06292"]   // 7 玫红→粉（暖）  ｜对面3=青绿（冷）
   ];
   // 不明显的淡纹理：小圆点 + 小星星，白色低透明度，不干扰文字
   var TEXTURE = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23ffffff' fill-opacity='0.10'/%3E%3Ccircle cx='58' cy='34' r='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3Ccircle cx='34' cy='66' r='3' fill='%23ffffff' fill-opacity='0.09'/%3E%3Cpath d='M72 62 l2.2 5.4 5.4 2.2 -5.4 2.2 -2.2 5.4 -2.2 -5.4 -5.4 -2.2 5.4 -2.2z' fill='%23ffffff' fill-opacity='0.09'/%3E%3C/svg%3E\")";
@@ -525,7 +526,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
       g5.style.backgroundImage = TEXTURE + ", linear-gradient(135deg, " + p[0] + ", " + p[1] + ")";
     }
     if (g6) {
-      var q = PALETTES[(dayIndex + 3) % PALETTES.length]; // 错开3位，保证与五年级不同色
+      var q = PALETTES[(dayIndex + 4) % PALETTES.length]; // 错开4位（正对面），保证两卡冷暖相对
       g6.style.backgroundImage = TEXTURE + ", linear-gradient(135deg, " + q[0] + ", " + q[1] + ")";
     }
   } catch (e) { /* 无JS时保留CSS默认配色 */ }
