@@ -72,6 +72,27 @@ jobs:
           mv index.html public/index.html
           ls -la public/
 
+      # 2026-10-19 今日任务自动更新（KB-TASK-AUTO-2026-10-19）：
+      # 将仓库 data/ 下的 tasks_daily_*.json 同步进 Pages 产物，供新版看板样板 fetch。
+      # 仅拷贝当日任务表（无积分字段），不含脚本/日志/台账。
+      # 失败处理：任一文件缺失则本步输出警告（Actions日志可见即报警），
+      # 不中断构建（index.html照常部署）；前端fetch失败时降级保留演示数据；
+      # 源JSON仍在仓库，下次触发重试，不存在静默丢数据。
+      - name: 同步今日任务表到 Pages 产物
+        run: |
+          mkdir -p public/data
+          ok=1
+          for f in tasks_daily_5.json tasks_daily_6.json; do
+            if [ -f "data/$f" ]; then
+              cp "data/$f" public/data/ && echo "已同步 data/$f"
+            else
+              echo "::warning::data/$f 不存在，跳过（前端将降级显示演示数据）"
+              ok=0
+            fi
+          done
+          ls -la public/data/ || true
+          [ "$ok" = "1" ] || echo "部分任务表缺失，已告警，构建继续"
+
       - name: 上传 Pages 产物
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa  # v3
         with:
