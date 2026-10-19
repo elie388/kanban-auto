@@ -987,6 +987,74 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     });
     resetIdle();
   })();
+
+  // 自动刷新：每5分钟整页刷新，刷新前保存/刷新后恢复折叠展开状态
+  (function () {
+    var REFRESH_MS = 300000; // 5分钟
+    var KEY = 'kanban_fold_state';
+    var timerId = null;
+    var lastTick = Date.now();
+    var tipEl = document.getElementById('auto-refresh-tip');
+    var btnEl = document.getElementById('manual-refresh-btn');
+
+    function saveFoldState() {
+      try {
+        var state = {};
+        document.querySelectorAll('.collapse-btn').forEach(function (btn) {
+          var id = btn.getAttribute('data-target');
+          var body = document.getElementById(id);
+          if (id && body) state[id] = !body.hasAttribute('hidden');
+        });
+        sessionStorage.setItem(KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+    function restoreFoldState() {
+      var raw = null;
+      try { raw = sessionStorage.getItem(KEY); } catch (e) { return; }
+      if (!raw) return;
+      var state;
+      try { state = JSON.parse(raw); } catch (e) { return; }
+      document.querySelectorAll('.collapse-btn').forEach(function (btn) {
+        var id = btn.getAttribute('data-target');
+        var body = document.getElementById(id);
+        if (id && body && Object.prototype.hasOwnProperty.call(state, id)) {
+          var expanded = !!state[id];
+          if (expanded) body.removeAttribute('hidden');
+          else body.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        }
+      });
+    }
+    function reloadNow() { saveFoldState(); location.reload(); }
+    function remainingText() {
+      if (timerId === null) return '已暂停';
+      var left = Math.max(0, REFRESH_MS - (Date.now() - lastTick));
+      var m = Math.floor(left / 60000);
+      var s = Math.floor((left % 60000) / 1000);
+      return m + ':' + (s < 10 ? '0' : '') + s + ' 后刷新';
+    }
+    function updateTip() {
+      if (tipEl) tipEl.textContent = '数据每5分钟自动更新（' + remainingText() + '）';
+    }
+    function startTimer() {
+      if (timerId !== null) return;
+      lastTick = Date.now();
+      timerId = setInterval(function () { lastTick = Date.now(); reloadNow(); }, REFRESH_MS);
+      updateTip();
+    }
+    function stopTimer() {
+      if (timerId !== null) { clearInterval(timerId); timerId = null; }
+      updateTip();
+    }
+    if (btnEl) btnEl.addEventListener('click', reloadNow);
+    restoreFoldState(); // 须在折叠初始化脚本之后执行
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') stopTimer();
+      else startTimer();
+    });
+    setInterval(updateTip, 1000);
+    startTimer();
+  })();
 })();
 </script>
 </body>
