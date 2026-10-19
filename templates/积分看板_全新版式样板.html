@@ -240,11 +240,12 @@
   .shop-top{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
   .shop-top .ic{font-size:30px; flex:0 0 auto;}
   .shop-top .nm{font-size:16px; font-weight:800; flex:1; min-width:0;
-    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2;
+    overflow:hidden; white-space:normal; text-overflow:clip; word-break:break-all;}
   .shop-top .cost{
     font-size:14px; font-weight:800; color:#E25C1D;
     background:#FFEEDD; padding:2px 10px; border-radius:999px;
-    white-space:nowrap; flex:0 0 auto;
+    white-space:nowrap; flex:0 0 auto; flex-shrink:0;
   }
   .bar-track{
     height:12px; border-radius:999px; background:#EDEFF2;
