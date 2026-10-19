@@ -7,7 +7,7 @@
 
 产出（幂等：内容无变化则不 commit）：
   data/stats_grade_{5,6}.json   余额（§1.1，低频强一致，带 checksum）
-  data/points_log_{5,6}.json    积分日志（§1.2+R3：近30天/≤20条，含 filtered_count/filtered）
+  data/points_log_{5,6}.json    积分日志（§1.2+R3：近7天/≤20条，含 filtered_count/filtered）
   data/shop_grade_{5,6}.json    商店档位进度（R1：规则手册第85行档位表，本期接入）
 
 红线：
@@ -36,6 +36,7 @@ sys.path.insert(0, SCRIPT_DIR)
 
 import _assert_lib
 from build_kanban import simplify_desc  # 只读复用，不得私改（§5.2）
+import sync_balance as sb  # M1（2026-10-20）：复用 norm_date，统一日期归一口径
 
 LEDGER = os.path.expanduser("~/workspace/goals/goal/hidden_files/积分记录.md")
 DATA_DIR = os.path.join(REPO_DIR, "data")
@@ -128,10 +129,14 @@ def read_ledger_blocks(ledger_path=LEDGER):
                 break
             buf.append(ln)
         block = "".join(buf)
-        # --- 核实1补断言 ---
-        assert block.strip(), "分节 ## %s 切块为空" % title
-        assert "<!-- key:" in block, "分节 ## %s 切块不含 <!-- key: 记录" % title
-        assert "历史归档" not in block, "分节 ## %s 切块混入历史归档" % title
+        # --- M1（DeepSeek终审 2026-10-20）：校验类逻辑禁用 assert
+        # （python3 -O 下 assert 被剥离，会静默失效），改显式 raise ---
+        if not block.strip():
+            raise ValueError("分节 ## %s 切块为空" % title)
+        if "<!-- key:" not in block:
+            raise ValueError("分节 ## %s 切块不含 <!-- key: 记录" % title)
+        if "历史归档" in block:
+            raise ValueError("分节 ## %s 切块混入历史归档" % title)
         return block
 
     return {5: cut("五年级"), 6: cut("六年级")}
@@ -158,7 +163,9 @@ def parse_rows(block, grade):
             raise ValueError("台账 %d 年级存在无法解析的行：%r" % (grade, s[:80]))
         mm_dd, desc, pts_s, bal_s = m.groups()
         pts = int(pts_s)
-        bal = int(bal_s)  # 允许负数（§7.2）
+        # 允许负数（§7.2 负余额照常输出；交叉契约见 sync_sections.build_shop N1 方案A：
+        # 负余额时 progress 钳0、balance 保留真实负值、redeemable 恒等式成立）
+        bal = int(bal_s)
         # --- 计分时间解析（KB-TIME） ---
         key_comment = ""
         km = KEY_COMMENT_RE.search(s)
@@ -176,22 +183,26 @@ def parse_rows(block, grade):
                      "key": key, "annot_time": annot_time})
     if not rows:
         raise ValueError("台账 %d 年级未解析出任何数据行" % grade)
-    # 余额链连续性抽查：余额应等于上一余额+积分（首行除外，允许期初行）
+    # S3 修复（2026-10-20）：余额链断裂改为熔断（fail-closed），与 sync_balance.parse_ledger
+    # 的链式校验对齐。期初行（desc 含"期初余额"）重置基线。DeepSeek 终审阻断项。
     prev = None
     for r in rows:
+        if "期初余额" in r["desc"]:
+            prev = r["balance"]
+            continue
         if prev is not None and r["balance"] != prev + r["pts"]:
-            warn("余额链疑似断裂（%s）：%d + %d != %d" % (r["date"], prev, r["pts"], r["balance"]))
+            raise ValueError("余额链断裂（%s 年级 %s）：%d+%d != %d" % (
+                grade, r["date"], prev, r["pts"], r["balance"]))
         prev = r["balance"]
     return rows
 
 
 def complete_year(mm_dd, today):
-    """MM-DD 补全年：若日期在今天之后，视为去年（跨年分支，§5.4 本期 10 月不启用但保留）。"""
-    m, d = int(mm_dd[:2]), int(mm_dd[3:5])
-    year = today.year
-    if (m, d) > (today.month, today.day):
-        year -= 1
-    return "%04d-%s" % (year, mm_dd)
+    """MM-DD 补全年：委托 sync_balance.norm_date（M1 统一口径，2026-10-20）。
+
+    保留本函数名以兼容现有调用；逻辑与 sync_balance.parse_ledger 完全一致。
+    """
+    return sb.norm_date(mm_dd, today)
 
 
 def load_time_sources():
@@ -269,9 +280,9 @@ def build_stats(grade, rows, ledger_sha16, today, generated_at):
 
 
 def build_log(grade, rows, today, generated_at):
-    """§1.2 + R3 + KB-TIME-2026-10-19：近30天倒序、同日按台账正序、≤20条；
+    """§1.2 + R3 + KB-TIME-2026-10-19：近7天倒序、同日按台账正序、≤20条；
     reason 经 simplify_desc + B5 断言；time 精确到分钟（台账 @HH:MM），schema 1.1。"""
-    cutoff = today - timedelta(days=30)
+    cutoff = today - timedelta(days=7)
     sources = load_time_sources()
     dated = []
     for idx, r in enumerate(rows):
@@ -287,7 +298,7 @@ def build_log(grade, rows, today, generated_at):
         dated.append((dt, idx, r))
 
     # 排序：日期倒序；同日按台账行顺序（idx）正序 —— 显式实现（放行条件2）
-    dated.sort(key=lambda t: (t[0], t[1]), reverse=False)
+    # L2 修复（2026-10-20）：删除冗余的第一遍 sort（被后两遍稳定排序完全覆盖）。DeepSeek 终审轻微项。
     # 先按 idx 正序稳定，再按日期倒序稳定 → 同日保持台账正序
     dated.sort(key=lambda t: t[1])
     dated.sort(key=lambda t: t[0], reverse=True)
@@ -327,63 +338,6 @@ def build_log(grade, rows, today, generated_at):
 
     d = {
         "schema_version": POINTS_LOG_SCHEMA,
-        "grade": grade,
-        "generated_at": generated_at,
-        "window": {"days": 30, "max_items": 20},
-        "items": items,
-        "truncated": truncated,
-        "filtered_count": filtered_count,
-    }
-    _assert_lib.assert_points_log_schema(d, "points_log_%d.json" % grade)
-    return d
-    cutoff = today - timedelta(days=30)
-    dated = []
-    for idx, r in enumerate(rows):
-        full = complete_year(r["date"], today)
-        try:
-            dt = datetime.strptime(full, "%Y-%m-%d").date()
-        except ValueError:
-            raise ValueError("非法日期：%s" % r["date"])
-        if dt < cutoff:
-            continue
-        if "期初余额" in r["desc"]:
-            continue  # 基线标记行，非积分变动，不进日志
-        dated.append((dt, idx, r))
-
-    # 排序：日期倒序；同日按台账行顺序（idx）正序 —— 显式实现（放行条件2）
-    dated.sort(key=lambda t: (t[0], t[1]), reverse=False)
-    # 先按 idx 正序稳定，再按日期倒序稳定 → 同日保持台账正序
-    dated.sort(key=lambda t: t[1])
-    dated.sort(key=lambda t: t[0], reverse=True)
-
-    truncated = len(dated) > 20
-    items = []
-    filtered_count = 0
-    for dt, idx, r in dated[:20]:
-        reason = simplify_desc(r["desc"])
-        if len(reason) > 40:
-            reason = reason[:40] + "…"  # 上限 40 字，超长截断加 …
-        filtered = False
-        hits = _assert_lib.find_forbidden_terms(reason)
-        if hits:
-            # B5：命中即替换，不阻断整体；明细打 WARN 供 DeepSeek 抽查
-            warn("敏感词命中 grade=%d date=%s hits=%r → 替换为'学习记录'"
-                 % (grade, r["date"], hits))
-            err_write("FILTERED grade=%d date=%s hits=%s" % (grade, r["date"], ",".join(hits)))
-            reason = "学习记录"
-            filtered = True
-            filtered_count += 1
-        pts = r["pts"]
-        items.append({
-            "date": r["date"],  # MM-DD（本期不跨年；跨年时 complete_year 输出 YYYY-MM-DD）
-            "reason": reason,
-            "pts": pts,
-            "sign": "plus" if pts >= 0 else "minus",
-            "filtered": filtered,
-        })
-
-    d = {
-        "schema_version": "1.0",
         "grade": grade,
         "generated_at": generated_at,
         "window": {"days": 30, "max_items": 20},
@@ -497,11 +451,13 @@ def write_json_atomic(path, obj):
 
 
 def main(force=False):
+    # S2 修复（2026-10-20）：--selftest 必须在窗口检查之前，否则窗口外运行静默 return 0，
+    # 自测根本不执行（环境依赖型假绿）。DeepSeek 终审阻断项。
+    if "--selftest" in sys.argv:
+        return selftest()
     if not force and not in_sync_window():
         log("非同步窗口（工作日19:00-23:00/周末09:00-23:00），跳过")
         return 0
-    if "--selftest" in sys.argv:
-        return selftest()
 
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(LOGS_DIR, exist_ok=True)
@@ -646,6 +602,8 @@ def selftest():
         # simplify_desc("第一条")=="第一条" 等；期望：10-19第四条, 10-18第二条, 10-17第一条/第三条/第五条
         exp = ["第四条", "第二条", "第一条", "第三条", "第五条"]
         assert got == exp, "排序错误：%r != %r" % (got, exp)
+        # S1 防回归（2026-10-20）：死代码删除后，schema 必须为 1.1（含 time/time_source 字段）
+        assert d["schema_version"] == "1.1", "schema_version=%r（期望 1.1，死代码回退？）" % d.get("schema_version")
         rec("T1 同日排序单测", True, "输出顺序=%s" % got)
     except Exception as e:
         rec("T1 同日排序单测", False, str(e)[:200])
@@ -681,6 +639,27 @@ def selftest():
             os.unlink(tp)
     except Exception as e:
         rec("T2b 切块断言", False, str(e)[:200])
+
+    # --- T2c S3（2026-10-20）：余额链断裂 → 熔断（fail-closed），不再 warn 放行 ---
+    try:
+        block_ok = ("| 10-19 | 期初余额 | +100 | 100 |\n"
+                    "| 10-19 | 正常+5 | +5 | 105 |\n")
+        rows = parse_rows(block_ok, 5)
+        assert len(rows) == 2, "期初行识别失败"
+        rec("T2c 余额链正常+期初行", True, "2行解析通过，期初行重置基线")
+    except Exception as e:
+        rec("T2c 余额链正常+期初行", False, str(e)[:200])
+    try:
+        block_bad = ("| 10-19 | 期初余额 | +100 | 100 |\n"
+                     "| 10-19 | 手误行 | +5 | 999 |\n")  # 100+5 != 999，链断裂
+        try:
+            parse_rows(block_bad, 5)
+            rec("T2c 余额链断裂熔断", False, "断裂未被拦截（仍在 warn 放行）")
+        except ValueError as ve:
+            assert "余额链断裂" in str(ve)
+            rec("T2c 余额链断裂熔断", True, "熔断信息：%s" % str(ve)[:80])
+    except Exception as e:
+        rec("T2c 余额链断裂熔断", False, str(e)[:200])
 
     # --- T3 §7.3：JSON 写后读回校验 ---
     try:
