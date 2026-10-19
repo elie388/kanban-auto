@@ -55,6 +55,15 @@ SHOP_TIERS = [
 
 NEG_MINUS = "−"  # U+2212 全角减号（用户拍板1：负余额静态显示 −N）
 
+# 积分日志计分时间（KB-TIME-2026-10-19，DeepSeek 终审）：
+# 台账 key 注释追加 @HH:MM 即为该条目的计分时间（唯一时间源红线：只认积分记录.md）。
+TIME_ANNOT_RE = re.compile(r"@(\d{2}):(\d{2})")
+KEY_COMMENT_RE = re.compile(r"<!--\s*key:\s*(.*?)\s*-->")
+TIME_SOURCE_ENUM = ("submit", "parent_confirm", "entry", "deadline")
+TIME_SOURCE_FILE = os.path.join(REPO_DIR, "data_src", "points_time_source.json")
+TIME_G6_DATE = "2026-10-19"  # 生效日：complete_year(日期) > 此日 且无 @HH:MM → 熔断
+POINTS_LOG_SCHEMA = "1.1"
+
 ROW_RE = re.compile(
     r"^\|\s*(\d{2}-\d{2})\s*\|\s*(.*?)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)\s*\|"
 )
@@ -132,6 +141,8 @@ def parse_rows(block, grade):
     """解析 | 日期 | 描述 | 积分 | 余额 | 行；保持台账行顺序。
 
     畸形行（像数据行但正则不匹配）→ raise（§7.1：不产出）。
+    同时解析 key 注释中的 @HH:MM（计分时间，KB-TIME-2026-10-19）；
+    @HH:MM 存在但格式非法 → raise（不得静默吞掉，走熔断）。
     """
     rows = []
     for ln in block.splitlines():
@@ -148,7 +159,21 @@ def parse_rows(block, grade):
         mm_dd, desc, pts_s, bal_s = m.groups()
         pts = int(pts_s)
         bal = int(bal_s)  # 允许负数（§7.2）
-        rows.append({"date": mm_dd, "desc": desc, "pts": pts, "balance": bal})
+        # --- 计分时间解析（KB-TIME） ---
+        key_comment = ""
+        km = KEY_COMMENT_RE.search(s)
+        if km:
+            key_comment = km.group(1)
+        key = TIME_ANNOT_RE.sub("", key_comment).strip()  # 去掉 @HH:MM 后的纯 key
+        annot_time = None
+        ta = TIME_ANNOT_RE.search(key_comment)
+        if ta:
+            hh, mm = int(ta.group(1)), int(ta.group(2))
+            if not (0 <= hh <= 23 and 0 <= mm <= 59):
+                raise ValueError("台账 %d 年级 @HH:MM 越界：%r" % (grade, s[:80]))
+            annot_time = "%02d:%02d" % (hh, mm)
+        rows.append({"date": mm_dd, "desc": desc, "pts": pts, "balance": bal,
+                     "key": key, "annot_time": annot_time})
     if not rows:
         raise ValueError("台账 %d 年级未解析出任何数据行" % grade)
     # 余额链连续性抽查：余额应等于上一余额+积分（首行除外，允许期初行）
@@ -167,6 +192,62 @@ def complete_year(mm_dd, today):
     if (m, d) > (today.month, today.day):
         year -= 1
     return "%04d-%s" % (year, mm_dd)
+
+
+def load_time_sources():
+    """读 data_src/points_time_source.json（DeepSeek 终审记录）；缺失 → 空映射（新条目默认 entry）。"""
+    try:
+        with open(TIME_SOURCE_FILE, encoding="utf-8") as f:
+            d = json.load(f)
+        src = d.get("sources", {})
+        return src if isinstance(src, dict) else {}
+    except FileNotFoundError:
+        return {}
+
+
+def resolve_log_time(r, grade, today, sources):
+    """KB-TIME-2026-10-19：由台账 @HH:MM 解析计分时间，附 G1–G6 校验门。
+
+    返回 (time, time_source)，无时间 → (None, None)。
+    触发熔断条件 → raise ValueError。
+    """
+    key = r.get("key", "")
+    annot_time = r.get("annot_time")
+    full_date = complete_year(r["date"], today)
+
+    # G6：生效日后新增条目缺 @HH:MM → 熔断
+    if annot_time is None and full_date > TIME_G6_DATE:
+        raise ValueError("G6 熔断：%s 年级 %s 条目（%s）缺 @HH:MM 入账时间" % (grade, r["date"], key[:40]))
+
+    if annot_time is None:
+        return None, None
+
+    # G1：格式已在 parse_rows 校验（00-23/00-59），此处复核
+    if not re.match(r"^([01]\d|2[0-3]):[0-5]\d$", annot_time):
+        raise ValueError("G1 熔断：time 格式非法 %r（%s）" % (annot_time, key[:40]))
+
+    # time_source：终审记录优先；新条目默认 entry（@HH:MM 即入账时刻 T3）
+    rec = sources.get(key)
+    if rec is not None:
+        src = rec.get("source")
+        if src not in TIME_SOURCE_ENUM:
+            raise ValueError("G2 熔断：time_source 枚举外 %r（%s）" % (src, key[:40]))
+        if rec.get("time") != annot_time:
+            raise ValueError("G2 熔断：台账 @%s 与终审记录 %s 不一致（%s），疑似事后改动"
+                             % (annot_time, rec.get("time"), key[:40]))
+    else:
+        src = "entry"
+
+    # deadline 语义校验（DeepSeek 约束3）：仅报警不熔断
+    if src == "deadline":
+        if not re.search(r"没交|漏交|截止", r["desc"]):
+            warn("deadline 源条目描述缺'没交/漏交/截止'语义（%s），请核对" % key[:40])
+            err_write("DEADLINE_SEMANTIC grade=%d key=%s" % (grade, key[:40]))
+        if r["pts"] >= 0:
+            warn("deadline 源出现在非扣分条目（%s），请核对" % key[:40])
+            err_write("DEADLINE_NONMINUS grade=%d key=%s" % (grade, key[:40]))
+
+    return annot_time, src
 
 
 # ---------------------------------------------------------------------------
@@ -188,7 +269,73 @@ def build_stats(grade, rows, ledger_sha16, today, generated_at):
 
 
 def build_log(grade, rows, today, generated_at):
-    """§1.2 + R3：近30天倒序、同日按台账正序、≤20条；reason 经 simplify_desc + B5 断言。"""
+    """§1.2 + R3 + KB-TIME-2026-10-19：近30天倒序、同日按台账正序、≤20条；
+    reason 经 simplify_desc + B5 断言；time 精确到分钟（台账 @HH:MM），schema 1.1。"""
+    cutoff = today - timedelta(days=30)
+    sources = load_time_sources()
+    dated = []
+    for idx, r in enumerate(rows):
+        full = complete_year(r["date"], today)
+        try:
+            dt = datetime.strptime(full, "%Y-%m-%d").date()
+        except ValueError:
+            raise ValueError("非法日期：%s" % r["date"])
+        if dt < cutoff:
+            continue
+        if "期初余额" in r["desc"]:
+            continue  # 基线标记行，非积分变动，不进日志
+        dated.append((dt, idx, r))
+
+    # 排序：日期倒序；同日按台账行顺序（idx）正序 —— 显式实现（放行条件2）
+    dated.sort(key=lambda t: (t[0], t[1]), reverse=False)
+    # 先按 idx 正序稳定，再按日期倒序稳定 → 同日保持台账正序
+    dated.sort(key=lambda t: t[1])
+    dated.sort(key=lambda t: t[0], reverse=True)
+
+    truncated = len(dated) > 20
+    items = []
+    filtered_count = 0
+    for dt, idx, r in dated[:20]:
+        reason = simplify_desc(r["desc"])
+        if len(reason) > 40:
+            reason = reason[:40] + "…"  # 上限 40 字，超长截断加 …
+        filtered = False
+        hits = _assert_lib.find_forbidden_terms(reason)
+        if hits:
+            # B5：命中即替换，不阻断整体；明细打 WARN 供 DeepSeek 抽查
+            warn("敏感词命中 grade=%d date=%s hits=%r → 替换为'学习记录'"
+                 % (grade, r["date"], hits))
+            err_write("FILTERED grade=%d date=%s hits=%s" % (grade, r["date"], ", ".join(hits)))
+            reason = "学习记录"
+            filtered = True
+            filtered_count += 1
+        pts = r["pts"]
+        # KB-TIME：计分时间（G1–G6 门内建于 resolve_log_time）
+        t, t_src = resolve_log_time(r, grade, today, sources)
+        # G3：time 与 time_source 双向一致（resolve 已保证，此处复核）
+        if (t is None) != (t_src is None):
+            raise ValueError("G3 熔断：time/time_source 不一致（%s）" % r.get("key", "")[:40])
+        items.append({
+            "date": r["date"],  # MM-DD（本期不跨年；跨年时 complete_year 输出 YYYY-MM-DD）
+            "time": t,  # HH:MM 或 null（无计分时间）
+            "time_source": t_src,  # submit/parent_confirm/entry/deadline 或 null（溯源，不前端展示）
+            "reason": reason,
+            "pts": pts,
+            "sign": "plus" if pts >= 0 else "minus",
+            "filtered": filtered,
+        })
+
+    d = {
+        "schema_version": POINTS_LOG_SCHEMA,
+        "grade": grade,
+        "generated_at": generated_at,
+        "window": {"days": 30, "max_items": 20},
+        "items": items,
+        "truncated": truncated,
+        "filtered_count": filtered_count,
+    }
+    _assert_lib.assert_points_log_schema(d, "points_log_%d.json" % grade)
+    return d
     cutoff = today - timedelta(days=30)
     dated = []
     for idx, r in enumerate(rows):

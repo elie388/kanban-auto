@@ -11,6 +11,10 @@ import unicodedata
 
 SCHEMA_VERSION = "1.0"
 
+# points_log 专用 schema（KB-TIME-2026-10-19：time/time_source，1.0→1.1）
+POINTS_LOG_SCHEMA_VERSION = "1.1"
+TIME_SOURCE_ENUM = ("submit", "parent_confirm", "entry", "deadline")
+
 # ---------------------------------------------------------------------------
 # B5 禁用词表（大小写不敏感扫描，全角半角等价：NFKC 归一化后比对）
 # ---------------------------------------------------------------------------
@@ -87,10 +91,12 @@ def assert_stats_schema(d, filename="stats_grade_?.json"):
     assert isinstance(cs, str) and len(cs) == 16, "checksum 须为 16 位 hex"
 
 
+import re as _re
+
 def assert_points_log_schema(d, filename="points_log_?.json"):
-    """points_log_{5,6}.json：§1.2 + R3（含 filtered_count/filtered）+ B5 零命中"""
+    """points_log_{5,6}.json：§1.2 + R3（含 filtered_count/filtered）+ B5 零命中 + KB-TIME 1.1"""
     assert isinstance(d, dict), "顶层须为 object"
-    assert d.get("schema_version") == SCHEMA_VERSION, "schema_version 须为 1.0"
+    assert d.get("schema_version") == POINTS_LOG_SCHEMA_VERSION, "points_log schema_version 须为 1.1"
     _check_grade(d, filename)
     assert _is_int(d.get("filtered_count")), "filtered_count 须为整数"
     assert isinstance(d.get("generated_at"), str) and d["generated_at"], "generated_at 须为非空字符串"
@@ -103,6 +109,13 @@ def assert_points_log_schema(d, filename="points_log_?.json"):
     for i, it in enumerate(items):
         assert isinstance(it, dict), "items[%d] 须为 object" % i
         assert isinstance(it.get("date"), str) and it["date"], "items[%d].date 异常" % i
+        # KB-TIME 1.1：time/time_source（G3 双向一致）
+        tm = it.get("time")
+        tsrc = it.get("time_source")
+        assert (tm is None) == (tsrc is None), "items[%d] time/time_source 不一致" % i
+        if tm is not None:
+            assert _re.match(r"^([01]\d|2[0-3]):[0-5]\d$", tm), "items[%d].time 格式非法" % i
+            assert tsrc in TIME_SOURCE_ENUM, "items[%d].time_source 枚举外" % i
         reason = it.get("reason")
         assert isinstance(reason, str) and reason, "items[%d].reason 异常" % i
         assert len(reason) <= 41, "items[%d].reason 超长（>41）" % i  # 40 + "…"

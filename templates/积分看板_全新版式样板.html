@@ -1367,6 +1367,8 @@
       var it = items[i];
       if(!it || typeof it.reason !== 'string' || !it.reason) continue; /* §7.3 类型断言 */
       if(typeof it.date !== 'string' || !it.date) continue;
+      if(it.time !== null && it.time !== undefined && !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(it.time)) continue; /* KB-TIME */
+      if(it.time_source !== null && it.time_source !== undefined && ['submit','parent_confirm','entry','deadline'].indexOf(it.time_source) < 0) continue;
       if(typeof it.pts !== 'number' || !Number.isInteger(it.pts)) continue;
       if(it.sign !== 'plus' && it.sign !== 'minus') continue;
       valid.push(it);
@@ -1399,7 +1401,7 @@
       pts.textContent = (pos ? '+' : '−') + Math.abs(it.pts);
       l1.appendChild(reason); l1.appendChild(pts);
       var l2 = document.createElement('div'); l2.className = 'log-line2';
-      l2.textContent = it.date; /* §5.4：只显示 MM-DD */
+      l2.textContent = (typeof it.time === 'string' && it.time) ? (it.date + ' ' + it.time) : it.date; /* KB-TIME：有时间显示 MM-DD HH:MM，无时间只显示 MM-DD */
       body.appendChild(l1); body.appendChild(l2);
       li.appendChild(dot); li.appendChild(body);
       listEl.appendChild(li);
@@ -1408,7 +1410,7 @@
 
   function loadLog(grade, blockId){
     fetchJson('points_log_' + grade + '.json').then(function(d){
-      if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
+      if(!d || d.schema_version !== '1.1' || d.grade !== grade) throw new Error('schema'); /* KB-TIME 1.1 */
       if(!Array.isArray(d.items)) throw new Error('items');
       var block = $(blockId);
       var list = block ? block.querySelector('.log-list') : null;
