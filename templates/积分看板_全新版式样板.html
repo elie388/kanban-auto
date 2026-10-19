@@ -434,6 +434,7 @@
   .tag-live{
     background:#E6F9ED; color:#16A34A; opacity:1;
     position:absolute; top:6px; right:8px;
+    overflow:hidden; isolation:isolate;
     animation:tagLiveBreathe 1.8s ease-in-out infinite;
   }
   .tag-live::before{
@@ -449,8 +450,21 @@
     0%,100%{ opacity:0; }
     50%{ opacity:.12; }
   }
+  /* 2026-10-19 持续闪光扫光（DeepSeek方案）：::after斜向白光2.5s扫过，z-index:-1保文字可读 */
+  .tag-live::after{
+    content:""; position:absolute; inset:0; border-radius:999px;
+    background:linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.75) 50%, rgba(255,255,255,.55) 55%, transparent 80%);
+    transform:translateX(-120%); z-index:-1; pointer-events:none;
+    animation:tagLiveShine 2.5s cubic-bezier(.4,0,.2,1) infinite;
+  }
+  @keyframes tagLiveShine{
+    0%{ transform:translateX(-120%); }
+    40%{ transform:translateX(120%); }
+    60%{ transform:translateX(120%); }
+    100%{ transform:translateX(-120%); }
+  }
   @media (prefers-reduced-motion: reduce){
-    .tag-live, .tag-live::before{ animation:none; }
+    .tag-live, .tag-live::before, .tag-live::after{ animation:none; }
   }
   .log-updated{font-size:12px; color:var(--sub); margin-left:8px; white-space:nowrap;}
   #shop-progress{margin:0 0 12px;}
