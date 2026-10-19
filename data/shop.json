@@ -1,0 +1,108 @@
+{
+ "schema_version": 1,
+ "items": [
+  {
+   "id": "mc30",
+   "name": "30分钟Minecraft",
+   "cost": 70,
+   "by_grade": {
+    "g5": {
+     "balance": 127,
+     "progress": 1.0,
+     "redeemable": true
+    },
+    "g6": {
+     "balance": 274,
+     "progress": 1.0,
+     "redeemable": true
+    }
+   }
+  },
+  {
+   "id": "mc60",
+   "name": "1小时Minecraft",
+   "cost": 100,
+   "by_grade": {
+    "g5": {
+     "balance": 127,
+     "progress": 1.0,
+     "redeemable": true
+    },
+    "g6": {
+     "balance": 274,
+     "progress": 1.0,
+     "redeemable": true
+    }
+   }
+  },
+  {
+   "id": "hy150",
+   "name": "1小时和平精英或2小时Minecraft",
+   "cost": 150,
+   "by_grade": {
+    "g5": {
+     "balance": 127,
+     "progress": 0.8467,
+     "redeemable": false
+    },
+    "g6": {
+     "balance": 274,
+     "progress": 1.0,
+     "redeemable": true
+    }
+   }
+  },
+  {
+   "id": "hy250",
+   "name": "2小时和平精英",
+   "cost": 250,
+   "by_grade": {
+    "g5": {
+     "balance": 127,
+     "progress": 0.508,
+     "redeemable": false
+    },
+    "g6": {
+     "balance": 274,
+     "progress": 1.0,
+     "redeemable": true
+    }
+   }
+  },
+  {
+   "id": "wish600",
+   "name": "达成愿望1次（等额50元，可兑现金）",
+   "cost": 600,
+   "by_grade": {
+    "g5": {
+     "balance": 127,
+     "progress": 0.2117,
+     "redeemable": false
+    },
+    "g6": {
+     "balance": 274,
+     "progress": 0.4567,
+     "redeemable": false
+    }
+   }
+  },
+  {
+   "id": "wish1000",
+   "name": "达成愿望1次（等额100元，可兑现金）",
+   "cost": 1000,
+   "by_grade": {
+    "g5": {
+     "balance": 127,
+     "progress": 0.127,
+     "redeemable": false
+    },
+    "g6": {
+     "balance": 274,
+     "progress": 0.274,
+     "redeemable": false
+    }
+   }
+  }
+ ],
+ "generated_at": "2026-10-19T20:28:06+08:00"
+}
