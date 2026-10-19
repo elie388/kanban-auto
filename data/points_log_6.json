@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-19T22:17:02+08:00",
+  "generated_at": "2026-10-19T22:32:03+08:00",
   "window": {
     "days": 30,
     "max_items": 20
@@ -14,6 +14,15 @@
       "reason": "第六期英语阅读写作练习没交",
       "pts": -5,
       "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "22:20",
+      "time_source": "entry",
+      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
+      "pts": 5,
+      "sign": "plus",
       "filtered": false
     },
     {
@@ -174,15 +183,6 @@
       "time": null,
       "time_source": null,
       "reason": "英语阅读写作按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "英语阅读写作阅读全对",
       "pts": 5,
       "sign": "plus",
       "filtered": false

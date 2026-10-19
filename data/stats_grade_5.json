@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "grade": 5,
-  "balance": 170,
+  "balance": 175,
   "ledger_date": "2026-10-19",
-  "generated_at": "2026-10-19T22:17:02+08:00",
+  "generated_at": "2026-10-19T22:32:03+08:00",
   "source": "hidden_files/积分记录.md",
-  "checksum": "c78d0276138ee103"
+  "checksum": "4248dfd4864c0f10"
 }
