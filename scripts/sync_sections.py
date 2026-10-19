@@ -41,7 +41,7 @@ BADGE_CATALOG = [
     ("jianchixiaoyongshi","坚持小勇士", "🔥", "连续14天完成同一固定挑战"),
     ("yueduzhixing",     "阅读之星",   "📖", "周打卡≥6天+整本书+笔记+录音复述"),
     ("yueduxiaodaren",   "阅读小达人", "📚", "周打卡≥5天+累计≥2本+笔记/口述"),
-    ("hezuozhixing",     "合作之星",   "🤝", "一周内≥2次主动合作（学校场景）"),
+    ("hezuozhixing",     "合作之星",   "🤝", "兄弟连续3天一起做家务（需两人协同、缺一不可，如递晾衣、共扫地）"),
     ("zhoujinbuzhixing", "周进步之星", "🚀", "正确率/分数较上周明显进步"),
     ("sanheyi",          "三合一快手", "⚡", "同日独立完成3项不同基础家务"),
     ("jiawujielishou",   "家务接力手", "🔄", "连续3天每天≥1项家务"),
@@ -84,6 +84,13 @@ SHOP_TABLE = [
     ("wish600",  "达成愿望1次（等额50元，可兑现金）", 600, "🌟"),
     ("wish1000", "达成愿望1次（等额100元，可兑现金）", 1000, "💫"),
 ]
+
+# N1-E2（DeepSeek终审定案 2026-10-20）：SHOP_TABLE 配置期校验——
+# cost 缺失/非数值/<=0 视为真正数据异常，模块加载即熔断，不得等到运行时。
+for _sid, _name, _cost, _icon in SHOP_TABLE:
+    if not isinstance(_cost, (int, float)) or isinstance(_cost, bool) or _cost <= 0:
+        raise ValueError("E2 商店 cost 配置错误：%s cost=%r" % (_sid, _cost))
+del _sid, _name, _cost, _icon
 
 KEY_PAT = re.compile(r"key:[^|]*?badge_([a-z]+)_")
 REV_PAT = re.compile(r"key:[^|]*?reverse_badge_([a-z]+)_")
@@ -155,8 +162,14 @@ def extract_badge_events():
                 icon, name = meta["icon"], meta["name"]
             else:
                 icon, name = split_icon_name(desc)
-            # 去重键 = badge_key + 孩子(分节已定) + 当周(date决定) + 考试标识(key+date+事项)
-            ident = (key, date, sb.clean_desc(desc))
+            # M2 修复（2026-10-20）：去重键纳入 HTML 注释完整 key。
+            # clean_desc 会剥离 <!-- key:... -->，若同徽章同日同描述文本多次获得
+            # （如"满分之星"不设上限），仅用 (key,date,clean_desc) 会误杀。
+            # 注释 key 不同 → 视为不同事件。
+            km = re.search(r"<!--\s*key:\s*(.*?)\s*-->", line)
+            full_key = km.group(1).strip() if km else ""
+            # 去重键 = badge_key + 当周(date决定) + 考试标识(key+date+事项+完整key)
+            ident = (key, date, sb.clean_desc(desc), full_key)
             if ident in seen:
                 continue
             seen.add(ident)
@@ -228,12 +241,20 @@ def build_badge_goals(events):
 
 
 def build_shop(balances):
+    # N1 方案A（DeepSeek终审定案 2026-10-20）：
+    # progress 是展示量（用钳0后的余额计算，恒 ∈ [0.0, 1.0]）；
+    # redeemable 是判定量（用真实余额，恒等式 redeemable == (balance >= cost)）；
+    # balance 输出保留真实值（含负），前端显示"−N"。
+    # 负余额 → 照常输出（与 build_stats §7.2"负余额照常输出"同口径），不构成熔断。
     items = []
     for sid, name, cost, icon in SHOP_TABLE:
+        # E2：cost 配置错误视为真正数据异常（上游熔断分支校验）
         bg = {}
         for gk in ("g5", "g6"):
-            bal = balances[gk]
-            prog = min(bal / cost, 1.0) if cost > 0 else 0.0
+            bal = balances[gk]  # 真实余额，可能为负
+            prog_bal = max(bal, 0)  # 仅用于进度计算，不改输出
+            prog = min(prog_bal / cost, 1.0) if cost > 0 else 0.0
+            prog = max(prog, 0.0)  # 双保险，杜绝负 progress
             bg[gk] = {"balance": bal, "progress": round(prog, 4),
                       "redeemable": bal >= cost}
         items.append({"id": sid, "name": name, "cost": cost, "icon": icon,
@@ -296,6 +317,9 @@ def main():
     try:
         grades = sb.parse_ledger(LEDGER)  # 含三重校验（期初/链式/余额范围）
         balances = {gk: grades[gk]["balance"] for gk in ("g5", "g6")}
+        # N1-E1（DeepSeek终审定案 2026-10-20）：balances 非 dict 视为真正数据异常
+        if not isinstance(balances, dict):
+            raise ValueError("E1 balances 非 dict：%r" % type(balances))
         events = extract_badge_events()
         docs = {
             "data/badges.json": build_badges(events),
@@ -310,13 +334,26 @@ def main():
             if doc2.get("schema_version") != 1:
                 raise ValueError("schema 校验失败：" + path)
             check_no_pii(doc2)
-        # shop 进度越界熔断
+        # N1 方案A（DeepSeek终审定案 2026-10-20）：熔断收窄至真正数据异常 E1-E4。
+        # 废止"progress 越界即熔断"独立条文——负余额时 progress 已钳0，不构成熔断。
+        # E4（钳0后 progress 仍越界）属实现自检，命中说明钳0逻辑回归失败，应熔断报错。
         for it in docs["data/shop.json"]["items"]:
             for gk in ("g5", "g6"):
-                p = it["by_grade"][gk]["progress"]
+                bg = it["by_grade"][gk]
+                bal, p, red = bg["balance"], bg["progress"], bg["redeemable"]
+                # E1：余额类型异常（非数值 / NaN / Inf）
+                if not isinstance(bal, (int, float)) or isinstance(bal, bool):
+                    raise ValueError("E1 商店余额类型异常：%s/%s" % (it["id"], gk))
+                if bal != bal or bal in (float("inf"), float("-inf")):
+                    raise ValueError("E1 商店余额 NaN/Inf：%s/%s" % (it["id"], gk))
+                # E3：余额量级越界（脏数据）
+                if abs(bal) > 1e9:
+                    raise ValueError("E3 商店余额量级越界：%s/%s bal=%s" % (it["id"], gk, bal))
+                # E4：实现自检——钳0后 progress 仍越界
                 if not (0.0 <= p <= 1.0):
-                    raise ValueError("商店进度越界熔断：" + it["id"])
-                if it["by_grade"][gk]["redeemable"] != (it["by_grade"][gk]["balance"] >= it["cost"]):
+                    raise ValueError("E4 商店进度越界（实现bug）：%s/%s p=%s" % (it["id"], gk, p))
+                # redeemable 一致性恒等式（恒成立）
+                if red != (bal >= it["cost"]):
                     raise ValueError("商店可兑换一致性失败：" + it["id"])
     except Exception as e:
         fail("sections 解析失败：" + str(e))
@@ -362,9 +399,21 @@ def main():
     if r.returncode != 0:
         log("push_failed", "git add 失败 rc=%d" % r.returncode)
         return 3
-    run_git("commit", "-m",
+    # M4（DeepSeek终审 2026-10-20，B1 复审补强）：显式检查 commit 返回码。
+    # git 无变更时 rc=1 且输出标准串 "nothing to commit, working tree clean"。
+    # 判定必须严格匹配完整标准串（双子串合取），防 pre-commit hook 误输出子串被误判为无变更。
+    # 注：依赖 git 英文标准输出（locale 需为 C/en）；若未来 git 措辞变化，安全降级走 rc=3 失败分支（fail-safe）。
+    # rc!=0 且非标准无变更串 → 一律视为真失败（return 3，与 push 失败共用返回码）。
+    cr = run_git("commit", "-m",
             "chore(sections): sync badges/shop/rules @ " +
             datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
+    if cr.returncode != 0:
+        _err = cr.stderr or ""
+        if "nothing to commit" in _err and "working tree clean" in _err:
+            log("no_change", "git commit 无变更（working tree clean），跳过推送")
+            return 0
+        log("push_failed", "git commit 真失败 rc=%d: %s" % (cr.returncode, _err[:200]))
+        return 3
     push_ok = False
     last_rc = None
     for _ in range(3):
