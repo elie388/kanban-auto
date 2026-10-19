@@ -1309,6 +1309,195 @@
 </script>
 
 <script>
+/* ============================================================
+   2026-10-19：全栏目实时同步（DeepSeek方案 KB-SECTIONS-AUTO，独立IIFE）
+   - 拉取 data/badges.json / badge_goals.json / shop.json / rules.json
+   - 任一失败按栏目独立降级（保留硬编码 DOM），不影响其他栏目
+   - 全部文本经 textContent 渲染（天然转义），禁用 innerHTML 拼用户数据
+   ============================================================ */
+(function(){
+  'use strict';
+  var TIMEOUT_MS = 4000;
+  var GRADE_NAME = { g5: '五年级', g6: '六年级' };
+
+  function $(id){ return document.getElementById(id); }
+  function el(tag, cls, text){
+    var e = document.createElement(tag);
+    if(cls) e.className = cls;
+    if(text != null) e.textContent = String(text);
+    return e;
+  }
+  function fetchJson(name){
+    var ctrl = null, timer = 0;
+    try{
+      if('AbortController' in window){
+        ctrl = new AbortController();
+        timer = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, TIMEOUT_MS);
+      }
+    }catch(e){}
+    var opts = { cache: 'no-store' };
+    if(ctrl) opts.signal = ctrl.signal;
+    return fetch('data/' + name + '?t=' + Date.now(), opts).then(function(r){
+      if(timer) clearTimeout(timer);
+      if(!r.ok) throw new Error('http ' + r.status);
+      return r.json();
+    });
+  }
+
+  /* ---- 1. 荣耀徽章（当周，台账 badge_ 事件） ---- */
+  function renderBadges(d){
+    var pad = document.querySelector('#panel-achieve .collapse-pad');
+    if(!pad || !d || !d.by_grade) return false;
+    pad.textContent = '';
+    ['g5','g6'].forEach(function(gk){
+      var block = el('div','grade-block');
+      block.setAttribute('aria-label', GRADE_NAME[gk] + '成就');
+      var head = el('div','grade-head');
+      head.appendChild(el('span','pill-grade ' + gk, GRADE_NAME[gk]));
+      head.appendChild(document.createTextNode('成就'));
+      block.appendChild(head);
+      var list = d.by_grade[gk] || [];
+      if(list.length){
+        var grid = el('div','badge-grid');
+        list.forEach(function(b){
+          if(!b || !b.name) return;
+          var ach = el('div','ach');
+          ach.appendChild(el('span','ic', b.icon || '🏅'));
+          ach.appendChild(el('div','tt', String(b.name).slice(0,8)));
+          ach.appendChild(el('div','ds', '获得日期 ' + (b.date || '')));
+          grid.appendChild(ach);
+        });
+        block.appendChild(grid);
+      }else{
+        block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
+      }
+      pad.appendChild(block);
+    });
+    return true;
+  }
+
+  /* ---- 2. 徽章目标榜（24 枚全目录 + 获得状态） ---- */
+  function renderGoals(d){
+    var pad = document.querySelector('#panel-lib .collapse-pad');
+    if(!pad || !d || !d.catalog || !d.catalog.length) return false;
+    pad.textContent = '';
+    var intro = el('p','rule-note','🚀 下面是全部 24 枚徽章——看中哪枚，就去把它拿下！');
+    intro.style.marginTop = '0'; intro.style.marginBottom = '14px';
+    pad.appendChild(intro);
+    var ul = el('ul','rule-list');
+    ul.setAttribute('aria-label','可争取徽章');
+    d.catalog.forEach(function(c){
+      if(!c || !c.name) return;
+      var holders = [];
+      ['g5','g6'].forEach(function(gk){
+        var arr = (d.by_grade && d.by_grade[gk]) || [];
+        for(var i = 0; i < arr.length; i++){
+          if(arr[i] && arr[i].key === c.key && arr[i].obtained){ holders.push(GRADE_NAME[gk]); break; }
+        }
+      });
+      var li = document.createElement('li');
+      var left = el('span');
+      left.appendChild(document.createTextNode((c.icon || '🏅') + ' ' + String(c.name).slice(0,8) + ' '));
+      var tag = el('span','rule-pts');
+      if(holders.length){
+        tag.textContent = holders.join('、') + '已获得 ✓';
+        tag.style.background = '#E7F8E7'; tag.style.color = '#1E7E34';
+      }else{
+        tag.textContent = '待解锁';
+        tag.style.background = '#FFF3D6'; tag.style.color = '#C77700';
+      }
+      left.appendChild(tag);
+      left.appendChild(el('span','lib-cond','解锁条件：' + (c.cond || '')));
+      li.appendChild(left);
+      li.appendChild(el('span','rule-pts plus','+5'));
+      ul.appendChild(li);
+    });
+    pad.appendChild(ul);
+    pad.appendChild(el('div','rule-note','💡 每拿下1枚徽章 +5 分；同一徽章只加1次。'));
+    return true;
+  }
+
+  /* ---- 3. 积分商店（兑换表 + 实时余额进度） ---- */
+  function renderShop(d){
+    var grid = document.querySelector('#panel-shop .shop-grid');
+    if(!grid || !d || !d.items || !d.items.length) return false;
+    grid.textContent = '';
+    d.items.forEach(function(it){
+      if(!it || !it.name || !it.by_grade) return;
+      var item = el('div','shop-item');
+      var top = el('div','shop-top');
+      top.appendChild(el('span','ic', it.icon || '🎁'));
+      top.appendChild(el('span','nm', it.name));
+      top.appendChild(el('span','cost', it.cost + ' 分'));
+      item.appendChild(top);
+      var maxProg = 0;
+      ['g5','g6'].forEach(function(gk){
+        var s = it.by_grade[gk];
+        if(s && typeof s.progress === 'number' && s.progress > maxProg) maxProg = s.progress;
+      });
+      var track = el('div','bar-track');
+      var fill = el('div','bar-fill');
+      fill.style.transform = 'scaleX(' + Math.min(Math.max(maxProg, 0), 1).toFixed(4) + ')';
+      track.appendChild(fill);
+      item.appendChild(track);
+      var hint = el('div','shop-hint');
+      ['g5','g6'].forEach(function(gk, idx){
+        var s = it.by_grade[gk];
+        if(!s || typeof s.balance !== 'number') return;
+        if(idx > 0) hint.appendChild(document.createElement('br'));
+        if(s.redeemable){
+          var ok = el('span','ok-line','积分已足够 ✅ ' + GRADE_NAME[gk] + '可立即兑换');
+          hint.appendChild(ok);
+        }else{
+          var need = it.cost - s.balance;
+          hint.appendChild(document.createTextNode(GRADE_NAME[gk] + '：还差 '));
+          hint.appendChild(el('b', null, need + ' 分'));
+          hint.appendChild(document.createTextNode(' 就可以兑换' + it.name));
+        }
+      });
+      item.appendChild(hint);
+      grid.appendChild(item);
+    });
+    return true;
+  }
+
+  /* ---- 4. 加分 / 扣分规则（规则手册白名单） ---- */
+  function renderRules(d, kind, panelId){
+    var list = document.querySelector('#' + panelId + ' .rule-list');
+    if(!list || !d || !d[kind] || !d[kind].length) return false;
+    list.textContent = '';
+    d[kind].forEach(function(r){
+      if(!r || !r.text) return;
+      var li = document.createElement('li');
+      li.appendChild(el('span', null, r.text));
+      var ms = String(r.text).match(/[+-]\d+/g) || [];
+      if(ms.length === 1){
+        li.appendChild(el('span', 'rule-pts ' + (ms[0].charAt(0) === '+' ? 'plus' : 'minus'), ms[0]));
+      }
+      list.appendChild(li);
+    });
+    return true;
+  }
+
+  function boot(){
+    fetchJson('badges.json').then(renderBadges).catch(function(e){ console.warn('徽章栏拉取失败，保留硬编码:', e); });
+    fetchJson('badge_goals.json').then(renderGoals).catch(function(e){ console.warn('目标榜拉取失败，保留硬编码:', e); });
+    fetchJson('shop.json').then(renderShop).catch(function(e){ console.warn('商店拉取失败，保留硬编码:', e); });
+    fetchJson('rules.json').then(function(d){
+      renderRules(d, 'add', 'panel-bonus');
+      renderRules(d, 'deduct', 'panel-deduct');
+    }).catch(function(e){ console.warn('规则拉取失败，保留硬编码:', e); });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  }else{
+    boot();
+  }
+})();
+</script>
+
+<script>
 /* 2026-10-19：5分钟自刷新 + 倒计时（DeepSeek方案，独立IIFE） */
 (function(){
   'use strict';

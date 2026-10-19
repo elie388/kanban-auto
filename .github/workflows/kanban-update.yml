@@ -100,6 +100,46 @@ jobs:
           fi
           ls -la public/data/
 
+      # 全栏目数据通道（KB-SECTIONS-AUTO-2026-10-19）：
+      # 同步 data/badges.json、badge_goals.json、shop.json、rules.json 进 Pages 产物。
+      # 软断言：缺失只告警不失败（前端按栏目独立降级，保留硬编码）。
+      - name: 同步全栏目数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          python3 - <<'PYEOF'
+          import json, sys
+          files = {
+            'data/badges.json': lambda d: (
+              d.get('schema_version') == 1 and 'by_grade' in d
+              and set(d['by_grade'].keys()) == {'g5', 'g6'}),
+            'data/badge_goals.json': lambda d: (
+              d.get('schema_version') == 1 and isinstance(d.get('catalog'), list)
+              and len(d['catalog']) == 24 and 'by_grade' in d),
+            'data/shop.json': lambda d: (
+              d.get('schema_version') == 1 and isinstance(d.get('items'), list)
+              and len(d['items']) > 0),
+            'data/rules.json': lambda d: (
+              d.get('schema_version') == 1 and isinstance(d.get('add'), list)
+              and isinstance(d.get('deduct'), list)),
+          }
+          ok = True
+          for path, check in files.items():
+              try:
+                  with open(path, encoding='utf-8') as f:
+                      d = json.load(f)
+                  assert check(d), 'schema 校验失败'
+                  print('OK ' + path)
+              except FileNotFoundError:
+                  print('::warning::' + path + ' 缺失，前端该栏目降级')
+                  continue
+              except Exception as e:
+                  print('::warning::' + path + ' 校验失败（' + str(e)[:80] + '），前端该栏目降级')
+                  continue
+              import shutil
+              shutil.copy(path, 'public/' + path)
+          PYEOF
+          ls -la public/data/
+
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
         run: |
