@@ -408,6 +408,18 @@ def badge_grid_html(grade, earned):
             f'</span>'
             f'</span>'
         )
+    # 版式排版优化 2026-10-19（DeepSeek）：追加未解锁徽章（灰度剪影+问号）
+    _earned_keys = set((earned or {}).keys()) if isinstance(earned, dict) else set(earned or [])
+    for _b in BADGE_MAP:
+        if _b["key"] not in _earned_keys:
+            parts.append(
+                f'<span class="badge badge-locked" aria-label="{esc(_b["name"])}未解锁">'
+                f'<span class="badge-clip"><span class="badge-main">'
+                f'<span class="badge-icon" aria-hidden="true">{_b["icon"]}</span>'
+                f'<span class="badge-name">{esc(_b["name"])}</span>'
+                f'<span class="badge-score">?</span>'
+                f'</span></span></span>'
+            )
     return '<div class="badge-grid">\n' + "\n".join(parts) + '\n</div>'
 
 
@@ -577,8 +589,9 @@ def main():
                 for e in recent:
                     cls = "plus" if e["pts"] >= 0 else "minus"
                     dt = e["md_date"] + (f" {e['hhmm']}" if e["hhmm"] else "")
+                    sign_attr = "+" if e["pts"] >= 0 else "-"
                     rh.append(
-                        f'<tr><td class="dt">{dt}</td><td class="desc">{esc(simplify_desc(e["desc"]))}</td>'
+                        f'<tr data-sign="{sign_attr}"><td class="dt">{dt}</td><td class="desc">{esc(simplify_desc(e["desc"]))}</td>'
                         f'<td class="{cls}">{pts_str(e["pts"], "−")}</td><td>{e["balance"]}</td></tr>'
                     )
                 rows_html = "\n          ".join(rh)
@@ -679,3 +692,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+# LAYOUT_2026_10_19

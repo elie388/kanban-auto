@@ -284,6 +284,82 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 @keyframes bgFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
 .bg-particle { position: fixed; border-radius: 50%; pointer-events: none; z-index: -1; animation: bgFloat 12s ease-in-out infinite; }
 }
+
+/* 版式排版优化 2026-10-19（DeepSeek） */
+/* 第1项：积分明细正负分流配色 */
+.history tr[data-sign="+"] { background: #f1f8e9; }
+.history tr[data-sign="-"] { background: #f5f5f5; }
+.history tr[data-sign="+"] td { border-bottom-color: #dcedc8; }
+.history tr[data-sign="-"] td { border-bottom-color: #e0e0e0; }
+
+/* 第2项：余额卡微拟物高光 + 等宽数字 */
+.card { position: relative; }
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,.22), rgba(255,255,255,0) 45%);
+}
+.card .score,
+.card .digit-strip > span { font-variant-numeric: tabular-nums; }
+
+/* 第3项：数字旁静态星星 */
+.card .score { position: relative; }
+.card .score::after {
+  content: "⭐";
+  font-size: .30em;
+  vertical-align: .55em;
+  margin-left: .12em;
+  display: inline-block;
+  line-height: 1;
+  height: 1em;
+  pointer-events: none;
+}
+
+/* 第4项：徽章悬念设计 */
+.badge-locked { filter: grayscale(1); opacity: .55; cursor: default; }
+.badge-locked .badge-icon { filter: grayscale(1); }
+.badge:not(.badge-locked):hover .badge-clip::after,
+.badge:not(.badge-locked):focus-visible .badge-clip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.75) 50%, transparent 70%);
+  transform: translateX(-120%);
+  animation: badgeShine .9s ease;
+  pointer-events: none;
+}
+
+/* 第5项：宫格任务面板 */
+#earn-body .two-col,
+#deduct-body .two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 24px;
+  align-items: start;
+}
+#earn-body td,
+#deduct-body td { overflow-wrap: anywhere; }
+
+
+@media (max-width: 380px) {
+  .cards { flex-direction: column; }
+  .card .grade { font-size: clamp(22px, 6vw, 28px); }
+  .card .score { font-size: clamp(56px, 15vw, 64px); overflow: hidden; }
+  .card::before {
+    background: linear-gradient(to bottom right, rgba(255,255,255,.22), rgba(255,255,255,0) 45%);
+  }
+}
+
+/* 560 以下单列（与既有 560 断点一致，不新增断点） */
+@media (max-width: 560px) {
+  #earn-body .two-col,
+  #deduct-body .two-col { grid-template-columns: 1fr; }
+}
+
+<!--LAYOUT_2026_10_19-->
 </style>
 </head>
 <body>
@@ -317,7 +393,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 
   <div class="section">
     <!--STATIC_EARN_START-->
-<button type="button" class="collapse-btn" aria-expanded="false" data-target="earn-body">📈 怎么赚分 📈</button>
+<button type="button" class="collapse-btn" aria-expanded="false" data-target="earn-body">🎯 任务大厅 🎯</button>
     <div class="collapse-body" id="earn-body" hidden>
           <div class="two-col"><div class="col"><table aria-label="事项列表"><tr><th>事项</th><th>积分</th></tr><tr><td>当天作业截止前交齐（须实际作答，空白/乱画按没交-10）</td><td class="plus">+10</td></tr><tr><td>作业正确率全对</td><td class="plus">+10</td></tr><tr><td>作业正确率90%及以上</td><td class="plus">+6</td></tr><tr><td>作业正确率80%及以上</td><td class="plus">+3</td></tr><tr><td>订正同一道错题第一次即改对（作业每天上限+8，三科共用）</td><td class="plus">+2/题</td></tr><tr><td>订正后作业当天提交核验（每份作业每日一次）</td><td class="plus">+2</td></tr><tr><td>书写整科无明显潦草（已因潦草扣分的科目当日不发）</td><td class="plus">+2/科</td></tr><tr><td>进步奖</td><td class="plus">+5</td></tr><tr><td>连续3天全对（首档+15，其后递减，每月封顶+30）</td><td class="plus">+15起</td></tr><tr><td>连续5天按时（首档+10，其后递减，每月封顶+30）</td><td class="plus">+10起</td></tr><tr><td>突破奖</td><td class="plus">+8</td></tr><tr><td>我布置的练习按时提交（每份每日一次）</td><td class="plus">+5</td></tr><tr><td>我布置的练习全对</td><td class="plus">+5</td></tr><tr><td>我布置的练习90%及以上</td><td class="plus">+3</td></tr><tr><td>我布置的练习80%及以上</td><td class="plus">+1</td></tr><tr><td>语文背诵按时发回</td><td class="plus">+5</td></tr></table></div><div class="col"><table><tr><th>事项</th><th>积分</th></tr><tr><td>语文背诵达标（流利无错漏）</td><td class="plus">+3</td></tr><tr><td>英语口语按时发回（每晚20:00前）</td><td class="plus">+5</td></tr><tr><td>英语写作重写按时发回</td><td class="plus">+5</td></tr><tr><td>英语写作重写达标</td><td class="plus">+3</td></tr><tr><td>53天天练交一页（同一页只计一次，当日53类封顶+15）</td><td class="plus">+3</td></tr><tr><td>53天天练该页全对</td><td class="plus">+3</td></tr><tr><td>53天天练该页90%及以上</td><td class="plus">+2</td></tr><tr><td>53天天练该页80%及以上</td><td class="plus">+1</td></tr><tr><td>周日卷三科都交</td><td class="plus">+5</td></tr><tr><td>家务洗碗（周一到五每人每天一次，周末每天最多两次）</td><td class="plus">+5</td></tr><tr><td>家务扫地（每天限一人一次）</td><td class="plus">+3</td></tr><tr><td>家务拖地（每天限一人一次）</td><td class="plus">+3</td></tr><tr><td>家务晾衣服（一人+3，合作各+2）</td><td class="plus">+3</td></tr><tr><td>家务晾袜子（每天仅限一次，限1人）</td><td class="plus">+3</td></tr><tr><td>家务整理桌面（各整各的，每人+1）</td><td class="plus">+2</td></tr><tr><td>家务同一项连做3天（第2天+2、第3天+3，每7天最多触发一次）</td><td class="plus">+5</td></tr></table></div></div>
     <div class="note">📌 家务每天每人合计封顶+15分。</div>
@@ -337,7 +413,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 
   <div class="section">
     <!--STATIC_REDEEM_START-->
-<button type="button" class="collapse-btn" aria-expanded="false" data-target="redeem-body">🎁 积分兑换 🎁</button>
+<button type="button" class="collapse-btn" aria-expanded="false" data-target="redeem-body">🎁 积分商店 🎁</button>
     <div class="collapse-body" id="redeem-body" hidden>
     <table>
       <tr><th>积分</th><th>兑换内容</th><th>可兑换</th></tr>
@@ -357,7 +433,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   <div class="section">
     <!--徽章区动态生成（2026-10-18用户定：每周更新，只显示当周获得，分年级；DeepSeek仲裁确认）-->
     <!--旧STATIC_BADGE静态区已作废：9徽章硬编码改为按台账badge_key每周动态过滤-->
-    <button type="button" class="collapse-btn" aria-expanded="false" data-target="badge-body">🏅 徽章成就 🏅</button>
+    <button type="button" class="collapse-btn" aria-expanded="false" data-target="badge-body">🏅 成就墙 🏅</button>
     <div class="collapse-body" id="badge-body" hidden>
     <div class="badge-grade-label">🟣 五年级</div>
     <!--BADGE_GRID_G5-->
@@ -367,7 +443,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   </div>
 
   <div class="section" id="history-section">
-    <button type="button" class="collapse-btn" aria-expanded="false" data-target="history-body">🧾 积分明细 🧾</button>
+    <button type="button" class="collapse-btn" aria-expanded="false" data-target="history-body">🧾 冒险日志 🧾</button>
     <div class="collapse-body" id="history-body" hidden>
     <div class="history-tools"><button type="button" id="history-reset" class="history-reset" hidden>显示全部年级</button></div>
     <div class="grade-cols">
