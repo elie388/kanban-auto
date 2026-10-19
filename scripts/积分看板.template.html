@@ -242,6 +242,9 @@
 #earn-body .two-col, #deduct-body .two-col { display: flex; gap: 24px; align-items: flex-start; }
 #earn-body .col, #deduct-body .col { flex: 1 1 0; min-width: 0; }
 #earn-body .col table, #deduct-body .col table { width: 100%; table-layout: fixed; }
+#earn-body .col th, #earn-body .col td, #deduct-body .col th, #deduct-body .col td { line-height: 1.7; padding: 10px 8px; vertical-align: middle; }
+/* 长文本换行两行时更舒展（2026-10-19用户反馈） */
+#earn-body .col td:first-child, #deduct-body .col td:first-child { line-height: 1.8; }
 #earn-body .col th:last-child, #earn-body .col td:last-child, #deduct-body .col th:last-child, #deduct-body .col td:last-child { width: 90px; }
 @media (max-width: 768px) { h1 { font-size: 36px; } }
 @media (max-width: 560px) {
