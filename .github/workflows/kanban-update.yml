@@ -13,7 +13,6 @@ name: 积分看板自动更新
 #   新版看板（全新版式样板）上线，替换旧版。
 #   自动更新逻辑变更：定时触发 → 部署 templates/新样板（静态） + 同步 data/tasks_daily_*.json；
 #   Drive 台账拉取与旧 build_wrapper.py 生成逻辑停用（脚本保留）。
-name: 积分看板自动更新
 
 on:
   push:
