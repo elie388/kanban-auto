@@ -1269,7 +1269,7 @@
    2026-10-19：看板真实数据（DeepSeek方案 KB-STATS-AUTO，独立IIFE）
    - 拉取 data/stats_grade_{5,6}.json → 余额（__kanbanSetBalance 直接写终值，不重滚）
    - 拉取 data/points_log_{5,6}.json → 积分日志（textContent 渲染，防 XSS）
-   - 拉取 data/shop_grade_{5,6}.json → 商店进度（下一档位 + 手续费小字，R1）
+   - 商店手续费小字静态渲染（#shop-progress，仅注记；2026-10-19 用户要求删除各年级汇总行）
    - 每区块独立判定/独立降级，任一失败不阻塞其他；只 console.warn，不弹窗
    ============================================================ */
 (function(){
@@ -1421,36 +1421,11 @@
     });
   }
 
-  /* ---------- 商店进度（R1：规则手册第85行档位表） ---------- */
-  function renderShopProgress(results){
+  /* ---------- 商店手续费注记（2026-10-19 用户要求：删除各年级汇总行，只保留手续费小字） ---------- */
+  function renderShopProgress(){
     var box = $('shop-progress');
     if(!box) return;
     while(box.firstChild) box.removeChild(box.firstChild);
-    var names = {5: '五年级', 6: '六年级'};
-    [5, 6].forEach(function(grade){
-      var d = results[grade];
-      if(!d) return;
-      var line = document.createElement('div');
-      line.className = 'shop-prog-line';
-      var bal = d.current_balance;
-      var text;
-      if(bal < 0){
-        text = names[grade] + '：余额为负，请先补足'; /* R1-3 */
-      }else{
-        var tiers = d.tiers.slice().sort(function(a, b){ return a.pts - b.pts; });
-        var next = null;
-        for(var i = 0; i < tiers.length; i++){
-          if(typeof tiers[i].pts === 'number' && tiers[i].pts > bal){ next = tiers[i]; break; }
-        }
-        if(next){
-          text = names[grade] + '：当前余额' + bal + '分，还差' + (next.pts - bal) + '分就可以兑换' + next.name; /* R1-2 */
-        }else{
-          text = names[grade] + '：当前余额' + bal + '分，已可兑换全部档位';
-        }
-      }
-      line.textContent = text;
-      box.appendChild(line);
-    });
     var fee = document.createElement('div');
     fee.className = 'shop-fee-note';
     fee.textContent = '（上学日/周末超22点兑换手续费15%）'; /* R1-4：档位列表下方小字≥12px */
@@ -1458,20 +1433,8 @@
   }
 
   function loadShop(){
-    var results = {};
-    function one(grade){
-      return fetchJson('shop_grade_' + grade + '.json').then(function(d){
-        if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
-        if(!Array.isArray(d.tiers) || !d.tiers.length) throw new Error('tiers');
-        if(typeof d.current_balance !== 'number' || !Number.isInteger(d.current_balance)) throw new Error('balance');
-        results[grade] = d;
-      });
-    }
-    Promise.all([one(5), one(6)]).then(function(){
-      renderShopProgress(results);
-    }).catch(function(e){
-      if(window.console && console.warn) console.warn('商店进度拉取失败，保留原样:', e);
-    });
+    /* 汇总行已删除（2026-10-19 用户要求），不再拉取 shop_grade_*.json；注记为静态文案，直接渲染 */
+    renderShopProgress();
   }
 
   /* ---------- 启动 ---------- */
