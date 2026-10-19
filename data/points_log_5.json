@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-19T21:02:25+08:00",
+  "generated_at": "2026-10-19T21:32:03+08:00",
   "window": {
     "days": 30,
     "max_items": 20
@@ -86,6 +86,15 @@
       "reason": "第六期英语阅读写作练习没交",
       "pts": -5,
       "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "冲正： 53天天练正确率",
+      "pts": 2,
+      "sign": "plus",
       "filtered": false
     },
     {
@@ -174,15 +183,6 @@
       "time": "22:25",
       "time_source": "submit",
       "reason": "订正当天发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "22:25",
-      "time_source": "submit",
-      "reason": "补做按时发回",
       "pts": 2,
       "sign": "plus",
       "filtered": false
