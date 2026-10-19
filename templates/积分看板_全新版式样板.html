@@ -428,43 +428,40 @@
     background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
     margin-left:8px;
   }
-  /* 2026-10-19 KB-TAG-LIVE：实时数据标签绿色呼吸动效（DeepSeek方案）
-     静态绿底常驻（.tag-live 声明晚于 .tag-demo/.bal-demo-tag，同权重后者胜）；
-     动效仅 transform/opacity；reduced-motion 下只保留静态绿底。 */
+  /* 2026-10-19 KB-TAG-LIVE v2：实时数据标签绿色呼吸动效（DeepSeek方案·终审版）
+     定位：绝对定位仅保留给余额卡（.bal-demo-tag 本身已 position:absolute）；
+          今日任务、积分日志标签留在文档流内，靠 flex margin 右置。
+     动效：仅 transform/opacity；reduced-motion 下只保留静态绿底。
+     扫光 ::after 已删除（违反 E8"一次性扫光不循环"规范）。 */
   .tag-live{
+    position:relative; /* 2026-10-19 终审补：给 ::before 提供定位含块（Gemini初审发现，DeepSeek终审确认） */
     background:#E6F9ED; color:#16A34A; opacity:1;
-    position:absolute; top:6px; right:8px;
     overflow:hidden; isolation:isolate;
-    animation:tagLiveBreathe 1.8s ease-in-out infinite;
+    animation:tagLiveBreathe 2.2s ease-in-out infinite;
   }
+  /* 余额卡：沿用其自身绝对定位锚点（.bal-card 为 position:relative） */
+  .bal-demo-tag.tag-live{
+    position:absolute; top:6px; right:8px;
+  }
+  /* 今日任务 / 积分日志：文档流内 flex 右置（覆盖原 margin-left:8px 使其真正靠右） */
+  .card h2 .tag-demo.tag-live{ margin-left:auto; }
+  .grade-head .tag-demo.tag-live{ margin-left:auto; }
+
   .tag-live::before{
     content:""; position:absolute; inset:0; border-radius:999px;
     background:#16A34A; opacity:0; pointer-events:none;
-    animation:tagLiveGlow 1.8s ease-in-out infinite;
+    animation:tagLiveGlow 2.2s ease-in-out infinite;
   }
   @keyframes tagLiveBreathe{
     0%,100%{ transform:scale(1); opacity:1; }
-    50%{ transform:scale(1.06); opacity:.88; }
+    50%{ transform:scale(1.10); opacity:.82; }
   }
   @keyframes tagLiveGlow{
     0%,100%{ opacity:0; }
-    50%{ opacity:.12; }
-  }
-  /* 2026-10-19 持续闪光扫光（DeepSeek方案）：::after斜向白光2.5s扫过，z-index:-1保文字可读 */
-  .tag-live::after{
-    content:""; position:absolute; inset:0; border-radius:999px;
-    background:linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.75) 50%, rgba(255,255,255,.55) 55%, transparent 80%);
-    transform:translateX(-120%); z-index:-1; pointer-events:none;
-    animation:tagLiveShine 2.5s cubic-bezier(.4,0,.2,1) infinite;
-  }
-  @keyframes tagLiveShine{
-    0%{ transform:translateX(-120%); }
-    40%{ transform:translateX(120%); }
-    60%{ transform:translateX(120%); }
-    100%{ transform:translateX(-120%); }
+    50%{ opacity:.28; }
   }
   @media (prefers-reduced-motion: reduce){
-    .tag-live, .tag-live::before, .tag-live::after{ animation:none; }
+    .tag-live, .tag-live::before{ animation:none; }
   }
   .log-updated{font-size:12px; color:var(--sub); margin-left:8px; white-space:nowrap;}
   #shop-progress{margin:0 0 12px;}
