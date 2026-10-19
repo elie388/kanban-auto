@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-19T22:02:16+08:00",
+  "generated_at": "2026-10-19T22:17:02+08:00",
   "window": {
     "days": 30,
     "max_items": 20
@@ -98,6 +98,60 @@
       "filtered": false
     },
     {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "数学完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "数学正确率83.3%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "数学书写-2",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "语文练习8/9/10页完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "语文正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": null,
+      "time_source": null,
+      "reason": "英语口语易+写作范文粘贴完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
       "date": "10-18",
       "time": null,
       "time_source": null,
@@ -130,60 +184,6 @@
       "time_source": null,
       "reason": "拖地",
       "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "洗碗",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "家长奖励",
-      "pts": 100,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "21:33",
-      "time_source": "submit",
-      "reason": "53天天练交一页",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "53天天练正确率78.6%",
-      "pts": -1,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "订正改对2题",
-      "pts": 4,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "22:25",
-      "time_source": "submit",
-      "reason": "订正当天发回",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }
