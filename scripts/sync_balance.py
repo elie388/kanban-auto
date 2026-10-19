@@ -142,6 +142,7 @@ def main():
     try:
         grades = parse_ledger(LEDGER)
     except Exception as e:
+        FAIL_LOG.parent.mkdir(parents=True, exist_ok=True)
         with open(FAIL_LOG, "a", encoding="utf-8") as f:
             f.write("%s %s\n" % (datetime.now(BEIJING).isoformat(timespec="seconds"), str(e)[:200]))
         try:
