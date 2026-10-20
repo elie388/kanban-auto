@@ -337,6 +337,8 @@
 
   /* 徽章目标榜：获得条件小字 */
   .lib-cond{display:block; font-size:13px; font-weight:400; color:var(--sub); margin-top:2px;}
+  .lib-prog{display:block; font-size:12.5px; font-weight:400; color:#5B6470; margin-top:3px;}
+  .lib-prog .prog-nodata{color:#B3B8BE;}
 
   /* 日志时间线 */
   .log-list{list-style:none; margin:0; padding:0;}
@@ -1609,6 +1611,8 @@
     var intro = el('p','rule-note','🚀 下面是全部 ' + d.catalog.length + ' 枚徽章——看中哪枚，就去把它拿下！');
     intro.style.marginTop = '0'; intro.style.marginBottom = '14px';
     pad.appendChild(intro);
+    /* 徽章进度红线固定说明（2026-10-20 徽章进度包 E-1）：展示≠发放 */
+    pad.appendChild(el('p','rule-note','📌 进度满只代表达到条件，徽章由每日总结人工确认后颁发。'));
     var ul = el('ul','rule-list');
     ul.setAttribute('aria-label','可争取徽章');
     d.catalog.forEach(function(c){
@@ -1633,6 +1637,47 @@
       }
       left.appendChild(tag);
       left.appendChild(el('span','lib-cond','解锁条件：' + (c.cond || '')));
+      /* 徽章进度（2026-10-20 徽章进度包）：行内双年级进度；单次事件型只写"随时可达成"；
+         "暂无数据"用浅灰 span 与真实 0 区分。进度仅展示，不触发发放。 */
+      var entMap = {};
+      ['g5','g6'].forEach(function(gk){
+        var arr2 = (d.by_grade && d.by_grade[gk]) || [];
+        for(var j = 0; j < arr2.length; j++){
+          if(arr2[j] && arr2[j].key === c.key) entMap[gk] = arr2[j];
+        }
+      });
+      var p0 = (entMap.g5 && entMap.g5.progress) || (entMap.g6 && entMap.g6.progress);
+      if(p0){
+        var pline = el('span','lib-prog');
+        var segCount = 0;
+        ['g5','g6'].forEach(function(gk){
+          var e2 = entMap[gk];
+          if(!e2 || e2.obtained || !e2.progress) return;
+          var pr = e2.progress, segText = null, isNodata = false;
+          if(pr.state === 'event'){
+            segText = '随时可达成';
+          }else if(pr.state === 'ok'){
+            var rem = pr.target - pr.current;
+            segText = GRADE_NAME[gk] + '：' + (pr.detail ? pr.detail + ' ' : '')
+              + pr.current + '/' + pr.target + pr.unit
+              + (rem > 0 ? '，还差' + rem + pr.unit : '，已达条件');
+          }else if(pr.state === 'nodata'){
+            segText = GRADE_NAME[gk] + '：暂无数据';
+            isNodata = true;
+          }
+          if(segText === null) return;
+          if(p0.state === 'event' && segCount > 0) return; /* 事件型只显示一次 */
+          if(segCount > 0) pline.appendChild(document.createTextNode(' · '));
+          var s2 = el('span', isNodata ? 'prog-nodata' : '');
+          s2.textContent = segText;
+          pline.appendChild(s2);
+          segCount++;
+        });
+        if(segCount > 0){
+          if(p0.state === 'nodata' && p0.note) pline.appendChild(document.createTextNode('（' + p0.note + '）'));
+          left.appendChild(pline);
+        }
+      }
       li.appendChild(left);
       /* L5（2026-10-20）：+5 收敛到单一数据源（badge_goals.json 的 points 字段），不再硬编码 */
       li.appendChild(el('span','rule-pts plus','+' + (c.points != null ? c.points : 5)));
