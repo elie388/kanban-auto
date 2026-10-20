@@ -260,6 +260,12 @@
   .ach .tt{font-size:14px; font-weight:700;}
   .ach .ds{font-size:12px; color:var(--sub); margin-top:2px;}
   .ach.locked{opacity:.55; filter:grayscale(.7); border-style:solid;}
+  /* 往期徽章折叠区（2026-10-20 徽章周期清空）：只记次数、不计分 */
+  #btn-achieve .cb-title{font-size:19px;}
+  .badge-history{margin-top:12px; border-top:1px dashed #E8DCC0; padding-top:10px;}
+  .badge-history summary{cursor:pointer; font-size:14px; font-weight:700; color:var(--sub); padding:4px 2px;}
+  .badge-history .hist-line{font-size:13px; color:var(--sub); padding:3px 2px; display:flex; justify-content:space-between; gap:8px;}
+  .badge-history .hist-line b{color:var(--txt); font-weight:700;}
   /* 成就进度条（2026-10-19新增） */
   .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
   .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
@@ -342,6 +348,10 @@
   .lib-cond{display:block; font-size:13px; font-weight:400; color:var(--sub); margin-top:2px;}
   .lib-prog{display:block; font-size:12.5px; font-weight:400; color:#5B6470; margin-top:3px;}
   .lib-prog .prog-nodata{color:#B3B8BE;}
+  .lib-detail{display:none}
+  li.open .lib-detail{display:block}
+  .lib-chev{font-size:12px; color:#9AA0A6; margin-left:6px; white-space:nowrap}
+  #panel-lib .rule-list li{cursor:pointer}
 
   /* 日志时间线 */
   .log-list{list-style:none; margin:0; padding:0;}
@@ -750,7 +760,7 @@
     <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-achieve" id="btn-achieve">
       <span class="emoji" aria-hidden="true">🏅</span>
-      <span class="cb-title">荣耀徽章</span>
+      <span class="cb-title">本周徽章（周一到周日）</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-achieve" role="region" aria-labelledby="btn-achieve">
@@ -1601,12 +1611,35 @@
         /* §6（2026-10-19）：无真实徽章台账，不编造、不沉默，显式标注建设中 */
         block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
       }
+      /* 往期徽章（2026-10-20 徽章周期清空）：往期只记次数、不计分；
+         已发积分永久保留，见 badges.json history（按 cycle_week 归档） */
+      var hist = (d.history && d.history[gk]) || [];
+      if(hist.length){
+        var det = document.createElement('details');
+        det.className = 'badge-history';
+        var sum = document.createElement('summary');
+        sum.textContent = '往期徽章（次数统计，不计分）';
+        det.appendChild(sum);
+        hist.forEach(function(h){
+          if(!h || !h.name) return;
+          var line = el('div','hist-line');
+          var nm = el('span');
+          nm.textContent = (h.icon || '🏅') + ' ' + String(h.name).slice(0,8);
+          line.appendChild(nm);
+          var ct = el('b');
+          ct.textContent = '共 ' + (h.count || 0) + ' 次';
+          line.appendChild(ct);
+          det.appendChild(line);
+        });
+        block.appendChild(det);
+      }
       pad.appendChild(block);
     });
     return true;
   }
 
   /* ---- 2. 徽章目标榜（全目录 + 获得状态；数量随 catalog 数据自动同步，不再硬编码） ---- */
+  var OPEN_GOALS = {};  /* 目标榜细节展开状态（2026-10-20 用户要求细节默认隐藏、点击徽章才显示；软刷新后按此恢复） */
   function renderGoals(d){
     var pad = document.querySelector('#panel-lib .collapse-pad');
     if(!pad || !d || !d.catalog || !d.catalog.length) return false;
@@ -1615,7 +1648,7 @@
     intro.style.marginTop = '0'; intro.style.marginBottom = '14px';
     pad.appendChild(intro);
     /* 徽章进度红线固定说明（2026-10-20 徽章进度包 E-1）：展示≠发放 */
-    pad.appendChild(el('p','rule-note','📌 进度满只代表达到条件，徽章由每日总结人工确认后颁发。'));
+    pad.appendChild(el('p','rule-note','📌 进度满只代表达到条件，徽章由每日总结人工确认后颁发。按周类进度每周一清零，连续/累计类不清。'));
     var ul = el('ul','rule-list');
     ul.setAttribute('aria-label','可争取徽章');
     d.catalog.forEach(function(c){
@@ -1639,7 +1672,10 @@
         tag.style.background = '#FFF3D6'; tag.style.color = '#C77700';
       }
       left.appendChild(tag);
-      left.appendChild(el('span','lib-cond','解锁条件：' + (c.cond || '')));
+      var chev = el('span','lib-chev', OPEN_GOALS[c.key] ? '收起 ▴' : '详情 ▾');
+      left.appendChild(chev);
+      var detail = el('div','lib-detail');
+      detail.appendChild(el('span','lib-cond','解锁条件：' + (c.cond || '')));
       /* 徽章进度（2026-10-20 徽章进度包）：行内双年级进度；单次事件型只写"随时可达成"；
          "暂无数据"用浅灰 span 与真实 0 区分。进度仅展示，不触发发放。 */
       var entMap = {};
@@ -1678,9 +1714,16 @@
         });
         if(segCount > 0){
           if(p0.state === 'nodata' && p0.note) pline.appendChild(document.createTextNode('（' + p0.note + '）'));
-          left.appendChild(pline);
+          detail.appendChild(pline);
         }
       }
+      left.appendChild(detail);
+      if(OPEN_GOALS[c.key]) li.classList.add('open');
+      li.addEventListener('click', function(){
+        var open = li.classList.toggle('open');
+        OPEN_GOALS[c.key] = open;
+        chev.textContent = open ? '收起 ▴' : '详情 ▾';
+      });
       li.appendChild(left);
       /* L5（2026-10-20）：+5 收敛到单一数据源（badge_goals.json 的 points 字段），不再硬编码 */
       li.appendChild(el('span','rule-pts plus','+' + (c.points != null ? c.points : 5)));
