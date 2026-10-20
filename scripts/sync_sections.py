@@ -297,8 +297,14 @@ def parse_rules():
                     if text.startswith(("互斥", "将功补过", "作弊疑点")):
                         pts = None
                     else:
-                        pm = PTS_RE.search(text)
-                        pts = pm.group(0) if pm else None
+                        # 2026-10-20去重（DeepSeek方案+Gemini审核）：
+                        # 首个" -数字"处截断正文，分值进徽章；单位/上限说明留正文
+                        pm = re.search(r"\s([+-]\d+)", text)
+                        if pm:
+                            pts = pm.group(1)
+                            text = (text[:pm.start()] + text[pm.end():]).strip()
+                        else:
+                            pts = None
                     items.append({"id": "%s%d" % (key[0], len(items) + 1),
                                   "text": text, "pts": pts, "remark": remark})
         if not items:

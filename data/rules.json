@@ -11,350 +11,350 @@
   {
    "id": "a2",
    "text": "作业正确率：全对+10 / 90%以上+6 / 80%~89%+3",
-   "pts": "+10",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a3",
    "text": "订正一次改对+2/题（作业每天上限+8三科共用、练习每天上限+6，分批提交不叠加）",
-   "pts": "+2",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a4",
    "text": "订正D档作业+1/题（完成率D档订正分减半；日上限仍为+8三科共用，不同比减半）",
-   "pts": "+1",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a5",
    "text": "订正当天发回+2",
-   "pts": "+2",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a6",
    "text": "超期提交的订正+1/题（超期提交订正加分减半）",
-   "pts": "+1",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a7",
    "text": "书写+2/科（完成率<80%不发；整页有效作答<50%该页书写不计）",
-   "pts": "+2",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a8",
    "text": "进步奖+5",
-   "pts": "+5",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a9",
    "text": "连续3天全对+15",
-   "pts": "+15",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a10",
    "text": "连续5天按时+10",
-   "pts": "+10",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a11",
    "text": "突破奖+8",
-   "pts": "+8",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a12",
-   "text": "背诵/口语按时发回 +5/次（规定时限内提交并发回；与作业按时提交不重复计分）",
+   "text": "背诵/口语按时发回/次（规定时限内提交并发回；与作业按时提交不重复计分）",
    "pts": "+5",
    "remark": null
   },
   {
    "id": "a13",
    "text": "练习完成分：完成率≥95%+5 / 80%~94%+3 / 60%~79%+1 / <60%为0",
-   "pts": "+5",
+   "pts": null,
    "remark": "（2026-10-19分档计分修订）"
   },
   {
    "id": "a14",
    "text": "练习正确率：全对+5 / 90%以上+3 / 80%~89%+1",
-   "pts": "+5",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a15",
    "text": "53完成分（按页完成率）：≥80%+3 / 60%~79%+1 / <60%为0",
-   "pts": "+3",
+   "pts": null,
    "remark": "（2026-10-19分档计分修订）"
   },
   {
    "id": "a16",
    "text": "53正确率：全对(100%)+3 / 90%~99%+2 / 80%~89%+1 / 70%~79%为0 / <70%-2",
-   "pts": "+3",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a17",
    "text": "周日卷（百分制）：90分以上+30 / 80分以上+16 / 70分以上+5",
-   "pts": "+30",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a18",
    "text": "在校考试：单元+30/+16/+5；月考期中+50/+24/+5；期末+80/+40/+5",
-   "pts": "+30",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a19",
    "text": "在校考试进步+20",
-   "pts": "+20",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a20",
    "text": "在校考试满分额外+100",
-   "pts": "+100",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a21",
-   "text": "徽章：每枚 +5/次（v3.7定稿：所有徽章一律+5/次）",
+   "text": "徽章：每枚/次（v3.7定稿：所有徽章一律+5/次）",
    "pts": "+5",
    "remark": null
   },
   {
    "id": "a22",
    "text": "洗碗+5（周一到五每人每天限一次，周末每天最多两次）",
-   "pts": "+5",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a23",
    "text": "扫地+3、拖地+3（每天各限一人一次）",
-   "pts": "+3",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a24",
    "text": "晾衣服+3（一人+3、合作各+2）",
-   "pts": "+3",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a25",
    "text": "晾袜子+3（每天仅限一次，限1人）",
-   "pts": "+3",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a26",
    "text": "整理桌面+2（各整各的每人+1）",
-   "pts": "+2",
+   "pts": null,
    "remark": null
   },
   {
    "id": "a27",
    "text": "连做3天+5（第2天+2、第3天+3）",
-   "pts": "+5",
+   "pts": null,
    "remark": null
   }
  ],
  "deduct": [
   {
    "id": "d1",
-   "text": "小拖拉 -2",
+   "text": "小拖拉",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d2",
-   "text": "抄错数字 -2",
+   "text": "抄错数字",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d3",
-   "text": "单位错 -2",
+   "text": "单位错",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d4",
-   "text": "53日期不规范 -2",
+   "text": "53日期不规范",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d5",
-   "text": "单科3处潦草 -2",
+   "text": "单科3处潦草",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d6",
-   "text": "列式不规范 -2",
+   "text": "列式不规范",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d7",
-   "text": "语文阅读答非所问 -2/题",
+   "text": "语文阅读答非所问/题",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d8",
-   "text": "语文表达不完整 -1/题",
+   "text": "语文表达不完整/题",
    "pts": "-1",
    "remark": null
   },
   {
    "id": "d9",
-   "text": "作文错字 -2（3个起每3个，上限-6）",
+   "text": "作文错字（3个起每3个，上限-6）",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d10",
-   "text": "作文语病 -2/处（上限-6）",
+   "text": "作文语病/处（上限-6）",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d11",
-   "text": "书写退步连续第2次未改善 -2/科",
+   "text": "书写退步连续第2次未改善/科",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d12",
-   "text": "53单页正确率<70% -2",
+   "text": "53单页正确率<70%",
    "pts": "-2",
    "remark": null
   },
   {
    "id": "d13",
-   "text": "高频第3次再犯 -3",
+   "text": "高频第3次再犯",
    "pts": "-3",
    "remark": null
   },
   {
    "id": "d14",
-   "text": "APP作业未交 -3",
+   "text": "APP作业未交",
    "pts": "-3",
    "remark": null
   },
   {
    "id": "d15",
-   "text": "53缺一页/白卷 -3",
+   "text": "53缺一页/白卷",
    "pts": "-3",
    "remark": null
   },
   {
    "id": "d16",
-   "text": "练习超期 -3",
+   "text": "练习超期",
    "pts": "-3",
    "remark": null
   },
   {
    "id": "d17",
-   "text": "漏科目 -5",
+   "text": "漏科目",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d18",
-   "text": "登记本没发 -5",
+   "text": "登记本没发",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d19",
-   "text": "订正超期 -5",
+   "text": "订正超期",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d20",
-   "text": "补做超期 -5",
+   "text": "补做超期",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d21",
-   "text": "整页潦草 -5",
+   "text": "整页潦草",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d22",
-   "text": "练习没交 -5",
+   "text": "练习没交",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d23",
-   "text": "周日卷缺一科 -5",
+   "text": "周日卷缺一科",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d24",
-   "text": "背诵/口语完全没发 -5",
+   "text": "背诵/口语完全没发",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d25",
-   "text": "作文胡编 -5/篇",
+   "text": "作文胡编/篇",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d26",
-   "text": "家务连续2天未做 -5",
+   "text": "家务连续2天未做",
    "pts": "-5",
    "remark": null
   },
   {
    "id": "d27",
-   "text": "当天没交 -10",
+   "text": "当天没交",
    "pts": "-10",
    "remark": null
   },
   {
    "id": "d28",
-   "text": "白卷 -10",
+   "text": "白卷",
    "pts": "-10",
    "remark": null
   },
   {
    "id": "d29",
-   "text": "乱画卷 -10",
+   "text": "乱画卷",
    "pts": "-10",
    "remark": null
   },
   {
    "id": "d30",
-   "text": "家务连续3天起每天 -10",
+   "text": "家务连续3天起每天",
    "pts": "-10",
    "remark": null
   },
   {
    "id": "d31",
-   "text": "作弊确认：正确率记0且额外 -10",
+   "text": "作弊确认：正确率记0且额外",
    "pts": "-10",
    "remark": null
   },
   {
    "id": "d32",
-   "text": "晚上超11点睡觉 -10",
+   "text": "晚上超11点睡觉",
    "pts": "-10",
    "remark": "（2026-10-20家长新增）"
   },
@@ -366,7 +366,7 @@
   },
   {
    "id": "d34",
-   "text": "单科单日扣分封顶 -10",
+   "text": "单科单日扣分封顶",
    "pts": "-10",
    "remark": null
   },
@@ -383,5 +383,5 @@
    "remark": null
   }
  ],
- "generated_at": "2026-10-20T11:52:47+08:00"
+ "generated_at": "2026-10-20T11:58:40+08:00"
 }
