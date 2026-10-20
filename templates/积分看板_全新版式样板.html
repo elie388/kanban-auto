@@ -175,7 +175,7 @@
   .task .task-info{flex:1; min-width:0; text-align:left;}
   .task .task-name{
     font-size:16px; font-weight:700;
-    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    overflow:visible; white-space:pre-line; word-break:break-word;
   }
   .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
   .task.done .task-name{color:#1E9E52;}
@@ -563,7 +563,7 @@
     .task{gap:10px;} /* 窄屏收紧行内间距 */
     .task .st-badge{padding:5px 8px; font-size:13px;} /* 窄屏徽章轻微收紧 */
     .task .task-name{
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; /* 窄屏单行省略，杜绝横向溢出 */
+      white-space:pre-line; word-break:break-word; overflow:visible; /* 窄屏亦多行完整展示，与主样式同口径 */
     }
     .task-prog{gap:6px;}
     .task-prog-bar{width:64px; flex:1 1 56px; min-width:56px;}
