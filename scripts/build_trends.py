@@ -54,12 +54,22 @@ BACKFILL_RATIO_THRESHOLD = 0.50  # Q3 规则二阈值（裁决原文）
 SMALL_SAMPLE_JUDGED = 5          # Q3：已判<5 为小样本档
 
 
-def q_count(err):
-    if err >= 10:
+def q_count(err, level="", status=""):
+    """补练题量 5-10（2026-10-20 家长令，DeepSeek 映射）：
+    base 按 err 分档（0→0,1-2→1,3-4→2,5-6→3,7-9→4,≥10→5）；M<80 +1；clamp [5,10]。
+    err≥10 或 顽固（err>5，重点记录口径）且未掌握 → 直接 10；证据不足 → 5。
+    注：题目库 knowledge_points 未存 M 分，用 掌握等级/掌握状态 作等价信号
+    （证据不足→证据不足；未掌握≈M<60；巩固中/未掌握→M<80 加成）。"""
+    if level == "证据不足":
         return 5
-    if err >= 5:
-        return 4
-    return 3
+    if err >= 10:
+        return 10
+    if err > 5 and status == "未掌握":
+        return 10
+    base = 0 if err == 0 else 1 if err <= 2 else 2 if err <= 4 else 3 if err <= 6 else 4 if err <= 9 else 5
+    if status == "未掌握" or level == "巩固中":
+        base += 1
+    return max(5, min(10, base))
 
 
 def form_link(grade, subject, kp, n, mode):
@@ -170,13 +180,13 @@ def main():
                             "small_sample_flag": True})
                 subj_stats[(d, s)] = (val, info)
             weak = []
-            for kp, err, last in db.execute(
-                    "SELECT 知识点名, 错误次数, 最近错误日期 FROM knowledge_points "
+            for kp, err, last, level, status in db.execute(
+                    "SELECT 知识点名, 错误次数, 最近错误日期, 掌握等级, 掌握状态 FROM knowledge_points "
                     "WHERE 年级=? AND 学科=? AND 错误次数>0 "
                     "ORDER BY 错误次数 DESC LIMIT 3", (g, s)):
-                n = q_count(err)
+                n = q_count(err, level or "", status or "")
                 weak.append({"kp": kp, "err": err, "last": last, "n": n,
-                             "link_tonight": form_link(g, s, kp, n, "今晚随练习发"),
+                             "link_tonight": form_link(g, s, kp, n, "明晚随练习发"),
                              "link_now": form_link(g, s, kp, n, "现在单独发")})
             npts_s = sum(1 for v in series if v is not None)
             gdata["subjects"][s] = {"days": series, "weak": weak,
