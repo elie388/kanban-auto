@@ -260,7 +260,6 @@
   .ach .tt{font-size:14px; font-weight:700;}
   .ach .ds{font-size:12px; color:var(--sub); margin-top:2px;}
   .ach.locked{opacity:.55; filter:grayscale(.7); border-style:solid;}
-  #btn-achieve .cb-title{font-size:19px;}
   /* 成就进度条（2026-10-19新增） */
   .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
   .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
@@ -650,12 +649,12 @@
   <section class="balance-grid" aria-label="积分余额">
     <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看五年级积分日志">
       <div class="bal-name">五年级</div>
-      <div class="bal-score"><span class="bal-num" data-target="170">170</span> <small>分</small></div>
+      <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
       <div class="bal-sub">继续加油攒分！</div>
     </button>
     <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看六年级积分日志">
       <div class="bal-name">六年级</div>
-      <div class="bal-score"><span class="bal-num" data-target="274">274</span> <small>分</small></div>
+      <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
       <div class="bal-sub">高分冲刺中！</div>
     </button>
   </section>
@@ -668,34 +667,14 @@
       <div class="task-head">
         <span class="pill-grade g5">五年级</span>
         <div class="task-prog" role="group" aria-label="五年级今日任务完成进度">
-          <span class="task-prog-text">已完成 1 / 3</span>
-          <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="已完成 1 / 3">
-            <div class="task-prog-fill" style="width:33.333%"></div>
+          <span class="task-prog-text">加载中…</span>
+          <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="加载中…">
+            <div class="task-prog-fill" style="width:0%"></div>
           </div>
         </div>
       </div>
       <div class="task-list">
-        <div class="task pending">
-                    <div class="task-info">
-            <div class="task-name">语文《53天天练》P24-25</div>
-            <div class="task-progress">进度 0 / 2 页 · 尚未开始</div>
-          </div>
-          <span class="st-badge">⭕ 未完成</span>
-        </div>
-        <div class="task correcting">
-                    <div class="task-info">
-            <div class="task-name">数学口算 20 题</div>
-            <div class="task-progress">已订正 8 / 20 题 · 继续加油</div>
-          </div>
-          <span class="st-badge">🔄 订正中</span>
-        </div>
-        <div class="task done">
-                    <div class="task-info">
-            <div class="task-name">英语背诵 U3 单词</div>
-            <div class="task-progress">全部完成 · 已提交背诵</div>
-          </div>
-          <span class="st-badge">✅ 已完成</span>
-        </div>
+        <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
       </div>
     </div>
 
@@ -704,34 +683,14 @@
       <div class="task-head">
         <span class="pill-grade g6">六年级</span>
         <div class="task-prog" role="group" aria-label="六年级今日任务完成进度">
-          <span class="task-prog-text">已完成 1 / 3</span>
-          <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="已完成 1 / 3">
-            <div class="task-prog-fill" style="width:33.333%"></div>
+          <span class="task-prog-text">加载中…</span>
+          <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="加载中…">
+            <div class="task-prog-fill" style="width:0%"></div>
           </div>
         </div>
       </div>
       <div class="task-list">
-        <div class="task pending">
-                    <div class="task-info">
-            <div class="task-name">数学《53天天练》P30-31</div>
-            <div class="task-progress">进度 0 / 2 页 · 尚未开始</div>
-          </div>
-          <span class="st-badge">⭕ 未完成</span>
-        </div>
-        <div class="task done">
-                    <div class="task-info">
-            <div class="task-name">语文小练笔</div>
-            <div class="task-progress">全部完成 · 已提交</div>
-          </div>
-          <span class="st-badge">✅ 已完成</span>
-        </div>
-        <div class="task correcting">
-                    <div class="task-info">
-            <div class="task-name">英语阅读 P28</div>
-            <div class="task-progress">已订正 2 / 5 题 · 继续加油</div>
-          </div>
-          <span class="st-badge">🔄 订正中</span>
-        </div>
+        <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
       </div>
 
     </div>
@@ -863,24 +822,8 @@
           <div class="grade-head"><span class="pill-grade g5">五年级</span>积分日志</div>
           <ul class="log-list">
             <li class="log-item">
-              <div class="log-dot plus">+</div>
               <div class="log-body">
-                <div class="log-line1"><span class="log-reason">默写满分（五年级 · 语文）</span><span class="log-pts plus">+5</span></div>
-                <div class="log-line2">2026-10-19 08:30</div>
-              </div>
-            </li>
-            <li class="log-item">
-              <div class="log-dot minus">-</div>
-              <div class="log-body">
-                <div class="log-line1"><span class="log-reason">作业迟交（五年级 · 语文）</span><span class="log-pts minus">-2</span></div>
-                <div class="log-line2">2026-10-18 21:10</div>
-              </div>
-            </li>
-            <li class="log-item">
-              <div class="log-dot plus">+</div>
-              <div class="log-body">
-                <div class="log-line1"><span class="log-reason">主动帮助家人（五年级）</span><span class="log-pts plus">+2</span></div>
-                <div class="log-line2">2026-10-18 18:30</div>
+                <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
               </div>
             </li>
           </ul>
@@ -889,17 +832,8 @@
           <div class="grade-head"><span class="pill-grade g6">六年级</span>积分日志</div>
           <ul class="log-list">
             <li class="log-item">
-              <div class="log-dot plus">+</div>
               <div class="log-body">
-                <div class="log-line1"><span class="log-reason">口算全对（六年级 · 数学）</span><span class="log-pts plus">+3</span></div>
-                <div class="log-line2">2026-10-19 08:00</div>
-              </div>
-            </li>
-            <li class="log-item">
-              <div class="log-dot plus">+</div>
-              <div class="log-body">
-                <div class="log-line1"><span class="log-reason">阅读打卡（六年级 · 课外）</span><span class="log-pts plus">+1</span></div>
-                <div class="log-line2">2026-10-18 20:00</div>
+                <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
               </div>
             </li>
           </ul>
