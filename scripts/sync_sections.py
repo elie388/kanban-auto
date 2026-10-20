@@ -283,9 +283,31 @@ def parse_tier(seg):
 
 def try_multi(text):
     """多档规则拆分（2026-10-20用户要求"分开列，不要挤一起"）：
-    返回 (header, subs) 或 None。识别两种形态：
-    A) " / " 分隔的档位（作业正确率/练习完成分/周日卷/53类/系数型）
-    B) "；" 分隔的分组（在校考试）"""
+    返回 (header, subs) 或 None。识别两种形态（B 优先于 A）：
+    B) "；" 分隔的分组（在校考试；组内可再有括号档位）
+    A) " / " 分隔的档位（作业正确率/练习完成分/周日卷/53类/系数型）"""
+    if "；" in text and "：" in text:
+        header, rest = text.split("：", 1)
+        groups = [g.strip() for g in rest.split("；") if g.strip()]
+        scored = sum(1 for g in groups if re.search(r"[+-]\d+", g))
+        if len(groups) >= 2 and scored >= 2:
+            subs = []
+            for g in groups:
+                # 分组带括号档位："单元（90分以上+30 / 80分以上+16 / 70分以上+5）"
+                gm = re.match(r"^(.+?)（(.+)）$", g)
+                if gm and " / " in gm.group(2):
+                    gname = gm.group(1)
+                    for tg in gm.group(2).split(" / "):
+                        t = parse_tier(tg)
+                        subs.append({"label": gname + " " + t["label"],
+                                     "pts": t["pts"]})
+                    continue
+                ms = re.findall(r"[+-]\d+", g)
+                if len(ms) == 1:
+                    subs.append(parse_tier(g))
+                else:
+                    subs.append({"label": g, "pts": None})
+            return header.strip(), subs
     if " / " in text:
         segs = text.split(" / ")
         scored = sum(1 for sg in segs
@@ -300,19 +322,6 @@ def try_multi(text):
             else:
                 header, t0 = "", first
             subs = [parse_tier(t0)] + [parse_tier(sg) for sg in segs[1:]]
-            return header.strip(), subs
-    if "；" in text and "：" in text:
-        header, rest = text.split("：", 1)
-        groups = [g.strip() for g in rest.split("；") if g.strip()]
-        scored = sum(1 for g in groups if re.search(r"[+-]\d+", g))
-        if len(groups) >= 2 and scored >= 2:
-            subs = []
-            for g in groups:
-                ms = re.findall(r"[+-]\d+", g)
-                if len(ms) == 1:
-                    subs.append(parse_tier(g))
-                else:
-                    subs.append({"label": g, "pts": None})
             return header.strip(), subs
     return None
 
