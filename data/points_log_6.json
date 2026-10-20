@@ -1,12 +1,66 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-20T19:22:02+08:00",
+  "generated_at": "2026-10-20T21:14:33+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "数学作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "数学正确率88.9%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "数学书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "英语作文抄写3次完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "英语抄写正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "英语书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-20",
       "time": "17:51",
@@ -130,60 +184,6 @@
       "time_source": "entry",
       "reason": "冲正：第六期英语阅读写作\"没交-5\"",
       "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "20:00",
-      "time_source": "deadline",
-      "reason": "第六期英语阅读写作练习没交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "11:03",
-      "time_source": "entry",
-      "reason": "不整理书桌（20-19晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "18:58",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "16:45",
-      "time_source": "submit",
-      "reason": "数学周试卷按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "16:16",
-      "time_source": "submit",
-      "reason": "英语周试卷Q25订正当天发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "16:16",
-      "time_source": "submit",
-      "reason": "英语周试卷写作补写按时发回",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }
