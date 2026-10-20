@@ -1539,12 +1539,12 @@
     return true;
   }
 
-  /* ---- 2. 徽章目标榜（24 枚全目录 + 获得状态） ---- */
+  /* ---- 2. 徽章目标榜（全目录 + 获得状态；数量随 catalog 数据自动同步，不再硬编码） ---- */
   function renderGoals(d){
     var pad = document.querySelector('#panel-lib .collapse-pad');
     if(!pad || !d || !d.catalog || !d.catalog.length) return false;
     pad.textContent = '';
-    var intro = el('p','rule-note','🚀 下面是全部 22 枚徽章——看中哪枚，就去把它拿下！');
+    var intro = el('p','rule-note','🚀 下面是全部 ' + d.catalog.length + ' 枚徽章——看中哪枚，就去把它拿下！');
     intro.style.marginTop = '0'; intro.style.marginBottom = '14px';
     pad.appendChild(intro);
     var ul = el('ul','rule-list');

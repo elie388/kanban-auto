@@ -31,7 +31,7 @@ LOCK_FILE = Path("/tmp/sync_sections.lock")
 BEIJING = sb.BEIJING
 LOG_KEEP_LINES = 2000
 
-# ---------- 22 枚徽章目录（v3.7 定稿，一律 +5/次）+ 历史 key 兼容 ----------
+# ---------- 徽章目录（v3.7 定稿，一律 +5/次；数量以 BADGE_CATALOG 实际条目为准，不再硬编码）+ 历史 key 兼容 ----------
 # key: 台账 badge_<key> 中的拼音；cond: 解锁条件（目标榜展示用）
 BADGE_CATALOG = [
     ("quanduizhixing",   "全对之星",   "✅", "单次作业/小测全部题目正确"),
@@ -55,7 +55,7 @@ BADGE_CATALOG = [
     ("biaodazhixing",    "表达之星",   "🗣️", "一周内口头表达/复述≥2次"),
     ("jiawuxiaobangshou","家务小帮手", "🏠", "单次完成1项基础家务"),
     ("zhengdalidaren",   "整理小达人", "🧹", "周内累计5天整理类家务"),
-    ("jiawuzhixing",     "家务之星",   "🏆", "周内家务≥10次且≥4类"),
+    ("jiawuzhixing",     "家务之星",   "🏆", "周内≥5次（每日≤1次计）"),
 ]
 # 历史徽章 key（旧体系，台账中可能出现；展示用，不在目标榜目录内）
 LEGACY_BADGES = {
