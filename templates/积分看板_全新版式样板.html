@@ -210,7 +210,10 @@
   .tr-ft{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
   circle.tr-pt{cursor:pointer}
   circle.tr-bad{stroke:#D64545 !important}
-  .tr-wrow{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px dashed #EFD9CF;cursor:pointer}
+  .tr-wrow{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px dashed #EFD9CF;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .tr-wrow.open{background:#FBF3E7}
+  .tr-wrow .row-cta{flex:none;color:#E8873A;background:#FDF0E1;border:1px solid #F3C491;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:700;white-space:nowrap;margin-left:8px}
+  .weak-hint{font-size:12px;color:#9AA0A6;margin-bottom:6px}
   .tr-wstrip{display:none;background:#FFF8EC;border-radius:10px;padding:9px 12px;margin:4px 0;font-size:12.5px}
   .tr-wstrip a{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;text-decoration:none}
   .tr-go-a{background:#E8873A;color:#fff}
@@ -2246,9 +2249,10 @@
     if(wk.length){
       h += '<div style="margin-top:10px;background:#FBEFEA;border-radius:12px;padding:10px 12px">';
       h += '<div style="font-weight:800;font-size:13.5px;margin-bottom:6px">⚠️ 本科目薄弱点</div>';
+      h += '<div class="weak-hint">点下面任意一行，选今晚随练习或现在单独发就能出题</div>';
       wk.forEach(function(w, wi){
-        h += '<div class="tr-wrow" data-kp="' + w.kp + '" data-wi="' + wi + '"><span>' + w.kp + ' <span style="color:#9AA0A6">→ ' + w.n + '题</span></span>'
-          + '<span style="color:#B4552D;font-weight:700">错' + w.err + '次 · 最近 ' + (w.last ? w.last.slice(5) : '—') + '</span></div>';
+        h += '<div class="tr-wrow" data-kp="' + w.kp + '" data-wi="' + wi + '"><span>' + w.kp + ' <span style="color:#9AA0A6">· 将出 ' + w.n + ' 题</span></span>'
+          + '<span style="display:flex;align-items:center;min-width:0"><span style="color:#B4552D;font-weight:700;white-space:nowrap">错' + w.err + '次 · 最近 ' + (w.last ? w.last.slice(5) : '—') + '</span><span class="row-cta">出题 ›</span></span></div>';
         h += '<div class="tr-wstrip" id="tr-ws-' + wi + '"></div>';
       });
       h += '<div style="font-size:11.5px;color:#9AA0A6;margin-top:6px">来自题目库真实记录（错误次数排序，取前3）</div></div>';
@@ -2269,8 +2273,12 @@
       r.addEventListener('click', function(){
         var w = wk[+r.dataset.wi], slot = el('tr-ws-' + r.dataset.wi);
         box.querySelectorAll('.tr-wstrip').forEach(function(x){ if(x !== slot) x.style.display = 'none'; });
-        if(slot.style.display === 'block'){ slot.style.display = 'none'; if(OPEN_WEAK === w.kp) OPEN_WEAK = null; return; }
-        slot.style.display = 'block'; OPEN_WEAK = w.kp;
+        box.querySelectorAll('.tr-wrow').forEach(function(x){
+          if(x !== r){ x.classList.remove('open'); var c0 = x.querySelector('.row-cta'); if(c0) c0.textContent = '出题 ›'; }
+        });
+        var cta = r.querySelector('.row-cta');
+        if(slot.style.display === 'block'){ slot.style.display = 'none'; r.classList.remove('open'); if(cta) cta.textContent = '出题 ›'; if(OPEN_WEAK === w.kp) OPEN_WEAK = null; return; }
+        slot.style.display = 'block'; OPEN_WEAK = w.kp; r.classList.add('open'); if(cta) cta.textContent = '收起';
         slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ ' + w.kp + ' · 生成 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
           + '<div style="color:#6B7280;margin-bottom:6px">题源：本题知识点错题本（去重/改编&lt;80%相似度）</div>'
           + '<a class="tr-go-a" href="' + w.link_tonight + '" target="_blank" rel="noopener">今晚19:00随练习发</a>'
