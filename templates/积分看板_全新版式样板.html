@@ -1930,6 +1930,8 @@
   function sl(arr, n){ return arr.slice(-n); }
   function nn(arr){ return arr.filter(function(v){ return v !== null && v !== undefined; }); }
   function fmt(v){ return v === null || v === undefined ? '—' : (Math.round(v * 10) / 10); }
+  /* P2 转义（DeepSeek 审查 2026-10-20）：知识点名/链接来自题目库数据，拼 innerHTML 前统一转义 */
+  function escHtml(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   /* 触控就近吸附（2026-10-20，DeepSeek 终审有条件通过）：由点击视口坐标换算 SVG x，
      取与各日期 X(i) 横向距离最近的 i。比较用严格 <（先遍历者胜）→ 两日正中点归左日。
      clientX 与 rect.left 同为视口坐标，相减自带滚动补偿。 */
@@ -2168,8 +2170,8 @@
       sv.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
       var topW = sv.length ? (TD.grades[gr].subjects[sv[0].sn].weak || [])[0] : null;
       if(sv.length && topW){
-        actHtml += '<div class="tr-actrow" data-g="' + gr + '" data-sn="' + sv[0].sn + '" data-kp="' + topW.kp + '" style="margin-top:6px">'
-          + '<div style="color:#6B7280">重点：' + gr + '《' + sv[0].sn + '》薄弱点 <b>' + topW.kp + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>明晚补上，做对计入复测。与下方单科卡里点这个薄弱点的「我要巩固」是同一件事。</div>'
+        actHtml += '<div class="tr-actrow" data-g="' + gr + '" data-sn="' + sv[0].sn + '" data-kp="' + escHtml(topW.kp) + '" style="margin-top:6px">'
+          + '<div style="color:#6B7280">重点：' + gr + '《' + sv[0].sn + '》薄弱点 <b>' + escHtml(topW.kp) + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>明晚补上，做对计入复测。与下方单科卡里点这个薄弱点的「我要巩固」是同一件事。</div>'
           + '<div style="margin-top:8px"><span class="tr-actgo" style="background:#E8873A;color:#fff;padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer">生成明晚补练 →</span></div></div>';
       } else {
         actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + gr + '</b>：本周期暂无明显薄弱点，继续保持。</div>';
@@ -2311,7 +2313,7 @@
       h += '<div style="font-weight:800;font-size:13.5px;margin-bottom:6px">⚠️ 本科目薄弱点</div>';
       h += '<div class="weak-hint">点下面任意一行，选明晚随练习或现在单独发就能巩固</div>';
       wk.forEach(function(w, wi){
-        h += '<div class="tr-wrow" data-kp="' + w.kp + '" data-wi="' + wi + '"><span class="tr-wmain"><span class="tr-wname">' + w.kp + '</span><span class="tr-wmeta">将出 ' + w.n + ' 题 · <b style="color:#B4552D">错' + w.err + '次</b> · 最近 ' + (w.last ? w.last.slice(5) : '—') + '</span></span><span class="row-cta">我要巩固 ›</span></div>';
+        h += '<div class="tr-wrow" data-kp="' + escHtml(w.kp) + '" data-wi="' + wi + '"><span class="tr-wmain"><span class="tr-wname">' + escHtml(w.kp) + '</span><span class="tr-wmeta">将出 ' + w.n + ' 题 · <b style="color:#B4552D">错' + w.err + '次</b> · 最近 ' + (w.last ? w.last.slice(5) : '—') + '</span></span><span class="row-cta">我要巩固 ›</span></div>';
         h += '<div class="tr-wstrip" id="tr-ws-' + wi + '"></div>';
       });
       h += '<div style="font-size:11.5px;color:#9AA0A6;margin-top:6px">来自题目库真实记录（错误次数排序，取前3）</div></div>';
@@ -2338,11 +2340,11 @@
         var cta = r.querySelector('.row-cta');
         if(slot.style.display === 'block'){ slot.style.display = 'none'; r.classList.remove('open'); if(cta) cta.textContent = '我要巩固 ›'; if(OPEN_WEAK === w.kp) OPEN_WEAK = null; return; }
         slot.style.display = 'block'; OPEN_WEAK = w.kp; r.classList.add('open'); if(cta) cta.textContent = '收起';
-        slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ 我要巩固「' + w.kp + '」· 共 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
+        slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ 我要巩固「' + escHtml(w.kp) + '」· 共 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
           + '<div style="color:#6B7280;margin-bottom:6px">题源：本题知识点错题本（去重/改编&lt;80%相似度）</div>'
-          + '<a class="tr-go-a" href="' + w.link_tonight + '" target="_blank" rel="noopener">明晚19:00随练习发</a>'
-          + '<a class="tr-go-b" href="' + w.link_now + '" target="_blank" rel="noopener">现在单独发</a>'
-          + '<div style="color:#9AA0A6;font-size:11.5px">点的按钮决定发送方式，其余已预填（' + gr + ' · ' + sn + ' · ' + w.kp + ' · ' + w.n + '题），打开表单确认提交即可。</div>';
+          + '<a class="tr-go-a" href="' + escHtml(w.link_tonight) + '" target="_blank" rel="noopener">明晚19:00随练习发</a>'
+          + '<a class="tr-go-b" href="' + escHtml(w.link_now) + '" target="_blank" rel="noopener">现在单独发</a>'
+          + '<div style="color:#9AA0A6;font-size:11.5px">点的按钮决定发送方式，其余已预填（' + gr + ' · ' + sn + ' · ' + escHtml(w.kp) + ' · ' + w.n + '题），打开表单确认提交即可。</div>';
       });
     });
   }
