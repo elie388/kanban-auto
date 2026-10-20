@@ -998,6 +998,12 @@
   function renderOne(secId, data){
     var sec = document.getElementById(secId);
     if(!sec || !data || data.date !== todayStr()) return false;
+    /* P2（DeepSeek 审查 2026-10-20）：栏目与数据年级一致性——错位文件宁可不渲染 */
+    var wantGrade = secId === 'tasks-g5' ? '五年级' : '六年级';
+    if(data.grade && data.grade !== wantGrade){
+      console.warn('今日任务年级错位：栏目', secId, '收到', data.grade, '数据，已跳过');
+      return false;
+    }
     var list = (data.tasks || []).filter(function(t){ return t.review_status === 'approved'; });
     /* meta 常驻任务「提交作业登记本」（2026-10-20，DeepSeek 方案）：不计入完成率分母 */
     var metas = list.filter(function(t){ return t.task_type === 'meta_register'; });
@@ -1038,9 +1044,11 @@
         /* P1-B（异常 #5，DeepSeek 终审）：pending 语义拆分 — 未到当日截止显示"待完成"，
            过截止才显示"未完成"；无 deadline_today 字段时保持旧行为。 */
         if(t.status === 'pending' && data.deadline_today){
-          try{
-            if(new Date() <= new Date(data.deadline_today)) sm = {cls:'pending', badge:'🕐 待完成'};
-          }catch(e){}
+          var dlT = new Date(data.deadline_today).getTime();
+          if(isNaN(dlT)){
+            if(!window.__DL_BAD){ window.__DL_BAD = 1; console.warn('deadline_today 无法解析:', data.deadline_today); }
+          }
+          else if(Date.now() <= dlT) sm = {cls:'pending', badge:'🕐 待完成'};
         } else if(t.status === 'pending' && !window.__DL_W){
           window.__DL_W = 1; console.warn('deadline_today 缺失，pending 退回旧语义"未完成"');
         }
@@ -1058,18 +1066,22 @@
   }
   var taskVer = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at），替代 ?t= 时间戳破缓存 */
   function load(){
-    var ok = 0;
+    var ok = 0, fetched = 0, settled = 0;
     [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
       fetch(DATA_BASE + pair[1] + (taskVer[pair[1]] ? '?v=' + encodeURIComponent(taskVer[pair[1]]) : ''), { cache: 'no-cache' })
         .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(function(d){ if(d && d.generated_at) taskVer[pair[1]] = d.generated_at; if(renderOne(pair[0], d)) ok++; })
+        .then(function(d){ fetched++; if(d && d.generated_at) taskVer[pair[1]] = d.generated_at; if(renderOne(pair[0], d)) ok++; })
+        .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); })
         .then(function(){
-          if(ok === 2){
-            var tag = document.getElementById('tasks-tag');
-            if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
-          }
-        })
-        .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); });
+          /* P2（DeepSeek 审查 2026-10-20）：两路都结算后才定标签——一成一败时
+             明示"部分数据更新失败"，不再长期挂"离线数据"误导 */
+          settled++;
+          if(settled < 2) return;
+          var tag = document.getElementById('tasks-tag');
+          if(!tag) return;
+          if(ok === 2){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
+          else if(fetched < 2){ tag.textContent = '部分数据更新失败'; tag.classList.remove('tag-live'); }
+        });
     });
   }
   load();
@@ -1149,6 +1161,10 @@
   /* ---------- 写终值（零动画） ---------- */
   function writeFinal(el, odo, target){
     if(el._rollV !== undefined && el._rollV !== window.__kanbanBalanceVersion) return; /* B3：旧动画不写 */
+    /* P2（DeepSeek 审查 2026-10-20）：位数增长防御——target 位数与现有滚轮槽数
+       不一致时先重建（setFinalBalance 已有此重建，此处兜底其他调用路径），
+       防 padStart 不截断导致的错位显示 */
+    if(String(target).length !== odo.children.length){ odo = buildOdometer(el, target); el._odo = odo; }
     var cellH = measureCellH(odo);
     if(!(cellH > 0)) cellH = 16; /* 极端兜底，正常路径不该走 */
     var s = String(target).padStart(odo.children.length, '0');
@@ -1853,10 +1869,10 @@
     /* 2026-10-20（用户要求，DeepSeek方案）：自动到期只刷内容不刷页面 */
     function softRefresh(){
       var ok = false;
-      try{ if(typeof window.__kanbanRefreshStats === 'function'){ window.__kanbanRefreshStats(); ok = true; } }catch(e){}
-      try{ if(typeof window.__kanbanRefreshSections === 'function'){ window.__kanbanRefreshSections(); ok = true; } }catch(e){}
-      try{ if(typeof window.__kanbanRefreshTasks === 'function'){ window.__kanbanRefreshTasks(); ok = true; } }catch(e){}
-      try{ if(typeof window.__kanbanRefreshTrends === 'function'){ window.__kanbanRefreshTrends(); ok = true; } }catch(e){}
+      try{ if(typeof window.__kanbanRefreshStats === 'function'){ window.__kanbanRefreshStats(); ok = true; } }catch(e){ console.warn('软刷新 stats 入口异常:', e); }
+      try{ if(typeof window.__kanbanRefreshSections === 'function'){ window.__kanbanRefreshSections(); ok = true; } }catch(e){ console.warn('软刷新 sections 入口异常:', e); }
+      try{ if(typeof window.__kanbanRefreshTasks === 'function'){ window.__kanbanRefreshTasks(); ok = true; } }catch(e){ console.warn('软刷新 tasks 入口异常:', e); }
+      try{ if(typeof window.__kanbanRefreshTrends === 'function'){ window.__kanbanRefreshTrends(); ok = true; } }catch(e){ console.warn('软刷新 trends 入口异常:', e); }
       if(!ok){ location.reload(); } /* 刷新入口全未就绪：回退整页刷新 */
     }
 
