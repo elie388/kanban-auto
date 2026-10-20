@@ -170,6 +170,30 @@ def read_ledger_blocks(ledger_path=LEDGER):
             raise ValueError("分节 ## %s 切块混入历史归档" % title)
         return block
 
+    # --- 防复发（2026-10-20）：数据行写到年级小节外必须熔断，不得静默忽略。
+    # 当晚事故：五年级22:00结算17笔被追加到文件末尾"历史归档"节，生成器按小节
+    # 切块读不到，余额长期停在旧值且无任何报错。本检查扫描全文件：凡匹配
+    # ROW_RE 的数据行，若不在任一年级小节范围内 → raise（走 exit 2 报告路径）。
+    spans = []
+    cur = None
+    for i, ln in enumerate(lines):
+        if ln.strip() in ("## 五年级", "## 六年级"):
+            if cur is not None:
+                spans.append((cur, i))
+            cur = i
+        elif ln.startswith("## ") and cur is not None:
+            spans.append((cur, i))
+            cur = None
+    if cur is not None:
+        spans.append((cur, len(lines)))
+    stray = []
+    for i, ln in enumerate(lines):
+        s = ln.strip()
+        if ROW_RE.match(s) and not any(a < i < b for a, b in spans):
+            stray.append(i + 1)
+    if stray:
+        raise ValueError("台账存在写在年级小节外的数据行（行号 %s），疑似追加位置错误，已熔断" % stray[:10])
+
     return {5: cut("五年级"), 6: cut("六年级")}
 
 
