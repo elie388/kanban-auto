@@ -81,7 +81,7 @@ BADGE_MAP.update({k: {"name": n, "icon": i} for k, (n, i) in LEGACY_BADGES.items
 SHOP_TABLE = [
     ("mc30",   "30分钟Minecraft", 70, "🕹️"),
     ("mc60",   "1小时Minecraft", 100, "🕹️"),
-    ("hy150",  "1小时和平精英或2小时Minecraft", 150, "🎮"),
+    ("hy150",  "1小时和平精英\n或2小时Minecraft", 150, "🎮"),
     ("hy250",  "2小时和平精英", 250, "🎮"),
     ("wish600",  "达成愿望一次\n等额50元", 600, "🌟"),
     ("wish1000", "达成愿望一次\n等额100元", 1000, "💫"),
