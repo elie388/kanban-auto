@@ -149,6 +149,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -158,6 +159,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -167,6 +169,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -180,6 +183,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 2,
@@ -194,6 +198,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 3,
@@ -208,6 +213,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -221,6 +227,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -230,6 +237,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -239,6 +247,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -252,6 +261,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -265,6 +275,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 3,
@@ -278,6 +289,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -291,6 +303,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -300,6 +313,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -309,6 +323,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -322,6 +337,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -331,6 +347,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "nodata",
      "note": "2026-10-26 起正式计数"
@@ -341,6 +358,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -350,6 +368,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -363,6 +382,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 1,
@@ -378,6 +398,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -387,6 +408,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -396,6 +418,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -409,6 +432,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 2,
@@ -423,6 +447,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -437,6 +462,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -450,6 +476,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -459,6 +486,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -468,6 +496,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -481,6 +510,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -494,6 +524,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 3,
@@ -507,6 +538,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -520,6 +552,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -529,6 +562,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -538,6 +572,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -551,6 +586,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -560,6 +596,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "nodata",
      "note": "2026-10-26 起正式计数"
@@ -570,6 +607,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "event"
     }
@@ -579,6 +617,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -592,6 +631,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
+    "total_count": 0,
     "progress": {
      "state": "ok",
      "current": 0,
@@ -602,5 +642,6 @@
    }
   ]
  },
- "generated_at": "2026-10-20T16:36:16+08:00"
+ "cycle_week": "2026-W43",
+ "generated_at": "2026-10-20T16:57:56+08:00"
 }

@@ -92,6 +92,14 @@ del _sid, _name, _cost, _icon
 
 KEY_PAT = re.compile(r"key:[^|]*?badge_([a-z]+)_")
 REV_PAT = re.compile(r"key:[^|]*?reverse_badge_([a-z]+)_")
+CYCLE_WEEK_RE = re.compile(r"cycle_week=(\d{4}-W\d{2})")
+
+
+def cycle_week_of(date_str):
+    """日期字符串 YYYY-MM-DD -> ISO 周期标识 YYYY-Www（徽章周期清空机制，
+    规则手册《徽章进度口径·徽章周期清空》子节）。"""
+    y, w, _ = datetime.strptime(date_str, "%Y-%m-%d").isocalendar()
+    return "%04d-W%02d" % (y, w)
 HTML_COMMENT = re.compile(r"<!--.*?-->")
 
 
@@ -173,8 +181,14 @@ def extract_badge_events():
             seen.add(ident)
             if key not in earliest or date < earliest[key]:
                 earliest[key] = date
+            # cycle_week：优先读 key 注释中的落账字段（终审落账环节写入）；
+            # 历史行无此字段 -> 按日期计算仅供展示归档，不参与周期重算/上限累计
+            # （DeepSeek 二次终审执行解释：历史行留空＝不回填、不计入当周 +50）。
+            cwm = CYCLE_WEEK_RE.search(line)
             active.setdefault(key, []).append(
-                {"key": key, "date": date, "icon": icon, "name": name})
+                {"key": key, "date": date, "icon": icon, "name": name,
+                 "cycle_week": cwm.group(1) if cwm else cycle_week_of(date),
+                 "cycle_week_recorded": bool(cwm)})
         # 净持有徽章：同徽章多次获得各自保留，按最早发放日排序
         events = []
         for key, evts in active.items():
@@ -198,9 +212,14 @@ def build_badges(events, now=None):
     now = now or datetime.now(BEIJING)
     ws, we = week_bounds(now)
     ws_s, we_s = ws.strftime("%Y-%m-%d"), we.strftime("%Y-%m-%d")
+    # 展示归属按 cycle_week（徽章周期清空机制）：带落账字段的事件按其
+    # cycle_week 归档，历史行按日期推算；不用台账写入日期，避免跨周终审
+    # 发放的上一周期徽章误入本周展示。
+    cur_cycle = cycle_week_of(ws_s)
     by_grade = {}
     for gk in ("g5", "g6"):
-        week_events = [e for e in events.get(gk, []) if ws_s <= e["date"] <= we_s]
+        week_events = [e for e in events.get(gk, [])
+                       if (e.get("cycle_week") or cycle_week_of(e["date"])) == cur_cycle]
         # 同徽章当周多次获得：按 key 分组累积，输出 count（不设上限）
         grouped = {}
         for e in week_events:
@@ -213,12 +232,34 @@ def build_badges(events, now=None):
                           "count": len(evts)})
         items.sort(key=lambda x: x["date"])
         by_grade[gk] = items
+    # 往期徽章（徽章周期清空机制）：本周期之前的全部徽章事件按 key 聚合，
+    # 只记次数、不计分；积分与台账历史不受影响（分不回收铁律）。
+    history = {}
+    for gk in ("g5", "g6"):
+        past = {}
+        for e in events.get(gk, []):
+            if (e.get("cycle_week") or cycle_week_of(e["date"])) >= cur_cycle:
+                continue
+            p = past.setdefault(e["key"], {"key": e["key"], "name": e["name"],
+                                            "icon": e["icon"], "count": 0,
+                                            "weeks": set()})
+            p["count"] += 1
+            p["weeks"].add(e.get("cycle_week") or cycle_week_of(e["date"]))
+        hl = []
+        for p in past.values():
+            p["weeks"] = sorted(p["weeks"])
+            p["last_week"] = p["weeks"][-1]
+            hl.append(p)
+        hl.sort(key=lambda x: (-x["count"], x["name"]))
+        history[gk] = hl
     # B-2：周界自证元数据（下游可独立验证周界归属）
     return {"schema_version": 1,
             "week": {"start": ws_s, "end": we_s, "tz": "Asia/Shanghai",
+                     "cycle_week": cycle_week_of(ws_s),
                      "week_start": ws.isoformat(timespec="seconds"),
                      "week_end": we.isoformat(timespec="seconds")},
-            "by_grade": by_grade}
+            "by_grade": by_grade,
+            "history": history}
 
 
 # ---------- 徽章进度统计（2026-10-20 徽章进度包，用户拍板+DeepSeek终审） ----------
@@ -601,9 +642,11 @@ def compute_badge_progress(events, now=None):
         # 合作之星：兄弟同日协同家务连续天数（需两年级数据，循环外补算见下）
         p["hezuozhixing"] = {"state": "ok", "current": 0, "target": 3,
                              "unit": "天", "mode": "连续"}
-        # 综合之星：本周已获不同徽章种类数 / 4
+        # 综合之星：本周已获不同徽章种类数 / 4（按 cycle_week 归属，
+        # 与展示/上限口径一致，不用台账写入日期）
         kinds = {e["key"] for e in events.get(gk, [])
-                 if ws_s <= e["date"] <= we_s}
+                 if (e.get("cycle_week") or cycle_week_of(e["date"]))
+                 == cycle_week_of(ws_s)}
         p["zonghezhixing"] = {"state": "ok", "current": min(len(kinds), 4),
                               "target": 4, "unit": "类", "mode": "本周"}
         # 三日不断：台账日期覆盖连续天数 / 3
@@ -673,26 +716,38 @@ def compute_badge_progress(events, now=None):
 
 
 
-def build_badge_goals(events, progress=None):
+def build_badge_goals(events, progress=None, now=None):
     catalog = [{"key": k, "name": n, "icon": i, "cond": c, "points": 5}
                for k, n, i, c in BADGE_CATALOG]
+    # 周期清空口径（2026-10-20）：obtained/date/count 按当前 cycle_week 计
+    # （本周期是否已获得），历史累计另存 total_count；往期成就看 badges.json
+    # 的 history（往期徽章区）。已发积分与台账历史不受此展示口径影响。
+    now = now or datetime.now(BEIJING)
+    ws, _we = week_bounds(now)
+    cur_cycle = cycle_week_of(ws.strftime("%Y-%m-%d"))
     by_grade = {}
     for gk in ("g5", "g6"):
         held = {}
         cnt = {}
+        total = {}
         for e in events.get(gk, []):
+            total[e["key"]] = total.get(e["key"], 0) + 1
+            if (e.get("cycle_week") or cycle_week_of(e["date"])) != cur_cycle:
+                continue
             if e["key"] not in held or e["date"] < held[e["key"]]:
                 held[e["key"]] = e["date"]
             cnt[e["key"]] = cnt.get(e["key"], 0) + 1
         entries = []
         for k, _, _, _ in BADGE_CATALOG:
             ent = {"key": k, "obtained": k in held,
-                   "date": held.get(k, ""), "count": cnt.get(k, 0)}
+                   "date": held.get(k, ""), "count": cnt.get(k, 0),
+                   "total_count": total.get(k, 0)}
             if progress and gk in progress and k in progress[gk]:
                 ent["progress"] = progress[gk][k]
             entries.append(ent)
         by_grade[gk] = entries
-    return {"schema_version": 1, "catalog": catalog, "by_grade": by_grade}
+    return {"schema_version": 1, "catalog": catalog, "by_grade": by_grade,
+            "cycle_week": cur_cycle}
 
 
 def build_shop(balances):
