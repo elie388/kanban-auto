@@ -1934,6 +1934,7 @@
       if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
       s += '<path d="' + segPath(sr.vals, g.X, g.Y) + '" fill="none" stroke="' + sr.col + '" stroke-width="2.4" stroke-linejoin="round"/>';
     });
+    var lblSpecs = [];
     series.forEach(function(sr){
       if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
       sr.vals.forEach(function(v, i){
@@ -1941,9 +1942,31 @@
         if(ONLYBAD && v >= TARGET) return;
         s += '<circle class="tr-pt' + (v < TARGET ? ' tr-bad' : '') + '" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="' + (v < TARGET ? 5 : 4) + '" fill="#fff" stroke="' + sr.col + '" stroke-width="2"/>';
       });
-      var lastV = null, lastI = -1;
-      sr.vals.forEach(function(v, i){ if(v !== null && v !== undefined){ lastV = v; lastI = i; } });
-      if(lastI >= 0) s += '<text x="' + g.X(lastI) + '" y="' + (g.Y(lastV) - 10) + '" font-size="12" font-weight="700" fill="' + sr.col + '" text-anchor="end">' + fmt(lastV) + '%</text>';
+      var lastV = null, lastI = -1, prevV = null;
+      sr.vals.forEach(function(v, i){ if(v !== null && v !== undefined){ prevV = lastV; lastV = v; lastI = i; } });
+      if(lastI >= 0){
+        /* 末点标签避让（2026-10-20，用户反馈 35% 标签被折线压住）：
+           选侧：线条下降进点（前值>末值）时进线从左上方来，标签改放点下方；上升/走平维持点上方。
+           边界：上方标签基线钳制 ≥13 防近 100% 时出界；下方基线将越过 282 → 回上方（靠描边晕保可读）。
+           282 来源：本图 H=300 固定，底部日期标签基线在 H-12=288，下方标签基线 >282 即进入日期行字形带，故以 282 为安全界（改 H/PB 时须同步复核此值）。
+           兜底：标签带白色描边晕（paint-order:stroke），任何残余相交不影响阅读。 */
+        var side = (prevV !== null && prevV > lastV) ? 1 : -1; /* 1=点下方, -1=点上方 */
+        if(side === 1 && g.Y(lastV) + 18 > 282) side = -1;
+        lblSpecs.push({ col: sr.col, x: g.X(lastI), v: lastV, side: side, txt: fmt(lastV) + '%' });
+      }
+    });
+    function lblY(L){ var ly = g.Y(L.v) + (L.side < 0 ? -10 : 18); return L.side < 0 ? Math.max(ly, 13) : ly; }
+    /* 双标签防撞：两条线末点标签横向接近（<48px）且纵向间距<15px 时，把数值较低的一条翻到另一侧。
+       前提：主图恒为两条线（五年级/六年级），故只处理 length===2；将来若加第三条线，须改为两两检测。 */
+    if(lblSpecs.length === 2){
+      var lxD = Math.abs(lblSpecs[0].x - lblSpecs[1].x);
+      if(lxD < 48 && Math.abs(lblY(lblSpecs[0]) - lblY(lblSpecs[1])) < 15){
+        var lowI = lblSpecs[0].v <= lblSpecs[1].v ? 0 : 1;
+        lblSpecs[lowI].side = -lblSpecs[lowI].side;
+      }
+    }
+    lblSpecs.forEach(function(L){
+      s += '<text x="' + L.x + '" y="' + lblY(L) + '" font-size="12" font-weight="700" fill="' + L.col + '" text-anchor="end" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="paint-order:stroke">' + L.txt + '</text>';
     });
     labels.forEach(function(d, i){
       if(i % (RANGE > 14 ? 3 : 2) === 0 || i === labels.length - 1)
