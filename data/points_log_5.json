@@ -1,12 +1,30 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-20T22:39:29+08:00",
+  "generated_at": "2026-10-20T22:47:02+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-20",
+      "time": "22:45",
+      "time_source": "entry",
+      "reason": "🏅家务小帮手徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:45",
+      "time_source": "entry",
+      "reason": "🏅三合一快手徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-20",
       "time": "22:00",
@@ -166,24 +184,6 @@
       "time_source": "entry",
       "reason": "英语口语按时发回",
       "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "22:20",
-      "time_source": "entry",
-      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "21:16",
-      "time_source": "entry",
-      "reason": "冲正： 53天天练正确率",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }
