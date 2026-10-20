@@ -176,6 +176,15 @@
   .task.correcting{border-color:#FFD97A;}
   .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
+  /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时与状态徽章并列 */
+  .task .corr-badge{
+    flex:0 0 auto;
+    font-size:13px; font-weight:700;
+    padding:5px 10px; border-radius:999px;
+    display:inline-flex; align-items:center; justify-content:center;
+    white-space:nowrap;
+    background:#FFE9E0; color:#C2410C;
+  }
   .task .task-info{flex:1; min-width:0; text-align:left;}
   .task .task-name{
     font-size:16px; font-weight:700;
@@ -1071,9 +1080,14 @@
         var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
         if(t.detail) sub2 += ' · ' + esc(t.detail);
         else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
+        /* 待改正标记（2026-10-20 家长拍板）：待订正未清零的任务并列显示，
+           与 done 新口径配套（还没完全改正不算已完成）。 */
+        var corrBadge = (typeof t.pending_corrections === 'number' && t.pending_corrections > 0)
+          ? '<span class="corr-badge">待改正 ' + t.pending_corrections + ' 题</span>' : '';
         html += '<div class="task ' + sm.cls + '"><div class="task-info">'
           + '<div class="task-name">' + esc(t.title) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
+          + corrBadge
           + '<span class="st-badge">' + sm.badge + '</span></div>';
       });
     }
