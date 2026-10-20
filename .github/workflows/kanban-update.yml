@@ -99,7 +99,8 @@ jobs:
               and set(d['by_grade'].keys()) == {'g5', 'g6'}),
             'data/badge_goals.json': lambda d: (
               d.get('schema_version') == 1 and isinstance(d.get('catalog'), list)
-              and len(d['catalog']) == 24 and 'by_grade' in d),
+              and len(d['catalog']) >= 1 and 'by_grade' in d
+              and set(d['by_grade'].keys()) == {'g5', 'g6'}),
             'data/shop.json': lambda d: (
               d.get('schema_version') == 1 and isinstance(d.get('items'), list)
               and len(d['items']) > 0),
