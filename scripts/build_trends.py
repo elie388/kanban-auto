@@ -55,21 +55,28 @@ SMALL_SAMPLE_JUDGED = 5          # Q3：已判<5 为小样本档
 
 
 def q_count(err, level="", status=""):
-    """补练题量 5-10（2026-10-20 家长令，DeepSeek 映射）：
-    base 按 err 分档（0→0,1-2→1,3-4→2,5-6→3,7-9→4,≥10→5）；M<80 +1；clamp [5,10]。
-    err≥10 或 顽固（err>5，重点记录口径）且未掌握 → 直接 10；证据不足 → 5。
-    注：题目库 knowledge_points 未存 M 分，用 掌握等级/掌握状态 作等价信号
-    （证据不足→证据不足；未掌握≈M<60；巩固中/未掌握→M<80 加成）。"""
+    """补练题量 5-10 终版表（2026-10-20 DeepSeek 定版，家长拍板加密）：
+              未掌握  巩固中
+    err 0-2     5      5
+    err 3-4     6      6
+    err 5-6     7      7
+    err 7-9     8      7
+    err ≥10    10      9
+    证据不足 → 5。注：原'顽固(err>5)且未掌握直达10'收窄为 err≥10 且未掌握
+    才直达 10（err 7-9 未掌握按表 8），此为 DeepSeek 终版表的自洽口径。
+    信号映射：题目库未存 M 分，status=未掌握→未掌握列，其余→巩固中列。"""
     if level == "证据不足":
         return 5
-    if err >= 10:
-        return 10
-    if err > 5 and status == "未掌握":
-        return 10
-    base = 0 if err == 0 else 1 if err <= 2 else 2 if err <= 4 else 3 if err <= 6 else 4 if err <= 9 else 5
-    if status == "未掌握" or level == "巩固中":
-        base += 1
-    return max(5, min(10, base))
+    col = (5, 6, 7, 8, 10) if status == "未掌握" else (5, 6, 7, 7, 9)
+    if err <= 2:
+        return col[0]
+    if err <= 4:
+        return col[1]
+    if err <= 6:
+        return col[2]
+    if err <= 9:
+        return col[3]
+    return col[4]
 
 
 def form_link(grade, subject, kp, n, mode):
