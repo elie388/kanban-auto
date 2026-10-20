@@ -1668,7 +1668,7 @@
         li.appendChild(sub);
       }else{
         li.appendChild(el('span', null, r.text));
-        if(r.remark){ li.appendChild(el('span', 'rule-remark', r.remark)); }
+        /* 2026-10-20用户要求：日期备注不显示（remark字段保留在数据中） */
         var badgeText = r.pts || null;
         if(!badgeText){
           var ms = String(r.text).match(/[+-]\d+/g) || [];
