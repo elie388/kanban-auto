@@ -5,6 +5,10 @@
 hidden_files/家务判定候选_YYYY-MM-DD.md，交每日总结汇总 -> DeepSeek 批量
 终审（首周逐笔）-> 通过才写台账 badge_ 条目并回写存档 [颁发:徽章名]。
 本脚本永不写台账、永不写存档、永不产生积分。
+台账读取/解析失败时 fail-closed（2026-10-20，DeepSeek 审查 P1#1）：抛错
+以非零码退出，当日清单写 JUDGE_STATUS: FAILED 失败标记（当日已有有效
+清单则不覆盖保留），绝不产出"已发 0 笔/已颁发：无"的假成功清单——防
+每日总结第 5.6 步终审被误导而重复颁发。
 未达也列（带进度/阈值）；存档无任何行时输出"无数据"而非 0。
 回补行只用于展示与对照：候选证据若全部为 [回补] 行，显式标注供终审裁定。
 周期清空机制（2026-10-20，规则手册《徽章进度口径·徽章周期清空》子节）：
@@ -24,6 +28,13 @@ import sync_sections as ss  # noqa: E402
 BASIC_ITEMS = ("洗碗", "扫地", "拖地", "晾衣服", "晾袜子", "整理桌面")
 PSEUDO_ITEMS = ("其他（连做链）",)
 GNAME = {"g5": "五年级", "g6": "六年级"}
+
+
+FAIL_MARKER = "JUDGE_STATUS: FAILED"
+
+
+class LedgerReadError(RuntimeError):
+    """台账（积分记录.md）读取/解析失败：判定器必须 fail-closed。"""
 
 
 def ref(r):
@@ -61,13 +72,20 @@ def judge(now):
     raw_events = {}
     try:
         raw_events = ss.extract_badge_events()
+        if not isinstance(raw_events, dict) \
+                or not all(isinstance(raw_events.get(gk), list)
+                           for gk in ("g5", "g6")):
+            raise ValueError("extract_badge_events 返回结构异常：%r"
+                             % (type(raw_events),))
         for gk in ("g5", "g6"):
             awarded[gk] = {}
             for e in raw_events.get(gk, []):
                 awarded[gk].setdefault(e["key"], []).append(e["date"])
-    except Exception:
-        awarded = {"g5": {}, "g6": {}}
-        raw_events = {}
+    except Exception as e:
+        # fail-closed（P1#1）：台账读取/解析失败绝不吞异常后用空数据继续
+        # 产出"已发 0 笔"的假成功清单——会误导总结终审重复颁发。抛错由
+        # main() 写失败标记并以非零码退出。
+        raise LedgerReadError("%s: %s" % (type(e).__name__, e)) from e
     # 本周已发累计（分年级）：仅统计带 cycle_week 落账字段的新条目；
     # 无 cycle_week 的历史行不计入（DeepSeek 二次终审执行解释，留痕口径）。
     week_issued = {}
@@ -217,7 +235,40 @@ def main():
     now = datetime.now(ss.BEIJING)
     date_s = now.strftime("%Y-%m-%d")
     out = a.out or str(ss.REPO.parent / ("家务判定候选_%s.md" % date_s))
-    body = judge(now)
+    try:
+        body = judge(now)
+    except LedgerReadError as e:
+        # fail-closed 落地：写失败标记（零候选条目），非零码退出。
+        # 当日文件已有有效清单（无失败标记）时不覆盖、保留原产物。
+        fail_text = "\n".join([
+            "# 家务判定候选清单 %s（判定器 22:30 自动产出）" % date_s,
+            "",
+            "<!-- %s -->" % FAIL_MARKER,
+            "> ⚠️ **判定失败：台账读取失败，已发累计未知，本清单无效——"
+            "无任何候选，禁止据此终审颁发。**",
+            "> 失败原因：%s" % e,
+            "> 处理要求：每日总结第 5.6 步见到本失败标记时，必须跳过家务"
+            "徽章终审并在元报告报警，不得按「无已发/已发 0 笔」处理；"
+            "待台账恢复后重跑判定器再行终审。",
+            "",
+        ]) + "\n"
+        preserved = False
+        if os.path.exists(out):
+            with open(out, encoding="utf-8") as f:
+                if FAIL_MARKER not in f.read():
+                    preserved = True
+        if not preserved:
+            with open(out, "w", encoding="utf-8") as f:
+                f.write(fail_text)
+        msg = ("JUDGE FAILED（台账读取失败，已发累计未知，候选清单无效）："
+               "%s" % e)
+        print(msg, file=sys.stderr)
+        print(msg)
+        if preserved:
+            print("当日已有有效清单，未覆盖（保留原产物）：", out)
+        else:
+            print("WROTE failure marker:", out)
+        sys.exit(2)
     head = ["# 家务判定候选清单 %s（判定器 22:30 自动产出）" % date_s, ""]
     if a.dry_run:
         head.append("> **演练（dry-run）：本清单仅供核对，候选不得写台账。**")
