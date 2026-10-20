@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T14:27:40+08:00",
+ "updated_at": "2026-10-20T15:11:08+08:00",
  "dates": [
   "2026-09-21",
   "2026-09-22",
@@ -50,20 +50,20 @@
     null,
     null,
     null,
-    65.7,
+    76.4,
     93.5,
     79.1,
     67.9,
     82.7,
     87.1,
     null,
-    78.8,
+    85.2,
     87.9,
     77.4,
-    60.3,
+    72.2,
     56.2,
     76.4,
-    35.0,
+    50.0,
     null
    ],
    "empty": false,
@@ -86,20 +86,20 @@
       null,
       null,
       null,
-      16.7,
+      null,
       null,
       83.7,
       54.5,
       82.6,
       92.9,
       null,
-      50.0,
+      null,
       91.2,
       85.7,
-      66.7,
+      70.6,
       66.7,
       57.1,
-      57.1,
+      null,
       null
      ],
      "weak": [
@@ -158,10 +158,10 @@
       100.0,
       86.5,
       84.1,
-      71.1,
+      73.0,
       60.0,
       87.1,
-      45.5,
+      50.0,
       null
      ],
      "weak": [
@@ -220,10 +220,10 @@
       81.0,
       85.5,
       70.6,
-      16.7,
+      null,
       33.3,
       63.3,
-      0.0,
+      null,
       null
      ],
      "weak": [
@@ -274,7 +274,7 @@
     null,
     null,
     null,
-    44.1,
+    52.4,
     100.0,
     100.0,
     68.9,
@@ -284,8 +284,8 @@
     79.6,
     86.6,
     90.4,
-    56.1,
-    78.4,
+    61.8,
+    85.7,
     92.5,
     null,
     null
@@ -310,7 +310,7 @@
       null,
       null,
       null,
-      44.1,
+      null,
       100.0,
       100.0,
       80.0,
@@ -320,8 +320,8 @@
       55.6,
       78.3,
       79.2,
-      55.2,
-      77.3,
+      61.5,
+      81.0,
       83.3,
       null,
       null
@@ -382,8 +382,8 @@
       94.2,
       86.8,
       95.7,
-      50.0,
-      86.7,
+      null,
+      92.9,
       92.1,
       null,
       null
@@ -434,7 +434,7 @@
       null,
       null,
       null,
-      0.0,
+      null,
       100.0,
       100.0,
       62.3,
@@ -445,7 +445,7 @@
       90.2,
       94.0,
       62.5,
-      71.4,
+      null,
       96.7,
       null,
       null
@@ -481,5 +481,190 @@
     }
    }
   }
- }
+ },
+ "isolation_reasons": {
+  "五年级": {
+   "语文": {
+    "2026-10-06": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M4"
+     ],
+     "judged": 12,
+     "correct": 2,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.833,
+     "small_sample": false
+    },
+    "2026-10-13": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M3"
+     ],
+     "judged": 6,
+     "correct": 3,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.5,
+     "small_sample": false
+    },
+    "2026-10-19": {
+     "reason": "pending_ratio=0.43",
+     "rules": [
+      "pending_ratio=0.43"
+     ],
+     "judged": 4,
+     "correct": 4,
+     "pending": 3,
+     "pending_share": 0.429,
+     "backfill_share": 0.0,
+     "small_sample": false
+    }
+   },
+   "英语": {
+    "2026-10-16": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M4"
+     ],
+     "judged": 12,
+     "correct": 2,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.25,
+     "small_sample": false
+    },
+    "2026-10-19": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M2"
+     ],
+     "judged": 9,
+     "correct": 0,
+     "pending": 2,
+     "pending_share": 0.182,
+     "backfill_share": 0.0,
+     "small_sample": false
+    }
+   }
+  },
+  "六年级": {
+   "语文": {
+    "2026-10-06": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M3"
+     ],
+     "judged": 34,
+     "correct": 15,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.559,
+     "small_sample": false
+    }
+   },
+   "数学": {
+    "2026-10-16": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M3"
+     ],
+     "judged": 4,
+     "correct": 2,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.5,
+     "small_sample": false
+    }
+   },
+   "英语": {
+    "2026-10-06": {
+     "reason": "adjudicated_group_isolation",
+     "rules": [
+      "adjudicated_M1-pure"
+     ],
+     "judged": 4,
+     "correct": 0,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 1.0,
+     "small_sample": false
+    },
+    "2026-10-17": {
+     "reason": "pending_ratio=0.58",
+     "rules": [
+      "pending_ratio=0.58"
+     ],
+     "judged": 10,
+     "correct": 10,
+     "pending": 14,
+     "pending_share": 0.583,
+     "backfill_share": 0.0,
+     "small_sample": false
+    }
+   }
+  }
+ },
+ "manual_review_queue": [
+  {
+   "date": "2026-10-19",
+   "grade": "五年级",
+   "subject": "语文",
+   "reason": "pending_ratio=0.43",
+   "rules": [
+    "pending_ratio=0.43"
+   ],
+   "judged": 4,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-16",
+   "grade": "六年级",
+   "subject": "数学",
+   "reason": "adjudicated_group_isolation",
+   "rules": [
+    "adjudicated_M3"
+   ],
+   "judged": 4,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-06",
+   "grade": "六年级",
+   "subject": "英语",
+   "reason": "adjudicated_group_isolation",
+   "rules": [
+    "adjudicated_M1-pure"
+   ],
+   "judged": 4,
+   "small_sample_flag": true
+  }
+ ],
+ "paper_batch_alerts": [
+  {
+   "date": "2026-10-17",
+   "grade": "六年级",
+   "subject": "语文",
+   "mail_id": "1a1487bd506a2e87",
+   "judged": 3,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-19",
+   "grade": "五年级",
+   "subject": "数学",
+   "mail_id": "1019_1",
+   "judged": 8,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-19",
+   "grade": "五年级",
+   "subject": "英语",
+   "mail_id": "1019_1",
+   "judged": 9,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  }
+ ]
 }
