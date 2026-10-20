@@ -228,6 +228,11 @@ import sqlite3 as _sqlite3
 from datetime import date as _date
 
 PROGRESS_FILE = REPO.parent / "徽章进度落记.md"
+CHORE_ARCHIVE_FILE = REPO.parent / "家务记录.md"
+CHORE_SKIP_LOG = REPO / "logs" / "chore_archive_skip.log"
+# desk_untidy 不进进度，仅台账：负面条目（不整理书桌等）只在台账扣分，
+# 永不写入家务记录存档、不参与任何徽章进度（DeepSeek 终审 2026-10-20）。
+CHORE_NEG_WORDS = ("不整理", "未整理", "未做")
 DAILY_FLAG_FILE = REPO.parent / "日结记录.jsonl"
 QBANK_DB = REPO.parent / "题目库.db"
 WRITING_DECIDE_LOG = REPO / "logs" / "badge_writing_decide.log"
@@ -273,6 +278,7 @@ def _ledger_rows_full():
 
 
 def _is_chore(row):
+    # 旧台账家务口径：2026-10-20 起家务类进度改读家务记录.md，本函数已无调用方，保留备查。
     if row["delta"] <= 0 or "badge" in row["key"] or "lianzuo" in row["key"]:
         return False
     if "连做" in row["desc"]:
@@ -302,10 +308,10 @@ def _streak_from_dates(date_set, today):
 
 
 def _parse_progress_notes():
-    """解析徽章进度落记.md：整理口头 / 晚睡报告 / 家务接力。返回 dict。"""
-    res = {"tidy_oral": {"g5": set(), "g6": set()},
-           "late_sleep": {"g5": set(), "g6": set()},
-           "relay": []}  # relay: [(date, member)]
+    """解析徽章进度落记.md：仅晚睡报告。（整理口头/家务接力已于 2026-10-20
+    迁入家务记录.md 计数，见 _parse_chore_archive；本文件只保留晚睡报告节。）
+    注：desk_untidy 不进进度，仅台账——负面条目不落记、不在此解析（DeepSeek 终审）。"""
+    res = {"late_sleep": {"g5": set(), "g6": set()}}
     if not PROGRESS_FILE.exists():
         return res
     gmap = {"五年级": "g5", "六年级": "g6"}
@@ -319,18 +325,72 @@ def _parse_progress_notes():
             if gn in line:
                 gk = k
                 break
-        if "zhengli_zhuomian_koutou" in line and gk:
-            res["tidy_oral"][gk].add(d0)
-        elif "wanshui_report" in line and gk:
+        if "wanshui_report" in line and gk:
             nm = re.search(r"(\d{1,2})-(\d{1,2})\s*晚", line)
             if nm:
                 year = d0[:4]
                 res["late_sleep"][gk].add("%s-%02d-%02d" % (year, int(nm.group(1)), int(nm.group(2))))
-        elif "jiawu_jieli" in line:
-            mm2 = re.search(r"接力[:：]\s*(\S+?)[\s|]", line)
-            if mm2:
-                res["relay"].append((d0, mm2.group(1)))
     return res
+
+
+def _chore_skip_log(line, reason):
+    try:
+        CHORE_SKIP_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with open(CHORE_SKIP_LOG, "a", encoding="utf-8") as f:
+            f.write("%s skip reason=%s row=%s\n" % (
+                datetime.now(BEIJING).isoformat(timespec="seconds"),
+                reason, line.strip()[:200]))
+    except OSError:
+        pass
+
+
+def _parse_chore_archive():
+    """解析家务记录.md（家务事实唯一记录面，2026-10-20 起家务类进度只读本存档）。
+    返回 {"exists": bool, "rows": [...], "dates": {gk: set(日期)},
+          "tidy": {gk: [(日期, 是否回补)]}, "coop_dates": set(日期),
+          "relay": {日期: set(gk|'fam')}}。
+    负向硬过滤：标记含 negative、或行内命中"不整理/未整理/未做"的行一律 skip
+    并记 skip 日志，绝不进入任何进度（写入侧误混的最后一道拦截）。"""
+    out = {"exists": False, "rows": [],
+           "dates": {"g5": set(), "g6": set()},
+           "tidy": {"g5": [], "g6": []},
+           "coop_dates": set(), "relay": {}}
+    if not CHORE_ARCHIVE_FILE.exists():
+        return out
+    out["exists"] = True
+    gmap = {"五": "g5", "六": "g6", "家庭": "fam"}
+    pair = {}  # (date, item) -> set(gk)：兄弟合作成对判定
+    for line in CHORE_ARCHIVE_FILE.read_text(encoding="utf-8").split("\n"):
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 9 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", cells[0]):
+            continue
+        dstr, grade, item, mode, partner = cells[0], cells[1], cells[2], cells[3], cells[4]
+        evidence, tstr, key, mark = cells[5], cells[6], cells[7], cells[8]
+        # 负向过滤（代码拦截，防负面报告误混入存档）
+        if "negative" in mark or any(w in (item + mark + key) for w in CHORE_NEG_WORDS):
+            _chore_skip_log(line, "negative")
+            continue
+        gk = gmap.get(grade)
+        if gk is None:
+            _chore_skip_log(line, "bad_grade")
+            continue
+        row = {"date": dstr, "gk": gk, "item": item, "mode": mode,
+               "partner": partner, "evidence": evidence, "time": tstr,
+               "key": key, "mark": mark,
+               "backfill": "[回补]" in mark}
+        out["rows"].append(row)
+        if gk in ("g5", "g6"):
+            out["dates"][gk].add(dstr)
+            if item == "整理桌面":
+                out["tidy"][gk].append((dstr, row["backfill"]))
+            if mode == "合作" and partner == "兄弟":
+                pair.setdefault((dstr, item), set()).add(gk)
+        out["relay"].setdefault(dstr, set()).add(gk)
+    out["coop_dates"] = {d for (d, _it), st in pair.items()
+                         if st == {"g5", "g6"}}
+    return out
 
 
 def _sleep_streak(late_dates, now):
@@ -490,6 +550,7 @@ def compute_badge_progress(events, now=None):
     now_iso = now.isoformat(timespec="seconds")
     rows_by_g = _ledger_rows_full()
     notes = _parse_progress_notes()
+    arch = _parse_chore_archive()
     flags = _load_daily_flags()
     ws, we = week_bounds(now)
     ws_s, we_s = ws.strftime("%Y-%m-%d"), we.strftime("%Y-%m-%d")
@@ -497,11 +558,12 @@ def compute_badge_progress(events, now=None):
     out = {}
     for gk in ("g5", "g6"):
         rows = rows_by_g[gk]
-        chore_dates = {r["date"] for r in rows if _is_chore(r)}
-        tidy_dates = {r["date"] for r in rows
-                      if r["delta"] > 0 and ("整理桌面" in r["desc"]
-                                             or "zhengli" in r["key"])}
-        tidy_dates |= notes["tidy_oral"][gk]
+        # 家务类数据源（2026-10-20 切换，DeepSeek 定稿）：只读家务记录存档，
+        # 不再读台账家务条目、不做双读过渡。事实只认存档，积分只认台账。
+        chore_dates = arch["dates"].get(gk, set())
+        tidy_all_dates = {d for d, _bf in arch["tidy"].get(gk, [])}
+        # 整理小达人活进度不计 [回补] 行（用户拍板 2026-10-20）
+        tidy_live_dates = {d for d, bf in arch["tidy"].get(gk, []) if not bf}
         late_dates = {r["date"] for r in rows
                       if r["delta"] < 0 and ("晚睡" in r["desc"]
                                              or "超23点" in r["desc"]
@@ -514,12 +576,12 @@ def compute_badge_progress(events, now=None):
         wk = len({d for d in chore_dates if ws_s <= d <= we_s})
         p["jiawuzhixing"] = {"state": "ok", "current": min(wk, 5), "target": 5,
                              "unit": "天", "mode": "本周"}
-        # 整理小达人：整理类连续天数 / 5
+        # 整理小达人：整理桌面连续天数 / 5（存档非回补行）
         p["zhengdalidaren"] = {"state": "ok",
-                               "current": min(_streak_from_dates(tidy_dates, today), 5),
+                               "current": min(_streak_from_dates(tidy_live_dates, today), 5),
                                "target": 5, "unit": "天", "mode": "连续"}
-        # 整理之星：整理桌面累计天数 / 5
-        p["zhenglizhixing"] = {"state": "ok", "current": min(len(tidy_dates), 5),
+        # 整理之星：整理桌面累计天数 / 5（存档按日去重，照片+口头同日合 1）
+        p["zhenglizhixing"] = {"state": "ok", "current": min(len(tidy_all_dates), 5),
                                "target": 5, "unit": "天", "mode": "累计"}
         # 熄灯小超人：睡眠连续 / 5
         sl = _sleep_streak(late_dates, now)
@@ -573,24 +635,17 @@ def compute_badge_progress(events, now=None):
         p["tupoxiaoyongshi"] = tp if tp is not None else {
             "state": "nodata", "note": "题目库暂不可用"}
         out[gk] = p
-    # 合作之星补算：两年级同日均有"合作"标识家务条目
-    coop = {}
-    for gk in ("g5", "g6"):
-        coop[gk] = {r["date"] for r in rows_by_g[gk]
-                    if _is_chore(r) and ("合作" in r["desc"] or "hezuo" in r["key"])}
-    both = coop["g5"] & coop["g6"]
+    # 合作之星补算：存档中兄弟同日同项目「合作/兄弟」成对日（只读家务记录.md）
     for gk in ("g5", "g6"):
         out[gk]["hezuozhixing"]["current"] = min(
-            _streak_from_dates(both, today), 3)
+            _streak_from_dates(arch["coop_dates"], today), 3)
     # 家务接力手补算（2026-10-20 改版，DeepSeek 方案+家长拍板）：
     # 同周两兄弟各≥2项、合计≥4、至少1次接力动作（同项不同日两人做过，或同日不同项目）
+    # 数据源 2026-10-20 切换为家务记录.md（原台账读法同日废止）；连做链伪行不计项。
     def _chore_items(gk):
-        items = []
-        for r in rows_by_g[gk]:
-            if _is_chore(r) and ws_s <= r["date"] <= we_s:
-                m = re.search(r"_\d{4}-\d{2}-\d{2}_([a-z]+)", r["key"])
-                items.append((r["date"], m.group(1) if m else r["desc"]))
-        return items
+        return [(r["date"], r["item"]) for r in arch["rows"]
+                if r["gk"] == gk and ws_s <= r["date"] <= we_s
+                and r["item"] != "其他（连做链）"]
     ci5, ci6 = _chore_items("g5"), _chore_items("g6")
     relay = False
     for i in {x for _, x in ci5} & {x for _, x in ci6}:
