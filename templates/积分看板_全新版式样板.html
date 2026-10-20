@@ -454,9 +454,19 @@
   .card h2 .tag-demo.tag-live{ margin-left:auto; }
   .grade-head .tag-demo.tag-live{ margin-left:auto; }
 
-  /* 2026-10-20 KB-TAG-LIVE-SIZE：栏目"实时数据"标签尺寸与余额卡统一（DeepSeek方案）
-     荣耀徽章/徽章目标榜/积分商店/积分日志 4 处 → 对齐 .bal-demo-tag（11px/1.4/1px 8px/400）。
-     override 不改原规则；仅命中带 .tag-live 的"实时数据"标签；今日任务标签命中同理属统一意图。 */
+  /* 2026-10-20 KB-TAG-LIVE-FONT10：栏目"实时数据"标签字号调小（DeepSeek方案，用户反馈"偏大"）
+     根因：第678/702/718/781行 4 处静态栏目标签(.card.collapse > .tag-live)原先无字号声明、继承 16px 偏大；
+     上版 override(.card h2 .tag-demo.tag-live)未命中这些元素，属选择器错配，本版纠正。
+     分治：4 处栏目标签 10px / 余额卡·今日任务·积分日志标签 11px 维持。
+     (Gemini初审意见已落实：今日任务标签不再波及，保持 11px；letter-spacing 删除，避免低分屏渲染劣化)
+     动效 scale(1.10) 峰值等效约 11px，不超改动前静息值。override 不改原规则，可回滚。 */
+  .card.collapse > .tag-live{
+    font-size:10px;
+    font-weight:400;
+    line-height:1.4;
+    padding:1px 7px;
+  }
+  /* 余额卡档(.bal-demo-tag 自带 11px)、今日任务档、积分日志档：维持 11px 不变 */
   .card h2 .tag-demo.tag-live,
   .grade-head .tag-demo.tag-live{
     font-size:11px;
