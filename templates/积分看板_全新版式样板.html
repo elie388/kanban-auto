@@ -1915,8 +1915,7 @@
     h += '<div id="tr-tip">👆 点任意一个点，看那天的明细</div>';
     h += '<div id="tr-wknote" class="tr-note" style="display:none"></div>';
     h += '<div id="tr-act" class="tr-act"><div style="font-weight:800;margin-bottom:4px">🎯 本周行动建议</div>'
-      + '<div id="tr-actbody" style="color:#6B7280"></div>'
-      + '<div style="margin-top:8px"><span id="tr-actgo" style="background:#E8873A;color:#fff;padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer">生成今晚补练 →</span></div></div>';
+      + '<div id="tr-actlist"></div></div>';
     h += '<div class="tr-inc"><div style="display:flex;justify-content:space-between;font-size:12.5px;color:#6B7280"><span>🎟️ 达标激励 · 累计达标天数</span><span id="tr-inctxt"></span></div>'
       + '<div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap" id="tr-incrow"></div></div>';
     h += '<div class="tr-ft" id="tr-ft"></div>';
@@ -1967,7 +1966,7 @@
       });
     });
 
-    /* 薄弱日点评 + 行动建议（数据链：最弱日 → 最弱科目 → 该科第1薄弱点） */
+    /* 薄弱日点评（数据链：双年级全局最弱日 → 当日最弱科目；口径同改版前，科目并列按 SUBJS 顺序） */
     var off = TD.dates.length - RANGE, best = null;
     GRADES.forEach(function(gr){
       sl(TD.grades[gr].overall, RANGE).forEach(function(v, i){
@@ -1977,32 +1976,70 @@
     });
     if(best){
       var fullI = off + best.i, subjVals = SUBJS.map(function(sn){
-        return { sn: sn, v: TD.grades[best.gr].subjects[sn].days[fullI] };
+        return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[best.gr].subjects[sn].days[fullI] };
       }).filter(function(x){ return x.v !== null && x.v !== undefined; });
-      subjVals.sort(function(x, y){ return x.v - y.v; });
+      subjVals.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
       if(subjVals.length){
         var wsn = subjVals[0].sn;
         var wk = el('tr-wknote'); wk.style.display = 'block';
         wk.innerHTML = '💡 薄弱日：' + TD.dates[fullI].slice(5) + '（' + best.gr + ' ' + fmt(best.v) + '%），' + wsn + '最低 ' + fmt(subjVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。';
-        var topW = (TD.grades[best.gr].subjects[wsn].weak || [])[0];
-        var act = el('tr-act'); act.style.display = 'block';
-        if(topW){
-          el('tr-actbody').innerHTML = '重点：' + best.gr + '《' + wsn + '》薄弱点 <b>' + topW.kp + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>今晚重做，做对计入复测。与下方单科卡里点这个薄弱点出题是同一件事。';
-          act.dataset.g = best.gr; act.dataset.sn = wsn; act.dataset.kp = topW.kp;
-        } else {
-          el('tr-actbody').innerHTML = '针对' + best.gr + '的' + wsn + '：从错题本挑同类题今晚重做，做对计入复测。';
-          act.dataset.g = best.gr; act.dataset.sn = wsn; act.dataset.kp = '';
-        }
-        el('tr-actgo').addEventListener('click', function(){
-          showSubj(act.dataset.g, act.dataset.sn);
+      }
+    }
+
+    /* 本周行动建议（F5·2026-10-20，DeepSeek 终审方案：按年级各出一条，顺序固定五年级→六年级）。
+       度量口径（C2，与现行单条逻辑一致）：
+         最弱日 = 该年级在当前窗口内 overall 正确率最低的日期（跳过 null，相同值取较早日期）；
+         最弱科目 = 当日各科正确率（subjects[科].days[最弱日全量索引]）最低者，并列时按 SUBJS 顺序（语→数→英）取前者；
+         薄弱点 = 该科 weak[0]（与单科卡同一条数据链）。
+       两态兜底（C3/C4）：该年级窗口内完全无 overall 数据 → 明示"数据未接入"；
+         有数据但最弱科目无科目数值或 weak 为空 → 兜底文案"本周期暂无明显薄弱点"，仍出条、无按钮。 */
+    var actHtml = '';
+    GRADES.forEach(function(gr){
+      var gb = null;
+      sl(TD.grades[gr].overall, RANGE).forEach(function(v, i){
+        if(v === null || v === undefined) return;
+        if(!gb || v < gb.v) gb = { i: i, v: v };
+      });
+      if(!gb){
+        actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + gr + '</b>：数据未接入。</div>';
+        return;
+      }
+      var fI = off + gb.i, sv = SUBJS.map(function(sn){
+        return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fI] };
+      }).filter(function(x){ return x.v !== null && x.v !== undefined; });
+      sv.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
+      var topW = sv.length ? (TD.grades[gr].subjects[sv[0].sn].weak || [])[0] : null;
+      if(sv.length && topW){
+        actHtml += '<div class="tr-actrow" data-g="' + gr + '" data-sn="' + sv[0].sn + '" data-kp="' + topW.kp + '" style="margin-top:6px">'
+          + '<div style="color:#6B7280">重点：' + gr + '《' + sv[0].sn + '》薄弱点 <b>' + topW.kp + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>今晚重做，做对计入复测。与下方单科卡里点这个薄弱点出题是同一件事。</div>'
+          + '<div style="margin-top:8px"><span class="tr-actgo" style="background:#E8873A;color:#fff;padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer">生成今晚补练 →</span></div></div>';
+      } else {
+        actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + gr + '</b>：本周期暂无明显薄弱点，继续保持。</div>';
+      }
+    });
+    var actBox = el('tr-act');
+    if(actHtml){
+      actBox.style.display = 'block';
+      el('tr-actlist').innerHTML = actHtml;
+      /* C5：每条按钮携带 (年级, 科目, kp) 并与所选最弱科目一致；点击跳到该科单科卡并点开对应薄弱点行，
+         找不到对应行时降级为滚动到单科卡区域供手动查看。 */
+      actBox.querySelectorAll('.tr-actgo').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var row = btn.closest('.tr-actrow');
+          var g = row.dataset.g, sn = row.dataset.sn, kp = row.dataset.kp;
+          showSubj(g, sn);
           setTimeout(function(){
-            var rows = el('tr-subj').querySelectorAll('.tr-wrow');
-            rows.forEach(function(r){
-              if(r.dataset.kp === act.dataset.kp){ r.click(); r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            var hit = null;
+            el('tr-subj').querySelectorAll('.tr-wrow').forEach(function(r){
+              if(r.dataset.kp === kp) hit = r;
             });
+            if(hit){ hit.click(); hit.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            else { var box = el('tr-subj'); if(box && box.scrollIntoView) box.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
           }, 150);
         });
-      }
+      });
+    } else {
+      actBox.style.display = 'none';
     }
 
     /* 达标激励 */
