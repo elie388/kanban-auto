@@ -63,8 +63,6 @@ BADGE_MAP = [
      "trigger": "当日零扣分"},
     {"icon": "💰", "name": "百分俱乐部", "key": "badge_baifen", "points": "+10",
      "trigger": "余额首次突破100（一次性）"},
-    {"icon": "👑", "name": "学霸", "key": "badge_xueba", "points": "+10/次",
-     "trigger": "当日有考试90分以上（同一考试只加一次）"},
     {"icon": "🎯", "name": "全对小达人", "key": "badge_quandui", "points": "+1",
      "trigger": "单日作业+练习正确率100%"},
     {"icon": "⏰", "name": "守时小达人", "key": "badge_shoushi", "points": "+1",

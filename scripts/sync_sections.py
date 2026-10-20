@@ -70,6 +70,8 @@ LEGACY_BADGES = {
     "dingzhengxiaonengshou": ("订正小能手", "✏️"),
     "shuxiexiaodaren": ("书写小达人", "✍️"),
     "quanqinxiaobiaobing": ("全勤小标兵", "📅"),
+    "kaoshibuzhixing": ("考试进步之星", "📈"),
+    "meirijinbuzhixing": ("每日进步之星", "🚀"),
 }
 BADGE_MAP = {k: {"name": n, "icon": i} for k, n, i, _ in BADGE_CATALOG}
 BADGE_MAP.update({k: {"name": n, "icon": i} for k, (n, i) in LEGACY_BADGES.items()})
