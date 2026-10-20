@@ -430,6 +430,29 @@ def r4_diff_check(snapshot_before):
 # ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
+def semantic_diff(old_obj, new_obj, generated_at):
+    """幂等 + R3 单调性判定（DeepSeek 终审 2026-10-20 看板全栏目实时同步）。
+
+    返回 (should_write: bool, reason: str)：
+      - no_old            旧文件不存在/不可解析 → 写
+      - no_semantic_change 忽略 generated_at 后语义一致 → 不写（真实幂等）
+      - monotonic_guard    旧文件 generated_at 严格大于新值 → 不写（R3 防乱序回退）
+      - changed            语义有变化且时间戳单调 → 写
+    """
+    if not isinstance(old_obj, dict):
+        return True, "no_old"
+    _o = dict(old_obj)
+    _n = dict(new_obj)
+    _o.pop("generated_at", None)
+    _n.pop("generated_at", None)
+    if _o == _n:
+        return False, "no_semantic_change"
+    _old_ga = old_obj.get("generated_at") or ""
+    if _old_ga > generated_at:
+        return False, "monotonic_guard"
+    return True, "changed"
+
+
 def write_json_atomic(path, obj):
     """写 JSON 后读回校验（§7.3 生成端）；失败 raise。"""
     tmp = path + ".tmp"
@@ -446,18 +469,40 @@ def main():
     if "--selftest" in sys.argv:
         return selftest()
 
+    # R3（DeepSeek 终审 2026-10-20 看板全栏目实时同步）：build 串行锁 ——
+    # 守护进程事件触发与 15m/5m 兜底 cron 可能并发调用本脚本，NB 锁保证同一时刻
+    # 只有一个 build 写 data/*.json，防产物交错 + generated_at 乱序。
+    # 抢不到锁 → 跳过本轮（fail-safe），不报错。
+    _lock_fp = open("/tmp/build_stats.lock", "w")
+    try:
+        fcntl.flock(_lock_fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        log("skip: build lock held（另一 build 正在运行，本轮跳过）")
+        return 0
+
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(LOGS_DIR, exist_ok=True)
     today = datetime.now(TZ).date()
     generated_at = datetime.now(TZ).isoformat(timespec="seconds")
 
-    # R4-1：替换前 pull --rebase；冲突 → 不 commit、写 err、告警
-    pr = git("pull", "--rebase")
+    # R4-1（2026-10-20根治，DeepSeek方案）：先自动 stash 未提交改动 →
+    # pull --ff-only → stash pop。主工作区未提交文件不再阻塞同步。
+    stash_r = git("stash", "push", "-u", "-m", "build_stats-auto")
+    stashed = (stash_r.returncode == 0 and "Saved working directory" in stash_r.stdout)
+    pr = git("pull", "--ff-only")
     if pr.returncode != 0:
-        msg = "R4 拦截：git pull --rebase 冲突，停手待人工处理"
+        msg = "R4 拦截：git pull --ff-only 失败，停手待人工处理"
         warn(msg)
         err_write("NEED-REVIEW " + msg + " :: " + pr.stderr[:200])
+        if stashed:
+            git("stash", "pop")
         return 2
+    if stashed:
+        pop_r = git("stash", "pop")
+        if pop_r.returncode != 0:
+            msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
+            warn(msg)
+            err_write("NEED-REVIEW " + msg + " :: " + pop_r.stderr[:200])
     snap = git("diff", "--stat").stdout
 
     try:
@@ -491,19 +536,29 @@ def main():
         outputs["data/shop_grade_%d.json" % grade] = build_shop(
             grade, balances[grade], generated_at)
 
-    # 写文件（原子写 + 读回校验）
+    # 写文件（原子写 + 读回校验；幂等判定见 semantic_diff）
+    # 说明（DeepSeek 终审 2026-10-20）：忽略 generated_at 比较语义内容，
+    # 无语义变化 → 不重写文件、不 commit。旧实现因 generated_at 每轮变化导致
+    # 每次运行都 commit，闸门删除后会形成 push 风暴，威胁 GitHub Actions
+    # 2000 分钟/月免费额度 —— 本修复为设计文档"无变更不 push"的真实落实。
     changed_files = []
     for rel, obj in outputs.items():
         path = os.path.join(REPO_DIR, rel)
-        old = None
+        old_obj = None
         if os.path.exists(path):
-            with open(path, encoding="utf-8") as f:
-                old = f.read()
+            try:
+                with open(path, encoding="utf-8") as f:
+                    old_obj = json.load(f)
+            except Exception:
+                old_obj = None
+        should_write, reason = semantic_diff(old_obj, obj, generated_at)
+        if not should_write:
+            if reason != "no_semantic_change":
+                warn("跳过覆盖 %s（原因：%s）" % (rel, reason))
+                err_write("SKIP_WRITE %s reason=%s" % (rel, reason))
+            continue
         write_json_atomic(path, obj)
-        with open(path, encoding="utf-8") as f:
-            new = f.read()
-        if old != new:
-            changed_files.append((rel, old is None))  # (路径, 是否为新建)
+        changed_files.append((rel, old_obj is None))  # (路径, 是否为新建)
 
     # 模板三重替换（B2+B4）
     tpl_changed, tpl_detail = replace_template_balances(balances)
@@ -737,6 +792,28 @@ def selftest():
         rec("T6c G6边界豁免", True, "10-19缺标注豁免，time=None")
     except Exception as e:
         rec("T6a/T6b/T6c G6", False, str(e)[:200])
+
+    # --- T7 幂等 + R3 单调性判定（DeepSeek 终审 2026-10-20 看板全栏目实时同步）---
+    try:
+        ga_new = "2026-10-20T11:00:00+08:00"
+        ga_old = "2026-10-20T10:00:00+08:00"
+        ga_future = "2026-10-20T12:00:00+08:00"
+        base = {"schema_version": "1.0", "grade": 5, "balance": 10}
+        # 无语义变化（仅 generated_at 不同）→ 不写
+        w, r = semantic_diff(dict(base, generated_at=ga_old), dict(base, generated_at=ga_new), ga_new)
+        assert (w, r) == (False, "no_semantic_change"), (w, r)
+        # 语义变化 + 时间戳单调 → 写
+        w, r = semantic_diff(dict(base, generated_at=ga_old), dict(base, balance=11, generated_at=ga_new), ga_new)
+        assert (w, r) == (True, "changed"), (w, r)
+        # 语义变化但旧时间戳在未来 → 单调性拦截
+        w, r = semantic_diff(dict(base, generated_at=ga_future), dict(base, balance=11, generated_at=ga_new), ga_new)
+        assert (w, r) == (False, "monotonic_guard"), (w, r)
+        # 无旧文件 → 写
+        w, r = semantic_diff(None, dict(base, generated_at=ga_new), ga_new)
+        assert (w, r) == (True, "no_old"), (w, r)
+        rec("T7 幂等+R3单调性", True, "semantic_diff 四分支（no_semantic_change/changed/monotonic_guard/no_old）均正确")
+    except Exception as e:
+        rec("T7 幂等+R3单调性", False, str(e)[:200])
 
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
