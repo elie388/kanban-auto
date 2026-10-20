@@ -1005,8 +1005,8 @@
   var DATA_BASE = 'https://whyjjf.lol/data/';
   var REFRESH_MS = 5 * 60 * 1000;
   var STATUS_MAP = {
-    pending:     {cls: 'pending',    badge: '⭕ 未完成'},
-    in_progress: {cls: 'correcting', badge: '🔄 订正中'},
+    pending:     {cls: 'pending',    badge: '📝 待提交'},
+    in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务'};
@@ -1066,17 +1066,8 @@
     } else {
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
-        /* P1-B（异常 #5，DeepSeek 终审）：pending 语义拆分 — 未到当日截止显示"待完成"，
-           过截止才显示"未完成"；无 deadline_today 字段时保持旧行为。 */
-        if(t.status === 'pending' && data.deadline_today){
-          var dlT = new Date(data.deadline_today).getTime();
-          if(isNaN(dlT)){
-            if(!window.__DL_BAD){ window.__DL_BAD = 1; console.warn('deadline_today 无法解析:', data.deadline_today); }
-          }
-          else if(Date.now() <= dlT) sm = {cls:'pending', badge:'🕐 待完成'};
-        } else if(t.status === 'pending' && !window.__DL_W){
-          window.__DL_W = 1; console.warn('deadline_today 缺失，pending 退回旧语义"未完成"');
-        }
+        /* 三态显示名（2026-10-20 家长定）：pending 统一显示"📝 待提交"，
+           不再按 deadline_today 拆分显示（原 P1-B 拆分取消）。 */
         var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
         if(t.detail) sub2 += ' · ' + esc(t.detail);
         else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
