@@ -14,7 +14,7 @@
     },
     {
       "pts": 150,
-      "name": "1小时和平精英或2小时Minecraft",
+      "name": "1小时和平精英\n或2小时Minecraft",
       "kind": "和平精英"
     },
     {
@@ -33,7 +33,7 @@
       "kind": "愿望"
     }
   ],
-  "current_balance": 175,
-  "generated_at": "2026-10-19T22:47:02+08:00",
+  "current_balance": 170,
+  "generated_at": "2026-10-20T11:14:32+08:00",
   "rule_source": "规则手册第85行"
 }
