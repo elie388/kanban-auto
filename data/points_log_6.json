@@ -1,12 +1,21 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-20T14:49:21+08:00",
+  "generated_at": "2026-10-20T17:56:36+08:00",
   "window": {
     "days": 30,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-20",
+      "time": "17:51",
+      "time_source": "entry",
+      "reason": "📆三日不断徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-19",
       "time": "22:20",
@@ -176,15 +185,6 @@
       "reason": "英语阅读写作练习第五期没交",
       "pts": -5,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "19:34",
-      "time_source": "submit",
-      "reason": "冲正：针对性练习背诵录音没发",
-      "pts": 5,
-      "sign": "plus",
       "filtered": false
     }
   ],
