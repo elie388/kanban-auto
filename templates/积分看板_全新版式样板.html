@@ -963,7 +963,7 @@
     in_progress: {cls: 'correcting', badge: '🔄 订正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
-  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录'};
+  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务'};
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -978,8 +978,11 @@
     var sec = document.getElementById(secId);
     if(!sec || !data || data.date !== todayStr()) return false;
     var list = (data.tasks || []).filter(function(t){ return t.review_status === 'approved'; });
-    var total = list.length;
-    var done = list.filter(function(t){ return t.status === 'done'; }).length;
+    /* meta 常驻任务「提交作业登记本」（2026-10-20，DeepSeek 方案）：不计入完成率分母 */
+    var metas = list.filter(function(t){ return t.task_type === 'meta_register'; });
+    var normals = list.filter(function(t){ return t.task_type !== 'meta_register'; });
+    var total = normals.length;
+    var done = normals.filter(function(t){ return t.status === 'done'; }).length;
     var progText = sec.querySelector('.task-prog-text');
     var progBar = sec.querySelector('.task-prog-bar');
     var progFill = sec.querySelector('.task-prog-fill');
@@ -993,13 +996,23 @@
     if(progFill) progFill.style.width = (total ? (done / total * 100) : 0) + '%';
     var taskList = sec.querySelector('.task-list');
     if(!taskList) return false;
+    /* meta 置顶；完成（completed_at）超过 30 分钟后隐藏，数据保留 */
+    var visible = [];
+    metas.forEach(function(t){
+      if(t.completed_at){
+        var age = Date.now() - new Date(t.completed_at).getTime();
+        if(!isNaN(age) && age > 30 * 60 * 1000) return;
+      }
+      visible.push(t);
+    });
+    visible = visible.concat(normals);
     var html = '';
-    if(total === 0){
+    if(visible.length === 0){
       html = '<div class="task done"><div class="task-info"><div class="task-name">今日暂无任务</div>'
         + '<div class="task-progress">全部完成，放松一下吧</div></div>'
         + '<span class="st-badge">\u2705 已完成</span></div>';
     } else {
-      list.forEach(function(t){
+      visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
         /* P1-B（异常 #5，DeepSeek 终审）：pending 语义拆分 — 未到当日截止显示"待完成"，
            过截止才显示"未完成"；无 deadline_today 字段时保持旧行为。 */
