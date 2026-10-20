@@ -533,11 +533,66 @@ def main():
             warn(msg)
             err_write("NEED-REVIEW " + msg + " :: " + (pop_r.stderr or "")[:200])
 
-    pr = git("pull", "--ff-only")
-    if pr.returncode != 0:
-        msg = "R4 拦截：git pull --ff-only 失败，停手待人工处理"
+    # R4-3（2026-10-20，DeepSeek 方案+家长拍板）：弃用 git pull --ff-only
+    # （偶发 fatal: Cannot fast-forward to multiple branches），改显式三步校验：
+    # fetch → 比对 HEAD 与 origin/master（相等放行 / 本地是祖先则 ff 合并 /
+    # 真分叉 exit 2 熔断）。校验全程在共享 git_push.lock 内（与 watchd /
+    # task_ingest 串行）；瞬时失败重试 2 次（间隔 5s）再熔断。
+    # R4"真分叉必须停"原则不变。
+    import time as _time
+    _GIT_PUSH_LOCK = os.path.join(os.path.dirname(REPO_DIR), "logs",
+                                  "git_push.lock")
+
+    def _acquire_git_lock(timeout=10):
+        os.makedirs(os.path.dirname(_GIT_PUSH_LOCK), exist_ok=True)
+        fp = open(_GIT_PUSH_LOCK, "w")
+        t0 = _time.time()
+        while True:
+            try:
+                fcntl.flock(fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                return fp
+            except OSError:
+                if _time.time() - t0 >= timeout:
+                    fp.close()
+                    return None
+                _time.sleep(0.5)
+
+    def _sync_once():
+        lock = _acquire_git_lock()
+        if lock is None:
+            return "git_push.lock 10s 未获得"
+        try:
+            fr = git("fetch", "origin")
+            if fr.returncode != 0:
+                return "fetch 失败：" + (fr.stderr or "")[:150]
+            head = git("rev-parse", "HEAD").stdout.strip()
+            remote = git("rev-parse", "origin/master").stdout.strip()
+            if head == remote:
+                return None
+            anc = git("merge-base", "--is-ancestor", "HEAD", "origin/master")
+            if anc.returncode == 0:
+                mg = git("merge", "--ff-only", "origin/master")
+                if mg.returncode != 0:
+                    return "ff 合并失败：" + (mg.stderr or "")[:150]
+                return None
+            return "DIVERGED"
+        finally:
+            lock.close()
+
+    sync_err = None
+    for _attempt in range(3):
+        sync_err = _sync_once()
+        if sync_err is None or sync_err == "DIVERGED":
+            break
+        if _attempt < 2:
+            _time.sleep(5)
+    if sync_err is not None:
+        if sync_err == "DIVERGED":
+            msg = "R4 拦截：本地与 origin/master 真分叉，停手待人工处理"
+        else:
+            msg = "R4 拦截：同步校验失败（已重试2次）：" + sync_err
         warn(msg)
-        err_write("NEED-REVIEW " + msg + " :: " + pr.stderr[:200])
+        err_write("NEED-REVIEW " + msg)
         _restore_stash()
         return 2
     snap = git("diff", "--stat").stdout
