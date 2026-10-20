@@ -288,6 +288,15 @@
   }
   .rule-pts.plus{background:#E4F8EC; color:#1E9E52;}
   .rule-pts.minus{background:#FFE9E9; color:#D64545;}
+  .rule-pts.note{background:#EFF1F3; color:#8A8F98;}
+  .rule-remark{font-size:12px; color:#9AA0A6; margin-left:6px;}
+  /* 2026-10-20：多档规则子项分行（用户要求"分开列，不要挤一起"） */
+  .rule-list li.rule-multi{display:block; padding:10px 0;}
+  .rule-head{font-weight:700;}
+  .rule-subs{list-style:none; margin:8px 0 2px 14px; padding:0;}
+  .rule-subs li{display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:6px 0; border-top:1px dashed #E8E4D8; border-bottom:none;
+    font-size:14px; min-height:0;}
   .rule-note{font-size:13px; color:var(--sub); margin-top:10px; line-height:1.7;}
 
   /* 徽章目标榜：获得条件小字 */
@@ -1629,6 +1638,14 @@
   }
 
   /* ---- 4. 加分 / 扣分规则（规则手册白名单） ---- */
+  /* 2026-10-20：徽章样式（+绿/-红/其余灰） */
+  function ruleBadge(text){
+    var cls = 'note';
+    if(text.charAt(0) === '+') cls = 'plus';
+    else if(text.charAt(0) === '-') cls = 'minus';
+    return el('span', 'rule-pts ' + cls, text);
+  }
+
   function renderRules(d, kind, panelId){
     var list = document.querySelector('#' + panelId + ' .rule-list');
     if(!list || !d || !d[kind] || !d[kind].length) return false;
@@ -1636,10 +1653,29 @@
     d[kind].forEach(function(r){
       if(!r || !r.text) return;
       var li = document.createElement('li');
-      li.appendChild(el('span', null, r.text));
-      var ms = String(r.text).match(/[+-]\d+/g) || [];
-      if(ms.length === 1){
-        li.appendChild(el('span', 'rule-pts ' + (ms[0].charAt(0) === '+' ? 'plus' : 'minus'), ms[0]));
+      if(r.subs && r.subs.length){
+        /* 多档规则：标题 + 子项分行（用户要求"分开列，不要挤一起"） */
+        li.className = 'rule-multi';
+        li.appendChild(el('span', 'rule-head', r.text));
+        var sub = document.createElement('ul');
+        sub.className = 'rule-subs';
+        r.subs.forEach(function(t){
+          var sli = document.createElement('li');
+          sli.appendChild(el('span', null, t.label));
+          if(t.pts){ sli.appendChild(ruleBadge(t.pts)); }
+          sub.appendChild(sli);
+        });
+        li.appendChild(sub);
+      }else{
+        li.appendChild(el('span', null, r.text));
+        if(r.remark){ li.appendChild(el('span', 'rule-remark', r.remark)); }
+        var badgeText = r.pts || null;
+        if(!badgeText){
+          var ms = String(r.text).match(/[+-]\d+/g) || [];
+          if(ms.length === 1) badgeText = ms[0];
+        }
+        if(badgeText){ li.appendChild(ruleBadge(badgeText)); }
+        else{ li.appendChild(el('span', 'rule-pts note', '说明')); }
       }
       list.appendChild(li);
     });

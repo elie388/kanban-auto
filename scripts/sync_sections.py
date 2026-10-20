@@ -266,6 +266,57 @@ PTS_RE = re.compile(r"[+-]\d+")
 REMARK_RE = re.compile(r"[（(][^）)]*20\d\d[^）)]*[）)]")
 
 
+def parse_tier(seg):
+    """多档规则的子项解析：返回 {label, pts}。"""
+    seg = seg.strip().rstrip("）)").strip()
+    m = re.search(r"[:：](\d+(?:\.\d+)?)$", seg)
+    if m and not re.search(r"[+-]\d+$", seg):
+        return {"label": seg[:m.start()], "pts": "×" + m.group(1)}
+    m = re.search(r"([+-]\d+)$", seg)
+    if m:
+        return {"label": seg[:m.start()], "pts": m.group(1)}
+    m = re.search(r"为(\d+)$", seg)
+    if m:
+        return {"label": seg[:m.start()], "pts": m.group(1)}
+    return {"label": seg, "pts": None}
+
+
+def try_multi(text):
+    """多档规则拆分（2026-10-20用户要求"分开列，不要挤一起"）：
+    返回 (header, subs) 或 None。识别两种形态：
+    A) " / " 分隔的档位（作业正确率/练习完成分/周日卷/53类/系数型）
+    B) "；" 分隔的分组（在校考试）"""
+    if " / " in text:
+        segs = text.split(" / ")
+        scored = sum(1 for sg in segs
+                     if re.search(r"[+-]\d+", sg) or re.search(r"[:：]\d", sg)
+                     or re.search(r"为\d+$", sg.strip().rstrip("）)")))
+        if len(segs) >= 2 and scored >= 2:
+            first = segs[0]
+            if "：" in first:
+                header, t0 = first.split("：", 1)
+            elif "（" in first:
+                header, t0 = first.split("（", 1)
+            else:
+                header, t0 = "", first
+            subs = [parse_tier(t0)] + [parse_tier(sg) for sg in segs[1:]]
+            return header.strip(), subs
+    if "；" in text and "：" in text:
+        header, rest = text.split("：", 1)
+        groups = [g.strip() for g in rest.split("；") if g.strip()]
+        scored = sum(1 for g in groups if re.search(r"[+-]\d+", g))
+        if len(groups) >= 2 and scored >= 2:
+            subs = []
+            for g in groups:
+                ms = re.findall(r"[+-]\d+", g)
+                if len(ms) == 1:
+                    subs.append(parse_tier(g))
+                else:
+                    subs.append({"label": g, "pts": None})
+            return header.strip(), subs
+    return None
+
+
 def parse_rules():
     """解析规则手册 dashboard 白名单块；缺失任一块视为失败（熔断）。
 
@@ -294,19 +345,28 @@ def parse_rules():
                     if rm:
                         remark = rm.group(0)
                         text = (text[:rm.start()] + text[rm.end():]).strip()
+                    subs = None
                     if text.startswith(("互斥", "将功补过", "作弊疑点")):
                         pts = None
                     else:
-                        # 2026-10-20去重（DeepSeek方案+Gemini审核）：
-                        # 首个" -数字"处截断正文，分值进徽章；单位/上限说明留正文
-                        pm = re.search(r"\s?([+-]\d+)", text)
-                        if pm:
-                            pts = pm.group(1)
-                            text = (text[:pm.start()] + text[pm.end():]).strip()
-                        else:
+                        multi = try_multi(text)
+                        if multi:
+                            text, subs = multi
                             pts = None
-                    items.append({"id": "%s%d" % (key[0], len(items) + 1),
-                                  "text": text, "pts": pts, "remark": remark})
+                        else:
+                            # 2026-10-20去重（DeepSeek方案+Gemini审核）：
+                            # 首个" -数字"处截断正文，分值进徽章；单位/上限说明留正文
+                            pm = re.search(r"\s?([+-]\d+)", text)
+                            if pm:
+                                pts = pm.group(1)
+                                text = (text[:pm.start()] + text[pm.end():]).strip()
+                            else:
+                                pts = None
+                    item = {"id": "%s%d" % (key[0], len(items) + 1),
+                            "text": text, "pts": pts, "remark": remark}
+                    if subs:
+                        item["subs"] = subs
+                    items.append(item)
         if not items:
             raise ValueError("白名单块为空：" + tag)
         out[key] = items
