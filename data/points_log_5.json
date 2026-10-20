@@ -1,12 +1,30 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-20T22:47:02+08:00",
+  "generated_at": "2026-10-20T23:34:13+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-20",
+      "time": "23:37",
+      "time_source": "entry",
+      "reason": "连续两晚超23点睡觉额外扣分",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:31",
+      "time_source": "entry",
+      "reason": "晚上超11点睡觉",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "10-20",
       "time": "22:45",
@@ -167,24 +185,6 @@
       "reason": "53天天练缺1页",
       "pts": -3,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "17:51",
-      "time_source": "entry",
-      "reason": "📆三日不断徽章",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "17:51",
-      "time_source": "entry",
-      "reason": "英语口语按时发回",
-      "pts": 5,
-      "sign": "plus",
       "filtered": false
     }
   ],
