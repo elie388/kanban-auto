@@ -395,6 +395,23 @@ def main():
         log("no_change", "四文件均无变化")
         return 0
 
+    # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
+    # 提交前检查 scripts/ 是否有未提交改动；有则本次不提交 + 告警日志（fail-safe）。
+    # 防 A类修复被功能提交卷入（程序异常台账 #1/#2）重演。
+    _dirty = run_git("status", "--porcelain", "--", "scripts/")
+    _dirty_out = (_dirty.stdout or "").strip()
+    if _dirty_out:
+        _dirty_files = "; ".join(l[:80] for l in _dirty_out.splitlines()[:10])
+        _alert = "%s | sync_sections.py | scripts/ 脏，跳过本次提交 | %s" % (
+            datetime.now(BEIJING).isoformat(timespec="seconds"), _dirty_files)
+        log("commit_guard_skip", _alert)
+        try:
+            with open(REPO / "logs" / "cron_commit_guard.log", "a", encoding="utf-8") as _f:
+                _f.write(_alert + "\n")
+        except Exception:
+            pass
+        return 0
+
     r = run_git("add", *changed_files)
     if r.returncode != 0:
         log("push_failed", "git add 失败 rc=%d" % r.returncode)

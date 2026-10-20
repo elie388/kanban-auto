@@ -543,6 +543,25 @@ def main(force=False):
                 git("checkout", "--", rel)
         return 2
 
+    # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
+    # 提交前检查 scripts/ 是否有未提交改动；有则本次不提交 + 告警日志（fail-safe）。
+    # 防 A类修复被功能提交卷入（程序异常台账 #1/#2）重演。
+    _dirty = git("status", "--porcelain", "--", "scripts/")
+    _dirty_out = (_dirty.stdout or "").strip()
+    if _dirty_out:
+        _dirty_files = "; ".join(l[:80] for l in _dirty_out.splitlines()[:10])
+        _alert = "%s | build_stats.py | scripts/ 脏，跳过本次提交 | %s" % (
+            datetime.now(TZ).isoformat(timespec="seconds"), _dirty_files)
+        warn(_alert)
+        log("commit_guard_skip: " + _alert)
+        try:
+            os.makedirs(LOGS_DIR, exist_ok=True)
+            with open(os.path.join(LOGS_DIR, "cron_commit_guard.log"), "a", encoding="utf-8") as _f:
+                _f.write(_alert + "\n")
+        except Exception:
+            pass
+        return 0
+
     # 提交（只加本方案的 6 文件 + 模板）
     git("add", *outputs.keys())
     if tpl_changed:
