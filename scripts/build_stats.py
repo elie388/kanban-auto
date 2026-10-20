@@ -46,6 +46,28 @@ LOGS_DIR = os.path.join(REPO_DIR, "logs")
 TEMPLATE = os.path.join(REPO_DIR, "templates", "积分看板_全新版式样板.html")
 TZ = timezone(timedelta(hours=8), "CST")
 
+
+# 产物命名模式（注意 points_log 历史命名无 _grade 段，三者不可统一拼装，
+# selftest T9 以字面集合断言防此类漂移）
+_OUTPUT_PATTERNS = {"stats": "data/stats_grade_%d.json",
+                    "points_log": "data/points_log_%d.json",
+                    "shop": "data/shop_grade_%d.json"}
+
+
+def _output_key(kind, grade):
+    return _OUTPUT_PATTERNS[kind] % grade
+
+
+# A 方案（2026-10-20 DeepSeek 双根因定案 T+1）：stash 显式路径——只 stash 本
+# 脚本自己的 6 个产物文件。模块级单点定义，与 outputs 构造同源（都走
+# _output_key；selftest T9 断言键集合相等防漂移），供 stash_orphan_scan
+# import 复用。回滚 checkout 前的脏检查范围另含模板（定案问题②：原事故
+# 被抹掉的正是模板改动，模板 checkout 与数据 checkout 在同一回滚段）。
+STASH_PATHS = [_output_key(kind, grade)
+               for grade in (5, 6)
+               for kind in ("stats", "points_log", "shop")]
+TEMPLATE_PATHS = ["templates/积分看板_全新版式样板.html"]
+
 # R1：档位表（规则手册第85行，唯一权威；变动须走规则手册修订）
 SHOP_TIERS = [
     {"pts": 70, "name": "30分钟Minecraft", "kind": "Minecraft"},
@@ -530,7 +552,24 @@ def main():
         except Exception:
             pass  # 记账失败绝不影响构建本身
 
-    stash_r = git("stash", "push", "-u", "-m", "build_stats-auto")
+    def _orphan_alert(event, ref, detail):
+        # DeepSeek 定案 1c 修正：stash_missing 视为 orphan，直接写入 orphan
+        # 告警文件（与 stash_orphan_scan 同一告警面），级别高于 pop 冲突。
+        try:
+            os.makedirs(LOGS_DIR, exist_ok=True)
+            rec = {"ts": datetime.now(TZ).isoformat(timespec="seconds"),
+                   "event": event, "ref": ref, "detail": detail[:200],
+                   "source": "build_stats"}
+            with open(os.path.join(LOGS_DIR, "stash_orphan_alert.log"),
+                      "a", encoding="utf-8") as _f:
+                _f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        except Exception:
+            pass  # 告警落盘失败不影响构建本身（stdout/err 已另行留痕）
+
+    # A 方案（定案 T+1）：显式 pathspec——只 stash 本脚本 6 个产物文件，
+    # STASH_PATHS 外的操作者改动全程留在工作区、永不被本脚本代收。
+    stash_r = git("stash", "push", "-u", "-m", "build_stats-auto",
+                  "--", *STASH_PATHS)
     stashed = (stash_r.returncode == 0 and "Saved working directory" in stash_r.stdout)
     _stash_ref = None
     if stashed:
@@ -540,7 +579,20 @@ def main():
     def _restore_stash():
         if not stashed:
             return
-        pop_r = git("stash", "pop")
+        # A 方案 1c（定案）：按 push 时记录的 ref 在 stash list 中定位下标，
+        # 只 pop 本次条目，防窗口内他人 push 后错 pop 别人的 stash。
+        lst = git("stash", "list", "--format=%H")
+        hashes = [ln.strip() for ln in (lst.stdout or "").splitlines()
+                  if ln.strip()]
+        if _stash_ref not in hashes:
+            msg = ("R4 严重告警：本次 stash 条目已不在 stash list"
+                   "（ref=%s），改动可能已被外部处理或丢失" % _stash_ref)
+            warn(msg)
+            err_write("NEED-REVIEW " + msg)
+            _stash_log("stash_missing", ref=_stash_ref)
+            _orphan_alert("stash_missing", _stash_ref, msg)
+            return
+        pop_r = git("stash", "pop", "stash@{%d}" % hashes.index(_stash_ref))
         if pop_r.returncode != 0:
             msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
             warn(msg)
@@ -579,6 +631,21 @@ def main():
                     return None
                 _time.sleep(0.5)
 
+    def _foreign_dirty_paths():
+        """A 方案 1d（定案）：当前工作区脏路径中落在 STASH_PATHS 外的集合。
+        显式路径 stash 后，本脚本产物恒干净；同步失败若与外部脏改动相关，
+        绝不代人 stash——由调用方记 foreign_dirty_tree 跳过本轮。"""
+        st = git("-c", "core.quotepath=false", "status", "--porcelain")
+        dirty = []
+        for ln in (st.stdout or "").splitlines():
+            if len(ln) < 4:
+                continue
+            p = ln[3:].strip()
+            if " -> " in p:
+                p = p.split(" -> ", 1)[1]
+            dirty.append(p.strip('"'))
+        return sorted(set(dirty) - set(STASH_PATHS))
+
     def _sync_once():
         lock = _acquire_git_lock()
         if lock is None:
@@ -595,6 +662,9 @@ def main():
             if anc.returncode == 0:
                 mg = git("merge", "--ff-only", "origin/master")
                 if mg.returncode != 0:
+                    foreign = _foreign_dirty_paths()
+                    if foreign:
+                        return "FOREIGN_DIRTY:" + ",".join(foreign)
                     return "ff 合并失败：" + (mg.stderr or "")[:150]
                 return None
             # P1#4 修复（DeepSeek 审查 2026-10-20）：origin 是 HEAD 的祖先 = 本地
@@ -613,8 +683,21 @@ def main():
         sync_err = _sync_once()
         if sync_err is None or sync_err == "DIVERGED":
             break
+        if sync_err.startswith("FOREIGN_DIRTY:"):
+            break  # 脏源在 STASH_PATHS 外：重试无意义，直接走跳过本轮
         if _attempt < 2:
             _time.sleep(5)
+    if sync_err is not None and sync_err.startswith("FOREIGN_DIRTY:"):
+        # A 方案 1d 落点（定案问题①：与 orphan 同源，记 stash 台账）：
+        # 不代人 stash、不熔断，结构化留痕后跳过本轮（fail-safe exit 0）。
+        _fpaths = sync_err.split(":", 1)[1]
+        warn("A 方案：同步被 STASH_PATHS 外未提交改动阻塞，跳过本轮"
+             "（foreign_dirty_tree）：%s" % _fpaths)
+        _stash_log("foreign_dirty_tree",
+                   paths=[p for p in _fpaths.split(",") if p])
+        err_write("foreign_dirty_tree paths=%s" % _fpaths)
+        _restore_stash()
+        return 0
     if sync_err is not None:
         if sync_err == "DIVERGED":
             msg = "R4 拦截：本地与 origin/master 真分叉，停手待人工处理"
@@ -667,11 +750,11 @@ def main():
     outputs = {}
     for grade in (5, 6):
         rows = all_rows[grade]
-        outputs["data/stats_grade_%d.json" % grade] = build_stats(
+        outputs[_output_key("stats", grade)] = build_stats(
             grade, rows, ledger_sha16, today, generated_at)
-        outputs["data/points_log_%d.json" % grade] = build_log(
+        outputs[_output_key("points_log", grade)] = build_log(
             grade, rows, today, generated_at)
-        outputs["data/shop_grade_%d.json" % grade] = build_shop(
+        outputs[_output_key("shop", grade)] = build_shop(
             grade, balances[grade], generated_at)
 
     # 写文件（原子写 + 读回校验；幂等判定见 semantic_diff）
@@ -710,6 +793,18 @@ def main():
         msg = "NEED-REVIEW R4 diff 校验失败：%s" % e
         warn(msg)
         err_write(msg)
+        # A 方案 1e（定案问题②：6 产物+模板）：回滚 checkout 前脏检查——
+        # 检查范围内任一路径有未提交改动则全部跳过 checkout，宁可不回滚
+        # 也不静默抹掉改动，留 NEED-REVIEW 由人工处置。
+        _rb_dirty = git("-c", "core.quotepath=false", "status", "--porcelain",
+                        "--", *(STASH_PATHS + TEMPLATE_PATHS)).stdout.strip()
+        if _rb_dirty:
+            msg2 = ("rollback_blocked_dirty：回滚范围存在未提交改动，"
+                    "跳过 checkout（首行：%s）" % _rb_dirty.splitlines()[0][:120])
+            warn(msg2)
+            err_write("NEED-REVIEW " + msg2)
+            _restore_stash()
+            return 2
         # 回滚：模板 checkout；数据文件：新建的删除、已存在的 checkout
         git("checkout", "--", TEMPLATE)
         for rel, was_new in changed_files:
@@ -973,6 +1068,26 @@ def selftest():
         rec("T8 (日期,时刻)倒序", True, "输出顺序=%s" % got)
     except Exception as e:
         rec("T8 (日期,时刻)倒序", False, str(e)[:200])
+
+    # --- T9 A 方案单点口径（DeepSeek 定案 T+1 验收）：STASH_PATHS 与产物
+    # 键集合严格相等、TEMPLATE_PATHS 非空且与 TEMPLATE 常量同源 ---
+    try:
+        derived = {_output_key(kind, grade)
+                   for grade in (5, 6)
+                   for kind in ("stats", "points_log", "shop")}
+        literal = {"data/stats_grade_5.json", "data/stats_grade_6.json",
+                   "data/points_log_5.json", "data/points_log_6.json",
+                   "data/shop_grade_5.json", "data/shop_grade_6.json"}
+        assert set(STASH_PATHS) == derived == literal, \
+            "STASH_PATHS 漂移：%r" % (STASH_PATHS,)
+        assert len(STASH_PATHS) == 6 and len(set(STASH_PATHS)) == 6
+        assert TEMPLATE_PATHS and \
+            TEMPLATE_PATHS[0] == os.path.relpath(TEMPLATE, REPO_DIR), \
+            "TEMPLATE_PATHS 与 TEMPLATE 常量不一致"
+        rec("T9 A方案单点口径", True,
+            "STASH_PATHS=6 产物（与 _output_key 派生集合、字面集合三方一致），TEMPLATE_PATHS 同源")
+    except Exception as e:
+        rec("T9 A方案单点口径", False, str(e)[:200])
 
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
