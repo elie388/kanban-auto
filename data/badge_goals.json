@@ -72,13 +72,6 @@
    "points": 5
   },
   {
-   "key": "kousuanxiaodaren",
-   "name": "口算小达人",
-   "icon": "🧮",
-   "cond": "连续7天口算打卡正确率≥90%",
-   "points": 5
-  },
-  {
    "key": "shuxiezhixing",
    "name": "书写之星",
    "icon": "✍️",
@@ -219,12 +212,6 @@
     "count": 0
    },
    {
-    "key": "kousuanxiaodaren",
-    "obtained": false,
-    "date": "",
-    "count": 0
-   },
-   {
     "key": "shuxiezhixing",
     "obtained": false,
     "date": "",
@@ -353,12 +340,6 @@
     "count": 0
    },
    {
-    "key": "kousuanxiaodaren",
-    "obtained": false,
-    "date": "",
-    "count": 0
-   },
-   {
     "key": "shuxiezhixing",
     "obtained": false,
     "date": "",
@@ -426,5 +407,5 @@
    }
   ]
  },
- "generated_at": "2026-10-20T11:01:08+08:00"
+ "generated_at": "2026-10-20T11:26:12+08:00"
 }
