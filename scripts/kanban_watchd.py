@@ -82,9 +82,60 @@ def now_iso():
     return datetime.now(BEIJING).isoformat(timespec="seconds")
 
 
+def _boot_id():
+    try:
+        return Path("/proc/sys/kernel/random/boot_id").read_text().strip()
+    except OSError:
+        return "unknown"
+
+
+BOOT_ID = _boot_id()
+# 退出原因（定案事项二探针）：信号处理器置位，atexit 落盘 exit 记录；
+# 无记录而进程消失 = SIGKILL 类外力（guard 侧据此判 unknown_kill）。
+_EXIT_REASON = {"value": "normal"}
+
+
+def _signal_exit(signum, _frame):
+    # 本进程为单线程阻塞轮询、无 in-flight 后台线程（DeepSeek 3c 免修依据）：
+    # 置位原因后以 SystemExit 走 finally/atexit 完成清理与留痕。
+    try:
+        _EXIT_REASON["value"] = "signal:%s" % signal.Signals(signum).name
+    except Exception:
+        _EXIT_REASON["value"] = "signal:%d" % signum
+    sys.exit(0)
+
+
+def _install_signal_handlers():
+    for _sig in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP, signal.SIGQUIT):
+        try:
+            signal.signal(_sig, _signal_exit)
+        except (OSError, ValueError):
+            pass
+
+
+def _parse_pid_content(text):
+    """pid 文件解析（定案 3a）：JSON {pid, boot_id, start_ts} 或历史纯整数。
+    返回 (pid, boot_id|None)；解析失败返回 (None, None)。"""
+    text = (text or "").strip()
+    if not text:
+        return None, None
+    try:
+        d = json.loads(text)
+        if isinstance(d, dict) and isinstance(d.get("pid"), int):
+            return d["pid"], d.get("boot_id")
+    except ValueError:
+        pass
+    try:
+        return int(text), None
+    except ValueError:
+        return None, None
+
+
 def log(status, reason="", extra=None):
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
-    rec = {"ts": now_iso(), "status": status, "reason": reason}
+    # 定案开放点③：每条日志带进程标识（pid+boot_id），跨重启交错可分辨
+    rec = {"ts": now_iso(), "status": status, "reason": reason,
+           "pid": os.getpid(), "boot_id": BOOT_ID}
     if extra:
         rec.update(extra)
     with open(LOG_FILE, "a", encoding="utf-8") as f:
@@ -318,24 +369,34 @@ def acquire_singleton():
         return False, "another instance holds the lock"
     if PID_FILE.exists():
         try:
-            pid = int(PID_FILE.read_text().strip())
-            os.kill(pid, 0)
-            return False, "pid file alive (pid=%d)" % pid
-        except (ValueError, ProcessLookupError, PermissionError, OSError):
+            pid, _ = _parse_pid_content(PID_FILE.read_text())
+            if pid is not None:
+                os.kill(pid, 0)
+                return False, "pid file alive (pid=%d)" % pid
+        except (ProcessLookupError, PermissionError, OSError):
             pass
-    PID_FILE.write_text(str(os.getpid()))
+    # 定案 3a：pid 文件改 JSON {pid, boot_id, start_ts}（guard 读时兼容旧版
+    # 纯整数；boot_id 供 guard 判"换环境"与死因分级）
+    PID_FILE.write_text(json.dumps(
+        {"pid": os.getpid(), "boot_id": BOOT_ID, "start_ts": now_iso()}))
     def _cleanup():
         try:
-            if PID_FILE.exists() and PID_FILE.read_text().strip() == str(os.getpid()):
-                PID_FILE.unlink()
+            if PID_FILE.exists():
+                pid, _ = _parse_pid_content(PID_FILE.read_text())
+                if pid == os.getpid():
+                    PID_FILE.unlink()
         except OSError:
             pass
-    atexit.register(_cleanup)
-    for sig in (signal.SIGTERM, signal.SIGINT):
+    def _record_exit():
+        # 定案 3c：退出原因落盘——SIGKILL 无从拦截，其"无 exit 记录"本身
+        # 即死亡证据（guard 判 unknown_kill 的依据）
         try:
-            signal.signal(sig, lambda *_: sys.exit(0))
-        except (OSError, ValueError):
+            log("exit", "", {"exit_reason": _EXIT_REASON["value"]})
+        except Exception:
             pass
+    atexit.register(_cleanup)
+    atexit.register(_record_exit)
+    _install_signal_handlers()
     return True, ""
 
 
@@ -476,6 +537,46 @@ def selftest():
         rec("T4 防抖合并", True, "连续变更聚合为一次 pending，计时不重置")
     except Exception as e:
         rec("T4 防抖合并", False, str(e)[:200])
+
+    # T5 pid 文件 JSON 读写 + boot_id + 历史纯整数兼容（定案 3a / 验收 T5）
+    try:
+        content = json.dumps({"pid": 4242, "boot_id": "boot-x",
+                              "start_ts": "2026-10-20T00:00:00+08:00"})
+        pid, boot = _parse_pid_content(content)
+        assert pid == 4242 and boot == "boot-x", (pid, boot)
+        pid2, boot2 = _parse_pid_content("1857")
+        assert pid2 == 1857 and boot2 is None, (pid2, boot2)
+        pid3, _ = _parse_pid_content("garbage")
+        assert pid3 is None
+        assert BOOT_ID and isinstance(BOOT_ID, str)
+        rec("T5 pid文件JSON", True, "JSON 解析 pid/boot_id 正确；纯整数兼容；坏内容返回 None；BOOT_ID 已取到")
+    except Exception as e:
+        rec("T5 pid文件JSON", False, str(e)[:200])
+
+    # T6 四信号处理器注册 + exit_reason 可置位（定案 3c / 验收 T6）
+    try:
+        watched = (signal.SIGTERM, signal.SIGINT, signal.SIGHUP, signal.SIGQUIT)
+        saved = {s: signal.getsignal(s) for s in watched}
+        try:
+            _install_signal_handlers()
+            for s in watched:
+                assert signal.getsignal(s) == _signal_exit, "信号 %s 未注册" % s
+            try:
+                _signal_exit(signal.SIGHUP, None)
+                raise AssertionError("处理器未退出")
+            except SystemExit:
+                pass
+            assert _EXIT_REASON["value"] == "signal:SIGHUP", _EXIT_REASON
+        finally:
+            for s, h in saved.items():
+                try:
+                    signal.signal(s, h)
+                except (OSError, ValueError):
+                    pass
+            _EXIT_REASON["value"] = "normal"
+        rec("T6 信号处理器", True, "SIGTERM/INT/HUP/QUIT 均注册 _signal_exit；置位 exit_reason=signal:SIGHUP 后 SystemExit")
+    except Exception as e:
+        rec("T6 信号处理器", False, str(e)[:200])
 
     n_fail = sum(1 for x in results if not x)
     print("自测完成：%d 通过 / %d 失败" % (len(results) - n_fail, n_fail), flush=True)
