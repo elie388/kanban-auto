@@ -730,8 +730,9 @@ def build_badge_goals(events, progress=None, now=None):
     catalog = [{"key": k, "name": n, "icon": i, "cond": c, "points": 5}
                for k, n, i, c in BADGE_CATALOG]
     # 周期清空口径（2026-10-20）：obtained/date/count 按当前 cycle_week 计
-    # （本周期是否已获得），历史累计另存 total_count；往期成就看 badges.json
-    # 的 history（往期徽章区）。已发积分与台账历史不受此展示口径影响。
+    # （本周期是否已获得），历史累计另存 total_count；往期徽章不在看板
+    # 展示（无 history 区），历史只保留在台账。已发积分与台账历史不受此
+    # 展示口径影响。
     now = now or datetime.now(BEIJING)
     ws, _we = week_bounds(now)
     cur_cycle = cycle_week_of(ws.strftime("%Y-%m-%d"))
