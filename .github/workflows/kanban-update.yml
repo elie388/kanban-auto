@@ -58,6 +58,11 @@ jobs:
           mkdir -p public
           cp "templates/积分看板_全新版式样板.html" public/index.html
           cp CNAME public/CNAME
+          # 主屏幕图标（2026-10-20 用户提供）：iOS 读取根路径 /apple-touch-icon.png；
+          # favicon 供浏览器标签页使用。硬断言文件非空，防上线缺图。
+          test -s apple-touch-icon.png || { echo "::error::apple-touch-icon.png 缺失或为空"; exit 1; }
+          test -s favicon-32.png || { echo "::error::favicon-32.png 缺失或为空"; exit 1; }
+          cp apple-touch-icon.png favicon-32.png public/
           ls -la public/
 
       # 今日任务数据通道（KB-TASK-AUTO-2026-10-19）：
