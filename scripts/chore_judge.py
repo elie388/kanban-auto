@@ -63,7 +63,9 @@ def judge(now):
         # 家务小帮手：任一基础家务行即达成
         basic = [r for r in grows if r["item"] in BASIC_ITEMS]
         if basic:
-            ev = sorted(basic, key=lambda r: r["date"])[0]
+            # 引用优先取最早的照片证据行（弱证据口头行仅在无照片行时引用）
+            photo = [r for r in basic if r["evidence"] in ("照片", "照片+口头")]
+            ev = sorted(photo or basic, key=lambda r: r["date"])[0]
             lines.append("- 【家务小帮手】候选（已达）依据：%s%s%s" % (
                 ref(ev), "（回补证据，终审请裁定）" if ev["backfill"] else "",
                 award_note(gk, "jiawuxiaobangshou")))
@@ -104,7 +106,12 @@ def judge(now):
                      if r["item"] == "整理桌面" and not r["backfill"]}
         n = ss._streak_from_dates(tidy_live, today)
         st = "候选（已达）" if n >= 5 else "未达"
-        lines.append("- 【整理小达人】%s：连续 %d/5 天" % (st, min(n, 5)))
+        bf_days = len({r["date"] for r in grows
+                       if r["item"] == "整理桌面" and r["backfill"]})
+        lines.append("- 【整理小达人】%s：连续 %d/5 天%s" % (
+            st, min(n, 5),
+            "（另有回补整理行 %d 天，按拍板不计入连续、仅展示对照，不代表未做）" % bf_days
+            if bf_days else ""))
         # 坚持小勇士·家务通道：有记录日期连续 / 14（仅家务通道）
         n = ss._streak_from_dates(arch["dates"].get(gk, set()), today)
         st = "候选（家务通道已达）" if n >= 14 else "未达"
@@ -157,6 +164,10 @@ def main():
                 "-> 通过后写台账 badge_ 条目并回写存档 [颁发:徽章名]；"
                 "不通过保留 [驳回:原因]。颁发后基准（累计不清零/连续归零/周类跨周重置）"
                 "由终审按口径裁定。")
+    head.append("回补证据口径（DeepSeek 终审 2026-10-20）：[回补] 行可作候选证据，"
+                "但首周（10-20~10-26）含回补证据的候选一律逐笔终审、不得批量自动放行；"
+                "仅依赖 [回补] 行且证据为口头/时刻未知的候选不予颁发（弱证据单独不成立，"
+                "与同批强证据并存时以强证据为准）；连做链行不计入任何项目类计数。")
     head.append("")
     with open(out, "w", encoding="utf-8") as f:
         f.write("\n".join(head + body) + "\n")
