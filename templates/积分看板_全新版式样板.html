@@ -1038,6 +1038,7 @@
     });
   }
   load();
+  window.__kanbanRefreshTasks = load; /* 2026-10-20：供倒计时软刷新调用（只刷内容不刷页面） */
   setInterval(load, REFRESH_MS);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) load(); });
 })();
@@ -1457,6 +1458,7 @@
     loadLog(6, 'log-g6');
     loadShop();
   }
+  window.__kanbanRefreshStats = boot; /* 2026-10-20：供倒计时软刷新调用 */
 
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', boot, { once: true });
@@ -1679,6 +1681,7 @@
       renderRules(d, 'deduct', 'panel-deduct');
     }).catch(function(e){ console.warn('规则拉取失败，显示占位:', e); });
   }
+  window.__kanbanRefreshSections = boot; /* 2026-10-20：供倒计时软刷新调用 */
 
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', boot, { once: true });
@@ -1708,14 +1711,27 @@
       return r;
     }
 
+    /* 2026-10-20（用户要求，DeepSeek方案）：自动到期只刷内容不刷页面 */
+    function softRefresh(){
+      var ok = false;
+      try{ if(typeof window.__kanbanRefreshStats === 'function'){ window.__kanbanRefreshStats(); ok = true; } }catch(e){}
+      try{ if(typeof window.__kanbanRefreshSections === 'function'){ window.__kanbanRefreshSections(); ok = true; } }catch(e){}
+      try{ if(typeof window.__kanbanRefreshTasks === 'function'){ window.__kanbanRefreshTasks(); ok = true; } }catch(e){}
+      if(!ok){ location.reload(); } /* 刷新入口全未就绪：回退整页刷新 */
+    }
+
+    function expire(){
+      stop();
+      softRefresh();
+      deadline = Date.now() + REFRESH_SEC * 1000;
+      start(); /* 重置倒计时 */
+    }
+
     function render(){
       var r = remainSec();
       var m = Math.floor(r / 60), s = r % 60;
       el.textContent = '数据' + m + '分' + s + '秒后更新';
-      if(r <= 0){
-        stop();
-        location.reload();
-      }
+      if(r <= 0){ expire(); }
     }
 
     function stop(){
@@ -1729,9 +1745,9 @@
     }
 
     function recalc(){
-      /* 可见时按 deadline 重算（后台timer被节流时校正），已到期直接刷新 */
+      /* 可见时按 deadline 重算（后台timer被节流时校正），已到期直接软刷新 */
       var r = remainSec();
-      if(r <= 0){ stop(); location.reload(); return; }
+      if(r <= 0){ expire(); return; }
       start();
     }
 
@@ -1746,6 +1762,16 @@
     });
 
     window.addEventListener('pagehide', stop);
+
+    /* 2026-10-20（用户要求）：手动点击倒计时文字整页刷新 */
+    try{
+      el.style.cursor = 'pointer';
+      el.title = '点击立即刷新页面';
+      el.addEventListener('click', function(){
+        el.textContent = '正在刷新…';
+        location.reload();
+      });
+    }catch(e){}
 
     start();
   }catch(e){ /* 静默降级：不阻断渲染 */ }
