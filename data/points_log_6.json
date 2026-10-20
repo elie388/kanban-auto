@@ -1,12 +1,48 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-20T21:14:33+08:00",
+  "generated_at": "2026-10-20T21:57:02+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-20",
+      "time": "21:35",
+      "time_source": "entry",
+      "reason": "语文背诵按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:35",
+      "time_source": "entry",
+      "reason": "语文背诵达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "英语口语按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "英语口语达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-20",
       "time": "20:47",
@@ -148,42 +184,6 @@
       "time_source": "entry",
       "reason": "英语作业完成分",
       "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "英语作业正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "英语书写表扬",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "作业迟交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "22:20",
-      "time_source": "entry",
-      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
-      "pts": 5,
       "sign": "plus",
       "filtered": false
     }
