@@ -1,162 +1,154 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-10-20",
-  "grade": "六年级",
-  "generated_at": "2026-10-20T00:05:03+08:00",
-  "updated_at": "2026-10-20T23:45:51+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-20T22:56:51+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-10-20",
+ "grade": "六年级",
+ "generated_at": "2026-10-20T00:05:03+08:00",
+ "updated_at": "2026-10-20T23:45:51+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-10-20T22:56:51+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "META-REGISTER-2026-10-20",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "拍登记本照片发回年级邮箱",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-20T17:41:48+08:00",
-      "updated_at": "2026-10-20T20:45:58+08:00",
-      "completed_at": "2026-10-20T20:45:58+08:00"
-    },
-    {
-      "task_id": "REG-20261020-F8F370",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄今天的作文3次，背10次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄今天的作文3次，背10次；②背28、29对话5次，抽背。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-20T20:45:58+08:00",
-      "updated_at": "2026-10-20T22:03:07+08:00",
-      "status_source": "sync_corrections",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "单词\"natural\"拼写为\"natarul\"",
-          "question": "",
-          "reason": "拼写错误（单词拼写未掌握；属抄写保真复现原稿错误，按1处计）。第1次犯"
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261020-9A2DB3",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "背28、29对话5次，抽背。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄今天的作文3次，背10次；②背28、29对话5次，抽背。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-20T20:45:58+08:00",
-      "updated_at": "2026-10-20T23:45:51+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-10-20T23:45:51+08:00",
-      "status_source": "late_batch_1020"
-    },
-    {
-      "task_id": "REG-20261020-0C42F4",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习L12、复习第三单元。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①预习L12、复习第三单元。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-20T20:45:58+08:00",
-      "updated_at": "2026-10-20T20:45:58+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261020-2D91B8",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念47、48、49",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念47、48、49；②校本P22。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-20T20:45:58+08:00",
-      "updated_at": "2026-10-20T23:45:51+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-10-20T23:45:51+08:00",
-      "status_source": "late_batch_1020"
-    },
-    {
-      "task_id": "REG-20261020-42DF3F",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本P22。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念47、48、49；②校本P22。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-20T20:45:58+08:00",
-      "updated_at": "2026-10-20T22:03:07+08:00",
-      "status_source": "sync_corrections",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "2-(2)\"当a=6时，b是( )\"",
-          "question": "",
-          "reason": "计算失误（整数8化为以10为分母的分数时出错，或4/3×6口算失误；差值恰为1）。第1次犯（用字母表示求值类计算）"
-        }
-      ]
-    }
-  ],
-  "counts": {
-    "total": 6,
-    "pending": 1,
-    "in_progress": 2,
-    "done": 3,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "META-REGISTER-2026-10-20",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "拍登记本照片发回年级邮箱",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-10-20T17:41:48+08:00",
+   "updated_at": "2026-10-20T20:45:58+08:00",
+   "completed_at": "2026-10-20T20:45:58+08:00"
   },
-  "deadline_today": "2026-10-20T22:30:00+08:00"
+  {
+   "task_id": "REG-20261020-F8F370",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄今天的作文3次，背10次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄今天的作文3次，背10次；②背28、29对话5次，抽背。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-20T20:45:58+08:00",
+   "updated_at": "2026-10-21T00:02:10+08:00",
+   "status_source": "parent_override_20261020",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-10-21T00:02:10+08:00"
+  },
+  {
+   "task_id": "REG-20261020-9A2DB3",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "背28、29对话5次，抽背。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄今天的作文3次，背10次；②背28、29对话5次，抽背。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-20T20:45:58+08:00",
+   "updated_at": "2026-10-20T23:45:51+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-10-20T23:45:51+08:00",
+   "status_source": "late_batch_1020"
+  },
+  {
+   "task_id": "REG-20261020-0C42F4",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "预习L12、复习第三单元。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①预习L12、复习第三单元。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-20T20:45:58+08:00",
+   "updated_at": "2026-10-21T00:02:10+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-10-21T00:02:10+08:00",
+   "status_source": "parent_override_20261020"
+  },
+  {
+   "task_id": "REG-20261020-2D91B8",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读背概念47、48、49",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念47、48、49；②校本P22。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-20T20:45:58+08:00",
+   "updated_at": "2026-10-20T23:45:51+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-10-20T23:45:51+08:00",
+   "status_source": "late_batch_1020"
+  },
+  {
+   "task_id": "REG-20261020-42DF3F",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "校本P22。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念47、48、49；②校本P22。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-20T20:45:58+08:00",
+   "updated_at": "2026-10-21T00:02:10+08:00",
+   "status_source": "parent_override_20261020",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-10-21T00:02:10+08:00"
+  }
+ ],
+ "counts": {
+  "total": 6,
+  "pending": 1,
+  "in_progress": 2,
+  "done": 3,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-10-20T22:30:00+08:00"
 }
