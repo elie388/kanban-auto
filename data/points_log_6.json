@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-20T23:46:01+08:00",
+  "generated_at": "2026-10-20T23:58:29+08:00",
   "window": {
     "days": 7,
     "max_items": 20
@@ -27,9 +27,90 @@
     },
     {
       "date": "10-20",
+      "time": "23:30",
+      "time_source": "entry",
+      "reason": "英语作文朗读发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:30",
+      "time_source": "entry",
+      "reason": "英语作文朗读迟交",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:30",
+      "time_source": "entry",
+      "reason": "英语作文朗读达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
       "time": "23:01",
       "time_source": "entry",
       "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:58",
+      "time_source": "entry",
+      "reason": "英语背28、29对话发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:58",
+      "time_source": "entry",
+      "reason": "英语背对话迟交",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:58",
+      "time_source": "entry",
+      "reason": "英语背对话达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:53",
+      "time_source": "entry",
+      "reason": "数学读背概念47、48、49发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:53",
+      "time_source": "entry",
+      "reason": "数学读背迟交",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:53",
+      "time_source": "entry",
+      "reason": "数学读背达标",
       "pts": 3,
       "sign": "plus",
       "filtered": false
@@ -100,87 +181,6 @@
     {
       "date": "10-20",
       "time": "20:47",
-      "time_source": "entry",
-      "reason": "数学书写表扬",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "20:47",
-      "time_source": "entry",
-      "reason": "英语作文抄写3次完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "20:47",
-      "time_source": "entry",
-      "reason": "英语抄写正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "20:47",
-      "time_source": "entry",
-      "reason": "英语书写表扬",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "17:51",
-      "time_source": "entry",
-      "reason": "📆三日不断徽章",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:44",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:44",
-      "time_source": "entry",
-      "reason": "晾衣服连做第2天",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "数学作业完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "数学作业正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
       "time_source": "entry",
       "reason": "数学书写表扬",
       "pts": 2,
