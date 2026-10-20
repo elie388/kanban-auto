@@ -67,12 +67,25 @@ def clean_desc(raw):
     return d
 
 
-def norm_date(s):
+def norm_date(s, today=None):
+    """MM-DD/YYYY-MM-DD → YYYY-MM-DD。
+
+    M1 修复（2026-10-20）：收敛跨年口径。若 MM-DD 在 today 之后，视为去年
+    （与 build_stats.complete_year 同逻辑）。today 缺省为今天（Asia/Shanghai）。
+    DeepSeek 终审中等项。
+    """
     s = s.strip()
     if re.fullmatch(r"\d{1,2}-\d{1,2}", s):
-        year = datetime.now(BEIJING).year
+        if today is None:
+            today = datetime.now(BEIJING).date()
+        elif isinstance(today, datetime):
+            today = today.date()
         mm, dd = s.split("-")
-        return "%d-%02d-%02d" % (year, int(mm), int(dd))
+        m, d = int(mm), int(dd)
+        year = today.year
+        if (m, d) > (today.month, today.day):
+            year -= 1
+        return "%d-%02d-%02d" % (year, m, d)
     return s
 
 
@@ -204,8 +217,20 @@ def main():
     if r.returncode != 0:
         log("push_failed", "git add 失败 rc=%d" % r.returncode)
         return 3
-    run_git("commit", "-m",
+    # M4（DeepSeek终审 2026-10-20，B1 复审补强）：显式检查 commit 返回码。
+    # git 无变更时 rc=1 且输出标准串 "nothing to commit, working tree clean"。
+    # 判定必须严格匹配完整标准串（双子串合取），防 pre-commit hook 误输出子串被误判为无变更。
+    # 注：依赖 git 英文标准输出（locale 需为 C/en）；若未来 git 措辞变化，安全降级走 rc=3 失败分支（fail-safe）。
+    # rc!=0 且非标准无变更串 → 一律视为真失败（return 3，与 push 失败共用返回码）。
+    cr = run_git("commit", "-m",
             "chore(balance): sync from ledger @ " + datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
+    if cr.returncode != 0:
+        _err = cr.stderr or ""
+        if "nothing to commit" in _err and "working tree clean" in _err:
+            log("no_change", "git commit 无变更（working tree clean），跳过推送")
+            return 0
+        log("push_failed", "git commit 真失败 rc=%d: %s" % (cr.returncode, _err[:200]))
+        return 3
     head_after = run_git("rev-parse", "HEAD").stdout.strip()
 
     push_ok = False
