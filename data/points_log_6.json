@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-20T18:07:02+08:00",
+  "generated_at": "2026-10-20T19:22:02+08:00",
   "window": {
     "days": 7,
     "max_items": 20
@@ -14,6 +14,114 @@
       "reason": "📆三日不断徽章",
       "pts": 5,
       "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:44",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:44",
+      "time_source": "entry",
+      "reason": "晾衣服连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "数学作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "数学作业正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "数学书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "语文作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "语文作业正确率85.7%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "语文书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "英语作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "英语作业正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "英语书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "作业迟交",
+      "pts": -5,
+      "sign": "minus",
       "filtered": false
     },
     {
@@ -76,114 +184,6 @@
       "time_source": "submit",
       "reason": "英语周试卷写作补写按时发回",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "15:47",
-      "time_source": "entry",
-      "reason": "冲正",
-      "pts": -4,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "15:25",
-      "time_source": "submit",
-      "reason": "英语周试卷按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "15:22",
-      "time_source": "submit",
-      "reason": "语文周试卷按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "英语周试卷Q25订正一次改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "英语周试卷正确率96.6%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "数学周试卷正确率92.1%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "21:46",
-      "time_source": "submit",
-      "reason": "英语阅读写作第1题补做按时发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "21:46",
-      "time_source": "submit",
-      "reason": "英语写作重写按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "20:49",
-      "time_source": "submit",
-      "reason": "针对性练习按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "20:28",
-      "time_source": "entry",
-      "reason": "冲正：针对性练习书面全对",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "20:23",
-      "time_source": "entry",
-      "reason": "针对性练习正确率88.9%",
-      "pts": 1,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "19:34",
-      "time_source": "submit",
-      "reason": "冲正：针对性练习背诵录音没发",
-      "pts": 5,
       "sign": "plus",
       "filtered": false
     }
