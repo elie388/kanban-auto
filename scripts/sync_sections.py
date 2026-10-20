@@ -918,6 +918,12 @@ def run_git(*args):
 
 
 def main():
+    # 静默窗闸门（DeepSeek 裁定1 2026-10-20：静默窗全域生效，闸门落脚本层）：
+    # [00:00,06:00) 内不 build、退出码 0；与 build_stats/build_trends 同口径，
+    # 窗口边界只认 sync_balance.BUILD_SILENT_WINDOW 单点定义。
+    if sb.in_build_silent_window():
+        log("skip_silent_window", "skip: in silent window [00:00,06:00)")
+        return 0
     try:
         lock = open(LOCK_FILE, "w")
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -1049,7 +1055,10 @@ def main():
             "chore(sections): sync badges/shop/rules @ " +
             datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
     if cr.returncode != 0:
-        _err = cr.stderr or ""
+        # P1#3 修复（DeepSeek 审查 2026-10-20）：git 的 "nothing to commit" 标准串
+        # 实际输出在 stdout（本机 git 2.43 实测、stderr 为空），只查 stderr 会把
+        # 无变更误判为真失败 return 3。改查 stdout+stderr 合并文本，双子串合取不变。
+        _err = (cr.stdout or "") + (cr.stderr or "")
         if "nothing to commit" in _err and "working tree clean" in _err:
             log("no_change", "git commit 无变更（working tree clean），跳过推送")
             return 0

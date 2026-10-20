@@ -458,6 +458,20 @@ def main():
     if "--selftest" in sys.argv:
         return selftest()
 
+    # 静默窗闸门（DeepSeek 裁定1 2026-10-20：静默窗全域生效，闸门落脚本层）：
+    # [00:00,06:00) 内不 build、退出码 0；watchd 事件触发与兜底 cron 调用同口径，
+    # 窗口边界只认 sync_balance.BUILD_SILENT_WINDOW 单点定义。
+    if sb.in_build_silent_window():
+        _ts = datetime.now(TZ).isoformat(timespec="seconds")
+        log("skip: in silent window [00:00,06:00) @ %s" % _ts)
+        try:
+            os.makedirs(LOGS_DIR, exist_ok=True)
+            with open(os.path.join(LOGS_DIR, "build_stats.log"), "a", encoding="utf-8") as _f:
+                _f.write("%s skip: in silent window [00:00,06:00)\n" % _ts)
+        except OSError:
+            pass
+        return 0
+
     # R3（DeepSeek 终审 2026-10-20 看板全栏目实时同步）：build 串行锁 ——
     # 守护进程事件触发与 15m/5m 兜底 cron 可能并发调用本脚本，NB 锁保证同一时刻
     # 只有一个 build 写 data/*.json，防产物交错 + generated_at 乱序。
@@ -502,6 +516,11 @@ def main():
                                   "git_push.lock")
 
     def _acquire_git_lock(timeout=10):
+        # P1#5 配套（2026-10-20）：watchd 持 git_push.lock 运行消费者时经
+        # KANBAN_GIT_LOCK_HELD=1 声明——本进程已在外层临界区内，不再重复取锁
+        # （flock 跨进程互斥，重复取必然超时误判）。返回 /dev/null 句柄占位。
+        if os.environ.get("KANBAN_GIT_LOCK_HELD") == "1":
+            return open(os.devnull, "w")
         os.makedirs(os.path.dirname(_GIT_PUSH_LOCK), exist_ok=True)
         fp = open(_GIT_PUSH_LOCK, "w")
         t0 = _time.time()

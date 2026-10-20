@@ -32,6 +32,21 @@ BEIJING = timezone(timedelta(hours=8))
 # 注意：此窗口与登记本快车道禁区 [23:30:00, 08:30:00) 是两种机制、两个用途（快车道管邮箱摄取，
 # 本窗口管看板 build），边界不一致不是 bug，禁止"对齐"（R6）。
 BUILD_SILENT_WINDOW = (0, 6)
+
+
+def in_build_silent_window(now=None):
+    """当前是否处于看板 build 软静默窗口 [00:00,06:00) Asia/Shanghai。
+
+    单点判定（DeepSeek 裁定1 2026-10-20：静默窗全域生效）：build_stats /
+    sync_sections / build_trends 的 main() 闸门统一调用本函数，watchd 与
+    兜底 cron 两侧同一口径；窗口边界只认 BUILD_SILENT_WINDOW 一处定义。
+    """
+    if now is None:
+        now = datetime.now(BEIJING)
+    start, end = BUILD_SILENT_WINDOW
+    return start <= now.hour < end
+
+
 ROW_PAT = re.compile(
     r"^\|\s*(\d{1,2}-\d{1,2}|\d{4}-\d{2}-\d{2})\s*\|\s*(.*?)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)\s*\|"
 )
@@ -232,7 +247,10 @@ def main():
     cr = run_git("commit", "-m",
             "chore(balance): sync from ledger @ " + datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
     if cr.returncode != 0:
-        _err = cr.stderr or ""
+        # P1#3 修复（DeepSeek 审查 2026-10-20）：git 的 "nothing to commit" 标准串
+        # 实际输出在 stdout（本机 git 2.43 实测），只查 stderr 会把无变更误判真失败。
+        # 改查 stdout+stderr 合并文本，双子串合取口径不变。
+        _err = (cr.stdout or "") + (cr.stderr or "")
         if "nothing to commit" in _err and "working tree clean" in _err:
             log("no_change", "git commit 无变更（working tree clean），跳过推送")
             return 0

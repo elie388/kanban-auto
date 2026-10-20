@@ -57,14 +57,17 @@ DEBOUNCE_S = float(os.environ.get("KANBAN_WATCHD_DEBOUNCE_S", "45"))
 PUSH_MIN_INTERVAL_S = 60
 PUSH_WINDOW_S = 300
 PUSH_WINDOW_MAX = 2
+FAILURE_RETRY_S = 120  # P1#5：消费者失败后的重试退避（防紧循环，远大于防抖 45s）
 GIT_SILENT_S = 300  # 供 guard 参考：push 后静默窗
 
+_SILENT_IMPORT_ERR = None
 try:
     sys.path.insert(0, str(SCRIPT_DIR))
     import sync_balance as _sb
     SILENT_WINDOW = tuple(_sb.BUILD_SILENT_WINDOW)  # 单点定义复用（R6）
-except Exception:
+except Exception as _e:  # P2 修复（2026-10-20）：回退不再静默——留痕待启动时写日志
     SILENT_WINDOW = (0, 6)  # 回退字面量（sync_balance 不可导入时）
+    _SILENT_IMPORT_ERR = _e
 
 QBANK = Path(os.environ.get("QBANK_PATH", str(REPO_DIR.parent / "题目库.db")))
 WATCH_TARGETS = {
@@ -237,20 +240,42 @@ class Watcher:
             log("git_lock_busy", "git_push.lock 30s 未获得，保持 pending 下轮重试",
                 {"target": key})
             return  # 不消费，下轮再试
+        fire_sig = signature(path)  # P1#5：消费前指纹，用于检出消费期间的源变更
+        results = []
         try:
             for script in consumers:
-                self._run_consumer(script, key, path)
+                results.append(self._run_consumer(script, key, path))
         finally:
             try:
                 fcntl.flock(lock, fcntl.LOCK_UN)
                 lock.close()
             except OSError:
                 pass
-        # 全部消费者跑完 → 消费本次变更，并写对账状态（F3）
+        # P1#5 修复（DeepSeek 审查 2026-10-20）：任一消费者失败/超时 → 不算已消费：
+        # 不推进 sig、不弹 pending，退避 FAILURE_RETRY_S 后重试并写 consumer_failed
+        # 告警（此前 rc≠0/超时被无条件当成功消费，变更永久丢失、只靠兜底 cron 收敛）。
+        failed = [s for s in results if s != "ok"]
+        if failed:
+            log("consumer_failed",
+                "消费者失败/超时 %s，本次变更未消费，%ds 后重试" % (failed, FAILURE_RETRY_S),
+                {"target": key, "scripts": consumers})
+            self.pending[key] = time.monotonic() + FAILURE_RETRY_S
+            return
         new_sig = signature(path)
+        self._state["last_build_ts"] = time.time()
+        if new_sig != fire_sig:
+            # 消费期间源文件又变了：以新指纹为基线并重新武装 pending，
+            # 下一轮用最新内容再建一次（消费者幂等），不把新变更一并吞掉。
+            log("change_during_consume", str(path), {"target": key})
+            self.sigs[key] = new_sig
+            self.pending[key] = time.monotonic() + DEBOUNCE_S
+            if new_sig is not None:
+                self._state.setdefault("consumed", {})[key] = [new_sig[0], new_sig[1]]
+            _save_state(self._state)
+            return
+        # 全部消费者成功且消费期间无新变更 → 消费本次变更，并写对账状态（F3）
         self.sigs[key] = new_sig
         self.pending.pop(key, None)
-        self._state["last_build_ts"] = time.time()
         if new_sig is not None:
             self._state.setdefault("consumed", {})[key] = [new_sig[0], new_sig[1]]
         _save_state(self._state)
@@ -262,13 +287,16 @@ class Watcher:
         env = dict(os.environ)
         # LEDGER_PATH 等透传（build_stats/sync_balance 均支持 LEDGER_PATH）
         env.setdefault("LEDGER_PATH", str(LEDGER))
+        # P1#5 配套：本进程已持 git_push.lock——声明消费者已在外层临界区内，
+        # 勿重复取锁（flock 跨进程互斥，重复取必然超时误判）。
+        env["KANBAN_GIT_LOCK_HELD"] = "1"
         try:
             r = subprocess.run([sys.executable, str(script_path)],
                                cwd=str(SCRIPT_DIR), env=env,
                                capture_output=True, text=True, timeout=600)
         except subprocess.TimeoutExpired:
             log("consumer_timeout", script, {"target": key})
-            return
+            return "timeout"
         tail = (r.stdout or "")[-500:]
         log("consumer_done", script,
             {"target": key, "rc": r.returncode,
@@ -277,6 +305,7 @@ class Watcher:
         if head_after and head_after != head_before:
             record_push()
             log("pushed", script, {"target": key, "commit": head_after[:12]})
+        return "ok" if r.returncode == 0 else "failed"
 
 
 def acquire_singleton():
@@ -316,6 +345,10 @@ def run_forever():
         log("singleton_conflict", why)
         print("singleton_conflict: " + why)
         return 1
+    if _SILENT_IMPORT_ERR is not None:
+        log("silent_window_import_fallback",
+            "sync_balance 导入失败，SILENT_WINDOW 回退字面量 (0,6)：%s"
+            % str(_SILENT_IMPORT_ERR)[:150])
     log("start", "kanban_watchd 启动",
         {"poll_s": POLL_S, "debounce_s": DEBOUNCE_S,
          "targets": sorted(WATCH_TARGETS.keys()),
@@ -364,14 +397,17 @@ def selftest():
     except Exception as e:
         rec("T1 指纹变更检测", False, str(e)[:200])
 
-    # T2 软静默边界（常量单点来自 sync_balance）
+    # T2 软静默边界（常量单点来自 sync_balance；P2 修复：同时断言来源非回退）
     try:
         assert SILENT_WINDOW == (0, 6), "SILENT_WINDOW=%r" % (SILENT_WINDOW,)
+        assert _SILENT_IMPORT_ERR is None, \
+            "SILENT_WINDOW 来自回退字面量（sync_balance 导入失败：%s）" % _SILENT_IMPORT_ERR
+        assert tuple(_sb.BUILD_SILENT_WINDOW) == SILENT_WINDOW, "与单点定义不一致"
         assert in_silent_window(datetime(2026, 10, 20, 0, 0, tzinfo=BEIJING)) is True
         assert in_silent_window(datetime(2026, 10, 20, 5, 59, tzinfo=BEIJING)) is True
         assert in_silent_window(datetime(2026, 10, 20, 6, 0, tzinfo=BEIJING)) is False
         assert in_silent_window(datetime(2026, 10, 20, 12, 0, tzinfo=BEIJING)) is False
-        rec("T2 软静默边界", True, "SILENT_WINDOW=(0,6)，边界 [00:00,06:00) 正确")
+        rec("T2 软静默边界", True, "SILENT_WINDOW=(0,6) 来源=sync_balance 单点定义，边界 [00:00,06:00) 正确")
     except Exception as e:
         rec("T2 软静默边界", False, str(e)[:200])
 

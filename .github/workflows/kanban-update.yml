@@ -2,7 +2,11 @@ name: 积分看板自动更新
 
 # 触发方式（2026-10-20 实时化，DeepSeek 终审放行）：
 # - on: push 全天候触发：台账变更 → build_stats 生成 → push → 本 workflow 部署，
-#   不再有时间窗口门控（原 schedule 定时触发段已删除）。
+#   workflow 层不再有时间窗口门控（原 schedule 定时触发段已删除）。
+#   注（DeepSeek 裁定1 2026-10-20）：窗口闸门在脚本层——build_stats/sync_sections/
+#   build_trends 的 main() 在 [00:00,06:00) 静默窗内 skip（BUILD_SILENT_WINDOW 单点
+#   定义），与本 workflow 的全天候触发不冲突：workflow 照常被 push 触发，夜间无新
+#   push 产生是因为脚本层闸门，不是 workflow 门控。
 # - workflow_dispatch 保留（手动演练/兜底）。
 # - 月消耗改为"仅变更触发"，随台账变更频率浮动；原定时消耗（约700-1400 分钟/月）归零。
 #

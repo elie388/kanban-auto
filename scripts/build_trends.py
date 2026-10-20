@@ -23,11 +23,17 @@ weak: 每科错误次数前3知识点，带补练表单预填链接。
 - 隔离原因仅写入数据层 isolation_reasons（供家长版/审计追溯），不得进入孩子版输出。
 - 本脚本不读 M1 溯源打标列（裁决 C1-Q1a：该标记仅作溯源元数据，聚合零消费，过滤条件不含该列）。
 """
+import fcntl
 import json
+import os
 import sqlite3
+import subprocess
+import time
 import urllib.parse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+import sync_balance as _sb  # BUILD_SILENT_WINDOW 单点定义（DeepSeek 裁定1）
 
 BEIJING = timezone(timedelta(hours=8))
 HERE = Path(__file__).resolve().parent
@@ -155,7 +161,91 @@ def paper_batch_alerts(db, dates):
     return alerts
 
 
+def write_json_atomic(path, obj):
+    """与 build_stats.write_json_atomic 同款（P1#6）：写 tmp → 读回校验 →
+    os.replace 原子替换；读回不一致 raise，不留半截/损坏文件。"""
+    tmp = str(path) + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=1)
+        f.write("\n")
+    with open(tmp, encoding="utf-8") as f:
+        back = json.load(f)
+    if back != obj:
+        raise ValueError("JSON 写后读回不一致：%s" % path)
+    os.replace(tmp, path)
+
+
+def _git(*args):
+    return subprocess.run(["git", "-C", str(REPO)] + list(args),
+                          capture_output=True, text=True, timeout=60)
+
+
+def _commit_trends():
+    """trends.json 自有提交链（P1#6 + DeepSeek 裁定4）：仅显式提交
+    data/trends.json；git_push.lock 覆盖 add→commit→push 全程（修正2）；
+    watchd 持锁运行消费者时经 KANBAN_GIT_LOCK_HELD=1 声明已在外层临界区内，
+    不重复取锁（flock 跨进程互斥，重复取必然超时）。"""
+    # Q2 守则：scripts/ 有未提交改动 → 跳过提交 + 告警（防卷入他流改动）
+    dirty = _git("status", "--porcelain", "--", "scripts/")
+    if (dirty.stdout or "").strip():
+        print("[build_trends][WARN] scripts/ 有未提交改动，跳过 trends 提交"
+              "（Q2 守则），文件已原子写本地保留")
+        return
+    lock_fp = None
+    if os.environ.get("KANBAN_GIT_LOCK_HELD") != "1":
+        lock_path = REPO.parent / "logs" / "git_push.lock"
+        lock_path.parent.mkdir(parents=True, exist_ok=True)
+        lock_fp = open(lock_path, "w")
+        deadline = time.monotonic() + 15
+        while True:
+            try:
+                fcntl.flock(lock_fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
+            except BlockingIOError:
+                if time.monotonic() >= deadline:
+                    lock_fp.close()
+                    print("[build_trends][WARN] git_push.lock 15s 未获得，"
+                          "trends 提交顺延（文件已原子写）")
+                    return
+                time.sleep(1)
+    try:
+        r = _git("add", "--", "data/trends.json")
+        if r.returncode != 0:
+            print("[build_trends][WARN] git add 失败 rc=%d: %s"
+                  % (r.returncode, (r.stderr or "")[:200]))
+            return
+        cr = _git("commit", "-m", "chore(trends): sync trends [auto]")
+        if cr.returncode != 0:
+            # 无变更判定与 P1#3 同口径：stdout+stderr 合并（裁定4 修正1 的兜底）
+            merged = (cr.stdout or "") + (cr.stderr or "")
+            if "nothing to commit" in merged and "working tree clean" in merged:
+                print("trends commit 无变更（working tree clean），跳过推送")
+                return
+            print("[build_trends][WARN] git commit 失败 rc=%d: %s"
+                  % (cr.returncode, merged[:200]))
+            return
+        pr = _git("push")
+        if pr.returncode != 0:
+            print("[build_trends][WARN] git push 失败（本地提交保留，下次重试）：%s"
+                  % (pr.stderr or "")[:200])
+            return
+        print("trends.json 已提交并推送")
+    finally:
+        if lock_fp is not None:
+            try:
+                fcntl.flock(lock_fp, fcntl.LOCK_UN)
+            except OSError:
+                pass
+            lock_fp.close()
+
+
 def main():
+    # 静默窗闸门（DeepSeek 裁定1 2026-10-20：静默窗全域生效，闸门落脚本层）：
+    # [00:00,06:00) 内不 build、退出码 0；三消费者同口径。
+    if _sb.in_build_silent_window():
+        print("skip: in silent window [00:00,06:00) @ %s"
+              % datetime.now(BEIJING).isoformat(timespec="seconds"))
+        return
     today = datetime.now(BEIJING).date()
     dates = [(today - timedelta(days=DAYS - 1 - i)).isoformat() for i in range(DAYS)]
     db = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
@@ -213,10 +303,26 @@ def main():
         gdata["sparse"] = npts < 2
         data["grades"][g] = gdata
     db.close()
-    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    # P1#6 + 裁定4 修正1：写入前先做语义比较（忽略顶层 updated_at）——
+    # 无语义变化则不写、不提交，并留一行日志注明判定依据（修正3）；
+    # 有变化才原子写 + 走自有提交链，不再靠其他主题提交顺带入库。
+    old = None
+    if OUT.exists():
+        try:
+            old = json.loads(OUT.read_text(encoding="utf-8"))
+        except Exception:
+            old = None
+    if isinstance(old, dict):
+        _o = dict(old); _o.pop("updated_at", None)
+        _n = dict(data); _n.pop("updated_at", None)
+        if _o == _n:
+            print("trends.json 无语义变化（忽略 updated_at 比较），不写不提交：%s" % OUT)
+            return
+    write_json_atomic(OUT, data)
     print(f"trends.json 已生成：{OUT} ({OUT.stat().st_size} bytes)；"
           f"隔离组 {sum(len(ss) for gg in data['isolation_reasons'].values() for ss in gg.values())}；"
           f"复核队列 {len(data['manual_review_queue'])}；批次告警 {len(data['paper_batch_alerts'])}")
+    _commit_trends()
 
 
 if __name__ == "__main__":
