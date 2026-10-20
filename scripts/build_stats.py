@@ -508,8 +508,34 @@ def main():
     # （各 return 出口统一调 _restore_stash）。此前 pop 太早 → R4 把操作者
     # 未提交改动当异常拦截，失败回滚的 git checkout 把改动直接抹掉（已真实
     # 发生：前端规则渲染改动被回滚丢失）。pop 延后后，回滚只碰脚本自身产物。
+    # D 台账壳（2026-10-20 DeepSeek 定案 T+0，只记账不改行为）：stash
+    # push/pop/CONFLICT 结构化留痕到 logs/build_stats_stash.log，供 T+1
+    # 上线的 orphan 扫描对账（push 后超时未 pop 即滞留告警的数据源）。
+    def _boot_id():
+        try:
+            with open("/proc/sys/kernel/random/boot_id") as _f:
+                return _f.read().strip()
+        except OSError:
+            return "unknown"
+
+    def _stash_log(event, **kw):
+        try:
+            os.makedirs(LOGS_DIR, exist_ok=True)
+            rec = {"ts": datetime.now(TZ).isoformat(timespec="seconds"),
+                   "event": event, "pid": os.getpid(), "boot_id": _boot_id()}
+            rec.update(kw)
+            with open(os.path.join(LOGS_DIR, "build_stats_stash.log"),
+                      "a", encoding="utf-8") as _f:
+                _f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        except Exception:
+            pass  # 记账失败绝不影响构建本身
+
     stash_r = git("stash", "push", "-u", "-m", "build_stats-auto")
     stashed = (stash_r.returncode == 0 and "Saved working directory" in stash_r.stdout)
+    _stash_ref = None
+    if stashed:
+        _stash_ref = git("rev-parse", "stash@{0}").stdout.strip()
+        _stash_log("push", ref=_stash_ref, msg="build_stats-auto")
 
     def _restore_stash():
         if not stashed:
@@ -519,6 +545,10 @@ def main():
             msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
             warn(msg)
             err_write("NEED-REVIEW " + msg + " :: " + (pop_r.stderr or "")[:200])
+            _stash_log("CONFLICT", ref=_stash_ref,
+                       detail=(pop_r.stderr or "")[:200])
+        else:
+            _stash_log("popped", ref=_stash_ref)
 
     # R4-3（2026-10-20，DeepSeek 方案+家长拍板）：弃用 git pull --ff-only
     # （偶发 fatal: Cannot fast-forward to multiple branches），改显式三步校验：
