@@ -68,7 +68,9 @@ TIME_G6_DATE = "2026-10-19"  # 生效日：complete_year(日期) > 此日 且无
 POINTS_LOG_SCHEMA = "1.1"
 
 ROW_RE = re.compile(
-    r"^\|\s*(\d{2}-\d{2})\s*\|\s*(.*?)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)\s*\|"
+    # N3 收口（2026-10-20）：日期接受面与 sync_balance.ROW_PAT 对齐
+    # （\d{1,2}-\d{1,2} 或 YYYY-MM-DD），存储在 parse_rows 内归一为零填充 MM-DD。
+    r"^\|\s*(\d{1,2}-\d{1,2}|\d{4}-\d{2}-\d{2})\s*\|\s*(.*?)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)\s*\|"
 )
 
 
@@ -153,7 +155,10 @@ def parse_rows(block, grade):
         m = ROW_RE.match(s)
         if not m:
             raise ValueError("台账 %d 年级存在无法解析的行：%r" % (grade, s[:80]))
-        mm_dd, desc, pts_s, bal_s = m.groups()
+        raw_date, desc, pts_s, bal_s = m.groups()
+        # N3 收口：存储统一零填充 MM-DD（经 sync_balance.norm_date 归一后取
+        # 月-日部分），下游 complete_year/排序/窗口口径不变。
+        mm_dd = sb.norm_date(raw_date)[5:]
         pts = int(pts_s)
         # 允许负数（§7.2 负余额照常输出；交叉契约见 sync_sections.build_shop N1 方案A：
         # 负余额时 progress 钳0、balance 保留真实负值、redeemable 恒等式成立）
