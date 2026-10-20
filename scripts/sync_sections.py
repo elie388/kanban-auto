@@ -299,7 +299,7 @@ def parse_rules():
                     else:
                         # 2026-10-20去重（DeepSeek方案+Gemini审核）：
                         # 首个" -数字"处截断正文，分值进徽章；单位/上限说明留正文
-                        pm = re.search(r"\s([+-]\d+)", text)
+                        pm = re.search(r"\s?([+-]\d+)", text)
                         if pm:
                             pts = pm.group(1)
                             text = (text[:pm.start()] + text[pm.end():]).strip()
