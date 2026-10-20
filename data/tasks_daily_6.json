@@ -3,7 +3,7 @@
   "date": "2026-10-20",
   "grade": "六年级",
   "generated_at": "2026-10-20T00:05:03+08:00",
-  "updated_at": "2026-10-20T23:00:30+08:00",
+  "updated_at": "2026-10-20T23:42:22+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -50,7 +50,14 @@
       "created_at": "2026-10-20T20:45:58+08:00",
       "updated_at": "2026-10-20T22:03:07+08:00",
       "status_source": "sync_corrections",
-      "pending_corrections": 1
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "作文抄写3次",
+          "question": "",
+          "reason": ""
+        }
+      ]
     },
     {
       "task_id": "REG-20261020-9A2DB3",
@@ -88,7 +95,8 @@
       },
       "created_at": "2026-10-20T20:45:58+08:00",
       "updated_at": "2026-10-20T20:45:58+08:00",
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261020-2D91B8",
@@ -107,7 +115,8 @@
       },
       "created_at": "2026-10-20T20:45:58+08:00",
       "updated_at": "2026-10-20T20:45:58+08:00",
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261020-42DF3F",
@@ -127,7 +136,14 @@
       "created_at": "2026-10-20T20:45:58+08:00",
       "updated_at": "2026-10-20T22:03:07+08:00",
       "status_source": "sync_corrections",
-      "pending_corrections": 1
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "校本P22",
+          "question": "",
+          "reason": ""
+        }
+      ]
     }
   ],
   "counts": {
