@@ -1645,13 +1645,15 @@
   }
 
   function boot(){
-    /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码 */
+    /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码。
+       注：①取客户端本地时区（与设备时区一致）；②日期时间为页面加载时刻（刷新后更新）；
+       ③静态兜底仅到日，分钟级精度依赖JS（若JS失败则回退为日精度）。 */
     try{
       var de = document.getElementById('board-date');
       if(de){
         var n = new Date();
         var p = function(x){ return (x < 10 ? '0' : '') + x; };
-        de.textContent = n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate());
+        de.textContent = n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate()) + ' ' + p(n.getHours()) + ':' + p(n.getMinutes());
       }
     }catch(e){ /* 日期写入失败不阻断 */ }
     fetchJson('badges.json').then(renderBadges).catch(function(e){ console.warn('徽章栏拉取失败，显示占位:', e); });
