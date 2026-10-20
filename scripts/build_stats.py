@@ -608,6 +608,22 @@ def main():
         if bal < 0:
             warn("§7.2 负余额：%d 年级余额 %d（照常输出，前端静态显示）" % (grade, bal))
 
+    # N3 对拍观察（DeepSeek 审查 2026-10-20 第一步：先告警、后收口）：本脚本
+    # parse_rows 与 sync_balance.parse_ledger 是两套独立台账解析器（日期接受面
+    # 与期初基线口径曾分叉）。此处对同一台账并行比对双年级余额（两边都是链式
+    # 校验，余额一致即结算结果一致）——不一致只告警留痕、不改变产出；收口
+    # （日期接受面/存储归一对齐）在后续提交完成，此哨兵长期保留作回归监测。
+    try:
+        _alt = sb.parse_ledger(Path(LEDGER))
+        for _g, _gk in ((5, "g5"), (6, "g6")):
+            if _alt[_gk]["balance"] != balances[_g]:
+                warn("N3 对拍不一致：%d 年级 本解析余额=%d / sync_balance 余额=%d"
+                     % (_g, balances[_g], _alt[_gk]["balance"]))
+                err_write("N3_DIVERGENCE grade=%d self_bal=%d alt_bal=%d"
+                          % (_g, balances[_g], _alt[_gk]["balance"]))
+    except Exception as _e:
+        warn("N3 对拍自身异常（忽略，不影响产出）：%s" % str(_e)[:120])
+
     outputs = {}
     for grade in (5, 6):
         rows = all_rows[grade]
