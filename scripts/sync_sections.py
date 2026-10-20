@@ -651,11 +651,15 @@ def compute_badge_progress(events, now=None):
         # 合作之星：兄弟同日协同家务连续天数（需两年级数据，循环外补算见下）
         p["hezuozhixing"] = {"state": "ok", "current": 0, "target": 3,
                              "unit": "天", "mode": "连续"}
-        # 综合之星：本周已获不同徽章种类数 / 4（按 cycle_week 归属，
-        # 与展示/上限口径一致，不用台账写入日期）
+        # 综合之星：本周已获不同徽章种类数 / 4。口径（DeepSeek 裁定3
+        # 2026-10-20）：对齐计数侧——仅落账记录了 cycle_week 的事件计入
+        # （与 chore_judge 已发累计/+50 上限同一口径），历史行（无 recorded
+        # cycle_week、仅按日期推算）不计。注意：机制上线周 W43 内，落账标注
+        # 启用（2026-10-20）之前的本周徽章行会因此少计一类，属过渡期已知
+        # 现象（W44 起自然消失），非 bug，勿按展示侧口径"修回"。
         kinds = {e["key"] for e in events.get(gk, [])
-                 if (e.get("cycle_week") or cycle_week_of(e["date"]))
-                 == cycle_week_of(ws_s)}
+                 if e.get("cycle_week_recorded")
+                 and e.get("cycle_week") == cycle_week_of(ws_s)}
         p["zonghezhixing"] = {"state": "ok", "current": min(len(kinds), 4),
                               "target": 4, "unit": "类", "mode": "本周"}
         # 三日不断：台账日期覆盖连续天数 / 3

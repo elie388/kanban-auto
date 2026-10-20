@@ -363,7 +363,7 @@ def build_log(grade, rows, today, generated_at):
         "schema_version": POINTS_LOG_SCHEMA,
         "grade": grade,
         "generated_at": generated_at,
-        "window": {"days": 30, "max_items": 20},
+        "window": {"days": 7, "max_items": 20},  # P1#2（裁定2 甲）：与数据窗口近7天统一
         "items": items,
         "truncated": truncated,
         "filtered_count": filtered_count,
@@ -393,7 +393,8 @@ def build_shop(grade, balance, generated_at):
 def r4_diff_check(snapshot_before):
     """R4：替换后 diff 与快照对比 —— 除 data/*.json 外只允许模板变化，且模板行数变动 ≤ 4。"""
     cur = git("-c", "core.quotepath=false", "diff", "--stat")
-    assert cur.returncode == 0, "git diff --stat 执行失败"
+    if cur.returncode != 0:
+        raise ValueError("git diff --stat 执行失败")  # P2：校验禁用 assert（M1 原则）
     allowed_data = {
         "data/stats_grade_5.json", "data/stats_grade_6.json",
         "data/points_log_5.json", "data/points_log_6.json",
@@ -406,13 +407,14 @@ def r4_diff_check(snapshot_before):
         if m:
             changed.add(m.group(1).strip())
     unexpected = changed - allowed_data - {template_name}
-    assert not unexpected, "R4 拦截：出现非预期变更文件 %r" % sorted(unexpected)
+    if unexpected:
+        raise ValueError("R4 拦截：出现非预期变更文件 %r" % sorted(unexpected))
     if template_name in changed:
         numstat = git("-c", "core.quotepath=false", "diff", "--numstat", "--", template_name)
         parts = numstat.stdout.split()
         added, deleted = int(parts[0]), int(parts[1])
-        assert added + deleted <= 4, \
-            "R4 拦截：模板行数变动 %d 超限（≤4）" % (added + deleted)
+        if added + deleted > 4:
+            raise ValueError("R4 拦截：模板行数变动 %d 超限（≤4）" % (added + deleted))
     return True
 
 
@@ -450,7 +452,10 @@ def write_json_atomic(path, obj):
         f.write("\n")
     with open(tmp, encoding="utf-8") as f:
         back = json.load(f)
-    assert back == obj, "JSON 写后读回不一致：%s" % path
+    if back != obj:
+        # P2：校验禁用 assert（M1 原则）；raise 前先写诊断日志，调用方按熔断处理
+        err_write("write_json_atomic 读回不一致：%s" % path)
+        raise ValueError("JSON 写后读回不一致：%s" % path)
     os.replace(tmp, path)
 
 
@@ -552,6 +557,13 @@ def main():
                 if mg.returncode != 0:
                     return "ff 合并失败：" + (mg.stderr or "")[:150]
                 return None
+            # P1#4 修复（DeepSeek 审查 2026-10-20）：origin 是 HEAD 的祖先 = 本地
+            # 领先（上次 push 失败遗留未推送提交），不是真分叉——放行走正常
+            # commit/push，把滞留提交一并推走；此前误判 DIVERGED 停手，
+            # stats/log/shop 会一直停更到有其他推送者顺带推走为止。
+            ahead = git("merge-base", "--is-ancestor", "origin/master", "HEAD")
+            if ahead.returncode == 0:
+                return None
             return "DIVERGED"
         finally:
             lock.close()
@@ -638,7 +650,7 @@ def main():
     # R4 diff 校验
     try:
         r4_diff_check(snap)
-    except AssertionError as e:
+    except (AssertionError, ValueError) as e:  # P2：r4 校验已改 raise ValueError
         msg = "NEED-REVIEW R4 diff 校验失败：%s" % e
         warn(msg)
         err_write(msg)

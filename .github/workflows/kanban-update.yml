@@ -90,7 +90,8 @@ jobs:
 
       # 全栏目数据通道（KB-SECTIONS-AUTO-2026-10-19）：
       # 同步 data/badges.json、badge_goals.json、shop.json、rules.json 进 Pages 产物。
-      # 软断言：缺失只告警不失败（前端按栏目独立降级，保留硬编码）。
+      # 硬断言（P1#8，DeepSeek 审查 2026-10-20）：缺失/校验失败即构建失败并点名
+      # 文件。原"软断言照绿"曾让 badges.json 在远端静默消失数日无人知。
       - name: 同步全栏目数据到 Pages 产物
         run: |
           mkdir -p public/data
@@ -111,31 +112,28 @@ jobs:
               d.get('schema_version') == 1 and isinstance(d.get('add'), list)
               and isinstance(d.get('deduct'), list)),
           }
-          ok = True
           for path, check in files.items():
               try:
                   with open(path, encoding='utf-8') as f:
                       d = json.load(f)
                   assert check(d), 'schema 校验失败'
-                  print('OK ' + path)
-              except FileNotFoundError:
-                  print('::warning::' + path + ' 缺失，前端该栏目降级')
-                  continue
               except Exception as e:
-                  print('::warning::' + path + ' 校验失败（' + str(e)[:80] + '），前端该栏目降级')
-                  continue
+                  print('::error::' + path + ' 缺失或校验失败（' + str(e)[:80] + '），构建失败')
+                  sys.exit(1)
+              print('OK ' + path)
               import shutil
               shutil.copy(path, 'public/' + path)
           PYEOF
           ls -la public/data/
 
       # 学习走势数据通道（2026-10-20，DeepSeek方案）：
-      # 同步 data/trends.json 进 Pages 产物。软断言：缺失/校验失败只告警不失败（前端降级为"暂不可用"）。
+      # 同步 data/trends.json 进 Pages 产物。硬断言（P1#8，DeepSeek 审查
+      # 2026-10-20）：缺失/校验失败即构建失败并点名文件，不再软断言照绿。
       - name: 同步学习走势数据到 Pages 产物
         run: |
           mkdir -p public/data
           python3 - <<'PYEOF'
-          import json, shutil
+          import json, shutil, sys
           p = 'data/trends.json'
           try:
               with open(p, encoding='utf-8') as f:
@@ -144,12 +142,11 @@ jobs:
               assert set(d.get('grades', {}).keys()) == {'五年级', '六年级'}, 'grades 缺年级'
               for gr in d['grades'].values():
                   assert isinstance(gr.get('overall'), list) and len(gr['overall']) == 30, 'overall 须为30天'
-              print('OK ' + p)
-              shutil.copy(p, 'public/' + p)
-          except FileNotFoundError:
-              print('::warning::' + p + ' 缺失，学习走势栏目降级')
           except Exception as e:
-              print('::warning::' + p + ' 校验失败（' + str(e)[:80] + '），学习走势栏目降级')
+              print('::error::' + p + ' 缺失或校验失败（' + str(e)[:80] + '），构建失败')
+              sys.exit(1)
+          print('OK ' + p)
+          shutil.copy(p, 'public/' + p)
           PYEOF
           ls -la public/data/
 

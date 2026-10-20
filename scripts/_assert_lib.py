@@ -102,7 +102,7 @@ def assert_points_log_schema(d, filename="points_log_?.json"):
     assert isinstance(d.get("generated_at"), str) and d["generated_at"], "generated_at 须为非空字符串"
     w = d.get("window")
     assert isinstance(w, dict), "window 须为 object"
-    assert w.get("days") == 30 and w.get("max_items") == 20, "window 须为 {days:30, max_items:20}"
+    assert w.get("days") == 7 and w.get("max_items") == 20, "window 须为 {days:7, max_items:20}"  # P1#2（裁定2 甲 2026-10-20）：日志窗口统一近7天，与 build_stats 生成端同步
     items = d.get("items")
     assert isinstance(items, list), "items 须为数组"
     assert len(items) <= 20, "items 不得超过 20 条"

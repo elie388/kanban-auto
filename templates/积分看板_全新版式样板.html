@@ -1386,25 +1386,28 @@
 
   function renderLogItems(listEl, items){
     while(listEl.firstChild) listEl.removeChild(listEl.firstChild);
-    var valid = [];
+    var valid = [], dropped = 0;
     for(var i = 0; i < items.length; i++){
       var it = items[i];
-      if(!it || typeof it.reason !== 'string' || !it.reason) continue; /* §7.3 类型断言 */
-      if(typeof it.date !== 'string' || !it.date) continue;
-      if(it.time !== null && it.time !== undefined && !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(it.time)) continue; /* KB-TIME */
-      if(it.time_source !== null && it.time_source !== undefined && ['submit','parent_confirm','entry','deadline'].indexOf(it.time_source) < 0) continue;
-      if(typeof it.pts !== 'number' || !Number.isInteger(it.pts)) continue;
-      if(it.sign !== 'plus' && it.sign !== 'minus') continue;
+      if(!it || typeof it.reason !== 'string' || !it.reason) { dropped++; continue; } /* §7.3 类型断言 */
+      if(typeof it.date !== 'string' || !it.date) { dropped++; continue; }
+      if(it.time !== null && it.time !== undefined && !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(it.time)) { dropped++; continue; } /* KB-TIME */
+      if(it.time_source !== null && it.time_source !== undefined && ['submit','parent_confirm','entry','deadline'].indexOf(it.time_source) < 0) { dropped++; continue; }
+      if(typeof it.pts !== 'number' || !Number.isInteger(it.pts)) { dropped++; continue; }
+      if(it.sign !== 'plus' && it.sign !== 'minus') { dropped++; continue; }
       valid.push(it);
       if(valid.length >= 20) break;
     }
+    /* P1#7（DeepSeek 审查 2026-10-20）：丢弃不再静默——计数并 console 告警；
+       下方空态在"全丢弃（数据异常）"与"真无记录"之间区分文案。 */
+    if(dropped && window.console && console.warn) console.warn('积分日志：丢弃不合规条目 ' + dropped + ' 条（共 ' + items.length + ' 条）');
     if(!valid.length){
       var li0 = document.createElement('li'); /* §5.5：空日志 */
       li0.className = 'log-item';
       var b0 = document.createElement('div'); b0.className = 'log-body';
       var l0 = document.createElement('div'); l0.className = 'log-line1';
       var s0 = document.createElement('span'); s0.className = 'log-reason';
-      s0.textContent = '近 30 天暂无积分记录';
+      s0.textContent = items.length ? '积分记录数据异常，暂时无法显示' : '近 7 天暂无积分记录'; /* P1#2/P1#7：窗口口径统一近7天；全丢弃=数据异常 */
       l0.appendChild(s0); b0.appendChild(l0); li0.appendChild(b0);
       listEl.appendChild(li0);
       return;
