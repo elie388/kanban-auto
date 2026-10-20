@@ -232,43 +232,60 @@
     font-size:18px; font-weight:800; color:var(--txt);
     margin:0 0 12px; padding-left:4px;
   }
-  .badge-grid{
-    display:grid; gap:12px;
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  /* 本周徽章：横向勋章带（2026-10-20 方案1，DeepSeek 终审放行）
+     大卡网格 → 64px 圆形勋章单行横滑；稀有度色环三档（金=普通/蓝=进阶/紫=稀有，仅颜色区分）；
+     BADGE_TIER / BADGE_BLURB 为展示层静态数据，仅决定色环与气泡文案，禁止被判定器/积分逻辑引用。 */
+  .badge-strip{
+    display:flex; flex-wrap:nowrap; gap:10px;
+    overflow-x:auto; overflow-y:hidden;
+    padding:8px 2px 10px;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(90deg,#000 93%,rgba(0,0,0,0));
+            mask-image:linear-gradient(90deg,#000 93%,rgba(0,0,0,0));
   }
-  @media(min-width:768px){.badge-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-  .ach{
-    background:linear-gradient(160deg,#FFF8E1,#FFFDF5);
-    border:2px dashed #FFD97A;
-    border-radius:var(--radius-sm);
-    padding:14px 10px; text-align:center;
-    min-width:0;
-    box-shadow:0 2px 8px rgba(232,176,75,.14);
-    transition:transform .2s ease, box-shadow .2s ease;
-    position:relative;
+  .badge-strip::-webkit-scrollbar{display:none;}
+  .medal{
+    flex:0 0 auto; width:76px; position:relative;
+    text-align:center; cursor:pointer; scroll-snap-align:start;
+    -webkit-tap-highlight-color:transparent;
   }
-  /* 2026-10-19：同徽章当周多次获得次数角标（如 ×3），静态 pill，无动效 */
-  .ach-count{
-    position:absolute; top:6px; right:6px;
+  .medal-disc{
+    width:64px; height:64px; margin:0 auto; border-radius:50%;
+    box-sizing:border-box; border:3px solid #E8B04B;
+    background:radial-gradient(circle at 32% 28%, #FFF6D8, #FFE9A8 58%, #F6D47E);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+    box-shadow:0 2px 6px rgba(232,176,75,.25);
+  }
+  .medal-disc.ring-blue{border-color:#4EA1FF;}
+  .medal-disc.ring-purple{border-color:#B678F0;}
+  .medal-disc .ic{font-size:28px; line-height:1; filter:drop-shadow(0 1px 2px rgba(232,176,75,.4));}
+  .medal-name{font-size:11px; font-weight:700; color:var(--txt); margin-top:5px; line-height:1.25; white-space:nowrap;}
+  /* 同徽章当周多次获得次数角标（如 ×3），静态小圆点，无动效 */
+  .medal-count{
+    position:absolute; top:0; right:2px; z-index:2;
     background:#D64545; color:#fff;
-    font-size:12px; font-weight:700; line-height:1;
-    padding:4px 8px; border-radius:999px;
+    font-size:11px; font-weight:700; line-height:1;
+    padding:3px 6px; border-radius:999px;
   }
-  .ach .ic{filter:drop-shadow(0 2px 3px rgba(232,176,75,.35));}
-  .ach:active{transform:scale(.96);}
-  .ach .ic{font-size:34px; display:block; margin-bottom:4px; line-height:1.2;}
-  .ach .tt{font-size:14px; font-weight:700;}
-  .ach .ds{font-size:12px; color:var(--sub); margin-top:2px;}
-  .ach.locked{opacity:.55; filter:grayscale(.7); border-style:solid;}
-  /* 新徽章动效 A+B（2026-10-20，DeepSeek 方案+用户拍板）：
+  /* 已读徽章入带飞入（DeepSeek 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入，单带前 6 枚，第 7 枚起不加此类（延迟硬归零） */
+  .medal.fly-in{animation:medalFly .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay:var(--fly-d,0ms);}
+  @keyframes medalFly{
+    from{transform:translateX(26px) scale(.6); opacity:0;}
+    to{transform:translateX(0) scale(1); opacity:1;}
+  }
+  /* 新徽章动效 A+B（2026-10-20 沿用，载体由大卡改为勋章圆盘）：
      A 呼吸光晕——未读新徽章金色光晕缓慢脉动，点开查看后停（localStorage 记已读，按周+年级+徽章区分）；
-     B 扫光掠过——首次渲染时一道高光斜扫过徽章一次即停（会话内不重播，软刷新不重复打扰）。 */
-  .ach.is-new{cursor:pointer; overflow:hidden; animation:badgeGlow 2.4s ease-in-out infinite alternate;}
-  @keyframes badgeGlow{
-    from{box-shadow:0 2px 8px rgba(232,176,75,.14), 0 0 0 0 rgba(246,212,126,.45);}
-    to{box-shadow:0 2px 8px rgba(232,176,75,.14), 0 0 16px 5px rgba(246,212,126,.85);}
+     B 扫光掠过——首次渲染时一道高光斜扫过圆盘一次即停（会话内不重播，软刷新不重复打扰）。
+     合并规则 R1：未读只走光晕+扫光、不飞入；已读只飞入、不带光晕，二者互斥不同帧叠加。 */
+  .medal.is-new .medal-disc{animation:medalGlow 2.4s ease-in-out infinite alternate;}
+  @keyframes medalGlow{
+    from{box-shadow:0 2px 6px rgba(232,176,75,.25), 0 0 0 0 rgba(246,212,126,.45);}
+    to{box-shadow:0 2px 6px rgba(232,176,75,.25), 0 0 14px 4px rgba(246,212,126,.85);}
   }
-  .ach.is-new::after{
+  .medal.is-new .medal-disc::after{
     content:''; position:absolute; top:0; bottom:0; left:0; width:55%;
     background:linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0));
     transform:translateX(-140%) skewX(-18deg);
@@ -276,10 +293,27 @@
     pointer-events:none;
   }
   @keyframes badgeShine{ to{transform:translateX(340%) skewX(-18deg);} }
-  .ach.is-new.shine-done::after{display:none;}
+  .medal.is-new.shine-done .medal-disc::after{display:none;}
   @media (prefers-reduced-motion: reduce){
-    .ach.is-new{animation:none;}
-    .ach.is-new::after{display:none;}
+    .medal.fly-in{animation:none;}
+    .medal.is-new .medal-disc{animation:none;}
+    .medal.is-new .medal-disc::after{display:none;}
+  }
+  /* 勋章详情气泡：点勋章展开（大图 + 点亮日期 + 一句童趣解释） */
+  .medal-pop{
+    display:flex; align-items:flex-start; gap:10px;
+    margin-top:6px; padding:10px 12px;
+    background:#FFFDF5; border:1.5px solid #FFD97A; border-radius:12px;
+  }
+  .medal-pop[hidden]{display:none;}
+  .medal-pop .pop-ic{font-size:34px; line-height:1.15;}
+  .medal-pop .pop-main{flex:1; min-width:0;}
+  .medal-pop .pop-name-t{font-size:14px; font-weight:800; color:var(--txt);}
+  .medal-pop .pop-date{font-size:12px; font-weight:600; color:var(--sub); margin-left:6px;}
+  .medal-pop .pop-blurb{font-size:13px; color:var(--txt); margin-top:2px;}
+  .medal-pop .pop-close{
+    background:none; border:none; padding:2px 4px;
+    font-size:16px; line-height:1; color:var(--sub); cursor:pointer;
   }
   /* 成就进度条（2026-10-19新增） */
   .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
@@ -431,22 +465,14 @@
     .ach-prog-bar.in > i{ animation: barGrow .6s var(--ease-pop) both; }
     @keyframes barGrow{ from{ transform: scaleX(0);} to{ transform: scaleX(1);} }
     /* D3 卡片按压回弹（:active） */
-    .task, .shop-item, .ach{ -webkit-tap-highlight-color: transparent; }
-    .task:active, .shop-item:active, .ach:active{
+    .task, .shop-item, .medal{ -webkit-tap-highlight-color: transparent; }
+    .task:active, .shop-item:active, .medal:active{
       transform: scale(.97);
       transition: transform var(--dur-fast) var(--ease-pop);
     }
     /* D4 折叠头按压反馈 */
     .collapse-btn:active{ transform: scale(.985); transition: transform var(--dur-fast) var(--ease-pop); }
-    /* D5 徽章呼吸微光（伪元素opacity脉动，不重绘box-shadow） */
-    .ach{ position: relative; }
-    .ach::after{
-      content:""; position:absolute; inset:0; border-radius: inherit;
-      box-shadow: 0 0 0 2px rgba(255,193,7,.55), 0 0 14px rgba(255,193,7,.35);
-      opacity:0; pointer-events:none;
-      animation: breathe 2.8s ease-in-out infinite;
-    }
-    @keyframes breathe{ 0%,100%{ opacity:0; } 50%{ opacity:1; } }
+    /* D5 徽章呼吸微光：2026-10-20 随勋章带改造退役（未读光晕改由 .medal-disc 的 medalGlow 接管，避免全员呼吸与色环/扫光叠加打架） */
     /* D6 今日任务错落淡入 */
     .task-list.in .task{ animation: taskIn .4s var(--ease-pop) both; }
     .task-list.in .task:nth-child(1){ animation-delay:0s; }
@@ -618,7 +644,6 @@
   /* 桌面端增强（2026-10-19：≥1024px 宽屏自适应） */
   @media(min-width:1024px){
     .wrap{max-width:980px;}
-    .badge-grid{grid-template-columns:repeat(4,1fr);}
     .bal-card{padding:22px;}
     .collapse-btn .cb-title{font-size:24px;}
     /* iPad横屏/桌面：今日任务两年级并排 */
@@ -1565,11 +1590,46 @@
     });
   }
 
-  /* ---- 1. 荣耀徽章（当周，台账 badge_ 事件） ---- */
+  /* ---- 1. 荣耀徽章（当周，台账 badge_ 事件） ----
+     2026-10-20 方案1 横向勋章带（DeepSeek 终审放行）：大卡网格 → 64px 圆形勋章单行横滑。
+     展示层静态数据 BADGE_TIER / BADGE_BLURB 仅决定色环与气泡文案，禁止被判定器/积分逻辑引用。 */
   var SHINE_PLAYED = {};  /* A+B 动效：扫光会话内已播标记（软刷新重渲染不重播） */
+  var FLY_PLAYED = {};    /* 飞入会话内已播标记（与 SHINE_PLAYED 同策略） */
+  var BADGE_TIER = {
+    baifentupo:'ring-purple', zonghezhixing:'ring-purple', jianchixiaoyongshi:'ring-purple',
+    quanduizhixing:'ring-blue', tupoxiaoyongshi:'ring-blue', hezuozhixing:'ring-blue',
+    jiawujielishou:'ring-blue', xidengxiaochaoren:'ring-blue', shuxiezhixing:'ring-blue',
+    zhengdalidaren:'ring-blue', jiawuzhixing:'ring-blue', sanheyi:'ring-blue', xiaolvxiaoshandian:'ring-blue'
+  };
+  var BADGE_BLURB = {
+    quanduizhixing:'一整套题全都做对了，太稳了！',
+    baifentupo:'卷面满分！这是最闪亮的一枚。',
+    zonghezhixing:'一周里集齐 4 种不同的徽章，全能选手！',
+    tupoxiaoyongshi:'同一类错题连着 3 次订正全对，难关被你攻下啦。',
+    jianchixiaoyongshi:'同一件事连着坚持 14 天，这份耐心超厉害。',
+    hezuozhixing:'连着 3 天和兄弟一起做家务，配合满分！',
+    sanheyi:'一天里独立做完 3 样家务，手脚真麻利。',
+    xiaolvxiaoshandian:'赶在 22:00 前就把今天的任务全做完了，快如闪电！',
+    xidengxiaochaoren:'连着 5 天都在 23:00 前上床睡觉，自律小超人！',
+    jiawujielishou:'和兄弟你一次我一次，家务接力完成啦。',
+    sanribuduan:'连着 3 天都没有断档，稳稳的！',
+    shuxiezhixing:'连着 5 次作业书写零扣分，字越写越漂亮。',
+    dancizhixing:'一次听写全对，单词记得牢牢的！',
+    moxiezhixing:'古诗文默写一次全对，背得滚瓜烂熟。',
+    zhenglizhixing:'整理桌面攒满 5 天，小天地干干净净。',
+    jinbumiao:'比上次进步了一大截，小苗正在长高！',
+    biaodazhixing:'这一周背诵和口语达标 2 次，越说越流利。',
+    jiawuxiaobangshou:'动手做了一件家务，家里因你更整洁。',
+    zhengdalidaren:'连着 5 天整理，桌面天天清清爽爽。',
+    jiawuzhixing:'一周做了 5 次家务，家务小明星就是你！'
+  };
   function badgeSeenId(weekId, gk, key){ return 'kb-badge-seen:' + weekId + ':' + gk + ':' + key; }
   function badgeIsSeen(id){ try{ return !!localStorage.getItem(id); }catch(e){ return true; } }
   function badgeMarkSeen(id){ try{ localStorage.setItem(id, '1'); }catch(e){} }
+  function badgeDateText(ds){
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(String(ds || ''));
+    return m ? (Number(m[2]) + '月' + Number(m[3]) + '日点亮') : '';
+  }
   function renderBadges(d){
     var pad = document.querySelector('#panel-achieve .collapse-pad');
     if(!pad || !d || !d.by_grade) return false;
@@ -1581,38 +1641,92 @@
       head.appendChild(el('span','pill-grade ' + gk, GRADE_NAME[gk]));
       head.appendChild(document.createTextNode('成就'));
       block.appendChild(head);
-      var list = d.by_grade[gk] || [];
+      var list = (d.by_grade[gk] || []).filter(function(b){ return b && b.name; });
+      /* 展示顺序：获得日期升序（先得在左，新徽章在带尾从右侧飞入） */
+      list = list.slice().sort(function(a,b){
+        var da = String(a.date || ''), db = String(b.date || '');
+        return da < db ? -1 : (da > db ? 1 : 0);
+      });
       if(list.length){
-        var grid = el('div','badge-grid');
+        var strip = el('div','badge-strip');
+        /* 桌面可用性（DeepSeek 终审约束）：竖向滚轮在带上转横向滚动；滚到边缘后不拦截，页面照常滚 */
+        strip.addEventListener('wheel', function(e){
+          if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+          var max = strip.scrollWidth - strip.clientWidth;
+          if(max <= 0) return;
+          var nl = strip.scrollLeft + e.deltaY;
+          if(nl < 0) nl = 0;
+          if(nl > max) nl = max;
+          if(nl !== strip.scrollLeft){ e.preventDefault(); strip.scrollLeft = nl; }
+        }, {passive:false});
+        var pop = el('div','medal-pop');
+        pop.hidden = true;
+        var popIc = el('span','pop-ic');
+        var popMain = el('div','pop-main');
+        var popNameRow = el('div','pop-name');
+        var popName = el('span','pop-name-t');
+        var popDate = el('span','pop-date');
+        var popBlurb = el('div','pop-blurb');
+        popNameRow.appendChild(popName);
+        popNameRow.appendChild(popDate);
+        popMain.appendChild(popNameRow);
+        popMain.appendChild(popBlurb);
+        var popClose = el('button','pop-close','×');
+        popClose.type = 'button';
+        popClose.setAttribute('aria-label','关闭');
+        popClose.addEventListener('click', function(){ pop.hidden = true; block._popKey = null; });
+        pop.appendChild(popIc);
+        pop.appendChild(popMain);
+        pop.appendChild(popClose);
+        var flyIdx = 0;
         list.forEach(function(b){
-          if(!b || !b.name) return;
-          var ach = el('div','ach');
-          /* A+B 动效（2026-10-20）：未读新徽章加 is-new（呼吸光晕+扫光）；点击后记已读、光晕停 */
-          if(b.key){
-            var sid = badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key);
-            if(!badgeIsSeen(sid)){
-              ach.classList.add('is-new');
-              if(SHINE_PLAYED[sid]) ach.classList.add('shine-done');
-              else SHINE_PLAYED[sid] = 1;
-              ach.title = '新徽章！点一下收下这份光';
-              ach.addEventListener('click', function(){
-                ach.classList.remove('is-new');
-                badgeMarkSeen(sid);
-              });
+          var medal = el('div','medal');
+          var sid = b.key ? badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key) : '';
+          /* 动效合并（DeepSeek 终审 R1/R3）：先判已读态——未读只走光晕+扫光不飞入；已读才判飞入，会话内只播一次 */
+          var isNew = !!sid && !badgeIsSeen(sid);
+          if(isNew){
+            medal.classList.add('is-new');
+            if(SHINE_PLAYED[sid]) medal.classList.add('shine-done');
+            else SHINE_PLAYED[sid] = 1;
+            medal.title = '新徽章！点一下收下这份光';
+          }else if(sid && !FLY_PLAYED[sid]){
+            FLY_PLAYED[sid] = 1;
+            if(flyIdx < 6){
+              medal.classList.add('fly-in');
+              medal.style.setProperty('--fly-d', (flyIdx * 70) + 'ms');
+              flyIdx++;
+              medal.addEventListener('animationend', function(){ medal.classList.remove('fly-in'); });
             }
           }
-          ach.appendChild(el('span','ic', b.icon || '🏅'));
-          ach.appendChild(el('div','tt', String(b.name).slice(0,8)));
-          /* 2026-10-19：满分之星当周多次获得显示次数角标（count>1；=1 不显示） */
+          var disc = el('div','medal-disc ' + (BADGE_TIER[b.key] || 'ring-gold'));
+          disc.appendChild(el('span','ic', b.icon || '🏅'));
+          medal.appendChild(disc);
+          medal.appendChild(el('div','medal-name', String(b.name)));
+          /* 同徽章当周多次获得次数角标（count>1 才显示，规则不变） */
           if(b.count && b.count > 1){
-            ach.appendChild(el('span','ach-count', '×' + b.count));
+            medal.appendChild(el('span','medal-count', '×' + b.count));
           }
-          ach.appendChild(el('div','ds', '获得日期 ' + (b.date || '')));
-          grid.appendChild(ach);
+          medal.addEventListener('click', function(){
+            if(medal.classList.contains('is-new')){
+              medal.classList.remove('is-new');
+              badgeMarkSeen(sid);
+              FLY_PLAYED[sid] = 1;
+            }
+            if(!pop.hidden && block._popKey === (b.key || b.name)){ pop.hidden = true; block._popKey = null; return; }
+            block._popKey = b.key || b.name;
+            popIc.textContent = b.icon || '🏅';
+            popName.textContent = String(b.name);
+            popDate.textContent = badgeDateText(b.date);
+            /* 兜底句：cond 字段不在 badges.json（在 badge_goals.json），设计稿表述有误，改通用童趣句——2026-10-20 报备确认 */
+            popBlurb.textContent = BADGE_BLURB[b.key] || '这枚徽章已经被你收进口袋啦！';
+            pop.hidden = false;
+          });
+          strip.appendChild(medal);
         });
-        block.appendChild(grid);
+        block.appendChild(strip);
+        block.appendChild(pop);
       }else{
-        /* §6（2026-10-19）：无真实徽章台账，不编造、不沉默，显式标注建设中 */
+        /* 无徽章空态：只显示已审文案，不渲染灰度占位（DeepSeek 终审 D4/D2 约束） */
         block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
       }
       pad.appendChild(block);
