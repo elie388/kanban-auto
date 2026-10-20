@@ -68,7 +68,7 @@
    "key": "jiawujielishou",
    "name": "家务接力手",
    "icon": "🔄",
-   "cond": "三人接力：不同家庭成员各完成≥1项家务",
+   "cond": "兄弟接力：同周两兄弟各做≥2项家务（含1次接力动作）",
    "points": 5
   },
   {
@@ -253,8 +253,11 @@
     "date": "",
     "count": 0,
     "progress": {
-     "state": "nodata",
-     "note": "暂无家庭成员接力落记"
+     "state": "ok",
+     "current": 0,
+     "target": 2,
+     "unit": "项/人",
+     "mode": "本周"
     }
    },
    {
@@ -479,8 +482,11 @@
     "date": "",
     "count": 0,
     "progress": {
-     "state": "nodata",
-     "note": "暂无家庭成员接力落记"
+     "state": "ok",
+     "current": 0,
+     "target": 2,
+     "unit": "项/人",
+     "mode": "本周"
     }
    },
    {
@@ -596,5 +602,5 @@
    }
   ]
  },
- "generated_at": "2026-10-20T16:30:30+08:00"
+ "generated_at": "2026-10-20T16:36:16+08:00"
 }

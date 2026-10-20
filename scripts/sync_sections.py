@@ -43,7 +43,7 @@ BADGE_CATALOG = [
     ("sanheyi",          "三合一快手", "⚡", "同日独立完成3项不同基础家务"),
     ("xiaolvxiaoshandian", "效率小闪电", "💨", "当日所有任务22:00前全部完成（可叠加）"),
     ("xidengxiaochaoren", "熄灯小超人", "🌙", "连续5天23:00前睡觉（中断重置）"),
-    ("jiawujielishou",   "家务接力手", "🔄", "三人接力：不同家庭成员各完成≥1项家务"),
+    ("jiawujielishou",   "家务接力手", "🔄", "兄弟接力：同周两兄弟各做≥2项家务（含1次接力动作）"),
     ("sanribuduan",      "三日不断",   "📆", "连续3天不断档/全勤一周取高档"),
     ("shuxiezhixing",    "书写之星",   "✍️", "连续5次作业书写零扣分"),
     ("dancizhixing",     "单词之星",   "🔤", "单次单词听写全对（≥10词）"),
@@ -572,18 +572,6 @@ def compute_badge_progress(events, now=None):
         tp = _tupo_progress(gk)
         p["tupoxiaoyongshi"] = tp if tp is not None else {
             "state": "nodata", "note": "题目库暂不可用"}
-        # 家务接力手：家庭成员落记
-        if notes["relay"]:
-            by_date = {}
-            for dstr, member in notes["relay"]:
-                by_date.setdefault(dstr, set()).add(member)
-            best_members = max(len(v) for v in by_date.values())
-            p["jiawujielishou"] = {"state": "ok",
-                                   "current": min(best_members, 3), "target": 3,
-                                   "unit": "人", "mode": "单日"}
-        else:
-            p["jiawujielishou"] = {"state": "nodata",
-                                   "note": "暂无家庭成员接力落记"}
         out[gk] = p
     # 合作之星补算：两年级同日均有"合作"标识家务条目
     coop = {}
@@ -594,6 +582,30 @@ def compute_badge_progress(events, now=None):
     for gk in ("g5", "g6"):
         out[gk]["hezuozhixing"]["current"] = min(
             _streak_from_dates(both, today), 3)
+    # 家务接力手补算（2026-10-20 改版，DeepSeek 方案+家长拍板）：
+    # 同周两兄弟各≥2项、合计≥4、至少1次接力动作（同项不同日两人做过，或同日不同项目）
+    def _chore_items(gk):
+        items = []
+        for r in rows_by_g[gk]:
+            if _is_chore(r) and ws_s <= r["date"] <= we_s:
+                m = re.search(r"_\d{4}-\d{2}-\d{2}_([a-z]+)", r["key"])
+                items.append((r["date"], m.group(1) if m else r["desc"]))
+        return items
+    ci5, ci6 = _chore_items("g5"), _chore_items("g6")
+    relay = False
+    for i in {x for _, x in ci5} & {x for _, x in ci6}:
+        d5 = {d for d, x in ci5 if x == i}
+        d6 = {d for d, x in ci6 if x == i}
+        if any(x != y for x in d5 for y in d6):
+            relay = True
+    for d in {d for d, _ in ci5} & {d for d, _ in ci6}:
+        if {x for dd, x in ci5 if dd == d} != {x for dd, x in ci6 if dd == d}:
+            relay = True
+    prog = min(min(len(ci5), len(ci6)), 2)
+    for gk in ("g5", "g6"):
+        out[gk]["jiawujielishou"] = {"state": "ok", "current": prog,
+                                     "target": 2, "unit": "项/人",
+                                     "mode": "本周"}
     # 书写判定日志（草约 A-4 放行前置）
     try:
         WRITING_DECIDE_LOG.parent.mkdir(parents=True, exist_ok=True)
