@@ -232,34 +232,13 @@ def build_badges(events, now=None):
                           "count": len(evts)})
         items.sort(key=lambda x: x["date"])
         by_grade[gk] = items
-    # 往期徽章（徽章周期清空机制）：本周期之前的全部徽章事件按 key 聚合，
-    # 只记次数、不计分；积分与台账历史不受影响（分不回收铁律）。
-    history = {}
-    for gk in ("g5", "g6"):
-        past = {}
-        for e in events.get(gk, []):
-            if (e.get("cycle_week") or cycle_week_of(e["date"])) >= cur_cycle:
-                continue
-            p = past.setdefault(e["key"], {"key": e["key"], "name": e["name"],
-                                            "icon": e["icon"], "count": 0,
-                                            "weeks": set()})
-            p["count"] += 1
-            p["weeks"].add(e.get("cycle_week") or cycle_week_of(e["date"]))
-        hl = []
-        for p in past.values():
-            p["weeks"] = sorted(p["weeks"])
-            p["last_week"] = p["weeks"][-1]
-            hl.append(p)
-        hl.sort(key=lambda x: (-x["count"], x["name"]))
-        history[gk] = hl
     # B-2：周界自证元数据（下游可独立验证周界归属）
     return {"schema_version": 1,
             "week": {"start": ws_s, "end": we_s, "tz": "Asia/Shanghai",
                      "cycle_week": cycle_week_of(ws_s),
                      "week_start": ws.isoformat(timespec="seconds"),
                      "week_end": we.isoformat(timespec="seconds")},
-            "by_grade": by_grade,
-            "history": history}
+            "by_grade": by_grade}
 
 
 # ---------- 徽章进度统计（2026-10-20 徽章进度包，用户拍板+DeepSeek终审） ----------

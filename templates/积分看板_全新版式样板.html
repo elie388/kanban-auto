@@ -260,12 +260,7 @@
   .ach .tt{font-size:14px; font-weight:700;}
   .ach .ds{font-size:12px; color:var(--sub); margin-top:2px;}
   .ach.locked{opacity:.55; filter:grayscale(.7); border-style:solid;}
-  /* 往期徽章折叠区（2026-10-20 徽章周期清空）：只记次数、不计分 */
   #btn-achieve .cb-title{font-size:19px;}
-  .badge-history{margin-top:12px; border-top:1px dashed #E8DCC0; padding-top:10px;}
-  .badge-history summary{cursor:pointer; font-size:14px; font-weight:700; color:var(--sub); padding:4px 2px;}
-  .badge-history .hist-line{font-size:13px; color:var(--sub); padding:3px 2px; display:flex; justify-content:space-between; gap:8px;}
-  .badge-history .hist-line b{color:var(--txt); font-weight:700;}
   /* 成就进度条（2026-10-19新增） */
   .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
   .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
@@ -1613,28 +1608,6 @@
         /* §6（2026-10-19）：无真实徽章台账，不编造、不沉默，显式标注建设中 */
         block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
       }
-      /* 往期徽章（2026-10-20 徽章周期清空）：往期只记次数、不计分；
-         已发积分永久保留，见 badges.json history（按 cycle_week 归档） */
-      var hist = (d.history && d.history[gk]) || [];
-      if(hist.length){
-        var det = document.createElement('details');
-        det.className = 'badge-history';
-        var sum = document.createElement('summary');
-        sum.textContent = '往期徽章（次数统计，不计分）';
-        det.appendChild(sum);
-        hist.forEach(function(h){
-          if(!h || !h.name) return;
-          var line = el('div','hist-line');
-          var nm = el('span');
-          nm.textContent = (h.icon || '🏅') + ' ' + String(h.name).slice(0,8);
-          line.appendChild(nm);
-          var ct = el('b');
-          ct.textContent = '共 ' + (h.count || 0) + ' 次';
-          line.appendChild(ct);
-          det.appendChild(line);
-        });
-        block.appendChild(det);
-      }
       pad.appendChild(block);
     });
     return true;
@@ -1650,7 +1623,7 @@
     intro.style.marginTop = '0'; intro.style.marginBottom = '14px';
     pad.appendChild(intro);
     /* 徽章进度红线固定说明（2026-10-20 徽章进度包 E-1）：展示≠发放 */
-    pad.appendChild(el('p','rule-note','📌 进度满只代表达到条件，徽章由每日总结人工确认后颁发。按周类进度每周一清零，连续/累计类不清。'));
+    pad.appendChild(el('p','rule-note','📌 进度满只代表达到条件，徽章由每日总结人工确认后颁发。'));
     var ul = el('ul','rule-list');
     ul.setAttribute('aria-label','可争取徽章');
     d.catalog.forEach(function(c){
