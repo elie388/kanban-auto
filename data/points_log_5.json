@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-20T18:07:02+08:00",
+  "generated_at": "2026-10-20T22:39:29+08:00",
   "window": {
     "days": 7,
     "max_items": 20
@@ -9,9 +9,162 @@
   "items": [
     {
       "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "数学完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "数学书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "数学完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "数学正确率92.3%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "数学书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "语文作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "语文作业正确率92.3%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "语文书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "英语完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "英语正确率84.2%",
+      "pts": 4,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "英语书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练P完成分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练P正确率58.3%",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练P完成分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练P正确率100%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练缺1页",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
       "time": "17:51",
       "time_source": "entry",
       "reason": "📆三日不断徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "17:51",
+      "time_source": "entry",
+      "reason": "英语口语按时发回",
       "pts": 5,
       "sign": "plus",
       "filtered": false
@@ -31,159 +184,6 @@
       "time_source": "entry",
       "reason": "冲正： 53天天练正确率",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "20:00",
-      "time_source": "deadline",
-      "reason": "第六期英语阅读写作练习没交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "19:18",
-      "time_source": "submit",
-      "reason": "英语Unit1完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "19:18",
-      "time_source": "submit",
-      "reason": "数学练习第页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "19:14",
-      "time_source": "entry",
-      "reason": "洗碗",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "11:03",
-      "time_source": "entry",
-      "reason": "不整理书桌（20-19晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "家务连做第3天",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "英语Unit1正确率84.5%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "英语书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "数学单元测试卷81分",
-      "pts": 16,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "数学练习第页书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "数学完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "数学正确率83.3%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "数学书写-2",
-      "pts": -2,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "语文练习8/9/10页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "语文正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "英语口语易+写作范文粘贴完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "22:12",
-      "time_source": "entry",
-      "reason": "洗碗",
-      "pts": 5,
       "sign": "plus",
       "filtered": false
     }
