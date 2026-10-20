@@ -3,12 +3,12 @@
   "date": "2026-10-20",
   "grade": "五年级",
   "generated_at": "2026-10-20T00:05:03+08:00",
-  "updated_at": "2026-10-20T20:16:28+08:00",
+  "updated_at": "2026-10-20T20:30:56+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-20T16:55:19+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-20T20:30:56+08:00",
+      "new_lines": 5
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -57,11 +57,101 @@
       "created_at": "2026-10-20T17:41:48+08:00",
       "updated_at": "2026-10-20T17:41:48+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "REG-20261020-277B95",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "英语（诵）校本18页。",
+      "detail": "原状态：待完成（孩子自勾✓，无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①英语（诵）校本18页。→ 待完成（孩子自勾✓，无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-20T20:30:56+08:00",
+      "updated_at": "2026-10-20T20:30:56+08:00"
+    },
+    {
+      "task_id": "REG-20261020-96EE96",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "数校本25页。",
+      "detail": "原状态：待完成（孩子自勾✓，无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①数校本25页。→ 待完成（孩子自勾✓，无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-20T20:30:56+08:00",
+      "updated_at": "2026-10-20T20:30:56+08:00"
+    },
+    {
+      "task_id": "REG-20261020-6C2861",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "语校本11课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①语校本11课；②生字11课；③预习12课。→ 待完成（孩子自勾✓，无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-20T20:30:56+08:00",
+      "updated_at": "2026-10-20T20:30:56+08:00"
+    },
+    {
+      "task_id": "REG-20261020-E18E4E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字11课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①语校本11课；②生字11课；③预习12课。→ 待完成（孩子自勾✓，无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-20T20:30:56+08:00",
+      "updated_at": "2026-10-20T20:30:56+08:00"
+    },
+    {
+      "task_id": "REG-20261020-D17AAE",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习12课。",
+      "detail": "原状态：待完成（孩子自勾✓，无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①语校本11课；②生字11课；③预习12课。→ 待完成（孩子自勾✓，无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-20T20:30:56+08:00",
+      "updated_at": "2026-10-20T20:30:56+08:00"
     }
   ],
   "counts": {
-    "total": 3,
-    "pending": 3,
+    "total": 8,
+    "pending": 8,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
