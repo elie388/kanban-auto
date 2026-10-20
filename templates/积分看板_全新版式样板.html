@@ -1867,6 +1867,7 @@
 /* ===== 学习走势（2026-10-20：DeepSeek 方案，数据 data/trends.json 由 build_trends.py 生成） ===== */
 (function(){
   var TD = null, RANGE = 14, ONLYBAD = false;
+  var SHOW_SUBJ = null, OPEN_WEAK = null; /* F2：刷新恢复用（已展开单科卡/薄弱点条） */
   var C5 = '#E8873A', C6 = '#3A7BD5', TARGET = 85;
   var GRADES = ['五年级', '六年级'], SUBJS = ['语文', '数学', '英语'];
   var GKEY = {'五年级': 'g5', '六年级': 'g6'}, GCOL = {'五年级': C5, '六年级': C6};
@@ -1900,6 +1901,9 @@
     if(!TD) return;
     var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
     var root = el('trend-root');
+    /* F4（2026-10-20）：空集防御——双年级在当前窗口都无数据点时直接占位 */
+    var anyData = GRADES.some(function(gr){ return sl(TD.grades[gr].overall, RANGE).some(function(v){ return v !== null && v !== undefined; }); });
+    if(!anyData){ root.innerHTML = '<p class="rule-note" style="margin-top:0">📈 近' + RANGE + '天暂无走势数据。</p>'; return; }
     var h = '';
     h += '<div class="tr-legend"><span><span class="tr-dot" style="background:' + C5 + '"></span>五年级</span>'
       + '<span><span class="tr-dot" style="background:' + C6 + '"></span>六年级</span>'
@@ -1928,9 +1932,11 @@
       return { gr: gr, vals: sl(TD.grades[gr].overall, RANGE), col: GCOL[gr] };
     });
     series.forEach(function(sr){
+      if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
       s += '<path d="' + segPath(sr.vals, g.X, g.Y) + '" fill="none" stroke="' + sr.col + '" stroke-width="2.4" stroke-linejoin="round"/>';
     });
     series.forEach(function(sr){
+      if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
       sr.vals.forEach(function(v, i){
         if(v === null || v === undefined) return;
         if(ONLYBAD && v >= TARGET) return;
@@ -2045,6 +2051,10 @@
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">';
     s += '<line x1="' + PL + '" y1="' + g.Y(TARGET) + '" x2="' + (W - PR) + '" y2="' + g.Y(TARGET) + '" stroke="#1E9E52" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>';
     s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round"/>';
+    /* F4（2026-10-20）：单点场景补圆点，纯路径看不见 */
+    if(nn(vals).length === 1){
+      vals.forEach(function(v, i){ if(v !== null && v !== undefined) s += '<circle cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="' + color + '"/>'; });
+    }
     s += '</svg>';
     return s;
   }
@@ -2067,6 +2077,7 @@
   function showSubj(gr, sn){
     if(!TD) return;
     var box = el('tr-subj'); if(!box) return;
+    SHOW_SUBJ = { g: gr, sn: sn };
     var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
     var vals = sl(TD.grades[gr].subjects[sn].days, RANGE), color = GCOL[gr];
     var W = 680, H = 280, PL = 44, PR = 16, PT = 18, PB = 34;
@@ -2115,8 +2126,8 @@
       r.addEventListener('click', function(){
         var w = wk[+r.dataset.wi], slot = el('tr-ws-' + r.dataset.wi);
         box.querySelectorAll('.tr-wstrip').forEach(function(x){ if(x !== slot) x.style.display = 'none'; });
-        if(slot.style.display === 'block'){ slot.style.display = 'none'; return; }
-        slot.style.display = 'block';
+        if(slot.style.display === 'block'){ slot.style.display = 'none'; if(OPEN_WEAK === w.kp) OPEN_WEAK = null; return; }
+        slot.style.display = 'block'; OPEN_WEAK = w.kp;
         slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ ' + w.kp + ' · 生成 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
           + '<div style="color:#6B7280;margin-bottom:6px">题源：本题知识点错题本（去重/改编&lt;80%相似度）</div>'
           + '<a class="tr-go-a" href="' + w.link_tonight + '" target="_blank" rel="noopener">今晚19:00随练习发</a>'
@@ -2127,11 +2138,28 @@
   }
 
   function loadTrends(){
+    var root = el('trend-root');
+    var oldHTML = root ? root.innerHTML : null;
     fetch('data/trends.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
-      TD = d; renderMain();
+      try{
+        TD = d; renderMain();
+        /* F2（2026-10-20）：软刷新后恢复用户已展开的单科卡与薄弱点出题条 */
+        if(SHOW_SUBJ){
+          showSubj(SHOW_SUBJ.g, SHOW_SUBJ.sn);
+          if(OPEN_WEAK){
+            var rows = el('tr-subj').querySelectorAll('.tr-wrow');
+            rows.forEach(function(r){ if(r.dataset.kp === OPEN_WEAK){ var s2 = document.getElementById('tr-ws-' + r.dataset.wi); if(s2 && s2.style.display !== 'block') r.click(); } });
+          }
+        }
+      }catch(e){
+        /* 渲染异常不清空旧内容（栏目独立兜底） */
+        if(root && oldHTML !== null) root.innerHTML = oldHTML;
+        console.warn('学习走势渲染失败，保留旧内容:', e);
+      }
     }).catch(function(){
-      var root = el('trend-root');
-      if(root && !TD) root.innerHTML = '<p class="rule-note" style="margin-top:0">📈 学习走势数据暂不可用，请稍后刷新。</p>';
+      if(root && !TD) root.innerHTML = '<p class="rule-note" style="margin-top:0" id="tr-retry">📈 学习走势数据暂不可用，点此重试。</p>';
+      var rt = el('tr-retry');
+      if(rt) rt.addEventListener('click', loadTrends);
     });
   }
   window.__kanbanRefreshTrends = loadTrends;

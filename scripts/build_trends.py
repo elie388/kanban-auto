@@ -65,7 +65,10 @@ def main():
     data = {"updated_at": datetime.now(BEIJING).isoformat(timespec="seconds"),
             "dates": dates, "grades": {}}
     for g in GRADES:
-        gdata = {"overall": daily_acc(db, dates, g), "subjects": {}}
+        overall = daily_acc(db, dates, g)
+        npts = sum(1 for v in overall if v is not None)
+        gdata = {"overall": overall, "empty": npts == 0, "sparse": npts < 2,
+                 "subjects": {}}
         for s in SUBJECTS:
             weak = []
             for kp, err, last in db.execute(
@@ -76,7 +79,10 @@ def main():
                 weak.append({"kp": kp, "err": err, "last": last, "n": n,
                              "link_tonight": form_link(g, s, kp, n, "今晚随练习发"),
                              "link_now": form_link(g, s, kp, n, "现在单独发")})
-            gdata["subjects"][s] = {"days": daily_acc(db, dates, g, s), "weak": weak}
+            days_s = daily_acc(db, dates, g, s)
+            npts_s = sum(1 for v in days_s if v is not None)
+            gdata["subjects"][s] = {"days": days_s, "weak": weak,
+                                    "empty": npts_s == 0, "sparse": npts_s < 2}
         data["grades"][g] = gdata
     db.close()
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")

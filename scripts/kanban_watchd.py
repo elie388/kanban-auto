@@ -48,6 +48,8 @@ PID_FILE = LOGS_DIR / "kanban_watchd.pid"
 LOCK_FILE = Path("/tmp/kanban_watchd.lock")
 LOG_FILE = LOGS_DIR / "kanban_watchd.log"
 RATE_LOG = LOGS_DIR / "push_rate.log"
+STATE_FILE = LOGS_DIR / "sync_state.json"  # F3（2026-10-20 审计修复3）：事件/构建对账与已消费指纹持久化
+GIT_LOCK = REPO_DIR.parent / "logs" / "git_push.lock"  # F3：与 task_ingest.do_push 共用同一把锁，串行化 git 区段
 LOG_KEEP_LINES = 2000
 
 POLL_S = float(os.environ.get("KANBAN_WATCHD_POLL_S", "20"))
@@ -144,6 +146,38 @@ def push_allowed(now_ts):
     return True, ""
 
 
+def _load_state():
+    try:
+        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _save_state(state):
+    try:
+        LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        STATE_FILE.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass
+
+
+def _acquire_git_lock(timeout_s=30):
+    """F3：与 task_ingest 共用 git_push.lock。成功返回打开的锁文件句柄；超时返回 None。
+    watchd 消费者（build_stats/sync_sections）在内部做 git 操作，整段持锁可防与 task_ingest 推送交错。"""
+    GIT_LOCK.parent.mkdir(parents=True, exist_ok=True)
+    lf = open(GIT_LOCK, "w")
+    deadline = time.monotonic() + timeout_s
+    while True:
+        try:
+            fcntl.flock(lf, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return lf
+        except BlockingIOError:
+            if time.monotonic() >= deadline:
+                lf.close()
+                return None
+            time.sleep(1)
+
+
 def record_push():
     """守护进程触发的某轮产生了 commit → 持久化记一笔（审计用）。"""
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -156,6 +190,13 @@ class Watcher:
         self.sigs = {}      # key -> 上次已消费指纹
         self.pending = {}   # key -> 防抖到期时间戳（monotonic）
         self._silent_logged = False
+        # F3：恢复已消费指纹。重启后若源文件与已消费指纹不一致，说明停机期间有变更未构建，
+        # poll 首轮会按 restored 逻辑重新武装 pending，避免事件丢失。
+        self._state = _load_state()
+        consumed = self._state.get("consumed", {}) if isinstance(self._state, dict) else {}
+        for key, saved in consumed.items():
+            if isinstance(saved, list) and len(saved) == 2:
+                self.sigs[key] = (saved[0], saved[1])
 
     def poll_once(self):
         """单轮：检测变更 -> 防抖到期且非静默且限流通过 -> 运行消费者。"""
@@ -171,6 +212,8 @@ class Watcher:
                 continue
             if sig != self.sigs[key] and key not in self.pending:
                 self.pending[key] = time.monotonic() + DEBOUNCE_S
+                self._state["last_event_ts"] = time.time()
+                _save_state(self._state)
                 log("change_detected", str(path),
                     {"target": key, "debounce_s": DEBOUNCE_S})
             if key in self.pending and time.monotonic() >= self.pending[key]:
@@ -189,11 +232,28 @@ class Watcher:
         if not ok:
             log("rate_limited", why, {"target": key})
             return  # 保持 pending，下一轮再试
-        for script in consumers:
-            self._run_consumer(script, key, path)
-        # 全部消费者跑完 → 消费本次变更
-        self.sigs[key] = signature(path)
+        lock = _acquire_git_lock()
+        if lock is None:
+            log("git_lock_busy", "git_push.lock 30s 未获得，保持 pending 下轮重试",
+                {"target": key})
+            return  # 不消费，下轮再试
+        try:
+            for script in consumers:
+                self._run_consumer(script, key, path)
+        finally:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_UN)
+                lock.close()
+            except OSError:
+                pass
+        # 全部消费者跑完 → 消费本次变更，并写对账状态（F3）
+        new_sig = signature(path)
+        self.sigs[key] = new_sig
         self.pending.pop(key, None)
+        self._state["last_build_ts"] = time.time()
+        if new_sig is not None:
+            self._state.setdefault("consumed", {})[key] = [new_sig[0], new_sig[1]]
+        _save_state(self._state)
 
     def _run_consumer(self, script, key, path):
         script_path = SCRIPT_DIR / script

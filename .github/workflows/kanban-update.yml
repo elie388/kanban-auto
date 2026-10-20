@@ -37,6 +37,12 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
 
+      # 清单对账（2026-10-20 审计修复1，DeepSeek方案）：
+      # 前端 fetch 的 data/*.json 必须都在本 workflow 的拷贝清单内，漏配即构建失败，
+      # 防 trends.json 式静默 404 复发。脚本只认拷贝语义 token，注释提及不算。
+      - name: 数据清单对账
+        run: python3 scripts/check_data_manifest.py
+
       # 2026-10-19 新版看板上线（用户指令：删掉旧积分看板，部署全新版式样板）：
       # 部署产物 = templates/ 下新样板 HTML（单文件，静态演示数据）；
       # 旧 build_wrapper.py 生成逻辑停用（脚本保留为 fallback，不再调用）；
