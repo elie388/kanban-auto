@@ -1163,7 +1163,9 @@
     if(el._rollV !== undefined && el._rollV !== window.__kanbanBalanceVersion) return; /* B3：旧动画不写 */
     /* P2（DeepSeek 审查 2026-10-20）：位数增长防御——target 位数与现有滚轮槽数
        不一致时先重建（setFinalBalance 已有此重建，此处兜底其他调用路径），
-       防 padStart 不截断导致的错位显示 */
+       防 padStart 不截断导致的错位显示。
+       前提（DeepSeek 终审条件登记）：target 为非负整数——负余额走
+       setFinalBalance 的静态 −N 分支，不入本函数。 */
     if(String(target).length !== odo.children.length){ odo = buildOdometer(el, target); el._odo = odo; }
     var cellH = measureCellH(odo);
     if(!(cellH > 0)) cellH = 16; /* 极端兜底，正常路径不该走 */
