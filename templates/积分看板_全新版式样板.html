@@ -2105,7 +2105,7 @@
       var a7 = avg(sl(all, 7)), p7 = avg(all.slice(-14, -7));
       return '<div class="tr-stat">' + gr + ' · 近7天平均<b>' + (a7 === null ? '—' : fmt(a7) + '%' + deltaHtml(a7, p7)) + '</b></div>';
     }).join('') + '<div class="tr-stat">达标天数（≥85%）<b>' + GRADES.map(function(gr){
-      return gr.slice(0, 1) + ' ' + nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length + ' 天';
+      return gr + ' ' + nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length + ' 天';
     }).join(' · ') + '</b></div>';
 
     /* 选项卡与筛选 */
