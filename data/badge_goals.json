@@ -58,6 +58,13 @@
    "points": 5
   },
   {
+   "key": "xiaolvxiaoshandian",
+   "name": "效率小闪电",
+   "icon": "💨",
+   "cond": "当日所有任务22:00前全部完成（可叠加）",
+   "points": 5
+  },
+  {
    "key": "jiawujielishou",
    "name": "家务接力手",
    "icon": "🔄",
@@ -193,6 +200,12 @@
     "count": 0
    },
    {
+    "key": "xiaolvxiaoshandian",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
     "key": "jiawujielishou",
     "obtained": false,
     "date": "",
@@ -315,6 +328,12 @@
     "count": 0
    },
    {
+    "key": "xiaolvxiaoshandian",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
     "key": "jiawujielishou",
     "obtained": false,
     "date": "",
@@ -388,5 +407,5 @@
    }
   ]
  },
- "generated_at": "2026-10-20T11:27:54+08:00"
+ "generated_at": "2026-10-20T11:40:58+08:00"
 }
