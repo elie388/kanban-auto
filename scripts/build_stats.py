@@ -48,7 +48,7 @@ TZ = timezone(timedelta(hours=8), "CST")
 SHOP_TIERS = [
     {"pts": 70, "name": "30分钟Minecraft", "kind": "Minecraft"},
     {"pts": 100, "name": "1小时Minecraft", "kind": "Minecraft"},
-    {"pts": 150, "name": "1小时和平精英或2小时Minecraft", "kind": "和平精英"},
+    {"pts": 150, "name": "1小时和平精英\n或2小时Minecraft", "kind": "和平精英"},
     {"pts": 250, "name": "2小时和平精英", "kind": "和平精英"},
     {"pts": 600, "name": "愿望50元", "kind": "愿望"},
     {"pts": 1000, "name": "愿望100元", "kind": "愿望"},
