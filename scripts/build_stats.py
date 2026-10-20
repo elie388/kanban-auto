@@ -296,7 +296,9 @@ def build_stats(grade, rows, ledger_sha16, today, generated_at):
 
 
 def build_log(grade, rows, today, generated_at):
-    """§1.2 + R3 + KB-TIME-2026-10-19：近7天倒序、同日按台账正序、≤20条；
+    """§1.2 + R3 + KB-TIME-2026-10-19 + KB-SORT-2026-10-20：近7天、(日期,时刻)倒序、≤20条；
+    同日有时刻者按时刻倒序在前、无时刻者随后保持台账正序；同日无时刻条目之间的
+    相对顺序 = 台账原始录入顺序，不代表发生先后（详见排序注释）；
     reason 经 simplify_desc + B5 断言；time 精确到分钟（台账 @HH:MM），schema 1.1。"""
     cutoff = today - timedelta(days=7)
     sources = load_time_sources()
@@ -311,18 +313,27 @@ def build_log(grade, rows, today, generated_at):
             continue
         if "期初余额" in r["desc"]:
             continue  # 基线标记行，非积分变动，不进日志
-        dated.append((dt, idx, r))
+        # KB-SORT-2026-10-20：排序需要时刻，故在此提前解析计分时间（G1–G6 门内建于
+        # resolve_log_time）。副作用（已报 DeepSeek 终审）：G6 熔断与 G3 复核的覆盖范围
+        # 由"排序后前 20 条"扩大为"窗口内全部条目"，与"新增条目必须标注 @HH:MM"红线一致。
+        t, t_src = resolve_log_time(r, grade, today, sources)
+        # G3：time 与 time_source 双向一致（resolve 已保证，此处复核）
+        if (t is None) != (t_src is None):
+            raise ValueError("G3 熔断：time/time_source 不一致（%s）" % r.get("key", "")[:40])
+        dated.append((dt, t, t_src, idx, r))
 
-    # 排序：日期倒序；同日按台账行顺序（idx）正序 —— 显式实现（放行条件2）
-    # L2 修复（2026-10-20）：删除冗余的第一遍 sort（被后两遍稳定排序完全覆盖）。DeepSeek 终审轻微项。
-    # 先按 idx 正序稳定，再按日期倒序稳定 → 同日保持台账正序
-    dated.sort(key=lambda t: t[1])
-    dated.sort(key=lambda t: t[0], reverse=True)
+    # 排序口径 KB-SORT-2026-10-20（用户要求"时间最新的在最前"，DeepSeek 终审裁决）：
+    # ① 日期倒序；② 同日内有时刻条目排在无时刻条目之前；③ 有时刻者按时刻倒序；
+    # ④ 同键（同日同时刻、同日均无时刻）保持台账正序（idx 正序）；其中无时刻条目间的
+    #    相对顺序仅为台账录入顺序，不代表发生先后（DeepSeek 终审 A 点条件）。
+    # 实现：先按 idx 正序稳定，再按 (日期, 有时刻标记, 时刻) 一次倒序稳定 → 同键保序。
+    dated.sort(key=lambda x: x[3])
+    dated.sort(key=lambda x: (x[0], 1 if x[1] else 0, x[1] or ""), reverse=True)
 
     truncated = len(dated) > 20
     items = []
     filtered_count = 0
-    for dt, idx, r in dated[:20]:
+    for dt, t, t_src, idx, r in dated[:20]:
         reason = simplify_desc(r["desc"])
         if len(reason) > 40:
             reason = reason[:40] + "…"  # 上限 40 字，超长截断加 …
@@ -337,11 +348,7 @@ def build_log(grade, rows, today, generated_at):
             filtered = True
             filtered_count += 1
         pts = r["pts"]
-        # KB-TIME：计分时间（G1–G6 门内建于 resolve_log_time）
-        t, t_src = resolve_log_time(r, grade, today, sources)
-        # G3：time 与 time_source 双向一致（resolve 已保证，此处复核）
-        if (t is None) != (t_src is None):
-            raise ValueError("G3 熔断：time/time_source 不一致（%s）" % r.get("key", "")[:40])
+        # KB-SORT-2026-10-20：t/t_src 已在排序前解析并通过 G3 复核（见 dated 构建处）
         items.append({
             "date": r["date"],  # MM-DD（本期不跨年；跨年时 complete_year 输出 YYYY-MM-DD）
             "time": t,  # HH:MM 或 null（无计分时间）
@@ -686,7 +693,8 @@ def selftest():
     today = datetime.now(TZ).date()
     gen = datetime.now(TZ).isoformat(timespec="seconds")
 
-    # --- T1 放行条件2：同日多条排序（日期倒序，同日按台账正序）---
+    # --- T1 放行条件2：同日多条排序（日期倒序，同日按台账正序；KB-SORT-2026-10-20 后：
+    # 本用例均为无时刻历史行，兼容新口径）---
     try:
         rows = [
             {"date": "10-17", "desc": "第一条", "pts": 1, "balance": 1},
@@ -851,6 +859,27 @@ def selftest():
         rec("T7 幂等+R3单调性", True, "semantic_diff 四分支（no_semantic_change/changed/monotonic_guard/no_old）均正确")
     except Exception as e:
         rec("T7 幂等+R3单调性", False, str(e)[:200])
+
+    # --- T8 KB-SORT-2026-10-20：(日期,时刻)倒序（用户要求"时间最新在最前"）---
+    # 口径：日期倒序 → 同日有时刻在前、无时刻在后 → 时刻倒序 → 同键保台账序
+    try:
+        import datetime as _dt2
+        mock_today2 = _dt2.date(2026, 10, 25)
+        rows = [
+            {"date": "10-19", "desc": "无时刻甲", "pts": 1, "balance": 1, "key": "t8k0", "annot_time": None},
+            {"date": "10-20", "desc": "早九点", "pts": 1, "balance": 2, "key": "t8k1", "annot_time": "09:00"},
+            {"date": "10-20", "desc": "晚十点", "pts": 1, "balance": 3, "key": "t8k2", "annot_time": "22:00"},
+            {"date": "10-19", "desc": "历史十点", "pts": 1, "balance": 4, "key": "t8k3", "annot_time": "10:00"},
+            {"date": "10-19", "desc": "无时刻乙", "pts": 1, "balance": 5, "key": "t8k4", "annot_time": None},
+            {"date": "10-20", "desc": "晚十点同刻", "pts": 1, "balance": 6, "key": "t8k5", "annot_time": "22:00"},
+        ]
+        d = build_log(5, rows, mock_today2, gen)
+        got = [it["reason"] for it in d["items"]]
+        exp = ["晚十点", "晚十点同刻", "早九点", "历史十点", "无时刻甲", "无时刻乙"]
+        assert got == exp, "KB-SORT 排序错误：%r != %r" % (got, exp)
+        rec("T8 (日期,时刻)倒序", True, "输出顺序=%s" % got)
+    except Exception as e:
+        rec("T8 (日期,时刻)倒序", False, str(e)[:200])
 
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))

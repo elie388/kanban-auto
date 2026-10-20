@@ -1,12 +1,66 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-20T12:05:12+08:00",
+  "generated_at": "2026-10-20T14:49:21+08:00",
   "window": {
     "days": 30,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-19",
+      "time": "22:20",
+      "time_source": "entry",
+      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "数学完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "21:16",
+      "time_source": "entry",
+      "reason": "冲正： 53天天练正确率",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "20:00",
+      "time_source": "deadline",
+      "reason": "第六期英语阅读写作练习没交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "19:18",
+      "time_source": "submit",
+      "reason": "英语Unit1完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "19:18",
+      "time_source": "submit",
+      "reason": "数学练习第页完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-19",
       "time": "19:14",
@@ -18,19 +72,19 @@
     },
     {
       "date": "10-19",
-      "time": null,
-      "time_source": null,
-      "reason": "家务连做第3天",
-      "pts": 3,
-      "sign": "plus",
+      "time": "11:03",
+      "time_source": "entry",
+      "reason": "不整理书桌（20-19晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
+      "pts": -5,
+      "sign": "minus",
       "filtered": false
     },
     {
       "date": "10-19",
-      "time": "19:18",
-      "time_source": "submit",
-      "reason": "英语Unit1完成分",
-      "pts": 10,
+      "time": null,
+      "time_source": null,
+      "reason": "家务连做第3天",
+      "pts": 3,
       "sign": "plus",
       "filtered": false
     },
@@ -63,46 +117,10 @@
     },
     {
       "date": "10-19",
-      "time": "19:18",
-      "time_source": "submit",
-      "reason": "数学练习第页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
       "time": null,
       "time_source": null,
       "reason": "数学练习第页书写+2",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "20:00",
-      "time_source": "deadline",
-      "reason": "第六期英语阅读写作练习没交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "21:16",
-      "time_source": "entry",
-      "reason": "冲正： 53天天练正确率",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "21:34",
-      "time_source": "entry",
-      "reason": "数学完成分",
-      "pts": 10,
       "sign": "plus",
       "filtered": false
     },
@@ -152,37 +170,19 @@
       "filtered": false
     },
     {
-      "date": "10-19",
-      "time": "22:20",
+      "date": "10-18",
+      "time": "22:12",
       "time_source": "entry",
-      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
+      "reason": "洗碗",
       "pts": 5,
       "sign": "plus",
       "filtered": false
     },
     {
-      "date": "10-19",
-      "time": "11:03",
-      "time_source": "entry",
-      "reason": "不整理书桌（20-19晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
       "date": "10-18",
-      "time": "09:28",
+      "time": "16:49",
       "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "09:31",
-      "time_source": "entry",
-      "reason": "扫地",
+      "reason": "拖地",
       "pts": 3,
       "sign": "plus",
       "filtered": false
