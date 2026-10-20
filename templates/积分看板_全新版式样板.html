@@ -1056,12 +1056,13 @@
     taskList.innerHTML = html;
     return true;
   }
+  var taskVer = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at），替代 ?t= 时间戳破缓存 */
   function load(){
     var ok = 0;
     [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
-      fetch(DATA_BASE + pair[1] + '?t=' + Date.now())
+      fetch(DATA_BASE + pair[1] + (taskVer[pair[1]] ? '?v=' + encodeURIComponent(taskVer[pair[1]]) : ''), { cache: 'no-cache' })
         .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(function(d){ if(renderOne(pair[0], d)) ok++; })
+        .then(function(d){ if(d && d.generated_at) taskVer[pair[1]] = d.generated_at; if(renderOne(pair[0], d)) ok++; })
         .then(function(){
           if(ok === 2){
             var tag = document.getElementById('tasks-tag');
@@ -1524,6 +1525,7 @@
     if(text != null) e.textContent = String(text);
     return e;
   }
+  var SEC_VER = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at） */
   function fetchJson(name){
     var ctrl = null, timer = 0;
     try{
@@ -1532,12 +1534,16 @@
         timer = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, TIMEOUT_MS);
       }
     }catch(e){}
-    var opts = { cache: 'no-store' };
+    var opts = { cache: 'no-cache' };
     if(ctrl) opts.signal = ctrl.signal;
-    return fetch('data/' + name + '?t=' + Date.now(), opts).then(function(r){
+    var v = SEC_VER[name];
+    return fetch('data/' + name + (v ? '?v=' + encodeURIComponent(v) : ''), opts).then(function(r){
       if(timer) clearTimeout(timer);
       if(!r.ok) throw new Error('http ' + r.status);
       return r.json();
+    }).then(function(d){
+      if(d && d.generated_at) SEC_VER[name] = d.generated_at;
+      return d;
     });
   }
 
@@ -2341,11 +2347,13 @@
     });
   }
 
+  var TREND_VER = ''; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=updated_at） */
   function loadTrends(){
     var root = el('trend-root');
     var oldHTML = root ? root.innerHTML : null;
-    fetch('data/trends.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
+    fetch('data/trends.json' + (TREND_VER ? '?v=' + encodeURIComponent(TREND_VER) : ''), { cache: 'no-cache' }).then(function(r){ return r.json(); }).then(function(d){
       try{
+        if(d && d.updated_at) TREND_VER = d.updated_at;
         TD = d; renderMain();
         /* F2（2026-10-20）：软刷新后恢复用户已展开的单科卡与薄弱点巩固条 */
         if(SHOW_SUBJ){
