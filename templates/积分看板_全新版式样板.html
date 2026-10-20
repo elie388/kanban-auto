@@ -997,6 +997,15 @@
     } else {
       list.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
+        /* P1-B（异常 #5，DeepSeek 终审）：pending 语义拆分 — 未到当日截止显示"待完成"，
+           过截止才显示"未完成"；无 deadline_today 字段时保持旧行为。 */
+        if(t.status === 'pending' && data.deadline_today){
+          try{
+            if(new Date() <= new Date(data.deadline_today)) sm = {cls:'pending', badge:'🕐 待完成'};
+          }catch(e){}
+        } else if(t.status === 'pending' && !window.__DL_W){
+          window.__DL_W = 1; console.warn('deadline_today 缺失，pending 退回旧语义"未完成"');
+        }
         var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
         if(t.detail) sub2 += ' · ' + esc(t.detail);
         else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
