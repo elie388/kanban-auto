@@ -262,8 +262,18 @@ def build_shop(balances):
     return {"schema_version": 1, "items": items}
 
 
+PTS_RE = re.compile(r"[+-]\d+")
+REMARK_RE = re.compile(r"[（(][^）)]*20\d\d[^）)]*[）)]")
+
+
 def parse_rules():
-    """解析规则手册 dashboard 白名单块；缺失任一块视为失败（熔断）。"""
+    """解析规则手册 dashboard 白名单块；缺失任一块视为失败（熔断）。
+
+    2026-10-20（用户要求统一格式，DeepSeek方案+Gemini审核）：
+    - 显式提取首个 [+-]数字 为 pts，避免前端正则被日期误匹配
+    - 日期类括号标注（如"（2026-10-20家长新增）"）移入 remark，正文清理干净
+    - 无分值条目 pts=None，前端显示"说明"徽章
+    """
     content = RULEBOOK.read_text(encoding="utf-8")
     out = {}
     for key, tag in (("add", "dashboard:add"), ("deduct", "dashboard:deduct")):
@@ -277,11 +287,23 @@ def parse_rules():
             if line.startswith("- "):
                 text = line[2:].strip()
                 if text:
-                    items.append(text)
+                    # 说明类条款（互斥/将功补过/作弊疑点）是机制注释，无分值；
+                    # 其余取首个分值（主分值）。先提备注，避免日期被误识别。
+                    remark = None
+                    rm = REMARK_RE.search(text)
+                    if rm:
+                        remark = rm.group(0)
+                        text = (text[:rm.start()] + text[rm.end():]).strip()
+                    if text.startswith(("互斥", "将功补过", "作弊疑点")):
+                        pts = None
+                    else:
+                        pm = PTS_RE.search(text)
+                        pts = pm.group(0) if pm else None
+                    items.append({"id": "%s%d" % (key[0], len(items) + 1),
+                                  "text": text, "pts": pts, "remark": remark})
         if not items:
             raise ValueError("白名单块为空：" + tag)
-        out[key] = [{"id": "%s%d" % (key[0], i + 1), "text": t}
-                    for i, t in enumerate(items)]
+        out[key] = items
     return {"schema_version": 1, "source_version": "规则手册.md", **out}
 
 
