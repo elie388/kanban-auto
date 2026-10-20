@@ -64,9 +64,12 @@ try:
 except Exception:
     SILENT_WINDOW = (0, 6)  # 回退字面量（sync_balance 不可导入时）
 
+QBANK = Path(os.environ.get("QBANK_PATH", str(REPO_DIR.parent / "题目库.db")))
 WATCH_TARGETS = {
     "ledger": (LEDGER, ["build_stats.py", "sync_sections.py"]),
     "rulebook": (RULEBOOK, ["sync_sections.py"]),
+    # 学习走势（2026-10-20 DeepSeek 方案）：题目库只读聚合 → data/trends.json
+    "qbank": (QBANK, ["build_trends.py"]),
 }
 
 

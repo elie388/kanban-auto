@@ -185,6 +185,39 @@
   .task.done .task-name{color:#1E9E52;}
   .task.done{background:#F3FCF6;}
 
+  /* 学习走势 */
+  .tr-legend{display:flex;gap:14px;margin:10px 0 4px;font-size:13px;align-items:center;flex-wrap:wrap;color:var(--sub)}
+  .tr-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+  .tr-tabs{margin-left:auto;display:flex;gap:6px}
+  .tr-tabs button{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
+  .tr-tabs button.on{background:#E8873A;border-color:#E8873A;color:#fff;font-weight:700}
+  .tr-filt{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
+  .tr-filt.on{background:#D64545;border-color:#D64545;color:#fff;font-weight:700}
+  #tr-tip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;min-height:18px}
+  .tr-note{background:#FFF7E6;border:1px solid #F0DFB8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;color:#8A6D2B}
+  .tr-act{display:none;background:#FFF;border:1.5px dashed #E8873A;border-radius:12px;padding:10px 12px;margin-top:8px;font-size:13px}
+  .tr-inc{background:#F8F4E9;border-radius:12px;padding:10px 12px;margin-top:12px}
+  .tr-stat{flex:1;min-width:140px;background:#F8F4E9;border-radius:12px;padding:9px 12px;font-size:12.5px;color:#6B7280}
+  .tr-stat b{display:block;font-size:16px;color:#30343B;margin-top:2px}
+  .tr-up{color:#1E9E52}.tr-dn{color:#D64545}
+  .tr-mrow{display:flex;gap:10px;align-items:stretch;margin-top:10px}
+  .tr-mlab{writing-mode:vertical-rl;font-size:13px;font-weight:700;color:#6B7280;display:flex;align-items:center}
+  .tr-mini{flex:1;background:#F8F4E9;border-radius:12px;padding:8px 8px 2px;cursor:pointer;min-width:0}
+  .tr-mhd{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:2px}
+  .tr-mhd b{font-size:14px}
+  .tr-sec-t{font-size:15px;font-weight:800;margin:14px 0 2px}
+  .tr-sub{font-size:12px;color:#9AA0A6}
+  .tr-ft{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  circle.tr-pt{cursor:pointer}
+  circle.tr-bad{stroke:#D64545 !important}
+  .tr-wrow{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px dashed #EFD9CF;cursor:pointer}
+  .tr-wstrip{display:none;background:#FFF8EC;border-radius:10px;padding:9px 12px;margin:4px 0;font-size:12.5px}
+  .tr-wstrip a{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;text-decoration:none}
+  .tr-go-a{background:#E8873A;color:#fff}
+  .tr-go-b{background:#F1EAD8;color:#6B7280}
+  .tr-subj{margin-top:12px;border-top:1px solid #EFEAD9;padding-top:4px}
+  #tr-stip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px}
+
   /* 荣耀徽章 */
   .grade-block{margin-top:18px;}
   .grade-block:first-of-type{margin-top:0;}
@@ -689,6 +722,21 @@
     </div>
   </section>
 
+  <!-- 学习走势（折叠按钮） -->
+  <section class="card collapse" aria-label="学习走势">
+    <span class="tag-live">实时数据</span>
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-trend" id="btn-trend">
+      <span class="emoji" aria-hidden="true">📈</span>
+      <span class="cb-title">学习走势</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-trend" role="region" aria-labelledby="btn-trend">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <div id="trend-root"><p class="rule-note" style="margin-top:0">📈 学习走势数据加载中…若持续显示，请稍后刷新。</p></div>
+      </div></div>
+    </div>
+  </section>
+
   <!-- 荣耀徽章（折叠按钮） -->
   <section class="card collapse" aria-label="荣耀徽章">
     <span class="tag-live">实时数据</span>
@@ -859,7 +907,7 @@
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['bonus','deduct','log','shop','achieve','lib'];
+  var ids = ['bonus','deduct','log','shop','achieve','lib','trend'];
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -1753,6 +1801,7 @@
       try{ if(typeof window.__kanbanRefreshStats === 'function'){ window.__kanbanRefreshStats(); ok = true; } }catch(e){}
       try{ if(typeof window.__kanbanRefreshSections === 'function'){ window.__kanbanRefreshSections(); ok = true; } }catch(e){}
       try{ if(typeof window.__kanbanRefreshTasks === 'function'){ window.__kanbanRefreshTasks(); ok = true; } }catch(e){}
+      try{ if(typeof window.__kanbanRefreshTrends === 'function'){ window.__kanbanRefreshTrends(); ok = true; } }catch(e){}
       if(!ok){ location.reload(); } /* 刷新入口全未就绪：回退整页刷新 */
     }
 
@@ -1811,6 +1860,285 @@
 
     start();
   }catch(e){ /* 静默降级：不阻断渲染 */ }
+})();
+</script>
+
+<script>
+/* ===== 学习走势（2026-10-20：DeepSeek 方案，数据 data/trends.json 由 build_trends.py 生成） ===== */
+(function(){
+  var TD = null, RANGE = 14, ONLYBAD = false;
+  var C5 = '#E8873A', C6 = '#3A7BD5', TARGET = 85;
+  var GRADES = ['五年级', '六年级'], SUBJS = ['语文', '数学', '英语'];
+  var GKEY = {'五年级': 'g5', '六年级': 'g6'}, GCOL = {'五年级': C5, '六年级': C6};
+  function el(id){ return document.getElementById(id); }
+  function sl(arr, n){ return arr.slice(-n); }
+  function nn(arr){ return arr.filter(function(v){ return v !== null && v !== undefined; }); }
+  function fmt(v){ return v === null || v === undefined ? '—' : (Math.round(v * 10) / 10); }
+  function avg(arr){ var a = nn(arr); return a.length ? a.reduce(function(x, y){ return x + y; }, 0) / a.length : null; }
+  function segPath(vals, X, Y){
+    var d = '', pen = false;
+    vals.forEach(function(v, i){
+      if(v === null || v === undefined){ pen = false; return; }
+      d += (pen ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1) + ' '; pen = true;
+    });
+    return d;
+  }
+  function gridSVG(W, H, PL, PR, PT, PB, dates, step){
+    var iw = W - PL - PR, s = '';
+    function X(i){ return PL + iw * i / (dates.length - 1); }
+    function Y(v){ return PT + (H - PT - PB) * (100 - v) / 100; }
+    [0, 25, 50, 75, 100].forEach(function(gv){
+      s += '<line x1="' + PL + '" y1="' + Y(gv) + '" x2="' + (W - PR) + '" y2="' + Y(gv) + '" stroke="#E9E2D2"/>';
+      s += '<text x="' + (PL - 6) + '" y="' + (Y(gv) + 4) + '" font-size="10" fill="#9AA0A6" text-anchor="end">' + gv + '%</text>';
+    });
+    s += '<rect x="' + PL + '" y="' + Y(100) + '" width="' + iw + '" height="' + (Y(TARGET) - Y(100)) + '" fill="#1E9E52" opacity="0.05"/>';
+    s += '<line x1="' + PL + '" y1="' + Y(TARGET) + '" x2="' + (W - PR) + '" y2="' + Y(TARGET) + '" stroke="#1E9E52" stroke-width="1.4" stroke-dasharray="6 4" opacity="0.65"/>';
+    return { s: s, X: X, Y: Y };
+  }
+
+  function renderMain(){
+    if(!TD) return;
+    var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
+    var root = el('trend-root');
+    var h = '';
+    h += '<div class="tr-legend"><span><span class="tr-dot" style="background:' + C5 + '"></span>五年级</span>'
+      + '<span><span class="tr-dot" style="background:' + C6 + '"></span>六年级</span>'
+      + '<span style="font-size:12px;color:#9AA0A6">- - 目标线 85%</span>'
+      + '<span class="tr-tabs" id="tr-tabs">'
+      + '<button data-r="7">近7天</button><button data-r="14">近14天</button><button data-r="30">近30天</button>'
+      + '<button class="tr-filt" id="tr-filt" style="margin-left:6px">⚠️ 只看未达标</button></span></div>';
+    h += '<div id="tr-chart"></div>';
+    h += '<div id="tr-tip">👆 点任意一个点，看那天的明细</div>';
+    h += '<div id="tr-wknote" class="tr-note" style="display:none"></div>';
+    h += '<div id="tr-act" class="tr-act"><div style="font-weight:800;margin-bottom:4px">🎯 本周行动建议</div>'
+      + '<div id="tr-actbody" style="color:#6B7280"></div>'
+      + '<div style="margin-top:8px"><span id="tr-actgo" style="background:#E8873A;color:#fff;padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer">生成今晚补练 →</span></div></div>';
+    h += '<div class="tr-inc"><div style="display:flex;justify-content:space-between;font-size:12.5px;color:#6B7280"><span>🎟️ 达标激励 · 累计达标天数</span><span id="tr-inctxt"></span></div>'
+      + '<div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap" id="tr-incrow"></div></div>';
+    h += '<div class="tr-ft" id="tr-ft"></div>';
+    h += '<div class="tr-sec-t">📊 分科正确率</div><div class="tr-sub">点任意一科，看大图和薄弱点</div><div id="tr-minis"></div>';
+    h += '<div class="tr-subj" id="tr-subj"></div>';
+    root.innerHTML = h;
+
+    /* 主图 */
+    var W = 680, H = 300, PL = 44, PR = 16, PT = 18, PB = 34;
+    var g = gridSVG(W, H, PL, PR, PT, PB, labels, RANGE > 14 ? 3 : 2);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">' + g.s;
+    var series = GRADES.map(function(gr){
+      return { gr: gr, vals: sl(TD.grades[gr].overall, RANGE), col: GCOL[gr] };
+    });
+    series.forEach(function(sr){
+      s += '<path d="' + segPath(sr.vals, g.X, g.Y) + '" fill="none" stroke="' + sr.col + '" stroke-width="2.4" stroke-linejoin="round"/>';
+    });
+    series.forEach(function(sr){
+      sr.vals.forEach(function(v, i){
+        if(v === null || v === undefined) return;
+        if(ONLYBAD && v >= TARGET) return;
+        s += '<circle class="tr-pt' + (v < TARGET ? ' tr-bad' : '') + '" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="' + (v < TARGET ? 5 : 4) + '" fill="#fff" stroke="' + sr.col + '" stroke-width="2"/>';
+      });
+      var lastV = null, lastI = -1;
+      sr.vals.forEach(function(v, i){ if(v !== null && v !== undefined){ lastV = v; lastI = i; } });
+      if(lastI >= 0) s += '<text x="' + g.X(lastI) + '" y="' + (g.Y(lastV) - 10) + '" font-size="12" font-weight="700" fill="' + sr.col + '" text-anchor="end">' + fmt(lastV) + '%</text>';
+    });
+    labels.forEach(function(d, i){
+      if(i % (RANGE > 14 ? 3 : 2) === 0 || i === labels.length - 1)
+        s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="10" fill="#9AA0A6" text-anchor="middle">' + d + '</text>';
+    });
+    s += '</svg>';
+    el('tr-chart').innerHTML = s;
+    el('tr-chart').querySelectorAll('circle.tr-pt').forEach(function(c){
+      c.addEventListener('click', function(){
+        var i = +c.dataset.i, dd = labels[i];
+        var parts = GRADES.map(function(gr){
+          var v = sl(TD.grades[gr].overall, RANGE)[i];
+          return gr + ' <b>' + (v === null || v === undefined ? '无数据' : fmt(v) + '%') + '</b>';
+        });
+        var anyBad = GRADES.some(function(gr){
+          var v = sl(TD.grades[gr].overall, RANGE)[i];
+          return v !== null && v !== undefined && v < TARGET;
+        });
+        el('tr-tip').innerHTML = '📅 ' + dd + '：' + parts.join(' · ') + (anyBad ? ' · <span style="color:#F5B97E">未达标，建议优先补练</span>' : '');
+      });
+    });
+
+    /* 薄弱日点评 + 行动建议（数据链：最弱日 → 最弱科目 → 该科第1薄弱点） */
+    var off = TD.dates.length - RANGE, best = null;
+    GRADES.forEach(function(gr){
+      sl(TD.grades[gr].overall, RANGE).forEach(function(v, i){
+        if(v === null || v === undefined) return;
+        if(!best || v < best.v) best = { gr: gr, i: i, v: v };
+      });
+    });
+    if(best){
+      var fullI = off + best.i, subjVals = SUBJS.map(function(sn){
+        return { sn: sn, v: TD.grades[best.gr].subjects[sn].days[fullI] };
+      }).filter(function(x){ return x.v !== null && x.v !== undefined; });
+      subjVals.sort(function(x, y){ return x.v - y.v; });
+      if(subjVals.length){
+        var wsn = subjVals[0].sn;
+        var wk = el('tr-wknote'); wk.style.display = 'block';
+        wk.innerHTML = '💡 薄弱日：' + TD.dates[fullI].slice(5) + '（' + best.gr + ' ' + fmt(best.v) + '%），' + wsn + '最低 ' + fmt(subjVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。';
+        var topW = (TD.grades[best.gr].subjects[wsn].weak || [])[0];
+        var act = el('tr-act'); act.style.display = 'block';
+        if(topW){
+          el('tr-actbody').innerHTML = '重点：' + best.gr + '《' + wsn + '》薄弱点 <b>' + topW.kp + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>今晚重做，做对计入复测。与下方单科卡里点这个薄弱点出题是同一件事。';
+          act.dataset.g = best.gr; act.dataset.sn = wsn; act.dataset.kp = topW.kp;
+        } else {
+          el('tr-actbody').innerHTML = '针对' + best.gr + '的' + wsn + '：从错题本挑同类题今晚重做，做对计入复测。';
+          act.dataset.g = best.gr; act.dataset.sn = wsn; act.dataset.kp = '';
+        }
+        el('tr-actgo').addEventListener('click', function(){
+          showSubj(act.dataset.g, act.dataset.sn);
+          setTimeout(function(){
+            var rows = el('tr-subj').querySelectorAll('.tr-wrow');
+            rows.forEach(function(r){
+              if(r.dataset.kp === act.dataset.kp){ r.click(); r.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            });
+          }, 150);
+        });
+      }
+    }
+
+    /* 达标激励 */
+    function incHtml(name, days, goal){
+      var pct = Math.min(100, Math.round(days / goal * 100));
+      var left = Math.max(0, goal - days);
+      return '<div style="flex:1;min-width:140px"><div style="font-size:12.5px;color:#6B7280">' + name + ' · 已达标 <b style="color:#30343B">' + days + ' 天</b></div>'
+        + '<div style="height:8px;background:#EDE7D3;border-radius:99px;margin-top:5px"><div style="height:8px;width:' + pct + '%;background:#1E9E52;border-radius:99px"></div></div>'
+        + '<div style="font-size:11.5px;color:#9AA0A6;margin-top:4px">' + (left > 0 ? '再达标 ' + left + ' 天 → 点亮🏅坚持小勇士进度' : '已达标一周 🏅') + '</div></div>';
+    }
+    el('tr-incrow').innerHTML = GRADES.map(function(gr){
+      var cnt = nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length;
+      return incHtml(gr, cnt, 7);
+    }).join('');
+    el('tr-inctxt').textContent = '近' + RANGE + '天口径';
+
+    /* 统计条 */
+    function deltaHtml(cur, prev){
+      if(cur === null || prev === null) return '';
+      var d = cur - prev;
+      return d >= 0 ? ' <span class="tr-up">↑ +' + fmt(d) + '</span>' : ' <span class="tr-dn">↓ ' + fmt(d) + '</span>';
+    }
+    el('tr-ft').innerHTML = GRADES.map(function(gr){
+      var all = TD.grades[gr].overall;
+      var a7 = avg(sl(all, 7)), p7 = avg(all.slice(-14, -7));
+      return '<div class="tr-stat">' + gr + ' · 近7天平均<b>' + (a7 === null ? '—' : fmt(a7) + '%' + deltaHtml(a7, p7)) + '</b></div>';
+    }).join('') + '<div class="tr-stat">达标天数（≥85%）<b>' + GRADES.map(function(gr){
+      return gr.slice(0, 1) + ' ' + nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length + ' 天';
+    }).join(' · ') + '</b></div>';
+
+    /* 选项卡与筛选 */
+    el('tr-tabs').querySelectorAll('button[data-r]').forEach(function(b){
+      if(+b.dataset.r === RANGE) b.classList.add('on');
+      b.addEventListener('click', function(){ RANGE = +b.dataset.r; renderMain(); });
+    });
+    var flt = el('tr-filt');
+    flt.classList.toggle('on', ONLYBAD);
+    flt.addEventListener('click', function(){ ONLYBAD = !ONLYBAD; renderMain(); });
+
+    renderMinis();
+  }
+
+  function sparkSVG(vals, color){
+    var W = 210, H = 90, PL = 6, PR = 6, PT = 8, PB = 8;
+    var g = gridSVG(W, H, PL, PR, PT, PB, vals.map(function(){ return ''; }), 99);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">';
+    s += '<line x1="' + PL + '" y1="' + g.Y(TARGET) + '" x2="' + (W - PR) + '" y2="' + g.Y(TARGET) + '" stroke="#1E9E52" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>';
+    s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round"/>';
+    s += '</svg>';
+    return s;
+  }
+
+  function renderMinis(){
+    var box = el('tr-minis'); if(!box || !TD) return;
+    box.innerHTML = GRADES.map(function(gr){
+      var minis = SUBJS.map(function(sn){
+        var vals = sl(TD.grades[gr].subjects[sn].days, RANGE);
+        var a = avg(vals);
+        return '<div class="tr-mini" data-g="' + gr + '" data-sn="' + sn + '"><div class="tr-mhd"><span>' + sn + '</span><b>' + (a === null ? '—' : fmt(a) + '%') + '</b></div>' + sparkSVG(vals, GCOL[gr]) + '</div>';
+      }).join('');
+      return '<div class="tr-mrow"><div class="tr-mlab">' + gr + '</div>' + minis + '</div>';
+    }).join('');
+    box.querySelectorAll('.tr-mini').forEach(function(m){
+      m.addEventListener('click', function(){ showSubj(m.dataset.g, m.dataset.sn); });
+    });
+  }
+
+  function showSubj(gr, sn){
+    if(!TD) return;
+    var box = el('tr-subj'); if(!box) return;
+    var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
+    var vals = sl(TD.grades[gr].subjects[sn].days, RANGE), color = GCOL[gr];
+    var W = 680, H = 280, PL = 44, PR = 16, PT = 18, PB = 34;
+    var g = gridSVG(W, H, PL, PR, PT, PB, labels, RANGE > 14 ? 3 : 2);
+    var h = '<div class="tr-sec-t">' + gr + ' · ' + sn + ' 正确率走势</div>';
+    h += '<div class="tr-sub">近' + RANGE + '天 · 点小图可切换科目</div>';
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;margin-top:6px">' + g.s;
+    s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2.4" stroke-linejoin="round"/>';
+    vals.forEach(function(v, i){
+      if(v === null || v === undefined) return;
+      s += '<circle class="tr-spt" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="#fff" stroke="' + color + '" stroke-width="2" style="cursor:pointer"/>';
+    });
+    labels.forEach(function(d, i){
+      if(i % (RANGE > 14 ? 3 : 2) === 0 || i === labels.length - 1)
+        s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="10" fill="#9AA0A6" text-anchor="middle">' + d + '</text>';
+    });
+    s += '</svg>';
+    h += s;
+    var a = avg(vals), nvals = nn(vals);
+    var mx = nvals.length ? Math.max.apply(null, nvals) : null, mn = nvals.length ? Math.min.apply(null, nvals) : null;
+    var cnt = nvals.filter(function(v){ return v >= TARGET; }).length;
+    h += '<div id="tr-stip">👆 点图上的点看单日</div>';
+    h += '<div class="tr-ft"><div class="tr-stat">' + RANGE + '天平均<b>' + (a === null ? '—' : fmt(a) + '%') + '</b></div>'
+      + '<div class="tr-stat">最高 / 最低<b>' + (mx === null ? '—' : fmt(mx) + '% / ' + fmt(mn) + '%') + '</b></div>'
+      + '<div class="tr-stat">达标天数<b>' + cnt + ' 天</b></div></div>';
+    var wk = TD.grades[gr].subjects[sn].weak || [];
+    if(wk.length){
+      h += '<div style="margin-top:10px;background:#FBEFEA;border-radius:12px;padding:10px 12px">';
+      h += '<div style="font-weight:800;font-size:13.5px;margin-bottom:6px">⚠️ 本科目薄弱点</div>';
+      wk.forEach(function(w, wi){
+        h += '<div class="tr-wrow" data-kp="' + w.kp + '" data-wi="' + wi + '"><span>' + w.kp + ' <span style="color:#9AA0A6">→ ' + w.n + '题</span></span>'
+          + '<span style="color:#B4552D;font-weight:700">错' + w.err + '次 · 最近 ' + (w.last ? w.last.slice(5) : '—') + '</span></div>';
+        h += '<div class="tr-wstrip" id="tr-ws-' + wi + '"></div>';
+      });
+      h += '<div style="font-size:11.5px;color:#9AA0A6;margin-top:6px">来自题目库真实记录（错误次数排序，取前3）</div></div>';
+    }
+    box.innerHTML = h;
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    box.querySelectorAll('circle.tr-spt').forEach(function(c){
+      c.addEventListener('click', function(){
+        var i = +c.dataset.i, v = vals[i];
+        el('tr-stip').textContent = '📅 ' + labels[i] + '：' + gr + sn + ' ' + (v === null || v === undefined ? '无数据' : fmt(v) + '%' + (v < TARGET ? '（未达标）' : '（达标 ✓）'));
+      });
+    });
+    box.querySelectorAll('.tr-wrow').forEach(function(r){
+      r.addEventListener('click', function(){
+        var w = wk[+r.dataset.wi], slot = el('tr-ws-' + r.dataset.wi);
+        box.querySelectorAll('.tr-wstrip').forEach(function(x){ if(x !== slot) x.style.display = 'none'; });
+        if(slot.style.display === 'block'){ slot.style.display = 'none'; return; }
+        slot.style.display = 'block';
+        slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ ' + w.kp + ' · 生成 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
+          + '<div style="color:#6B7280;margin-bottom:6px">题源：本题知识点错题本（去重/改编&lt;80%相似度）</div>'
+          + '<a class="tr-go-a" href="' + w.link_tonight + '" target="_blank" rel="noopener">今晚19:00随练习发</a>'
+          + '<a class="tr-go-b" href="' + w.link_now + '" target="_blank" rel="noopener">现在单独出题发</a>'
+          + '<div style="color:#9AA0A6;font-size:11.5px">点的按钮决定发送方式，其余已预填（' + gr + ' · ' + sn + ' · ' + w.kp + ' · ' + w.n + '题），打开表单确认提交即可。</div>';
+      });
+    });
+  }
+
+  function loadTrends(){
+    fetch('data/trends.json?t=' + Date.now()).then(function(r){ return r.json(); }).then(function(d){
+      TD = d; renderMain();
+    }).catch(function(){
+      var root = el('trend-root');
+      if(root && !TD) root.innerHTML = '<p class="rule-note" style="margin-top:0">📈 学习走势数据暂不可用，请稍后刷新。</p>';
+    });
+  }
+  window.__kanbanRefreshTrends = loadTrends;
+  window.__showTrendSubj = showSubj;
+  loadTrends();
+  var btn = el('btn-trend');
+  if(btn) btn.addEventListener('click', function(){ if(!TD) loadTrends(); });
 })();
 </script>
 
