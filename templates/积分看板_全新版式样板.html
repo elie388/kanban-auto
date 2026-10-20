@@ -230,6 +230,10 @@
   .tr-wstrip a{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;text-decoration:none}
   .tr-go-a{background:#E8873A;color:#fff}
   .tr-go-b{background:#F1EAD8;color:#6B7280}
+  .tr-wstrip button{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;border:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .tr-wstrip button:disabled{opacity:.55;cursor:default}
+  .tr-submit-status{margin-top:4px;font-size:12.5px;color:#2E7D32;min-height:16px}
+  .tr-fallback a{display:inline;padding:0;margin:0;color:#B4552D;text-decoration:underline;font-size:11.5px}
   .tr-subj{margin-top:12px;border-top:1px solid #EFEAD9;padding-top:4px}
   #tr-stip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px}
 
@@ -2688,9 +2692,66 @@
         slot.style.display = 'block'; OPEN_WEAK = w.kp; r.classList.add('open'); if(cta) cta.textContent = '收起';
         slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ 我要巩固「' + escHtml(w.kp) + '」· 共 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
           + '<div style="color:#6B7280;margin-bottom:6px">题源：本题知识点错题本（去重/改编&lt;80%相似度）</div>'
-          + '<a class="tr-go-a" href="' + escHtml(w.link_tonight) + '" target="_blank" rel="noopener">明晚19:00随练习发</a>'
-          + '<a class="tr-go-b" href="' + escHtml(w.link_now) + '" target="_blank" rel="noopener">现在单独发</a>'
-          + '<div style="color:#9AA0A6;font-size:11.5px">点的按钮决定发送方式，其余已预填（' + gr + ' · ' + sn + ' · ' + escHtml(w.kp) + ' · ' + w.n + '题），打开表单确认提交即可。</div>';
+          + '<button type="button" class="tr-go-a" data-pmode="tonight">明晚19:00随练习发</button>'
+          + '<button type="button" class="tr-go-b" data-pmode="now">现在单独发</button>'
+          + '<div class="tr-submit-status"></div>'
+          + '<div class="tr-fallback" style="display:none;color:#9AA0A6;font-size:11.5px">自动提交没成功？也可以 <a href="' + escHtml(w.link_tonight) + '" target="_blank" rel="noopener">打开表单手动提交</a>（在表里记得选好发送方式哦）</div>'
+          + '<div style="color:#9AA0A6;font-size:11.5px">点按钮就直接提交，不用再打开表单。同一个知识点今天只算一次（' + gr + ' · ' + sn + ' · ' + escHtml(w.kp) + ' · ' + w.n + '题）。</div>';
+        bindPracticeSubmit(slot, gr, sn, w);
+      });
+    });
+  }
+
+  /* 补练按钮直提（2026-10-20 乙'方案，DeepSeek 定案+用户拍板）：点按钮 → Worker
+     中转写 KV → 回执确认后才提示"已收到"；失败保留打开表单手动提交的兜底。
+     先到先得：当日同知识点只入队一次（Worker 幂等 + poll 双源去重双保险）。 */
+  function practiceTodayStr(){
+    var d = new Date();
+    function p2(x){ return (x < 10 ? '0' : '') + x; }
+    return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate());
+  }
+  function bindPracticeSubmit(slot, gr, sn, w){
+    var status = slot.querySelector('.tr-submit-status');
+    var fallback = slot.querySelector('.tr-fallback');
+    var btns = slot.querySelectorAll('button[data-pmode]');
+    if(!btns.length) return;
+    var url = (window.TD && TD.practice_submit_url) || 'https://practice-req-relay.whyjjf.workers.dev/submit';
+    var lsKey = 'kb-practice-submitted:' + practiceTodayStr() + '|' + gr + '|' + sn + '|' + w.kp;
+    function lsGet(){ try{ return localStorage.getItem(lsKey); }catch(e){ return null; } }
+    function lsSet(){ try{ localStorage.setItem(lsKey, '1'); }catch(e){} }
+    function markDone(msg){
+      btns.forEach(function(b){ b.disabled = true; });
+      if(status) status.textContent = msg;
+    }
+    function markFail(){
+      btns.forEach(function(b){ b.disabled = false; });
+      if(status) status.textContent = '提交没成功，再试一次或用下面的表单';
+      if(fallback) fallback.style.display = 'block';
+    }
+    if(lsGet()){ markDone('✅ 今天这个知识点已经提交过啦'); return; }
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var mode = btn.getAttribute('data-pmode');
+        btns.forEach(function(b){ b.disabled = true; });
+        if(status) status.textContent = '正在提交…';
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 10000) : null;
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ grade: gr, subject: sn, point: w.kp, mode: mode }),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(function(resp){ return resp.json(); }).then(function(j){
+          if(timer) clearTimeout(timer);
+          if(j && j.ok){
+            lsSet();
+            markDone(j.duplicate ? '✅ 已收到（今天这个知识点已经提交过啦）'
+              : (mode === 'tonight' ? '✅ 已收到，明晚19:00随练习一起发' : '✅ 已收到，马上单独发'));
+          } else { markFail(); }
+        }).catch(function(){
+          if(timer) clearTimeout(timer);
+          markFail();
+        });
       });
     });
   }

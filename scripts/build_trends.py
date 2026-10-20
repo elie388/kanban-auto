@@ -41,6 +41,9 @@ REPO = HERE.parent
 DB_PATH = REPO.parent / "题目库.db"
 OUT = REPO / "data" / "trends.json"
 FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfe_5U2ObcmxXle8XG0xtvLVkuJ2JIx9f6qG4w5-vKNug1ePw/viewform"
+# 补练按钮直提中转（2026-10-20 乙'方案）：按钮 POST 到 Worker 写 KV，
+# 表单链接（form_link）退为提交失败时的手动兜底，不再是主通道。
+SUBMIT_URL = "https://practice-req-relay.whyjjf.workers.dev/submit"
 DAYS = 30
 GRADES = ["五年级", "六年级"]
 SUBJECTS = ["语文", "数学", "英语"]
@@ -86,6 +89,7 @@ def q_count(err, level="", status=""):
 
 
 def form_link(grade, subject, kp, n, mode):
+    """表单预填链接（乙'后仅作兜底：Worker 提交失败时孩子打开表单手动提交）。"""
     q = urllib.parse.urlencode({
         "usp": "pp_url",
         "entry.1016062372": grade,
@@ -250,6 +254,7 @@ def main():
     dates = [(today - timedelta(days=DAYS - 1 - i)).isoformat() for i in range(DAYS)]
     db = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
     data = {"updated_at": datetime.now(BEIJING).isoformat(timespec="seconds"),
+            "practice_submit_url": SUBMIT_URL,
             "dates": dates, "grades": {},
             "isolation_reasons": {}, "manual_review_queue": [],
             "paper_batch_alerts": paper_batch_alerts(db, dates)}
