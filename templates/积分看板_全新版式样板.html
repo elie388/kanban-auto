@@ -260,6 +260,27 @@
   .ach .tt{font-size:14px; font-weight:700;}
   .ach .ds{font-size:12px; color:var(--sub); margin-top:2px;}
   .ach.locked{opacity:.55; filter:grayscale(.7); border-style:solid;}
+  /* 新徽章动效 A+B（2026-10-20，DeepSeek 方案+用户拍板）：
+     A 呼吸光晕——未读新徽章金色光晕缓慢脉动，点开查看后停（localStorage 记已读，按周+年级+徽章区分）；
+     B 扫光掠过——首次渲染时一道高光斜扫过徽章一次即停（会话内不重播，软刷新不重复打扰）。 */
+  .ach.is-new{cursor:pointer; overflow:hidden; animation:badgeGlow 2.4s ease-in-out infinite alternate;}
+  @keyframes badgeGlow{
+    from{box-shadow:0 2px 8px rgba(232,176,75,.14), 0 0 0 0 rgba(246,212,126,.45);}
+    to{box-shadow:0 2px 8px rgba(232,176,75,.14), 0 0 16px 5px rgba(246,212,126,.85);}
+  }
+  .ach.is-new::after{
+    content:''; position:absolute; top:0; bottom:0; left:0; width:55%;
+    background:linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0));
+    transform:translateX(-140%) skewX(-18deg);
+    animation:badgeShine 1.15s ease-out .3s 1 forwards;
+    pointer-events:none;
+  }
+  @keyframes badgeShine{ to{transform:translateX(340%) skewX(-18deg);} }
+  .ach.is-new.shine-done::after{display:none;}
+  @media (prefers-reduced-motion: reduce){
+    .ach.is-new{animation:none;}
+    .ach.is-new::after{display:none;}
+  }
   /* 成就进度条（2026-10-19新增） */
   .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
   .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
@@ -1521,6 +1542,10 @@
   }
 
   /* ---- 1. 荣耀徽章（当周，台账 badge_ 事件） ---- */
+  var SHINE_PLAYED = {};  /* A+B 动效：扫光会话内已播标记（软刷新重渲染不重播） */
+  function badgeSeenId(weekId, gk, key){ return 'kb-badge-seen:' + weekId + ':' + gk + ':' + key; }
+  function badgeIsSeen(id){ try{ return !!localStorage.getItem(id); }catch(e){ return true; } }
+  function badgeMarkSeen(id){ try{ localStorage.setItem(id, '1'); }catch(e){} }
   function renderBadges(d){
     var pad = document.querySelector('#panel-achieve .collapse-pad');
     if(!pad || !d || !d.by_grade) return false;
@@ -1538,6 +1563,20 @@
         list.forEach(function(b){
           if(!b || !b.name) return;
           var ach = el('div','ach');
+          /* A+B 动效（2026-10-20）：未读新徽章加 is-new（呼吸光晕+扫光）；点击后记已读、光晕停 */
+          if(b.key){
+            var sid = badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key);
+            if(!badgeIsSeen(sid)){
+              ach.classList.add('is-new');
+              if(SHINE_PLAYED[sid]) ach.classList.add('shine-done');
+              else SHINE_PLAYED[sid] = 1;
+              ach.title = '新徽章！点一下收下这份光';
+              ach.addEventListener('click', function(){
+                ach.classList.remove('is-new');
+                badgeMarkSeen(sid);
+              });
+            }
+          }
           ach.appendChild(el('span','ic', b.icon || '🏅'));
           ach.appendChild(el('div','tt', String(b.name).slice(0,8)));
           /* 2026-10-19：满分之星当周多次获得显示次数角标（count>1；=1 不显示） */
