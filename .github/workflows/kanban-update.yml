@@ -1,13 +1,10 @@
 name: 积分看板自动更新
 
-# 用户时间表（北京时间 CST = UTC+8，cron 用 UTC）：
-# - 上学工作日：19:00-23:00 CST（11:00-15:00 UTC），每15分钟，周一到周五
-#   实际触发：11:00-14:45 每15分钟 + 15:00 收尾一次（= CST 19:00-22:45 + 23:00）
-# - 上学周末：09:00-23:00 CST（01:00-15:00 UTC），每15分钟，周六周日
-#   实际触发：01:00-14:45 每15分钟 + 15:00 收尾一次（= CST 09:00-22:45 + 23:00）
-# - 假期：同周末时间表。假期的工作日仍会按工作日 cron 触发（接受额度浪费，不改代码）
-# - 寒暑假时间用户另行通知后调整
-# 月消耗约 700-1400 分钟，在 2000 免费额度内
+# 触发方式（2026-10-20 实时化，DeepSeek 终审放行）：
+# - on: push 全天候触发：台账变更 → build_stats 生成 → push → 本 workflow 部署，
+#   不再有时间窗口门控（原 schedule 定时触发段已删除）。
+# - workflow_dispatch 保留（手动演练/兜底）。
+# - 月消耗改为"仅变更触发"，随台账变更频率浮动；原定时消耗（约700-1400 分钟/月）归零。
 #
 # 2026-10-19 迁移记录（用户批准）：
 #   新版看板（全新版式样板）上线，替换旧版。
@@ -17,21 +14,12 @@ name: 积分看板自动更新
 on:
   push:
     branches: [master]
-  schedule:
-    # 工作日 CST 19:00-22:45（UTC 11:00-14:45），每15分钟
-    - cron: '*/15 11-14 * * 1-5'
-    # 工作日 CST 23:00 收尾一次（UTC 15:00）
-    - cron: '0 15 * * 1-5'
-    # 周末 CST 09:00-22:45（UTC 01:00-14:45），每15分钟
-    - cron: '*/15 1-14 * * 0,6'
-    # 周末 CST 23:00 收尾一次（UTC 15:00）
-    - cron: '0 15 * * 0,6'
   workflow_dispatch:  # 允许手动触发
 
-# 防并发：上一次未跑完时排队，不并行
+# 并发收敛：新 push 取消在途旧部署（旧部署已被新 commit 超越，无需跑完；纯静态部署无副作用；2026-10-20 DeepSeek 终审）
 concurrency:
   group: kanban-update
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 # DeepSeek 安全加固：默认最小权限，各 job 按需声明
 permissions:
@@ -170,3 +158,6 @@ jobs:
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e  # v4
+
+      - name: 记录部署 commit（2026-10-20 实时化观察用）
+        run: echo "deployed commit ${{ github.sha }}"

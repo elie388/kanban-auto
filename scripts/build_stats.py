@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """看板真实数据生成器（DeepSeek 方案 KB-STATS-AUTO-2026-10-19）。
 
-链路：VM 本地 cron（工作日 19:00-23:00 / 周末 09:00-23:00，Asia/Shanghai，每 15 分钟，
-      与 GitHub workflow 同窗口错开 2 分钟）→ 本脚本 → data/*.json → git commit+push
-      → 现有 workflow 照常部署到 Pages。
+链路：VM 本地 cron（全天，Asia/Shanghai，每 5 分钟；2026-10-20 起取消时间窗口门控，
+      2026-10-20 DeepSeek 终审 KB-STATS-AUTO §2.2 废止）→ 本脚本 → data/*.json
+      → git commit+push → GitHub workflow（on: push）部署到 Pages。
 
 产出（幂等：内容无变化则不 commit）：
   data/stats_grade_{5,6}.json   余额（§1.1，低频强一致，带 checksum）
@@ -19,9 +19,9 @@
 用法：
   python3 scripts/build_stats.py            正常运行（cron 调用）
   python3 scripts/build_stats.py --selftest 自测（放行条件2同日排序单测 + §7.1/7.3/7.5）
-  python3 scripts/build_stats.py --force     忽略时间窗口（手动用）
 """
 
+import fcntl
 import hashlib
 import json
 import os
@@ -38,7 +38,9 @@ import _assert_lib
 from build_kanban import simplify_desc  # 只读复用，不得私改（§5.2）
 import sync_balance as sb  # M1（2026-10-20）：复用 norm_date，统一日期归一口径
 
-LEDGER = os.path.expanduser("~/workspace/goals/goal/hidden_files/积分记录.md")
+LEDGER = os.environ.get(
+    "LEDGER_PATH",
+    os.path.expanduser("~/workspace/goals/goal/hidden_files/积分记录.md"))
 DATA_DIR = os.path.join(REPO_DIR, "data")
 LOGS_DIR = os.path.join(REPO_DIR, "logs")
 TEMPLATE = os.path.join(REPO_DIR, "templates", "积分看板_全新版式样板.html")
@@ -92,16 +94,6 @@ def git(*args):
         ["git", "-C", REPO_DIR] + list(args),
         capture_output=True, text=True, timeout=60,
     )
-
-
-def in_sync_window(now=None):
-    """§2.2：工作日 19:00-23:00，周末/假期 09:00-23:00（Asia/Shanghai）。"""
-    now = now or datetime.now(TZ)
-    wd = now.weekday()  # 0=周一
-    h = now.hour + now.minute / 60.0
-    if wd < 5:
-        return 19.0 <= h < 23.0
-    return 9.0 <= h < 23.0
 
 
 # ---------------------------------------------------------------------------
@@ -450,14 +442,9 @@ def write_json_atomic(path, obj):
     os.replace(tmp, path)
 
 
-def main(force=False):
-    # S2 修复（2026-10-20）：--selftest 必须在窗口检查之前，否则窗口外运行静默 return 0，
-    # 自测根本不执行（环境依赖型假绿）。DeepSeek 终审阻断项。
+def main():
     if "--selftest" in sys.argv:
         return selftest()
-    if not force and not in_sync_window():
-        log("非同步窗口（工作日19:00-23:00/周末09:00-23:00），跳过")
-        return 0
 
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(LOGS_DIR, exist_ok=True)
@@ -757,5 +744,4 @@ def selftest():
 
 
 if __name__ == "__main__":
-    force = "--force" in sys.argv
-    sys.exit(main(force=force))
+    sys.exit(main())
