@@ -1704,8 +1704,6 @@
       ul.appendChild(li);
     });
     pad.appendChild(ul);
-    var _pts0 = (d.catalog[0] && d.catalog[0].points != null) ? d.catalog[0].points : 5;
-    pad.appendChild(el('div','rule-note','💡 每拿下1枚徽章 +' + _pts0 + '（满分之星不设上限）'));
     return true;
   }
 
@@ -2129,24 +2127,32 @@
       mainSvg.addEventListener('click', function(e){ pickDay(nearestIdx(mainSvg, e.clientX, xsMain)); });
     }
 
-    /* 薄弱日点评（数据链：双年级全局最弱日 → 当日最弱科目；口径同改版前，科目并列按 SUBJS 顺序） */
-    var off = TD.dates.length - RANGE, best = null;
+    /* 薄弱日点评（2026-10-20 改版，用户截图反馈"只显示一个年级"）：
+       按年级各取一条（与"本周行动建议"双年级修复同一口径）——每年级在当前窗口内
+       各自的最弱日（overall 最低，跳过 null，相同值取较早日期）→ 该日该年级最弱科目
+       （分科非 null 最低、并列按 SUBJS 顺序，与点选明细口径一致）→ 各自点评行，两行都显示。
+       某年级窗口内无有效数据（overall 全 null，或最弱日无分科数值）→ 该年级显式
+       "暂无数据"，不编造、不借用另一年级数据；两年级都无数据 → 整条隐藏（既有无数据处理）。 */
+    var off = TD.dates.length - RANGE, wkLines = [], wkAny = false;
     GRADES.forEach(function(gr){
+      var gb = null;
       sl(TD.grades[gr].overall, RANGE).forEach(function(v, i){
         if(v === null || v === undefined) return;
-        if(!best || v < best.v) best = { gr: gr, i: i, v: v };
+        if(!gb || v < gb.v) gb = { i: i, v: v };
       });
-    });
-    if(best){
-      var fullI = off + best.i, subjVals = SUBJS.map(function(sn){
-        return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[best.gr].subjects[sn].days[fullI] };
+      if(!gb){ wkLines.push('💡 薄弱日：' + gr + '暂无数据。'); return; }
+      var fI = off + gb.i, sVals = SUBJS.map(function(sn){
+        return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fI] };
       }).filter(function(x){ return x.v !== null && x.v !== undefined; });
-      subjVals.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
-      if(subjVals.length){
-        var wsn = subjVals[0].sn;
-        var wk = el('tr-wknote'); wk.style.display = 'block';
-        wk.innerHTML = '💡 薄弱日：' + TD.dates[fullI].slice(5) + '（' + best.gr + ' ' + fmt(best.v) + '%），' + wsn + '最低 ' + fmt(subjVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。';
-      }
+      sVals.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
+      if(!sVals.length){ wkLines.push('💡 薄弱日：' + gr + '暂无数据。'); return; }
+      wkAny = true;
+      var wsn = sVals[0].sn;
+      wkLines.push('💡 薄弱日：' + TD.dates[fI].slice(5) + '（' + gr + ' ' + fmt(gb.v) + '%），' + wsn + '最低 ' + fmt(sVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。');
+    });
+    if(wkAny){
+      var wk = el('tr-wknote'); wk.style.display = 'block';
+      wk.innerHTML = wkLines.join('<br>');
     }
 
     /* 本周行动建议（F5·2026-10-20，DeepSeek 终审方案：按年级各出一条，顺序固定五年级→六年级）。
