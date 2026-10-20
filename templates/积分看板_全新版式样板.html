@@ -1644,18 +1644,33 @@
     return true;
   }
 
-  function boot(){
-    /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码。
-       注：①取客户端本地时区（与设备时区一致）；②日期时间为页面加载时刻（刷新后更新）；
-       ③静态兜底仅到日，分钟级精度依赖JS（若JS失败则回退为日精度）。 */
+  /* 标题时钟（2026-10-20 用户要求）：秒级实时跳动，强制北京时间（Asia/Shanghai），
+     不受设备时区影响。格式 YYYY-MM-DD HH:MM:SS，formatToParts 组装，免受 locale 分隔符差异影响。 */
+  var clockTimer = null;
+  /* DeepSeek 终审建议：formatter 在模块级创建一次复用，每秒不再新建。 */
+  var bjClockFmt = new Intl.DateTimeFormat('zh-CN', {
+    timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+  });
+  function fmtBjClock(d){
+    var parts = bjClockFmt.formatToParts(d);
+    var g = function(t){ for(var i = 0; i < parts.length; i++){ if(parts[i].type === t) return parts[i].value; } return ''; };
+    return g('year') + '-' + g('month') + '-' + g('day') + ' ' + g('hour') + ':' + g('minute') + ':' + g('second');
+  }
+  function tickClock(){
     try{
       var de = document.getElementById('board-date');
-      if(de){
-        var n = new Date();
-        var p = function(x){ return (x < 10 ? '0' : '') + x; };
-        de.textContent = n.getFullYear() + '-' + p(n.getMonth() + 1) + '-' + p(n.getDate()) + ' ' + p(n.getHours()) + ':' + p(n.getMinutes());
-      }
-    }catch(e){ /* 日期写入失败不阻断 */ }
+      if(de){ de.textContent = fmtBjClock(new Date()); }
+    }catch(e){ /* 时钟写入失败不阻断，保留静态兜底 */ }
+  }
+
+  function boot(){
+    /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码。
+       2026-10-20 用户要求：秒级实时跳动 + 北京时间（Asia/Shanghai，见 tickClock/fmtBjClock）；
+       静态兜底仅到日，秒级精度依赖 JS（若 JS 失败则回退为日精度）。 */
+    tickClock();
+    if(clockTimer){ clearInterval(clockTimer); }
+    clockTimer = setInterval(tickClock, 1000);
     fetchJson('badges.json').then(renderBadges).catch(function(e){ console.warn('徽章栏拉取失败，显示占位:', e); });
     fetchJson('badge_goals.json').then(renderGoals).catch(function(e){ console.warn('目标榜拉取失败，显示占位:', e); });
     fetchJson('shop.json').then(renderShop).catch(function(e){ console.warn('商店拉取失败，显示占位:', e); });
