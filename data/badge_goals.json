@@ -358,7 +358,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
-    "total_count": 0,
+    "total_count": 1,
     "progress": {
      "state": "event"
     }
@@ -607,7 +607,7 @@
     "obtained": false,
     "date": "",
     "count": 0,
-    "total_count": 0,
+    "total_count": 1,
     "progress": {
      "state": "event"
     }
@@ -643,5 +643,5 @@
   ]
  },
  "cycle_week": "2026-W43",
- "generated_at": "2026-10-20T22:42:56+08:00"
+ "generated_at": "2026-10-20T22:47:55+08:00"
 }
