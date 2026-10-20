@@ -348,6 +348,8 @@
   .lib-cond{display:block; font-size:13px; font-weight:400; color:var(--sub); margin-top:2px;}
   .lib-prog{display:block; font-size:12.5px; font-weight:400; color:#5B6470; margin-top:3px;}
   .lib-prog .prog-nodata{color:#B3B8BE;}
+  .lib-prog .prog-seg{display:block; margin-top:2px}
+  .lib-prog .prog-seg:first-child{margin-top:0}
   .lib-detail{display:none}
   li.open .lib-detail{display:block}
   .lib-chev{font-size:12px; color:#9AA0A6; margin-left:6px; white-space:nowrap}
@@ -1706,8 +1708,8 @@
           }
           if(segText === null) return;
           if(p0.state === 'event' && segCount > 0) return; /* 事件型只显示一次 */
-          if(segCount > 0) pline.appendChild(document.createTextNode(' · '));
-          var s2 = el('span', isNodata ? 'prog-nodata' : '');
+          /* 双年级进度分行显示（2026-10-20 用户要求）：不再用' · '拼接 */
+          var s2 = el('span', (isNodata ? 'prog-nodata ' : '') + 'prog-seg');
           s2.textContent = segText;
           pline.appendChild(s2);
           segCount++;
