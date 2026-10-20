@@ -100,4 +100,7 @@ def _verify_output(path: str) -> None:
 
 
 if __name__ == "__main__":
+    # DEPRECATED 守卫（DeepSeek 审查 P2，2026-10-20）：旧生成链已停用
+    # （workflow 注释明示保留为 fallback、不再调用），直接执行拒绝运行。
+    raise SystemExit("DEPRECATED: build_wrapper.py 已停用（fallback 保留），禁止直接执行")
     main()

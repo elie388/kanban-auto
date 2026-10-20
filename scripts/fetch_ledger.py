@@ -172,4 +172,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # DEPRECATED 守卫（DeepSeek 审查 P2，2026-10-20）：台账拉取已停用
+    # （新版看板不消费此通道），直接执行拒绝运行。
+    raise SystemExit("DEPRECATED: fetch_ledger.py 已停用，禁止直接执行")

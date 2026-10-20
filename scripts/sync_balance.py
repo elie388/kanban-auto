@@ -276,4 +276,9 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # DEPRECATED 守卫（DeepSeek 审查 P2，2026-10-20）：本脚本作为独立入口已
+    # 退役（2026-10-19 R2：余额通道由 build_stats 接管、全栏目由 sync_sections
+    # 承担同一 commit 流程），直接执行会与 sync_sections 双头 commit——拒绝
+    # 运行。本模块作为解析库被 build_stats/sync_sections/build_trends/watchd
+    # import 复用，import 不受本守卫影响。
+    raise SystemExit("DEPRECATED: sync_balance.py 独立入口已退役，禁止直接执行（仅允许 import）")

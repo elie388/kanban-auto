@@ -692,5 +692,8 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # DEPRECATED 守卫（DeepSeek 审查 P2，2026-10-20）：旧生成器已停用，直接
+    # 执行会以旧口径覆盖产物 index.html——拒绝运行。本模块仅允许 import 复用
+    # （build_stats 复用 simplify_desc），import 不受本守卫影响。
+    raise SystemExit("DEPRECATED: build_kanban.py 已停用，禁止直接执行（仅允许 import）")
 # LAYOUT_2026_10_19
