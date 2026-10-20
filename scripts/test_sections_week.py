@@ -113,6 +113,136 @@ check("N-1 cycle_week 历史行：recorded=False 且按日期推算",
       _xb.get("cycle_week_recorded") is False
       and _xb.get("cycle_week") == ss.cycle_week_of("2026-10-16"))
 
+# B方案（2026-10-20 用户拍板+DeepSeek 终审）：补发徽章同带展示+「补发」角标。
+# 构造事件复刻 2026-10-20 今晚实况：W43 三日不断（本周期归属）+ W42 补发
+# 两枚（late_cycle=W42、落账日期 10-20 属 W43）。
+_LATE_EVENTS = {
+    "g5": [
+        {"key": "sanribuduan", "name": "三日不断", "icon": "📆",
+         "date": "2026-10-20", "cycle_week": "2026-W43",
+         "cycle_week_recorded": True, "late_cycle": None,
+         "late_cycle_recorded": False},
+        {"key": "jiawuxiaobangshou", "name": "家务小帮手", "icon": "🏅",
+         "date": "2026-10-20", "cycle_week": "2026-W42",
+         "cycle_week_recorded": True, "late_cycle": "2026-W42",
+         "late_cycle_recorded": True},
+        {"key": "sanheyikuaishou", "name": "三合一快手", "icon": "🏅",
+         "date": "2026-10-20", "cycle_week": "2026-W42",
+         "cycle_week_recorded": True, "late_cycle": "2026-W42",
+         "late_cycle_recorded": True},
+    ],
+    "g6": [
+        {"key": "sanribuduan", "name": "三日不断", "icon": "📆",
+         "date": "2026-10-20", "cycle_week": "2026-W43",
+         "cycle_week_recorded": True, "late_cycle": None,
+         "late_cycle_recorded": False},
+        {"key": "jiawuxiaobangshou", "name": "家务小帮手", "icon": "🏅",
+         "date": "2026-10-20", "cycle_week": "2026-W42",
+         "cycle_week_recorded": True, "late_cycle": "2026-W42",
+         "late_cycle_recorded": True},
+    ],
+}
+_w43_now = datetime(2026, 10, 20, 23, 30, 0, tzinfo=BEIJING)
+_b43 = ss.build_badges(_LATE_EVENTS, now=_w43_now)
+_g5_items = {it["key"]: it for it in _b43["by_grade"]["g5"]}
+_g6_items = {it["key"]: it for it in _b43["by_grade"]["g6"]}
+check("B补发 W43视角：五年级带内 3 枚（1本周+2补发）",
+      len(_b43["by_grade"]["g5"]) == 3)
+check("B补发 W43视角：六年级带内 2 枚（1本周+1补发）",
+      len(_b43["by_grade"]["g6"]) == 2)
+check("B补发 W43视角：本周归属徽章无 late 标记",
+      "late" not in _g5_items.get("sanribuduan", {}))
+check("B补发 W43视角：补发带 late=True 且 origin_cycle=W42",
+      _g5_items.get("jiawuxiaobangshou", {}).get("late") is True
+      and _g5_items.get("jiawuxiaobangshou", {}).get("origin_cycle") == "2026-W42"
+      and _g5_items.get("sanheyikuaishou", {}).get("late") is True
+      and _g6_items.get("jiawuxiaobangshou", {}).get("late") is True)
+check("B补发 W43视角：补发不并入本周同 key 的 count",
+      _g5_items.get("sanribuduan", {}).get("count") == 1)
+
+# 过渡周防误标：W44 周一视角下，W42 补发与 W43 归属徽章都不得出现在
+# W44 带内（补发只在其颁发所在周期 W43 展示）。
+_w44_now = datetime(2026, 10, 26, 0, 5, 0, tzinfo=BEIJING)
+_b44 = ss.build_badges(_LATE_EVENTS, now=_w44_now)
+check("B补发 W44视角：上周补发不出现、不误标为本周归属",
+      _b44["by_grade"]["g5"] == [] and _b44["by_grade"]["g6"] == []
+      and _b44["week"]["cycle_week"] == "2026-W44")
+
+# W44 内新发生的补发（归属 W43、W44 颁发）应在 W44 带内带角标展示。
+_LATE_W44 = {
+    "g5": [{"key": "moxiezhixing", "name": "默写之星", "icon": "📝",
+            "date": "2026-10-27", "cycle_week": "2026-W43",
+            "cycle_week_recorded": True, "late_cycle": "2026-W43",
+            "late_cycle_recorded": True}],
+    "g6": [],
+}
+_b44b = ss.build_badges(_LATE_W44, now=datetime(2026, 10, 27, 12, 0, 0,
+                                               tzinfo=BEIJING))
+_it = (_b44b["by_grade"]["g5"] or [{}])[0]
+check("B补发 W44视角：本周期内颁发的补发同带展示带角标",
+      len(_b44b["by_grade"]["g5"]) == 1 and _it.get("late") is True
+      and _it.get("origin_cycle") == "2026-W43")
+
+# P3（DeepSeek 终审条件）：同 key 同归属周多笔补发 -> 带内合并为一条目、
+# count 累加（×N 与「补发」角标并存），不产生两个独立 late 条目。
+_LATE_MULTI = {
+    "g5": [
+        {"key": "jiawuxiaobangshou", "name": "家务小帮手", "icon": "🏅",
+         "date": "2026-10-20", "cycle_week": "2026-W42",
+         "cycle_week_recorded": True, "late_cycle": "2026-W42",
+         "late_cycle_recorded": True},
+        {"key": "jiawuxiaobangshou", "name": "家务小帮手", "icon": "🏅",
+         "date": "2026-10-21", "cycle_week": "2026-W42",
+         "cycle_week_recorded": True, "late_cycle": "2026-W42",
+         "late_cycle_recorded": True},
+    ],
+    "g6": [],
+}
+_bm = ss.build_badges(_LATE_MULTI, now=_w43_now)
+_bm_items = [it for it in _bm["by_grade"]["g5"]
+             if it["key"] == "jiawuxiaobangshou"]
+check("B补发 P3：同key多笔补发合并一条目 count=2 且带 late",
+      len(_bm_items) == 1 and _bm_items[0].get("count") == 2
+      and _bm_items[0].get("late") is True
+      and _bm_items[0].get("origin_cycle") == "2026-W42")
+
+# extract 层：合成台账验证 late_cycle 字段解析（带标记=True、无标记=False）。
+_B_LEDGER = """## 五年级
+
+| 日期 | 描述 | 积分 | 余额 |
+| --- | --- | --- | --- |
+| 10-20 | 🏅家务小帮手徽章 | +5 | 253 | <!-- key:五年级_2026-10-20_badge_jiawuxiaobangshou_家务小帮手 @22:45 | cycle_week=2026-W42 | late_cycle=2026-W42 -->
+| 10-20 | 📆三日不断徽章 | +5 | 258 | <!-- key:五年级_2026-10-20_badge_sanribuduan_三日不断 @17:51 | cycle_week=2026-W43 -->
+
+## 六年级
+
+| 日期 | 描述 | 积分 | 余额 |
+| --- | --- | --- | --- |
+| 10-20 | 📆三日不断徽章 | +5 | 120 | <!-- key:六年级_2026-10-20_badge_sanribuduan_三日不断 @17:51 | cycle_week=2026-W43 -->
+"""
+_fd2, _tp2 = tempfile.mkstemp(suffix=".md")
+with open(_fd2, "w", encoding="utf-8") as _f:
+    _f.write(_B_LEDGER)
+try:
+    ss.LEDGER = Path(_tp2)
+    _ev2 = ss.extract_badge_events()
+finally:
+    ss.LEDGER = _orig_ledger
+    os.unlink(_tp2)
+_ev2_g5 = {e["key"]: e for e in _ev2["g5"]}
+check("B补发 extract：late_cycle 解析（值=W42、recorded=True）",
+      _ev2_g5.get("jiawuxiaobangshou", {}).get("late_cycle") == "2026-W42"
+      and _ev2_g5.get("jiawuxiaobangshou", {}).get("late_cycle_recorded") is True)
+check("B补发 extract：无 late_cycle 行 recorded=False",
+      _ev2_g5.get("sanribuduan", {}).get("late_cycle_recorded") is False
+      and _ev2_g5.get("sanribuduan", {}).get("late_cycle") is None)
+# extract->build 端到端：真实口径事件喂 W43 视角应得 2 枚（1+1补发）
+_b_e2e = ss.build_badges(_ev2, now=_w43_now)
+check("B补发 端到端：五年级 2 枚且补发带标记",
+      len(_b_e2e["by_grade"]["g5"]) == 2
+      and {it["key"]: it for it in _b_e2e["by_grade"]["g5"]}
+          .get("jiawuxiaobangshou", {}).get("late") is True)
+
 print("----")
 if fails:
     print("FAILED:", fails)

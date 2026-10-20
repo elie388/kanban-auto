@@ -93,6 +93,7 @@ del _sid, _name, _cost, _icon
 KEY_PAT = re.compile(r"key:[^|]*?badge_([a-z]+)_")
 REV_PAT = re.compile(r"key:[^|]*?reverse_badge_([a-z]+)_")
 CYCLE_WEEK_RE = re.compile(r"cycle_week=(\d{4}-W\d{2})")
+LATE_CYCLE_RE = re.compile(r"late_cycle=(\d{4}-W\d{2})")
 
 
 def cycle_week_of(date_str):
@@ -185,10 +186,15 @@ def extract_badge_events():
             # 历史行无此字段 -> 按日期计算仅供展示归档，不参与周期重算/上限累计
             # （DeepSeek 二次终审执行解释：历史行留空＝不回填、不计入当周 +50）。
             cwm = CYCLE_WEEK_RE.search(line)
+            # late_cycle：补发标记（归属周早于落账周），由终审落账环节与
+            # cycle_week 一并写入 key 注释；无此字段 -> 非补发条目。
+            lcm = LATE_CYCLE_RE.search(line)
             active.setdefault(key, []).append(
                 {"key": key, "date": date, "icon": icon, "name": name,
                  "cycle_week": cwm.group(1) if cwm else cycle_week_of(date),
-                 "cycle_week_recorded": bool(cwm)})
+                 "cycle_week_recorded": bool(cwm),
+                 "late_cycle": lcm.group(1) if lcm else None,
+                 "late_cycle_recorded": bool(lcm)})
         # 净持有徽章：同徽章多次获得各自保留，按最早发放日排序
         events = []
         for key, evts in active.items():
@@ -230,6 +236,26 @@ def build_badges(events, now=None):
             items.append({"key": key, "name": evts[0]["name"][:8],
                           "icon": evts[0]["icon"], "date": evts[0]["date"],
                           "count": len(evts)})
+        # 补发展示（B方案，2026-10-20 用户拍板+DeepSeek 终审）：归属为此前
+        # 周期、带 late_cycle 标记、且落账日期（颁发）落在本周期内的徽章，
+        # 在本周期徽章带内同带展示并加 late 标记（前端渲染「补发」角标）；
+        # 归属周仍记原周（origin_cycle），不并入本周 count、不影响目标榜
+        # 计数。补发只在其颁发所在周期展示：下周期视角下其落账日期已不在
+        # 当周，自然消失，不会被误标为下周归属。
+        late_events = [e for e in events.get(gk, [])
+                       if e.get("late_cycle_recorded")
+                       and (e.get("cycle_week") or cycle_week_of(e["date"])) != cur_cycle
+                       and cycle_week_of(e["date"]) == cur_cycle]
+        late_grouped = {}
+        for e in late_events:
+            late_grouped.setdefault(e["key"], []).append(e)
+        for key, evts in late_grouped.items():
+            evts.sort(key=lambda x: x["date"])
+            items.append({"key": key, "name": evts[0]["name"][:8],
+                          "icon": evts[0]["icon"], "date": evts[0]["date"],
+                          "count": len(evts), "late": True,
+                          "origin_cycle": (evts[0].get("cycle_week")
+                                           or cycle_week_of(evts[0]["date"]))})
         items.sort(key=lambda x: x["date"])
         by_grade[gk] = items
     # B-2：周界自证元数据（下游可独立验证周界归属）

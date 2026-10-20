@@ -279,6 +279,13 @@
     font-size:11px; font-weight:700; line-height:1;
     padding:3px 6px; border-radius:999px;
   }
+  /* 补发角标（2026-10-20 B方案）：左上，与右上 ×N 计数角标错开不冲突 */
+  .medal-late{
+    position:absolute; top:0; left:2px; z-index:2;
+    background:#E8862E; color:#fff;
+    font-size:11px; font-weight:700; line-height:1;
+    padding:3px 6px; border-radius:999px;
+  }
   /* 已读徽章入带飞入（DeepSeek 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入，单带前 6 枚，第 7 枚起不加此类（延迟硬归零） */
   .medal.fly-in{animation:medalFly .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay:var(--fly-d,0ms);}
   @keyframes medalFly{
@@ -1883,7 +1890,7 @@
         var flyIdx = 0;
         list.forEach(function(b){
           var medal = el('div','medal');
-          var sid = b.key ? badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key) : '';
+          var sid = b.key ? badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key + (b.late ? ':late' : '')) : '';
           /* 动效合并（DeepSeek 终审 R1/R3）：先判已读态——未读只走光晕+扫光不飞入；已读才判飞入，会话内只播一次 */
           var isNew = !!sid && !badgeIsSeen(sid);
           if(isNew){
@@ -1908,17 +1915,22 @@
           if(b.count && b.count > 1){
             medal.appendChild(el('span','medal-count', '×' + b.count));
           }
+          /* 补发角标（2026-10-20 B方案）：此前周期归属、本周期补发的徽章同带展示、左上标「补发」 */
+          if(b.late){
+            medal.appendChild(el('span','medal-late', '补发'));
+          }
           medal.addEventListener('click', function(){
             if(medal.classList.contains('is-new')){
               medal.classList.remove('is-new');
               badgeMarkSeen(sid);
               FLY_PLAYED[sid] = 1;
             }
-            if(!pop.hidden && block._popKey === (b.key || b.name)){ pop.hidden = true; block._popKey = null; return; }
-            block._popKey = b.key || b.name;
+            var popId = (b.key || b.name) + (b.late ? ':late' : '');
+            if(!pop.hidden && block._popKey === popId){ pop.hidden = true; block._popKey = null; return; }
+            block._popKey = popId;
             popIc.textContent = b.icon || '🏅';
             popName.textContent = String(b.name);
-            popDate.textContent = badgeDateText(b.date);
+            popDate.textContent = badgeDateText(b.date) + (b.late ? ' · 补发' : '');
             /* 兜底句：cond 字段不在 badges.json（在 badge_goals.json），设计稿表述有误，改通用童趣句——2026-10-20 报备确认 */
             popBlurb.textContent = BADGE_BLURB[b.key] || '这枚徽章已经被你收进口袋啦！';
             pop.hidden = false;
