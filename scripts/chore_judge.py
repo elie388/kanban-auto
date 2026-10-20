@@ -134,20 +134,27 @@ def judge(now):
             if len(wk_dates) >= 5 else ""))
         if len(wk_dates) >= 5 and all_backfill(wk_rows):
             lines[-1] += "（证据含回补行，终审请裁定）"
-        # 整理之星：整理桌面累计天数 / 5（按日去重）
-        tidy_all = sorted({r["date"] for r in grows if r["item"] == "整理桌面"})
+        # 整理之星：整理桌面累计天数 / 5（按日去重；只统计最近一次
+        # [颁发:整理之星] 标记之后的行——达成后归零重新累计）
+        base_star = arch.get("award_idx", {}).get((gk, "整理之星"), -1)
+        tidy_all = sorted({r["date"] for r in grows
+                           if r["item"] == "整理桌面" and r["idx"] > base_star})
         st = "候选（已达）" if len(tidy_all) >= 5 else "未达"
         lines.append("- 【整理之星】%s：累计 %d/5 天（%s）%s" % (
             st, min(len(tidy_all), 5), "、".join(tidy_all) or "无",
             cyc_tag(tidy_all[4], "｜累计类：颁发后累计计数归零重新累计")
             if len(tidy_all) >= 5 else ""))
-        # 整理小达人：整理桌面连续 / 5（不计回补行）
+        # 整理小达人：整理桌面连续 / 5（不计回补行；只统计最近一次
+        # [颁发:整理小达人] 标记之后的行——达成后归零重新起算）
+        base_daren = arch.get("award_idx", {}).get((gk, "整理小达人"), -1)
         tidy_live = {r["date"] for r in grows
-                     if r["item"] == "整理桌面" and not r["backfill"]}
+                     if r["item"] == "整理桌面" and not r["backfill"]
+                     and r["idx"] > base_daren}
         n = ss._streak_from_dates(tidy_live, today)
         st = "候选（已达）" if n >= 5 else "未达"
         bf_days = len({r["date"] for r in grows
-                       if r["item"] == "整理桌面" and r["backfill"]})
+                       if r["item"] == "整理桌面" and r["backfill"]
+                       and r["idx"] > base_daren})
         lines.append("- 【整理小达人】%s：连续 %d/5 天%s%s" % (
             st, min(n, 5),
             "（另有回补整理行 %d 天，按拍板不计入连续、仅展示对照，不代表未做）" % bf_days
@@ -155,22 +162,26 @@ def judge(now):
             cyc_tag(streak_anchor(tidy_live, today).isoformat(),
                     "｜连续类：颁发后连续计数归零重新起算")
             if n >= 5 else ""))
-        # 坚持小勇士·家务通道：有记录日期连续 / 14（仅家务通道）
-        n = ss._streak_from_dates(arch["dates"].get(gk, set()), today)
+        # 坚持小勇士·家务通道：有记录日期连续 / 14（仅家务通道；
+        # 只统计最近一次 [颁发:坚持小勇士] 标记之后的行——达成后归零）
+        base_jian = arch.get("award_idx", {}).get((gk, "坚持小勇士"), -1)
+        jian_dates = {r["date"] for r in grows if r["idx"] > base_jian}
+        n = ss._streak_from_dates(jian_dates, today)
         st = "候选（家务通道已达）" if n >= 14 else "未达"
         lines.append("- 【坚持小勇士·家务通道】%s：连续 %d/14 天%s" % (
             st, min(n, 14),
-            cyc_tag(streak_anchor(arch["dates"].get(gk, set()), today).isoformat(),
+            cyc_tag(streak_anchor(jian_dates, today).isoformat(),
                     "｜通道类：颁发后该通道计数归零；每通道每 cycle_week ≤1 次")
             if n >= 14 else ""))
         lines.append("")
-    # 合作之星：兄弟同日同项目合作成对日连续 / 3
-    n = ss._streak_from_dates(arch["coop_dates"], today)
+    # 合作之星：兄弟同日同项目合作成对日连续 / 3（只统计最近一次
+    # [颁发:合作之星] 之后成对完成的日——达成后归零重新起算）
+    n = ss._streak_from_dates(arch["coop_dates_new"], today)
     st = "候选（已达）" if n >= 3 else "未达"
     lines.append("## 合作之星（双人）")
     lines.append("- 【合作之星】%s：成对日连续 %d/3 天（成对日：%s）%s" % (
-        st, min(n, 3), "、".join(sorted(arch["coop_dates"])) or "无",
-        cyc_tag(streak_anchor(arch["coop_dates"], today).isoformat(),
+        st, min(n, 3), "、".join(sorted(arch["coop_dates_new"])) or "无",
+        cyc_tag(streak_anchor(arch["coop_dates_new"], today).isoformat(),
                 "｜连续类：颁发后连续计数归零重新起算") if n >= 3 else ""))
     # 家务接力手（现行口径 a24c506：同周两兄弟各>=2项 + 至少1次接力动作）
     def items(gk):

@@ -374,12 +374,14 @@ def _parse_chore_archive():
     out = {"exists": False, "rows": [],
            "dates": {"g5": set(), "g6": set()},
            "tidy": {"g5": [], "g6": []},
-           "coop_dates": set(), "relay": {}}
+           "coop_dates": set(), "coop_dates_new": set(), "relay": {},
+           "award_idx": {}}
     if not CHORE_ARCHIVE_FILE.exists():
         return out
     out["exists"] = True
     gmap = {"五": "g5", "六": "g6", "家庭": "fam"}
     pair = {}  # (date, item) -> set(gk)：兄弟合作成对判定
+    pair_idx = {}  # (date, item) -> 成对完成时的行序（后到一行的 idx）
     for line in CHORE_ARCHIVE_FILE.read_text(encoding="utf-8").split("\n"):
         if not line.startswith("|"):
             continue
@@ -399,17 +401,33 @@ def _parse_chore_archive():
         row = {"date": dstr, "gk": gk, "item": item, "mode": mode,
                "partner": partner, "evidence": evidence, "time": tstr,
                "key": key, "mark": mark,
-               "backfill": "[回补]" in mark}
+               "backfill": "[回补]" in mark,
+               "idx": len(out["rows"])}
         out["rows"].append(row)
+        # 颁发消费基线（徽章周期清空机制）：存档行上的 [颁发:徽章名] 标记
+        # 表示该行及之前的计数已被那次颁发消费；连续/累计类进度与判定
+        # 只统计基线之后的行，实现"达成后计数归零重新起算/累计"。
+        if "颁发" in mark:
+            for bname in ("整理之星", "整理小达人", "坚持小勇士", "合作之星"):
+                if bname in mark:
+                    out["award_idx"][(gk, bname)] = row["idx"]
+                    if bname == "合作之星":
+                        out["award_idx"][("coop", bname)] = row["idx"]
         if gk in ("g5", "g6"):
             out["dates"][gk].add(dstr)
             if item == "整理桌面":
                 out["tidy"][gk].append((dstr, row["backfill"]))
             if mode == "合作" and partner == "兄弟":
-                pair.setdefault((dstr, item), set()).add(gk)
+                st = pair.setdefault((dstr, item), set())
+                st.add(gk)
+                if st == {"g5", "g6"} and (dstr, item) not in pair_idx:
+                    pair_idx[(dstr, item)] = row["idx"]
         out["relay"].setdefault(dstr, set()).add(gk)
     out["coop_dates"] = {d for (d, _it), st in pair.items()
                          if st == {"g5", "g6"}}
+    coop_base = out["award_idx"].get(("coop", "合作之星"), -1)
+    out["coop_dates_new"] = {d for (d, _it), i in pair_idx.items()
+                             if i > coop_base}
     return out
 
 
@@ -581,9 +599,21 @@ def compute_badge_progress(events, now=None):
         # 家务类数据源（2026-10-20 切换，DeepSeek 定稿）：只读家务记录存档，
         # 不再读台账家务条目、不做双读过渡。事实只认存档，积分只认台账。
         chore_dates = arch["dates"].get(gk, set())
-        tidy_all_dates = {d for d, _bf in arch["tidy"].get(gk, [])}
+        # 颁发消费基线（周期清空机制）：整理之星/整理小达人/坚持小勇士
+        # 只统计最近一次 [颁发:对应徽章] 标记之后的行，达成后归零重计。
+        aidx = arch.get("award_idx", {})
+        base_star = aidx.get((gk, "整理之星"), -1)
+        base_daren = aidx.get((gk, "整理小达人"), -1)
+        base_jian = aidx.get((gk, "坚持小勇士"), -1)
+        tidy_all_dates = {r["date"] for r in arch["rows"]
+                          if r["gk"] == gk and r["item"] == "整理桌面"
+                          and r["idx"] > base_star}
         # 整理小达人活进度不计 [回补] 行（用户拍板 2026-10-20）
-        tidy_live_dates = {d for d, bf in arch["tidy"].get(gk, []) if not bf}
+        tidy_live_dates = {r["date"] for r in arch["rows"]
+                           if r["gk"] == gk and r["item"] == "整理桌面"
+                           and not r["backfill"] and r["idx"] > base_daren}
+        jian_dates = {r["date"] for r in arch["rows"]
+                      if r["gk"] == gk and r["idx"] > base_jian}
         late_dates = {r["date"] for r in rows
                       if r["delta"] < 0 and ("晚睡" in r["desc"]
                                              or "超23点" in r["desc"]
@@ -607,8 +637,8 @@ def compute_badge_progress(events, now=None):
         sl = _sleep_streak(late_dates, now)
         p["xidengxiaochaoren"] = {"state": "ok", "current": min(sl, 5),
                                   "target": 5, "unit": "天", "mode": "连续"}
-        # 坚持小勇士：三通道取最长
-        chans = [("家务", _streak_from_dates(chore_dates, today)),
+        # 坚持小勇士：三通道取最长（家务通道按颁发基线归零重计）
+        chans = [("家务", _streak_from_dates(jian_dates, today)),
                  ("睡觉", sl)]
         hw = _homework_streak(flags, gk)
         if hw is not None:
@@ -657,10 +687,11 @@ def compute_badge_progress(events, now=None):
         p["tupoxiaoyongshi"] = tp if tp is not None else {
             "state": "nodata", "note": "题目库暂不可用"}
         out[gk] = p
-    # 合作之星补算：存档中兄弟同日同项目「合作/兄弟」成对日（只读家务记录.md）
+    # 合作之星补算：存档中兄弟同日同项目「合作/兄弟」成对日（只读家务记录.md）；
+    # 只统计最近一次 [颁发:合作之星] 之后成对完成的日（达成后归零重计）
     for gk in ("g5", "g6"):
         out[gk]["hezuozhixing"]["current"] = min(
-            _streak_from_dates(arch["coop_dates"], today), 3)
+            _streak_from_dates(arch["coop_dates_new"], today), 3)
     # 家务接力手补算（2026-10-20 改版，DeepSeek 方案+家长拍板）：
     # 同周两兄弟各≥2项、合计≥4、至少1次接力动作（同项不同日两人做过，或同日不同项目）
     # 数据源 2026-10-20 切换为家务记录.md（原台账读法同日废止）；连做链伪行不计项。
