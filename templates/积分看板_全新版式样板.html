@@ -154,13 +154,18 @@
 
   .task-list{display:flex; flex-direction:column; gap:10px;}
   .task{
-    display:flex; align-items:center; justify-content:space-between; /* 状态右置：文字左、徽章右 */
-    gap:16px;
+    display:flex; flex-direction:column; align-items:stretch;
     padding:12px 14px; border-radius:var(--radius-sm);
     border:2px solid transparent;
     background:#FAFBFC;
     min-height:56px;
     transition:transform .15s ease;
+  }
+  /* 卡片主行：文字左、状态徽章右（待改正徽标/明细面板在此行之下另起行，
+     不再挤压标题与副文案，2026-10-20 家长截图反馈后改） */
+  .task .task-main{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; width:100%;
   }
   .task:active{transform:scale(.98);}
   .task .st-badge{
@@ -176,15 +181,28 @@
   .task.correcting{border-color:#FFD97A;}
   .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
-  /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时与状态徽章并列 */
+  /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
+     点击展开明细（2026-10-20 续）：徽标独占一行（主行之下左对齐），
+     不再与状态徽章同行挤压；展开区逐题列题号/题目/错因。 */
   .task .corr-badge{
-    flex:0 0 auto;
-    font-size:13px; font-weight:700;
-    padding:5px 10px; border-radius:999px;
-    display:inline-flex; align-items:center; justify-content:center;
-    white-space:nowrap;
+    align-self:flex-start;
+    margin-top:10px;
+    font-size:13px; font-weight:700; font-family:inherit;
+    padding:5px 12px; border-radius:999px; border:none; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center; gap:5px;
+    white-space:nowrap; min-height:36px;
     background:#FFE9E0; color:#C2410C;
+    -webkit-tap-highlight-color:transparent;
   }
+  .task .corr-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
+  .task.open-corr .corr-caret{transform:rotate(90deg);}
+  .task .corr-panel{display:none; width:100%; margin-top:8px; border-top:1px dashed #F0C4A8; padding-top:4px;}
+  .task.open-corr .corr-panel{display:block;}
+  .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
+  .corr-item:last-child{border-bottom:none;}
+  .corr-item .corr-no{font-weight:700; color:#C2410C;}
+  .corr-item .corr-q{color:#30343B;}
+  .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .task .task-info{flex:1; min-width:0; text-align:left;}
   .task .task-name{
     font-size:16px; font-weight:700;
@@ -1030,6 +1048,17 @@
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务'};
+  var OPEN_CORR = {}; /* 待改正明细展开状态（按 task_id，软刷新后恢复，与目标榜 OPEN_GOALS 同款） */
+  document.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('.corr-badge') : null;
+    if(!b) return;
+    var card = b.closest ? b.closest('.task') : null;
+    if(!card) return;
+    var open = card.classList.toggle('open-corr');
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var tid = b.getAttribute('data-corr');
+    if(tid){ if(open) OPEN_CORR[tid] = 1; else delete OPEN_CORR[tid]; }
+  });
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -1080,9 +1109,9 @@
     visible = visible.concat(normals);
     var html = '';
     if(visible.length === 0){
-      html = '<div class="task done"><div class="task-info"><div class="task-name">今日暂无任务</div>'
+      html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-name">今日暂无任务</div>'
         + '<div class="task-progress">全部完成，放松一下吧</div></div>'
-        + '<span class="st-badge">\u2705 已完成</span></div>';
+        + '<span class="st-badge">\u2705 已完成</span></div></div>';
     } else {
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
@@ -1091,15 +1120,37 @@
         var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
         if(t.detail) sub2 += ' · ' + esc(t.detail);
         else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
-        /* 待改正标记（2026-10-20 家长拍板）：待订正未清零的任务并列显示，
-           与 done 新口径配套（还没完全改正不算已完成）。 */
-        var corrBadge = (typeof t.pending_corrections === 'number' && t.pending_corrections > 0)
-          ? '<span class="corr-badge">待改正 ' + t.pending_corrections + ' 题</span>' : '';
-        html += '<div class="task ' + sm.cls + '"><div class="task-info">'
+        /* 待改正标记（2026-10-20 家长拍板）：待订正未清零的任务显示，
+           与 done 新口径配套（还没完全改正不算已完成）。
+           点击展开明细（2026-10-20 续）：明细 corrections 与数字同源
+           （task_ingest.sync_corrections 同一归集列表，长度恒等），
+           徽标独占一行（主行之下），点一下展开、再点收起。 */
+        var corrBadge = '', corrPanel = '', openCls = '';
+        if(typeof t.pending_corrections === 'number' && t.pending_corrections > 0){
+          var items = '';
+          var corrList = Array.isArray(t.corrections) ? t.corrections : [];
+          if(corrList.length){
+            corrList.forEach(function(c){
+              items += '<div class="corr-item">'
+                + (c.label ? '<span class="corr-no">' + esc(c.label) + '</span>' : '')
+                + (c.question ? ' <span class="corr-q">' + esc(c.question) + '</span>' : '')
+                + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
+                + '</div>';
+            });
+          } else {
+            items = '<div class="corr-item">题目明细同步中，请稍后刷新查看</div>';
+          }
+          if(OPEN_CORR[t.task_id]) openCls = ' open-corr';
+          corrBadge = '<button type="button" class="corr-badge" data-corr="' + esc(t.task_id) + '"'
+            + ' aria-expanded="' + (OPEN_CORR[t.task_id] ? 'true' : 'false') + '">待改正 '
+            + t.pending_corrections + ' 题 <span class="corr-caret">▸</span></button>';
+          corrPanel = '<div class="corr-panel">' + items + '</div>';
+        }
+        html += '<div class="task ' + sm.cls + openCls + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-name">' + esc(t.title) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
-          + corrBadge
-          + '<span class="st-badge">' + sm.badge + '</span></div>';
+          + '<span class="st-badge">' + sm.badge + '</span></div>'
+          + corrBadge + corrPanel + '</div>';
       });
     }
     taskList.innerHTML = html;
