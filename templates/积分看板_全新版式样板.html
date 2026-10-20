@@ -1875,6 +1875,50 @@
   function sl(arr, n){ return arr.slice(-n); }
   function nn(arr){ return arr.filter(function(v){ return v !== null && v !== undefined; }); }
   function fmt(v){ return v === null || v === undefined ? '—' : (Math.round(v * 10) / 10); }
+  /* 触控就近吸附（2026-10-20，DeepSeek 终审有条件通过）：由点击视口坐标换算 SVG x，
+     取与各日期 X(i) 横向距离最近的 i。比较用严格 <（先遍历者胜）→ 两日正中点归左日。
+     clientX 与 rect.left 同为视口坐标，相减自带滚动补偿。 */
+  /* 响应式轴规格（2026-10-20，DeepSeek 终审有条件通过；取代刻度14/日期12固定值裁决）：
+     视觉字号 = SVG字号 × s（s=容器宽/680），故按目标视觉字号反算 SVG 字号并钳制
+     （刻度 9–19、日期 9–18；上限经 390 档离线量测按 DeepSeek C2 回归微调）——小屏保可读、大屏设上限。Gemini 初审曾要求正向缩放，
+     经 DeepSeek 裁决为机制性误判（两端都失败），不得改回。
+     pl 随刻度字号联动（2.69=实测「100%」每单位字号宽，+14 余量，下限40防宽屏塌陷）；
+     step 按串宽/日间隔几何推导：30 天窗口串宽>日间隔是物理上限、必须抽样，非可优化项；
+     日期末日必标为硬要求，不得被抽样掉。 */
+  function axisSpec(containerW, n){
+    var w = containerW || 680, s = w / 680;
+    function cl(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+    var scaleF = cl(Math.round(12.5 / s), 9, 19);
+    var dateF = cl(Math.round(11.5 / s), 9, 18);
+    var pl = Math.max(40, Math.round(scaleF * 2.69) + 14);
+    var iw = 680 - pl - 16, step = 1;
+    if(n > 1) step = Math.max(1, Math.ceil(dateF * 2.7 * 1.15 / (iw / (n - 1))));
+    return { scaleF: scaleF, dateF: dateF, pl: pl, step: step, iw: iw, dateW: dateF * 2.7 };
+  }
+  /* 日期标签显示集（DeepSeek 终审 C3）：按 step 抽样 + 末日必标；
+     末日标签改 end 锚点贴右界绘制，其占用左界为 X(n-1)-dateW，与紧邻常规标签
+     （居中占用 ±dateW/2）间距不足 1.5×dateW 时剔除紧邻者，保证不重叠不截断。 */
+  function dateShown(n, spec){
+    var set = {}, last = n - 1, i;
+    for(i = 0; i < n; i += spec.step) set[i] = true;
+    set[last] = true;
+    if(n > 1){
+      var gap = spec.iw / (n - 1), need = spec.dateW * 1.5;
+      for(i = last - 1; i >= 0; i--){
+        if(!set[i]) continue;
+        if((last - i) * gap < need) delete set[i]; else break;
+      }
+    }
+    return set;
+  }
+  function nearestIdx(svgEl, clientX, xs){
+    var r = svgEl.getBoundingClientRect(); if(!r.width) return 0;
+    var vbW = (svgEl.viewBox && svgEl.viewBox.baseVal && svgEl.viewBox.baseVal.width) || 680;
+    var x = (clientX - r.left) * vbW / r.width;
+    var bi = 0, bd = Infinity;
+    xs.forEach(function(xx, k){ var d = Math.abs(xx - x); if(d < bd){ bd = d; bi = k; } });
+    return bi;
+  }
   function avg(arr){ var a = nn(arr); return a.length ? a.reduce(function(x, y){ return x + y; }, 0) / a.length : null; }
   function segPath(vals, X, Y){
     var d = '', pen = false;
@@ -1884,13 +1928,13 @@
     });
     return d;
   }
-  function gridSVG(W, H, PL, PR, PT, PB, dates, step){
+  function gridSVG(W, H, PL, PR, PT, PB, dates, step, scaleF){
     var iw = W - PL - PR, s = '';
     function X(i){ return PL + iw * i / (dates.length - 1); }
     function Y(v){ return PT + (H - PT - PB) * (100 - v) / 100; }
     [0, 25, 50, 75, 100].forEach(function(gv){
       s += '<line x1="' + PL + '" y1="' + Y(gv) + '" x2="' + (W - PR) + '" y2="' + Y(gv) + '" stroke="#E9E2D2"/>';
-      s += '<text x="' + (PL - 6) + '" y="' + (Y(gv) + 4) + '" font-size="10" fill="#9AA0A6" text-anchor="end">' + gv + '%</text>';
+      s += '<text x="' + (PL - 6) + '" y="' + (Y(gv) + 5) + '" font-size="' + (scaleF || 12) + '" fill="#9AA0A6" text-anchor="end">' + gv + '%</text>';
     });
     s += '<rect x="' + PL + '" y="' + Y(100) + '" width="' + iw + '" height="' + (Y(TARGET) - Y(100)) + '" fill="#1E9E52" opacity="0.05"/>';
     s += '<line x1="' + PL + '" y1="' + Y(TARGET) + '" x2="' + (W - PR) + '" y2="' + Y(TARGET) + '" stroke="#1E9E52" stroke-width="1.4" stroke-dasharray="6 4" opacity="0.65"/>';
@@ -1924,9 +1968,10 @@
     root.innerHTML = h;
 
     /* 主图 */
-    var W = 680, H = 300, PL = 44, PR = 16, PT = 18, PB = 34;
-    var g = gridSVG(W, H, PL, PR, PT, PB, labels, RANGE > 14 ? 3 : 2);
-    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">' + g.s;
+    var spec = axisSpec(root.clientWidth, labels.length);
+    var W = 680, H = 300, PL = spec.pl, PR = 16, PT = 18, PB = 34;
+    var g = gridSVG(W, H, PL, PR, PT, PB, labels, spec.step, spec.scaleF);
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;touch-action:manipulation">' + g.s;
     var series = GRADES.map(function(gr){
       return { gr: gr, vals: sl(TD.grades[gr].overall, RANGE), col: GCOL[gr] };
     });
@@ -1968,15 +2013,21 @@
     lblSpecs.forEach(function(L){
       s += '<text x="' + L.x + '" y="' + lblY(L) + '" font-size="12" font-weight="700" fill="' + L.col + '" text-anchor="end" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="paint-order:stroke">' + L.txt + '</text>';
     });
+    var shownD = dateShown(labels.length, spec);
     labels.forEach(function(d, i){
-      if(i % (RANGE > 14 ? 3 : 2) === 0 || i === labels.length - 1)
-        s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="10" fill="#9AA0A6" text-anchor="middle">' + d + '</text>';
+      if(!shownD[i]) return;
+      var isLast = i === labels.length - 1;
+      s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="' + spec.dateF + '" fill="#9AA0A6" text-anchor="' + (isLast ? 'end' : 'middle') + '">' + d + '</text>';
+    });
+    /* 触控热区（2026-10-20）：每日期一层透明大热区（r=20），可见点大小不变；
+       选日不依赖热区自身 i，全图 click 统一走 nearestIdx 坐标吸附（见下方绑定）。 */
+    labels.forEach(function(d, i){
+      s += '<circle class="tr-hit" cx="' + g.X(i) + '" cy="' + g.Y(50) + '" r="20" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
     });
     s += '</svg>';
     el('tr-chart').innerHTML = s;
-    el('tr-chart').querySelectorAll('circle.tr-pt').forEach(function(c){
-      c.addEventListener('click', function(){
-        var i = +c.dataset.i, dd = labels[i], fullI = (TD.dates.length - RANGE) + i;
+    function pickDay(i){
+        var dd = labels[i], fullI = (TD.dates.length - RANGE) + i;
         /* 明细条文案（2026-10-20 用户反馈模糊，DeepSeek 终审定稿）：逐年级分段，各自报正确率与达标状态
            （≥TARGET 达标；未达标段整段橙色高亮，并带当日最弱科目与补练建议——最弱科目口径与薄弱日点评一致：
            分科非 null 最低、并列按 SUBJS 顺序）；当日无分科数据则只报状态不给科目；overall 为 null 报
@@ -2001,8 +2052,14 @@
         });
         var tail = (nData === GRADES.length && !anyBad) ? '——两个年级都达到目标线，继续保持！' : '';
         el('tr-tip').innerHTML = '📅 ' + dd + '：' + segs.join(' · ') + tail;
-      });
-    });
+    }
+    /* 全图统一选日（DeepSeek 终审 C1）：可见点/热区/空白都冒泡到 svg 根，按坐标吸附最近日期，
+       不再给单点单独绑 click，避免热区重叠抢答。 */
+    var mainSvg = el('tr-chart').querySelector('svg');
+    if(mainSvg){
+      var xsMain = labels.map(function(_, k){ return g.X(k); });
+      mainSvg.addEventListener('click', function(e){ pickDay(nearestIdx(mainSvg, e.clientX, xsMain)); });
+    }
 
     /* 薄弱日点评（数据链：双年级全局最弱日 → 当日最弱科目；口径同改版前，科目并列按 SUBJS 顺序） */
     var off = TD.dates.length - RANGE, best = null;
@@ -2155,19 +2212,26 @@
     SHOW_SUBJ = { g: gr, sn: sn };
     var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
     var vals = sl(TD.grades[gr].subjects[sn].days, RANGE), color = GCOL[gr];
-    var W = 680, H = 280, PL = 44, PR = 16, PT = 18, PB = 34;
-    var g = gridSVG(W, H, PL, PR, PT, PB, labels, RANGE > 14 ? 3 : 2);
+    var spec = axisSpec(box.clientWidth, labels.length);
+    var W = 680, H = 280, PL = spec.pl, PR = 16, PT = 18, PB = 34;
+    var g = gridSVG(W, H, PL, PR, PT, PB, labels, spec.step, spec.scaleF);
     var h = '<div class="tr-sec-t">' + gr + ' · ' + sn + ' 正确率走势</div>';
     h += '<div class="tr-sub">近' + RANGE + '天 · 点小图可切换科目</div>';
-    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;margin-top:6px">' + g.s;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;margin-top:6px;touch-action:manipulation">' + g.s;
     s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2.4" stroke-linejoin="round"/>';
     vals.forEach(function(v, i){
       if(v === null || v === undefined) return;
       s += '<circle class="tr-spt" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="#fff" stroke="' + color + '" stroke-width="2" style="cursor:pointer"/>';
     });
+    var shownD = dateShown(labels.length, spec);
     labels.forEach(function(d, i){
-      if(i % (RANGE > 14 ? 3 : 2) === 0 || i === labels.length - 1)
-        s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="10" fill="#9AA0A6" text-anchor="middle">' + d + '</text>';
+      if(!shownD[i]) return;
+      var isLast = i === labels.length - 1;
+      s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="' + spec.dateF + '" fill="#9AA0A6" text-anchor="' + (isLast ? 'end' : 'middle') + '">' + d + '</text>';
+    });
+    /* 触控热区（2026-10-20）：同主图，每日期透明热区 r=20，可见点不变，选日走 svg 根坐标吸附。 */
+    labels.forEach(function(d, i){
+      s += '<circle class="tr-hit" cx="' + g.X(i) + '" cy="' + g.Y(50) + '" r="20" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
     });
     s += '</svg>';
     h += s;
@@ -2191,12 +2255,16 @@
     }
     box.innerHTML = h;
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    box.querySelectorAll('circle.tr-spt').forEach(function(c){
-      c.addEventListener('click', function(){
-        var i = +c.dataset.i, v = vals[i];
-        el('tr-stip').textContent = '📅 ' + labels[i] + '：' + gr + sn + ' ' + (v === null || v === undefined ? '无数据' : fmt(v) + '%' + (v < TARGET ? '（未达标）' : '（达标 ✓）'));
-      });
-    });
+    function pickSubjDay(i){
+      var v = vals[i];
+      el('tr-stip').textContent = '📅 ' + labels[i] + '：' + gr + sn + ' ' + (v === null || v === undefined ? '无数据' : fmt(v) + '%' + (v < TARGET ? '（未达标）' : '（达标 ✓）'));
+    }
+    /* 全图统一选日（DeepSeek 终审 C1/C5）：与主图共用 nearestIdx 工具，但 pick 逻辑与黑条渲染独立。 */
+    var subjSvg = box.querySelector('svg');
+    if(subjSvg){
+      var xsSubj = labels.map(function(_, k){ return g.X(k); });
+      subjSvg.addEventListener('click', function(e){ pickSubjDay(nearestIdx(subjSvg, e.clientX, xsSubj)); });
+    }
     box.querySelectorAll('.tr-wrow').forEach(function(r){
       r.addEventListener('click', function(){
         var w = wk[+r.dataset.wi], slot = el('tr-ws-' + r.dataset.wi);
@@ -2240,6 +2308,19 @@
   window.__kanbanRefreshTrends = loadTrends;
   window.__showTrendSubj = showSubj;
   loadTrends();
+  /* 响应式重绘（2026-10-20）：仅窗口宽度变化时防抖重绘，避免移动端滚动高度变化误触发；
+     重绘后恢复已展开的分科图（SHOW_SUBJ），字号/抽样由 axisSpec 按新宽度重算。 */
+  var rszT = null, lastWinW = window.innerWidth;
+  window.addEventListener('resize', function(){
+    if(window.innerWidth === lastWinW) return;
+    lastWinW = window.innerWidth;
+    clearTimeout(rszT);
+    rszT = setTimeout(function(){
+      if(!TD) return;
+      renderMain();
+      if(SHOW_SUBJ) showSubj(SHOW_SUBJ.g, SHOW_SUBJ.sn);
+    }, 250);
+  });
   var btn = el('btn-trend');
   if(btn) btn.addEventListener('click', function(){ if(!TD) loadTrends(); });
 })();
