@@ -29,6 +29,7 @@ import re
 import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(SCRIPT_DIR)
@@ -67,6 +68,20 @@ STASH_PATHS = [_output_key(kind, grade)
                for grade in (5, 6)
                for kind in ("stats", "points_log", "shop")]
 TEMPLATE_PATHS = ["templates/积分看板_全新版式样板.html"]
+
+
+def _n3_sentinel_already_logged_today(log_path=None, today_str=None):
+    """N3 哨兵当日首轮判定（定案问题④）：logs/build_stats.log 今日是否已有
+    N3 sentinel OK 行。该日志按时间追加，读尾部 300 行足够判定。"""
+    log_path = log_path or os.path.join(LOGS_DIR, "build_stats.log")
+    today_str = today_str or datetime.now(TZ).strftime("%Y-%m-%d")
+    try:
+        with open(log_path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+    except OSError:
+        return False
+    return any(ln.startswith(today_str) and "N3 sentinel OK" in ln
+               for ln in lines[-300:])
 
 # R1：档位表（规则手册第85行，唯一权威；变动须走规则手册修订）
 SHOP_TIERS = [
@@ -738,12 +753,22 @@ def main():
     # （日期接受面/存储归一对齐）在后续提交完成，此哨兵长期保留作回归监测。
     try:
         _alt = sb.parse_ledger(Path(LEDGER))
+        _n3_diverged = False
         for _g, _gk in ((5, "g5"), (6, "g6")):
             if _alt[_gk]["balance"] != balances[_g]:
+                _n3_diverged = True
                 warn("N3 对拍不一致：%d 年级 本解析余额=%d / sync_balance 余额=%d"
                      % (_g, balances[_g], _alt[_gk]["balance"]))
                 err_write("N3_DIVERGENCE grade=%d self_bal=%d alt_bal=%d"
                           % (_g, balances[_g], _alt[_gk]["balance"]))
+        if not _n3_diverged and not _n3_sentinel_already_logged_today():
+            # 定案问题④：哨兵通过仅当日首轮留痕——既证明哨兵每日真实
+            # 生效，又不让高频运行把日志淹没；不一致仍走 err_write 全量。
+            with open(os.path.join(LOGS_DIR, "build_stats.log"),
+                      "a", encoding="utf-8") as _f:
+                _f.write("%s N3 sentinel OK g5=%d g6=%d\n" % (
+                    datetime.now(TZ).isoformat(timespec="seconds"),
+                    balances[5], balances[6]))
     except Exception as _e:
         warn("N3 对拍自身异常（忽略，不影响产出）：%s" % str(_e)[:120])
 
@@ -1088,6 +1113,24 @@ def selftest():
             "STASH_PATHS=6 产物（与 _output_key 派生集合、字面集合三方一致），TEMPLATE_PATHS 同源")
     except Exception as e:
         rec("T9 A方案单点口径", False, str(e)[:200])
+
+    # --- T10 N3 哨兵当日首轮判定（DeepSeek 定案问题④验收）---
+    try:
+        import tempfile
+        with tempfile.NamedTemporaryFile("w", suffix=".log", delete=False, encoding="utf-8") as tf:
+            tp = tf.name
+        assert _n3_sentinel_already_logged_today(tp, "2026-10-20") is False, "空日志应为首轮"
+        with open(tp, "a", encoding="utf-8") as f:
+            f.write("2026-10-19T23:00:00+08:00 N3 sentinel OK g5=1 g6=2\n")
+        assert _n3_sentinel_already_logged_today(tp, "2026-10-20") is False, "只有昨日行应为首轮"
+        with open(tp, "a", encoding="utf-8") as f:
+            f.write("2026-10-20T08:00:00+08:00 N3 sentinel OK g5=170 g6=274\n")
+        assert _n3_sentinel_already_logged_today(tp, "2026-10-20") is True, "今日已有行应非首轮"
+        assert _n3_sentinel_already_logged_today(tp + ".missing", "2026-10-20") is False, "文件缺失应为首轮"
+        os.unlink(tp)
+        rec("T10 N3首轮判定", True, "空/只有昨日行/文件缺失→首轮；今日已有行→非首轮")
+    except Exception as e:
+        rec("T10 N3首轮判定", False, str(e)[:200])
 
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
