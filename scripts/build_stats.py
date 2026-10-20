@@ -208,9 +208,29 @@ def load_time_sources():
         return {}
 
 
+DESC_TIME_RE = re.compile(r"(\d{1,2}):(\d{2})(?::\d{2})?")
+
+
+def extract_desc_time(desc):
+    """2026-10-20（用户要求积分日志精确到分）：从条目描述中提取台账记录时间。
+
+    只用于生效日（2026-10-19）及之前的历史条目。新条目仍须用 @HH:MM，缺失即熔断。
+    取描述中第一个合法的 HH:MM（照片时间/提交时间均属台账记录时间）。
+    """
+    m = DESC_TIME_RE.search(desc or "")
+    if not m:
+        return None
+    hh, mm = int(m.group(1)), int(m.group(2))
+    if 0 <= hh <= 23 and 0 <= mm <= 59:
+        return "%02d:%02d" % (hh, mm)
+    return None
+
+
 def resolve_log_time(r, grade, today, sources):
     """KB-TIME-2026-10-19：由台账 @HH:MM 解析计分时间，附 G1–G6 校验门。
 
+    2026-10-20 补充：历史条目（≤2026-10-19）缺 @HH:MM 时，从描述提取台账记录时间
+    作回退（用户要求积分日志精确到分）；仍无时间 → (None, None)，前端只显示 MM-DD。
     返回 (time, time_source)，无时间 → (None, None)。
     触发熔断条件 → raise ValueError。
     """
@@ -218,7 +238,11 @@ def resolve_log_time(r, grade, today, sources):
     annot_time = r.get("annot_time")
     full_date = complete_year(r["date"], today)
 
-    # G6：生效日后新增条目缺 @HH:MM → 熔断
+    # 历史条目回退：@HH:MM 缺失时从描述提取台账记录时间
+    if annot_time is None and full_date <= TIME_G6_DATE:
+        annot_time = extract_desc_time(r["desc"])
+
+    # G6：生效日后新增条目缺 @HH:MM → 熔断（描述回退不适用于新条目）
     if annot_time is None and full_date > TIME_G6_DATE:
         raise ValueError("G6 熔断：%s 年级 %s 条目（%s）缺 @HH:MM 入账时间" % (grade, r["date"], key[:40]))
 
@@ -485,24 +509,30 @@ def main():
     today = datetime.now(TZ).date()
     generated_at = datetime.now(TZ).isoformat(timespec="seconds")
 
-    # R4-1（2026-10-20根治，DeepSeek方案）：先自动 stash 未提交改动 →
-    # pull --ff-only → stash pop。主工作区未提交文件不再阻塞同步。
+    # R4-1（2026-10-20根治，DeepSeek方案）：先自动 stash 未提交改动 → pull --ff-only。
+    # R4-2（2026-10-20再根治，用户报障+DeepSeek裁决）：pop 延后到全流程结束
+    # （各 return 出口统一调 _restore_stash）。此前 pop 太早 → R4 把操作者
+    # 未提交改动当异常拦截，失败回滚的 git checkout 把改动直接抹掉（已真实
+    # 发生：前端规则渲染改动被回滚丢失）。pop 延后后，回滚只碰脚本自身产物。
     stash_r = git("stash", "push", "-u", "-m", "build_stats-auto")
     stashed = (stash_r.returncode == 0 and "Saved working directory" in stash_r.stdout)
+
+    def _restore_stash():
+        if not stashed:
+            return
+        pop_r = git("stash", "pop")
+        if pop_r.returncode != 0:
+            msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
+            warn(msg)
+            err_write("NEED-REVIEW " + msg + " :: " + (pop_r.stderr or "")[:200])
+
     pr = git("pull", "--ff-only")
     if pr.returncode != 0:
         msg = "R4 拦截：git pull --ff-only 失败，停手待人工处理"
         warn(msg)
         err_write("NEED-REVIEW " + msg + " :: " + pr.stderr[:200])
-        if stashed:
-            git("stash", "pop")
+        _restore_stash()
         return 2
-    if stashed:
-        pop_r = git("stash", "pop")
-        if pop_r.returncode != 0:
-            msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
-            warn(msg)
-            err_write("NEED-REVIEW " + msg + " :: " + pop_r.stderr[:200])
     snap = git("diff", "--stat").stdout
 
     try:
@@ -516,6 +546,7 @@ def main():
         msg = "台账解析失败（§7.1 熔断）：%s" % e
         warn(msg)
         err_write(msg)
+        _restore_stash()
         return 2
 
     balances = {}
@@ -566,6 +597,7 @@ def main():
 
     if not changed_files and not tpl_changed:
         log("幂等：6 文件与模板均无变化，不 commit")
+        _restore_stash()
         return 0
 
     # R4 diff 校验
@@ -583,6 +615,7 @@ def main():
                 os.remove(p)
             elif not was_new:
                 git("checkout", "--", rel)
+        _restore_stash()
         return 2
 
     # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
@@ -602,6 +635,7 @@ def main():
                 _f.write(_alert + "\n")
         except Exception:
             pass
+        _restore_stash()
         return 0
 
     # 提交（只加本方案的 6 文件 + 模板）
@@ -614,17 +648,20 @@ def main():
     if cp.returncode != 0:
         warn("git commit 失败：%s" % cp.stderr[:200])
         err_write("git commit 失败：" + cp.stderr[:200])
+        _restore_stash()
         return 3
     pp = git("push")
     if pp.returncode != 0:
         warn("git push 失败（本地文件已保留，下次重试）：%s" % pp.stderr[:200])
         err_write("git push 失败：" + pp.stderr[:200])
+        _restore_stash()
         return 3
     log("已提交并推送：%s（模板%s）" % (msg, "已更新" if tpl_changed else "未动"))
     with open(os.path.join(LOGS_DIR, "build_stats.log"), "a", encoding="utf-8") as f:
         f.write("%s ledger_sha256=%s balances=%s commit=%s\n" % (
             generated_at, hashlib.sha256(ledger_bytes).hexdigest(),
             balances, msg))
+    _restore_stash()
     return 0
 
 
