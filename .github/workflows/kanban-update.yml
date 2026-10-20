@@ -119,6 +119,30 @@ jobs:
           PYEOF
           ls -la public/data/
 
+      # 学习走势数据通道（2026-10-20，DeepSeek方案）：
+      # 同步 data/trends.json 进 Pages 产物。软断言：缺失/校验失败只告警不失败（前端降级为"暂不可用"）。
+      - name: 同步学习走势数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          python3 - <<'PYEOF'
+          import json, shutil
+          p = 'data/trends.json'
+          try:
+              with open(p, encoding='utf-8') as f:
+                  d = json.load(f)
+              assert isinstance(d.get('dates'), list) and len(d['dates']) == 30, 'dates 须为30天'
+              assert set(d.get('grades', {}).keys()) == {'五年级', '六年级'}, 'grades 缺年级'
+              for gr in d['grades'].values():
+                  assert isinstance(gr.get('overall'), list) and len(gr['overall']) == 30, 'overall 须为30天'
+              print('OK ' + p)
+              shutil.copy(p, 'public/' + p)
+          except FileNotFoundError:
+              print('::warning::' + p + ' 缺失，学习走势栏目降级')
+          except Exception as e:
+              print('::warning::' + p + ' 校验失败（' + str(e)[:80] + '），学习走势栏目降级')
+          PYEOF
+          ls -la public/data/
+
       # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：
       # 跨周边界定值测试必跑，防止周界回归。失败则构建失败。
       - name: 全栏目跨周边界单测
