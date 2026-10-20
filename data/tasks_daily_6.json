@@ -3,7 +3,7 @@
   "date": "2026-10-20",
   "grade": "六年级",
   "generated_at": "2026-10-20T00:05:03+08:00",
-  "updated_at": "2026-10-20T23:42:22+08:00",
+  "updated_at": "2026-10-20T23:43:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -53,9 +53,9 @@
       "pending_corrections": 1,
       "corrections": [
         {
-          "label": "作文抄写3次",
+          "label": "单词\"natural\"拼写为\"natarul\"",
           "question": "",
-          "reason": ""
+          "reason": "拼写错误（单词拼写未掌握；属抄写保真复现原稿错误，按1处计）。第1次犯"
         }
       ]
     },
@@ -76,7 +76,8 @@
       },
       "created_at": "2026-10-20T20:45:58+08:00",
       "updated_at": "2026-10-20T20:45:58+08:00",
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261020-0C42F4",
@@ -139,9 +140,9 @@
       "pending_corrections": 1,
       "corrections": [
         {
-          "label": "校本P22",
+          "label": "2-(2)\"当a=6时，b是( )\"",
           "question": "",
-          "reason": ""
+          "reason": "计算失误（整数8化为以10为分母的分数时出错，或4/3×6口算失误；差值恰为1）。第1次犯（用字母表示求值类计算）"
         }
       ]
     }
