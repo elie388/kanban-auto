@@ -114,13 +114,6 @@
    "points": 5
   },
   {
-   "key": "cuotizhenglizhixing",
-   "name": "错题整理之星",
-   "icon": "📓",
-   "cond": "一周错题本整理≥5题且分类正确",
-   "points": 5
-  },
-  {
    "key": "biaodazhixing",
    "name": "表达之星",
    "icon": "🗣️",
@@ -248,12 +241,6 @@
     "count": 0
    },
    {
-    "key": "cuotizhenglizhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0
-   },
-   {
     "key": "biaodazhixing",
     "obtained": false,
     "date": "",
@@ -376,12 +363,6 @@
     "count": 0
    },
    {
-    "key": "cuotizhenglizhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0
-   },
-   {
     "key": "biaodazhixing",
     "obtained": false,
     "date": "",
@@ -407,5 +388,5 @@
    }
   ]
  },
- "generated_at": "2026-10-20T11:26:12+08:00"
+ "generated_at": "2026-10-20T11:27:54+08:00"
 }

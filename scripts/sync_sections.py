@@ -50,7 +50,6 @@ BADGE_CATALOG = [
     ("sikaozhixing",     "思考之星",   "🧠", "作业有可辨识推导文字+题号回链"),
     ("zhenglizhixing",   "整理之星",   "🗂️", "连续5天自主整理书包/书桌"),
     ("jinbumiao",        "进步小苗",   "🌱", "单科单次作业正确率较上次+15百分点"),
-    ("cuotizhenglizhixing","错题整理之星","📓", "一周错题本整理≥5题且分类正确"),
     ("biaodazhixing",    "表达之星",   "🗣️", "一周内口头表达/复述≥2次"),
     ("jiawuxiaobangshou","家务小帮手", "🏠", "单次完成1项基础家务"),
     ("zhengdalidaren",   "整理小达人", "🧹", "周内累计5天整理类家务"),
