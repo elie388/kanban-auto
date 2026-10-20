@@ -1,468 +1,430 @@
 {
-  "schema_version": 1,
-  "catalog": [
-    {
-      "key": "quanduizhixing",
-      "name": "全对之星",
-      "icon": "✅",
-      "cond": "单次作业/小测全部题目正确",
-      "points": 5
-    },
-    {
-      "key": "baifentupo",
-      "name": "满分之星",
-      "icon": "💯",
-      "cond": "考试100分即可获得",
-      "points": 5
-    },
-    {
-      "key": "zonghezhixing",
-      "name": "综合之星",
-      "icon": "🏅",
-      "cond": "一周内≥4类不同徽章",
-      "points": 5
-    },
-    {
-      "key": "tupoxiaoyongshi",
-      "name": "突破小勇士",
-      "icon": "🛡️",
-      "cond": "同一类错题连续3次订正全对",
-      "points": 5
-    },
-    {
-      "key": "jianchixiaoyongshi",
-      "name": "坚持小勇士",
-      "icon": "🔥",
-      "cond": "连续14天完成同一固定挑战",
-      "points": 5
-    },
-    {
-      "key": "yueduzhixing",
-      "name": "阅读之星",
-      "icon": "📖",
-      "cond": "周打卡≥6天+整本书+笔记+录音复述",
-      "points": 5
-    },
-    {
-      "key": "yueduxiaodaren",
-      "name": "阅读小达人",
-      "icon": "📚",
-      "cond": "周打卡≥5天+累计≥2本+笔记/口述",
-      "points": 5
-    },
-    {
-      "key": "hezuozhixing",
-      "name": "合作之星",
-      "icon": "🤝",
-      "cond": "兄弟连续3天一起做家务（需两人协同、缺一不可，如递晾衣、共扫地）",
-      "points": 5
-    },
-    {
-      "key": "zhoujinbuzhixing",
-      "name": "周进步之星",
-      "icon": "🚀",
-      "cond": "正确率/分数较上周明显进步",
-      "points": 5
-    },
-    {
-      "key": "sanheyi",
-      "name": "三合一快手",
-      "icon": "⚡",
-      "cond": "同日独立完成3项不同基础家务",
-      "points": 5
-    },
-    {
-      "key": "jiawujielishou",
-      "name": "家务接力手",
-      "icon": "🔄",
-      "cond": "连续3天每天≥1项家务",
-      "points": 5
-    },
-    {
-      "key": "sanribuduan",
-      "name": "三日不断",
-      "icon": "📆",
-      "cond": "连续3天不断档/全勤一周取高档",
-      "points": 5
-    },
-    {
-      "key": "kousuanxiaodaren",
-      "name": "口算小达人",
-      "icon": "🧮",
-      "cond": "连续7天口算打卡正确率≥90%",
-      "points": 5
-    },
-    {
-      "key": "shuxiezhixing",
-      "name": "书写之星",
-      "icon": "✍️",
-      "cond": "连续N次作业书写零扣分",
-      "points": 5
-    },
-    {
-      "key": "dancizhixing",
-      "name": "单词之星",
-      "icon": "🔤",
-      "cond": "单次单词听写全对（≥10词）",
-      "points": 5
-    },
-    {
-      "key": "moxiezhixing",
-      "name": "默写之星",
-      "icon": "📝",
-      "cond": "单次古诗文/课文默写全对",
-      "points": 5
-    },
-    {
-      "key": "sikaozhixing",
-      "name": "思考之星",
-      "icon": "🧠",
-      "cond": "作业有可辨识推导文字+题号回链",
-      "points": 5
-    },
-    {
-      "key": "zhenglizhixing",
-      "name": "整理之星",
-      "icon": "🗂️",
-      "cond": "连续5天自主整理书包/书桌",
-      "points": 5
-    },
-    {
-      "key": "jinbumiao",
-      "name": "进步小苗",
-      "icon": "🌱",
-      "cond": "单科单次作业正确率较上次+15百分点",
-      "points": 5
-    },
-    {
-      "key": "cuotizhenglizhixing",
-      "name": "错题整理之星",
-      "icon": "📓",
-      "cond": "一周错题本整理≥5题且分类正确",
-      "points": 5
-    },
-    {
-      "key": "biaodazhixing",
-      "name": "表达之星",
-      "icon": "🗣️",
-      "cond": "一周内口头表达/复述≥2次",
-      "points": 5
-    },
-    {
-      "key": "jiawuxiaobangshou",
-      "name": "家务小帮手",
-      "icon": "🏠",
-      "cond": "单次完成1项基础家务",
-      "points": 5
-    },
-    {
-      "key": "zhengdalidaren",
-      "name": "整理小达人",
-      "icon": "🧹",
-      "cond": "周内累计5天整理类家务",
-      "points": 5
-    },
-    {
-      "key": "jiawuzhixing",
-      "name": "家务之星",
-      "icon": "🏆",
-      "cond": "周内家务≥10次且≥4类",
-      "points": 5
-    }
-  ],
-  "by_grade": {
-    "g5": [
-      {
-        "key": "quanduizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "baifentupo",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zonghezhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "tupoxiaoyongshi",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jianchixiaoyongshi",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "yueduzhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "yueduxiaodaren",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "hezuozhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zhoujinbuzhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "sanheyi",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jiawujielishou",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "sanribuduan",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "kousuanxiaodaren",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "shuxiezhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "dancizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "moxiezhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "sikaozhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zhenglizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jinbumiao",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "cuotizhenglizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "biaodazhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jiawuxiaobangshou",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zhengdalidaren",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jiawuzhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      }
-    ],
-    "g6": [
-      {
-        "key": "quanduizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "baifentupo",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zonghezhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "tupoxiaoyongshi",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jianchixiaoyongshi",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "yueduzhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "yueduxiaodaren",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "hezuozhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zhoujinbuzhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "sanheyi",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jiawujielishou",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "sanribuduan",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "kousuanxiaodaren",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "shuxiezhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "dancizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "moxiezhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "sikaozhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zhenglizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jinbumiao",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "cuotizhenglizhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "biaodazhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jiawuxiaobangshou",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "zhengdalidaren",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      },
-      {
-        "key": "jiawuzhixing",
-        "obtained": false,
-        "date": "",
-        "count": 0
-      }
-    ]
+ "schema_version": 1,
+ "catalog": [
+  {
+   "key": "quanduizhixing",
+   "name": "全对之星",
+   "icon": "✅",
+   "cond": "单次作业/小测全部题目正确",
+   "points": 5
   },
-  "generated_at": "2026-10-19T20:55:13+08:00"
+  {
+   "key": "baifentupo",
+   "name": "满分之星",
+   "icon": "💯",
+   "cond": "考试100分即可获得",
+   "points": 5
+  },
+  {
+   "key": "zonghezhixing",
+   "name": "综合之星",
+   "icon": "🏅",
+   "cond": "一周内≥4类不同徽章",
+   "points": 5
+  },
+  {
+   "key": "tupoxiaoyongshi",
+   "name": "突破小勇士",
+   "icon": "🛡️",
+   "cond": "同一类错题连续3次订正全对",
+   "points": 5
+  },
+  {
+   "key": "jianchixiaoyongshi",
+   "name": "坚持小勇士",
+   "icon": "🔥",
+   "cond": "连续14天完成同一固定挑战",
+   "points": 5
+  },
+  {
+   "key": "hezuozhixing",
+   "name": "合作之星",
+   "icon": "🤝",
+   "cond": "兄弟连续3天一起做家务（需两人协同、缺一不可，如递晾衣、共扫地）",
+   "points": 5
+  },
+  {
+   "key": "zhoujinbuzhixing",
+   "name": "周进步之星",
+   "icon": "🚀",
+   "cond": "正确率/分数较上周明显进步",
+   "points": 5
+  },
+  {
+   "key": "sanheyi",
+   "name": "三合一快手",
+   "icon": "⚡",
+   "cond": "同日独立完成3项不同基础家务",
+   "points": 5
+  },
+  {
+   "key": "jiawujielishou",
+   "name": "家务接力手",
+   "icon": "🔄",
+   "cond": "连续3天每天≥1项家务",
+   "points": 5
+  },
+  {
+   "key": "sanribuduan",
+   "name": "三日不断",
+   "icon": "📆",
+   "cond": "连续3天不断档/全勤一周取高档",
+   "points": 5
+  },
+  {
+   "key": "kousuanxiaodaren",
+   "name": "口算小达人",
+   "icon": "🧮",
+   "cond": "连续7天口算打卡正确率≥90%",
+   "points": 5
+  },
+  {
+   "key": "shuxiezhixing",
+   "name": "书写之星",
+   "icon": "✍️",
+   "cond": "连续N次作业书写零扣分",
+   "points": 5
+  },
+  {
+   "key": "dancizhixing",
+   "name": "单词之星",
+   "icon": "🔤",
+   "cond": "单次单词听写全对（≥10词）",
+   "points": 5
+  },
+  {
+   "key": "moxiezhixing",
+   "name": "默写之星",
+   "icon": "📝",
+   "cond": "单次古诗文/课文默写全对",
+   "points": 5
+  },
+  {
+   "key": "sikaozhixing",
+   "name": "思考之星",
+   "icon": "🧠",
+   "cond": "作业有可辨识推导文字+题号回链",
+   "points": 5
+  },
+  {
+   "key": "zhenglizhixing",
+   "name": "整理之星",
+   "icon": "🗂️",
+   "cond": "连续5天自主整理书包/书桌",
+   "points": 5
+  },
+  {
+   "key": "jinbumiao",
+   "name": "进步小苗",
+   "icon": "🌱",
+   "cond": "单科单次作业正确率较上次+15百分点",
+   "points": 5
+  },
+  {
+   "key": "cuotizhenglizhixing",
+   "name": "错题整理之星",
+   "icon": "📓",
+   "cond": "一周错题本整理≥5题且分类正确",
+   "points": 5
+  },
+  {
+   "key": "biaodazhixing",
+   "name": "表达之星",
+   "icon": "🗣️",
+   "cond": "一周内口头表达/复述≥2次",
+   "points": 5
+  },
+  {
+   "key": "jiawuxiaobangshou",
+   "name": "家务小帮手",
+   "icon": "🏠",
+   "cond": "单次完成1项基础家务",
+   "points": 5
+  },
+  {
+   "key": "zhengdalidaren",
+   "name": "整理小达人",
+   "icon": "🧹",
+   "cond": "周内累计5天整理类家务",
+   "points": 5
+  },
+  {
+   "key": "jiawuzhixing",
+   "name": "家务之星",
+   "icon": "🏆",
+   "cond": "周内家务≥10次且≥4类",
+   "points": 5
+  }
+ ],
+ "by_grade": {
+  "g5": [
+   {
+    "key": "quanduizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "baifentupo",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zonghezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "tupoxiaoyongshi",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jianchixiaoyongshi",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "hezuozhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zhoujinbuzhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "sanheyi",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jiawujielishou",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "sanribuduan",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "kousuanxiaodaren",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "shuxiezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "dancizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "moxiezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "sikaozhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zhenglizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jinbumiao",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "cuotizhenglizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "biaodazhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jiawuxiaobangshou",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zhengdalidaren",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jiawuzhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   }
+  ],
+  "g6": [
+   {
+    "key": "quanduizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "baifentupo",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zonghezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "tupoxiaoyongshi",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jianchixiaoyongshi",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "hezuozhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zhoujinbuzhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "sanheyi",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jiawujielishou",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "sanribuduan",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "kousuanxiaodaren",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "shuxiezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "dancizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "moxiezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "sikaozhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zhenglizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jinbumiao",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "cuotizhenglizhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "biaodazhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jiawuxiaobangshou",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "zhengdalidaren",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   },
+   {
+    "key": "jiawuzhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0
+   }
+  ]
+ },
+ "generated_at": "2026-10-20T10:15:22+08:00"
 }

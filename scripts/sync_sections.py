@@ -31,7 +31,7 @@ LOCK_FILE = Path("/tmp/sync_sections.lock")
 BEIJING = sb.BEIJING
 LOG_KEEP_LINES = 2000
 
-# ---------- 24 枚徽章目录（v3.7 定稿，一律 +5/次）+ 历史 key 兼容 ----------
+# ---------- 22 枚徽章目录（v3.7 定稿，一律 +5/次）+ 历史 key 兼容 ----------
 # key: 台账 badge_<key> 中的拼音；cond: 解锁条件（目标榜展示用）
 BADGE_CATALOG = [
     ("quanduizhixing",   "全对之星",   "✅", "单次作业/小测全部题目正确"),
@@ -39,8 +39,6 @@ BADGE_CATALOG = [
     ("zonghezhixing",    "综合之星",   "🏅", "一周内≥4类不同徽章"),
     ("tupoxiaoyongshi",  "突破小勇士", "🛡️", "同一类错题连续3次订正全对"),
     ("jianchixiaoyongshi","坚持小勇士", "🔥", "连续14天完成同一固定挑战"),
-    ("yueduzhixing",     "阅读之星",   "📖", "周打卡≥6天+整本书+笔记+录音复述"),
-    ("yueduxiaodaren",   "阅读小达人", "📚", "周打卡≥5天+累计≥2本+笔记/口述"),
     ("hezuozhixing",     "合作之星",   "🤝", "兄弟连续3天一起做家务（需两人协同、缺一不可，如递晾衣、共扫地）"),
     ("zhoujinbuzhixing", "周进步之星", "🚀", "正确率/分数较上周明显进步"),
     ("sanheyi",          "三合一快手", "⚡", "同日独立完成3项不同基础家务"),
