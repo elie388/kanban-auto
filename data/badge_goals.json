@@ -201,7 +201,7 @@
     "total_count": 0,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 0,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -450,7 +450,7 @@
     "total_count": 0,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 0,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -643,5 +643,5 @@
   ]
  },
  "cycle_week": "2026-W43",
- "generated_at": "2026-10-20T22:47:55+08:00"
+ "generated_at": "2026-10-21T06:00:17+08:00"
 }
