@@ -1976,16 +1976,31 @@
     el('tr-chart').innerHTML = s;
     el('tr-chart').querySelectorAll('circle.tr-pt').forEach(function(c){
       c.addEventListener('click', function(){
-        var i = +c.dataset.i, dd = labels[i];
-        var parts = GRADES.map(function(gr){
+        var i = +c.dataset.i, dd = labels[i], fullI = (TD.dates.length - RANGE) + i;
+        /* 明细条文案（2026-10-20 用户反馈模糊，DeepSeek 终审定稿）：逐年级分段，各自报正确率与达标状态
+           （≥TARGET 达标；未达标段整段橙色高亮，并带当日最弱科目与补练建议——最弱科目口径与薄弱日点评一致：
+           分科非 null 最低、并列按 SUBJS 顺序）；当日无分科数据则只报状态不给科目；overall 为 null 报
+           "当天无数据"，不编造数字。结尾肯定句仅在两年级都有数据且都达标时追加。 */
+        var segs = [], nData = 0, anyBad = false;
+        GRADES.forEach(function(gr){
           var v = sl(TD.grades[gr].overall, RANGE)[i];
-          return gr + ' <b>' + (v === null || v === undefined ? '无数据' : fmt(v) + '%') + '</b>';
+          if(v === null || v === undefined){ segs.push(gr + '：当天无数据'); return; }
+          nData++;
+          if(v >= TARGET){
+            segs.push(gr + ' <b>' + fmt(v) + '%</b>（已达标 ✓）');
+            return;
+          }
+          anyBad = true;
+          var sv = SUBJS.map(function(sn){
+            return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fullI] };
+          }).filter(function(x){ return x.v !== null && x.v !== undefined; });
+          sv.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
+          var seg = gr + ' <b>' + fmt(v) + '%</b>（未达标，低于目标线' + TARGET + '%）';
+          if(sv.length) seg += '，当天' + sv[0].sn + '最低（' + fmt(sv[0].v) + '%），建议优先补练' + sv[0].sn;
+          segs.push('<span style="color:#F5B97E">' + seg + '</span>');
         });
-        var anyBad = GRADES.some(function(gr){
-          var v = sl(TD.grades[gr].overall, RANGE)[i];
-          return v !== null && v !== undefined && v < TARGET;
-        });
-        el('tr-tip').innerHTML = '📅 ' + dd + '：' + parts.join(' · ') + (anyBad ? ' · <span style="color:#F5B97E">未达标，建议优先补练</span>' : '');
+        var tail = (nData === GRADES.length && !anyBad) ? '——两个年级都达到目标线，继续保持！' : '';
+        el('tr-tip').innerHTML = '📅 ' + dd + '：' + segs.join(' · ') + tail;
       });
     });
 
