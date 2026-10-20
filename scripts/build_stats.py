@@ -222,7 +222,12 @@ def extract_desc_time(desc):
     只用于生效日（2026-10-19）及之前的历史条目。新条目仍须用 @HH:MM，缺失即熔断。
     取描述中第一个合法的 HH:MM（照片时间/提交时间均属台账记录时间）。
     """
-    m = DESC_TIME_RE.search(desc or "")
+    # P2（DeepSeek 审查 2026-10-20）：描述本身在讲没交/漏交/未交/截止时，
+    # 其中的 HH:MM 多为截止时刻而非记录时间，提取会把日志时间记错——整条跳过。
+    _d = desc or ""
+    if any(_k in _d for _k in ("没交", "漏交", "未交", "截止")):
+        return None
+    m = DESC_TIME_RE.search(_d)
     if not m:
         return None
     hh, mm = int(m.group(1)), int(m.group(2))

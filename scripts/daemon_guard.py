@@ -62,8 +62,12 @@ def daemon_alive():
     try:
         os.kill(pid, 0)
         return True, "pid=%d" % pid
-    except (ProcessLookupError, PermissionError):
+    except ProcessLookupError:
         return False, "pid=%d dead" % pid
+    except PermissionError:
+        # P2（DeepSeek 审查 2026-10-20）：无权限探测 = 进程存在（属其他用户），
+        # 判存活防误判死亡后重复拉起双实例
+        return True, "pid=%d alive (no probe permission)" % pid
     except OSError as e:
         return False, "kill -0 err: %s" % e
 
@@ -105,13 +109,20 @@ def main():
         fail("拉起守护进程失败: %s" % e)
         log("relaunch_failed", str(e)[:200])
         return 1
-    time.sleep(2)
-    alive2, why2 = daemon_alive()
+    # P2（DeepSeek 审查 2026-10-20）：复核由固定等 2s 改为轮询至多 10s——
+    # 守护进程冷启动（解释器+导入+单例+状态恢复）偶尔超过 2s，固定等待会误报
+    # 拉起失败并留下 fail 告警噪音。
+    alive2, why2 = False, "not polled"
+    for _ in range(10):
+        time.sleep(1)
+        alive2, why2 = daemon_alive()
+        if alive2:
+            break
     if alive2:
         log("relaunched", "守护进程已拉起", {"detail": why2})
         return 0
-    fail("守护进程拉起后 2s 仍未存活")
-    log("relaunch_failed", "拉起后未存活", {"detail": why2})
+    fail("守护进程拉起后 10s 仍未存活")
+    log("relaunch_failed", "拉起后 10s 未存活", {"detail": why2})
     return 1
 
 

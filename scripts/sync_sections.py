@@ -252,7 +252,9 @@ CHORE_ARCHIVE_FILE = REPO.parent / "家务记录.md"
 CHORE_SKIP_LOG = REPO / "logs" / "chore_archive_skip.log"
 # desk_untidy 不进进度，仅台账：负面条目（不整理书桌等）只在台账扣分，
 # 永不写入家务记录存档、不参与任何徽章进度（DeepSeek 终审 2026-10-20）。
-CHORE_NEG_WORDS = ("不整理", "未整理", "未做")
+CHORE_NEG_WORDS = ("不整理", "未整理", "未做", "没整理", "没做", "没收拾")
+# 负面词表（2026-10-20 P2 保守扩充）：仅加同义口语变体。注意词表越宽误伤
+# 正向记录的风险越大（如"没收拾好就出门"类语境），扩充只限明确负面短语。
 DAILY_FLAG_FILE = REPO.parent / "日结记录.jsonl"
 QBANK_DB = REPO.parent / "题目库.db"
 WRITING_DECIDE_LOG = REPO / "logs" / "badge_writing_decide.log"
@@ -559,7 +561,10 @@ def _tupo_progress(gk):
             "SELECT 知识点, 状态, 更新时间 FROM questions WHERE 年级=?",
             (grade,)).fetchall()
         con.close()
-    except Exception:
+    except Exception as _qe:
+        # P2（DeepSeek 审查 2026-10-20）：题库查询失败不再静默吞——留痕便于
+        # 区分"真无数据"与"查询坏了"（返回值仍为 None 降级，不阻断同步）
+        log("qbank_error", "_tupo_progress %s: %s" % (gk, str(_qe)[:150]))
         return None
     by_kp = {}
     for kp, status, upd in rows:
@@ -953,7 +958,18 @@ def main():
         try:
             progress = compute_badge_progress(events)
         except Exception as _pe:
-            log("progress_error", str(_pe)[:200])
+            # P2（DeepSeek 审查 2026-10-20）：进度计算持续失败要升级告警——
+            # 仿 parse_error 模式（看本次之前最近 2 条日志状态），连续第 3 次
+            # 失败写 FAIL_LOG ALERT，避免进度长期静默消失无人知。
+            try:
+                _tail = LOG_FILE.read_text(encoding="utf-8").splitlines()[-2:]
+                _prev = [json.loads(_l).get("status") for _l in _tail]
+            except Exception:
+                _prev = []
+            _alert = _prev.count("progress_error") >= 2
+            log("progress_error", str(_pe)[:200], {"alert": _alert})
+            if _alert:
+                fail("ALERT: 徽章进度连续 3 次计算失败，需人工介入")
             progress = None
         docs = {
             "data/badges.json": build_badges(events),
