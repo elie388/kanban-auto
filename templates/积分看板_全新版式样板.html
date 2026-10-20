@@ -1090,12 +1090,71 @@
     return true;
   }
   var taskVer = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at），替代 ?t= 时间戳破缓存 */
-  function load(){
-    var ok = 0, fetched = 0, settled = 0;
-    [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
-      fetch(DATA_BASE + pair[1] + (taskVer[pair[1]] ? '?v=' + encodeURIComponent(taskVer[pair[1]]) : ''), { cache: 'no-cache' })
+  /* 方案E（2026-10-20，DeepSeek 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径。
+     缓存渲染时角标明示"数据更新于 HH:MM"（取两路中较旧的一路时刻）。 */
+  var TASK_RETRY_DELAYS = [1000, 2000, 4000];
+  var taskRecheckTimer = 0;
+  function taskCacheWrite(name, d){
+    try{
+      if(d && typeof d === 'object'){
+        localStorage.setItem('kb-cache:' + name, JSON.stringify({ ts: Date.now(), data: d }));
+      }
+    }catch(e){}
+  }
+  function taskCacheRead(name){
+    try{
+      var raw = localStorage.getItem('kb-cache:' + name);
+      if(!raw) return null;
+      var c = JSON.parse(raw);
+      if(!c || typeof c.ts !== 'number' || !c.data) return null;
+      return c;
+    }catch(e){ return null; }
+  }
+  function taskFmtHHMM(ts){
+    try{
+      var s = new Date(ts).toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false });
+      var m = s.match(/(\d{1,2}):(\d{2})/);
+      if(m) return (m[1].length < 2 ? '0' + m[1] : m[1]) + ':' + m[2];
+    }catch(e){}
+    var d = new Date(ts);
+    var hh = d.getHours(), mm = d.getMinutes();
+    return (hh < 10 ? '0' + hh : '' + hh) + ':' + (mm < 10 ? '0' + mm : '' + mm);
+  }
+  function fetchTask(name){
+    var attempt = 0;
+    function tryOnce(){
+      attempt++;
+      return fetch(DATA_BASE + name + (taskVer[name] ? '?v=' + encodeURIComponent(taskVer[name]) : ''), { cache: 'no-cache' })
         .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-        .then(function(d){ fetched++; if(d && d.generated_at) taskVer[pair[1]] = d.generated_at; if(renderOne(pair[0], d)) ok++; })
+        .then(function(d){
+          if(d && d.generated_at) taskVer[name] = d.generated_at;
+          taskCacheWrite(name, d);
+          return { data: d, fromCache: false, ts: 0 };
+        })
+        .catch(function(e){
+          if(attempt <= 3){
+            var delay = TASK_RETRY_DELAYS[attempt - 1] * (0.8 + Math.random() * 0.4);
+            return new Promise(function(resolve){ setTimeout(resolve, delay); }).then(tryOnce);
+          }
+          var c = taskCacheRead(name);
+          if(c){
+            if(c.data.generated_at) taskVer[name] = c.data.generated_at;
+            return { data: c.data, fromCache: true, ts: c.ts };
+          }
+          throw e;
+        });
+    }
+    return tryOnce();
+  }
+  function load(){
+    var ok = 0, obtained = 0, anyCache = false, cacheTs = 0, settled = 0;
+    [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
+      fetchTask(pair[1])
+        .then(function(res){
+          obtained++;
+          if(res.fromCache){ anyCache = true; if(!cacheTs || res.ts < cacheTs) cacheTs = res.ts; }
+          if(renderOne(pair[0], res.data)) ok++;
+        })
         .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); })
         .then(function(){
           /* P2（DeepSeek 审查 2026-10-20）：两路都结算后才定标签——一成一败时
@@ -1103,9 +1162,15 @@
           settled++;
           if(settled < 2) return;
           var tag = document.getElementById('tasks-tag');
-          if(!tag) return;
-          if(ok === 2){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
-          else if(fetched < 2){ tag.textContent = '部分数据更新失败'; tag.classList.remove('tag-live'); }
+          if(tag){
+            if(ok === 2 && anyCache){ tag.textContent = '数据更新于 ' + taskFmtHHMM(cacheTs); tag.classList.remove('tag-live'); }
+            else if(ok === 2){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
+            else if(obtained < 2){ tag.textContent = '部分数据更新失败'; tag.classList.remove('tag-live'); }
+          }
+          /* 方案E慢速复查：有文件最终未取得（且无缓存兜底）时 60 秒后重拉，单飞防堆叠 */
+          if(obtained < 2 && !taskRecheckTimer){
+            taskRecheckTimer = setTimeout(function(){ taskRecheckTimer = 0; load(); }, 60000);
+          }
         });
     });
   }
@@ -1368,7 +1433,51 @@
 
   function $(id){ return document.getElementById(id); }
 
-  function fetchJson(name){
+  /* ---------- 方案E（2026-10-20，DeepSeek 仲裁）：拉取重试 + 本地缓存兜底 ----------
+     根因：数据 push 触发 Pages 全站重部署，窗口内 fetch 可能 404/超时，旧逻辑
+     直接误标静态值。现：失败自动重试（≤3 次，间隔 1s/2s/4s，±20% 抖动）；
+     最终失败用 localStorage 上次成功数据渲染，角标明示"数据更新于 HH:MM"；
+     无缓存才标"暂时无法连接"。缓存读写全程 try/catch（隐私模式不崩）。 */
+  var RETRY_DELAYS = [1000, 2000, 4000];
+  var CACHE_PREFIX = 'kb-cache:';
+  var srcInfo = {}; /* 文件名 -> {fromCache:bool, ts:epoch ms}：最近一次数据来源 */
+  var recheckTimers = {}; /* 慢速复查：块key -> interval id（60 秒一次，恢复实时即停） */
+
+  function cacheWrite(name, d){
+    try{
+      if(d && typeof d === 'object'){
+        localStorage.setItem(CACHE_PREFIX + name, JSON.stringify({ ts: Date.now(), data: d }));
+      }
+    }catch(e){}
+  }
+  function cacheRead(name){
+    try{
+      var raw = localStorage.getItem(CACHE_PREFIX + name);
+      if(!raw) return null;
+      var c = JSON.parse(raw);
+      if(!c || typeof c.ts !== 'number' || !c.data) return null;
+      return c;
+    }catch(e){ return null; }
+  }
+  function fmtHHMM(ts){
+    try{
+      var s = new Date(ts).toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', hour12: false });
+      var m = s.match(/(\d{1,2}):(\d{2})/);
+      if(m) return (m[1].length < 2 ? '0' + m[1] : m[1]) + ':' + m[2];
+    }catch(e){}
+    var d = new Date(ts);
+    var hh = d.getHours(), mm = d.getMinutes();
+    return (hh < 10 ? '0' + hh : '' + hh) + ':' + (mm < 10 ? '0' + mm : '' + mm);
+  }
+  function startRecheck(key, fn){
+    if(recheckTimers[key]) return;
+    recheckTimers[key] = setInterval(function(){ try{ fn(); }catch(e){} }, 60000);
+  }
+  function stopRecheck(key){
+    if(recheckTimers[key]){ clearInterval(recheckTimers[key]); delete recheckTimers[key]; }
+  }
+
+  function fetchOnce(name){
     var v = vCache[name];
     var url = 'data/' + name + (v ? '?v=' + encodeURIComponent(v) : '');
     var ctrl = null, timer = 0;
@@ -1390,6 +1499,33 @@
     });
   }
 
+  function fetchJson(name, hooks){
+    hooks = hooks || {};
+    var attempt = 0;
+    function tryOnce(){
+      attempt++;
+      return fetchOnce(name).then(function(d){
+        cacheWrite(name, d);
+        srcInfo[name] = { fromCache: false, ts: 0 };
+        return d;
+      }).catch(function(e){
+        if(attempt <= 3){
+          if(hooks.onRetry){ try{ hooks.onRetry(attempt); }catch(e2){} }
+          var delay = RETRY_DELAYS[attempt - 1] * (0.8 + Math.random() * 0.4);
+          return new Promise(function(resolve){ setTimeout(resolve, delay); }).then(tryOnce);
+        }
+        var c = cacheRead(name);
+        if(c){
+          if(c.data.generated_at) vCache[name] = c.data.generated_at;
+          srcInfo[name] = { fromCache: true, ts: c.ts };
+          return c.data;
+        }
+        throw e;
+      });
+    }
+    return tryOnce();
+  }
+
   /* ---------- 余额 ---------- */
   function setBalTag(cardId, text){
     var card = $(cardId);
@@ -1405,17 +1541,27 @@
   }
 
   function loadBalance(grade, cardId){
-    fetchJson('stats_grade_' + grade + '.json').then(function(d){
+    var key = 'bal' + grade;
+    var name = 'stats_grade_' + grade + '.json';
+    fetchJson(name, { onRetry: function(n){ setBalTag(cardId, '重试中（' + n + '/3)'); } }).then(function(d){
       if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
       if(typeof d.balance !== 'number' || !Number.isInteger(d.balance)) throw new Error('balance');
       var card = $(cardId);
       var num = card ? card.querySelector('.bal-num') : null;
       if(!num) throw new Error('no bal-num');
       window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
-      setBalTag(cardId, '实时数据'); /* §3.2：本区块成功即翻 */
+      var si = srcInfo[name];
+      if(si && si.fromCache){
+        setBalTag(cardId, '数据更新于 ' + fmtHHMM(si.ts)); /* 方案E：缓存渲染，明示数据时刻 */
+        startRecheck(key, function(){ loadBalance(grade, cardId); });
+      }else{
+        setBalTag(cardId, '实时数据'); /* §3.2：本区块成功即翻 */
+        stopRecheck(key);
+      }
     }).catch(function(e){
-      setBalTag(cardId, '演示数据'); /* §3.3：失败保留模板静态真实值 */
+      setBalTag(cardId, '暂时无法连接'); /* 方案E：最终失败且无缓存，保留模板静态值 */
       if(window.console && console.warn) console.warn('余额拉取失败，保留模板静态值:', e);
+      startRecheck(key, function(){ loadBalance(grade, cardId); });
     });
   }
 
@@ -1501,17 +1647,27 @@
   }
 
   function loadLog(grade, blockId){
-    fetchJson('points_log_' + grade + '.json').then(function(d){
+    var key = 'log' + grade;
+    var name = 'points_log_' + grade + '.json';
+    fetchJson(name, { onRetry: function(n){ setLogTag(blockId, '重试中（' + n + '/3)', null); } }).then(function(d){
       if(!d || d.schema_version !== '1.1' || d.grade !== grade) throw new Error('schema'); /* KB-TIME 1.1 */
       if(!Array.isArray(d.items)) throw new Error('items');
       var block = $(blockId);
       var list = block ? block.querySelector('.log-list') : null;
       if(!list) throw new Error('no log-list');
       renderLogItems(list, d.items);
-      setLogTag(blockId, '实时数据', d.generated_at); /* §3.2 */
+      var si = srcInfo[name];
+      if(si && si.fromCache){
+        setLogTag(blockId, '数据更新于 ' + fmtHHMM(si.ts), null); /* 方案E：缓存渲染，明示数据时刻 */
+        startRecheck(key, function(){ loadLog(grade, blockId); });
+      }else{
+        setLogTag(blockId, '实时数据', d.generated_at); /* §3.2 */
+        stopRecheck(key);
+      }
     }).catch(function(e){
-      setLogTag(blockId, '演示数据', null); /* §3.3：失败保留 demo */
-      if(window.console && console.warn) console.warn('日志拉取失败，保留演示数据:', e);
+      setLogTag(blockId, '暂时无法连接', null); /* 方案E：最终失败且无缓存，保留静态内容 */
+      if(window.console && console.warn) console.warn('日志拉取失败，保留静态内容:', e);
+      startRecheck(key, function(){ loadLog(grade, blockId); });
     });
   }
 
@@ -1569,7 +1725,26 @@
     return e;
   }
   var SEC_VER = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at） */
-  function fetchJson(name){
+  /* 方案E（2026-10-20，DeepSeek 仲裁）：与 stats 模块同款重试 + 缓存兜底。
+     本栏目无角标：缓存仅用于渲染兜底；最终失败且无缓存时维持原有占位降级。 */
+  var SEC_RETRY_DELAYS = [1000, 2000, 4000];
+  function secCacheWrite(name, d){
+    try{
+      if(d && typeof d === 'object'){
+        localStorage.setItem('kb-cache:' + name, JSON.stringify({ ts: Date.now(), data: d }));
+      }
+    }catch(e){}
+  }
+  function secCacheRead(name){
+    try{
+      var raw = localStorage.getItem('kb-cache:' + name);
+      if(!raw) return null;
+      var c = JSON.parse(raw);
+      if(!c || typeof c.ts !== 'number' || !c.data) return null;
+      return c;
+    }catch(e){ return null; }
+  }
+  function secFetchOnce(name){
     var ctrl = null, timer = 0;
     try{
       if('AbortController' in window){
@@ -1588,6 +1763,28 @@
       if(d && d.generated_at) SEC_VER[name] = d.generated_at;
       return d;
     });
+  }
+  function fetchJson(name){
+    var attempt = 0;
+    function tryOnce(){
+      attempt++;
+      return secFetchOnce(name).then(function(d){
+        secCacheWrite(name, d);
+        return d;
+      }).catch(function(e){
+        if(attempt <= 3){
+          var delay = SEC_RETRY_DELAYS[attempt - 1] * (0.8 + Math.random() * 0.4);
+          return new Promise(function(resolve){ setTimeout(resolve, delay); }).then(tryOnce);
+        }
+        var c = secCacheRead(name);
+        if(c){
+          if(c.data.generated_at) SEC_VER[name] = c.data.generated_at;
+          return c.data;
+        }
+        throw e;
+      });
+    }
+    return tryOnce();
   }
 
   /* ---- 1. 荣耀徽章（当周，台账 badge_ 事件） ----
@@ -2482,10 +2679,51 @@
   }
 
   var TREND_VER = ''; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=updated_at） */
+  /* 方案E（2026-10-20，DeepSeek 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径 */
+  var TREND_RETRY_DELAYS = [1000, 2000, 4000];
+  var trendRecheckTimer = 0;
+  function trendCacheWrite(d){
+    try{
+      if(d && typeof d === 'object'){
+        localStorage.setItem('kb-cache:trends.json', JSON.stringify({ ts: Date.now(), data: d }));
+      }
+    }catch(e){}
+  }
+  function trendCacheRead(){
+    try{
+      var raw = localStorage.getItem('kb-cache:trends.json');
+      if(!raw) return null;
+      var c = JSON.parse(raw);
+      if(!c || typeof c.ts !== 'number' || !c.data) return null;
+      return c;
+    }catch(e){ return null; }
+  }
+  function fetchTrends(){
+    var attempt = 0;
+    function tryOnce(){
+      attempt++;
+      return fetch('data/trends.json' + (TREND_VER ? '?v=' + encodeURIComponent(TREND_VER) : ''), { cache: 'no-cache' }).then(function(r){
+        if(!r.ok) throw new Error('http ' + r.status);
+        return r.json();
+      }).then(function(d){
+        trendCacheWrite(d);
+        return d;
+      }).catch(function(e){
+        if(attempt <= 3){
+          var delay = TREND_RETRY_DELAYS[attempt - 1] * (0.8 + Math.random() * 0.4);
+          return new Promise(function(resolve){ setTimeout(resolve, delay); }).then(tryOnce);
+        }
+        var c = trendCacheRead();
+        if(c) return c.data;
+        throw e;
+      });
+    }
+    return tryOnce();
+  }
   function loadTrends(){
     var root = el('trend-root');
     var oldHTML = root ? root.innerHTML : null;
-    fetch('data/trends.json' + (TREND_VER ? '?v=' + encodeURIComponent(TREND_VER) : ''), { cache: 'no-cache' }).then(function(r){ return r.json(); }).then(function(d){
+    fetchTrends().then(function(d){
       try{
         if(d && d.updated_at) TREND_VER = d.updated_at;
         TD = d; renderMain();
@@ -2506,6 +2744,10 @@
       if(root && !TD) root.innerHTML = '<p class="rule-note" style="margin-top:0" id="tr-retry">📈 学习走势数据暂不可用，点此重试。</p>';
       var rt = el('tr-retry');
       if(rt) rt.addEventListener('click', loadTrends);
+      /* 方案E慢速复查：最终失败 60 秒后自动重拉，单飞防堆叠 */
+      if(!trendRecheckTimer){
+        trendRecheckTimer = setTimeout(function(){ trendRecheckTimer = 0; loadTrends(); }, 60000);
+      }
     });
   }
   window.__kanbanRefreshTrends = loadTrends;
