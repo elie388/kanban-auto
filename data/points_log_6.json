@@ -1,12 +1,21 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T20:28:55+08:00",
+  "generated_at": "2026-10-21T21:07:05+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "21:06",
+      "time_source": "entry",
+      "reason": "拖地",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "20:27",
@@ -176,15 +185,6 @@
       "reason": "🏅家务小帮手徽章",
       "pts": 5,
       "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:30",
-      "time_source": "entry",
-      "reason": "53天天练三科未交",
-      "pts": -9,
-      "sign": "minus",
       "filtered": false
     }
   ],

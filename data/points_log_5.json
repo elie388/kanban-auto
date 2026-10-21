@@ -1,12 +1,30 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T20:57:04+08:00",
+  "generated_at": "2026-10-21T21:07:05+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "21:06",
+      "time_source": "entry",
+      "reason": "11课古诗订正默写\"已亥杂诗\"改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:06",
+      "time_source": "entry",
+      "reason": "11课古诗订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "20:24",
@@ -166,24 +184,6 @@
       "time_source": "entry",
       "reason": "英语20页完成分",
       "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语20页正确率65%",
-      "pts": 0,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语20页书写+2",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }
