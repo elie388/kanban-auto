@@ -405,6 +405,30 @@
   .shop-hint b{color:#E25C1D;}
   .shop-hint .ok-line{color:#1E9E52; font-weight:700;}
 
+  /* 兑换记录（2026-10-21 DeepSeek 方案+家长拍板：商店样式不变，记录沿用商店卡；
+     默认收起、点击展开，与目标榜详情同交互） */
+  .redeem-wrap{margin-top:18px;}
+  .redeem-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
+    padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
+  .redeem-head{font-size:16px; font-weight:800; flex:1;}
+  .redeem-sub{font-size:12px; color:var(--sub); font-weight:400; margin-left:6px;}
+  .redeem-chev{font-size:13px; color:var(--sub);}
+  .redeem-grade{font-size:14px; font-weight:800; margin:14px 0 8px;}
+  .redeem-item{border-radius:var(--radius-sm); padding:12px 14px; background:#FAFBFC;
+    border:1px solid #EEF1F4; margin-bottom:10px;}
+  .redeem-top{display:flex; align-items:center; gap:10px;}
+  .redeem-top .ic{font-size:26px; flex:0 0 auto;}
+  .redeem-top .nm{font-size:15px; font-weight:800; flex:1; min-width:0;}
+  .redeem-top .spent{font-size:14px; font-weight:800; color:#D64541; background:#FDECEA;
+    padding:2px 10px; border-radius:999px; white-space:nowrap; flex:0 0 auto;}
+  .redeem-hint{font-size:13px; color:var(--sub); margin-top:6px; line-height:1.6;}
+  .redeem-item.rev{opacity:.72;}
+  .redeem-item.rev .nm{text-decoration:line-through;}
+  .redeem-back{font-size:12px; font-weight:700; color:#1E7E34; background:#E7F8E7;
+    border-radius:999px; padding:2px 10px; white-space:nowrap; flex:0 0 auto;}
+  .redeem-empty{border:1.5px dashed #D8D2C2; border-radius:var(--radius-sm); padding:14px;
+    text-align:center; font-size:13px; color:var(--sub); background:#FAFBFC;}
+
   /* 规则列表 */
   .rule-list{list-style:none; margin:0; padding:0;}
   .rule-list li{
@@ -854,6 +878,14 @@
       </div>
 
       </div>
+    <!-- 兑换记录（2026-10-21）：默认收起，点击标题行展开；内容由 renderRedeem 渲染 -->
+    <div class="redeem-wrap" id="redeem-box">
+      <button class="redeem-toggle" type="button" id="redeem-toggle" aria-expanded="false" aria-controls="redeem-body">
+        <span class="redeem-head">兑换记录<span class="redeem-sub">最近 15 天</span></span>
+        <span class="redeem-chev" id="redeem-chev">展开 ▾</span>
+      </button>
+      <div id="redeem-body" hidden></div>
+    </div>
       </div></div>
     </div>
   </section>
@@ -1775,7 +1807,7 @@
 <script>
 /* ============================================================
    2026-10-19：全栏目实时同步（DeepSeek方案 KB-SECTIONS-AUTO，独立IIFE）
-   - 拉取 data/badges.json / badge_goals.json / shop.json / rules.json
+   - 拉取 data/badges.json / badge_goals.json / shop.json / rules.json / redeem_log.json
    - 任一失败按栏目独立降级（保留硬编码 DOM），不影响其他栏目
    - 全部文本经 textContent 渲染（天然转义），禁用 innerHTML 拼用户数据
    ============================================================ */
@@ -2206,6 +2238,61 @@
     }catch(e){ /* 时钟写入失败不阻断，保留静态兜底 */ }
   }
 
+  /* ---- 兑换记录（2026-10-21）：默认收起、点击展开；软刷新后按 OPEN_REDEEM 恢复 ---- */
+  var OPEN_REDEEM = false;
+  function redeemDateText(ds){
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(ds || ''));
+    return m ? (Number(m[2]) + '月' + Number(m[3]) + '日') : String(ds || '');
+  }
+  function renderRedeem(d){
+    var box = $('redeem-box'), body = $('redeem-body');
+    if(!box || !body || !d || !d.by_grade) return false;
+    var btn = $('redeem-toggle'), chev = $('redeem-chev');
+    if(btn && !btn.dataset.wired){
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', function(){
+        OPEN_REDEEM = !OPEN_REDEEM;
+        body.hidden = !OPEN_REDEEM;
+        btn.setAttribute('aria-expanded', OPEN_REDEEM ? 'true' : 'false');
+        if(chev) chev.textContent = OPEN_REDEEM ? '收起 ▴' : '展开 ▾';
+      });
+    }
+    body.hidden = !OPEN_REDEEM;
+    if(btn) btn.setAttribute('aria-expanded', OPEN_REDEEM ? 'true' : 'false');
+    if(chev) chev.textContent = OPEN_REDEEM ? '收起 ▴' : '展开 ▾';
+    body.textContent = '';
+    ['g5','g6'].forEach(function(gk){
+      body.appendChild(el('div','redeem-grade', GRADE_NAME[gk]));
+      var arr = d.by_grade[gk] || [];
+      if(!arr.length){
+        body.appendChild(el('div','redeem-empty','还没有兑换过哦～攒够分就能来这儿换 Minecraft / 和平精英时间。💪'));
+        return;
+      }
+      arr.forEach(function(r){
+        var item = el('div','redeem-item' + (r.revoked ? ' rev' : ''));
+        var top = el('div','redeem-top');
+        top.appendChild(el('span','ic', r.icon || '🎁'));
+        top.appendChild(el('span','nm', String(r.item || '')));
+        if(r.revoked){
+          top.appendChild(el('span','redeem-back','+' + r.refunded + ' 分已退回'));
+        }else{
+          top.appendChild(el('span','spent','-' + r.spent + ' 分'));
+        }
+        item.appendChild(top);
+        var hint = redeemDateText(r.date) + '兑换';
+        if(r.revoked){
+          hint += ' · 已撤销' + (r.revoke_reason ? '（' + r.revoke_reason + '）' : '');
+        }else{
+          if(r.fee) hint += ' · 含手续费 ' + r.fee + ' 分';
+          if(typeof r.balance_after === 'number') hint += ' · 兑后还剩 ' + r.balance_after + ' 分';
+        }
+        item.appendChild(el('div','redeem-hint', hint));
+        body.appendChild(item);
+      });
+    });
+    return true;
+  }
+
   function boot(){
     /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码。
        2026-10-20 用户要求：秒级实时跳动 + 北京时间（Asia/Shanghai，见 tickClock/fmtBjClock）；
@@ -2216,6 +2303,7 @@
     fetchJson('badges.json').then(renderBadges).catch(function(e){ console.warn('徽章栏拉取失败，显示占位:', e); });
     fetchJson('badge_goals.json').then(renderGoals).catch(function(e){ console.warn('目标榜拉取失败，显示占位:', e); });
     fetchJson('shop.json').then(renderShop).catch(function(e){ console.warn('商店拉取失败，显示占位:', e); });
+    fetchJson('redeem_log.json').then(renderRedeem).catch(function(e){ console.warn('兑换记录拉取失败:', e); });
     fetchJson('rules.json').then(function(d){
       renderRules(d, 'add', 'panel-bonus');
       renderRules(d, 'deduct', 'panel-deduct');

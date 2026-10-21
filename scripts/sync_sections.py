@@ -810,6 +810,102 @@ def build_badge_goals(events, progress=None, now=None):
             "cycle_week": cur_cycle}
 
 
+# ---------- 兑换记录（2026-10-21 DeepSeek 方案 + 家长拍板：商店底部、分年级、
+# 滚动15天、点击展开；前端渲染在模板 renderRedeem） ----------
+# 落账约定（写入规则手册《积分商店》节）：兑换行 key 含
+# redeem_<档位>_<场次>（如 redeem_minecraft30_20261021a）；手续费如单列一行，
+# 与主行同场次且描述含"手续费"；撤销/退回行 key 为同场次加 _reversal 后缀，
+# 描述写明原因。脚本按场次归并：负分合计=花费，手续费行负分=fee，
+# 主行（或场次最后一行）余额列=兑后余额；有 _reversal 场次 -> 原条标 revoked。
+REDEEM_KEY_RE = re.compile(r"redeem_([a-z0-9]+)_([a-z0-9]+?)(_reversal)?(?:_|\s|$)")
+REDEEM_TIERS = {
+    "minecraft30": ("30分钟Minecraft", "🕹️"),
+    "minecraft60": ("1小时Minecraft", "🕹️"),
+    "heping150": ("1小时和平精英或2小时Minecraft", "🎮"),
+    "heping250": ("2小时和平精英", "🎮"),
+    "wish600": ("达成愿望一次（50元）", "🌟"),
+    "wish1000": ("达成愿望一次（100元）", "💫"),
+}
+
+
+def build_redeem_log(content, now=None):
+    """从台账文本解析兑换记录：返回最近15天（滚动，含今日）、按年级分组、
+    日期倒序的记录。零兑换时 by_grade 为空列表（前端显示空态文案）。"""
+    now = now or datetime.now(BEIJING)
+    today = now.date()
+    win_start = today - timedelta(days=14)
+    by_grade = {}
+    for gk, grade in (("g5", "五年级"), ("g6", "六年级")):
+        m = re.search(r"## " + grade + r"\n(.*?)(?=\n## |\Z)", content, re.DOTALL)
+        sessions = {}  # (session) -> 聚合中的记录
+        order = []
+        if m:
+            for line in m.group(1).split("\n"):
+                mm = sb.ROW_PAT.match(line)
+                if not mm:
+                    continue
+                km = REDEEM_KEY_RE.search(line)
+                if not km:
+                    continue
+                tier, session = km.group(1), km.group(2)
+                is_reversal = bool(km.group(3))
+                date = sb.norm_date(mm.group(1))
+                desc = sb.clean_desc(mm.group(2))
+                try:
+                    pts = int(mm.group(3))
+                    bal = int(mm.group(4))
+                except (TypeError, ValueError):
+                    continue
+                key = (session, is_reversal)
+                if key not in sessions:
+                    sessions[key] = {"tier": tier, "session": session,
+                                     "reversal": is_reversal, "rows": []}
+                    order.append(key)
+                sessions[key]["rows"].append(
+                    {"date": date, "desc": desc, "pts": pts, "bal": bal})
+        records = []
+        rev_by_session = {s: v for (s, r), v in sessions.items() if r}
+        for (session, is_rev), agg in sessions.items():
+            if is_rev:
+                continue
+            rows = agg["rows"]
+            main_date = rows[0]["date"]
+            try:
+                d0 = datetime.strptime(main_date, "%Y-%m-%d").date()
+            except ValueError:
+                continue
+            if not (win_start <= d0 <= today):
+                continue
+            spent = -sum(r["pts"] for r in rows if r["pts"] < 0)
+            fee = -sum(r["pts"] for r in rows
+                       if r["pts"] < 0 and "手续费" in r["desc"])
+            # 兑换物名：优先主行描述（去"兑换"前缀与括号注记），缺失用档位表
+            name = rows[0]["desc"]
+            name = re.sub(r"^兑换", "", name).strip()
+            name = re.sub(r"[（(][^）)]*[）)]$", "", name).strip()
+            tname, ticon = REDEEM_TIERS.get(agg["tier"], ("", "🎁"))
+            if not name:
+                name = tname
+            bal_after = None
+            for r in rows:
+                if r["bal"] is not None:
+                    bal_after = r["bal"]
+            rec = {"date": main_date, "item": name, "icon": ticon,
+                   "spent": spent, "fee": fee, "balance_after": bal_after,
+                   "revoked": False, "refunded": 0, "revoke_reason": ""}
+            rv = rev_by_session.get(session)
+            if rv:
+                rec["revoked"] = True
+                rec["refunded"] = sum(r["pts"] for r in rv["rows"] if r["pts"] > 0)
+                reason = rv["rows"][0]["desc"]
+                reason = re.sub(r"^(冲正|撤销)[：:\s]*", "", reason).strip()
+                rec["revoke_reason"] = reason
+            records.append(rec)
+        records.sort(key=lambda r: r["date"], reverse=True)
+        by_grade[gk] = records
+    return {"schema_version": 1, "window_days": 15, "by_grade": by_grade}
+
+
 def build_shop(balances):
     # N1 方案A（DeepSeek终审定案 2026-10-20）：
     # progress 是展示量（用钳0后的余额计算，恒 ∈ [0.0, 1.0]）；
@@ -1016,6 +1112,8 @@ def main():
             "data/badge_goals.json": build_badge_goals(events, progress),
             "data/shop.json": build_shop(balances),
             "data/rules.json": parse_rules(),
+            "data/redeem_log.json": build_redeem_log(
+                LEDGER.read_text(encoding="utf-8")),
         }
         # 校验门：往返 + 白名单 + PII/注入熔断
         for path, doc in docs.items():
