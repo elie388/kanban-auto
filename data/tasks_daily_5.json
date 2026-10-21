@@ -3,12 +3,12 @@
   "date": "2026-10-21",
   "grade": "五年级",
   "generated_at": "2026-10-21T00:05:05+08:00",
-  "updated_at": "2026-10-21T19:06:59+08:00",
+  "updated_at": "2026-10-21T19:10:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-21T18:21:57+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-21T19:10:16+08:00",
+      "new_lines": 2
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -181,11 +181,47 @@
       "file_hash": null,
       "created_at": "2026-10-21T19:06:59+08:00",
       "updated_at": "2026-10-21T19:06:59+08:00"
+    },
+    {
+      "task_id": "REG-20261021-5BBF6A",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字12课：抄一遍、默一遍（用稿纸）。",
+      "detail": "原状态：待完成（无佐证照片）。另登记本末尾有\"试卷签名\"一项，属家长事项",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字12课：抄一遍、默一遍（用稿纸）。→ 待完成（无佐证照片）。另登记本末尾有\"试卷签名\"一项，属家长事项；家长随后指示列为今日任务（REG-20261021-0BB15F「试卷签名（家长事项）」），家长签完告知后标完成。",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-D59A11",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "家长随后指示列为今日任务（REG-20261021-0BB15F「试卷签名（家长事项）」），家长签完告知后标完成",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字12课：抄一遍、默一遍（用稿纸）。→ 待完成（无佐证照片）。另登记本末尾有\"试卷签名\"一项，属家长事项；家长随后指示列为今日任务（REG-20261021-0BB15F「试卷签名（家长事项）」），家长签完告知后标完成。",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
     }
   ],
   "counts": {
-    "total": 10,
-    "pending": 8,
+    "total": 12,
+    "pending": 10,
     "in_progress": 0,
     "done": 2,
     "pending_review": 0

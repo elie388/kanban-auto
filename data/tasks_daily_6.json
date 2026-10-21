@@ -3,12 +3,12 @@
   "date": "2026-10-21",
   "grade": "六年级",
   "generated_at": "2026-10-21T00:05:05+08:00",
-  "updated_at": "2026-10-21T19:06:59+08:00",
+  "updated_at": "2026-10-21T19:10:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-21T18:21:57+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-21T19:10:16+08:00",
+      "new_lines": 7
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -69,12 +69,12 @@
       "title": "提交作业登记本",
       "detail": "拍登记本照片发回年级邮箱",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-21T18:22:23+08:00",
-      "updated_at": "2026-10-21T18:22:23+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "completed_at": "2026-10-21T19:10:16+08:00"
     },
     {
       "task_id": "PRACT-20261021-C81B9C",
@@ -89,13 +89,139 @@
       "file_hash": null,
       "created_at": "2026-10-21T19:06:59+08:00",
       "updated_at": "2026-10-21T19:06:59+08:00"
+    },
+    {
+      "task_id": "REG-20261021-606597",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄U3 famous到young的单词和中文各4次，背10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-1EC62E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "复习U3中文，跟读10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-C83A44",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3单词、总对话。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-5EE65E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "修改订正作文，重新誊写一次（作文①）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观?》（末字待确认）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-455A18",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "复习第三单元，听写并默《观?》（末字待确认）。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观?》（末字待确认）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-018282",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本23、25",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本23、25；②读背概念26、27。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "REG-20261021-36F592",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念26、27。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本23、25；②读背概念26、27。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00"
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 12,
+    "pending": 11,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-21T22:30:00+08:00"
