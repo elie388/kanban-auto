@@ -133,11 +133,17 @@ def judge(now):
                 by_day.setdefault(r["date"], {})[r["item"]] = r
         hit = [(d, v) for d, v in sorted(by_day.items()) if len(v) >= 3]
         if hit:
-            d, v = hit[-1]
-            lines.append("- 【三合一快手】候选（已达 %s）依据：%s%s%s%s" % (
-                d, "；".join(ref(x) for x in v.values()),
-                "（证据全部为回补行，终审请裁定）" if all_backfill(list(v.values())) else "",
-                award_note(gk, "sanheyi"), cyc_tag(d)))
+            # 2026-10-21 家长定：三合一快手每日可达成一次——逐日出候选，已颁发日标注跳过
+            awarded_days = set(awarded.get(gk, {}).get("sanheyi", []))
+            for d, v in hit:
+                if d in awarded_days:
+                    lines.append("- 【三合一快手】%s 已颁发（跳过）依据：%s" % (
+                        d, "；".join(ref(x) for x in v.values())))
+                    continue
+                lines.append("- 【三合一快手】候选（已达 %s）依据：%s%s%s%s" % (
+                    d, "；".join(ref(x) for x in v.values()),
+                    "（证据全部为回补行，终审请裁定）" if all_backfill(list(v.values())) else "",
+                    award_note(gk, "sanheyi"), cyc_tag(d)))
         else:
             best = max((len(v) for v in by_day.values()), default=0)
             lines.append("- 【三合一快手】未达：单日最多 %d 项（需 3 项不同）" % best)
