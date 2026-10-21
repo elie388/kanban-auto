@@ -71,6 +71,10 @@ LEGACY_BADGES = {
 }
 BADGE_MAP = {k: {"name": n, "icon": i} for k, n, i, _ in BADGE_CATALOG}
 BADGE_MAP.update({k: {"name": n, "icon": i} for k, (n, i) in LEGACY_BADGES.items()})
+# 历史落账 key 变体 -> 目录 canonical key（2026-10-21 修复）：三合一快手
+# 2026-10-20 补发落账时曾用 badge_sanheyikuaishou，与目录 sanheyi 不一致，
+# 导致目标榜永远匹配不到该徽章。解析时归一，冲正同理。
+KEY_ALIAS = {"sanheyikuaishou": "sanheyi"}
 
 # ---------- 积分商店（规则手册兑换表） ----------
 # (id, name, cost, icon)
@@ -158,12 +162,12 @@ def extract_badge_events():
             desc = mm.group(2)
             rev = REV_PAT.search(line)
             if rev:
-                active.pop(rev.group(1), None)
+                active.pop(KEY_ALIAS.get(rev.group(1), rev.group(1)), None)
                 continue
             b = KEY_PAT.search(line)
             if not b:
                 continue
-            key = b.group(1)
+            key = KEY_ALIAS.get(b.group(1), b.group(1))
             meta = BADGE_MAP.get(key)
             if meta:
                 icon, name = meta["icon"], meta["name"]
@@ -776,18 +780,28 @@ def build_badge_goals(events, progress=None, now=None):
         held = {}
         cnt = {}
         total = {}
+        late_held = {}
         for e in events.get(gk, []):
             total[e["key"]] = total.get(e["key"], 0) + 1
             if (e.get("cycle_week") or cycle_week_of(e["date"])) != cur_cycle:
+                # 补发落账本周期（与 build_badges 同口径）：徽章带已同带展示，
+                # 目标榜"已获取"标签须一致（2026-10-21 用户报障修复）；仅影响
+                # obtained 标签，count/进度计数仍按归属周不动（B方案口径）。
+                if (e.get("late_cycle_recorded")
+                        and cycle_week_of(e["date"]) == cur_cycle):
+                    if e["key"] not in late_held or e["date"] < late_held[e["key"]]:
+                        late_held[e["key"]] = e["date"]
                 continue
             if e["key"] not in held or e["date"] < held[e["key"]]:
                 held[e["key"]] = e["date"]
             cnt[e["key"]] = cnt.get(e["key"], 0) + 1
         entries = []
         for k, _, _, _ in BADGE_CATALOG:
-            ent = {"key": k, "obtained": k in held,
-                   "date": held.get(k, ""), "count": cnt.get(k, 0),
-                   "total_count": total.get(k, 0)}
+            ent = {"key": k, "obtained": (k in held) or (k in late_held),
+                   "date": held.get(k) or late_held.get(k, ""),
+                   "count": cnt.get(k, 0),
+                   "total_count": total.get(k, 0),
+                   "via_late": (k not in held) and (k in late_held)}
             if progress and gk in progress and k in progress[gk]:
                 ent["progress"] = progress[gk][k]
             entries.append(ent)
