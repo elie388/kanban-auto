@@ -755,13 +755,13 @@
 
   <!-- 余额卡片 -->
   <section class="balance-grid" aria-label="积分余额">
-    <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看五年级积分日志">
-      <div class="bal-name">五年级</div>
+    <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看彦均积分日志">
+      <div class="bal-name">彦均</div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
       <div class="bal-sub">继续加油攒分！</div>
     </button>
-    <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看六年级积分日志">
-      <div class="bal-name">六年级</div>
+    <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看伟豪积分日志">
+      <div class="bal-name">伟豪</div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
       <div class="bal-sub">高分冲刺中！</div>
     </button>
@@ -773,8 +773,8 @@
 
     <div class="task-section" id="tasks-g5">
       <div class="task-head">
-        <span class="pill-grade g5">五年级</span>
-        <div class="task-prog" role="group" aria-label="五年级今日任务完成进度">
+        <span class="pill-grade g5">彦均</span>
+        <div class="task-prog" role="group" aria-label="彦均今日任务完成进度">
           <span class="task-prog-text">加载中…</span>
           <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="加载中…">
             <div class="task-prog-fill" style="width:0%"></div>
@@ -789,8 +789,8 @@
 
     <div class="task-section" id="tasks-g6">
       <div class="task-head">
-        <span class="pill-grade g6">六年级</span>
-        <div class="task-prog" role="group" aria-label="六年级今日任务完成进度">
+        <span class="pill-grade g6">伟豪</span>
+        <div class="task-prog" role="group" aria-label="伟豪今日任务完成进度">
           <span class="task-prog-text">加载中…</span>
           <div class="task-prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="加载中…">
             <div class="task-prog-fill" style="width:0%"></div>
@@ -830,13 +830,13 @@
     <div class="collapse-body" id="panel-achieve" role="region" aria-labelledby="btn-achieve">
       <div class="collapse-inner"><div class="collapse-pad">
 
-    <div class="grade-block" aria-label="五年级成就">
-      <div class="grade-head"><span class="pill-grade g5">五年级</span>成就</div>
+    <div class="grade-block" aria-label="彦均成就">
+      <div class="grade-head"><span class="pill-grade g5">彦均</span>成就</div>
       <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
 
-    <div class="grade-block" aria-label="六年级成就">
-      <div class="grade-head"><span class="pill-grade g6">六年级</span>成就</div>
+    <div class="grade-block" aria-label="伟豪成就">
+      <div class="grade-head"><span class="pill-grade g6">伟豪</span>成就</div>
       <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
       </div></div>
@@ -934,8 +934,8 @@
     </button>
     <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
       <div class="collapse-inner"><div class="collapse-pad">
-        <div class="grade-block" id="log-g5" aria-label="五年级积分日志">
-          <div class="grade-head"><span class="pill-grade g5">五年级</span>积分日志</div>
+        <div class="grade-block" id="log-g5" aria-label="彦均积分日志">
+          <div class="grade-head"><span class="pill-grade g5">彦均</span>积分日志</div>
           <ul class="log-list">
             <li class="log-item">
               <div class="log-body">
@@ -944,8 +944,8 @@
             </li>
           </ul>
         </div>
-        <div class="grade-block" id="log-g6" aria-label="六年级积分日志">
-          <div class="grade-head"><span class="pill-grade g6">六年级</span>积分日志</div>
+        <div class="grade-block" id="log-g6" aria-label="伟豪积分日志">
+          <div class="grade-head"><span class="pill-grade g6">伟豪</span>积分日志</div>
           <ul class="log-list">
             <li class="log-item">
               <div class="log-body">
@@ -1814,7 +1814,7 @@
 (function(){
   'use strict';
   var TIMEOUT_MS = 4000;
-  var GRADE_NAME = { g5: '五年级', g6: '六年级' };
+  var GRADE_NAME = { g5: '彦均', g6: '伟豪' };
 
   function $(id){ return document.getElementById(id); }
   function el(tag, cls, text){
@@ -2415,6 +2415,7 @@
   var C5 = '#E8873A', C6 = '#3A7BD5', TARGET = 85;
   var GRADES = ['五年级', '六年级'], SUBJS = ['语文', '数学', '英语'];
   var GKEY = {'五年级': 'g5', '六年级': 'g6'}, GCOL = {'五年级': C5, '六年级': C6};
+  var GNAME = {'五年级': '彦均', '六年级': '伟豪'};
   function el(id){ return document.getElementById(id); }
   function sl(arr, n){ return arr.slice(-n); }
   function nn(arr){ return arr.filter(function(v){ return v !== null && v !== undefined; }); }
@@ -2495,8 +2496,8 @@
     var anyData = GRADES.some(function(gr){ return sl(TD.grades[gr].overall, RANGE).some(function(v){ return v !== null && v !== undefined; }); });
     if(!anyData){ root.innerHTML = '<p class="rule-note" style="margin-top:0">📈 近' + RANGE + '天暂无走势数据。</p>'; return; }
     var h = '';
-    h += '<div class="tr-legend"><span><span class="tr-dot" style="background:' + C5 + '"></span>五年级</span>'
-      + '<span><span class="tr-dot" style="background:' + C6 + '"></span>六年级</span>'
+    h += '<div class="tr-legend"><span><span class="tr-dot" style="background:' + C5 + '"></span>彦均</span>'
+      + '<span><span class="tr-dot" style="background:' + C6 + '"></span>伟豪</span>'
       + '<span style="font-size:12px;color:#9AA0A6">- - 目标线 85%</span>'
       + '<span class="tr-tabs" id="tr-tabs">'
       + '<button data-r="7">近7天</button><button data-r="14">近14天</button><button data-r="30">近30天</button>'
@@ -2581,10 +2582,10 @@
         var segs = [], nData = 0, anyBad = false;
         GRADES.forEach(function(gr){
           var v = sl(TD.grades[gr].overall, RANGE)[i];
-          if(v === null || v === undefined){ segs.push(gr + '：当天无数据'); return; }
+          if(v === null || v === undefined){ segs.push(GNAME[gr] + '：当天无数据'); return; }
           nData++;
           if(v >= TARGET){
-            segs.push(gr + ' <b>' + fmt(v) + '%</b>（已达标 ✓）');
+            segs.push(GNAME[gr] + ' <b>' + fmt(v) + '%</b>（已达标 ✓）');
             return;
           }
           anyBad = true;
@@ -2620,15 +2621,15 @@
         if(v === null || v === undefined) return;
         if(!gb || v < gb.v) gb = { i: i, v: v };
       });
-      if(!gb){ wkLines.push('💡 薄弱日：' + gr + '暂无数据。'); return; }
+      if(!gb){ wkLines.push('💡 薄弱日：' + GNAME[gr] + '暂无数据。'); return; }
       var fI = off + gb.i, sVals = SUBJS.map(function(sn){
         return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fI] };
       }).filter(function(x){ return x.v !== null && x.v !== undefined; });
       sVals.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
-      if(!sVals.length){ wkLines.push('💡 薄弱日：' + gr + '暂无数据。'); return; }
+      if(!sVals.length){ wkLines.push('💡 薄弱日：' + GNAME[gr] + '暂无数据。'); return; }
       wkAny = true;
       var wsn = sVals[0].sn;
-      wkLines.push('💡 薄弱日：' + TD.dates[fI].slice(5) + '（' + gr + ' ' + fmt(gb.v) + '%），' + wsn + '最低 ' + fmt(sVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。');
+      wkLines.push('💡 薄弱日：' + TD.dates[fI].slice(5) + '（' + GNAME[gr] + ' ' + fmt(gb.v) + '%），' + wsn + '最低 ' + fmt(sVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。');
     });
     if(wkAny){
       var wk = el('tr-wknote'); wk.style.display = 'block';
@@ -2650,7 +2651,7 @@
         if(!gb || v < gb.v) gb = { i: i, v: v };
       });
       if(!gb){
-        actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + gr + '</b>：数据未接入。</div>';
+        actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + GNAME[gr] + '</b>：数据未接入。</div>';
         return;
       }
       var fI = off + gb.i, sv = SUBJS.map(function(sn){
@@ -2660,10 +2661,10 @@
       var topW = sv.length ? (TD.grades[gr].subjects[sv[0].sn].weak || [])[0] : null;
       if(sv.length && topW){
         actHtml += '<div class="tr-actrow" data-g="' + gr + '" data-sn="' + sv[0].sn + '" data-kp="' + escHtml(topW.kp) + '" style="margin-top:6px">'
-          + '<div style="color:#6B7280">重点：' + gr + '《' + sv[0].sn + '》薄弱点 <b>' + escHtml(topW.kp) + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>明晚补上，做对计入复测。与下方单科卡里点这个薄弱点的「我要巩固」是同一件事。</div>'
+          + '<div style="color:#6B7280">重点：' + GNAME[gr] + '《' + sv[0].sn + '》薄弱点 <b>' + escHtml(topW.kp) + '</b>（错' + topW.err + '次）——生成 <b>' + topW.n + ' 道变式题</b>明晚补上，做对计入复测。与下方单科卡里点这个薄弱点的「我要巩固」是同一件事。</div>'
           + '<div style="margin-top:8px"><span class="tr-actgo" style="background:#E8873A;color:#fff;padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:700;cursor:pointer">生成明晚补练 →</span></div></div>';
       } else {
-        actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + gr + '</b>：本周期暂无明显薄弱点，继续保持。</div>';
+        actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + GNAME[gr] + '</b>：本周期暂无明显薄弱点，继续保持。</div>';
       }
     });
     var actBox = el('tr-act');
@@ -2701,7 +2702,7 @@
     }
     el('tr-incrow').innerHTML = GRADES.map(function(gr){
       var cnt = nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length;
-      return incHtml(gr, cnt, 7);
+      return incHtml(GNAME[gr], cnt, 7);
     }).join('');
     el('tr-inctxt').textContent = '近' + RANGE + '天口径';
 
@@ -2714,9 +2715,9 @@
     el('tr-ft').innerHTML = GRADES.map(function(gr){
       var all = TD.grades[gr].overall;
       var a7 = avg(sl(all, 7)), p7 = avg(all.slice(-14, -7));
-      return '<div class="tr-stat">' + gr + ' · 近7天平均<b>' + (a7 === null ? '—' : fmt(a7) + '%' + deltaHtml(a7, p7)) + '</b></div>';
+      return '<div class="tr-stat">' + GNAME[gr] + ' · 近7天平均<b>' + (a7 === null ? '—' : fmt(a7) + '%' + deltaHtml(a7, p7)) + '</b></div>';
     }).join('') + '<div class="tr-stat">达标天数（≥85%）<b>' + GRADES.map(function(gr){
-      return gr + ' ' + nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length + ' 天';
+      return GNAME[gr] + ' ' + nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length + ' 天';
     }).join(' · ') + '</b></div>';
 
     /* 选项卡与筛选 */
