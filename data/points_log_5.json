@@ -1,12 +1,57 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T20:13:59+08:00",
+  "generated_at": "2026-10-21T20:37:04+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "20:14",
+      "time_source": "entry",
+      "reason": "英语口语按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:14",
+      "time_source": "entry",
+      "reason": "生字12课订正泻改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:14",
+      "time_source": "entry",
+      "reason": "生字12课订正腾改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:14",
+      "time_source": "entry",
+      "reason": "生字12课订正胎改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:14",
+      "time_source": "entry",
+      "reason": "生字12课订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "20:13",
@@ -139,51 +184,6 @@
       "time_source": "entry",
       "reason": "整理桌面",
       "pts": 1,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:00",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:45",
-      "time_source": "entry",
-      "reason": "🏅家务小帮手徽章",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:45",
-      "time_source": "entry",
-      "reason": "🏅三合一快手徽章",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "数学完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "数学书写+2",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }
