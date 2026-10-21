@@ -216,11 +216,13 @@
   .tr-legend{display:flex;gap:14px;margin:10px 0 4px;font-size:13px;align-items:center;flex-wrap:wrap;color:var(--sub)}
   .tr-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
   .tr-tabs{margin-left:auto;display:flex;gap:6px}
+  .tr-tabsrow{display:flex;width:100%;margin:0 0 4px}
   .tr-tabs button{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
   .tr-tabs button.on{background:#E8873A;border-color:#E8873A;color:#fff;font-weight:700}
   .tr-filt{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
   .tr-filt.on{background:#D64545;border-color:#D64545;color:#fff;font-weight:700}
   #tr-tip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;min-height:18px}
+  .tr-updated{font-size:11.5px;color:#9AA0A6;margin-top:4px}
   .tr-note{background:#FFF7E6;border:1px solid #F0DFB8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;color:#8A6D2B}
   .tr-act{display:none;background:#FFF;border:1.5px dashed #E8873A;border-radius:12px;padding:10px 12px;margin-top:8px;font-size:13px}
   .tr-inc{background:#F8F4E9;border-radius:12px;padding:10px 12px;margin-top:12px}
@@ -236,6 +238,7 @@
   .tr-sub{font-size:12px;color:#9AA0A6}
   .tr-ft{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
   circle.tr-pt{cursor:pointer}
+  circle.tr-nodata{cursor:pointer}
   circle.tr-bad{stroke:#D64545 !important}
   .tr-wrow{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px dashed #EFD9CF;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .tr-wmain{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
@@ -2475,6 +2478,38 @@
     });
     return d;
   }
+  /* 日期工具（2026-10-21）：一律用 Date 运算后拼字符串，跨月/闰年安全，不手拼日期 */
+  function dstr(d){ function p2(x){ return (x < 10 ? '0' : '') + x; } return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); }
+  /* 显示窗口（2026-10-21 家长定「横轴提前 2 天」）：所选区间末日固定为今天+2，起点按 RANGE 往前推；
+     src=该格在 TD.dates 中的下标（-1 表示数据源无此日）；fut=未来日（还没到），与历史空值日区分呈现。 */
+  function dispWindow(){
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var todayS = dstr(now);
+    var end = new Date(now); end.setDate(end.getDate() + 2);
+    var idx = {};
+    TD.dates.forEach(function(d, i){ idx[d] = i; });
+    var dates = [], src = [], fut = [];
+    for(var k = RANGE - 1; k >= 0; k--){
+      var d = new Date(end); d.setDate(d.getDate() - k);
+      var s = dstr(d);
+      var i = Object.prototype.hasOwnProperty.call(idx, s) ? idx[s] : -1;
+      dates.push(s); src.push(i); fut.push(i < 0 && s > todayS);
+    }
+    return { dates: dates, src: src, fut: fut };
+  }
+  function winVals(arr, w){ return w.src.map(function(i){ return i < 0 ? null : arr[i]; }); }
+  /* 空值日占位圈高度：同线相邻实测点的插值高度（只有一侧时取该侧点，两侧皆无取 50% 高度）；仅占位、不代表数值 */
+  function gapY(vals, i, Y){
+    var p = -1, n = -1, a;
+    for(a = i - 1; a >= 0; a--){ if(vals[a] !== null && vals[a] !== undefined){ p = a; break; } }
+    for(a = i + 1; a < vals.length; a++){ if(vals[a] !== null && vals[a] !== undefined){ n = a; break; } }
+    if(p >= 0 && n >= 0) return Y(vals[p]) + (Y(vals[n]) - Y(vals[p])) * (i - p) / (n - p);
+    if(p >= 0) return Y(vals[p]);
+    if(n >= 0) return Y(vals[n]);
+    return Y(50);
+  }
+  /* 文本估算宽度（标签防撞用）：CJK 按 1 倍字号、其余 ASCII 按 0.6 倍字号 */
+  function tw(txt, fs){ var w = 0; for(var k = 0; k < txt.length; k++) w += txt.charCodeAt(k) > 255 ? fs : fs * 0.6; return w; }
   function gridSVG(W, H, PL, PR, PT, PB, dates, step, scaleF){
     var iw = W - PL - PR, s = '';
     function X(i){ return PL + iw * i / (dates.length - 1); }
@@ -2490,19 +2525,30 @@
 
   function renderMain(){
     if(!TD) return;
-    var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
+    var DW = dispWindow();
+    var dates = DW.dates, labels = dates.map(function(d){ return d.slice(5); });
+    var overallW = {};
+    GRADES.forEach(function(gr){ overallW[gr] = winVals(TD.grades[gr].overall, DW); });
     var root = el('trend-root');
     /* F4（2026-10-20）：空集防御——双年级在当前窗口都无数据点时直接占位 */
-    var anyData = GRADES.some(function(gr){ return sl(TD.grades[gr].overall, RANGE).some(function(v){ return v !== null && v !== undefined; }); });
+    var anyData = GRADES.some(function(gr){ return overallW[gr].some(function(v){ return v !== null && v !== undefined; }); });
     if(!anyData){ root.innerHTML = '<p class="rule-note" style="margin-top:0">📈 近' + RANGE + '天暂无走势数据。</p>'; return; }
     var h = '';
+    /* 图例与页签分行（2026-10-21 修复）：图例独立一行常显，不再被页签挤出画面 */
     h += '<div class="tr-legend"><span><span class="tr-dot" style="background:' + C5 + '"></span>彦均</span>'
       + '<span><span class="tr-dot" style="background:' + C6 + '"></span>伟豪</span>'
-      + '<span style="font-size:12px;color:#9AA0A6">- - 目标线 85%</span>'
-      + '<span class="tr-tabs" id="tr-tabs">'
+      + '<span style="font-size:12px;color:#9AA0A6">- - 目标线 85%</span></div>'
+      + '<div class="tr-tabsrow"><span class="tr-tabs" id="tr-tabs">'
       + '<button data-r="7">近7天</button><button data-r="14">近14天</button><button data-r="30">近30天</button>'
       + '<button class="tr-filt" id="tr-filt" style="margin-left:6px">⚠️ 只看未达标</button></span></div>';
     h += '<div id="tr-chart"></div>';
+    if(TD.updated_at){
+      var udT = new Date(TD.updated_at);
+      if(!isNaN(udT.getTime())){
+        var p2u = function(x){ return (x < 10 ? '0' : '') + x; };
+        h += '<div class="tr-updated">数据更新于 ' + p2u(udT.getHours()) + ':' + p2u(udT.getMinutes()) + '</div>';
+      }
+    }
     h += '<div id="tr-tip">👆 点任意一个点，看那天的明细</div>';
     h += '<div id="tr-wknote" class="tr-note" style="display:none"></div>';
     h += '<div id="tr-act" class="tr-act"><div style="font-weight:800;margin-bottom:4px">🎯 本周行动建议</div>'
@@ -2520,7 +2566,7 @@
     var g = gridSVG(W, H, PL, PR, PT, PB, labels, spec.step, spec.scaleF);
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;touch-action:manipulation">' + g.s;
     var series = GRADES.map(function(gr){
-      return { gr: gr, vals: sl(TD.grades[gr].overall, RANGE), col: GCOL[gr] };
+      return { gr: gr, vals: overallW[gr], col: GCOL[gr] };
     });
     series.forEach(function(sr){
       if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
@@ -2530,7 +2576,12 @@
     series.forEach(function(sr){
       if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
       sr.vals.forEach(function(v, i){
-        if(v === null || v === undefined) return;
+        if(DW.fut[i]) return; /* 未来日：不画点、不画占位圈，折线不延伸 */
+        if(v === null || v === undefined){
+          /* 历史空值日：灰色空心圈占位（虚线描边明示非数值点），点击仍走全图吸附到该日、提示「当天无数据」 */
+          s += '<circle class="tr-nodata" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + gapY(sr.vals, i, g.Y) + '" r="5" fill="#fff" stroke="#B9BDC4" stroke-width="1.6" stroke-dasharray="3 2"/>';
+          return;
+        }
         if(ONLYBAD && v >= TARGET) return;
         s += '<circle class="tr-pt' + (v < TARGET ? ' tr-bad' : '') + '" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="' + (v < TARGET ? 5 : 4) + '" fill="#fff" stroke="' + sr.col + '" stroke-width="2"/>';
       });
@@ -2548,7 +2599,7 @@
       }
     });
     function lblY(L){ var ly = g.Y(L.v) + (L.side < 0 ? -10 : 18); return L.side < 0 ? Math.max(ly, 13) : ly; }
-    /* 双标签防撞：两条线末点标签横向接近（<48px）且纵向间距<15px 时，把数值较低的一条翻到另一侧。
+    /* 双标签防撞（第一层，既有）：两条线末点标签横向接近（<48px）且纵向间距<15px 时，把数值较低的一条翻到另一侧。
        前提：主图恒为两条线（五年级/六年级），故只处理 length===2；将来若加第三条线，须改为两两检测。 */
     if(lblSpecs.length === 2){
       var lxD = Math.abs(lblSpecs[0].x - lblSpecs[1].x);
@@ -2557,14 +2608,53 @@
         lblSpecs[lowI].side = -lblSpecs[lowI].side;
       }
     }
+    /* 双标签防撞（第二层，2026-10-21 强化）：按估算宽高做包围盒检测，仍重叠则纵向拉开
+       （上标签上移、下标签下移，基线钳制在 13..282 内）；纵向空间不足时把低值标签整段左移、横向错开。 */
+    function lblBox(L){
+      var w = tw(L.txt, 12) + 8, cx = L.x + (L.dx || 0), by = lblY(L) + (L.dy || 0);
+      return { x0: cx - w, x1: cx, y0: by - 14, y1: by + 5 };
+    }
+    lblSpecs.forEach(function(L){ L.dx = 0; L.dy = 0; });
+    if(lblSpecs.length === 2){
+      for(var rsIt = 0; rsIt < 8; rsIt++){
+        var bA = lblBox(lblSpecs[0]), bB = lblBox(lblSpecs[1]);
+        var oX = Math.min(bA.x1, bB.x1) - Math.max(bA.x0, bB.x0);
+        var oY = Math.min(bA.y1, bB.y1) - Math.max(bA.y0, bB.y0);
+        if(oX <= 0 || oY <= 0) break;
+        var upL = (bA.y0 + bA.y1) <= (bB.y0 + bB.y1) ? lblSpecs[0] : lblSpecs[1];
+        var dnL = upL === lblSpecs[0] ? lblSpecs[1] : lblSpecs[0];
+        var need = oY + 4;
+        var upMove = Math.min(Math.ceil(need / 2), Math.max(0, (lblY(upL) + upL.dy) - 13));
+        var dnMove = Math.min(need - upMove, Math.max(0, 282 - (lblY(dnL) + dnL.dy)));
+        if(upMove > 0) upL.dy -= upMove;
+        if(dnMove > 0) dnL.dy += dnMove;
+        if(upMove + dnMove < need){
+          var lowL2 = lblSpecs[0].v <= lblSpecs[1].v ? lblSpecs[0] : lblSpecs[1];
+          lowL2.dx = -(tw(lowL2.txt, 12) + 14);
+        }
+      }
+    }
+    /* 目标线标注（2026-10-21）：虚线右端直接标「目标 85%」；若与任一末点标签包围盒重叠则改放左端，
+       避免紧贴末点值被误读为同一个数。 */
+    var tgtPlace = 'right';
+    (function(){
+      var twd = tw('目标 ' + TARGET + '%', 11.5) + 8;
+      var ty0 = g.Y(TARGET) - 19, ty1 = g.Y(TARGET) - 2;
+      var tx1 = W - PR - 4, tx0 = tx1 - twd;
+      for(var ti = 0; ti < lblSpecs.length; ti++){
+        var lb = lblBox(lblSpecs[ti]);
+        if(Math.min(tx1, lb.x1) - Math.max(tx0, lb.x0) > 0 && Math.min(ty1, lb.y1) - Math.max(ty0, lb.y0) > 0){ tgtPlace = 'left'; break; }
+      }
+    })();
+    s += '<text x="' + (tgtPlace === 'left' ? (PL + 4) : (W - PR - 4)) + '" y="' + (g.Y(TARGET) - 6) + '" font-size="11.5" font-weight="700" fill="#1E9E52" text-anchor="' + (tgtPlace === 'left' ? 'start' : 'end') + '" stroke="#fff" stroke-width="3.5" stroke-linejoin="round" style="paint-order:stroke">目标 ' + TARGET + '%</text>';
     lblSpecs.forEach(function(L){
-      s += '<text x="' + L.x + '" y="' + lblY(L) + '" font-size="12" font-weight="700" fill="' + L.col + '" text-anchor="end" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="paint-order:stroke">' + L.txt + '</text>';
+      s += '<text x="' + (L.x + (L.dx || 0)) + '" y="' + (lblY(L) + (L.dy || 0)) + '" font-size="12" font-weight="700" fill="' + L.col + '" text-anchor="end" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="paint-order:stroke">' + L.txt + '</text>';
     });
     var shownD = dateShown(labels.length, spec);
     labels.forEach(function(d, i){
       if(!shownD[i]) return;
       var isLast = i === labels.length - 1;
-      s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="' + spec.dateF + '" fill="#9AA0A6" text-anchor="' + (isLast ? 'end' : 'middle') + '">' + d + '</text>';
+      s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="' + spec.dateF + '" fill="' + (DW.fut[i] ? '#C9CDD3' : '#9AA0A6') + '" text-anchor="' + (isLast ? 'end' : 'middle') + '">' + d + '</text>';
     });
     /* 触控热区（2026-10-20）：每日期一层透明大热区（r=20），可见点大小不变；
        选日不依赖热区自身 i，全图 click 统一走 nearestIdx 坐标吸附（见下方绑定）。 */
@@ -2574,14 +2664,16 @@
     s += '</svg>';
     el('tr-chart').innerHTML = s;
     function pickDay(i){
-        var dd = labels[i], fullI = (TD.dates.length - RANGE) + i;
+        var dd = labels[i];
+        if(DW.fut[i]){ el('tr-tip').innerHTML = '📅 ' + dd + '：还没到这一天'; return; }
+        var srcI = DW.src[i];
         /* 明细条文案（2026-10-20 用户反馈模糊，DeepSeek 终审定稿）：逐年级分段，各自报正确率与达标状态
            （≥TARGET 达标；未达标段整段橙色高亮，并带当日最弱科目与补练建议——最弱科目口径与薄弱日点评一致：
            分科非 null 最低、并列按 SUBJS 顺序）；当日无分科数据则只报状态不给科目；overall 为 null 报
            "当天无数据"，不编造数字。结尾肯定句仅在两年级都有数据且都达标时追加。 */
         var segs = [], nData = 0, anyBad = false;
         GRADES.forEach(function(gr){
-          var v = sl(TD.grades[gr].overall, RANGE)[i];
+          var v = overallW[gr][i];
           if(v === null || v === undefined){ segs.push(GNAME[gr] + '：当天无数据'); return; }
           nData++;
           if(v >= TARGET){
@@ -2590,7 +2682,7 @@
           }
           anyBad = true;
           var sv = SUBJS.map(function(sn){
-            return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fullI] };
+            return { sn: sn, si: SUBJS.indexOf(sn), v: srcI >= 0 ? TD.grades[gr].subjects[sn].days[srcI] : null };
           }).filter(function(x){ return x.v !== null && x.v !== undefined; });
           sv.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
           var seg = gr + ' <b>' + fmt(v) + '%</b>（未达标，低于目标线' + TARGET + '%）';
@@ -2614,22 +2706,22 @@
        （分科非 null 最低、并列按 SUBJS 顺序，与点选明细口径一致）→ 各自点评行，两行都显示。
        某年级窗口内无有效数据（overall 全 null，或最弱日无分科数值）→ 该年级显式
        "暂无数据"，不编造、不借用另一年级数据；两年级都无数据 → 整条隐藏（既有无数据处理）。 */
-    var off = TD.dates.length - RANGE, wkLines = [], wkAny = false;
+    var wkLines = [], wkAny = false;
     GRADES.forEach(function(gr){
       var gb = null;
-      sl(TD.grades[gr].overall, RANGE).forEach(function(v, i){
+      overallW[gr].forEach(function(v, i){
         if(v === null || v === undefined) return;
         if(!gb || v < gb.v) gb = { i: i, v: v };
       });
       if(!gb){ wkLines.push('💡 薄弱日：' + GNAME[gr] + '暂无数据。'); return; }
-      var fI = off + gb.i, sVals = SUBJS.map(function(sn){
-        return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fI] };
+      var fI = DW.src[gb.i], sVals = SUBJS.map(function(sn){
+        return { sn: sn, si: SUBJS.indexOf(sn), v: fI >= 0 ? TD.grades[gr].subjects[sn].days[fI] : null };
       }).filter(function(x){ return x.v !== null && x.v !== undefined; });
       sVals.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
       if(!sVals.length){ wkLines.push('💡 薄弱日：' + GNAME[gr] + '暂无数据。'); return; }
       wkAny = true;
       var wsn = sVals[0].sn;
-      wkLines.push('💡 薄弱日：' + TD.dates[fI].slice(5) + '（' + GNAME[gr] + ' ' + fmt(gb.v) + '%），' + wsn + '最低 ' + fmt(sVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。');
+      wkLines.push('💡 薄弱日：' + DW.dates[gb.i].slice(5) + '（' + GNAME[gr] + ' ' + fmt(gb.v) + '%），' + wsn + '最低 ' + fmt(sVals[0].v) + '%——建议下次先做' + wsn + '，留足时间。');
     });
     if(wkAny){
       var wk = el('tr-wknote'); wk.style.display = 'block';
@@ -2646,7 +2738,7 @@
     var actHtml = '';
     GRADES.forEach(function(gr){
       var gb = null;
-      sl(TD.grades[gr].overall, RANGE).forEach(function(v, i){
+      overallW[gr].forEach(function(v, i){
         if(v === null || v === undefined) return;
         if(!gb || v < gb.v) gb = { i: i, v: v };
       });
@@ -2654,8 +2746,8 @@
         actHtml += '<div style="color:#6B7280;margin-top:6px"><b>' + GNAME[gr] + '</b>：数据未接入。</div>';
         return;
       }
-      var fI = off + gb.i, sv = SUBJS.map(function(sn){
-        return { sn: sn, si: SUBJS.indexOf(sn), v: TD.grades[gr].subjects[sn].days[fI] };
+      var fI = DW.src[gb.i], sv = SUBJS.map(function(sn){
+        return { sn: sn, si: SUBJS.indexOf(sn), v: fI >= 0 ? TD.grades[gr].subjects[sn].days[fI] : null };
       }).filter(function(x){ return x.v !== null && x.v !== undefined; });
       sv.sort(function(x, y){ return (x.v - y.v) || (x.si - y.si); });
       var topW = sv.length ? (TD.grades[gr].subjects[sv[0].sn].weak || [])[0] : null;
@@ -2701,7 +2793,7 @@
         + '<div style="font-size:11.5px;color:#9AA0A6;margin-top:4px">' + (left > 0 ? '再达标 ' + left + ' 天 → 累计满一周' : '已累计达标满一周 🎉') + '</div></div>';
     }
     el('tr-incrow').innerHTML = GRADES.map(function(gr){
-      var cnt = nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length;
+      var cnt = nn(overallW[gr]).filter(function(v){ return v >= TARGET; }).length;
       return incHtml(GNAME[gr], cnt, 7);
     }).join('');
     el('tr-inctxt').textContent = '近' + RANGE + '天口径';
@@ -2717,7 +2809,7 @@
       var a7 = avg(sl(all, 7)), p7 = avg(all.slice(-14, -7));
       return '<div class="tr-stat">' + GNAME[gr] + ' · 近7天平均<b>' + (a7 === null ? '—' : fmt(a7) + '%' + deltaHtml(a7, p7)) + '</b></div>';
     }).join('') + '<div class="tr-stat">达标天数（≥85%）<b>' + GRADES.map(function(gr){
-      return GNAME[gr] + ' ' + nn(sl(TD.grades[gr].overall, RANGE)).filter(function(v){ return v >= TARGET; }).length + ' 天';
+      return GNAME[gr] + ' ' + nn(overallW[gr]).filter(function(v){ return v >= TARGET; }).length + ' 天';
     }).join(' · ') + '</b></div>';
 
     /* 选项卡与筛选 */
@@ -2732,12 +2824,18 @@
     renderMinis();
   }
 
-  function sparkSVG(vals, color){
+  function sparkSVG(vals, color, fut){
     var W = 210, H = 90, PL = 6, PR = 6, PT = 8, PB = 8;
     var g = gridSVG(W, H, PL, PR, PT, PB, vals.map(function(){ return ''; }), 99);
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">';
     s += '<line x1="' + PL + '" y1="' + g.Y(TARGET) + '" x2="' + (W - PR) + '" y2="' + g.Y(TARGET) + '" stroke="#1E9E52" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>';
     s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round"/>';
+    /* 空值日与主图同口径：历史无数据画灰圈占位，未来日不画 */
+    vals.forEach(function(v, i){
+      if(v !== null && v !== undefined) return;
+      if(fut && fut[i]) return;
+      s += '<circle cx="' + g.X(i) + '" cy="' + gapY(vals, i, g.Y) + '" r="3.5" fill="#fff" stroke="#B9BDC4" stroke-width="1.3" stroke-dasharray="2.5 2"/>';
+    });
     /* F4（2026-10-20）：单点场景补圆点，纯路径看不见 */
     if(nn(vals).length === 1){
       vals.forEach(function(v, i){ if(v !== null && v !== undefined) s += '<circle cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="' + color + '"/>'; });
@@ -2748,11 +2846,12 @@
 
   function renderMinis(){
     var box = el('tr-minis'); if(!box || !TD) return;
+    var DWm = dispWindow();
     box.innerHTML = GRADES.map(function(gr){
       var minis = SUBJS.map(function(sn){
-        var vals = sl(TD.grades[gr].subjects[sn].days, RANGE);
+        var vals = winVals(TD.grades[gr].subjects[sn].days, DWm);
         var a = avg(vals);
-        return '<div class="tr-mini" data-g="' + gr + '" data-sn="' + sn + '"><div class="tr-mhd"><span>' + sn + '</span><b>' + (a === null ? '—' : fmt(a) + '%') + '</b></div>' + sparkSVG(vals, GCOL[gr]) + '</div>';
+        return '<div class="tr-mini" data-g="' + gr + '" data-sn="' + sn + '"><div class="tr-mhd"><span>' + sn + '</span><b>' + (a === null ? '—' : fmt(a) + '%') + '</b></div>' + sparkSVG(vals, GCOL[gr], DWm.fut) + '</div>';
       }).join('');
       return '<div class="tr-mrow"><div class="tr-mlab">' + gr + '</div>' + minis + '</div>';
     }).join('');
@@ -2765,8 +2864,9 @@
     if(!TD) return;
     var box = el('tr-subj'); if(!box) return;
     SHOW_SUBJ = { g: gr, sn: sn };
-    var dates = sl(TD.dates, RANGE), labels = dates.map(function(d){ return d.slice(5); });
-    var vals = sl(TD.grades[gr].subjects[sn].days, RANGE), color = GCOL[gr];
+    var DW = dispWindow();
+    var dates = DW.dates, labels = dates.map(function(d){ return d.slice(5); });
+    var vals = winVals(TD.grades[gr].subjects[sn].days, DW), color = GCOL[gr];
     var spec = axisSpec(box.clientWidth, labels.length);
     var W = 680, H = 280, PL = spec.pl, PR = 16, PT = 18, PB = 34;
     var g = gridSVG(W, H, PL, PR, PT, PB, labels, spec.step, spec.scaleF);
@@ -2774,15 +2874,21 @@
     h += '<div class="tr-sub">近' + RANGE + '天 · 点小图可切换科目</div>';
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;margin-top:6px;touch-action:manipulation">' + g.s;
     s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2.4" stroke-linejoin="round"/>';
+    /* 目标线标注（2026-10-21，同主图）：虚线右端标「目标 85%」（分科大图无末点值标签，无需避让） */
+    s += '<text x="' + (W - PR - 4) + '" y="' + (g.Y(TARGET) - 6) + '" font-size="11.5" font-weight="700" fill="#1E9E52" text-anchor="end" stroke="#fff" stroke-width="3.5" stroke-linejoin="round" style="paint-order:stroke">目标 ' + TARGET + '%</text>';
     vals.forEach(function(v, i){
-      if(v === null || v === undefined) return;
+      if(DW.fut[i]) return; /* 未来日：不画点、不画占位圈 */
+      if(v === null || v === undefined){
+        s += '<circle class="tr-nodata" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + gapY(vals, i, g.Y) + '" r="5" fill="#fff" stroke="#B9BDC4" stroke-width="1.6" stroke-dasharray="3 2"/>';
+        return;
+      }
       s += '<circle class="tr-spt" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="#fff" stroke="' + color + '" stroke-width="2" style="cursor:pointer"/>';
     });
     var shownD = dateShown(labels.length, spec);
     labels.forEach(function(d, i){
       if(!shownD[i]) return;
       var isLast = i === labels.length - 1;
-      s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="' + spec.dateF + '" fill="#9AA0A6" text-anchor="' + (isLast ? 'end' : 'middle') + '">' + d + '</text>';
+      s += '<text x="' + g.X(i) + '" y="' + (H - 12) + '" font-size="' + spec.dateF + '" fill="' + (DW.fut[i] ? '#C9CDD3' : '#9AA0A6') + '" text-anchor="' + (isLast ? 'end' : 'middle') + '">' + d + '</text>';
     });
     /* 触控热区（2026-10-20）：同主图，每日期透明热区 r=20，可见点不变，选日走 svg 根坐标吸附。 */
     labels.forEach(function(d, i){
@@ -2811,6 +2917,7 @@
     box.innerHTML = h;
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     function pickSubjDay(i){
+      if(DW.fut[i]){ el('tr-stip').textContent = '📅 ' + labels[i] + '：还没到这一天'; return; }
       var v = vals[i];
       el('tr-stip').textContent = '📅 ' + labels[i] + '：' + gr + sn + ' ' + (v === null || v === undefined ? '无数据' : fmt(v) + '%' + (v < TARGET ? '（未达标）' : '（达标 ✓）'));
     }
