@@ -1,12 +1,39 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T17:42:48+08:00",
+  "generated_at": "2026-10-21T19:46:20+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "19:30",
+      "time_source": "entry",
+      "reason": "语文朗读按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:30",
+      "time_source": "entry",
+      "reason": "语文朗读达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:29",
+      "time_source": "entry",
+      "reason": "英语口语按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-20",
       "time": "23:37",
@@ -157,33 +184,6 @@
       "time_source": "entry",
       "reason": "英语口语按时发回",
       "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "21:34",
-      "time_source": "entry",
-      "reason": "英语口语达标",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "20:47",
-      "time_source": "entry",
-      "reason": "数学作业完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "20:47",
-      "time_source": "entry",
-      "reason": "数学正确率88.9%",
-      "pts": 3,
       "sign": "plus",
       "filtered": false
     }
