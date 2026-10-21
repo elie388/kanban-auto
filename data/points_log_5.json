@@ -1,12 +1,39 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T20:06:20+08:00",
+  "generated_at": "2026-10-21T20:13:59+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "20:13",
+      "time_source": "entry",
+      "reason": "语文生字抄写完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:13",
+      "time_source": "entry",
+      "reason": "语文生字抄写正确率62.5%",
+      "pts": 0,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:13",
+      "time_source": "entry",
+      "reason": "语文生字抄写书写-2",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "20:06",
@@ -148,33 +175,6 @@
       "time_source": "entry",
       "reason": "数学完成分",
       "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "数学书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "数学完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "数学正确率92.3%",
-      "pts": 6,
       "sign": "plus",
       "filtered": false
     },
