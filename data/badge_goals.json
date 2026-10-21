@@ -175,7 +175,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 2,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -206,7 +206,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 4,
+     "current": 5,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -405,7 +405,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -444,7 +444,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 2,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -683,5 +683,5 @@
   ]
  },
  "cycle_week": "2026-W43",
- "generated_at": "2026-10-21T21:07:10+08:00"
+ "generated_at": "2026-10-21T23:08:33+08:00"
 }
