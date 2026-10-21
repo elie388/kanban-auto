@@ -1,242 +1,278 @@
 {
- "schema_version": "1.0",
- "date": "2026-10-21",
- "grade": "六年级",
- "generated_at": "2026-10-21T00:05:05+08:00",
- "updated_at": "2026-10-21T19:37:15+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-10-21T19:37:09+08:00",
-   "new_lines": 0
+  "schema_version": "1.0",
+  "date": "2026-10-21",
+  "grade": "六年级",
+  "generated_at": "2026-10-21T00:05:05+08:00",
+  "updated_at": "2026-10-21T19:57:48+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-10-21T19:57:48+08:00",
+      "new_lines": 2
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": "2026-10-21T19:11:00+08:00",
+      "status": "done"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": "2026-10-21T19:00:18+08:00",
+      "status": "done"
+    }
   },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": "2026-10-21T19:11:00+08:00",
-   "status": "done"
+  "tasks": [
+    {
+      "task_id": "D53-2026-10-21-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-21T16:55:24+08:00",
+      "updated_at": "2026-10-21T16:55:24+08:00"
+    },
+    {
+      "task_id": "D53-2026-10-21-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-21T16:55:24+08:00",
+      "updated_at": "2026-10-21T16:55:24+08:00"
+    },
+    {
+      "task_id": "D53-2026-10-21-ENG",
+      "source": "daily_53",
+      "subject": "英语",
+      "title": "53天天练·英语",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-21T16:55:24+08:00",
+      "updated_at": "2026-10-21T16:55:24+08:00"
+    },
+    {
+      "task_id": "META-REGISTER-2026-10-21",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "拍登记本照片发回年级邮箱",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-10-21T18:22:23+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "completed_at": "2026-10-21T19:10:16+08:00"
+    },
+    {
+      "task_id": "PRACT-20261021-C81B9C",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "Word：六年级针对性练习_2026-10-21.docx，按今日练习清单完成",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#六年级针对性练习_2026-10-21.docx",
+      "file_hash": null,
+      "created_at": "2026-10-21T19:06:59+08:00",
+      "updated_at": "2026-10-21T19:06:59+08:00"
+    },
+    {
+      "task_id": "REG-20261021-606597",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄U3 famous到young的单词和中文各4次，背10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-1EC62E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "写B面的中文，跟读10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-C83A44",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3单词、B面对话",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-5EE65E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "修改订正作文，重新誊写一次（作文①）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观?》（末字待确认）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-455A18",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "复习第三单元，听写并默《观潮》",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观?》（末字待确认）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-018282",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本23、25",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本23、25；②读背概念26、27。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-36F592",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念26、27。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本23、25；②读背概念26、27。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:10:16+08:00",
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261021-1C6329",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3单词、B面对话。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②写B面的中文，跟读10次；早读：U3单词、B面对话。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:57:48+08:00",
+      "updated_at": "2026-10-21T19:57:48+08:00"
+    },
+    {
+      "task_id": "REG-20261021-A8FCF1",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "复习第三单元，听写并默《观潮》。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观潮》。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-21T19:57:48+08:00",
+      "updated_at": "2026-10-21T19:57:48+08:00"
+    }
+  ],
+  "counts": {
+    "total": 14,
+    "pending": 13,
+    "in_progress": 0,
+    "done": 1,
+    "pending_review": 0
   },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": "2026-10-21T19:00:18+08:00",
-   "status": "done"
-  }
- },
- "tasks": [
-  {
-   "task_id": "D53-2026-10-21-CHN",
-   "source": "daily_53",
-   "subject": "语文",
-   "title": "53天天练·语文",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-21T16:55:24+08:00",
-   "updated_at": "2026-10-21T16:55:24+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-21-MATH",
-   "source": "daily_53",
-   "subject": "数学",
-   "title": "53天天练·数学",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-21T16:55:24+08:00",
-   "updated_at": "2026-10-21T16:55:24+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-21-ENG",
-   "source": "daily_53",
-   "subject": "英语",
-   "title": "53天天练·英语",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-21T16:55:24+08:00",
-   "updated_at": "2026-10-21T16:55:24+08:00"
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-21",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "拍登记本照片发回年级邮箱",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-10-21T18:22:23+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "completed_at": "2026-10-21T19:10:16+08:00"
-  },
-  {
-   "task_id": "PRACT-20261021-C81B9C",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "针对性练习（含口语+背诵）",
-   "detail": "Word：六年级针对性练习_2026-10-21.docx，按今日练习清单完成",
-   "estimate_min": 30,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "今日练习清单.json#六年级针对性练习_2026-10-21.docx",
-   "file_hash": null,
-   "created_at": "2026-10-21T19:06:59+08:00",
-   "updated_at": "2026-10-21T19:06:59+08:00"
-  },
-  {
-   "task_id": "REG-20261021-606597",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "抄U3 famous到young的单词和中文各4次，背10次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-1EC62E",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "写B面的中文，跟读10次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-C83A44",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "U3单词、B面对话",
-   "detail": "原状态：待完成（无佐证照片）",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄U3 famous到young的单词和中文各4次，背10次；②复习U3中文，跟读10次；早读：U3单词、总对话。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-5EE65E",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "修改订正作文，重新誊写一次（作文①）",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观?》（末字待确认）。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-455A18",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "复习第三单元，听写并默《观潮》",
-   "detail": "原状态：待完成（无佐证照片）",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①修改订正作文，重新誊写一次（作文①）；②复习第三单元，听写并默《观?》（末字待确认）。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-018282",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本23、25",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①校本23、25；②读背概念26、27。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-36F592",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念26、27。",
-   "detail": "原状态：待完成（无佐证照片）",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①校本23、25；②读背概念26、27。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T19:10:16+08:00",
-   "updated_at": "2026-10-21T19:10:16+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  }
- ],
- "counts": {
-  "total": 12,
-  "pending": 11,
-  "in_progress": 0,
-  "done": 1,
-  "pending_review": 0
- },
- "deadline_today": "2026-10-21T22:30:00+08:00"
+  "deadline_today": "2026-10-21T22:30:00+08:00"
 }
