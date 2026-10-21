@@ -4,6 +4,8 @@
 监听（Q4 裁决澄清：徽章颁发台账即积分记录.md，无独立文件，不得虚构路径）：
   hidden_files/积分记录.md -> [build_stats.py, sync_sections.py]
   hidden_files/规则手册.md  -> [sync_sections.py]
+  hidden_files/tasks_daily_5.json -> [sync_tasks.py]  （2026-10-21 选项1补强）
+  hidden_files/tasks_daily_6.json -> [sync_tasks.py]  （2026-10-21 选项1补强）
 明确不监听 kanban-deploy/data/*.json 产物（防自触发循环）。
 
 触发策略（取与关系，Q5）：
@@ -70,11 +72,17 @@ except Exception as _e:  # P2 修复（2026-10-20）：回退不再静默——�
     _SILENT_IMPORT_ERR = _e
 
 QBANK = Path(os.environ.get("QBANK_PATH", str(REPO_DIR.parent / "题目库.db")))
+TASKS_5 = Path(os.environ.get("TASKS_5_PATH", str(REPO_DIR.parent / "tasks_daily_5.json")))
+TASKS_6 = Path(os.environ.get("TASKS_6_PATH", str(REPO_DIR.parent / "tasks_daily_6.json")))
 WATCH_TARGETS = {
     "ledger": (LEDGER, ["build_stats.py", "sync_sections.py"]),
     "rulebook": (RULEBOOK, ["sync_sections.py"]),
     # 学习走势（2026-10-20 DeepSeek 方案）：题目库只读聚合 → data/trends.json
     "qbank": (QBANK, ["build_trends.py"]),
+    # 任务表（2026-10-21 选项1补强）：task_ingest 落盘 hidden_files/tasks_daily_*.json
+    # 后由 sync_tasks.py 拷贝到 data/ 并 commit+push（幂等，无变化则空转）
+    "tasks_5": (TASKS_5, ["sync_tasks.py"]),
+    "tasks_6": (TASKS_6, ["sync_tasks.py"]),
 }
 
 
@@ -359,6 +367,18 @@ class Watcher:
         return "ok" if r.returncode == 0 else "failed"
 
 
+def _pid_stale_takeover(stored_boot_id, current_boot_id=BOOT_ID):
+    """pid 校验（2026-10-21 存活事故修复）：pid 文件 boot_id 与当前环境不一致
+    → 视同已死，可接管重启（旧环境残留的 pid 号可能被新环境进程复用，
+    光靠 kill(pid,0) 会误判存活，导致 singleton_conflict 退出、无人再拉起）。
+    stored 为 None（旧版纯整数格式）→ 无法判断，沿用旧逻辑。"""
+    if stored_boot_id is None:
+        return False
+    if current_boot_id in (None, "unknown"):
+        return False
+    return stored_boot_id != current_boot_id
+
+
 def acquire_singleton():
     """PID 文件 + flock 单例。返回 (ok, reason)。"""
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -369,7 +389,17 @@ def acquire_singleton():
         return False, "another instance holds the lock"
     if PID_FILE.exists():
         try:
-            pid, _ = _parse_pid_content(PID_FILE.read_text())
+            pid, boot = _parse_pid_content(PID_FILE.read_text())
+            if pid is not None and _pid_stale_takeover(boot):
+                # 跨环境残留：直接接管，不判 singleton_conflict
+                log("stale_pid_takeover",
+                    "pid 文件 boot_id(%s) 与当前环境(%s)不一致，视同已死，接管重启"
+                    % (boot, BOOT_ID), {"old_pid": pid})
+                try:
+                    PID_FILE.unlink()
+                except OSError:
+                    pass
+                pid = None
             if pid is not None:
                 os.kill(pid, 0)
                 return False, "pid file alive (pid=%d)" % pid
@@ -577,6 +607,34 @@ def selftest():
         rec("T6 信号处理器", True, "SIGTERM/INT/HUP/QUIT 均注册 _signal_exit；置位 exit_reason=signal:SIGHUP 后 SystemExit")
     except Exception as e:
         rec("T6 信号处理器", False, str(e)[:200])
+
+    # T7 任务表监听项（2026-10-21 选项1补强 / 验收 T7）
+    try:
+        for key, fname in (("tasks_5", "tasks_daily_5.json"),
+                           ("tasks_6", "tasks_daily_6.json")):
+            path, consumers = WATCH_TARGETS[key]
+            assert str(path).endswith(fname), (key, path)
+            assert consumers == ["sync_tasks.py"], (key, consumers)
+        assert (SCRIPT_DIR / "sync_tasks.py").exists(), "sync_tasks.py 缺失"
+        assert TASKS_5.parent == REPO_DIR.parent, "TASKS_5 应指向 hidden_files 根"
+        rec("T7 任务表监听", True,
+            "tasks_5/tasks_6 → [sync_tasks.py] 已注册，源=hidden_files/tasks_daily_*.json")
+    except Exception as e:
+        rec("T7 任务表监听", False, str(e)[:200])
+
+    # T8 pid 跨环境接管（2026-10-21 存活事故修复 / 验收 T8）
+    try:
+        assert _pid_stale_takeover("boot-old", "boot-new") is True, "boot 不一致应接管"
+        assert _pid_stale_takeover("boot-same", "boot-same") is False, "boot 一致不接管"
+        assert _pid_stale_takeover(None, "boot-new") is False, "旧格式沿用旧逻辑"
+        assert _pid_stale_takeover("boot-old", "unknown") is False, "boot 不可读不接管"
+        pid, boot = _parse_pid_content(
+            json.dumps({"pid": 1, "boot_id": "b"}))
+        assert (pid, boot) == (1, "b")
+        rec("T8 pid跨环境接管", True,
+            "boot 不一致→接管；一致/旧格式/unknown→沿用旧逻辑")
+    except Exception as e:
+        rec("T8 pid跨环境接管", False, str(e)[:200])
 
     n_fail = sum(1 for x in results if not x)
     print("自测完成：%d 通过 / %d 失败" % (len(results) - n_fail, n_fail), flush=True)

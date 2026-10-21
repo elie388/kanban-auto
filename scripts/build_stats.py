@@ -461,6 +461,16 @@ def build_shop(grade, balance, generated_at):
 # 模板余额注入已废止（2026-10-20 17:27 熔断修复：2cea4ca 按用户拍板将模板余额卡
 # 静态值改为占位符'—'，禁止再把余额硬编码进模板；前端加载器已从 data/stats JSON
 # 实时写入真实余额，本处不再做构建时替换）。
+# 熔断根因修复（2026-10-21，家长拍板选项3）：docs/程序异常台账.md 的操作者
+# 正当更新不得再阻断数据同步。构建本身从不写该文件、提交段也不 add 它，
+# 故列入容忍清单：仅免除 R4 拦截，文件内容原样保留，绝不代人 stash/commit。
+# 原有三条防线不变：台账解析失败 §7.1 独立熔断、模板行数 ≤4 校验保留、
+# 其余非预期路径照旧拦截。
+R4_TOLERATED_PATHS = {
+    "docs/程序异常台账.md",
+}
+
+
 def r4_diff_check(snapshot_before):
     """R4：替换后 diff 与快照对比 —— 除 data/*.json 外只允许模板变化，且模板行数变动 ≤ 4。"""
     cur = git("-c", "core.quotepath=false", "diff", "--stat")
@@ -477,7 +487,11 @@ def r4_diff_check(snapshot_before):
         m = re.match(r"^\s*(.+?)\s+\|\s+(\d+)", ln)
         if m:
             changed.add(m.group(1).strip())
-    unexpected = changed - allowed_data - {template_name}
+    tolerated = sorted(changed & R4_TOLERATED_PATHS)
+    if tolerated:
+        err_write("R4 容忍：docs 程序异常台账有未提交变更，不阻断数据同步：%s"
+                  % ",".join(tolerated))
+    unexpected = changed - allowed_data - {template_name} - R4_TOLERATED_PATHS
     if unexpected:
         raise ValueError("R4 拦截：出现非预期变更文件 %r" % sorted(unexpected))
     if template_name in changed:
@@ -1155,6 +1169,42 @@ def selftest():
         rec("T10 N3首轮判定", True, "空/只有昨日行/文件缺失→首轮；今日已有行→非首轮")
     except Exception as e:
         rec("T10 N3首轮判定", False, str(e)[:200])
+
+    # --- T11 R4 容忍 docs/程序异常台账.md（2026-10-21 熔断根因修复验收）---
+    try:
+        _real_git = globals()["git"]
+
+        class _FR:
+            returncode = 0
+            stdout = (" data/stats_grade_5.json | 2 +-\n"
+                      " docs/程序异常台账.md | 3 ++-\n")
+
+        class _FR2:
+            returncode = 0
+            stdout = " scripts/evil.py | 9 ++++++++-\n"
+
+        globals()["git"] = lambda *a: _FR()
+        try:
+            assert r4_diff_check("") is True, "docs 台账变更应被容忍放行"
+        finally:
+            globals()["git"] = _real_git
+        globals()["git"] = lambda *a: _FR2()
+        try:
+            try:
+                r4_diff_check("")
+                raise SystemExit("未知文件未被拦截")
+            except ValueError as ve:
+                assert "R4 拦截" in str(ve), str(ve)
+        finally:
+            globals()["git"] = _real_git
+        rec("T11 R4容忍docs", True,
+            "docs/程序异常台账.md 未提交变更放行；未知文件仍 R4 拦截")
+    except Exception as e:
+        try:
+            globals()["git"] = _real_git
+        except Exception:
+            pass
+        rec("T11 R4容忍docs", False, str(e)[:200])
 
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
