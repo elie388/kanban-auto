@@ -1,7 +1,11 @@
 {
   "schema_version": "1.1",
   "grade": 6,
+<<<<<<< Updated upstream
   "generated_at": "2026-10-21T20:06:20+08:00",
+=======
+  "generated_at": "2026-10-21T20:05:07+08:00",
+>>>>>>> Stashed changes
   "window": {
     "days": 7,
     "max_items": 20
