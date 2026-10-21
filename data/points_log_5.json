@@ -1,12 +1,39 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T21:07:05+08:00",
+  "generated_at": "2026-10-21T23:08:29+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "22:47",
+      "time_source": "entry",
+      "reason": "🏅家务接力手徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "22:38",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "22:38",
+      "time_source": "entry",
+      "reason": "晾衣服连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "21:06",
@@ -156,33 +183,6 @@
       "time": "20:06",
       "time_source": "entry",
       "reason": "英语19页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语19页正确率93.3%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语19页书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语20页完成分",
       "pts": 10,
       "sign": "plus",
       "filtered": false

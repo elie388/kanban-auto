@@ -1,12 +1,30 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T22:09:09+08:00",
+  "generated_at": "2026-10-21T23:08:29+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "22:47",
+      "time_source": "entry",
+      "reason": "撤销2026-六年级语文作业正确率+3：唯一判错\"蒙冲应为艨艟\"系标准错用误判；…",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "22:47",
+      "time_source": "entry",
+      "reason": "🏅家务接力手徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "21:55",
@@ -166,24 +184,6 @@
       "time_source": "entry",
       "reason": "英语U3抄写书写工整",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "21:06",
-      "time_source": "entry",
-      "reason": "拖地",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:27",
-      "time_source": "entry",
-      "reason": "英语抄写订正",
-      "pts": 10,
       "sign": "plus",
       "filtered": false
     }
