@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-20T23:58:29+08:00",
+  "generated_at": "2026-10-21T17:42:48+08:00",
   "window": {
     "days": 7,
     "max_items": 20
@@ -126,6 +126,15 @@
     },
     {
       "date": "10-20",
+      "time": "22:30",
+      "time_source": "entry",
+      "reason": "53天天练三科未交",
+      "pts": -9,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
       "time": "21:35",
       "time_source": "entry",
       "reason": "语文背诵按时发回",
@@ -175,15 +184,6 @@
       "time_source": "entry",
       "reason": "数学正确率88.9%",
       "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "20:47",
-      "time_source": "entry",
-      "reason": "数学书写表扬",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }

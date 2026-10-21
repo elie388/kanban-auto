@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T06:00:14+08:00",
+  "generated_at": "2026-10-21T17:42:48+08:00",
   "window": {
     "days": 7,
     "max_items": 20
@@ -23,6 +23,24 @@
       "reason": "晚上超11点睡觉",
       "pts": -10,
       "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:06",
+      "time_source": "entry",
+      "reason": "整理桌面",
+      "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:00",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
       "filtered": false
     },
     {
@@ -167,24 +185,6 @@
       "reason": "53天天练P5-3完成分",
       "pts": 3,
       "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "53天天练P5-3正确率100%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "53天天练缺1页",
-      "pts": -3,
-      "sign": "minus",
       "filtered": false
     }
   ],
