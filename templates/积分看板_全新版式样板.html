@@ -2265,7 +2265,7 @@
       body.appendChild(el('div','redeem-grade', GRADE_NAME[gk]));
       var arr = d.by_grade[gk] || [];
       if(!arr.length){
-        body.appendChild(el('div','redeem-empty','还没有兑换过哦～攒够积分，来这里换游戏时间，也能换一次心愿达成。'));
+        body.appendChild(el('div','redeem-empty','还没有兑换过哦～'));
         return;
       }
       arr.forEach(function(r){
