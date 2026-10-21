@@ -745,9 +745,26 @@
     .card h2{font-size:20px;}
     .task .task-name{font-size:15px;}
   }
+  /* 下拉刷新指示条（2026-10-21）：固定顶部居中胶囊，跟随下拉位移；仅触摸手势驱动，桌面端无影响 */
+  .ptr-bar{
+    position:fixed; left:50%; top:calc(env(safe-area-inset-top, 0px) + 10px);
+    transform:translate(-50%,-72px); opacity:0; z-index:999;
+    background:var(--card); color:var(--txt);
+    border:1px solid rgba(255,255,255,.7); border-radius:999px;
+    box-shadow:var(--shadow);
+    padding:7px 16px; font-size:13px; line-height:1.3; white-space:nowrap;
+    display:flex; align-items:center; gap:6px;
+    pointer-events:none;
+  }
+  .ptr-bar.ptr-anim{transition:transform .25s ease, opacity .25s ease;}
+  .ptr-bar .ptr-ico{display:inline-block; transition:transform .15s ease;}
+  .ptr-bar.ptr-ready .ptr-ico{transform:rotate(180deg);}
+  .ptr-bar.ptr-busy .ptr-ico{animation:ptrSpin .8s linear infinite;}
+  @keyframes ptrSpin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
+<div class="ptr-bar" id="ptr-bar" aria-hidden="true"><span class="ptr-ico" id="ptr-ico">↓</span><span id="ptr-txt">下拉刷新</span></div>
 <div class="wrap">
 
   <!-- 标题 -->
@@ -3093,6 +3110,154 @@
   });
   var btn = el('btn-trend');
   if(btn) btn.addEventListener('click', function(){ if(!TD) loadTrends(); });
+})();
+</script>
+
+<script>
+/* 2026-10-21 下拉刷新（独立 IIFE，与各模块零耦合）：
+   - 仅页面滚动在顶部时响应触摸下拉；指示条跟随位移（阻尼），70px 为触发阈值
+   - 刷新复用既有全量加载入口 __kanbanRefreshStats/Sections/Tasks/Trends（与倒计时软刷新同套，
+     各模块自带 no-cache + 版本参数与本地缓存兜底，本段不另起 fetch 封装）
+   - 成败判定：透明计数 data/*.json 的网络请求（包一层 window.fetch 仅计数、原样转发），
+     PTR 期间有任一请求成功即「已更新」；全部失败（断网等）提示并保留旧数据（模块兜底本就不清空） */
+(function(){
+  'use strict';
+  var bar = document.getElementById('ptr-bar');
+  var txt = document.getElementById('ptr-txt');
+  if(!bar || !txt) return;
+  var ico = document.getElementById('ptr-ico');
+
+  var THRESHOLD = 70;   /* 触发阈值（原始下拉距离 px） */
+  var RESIST = 0.6;     /* 指示条位移阻尼 */
+  var HIDDEN_Y = -72;   /* 隐藏位移，与 CSS 初始 transform 一致 */
+
+  /* ---- fetch 活动计数（透明转发，不改任何模块行为） ---- */
+  var act = { started: 0, ok: 0, inflight: 0 };
+  try{
+    var origFetch = window.fetch;
+    if(typeof origFetch === 'function'){
+      window.fetch = function(){
+        var url = '';
+        try{ url = String(arguments[0] && arguments[0].url ? arguments[0].url : arguments[0]); }catch(e){}
+        var isData = /\/data\/[^/?#]+\.json(\?|#|$)/.test(url) || /^data\/[^/?#]+\.json(\?|#|$)/.test(url);
+        if(!isData) return origFetch.apply(window, arguments);
+        act.started++; act.inflight++;
+        var p = origFetch.apply(window, arguments);
+        p.then(function(r){ act.inflight--; if(r && r.ok) act.ok++; },
+               function(){ act.inflight--; });
+        return p;
+      };
+    }
+  }catch(e){ /* 计数失败仅影响成败提示文案，不影响刷新本身 */ }
+
+  function setBar(y, anim){
+    bar.classList.toggle('ptr-anim', !!anim);
+    bar.style.transform = 'translate(-50%,' + y + 'px)';
+    bar.style.opacity = (y <= HIDDEN_Y) ? '0' : '1';
+  }
+  function setTxt(t){ if(txt.textContent !== t) txt.textContent = t; }
+  function fmtHMS(){
+    try{
+      var s = new Date().toLocaleTimeString('zh-CN', { timeZone: 'Asia/Shanghai', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+      var m = s.match(/(\d{1,2}):(\d{2}):(\d{2})/);
+      if(m) return (m[1].length < 2 ? '0' + m[1] : m[1]) + ':' + m[2] + ':' + m[3];
+    }catch(e){}
+    var d = new Date(), p2 = function(n){ return (n < 10 ? '0' : '') + n; };
+    return p2(d.getHours()) + ':' + p2(d.getMinutes()) + ':' + p2(d.getSeconds());
+  }
+
+  var refreshing = false;
+
+  function doRefresh(){
+    if(refreshing) return;
+    refreshing = true;
+    bar.classList.remove('ptr-ready');
+    bar.classList.add('ptr-busy');
+    if(ico) ico.textContent = '⟳';
+    setTxt('刷新中…');
+    setBar(0, true);
+
+    var any = false;
+    ['__kanbanRefreshStats', '__kanbanRefreshSections', '__kanbanRefreshTasks', '__kanbanRefreshTrends'].forEach(function(k){
+      try{ if(typeof window[k] === 'function'){ window[k](); any = true; } }
+      catch(e){ console.warn('下拉刷新入口异常:', k, e); }
+    });
+    if(!any){ location.reload(); return; } /* 入口全未就绪：与软刷新同口径，回退整页刷新 */
+
+    var snapStarted = act.started, snapOk = act.ok;
+    var t0 = Date.now();
+    var timer = setInterval(function(){
+      var elapsed = Date.now() - t0;
+      var started = act.started - snapStarted;
+      var settled = started > 0 && act.inflight === 0 && elapsed >= 900;
+      if(settled || elapsed >= 15000){
+        clearInterval(timer);
+        finishRefresh((act.ok - snapOk) > 0);
+      }
+    }, 150);
+  }
+
+  function finishRefresh(ok){
+    bar.classList.remove('ptr-busy');
+    if(ico) ico.textContent = ok ? '✓' : '!';
+    setTxt(ok ? ('已更新 ' + fmtHMS()) : '刷新失败，显示的是上次数据');
+    setTimeout(function(){
+      setBar(HIDDEN_Y, true);
+      setTimeout(function(){
+        refreshing = false;
+        if(ico) ico.textContent = '↓';
+        setTxt('下拉刷新');
+      }, 280);
+    }, 1600);
+  }
+
+  /* ---- 手势：顶部下拉才介入；横滑/上滑/已离顶一律放行 ---- */
+  var tracking = false, engaged = false, startX = 0, startY = 0, dy = 0;
+
+  function atTop(){ return (window.scrollY || window.pageYOffset || 0) <= 0; }
+
+  function resetGesture(){
+    tracking = false; engaged = false; dy = 0;
+    if(!refreshing){ bar.classList.remove('ptr-ready'); setBar(HIDDEN_Y, true); }
+  }
+
+  document.addEventListener('touchstart', function(e){
+    if(refreshing) return;
+    if(!e.touches || e.touches.length !== 1 || !atTop()){ tracking = false; return; }
+    tracking = true; engaged = false; dy = 0;
+    startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e){
+    if(!tracking || refreshing) return;
+    if(!e.touches || e.touches.length !== 1){ resetGesture(); return; }
+    var dx = e.touches[0].clientX - startX;
+    dy = e.touches[0].clientY - startY;
+    if(!engaged){
+      if(Math.abs(dx) > Math.abs(dy) + 6){ tracking = false; return; } /* 横向滑动：不介入 */
+      if(dy <= 0 || !atTop()){ return; }                                /* 上滑/未在顶部：不介入 */
+      engaged = true;
+    }
+    if(dy <= 0 || !atTop()){ resetGesture(); return; }
+    e.preventDefault(); /* 仅已进入下拉状态才拦截，阻页面滚动与浏览器自带下拉行为 */
+    var y = HIDDEN_Y + Math.min(dy * RESIST, -HIDDEN_Y);
+    setBar(y, false);
+    var ready = dy >= THRESHOLD;
+    bar.classList.toggle('ptr-ready', ready);
+    setTxt(ready ? '松开刷新' : '下拉刷新');
+  }, { passive: false });
+
+  function onEnd(){
+    if(!tracking) return;
+    var fire = engaged && dy >= THRESHOLD;
+    tracking = false; engaged = false;
+    if(fire){ doRefresh(); }
+    else if(!refreshing){ bar.classList.remove('ptr-ready'); setBar(HIDDEN_Y, true); }
+  }
+  document.addEventListener('touchend', onEnd, { passive: true });
+  document.addEventListener('touchcancel', onEnd, { passive: true });
+
+  window.__kanbanPullRefresh = doRefresh; /* 供自检/调试调用，与手势同一入口 */
 })();
 </script>
 
