@@ -188,6 +188,25 @@ def _save_state(state):
         pass
 
 
+def _normalize_dead_state(st, pid, now):
+    """存活保障（2026-10-21 guard 崩溃修复）：旧状态文件可能缺字段或类型异常
+    （KeyError 'first_dead_ts' 曾致 guard 崩溃退出码 1、无人拉起守护），
+    缺失/异常时降级补齐默认值，绝不崩溃。"""
+    if not isinstance(st, dict):
+        st = {}
+    if st.get("dead_pid") != pid:
+        return {"dead_pid": pid, "first_dead_ts": now, "skip_count": 0}
+    try:
+        first = float(st.get("first_dead_ts"))
+    except (TypeError, ValueError):
+        first = now
+    try:
+        skip = int(st.get("skip_count", 0))
+    except (TypeError, ValueError):
+        skip = 0
+    return {"dead_pid": pid, "first_dead_ts": first, "skip_count": skip}
+
+
 def _clear_state():
     try:
         STATE_FILE.unlink()
@@ -259,17 +278,15 @@ def main():
     last = git_last_commit_ts()
     now = time.time()
     if last is not None and now - last < GIT_SILENT_S:
-        st = _load_state()
-        if st.get("dead_pid") != info.get("pid"):
-            st = {"dead_pid": info.get("pid"), "first_dead_ts": now,
-                  "skip_count": 0}
-        st["skip_count"] = int(st.get("skip_count", 0)) + 1
+        # 2026-10-21 崩溃修复：状态归一化（缺字段/类型异常降级，不崩溃）
+        st = _normalize_dead_state(_load_state(), info.get("pid"), now)
+        st["skip_count"] += 1
         _save_state(st)
         extra = {"dead_pid": info.get("pid"),
                  "dead_reason": info.get("dead_reason"),
                  "first_dead_ts": st["first_dead_ts"],
                  "skip_count": st["skip_count"], "last_commit": last}
-        if now - float(st["first_dead_ts"]) >= GIT_SILENT_MAX_S:
+        if now - st["first_dead_ts"] >= GIT_SILENT_MAX_S:
             log("force_relaunch",
                 "静默窗推迟达上限 %ds，强制拉起" % GIT_SILENT_MAX_S, extra)
             _clear_state()
@@ -289,5 +306,46 @@ def main():
     return _relaunch()
 
 
+def selftest():
+    """--selftest：_normalize_dead_state 降级健壮性（2026-10-21 崩溃回归）。"""
+    results = []
+
+    def rec(name, ok, detail):
+        results.append(ok)
+        print("[%s] %s :: %s" % ("PASS" if ok else "FAIL", name, detail), flush=True)
+
+    try:
+        now = 1000.0
+        # G1：缺 first_dead_ts（崩溃现场）→ 降级补齐，不抛 KeyError
+        s = _normalize_dead_state({"dead_pid": 9, "skip_count": 2}, 9, now)
+        assert s == {"dead_pid": 9, "first_dead_ts": now, "skip_count": 2}, s
+        # G2：非 dict / 全空 → 初始化
+        s = _normalize_dead_state(None, 9, now)
+        assert s == {"dead_pid": 9, "first_dead_ts": now, "skip_count": 0}, s
+        s = _normalize_dead_state({}, 9, now)
+        assert s["first_dead_ts"] == now and s["skip_count"] == 0, s
+        # G3：类型异常 → 降级
+        s = _normalize_dead_state(
+            {"dead_pid": 9, "first_dead_ts": "garbage", "skip_count": "x"}, 9, now)
+        assert s["first_dead_ts"] == now and s["skip_count"] == 0, s
+        # G4：pid 变化 → 重置为新事件
+        s = _normalize_dead_state(
+            {"dead_pid": 7, "first_dead_ts": 100.0, "skip_count": 5}, 9, now)
+        assert s == {"dead_pid": 9, "first_dead_ts": now, "skip_count": 0}, s
+        # G5：正常透传
+        s = _normalize_dead_state(
+            {"dead_pid": 9, "first_dead_ts": 900.0, "skip_count": 3}, 9, now)
+        assert s == {"dead_pid": 9, "first_dead_ts": 900.0, "skip_count": 3}, s
+        rec("G1-G5 状态归一化", True,
+            "缺字段/非dict/类型异常/pid变化/正常透传 全部降级不崩溃")
+    except Exception as e:
+        rec("G1-G5 状态归一化", False, str(e)[:200])
+    n_fail = sum(1 for x in results if not x)
+    print("自测完成：%d 通过 / %d 失败" % (len(results) - n_fail, n_fail), flush=True)
+    return 1 if n_fail else 0
+
+
 if __name__ == "__main__":
+    if "--selftest" in sys.argv:
+        sys.exit(selftest())
     sys.exit(main())
