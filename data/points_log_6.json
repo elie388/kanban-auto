@@ -1,12 +1,21 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T23:09:12+08:00",
+  "generated_at": "2026-10-21T23:22:16+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "23:19",
+      "time_source": "entry",
+      "reason": "晚上超11点睡觉",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "22:47",
@@ -175,15 +184,6 @@
       "time_source": "entry",
       "reason": "英语U3抄写正确率84.4%",
       "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "21:07",
-      "time_source": "entry",
-      "reason": "英语U3抄写书写工整",
-      "pts": 2,
       "sign": "plus",
       "filtered": false
     }

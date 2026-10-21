@@ -1,12 +1,21 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T23:09:12+08:00",
+  "generated_at": "2026-10-21T23:22:16+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "23:19",
+      "time_source": "entry",
+      "reason": "晚上超11点睡觉",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "22:47",
@@ -175,15 +184,6 @@
       "time_source": "entry",
       "reason": "数学26页书写+2",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语19页完成分",
-      "pts": 10,
       "sign": "plus",
       "filtered": false
     }
