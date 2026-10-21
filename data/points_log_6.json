@@ -1,12 +1,30 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T19:47:54+08:00",
+  "generated_at": "2026-10-21T20:06:20+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "19:48",
+      "time_source": "entry",
+      "reason": "英语抄写按时发回",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:48",
+      "time_source": "entry",
+      "reason": "英语抄写书写工整无潦草",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "19:30",
@@ -165,24 +183,6 @@
       "time": "21:35",
       "time_source": "entry",
       "reason": "语文背诵按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "21:35",
-      "time_source": "entry",
-      "reason": "语文背诵达标",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "21:34",
-      "time_source": "entry",
-      "reason": "英语口语按时发回",
       "pts": 5,
       "sign": "plus",
       "filtered": false
