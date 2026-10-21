@@ -3,13 +3,7 @@
   "grade": 6,
   "balance": 401,
   "ledger_date": "2026-10-21",
-<<<<<<< Updated upstream
-  "generated_at": "2026-10-21T20:06:20+08:00",
+  "generated_at": "2026-10-21T20:11:20+08:00",
   "source": "hidden_files/积分记录.md",
-  "checksum": "d97d1fe8318962e2"
-=======
-  "generated_at": "2026-10-21T20:05:07+08:00",
-  "source": "hidden_files/积分记录.md",
-  "checksum": "604523e5f56da06f"
->>>>>>> Stashed changes
+  "checksum": "4619718b949a5d57"
 }
