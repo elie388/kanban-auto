@@ -1,282 +1,33 @@
 {
- "schema_version": "1.0",
- "date": "2026-10-21",
- "grade": "五年级",
- "generated_at": "2026-10-21T00:05:05+08:00",
- "updated_at": "2026-10-21T22:56:57+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-10-21T22:56:57+08:00",
-   "new_lines": 0
+  "schema_version": "1.0",
+  "date": "2026-10-22",
+  "grade": "五年级",
+  "generated_at": "2026-10-22T00:05:11+08:00",
+  "updated_at": "2026-10-22T00:05:11+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": null,
+      "new_lines": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
+    }
   },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": "2026-10-21T19:11:00+08:00",
-   "status": "done"
+  "tasks": [],
+  "counts": {
+    "total": 0,
+    "pending": 0,
+    "in_progress": 0,
+    "done": 0,
+    "pending_review": 0
   },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": "2026-10-21T19:00:18+08:00",
-   "status": "done"
-  }
- },
- "tasks": [
-  {
-   "task_id": "D53-2026-10-21-CHN",
-   "source": "daily_53",
-   "subject": "语文",
-   "title": "53天天练·语文",
-   "detail": "家长22:02指示：今日不做53天天练，豁免（不扣分、不计缺交）。",
-   "estimate_min": 10,
-   "status": "done",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-21T16:55:24+08:00",
-   "updated_at": "2026-10-21T16:55:24+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-21-MATH",
-   "source": "daily_53",
-   "subject": "数学",
-   "title": "53天天练·数学",
-   "detail": "家长22:02指示：今日不做53天天练，豁免（不扣分、不计缺交）。",
-   "estimate_min": 10,
-   "status": "done",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-21T16:55:24+08:00",
-   "updated_at": "2026-10-21T16:55:24+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-21-ENG",
-   "source": "daily_53",
-   "subject": "英语",
-   "title": "53天天练·英语",
-   "detail": "家长22:02指示：今日不做53天天练，豁免（不扣分、不计缺交）。",
-   "estimate_min": 10,
-   "status": "done",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-21T16:55:24+08:00",
-   "updated_at": "2026-10-21T16:55:24+08:00"
-  },
-  {
-   "task_id": "REG-20261021-5C804A",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "口语易",
-   "detail": "20:30已完成：口语易截图显示今日任务已提交（18:11截图）。",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①口语易；②校本19、20页。→ 待完成（无佐证照片；另有英语App截图邮件1a15df5b3856d05d，疑似口语类已提交记录，待19:00 watcher核对）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T18:21:57+08:00",
-   "updated_at": "2026-10-21T18:21:57+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261021-FB7282",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "校本19、20页。",
-   "detail": "原状态：待完成（无佐证照片；另有英语App截图邮件1a15df5b3856d05d，疑似口语类已提交记录，待19:00 ",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①口语易；②校本19、20页。→ 待完成（无佐证照片；另有英语App截图邮件1a15df5b3856d05d，疑似口语类已提交记录，待19:00 watcher核对）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T18:21:57+08:00",
-   "updated_at": "2026-10-21T22:36:00+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "status_source": "parent_override_20261021",
-   "completed_at": "2026-10-21T22:36:00+08:00"
-  },
-  {
-   "task_id": "REG-20261021-800A76",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本26页。",
-   "detail": "原状态：待完成（无佐证照片）",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①校本26页。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T18:21:57+08:00",
-   "updated_at": "2026-10-21T20:07:15+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-10-21T20:07:15+08:00",
-   "status_source": "批改完成（数学26页全对）"
-  },
-  {
-   "task_id": "REG-20261021-0BB15F",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "试卷签名（家长事项）",
-   "detail": "登记本10-21：试卷签名，家长事项；家长签完告知后标完成",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①生字12课：抄一遍、默一遍（用稿纸）；②试卷签名（家长事项，不建孩子任务）。→ 待完成（无佐证照片）",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": "muse"
-   },
-   "created_at": "2026-10-21T18:21:57+08:00",
-   "updated_at": "2026-10-21T18:52:30+08:00",
-   "completed_at": "2026-10-21T18:52:30+08:00",
-   "status_source": "parent_signed",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-21",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "拍登记本照片发回年级邮箱",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-10-21T18:22:23+08:00",
-   "updated_at": "2026-10-21T18:22:23+08:00",
-   "completed_at": "2026-10-21T18:21:57+08:00"
-  },
-  {
-   "task_id": "PRACT-20261021-89BED4",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "针对性练习（含口语+背诵）",
-   "detail": "Word：五年级针对性练习_2026-10-21.docx，按今日练习清单完成",
-   "estimate_min": 30,
-   "status": "done",
-   "review_status": "approved",
-   "file_ref": "今日练习清单.json#五年级针对性练习_2026-10-21.docx",
-   "file_hash": null,
-   "created_at": "2026-10-21T19:06:59+08:00",
-   "updated_at": "2026-10-21T22:36:00+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-10-21T22:36:00+08:00",
-   "status_source": "parent_override_20261021"
-  },
-  {
-   "task_id": "EXAM-20261021-308266",
-   "source": "exam_correction",
-   "subject": "语文",
-   "title": "语文·单元测试（第三单元）订正（剩2题）",
-   "detail": "卷面86分，挂起36分（档位+16、进步+20）；考试日期2026-10-21；错题：五-4（民间故事图片）、阅读一-1（部分）",
-   "status": "done",
-   "review_status": "approved",
-   "exam_tracking_id": "EXAM-20261021-G5-YW-01",
-   "question_ids": [
-    "EXAM-G5-YW-20261021-五-4",
-    "EXAM-G5-YW-20261021-阅读一-1"
-   ],
-   "carry_first_date": "2026-10-21",
-   "created_at": "2026-10-21T19:30:00+08:00",
-   "updated_at": "2026-10-21T22:36:00+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-10-21T22:36:00+08:00",
-   "status_source": "parent_override_20261021"
-  },
-  {
-   "task_id": "REG-20261021-5BBF6A",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "生字12课：抄一遍、默一遍（用稿纸）。",
-   "detail": "语文 · 学校作业 · 登记本10-21：生字12课抄写已完成（20:14重写9字，3处错全改对）；默写（用稿纸）未交，待补；另皇的拼音声调需订正",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①生字12课：抄一遍、默一遍（用稿纸）。→ 待完成（无佐证照片）。另登记本末尾有\"试卷签名\"一项，属家长事项，已单列为任务REG-20261021-0BB15F并已完成（备注句，勿按分号切分立项）。",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-21T20:15:48+08:00",
-   "updated_at": "2026-10-21T21:11:38+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "MANUAL-20261021-001",
-   "source": "manual",
-   "subject": "数学",
-   "title": "事件触发实测任务（稍后删除）",
-   "detail": "watchd tasks_5 事件触发回归测试",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-10-21T20:40:18+08:00",
-   "updated_at": "2026-10-21T22:36:00+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-10-21T22:36:00+08:00",
-   "status_source": "parent_override_20261021"
-  },
-  {
-   "task_id": "REG-20261021-11CE57",
-   "source": "register_book",
-   "status": "done",
-   "title": "古诗11课：抄一遍、默一遍（用稿纸）",
-   "detail": "语文 · 学校作业 · 已提交已批改：6首4对2错（66.7%）；《己亥杂诗》抄写、默写标题共4处字误待订正重写（己亥、龚自珍），正文全对",
-   "date": "2026-10-21",
-   "grade": "五年级",
-   "review_status": "approved",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-10-21T22:36:00+08:00",
-   "updated_at": "2026-10-21T22:36:00+08:00",
-   "status_source": "parent_override_20261021"
-  },
-  {
-   "task_id": "MANUAL-20261021-002",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语阅读写作第八期",
-   "detail": "20:00已双通道发送（家长聊天＋孩子邮箱），当晚完成、拍照发回年级邮箱；含阅读理解＋写作。",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-10-21T22:49:00+08:00",
-   "updated_at": "2026-10-21T23:19:00+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-10-21T23:19:00+08:00",
-   "status_source": "parent_waiver_20261021_period8"
-  }
- ],
- "counts": {
-  "total": 14,
-  "pending": 1,
-  "in_progress": 0,
-  "done": 13,
-  "pending_review": 0
- },
- "deadline_today": "2026-10-21T22:30:00+08:00"
+  "deadline_today": null
 }
