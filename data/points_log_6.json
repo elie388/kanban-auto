@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T21:59:08+08:00",
+  "generated_at": "2026-10-21T22:09:09+08:00",
   "window": {
     "days": 7,
     "max_items": 20
@@ -45,6 +45,132 @@
     },
     {
       "date": "10-21",
+      "time": "21:31",
+      "time_source": "entry",
+      "reason": "数学课本P23作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:31",
+      "time_source": "entry",
+      "reason": "数学课本P23正确率85.7%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:31",
+      "time_source": "entry",
+      "reason": "数学课本P23书写工整",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:28",
+      "time_source": "entry",
+      "reason": "语文听写其二订正",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:23",
+      "time_source": "entry",
+      "reason": "语文其二全首默写发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:23",
+      "time_source": "entry",
+      "reason": "语文其二默写达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:16",
+      "time_source": "entry",
+      "reason": "语文听写其二完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:16",
+      "time_source": "entry",
+      "reason": "语文听写正确率95%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:16",
+      "time_source": "entry",
+      "reason": "语文听写书写工整",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "语文作文重誊完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "语文作文语病5处",
+      "pts": -6,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "英语U3单词抄写整份重交订正",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "英语U3抄写正确率84.4%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "英语U3抄写书写工整",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
       "time": "21:06",
       "time_source": "entry",
       "reason": "拖地",
@@ -58,132 +184,6 @@
       "time_source": "entry",
       "reason": "英语抄写订正",
       "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "19:48",
-      "time_source": "entry",
-      "reason": "英语抄写按时发回",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "19:48",
-      "time_source": "entry",
-      "reason": "英语抄写书写工整无潦草",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "19:30",
-      "time_source": "entry",
-      "reason": "语文朗读按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "19:30",
-      "time_source": "entry",
-      "reason": "语文朗读达标",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "19:29",
-      "time_source": "entry",
-      "reason": "英语口语按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:37",
-      "time_source": "entry",
-      "reason": "连续两晚超23点睡觉额外扣分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:31",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:30",
-      "time_source": "entry",
-      "reason": "英语作文朗读发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:30",
-      "time_source": "entry",
-      "reason": "英语作文朗读迟交",
-      "pts": -3,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:30",
-      "time_source": "entry",
-      "reason": "英语作文朗读达标",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:01",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:58",
-      "time_source": "entry",
-      "reason": "英语背28、29对话发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:58",
-      "time_source": "entry",
-      "reason": "英语背对话迟交",
-      "pts": -3,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:58",
-      "time_source": "entry",
-      "reason": "英语背对话达标",
-      "pts": 3,
       "sign": "plus",
       "filtered": false
     }
