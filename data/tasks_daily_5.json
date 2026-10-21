@@ -3,7 +3,7 @@
   "date": "2026-10-21",
   "grade": "五年级",
   "generated_at": "2026-10-21T00:05:05+08:00",
-  "updated_at": "2026-10-21T19:37:09+08:00",
+  "updated_at": "2026-10-21T19:37:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -77,7 +77,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-21T18:21:57+08:00",
-      "updated_at": "2026-10-21T18:21:57+08:00"
+      "updated_at": "2026-10-21T18:21:57+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261021-FB7282",
@@ -95,7 +97,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-21T18:21:57+08:00",
-      "updated_at": "2026-10-21T18:21:57+08:00"
+      "updated_at": "2026-10-21T18:21:57+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261021-800A76",
@@ -113,7 +117,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-21T18:21:57+08:00",
-      "updated_at": "2026-10-21T18:21:57+08:00"
+      "updated_at": "2026-10-21T18:21:57+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261021-F0DE3E",
@@ -131,7 +137,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-21T18:21:57+08:00",
-      "updated_at": "2026-10-21T18:21:57+08:00"
+      "updated_at": "2026-10-21T18:21:57+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261021-0BB15F",
@@ -151,7 +159,9 @@
       "created_at": "2026-10-21T18:21:57+08:00",
       "updated_at": "2026-10-21T18:52:30+08:00",
       "completed_at": "2026-10-21T18:52:30+08:00",
-      "status_source": "parent_signed"
+      "status_source": "parent_signed",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "META-REGISTER-2026-10-21",
@@ -198,7 +208,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-21T19:10:16+08:00",
-      "updated_at": "2026-10-21T19:10:16+08:00"
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261021-D59A11",
@@ -216,7 +228,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-21T19:10:16+08:00",
-      "updated_at": "2026-10-21T19:10:16+08:00"
+      "updated_at": "2026-10-21T19:10:16+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "EXAM-20261021-308266",
