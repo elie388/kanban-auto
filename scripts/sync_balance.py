@@ -48,7 +48,9 @@ def in_build_silent_window(now=None):
 
 
 ROW_PAT = re.compile(
-    r"^\|\s*(\d{1,2}-\d{1,2}|\d{4}-\d{2}-\d{2})\s*\|\s*(.*?)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)\s*\|"
+    # 日期格允许后跟括号备注（如 10-19（补记10-21）），捕获组仍取纯日期；
+    # 与 build_stats.ROW_RE 对齐（N3 收口）。
+    r"^\|\s*(\d{1,2}-\d{1,2}|\d{4}-\d{2}-\d{2})(?:\s*[\(（][^\)）]*[\)）])?\s*\|\s*(.*?)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)\s*\|"
 )
 HTML_COMMENT = re.compile(r"<!--.*?-->")
 PAREN = re.compile(r"[（(][^（）()【】]*[）)]")
@@ -97,6 +99,9 @@ def norm_date(s, today=None):
     DeepSeek 终审中等项。
     """
     s = s.strip()
+    # 日期格后括号备注（手写过渡期合法记账格式，如 10-19（补记10-21））先剥离
+    # 再做日期匹配；台账 append-only，解析器必须容忍，不得反过来要求改账。
+    s = re.sub(r"\s*[\(（][^\)）]*[\)）]\s*$", "", s)
     if re.fullmatch(r"\d{1,2}-\d{1,2}", s):
         if today is None:
             today = datetime.now(BEIJING).date()
