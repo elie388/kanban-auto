@@ -1,12 +1,24 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "grade": 5,
-  "generated_at": "2026-10-21T23:22:16+08:00",
+  "generated_at": "2026-10-22T07:13:47+08:00",
   "window": {
     "days": 7,
-    "max_items": 20
+    "max_items": 20,
+    "extra_negative_max": 5
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "00:01",
+      "time_source": "entry",
+      "reason": "连续第三晚超23点睡觉额外加扣",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-22"
+    },
     {
       "date": "10-21",
       "time": "23:19",
@@ -42,6 +54,17 @@
       "pts": 2,
       "sign": "plus",
       "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "22:30",
+      "time_source": "entry",
+      "reason": "针对性练习没交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-21"
     },
     {
       "date": "10-21",
@@ -170,24 +193,53 @@
       "filtered": false
     },
     {
-      "date": "10-21",
-      "time": "20:06",
+      "date": "10-20",
+      "time": "23:37",
       "time_source": "entry",
-      "reason": "数学26页正确率100%",
-      "pts": 10,
-      "sign": "plus",
+      "reason": "连续两晚超23点睡觉额外扣分",
+      "pts": -10,
+      "sign": "minus",
       "filtered": false
     },
     {
-      "date": "10-21",
-      "time": "20:06",
+      "date": "10-20",
+      "time": "23:31",
       "time_source": "entry",
-      "reason": "数学26页书写+2",
-      "pts": 2,
-      "sign": "plus",
+      "reason": "晚上超11点睡觉",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练P14-1正确率58.3%",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练缺1页",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练三科未交",
+      "pts": -9,
+      "sign": "minus",
       "filtered": false
     }
   ],
   "truncated": true,
+  "extra_negative_count": 5,
+  "extra_negative_omitted": 4,
   "filtered_count": 0
 }

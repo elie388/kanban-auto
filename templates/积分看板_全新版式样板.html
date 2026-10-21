@@ -1759,6 +1759,7 @@
       l1.appendChild(reason); l1.appendChild(pts);
       var l2 = document.createElement('div'); l2.className = 'log-line2';
       l2.textContent = (typeof it.time === 'string' && it.time) ? (it.date + ' ' + it.time) : it.date; /* KB-TIME：有时间显示 MM-DD HH:MM，无时间只显示 MM-DD */
+      if(it.backfill && it.posted_date){ l2.textContent += ' · 补记（' + it.posted_date + ' 入账）'; } /* KB-POST-2026-10-22：主显示名义日期，补记行副标入账日期 */
       body.appendChild(l1); body.appendChild(l2);
       li.appendChild(dot); li.appendChild(body);
       listEl.appendChild(li);
@@ -1769,7 +1770,7 @@
     var key = 'log' + grade;
     var name = 'points_log_' + grade + '.json';
     fetchJson(name, { onRetry: function(n){ setLogTag(blockId, '重试中（' + n + '/3)', null); } }).then(function(d){
-      if(!d || d.schema_version !== '1.1' || d.grade !== grade) throw new Error('schema'); /* KB-TIME 1.1 */
+      if(!d || d.schema_version !== '1.2' || d.grade !== grade) throw new Error('schema'); /* KB-POST 1.2：入账时间排序+负分额外保留+补记副标 */
       if(!Array.isArray(d.items)) throw new Error('items');
       var block = $(blockId);
       var list = block ? block.querySelector('.log-list') : null;

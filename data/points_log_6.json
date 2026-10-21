@@ -1,12 +1,24 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "grade": 6,
-  "generated_at": "2026-10-21T23:22:16+08:00",
+  "generated_at": "2026-10-22T07:13:47+08:00",
   "window": {
     "days": 7,
-    "max_items": 20
+    "max_items": 20,
+    "extra_negative_max": 5
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "00:01",
+      "time_source": "entry",
+      "reason": "连续第三晚超23点睡觉额外加扣",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-22"
+    },
     {
       "date": "10-21",
       "time": "23:19",
@@ -33,6 +45,17 @@
       "pts": 5,
       "sign": "plus",
       "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "22:30",
+      "time_source": "entry",
+      "reason": "针对性练习没交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-21"
     },
     {
       "date": "10-21",
@@ -170,24 +193,53 @@
       "filtered": false
     },
     {
-      "date": "10-21",
-      "time": "21:07",
+      "date": "10-20",
+      "time": "23:37",
       "time_source": "entry",
-      "reason": "英语U3单词抄写整份重交订正",
-      "pts": 2,
-      "sign": "plus",
+      "reason": "连续两晚超23点睡觉额外扣分",
+      "pts": -10,
+      "sign": "minus",
       "filtered": false
     },
     {
-      "date": "10-21",
-      "time": "21:07",
+      "date": "10-20",
+      "time": "23:31",
       "time_source": "entry",
-      "reason": "英语U3抄写正确率84.4%",
-      "pts": 3,
-      "sign": "plus",
+      "reason": "晚上超11点睡觉",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:30",
+      "time_source": "entry",
+      "reason": "英语作文朗读迟交",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:58",
+      "time_source": "entry",
+      "reason": "英语背对话迟交",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:53",
+      "time_source": "entry",
+      "reason": "数学读背迟交",
+      "pts": -3,
+      "sign": "minus",
       "filtered": false
     }
   ],
   "truncated": true,
+  "extra_negative_count": 5,
+  "extra_negative_omitted": 12,
   "filtered_count": 0
 }

@@ -98,11 +98,14 @@ NEG_MINUS = "−"  # U+2212 全角减号（用户拍板1：负余额静态显示
 # 积分日志计分时间（KB-TIME-2026-10-19，DeepSeek 终审）：
 # 台账 key 注释追加 @HH:MM 即为该条目的计分时间（唯一时间源红线：只认积分记录.md）。
 TIME_ANNOT_RE = re.compile(r"@(\d{2}):(\d{2})")
+# 补记行结构化字段（KB-POST-2026-10-22，DeepSeek 组合3 定案）：key 注释内
+# backfill=YYYY-MM-DD 表示该条的真实入账日期；排序键用 backfill 日期 + @HH:MM。
+BACKFILL_RE = re.compile(r"backfill=(\d{4}-\d{2}-\d{2})")
 KEY_COMMENT_RE = re.compile(r"<!--\s*key:\s*(.*?)\s*-->")
 TIME_SOURCE_ENUM = ("submit", "parent_confirm", "entry", "deadline")
 TIME_SOURCE_FILE = os.path.join(REPO_DIR, "data_src", "points_time_source.json")
 TIME_G6_DATE = "2026-10-19"  # 生效日：complete_year(日期) > 此日 且无 @HH:MM → 熔断
-POINTS_LOG_SCHEMA = "1.1"
+POINTS_LOG_SCHEMA = "1.2"
 
 ROW_RE = re.compile(
     # 日期格允许后跟括号备注（如 10-19（补记10-21）），捕获组仍取纯日期。
@@ -238,8 +241,11 @@ def parse_rows(block, grade):
             if not (0 <= hh <= 23 and 0 <= mm <= 59):
                 raise ValueError("台账 %d 年级 @HH:MM 越界：%r" % (grade, s[:80]))
             annot_time = "%02d:%02d" % (hh, mm)
+        bf = BACKFILL_RE.search(key_comment)
         rows.append({"date": mm_dd, "desc": desc, "pts": pts, "balance": bal,
-                     "key": key, "annot_time": annot_time})
+                     "key": key, "annot_time": annot_time,
+                     "backfill": bf.group(1) if bf else None,
+                     "backfill_remark": bool(re.search(r"[（(]\s*补记", s))})
     if not rows:
         raise ValueError("台账 %d 年级未解析出任何数据行" % grade)
     # S3 修复（2026-10-20）：余额链断裂改为熔断（fail-closed），与 sync_balance.parse_ledger
@@ -368,10 +374,11 @@ def build_stats(grade, rows, ledger_sha16, today, generated_at):
 
 
 def build_log(grade, rows, today, generated_at):
-    """§1.2 + R3 + KB-TIME-2026-10-19 + KB-SORT-2026-10-20：近7天、(日期,时刻)倒序、≤20条；
-    同日有时刻者按时刻倒序在前、无时刻者随后保持台账正序；同日无时刻条目之间的
-    相对顺序 = 台账原始录入顺序，不代表发生先后（详见排序注释）；
-    reason 经 simplify_desc + B5 断言；time 精确到分钟（台账 @HH:MM），schema 1.1。"""
+    """§1.2 + R3 + KB-TIME-2026-10-19 + KB-POST-2026-10-22：近7天、按真实入账
+    时间（补记行 = backfill 日期 + @HH:MM）倒序、基础 20 条 + 被挤出的负分
+    额外保留最近 5 条（列表 ≤25 条）；同入账日有时刻者按时刻倒序在前、
+    无时刻者随后保持台账正序；reason 经 simplify_desc + B5 断言；
+    time 精确到分钟（台账 @HH:MM），schema 1.2。"""
     cutoff = today - timedelta(days=7)
     sources = load_time_sources()
     dated = []
@@ -392,20 +399,44 @@ def build_log(grade, rows, today, generated_at):
         # G3：time 与 time_source 双向一致（resolve 已保证，此处复核）
         if (t is None) != (t_src is None):
             raise ValueError("G3 熔断：time/time_source 不一致（%s）" % r.get("key", "")[:40])
-        dated.append((dt, t, t_src, idx, r))
+        # KB-POST-2026-10-22（家长口径"只显示20条、但是显示最新的" + DeepSeek
+        # 组合3 定案）：排序键改真实入账时间。普通行入账日 = 名义日期；补记行
+        # 入账日 = key 注释 backfill=YYYY-MM-DD（结构化字段，非备注文字解析）。
+        # 日期格带（补记…）备注却缺 backfill 字段 → 告警留痕、按名义日期排。
+        pdt = dt
+        if r.get("backfill"):
+            try:
+                pdt = datetime.strptime(r["backfill"], "%Y-%m-%d").date()
+            except ValueError:
+                raise ValueError("backfill 日期非法：%s" % r["backfill"])
+        elif r.get("backfill_remark"):
+            warn("补记行缺 backfill 结构化字段，按名义日期排序 grade=%d date=%s"
+                 % (grade, r["date"]))
+            err_write("BACKFILL_TOKEN_MISSING grade=%d date=%s key=%s"
+                      % (grade, r["date"], r.get("key", "")[:40]))
+        dated.append((dt, pdt, t, t_src, idx, r))
 
-    # 排序口径 KB-SORT-2026-10-20（用户要求"时间最新的在最前"，DeepSeek 终审裁决）：
-    # ① 日期倒序；② 同日内有时刻条目排在无时刻条目之前；③ 有时刻者按时刻倒序；
-    # ④ 同键（同日同时刻、同日均无时刻）保持台账正序（idx 正序）；其中无时刻条目间的
-    #    相对顺序仅为台账录入顺序，不代表发生先后（DeepSeek 终审 A 点条件）。
-    # 实现：先按 idx 正序稳定，再按 (日期, 有时刻标记, 时刻) 一次倒序稳定 → 同键保序。
-    dated.sort(key=lambda x: x[3])
-    dated.sort(key=lambda x: (x[0], 1 if x[1] else 0, x[1] or ""), reverse=True)
+    # 排序口径 KB-POST-2026-10-22（取代 KB-SORT-2026-10-20 的名义日期键）：
+    # ① 入账日期倒序；② 同入账日内有时刻条目排在无时刻条目之前；③ 有时刻者
+    # 按时刻倒序；④ 同键保持台账正序（idx 正序，DeepSeek 定案的次级键）。
+    # 实现：先按 idx 正序稳定，再按 (入账日期, 有时刻标记, 时刻) 一次倒序稳定。
+    dated.sort(key=lambda x: x[4])
+    dated.sort(key=lambda x: (x[1], 1 if x[2] else 0, x[2] or ""), reverse=True)
 
-    truncated = len(dated) > 20
+    # 截断口径（DeepSeek 组合3）：基础取前 20 条；被挤出的负分条目额外保留
+    # 最近 5 条（仅负分，正数补记行不保留），合并后仍按入账时间倒序，
+    # 列表最多 25 条。extra_negative_omitted 记录仍被折叠的负分条数。
+    base = dated[:20]
+    squeezed_neg = [e for e in dated[20:] if e[5]["pts"] < 0]
+    extras = squeezed_neg[:5]
+    omitted_neg = len(squeezed_neg) - len(extras)
+    selected = sorted(base + extras, key=lambda x: x[4])
+    selected.sort(key=lambda x: (x[1], 1 if x[2] else 0, x[2] or ""), reverse=True)
+
+    truncated = len(dated) > len(selected)
     items = []
     filtered_count = 0
-    for dt, t, t_src, idx, r in dated[:20]:
+    for dt, pdt, t, t_src, idx, r in selected:
         reason = simplify_desc(r["desc"])
         if len(reason) > 40:
             reason = reason[:40] + "…"  # 上限 40 字，超长截断加 …
@@ -420,8 +451,8 @@ def build_log(grade, rows, today, generated_at):
             filtered = True
             filtered_count += 1
         pts = r["pts"]
-        # KB-SORT-2026-10-20：t/t_src 已在排序前解析并通过 G3 复核（见 dated 构建处）
-        items.append({
+        # KB-POST-2026-10-22：t/t_src 已在排序前解析并通过 G3 复核（见 dated 构建处）
+        item = {
             "date": r["date"],  # MM-DD（本期不跨年；跨年时 complete_year 输出 YYYY-MM-DD）
             "time": t,  # HH:MM 或 null（无计分时间）
             "time_source": t_src,  # submit/parent_confirm/entry/deadline 或 null（溯源，不前端展示）
@@ -429,15 +460,22 @@ def build_log(grade, rows, today, generated_at):
             "pts": pts,
             "sign": "plus" if pts >= 0 else "minus",
             "filtered": filtered,
-        })
+        }
+        if r.get("backfill"):
+            # 补记行：前端主显示名义日期，副标"补记 · 入账日期"（DeepSeek 定案）
+            item["backfill"] = True
+            item["posted_date"] = r["backfill"][5:]  # MM-DD
+        items.append(item)
 
     d = {
         "schema_version": POINTS_LOG_SCHEMA,
         "grade": grade,
         "generated_at": generated_at,
-        "window": {"days": 7, "max_items": 20},  # P1#2（裁定2 甲）：与数据窗口近7天统一
+        "window": {"days": 7, "max_items": 20, "extra_negative_max": 5},
         "items": items,
         "truncated": truncated,
+        "extra_negative_count": len(extras),
+        "extra_negative_omitted": omitted_neg,
         "filtered_count": filtered_count,
     }
     _assert_lib.assert_points_log_schema(d, "points_log_%d.json" % grade)
@@ -960,8 +998,9 @@ def selftest():
         # simplify_desc("第一条")=="第一条" 等；期望：10-19第四条, 10-18第二条, 10-17第一条/第三条/第五条
         exp = ["第四条", "第二条", "第一条", "第三条", "第五条"]
         assert got == exp, "排序错误：%r != %r" % (got, exp)
-        # S1 防回归（2026-10-20）：死代码删除后，schema 必须为 1.1（含 time/time_source 字段）
-        assert d["schema_version"] == "1.1", "schema_version=%r（期望 1.1，死代码回退？）" % d.get("schema_version")
+        # S1 防回归（2026-10-20）：死代码删除后，schema 必须为当前版本（含 time/time_source 字段）
+        # KB-POST-2026-10-22：版本随口径升版 1.1 → 1.2（入账时间排序+负分额外保留+补记字段）
+        assert d["schema_version"] == "1.2", "schema_version=%r（期望 1.2，死代码回退？）" % d.get("schema_version")
         rec("T1 同日排序单测", True, "输出顺序=%s" % got)
     except Exception as e:
         rec("T1 同日排序单测", False, str(e)[:200])
