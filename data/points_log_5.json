@@ -1,12 +1,39 @@
 {
   "schema_version": "1.1",
   "grade": 5,
-  "generated_at": "2026-10-21T20:37:04+08:00",
+  "generated_at": "2026-10-21T20:57:04+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "20:24",
+      "time_source": "entry",
+      "reason": "语文11课古诗完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:24",
+      "time_source": "entry",
+      "reason": "语文11课古诗正确率66.7%",
+      "pts": 0,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:24",
+      "time_source": "entry",
+      "reason": "语文11课古诗书写+2",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "20:14",
@@ -157,33 +184,6 @@
       "time_source": "entry",
       "reason": "英语20页书写+2",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:37",
-      "time_source": "entry",
-      "reason": "连续两晚超23点睡觉额外扣分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:31",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "23:06",
-      "time_source": "entry",
-      "reason": "整理桌面",
-      "pts": 1,
       "sign": "plus",
       "filtered": false
     }
