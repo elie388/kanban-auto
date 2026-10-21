@@ -111,6 +111,10 @@ jobs:
             'data/rules.json': lambda d: (
               d.get('schema_version') == 1 and isinstance(d.get('add'), list)
               and isinstance(d.get('deduct'), list)),
+            'data/redeem_log.json': lambda d: (
+              d.get('schema_version') == 1 and d.get('window_days') == 15
+              and 'by_grade' in d
+              and set(d['by_grade'].keys()) == {'g5', 'g6'}),
           }
           for path, check in files.items():
               try:
