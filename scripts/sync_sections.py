@@ -188,7 +188,7 @@ def extract_badge_events():
                 earliest[key] = date
             # cycle_week：优先读 key 注释中的落账字段（终审落账环节写入）；
             # 历史行无此字段 -> 按日期计算仅供展示归档，不参与周期重算/上限累计
-            # （DeepSeek 二次终审执行解释：历史行留空＝不回填、不计入当周 +50）。
+            # （DeepSeek 二次终审执行解释：历史行留空＝不回填、不参与周期重算）。
             cwm = CYCLE_WEEK_RE.search(line)
             # late_cycle：补发标记（归属周早于落账周），由终审落账环节与
             # cycle_week 一并写入 key 注释；无此字段 -> 非补发条目。
@@ -688,7 +688,7 @@ def compute_badge_progress(events, now=None):
                              "unit": "天", "mode": "连续"}
         # 综合之星：本周已获不同徽章种类数 / 4。口径（DeepSeek 裁定3
         # 2026-10-20）：对齐计数侧——仅落账记录了 cycle_week 的事件计入
-        # （与 chore_judge 已发累计/+50 上限同一口径），历史行（无 recorded
+        # （与 chore_judge 已发累计同一口径），历史行（无 recorded
         # cycle_week、仅按日期推算）不计。注意：机制上线周 W43 内，落账标注
         # 启用（2026-10-20）之前的本周徽章行会因此少计一类，属过渡期已知
         # 现象（W44 起自然消失），非 bug，勿按展示侧口径"修回"。
