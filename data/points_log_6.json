@@ -1,12 +1,48 @@
 {
   "schema_version": "1.1",
   "grade": 6,
-  "generated_at": "2026-10-21T21:07:05+08:00",
+  "generated_at": "2026-10-21T21:59:08+08:00",
   "window": {
     "days": 7,
     "max_items": 20
   },
   "items": [
+    {
+      "date": "10-21",
+      "time": "21:55",
+      "time_source": "entry",
+      "reason": "数学校本P25整理与复习正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:55",
+      "time_source": "entry",
+      "reason": "数学校本P25书写工整",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:55",
+      "time_source": "entry",
+      "reason": "英语口语\"My weekend\"问答重录发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:55",
+      "time_source": "entry",
+      "reason": "英语口语\"My weekend\"问答重录达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-21",
       "time": "21:06",
@@ -148,42 +184,6 @@
       "time_source": "entry",
       "reason": "英语背对话达标",
       "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:53",
-      "time_source": "entry",
-      "reason": "数学读背概念47、48、49发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:53",
-      "time_source": "entry",
-      "reason": "数学读背迟交",
-      "pts": -3,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:53",
-      "time_source": "entry",
-      "reason": "数学读背达标",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-20",
-      "time": "22:45",
-      "time_source": "entry",
-      "reason": "🏅家务小帮手徽章",
-      "pts": 5,
       "sign": "plus",
       "filtered": false
     }
