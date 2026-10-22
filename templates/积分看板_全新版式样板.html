@@ -1278,7 +1278,17 @@
     try { return new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Shanghai'}); }
     catch(e){ return ''; }
   }
+  window.__taskOrig = window.__taskOrig || {};
   function renderOne(secId, data){
+    try{ (data.tasks || []).forEach(function(t){
+      var seen = {}, parts = [];
+      (t.corrections || []).forEach(function(c){
+        var tx = (c.orig_text || '').trim();
+        if(tx && !seen[tx]){ seen[tx] = 1; parts.push(tx); }
+      });
+      if(parts.length) window.__taskOrig[t.task_id] = parts.join('\n');
+      else delete window.__taskOrig[t.task_id];
+    }); }catch(e){}
     var sec = document.getElementById(secId);
     if(!sec || !data || data.date !== todayStr()) return false;
     /* P2（DeepSeek 审查 2026-10-20）：栏目与数据年级一致性——错位文件宁可不渲染 */
@@ -3707,6 +3717,9 @@
 .up-seek::-moz-range-thumb{width:26px; height:26px; border-radius:50%; background:#3d9970; border:3px solid #fff;}
 .up-ptime{font-size:14px; color:#6B7280; min-width:88px; text-align:right; font-variant-numeric:tabular-nums;}
 .up-sub{color:#8a8378;font-size:13.5px;margin-bottom:10px;line-height:1.5}
+.up-orig{margin:2px 0 12px;padding:10px 12px;background:#FFFDF4;border:1.5px solid #EAD9A0;border-radius:12px}
+.up-orig-cap{font-size:12.5px;font-weight:700;color:#8A6D1F;margin-bottom:5px}
+.up-orig-text{font-size:16.5px;line-height:1.75;color:#26221A;white-space:pre-line}
 .up-row{margin:12px 0}
 .up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
 .up-pick{display:flex;gap:8px;flex-wrap:wrap}
@@ -3731,6 +3744,7 @@
   <div class="up-sheet" role="dialog" aria-label="交作业">
     <h3 id="up-title">交作业</h3>
     <div class="up-sub" id="up-subtitle"></div>
+    <div class="up-orig" id="up-orig" style="display:none"><div class="up-orig-cap">原文 · 照着读</div><div class="up-orig-text" id="up-orig-text"></div></div>
     <div class="up-row" id="up-childrow" style="display:none">
       <label>哪个孩子</label>
       <div class="up-pick" id="up-children"></div>
@@ -3871,6 +3885,7 @@
     busy = false; var go = $('up-go'); go.disabled = false; go.textContent = '全部交完 ✅'; go.onclick = null;
     $('up-msg').textContent = ''; $('up-msg').className = 'up-msg';
     $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
+    $('up-orig').style.display = 'none';
     recFiles = []; recSet = new Set();
     $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none';
     if(ctx.mode === 'task'){
@@ -3878,6 +3893,9 @@
       cur.task_id = ctx.info.task_id; cur.task_source = ctx.info.task_source; cur.title = ctx.info.title;
       $('up-title').textContent = '交这一项';
       $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
+      var _ot = (window.__taskOrig || {})[cur.task_id];
+      if(_ot){ $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
+      else { $('up-orig').style.display = 'none'; }
     } else if(ctx.mode === 'chore'){
       cur.type = 'chore';
       $('up-title').textContent = '交家务照片';
