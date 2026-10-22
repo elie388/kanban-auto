@@ -1230,7 +1230,7 @@
     if(!au) return;
     if(!au.paused){ au.pause(); corrSetBtn(pb, false); return; }
     document.querySelectorAll('.corr-audio audio').forEach(function(o){ if(o !== au && !o.paused) o.pause(); });
-    document.querySelectorAll('.corr-play').forEach(function(o){ if(o !== pb) o.textContent = '\u25B6'; });
+    document.querySelectorAll('.corr-play').forEach(function(o){ if(o !== pb) corrSetBtn(o, false); });
     au.onended = function(){ corrSetBtn(pb, false); };
     au.onpause = function(){ if(au.paused) corrSetBtn(pb, false); };
     var pr = au.play();
