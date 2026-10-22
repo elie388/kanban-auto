@@ -245,6 +245,7 @@
   .corr-item .corr-qimg{margin-top:8px;}
   .corr-item .corr-cap{display:inline-block; font-size:11px; font-weight:700; color:#8A6D2B; background:#FFF3D6; border:1px solid #F0DFB8; border-radius:6px; padding:1px 7px; margin-bottom:4px;}
   .corr-item .corr-qimg .corr-img{margin-top:0;}
+  .corr-item .corr-orig{display:block; color:#30343B; white-space:pre-line; line-height:1.65;}
   .corr-item.corr-qa{border-left:2px solid #D8C9A8; padding-left:10px; background:#FDFAF1;}
   .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
   /* 操作横排（2026-10-22 家长定）：「交这一项」与打印按钮放同一横排 */
@@ -1380,6 +1381,7 @@
                 + (c.label ? '<span class="corr-no">' + esc(c.label) + '</span>' : '')
                 + (c.question ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
                 + (c.q_img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原题图</span><img class=\"corr-img\" src=\"data/diagrams/' + esc(c.q_img) + '\" alt=\"原题图\"></div>' : '')
+                + (c.orig_text ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原文</span><span class=\"corr-orig\"' + esc(c.orig_text) + '</span></div>' : '')
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
                 + (c.img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">引导图</span><img class=\"corr-img\" src=\"data/diagrams/' + esc(c.img) + '\" alt=\"画图引导\"></div>' : '')
