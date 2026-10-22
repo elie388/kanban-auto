@@ -215,6 +215,19 @@
   .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
+  .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
+  #printArea{display:none;}
+  body.kb-printing #printArea{display:block; position:fixed; inset:0; z-index:9999; background:#fff; overflow:auto; padding:10px;}
+  #printArea .pa-bar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
+  #printArea .pa-title{font-weight:700; margin-right:auto; font-size:16px;}
+  #printArea .pa-hint{color:#8a8171; font-size:12px; margin-bottom:10px;}
+  #printArea img{display:block; width:100%; margin:0 auto 10px; border:1px solid #ddd;}
+  @media print{
+    body>*{display:none !important;}
+    body>#printArea{display:block !important; position:static; overflow:visible; padding:0;}
+    #printArea .pa-bar, #printArea .pa-hint{display:none !important;}
+    #printArea img{border:none; page-break-after:always; margin:0;}
+  }
   .corr-item .corr-audio{display:flex; align-items:center; gap:10px; margin-top:8px;}
   .corr-item .corr-play{width:52px; height:52px; border-radius:50%; border:none; background:#3d9970; color:#fff; font-size:22px; line-height:1; cursor:pointer; flex:0 0 auto; padding:0;}
   .corr-item .corr-alab{font-size:13px; color:#5A5145;}
@@ -1261,10 +1274,11 @@
           if(pdfs.length){
             filesRow = '<div class="tfiles">' + pdfs.map(function(f){
               var furl = 'data/files/' + encodeURIComponent(f.name);
-              return '<a class="tfile" href="' + furl + '" target="_blank" rel="noopener">\uD83D\uDCC4 ' + esc(f.label || f.name) + '</a>'
-                + '<button type="button" class="tfile tprint" data-print="' + furl + '" data-name="' + esc(f.name) + '">\uD83D\uDDA8 打印这份</button>';
+              var pages = Array.isArray(f.pages) ? f.pages.map(function(pg){ return 'data/files/' + encodeURIComponent(pg); }).join(',') : '';
+              return '<button type="button" class="tfile tprint1" data-print1="1" data-pages="' + pages + '" data-pdf="' + furl + '" data-name="' + esc(f.label || f.name) + '">\uD83D\uDDA8 打印' + esc(f.label || '') + '</button>';
             }).join('') + '</div>';
           }
+        }
         }
         if(typeof t.pending_corrections === 'number' && t.pending_corrections > 0){
           var items = '';
@@ -4309,25 +4323,60 @@
   window.requestAnimationFrame(tick);
 })();
 
-/* 练习文件打印（2026-10-22）：iOS 预览 PDF 无打印入口，改走系统分享菜单（内含打印）；
-   不支持文件分享时退回新页打开。 */
-document.addEventListener('click', function(e){
-  var b = (e.target && e.target.closest) ? e.target.closest('[data-print]') : null;
-  if(!b) return;
-  e.preventDefault();
-  var url = b.getAttribute('data-print'), name = b.getAttribute('data-name') || 'file.pdf';
+/* 练习文件打印（2026-10-22 家长定版）：卡上只有一个「打印XX」按钮，
+   点开打印页（整页图片版式），自动调起系统打印；WebView 里若打印不弹，
+   页内有「分享 PDF」兜底（分享菜单内含打印）。 */
+function kbSharePdf(url, name){
   function openTab(){ window.open(url, '_blank'); }
   try {
     if(navigator.canShare){
       fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
-        var f = new File([blob], name, { type: 'application/pdf' });
+        var f = new File([blob], name || 'file.pdf', { type: 'application/pdf' });
         if(navigator.canShare({ files: [f] })){ navigator.share({ files: [f] }).catch(function(){}); }
         else openTab();
       }).catch(openTab);
     } else openTab();
   } catch(err){ openTab(); }
+}
+function kbClosePrint(){
+  document.body.classList.remove('kb-printing');
+  var pa = document.getElementById('printArea');
+  if(pa) pa.innerHTML = '';
+}
+function kbOpenPrint(name, pages, pdfUrl){
+  var pa = document.getElementById('printArea');
+  if(!pa) return;
+  var h = '<div class="pa-bar"><span class="pa-title">' + name + '</span>'
+    + '<button type="button" class="tfile" id="paPrint">🖨 打印</button>'
+    + (pdfUrl ? '<button type="button" class="tfile" id="paShare">分享 PDF</button>' : '')
+    + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
+    + '<div class="pa-hint">打印没弹出来时，点「分享 PDF」，在菜单里选「打印」。</div>';
+  pages.forEach(function(u){ h += '<img src="' + u + '" alt="练习页">'; });
+  pa.innerHTML = h;
+  document.body.classList.add('kb-printing');
+  pa.scrollTop = 0;
+  function go(){ try { window.print(); } catch(e){} }
+  var imgs = pa.querySelectorAll('img'), left = imgs.length;
+  if(!left) setTimeout(go, 200);
+  imgs.forEach(function(im){
+    function done(){ if(--left === 0) setTimeout(go, 250); }
+    if(im.complete) done();
+    else { im.addEventListener('load', done); im.addEventListener('error', done); }
+  });
+  document.getElementById('paClose').addEventListener('click', kbClosePrint);
+  document.getElementById('paPrint').addEventListener('click', go);
+  var sh = document.getElementById('paShare');
+  if(sh) sh.addEventListener('click', function(){ kbSharePdf(pdfUrl, name); });
+}
+document.addEventListener('click', function(e){
+  var b = (e.target && e.target.closest) ? e.target.closest('[data-print1]') : null;
+  if(!b) return;
+  e.preventDefault();
+  var pages = (b.getAttribute('data-pages') || '').split(',').filter(function(x){ return !!x; });
+  kbOpenPrint(b.getAttribute('data-name') || '练习文件', pages, b.getAttribute('data-pdf') || '');
 });
 </script>
 
+<div id="printArea"></div>
 </body>
 </html>
