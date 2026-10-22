@@ -3435,7 +3435,7 @@
     if(!pass){ ui.err.textContent = '先输入家庭口令'; return; }
     ui.okBtn.disabled = true; ui.okBtn.textContent = '校验中…';
     ui.err.textContent = '';
-    fetch('https://homework-upload.whyjjf.workers.dev/auth', {
+    fetch((location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev') + '/auth', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ passcode: pass })
@@ -3903,7 +3903,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261022-2120';
+  var KB_BUILD = '20261022-2150';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -3921,7 +3921,7 @@
         }
       }).catch(function(){});
   } catch(e){}
-  var WORKER = 'https://homework-upload.whyjjf.workers.dev';
+  var WORKER = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev'); /* 2026-10-22晚：接口改走看板同域 /hw-api，绕开该 iPad 到 workers.dev 的连接假死 */
   var LS_TOKEN = 'hw-dev-token';
   var LS_STATE = 'hw-up-state';
   var TYPES = [
@@ -4728,7 +4728,7 @@ function kbClosePrint(){
    → POST homework-upload /print/req（只入队，服务端轮询进程再发邮件到打印机）。
    结果用 kbToast 反馈：已发送／20 分钟内已打过／今日页数已达上限／降级文案。
    发送成功后按钮 20 分钟内置灰（localStorage 计时，重开打印页同样生效；与服务端防重窗口同为 20 分钟，A3 对齐）。 */
-var KB_EPRINT_API = 'https://homework-upload.whyjjf.workers.dev/print/req';
+var KB_EPRINT_API = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev') + '/print/req';
 function kbEprintGrayKey(grade, file){ return 'kb-eprint-gray:' + grade + ':' + file; }
 function kbEprintGrayed(grade, file){
   try {
