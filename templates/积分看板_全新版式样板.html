@@ -498,6 +498,11 @@
   .log-scrollwrap.has-more::after{content:''; position:absolute; left:0; right:0; bottom:26px; height:34px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.97)); pointer-events:none;}
   .log-count{font-size:12px; color:var(--sub); text-align:center; padding-top:6px; min-height:18px;}
   .log-day{font-size:13px; font-weight:700; color:var(--sub); padding:10px 0 0; list-style:none;}
+  /* 自动滚动（2026-10-22 家长定、DeepSeek定版）：规则区滚动容器＋总开关行 */
+  .rule-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
+  .as-row{display:flex; justify-content:flex-end; margin-bottom:8px;}
+  .as-label{font-size:13px; color:var(--sub); display:flex; align-items:center; gap:6px; cursor:pointer;}
+  .as-toggle{width:18px; height:18px;}
 
   /* 页脚 */
   .footer{
@@ -926,10 +931,11 @@
     </button>
     <div class="collapse-body" id="panel-bonus" role="region" aria-labelledby="btn-bonus">
       <div class="collapse-inner"><div class="collapse-pad">
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle"> 自动滚动</label></div>
         <!-- 兜底（2026-10-20，DeepSeek终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
-        <ul class="rule-list">
+        <div class="auto-scroll rule-scroll"><ul class="rule-list">
           <li><span>规则数据暂不可用，请稍后刷新。</span></li>
-        </ul>
+        </ul></div>
       </div></div>
     </div>
   </section>
@@ -943,10 +949,11 @@
     </button>
     <div class="collapse-body" id="panel-deduct" role="region" aria-labelledby="btn-deduct">
       <div class="collapse-inner"><div class="collapse-pad">
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle"> 自动滚动</label></div>
         <!-- 兜底（2026-10-20，DeepSeek终审定案b）：同加分规则，不硬编码条目。 -->
-        <ul class="rule-list">
+        <div class="auto-scroll rule-scroll"><ul class="rule-list">
           <li><span>规则数据暂不可用，请稍后刷新。</span></li>
-        </ul>
+        </ul></div>
       </div></div>
     </div>
   </section>
@@ -961,9 +968,10 @@
     </button>
     <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
       <div class="collapse-inner"><div class="collapse-pad">
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle"> 自动滚动</label></div>
         <div class="grade-block" id="log-g5" aria-label="彦均积分日志">
           <div class="grade-head"><span class="pill-grade g5">彦均</span>积分日志</div>
-          <div class="log-scrollwrap"><div class="log-scroll"><ul class="log-list">
+          <div class="log-scrollwrap"><div class="log-scroll auto-scroll"><ul class="log-list">
             <li class="log-item">
               <div class="log-body">
                 <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
@@ -974,7 +982,7 @@
         </div>
         <div class="grade-block" id="log-g6" aria-label="伟豪积分日志">
           <div class="grade-head"><span class="pill-grade g6">伟豪</span>积分日志</div>
-          <div class="log-scrollwrap"><div class="log-scroll"><ul class="log-list">
+          <div class="log-scrollwrap"><div class="log-scroll auto-scroll"><ul class="log-list">
             <li class="log-item">
               <div class="log-body">
                 <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
@@ -3639,6 +3647,106 @@
 })();
 </script>
 <!-- ===== 交作业上传模块 结束 ===== -->
+
+<script>
+/* 自动滚动引擎（2026-10-22 家长定、DeepSeek 定版口径）：
+   适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区）。
+   默认自动往下滚（约 3 秒一行 ≈ 22px/s）；手动优先——触摸/点按/滚轮一律
+   暂停，松手闲置 5 秒后从原位置缓入恢复；滚到底停 4 秒后平滑回顶重滚；
+   栏目折叠、区域滚出视口（IntersectionObserver 阈值 0.5）、页面切后台均停；
+   系统“减少动态效果”时默认关（总开关显式打开则尊重，回顶改瞬时）；
+   总开关三处同步、状态 localStorage 持久化。程序滚动用 rAF 逐帧写
+   scrollTop，并以时间戳标志区分程序/用户滚动，防自激暂停（DeepSeek iOS 注意点）。 */
+(function(){
+  var SPEED = 22, IDLE_MS = 5000, DWELL_MS = 4000, RAMP_MS = 450, RET_MS = 400;
+  var store = null;
+  try { store = window.localStorage; } catch(e) { store = null; }
+  var pref = null;
+  try { pref = store ? store.getItem('kb_autoscroll') : null; } catch(e) { pref = null; }
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  function reduced(){ return !!(mq && mq.matches); }
+  function enabled(){
+    if(pref === 'on') return true;
+    if(pref === 'off') return false;
+    return !reduced();
+  }
+  var toggles = Array.prototype.slice.call(document.querySelectorAll('.as-toggle'));
+  function syncToggles(){ toggles.forEach(function(t){ t.checked = enabled(); }); }
+  toggles.forEach(function(t){
+    t.addEventListener('change', function(){
+      pref = t.checked ? 'on' : 'off';
+      try { if(store) store.setItem('kb_autoscroll', pref); } catch(e) {}
+      syncToggles();
+    });
+  });
+  syncToggles();
+
+  var states = [];
+  document.querySelectorAll('.auto-scroll').forEach(function(elm){
+    var st = { el: elm, hold: false, lastUser: 0, visible: false,
+               rampFrom: 0, dwellUntil: 0, returning: false, retFrom: 0, retStart: 0, lastProg: 0 };
+    states.push(st);
+    ['touchstart', 'pointerdown', 'wheel'].forEach(function(ev){
+      elm.addEventListener(ev, function(){ st.hold = true; st.lastUser = Date.now(); st.returning = false; st.dwellUntil = 0; }, { passive: true });
+    });
+    ['touchend', 'touchcancel', 'pointerup'].forEach(function(ev){
+      elm.addEventListener(ev, function(){ st.lastUser = Date.now(); }, { passive: true });
+    });
+    elm.addEventListener('scroll', function(){
+      /* 惯性滚动等非程序滚动同样刷新闲置计时；程序写入 80ms 内的事件忽略 */
+      if(Date.now() - st.lastProg > 80){ st.lastUser = Date.now(); }
+    }, { passive: true });
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(en){ st.visible = en.intersectionRatio >= 0.5; });
+      }, { threshold: [0, 0.5, 1] }).observe(elm);
+    } else { st.visible = true; }
+  });
+
+  var lastTs = 0;
+  function tick(ts){
+    var dt = lastTs ? Math.min(100, ts - lastTs) : 16;
+    lastTs = ts;
+    var now = Date.now();
+    states.forEach(function(st){
+      var elm = st.el;
+      var card = elm.closest ? elm.closest('.collapse') : null;
+      var open = !card || card.classList.contains('open');
+      var over = elm.scrollHeight > elm.clientHeight + 4;
+      if(!enabled() || !open || !st.visible || document.hidden || !over){
+        st.rampFrom = 0; return;
+      }
+      if(st.hold){
+        if(now - st.lastUser < IDLE_MS){ st.rampFrom = 0; return; }
+        st.hold = false; st.rampFrom = ts; /* 闲置满 5 秒：自此缓入恢复 */
+      }
+      if(st.dwellUntil){
+        if(ts < st.dwellUntil) return;
+        st.dwellUntil = 0;
+        if(reduced() && pref !== 'on'){ /* 减少动态且非显式开启不会走到这里（enabled 已拦），保险瞬时回顶 */
+          st.lastProg = Date.now(); elm.scrollTop = 0; st.rampFrom = ts; return;
+        }
+        if(pref === 'on' && reduced()){ st.lastProg = Date.now(); elm.scrollTop = 0; st.rampFrom = ts; return; }
+        st.returning = true; st.retFrom = elm.scrollTop; st.retStart = ts;
+      }
+      if(st.returning){
+        var p = (ts - st.retStart) / RET_MS;
+        if(p >= 1){ st.lastProg = Date.now(); elm.scrollTop = 0; st.returning = false; st.rampFrom = ts; }
+        else { st.lastProg = Date.now(); elm.scrollTop = Math.max(0, Math.round(st.retFrom * (1 - p))); }
+        return;
+      }
+      var factor = st.rampFrom ? Math.min(1, (ts - st.rampFrom) / RAMP_MS) : 1;
+      st.lastProg = Date.now();
+      elm.scrollTop += SPEED * factor * dt / 1000;
+      if(elm.scrollTop + elm.clientHeight >= elm.scrollHeight - 1){
+        st.dwellUntil = ts + DWELL_MS;
+      }
+    });
+    window.requestAnimationFrame(tick);
+  }
+  window.requestAnimationFrame(tick);
+})();
+</script>
 
 </body>
 </html>
