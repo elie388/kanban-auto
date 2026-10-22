@@ -3867,7 +3867,7 @@
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
       <div id="up-rec" style="display:none">
-        <div class="up-rechint" id="up-rec-hint" style="display:none">📖 这个读背要把<b>原文</b>一起交哦：先点上面的「📷 选取文件」把要读背的原文拍照上传，再点下面的录音读一遍，一起交，老师会照着原文批改。</div>
+        <div class="up-rechint" id="up-rec-hint" style="display:none">📖 这个要把<b>内容</b>一起交哦：先点上面的「📷 选取文件」把要读、要预习或要对话的内容拍照上传，再点下面的录音读一遍，一起交，老师会照着内容批改。</div>
         <button class="up-recbtn" id="up-rec-start" type="button">🎤 直接录音</button>
         <div class="up-reclive" id="up-rec-live" style="display:none">
           <span class="up-recdot"></span><span class="up-rectime" id="up-rec-time">00:00 / 15:00</span>
@@ -3903,7 +3903,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261022-2230';
+  var KB_BUILD = '20261022-2312';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -4096,7 +4096,7 @@
     if(cur.type === 'reading') return true;
     if(cur.mode === 'task' && cur.title){
       var t = cur.title;
-      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声|预习)/.test(t)) return true;
+      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声|预习|对话)/.test(t)) return true;
       if(/背\d/.test(t)) return true; /* 2026-10-22 兜底补强：「背10次」类（背+数字） */
       /* 2026-10-22晚修复：「读作文10分钟」这类只有单字「读」的朗读任务原关键词没覆盖、录音区不显示；
          放宽为标题含「读」也显示，但「阅读」（阅读理解类书面题）除外。 */
