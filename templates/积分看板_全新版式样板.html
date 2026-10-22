@@ -4372,7 +4372,7 @@ function kbOpenPrint(name, pages, pdfUrl){
   var h = '<div class="pa-bar"><span class="pa-title">' + name + '</span>'
     + '<button type="button" class="tfile tprint1" id="paPrint">🖨 打印</button>'
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
-    + '<div class="pa-hint">点「打印」弹出菜单后，把菜单最下面一排圆形按钮往左滑，找到「打印」点开即可。</div>';
+    + '<div class="pa-hint">点「打印」会直接打开这份 PDF；打开后点浏览器上的分享按钮，菜单里选「打印」。</div>';
   pages.forEach(function(u){ h += '<img src="' + u + '" alt="练习页">'; });
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
@@ -4385,7 +4385,7 @@ function kbOpenPrint(name, pages, pdfUrl){
     go();
     setTimeout(function(){
       window.removeEventListener('beforeprint', onBP);
-      if(!fired && pdfUrl) kbSharePdf(pdfUrl, name);
+      if(!fired && pdfUrl) window.location.href = pdfUrl;
     }, 700);
   }
   var imgs = pa.querySelectorAll('img'), left = imgs.length;
