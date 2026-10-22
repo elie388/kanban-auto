@@ -74,7 +74,10 @@ BADGE_MAP.update({k: {"name": n, "icon": i} for k, (n, i) in LEGACY_BADGES.items
 # 历史落账 key 变体 -> 目录 canonical key（2026-10-21 修复）：三合一快手
 # 2026-10-20 补发落账时曾用 badge_sanheyikuaishou，与目录 sanheyi 不一致，
 # 导致目标榜永远匹配不到该徽章。解析时归一，冲正同理。
-KEY_ALIAS = {"sanheyikuaishou": "sanheyi"}
+KEY_ALIAS = {"sanheyikuaishou": "sanheyi",
+             # 2026-10-22：台账 10-21 家务接力手两行 key 误拼 jiwujielishou（少 a），
+             # 台账 append-only 不反写，解析侧归一到目录 key，否则目标榜 obtained 对不上
+             "jiwujielishou": "jiawujielishou"}
 
 # ---------- 积分商店（规则手册兑换表） ----------
 # (id, name, cost, icon)
