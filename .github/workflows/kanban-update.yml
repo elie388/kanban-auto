@@ -73,6 +73,7 @@ jobs:
           test -s data/tasks_daily_5.json || { echo "::error::data/tasks_daily_5.json 缺失或为空"; exit 1; }
           test -s data/tasks_daily_6.json || { echo "::error::data/tasks_daily_6.json 缺失或为空"; exit 1; }
           cp data/tasks_daily_5.json data/tasks_daily_6.json public/data/
+          cp data/yesterday_done_5.json data/yesterday_done_6.json public/data/
           ls -la public/data/
 
       # 待改正配图通道（2026-10-22 家长定）：待改正明细的画图引导图
