@@ -4572,7 +4572,18 @@ function kbEprintSubmit(file, grade, label, pages, btn){
     else kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
   }, function(){});
 }
+/* 打印口令门（2026-10-22 家长定）：点卡片上的打印按钮先过口令——
+   与提交作业同一体系：本机有设备令牌直接打开打印页；没有令牌先弹
+   口令框（复用补练口令门 window.kbAskPass），校验通过存令牌并自动
+   继续打开；口令错在框内报错。打印页内的「发到打印机」另有其口令门。 */
 function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
+  if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
+    window.kbAskPass(function(){ kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName); }, null);
+    return;
+  }
+  kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName);
+}
+function kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName){
   var pa = document.getElementById('printArea');
   if(!pa) return;
   var pageCount = Math.max(pages.length, 1);
