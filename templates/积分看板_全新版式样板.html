@@ -3773,7 +3773,7 @@
 /* 自动滚动引擎（2026-10-22 家长定、DeepSeek 定版口径）：
    适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区）。
    默认自动往下滚（约 3 秒一行 ≈ 22px/s）；手动优先——触摸/点按/滚轮一律
-   暂停，松手闲置 8 秒后从原位置缓入恢复（2026-10-22 家长由 5 秒改定 8 秒）；滚到底停 4 秒后平滑回顶重滚；
+   暂停，松手闲置 8 秒后从原位置缓入恢复（2026-10-22 家长由 5 秒改定 8 秒）；无缝循环滚动（内容克隆一份接在后面、滚满一轮接回开头，2026-10-22 家长改定，不再到底回顶重滚）；
    栏目折叠、区域与视口不相交（顶边进入判定、DeepSeek 二次定版）、页面切后台均停；
    系统“减少动态效果”时默认关（开关显式打开则尊重，回顶改瞬时）；
    三栏目开关各自独立、互不影响（2026-10-22 家长改定），状态按栏目
@@ -3811,7 +3811,7 @@
   document.querySelectorAll('.auto-scroll').forEach(function(elm){
     var st = { el: elm, key: elm.getAttribute('data-as-key') || 'log', hold: false, lastUser: 0, visible: false,
                rampFrom: 0, dwellUntil: 0, returning: false, retFrom: 0, retStart: 0, lastProg: 0,
-               pos: -1, lastWritten: 0, touching: false };
+               pos: -1, lastWritten: 0, touching: false, loopH: 0, needLoop: true, loopObs: null };
     states.push(st);
     ['touchstart', 'pointerdown', 'wheel'].forEach(function(ev){
       elm.addEventListener(ev, function(){ st.hold = true; st.touching = true; st.lastUser = Date.now(); st.returning = false; st.dwellUntil = 0; st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop; }, { passive: true });
@@ -3840,7 +3840,55 @@
         es.forEach(function(en){ st.visible = en.isIntersecting; });
       }, { rootMargin: '100px 0px 100px 0px', threshold: [0, 0.02] }).observe(elm);
     } else { st.visible = true; }
+    if('MutationObserver' in window){
+      st.loopObs = new MutationObserver(function(muts){
+        for(var i = 0; i < muts.length; i++){
+          var nodes = [].concat([].slice.call(muts[i].addedNodes), [].slice.call(muts[i].removedNodes));
+          for(var j = 0; j < nodes.length; j++){
+            if(nodes[j].nodeType === 1 && !nodes[j].hasAttribute('data-as-clone')){ st.needLoop = true; return; }
+          }
+        }
+      });
+      st.loopObs.observe(elm, { childList: true });
+    }
   });
+
+  /* 无缝循环（2026-10-22 家长改定、DeepSeek 终审）：内容整组克隆一份接在
+     后面，pos 滚满一轮原始高度 loopH 即取模接回开头，克隆与原件一致、
+     跳变不可见；到底停留与回顶动画在循环模式下不可达。
+     硬性约束（DeepSeek）：loopH 用首个克隆与首个原件的实际位置差测得；
+     重建走断开观察→改 DOM→恢复观察防自触发，重建后 pos 按当前视觉
+     位置对新 loopH 取模归一；归一用 while 循环；重建不碰闲置计时。 */
+  function ensureLoop(st){
+    var elm = st.el;
+    if(st.loopObs) st.loopObs.disconnect();
+    var old = elm.querySelectorAll('[data-as-clone]');
+    for(var i = 0; i < old.length; i++) old[i].remove();
+    st.loopH = 0;
+    if(elm.children.length && elm.scrollHeight > elm.clientHeight + 4){
+      var firsts = Array.prototype.slice.call(elm.children);
+      firsts.forEach(function(ch){
+        var c = ch.cloneNode(true);
+        c.setAttribute('data-as-clone', '1');
+        c.setAttribute('aria-hidden', 'true');
+        if(c.id) c.removeAttribute('id');
+        var withIds = c.querySelectorAll('[id]');
+        for(var k = 0; k < withIds.length; k++) withIds[k].removeAttribute('id');
+        elm.appendChild(c);
+      });
+      var fc = elm.querySelector('[data-as-clone]');
+      if(fc && firsts[0]){
+        var er = elm.getBoundingClientRect();
+        var y0 = firsts[0].getBoundingClientRect().top - er.top + elm.scrollTop;
+        var y1 = fc.getBoundingClientRect().top - er.top + elm.scrollTop;
+        st.loopH = Math.round(y1 - y0);
+        if(st.loopH <= 0) st.loopH = 0;
+      }
+    }
+    if(st.loopObs) st.loopObs.observe(elm, { childList: true });
+  }
+  window.addEventListener('resize', function(){ states.forEach(function(s){ s.needLoop = true; }); });
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ states.forEach(function(s){ s.needLoop = true; }); }); }
 
   function writePos(st, v){
     /* 位置写出：取整后变化才写（iOS 取整环境下避免无用写入） */
@@ -3855,6 +3903,15 @@
     var now = Date.now();
     states.forEach(function(st){
       var elm = st.el;
+      if(!st.loopH && elm.clientHeight > 0 && elm.scrollHeight > elm.clientHeight + 4 && elm.children.length) st.needLoop = true;
+      if(st.needLoop){
+        st.needLoop = false;
+        ensureLoop(st);
+        if(st.pos >= 0){
+          st.pos = st.loopH > 0 ? (elm.scrollTop % st.loopH) : elm.scrollTop;
+          st.lastWritten = elm.scrollTop;
+        }
+      }
       var card = elm.closest ? elm.closest('.collapse') : null;
       var open = !card || card.classList.contains('open');
       var over = elm.scrollHeight > elm.clientHeight + 4;
@@ -3866,9 +3923,11 @@
       if(st.hold){
         if(now - st.lastUser < IDLE_MS){ st.rampFrom = 0; return; }
         st.hold = false; st.rampFrom = ts; /* 闲置满 8 秒：自此缓入恢复 */
-        st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop;
+        /* 恢复时按当前视觉位置对 loopH 取模归一（DeepSeek 约束） */
+        st.pos = st.loopH > 0 ? (elm.scrollTop % st.loopH) : elm.scrollTop;
+        st.lastWritten = elm.scrollTop;
       }
-      if(st.dwellUntil){
+      if(!st.loopH && st.dwellUntil){
         if(ts < st.dwellUntil) return;
         st.dwellUntil = 0;
         if(reduced()){ /* 减少动态时能滚必是该栏目被显式开启：回顶改瞬时跳转 */
@@ -3876,7 +3935,7 @@
         }
         st.returning = true; st.retFrom = st.pos; st.retStart = ts;
       }
-      if(st.returning){
+      if(!st.loopH && st.returning){
         var p = (ts - st.retStart) / RET_MS;
         st.pos = Math.max(0, st.retFrom * (1 - p));
         writePos(st, st.pos);
@@ -3889,10 +3948,16 @@
          scrollTop 按整数存储，增量写后读回原值，永远原地踏步（桌面 Blink
          保留小数故正常）。根因经 deepseek 终审确认。 */
       st.pos += SPEED * factor * dt / 1000;
-      if(st.pos > maxScroll) st.pos = maxScroll;
-      writePos(st, st.pos);
-      if(st.pos >= maxScroll - 2){
-        st.dwellUntil = ts + DWELL_MS;
+      if(st.loopH > 0){
+        /* 循环模式：滚满一轮取模接回开头（while 归一防外部大改），无停留无回顶 */
+        while(st.pos >= st.loopH) st.pos -= st.loopH;
+        writePos(st, st.pos);
+      } else {
+        if(st.pos > maxScroll) st.pos = maxScroll;
+        writePos(st, st.pos);
+        if(st.pos >= maxScroll - 2){
+          st.dwellUntil = ts + DWELL_MS;
+        }
       }
     });
     window.requestAnimationFrame(tick);
