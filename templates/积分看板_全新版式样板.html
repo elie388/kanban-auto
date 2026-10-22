@@ -190,8 +190,9 @@
   .task .st-mini{font-size:11px; font-weight:600; color:#8a8378; background:#F1F3F5; border-radius:999px; padding:2px 8px; white-space:nowrap;}
   /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
      徽标独占一行（主行之下左对齐），不再与状态徽章同行挤压；
-     展开区逐题列题号/题目/错因。默认展开（2026-10-22 家长定：
-     每项任务不用点击才展开），点徽标可收起、再点重新展开。 */
+     展开区逐题列题号/题目/错因。2026-10-22 家长改定：整个任务卡
+     默认收起、点「展开」后才展开（见 .open-task 规则），本徽标
+     随卡展开后显示，为纯标签不再承担展开开关。 */
   .task .corr-badge{
     align-self:flex-start;
     margin-top:10px;
@@ -203,9 +204,25 @@
     -webkit-tap-highlight-color:transparent;
   }
   .task .corr-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
-  .task.open-corr .corr-caret{transform:rotate(90deg);}
+  .task.open-task .corr-caret{transform:rotate(90deg);}
   .task .corr-panel{display:none; width:100%; margin-top:8px; border-top:1px dashed #F0C4A8; padding-top:4px;}
-  .task.open-corr .corr-panel{display:block;}
+  .task.open-task .corr-panel{display:block;}
+  /* 任务卡默认收起（2026-10-22 家长定：每项任务点击后才展开，不分状态）：
+     收起时只留标题、状态徽章与「展开」按钮，其余（说明、待改正、文件、交作业按钮）展开后才显示 */
+  .task:not(.open-task) .task-progress{display:none;}
+  .task:not(.open-task) .corr-badge{display:none;}
+  .task:not(.open-task) .tfiles{display:none;}
+  .task:not(.open-task) .st-mini{display:none;}
+  .task:not(.open-task) .st-zone .up-btn{display:none;}
+  .task .task-toggle{
+    font-size:12.5px; font-weight:700; font-family:inherit;
+    padding:5px 12px; border-radius:999px; border:1.5px solid #D8C9A8; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center; gap:5px;
+    white-space:nowrap; min-height:36px;
+    background:#F3EFE3; color:#5A5145;
+    -webkit-tap-highlight-color:transparent;
+  }
+  span.corr-badge{cursor:default;}
   .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
   .corr-item .corr-no{font-weight:700; color:#C2410C;}
@@ -1156,16 +1173,18 @@
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正'};
-  var CLOSED_CORR = {}; /* 待改正明细收起状态（按 task_id，软刷新后恢复）：2026-10-22 家长定默认展开，只记家长/孩子手动收起的 */
+  var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击「展开」后才展开，不分状态 */
   document.addEventListener('click', function(e){
-    var b = e.target && e.target.closest ? e.target.closest('.corr-badge') : null;
+    var b = e.target && e.target.closest ? e.target.closest('.task-toggle') : null;
     if(!b) return;
     var card = b.closest ? b.closest('.task') : null;
     if(!card) return;
-    var open = card.classList.toggle('open-corr');
+    var open = card.classList.toggle('open-task');
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    var tid = b.getAttribute('data-corr');
-    if(tid){ if(open) delete CLOSED_CORR[tid]; else CLOSED_CORR[tid] = 1; }
+    var tx = b.querySelector('.tt-text');
+    if(tx) tx.textContent = open ? '收起' : '展开';
+    var tid = b.getAttribute('data-toggle-task');
+    if(tid){ if(open) OPEN_TASK[tid] = 1; else delete OPEN_TASK[tid]; }
   });
   /* 待改正示范录音播放（2026-10-22）：委托切换，同时只播一个，播完复位 */
   document.addEventListener('click', function(e){
@@ -1278,7 +1297,7 @@
            点击展开明细（2026-10-20 续）：明细 corrections 与数字同源
            （task_ingest.sync_corrections 同一归集列表，长度恒等），
            徽标独占一行（主行之下），点一下展开、再点收起。 */
-        var corrBadge = '', corrPanel = '', openCls = '';
+        var corrBadge = '', corrPanel = '';
         var filesRow = '';
         /* 下载/打印按钮隐藏规则（2026-10-22 家长定）：孩子已提交该项作业、
            经批改核实没有问题（任务 done）后，练习文件的打印按钮隐藏；
@@ -1322,19 +1341,20 @@
               + '<span class="corr-h">' + esc(x.a || '') + '</span>'
               + '</div>';
           });
-          if(!CLOSED_CORR[t.task_id]) openCls = ' open-corr';
           var badgeTxt = (pendN > 0)
             ? ('待改正 ' + pendN + ' 题' + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
             : ('\uD83D\uDCAC 留言回复 ' + qaList.length);
-          corrBadge = '<button type="button" class="corr-badge" data-corr="' + esc(t.task_id) + '"'
-            + ' aria-expanded="' + (CLOSED_CORR[t.task_id] ? 'false' : 'true') + '">' + badgeTxt
-            + ' <span class="corr-caret">▸</span></button>';
+          corrBadge = '<span class="corr-badge">' + badgeTxt + '</span>';
           corrPanel = '<div class="corr-panel">' + items + '</div>';
         }
-        html += '<div class="task ' + sm.cls + openCls + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
+        var taskOpen = !!OPEN_TASK[t.task_id];
+        var toggleBtn = '<button type="button" class="task-toggle" data-toggle-task="' + esc(t.task_id || '') + '"'
+          + ' aria-expanded="' + (taskOpen ? 'true' : 'false') + '"><span class="tt-text">' + (taskOpen ? '收起' : '展开') + '</span>'
+          + ' <span class="corr-caret">▸</span></button>';
+        html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-name">' + esc(t.title) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
-          + '<span class="st-zone"><span class="st-badge">' + badgeText + '</span>' + miniPill + '</span></div>'
+          + '<span class="st-zone"><span class="st-badge">' + badgeText + '</span>' + miniPill + toggleBtn + '</span></div>'
           + corrBadge + corrPanel + filesRow + '</div>';
       });
     }
