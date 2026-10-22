@@ -3587,6 +3587,7 @@
         try { localStorage.setItem(LS_TOKEN, r.body.device_token); } catch(e){}
         $('up-passrow').style.display = 'none';
       });
+    $('up-filelist').innerHTML = '';
     var rows = files.map(fileRow);
     ensureToken
       .then(function(){ return Promise.all(files.map(sha256Of)); })
