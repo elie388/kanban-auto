@@ -240,6 +240,16 @@
   #printArea .pa-bar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
   #printArea .pa-title{font-weight:700; margin-right:auto; font-size:16px;}
   #printArea .pa-hint{color:#8a8171; font-size:12px; margin-bottom:10px;}
+  /* ePrint 二次确认框（2026-10-22 定稿）：样式与口令框同系，层级高于打印页 */
+  .kbcf-mask{position:fixed;inset:0;background:rgba(40,32,24,.45);display:none;align-items:center;justify-content:center;z-index:10001;padding:20px}
+  .kbcf-mask.show{display:flex}
+  .kbcf-card{background:#FFFBF2;border-radius:16px;max-width:340px;width:100%;padding:18px 16px 14px;box-shadow:0 12px 32px rgba(0,0,0,.28)}
+  .kbcf-title{font-weight:800;font-size:16px;margin-bottom:6px;color:#3D2E22}
+  .kbcf-hint{color:#8A7A68;font-size:13px;line-height:1.55}
+  .kbcf-row{display:flex;gap:10px;margin-top:12px}
+  .kbcf-cancel{flex:1;border:0;border-radius:10px;padding:11px 0;background:#EFE7D8;color:#6B5B45;font-size:15px;cursor:pointer}
+  .kbcf-ok{flex:1;border:0;border-radius:10px;padding:11px 0;background:#3E7C4F;color:#fff;font-size:15px;cursor:pointer}
+  #printArea .pa-bar .tfile:disabled{opacity:.55;cursor:default}
   #printArea img{display:block; width:100%; margin:0 auto 10px; border:1px solid #ddd;}
   @media print{
     body>*{display:none !important;}
@@ -1308,7 +1318,7 @@
             filesRow = '<div class="tfiles">' + pdfs.map(function(f){
               var furl = 'data/files/' + encodeURIComponent(f.name);
               var pages = Array.isArray(f.pages) ? f.pages.map(function(pg){ return 'data/files/' + encodeURIComponent(pg); }).join(',') : '';
-              return '<button type="button" class="tfile tprint1" data-print1="1" data-pages="' + pages + '" data-pdf="' + furl + '" data-name="' + esc(f.label || f.name) + '">\uD83D\uDDA8 打印' + esc(f.label || '') + '</button>';
+              return '<button type="button" class="tfile tprint1" data-print1="1" data-pages="' + pages + '" data-pdf="' + furl + '" data-file="' + esc(f.name) + '" data-grade="' + esc(wantGrade) + '" data-name="' + esc(f.label || f.name) + '">\uD83D\uDDA8 打印' + esc(f.label || '') + '</button>';
             }).join('') + '</div>';
           }
         }
@@ -3186,6 +3196,11 @@
      行内状态文字与表单兜底保留。中转服务端本轮不验令牌（后续加固项）。 */
   var KB_PASS_UI = null;
   function kbPracticeToken(){ try { return localStorage.getItem('hw-dev-token') || ''; } catch(e){ return ''; } }
+  /* 跨块复用出口（2026-10-22 ePrint 接入）：口令门与 toast 定义在本 IIFE 内，
+     打印页代码在末尾 script 块，须经 window 显式挂出才能调用。 */
+  window.kbPracticeToken = kbPracticeToken;
+  window.kbToast = kbToast;
+  window.kbAskPass = kbAskPass;
   function kbEnsurePracticeUi(){
     if(KB_PASS_UI) return KB_PASS_UI;
     var css = document.createElement('style');
@@ -4387,13 +4402,101 @@ function kbClosePrint(){
   var pa = document.getElementById('printArea');
   if(pa) pa.innerHTML = '';
 }
-function kbOpenPrint(name, pages, pdfUrl){
+/* ePrint 一键打印（2026-10-22 定稿，设计见 hidden_files/ePrint打印_设计与验证.md）：
+   打印页点「发到打印机」→ 二次确认 → 口令门（无设备令牌先校验，复用补练口令门）
+   → POST homework-upload /print/req（只入队，服务端轮询进程再发邮件到打印机）。
+   结果用 kbToast 反馈：已发送／20 分钟内已打过／今日页数已达上限／降级文案。
+   发送成功后按钮 30 分钟内置灰（localStorage 计时，重开打印页同样生效）。 */
+var KB_EPRINT_API = 'https://homework-upload.whyjjf.workers.dev/print/req';
+function kbEprintGrayKey(grade, file){ return 'kb-eprint-gray:' + grade + ':' + file; }
+function kbEprintGrayed(grade, file){
+  try {
+    var ts = parseInt(localStorage.getItem(kbEprintGrayKey(grade, file)) || '0', 10);
+    return !!ts && (Date.now() - ts) < 30 * 60 * 1000;
+  } catch(e){ return false; }
+}
+function kbEprintMarkSent(grade, file){
+  try { localStorage.setItem(kbEprintGrayKey(grade, file), String(Date.now())); } catch(e){}
+}
+var KB_CF_PENDING = null;
+function kbEnsurePrintConfirm(){
+  var m = document.getElementById('kbcf-mask');
+  if(m) return m;
+  m = document.createElement('div');
+  m.id = 'kbcf-mask';
+  m.className = 'kbcf-mask';
+  m.innerHTML = '<div class="kbcf-card"><div class="kbcf-title">🖨 发到打印机</div>'
+    + '<div class="kbcf-hint"></div>'
+    + '<div class="kbcf-row"><button type="button" class="kbcf-cancel">再想想</button>'
+    + '<button type="button" class="kbcf-ok">确认发送</button></div></div>';
+  document.body.appendChild(m);
+  m.addEventListener('click', function(e){ if(e.target === m) kbHidePrintConfirm(); });
+  m.querySelector('.kbcf-cancel').addEventListener('click', kbHidePrintConfirm);
+  m.querySelector('.kbcf-ok').addEventListener('click', function(){
+    var f = KB_CF_PENDING;
+    kbHidePrintConfirm();
+    if(f) f();
+  });
+  return m;
+}
+function kbAskPrintConfirm(text, onOk){
+  var m = kbEnsurePrintConfirm();
+  m.querySelector('.kbcf-hint').textContent = text;
+  KB_CF_PENDING = onOk;
+  m.classList.add('show');
+}
+function kbHidePrintConfirm(){
+  var m = document.getElementById('kbcf-mask');
+  if(m) m.classList.remove('show');
+  KB_CF_PENDING = null;
+}
+function kbEprintSubmit(file, grade, label, pages, btn){
+  function post(tok){
+    fetch(KB_EPRINT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Device-Token': tok },
+      body: JSON.stringify({ file: file, grade: grade, label: label, pages: pages })
+    }).then(function(resp){
+      return resp.json().catch(function(){ return null; }).then(function(j){ return { status: resp.status, body: j }; });
+    }).then(function(r){
+      if(r.status === 401 && r.body && r.body.code === 'stale_token'){
+        try { localStorage.removeItem('hw-dev-token'); } catch(e){}
+        kbEprintSubmit(file, grade, label, pages, btn);
+        return;
+      }
+      if(r.status === 200 && r.body && r.body.result === 'queued'){
+        kbEprintMarkSent(grade, file);
+        if(btn){ btn.disabled = true; btn.textContent = '🖨 已发送到打印机'; }
+        kbToast('已发送到打印机，稍等几分钟就会打出来');
+      } else if(r.status === 200 && r.body && r.body.result === 'duplicate'){
+        var mins = (typeof r.body.minutes_ago === 'number') ? r.body.minutes_ago : 0;
+        kbToast(mins + '分钟前打印了，请等待打印～');
+      } else if(r.status === 200 && r.body && r.body.result === 'capped'){
+        kbToast('今天打印页数已达上限（20 页），明天再打吧');
+      } else {
+        kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
+      }
+    }).catch(function(){
+      kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
+    });
+  }
+  var tok = kbPracticeToken();
+  if(tok){ post(tok); return; }
+  kbAskPass(function(){
+    var t2 = kbPracticeToken();
+    if(t2) post(t2);
+    else kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
+  }, function(){});
+}
+function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
   var pa = document.getElementById('printArea');
   if(!pa) return;
+  var pageCount = Math.max(pages.length, 1);
   var h = '<div class="pa-bar"><span class="pa-title">' + name + '</span>'
-    + '<button type="button" class="tfile tprint1" id="paPrint">🖨 打印</button>'
+    + (pdfUrl && fileName ? '<button type="button" class="tfile tprint1" id="paEprint">🖨 发到打印机</button>' : '')
+    + '<button type="button" class="tfile" id="paPrint">打印 / 分享文件</button>'
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
-    + '<div class="pa-hint">点「打印」弹出菜单后，选「保存到文件」，再到「文件」App 打开这份 PDF，点分享选「打印」。用 Safari 打开看板时，点「打印」可直接打印。</div>';
+    + '<div class="pa-hint">点「发到打印机」：这份 PDF 会发到家里的打印机自动打印，稍等几分钟。点「打印 / 分享文件」：在弹出菜单中选「保存到文件」，再到「文件」App 打开这份 PDF，点分享选「打印」。</div>';
   pages.forEach(function(u){ h += '<img src="' + u + '" alt="练习页">'; });
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
@@ -4418,13 +4521,27 @@ function kbOpenPrint(name, pages, pdfUrl){
   });
   document.getElementById('paClose').addEventListener('click', kbClosePrint);
   document.getElementById('paPrint').addEventListener('click', goWithFallback);
+  var ep = document.getElementById('paEprint');
+  if(ep){
+    if(kbEprintGrayed(gradeName, fileName)){
+      ep.disabled = true;
+      ep.textContent = '🖨 已发送（30 分钟内不可重复）';
+    }
+    ep.addEventListener('click', function(){
+      if(ep.disabled) return;
+      kbAskPrintConfirm('把「' + name + '」发到家里的打印机打印吗？共 ' + pageCount + ' 页。', function(){
+        kbEprintSubmit(fileName, gradeName, name, pageCount, ep);
+      });
+    });
+  }
 }
 document.addEventListener('click', function(e){
   var b = (e.target && e.target.closest) ? e.target.closest('[data-print1]') : null;
   if(!b) return;
   e.preventDefault();
   var pages = (b.getAttribute('data-pages') || '').split(',').filter(function(x){ return !!x; });
-  kbOpenPrint(b.getAttribute('data-name') || '练习文件', pages, b.getAttribute('data-pdf') || '');
+  kbOpenPrint(b.getAttribute('data-name') || '练习文件', pages, b.getAttribute('data-pdf') || '',
+    b.getAttribute('data-file') || '', b.getAttribute('data-grade') || '');
 });
 </script>
 
