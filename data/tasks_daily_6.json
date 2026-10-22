@@ -3,7 +3,7 @@
   "date": "2026-10-22",
   "grade": "六年级",
   "generated_at": "2026-10-22T00:05:11+08:00",
-  "updated_at": "2026-10-22T22:56:54+08:00",
+  "updated_at": "2026-10-22T23:01:51+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -145,7 +145,11 @@
       "pending_corrections": 0,
       "corrections": [],
       "completed_at": "2026-10-22T22:26:55+08:00",
-      "status_source": "bank_writeback"
+      "status_source": "bank_writeback",
+      "orig_photos": [
+        "fc7b99816a1973a9.jpg",
+        "21db7238415e1feb.jpg"
+      ]
     },
     {
       "task_id": "REG-20261022-146C0D",
@@ -217,7 +221,9 @@
       "created_at": "2026-10-22T20:23:56+08:00",
       "updated_at": "2026-10-22T20:23:56+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "task_type": "reading",
+      "type_source": "regex_bao"
     },
     {
       "task_id": "REG-20261022-743B82",
@@ -296,7 +302,9 @@
       "created_at": "2026-10-22T20:23:56+08:00",
       "updated_at": "2026-10-22T20:23:56+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "task_type": "reading",
+      "type_source": "regex_bao"
     }
   ],
   "counts": {
