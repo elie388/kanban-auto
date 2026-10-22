@@ -258,9 +258,16 @@
     #printArea .pa-bar, #printArea .pa-hint{display:none !important;}
     #printArea img{border:none; page-break-after:always; margin:0;}
   }
-  .corr-item .corr-audio{display:flex; align-items:center; gap:10px; margin-top:8px;}
-  .corr-item .corr-play{width:52px; height:52px; border-radius:50%; border:none; background:#3d9970; color:#fff; font-size:22px; line-height:1; cursor:pointer; flex:0 0 auto; padding:0;}
-  .corr-item .corr-alab{font-size:13px; color:#5A5145;}
+  .corr-item .corr-audios{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .corr-item .corr-audio{display:inline-flex;}
+  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 15px; border-radius:999px; border:1.5px solid #DFA050; background:#FFF7E6; color:#7A4E12; font-size:14px; font-weight:600; line-height:1; cursor:pointer;}
+  .corr-item .corr-play .corr-ic{font-size:13px; color:#E8873A;}
+  .corr-item .corr-play.orig{border-color:#7FA6C9; background:#EFF6FC; color:#2F5D8A;}
+  .corr-item .corr-play.orig .corr-ic{color:#4A7FB5;}
+  .corr-item .corr-play.playing{background:#E8873A; border-color:#E8873A; color:#fff;}
+  .corr-item .corr-play.playing .corr-ic{color:#fff;}
+  .corr-item .corr-play.orig.playing{background:#4A7FB5; border-color:#4A7FB5; color:#fff;}
+  .corr-item .corr-play.orig.playing .corr-ic{color:#fff;}
   .corr-item .corr-audio audio{display:none;}
   .task .task-info{flex:1; min-width:0; text-align:left;}
   .task .task-name{
@@ -1209,20 +1216,26 @@
     if(e.target.closest('.task-info')) toggleTaskCard(card);
   });
   /* 待改正示范录音播放（2026-10-22）：委托切换，同时只播一个，播完复位 */
+  function corrSetBtn(pb, playing){
+    if(!pb) return;
+    var ic = pb.querySelector('.corr-ic');
+    if(ic) ic.textContent = playing ? '\u23F8' : '\u25B6';
+    pb.classList.toggle('playing', !!playing);
+  }
   document.addEventListener('click', function(e){
     var pb = e.target && e.target.closest ? e.target.closest('.corr-play') : null;
     if(!pb) return;
     var wrap = pb.closest ? pb.closest('.corr-audio') : null;
     var au = wrap ? wrap.querySelector('audio') : null;
     if(!au) return;
-    if(!au.paused){ au.pause(); pb.textContent = '\u25B6'; return; }
+    if(!au.paused){ au.pause(); corrSetBtn(pb, false); return; }
     document.querySelectorAll('.corr-audio audio').forEach(function(o){ if(o !== au && !o.paused) o.pause(); });
     document.querySelectorAll('.corr-play').forEach(function(o){ if(o !== pb) o.textContent = '\u25B6'; });
-    au.onended = function(){ pb.textContent = '\u25B6'; };
-    au.onpause = function(){ if(au.ended || !au.currentTime) pb.textContent = '\u25B6'; else if(au.paused) pb.textContent = '\u25B6'; };
+    au.onended = function(){ corrSetBtn(pb, false); };
+    au.onpause = function(){ if(au.paused) corrSetBtn(pb, false); };
     var pr = au.play();
-    if(pr && pr.catch) pr.catch(function(){ pb.textContent = '\u25B6'; });
-    pb.textContent = '\u23F8';
+    if(pr && pr.catch) pr.catch(function(){ corrSetBtn(pb, false); });
+    corrSetBtn(pb, true);
   });
 
   function esc(s){
@@ -1347,11 +1360,11 @@
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
                 + (c.img ? '<img class="corr-img" src="data/diagrams/' + esc(c.img) + '" alt="画图引导">' : '')
-                + (Array.isArray(c.audios) ? c.audios.map(function(a){
-                    return '<div class="corr-audio"><button type="button" class="corr-play" aria-label="播放示范录音">\u25B6</button>'
-                      + '<span class="corr-alab">' + esc(a.label || '示范录音') + '</span>'
-                      + '<audio preload="none" src="data/audio/' + esc(a.src) + '"></audio></div>';
-                  }).join('') : '')
+                + ((Array.isArray(c.audios) && c.audios.length) ? '<div class="corr-audios">' + c.audios.map(function(a){
+                    var isOrig = (a.label || '').indexOf('原音') >= 0;
+                    return '<span class="corr-audio"><button type="button" class="corr-play' + (isOrig ? ' orig' : '') + '" aria-label="播放录音"><span class="corr-ic">\u25B6</span><span class="corr-alab">' + esc(a.label || '示范录音') + '</span></button>'
+                      + '<audio preload="none" src="data/audio/' + esc(a.src) + '"></audio></span>';
+                  }).join('') + '</div>' : '')
                 + '</div>';
             });
           } else if(pendN > 0) {
