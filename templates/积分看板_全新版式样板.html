@@ -3691,17 +3691,26 @@
   var states = [];
   document.querySelectorAll('.auto-scroll').forEach(function(elm){
     var st = { el: elm, key: elm.getAttribute('data-as-key') || 'log', hold: false, lastUser: 0, visible: false,
-               rampFrom: 0, dwellUntil: 0, returning: false, retFrom: 0, retStart: 0, lastProg: 0 };
+               rampFrom: 0, dwellUntil: 0, returning: false, retFrom: 0, retStart: 0, lastProg: 0,
+               pos: -1, lastWritten: 0, touching: false };
     states.push(st);
     ['touchstart', 'pointerdown', 'wheel'].forEach(function(ev){
-      elm.addEventListener(ev, function(){ st.hold = true; st.lastUser = Date.now(); st.returning = false; st.dwellUntil = 0; }, { passive: true });
+      elm.addEventListener(ev, function(){ st.hold = true; st.touching = true; st.lastUser = Date.now(); st.returning = false; st.dwellUntil = 0; st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop; }, { passive: true });
     });
     ['touchend', 'touchcancel', 'pointerup'].forEach(function(ev){
-      elm.addEventListener(ev, function(){ st.lastUser = Date.now(); }, { passive: true });
+      elm.addEventListener(ev, function(){ st.touching = false; st.lastUser = Date.now(); }, { passive: true });
     });
     elm.addEventListener('scroll', function(){
-      /* 惯性滚动等非程序滚动同样刷新闲置计时；程序写入 80ms 内的事件忽略 */
-      if(Date.now() - st.lastProg > 80){ st.lastUser = Date.now(); }
+      /* 回声判定（DeepSeek 终审三条件：写入基准差＋交互标志＋时间窗）：
+         非交互中且与上次程序写入值相差 ≤1px 的，一律视为程序写入的回声
+         （含 iOS 迟到的 scroll 事件），不刷新闲置计时；其余视为用户滚动，
+         刷新闲置计时并把位置基准同步回真实 scrollTop。 */
+      var v = elm.scrollTop;
+      if(!st.touching && Math.abs(v - st.lastWritten) <= 1) return;
+      if(st.touching || Date.now() - st.lastProg > 80){
+        st.lastUser = Date.now();
+        st.pos = v; st.lastWritten = v;
+      }
     }, { passive: true });
     if('IntersectionObserver' in window){
       /* 可见判定（DeepSeek 二次定版 2026-10-22）：按位置事件而非面积比例——
@@ -3714,6 +3723,12 @@
     } else { st.visible = true; }
   });
 
+  function writePos(st, v){
+    /* 位置写出：取整后变化才写（iOS 取整环境下避免无用写入） */
+    var w = Math.round(v);
+    if(w !== st.lastWritten){ st.el.scrollTop = w; st.lastWritten = w; }
+    st.lastProg = Date.now();
+  }
   var lastTs = 0;
   function tick(ts){
     var dt = lastTs ? Math.min(100, ts - lastTs) : 16;
@@ -3727,28 +3742,37 @@
       if(!enabledFor(st.key) || !open || !st.visible || document.hidden || !over){
         st.rampFrom = 0; return;
       }
+      var maxScroll = elm.scrollHeight - elm.clientHeight;
+      if(st.pos < 0){ st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop; }
       if(st.hold){
         if(now - st.lastUser < IDLE_MS){ st.rampFrom = 0; return; }
         st.hold = false; st.rampFrom = ts; /* 闲置满 5 秒：自此缓入恢复 */
+        st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop;
       }
       if(st.dwellUntil){
         if(ts < st.dwellUntil) return;
         st.dwellUntil = 0;
         if(reduced()){ /* 减少动态时能滚必是该栏目被显式开启：回顶改瞬时跳转 */
-          st.lastProg = Date.now(); elm.scrollTop = 0; st.rampFrom = ts; return;
+          st.pos = 0; writePos(st, 0); st.rampFrom = ts; return;
         }
-        st.returning = true; st.retFrom = elm.scrollTop; st.retStart = ts;
+        st.returning = true; st.retFrom = st.pos; st.retStart = ts;
       }
       if(st.returning){
         var p = (ts - st.retStart) / RET_MS;
-        if(p >= 1){ st.lastProg = Date.now(); elm.scrollTop = 0; st.returning = false; st.rampFrom = ts; }
-        else { st.lastProg = Date.now(); elm.scrollTop = Math.max(0, Math.round(st.retFrom * (1 - p))); }
+        st.pos = Math.max(0, st.retFrom * (1 - p));
+        writePos(st, st.pos);
+        if(p >= 1){ st.pos = 0; writePos(st, 0); st.returning = false; st.rampFrom = ts; }
         return;
       }
       var factor = st.rampFrom ? Math.min(1, (ts - st.rampFrom) / RAMP_MS) : 1;
-      st.lastProg = Date.now();
-      elm.scrollTop += SPEED * factor * dt / 1000;
-      if(elm.scrollTop + elm.clientHeight >= elm.scrollHeight - 1){
+      /* 关键修复（2026-10-22）：位置由 JS 变量 pos 以小数累积、写出时取整。
+         旧写法逐帧 elm.scrollTop += 约 0.37px 依赖读回累积；iOS WebKit 把
+         scrollTop 按整数存储，增量写后读回原值，永远原地踏步（桌面 Blink
+         保留小数故正常）。根因经 deepseek 终审确认。 */
+      st.pos += SPEED * factor * dt / 1000;
+      if(st.pos > maxScroll) st.pos = maxScroll;
+      writePos(st, st.pos);
+      if(st.pos >= maxScroll - 2){
         st.dwellUntil = ts + DWELL_MS;
       }
     });
