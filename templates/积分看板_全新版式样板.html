@@ -1279,7 +1279,10 @@
            徽标独占一行（主行之下），点一下展开、再点收起。 */
         var corrBadge = '', corrPanel = '', openCls = '';
         var filesRow = '';
-        if(Array.isArray(t.files) && t.files.length){
+        /* 下载/打印按钮隐藏规则（2026-10-22 家长定）：孩子已提交该项作业、
+           经批改核实没有问题（任务 done）后，练习文件的打印按钮隐藏；
+           未提交或待改正（未 done）时保留，方便孩子重打重做。 */
+        if(t.status !== 'done' && Array.isArray(t.files) && t.files.length){
           var pdfs = t.files.filter(function(f){ return /\.pdf$/i.test(f.name); });
           if(pdfs.length){
             filesRow = '<div class="tfiles">' + pdfs.map(function(f){
