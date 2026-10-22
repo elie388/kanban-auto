@@ -3477,6 +3477,10 @@
 .up-mask.open{display:flex}
 .up-sheet{background:#fffdf5;width:min(560px,100%);max-height:88vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:18px 18px 26px;box-shadow:0 -6px 30px rgba(0,0,0,.25)}
 .up-sheet h3{margin:2px 0 6px;font-size:19px}
+.up-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.up-exit{flex:none;min-height:36px;padding:6px 12px;border-radius:999px;border:1.5px solid #d8d2c0;background:#fff;font-size:14px;color:#6b6558;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.up-exit:active{transform:scale(.96)}
+.up-cd{display:block;margin-top:2px;font-size:13px;color:#8a8378}
 .up-sub{color:#8a8378;font-size:13.5px;margin-bottom:10px;line-height:1.5}
 .up-row{margin:12px 0}
 .up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
@@ -3500,7 +3504,10 @@
 </style>
 <div class="up-mask" id="up-mask">
   <div class="up-sheet" role="dialog" aria-label="交作业">
-    <h3 id="up-title">交作业</h3>
+    <div class="up-head">
+      <h3 id="up-title">交作业</h3>
+      <button class="up-exit" id="up-exit" type="button">✕ 退出</button>
+    </div>
     <div class="up-sub" id="up-subtitle"></div>
     <div class="up-row" id="up-childrow" style="display:none">
       <label>哪个孩子</label>
@@ -3611,6 +3618,7 @@
   var cur = null; /* {mode, info?, key, grade, type, task_id, task_source, title} */
   function openSheet(ctx){
     cur = {mode: ctx.mode, key: ctx.key, grade: null, type: null, task_id: null, task_source: null, title: ''};
+    stopAutoExit();
     busy = false; var go = $('up-go'); go.disabled = false; go.textContent = '全部交完 ✅'; go.onclick = null;
     $('up-msg').textContent = ''; $('up-msg').className = 'up-msg';
     $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
@@ -3658,7 +3666,44 @@
       box.appendChild(b);
     });
   }
-  function closeSheet(){ if(busy) return; $('up-mask').classList.remove('open'); }
+  function closeSheet(){ if(busy) return; stopAutoExit(); $('up-mask').classList.remove('open'); }
+  function requestClose(){ if(busy) return; stopAutoExit(); $('up-mask').classList.remove('open'); }
+
+  /* ---------- 成功后自动退出（8 秒；2026-10-22 家长定，deepseek 复核） ---------- */
+  var cdTimer = null, cdEndAt = 0;
+  function cdSpan(){
+    var m = $('up-msg'); if(!m) return null;
+    var s = m.querySelector('.up-cd');
+    if(!s){ s = document.createElement('span'); s.className = 'up-cd'; m.appendChild(s); }
+    return s;
+  }
+  function paintCd(){
+    var s = cdSpan(); if(!s) return;
+    var left = Math.max(0, Math.ceil((cdEndAt - Date.now()) / 1000));
+    s.textContent = '（' + left + ' 秒后自动退出，点「完成」可立即退出）';
+  }
+  function startAutoExit(sec){
+    stopAutoExit();
+    cdEndAt = Date.now() + sec * 1000;
+    paintCd();
+    cdTimer = setInterval(function(){
+      if(cdEndAt - Date.now() <= 0){ stopAutoExit(); finishClose(); return; }
+      paintCd();
+    }, 250);
+  }
+  function stopAutoExit(){
+    if(cdTimer){ clearInterval(cdTimer); cdTimer = null; }
+    cdEndAt = 0;
+    var m = $('up-msg'); var s = m ? m.querySelector('.up-cd') : null;
+    if(s) s.remove();
+  }
+  function finishClose(){
+    stopAutoExit();
+    busy = false;
+    var go = $('up-go');
+    go.disabled = false; go.textContent = '全部交完 ✅'; go.onclick = null;
+    $('up-mask').classList.remove('open');
+  }
 
   /* ---------- 文件与上传 ---------- */
   function kindOf(f){
@@ -3712,6 +3757,7 @@
 
   function doSubmit(){
     if(busy) return;
+    if($('up-go').textContent === '完成') return;
     var files = Array.prototype.slice.call($('up-files').files || []);
     if(!cur.grade){ setMsg('先选一下是哪个孩子哦', 'err'); return; }
     if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
@@ -3776,7 +3822,10 @@
         setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。', 'good');
         if(cur.mode === 'task') markSubmitted(cur.key, rc.receipt_no);
         $('up-go').textContent = '完成';
-        $('up-go').onclick = function(){ busy = false; $('up-go').disabled = false; $('up-go').textContent = '全部交完 ✅'; $('up-go').onclick = null; closeSheetForce(); };
+        $('up-go').disabled = false;
+        $('up-go').onclick = function(){ finishClose(); };
+        busy = false;
+        startAutoExit(8);
       })
       .catch(function(e){
         setMsg(e.message || '出了点问题，再试一次', 'err');
@@ -3786,9 +3835,10 @@
   function closeSheetForce(){ $('up-mask').classList.remove('open'); }
 
   document.addEventListener('DOMContentLoaded', function(){
-    $('up-close').addEventListener('click', closeSheet);
+    $('up-close').addEventListener('click', requestClose);
+    var exitBtn = $('up-exit'); if(exitBtn) exitBtn.addEventListener('click', requestClose);
     $('up-go').addEventListener('click', function(){ if($('up-go').textContent === '完成') return; doSubmit(); });
-    $('up-mask').addEventListener('click', function(e){ if(e.target === $('up-mask')) closeSheet(); });
+    $('up-mask').addEventListener('click', function(e){ if(e.target === $('up-mask')) requestClose(); });
     paintButtons();
     new MutationObserver(function(){ paintButtons(); })
       .observe(document.body, {childList: true, subtree: true});
