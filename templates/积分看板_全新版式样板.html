@@ -4351,7 +4351,7 @@
    点开打印页（整页图片版式），自动调起系统打印；WebView 里若打印不弹，
    页内有「分享 PDF」兜底（分享菜单内含打印）。 */
 function kbSharePdf(url, name){
-  function openPdf(){ window.location.href = url; }
+  function openPdf(){ alert('当前浏览器不支持分享这份 PDF，请用 Safari 打开看板（whyjjf.lol）后再点打印。'); }
   try {
     if(navigator.canShare){
       fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
@@ -4373,7 +4373,7 @@ function kbOpenPrint(name, pages, pdfUrl){
   var h = '<div class="pa-bar"><span class="pa-title">' + name + '</span>'
     + '<button type="button" class="tfile tprint1" id="paPrint">🖨 打印</button>'
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
-    + '<div class="pa-hint">点「打印」会直接打开这份 PDF；打开后点浏览器上的分享按钮，菜单里选「打印」。</div>';
+    + '<div class="pa-hint">点「打印」弹出菜单后，选「保存到文件」，再到「文件」App 打开这份 PDF，点分享选「打印」。用 Safari 打开看板时，点「打印」可直接打印。</div>';
   pages.forEach(function(u){ h += '<img src="' + u + '" alt="练习页">'; });
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
@@ -4386,7 +4386,7 @@ function kbOpenPrint(name, pages, pdfUrl){
     go();
     setTimeout(function(){
       window.removeEventListener('beforeprint', onBP);
-      if(!fired && pdfUrl) window.location.href = pdfUrl;
+      if(!fired && pdfUrl) kbSharePdf(pdfUrl, name);
     }, 700);
   }
   var imgs = pa.querySelectorAll('img'), left = imgs.length;
