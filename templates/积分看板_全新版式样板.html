@@ -1391,15 +1391,15 @@
               items += '<div class="corr-item">'
                 + (c.label ? '<span class="corr-no">' + esc(c.label) + '</span>' : '')
                 + (c.question ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
-                + (c.q_img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原题图</span><img class=\"corr-img\" src=\"data/diagrams/' + esc(c.q_img) + '\" alt=\"原题图\"></div>' : '')
+                + (c.q_img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原题图</span><img class=\"corr-img\" src=\"data/diagrams/' + encodeURIComponent(c.q_img) + '\" alt=\"原题图\"></div>' : '')
                 + (c.orig_text ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原文</span><span class=\"corr-orig\">' + esc(c.orig_text) + '</span></div>' : '')
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
-                + (c.img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">引导图</span><img class=\"corr-img\" src=\"data/diagrams/' + esc(c.img) + '\" alt=\"画图引导\"></div>' : '')
+                + (c.img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">引导图</span><img class=\"corr-img\" src=\"data/diagrams/' + encodeURIComponent(c.img) + '\" alt=\"画图引导\"></div>' : '')
                 + ((Array.isArray(c.audios) && c.audios.length) ? '<div class="corr-audios">' + c.audios.map(function(a){
                     var isOrig = (a.label || '').indexOf('原音') >= 0;
                     return '<span class="corr-audio"><button type="button" class="corr-play' + (isOrig ? ' orig' : '') + '" aria-label="播放录音"><span class="corr-ic">\u25B6</span><span class="corr-alab">' + esc(a.label || '示范录音') + '</span></button>'
-                      + '<audio preload="none" src="data/audio/' + esc(a.src) + '"></audio></span>';
+                      + '<audio preload="none" src="data/audio/' + encodeURIComponent(a.src) + '"></audio></span>';
                   }).join('') + '</div>' : '')
                 + '</div>';
             });
@@ -1504,11 +1504,18 @@
     }
     return tryOnce();
   }
+  var taskLoading = false; /* B8（2026-10-22 三方审查修复）：load 单飞锁，防 visibilitychange/定时器并发重复拉取 */
   function load(){
+    if(taskLoading) return;
+    taskLoading = true;
     var ok = 0, obtained = 0, anyCache = false, cacheTs = 0, settled = 0;
     [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
       fetchTask(pair[1])
         .then(function(res){
+          /* A2：断网过夜时缓存是昨天的——renderOne 会因日期不符拒渲染，旧逻辑却
+             obtained++ 冒充取得成功，标签永久卡在「加载中」且 60 秒复查不触发。
+             过期缓存不计 obtained，走「部分数据更新失败」+ 复查路径。 */
+          if(res.fromCache && res.data && res.data.date !== todayStr()) return;
           obtained++;
           if(res.fromCache){ anyCache = true; if(!cacheTs || res.ts < cacheTs) cacheTs = res.ts; }
           if(renderOne(pair[0], res.data)) ok++;
@@ -1519,6 +1526,7 @@
              明示"部分数据更新失败"，不再长期挂"离线数据"误导 */
           settled++;
           if(settled < 2) return;
+          taskLoading = false;
           var tag = document.getElementById('tasks-tag');
           if(tag){
             if(ok === 2 && anyCache){ tag.textContent = '数据更新于 ' + taskFmtHHMM(cacheTs); tag.classList.remove('tag-live'); }
@@ -1746,7 +1754,11 @@
     }
     var odo = el._odo;
     if(!odo){
-      el.textContent = t; /* 滚轮尚未构建：直接写静态文本 */
+      /* B5（2026-10-22 三方审查修复）：负→正恢复时滚轮 DOM 已被负分支移除，
+         旧逻辑只写静态文本、滚轮结构永不恢复；改为重建滚轮并写终值（重建≠重滚） */
+      odo = buildOdometer(el, t);
+      el._odo = odo;
+      writeFinal(el, odo, t);
       el.dataset.rolled = '1';
       return;
     }
@@ -1847,6 +1859,7 @@
     }catch(e){}
     var opts = { cache: 'no-cache' };
     if(ctrl) opts.signal = ctrl.signal;
+    /* B2：timer 在成败两条路径都清理（旧写法 fetch 抛错时不清，句柄残留） */
     return fetch(url, opts).then(function(r){
       if(timer) clearTimeout(timer);
       if(!r.ok) throw new Error('http ' + r.status);
@@ -1854,6 +1867,9 @@
     }).then(function(d){
       if(d && d.generated_at) vCache[name] = d.generated_at;
       return d;
+    }, function(e){
+      if(timer) clearTimeout(timer);
+      throw e;
     });
   }
 
@@ -1903,7 +1919,8 @@
     var name = 'stats_grade_' + grade + '.json';
     fetchJson(name, { onRetry: function(n){ setBalTag(cardId, '重试中（' + n + '/3)'); } }).then(function(d){
       if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
-      if(typeof d.balance !== 'number' || !Number.isInteger(d.balance)) throw new Error('balance');
+      if(typeof d.balance !== 'number' || !isFinite(d.balance)) throw new Error('balance');
+      d.balance = Math.trunc(d.balance); /* P1-6（2026-10-22 三方审查修复）：小数余额截整显示，不再整块降级为「暂时无法连接」 */
       var card = $(cardId);
       var num = card ? card.querySelector('.bal-num') : null;
       if(!num) throw new Error('no bal-num');
@@ -1981,9 +1998,15 @@
        即排序结果），不分正负、不再截断。 */
     var LOG_DISPLAY_DAYS = 3;
     var allowDay = {};
-    var nowD = new Date();
+    /* A1（2026-10-22 三方审查修复）：基准「今天」改 Asia/Shanghai 口径，与全站
+       todayStr 一致；旧写法用设备本地时区，设备时区非 +08 时最近一天日志被整天滤掉 */
+    var baseY, baseM, baseD;
+    var shP = null;
+    try { shP = new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Shanghai'}).split('-'); } catch(e){}
+    if(shP && shP.length === 3){ baseY = +shP[0]; baseM = +shP[1] - 1; baseD = +shP[2]; }
+    else { var nd0 = new Date(); baseY = nd0.getFullYear(); baseM = nd0.getMonth(); baseD = nd0.getDate(); }
     for(var di = 0; di < LOG_DISPLAY_DAYS; di++){
-      var dd = new Date(nowD.getFullYear(), nowD.getMonth(), nowD.getDate() - di);
+      var dd = new Date(baseY, baseM, baseD - di);
       var mmK = ('0' + (dd.getMonth() + 1)).slice(-2), daK = ('0' + dd.getDate()).slice(-2);
       allowDay[mmK + '-' + daK] = di; /* 0=今天 1=昨天 2=前天 */
     }
@@ -2050,10 +2073,13 @@
       else { cntEl.hidden = true; cntEl.textContent = ''; }
     }
     if(scrollEl && overflow && wrapEl){
-      scrollEl.addEventListener('scroll', function(){
+      /* B4：重渲染前先摘旧监听（旧写法每次 render 都新加一个、永不移除，软刷新多次后叠加） */
+      if(scrollEl._kbLogScrollH) scrollEl.removeEventListener('scroll', scrollEl._kbLogScrollH);
+      scrollEl._kbLogScrollH = function(){
         var atBottom = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight < 8;
         wrapEl.classList.toggle('has-more', !atBottom);
-      });
+      };
+      scrollEl.addEventListener('scroll', scrollEl._kbLogScrollH);
     }
     return {shown: shown.length, neg: shown.filter(function(x){ return x.sign === 'minus'; }).length};
   }
@@ -2131,7 +2157,7 @@
   var GRADE_NAME = { g5: '彦均', g6: '伟豪' };
 
   function $(id){ return document.getElementById(id); }
-  function el(tag, cls, text){
+  function mkEl(tag, cls, text){
     var e = document.createElement(tag);
     if(cls) e.className = cls;
     if(text != null) e.textContent = String(text);
@@ -2168,6 +2194,7 @@
     var opts = { cache: 'no-cache' };
     if(ctrl) opts.signal = ctrl.signal;
     var v = SEC_VER[name];
+    /* B2：timer 在成败两条路径都清理（同 fetchOnce） */
     return fetch('data/' + name + (v ? '?v=' + encodeURIComponent(v) : ''), opts).then(function(r){
       if(timer) clearTimeout(timer);
       if(!r.ok) throw new Error('http ' + r.status);
@@ -2175,6 +2202,9 @@
     }).then(function(d){
       if(d && d.generated_at) SEC_VER[name] = d.generated_at;
       return d;
+    }, function(e){
+      if(timer) clearTimeout(timer);
+      throw e;
     });
   }
   function fetchJson(name){
@@ -2245,10 +2275,10 @@
     if(!pad || !d || !d.by_grade) return false;
     pad.textContent = '';
     ['g5','g6'].forEach(function(gk){
-      var block = el('div','grade-block');
+      var block = mkEl('div','grade-block');
       block.setAttribute('aria-label', GRADE_NAME[gk] + '成就');
-      var head = el('div','grade-head');
-      head.appendChild(el('span','pill-grade ' + gk, GRADE_NAME[gk]));
+      var head = mkEl('div','grade-head');
+      head.appendChild(mkEl('span','pill-grade ' + gk, GRADE_NAME[gk]));
       head.appendChild(document.createTextNode('成就'));
       block.appendChild(head);
       var list = (d.by_grade[gk] || []).filter(function(b){ return b && b.name; });
@@ -2258,7 +2288,7 @@
         return da < db ? -1 : (da > db ? 1 : 0);
       });
       if(list.length){
-        var strip = el('div','badge-strip');
+        var strip = mkEl('div','badge-strip');
         /* 桌面可用性（DeepSeek 终审约束）：竖向滚轮在带上转横向滚动；滚到边缘后不拦截，页面照常滚 */
         strip.addEventListener('wheel', function(e){
           if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
@@ -2269,19 +2299,19 @@
           if(nl > max) nl = max;
           if(nl !== strip.scrollLeft){ e.preventDefault(); strip.scrollLeft = nl; }
         }, {passive:false});
-        var pop = el('div','medal-pop');
+        var pop = mkEl('div','medal-pop');
         pop.hidden = true;
-        var popIc = el('span','pop-ic');
-        var popMain = el('div','pop-main');
-        var popNameRow = el('div','pop-name');
-        var popName = el('span','pop-name-t');
-        var popDate = el('span','pop-date');
-        var popBlurb = el('div','pop-blurb');
+        var popIc = mkEl('span','pop-ic');
+        var popMain = mkEl('div','pop-main');
+        var popNameRow = mkEl('div','pop-name');
+        var popName = mkEl('span','pop-name-t');
+        var popDate = mkEl('span','pop-date');
+        var popBlurb = mkEl('div','pop-blurb');
         popNameRow.appendChild(popName);
         popNameRow.appendChild(popDate);
         popMain.appendChild(popNameRow);
         popMain.appendChild(popBlurb);
-        var popClose = el('button','pop-close','×');
+        var popClose = mkEl('button','pop-close','×');
         popClose.type = 'button';
         popClose.setAttribute('aria-label','关闭');
         popClose.addEventListener('click', function(){ pop.hidden = true; block._popKey = null; });
@@ -2290,7 +2320,7 @@
         pop.appendChild(popClose);
         var flyIdx = 0;
         list.forEach(function(b){
-          var medal = el('div','medal');
+          var medal = mkEl('div','medal');
           var sid = b.key ? badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key + (b.late ? ':late' : '')) : '';
           /* 动效合并（DeepSeek 终审 R1/R3）：先判已读态——未读只走光晕+扫光不飞入；已读才判飞入，会话内只播一次 */
           var isNew = !!sid && !badgeIsSeen(sid);
@@ -2308,17 +2338,17 @@
               medal.addEventListener('animationend', function(){ medal.classList.remove('fly-in'); });
             }
           }
-          var disc = el('div','medal-disc ' + (BADGE_TIER[b.key] || 'ring-gold'));
-          disc.appendChild(el('span','ic', b.icon || '🏅'));
+          var disc = mkEl('div','medal-disc ' + (BADGE_TIER[b.key] || 'ring-gold'));
+          disc.appendChild(mkEl('span','ic', b.icon || '🏅'));
           medal.appendChild(disc);
-          medal.appendChild(el('div','medal-name', String(b.name)));
+          medal.appendChild(mkEl('div','medal-name', String(b.name)));
           /* 同徽章当周多次获得次数角标（count>1 才显示，规则不变） */
           if(b.count && b.count > 1){
-            medal.appendChild(el('span','medal-count', '×' + b.count));
+            medal.appendChild(mkEl('span','medal-count', '×' + b.count));
           }
           /* 补发角标（2026-10-20 B方案）：此前周期归属、本周期补发的徽章同带展示、左上标「补发」 */
           if(b.late){
-            medal.appendChild(el('span','medal-late', '补发'));
+            medal.appendChild(mkEl('span','medal-late', '补发'));
           }
           medal.addEventListener('click', function(){
             if(medal.classList.contains('is-new')){
@@ -2342,7 +2372,7 @@
         block.appendChild(pop);
       }else{
         /* 无徽章空态：只显示已审文案，不渲染灰度占位（DeepSeek 终审 D4/D2 约束） */
-        block.appendChild(el('div','rule-note','本周徽章等你来拿 🏅'));
+        block.appendChild(mkEl('div','rule-note','本周徽章等你来拿 🏅'));
       }
       pad.appendChild(block);
     });
@@ -2355,11 +2385,11 @@
     var pad = document.querySelector('#panel-lib .collapse-pad');
     if(!pad || !d || !d.catalog || !d.catalog.length) return false;
     pad.textContent = '';
-    var intro = el('p','rule-note','🚀 下面是全部 ' + d.catalog.length + ' 枚徽章——看中哪枚，就去把它拿下！');
+    var intro = mkEl('p','rule-note','🚀 下面是全部 ' + d.catalog.length + ' 枚徽章——看中哪枚，就去把它拿下！');
     intro.style.marginTop = '0'; intro.style.marginBottom = '14px';
     pad.appendChild(intro);
     /* 徽章进度红线固定说明（2026-10-20 徽章进度包 E-1）：展示≠发放 */
-    var ul = el('ul','rule-list');
+    var ul = mkEl('ul','rule-list');
     ul.setAttribute('aria-label','可争取徽章');
     d.catalog.forEach(function(c){
       if(!c || !c.name) return;
@@ -2371,9 +2401,9 @@
         }
       });
       var li = document.createElement('li');
-      var left = el('span');
+      var left = mkEl('span');
       left.appendChild(document.createTextNode((c.icon || '🏅') + ' ' + String(c.name).slice(0,8) + ' '));
-      var tag = el('span','rule-pts');
+      var tag = mkEl('span','rule-pts');
       if(holders.length){
         tag.textContent = holders.join('、') + '已获取';
         tag.style.background = '#E7F8E7'; tag.style.color = '#1E7E34';
@@ -2382,10 +2412,10 @@
         tag.style.background = '#FFF3D6'; tag.style.color = '#C77700';
       }
       left.appendChild(tag);
-      var chev = el('span','lib-chev', OPEN_GOALS[c.key] ? '收起 ▴' : '详情 ▾');
+      var chev = mkEl('span','lib-chev', OPEN_GOALS[c.key] ? '收起 ▴' : '详情 ▾');
       left.appendChild(chev);
-      var detail = el('div','lib-detail');
-      detail.appendChild(el('span','lib-cond','解锁条件：' + (c.cond || '')));
+      var detail = mkEl('div','lib-detail');
+      detail.appendChild(mkEl('span','lib-cond','解锁条件：' + (c.cond || '')));
       /* 徽章进度（2026-10-20 徽章进度包）：行内双年级进度；单次事件型只写"随时可达成"；
          "暂无数据"用浅灰 span 与真实 0 区分。进度仅展示，不触发发放。 */
       var entMap = {};
@@ -2397,7 +2427,7 @@
       });
       var p0 = (entMap.g5 && entMap.g5.progress) || (entMap.g6 && entMap.g6.progress);
       if(p0){
-        var pline = el('span','lib-prog');
+        var pline = mkEl('span','lib-prog');
         var segCount = 0;
         ['g5','g6'].forEach(function(gk){
           var e2 = entMap[gk];
@@ -2417,7 +2447,7 @@
           if(segText === null) return;
           if(p0.state === 'event' && segCount > 0) return; /* 事件型只显示一次 */
           /* 双年级进度分行显示（2026-10-20 用户要求）：不再用' · '拼接 */
-          var s2 = el('span', (isNodata ? 'prog-nodata ' : '') + 'prog-seg');
+          var s2 = mkEl('span', (isNodata ? 'prog-nodata ' : '') + 'prog-seg');
           s2.textContent = segText;
           pline.appendChild(s2);
           segCount++;
@@ -2436,7 +2466,7 @@
       });
       li.appendChild(left);
       /* L5（2026-10-20）：+5 收敛到单一数据源（badge_goals.json 的 points 字段），不再硬编码 */
-      li.appendChild(el('span','rule-pts plus','+' + (c.points != null ? c.points : 5)));
+      li.appendChild(mkEl('span','rule-pts plus','+' + (c.points != null ? c.points : 5)));
       ul.appendChild(li);
     });
     pad.appendChild(ul);
@@ -2450,34 +2480,37 @@
     grid.textContent = '';
     d.items.forEach(function(it){
       if(!it || !it.name || !it.by_grade) return;
-      var item = el('div','shop-item');
-      var top = el('div','shop-top');
-      top.appendChild(el('span','ic', it.icon || '🎁'));
-      top.appendChild(el('span','nm', it.name));
-      top.appendChild(el('span','cost', it.cost + ' 分'));
+      if(typeof it.cost !== 'number' || !isFinite(it.cost)) return; /* B9：cost 非数字时整项跳过，防 NaN/「[object Object] 分」 */
+      var item = mkEl('div','shop-item');
+      var top = mkEl('div','shop-top');
+      top.appendChild(mkEl('span','ic', it.icon || '🎁'));
+      top.appendChild(mkEl('span','nm', it.name));
+      top.appendChild(mkEl('span','cost', it.cost + ' 分'));
       item.appendChild(top);
       var maxProg = 0;
       ['g5','g6'].forEach(function(gk){
         var s = it.by_grade[gk];
         if(s && typeof s.progress === 'number' && s.progress > maxProg) maxProg = s.progress;
       });
-      var track = el('div','bar-track');
-      var fill = el('div','bar-fill');
+      var track = mkEl('div','bar-track');
+      var fill = mkEl('div','bar-fill');
       fill.style.transform = 'scaleX(' + Math.min(Math.max(maxProg, 0), 1).toFixed(4) + ')';
       track.appendChild(fill);
       item.appendChild(track);
-      var hint = el('div','shop-hint');
-      ['g5','g6'].forEach(function(gk, idx){
+      var hint = mkEl('div','shop-hint');
+      var hintN = 0; /* B9：换行按「已渲染条数」而非数组下标，防某年级缺数据时顶部多一个空行 */
+      ['g5','g6'].forEach(function(gk){
         var s = it.by_grade[gk];
         if(!s || typeof s.balance !== 'number') return;
-        if(idx > 0) hint.appendChild(document.createElement('br'));
+        if(hintN > 0) hint.appendChild(document.createElement('br'));
+        hintN++;
         if(s.redeemable){
-          var ok = el('span','ok-line','积分已足够 ✅ ' + GRADE_NAME[gk] + '可立即兑换');
+          var ok = mkEl('span','ok-line','积分已足够 ✅ ' + GRADE_NAME[gk] + '可立即兑换');
           hint.appendChild(ok);
         }else{
           var need = it.cost - s.balance;
           hint.appendChild(document.createTextNode(GRADE_NAME[gk] + '：还差 '));
-          hint.appendChild(el('b', null, need + ' 分'));
+          hint.appendChild(mkEl('b', null, need + ' 分'));
           hint.appendChild(document.createTextNode(' 就可以兑换' + it.name));
         }
       });
@@ -2490,10 +2523,11 @@
   /* ---- 4. 加分 / 扣分规则（规则手册白名单） ---- */
   /* 2026-10-20：徽章样式（+绿/-红/其余灰） */
   function ruleBadge(text){
+    text = String(text == null ? '' : text); /* B9：pts 可能是数字，先转字符串防 charAt 抛错 */
     var cls = 'note';
     if(text.charAt(0) === '+') cls = 'plus';
     else if(text.charAt(0) === '-') cls = 'minus';
-    return el('span', 'rule-pts ' + cls, text);
+    return mkEl('span', 'rule-pts ' + cls, text);
   }
 
   function renderRules(d, kind, panelId){
@@ -2506,18 +2540,18 @@
       if(r.subs && r.subs.length){
         /* 多档规则：标题 + 子项分行（用户要求"分开列，不要挤一起"） */
         li.className = 'rule-multi';
-        li.appendChild(el('span', 'rule-head', r.text));
+        li.appendChild(mkEl('span', 'rule-head', r.text));
         var sub = document.createElement('ul');
         sub.className = 'rule-subs';
         r.subs.forEach(function(t){
           var sli = document.createElement('li');
-          sli.appendChild(el('span', null, t.label));
+          sli.appendChild(mkEl('span', null, t.label));
           if(t.pts){ sli.appendChild(ruleBadge(t.pts)); }
           sub.appendChild(sli);
         });
         li.appendChild(sub);
       }else{
-        li.appendChild(el('span', null, r.text));
+        li.appendChild(mkEl('span', null, r.text));
         /* 2026-10-20用户要求：日期备注不显示（remark字段保留在数据中） */
         var badgeText = r.pts || null;
         if(!badgeText){
@@ -2525,7 +2559,7 @@
           if(ms.length === 1) badgeText = ms[0];
         }
         if(badgeText){ li.appendChild(ruleBadge(badgeText)); }
-        else{ li.appendChild(el('span', 'rule-pts note', '说明')); }
+        else{ li.appendChild(mkEl('span', 'rule-pts note', '说明')); }
       }
       list.appendChild(li);
     });
@@ -2580,18 +2614,18 @@
       sc.textContent = '';
       var arr = d.by_grade[gk] || [];
       if(!arr.length){
-        sc.appendChild(el('div','redeem-empty','还没有兑换过哦～'));
+        sc.appendChild(mkEl('div','redeem-empty','还没有兑换过哦～'));
         return;
       }
       arr.forEach(function(r){
-        var item = el('div','redeem-item' + (r.revoked ? ' rev' : ''));
-        var top = el('div','redeem-top');
-        top.appendChild(el('span','ic', r.icon || '🎁'));
-        top.appendChild(el('span','nm', String(r.item || '')));
+        var item = mkEl('div','redeem-item' + (r.revoked ? ' rev' : ''));
+        var top = mkEl('div','redeem-top');
+        top.appendChild(mkEl('span','ic', r.icon || '🎁'));
+        top.appendChild(mkEl('span','nm', String(r.item || '')));
         if(r.revoked){
-          top.appendChild(el('span','redeem-back','+' + r.refunded + ' 分已退回'));
+          top.appendChild(mkEl('span','redeem-back','+' + (typeof r.refunded === 'number' ? r.refunded : 0) + ' 分已退回'));
         }else{
-          top.appendChild(el('span','spent','-' + r.spent + ' 分'));
+          top.appendChild(mkEl('span','spent','-' + (typeof r.spent === 'number' ? r.spent : 0) + ' 分'));
         }
         item.appendChild(top);
         var hint = redeemDateText(r.date) + '兑换';
@@ -2601,7 +2635,7 @@
           if(r.fee) hint += ' · 含手续费 ' + r.fee + ' 分';
           if(typeof r.balance_after === 'number') hint += ' · 兑后还剩 ' + r.balance_after + ' 分';
         }
-        item.appendChild(el('div','redeem-hint', hint));
+        item.appendChild(mkEl('div','redeem-hint', hint));
         sc.appendChild(item);
       });
     });
@@ -2662,11 +2696,13 @@
       try{ if(typeof window.__kanbanRefreshTasks === 'function'){ window.__kanbanRefreshTasks(); ok = true; } }catch(e){ console.warn('软刷新 tasks 入口异常:', e); }
       try{ if(typeof window.__kanbanRefreshTrends === 'function'){ window.__kanbanRefreshTrends(); ok = true; } }catch(e){ console.warn('软刷新 trends 入口异常:', e); }
       if(!ok){ location.reload(); } /* 刷新入口全未就绪：回退整页刷新 */
+      return ok;
     }
 
     function expire(){
       stop();
-      softRefresh();
+      /* A9（2026-10-22 三方审查修复）：已走整页重载时不再重置倒计时/建新定时器，防重载被延迟时定时器叠加 */
+      if(!softRefresh()) return;
       deadline = Date.now() + REFRESH_SEC * 1000;
       start(); /* 重置倒计时 */
     }
@@ -2792,10 +2828,18 @@
   }
   /* 日期工具（2026-10-21）：一律用 Date 运算后拼字符串，跨月/闰年安全，不手拼日期 */
   function dstr(d){ function p2(x){ return (x < 10 ? '0' : '') + x; } return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); }
+  /* B12（2026-10-22 三方审查修复）：「今天」统一取 Asia/Shanghai 日期，与数据生成端口径一致 */
+  function shTodayDate(){
+    try {
+      var p = new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Shanghai'}).split('-');
+      if(p.length === 3) return new Date(+p[0], +p[1] - 1, +p[2]);
+    } catch(e){}
+    var d = new Date(); d.setHours(0, 0, 0, 0); return d;
+  }
   /* 显示窗口（2026-10-21 家长定「横轴提前 2 天」）：所选区间末日固定为今天+2，起点按 RANGE 往前推；
      src=该格在 TD.dates 中的下标（-1 表示数据源无此日）；fut=未来日（还没到），与历史空值日区分呈现。 */
   function dispWindow(){
-    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var now = shTodayDate();
     var todayS = dstr(now);
     var end = new Date(now); end.setDate(end.getDate() + 2);
     var idx = {};
@@ -3254,7 +3298,7 @@
           + '<button type="button" class="tr-go-a" data-pmode="tonight">明晚19:00随练习发</button>'
           + '<button type="button" class="tr-go-b" data-pmode="now">现在单独发</button>'
           + '<div class="tr-submit-status"></div>'
-          + '<div class="tr-fallback" style="display:none;color:#9AA0A6;font-size:11.5px">自动提交没成功？也可以 <a href="' + escHtml(w.link_tonight) + '" target="_blank" rel="noopener">打开表单手动提交</a>（在表里记得选好发送方式哦）</div>'
+          + '<div class="tr-fallback" style="display:none;color:#9AA0A6;font-size:11.5px">自动提交没成功？也可以 <a href="' + escHtml(/^https:\/\//i.test(w.link_tonight || '') ? w.link_tonight : '#') + '" target="_blank" rel="noopener">打开表单手动提交</a>（在表里记得选好发送方式哦）</div>'
           + '<div style="color:#9AA0A6;font-size:11.5px">点按钮就直接提交，不用再打开表单。同一个知识点今天只算一次（' + gr + ' · ' + sn + ' · ' + escHtml(w.kp) + ' · ' + w.n + '题）。</div>';
         bindPracticeSubmit(slot, gr, sn, w);
       });
@@ -3377,6 +3421,8 @@
   }
 
   function practiceTodayStr(){
+    /* B12：「今日已提交」去重键改 Asia/Shanghai 口径，与服务端一致 */
+    try { return new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Shanghai'}); } catch(e){}
     var d = new Date();
     function p2(x){ return (x < 10 ? '0' : '') + x; }
     return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate());
@@ -3443,6 +3489,7 @@
   /* 方案E（2026-10-20，DeepSeek 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径 */
   var TREND_RETRY_DELAYS = [1000, 2000, 4000];
   var trendRecheckTimer = 0;
+  var trendRetryCount = 0; /* A6（2026-10-22 三方审查修复）：自动复查最多 5 次，防服务端长期故障时无限重试 */
   function trendCacheWrite(d){
     try{
       if(d && typeof d === 'object'){
@@ -3463,12 +3510,21 @@
     var attempt = 0;
     function tryOnce(){
       attempt++;
-      return fetch('data/trends.json' + (TREND_VER ? '?v=' + encodeURIComponent(TREND_VER) : ''), { cache: 'no-cache' }).then(function(r){
+      /* 弱网超时（2026-10-22 三方审查修复）：旧写法无超时，WKWebView 弱网可挂起数十秒 */
+      var ctrl = null, tmo = 0;
+      try{ if('AbortController' in window){ ctrl = new AbortController(); tmo = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, 6000); } }catch(e){}
+      var opts = { cache: 'no-cache' };
+      if(ctrl) opts.signal = ctrl.signal;
+      return fetch('data/trends.json' + (TREND_VER ? '?v=' + encodeURIComponent(TREND_VER) : ''), opts).then(function(r){
+        if(tmo) clearTimeout(tmo);
         if(!r.ok) throw new Error('http ' + r.status);
         return r.json();
       }).then(function(d){
         trendCacheWrite(d);
         return d;
+      }, function(e){
+        if(tmo) clearTimeout(tmo);
+        throw e;
       }).catch(function(e){
         if(attempt <= 3){
           var delay = TREND_RETRY_DELAYS[attempt - 1] * (0.8 + Math.random() * 0.4);
@@ -3485,6 +3541,7 @@
     var root = el('trend-root');
     var oldHTML = root ? root.innerHTML : null;
     fetchTrends().then(function(d){
+      trendRetryCount = 0;
       try{
         if(d && d.updated_at) TREND_VER = d.updated_at;
         TD = d; renderMain();
@@ -3505,8 +3562,9 @@
       if(root && !TD) root.innerHTML = '<p class="rule-note" style="margin-top:0" id="tr-retry">📈 学习走势数据暂不可用，点此重试。</p>';
       var rt = el('tr-retry');
       if(rt) rt.addEventListener('click', loadTrends);
-      /* 方案E慢速复查：最终失败 60 秒后自动重拉，单飞防堆叠 */
-      if(!trendRecheckTimer){
+      /* 方案E慢速复查：最终失败 60 秒后自动重拉，单飞防堆叠；A6：最多复查 5 次后停（手动点重试不受限） */
+      if(!trendRecheckTimer && trendRetryCount < 5){
+        trendRetryCount++;
         trendRecheckTimer = setTimeout(function(){ trendRecheckTimer = 0; loadTrends(); }, 60000);
       }
     });
@@ -3557,7 +3615,8 @@
     if(typeof origFetch === 'function'){
       window.fetch = function(){
         var url = '';
-        try{ url = String(arguments[0] && arguments[0].url ? arguments[0].url : arguments[0]); }catch(e){}
+        /* B3（2026-10-22 三方审查修复）：Request 取 .url、URL 对象取 .href，旧写法对 URL 对象 toString 成 [object URL] 匹配不上、请求不计数 */
+        try{ var a0 = arguments[0]; url = String((a0 && a0.url) || (a0 && a0.href) || a0 || ''); }catch(e){}
         var isData = /\/data\/[^/?#]+\.json(\?|#|$)/.test(url) || /^data\/[^/?#]+\.json(\?|#|$)/.test(url);
         if(!isData) return origFetch.apply(window, arguments);
         act.started++; act.inflight++;
@@ -3810,12 +3869,26 @@
   var busy = false;
 
   function $(id){ return document.getElementById(id); }
-  function todayStr(){ try { return new Date().toLocaleDateString('en-CA', {timeZone:'Asia/Shanghai'}); } catch(e){ return ''; } }
-  function stateGet(){
-    try { var s = JSON.parse(localStorage.getItem(LS_STATE) || '{}'); return (s.date === todayStr()) ? s : {date: todayStr(), items:{}}; }
-    catch(e){ return {date: todayStr(), items:{}}; }
+  function todayStr(){
+    try { return new Date().toLocaleDateString('en-CA', {timeZone:'Asia/Shanghai'}); } catch(e){}
+    /* B7：旧内核不支持 timeZone 时回退本地日期，绝不返回 ''（'' 会让 stateGet 永远判跨日、今日已交记录被清） */
+    var d = new Date(), p2 = function(n){ return (n < 10 ? '0' : '') + n; };
+    return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate());
   }
-  function stateSet(s){ try { localStorage.setItem(LS_STATE, JSON.stringify(s)); } catch(e){} }
+  var STATE_MEM = null; /* B7：内存镜像——localStorage 写失败（无痕/配额满）时本会话内「已交」状态不丢 */
+  function stateGet(){
+    try {
+      var s = JSON.parse(localStorage.getItem(LS_STATE) || '{}');
+      if(s && s.date === todayStr()){
+        if(!s.items || typeof s.items !== 'object') s.items = {};
+        STATE_MEM = s;
+        return s;
+      }
+    } catch(e){}
+    if(STATE_MEM && STATE_MEM.date === todayStr()) return STATE_MEM;
+    return {date: todayStr(), items:{}};
+  }
+  function stateSet(s){ STATE_MEM = s; try { localStorage.setItem(LS_STATE, JSON.stringify(s)); } catch(e){} }
   function markSubmitted(key, receipt){
     var s = stateGet(); var it = s.items[key] || {batches: 0};
     it.batches += 1; it.receipt = receipt; s.items[key] = it; stateSet(s);
@@ -3940,6 +4013,7 @@
   /* ---------- 直接录音（2026-10-22 家长定：仅读背/口语类；gemini+deepseek 评审） ---------- */
   var recFiles = [], recSet = new Set();
   var recMR = null, recStream = null, recChunks = [], recStartAt = 0, recTimer = null, recBlob = null, recMime = '', recStopWhy = '';
+  var recGen = 0; /* A8（2026-10-22 三方审查修复）：录音代次——面板关闭/重置后到达的 getUserMedia 回调一律作废并关流 */
   var REC_MAX_SEC = 300;
   function recSupported(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
   function recShouldShow(){
@@ -3958,6 +4032,7 @@
     if(recStream){ recStream.getTracks().forEach(function(t){ t.stop(); }); recStream = null; }
   }
   function recReset(){
+    recGen++;
     if(recMR && recMR.state === 'recording'){ recStopWhy = 'discard'; try { recMR.stop(); } catch(e){} }
     recMR = null; recBlob = null; recChunks = []; recStopTracks();
     var st = $('up-rec-start'), l = $('up-rec-live'), p = $('up-rec-prev'), e = $('up-rec-err'), n = $('up-rec-note');
@@ -3983,7 +4058,13 @@
   function recStart(){
     recErr('');
     if(!recSupported()){ recErr('这台设备不支持直接录音，可以用选文件上传录音。'); return; }
-    navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+    var myGen = ++recGen;
+    var gum;
+    try { gum = navigator.mediaDevices.getUserMedia({audio: true}); }
+    catch(e){ recErr('录音打不开，可以用选文件上传录音。'); return; }
+    gum.then(function(stream){
+      /* A8：等权限期间面板已关/已重置——立刻关掉这条迟到的麦克风流，不再往下走 */
+      if(myGen !== recGen){ stream.getTracks().forEach(function(t){ t.stop(); }); return; }
       recStream = stream; recChunks = []; recMime = recPickMime(); recStopWhy = '';
       try { recMR = recMime ? new MediaRecorder(stream, {mimeType: recMime}) : new MediaRecorder(stream); }
       catch(e){ recMR = new MediaRecorder(stream); }
@@ -4041,7 +4122,10 @@
   }
   function recRedo(){ recBlob = null; $('up-rec-prev').style.display = 'none'; $('up-rec-start').style.display = 'block'; $('up-rec-note').style.display = 'none'; }
   document.addEventListener('visibilitychange', function(){
-    if(document.hidden && recMR && recMR.state === 'recording') recStop('interrupt');
+    if(!document.hidden || !recMR) return;
+    if(recMR.state === 'recording'){ recStop('interrupt'); return; }
+    /* A8：iOS 切后台会冻结 JS，stop 的 onstop 可能回前台才触发——先把中断标记立好，onstop 回来时按中断出提示与片段 */
+    if(recStopWhy === '') recStopWhy = 'interrupt';
   });
   (function(){
     var st = $('up-rec-start'); if(st) st.addEventListener('click', recStart);
@@ -4137,6 +4221,8 @@
     return new Promise(function(resolve, reject){
       var xhr = new XMLHttpRequest();
       xhr.open('PUT', url, true);
+      xhr.timeout = 60000; /* A7（2026-10-22 三方审查修复）：弱网无超时会让 busy 永久锁死面板只能强刷 */
+      xhr.ontimeout = function(){ reject(new Error('上传超时，网络太慢啦')); };
       if(contentType) xhr.setRequestHeader('Content-Type', contentType);
       xhr.upload.onprogress = function(e){ if(e.lengthComputable) onProg(e.loaded / e.total); };
       xhr.onload = function(){ (xhr.status >= 200 && xhr.status < 300) ? resolve() : reject(new Error('上传失败(' + xhr.status + ')')); };
@@ -4262,8 +4348,21 @@
     $('up-go').addEventListener('click', function(){ if($('up-go').textContent === '完成') return; doSubmit(); });
     $('up-mask').addEventListener('click', function(e){ if(e.target === $('up-mask')) requestClose(); });
     paintButtons();
-    new MutationObserver(function(){ paintButtons(); })
-      .observe(document.body, {childList: true, subtree: true});
+    /* B6（2026-10-22 三方审查修复）：观察范围从 document.body 全树收敛到两个任务区，
+       并用 rAF 合并高频触发（积分日志/倒计时等无关 DOM 变化不再连带全量扫描） */
+    var paintQueued = false;
+    function queuePaint(){
+      if(paintQueued) return;
+      paintQueued = true;
+      requestAnimationFrame(function(){ paintQueued = false; paintButtons(); });
+    }
+    var mo = new MutationObserver(queuePaint);
+    var moTargets = 0;
+    ['tasks-g5', 'tasks-g6'].forEach(function(id){
+      var s = document.getElementById(id);
+      if(s){ mo.observe(s, {childList: true, subtree: true}); moTargets++; }
+    });
+    if(!moTargets) mo.observe(document.body, {childList: true, subtree: true});
   });
 })();
 </script>
@@ -4456,7 +4555,8 @@
       } else {
         if(st.pos > maxScroll) st.pos = maxScroll;
         writePos(st, st.pos);
-        if(st.pos >= maxScroll - 2){
+        if(st.pos >= maxScroll - 2 && !st.dwellUntil){
+          /* A5（2026-10-22 三方审查修复）：只在首次触底时设停留截止——旧写法每帧刷新，dwell 永远等不到期、回不了顶 */
           st.dwellUntil = ts + DWELL_MS;
         }
       }
@@ -4490,13 +4590,13 @@ function kbClosePrint(){
    打印页点「发到打印机」→ 二次确认 → 口令门（无设备令牌先校验，复用补练口令门）
    → POST homework-upload /print/req（只入队，服务端轮询进程再发邮件到打印机）。
    结果用 kbToast 反馈：已发送／20 分钟内已打过／今日页数已达上限／降级文案。
-   发送成功后按钮 30 分钟内置灰（localStorage 计时，重开打印页同样生效）。 */
+   发送成功后按钮 20 分钟内置灰（localStorage 计时，重开打印页同样生效；与服务端防重窗口同为 20 分钟，A3 对齐）。 */
 var KB_EPRINT_API = 'https://homework-upload.whyjjf.workers.dev/print/req';
 function kbEprintGrayKey(grade, file){ return 'kb-eprint-gray:' + grade + ':' + file; }
 function kbEprintGrayed(grade, file){
   try {
     var ts = parseInt(localStorage.getItem(kbEprintGrayKey(grade, file)) || '0', 10);
-    return !!ts && (Date.now() - ts) < 30 * 60 * 1000;
+    return !!ts && (Date.now() - ts) < 20 * 60 * 1000;
   } catch(e){ return false; }
 }
 function kbEprintMarkSent(grade, file){
@@ -4534,8 +4634,10 @@ function kbHidePrintConfirm(){
   if(m) m.classList.remove('show');
   KB_CF_PENDING = null;
 }
-function kbEprintSubmit(file, grade, label, pages, btn){
+function kbEprintSubmit(file, grade, label, pages, btn, depth){
+  depth = depth || 0;
   function post(tok){
+    if(btn) btn.disabled = true; /* B10（2026-10-22 三方审查修复）：请求在途禁用按钮，防连点重复请求/堆叠口令框；终局分支再恢复 */
     fetch(KB_EPRINT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Device-Token': tok },
@@ -4545,7 +4647,9 @@ function kbEprintSubmit(file, grade, label, pages, btn){
     }).then(function(r){
       if(r.status === 401 && r.body && r.body.code === 'stale_token'){
         try { localStorage.removeItem('hw-dev-token'); } catch(e){}
-        kbEprintSubmit(file, grade, label, pages, btn);
+        /* B10：stale 重试最多递归一层，防服务端持续 401 时无限递归 */
+        if(depth < 1){ kbEprintSubmit(file, grade, label, pages, btn, depth + 1); }
+        else { if(btn) btn.disabled = false; kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印'); }
         return;
       }
       if(r.status === 200 && r.body && r.body.result === 'queued'){
@@ -4554,13 +4658,17 @@ function kbEprintSubmit(file, grade, label, pages, btn){
         kbToast('已发送到打印机，稍等几分钟就会打出来');
       } else if(r.status === 200 && r.body && r.body.result === 'duplicate'){
         var mins = (typeof r.body.minutes_ago === 'number') ? r.body.minutes_ago : 0;
+        if(btn) btn.disabled = false;
         kbToast(mins + '分钟前打印了，请等待打印～');
       } else if(r.status === 200 && r.body && r.body.result === 'capped'){
+        if(btn) btn.disabled = false;
         kbToast('今天打印页数已达上限（20 页），明天再打吧');
       } else {
+        if(btn) btn.disabled = false;
         kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
       }
     }).catch(function(){
+      if(btn) btn.disabled = false;
       kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
     });
   }
@@ -4583,16 +4691,18 @@ function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
   }
   kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName);
 }
+/* A4（2026-10-22 三方审查修复）：拼 innerHTML 的文本先转义，防文件名/练习名含特殊符号冲坏页面结构 */
+function kbEscT(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName){
   var pa = document.getElementById('printArea');
   if(!pa) return;
   var pageCount = Math.max(pages.length, 1);
-  var h = '<div class="pa-bar"><span class="pa-title">' + name + '</span>'
+  var h = '<div class="pa-bar"><span class="pa-title">' + kbEscT(name) + '</span>'
     + (pdfUrl && fileName ? '<button type="button" class="tfile tprint1" id="paEprint">🖨 发到打印机</button>' : '')
     + '<button type="button" class="tfile" id="paPrint">打印 / 分享文件</button>'
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
     + '<div class="pa-hint">点「发到打印机」：这份 PDF 会发到家里的打印机自动打印，稍等几分钟。点「打印 / 分享文件」：在弹出菜单中选「保存到文件」，再到「文件」App 打开这份 PDF，点分享选「打印」。</div>';
-  pages.forEach(function(u){ h += '<img src="' + u + '" alt="练习页">'; });
+  pages.forEach(function(u){ h += '<img src="' + kbEscT(u) + '" alt="练习页">'; });
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
   pa.scrollTop = 0;
@@ -4620,7 +4730,7 @@ function kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName){
   if(ep){
     if(kbEprintGrayed(gradeName, fileName)){
       ep.disabled = true;
-      ep.textContent = '🖨 已发送（30 分钟内不可重复）';
+      ep.textContent = '🖨 已发送（20 分钟内不可重复）';
     }
     ep.addEventListener('click', function(){
       if(ep.disabled) return;
