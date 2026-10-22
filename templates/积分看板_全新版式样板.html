@@ -1710,6 +1710,8 @@
       var num = card ? card.querySelector('.bal-num') : null;
       if(!num) throw new Error('no bal-num');
       window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
+      var sub = card ? card.querySelector('.bal-sub') : null;
+      if(sub && typeof d.bal_sub === 'string' && d.bal_sub) sub.textContent = d.bal_sub; /* 文案由脚本按余额+兑换目录生成（2026-10-22） */
       var si = srcInfo[name];
       if(si && si.fromCache){
         setBalTag(cardId, '数据更新于 ' + fmtHHMM(si.ts)); /* 方案E：缓存渲染，明示数据时刻 */
