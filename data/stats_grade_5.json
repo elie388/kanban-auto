@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
   "grade": 5,
-  "balance": 134,
+  "balance": 114,
   "bal_sub": "一小时Minecraft，已经攥在手里啦。",
   "ledger_date": "2026-10-22",
-  "generated_at": "2026-10-22T19:28:23+08:00",
+  "generated_at": "2026-10-22T22:39:27+08:00",
   "source": "hidden_files/积分记录.md",
-  "checksum": "09a7602c8d1a91d1"
+  "checksum": "dc5164dcd4484352"
 }
