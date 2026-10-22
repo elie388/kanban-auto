@@ -211,6 +211,7 @@
   .corr-item .corr-q{color:#30343B;}
   .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
+  .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
   .task .task-info{flex:1; min-width:0; text-align:left;}
   .task .task-name{
     font-size:16px; font-weight:700;
@@ -1228,6 +1229,7 @@
                 + (c.question ? ' <span class="corr-q">' + esc(c.question) + '</span>' : '')
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
+                + (c.img ? '<img class="corr-img" src="data/diagrams/' + esc(c.img) + '" alt="画图引导">' : '')
                 + '</div>';
             });
           } else {
