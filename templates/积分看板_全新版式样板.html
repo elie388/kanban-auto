@@ -1327,13 +1327,10 @@
     if(progFill) progFill.style.width = (total ? (done / total * 100) : 0) + '%';
     var taskList = sec.querySelector('.task-list');
     if(!taskList) return false;
-    /* meta 置顶；完成（completed_at）超过 30 分钟后隐藏，数据保留 */
+    /* meta 置顶；完成后当天一直显示（2026-10-22 家长改定，取消原「完成超 30 分钟隐藏」：
+       伟豪当天 12:05 就交完登记本，卡 12:35 后消失、家长下午看不到；任务数据本来就是当天的，第二天自然不在列表） */
     var visible = [];
     metas.forEach(function(t){
-      if(t.completed_at){
-        var age = Date.now() - new Date(t.completed_at).getTime();
-        if(!isNaN(age) && age > 30 * 60 * 1000) return;
-      }
       visible.push(t);
     });
     /* 状态排序（2026-10-22 家长定）：全部任务（含登记本卡）按状态排——待提交 → 改正中 → 已完成，
