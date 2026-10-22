@@ -4279,23 +4279,33 @@
   function api(path, body, method){
     var headers = {'Content-Type': 'application/json'};
     var tk = token(); if(tk) headers['X-Device-Token'] = tk;
-    /* 2026-10-22 修复：fetch 无超时时弱网/webview 假死会让「正在准备」永久卡死、面板锁死。
-       加 20 秒 AbortController 超时，超时/断网统一转友好报错，由 doSubmit 的 catch 解锁重试。 */
+    /* 2026-10-22晚改：连接类请求改走 XMLHttpRequest（与文件本体 PUT 同通道）。
+       此前 fetch 在该 iPad 的 webview 里对 /auth、/sign 等小请求会无响应假死（单文件偶合成功、多文件必卡），
+       服务器实测 auth/sign 均约 1.2~1.5 秒、与文件数无关。XHR 自带 timeout，报错带步骤名便于定位。 */
+    var STEP = {'/auth': '验证口令', '/upload/sign': '准备上传', '/upload/resign': '续传文件', '/upload/complete': '最后确认', '/print/req': '发送打印'};
     function attempt(){
-      var ctrl = ('AbortController' in window) ? new AbortController() : null;
-      var timer = ctrl ? setTimeout(function(){ try { ctrl.abort(); } catch(e){} }, 20000) : null;
-      var opts = {method: method || 'POST', headers: headers,
-        body: body ? JSON.stringify(body) : undefined};
-      if(ctrl) opts.signal = ctrl.signal;
-      return fetch(WORKER + path, opts)
-        .then(function(r){ return r.json().then(function(j){ return {status: r.status, body: j}; },
-          function(){ return {status: r.status, body: {error: '服务器返回异常，再试一次'}}; }); })
-        .finally(function(){ if(timer) clearTimeout(timer); });
+      return new Promise(function(resolve, reject){
+        var xhr = new XMLHttpRequest();
+        xhr.open(method || 'POST', WORKER + path, true);
+        xhr.timeout = 20000;
+        Object.keys(headers).forEach(function(k){ xhr.setRequestHeader(k, headers[k]); });
+        xhr.onload = function(){
+          var j = null;
+          try { j = JSON.parse(xhr.responseText); } catch(e){}
+          if(j === null) j = {error: '服务器返回异常，再试一次'};
+          resolve({status: xhr.status, body: j});
+        };
+        xhr.ontimeout = function(){ var e = new Error('timeout'); e.name = 'AbortError'; reject(e); };
+        xhr.onerror = function(){ reject(new Error('network')); };
+        xhr.send(body ? JSON.stringify(body) : undefined);
+      });
     }
-    /* 弱网瞬时假死自动重试一次（2026-10-22晚：多文件提交时 /auth、/sign 曾 20 秒无响应直接失败） */
     return attempt().catch(function(e){
       return new Promise(function(res){ setTimeout(res, 900); }).then(attempt)
-        .catch(function(e2){ throw new Error(e2 && e2.name === 'AbortError' ? '网络太慢啦，没连上，请再试一次' : '网络不好，没连上，请再试一次'); });
+        .catch(function(e2){
+          var step = STEP[path] || '连接服务器';
+          throw new Error(e2 && e2.name === 'AbortError' ? ('网络太慢啦，没连上（' + step + '这一步），请再试一次') : ('网络不好，没连上（' + step + '这一步），请再试一次'));
+        });
     });
   }
   function putFile(url, file, contentType, onProg){
