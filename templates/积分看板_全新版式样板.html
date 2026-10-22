@@ -3962,7 +3962,7 @@
         b.textContent = '🧹 交家务照片';
         b.addEventListener('click', function(){ openSheet({mode:'chore', grade: info.grade, key: 'chore'}); });
       } else {
-        var key = 'task:' + info.task_id;
+        var key = 'task:' + info.grade + ':' + info.task_id;
         var s = stateGet(); var it = s.items[key];
         b.className = 'up-btn' + (it ? ' sent' : '');
         b.textContent = it ? ('📤 已交' + it.batches + '批 · 再补交') : '📤 交这一项';
