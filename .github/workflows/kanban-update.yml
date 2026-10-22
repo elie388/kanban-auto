@@ -107,6 +107,16 @@ jobs:
             ls -la public/data/audio/ || true
           fi
 
+      # 已完成任务原图通道（2026-10-22 家长定，三方定案）：任务卡「查看原图」
+      # 的高清查看版 data/orig/ 同步进 Pages 产物；目录不存在或为空时跳过。
+      - name: 同步已完成任务原图到 Pages 产物
+        run: |
+          if [ -d data/orig ]; then
+            mkdir -p public/data/orig
+            cp data/orig/* public/data/orig/ 2>/dev/null || true
+            ls -la public/data/orig/ || true
+          fi
+
       # 看板真实数据通道（KB-STATS-AUTO-2026-10-19，DeepSeek终审 B1/R1/R3）：
       # 同步 data/stats_grade_*.json、points_log_*.json、shop_grade_*.json 进 Pages 产物。
       # 硬断言：文件缺失/为空/schema异常/敏感词命中任一即构建失败（余额是家长最敏感字段，不允许静默坏数据）。

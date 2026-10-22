@@ -260,6 +260,20 @@
   .task-acts .st-zone{flex:none; order:2;}
   .task-acts .tfiles{flex:1; min-width:0; order:1; margin-top:0;}
   .task .task-acts:not(:has(.tfile)){justify-content:flex-end;}
+  /* 已完成任务「查看原图」按钮＋全屏查看器（2026-10-22 家长定，三方定案） */
+  .tfile.torig{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#EEF4FA; border-color:#B9CFE4; color:#1F4E79;}
+  #origViewer{position:fixed; inset:0; z-index:9990; background:rgba(12,14,18,.95); display:none; flex-direction:column;}
+  #origViewer.open{display:flex;}
+  #origViewer .ov-bar{display:flex; align-items:center; justify-content:space-between; padding:12px 14px;}
+  #origViewer .ov-count{font-size:14px; color:#d7dce3;}
+  #origViewer .ov-close{background:none; border:1px solid rgba(255,255,255,.4); color:#fff; border-radius:999px; min-width:44px; min-height:44px; font-size:16px; cursor:pointer;}
+  #origViewer .ov-stage{flex:1; overflow:auto; display:flex; align-items:center; justify-content:center;}
+  #origViewer .ov-stage img{max-width:100%; max-height:100%; object-fit:contain;}
+  #origViewer .ov-stage img.zoomed{max-width:none; max-height:none; width:200%;}
+  #origViewer .ov-err{color:#ffb4a2; font-size:15px; padding:20px; text-align:center; line-height:1.7;}
+  #origViewer .ov-nav{display:flex; gap:10px; justify-content:center; padding:12px;}
+  #origViewer .ov-nav button{flex:1; max-width:170px; min-height:46px; border-radius:12px; border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.08); color:#fff; font-size:15px; cursor:pointer;}
+  #origViewer .ov-nav button:disabled{opacity:.35;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
   .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
@@ -1386,6 +1400,16 @@
             }).join('') + '</div>';
           }
         }
+        /* 已完成任务「查看原图」（2026-10-22 家长定，三方定案）：仅 done＋学习类
+           任务（家务/登记本不纳入本期）且登记了 orig_photos 才渲染；照片清单
+           登记到 window.__taskOrigPhotos 供查看器取用，点击走口令门（kbOpenOriginals）。 */
+        var origRow = '';
+        if(t.status === 'done' && t.source !== 'chore' && t.task_type !== 'meta_register'
+           && Array.isArray(t.orig_photos) && t.orig_photos.length){
+          window.__taskOrigPhotos = window.__taskOrigPhotos || {};
+          window.__taskOrigPhotos[t.task_id] = t.orig_photos;
+          origRow = '<div class="tfiles toris"><button type="button" class="tfile torig" data-tid="' + esc(t.task_id) + '">📷 查看原图（' + t.orig_photos.length + '张）</button></div>';
+        }
         var qaList = Array.isArray(t.qa) ? t.qa : [];
         var pendN = (typeof t.pending_corrections === 'number') ? t.pending_corrections : 0;
         if(pendN > 0 || qaList.length){
@@ -1446,7 +1470,7 @@
           + '<div class="task-progress">' + sub2 + '</div></div>'
           + toggleBtn + '</div>'
           + corrBadge + corrPanel
-          + '<div class=\"task-acts\"><span class=\"st-zone\"></span>' + filesRow + '</div></div>';
+          + '<div class=\"task-acts\"><span class=\"st-zone\"></span>' + filesRow + origRow + '</div></div>';
       });
     }
     taskList.innerHTML = html;
@@ -4689,6 +4713,70 @@ function kbEprintSubmit(file, grade, label, pages, btn, depth){
    与提交作业同一体系：本机有设备令牌直接打开打印页；没有令牌先弹
    口令框（复用补练口令门 window.kbAskPass），校验通过存令牌并自动
    继续打开；口令错在框内报错。打印页内的「发到打印机」另有其口令门。 */
+/* 已完成任务原图查看器（2026-10-22 家长定，三方定案）。入口按钮在任务卡
+   操作区（renderOne 的 origRow），点击先过口令门（与打印/补练同一体系，
+   家长追加要求：无设备令牌先弹口令框、通过存令牌后自动打开）。照片清单
+   在 renderOne 登记到 window.__taskOrigPhotos[task_id]，图片走 data/orig/
+   发布通道（高清查看版）；加载失败有占位提示（终审条件 C-c）。 */
+var __ovState = { list: [], idx: 0 };
+function kbOvEnsure(){
+  if(document.getElementById('origViewer')) return;
+  var div = document.createElement('div');
+  div.id = 'origViewer';
+  div.innerHTML = '<div class="ov-bar"><span class="ov-count"></span><button type="button" class="ov-close" aria-label="关闭">✕</button></div>'
+    + '<div class="ov-stage"><img class="ov-img" alt="孩子提交的原图"><div class="ov-err" style="display:none">这张图加载失败<br>请检查网络后重试</div></div>'
+    + '<div class="ov-nav"><button type="button" class="ov-prev">‹ 上一张</button><button type="button" class="ov-next">下一张 ›</button></div>';
+  document.body.appendChild(div);
+  div.querySelector('.ov-close').addEventListener('click', kbOvClose);
+  div.querySelector('.ov-prev').addEventListener('click', function(){ kbOvNav(-1); });
+  div.querySelector('.ov-next').addEventListener('click', function(){ kbOvNav(1); });
+  div.addEventListener('click', function(e){ if(e.target === div) kbOvClose(); });
+  var img = div.querySelector('.ov-img');
+  img.addEventListener('dblclick', function(){ img.classList.toggle('zoomed'); });
+  var tx = null;
+  div.addEventListener('touchstart', function(e){ tx = e.changedTouches[0].clientX; }, {passive: true});
+  div.addEventListener('touchend', function(e){
+    if(tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx;
+    if(dx > 48) kbOvNav(-1); else if(dx < -48) kbOvNav(1);
+    tx = null;
+  }, {passive: true});
+}
+function kbOvRender(){
+  var ov = document.getElementById('origViewer'); if(!ov) return;
+  var img = ov.querySelector('.ov-img'), err = ov.querySelector('.ov-err');
+  var n = __ovState.list.length, i = __ovState.idx;
+  ov.querySelector('.ov-count').textContent = '第 ' + (i + 1) + ' / 共 ' + n + ' 张';
+  ov.querySelector('.ov-prev').disabled = i <= 0;
+  ov.querySelector('.ov-next').disabled = i >= n - 1;
+  err.style.display = 'none'; img.style.display = ''; img.classList.remove('zoomed');
+  img.onerror = function(){ img.style.display = 'none'; err.style.display = ''; };
+  img.src = 'data/orig/' + encodeURIComponent(__ovState.list[i]);
+}
+function kbOvNav(d){
+  var n = __ovState.list.length;
+  __ovState.idx = Math.min(n - 1, Math.max(0, __ovState.idx + d));
+  kbOvRender();
+}
+function kbOvClose(){
+  var ov = document.getElementById('origViewer');
+  if(ov) ov.classList.remove('open');
+}
+function kbOpenOriginals(tid){
+  if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
+    window.kbAskPass(function(){ kbOpenOriginals(tid); }, null);
+    return;
+  }
+  var list = (window.__taskOrigPhotos || {})[tid] || [];
+  if(!list.length) return;
+  __ovState.list = list; __ovState.idx = 0;
+  kbOvEnsure(); kbOvRender();
+  document.getElementById('origViewer').classList.add('open');
+}
+document.addEventListener('click', function(e){
+  var b = e.target && e.target.closest ? e.target.closest('.torig') : null;
+  if(b) kbOpenOriginals(b.getAttribute('data-tid'));
+});
 function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
   if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
     window.kbAskPass(function(){ kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName); }, null);
