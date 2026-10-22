@@ -4264,25 +4264,33 @@
   }
   function sha256Of(f){
     if(f.size > 60 * 1024 * 1024 || !window.crypto || !crypto.subtle) return Promise.resolve(null);
-    return f.arrayBuffer().then(function(buf){ return crypto.subtle.digest('SHA-256', buf); })
+    var work = f.arrayBuffer().then(function(buf){ return crypto.subtle.digest('SHA-256', buf); })
       .then(function(h){ return Array.from(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); })
       .catch(function(){ return null; });
+    /* 5 秒读不出就放弃哈希（服务器选填），不让读文件卡住整批提交 */
+    return Promise.race([work, new Promise(function(res){ setTimeout(function(){ res(null); }, 5000); })]);
   }
   function api(path, body, method){
     var headers = {'Content-Type': 'application/json'};
     var tk = token(); if(tk) headers['X-Device-Token'] = tk;
     /* 2026-10-22 修复：fetch 无超时时弱网/webview 假死会让「正在准备」永久卡死、面板锁死。
        加 20 秒 AbortController 超时，超时/断网统一转友好报错，由 doSubmit 的 catch 解锁重试。 */
-    var ctrl = ('AbortController' in window) ? new AbortController() : null;
-    var timer = ctrl ? setTimeout(function(){ try { ctrl.abort(); } catch(e){} }, 20000) : null;
-    var opts = {method: method || 'POST', headers: headers,
-      body: body ? JSON.stringify(body) : undefined};
-    if(ctrl) opts.signal = ctrl.signal;
-    return fetch(WORKER + path, opts)
-      .then(function(r){ return r.json().then(function(j){ return {status: r.status, body: j}; },
-        function(){ return {status: r.status, body: {error: '服务器返回异常，再试一次'}}; }); })
-      .catch(function(e){ throw new Error(e && e.name === 'AbortError' ? '网络太慢啦，没连上，请再试一次' : '网络不好，没连上，请再试一次'); })
-      .finally(function(){ if(timer) clearTimeout(timer); });
+    function attempt(){
+      var ctrl = ('AbortController' in window) ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function(){ try { ctrl.abort(); } catch(e){} }, 20000) : null;
+      var opts = {method: method || 'POST', headers: headers,
+        body: body ? JSON.stringify(body) : undefined};
+      if(ctrl) opts.signal = ctrl.signal;
+      return fetch(WORKER + path, opts)
+        .then(function(r){ return r.json().then(function(j){ return {status: r.status, body: j}; },
+          function(){ return {status: r.status, body: {error: '服务器返回异常，再试一次'}}; }); })
+        .finally(function(){ if(timer) clearTimeout(timer); });
+    }
+    /* 弱网瞬时假死自动重试一次（2026-10-22晚：多文件提交时 /auth、/sign 曾 20 秒无响应直接失败） */
+    return attempt().catch(function(e){
+      return new Promise(function(res){ setTimeout(res, 900); }).then(attempt)
+        .catch(function(e2){ throw new Error(e2 && e2.name === 'AbortError' ? '网络太慢啦，没连上，请再试一次' : '网络不好，没连上，请再试一次'); });
+    });
   }
   function putFile(url, file, contentType, onProg){
     return new Promise(function(resolve, reject){
@@ -4355,7 +4363,7 @@
     if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
     if(!files.length){ setMsg('还没有选照片/录音/视频哦', 'err'); return; }
     if(files.length > 10){ setMsg('一次最多交10个文件，可以分两次交', 'err'); return; }
-    busy = true; $('up-go').disabled = true; setMsg('正在准备…');
+    busy = true; $('up-go').disabled = true; setMsg(token() ? '正在准备…' : '正在验证口令…');
     var pass = $('up-pass') ? $('up-pass').value.trim() : '';
     var ensureToken = token() ? Promise.resolve() :
       api('/auth', {passcode: pass}).then(function(r){
@@ -4368,6 +4376,7 @@
     ensureToken
       .then(function(){ return Promise.all(files.map(sha256Of)); })
       .then(function(shas){
+        setMsg('正在准备上传…');
         var meta = files.map(function(f, i){
           var m = {ext: extOf(f), kind: kindOf(f), size: f.size};
           if(shas[i]) m.sha256 = shas[i];
