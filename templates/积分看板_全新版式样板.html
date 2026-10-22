@@ -251,7 +251,8 @@
   /* 操作横排（2026-10-22 家长定）：「交这一项」与打印按钮放同一横排 */
   .task .task-acts{display:flex; gap:8px; width:100%; margin-top:10px; align-items:stretch;}
   .task .task-acts .st-zone{width:auto; margin-top:0; flex:none;}
-  .task .task-acts .tfiles{flex:1; margin-top:0; min-width:0;}
+  .task-acts .st-zone{flex:none; order:2;}
+  .task-acts .tfiles{flex:1; min-width:0; order:1; margin-top:0;}
   .task .task-acts:not(:has(.tfile)){justify-content:flex-end;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
