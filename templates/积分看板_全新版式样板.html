@@ -189,8 +189,9 @@
   }
   .task .st-mini{font-size:11px; font-weight:600; color:#8a8378; background:#F1F3F5; border-radius:999px; padding:2px 8px; white-space:nowrap;}
   /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
-     点击展开明细（2026-10-20 续）：徽标独占一行（主行之下左对齐），
-     不再与状态徽章同行挤压；展开区逐题列题号/题目/错因。 */
+     徽标独占一行（主行之下左对齐），不再与状态徽章同行挤压；
+     展开区逐题列题号/题目/错因。默认展开（2026-10-22 家长定：
+     每项任务不用点击才展开），点徽标可收起、再点重新展开。 */
   .task .corr-badge{
     align-self:flex-start;
     margin-top:10px;
@@ -1155,7 +1156,7 @@
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正'};
-  var OPEN_CORR = {}; /* 待改正明细展开状态（按 task_id，软刷新后恢复，与目标榜 OPEN_GOALS 同款） */
+  var CLOSED_CORR = {}; /* 待改正明细收起状态（按 task_id，软刷新后恢复）：2026-10-22 家长定默认展开，只记家长/孩子手动收起的 */
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('.corr-badge') : null;
     if(!b) return;
@@ -1164,7 +1165,7 @@
     var open = card.classList.toggle('open-corr');
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
     var tid = b.getAttribute('data-corr');
-    if(tid){ if(open) OPEN_CORR[tid] = 1; else delete OPEN_CORR[tid]; }
+    if(tid){ if(open) delete CLOSED_CORR[tid]; else CLOSED_CORR[tid] = 1; }
   });
   /* 待改正示范录音播放（2026-10-22）：委托切换，同时只播一个，播完复位 */
   document.addEventListener('click', function(e){
@@ -1321,12 +1322,12 @@
               + '<span class="corr-h">' + esc(x.a || '') + '</span>'
               + '</div>';
           });
-          if(OPEN_CORR[t.task_id]) openCls = ' open-corr';
+          if(!CLOSED_CORR[t.task_id]) openCls = ' open-corr';
           var badgeTxt = (pendN > 0)
             ? ('待改正 ' + pendN + ' 题' + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
             : ('\uD83D\uDCAC 留言回复 ' + qaList.length);
           corrBadge = '<button type="button" class="corr-badge" data-corr="' + esc(t.task_id) + '"'
-            + ' aria-expanded="' + (OPEN_CORR[t.task_id] ? 'true' : 'false') + '">' + badgeTxt
+            + ' aria-expanded="' + (CLOSED_CORR[t.task_id] ? 'false' : 'true') + '">' + badgeTxt
             + ' <span class="corr-caret">▸</span></button>';
           corrPanel = '<div class="corr-panel">' + items + '</div>';
         }
