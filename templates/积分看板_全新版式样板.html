@@ -3898,10 +3898,29 @@
       <button class="up-go" id="up-go" type="button">全部交完 ✅</button>
     </div>
     <div class="up-msg" id="up-msg"></div>
+        <div id="up-ver" style="font-size:11px; color:#b6ad96; text-align:right; margin-top:2px;"></div>
   </div>
 </div>
 <script>
 (function(){
+  var KB_BUILD = '20261022-2120';
+  /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
+     页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
+  try {
+    fetch(location.pathname + '?_cb=' + Date.now(), {cache: 'no-store'})
+      .then(function(r){ return r.text(); })
+      .then(function(t){
+        var m = t.match(/KB_BUILD = '([^']+)'/);
+        if(m && m[1] !== KB_BUILD){
+          try {
+            if(sessionStorage.getItem('kb-reload-for') !== m[1]){
+              sessionStorage.setItem('kb-reload-for', m[1]);
+              location.replace(location.pathname + '?v=' + m[1]);
+            }
+          } catch(e){}
+        }
+      }).catch(function(){});
+  } catch(e){}
   var WORKER = 'https://homework-upload.whyjjf.workers.dev';
   var LS_TOKEN = 'hw-dev-token';
   var LS_STATE = 'hw-up-state';
@@ -3938,6 +3957,7 @@
   function markSubmitted(key, receipt){
     var s = stateGet(); var it = s.items[key] || {batches: 0};
     it.batches += 1; it.receipt = receipt; s.items[key] = it; stateSet(s);
+    var uv = $('up-ver'); if(uv) uv.textContent = '版本 ' + KB_BUILD;
     paintButtons();
   }
   function token(){ try { return localStorage.getItem(LS_TOKEN) || ''; } catch(e){ return ''; } }
