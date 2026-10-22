@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "六年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T00:11:25+08:00",
+  "updated_at": "2026-10-23T00:11:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -64,17 +64,8 @@
       "created_at": "2026-10-22T20:23:56+08:00",
       "updated_at": "2026-10-23T00:05:10+08:00",
       "task_type": "reading",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "形容词最高级笔记抄写3次 3次-(easy)",
-          "question": "写出 easy 的最高级形式",
-          "reason": "最高级拼写错误：eaiest，应为 easiest（y→i 再加 est，漏写 s） 看板上传·英语形容词最高级笔记抄写3次·任务REG-20261022-146C0D·首图22:06:06（迟交）",
-          "hint": "①检查一下 easy 的最高级拼写，对照规则2看看哪里不对。②辅音字母+y结尾的词变最高级：把 y 改成 i，再加 est。③easy→先把 y 换成 i 得 easi，再加 est，逐字母拼：e-a-s-i-e-s-t。",
-          "img": "",
-          "q_img": ""
-        }
-      ],
+      "pending_corrections": 0,
+      "corrections": [],
       "status_source": "bank_writeback",
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
@@ -146,25 +137,8 @@
       },
       "created_at": "2026-10-22T20:23:56+08:00",
       "updated_at": "2026-10-23T00:05:10+08:00",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "第一单元过关小测 一-1-(1)",
-          "question": "给加点字蒙(蒙古族)选择正确读音。",
-          "reason": "多音字误读：蒙古的蒙读měng(第三声)，孩子选méng(第一声) 看板上传·语文第一单元过关小测·任务REG-20261022-743B82·首图22:08:02",
-          "hint": "①“蒙古”平时怎么读？②“蒙”有几个读音？③查字典确认“蒙古”的“蒙”读měng，第三声。",
-          "img": "",
-          "q_img": ""
-        },
-        {
-          "label": "第一单元过关小测 一-1-(7)",
-          "question": "给加点字薄(薄雾)选择正确读音。",
-          "reason": "多音字误读：薄雾的薄读bó(第二声)，孩子选bǎo(第三声) 看板上传·语文第一单元过关小测·任务REG-20261022-743B82·首图22:08:02",
-          "hint": "①“薄雾”是什么意思？②“薄”读bó的词有哪些？（薄雾、单薄）读báo呢？（薄纸）③记住表示“薄而轻”读bó。",
-          "img": "",
-          "q_img": ""
-        }
-      ],
+      "pending_corrections": 0,
+      "corrections": [],
       "status_source": "bank_writeback",
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
