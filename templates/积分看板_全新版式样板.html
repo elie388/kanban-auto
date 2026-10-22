@@ -161,19 +161,18 @@
     min-height:56px;
     transition:transform .15s ease;
   }
-  /* 卡片主行：文字左、状态徽章右（待改正徽标/明细面板在此行之下另起行，
-     不再挤压标题与副文案，2026-10-20 家长截图反馈后改） */
+  /* 卡片主行（A款，2026-10-22 家长拍板、三方定案）：左侧一列＝状态徽章在上、
+     标题在下；右侧只留一行「详情」文字链（待改正徽标/明细面板在主行之下另起行） */
   .task .task-main{
     display:flex; align-items:center; justify-content:space-between;
-    gap:16px; width:100%;
+    gap:12px; width:100%;
   }
   .task:active{transform:scale(.98);}
+  .task .task-top{display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:5px;}
   .task .st-badge{
     flex:0 0 auto;
-    margin-left:auto; /* 徽章右置双保险 */
-    min-width:44px; min-height:44px; /* 触摸目标 */
-    font-size:13px; font-weight:700;
-    padding:5px 12px; border-radius:999px;
+    font-size:12px; font-weight:700;
+    padding:3px 10px; border-radius:999px;
     display:inline-flex; align-items:center; justify-content:center; gap:4px;
     white-space:nowrap;
   }
@@ -181,12 +180,13 @@
   .task.correcting{border-color:#FFD97A;}
   .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
-  /* 状态区（2026-10-22 入口合并，deepseek 定案(a)）：状态徽标与「交这一项」按钮同处一区，
-     徽标在上、按钮在下右对齐；上传模块把按钮注入 .st-zone */
+  /* 操作区（A款）：主行之下右对齐一行，只放上传模块注入的「交这一项」按钮；
+     空时不占位，收起时整行隐藏 */
   .task .st-zone{
-    display:flex; flex-direction:column; align-items:flex-end; gap:6px;
-    flex:0 0 auto; margin-left:auto;
+    display:flex; justify-content:flex-end; gap:6px;
+    width:100%; margin-top:8px;
   }
+  .task .st-zone:empty{display:none;}
   .task .st-mini{font-size:11px; font-weight:600; color:#8a8378; background:#F1F3F5; border-radius:999px; padding:2px 8px; white-space:nowrap;}
   /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
      徽标独占一行（主行之下左对齐），不再与状态徽章同行挤压；
@@ -213,16 +213,18 @@
   .task[data-tid]:not(.open-task) .corr-badge{display:none;}
   .task[data-tid]:not(.open-task) .tfiles{display:none;}
   .task[data-tid]:not(.open-task) .st-mini{display:none;}
-  .task[data-tid]:not(.open-task) .st-zone .up-btn{display:none;}
+  .task[data-tid]:not(.open-task) .st-zone{display:none;}
+  .task[data-tid]:not(.open-task) .task-acts{display:none;}
   .task[data-tid]:not(.open-task){cursor:pointer;}
   .task .task-toggle{
-    font-size:12.5px; font-weight:700; font-family:inherit;
-    padding:5px 12px; border-radius:999px; border:1.5px solid #D8C9A8; cursor:pointer;
-    display:inline-flex; align-items:center; justify-content:center; gap:5px;
-    white-space:nowrap; min-height:36px;
-    background:#F3EFE3; color:#5A5145;
+    font-size:13.5px; font-weight:600; font-family:inherit;
+    padding:10px 2px 10px 14px; border:none; background:transparent; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center; gap:4px;
+    white-space:nowrap; min-height:44px; /* 文字链热区不缩水 */
+    color:#8A8378; flex:0 0 auto; align-self:center;
     -webkit-tap-highlight-color:transparent;
   }
+  .task.correcting .task-toggle{color:#C77700; font-weight:700;}
   span.corr-badge{cursor:default;}
   .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
@@ -236,6 +238,11 @@
   .corr-item .corr-qimg .corr-img{margin-top:0;}
   .corr-item.corr-qa{border-left:2px solid #D8C9A8; padding-left:10px; background:#FDFAF1;}
   .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  /* 操作横排（2026-10-22 家长定）：「交这一项」与打印按钮放同一横排 */
+  .task .task-acts{display:flex; gap:8px; width:100%; margin-top:10px; align-items:stretch;}
+  .task .task-acts .st-zone{width:auto; margin-top:0; flex:none;}
+  .task .task-acts .tfiles{flex:1; margin-top:0; min-width:0;}
+  .task .task-acts:not(:has(.tfile)){justify-content:flex-end;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
   .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
@@ -814,7 +821,7 @@
   /* 小屏微调 */
   @media (max-width:420px){
     .task{gap:10px;} /* 窄屏收紧行内间距 */
-    .task .st-badge{padding:5px 8px; font-size:13px;} .task .st-zone .up-btn{padding:5px 8px;} /* 窄屏徽章轻微收紧 */
+    .task .st-badge{padding:3px 8px; font-size:12px;} .task .st-zone .up-btn{padding:5px 8px;} /* 窄屏徽章轻微收紧 */
     .task .task-name{
       white-space:pre-line; word-break:break-word; overflow:visible; /* 窄屏亦多行完整展示，与主样式同口径 */
     }
@@ -1309,9 +1316,8 @@
     visible = visible.slice().sort(function(a, b){ return kbTaskRank(a) - kbTaskRank(b); });
     var html = '';
     if(visible.length === 0){
-      html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-name">今日暂无任务</div>'
-        + '<div class="task-progress">全部完成，放松一下吧</div></div>'
-        + '<span class="st-zone"><span class="st-badge">\u2705 已完成</span></span></div></div>';
+      html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-top"><span class="st-badge">\u2705 已完成</span></div><div class="task-name">今日暂无任务</div>'
+        + '<div class="task-progress">全部完成，放松一下吧</div></div></div></div>';
     } else {
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
@@ -1395,11 +1401,21 @@
           + ' data-preview="' + esc(previewTxt) + '"'
           + ' aria-expanded="' + (taskOpen ? 'true' : 'false') + '"><span class="tt-text">' + (taskOpen ? '收起' : esc(previewTxt)) + '</span>'
           + ' <span class="corr-caret">▸</span></button>';
+        var dispTitle = t.title || '';
+        if(t.source === 'exam_correction'){
+          var mRem = dispTitle.match(/剩\s*\d+\s*题/);
+          if(mRem){
+            dispTitle = dispTitle.replace(/[（(]?\s*剩\s*\d+\s*题\s*[）)]?/, '').replace(/\s{2,}/g, ' ').trim();
+            badgeText += ' · ' + mRem[0].replace(/\s+/g, '');
+          }
+        }
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
-          + '<div class="task-name">' + esc(t.title) + '</div>'
+          + '<div class="task-top"><span class="st-badge">' + badgeText + '</span>' + miniPill + '</div>'
+          + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
-          + '<span class="st-zone"><span class="st-badge">' + badgeText + '</span>' + miniPill + toggleBtn + '</span></div>'
-          + corrBadge + corrPanel + filesRow + '</div>';
+          + toggleBtn + '</div>'
+          + corrBadge + corrPanel
+          + '<div class=\"task-acts\"><span class=\"st-zone\"></span>' + filesRow + '</div></div>';
       });
     }
     taskList.innerHTML = html;
