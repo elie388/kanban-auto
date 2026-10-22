@@ -270,8 +270,10 @@
   }
   .corr-item .corr-audios{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
   .corr-item .corr-audio{display:inline-flex;}
-  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 15px; border-radius:999px; border:1.5px solid #E09A45; background:#FFF4E3; color:#6B3F0E; font-size:14px; font-weight:600; line-height:1; cursor:pointer;}
-  .corr-item .corr-play .corr-ic{font-size:13px; color:#D97A2B;}
+  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 13px; border-radius:999px; border:1.5px solid #E09A45; background:#FFF4E3; color:#6B3F0E; font-size:14px; font-weight:600; line-height:1; cursor:pointer; flex:0 0 auto;}
+  /* 图标定宽（2026-10-22 家长报障修复）：▶ 与 ⏸ 字形宽度不同，播放时换图标会把按钮撑宽、
+     三个按钮总宽正好卡在换行临界点上，一点播放按钮行就从两行跳成一行；图标盒定宽后两种状态同宽，不再跳行 */
+  .corr-item .corr-play .corr-ic{display:inline-block; width:15px; text-align:center; flex:0 0 auto; font-size:13px; color:#D97A2B;}
   .corr-item .corr-play.orig{border-color:#5B8DB8; background:#EAF4FB; color:#1F4E79;}
   .corr-item .corr-play.orig .corr-ic{color:#3D77A8;}
   .corr-item .corr-play.playing{background:#D97A2B; border-color:#D97A2B; color:#fff;}
@@ -1200,7 +1202,7 @@
     in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
-  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正'};
+  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正', chore: '日常打卡', daily_53: '每日练习'};
   var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击后才展开，不分状态；同日续定方案1：整卡可点＋入口带内容预告 */
   function toggleTaskCard(card){
     var open = card.classList.toggle('open-task');
@@ -1333,7 +1335,7 @@
         }
         /* 三态显示名（2026-10-20 家长定）：pending 统一显示"📝 待提交"，
            不再按 deadline_today 拆分显示（原 P1-B 拆分取消）。 */
-        var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
+        var sub2 = esc(t.subject || '') + (SOURCE_LABEL[t.source] ? ' · ' + esc(SOURCE_LABEL[t.source]) : '');
         if(t.detail) sub2 += ' · ' + esc(t.detail);
         else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
         /* 待改正标记（2026-10-20 家长拍板）：待订正未清零的任务显示，
