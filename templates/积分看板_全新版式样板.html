@@ -176,10 +176,19 @@
     display:inline-flex; align-items:center; justify-content:center; gap:4px;
     white-space:nowrap;
   }
-  .task.pending .st-badge{background:#F1F3F5; color:#6B7280;}
+  /* 状态呼吸灯（2026-10-22 家长定）：待提交=红、改正中=橙、已完成=绿，徽章前圆点做呼吸脉冲 */
+  .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 1.8s ease-in-out infinite;}
+  @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.35; transform:scale(.8);}}
+  @media (prefers-reduced-motion: reduce){ .task .st-dot{animation:none;} }
+  .task.pending .st-badge{background:#FDECEA; color:#C92A20;}
+  .task.pending .st-dot{background:#E5484D; box-shadow:0 0 6px rgba(229,72,77,.55);}
   .task.correcting{border-color:#FFD97A;}
-  .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
+  .task.correcting .st-badge{background:#FFF3D6; color:#B54708;}
+  .task.correcting .st-dot{background:#F08C0A; box-shadow:0 0 6px rgba(240,140,10,.55);}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
+  .task.done .st-dot{background:#22B573; box-shadow:0 0 6px rgba(34,181,115,.5);}
+  .task .st-badge.is-calm{background:#F1F3F5; color:#6B7280;}
+  .task .st-badge.is-calm .st-dot{background:#98A2B3; box-shadow:none; animation:none;}
   /* 操作区（A款）：主行之下右对齐一行，只放上传模块注入的「交这一项」按钮；
      空时不占位，收起时整行隐藏 */
   .task .st-zone{
@@ -249,7 +258,9 @@
   #printArea{display:none;}
   body.kb-printing #printArea{display:block; position:fixed; inset:0; z-index:9999; background:#fff; overflow:auto; padding:10px;}
   #printArea .pa-bar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
-  #printArea .pa-title{font-weight:700; margin-right:auto; font-size:16px;}
+  /* 标题独占一行（2026-10-22 家长截图报障）：标题与三按钮同行时「发到打印机」被挤到文字内部折行（机字掉到第二行）；按钮一律不折行、不收缩 */
+  #printArea .pa-title{font-weight:700; margin-right:auto; font-size:16px; flex:1 1 100%;}
+  #printArea .pa-bar .tfile{white-space:nowrap; flex:0 0 auto;}
   #printArea .pa-hint{color:#8a8171; font-size:12px; margin-bottom:10px;}
   /* ePrint 二次确认框（2026-10-22 定稿）：样式与口令框同系，层级高于打印页 */
   .kbcf-mask{position:fixed;inset:0;background:rgba(40,32,24,.45);display:none;align-items:center;justify-content:center;z-index:10001;padding:20px}
@@ -1318,7 +1329,7 @@
     visible = visible.slice().sort(function(a, b){ return kbTaskRank(a) - kbTaskRank(b); });
     var html = '';
     if(visible.length === 0){
-      html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-top"><span class="st-badge">\u2705 已完成</span></div><div class="task-name">今日暂无任务</div>'
+      html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-top"><span class="st-badge"><span class="st-dot"></span>\u2705 已完成</span></div><div class="task-name">今日暂无任务</div>'
         + '<div class="task-progress">全部完成，放松一下吧</div></div></div></div>';
     } else {
       visible.forEach(function(t){
@@ -1412,7 +1423,7 @@
           }
         }
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
-          + '<div class="task-top"><span class="st-badge">' + badgeText + '</span>' + miniPill + '</div>'
+          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeText + '</span>' + miniPill + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
           + toggleBtn + '</div>'
