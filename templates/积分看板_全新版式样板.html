@@ -3844,6 +3844,7 @@
   </div>
   <div id="upPreviewStage" style="flex:1; overflow:auto; display:flex; align-items:center; justify-content:center; padding:0 12px 18px;"></div>
 </div>
+<div id="kb-upd-bar" style="display:none; position:fixed; top:0; left:0; right:0; z-index:9998; background:#B45309; color:#fff; text-align:center; padding:10px 12px; font-size:14px; cursor:pointer;">有新版本，点这里整页重载</div>
 <div class="up-mask" id="up-mask">
   <div class="up-sheet" role="dialog" aria-label="交作业">
     <h3 id="up-title">交作业</h3>
@@ -3903,7 +3904,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261022-2312';
+  var KB_BUILD = '20261023-0118';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -3921,6 +3922,42 @@
         }
       }).catch(function(){});
   } catch(e){}
+  /* 软刷新构建号复查（2026-10-23 DeepSeek 终审(d)）：页面长开时软刷新只换数据不换代码，
+     若期间有新版部署，旧页会一直跑旧代码（2026-10-22 录音区复发根因）。与页面 5 分钟
+     软刷新同周期复查构建号，不一致时顶部提示条引导整页重载；sessionStorage
+     kb-buildSeen 保证同一构建号只提示一次，节流 ≥4 分钟、每周期最多 1 次请求。 */
+  window.__KB_BUILD = KB_BUILD;
+  var _kbLastCheck = 0;
+  window.__kbBuildCheck = function(){
+    var now = Date.now();
+    if(now - _kbLastCheck < 4 * 60 * 1000) return;
+    _kbLastCheck = now;
+    try {
+      fetch(location.pathname + '?_cb=' + now, {cache: 'no-store'})
+        .then(function(r){ return r.text(); })
+        .then(function(t){
+          var m = t.match(/KB_BUILD = '([^']+)'/);
+          if(!m) return;
+          var bar = document.getElementById('kb-upd-bar');
+          if(!bar) return;
+          if(m[1] !== KB_BUILD){
+            var seen = '';
+            try { seen = sessionStorage.getItem('kb-buildSeen') || ''; } catch(e){}
+            if(seen !== m[1]){
+              bar.style.display = 'block';
+              bar.onclick = function(){
+                try { sessionStorage.setItem('kb-buildSeen', m[1]); } catch(e){}
+                location.reload();
+              };
+            }
+          } else {
+            bar.style.display = 'none';
+          }
+        }).catch(function(){});
+    } catch(e){}
+  };
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) window.__kbBuildCheck(); });
+  setInterval(window.__kbBuildCheck, 5 * 60 * 1000);
   var WORKER = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev'); /* 2026-10-22晚：接口改走看板同域 /hw-api，绕开该 iPad 到 workers.dev 的连接假死 */
   var LS_TOKEN = 'hw-dev-token';
   var LS_STATE = 'hw-up-state';
@@ -4060,6 +4097,7 @@
       buildChildren(); buildTypes();
     }
     $('up-passrow').style.display = token() ? 'none' : 'block';
+    var _uv = $('up-ver'); if(_uv) _uv.textContent = '版本 ' + KB_BUILD; /* 2026-10-23 DeepSeek 终审(d)：打开面板即显示版本号（此前仅提交成功后才写，旧页无从自证） */
     recGate();
     $('up-mask').classList.add('open');
   }
@@ -4091,12 +4129,23 @@
   var recGen = 0; /* A8（2026-10-22 三方审查修复）：录音代次——面板关闭/重置后到达的 getUserMedia 回调一律作废并关流 */
   var REC_MAX_SEC = 900; /* 2026-10-22 家长改定：录音上限 15 分钟（原 5 分钟） */
   function recSupported(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
+  /* 裸词补判（与摄取层 task_ingest._oral_bao_hit 同源口径，2026-10-23 DeepSeek 终审 (b)）：
+     仅面板渲染层兜底，不改存储的 task_type。 */
+  function oralBaoHit(t){
+    if(!t) return false;
+    if(t.indexOf('读作文') !== -1) return true;
+    if(t.indexOf('对话') === -1) return false;
+    if(/(写作|作文|抄写|翻译|填|选|连|阅读|日记|摘抄)/.test(t)) return false;
+    if(/(写|抄|默)/.test(t)) return false;
+    return /(英语|English|单词|课文|记录|分钟|Module|U\\d|P\\d|第\\d+课)/.test(t);
+  }
   function recShouldShow(){
     if(!recSupported() || !cur) return false;
     if(cur.type === 'reading') return true;
     if(cur.mode === 'task' && cur.title){
       var t = cur.title;
-      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声|预习|对话)/.test(t)) return true;
+      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声|预习)/.test(t)) return true;
+      if(oralBaoHit(t)) return true;
       if(/背\d/.test(t)) return true; /* 2026-10-22 兜底补强：「背10次」类（背+数字） */
       /* 2026-10-22晚修复：「读作文10分钟」这类只有单字「读」的朗读任务原关键词没覆盖、录音区不显示；
          放宽为标题含「读」也显示，但「阅读」（阅读理解类书面题）除外。 */
