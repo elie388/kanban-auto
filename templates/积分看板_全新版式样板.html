@@ -208,7 +208,7 @@
   .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
   .corr-item .corr-no{font-weight:700; color:#C2410C;}
-  .corr-item .corr-q{color:#30343B;}
+  .corr-item .corr-q{color:#30343B; white-space:pre-line;}
   .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
   .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
@@ -1148,7 +1148,13 @@
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
-      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}
+function fmtQ(t){
+  if(!t) return t;
+  var ms = t.match(/[A-E][.、．]/g);
+  if(!ms || ms.length < 3) return t;
+  return t.replace(/\s*([A-E])[.、．]\s*/g, '\n$1. ').replace(/^\n/, '').trim();
+}[c];
     });
   }
   function todayStr(){
@@ -1233,7 +1239,7 @@
             corrList.forEach(function(c){
               items += '<div class="corr-item">'
                 + (c.label ? '<span class="corr-no">' + esc(c.label) + '</span>' : '')
-                + (c.question ? ' <span class="corr-q">' + esc(c.question) + '</span>' : '')
+                + (c.question ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
                 + (c.img ? '<img class="corr-img" src="data/diagrams/' + esc(c.img) + '" alt="画图引导">' : '')
