@@ -212,6 +212,9 @@
   .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
   .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
+  .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
+  .tfile:active{background:#EAE2CC;}
   .corr-item .corr-audio{display:flex; align-items:center; gap:10px; margin-top:8px;}
   .corr-item .corr-play{width:52px; height:52px; border-radius:50%; border:none; background:#3d9970; color:#fff; font-size:22px; line-height:1; cursor:pointer; flex:0 0 auto; padding:0;}
   .corr-item .corr-alab{font-size:13px; color:#5A5145;}
@@ -1252,6 +1255,12 @@
            （task_ingest.sync_corrections 同一归集列表，长度恒等），
            徽标独占一行（主行之下），点一下展开、再点收起。 */
         var corrBadge = '', corrPanel = '', openCls = '';
+        var filesRow = '';
+        if(Array.isArray(t.files) && t.files.length){
+          filesRow = '<div class="tfiles">' + t.files.map(function(f){
+            return '<a class="tfile" href="data/files/' + encodeURIComponent(f.name) + '" download="' + esc(f.name) + '">\u2B07 ' + esc(f.label || f.name) + '</a>';
+          }).join('') + '</div>';
+        }
         if(typeof t.pending_corrections === 'number' && t.pending_corrections > 0){
           var items = '';
           var corrList = Array.isArray(t.corrections) ? t.corrections : [];
@@ -1283,7 +1292,7 @@
           + '<div class="task-name">' + esc(t.title) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
           + '<span class="st-zone"><span class="st-badge">' + badgeText + '</span>' + miniPill + '</span></div>'
-          + corrBadge + corrPanel + '</div>';
+          + corrBadge + corrPanel + filesRow + '</div>';
       });
     }
     taskList.innerHTML = html;

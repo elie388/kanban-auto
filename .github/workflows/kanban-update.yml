@@ -89,6 +89,16 @@ jobs:
       # 读背示范录音通道（2026-10-22 家长定）：待改正明细里的示范录音
       # data/audio/ 同步进 Pages 产物，供明细里的 <audio> 引用；
       # 目录不存在或为空时跳过（不阻断构建）。
+      # 练习文件下载通道（2026-10-22 家长定）：任务卡挂的练习文件（Word/PDF）
+      # data/files/ 同步进 Pages 产物，供任务卡下载打印；目录不存在或为空时跳过。
+      - name: 同步练习文件到 Pages 产物
+        run: |
+          if [ -d data/files ]; then
+            mkdir -p public/data/files
+            cp data/files/* public/data/files/ 2>/dev/null || true
+            ls -la public/data/files/ || true
+          fi
+
       - name: 同步读背示范录音到 Pages 产物
         run: |
           if [ -d data/audio ]; then
