@@ -3496,6 +3496,12 @@
 .up-recredo{padding:10px 14px; font-size:14.5px; color:#6B7280; background:#F1F3F5; border:none; border-radius:9px; cursor:pointer;}
 .up-recnote{margin-top:8px; font-size:12.5px; color:#1e6b4a;}
 .up-recerr{margin-top:8px; font-size:13px; color:#c0392b;}
+.up-player{display:flex; align-items:center; gap:12px; padding:4px 2px 2px;}
+.up-playbtn{width:60px; height:60px; border-radius:50%; background:#3d9970; color:#fff; font-size:25px; line-height:1; border:none; flex:0 0 auto; cursor:pointer;}
+.up-seek{flex:1; min-width:0; height:10px; -webkit-appearance:none; appearance:none; background:#E7E1CD; border-radius:99px; outline:none;}
+.up-seek::-webkit-slider-thumb{-webkit-appearance:none; width:30px; height:30px; border-radius:50%; background:#3d9970; border:3px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,.25);}
+.up-seek::-moz-range-thumb{width:26px; height:26px; border-radius:50%; background:#3d9970; border:3px solid #fff;}
+.up-ptime{font-size:14px; color:#6B7280; min-width:88px; text-align:right; font-variant-numeric:tabular-nums;}
 .up-sub{color:#8a8378;font-size:13.5px;margin-bottom:10px;line-height:1.5}
 .up-row{margin:12px 0}
 .up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
@@ -3545,7 +3551,12 @@
           <button class="up-recstop" id="up-rec-stop" type="button">⏹ 停止</button>
         </div>
         <div class="up-recprev" id="up-rec-prev" style="display:none">
-          <audio id="up-rec-audio" controls></audio>
+          <div class="up-player">
+            <button class="up-playbtn" id="up-rec-play" type="button">▶</button>
+            <input class="up-seek" id="up-rec-seek" type="range" min="0" max="1000" value="0">
+            <span class="up-ptime" id="up-rec-ptime">00:00 / 00:00</span>
+          </div>
+          <audio id="up-rec-audio" preload="metadata" style="display:none"></audio>
           <div class="up-recbtns">
             <button class="up-recuse" id="up-rec-use" type="button">✅ 用这段录音</button>
             <button class="up-recredo" id="up-rec-redo" type="button">🗑 重录</button>
@@ -3779,6 +3790,9 @@
     recBlob = new Blob(recChunks, {type: recMime || 'audio/mp4'});
     if(!recBlob.size){ $('up-rec-start').style.display = 'block'; recErr('没录到声音，再试一次？'); return; }
     $('up-rec-audio').src = URL.createObjectURL(recBlob);
+    var pb0 = $('up-rec-play'); if(pb0) pb0.textContent = '▶';
+    var sk0 = $('up-rec-seek'); if(sk0) sk0.value = 0;
+    var pt0 = $('up-rec-ptime'); if(pt0) pt0.textContent = '00:00 / 00:00';
     $('up-rec-prev').style.display = 'block';
     var note = $('up-rec-note');
     if(why === 'max'){ note.textContent = '已经录满5分钟啦，先听一听，可以就点「用这段录音」。'; note.style.display = 'block'; }
@@ -3807,6 +3821,26 @@
     var sp = $('up-rec-stop'); if(sp) sp.addEventListener('click', function(){ recStop(''); });
     var us = $('up-rec-use'); if(us) us.addEventListener('click', recUse);
     var rd = $('up-rec-redo'); if(rd) rd.addEventListener('click', recRedo);
+    var au = $('up-rec-audio'), pl = $('up-rec-play'), sk2 = $('up-rec-seek'), pt2 = $('up-rec-ptime');
+    if(au && pl && sk2 && pt2){
+      pl.addEventListener('click', function(){
+        if(au.paused){ au.play(); pl.textContent = '⏸'; } else { au.pause(); pl.textContent = '▶'; }
+      });
+      au.addEventListener('timeupdate', function(){
+        if(au.duration && isFinite(au.duration)){
+          sk2.value = Math.round(au.currentTime / au.duration * 1000);
+          pt2.textContent = recFmt(Math.floor(au.currentTime)) + ' / ' + recFmt(Math.floor(au.duration));
+        }
+      });
+      au.addEventListener('loadedmetadata', function(){
+        if(au.duration && isFinite(au.duration)) pt2.textContent = '00:00 / ' + recFmt(Math.floor(au.duration));
+      });
+      au.addEventListener('ended', function(){ pl.textContent = '▶'; sk2.value = 0; });
+      au.addEventListener('pause', function(){ pl.textContent = '▶'; });
+      sk2.addEventListener('input', function(){
+        if(au.duration && isFinite(au.duration)) au.currentTime = au.duration * (sk2.value / 1000);
+      });
+    }
   })();
 
 
@@ -3967,7 +4001,11 @@
       })
       .then(function(sign){
         setMsg('都传上去了，正在确认…');
-        return api('/upload/complete', {batch_id: sign.batch_id});
+        return api('/upload/complete', {batch_id: sign.batch_id}).catch(function(){
+          return new Promise(function(res){ setTimeout(res, 1200); }).then(function(){
+            return api('/upload/complete', {batch_id: sign.batch_id});
+          });
+        });
       })
       .then(function(r){
         if(r.status === 409) throw new Error('有文件没传成功，看看上面哪一行是红的，重新选它再交一次');
