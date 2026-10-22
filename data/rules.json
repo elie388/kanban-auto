@@ -452,196 +452,202 @@
   },
   {
    "id": "d11",
+   "text": "写作涂改/处（不设上限）",
+   "pts": "-1",
+   "remark": null
+  },
+  {
+   "id": "d12",
    "text": "书写退步连续第2次未改善/科",
    "pts": "-2",
    "remark": null
   },
   {
-   "id": "d12",
+   "id": "d13",
    "text": "53天天练单页正确率<70%",
    "pts": "-2",
    "remark": null
   },
   {
-   "id": "d13",
+   "id": "d14",
    "text": "高频第3次再犯",
    "pts": "-3",
    "remark": null
   },
   {
-   "id": "d14",
+   "id": "d15",
    "text": "APP作业未交",
    "pts": "-3",
    "remark": null
   },
   {
-   "id": "d15",
+   "id": "d16",
    "text": "53天天练缺一页/白卷",
    "pts": "-3",
    "remark": null
   },
   {
-   "id": "d16",
+   "id": "d17",
    "text": "练习超期",
    "pts": "-3",
    "remark": null
   },
   {
-   "id": "d17",
+   "id": "d18",
    "text": "漏科目",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d18",
+   "id": "d19",
    "text": "登记本没发",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d19",
+   "id": "d20",
    "text": "订正超期",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d20",
+   "id": "d21",
    "text": "补做超期",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d21",
+   "id": "d22",
    "text": "整页潦草",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d22",
+   "id": "d23",
    "text": "练习没交",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d23",
+   "id": "d24",
    "text": "周日卷缺一科",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d24",
+   "id": "d25",
    "text": "背诵/口语完全没发",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d25",
+   "id": "d26",
    "text": "读背迟交/次（迟于当日截止提交；与发回分、达标分分开算）",
    "pts": "-3",
    "remark": null
   },
   {
-   "id": "d26",
+   "id": "d27",
    "text": "读背完全没发/次（登记本读背类当日无录音/视频提交）",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d27",
+   "id": "d28",
    "text": "英语写作重写没按时",
    "pts": "-3",
    "remark": null
   },
   {
-   "id": "d28",
+   "id": "d29",
    "text": "英语写作重写完全没重发（没按时先扣3分，截止3天后仍未发回时合计扣5分）",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d29",
+   "id": "d30",
    "text": "作文胡编/篇",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d30",
+   "id": "d31",
    "text": "家务连续2天未做",
    "pts": "-5",
    "remark": null
   },
   {
-   "id": "d31",
+   "id": "d32",
    "text": "当天没交",
    "pts": "-10",
    "remark": null
   },
   {
-   "id": "d32",
+   "id": "d33",
    "text": "白卷",
    "pts": "-10",
    "remark": null
   },
   {
-   "id": "d33",
+   "id": "d34",
    "text": "乱画卷",
    "pts": "-10",
    "remark": null
   },
   {
-   "id": "d34",
+   "id": "d35",
    "text": "家务连续3天起不做/每天扣分",
    "pts": "-10",
    "remark": null
   },
   {
-   "id": "d35",
+   "id": "d36",
    "text": "作弊确认：正确率记0且额外",
    "pts": "-10",
    "remark": null
   },
   {
-   "id": "d36",
+   "id": "d37",
    "text": "晚上超11点睡觉（连续两晚超时加扣10分）",
    "pts": "-10",
    "remark": "（2026-10-20家长新增；生效边界：自2026-10-20当晚起算，不追溯之前睡眠；家长13:54报告的10-19晚约24点睡已裁定不扣，DeepSeek终审同意；熄灯小超人连续天数同样自2026-10-20起算）"
   },
   {
-   "id": "d37",
+   "id": "d38",
    "text": "互斥：同一违规事实只保留一笔（当天没交-10 > 漏科目/迟交/补做超时-5）",
    "pts": null,
    "remark": null
   },
   {
-   "id": "d38",
+   "id": "d39",
    "text": "单科单日扣分封顶",
    "pts": "-10",
    "remark": null
   },
   {
-   "id": "d39",
+   "id": "d40",
    "text": "将功补过：7天内纠正且连续5天不再犯，返还一半",
    "pts": null,
    "remark": null
   },
   {
-   "id": "d40",
+   "id": "d41",
    "text": "作弊疑点：AI只标疑点，不自动处罚",
    "pts": null,
    "remark": null
   },
   {
-   "id": "d41",
+   "id": "d42",
    "text": "互赠手续费10%：接收方实得赠送积分的90%",
    "pts": null,
    "remark": null
   },
   {
-   "id": "d42",
+   "id": "d43",
    "text": "兑换游戏手续费15%：上学日兑换加收；周末兑换且玩超过晚上10点才加收",
    "pts": null,
    "remark": null
   }
  ],
- "generated_at": "2026-10-21T20:26:22+08:00"
+ "generated_at": "2026-10-22T20:30:06+08:00"
 }
