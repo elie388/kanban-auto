@@ -1258,7 +1258,12 @@
         var filesRow = '';
         if(Array.isArray(t.files) && t.files.length){
           filesRow = '<div class="tfiles">' + t.files.map(function(f){
-            return '<a class="tfile" href="data/files/' + encodeURIComponent(f.name) + '" download="' + esc(f.name) + '">\u2B07 ' + esc(f.label || f.name) + '</a>';
+            var furl = 'data/files/' + encodeURIComponent(f.name);
+            if(/\.pdf$/i.test(f.name)){
+              return '<a class="tfile" href="' + furl + '" target="_blank" rel="noopener">\uD83D\uDCC4 ' + esc(f.label || f.name) + '</a>'
+                + '<button type="button" class="tfile tprint" data-print="' + furl + '" data-name="' + esc(f.name) + '">\uD83D\uDDA8 打印这份</button>';
+            }
+            return '<a class="tfile" href="' + furl + '" download="' + esc(f.name) + '">\u2B07 ' + esc(f.label || f.name) + '</a>';
           }).join('') + '</div>';
         }
         if(typeof t.pending_corrections === 'number' && t.pending_corrections > 0){
@@ -4298,6 +4303,25 @@
   }
   window.requestAnimationFrame(tick);
 })();
+
+/* 练习文件打印（2026-10-22）：iOS 预览 PDF 无打印入口，改走系统分享菜单（内含打印）；
+   不支持文件分享时退回新页打开。 */
+document.addEventListener('click', function(e){
+  var b = (e.target && e.target.closest) ? e.target.closest('[data-print]') : null;
+  if(!b) return;
+  e.preventDefault();
+  var url = b.getAttribute('data-print'), name = b.getAttribute('data-name') || 'file.pdf';
+  function openTab(){ window.open(url, '_blank'); }
+  try {
+    if(navigator.canShare){
+      fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
+        var f = new File([blob], name, { type: 'application/pdf' });
+        if(navigator.canShare({ files: [f] })){ navigator.share({ files: [f] }).catch(function(){}); }
+        else openTab();
+      }).catch(openTab);
+    } else openTab();
+  } catch(err){ openTab(); }
+});
 </script>
 
 </body>
