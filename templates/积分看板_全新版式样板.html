@@ -181,6 +181,12 @@
   .task.correcting{border-color:#FFD97A;}
   .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
+  /* 状态区（2026-10-22 入口合并，deepseek 定案(a)）：状态徽标与「交这一项」按钮同处一区，
+     徽标在上、按钮在下右对齐；上传模块把按钮注入 .st-zone */
+  .task .st-zone{
+    display:flex; flex-direction:column; align-items:flex-end; gap:6px;
+    flex:0 0 auto; margin-left:auto;
+  }
   /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
      点击展开明细（2026-10-20 续）：徽标独占一行（主行之下左对齐），
      不再与状态徽章同行挤压；展开区逐题列题号/题目/错因。 */
@@ -1181,7 +1187,7 @@
     if(visible.length === 0){
       html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-name">今日暂无任务</div>'
         + '<div class="task-progress">全部完成，放松一下吧</div></div>'
-        + '<span class="st-badge">\u2705 已完成</span></div></div>';
+        + '<span class="st-zone"><span class="st-badge">\u2705 已完成</span></span></div></div>';
     } else {
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
@@ -1219,7 +1225,7 @@
         html += '<div class="task ' + sm.cls + openCls + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-name">' + esc(t.title) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
-          + '<span class="st-badge">' + sm.badge + '</span></div>'
+          + '<span class="st-zone"><span class="st-badge">' + sm.badge + '</span></span></div>'
           + corrBadge + corrPanel + '</div>';
       });
     }
@@ -3448,6 +3454,7 @@
 .up-btn{margin-top:8px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid #b98a2f;background:#fdf6df;color:#7a5b12;font-size:14px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .up-btn:active{transform:scale(.97)}
 .up-btn.sent{border-color:#3d9970;background:#e8f7ef;color:#1e6b4a}
+.st-zone .up-btn{margin-top:0;min-height:36px}
 .up-btn.busy{opacity:.55;pointer-events:none}
 .up-bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 2px 2px}
 .up-bar .up-btn{margin-top:0;font-size:15px;padding:10px 18px}
@@ -3562,9 +3569,13 @@
       b.type = 'button'; b.className = 'up-btn' + (it ? ' sent' : '');
       b.textContent = it ? ('📤 已交' + it.batches + '批 · 再补交') : '📤 交这一项';
       b.addEventListener('click', function(){ openSheet({mode:'task', info: info, key: key}); });
-      var main = card.querySelector('.task-main');
-      if(main && main.parentNode === card) card.insertBefore(b, card.children[1] || null);
-      else card.appendChild(b);
+      var zone = card.querySelector('.st-zone');
+      if(zone) zone.appendChild(b);
+      else {
+        var main = card.querySelector('.task-main');
+        if(main && main.parentNode === card) card.insertBefore(b, card.children[1] || null);
+        else card.appendChild(b);
+      }
     });
     paintBar();
   }
