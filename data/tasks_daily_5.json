@@ -57,6 +57,25 @@
    "count_in_completion_rate": false,
    "created_at": "2026-10-22T11:39:22+08:00",
    "updated_at": "2026-10-22T11:39:23+08:00"
+  },
+  {
+   "task_id": "TEST-PRACT-20261022-G5",
+   "source": "targeted_practice",
+   "subject": "",
+   "title": "【测试】针对性练习（文件演示）",
+   "detail": "点下方绿色按钮打印本期针对性练习；演示卡，看完删除",
+   "status": "pending",
+   "review_status": "approved",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-10-21.pdf",
+     "label": "针对性练习",
+     "pages": [
+      "五年级针对性练习_2026-10-21_p-1.png",
+      "五年级针对性练习_2026-10-21_p-2.png"
+     ]
+    }
+   ]
   }
  ],
  "counts": {
