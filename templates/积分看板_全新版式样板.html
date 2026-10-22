@@ -492,7 +492,8 @@
   .log-pts.minus{color:#D64545;}
   .log-line2{font-size:12px; color:var(--sub); margin-top:2px;}
   /* KB-POST2-2026-10-22：日志滚动区（最多约5条高、区内滚动、防穿透、底部渐隐＋条数提示、按天分组） */
-  .log-title{font-size:22px; font-weight:700; padding:2px 0 10px;}
+  .cb-hint{font-size:13px; font-weight:600; color:var(--sub);}
+  .cb-hint.has-neg{color:#D64545;}
   .log-scrollwrap{position:relative;}
   .log-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
   .log-scrollwrap.has-more::after{content:''; position:absolute; left:0; right:0; bottom:26px; height:34px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.97)); pointer-events:none;}
@@ -951,31 +952,40 @@
     </div>
   </section>
 
-  <!-- 积分日志（KB-POST2-2026-10-22：取消折叠常开；最近3天、约5条高滚动区） -->
-  <section class="card" aria-label="积分日志">
+  <!-- 积分日志（KB-POST2-2026-10-22 家长定折叠保留版：默认折叠、标题带近3天扣分提示、打开后约5条高滚动区） -->
+  <section class="card collapse" aria-label="积分日志">
     <span class="tag-live">实时数据</span>
-    <div class="log-title"><span class="emoji" aria-hidden="true">🧾</span> 积分日志</div>
-    <div class="grade-block" id="log-g5" aria-label="彦均积分日志">
-      <div class="grade-head"><span class="pill-grade g5">彦均</span>积分日志</div>
-      <div class="log-scrollwrap"><div class="log-scroll"><ul class="log-list">
-        <li class="log-item">
-          <div class="log-body">
-            <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
-          </div>
-        </li>
-      </ul></div></div>
-      <div class="log-count" hidden></div>
-    </div>
-    <div class="grade-block" id="log-g6" aria-label="伟豪积分日志">
-      <div class="grade-head"><span class="pill-grade g6">伟豪</span>积分日志</div>
-      <div class="log-scrollwrap"><div class="log-scroll"><ul class="log-list">
-        <li class="log-item">
-          <div class="log-body">
-            <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
-          </div>
-        </li>
-      </ul></div></div>
-      <div class="log-count" hidden></div>
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
+      <span class="emoji" aria-hidden="true">🧾</span>
+      <span class="cb-title">积分日志</span>
+      <span class="cb-hint" id="log-hint"></span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <div class="grade-block" id="log-g5" aria-label="彦均积分日志">
+          <div class="grade-head"><span class="pill-grade g5">彦均</span>积分日志</div>
+          <div class="log-scrollwrap"><div class="log-scroll"><ul class="log-list">
+            <li class="log-item">
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
+              </div>
+            </li>
+          </ul></div></div>
+          <div class="log-count" hidden></div>
+        </div>
+        <div class="grade-block" id="log-g6" aria-label="伟豪积分日志">
+          <div class="grade-head"><span class="pill-grade g6">伟豪</span>积分日志</div>
+          <div class="log-scrollwrap"><div class="log-scroll"><ul class="log-list">
+            <li class="log-item">
+              <div class="log-body">
+                <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
+              </div>
+            </li>
+          </ul></div></div>
+          <div class="log-count" hidden></div>
+        </div>
+      </div></div>
     </div>
   </section>
 
@@ -1756,7 +1766,7 @@
       s0.textContent = (!valid.length && dropped) ? '积分记录数据异常，暂时无法显示' : '近 3 天暂无积分记录'; /* KB-POST2：展示窗口最近3天；全丢弃=数据异常 */
       l0.appendChild(s0); b0.appendChild(l0); li0.appendChild(b0);
       listEl.appendChild(li0);
-      return;
+      return {shown: 0, neg: 0};
     }
     var lastDay = null;
     shown.forEach(function(it){
@@ -1808,6 +1818,22 @@
         wrapEl.classList.toggle('has-more', !atBottom);
       });
     }
+    return {shown: shown.length, neg: shown.filter(function(x){ return x.sign === 'minus'; }).length};
+  }
+
+  /* KB-POST2 折叠条件（DeepSeek）：折叠标题旁显示近3天扣分笔数，默认态防漏看 */
+  var logNegByGrade = {};
+  function updateLogHint(grade, neg){
+    if(typeof neg === 'number') logNegByGrade[grade] = neg;
+    var hint = document.getElementById('log-hint');
+    if(!hint) return;
+    var parts = [], total = 0;
+    [[5, '彦均'], [6, '伟豪']].forEach(function(p){
+      if(logNegByGrade[p[0]] !== undefined){ parts.push(p[1] + ' ' + logNegByGrade[p[0]] + ' 笔'); total += logNegByGrade[p[0]]; }
+    });
+    if(!parts.length) return;
+    hint.textContent = total > 0 ? ('近3天扣分 ' + parts.join(' · ')) : '近3天无扣分';
+    hint.classList.toggle('has-neg', total > 0);
   }
 
   function loadLog(grade, blockId){
@@ -1819,7 +1845,8 @@
       var block = $(blockId);
       var list = block ? block.querySelector('.log-list') : null;
       if(!list) throw new Error('no log-list');
-      renderLogItems(list, d.items);
+      var logStats = renderLogItems(list, d.items);
+      updateLogHint(grade, logStats && logStats.neg);
       var si = srcInfo[name];
       if(si && si.fromCache){
         setLogTag(blockId, '数据更新于 ' + fmtHHMM(si.ts), null); /* 方案E：缓存渲染，明示数据时刻 */
