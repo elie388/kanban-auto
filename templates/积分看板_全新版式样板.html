@@ -3903,7 +3903,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261022-2150';
+  var KB_BUILD = '20261022-2218';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -3980,6 +3980,13 @@
       /* 补练卡（practice_req_process 以 manual 源建卡）：给提交入口，走练习批改流程（2026-10-22 家长定） */
       if((card.getAttribute('data-status') || '') === 'done') return null;
       return {grade: grade, type: 'practice', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
+    }
+    if(tt === 'reading'){
+      /* 2026-10-22 deepseek 全面排查定案（主修）：任务自身类型 task_type 优先于来源推断。
+         口头类任务（摄取层标 task_type=reading）的提交类型必须是 reading，
+         否则面板录音区不显示、提交还会以 homework 类型上行。 */
+      if((card.getAttribute('data-status') || '') === 'done') return null;
+      return {grade: grade, type: 'reading', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
     }
     var ty = SRC_TYPE[src];
     if(!ty) return null;
@@ -4089,7 +4096,8 @@
     if(cur.type === 'reading') return true;
     if(cur.mode === 'task' && cur.title){
       var t = cur.title;
-      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声)/.test(t)) return true;
+      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声|预习)/.test(t)) return true;
+      if(/背\d/.test(t)) return true; /* 2026-10-22 兜底补强：「背10次」类（背+数字） */
       /* 2026-10-22晚修复：「读作文10分钟」这类只有单字「读」的朗读任务原关键词没覆盖、录音区不显示；
          放宽为标题含「读」也显示，但「阅读」（阅读理解类书面题）除外。 */
       if(t.indexOf('阅读') === -1 && t.indexOf('读') !== -1) return true;
