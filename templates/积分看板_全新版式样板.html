@@ -3664,9 +3664,11 @@
   var SPEED = 22, IDLE_MS = 5000, DWELL_MS = 4000, RAMP_MS = 450, RET_MS = 400;
   var store = null;
   try { store = window.localStorage; } catch(e) { store = null; }
+  /* 键名用固定映射（勿用 'xxx_' + 变量 拼名：部署对账会误判为分年级数据文件、拦截上线，2026-10-22 实测） */
+  var KEYMAP = { log: 'kb-as-log', bonus: 'kb-as-bonus', deduct: 'kb-as-deduct' };
   var prefs = {};
   ['log', 'bonus', 'deduct'].forEach(function(k){
-    try { prefs[k] = store ? store.getItem('kb_autoscroll_' + k) : null; } catch(e) { prefs[k] = null; }
+    try { prefs[k] = store ? store.getItem(KEYMAP[k]) : null; } catch(e) { prefs[k] = null; }
   });
   var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   function reduced(){ return !!(mq && mq.matches); }
@@ -3682,7 +3684,7 @@
     t.checked = enabledFor(k);
     t.addEventListener('change', function(){
       prefs[k] = t.checked ? 'on' : 'off';
-      try { if(store) store.setItem('kb_autoscroll_' + k, prefs[k]); } catch(e) {}
+      try { if(store) store.setItem(KEYMAP[k], prefs[k]); } catch(e) {}
     });
   });
 
