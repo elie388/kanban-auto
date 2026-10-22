@@ -1,12 +1,78 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-23T06:00:12+08:00",
+  "generated_at": "2026-10-23T07:51:17+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-22",
+      "time": "07:51",
+      "time_source": "entry",
+      "reason": "冲正：任务类积分清零",
+      "pts": -35,
+      "sign": "minus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-23"
+    },
+    {
+      "date": "10-22",
+      "time": "07:50",
+      "time_source": "entry",
+      "reason": "语文·校本12课完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-23"
+    },
+    {
+      "date": "10-22",
+      "time": "07:50",
+      "time_source": "entry",
+      "reason": "数学·校本29页完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-23"
+    },
+    {
+      "date": "10-22",
+      "time": "07:50",
+      "time_source": "entry",
+      "reason": "数学·校本29页正确率档90.9%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-23"
+    },
+    {
+      "date": "10-22",
+      "time": "07:50",
+      "time_source": "entry",
+      "reason": "英语·抄M2单词完成分C档",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-23"
+    },
+    {
+      "date": "10-22",
+      "time": "07:50",
+      "time_source": "entry",
+      "reason": "英语·抄M2单词正确率档92.9%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-23"
+    },
     {
       "date": "10-22",
       "time": "01:38",
