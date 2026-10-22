@@ -29,7 +29,7 @@
    "title": "校本及12课",
    "detail": "",
    "estimate_min": null,
-   "status": "in_progress",
+   "status": "submitted",
    "review_status": "approved",
    "ocr_confidence": null,
    "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
@@ -38,13 +38,13 @@
     "reviewed_by": null
    },
    "created_at": "2026-10-22T20:37:47+08:00",
-   "updated_at": "2026-10-23T01:08:00+08:00",
+   "updated_at": "2026-10-23T01:40:00+08:00",
    "pending_corrections": 0,
    "corrections": [],
    "carry_first_date": "2026-10-22",
    "carried_from": "2026-10-22",
    "carry_count": 1,
-   "status_source": "manual_writeback_20261023"
+   "status_source": "correction_void_20261023"
   },
   {
    "task_id": "REG-20261022-665B72",
@@ -103,7 +103,7 @@
    "title": "校本29页。",
    "detail": "原状态：待完成（无佐证照片）",
    "estimate_min": null,
-   "status": "in_progress",
+   "status": "submitted",
    "review_status": "approved",
    "ocr_confidence": null,
    "raw_text": "- 数学：①校本29页。→ 待完成（无佐证照片）",
@@ -112,13 +112,13 @@
     "reviewed_by": null
    },
    "created_at": "2026-10-22T20:37:47+08:00",
-   "updated_at": "2026-10-23T01:08:00+08:00",
+   "updated_at": "2026-10-23T01:40:00+08:00",
    "pending_corrections": 0,
    "corrections": [],
    "carry_first_date": "2026-10-22",
    "carried_from": "2026-10-22",
    "carry_count": 1,
-   "status_source": "manual_writeback_20261023"
+   "status_source": "correction_void_20261023"
   },
   {
    "task_id": "REG-20261022-C75208",
@@ -152,7 +152,7 @@
    "title": "抄M2单词4英4中。",
    "detail": "原状态：待完成（无佐证照片）",
    "estimate_min": null,
-   "status": "in_progress",
+   "status": "submitted",
    "review_status": "approved",
    "ocr_confidence": null,
    "raw_text": "- 英语：①口语易；②抄M2单词4英4中。→ 待完成（无佐证照片）",
@@ -161,13 +161,13 @@
     "reviewed_by": null
    },
    "created_at": "2026-10-22T20:37:47+08:00",
-   "updated_at": "2026-10-23T01:08:00+08:00",
+   "updated_at": "2026-10-23T01:40:00+08:00",
    "pending_corrections": 0,
    "corrections": [],
    "carry_first_date": "2026-10-22",
    "carried_from": "2026-10-22",
    "carry_count": 1,
-   "status_source": "manual_writeback_20261023"
+   "status_source": "correction_void_20261023"
   },
   {
    "task_id": "CHORE-20261023-G5",
