@@ -3,7 +3,7 @@
   "date": "2026-10-22",
   "grade": "六年级",
   "generated_at": "2026-10-22T00:05:11+08:00",
-  "updated_at": "2026-10-22T16:55:23+08:00",
+  "updated_at": "2026-10-22T16:55:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -17,8 +17,8 @@
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-10-22T16:55:28+08:00",
+      "status": "done"
     }
   },
   "tasks": [
@@ -96,11 +96,50 @@
           "a": "（演示回复）你问得好，我们一步一步来：\n①先检查：对照课本录音再听一遍 famous，把你觉得最容易读错的那一小段圈出来；\n②再看方向：这个词的重音在第一个音节，中间那个音是短促的轻音、嘴巴不用张大，结尾的音要轻轻带出来，不能吞掉；\n③最后留个小问题验证一下：young 和 famous，哪一个结尾也有这样轻轻带出的音？你读一遍录下来，下次交作业时一起发我听听。\n（这条是演示内容：真实批改时，这里显示的是老师对你留言的正式回复，会和邮件里的回复一模一样。）"
         }
       ]
+    },
+    {
+      "task_id": "D53-2026-10-22-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-22T16:55:28+08:00",
+      "updated_at": "2026-10-22T16:55:28+08:00"
+    },
+    {
+      "task_id": "D53-2026-10-22-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-22T16:55:28+08:00",
+      "updated_at": "2026-10-22T16:55:28+08:00"
+    },
+    {
+      "task_id": "D53-2026-10-22-ENG",
+      "source": "daily_53",
+      "subject": "英语",
+      "title": "53天天练·英语",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-22T16:55:28+08:00",
+      "updated_at": "2026-10-22T16:55:28+08:00"
     }
   ],
   "counts": {
-    "total": 3,
-    "pending": 1,
+    "total": 6,
+    "pending": 4,
     "in_progress": 2,
     "done": 0,
     "pending_review": 0
