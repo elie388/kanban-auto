@@ -3773,14 +3773,14 @@
 /* 自动滚动引擎（2026-10-22 家长定、DeepSeek 定版口径）：
    适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区）。
    默认自动往下滚（约 3 秒一行 ≈ 22px/s）；手动优先——触摸/点按/滚轮一律
-   暂停，松手闲置 5 秒后从原位置缓入恢复；滚到底停 4 秒后平滑回顶重滚；
+   暂停，松手闲置 8 秒后从原位置缓入恢复（2026-10-22 家长由 5 秒改定 8 秒）；滚到底停 4 秒后平滑回顶重滚；
    栏目折叠、区域与视口不相交（顶边进入判定、DeepSeek 二次定版）、页面切后台均停；
    系统“减少动态效果”时默认关（开关显式打开则尊重，回顶改瞬时）；
    三栏目开关各自独立、互不影响（2026-10-22 家长改定），状态按栏目
    localStorage 持久化。程序滚动用 rAF 逐帧写
    scrollTop，并以时间戳标志区分程序/用户滚动，防自激暂停（DeepSeek iOS 注意点）。 */
 (function(){
-  var SPEED = 22, IDLE_MS = 5000, DWELL_MS = 4000, RAMP_MS = 450, RET_MS = 400;
+  var SPEED = 22, IDLE_MS = 8000, DWELL_MS = 4000, RAMP_MS = 450, RET_MS = 400;
   var store = null;
   try { store = window.localStorage; } catch(e) { store = null; }
   /* 键名用固定映射（勿用 'xxx_' + 变量 拼名：部署对账会误判为分年级数据文件、拦截上线，2026-10-22 实测） */
@@ -3865,7 +3865,7 @@
       if(st.pos < 0){ st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop; }
       if(st.hold){
         if(now - st.lastUser < IDLE_MS){ st.rampFrom = 0; return; }
-        st.hold = false; st.rampFrom = ts; /* 闲置满 5 秒：自此缓入恢复 */
+        st.hold = false; st.rampFrom = ts; /* 闲置满 8 秒：自此缓入恢复 */
         st.pos = elm.scrollTop; st.lastWritten = elm.scrollTop;
       }
       if(st.dwellUntil){
