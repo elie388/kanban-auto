@@ -229,6 +229,18 @@
      收起时只留标题、状态徽章与「展开」按钮，其余（说明、待改正、文件、交作业按钮）展开后才显示 */
   .task[data-tid]:not(.open-task) .task-progress{display:none;}
   .task[data-tid]:not(.open-task) .corr-badge{display:none;}
+  /* 待批改角标（2026-10-23 B案）：昨日已交/批改中被携带到今日的任务，提示「交了、在等批改」 */
+  .task .carry-tag{font-size:10.5px;color:#1D5FA8;background:#EAF2FB;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap;}
+  /* 昨日完成折叠区（2026-10-23 B案，DeepSeek 定案）：只读回顾、灰色淡出，本地时间12:00后不再渲染 */
+  .yd-zone{margin-top:10px;}
+  .yd-zone:empty{display:none;}
+  .yd-head{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;cursor:pointer;padding:6px 2px;font-size:13px;color:var(--sub);text-align:left;}
+  .yd-count{background:#E4F8EC;color:#1E9E52;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:600;}
+  .yd-body{padding:2px 2px 6px;}
+  .yd-group{font-size:12px;color:var(--sub);margin:6px 0 2px;}
+  .yd-item{display:flex;gap:6px;align-items:baseline;padding:3px 2px;font-size:13.5px;color:#6B7280;}
+  .yd-item .yd-check{color:#1E9E52;flex:none;}
+  .yd-tag{flex:none;font-size:10.5px;color:#6B7280;border:1px solid #D8DCE2;border-radius:999px;padding:0 6px;}
   .task[data-tid]:not(.open-task) .tfiles{display:none;}
   .task[data-tid]:not(.open-task) .st-mini{display:none;}
   .task[data-tid]:not(.open-task) .st-zone{display:none;}
@@ -933,6 +945,7 @@
       <div class="task-list">
         <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
       </div>
+      <div class="yd-zone" id="yd-g5"></div>
     </div>
 
 
@@ -949,7 +962,7 @@
       <div class="task-list">
         <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
       </div>
-
+      <div class="yd-zone" id="yd-g6"></div>
     </div>
   </section>
 
@@ -1472,8 +1485,13 @@
             badgeText += ' · ' + mRem[0].replace(/\s+/g, '');
           }
         }
+        /* 待批改角标（2026-10-23 B案）：被跨日携带的 submitted/grading 任务，提示孩子「交了、在等批改」 */
+        var carryTag = '';
+        if((t.carry_count || t.carried_from) && (t.status === 'submitted' || t.status === 'grading')){
+          carryTag = '<span class="carry-tag">待批改</span>';
+        }
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
-          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeText + '</span>' + miniPill + '</div>'
+          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeText + '</span>' + miniPill + carryTag + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
           + toggleBtn + '</div>'
@@ -1579,6 +1597,62 @@
   }
   load();
   window.__kanbanRefreshTasks = load; /* 2026-10-20：供倒计时软刷新调用（只刷内容不刷页面） */
+  /* ================================================================
+     昨日完成折叠区（2026-10-23 B 案，家长拍板、DeepSeek 定案）：
+     - 数据 data/yesterday_done_{5,6}.json，由 rollover 从昨日归档抽 done 生成；
+     - 只读展示，不计今日完成率，无任何操作按钮；
+     - 浏览器本地时间 >= YESTERDAY_CUTOFF_HOUR 不渲染（时区必须用本地时间，勿改 UTC）；
+     - data.date 必须等于本地昨日，陈旧文件自动不显；默认折叠，标题带完成数徽标。
+     ================================================================ */
+  var YESTERDAY_CUTOFF_HOUR = 12;
+  var YD_OPEN = {};
+  var YD_DATA = {};
+  function ydYesterdayStr(){
+    var d = new Date(); d.setDate(d.getDate() - 1);
+    function p(n){ return (n < 10 ? '0' : '') + n; }
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  }
+  function renderYesterday(zoneId, data){
+    var zone = document.getElementById(zoneId);
+    if(!zone) return;
+    if(!data || data.date !== ydYesterdayStr() || new Date().getHours() >= YESTERDAY_CUTOFF_HOUR || !data.items || !data.items.length){
+      zone.innerHTML = '';
+      return;
+    }
+    var study = data.items.filter(function(it){ return it.group !== 'chore'; });
+    var chore = data.items.filter(function(it){ return it.group === 'chore'; });
+    function row(it, isChore){
+      return '<div class="yd-item"><span class="yd-check">✓</span><span>' + (isChore ? '🏠 ' : '') + esc(it.title || '') + '</span><span class="yd-tag">昨日</span></div>';
+    }
+    var body = '';
+    if(study.length) body += '<div class="yd-group">学习任务</div>' + study.map(function(it){ return row(it, false); }).join('');
+    if(chore.length) body += '<div class="yd-group">家务</div>' + chore.map(function(it){ return row(it, true); }).join('');
+    var open = !!YD_OPEN[zoneId];
+    zone.innerHTML = '<button type="button" class="yd-head" data-yd-toggle="' + zoneId + '" aria-expanded="' + (open ? 'true' : 'false') + '">昨日完成<span class="yd-count">' + data.items.length + '</span><span class="corr-caret">' + (open ? '▾' : '▸') + '</span></button>'
+      + (open ? '<div class="yd-body">' + body + '</div>' : '');
+  }
+  var ydLoading = false;
+  function loadYesterday(){
+    if(ydLoading) return;
+    ydLoading = true;
+    var settled = 0;
+    [['yd-g5', 'yesterday_done_5.json'], ['yd-g6', 'yesterday_done_6.json']].forEach(function(pair){
+      fetchTask(pair[1])
+        .then(function(res){ YD_DATA[pair[0]] = res.data; renderYesterday(pair[0], res.data); })
+        .catch(function(){ renderYesterday(pair[0], null); })
+        .then(function(){ if(++settled === 2) ydLoading = false; });
+    });
+  }
+  document.addEventListener('click', function(e){
+    var btn = (e.target && e.target.closest) ? e.target.closest('[data-yd-toggle]') : null;
+    if(!btn) return;
+    var zid = btn.getAttribute('data-yd-toggle');
+    YD_OPEN[zid] = !YD_OPEN[zid];
+    renderYesterday(zid, YD_DATA[zid]);
+  });
+  loadYesterday();
+  setInterval(loadYesterday, REFRESH_MS);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) loadYesterday(); });
   setInterval(load, REFRESH_MS);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) load(); });
 })();
@@ -3904,7 +3978,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0118';
+  var KB_BUILD = '20261023-0820';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
