@@ -931,9 +931,9 @@
     </button>
     <div class="collapse-body" id="panel-bonus" role="region" aria-labelledby="btn-bonus">
       <div class="collapse-inner"><div class="collapse-pad">
-        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle"> 自动滚动</label></div>
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="bonus"> 自动滚动</label></div>
         <!-- 兜底（2026-10-20，DeepSeek终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
-        <div class="auto-scroll rule-scroll"><ul class="rule-list">
+        <div class="auto-scroll rule-scroll" data-as-key="bonus"><ul class="rule-list">
           <li><span>规则数据暂不可用，请稍后刷新。</span></li>
         </ul></div>
       </div></div>
@@ -949,16 +949,16 @@
     </button>
     <div class="collapse-body" id="panel-deduct" role="region" aria-labelledby="btn-deduct">
       <div class="collapse-inner"><div class="collapse-pad">
-        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle"> 自动滚动</label></div>
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="deduct"> 自动滚动</label></div>
         <!-- 兜底（2026-10-20，DeepSeek终审定案b）：同加分规则，不硬编码条目。 -->
-        <div class="auto-scroll rule-scroll"><ul class="rule-list">
+        <div class="auto-scroll rule-scroll" data-as-key="deduct"><ul class="rule-list">
           <li><span>规则数据暂不可用，请稍后刷新。</span></li>
         </ul></div>
       </div></div>
     </div>
   </section>
 
-  <!-- 积分日志（KB-POST2-2026-10-22 家长定折叠保留版：默认折叠、标题带近3天扣分提示、打开后约5条高滚动区） -->
+  <!-- 积分日志（KB-POST2-2026-10-22 家长定折叠保留版：默认折叠、打开后约5条高滚动区） -->
   <section class="card collapse" aria-label="积分日志">
     <span class="tag-live">实时数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
@@ -968,10 +968,10 @@
     </button>
     <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
       <div class="collapse-inner"><div class="collapse-pad">
-        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle"> 自动滚动</label></div>
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="log"> 自动滚动</label></div>
         <div class="grade-block" id="log-g5" aria-label="彦均积分日志">
           <div class="grade-head"><span class="pill-grade g5">彦均</span>积分日志</div>
-          <div class="log-scrollwrap"><div class="log-scroll auto-scroll"><ul class="log-list">
+          <div class="log-scrollwrap"><div class="log-scroll auto-scroll" data-as-key="log"><ul class="log-list">
             <li class="log-item">
               <div class="log-body">
                 <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
@@ -982,7 +982,7 @@
         </div>
         <div class="grade-block" id="log-g6" aria-label="伟豪积分日志">
           <div class="grade-head"><span class="pill-grade g6">伟豪</span>积分日志</div>
-          <div class="log-scrollwrap"><div class="log-scroll auto-scroll"><ul class="log-list">
+          <div class="log-scrollwrap"><div class="log-scroll auto-scroll" data-as-key="log"><ul class="log-list">
             <li class="log-item">
               <div class="log-body">
                 <div class="log-line1"><span class="log-reason">积分日志数据加载中…若持续显示，请稍后刷新</span></div>
@@ -3653,37 +3653,40 @@
    适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区）。
    默认自动往下滚（约 3 秒一行 ≈ 22px/s）；手动优先——触摸/点按/滚轮一律
    暂停，松手闲置 5 秒后从原位置缓入恢复；滚到底停 4 秒后平滑回顶重滚；
-   栏目折叠、区域滚出视口（IntersectionObserver 阈值 0.5）、页面切后台均停；
-   系统“减少动态效果”时默认关（总开关显式打开则尊重，回顶改瞬时）；
-   总开关三处同步、状态 localStorage 持久化。程序滚动用 rAF 逐帧写
+   栏目折叠、区域可见比例低于 0.15（DeepSeek 复核定版）、页面切后台均停；
+   系统“减少动态效果”时默认关（开关显式打开则尊重，回顶改瞬时）；
+   三栏目开关各自独立、互不影响（2026-10-22 家长改定），状态按栏目
+   localStorage 持久化。程序滚动用 rAF 逐帧写
    scrollTop，并以时间戳标志区分程序/用户滚动，防自激暂停（DeepSeek iOS 注意点）。 */
 (function(){
   var SPEED = 22, IDLE_MS = 5000, DWELL_MS = 4000, RAMP_MS = 450, RET_MS = 400;
   var store = null;
   try { store = window.localStorage; } catch(e) { store = null; }
-  var pref = null;
-  try { pref = store ? store.getItem('kb_autoscroll') : null; } catch(e) { pref = null; }
+  var prefs = {};
+  ['log', 'bonus', 'deduct'].forEach(function(k){
+    try { prefs[k] = store ? store.getItem('kb_autoscroll_' + k) : null; } catch(e) { prefs[k] = null; }
+  });
   var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   function reduced(){ return !!(mq && mq.matches); }
-  function enabled(){
-    if(pref === 'on') return true;
-    if(pref === 'off') return false;
+  function enabledFor(k){
+    var p = prefs[k];
+    if(p === 'on') return true;
+    if(p === 'off') return false;
     return !reduced();
   }
   var toggles = Array.prototype.slice.call(document.querySelectorAll('.as-toggle'));
-  function syncToggles(){ toggles.forEach(function(t){ t.checked = enabled(); }); }
   toggles.forEach(function(t){
+    var k = t.getAttribute('data-as-key') || 'log';
+    t.checked = enabledFor(k);
     t.addEventListener('change', function(){
-      pref = t.checked ? 'on' : 'off';
-      try { if(store) store.setItem('kb_autoscroll', pref); } catch(e) {}
-      syncToggles();
+      prefs[k] = t.checked ? 'on' : 'off';
+      try { if(store) store.setItem('kb_autoscroll_' + k, prefs[k]); } catch(e) {}
     });
   });
-  syncToggles();
 
   var states = [];
   document.querySelectorAll('.auto-scroll').forEach(function(elm){
-    var st = { el: elm, hold: false, lastUser: 0, visible: false,
+    var st = { el: elm, key: elm.getAttribute('data-as-key') || 'log', hold: false, lastUser: 0, visible: false,
                rampFrom: 0, dwellUntil: 0, returning: false, retFrom: 0, retStart: 0, lastProg: 0 };
     states.push(st);
     ['touchstart', 'pointerdown', 'wheel'].forEach(function(ev){
@@ -3698,8 +3701,8 @@
     }, { passive: true });
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){
-        es.forEach(function(en){ st.visible = en.intersectionRatio >= 0.5; });
-      }, { threshold: [0, 0.5, 1] }).observe(elm);
+        es.forEach(function(en){ st.visible = en.intersectionRatio >= 0.15; });
+      }, { threshold: [0, 0.15, 0.5, 1] }).observe(elm);
     } else { st.visible = true; }
   });
 
@@ -3713,7 +3716,7 @@
       var card = elm.closest ? elm.closest('.collapse') : null;
       var open = !card || card.classList.contains('open');
       var over = elm.scrollHeight > elm.clientHeight + 4;
-      if(!enabled() || !open || !st.visible || document.hidden || !over){
+      if(!enabledFor(st.key) || !open || !st.visible || document.hidden || !over){
         st.rampFrom = 0; return;
       }
       if(st.hold){
@@ -3723,10 +3726,9 @@
       if(st.dwellUntil){
         if(ts < st.dwellUntil) return;
         st.dwellUntil = 0;
-        if(reduced() && pref !== 'on'){ /* 减少动态且非显式开启不会走到这里（enabled 已拦），保险瞬时回顶 */
+        if(reduced()){ /* 减少动态时能滚必是该栏目被显式开启：回顶改瞬时跳转 */
           st.lastProg = Date.now(); elm.scrollTop = 0; st.rampFrom = ts; return;
         }
-        if(pref === 'on' && reduced()){ st.lastProg = Date.now(); elm.scrollTop = 0; st.rampFrom = ts; return; }
         st.returning = true; st.retFrom = elm.scrollTop; st.retStart = ts;
       }
       if(st.returning){
