@@ -3801,6 +3801,7 @@
 .up-recuse{flex:1; padding:10px; font-size:14.5px; font-weight:700; color:#fff; background:#3d9970; border:none; border-radius:9px; cursor:pointer;}
 .up-recredo{padding:10px 14px; font-size:14.5px; color:#6B7280; background:#F1F3F5; border:none; border-radius:9px; cursor:pointer;}
 .up-recnote{margin-top:8px; font-size:12.5px; color:#1e6b4a;}
+.up-rechint{margin-top:10px; padding:9px 11px; font-size:14px; line-height:1.6; color:#6B4E00; background:#FFF7E0; border:1.5px solid #EAD9A0; border-radius:10px;}
 .up-recerr{margin-top:8px; font-size:13px; color:#c0392b;}
 .up-player{display:flex; align-items:center; gap:12px; padding:4px 2px 2px;}
 .up-playbtn{width:60px; height:60px; border-radius:50%; background:#3d9970; color:#fff; font-size:25px; line-height:1; border:none; flex:0 0 auto; cursor:pointer;}
@@ -3855,9 +3856,10 @@
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
       <div id="up-rec" style="display:none">
+        <div class="up-rechint" id="up-rec-hint" style="display:none">📖 读背作业：先点上面的「📷 选取文件」把读背的<b>原文拍照</b>上传，再点下面的录音，把读的内容录下来，一起交。</div>
         <button class="up-recbtn" id="up-rec-start" type="button">🎤 直接录音</button>
         <div class="up-reclive" id="up-rec-live" style="display:none">
-          <span class="up-recdot"></span><span class="up-rectime" id="up-rec-time">00:00 / 05:00</span>
+          <span class="up-recdot"></span><span class="up-rectime" id="up-rec-time">00:00 / 15:00</span>
           <button class="up-recstop" id="up-rec-stop" type="button">⏹ 停止</button>
         </div>
         <div class="up-recprev" id="up-rec-prev" style="display:none">
@@ -4049,7 +4051,7 @@
   var recFiles = [], recSet = new Set();
   var recMR = null, recStream = null, recChunks = [], recStartAt = 0, recTimer = null, recBlob = null, recMime = '', recStopWhy = '';
   var recGen = 0; /* A8（2026-10-22 三方审查修复）：录音代次——面板关闭/重置后到达的 getUserMedia 回调一律作废并关流 */
-  var REC_MAX_SEC = 300;
+  var REC_MAX_SEC = 900; /* 2026-10-22 家长改定：录音上限 15 分钟（原 5 分钟） */
   function recSupported(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
   function recShouldShow(){
     if(!recSupported() || !cur) return false;
@@ -4061,6 +4063,8 @@
     var b = $('up-rec'); if(!b) return;
     recReset();
     b.style.display = recShouldShow() ? 'block' : 'none';
+    var hint = $('up-rec-hint');
+    if(hint) hint.style.display = (b.style.display !== 'none' && cur && cur.type === 'reading') ? 'block' : 'none';
   }
   function recStopTracks(){
     if(recTimer){ clearInterval(recTimer); recTimer = null; }
@@ -4112,10 +4116,10 @@
       $('up-rec-prev').style.display = 'none';
       $('up-rec-note').style.display = 'none';
       $('up-rec-live').style.display = 'flex';
-      $('up-rec-time').textContent = '00:00 / 05:00';
+      $('up-rec-time').textContent = '00:00 / ' + recFmt(REC_MAX_SEC);
       recTimer = setInterval(function(){
         var sec = Math.floor((Date.now() - recStartAt) / 1000);
-        $('up-rec-time').textContent = recFmt(sec) + ' / 05:00';
+        $('up-rec-time').textContent = recFmt(sec) + ' / ' + recFmt(REC_MAX_SEC);
         if(sec >= REC_MAX_SEC) recStop('max');
       }, 250);
     }).catch(function(err){
