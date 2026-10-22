@@ -1239,7 +1239,15 @@
       }
       visible.push(t);
     });
-    visible = visible.concat(normals);
+    /* 状态排序（2026-10-22 家长定）：待提交 → 改正中 → 已完成，同档保持原顺序；meta 登记本卡保持置顶 */
+    function kbTaskRank(t){
+      if(t.status === 'done') return 2;
+      var pn = (typeof t.pending_corrections === 'number') ? t.pending_corrections : 0;
+      if(pn > 0 || t.status === 'submitted' || t.status === 'in_progress') return 1;
+      return 0;
+    }
+    var sortedNormals = normals.slice().sort(function(a, b){ return kbTaskRank(a) - kbTaskRank(b); });
+    visible = visible.concat(sortedNormals);
     var html = '';
     if(visible.length === 0){
       html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-name">今日暂无任务</div>'
