@@ -212,6 +212,7 @@
   .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
   .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
+  .corr-item.corr-qa{border-left:2px solid #D8C9A8; padding-left:10px; background:#FDFAF1;}
   .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
@@ -1279,8 +1280,9 @@
             }).join('') + '</div>';
           }
         }
-        }
-        if(typeof t.pending_corrections === 'number' && t.pending_corrections > 0){
+        var qaList = Array.isArray(t.qa) ? t.qa : [];
+        var pendN = (typeof t.pending_corrections === 'number') ? t.pending_corrections : 0;
+        if(pendN > 0 || qaList.length){
           var items = '';
           var corrList = Array.isArray(t.corrections) ? t.corrections : [];
           if(corrList.length){
@@ -1298,13 +1300,22 @@
                   }).join('') : '')
                 + '</div>';
             });
-          } else {
+          } else if(pendN > 0) {
             items = '<div class="corr-item">题目明细同步中，请稍后刷新查看</div>';
           }
+          qaList.forEach(function(x){
+            items += '<div class="corr-item corr-qa">'
+              + '<span class="corr-q">\uD83D\uDCAC 你问：' + esc(x.q || '') + '</span>'
+              + '<span class="corr-h">' + esc(x.a || '') + '</span>'
+              + '</div>';
+          });
           if(OPEN_CORR[t.task_id]) openCls = ' open-corr';
+          var badgeTxt = (pendN > 0)
+            ? ('待改正 ' + pendN + ' 题' + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
+            : ('\uD83D\uDCAC 留言回复 ' + qaList.length);
           corrBadge = '<button type="button" class="corr-badge" data-corr="' + esc(t.task_id) + '"'
-            + ' aria-expanded="' + (OPEN_CORR[t.task_id] ? 'true' : 'false') + '">待改正 '
-            + t.pending_corrections + ' 题 <span class="corr-caret">▸</span></button>';
+            + ' aria-expanded="' + (OPEN_CORR[t.task_id] ? 'true' : 'false') + '">' + badgeTxt
+            + ' <span class="corr-caret">▸</span></button>';
           corrPanel = '<div class="corr-panel">' + items + '</div>';
         }
         html += '<div class="task ' + sm.cls + openCls + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
