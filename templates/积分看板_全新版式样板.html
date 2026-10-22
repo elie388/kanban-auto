@@ -209,11 +209,12 @@
   .task.open-task .corr-panel{display:block;}
   /* 任务卡默认收起（2026-10-22 家长定：每项任务点击后才展开，不分状态）：
      收起时只留标题、状态徽章与「展开」按钮，其余（说明、待改正、文件、交作业按钮）展开后才显示 */
-  .task:not(.open-task) .task-progress{display:none;}
-  .task:not(.open-task) .corr-badge{display:none;}
-  .task:not(.open-task) .tfiles{display:none;}
-  .task:not(.open-task) .st-mini{display:none;}
-  .task:not(.open-task) .st-zone .up-btn{display:none;}
+  .task[data-tid]:not(.open-task) .task-progress{display:none;}
+  .task[data-tid]:not(.open-task) .corr-badge{display:none;}
+  .task[data-tid]:not(.open-task) .tfiles{display:none;}
+  .task[data-tid]:not(.open-task) .st-mini{display:none;}
+  .task[data-tid]:not(.open-task) .st-zone .up-btn{display:none;}
+  .task[data-tid]:not(.open-task){cursor:pointer;}
   .task .task-toggle{
     font-size:12.5px; font-weight:700; font-family:inherit;
     padding:5px 12px; border-radius:999px; border:1.5px solid #D8C9A8; cursor:pointer;
@@ -1183,18 +1184,29 @@
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正'};
-  var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击「展开」后才展开，不分状态 */
-  document.addEventListener('click', function(e){
-    var b = e.target && e.target.closest ? e.target.closest('.task-toggle') : null;
-    if(!b) return;
-    var card = b.closest ? b.closest('.task') : null;
-    if(!card) return;
+  var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击后才展开，不分状态；同日续定方案1：整卡可点＋入口带内容预告 */
+  function toggleTaskCard(card){
     var open = card.classList.toggle('open-task');
-    b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    var tx = b.querySelector('.tt-text');
-    if(tx) tx.textContent = open ? '收起' : '展开';
-    var tid = b.getAttribute('data-toggle-task');
+    var btn = card.querySelector('.task-toggle');
+    if(btn){
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var tx = btn.querySelector('.tt-text');
+      if(tx) tx.textContent = open ? '收起' : (btn.getAttribute('data-preview') || '展开');
+    }
+    var tid = card.getAttribute('data-tid');
     if(tid){ if(open) OPEN_TASK[tid] = 1; else delete OPEN_TASK[tid]; }
+  }
+  document.addEventListener('click', function(e){
+    if(!e.target || !e.target.closest) return;
+    var card = e.target.closest('.task');
+    if(!card || !card.hasAttribute('data-tid')) return;
+    var tb = e.target.closest('.task-toggle');
+    if(tb){ toggleTaskCard(card); return; }
+    /* 卡内其他交互元素（打印/交作业/录音播放等）各行其事，不触发展开收起 */
+    if(e.target.closest('button, a, audio, input, select, textarea')) return;
+    if(!card.classList.contains('open-task')){ toggleTaskCard(card); return; }
+    /* 展开后只点标题区才收起，点明细正文不收 */
+    if(e.target.closest('.task-info')) toggleTaskCard(card);
   });
   /* 待改正示范录音播放（2026-10-22）：委托切换，同时只播一个，播完复位 */
   document.addEventListener('click', function(e){
@@ -1358,8 +1370,13 @@
           corrPanel = '<div class="corr-panel">' + items + '</div>';
         }
         var taskOpen = !!OPEN_TASK[t.task_id];
+        /* 入口预告文案（2026-10-22 方案1）：收起时按钮先告诉家长里面有什么 */
+        var previewTxt = (pendN > 0)
+          ? ('待改正 ' + pendN + ' 题' + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
+          : (qaList.length ? ('\uD83D\uDCAC 留言回复 ' + qaList.length) : '详情');
         var toggleBtn = '<button type="button" class="task-toggle" data-toggle-task="' + esc(t.task_id || '') + '"'
-          + ' aria-expanded="' + (taskOpen ? 'true' : 'false') + '"><span class="tt-text">' + (taskOpen ? '收起' : '展开') + '</span>'
+          + ' data-preview="' + esc(previewTxt) + '"'
+          + ' aria-expanded="' + (taskOpen ? 'true' : 'false') + '"><span class="tt-text">' + (taskOpen ? '收起' : esc(previewTxt)) + '</span>'
           + ' <span class="corr-caret">▸</span></button>';
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-name">' + esc(t.title) + '</div>'
