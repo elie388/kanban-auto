@@ -27,14 +27,10 @@
    "source": "manual",
    "subject": "数学",
    "title": "【测试】补练·小数点移动（文件下载演示）",
-   "detail": "卡片下方有 Word 和 PDF 两个下载按钮，点开即可下载打印；本卡 1 小时后自动删除",
+   "detail": "卡片下方有 PDF 打开和打印按钮；本卡 1 小时后自动删除",
    "status": "pending",
    "review_status": "approved",
    "files": [
-    {
-     "name": "五年级补练_数学_小数点移动_2026-10-20.docx",
-     "label": "补练文件 · Word 版"
-    },
     {
      "name": "五年级补练_数学_小数点移动_2026-10-20.pdf",
      "label": "补练文件 · PDF 版（打印用）"
