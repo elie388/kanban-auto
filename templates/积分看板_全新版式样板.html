@@ -4347,16 +4347,16 @@
    点开打印页（整页图片版式），自动调起系统打印；WebView 里若打印不弹，
    页内有「分享 PDF」兜底（分享菜单内含打印）。 */
 function kbSharePdf(url, name){
-  function openTab(){ window.open(url, '_blank'); }
+  function openPdf(){ window.location.href = url; }
   try {
     if(navigator.canShare){
       fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
         var f = new File([blob], name || 'file.pdf', { type: 'application/pdf' });
-        if(navigator.canShare({ files: [f] })){ navigator.share({ files: [f] }).catch(function(){}); }
-        else openTab();
-      }).catch(openTab);
-    } else openTab();
-  } catch(err){ openTab(); }
+        if(navigator.canShare({ files: [f] })){ navigator.share({ files: [f] }).catch(function(err){ if(!err || err.name !== 'AbortError') openPdf(); }); }
+        else openPdf();
+      }).catch(openPdf);
+    } else openPdf();
+  } catch(err){ openPdf(); }
 }
 function kbClosePrint(){
   document.body.classList.remove('kb-printing');
