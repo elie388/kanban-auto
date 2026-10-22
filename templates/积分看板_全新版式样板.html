@@ -1239,15 +1239,16 @@
       }
       visible.push(t);
     });
-    /* 状态排序（2026-10-22 家长定）：待提交 → 改正中 → 已完成，同档保持原顺序；meta 登记本卡保持置顶 */
+    /* 状态排序（2026-10-22 家长定）：全部任务（含登记本卡）按状态排——待提交 → 改正中 → 已完成，
+       同档保持原顺序（登记本未交时在待提交组靠前，交完沉入已完成组，30 分钟后按原规则隐藏） */
     function kbTaskRank(t){
       if(t.status === 'done') return 2;
       var pn = (typeof t.pending_corrections === 'number') ? t.pending_corrections : 0;
       if(pn > 0 || t.status === 'submitted' || t.status === 'in_progress') return 1;
       return 0;
     }
-    var sortedNormals = normals.slice().sort(function(a, b){ return kbTaskRank(a) - kbTaskRank(b); });
-    visible = visible.concat(sortedNormals);
+    visible = visible.concat(normals);
+    visible = visible.slice().sort(function(a, b){ return kbTaskRank(a) - kbTaskRank(b); });
     var html = '';
     if(visible.length === 0){
       html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-name">今日暂无任务</div>'
