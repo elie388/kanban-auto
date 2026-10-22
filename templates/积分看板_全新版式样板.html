@@ -492,8 +492,7 @@
   .log-pts.minus{color:#D64545;}
   .log-line2{font-size:12px; color:var(--sub); margin-top:2px;}
   /* KB-POST2-2026-10-22：日志滚动区（最多约5条高、区内滚动、防穿透、底部渐隐＋条数提示、按天分组） */
-  .cb-hint{font-size:13px; font-weight:600; color:var(--sub);}
-  .cb-hint.has-neg{color:#D64545;}
+
   .log-scrollwrap{position:relative;}
   .log-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
   .log-scrollwrap.has-more::after{content:''; position:absolute; left:0; right:0; bottom:26px; height:34px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.97)); pointer-events:none;}
@@ -958,7 +957,6 @@
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
       <span class="emoji" aria-hidden="true">🧾</span>
       <span class="cb-title">积分日志</span>
-      <span class="cb-hint" id="log-hint"></span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
@@ -1821,20 +1819,6 @@
     return {shown: shown.length, neg: shown.filter(function(x){ return x.sign === 'minus'; }).length};
   }
 
-  /* KB-POST2 折叠条件（DeepSeek）：折叠标题旁显示近3天扣分笔数，默认态防漏看 */
-  var logNegByGrade = {};
-  function updateLogHint(grade, neg){
-    if(typeof neg === 'number') logNegByGrade[grade] = neg;
-    var hint = document.getElementById('log-hint');
-    if(!hint) return;
-    var parts = [], total = 0;
-    [[5, '彦均'], [6, '伟豪']].forEach(function(p){
-      if(logNegByGrade[p[0]] !== undefined){ parts.push(p[1] + ' ' + logNegByGrade[p[0]] + ' 笔'); total += logNegByGrade[p[0]]; }
-    });
-    if(!parts.length) return;
-    hint.textContent = total > 0 ? ('近3天扣分 ' + parts.join(' · ')) : '近3天无扣分';
-    hint.classList.toggle('has-neg', total > 0);
-  }
 
   function loadLog(grade, blockId){
     var key = 'log' + grade;
@@ -1845,8 +1829,7 @@
       var block = $(blockId);
       var list = block ? block.querySelector('.log-list') : null;
       if(!list) throw new Error('no log-list');
-      var logStats = renderLogItems(list, d.items);
-      updateLogHint(grade, logStats && logStats.neg);
+      renderLogItems(list, d.items);
       var si = srcInfo[name];
       if(si && si.fromCache){
         setLogTag(blockId, '数据更新于 ' + fmtHHMM(si.ts), null); /* 方案E：缓存渲染，明示数据时刻 */
