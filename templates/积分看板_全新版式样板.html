@@ -188,6 +188,9 @@
   .task.submitted .st-badge{background:#E1EDF9; color:#1D5FA8;}
   .task.submitted .st-dot{background:#3D77A8;}
   .task.pending .st-dot{background:#E5484D;}
+  .task.grading{background:#F4F1FA;}
+  .task.grading .st-badge{background:#E7E1F7; color:#4B3F8F;}
+  .task.grading .st-dot{background:#7C6BD6;}
   .task.correcting{background:#FEF8EC;}
   .task.correcting .st-badge{background:#FFF3D6; color:#B54708;}
   .task.correcting .st-dot{background:#F08C0A;}
@@ -1234,6 +1237,7 @@
   var STATUS_MAP = {
     pending:     {cls: 'pending',    badge: '📝 待提交'},
     submitted:   {cls: 'submitted',  badge: '📤 已提交·待批改'},
+    grading:     {cls: 'grading',    badge: '🔍 批改中'},
     in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
@@ -1357,7 +1361,7 @@
     function kbTaskRank(t){
       if(t.status === 'done') return 2;
       var pn = (typeof t.pending_corrections === 'number') ? t.pending_corrections : 0;
-      if(pn > 0 || t.status === 'submitted' || t.status === 'in_progress') return 1;
+      if(pn > 0 || t.status === 'submitted' || t.status === 'grading' || t.status === 'in_progress') return 1;
       return 0;
     }
     visible = visible.concat(normals);
