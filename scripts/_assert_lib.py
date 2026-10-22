@@ -12,7 +12,7 @@ import unicodedata
 SCHEMA_VERSION = "1.0"
 
 # points_log 专用 schema（KB-TIME-2026-10-19：time/time_source，1.0→1.1）
-POINTS_LOG_SCHEMA_VERSION = "1.2"
+POINTS_LOG_SCHEMA_VERSION = "1.3"
 TIME_SOURCE_ENUM = ("submit", "parent_confirm", "entry", "deadline")
 
 # ---------------------------------------------------------------------------
@@ -96,17 +96,17 @@ import re as _re
 def assert_points_log_schema(d, filename="points_log_?.json"):
     """points_log_{5,6}.json：§1.2 + R3（含 filtered_count/filtered）+ B5 零命中 + KB-TIME 1.1"""
     assert isinstance(d, dict), "顶层须为 object"
-    assert d.get("schema_version") == POINTS_LOG_SCHEMA_VERSION, "points_log schema_version 须为 1.2"
+    assert d.get("schema_version") == POINTS_LOG_SCHEMA_VERSION, "points_log schema_version 须为 1.3"
     _check_grade(d, filename)
     assert _is_int(d.get("filtered_count")), "filtered_count 须为整数"
     assert isinstance(d.get("generated_at"), str) and d["generated_at"], "generated_at 须为非空字符串"
     w = d.get("window")
     assert isinstance(w, dict), "window 须为 object"
-    assert w.get("days") == 7 and w.get("max_items") == 20, "window 须为 {days:7, max_items:20}"  # P1#2（裁定2 甲 2026-10-20）：日志窗口统一近7天，与 build_stats 生成端同步
+    assert w.get("days") == 7 and w.get("max_items") == 300, "window 须为 {days:7, max_items:300}"  # KB-POST2-2026-10-22：7天全量输出（前端展示最近3天滚动），300 为安全上限
     items = d.get("items")
     assert isinstance(items, list), "items 须为数组"
-    # KB-POST-2026-10-22（DeepSeek 组合3）：基础 20 条 + 负分额外保留 ≤5 → 上限 25
-    assert len(items) <= 25, "items 不得超过 25 条"
+    # KB-POST2-2026-10-22（DeepSeek 改良版）：7 天全量输出，安全上限 300 条
+    assert len(items) <= 300, "items 不得超过 300 条"
     for i, it in enumerate(items):
         assert isinstance(it, dict), "items[%d] 须为 object" % i
         assert isinstance(it.get("date"), str) and it["date"], "items[%d].date 异常" % i

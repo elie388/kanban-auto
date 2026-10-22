@@ -105,7 +105,7 @@ KEY_COMMENT_RE = re.compile(r"<!--\s*key:\s*(.*?)\s*-->")
 TIME_SOURCE_ENUM = ("submit", "parent_confirm", "entry", "deadline")
 TIME_SOURCE_FILE = os.path.join(REPO_DIR, "data_src", "points_time_source.json")
 TIME_G6_DATE = "2026-10-19"  # 生效日：complete_year(日期) > 此日 且无 @HH:MM → 熔断
-POINTS_LOG_SCHEMA = "1.2"
+POINTS_LOG_SCHEMA = "1.3"
 
 ROW_RE = re.compile(
     # 日期格允许后跟括号备注（如 10-19（补记10-21）），捕获组仍取纯日期。
@@ -374,11 +374,11 @@ def build_stats(grade, rows, ledger_sha16, today, generated_at):
 
 
 def build_log(grade, rows, today, generated_at):
-    """§1.2 + R3 + KB-TIME-2026-10-19 + KB-POST-2026-10-22：近7天、按真实入账
-    时间（补记行 = backfill 日期 + @HH:MM）倒序、基础 20 条 + 被挤出的负分
-    额外保留最近 5 条（列表 ≤25 条）；同入账日有时刻者按时刻倒序在前、
-    无时刻者随后保持台账正序；reason 经 simplify_desc + B5 断言；
-    time 精确到分钟（台账 @HH:MM），schema 1.2。"""
+    """§1.2 + R3 + KB-TIME-2026-10-19 + KB-POST2-2026-10-22：近7天全量、按
+    真实入账时间（补记行 = backfill 日期 + @HH:MM）倒序输出（安全上限
+    300 条）；前端只展示最近 3 天、区域内滚动；同入账日有时刻者按时刻
+    倒序在前、无时刻者随后保持台账正序；reason 经 simplify_desc + B5
+    断言；time 精确到分钟（台账 @HH:MM），schema 1.3。"""
     cutoff = today - timedelta(days=7)
     sources = load_time_sources()
     dated = []
@@ -423,16 +423,11 @@ def build_log(grade, rows, today, generated_at):
     dated.sort(key=lambda x: x[4])
     dated.sort(key=lambda x: (x[1], 1 if x[2] else 0, x[2] or ""), reverse=True)
 
-    # 截断口径（DeepSeek 组合3）：基础取前 20 条；被挤出的负分条目额外保留
-    # 最近 5 条（仅负分，正数补记行不保留），合并后仍按入账时间倒序，
-    # 列表最多 25 条。extra_negative_omitted 记录仍被折叠的负分条数。
-    base = dated[:20]
-    squeezed_neg = [e for e in dated[20:] if e[5]["pts"] < 0]
-    extras = squeezed_neg[:5]
-    omitted_neg = len(squeezed_neg) - len(extras)
-    selected = sorted(base + extras, key=lambda x: x[4])
-    selected.sort(key=lambda x: (x[1], 1 if x[2] else 0, x[2] or ""), reverse=True)
-
+    # 截断口径 KB-POST2-2026-10-22（DeepSeek 改良版定案，取代组合3的负分
+    # 额外保留）：7 天窗口全量输出、不再按条数截断（前端只展示最近 3 天、
+    # 区域内滚动，见模板 LOG_DISPLAY_DAYS）；仅保留 300 条安全上限防异常
+    # 数据膨胀。取消负分额外保留：3 天内全量可见，不存在被挤出。
+    selected = dated[:300]
     truncated = len(dated) > len(selected)
     items = []
     filtered_count = 0
@@ -471,11 +466,9 @@ def build_log(grade, rows, today, generated_at):
         "schema_version": POINTS_LOG_SCHEMA,
         "grade": grade,
         "generated_at": generated_at,
-        "window": {"days": 7, "max_items": 20, "extra_negative_max": 5},
+        "window": {"days": 7, "max_items": 300},
         "items": items,
         "truncated": truncated,
-        "extra_negative_count": len(extras),
-        "extra_negative_omitted": omitted_neg,
         "filtered_count": filtered_count,
     }
     _assert_lib.assert_points_log_schema(d, "points_log_%d.json" % grade)
@@ -999,8 +992,8 @@ def selftest():
         exp = ["第四条", "第二条", "第一条", "第三条", "第五条"]
         assert got == exp, "排序错误：%r != %r" % (got, exp)
         # S1 防回归（2026-10-20）：死代码删除后，schema 必须为当前版本（含 time/time_source 字段）
-        # KB-POST-2026-10-22：版本随口径升版 1.1 → 1.2（入账时间排序+负分额外保留+补记字段）
-        assert d["schema_version"] == "1.2", "schema_version=%r（期望 1.2，死代码回退？）" % d.get("schema_version")
+        # KB-POST2-2026-10-22：版本随口径升版 1.2 → 1.3（7天全量输出、取消负分额外保留、前端3天滚动展示）
+        assert d["schema_version"] == "1.3", "schema_version=%r（期望 1.3，死代码回退？）" % d.get("schema_version")
         rec("T1 同日排序单测", True, "输出顺序=%s" % got)
     except Exception as e:
         rec("T1 同日排序单测", False, str(e)[:200])
