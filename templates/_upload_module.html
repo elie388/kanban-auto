@@ -136,10 +136,7 @@
     var b1 = document.createElement('button'); b1.type = 'button'; b1.className = 'up-btn';
     b1.textContent = '🧹 交家务照片';
     b1.addEventListener('click', function(){ openSheet({mode:'chore', key:'chore'}); });
-    var b2 = document.createElement('button'); b2.type = 'button'; b2.className = 'up-btn';
-    b2.textContent = '📥 交作业（找不到按钮时用）';
-    b2.addEventListener('click', function(){ openSheet({mode:'panel', key:'panel'}); });
-    bar.appendChild(b1); bar.appendChild(b2);
+    bar.appendChild(b1);
     var h2 = sec.querySelector('h2');
     if(h2 && h2.nextSibling) sec.insertBefore(bar, h2.nextSibling); else sec.insertBefore(bar, sec.firstChild);
   }

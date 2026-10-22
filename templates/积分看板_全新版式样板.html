@@ -1123,7 +1123,7 @@
     in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
-  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务'};
+  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正'};
   var OPEN_CORR = {}; /* 待改正明细展开状态（按 task_id，软刷新后恢复，与目标榜 OPEN_GOALS 同款） */
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('.corr-badge') : null;
@@ -3587,10 +3587,7 @@
     var b1 = document.createElement('button'); b1.type = 'button'; b1.className = 'up-btn';
     b1.textContent = '🧹 交家务照片';
     b1.addEventListener('click', function(){ openSheet({mode:'chore', key:'chore'}); });
-    var b2 = document.createElement('button'); b2.type = 'button'; b2.className = 'up-btn';
-    b2.textContent = '📥 交作业（找不到按钮时用）';
-    b2.addEventListener('click', function(){ openSheet({mode:'panel', key:'panel'}); });
-    bar.appendChild(b1); bar.appendChild(b2);
+    bar.appendChild(b1);
     var h2 = sec.querySelector('h2');
     if(h2 && h2.nextSibling) sec.insertBefore(bar, h2.nextSibling); else sec.insertBefore(bar, sec.firstChild);
   }
