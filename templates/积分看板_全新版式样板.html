@@ -1409,10 +1409,10 @@
           }
         }
         /* 已完成任务「查看原图」（2026-10-22 家长定，三方定案）：仅 done＋学习类
-           任务（家务/登记本不纳入本期）且登记了 orig_photos 才渲染；照片清单
+           任务（家务不纳入；登记本卡 2026-10-22晚家长要求纳入）且登记了 orig_photos 才渲染；照片清单
            登记到 window.__taskOrigPhotos 供查看器取用，点击走口令门（kbOpenOriginals）。 */
         var origRow = '';
-        if(t.status === 'done' && t.source !== 'chore' && t.task_type !== 'meta_register'
+        if(t.status === 'done' && t.source !== 'chore'
            && Array.isArray(t.orig_photos) && t.orig_photos.length){
           window.__taskOrigPhotos = window.__taskOrigPhotos || {};
           window.__taskOrigPhotos[t.task_id] = t.orig_photos;
@@ -3903,7 +3903,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261022-2218';
+  var KB_BUILD = '20261022-2230';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
