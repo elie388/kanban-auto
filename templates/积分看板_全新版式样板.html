@@ -4252,9 +4252,18 @@
   function api(path, body, method){
     var headers = {'Content-Type': 'application/json'};
     var tk = token(); if(tk) headers['X-Device-Token'] = tk;
-    return fetch(WORKER + path, {method: method || 'POST', headers: headers,
-      body: body ? JSON.stringify(body) : undefined})
-      .then(function(r){ return r.json().then(function(j){ return {status: r.status, body: j}; }); });
+    /* 2026-10-22 修复：fetch 无超时时弱网/webview 假死会让「正在准备」永久卡死、面板锁死。
+       加 20 秒 AbortController 超时，超时/断网统一转友好报错，由 doSubmit 的 catch 解锁重试。 */
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function(){ try { ctrl.abort(); } catch(e){} }, 20000) : null;
+    var opts = {method: method || 'POST', headers: headers,
+      body: body ? JSON.stringify(body) : undefined};
+    if(ctrl) opts.signal = ctrl.signal;
+    return fetch(WORKER + path, opts)
+      .then(function(r){ return r.json().then(function(j){ return {status: r.status, body: j}; },
+        function(){ return {status: r.status, body: {error: '服务器返回异常，再试一次'}}; }); })
+      .catch(function(e){ throw new Error(e && e.name === 'AbortError' ? '网络太慢啦，没连上，请再试一次' : '网络不好，没连上，请再试一次'); })
+      .finally(function(){ if(timer) clearTimeout(timer); });
   }
   function putFile(url, file, contentType, onProg){
     return new Promise(function(resolve, reject){
