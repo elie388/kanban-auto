@@ -270,7 +270,9 @@
       })
       .then(function(r){
         if(r.status === 401){ try { localStorage.removeItem(LS_TOKEN); } catch(e){}
-          $('up-passrow').style.display = 'block'; throw new Error('这台设备还没登记，输一次家庭口令再交'); }
+          $('up-passrow').style.display = 'block';
+          if(r.body && r.body.code === 'stale_token') throw new Error('登录已过期啦，请让爸爸或妈妈看一下新口令，输一次就能继续交');
+          throw new Error('这台设备还没登记，输一次家庭口令再交'); }
         if(r.status !== 200) throw new Error((r.body && r.body.error) || '准备失败，再试一次');
         var sign = r.body;
         var chain = Promise.resolve();
