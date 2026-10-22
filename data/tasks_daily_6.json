@@ -1,135 +1,73 @@
 {
- "schema_version": "1.0",
- "date": "2026-10-22",
- "grade": "六年级",
- "generated_at": "2026-10-22T00:05:11+08:00",
- "updated_at": "2026-10-22T12:05:06+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": null,
-   "new_lines": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "REG-20261022-TMP601",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "【临时测试】作业上传按钮演示",
-   "detail": "家长临时测试任务：仅用于查看任务卡上的上传作业按钮，约一小时后删除，请勿当真提交。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_at": "2026-10-22T11:17:03+08:00",
-   "updated_at": "2026-10-22T11:17:03+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "PRACT-20261022-TMP601",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "【临时测试】针对性练习上传按钮演示",
-   "detail": "家长临时测试任务：仅用于查看上传按钮，约一小时后删除。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_at": "2026-10-22T11:17:03+08:00",
-   "updated_at": "2026-10-22T11:17:03+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "EXAM-20261022-TMP601",
-   "source": "exam_correction",
-   "subject": "语文",
-   "title": "【临时测试】考试订正上传按钮演示（剩1题）",
-   "detail": "家长临时测试任务：仅用于查看上传按钮，约一小时后删除。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_at": "2026-10-22T11:17:03+08:00",
-   "updated_at": "2026-10-22T11:17:03+08:00",
-   "pending_corrections": 1,
-   "corrections": []
-  },
-  {
-   "task_id": "CHORE-20261022-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-10-22T17:30:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-10-22T11:39:22+08:00",
-   "updated_at": "2026-10-22T11:39:23+08:00"
-  },
-  {
-   "task_id": "TEST-CORR-20261022-G6",
-   "source": "exam_correction",
-   "subject": "英语",
-   "title": "【效果测试】待改正明细 · 含引导（看完删）",
-   "detail": "排版效果测试卡：随机抽的真实待改正题（含详细引导），点开「待改正 1 题」查看",
-   "status": "in_progress",
-   "review_status": "approved",
-   "pending_corrections": 1,
-   "corrections": [
-    {
-     "label": "英语校本 P14 一.3",
-     "question": "There are some 3. ___ People throw plastic bags into the sea.",
-     "reason": "语法错误——some 后接复数可数名词，漏加复数 s。",
-     "hint": "① 先自己检查一遍：把你填的词单独读出来——它表示的是「一个」还是「一些」？再看看它前面的 some，两个词「对得上」吗？\n② 这道题考的是 some 的用法：some 表示「一些」，用在肯定句里，后面接的名词要用复数（可数名词）或者不可数名词。比如 some books 是「一些书」，不会说成 some book。\n③ 关键步骤：先判断你填的是不是可数名词；是的话，给它加上表示复数的变化（一般是词尾加 -s），然后把整句连起来读一遍，看看读着顺不顺、意思通不通。"
+  "schema_version": "1.0",
+  "date": "2026-10-22",
+  "grade": "六年级",
+  "generated_at": "2026-10-22T00:05:11+08:00",
+  "updated_at": "2026-10-22T14:15:24+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": null,
+      "new_lines": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
     }
-   ],
-   "created_at": "2026-10-22T12:05:06+08:00",
-   "updated_at": "2026-10-22T12:05:06+08:00"
   },
-  {
-   "task_id": "TEST-DIAG-20261022-G6",
-   "source": "exam_correction",
-   "subject": "数学",
-   "title": "【效果测试】待改正明细 · 含画图引导（看完删）",
-   "detail": "排版效果测试卡：真实待改正数学题＋真实配图（圆的直径），点开「待改正 1 题」看引导文字下方有没有图",
-   "status": "in_progress",
-   "review_status": "approved",
-   "pending_corrections": 1,
-   "corrections": [
+  "tasks": [
     {
-     "label": "53天天练第3课时-题3",
-     "question": "笑笑用下图所示的方法测量出了圆的直径，这种方法的依据是（）。A.圆上的点到圆心的距离相等 B.圆是轴对称图形 C.同一个圆中，直径是半径的2倍 D.直径是圆内最长的线段",
-     "reason": "把“对折找圆心”（依据轴对称）和“移动直尺找最长线段”（依据最长线段）混淆",
-     "hint": "① 先自己检查一遍：图里笑笑是怎么测出直径的——是把圆对折，还是拿直尺在圆里一边移动一边找最长的那条线段？先把动作看清楚，再去对选项。\n② 这道题考的是直径的特征：直径是通过圆心、两端都在圆上的线段；同一个圆里，直径是最长的线段（看下面图里标出的那条）。而“对折找圆心”用的是圆的轴对称性，那是另一种方法的依据，别把两种方法混在一起。\n③ 关键步骤：先判定图中方法的动作属于哪一种，再到选项里找“这一种方法的依据”；不要看到有耳熟的说法就直接选。",
-     "img": "g6_diameter_20261017_guide.png"
+      "task_id": "CHORE-20261022-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-10-22T17:30:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-10-22T11:39:22+08:00",
+      "updated_at": "2026-10-22T11:39:23+08:00"
+    },
+    {
+      "task_id": "TEST-DIAG-20261022-G6",
+      "source": "exam_correction",
+      "subject": "数学",
+      "title": "【效果测试】待改正明细 · 含画图引导（看完删）",
+      "detail": "排版效果测试卡：真实待改正数学题＋真实配图（圆的直径），点开「待改正 1 题」看引导文字下方有没有图",
+      "status": "in_progress",
+      "review_status": "approved",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "53天天练第3课时-题3",
+          "question": "笑笑用下图所示的方法测量出了圆的直径，这种方法的依据是（）。A.圆上的点到圆心的距离相等 B.圆是轴对称图形 C.同一个圆中，直径是半径的2倍 D.直径是圆内最长的线段",
+          "reason": "把“对折找圆心”（依据轴对称）和“移动直尺找最长线段”（依据最长线段）混淆",
+          "hint": "① 先自己检查一遍：图里笑笑是怎么测出直径的——是把圆对折，还是拿直尺在圆里一边移动一边找最长的那条线段？先把动作看清楚，再去对选项。\n② 这道题考的是直径的特征：直径是通过圆心、两端都在圆上的线段；同一个圆里，直径是最长的线段（看下面图里标出的那条）。而“对折找圆心”用的是圆的轴对称性，那是另一种方法的依据，别把两种方法混在一起。\n③ 关键步骤：先判定图中方法的动作属于哪一种，再到选项里找“这一种方法的依据”；不要看到有耳熟的说法就直接选。",
+          "img": "g6_diameter_20261017_guide.png"
+        }
+      ],
+      "created_at": "2026-10-22T12:05:06+08:00",
+      "updated_at": "2026-10-22T12:05:06+08:00"
     }
-   ],
-   "created_at": "2026-10-22T12:05:06+08:00",
-   "updated_at": "2026-10-22T12:05:06+08:00"
-  }
- ],
- "counts": {
-  "total": 6,
-  "pending": 4,
-  "in_progress": 2,
-  "submitted": 0,
-  "done": 0
- },
- "deadline_today": null
+  ],
+  "counts": {
+    "total": 2,
+    "pending": 1,
+    "in_progress": 1,
+    "submitted": 0,
+    "done": 0
+  },
+  "deadline_today": null
 }

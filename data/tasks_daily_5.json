@@ -3,7 +3,7 @@
   "date": "2026-10-22",
   "grade": "五年级",
   "generated_at": "2026-10-22T00:05:11+08:00",
-  "updated_at": "2026-10-22T12:46:17+08:00",
+  "updated_at": "2026-10-22T14:15:24+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -23,48 +23,6 @@
   },
   "tasks": [
     {
-      "task_id": "REG-20261022-TMP501",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "【临时测试】作业上传按钮演示",
-      "detail": "家长临时测试任务：仅用于查看任务卡上的上传作业按钮，约一小时后删除，请勿当真提交。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_at": "2026-10-22T11:17:03+08:00",
-      "updated_at": "2026-10-22T11:17:03+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "PRACT-20261022-TMP501",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "【临时测试】针对性练习上传按钮演示",
-      "detail": "家长临时测试任务：仅用于查看上传按钮，约一小时后删除。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_at": "2026-10-22T11:17:03+08:00",
-      "updated_at": "2026-10-22T11:17:03+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "EXAM-20261022-TMP501",
-      "source": "exam_correction",
-      "subject": "语文",
-      "title": "【临时测试】考试订正上传按钮演示（剩1题）",
-      "detail": "家长临时测试任务：仅用于查看上传按钮，约一小时后删除。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_at": "2026-10-22T11:17:03+08:00",
-      "updated_at": "2026-10-22T11:17:03+08:00",
-      "pending_corrections": 1,
-      "corrections": []
-    },
-    {
       "task_id": "CHORE-20261022-G5",
       "source": "chore",
       "subject": "家务",
@@ -81,42 +39,11 @@
       "count_in_completion_rate": false,
       "created_at": "2026-10-22T11:39:22+08:00",
       "updated_at": "2026-10-22T11:39:23+08:00"
-    },
-    {
-      "task_id": "TEST-CORR-20261022-G5",
-      "source": "exam_correction",
-      "subject": "语文",
-      "title": "【效果测试】待改正明细 · 含引导（看完删）",
-      "detail": "排版效果测试卡：随机抽的真实待改正题（含详细引导），点开「待改正 1 题」查看",
-      "status": "in_progress",
-      "review_status": "approved",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "语文 1",
-          "question": "迎 yíng／影 yǐng 拼音书写",
-          "reason": "前后鼻音拼写错误，第2次标高频",
-          "hint": "① 先自己念一遍：把「迎」和「影」拖长了慢慢读，听听结尾的音停在哪里——是停在舌尖上，还是往鼻子后面沉？\n② 考的是前后鼻音的拼写：韵母尾音是 -n 的写 n（如 in、en），尾音是 -ng 的写 ng（如 ing、eng），就差一个字母 g，写错就成了另一个音；这是你第 2 次在这个知识点上出错了，要重点记。\n③ 关键一步：读的时候把嘴慢慢闭上——声音从鼻子后面出来、闭得拢的是后鼻音 -ng；舌尖顶住上牙龈的是前鼻音 -n。判断完再把拼音改过来，最后把两个字连读两遍记牢。"
-        }
-      ],
-      "created_at": "2026-10-22T12:05:06+08:00",
-      "updated_at": "2026-10-22T12:05:06+08:00"
-    },
-    {
-      "task_id": "TEST-REC-20261022-G5",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "【效果测试】读背录音 · 点交这一项试录音",
-      "detail": "录音功能测试卡：打开提交面板应出现绿色「直接录音」按钮，录完可试听/重录",
-      "status": "pending",
-      "review_status": "approved",
-      "created_at": "2026-10-22T12:46:17+08:00",
-      "updated_at": "2026-10-22T12:46:17+08:00"
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 4,
+    "total": 1,
+    "pending": 1,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
