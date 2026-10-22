@@ -4067,7 +4067,13 @@
   function recShouldShow(){
     if(!recSupported() || !cur) return false;
     if(cur.type === 'reading') return true;
-    if(cur.mode === 'task' && cur.title && /(读背|朗读|背诵|口语|诵读|听读|抽背|录音)/.test(cur.title)) return true;
+    if(cur.mode === 'task' && cur.title){
+      var t = cur.title;
+      if(/(读背|朗读|背诵|口语|诵读|听读|抽背|录音|熟读|读作文|读课文|大声读|读出声)/.test(t)) return true;
+      /* 2026-10-22晚修复：「读作文10分钟」这类只有单字「读」的朗读任务原关键词没覆盖、录音区不显示；
+         放宽为标题含「读」也显示，但「阅读」（阅读理解类书面题）除外。 */
+      if(t.indexOf('阅读') === -1 && t.indexOf('读') !== -1) return true;
+    }
     return false;
   }
   /* 2026-10-22 家长定：不是系统出的读背（如学校读背作业），提交时提示孩子上传原文照片，
