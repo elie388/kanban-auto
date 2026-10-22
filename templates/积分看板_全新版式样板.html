@@ -3032,6 +3032,113 @@
   /* 补练按钮直提（2026-10-20 乙'方案，DeepSeek 定案+用户拍板）：点按钮 → Worker
      中转写 KV → 回执确认后才提示"已收到"；失败保留打开表单手动提交的兜底。
      先到先得：当日同知识点只入队一次（Worker 幂等 + poll 双源去重双保险）。 */
+  /* 补练按钮口令门 + toast 通知（2026-10-22 家长定、DeepSeek 定版）：
+     与提交作业同一口令体系——本机已有设备令牌（hw-dev-token，由
+     homework-upload 的 /auth 签发）直接提交；没有令牌先弹口令框，
+     校验通过存令牌并自动继续刚才那次提交，口令错在框内报错重试。
+     结果反馈走 toast（顶部弹出、带关闭叉、3 秒自动关、新通知重置计时），
+     行内状态文字与表单兜底保留。中转服务端本轮不验令牌（后续加固项）。 */
+  var KB_PASS_UI = null;
+  function kbPracticeToken(){ try { return localStorage.getItem('hw-dev-token') || ''; } catch(e){ return ''; } }
+  function kbEnsurePracticeUi(){
+    if(KB_PASS_UI) return KB_PASS_UI;
+    var css = document.createElement('style');
+    css.textContent = ''
+      + '.kb-toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translate(-50%,-8px);max-width:88vw;background:rgba(43,36,32,.94);color:#FFF7EA;font-size:14px;line-height:1.5;padding:10px 38px 10px 14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;z-index:9999}'
+      + '.kb-toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}'
+      + '.kb-toast-x{position:absolute;top:4px;right:8px;border:0;background:transparent;color:#FFD9A8;font-size:18px;line-height:1;padding:4px;cursor:pointer}'
+      + '.kb-pass-mask{position:fixed;inset:0;background:rgba(40,32,24,.45);display:none;align-items:center;justify-content:center;z-index:9998;padding:20px}'
+      + '.kb-pass-mask.show{display:flex}'
+      + '.kb-pass-card{background:#FFFBF2;border-radius:16px;max-width:340px;width:100%;padding:18px 16px 14px;box-shadow:0 12px 32px rgba(0,0,0,.28)}'
+      + '.kb-pass-title{font-weight:800;font-size:16px;margin-bottom:6px;color:#3D2E22}'
+      + '.kb-pass-hint{color:#8A7A68;font-size:12.5px;margin-bottom:10px}'
+      + '.kb-pass-input{width:100%;box-sizing:border-box;border:1.5px solid #E8DCC8;border-radius:10px;padding:10px 12px;font-size:16px;background:#FFF;color:#3D2E22;outline:none}'
+      + '.kb-pass-err{color:#C0392B;font-size:12.5px;min-height:18px;margin-top:6px}'
+      + '.kb-pass-row{display:flex;gap:10px;margin-top:10px}'
+      + '.kb-pass-cancel{flex:1;border:0;border-radius:10px;padding:11px 0;background:#EFE7D8;color:#6B5B45;font-size:15px;cursor:pointer}'
+      + '.kb-pass-ok{flex:1;border:0;border-radius:10px;padding:11px 0;background:#E8873A;color:#FFF;font-size:15px;font-weight:700;cursor:pointer}'
+      + '.kb-pass-ok:disabled{opacity:.55}';
+    document.head.appendChild(css);
+    var toast = document.createElement('div');
+    toast.className = 'kb-toast';
+    toast.innerHTML = '<span class="kb-toast-msg"></span><button type="button" class="kb-toast-x" aria-label="关闭">×</button>';
+    document.body.appendChild(toast);
+    var mask = document.createElement('div');
+    mask.className = 'kb-pass-mask';
+    mask.innerHTML = '<div class="kb-pass-card">'
+      + '<div class="kb-pass-title">🔐 输入家庭口令</div>'
+      + '<div class="kb-pass-hint">和提交作业同一个口令。第一次用要输一次，之后这台设备就不用再输了。</div>'
+      + '<input class="kb-pass-input" type="text" autocomplete="off" placeholder="家庭口令">'
+      + '<div class="kb-pass-err"></div>'
+      + '<div class="kb-pass-row"><button type="button" class="kb-pass-cancel">取消</button><button type="button" class="kb-pass-ok">确认</button></div>'
+      + '</div>';
+    document.body.appendChild(mask);
+    var ui = { toast: toast, toastMsg: toast.querySelector('.kb-toast-msg'), mask: mask,
+               input: mask.querySelector('.kb-pass-input'), err: mask.querySelector('.kb-pass-err'),
+               okBtn: mask.querySelector('.kb-pass-ok'), pending: null, toastTimer: 0 };
+    toast.querySelector('.kb-toast-x').addEventListener('click', function(){ kbHideToast(); });
+    mask.querySelector('.kb-pass-cancel').addEventListener('click', function(){ kbClosePass(); });
+    mask.addEventListener('click', function(e){ if(e.target === mask) kbClosePass(); });
+    ui.okBtn.addEventListener('click', function(){ kbConfirmPass(); });
+    ui.input.addEventListener('keydown', function(e){ if(e.key === 'Enter') kbConfirmPass(); });
+    KB_PASS_UI = ui;
+    return ui;
+  }
+  function kbToast(msg){
+    var ui = kbEnsurePracticeUi();
+    ui.toastMsg.textContent = msg;
+    ui.toast.classList.add('show');
+    if(ui.toastTimer) clearTimeout(ui.toastTimer);
+    ui.toastTimer = setTimeout(kbHideToast, 3000);
+  }
+  function kbHideToast(){
+    if(!KB_PASS_UI) return;
+    KB_PASS_UI.toast.classList.remove('show');
+    if(KB_PASS_UI.toastTimer){ clearTimeout(KB_PASS_UI.toastTimer); KB_PASS_UI.toastTimer = 0; }
+  }
+  function kbClosePass(){
+    var ui = kbEnsurePracticeUi();
+    ui.mask.classList.remove('show');
+    var p = ui.pending; ui.pending = null;
+    if(p && p.onCancel) p.onCancel();
+  }
+  function kbAskPass(onOk, onCancel){
+    var ui = kbEnsurePracticeUi();
+    ui.pending = { onOk: onOk, onCancel: onCancel };
+    ui.err.textContent = '';
+    ui.input.value = '';
+    ui.okBtn.disabled = false; ui.okBtn.textContent = '确认';
+    ui.mask.classList.add('show');
+    setTimeout(function(){ try { ui.input.focus(); } catch(e){} }, 60);
+  }
+  function kbConfirmPass(){
+    var ui = kbEnsurePracticeUi();
+    var pass = (ui.input.value || '').trim();
+    if(!pass){ ui.err.textContent = '先输入家庭口令'; return; }
+    ui.okBtn.disabled = true; ui.okBtn.textContent = '校验中…';
+    ui.err.textContent = '';
+    fetch('https://homework-upload.whyjjf.workers.dev/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ passcode: pass })
+    }).then(function(resp){
+      return resp.json().catch(function(){ return null; }).then(function(j){ return { status: resp.status, body: j }; });
+    }).then(function(r){
+      ui.okBtn.disabled = false; ui.okBtn.textContent = '确认';
+      if(r.status === 200 && r.body && r.body.device_token){
+        try { localStorage.setItem('hw-dev-token', r.body.device_token); } catch(e){}
+        var p = ui.pending; ui.pending = null;
+        ui.mask.classList.remove('show');
+        if(p && p.onOk) p.onOk();
+      } else {
+        ui.err.textContent = '口令不对，再看看？';
+      }
+    }).catch(function(){
+      ui.okBtn.disabled = false; ui.okBtn.textContent = '确认';
+      ui.err.textContent = '网络不太好，再试一次';
+    });
+  }
+
   function practiceTodayStr(){
     var d = new Date();
     function p2(x){ return (x < 10 ? '0' : '') + x; }
@@ -3056,28 +3163,40 @@
       if(fallback) fallback.style.display = 'block';
     }
     if(lsGet()){ markDone('✅ 今天这个知识点已经提交过啦'); return; }
+    function doSubmit(mode){
+      btns.forEach(function(b){ b.disabled = true; });
+      if(status) status.textContent = '正在提交…';
+      var ctrl = ('AbortController' in window) ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 10000) : null;
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ grade: gr, subject: sn, point: w.kp, mode: mode }),
+        signal: ctrl ? ctrl.signal : undefined
+      }).then(function(resp){ return resp.json(); }).then(function(j){
+        if(timer) clearTimeout(timer);
+        if(j && j.ok){
+          lsSet();
+          var msg = j.duplicate ? '✅ 已收到（今天这个知识点已经提交过啦）'
+            : (mode === 'tonight' ? '✅ 已收到，明晚19:00随练习一起发' : '✅ 已收到，马上单独发');
+          markDone(msg);
+          kbToast(msg);
+        } else { markFail(); kbToast('提交没成功，再试一次或用下面的表单'); }
+      }).catch(function(){
+        if(timer) clearTimeout(timer);
+        markFail();
+        kbToast('提交没成功，再试一次或用下面的表单');
+      });
+    }
     btns.forEach(function(btn){
       btn.addEventListener('click', function(){
         var mode = btn.getAttribute('data-pmode');
+        /* 口令门（2026-10-22 家长定）：有设备令牌直接提交；没有先弹口令框，
+           校验通过自动继续本次提交，取消则恢复按钮可用。 */
+        if(kbPracticeToken()){ doSubmit(mode); return; }
         btns.forEach(function(b){ b.disabled = true; });
-        if(status) status.textContent = '正在提交…';
-        var ctrl = ('AbortController' in window) ? new AbortController() : null;
-        var timer = ctrl ? setTimeout(function(){ ctrl.abort(); }, 10000) : null;
-        fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ grade: gr, subject: sn, point: w.kp, mode: mode }),
-          signal: ctrl ? ctrl.signal : undefined
-        }).then(function(resp){ return resp.json(); }).then(function(j){
-          if(timer) clearTimeout(timer);
-          if(j && j.ok){
-            lsSet();
-            markDone(j.duplicate ? '✅ 已收到（今天这个知识点已经提交过啦）'
-              : (mode === 'tonight' ? '✅ 已收到，明晚19:00随练习一起发' : '✅ 已收到，马上单独发'));
-          } else { markFail(); }
-        }).catch(function(){
-          if(timer) clearTimeout(timer);
-          markFail();
+        kbAskPass(function(){ doSubmit(mode); }, function(){
+          btns.forEach(function(b){ b.disabled = false; });
         });
       });
     });
