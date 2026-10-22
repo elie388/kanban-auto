@@ -3860,7 +3860,7 @@
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
       <div id="up-rec" style="display:none">
-        <div class="up-rechint" id="up-rec-hint" style="display:none">📖 读背作业：先点上面的「📷 选取文件」把读背的<b>原文拍照</b>上传，再点下面的录音，把读的内容录下来，一起交。</div>
+        <div class="up-rechint" id="up-rec-hint" style="display:none">📖 这个读背要把<b>原文</b>一起交哦：先点上面的「📷 选取文件」把要读背的原文拍照上传，再点下面的录音读一遍，一起交，老师会照着原文批改。</div>
         <button class="up-recbtn" id="up-rec-start" type="button">🎤 直接录音</button>
         <div class="up-reclive" id="up-rec-live" style="display:none">
           <span class="up-recdot"></span><span class="up-rectime" id="up-rec-time">00:00 / 15:00</span>
@@ -4063,12 +4063,20 @@
     if(cur.mode === 'task' && cur.title && /(读背|朗读|背诵|口语|诵读|听读|抽背|录音)/.test(cur.title)) return true;
     return false;
   }
+  /* 2026-10-22 家长定：不是系统出的读背（如学校读背作业），提交时提示孩子上传原文照片，
+     批改以同批上传的原文为准。系统针对性练习里的读背、已展示原文的待改正重读，不再提示。 */
+  function recNeedOrig(){
+    if(!recShouldShow() || !cur) return false;
+    if(cur.mode === 'task' && cur.task_source === 'targeted_practice') return false;
+    if(cur.task_id && window.__taskOrig && window.__taskOrig[cur.task_id]) return false;
+    return true;
+  }
   function recGate(){
     var b = $('up-rec'); if(!b) return;
     recReset();
     b.style.display = recShouldShow() ? 'block' : 'none';
     var hint = $('up-rec-hint');
-    if(hint) hint.style.display = (b.style.display !== 'none' && cur && cur.type === 'reading') ? 'block' : 'none';
+    if(hint) hint.style.display = (b.style.display !== 'none' && recNeedOrig()) ? 'block' : 'none';
   }
   function recStopTracks(){
     if(recTimer){ clearInterval(recTimer); recTimer = null; }
