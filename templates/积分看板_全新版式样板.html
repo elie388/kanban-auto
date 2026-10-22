@@ -1257,14 +1257,14 @@
         var corrBadge = '', corrPanel = '', openCls = '';
         var filesRow = '';
         if(Array.isArray(t.files) && t.files.length){
-          filesRow = '<div class="tfiles">' + t.files.map(function(f){
-            var furl = 'data/files/' + encodeURIComponent(f.name);
-            if(/\.pdf$/i.test(f.name)){
+          var pdfs = t.files.filter(function(f){ return /\.pdf$/i.test(f.name); });
+          if(pdfs.length){
+            filesRow = '<div class="tfiles">' + pdfs.map(function(f){
+              var furl = 'data/files/' + encodeURIComponent(f.name);
               return '<a class="tfile" href="' + furl + '" target="_blank" rel="noopener">\uD83D\uDCC4 ' + esc(f.label || f.name) + '</a>'
                 + '<button type="button" class="tfile tprint" data-print="' + furl + '" data-name="' + esc(f.name) + '">\uD83D\uDDA8 打印这份</button>';
-            }
-            return '<a class="tfile" href="' + furl + '" download="' + esc(f.name) + '">\u2B07 ' + esc(f.label || f.name) + '</a>';
-          }).join('') + '</div>';
+            }).join('') + '</div>';
+          }
         }
         if(typeof t.pending_corrections === 'number' && t.pending_corrections > 0){
           var items = '';
