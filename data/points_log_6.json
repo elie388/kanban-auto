@@ -1,11 +1,10 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-22T07:13:47+08:00",
+  "generated_at": "2026-10-22T09:03:46+08:00",
   "window": {
     "days": 7,
-    "max_items": 20,
-    "extra_negative_max": 5
+    "max_items": 300
   },
   "items": [
     {
@@ -193,6 +192,96 @@
       "filtered": false
     },
     {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "英语U3单词抄写整份重交订正",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "英语U3抄写正确率84.4%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:07",
+      "time_source": "entry",
+      "reason": "英语U3抄写书写工整",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "21:06",
+      "time_source": "entry",
+      "reason": "拖地",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "20:27",
+      "time_source": "entry",
+      "reason": "英语抄写订正",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:48",
+      "time_source": "entry",
+      "reason": "英语抄写按时发回",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:48",
+      "time_source": "entry",
+      "reason": "英语抄写书写工整无潦草",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:30",
+      "time_source": "entry",
+      "reason": "语文朗读按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:30",
+      "time_source": "entry",
+      "reason": "语文朗读达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-21",
+      "time": "19:29",
+      "time_source": "entry",
+      "reason": "英语口语按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
       "date": "10-20",
       "time": "23:37",
       "time_source": "entry",
@@ -214,9 +303,45 @@
       "date": "10-20",
       "time": "23:30",
       "time_source": "entry",
+      "reason": "英语作文朗读发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:30",
+      "time_source": "entry",
       "reason": "英语作文朗读迟交",
       "pts": -3,
       "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:30",
+      "time_source": "entry",
+      "reason": "英语作文朗读达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "23:01",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:58",
+      "time_source": "entry",
+      "reason": "英语背28、29对话发回",
+      "pts": 5,
+      "sign": "plus",
       "filtered": false
     },
     {
@@ -230,16 +355,590 @@
     },
     {
       "date": "10-20",
+      "time": "22:58",
+      "time_source": "entry",
+      "reason": "英语背对话达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:53",
+      "time_source": "entry",
+      "reason": "数学读背概念47、48、49发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
       "time": "22:53",
       "time_source": "entry",
       "reason": "数学读背迟交",
       "pts": -3,
       "sign": "minus",
       "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:53",
+      "time_source": "entry",
+      "reason": "数学读背达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:45",
+      "time_source": "entry",
+      "reason": "🏅家务小帮手徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "22:30",
+      "time_source": "entry",
+      "reason": "53天天练三科未交",
+      "pts": -9,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:35",
+      "time_source": "entry",
+      "reason": "语文背诵按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:35",
+      "time_source": "entry",
+      "reason": "语文背诵达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "英语口语按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "英语口语达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "数学作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "数学正确率88.9%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "数学书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "英语作文抄写3次完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "英语抄写正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "20:47",
+      "time_source": "entry",
+      "reason": "英语书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-20",
+      "time": "17:51",
+      "time_source": "entry",
+      "reason": "📆三日不断徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:44",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:44",
+      "time_source": "entry",
+      "reason": "晾衣服连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "数学作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "数学作业正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "数学书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "语文作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "语文作业正确率85.7%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "语文书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "英语作业完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "英语作业正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "英语书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "作业迟交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "22:20",
+      "time_source": "entry",
+      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "22:00",
+      "time_source": "entry",
+      "reason": "53天天练三科未交",
+      "pts": -9,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "20:00",
+      "time_source": "deadline",
+      "reason": "第六期英语阅读写作练习没交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-19",
+      "time": "11:03",
+      "time_source": "entry",
+      "reason": "不整理书桌（2026-晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "18:58",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "16:45",
+      "time_source": "submit",
+      "reason": "数学周试卷按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "16:16",
+      "time_source": "submit",
+      "reason": "英语周试卷Q25订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "16:16",
+      "time_source": "submit",
+      "reason": "英语周试卷写作补写按时发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "15:47",
+      "time_source": "entry",
+      "reason": "冲正",
+      "pts": -4,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "15:25",
+      "time_source": "submit",
+      "reason": "英语周试卷按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": "15:22",
+      "time_source": "submit",
+      "reason": "语文周试卷按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": null,
+      "time_source": null,
+      "reason": "英语周试卷Q25订正一次改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": null,
+      "time_source": null,
+      "reason": "英语周试卷正确率96.6%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-18",
+      "time": null,
+      "time_source": null,
+      "reason": "数学周试卷正确率92.1%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "21:46",
+      "time_source": "submit",
+      "reason": "英语阅读写作第1题补做按时发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "21:46",
+      "time_source": "submit",
+      "reason": "英语写作重写按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "20:49",
+      "time_source": "submit",
+      "reason": "针对性练习按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "20:28",
+      "time_source": "entry",
+      "reason": "冲正：针对性练习书面全对",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "20:23",
+      "time_source": "entry",
+      "reason": "针对性练习正确率88.9%",
+      "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "19:34",
+      "time_source": "submit",
+      "reason": "冲正：针对性练习背诵录音没发",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "19:34",
+      "time_source": "submit",
+      "reason": "语文背诵按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "19:34",
+      "time_source": "submit",
+      "reason": "语文背诵达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "19:33",
+      "time_source": "submit",
+      "reason": "冲正：针对性练习口语录音没发",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "19:33",
+      "time_source": "submit",
+      "reason": "英语口语按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": "15:54",
+      "time_source": "submit",
+      "reason": "15:47/15:54批次",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "家长奖励",
+      "pts": 100,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "英语阅读写作练习第五期没交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "针对性练习书面全对",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "针对性练习口语录音没发",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "针对性练习背诵录音没发",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "英语阅读写作按时发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "英语阅读写作阅读全对",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "针对性练习英语二、3订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-17",
+      "time": null,
+      "time_source": null,
+      "reason": "乱放毛巾",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-16",
+      "time": null,
+      "time_source": null,
+      "reason": "家务连续2天未做",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-16",
+      "time": null,
+      "time_source": null,
+      "reason": "👑学霸徽章",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
     }
   ],
-  "truncated": true,
-  "extra_negative_count": 5,
-  "extra_negative_omitted": 12,
+  "truncated": false,
   "filtered_count": 0
 }
