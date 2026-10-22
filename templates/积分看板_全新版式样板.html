@@ -3684,6 +3684,11 @@
       if(btxt.indexOf('豁免') >= 0 || btxt.indexOf('当天未完成') >= 0) return null;
       return {grade: grade, type: 'chore', task_id: card.getAttribute('data-tid'), task_source: 'chore', title: title, choreCard: true};
     }
+    if(src === 'manual' && title.indexOf('补练') >= 0){
+      /* 补练卡（practice_req_process 以 manual 源建卡）：给提交入口，走练习批改流程（2026-10-22 家长定） */
+      if((card.getAttribute('data-status') || '') === 'done') return null;
+      return {grade: grade, type: 'practice', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
+    }
     var ty = SRC_TYPE[src];
     if(!ty) return null;
     var st = card.getAttribute('data-status') || '';
