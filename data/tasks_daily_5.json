@@ -3,7 +3,7 @@
   "date": "2026-10-22",
   "grade": "五年级",
   "generated_at": "2026-10-22T00:05:11+08:00",
-  "updated_at": "2026-10-22T11:17:03+08:00",
+  "updated_at": "2026-10-22T11:39:23+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -63,11 +63,29 @@
       "updated_at": "2026-10-22T11:17:03+08:00",
       "pending_corrections": 1,
       "corrections": []
+    },
+    {
+      "task_id": "CHORE-20261022-G5",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-10-22T17:30:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-10-22T11:39:22+08:00",
+      "updated_at": "2026-10-22T11:39:23+08:00"
     }
   ],
   "counts": {
-    "total": 3,
-    "pending": 3,
+    "total": 4,
+    "pending": 4,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
