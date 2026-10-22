@@ -1,251 +1,262 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-10-22",
-  "grade": "六年级",
-  "generated_at": "2026-10-22T00:05:11+08:00",
-  "updated_at": "2026-10-22T20:37:47+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-22T20:37:47+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-10-22T19:00:13+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-10-22",
+ "grade": "六年级",
+ "generated_at": "2026-10-22T00:05:11+08:00",
+ "updated_at": "2026-10-22T20:37:47+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-10-22T20:37:47+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261022-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-10-22T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-22T11:39:22+08:00",
-      "updated_at": "2026-10-22T11:39:23+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-22-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-22T16:55:28+08:00",
-      "updated_at": "2026-10-22T16:55:28+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-22-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-22T16:55:28+08:00",
-      "updated_at": "2026-10-22T16:55:28+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-22-ENG",
-      "source": "daily_53",
-      "subject": "英语",
-      "title": "53天天练·英语",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-22T16:55:28+08:00",
-      "updated_at": "2026-10-22T16:55:28+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-22",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "拍登记本照片发回年级邮箱",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-22T19:00:11+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00",
-      "completed_at": "2026-10-22T20:23:56+08:00",
-      "status_source": "kanban_upload:b17926715531199e2f0fc48171682b"
-    },
-    {
-      "task_id": "REG-20261022-4939B9",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念20、21",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念20、21；②思考题P2、3。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-FB7523",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "思考题P2、3。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念20、21；②思考题P2、3。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-146C0D",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄形容词最高级笔记3次，背10次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄形容词最高级笔记3次，背10次；②读U3 speed up单词，P30对话5次。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-00E937",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "读U3 speed up单词，P30对话5次。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄形容词最高级笔记3次，背10次；②读U3 speed up单词，P30对话5次。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-3D8BB2",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "U3单词，P30对话。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：U3单词，P30对话。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-743B82",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "第一单元过关小测",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-67E350",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习U1",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    },
-    {
-      "task_id": "REG-20261022-36C2D1",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读作文10分钟，记录。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-22T20:23:56+08:00"
-    }
-  ],
-  "counts": {
-    "total": 13,
-    "pending": 12,
-    "in_progress": 0,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": "2026-10-22T22:00:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-10-22T19:00:13+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261022-G6",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-10-22T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-10-22T11:39:22+08:00",
+   "updated_at": "2026-10-22T11:39:23+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-22-CHN",
+   "source": "daily_53",
+   "subject": "语文",
+   "title": "53天天练·语文",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-22T16:55:28+08:00",
+   "updated_at": "2026-10-22T16:55:28+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-22-MATH",
+   "source": "daily_53",
+   "subject": "数学",
+   "title": "53天天练·数学",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-22T16:55:28+08:00",
+   "updated_at": "2026-10-22T16:55:28+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-22-ENG",
+   "source": "daily_53",
+   "subject": "英语",
+   "title": "53天天练·英语",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-22T16:55:28+08:00",
+   "updated_at": "2026-10-22T16:55:28+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-10-22",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "拍登记本照片发回年级邮箱",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-10-22T19:00:11+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00",
+   "completed_at": "2026-10-22T20:23:56+08:00",
+   "status_source": "kanban_upload:b17926715531199e2f0fc48171682b"
+  },
+  {
+   "task_id": "REG-20261022-4939B9",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读背概念20、21",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念20、21；②思考题P2、3。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-FB7523",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "思考题P2、3。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念20、21；②思考题P2、3。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-146C0D",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄形容词最高级笔记3次，背10次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄形容词最高级笔记3次，背10次；②读U3 speed up单词，P30对话5次。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-00E937",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "读U3 speed up单词，P30对话5次。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄形容词最高级笔记3次，背10次；②读U3 speed up单词，P30对话5次。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-3D8BB2",
+   "source": "register_book",
+   "subject": "英语早读",
+   "title": "U3单词，P30对话。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语早读：U3单词，P30对话。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-743B82",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "第一单元过关小测",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-67E350",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "预习U1",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "REG-20261022-36C2D1",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读作文10分钟，记录。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-22T20:23:56+08:00",
+   "updated_at": "2026-10-22T20:23:56+08:00"
+  },
+  {
+   "task_id": "TEST-GRADING-20261022-G6",
+   "title": "【验收后删除】批改中状态演示",
+   "type": "homework",
+   "source": "manual",
+   "status": "grading",
+   "review_status": "approved",
+   "date": "2026-10-22",
+   "detail": "临时验收卡，验完即删",
+   "pending_corrections": 0
+  }
+ ],
+ "counts": {
+  "total": 13,
+  "pending": 12,
+  "in_progress": 0,
+  "done": 1,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-10-22T22:00:00+08:00"
 }
