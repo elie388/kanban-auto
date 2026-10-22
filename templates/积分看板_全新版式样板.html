@@ -156,8 +156,9 @@
   .task{
     display:flex; flex-direction:column; align-items:stretch;
     padding:12px 14px; border-radius:var(--radius-sm);
-    border:2px solid transparent;
+    border:1.5px solid #E5E7EB;
     background:#FAFBFC;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
     min-height:56px;
     transition:transform .15s ease;
   }
@@ -180,9 +181,13 @@
   .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 2.8s ease-in-out infinite;}
   @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.6; transform:scale(.88);}}
   @media (prefers-reduced-motion: reduce){ .task .st-dot{animation:none;} }
+  .task.pending{background:#FCF2F2;}
   .task.pending .st-badge{background:#FDECEA; color:#C92A20;}
+  .task.submitted{background:#F0F4F8;}
+  .task.submitted .st-badge{background:#E1EDF9; color:#1D5FA8;}
+  .task.submitted .st-dot{background:#3D77A8;}
   .task.pending .st-dot{background:#E5484D;}
-  .task.correcting{border-color:#FFD97A;}
+  .task.correcting{background:#FEF8EC;}
   .task.correcting .st-badge{background:#FFF3D6; color:#B54708;}
   .task.correcting .st-dot{background:#F08C0A;}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
@@ -301,7 +306,9 @@
   }
   .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
   .task.done .task-name{color:#1E9E52;}
-  .task.done{background:#F3FCF6;}
+  .task.done{background:#F2F9F4; position:relative; padding-top:20px;}
+  .task.done::before{content:''; position:absolute; top:0; left:0; right:0; height:8px; background:#D1E7DA; border-radius:var(--radius-sm) var(--radius-sm) 0 0;}
+  .task.is-exempt{background:#FAFBFC; border-style:dashed;}
 
   /* 学习走势 */
   .tr-legend{display:flex;gap:14px;margin:10px 0 4px;font-size:13px;align-items:center;flex-wrap:wrap;color:var(--sub)}
@@ -1211,7 +1218,7 @@
   var REFRESH_MS = 5 * 60 * 1000;
   var STATUS_MAP = {
     pending:     {cls: 'pending',    badge: '📝 待提交'},
-    submitted:   {cls: 'pending',    badge: '📤 已提交·待批改'},
+    submitted:   {cls: 'submitted',  badge: '📤 已提交·待批改'},
     in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
@@ -1435,7 +1442,7 @@
             badgeText += ' · ' + mRem[0].replace(/\s+/g, '');
           }
         }
-        html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
+        html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeText + '</span>' + miniPill + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
