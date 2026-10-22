@@ -3837,6 +3837,13 @@
 .up-msg.err{color:#b3372f}.up-msg.good{color:#1e6b4a}
 .up-pass{width:100%;box-sizing:border-box;border:1.5px solid #d8d2c0;border-radius:10px;padding:10px;font-size:16px;background:#fff}
 </style>
+<div id="upPreview" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(20,20,25,.95); flex-direction:column;">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px;">
+    <span id="upPreviewName" style="color:#d7dce3; font-size:14px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;"></span>
+    <button type="button" id="upPreviewClose" style="background:none; border:1px solid rgba(255,255,255,.4); color:#fff; border-radius:999px; min-width:44px; min-height:44px; font-size:16px; cursor:pointer; flex:none;">✕</button>
+  </div>
+  <div id="upPreviewStage" style="flex:1; overflow:auto; display:flex; align-items:center; justify-content:center; padding:0 12px 18px;"></div>
+</div>
 <div class="up-mask" id="up-mask">
   <div class="up-sheet" role="dialog" aria-label="交作业">
     <h3 id="up-title">交作业</h3>
@@ -4301,8 +4308,31 @@
       var nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = (recSet.has(f) ? '🎤 ' : '') + (f.name || '文件');
       var sz = document.createElement('span'); sz.className = 'sz';
       sz.textContent = f.size >= 1048576 ? (f.size/1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(f.size/1024)) + 'KB';
-      d.appendChild(nm); d.appendChild(sz); box.appendChild(d);
+      var eye = document.createElement('span'); eye.textContent = '👁'; eye.style.flex = 'none';
+      d.appendChild(nm); d.appendChild(eye); d.appendChild(sz); box.appendChild(d);
+      d.style.cursor = 'pointer';
+      d.addEventListener('click', function(){ previewFile(f); });
     });
+  }
+  /* 2026-10-22 家长定：点已选文件行打开原图/原声预览，交之前核对有没有选错。 */
+  var upPreviewUrl = null;
+  function previewFile(f){
+    var stage = $('upPreviewStage'); if(!stage) return;
+    closePreview();
+    try { upPreviewUrl = URL.createObjectURL(f); } catch(e){ return; }
+    $('upPreviewName').textContent = f.name || '文件';
+    var kind = kindOf(f), el;
+    if(kind === 'video'){ el = document.createElement('video'); el.controls = true; el.src = upPreviewUrl; el.style.maxWidth = '100%'; el.style.maxHeight = '100%'; }
+    else if(kind === 'audio'){ el = document.createElement('audio'); el.controls = true; el.src = upPreviewUrl; el.style.width = '92%'; }
+    else { el = document.createElement('img'); el.src = upPreviewUrl; el.alt = f.name || ''; el.style.maxWidth = '100%'; el.style.maxHeight = '100%'; el.style.objectFit = 'contain';
+      el.onerror = function(){ stage.innerHTML = '<div style="color:#ffb4a2; font-size:15px;">这个文件没法预览</div>'; }; }
+    stage.appendChild(el);
+    $('upPreview').style.display = 'flex';
+  }
+  function closePreview(){
+    var pv = $('upPreview'); if(pv) pv.style.display = 'none';
+    var stage = $('upPreviewStage'); if(stage) stage.innerHTML = '';
+    if(upPreviewUrl){ try { URL.revokeObjectURL(upPreviewUrl); } catch(e){} upPreviewUrl = null; }
   }
   function fileRow(f){
     var d = document.createElement('div'); d.className = 'up-file';
@@ -4405,6 +4435,8 @@
     $('up-close').addEventListener('click', requestClose);
     var pickBtn = $('up-pickbtn'); if(pickBtn) pickBtn.addEventListener('click', function(){ $('up-files').click(); });
     $('up-files').addEventListener('change', paintPicked);
+    var pvc = $('upPreviewClose'); if(pvc) pvc.addEventListener('click', closePreview);
+    var pvm = $('upPreview'); if(pvm) pvm.addEventListener('click', function(e){ if(e.target === pvm) closePreview(); });
     $('up-go').addEventListener('click', function(){ if($('up-go').textContent === '完成') return; doSubmit(); });
     $('up-mask').addEventListener('click', function(e){ if(e.target === $('up-mask')) requestClose(); });
     paintButtons();
