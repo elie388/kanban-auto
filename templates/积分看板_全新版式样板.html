@@ -187,6 +187,7 @@
     display:flex; flex-direction:column; align-items:flex-end; gap:6px;
     flex:0 0 auto; margin-left:auto;
   }
+  .task .st-mini{font-size:11px; font-weight:600; color:#8a8378; background:#F1F3F5; border-radius:999px; padding:2px 8px; white-space:nowrap;}
   /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
      点击展开明细（2026-10-20 续）：徽标独占一行（主行之下左对齐），
      不再与状态徽章同行挤压；展开区逐题列题号/题目/错因。 */
@@ -1154,12 +1155,16 @@
       console.warn('今日任务年级错位：栏目', secId, '收到', data.grade, '数据，已跳过');
       return false;
     }
-    var list = (data.tasks || []).filter(function(t){ return t.review_status === 'approved'; });
+    var list = (data.tasks || []).filter(function(t){
+      if(t.appear_at){ var at = new Date(t.appear_at).getTime(); if(!isNaN(at) && at > Date.now()) return false; }
+      return t.review_status === 'approved';
+    });
     /* meta 常驻任务「提交作业登记本」（2026-10-20，DeepSeek 方案）：不计入完成率分母 */
     var metas = list.filter(function(t){ return t.task_type === 'meta_register'; });
     var normals = list.filter(function(t){ return t.task_type !== 'meta_register'; });
-    var total = normals.length;
-    var done = normals.filter(function(t){ return t.status === 'done'; }).length;
+    var counted = normals.filter(function(t){ return t.source !== 'chore'; });
+    var total = counted.length;
+    var done = counted.filter(function(t){ return t.status === 'done'; }).length;
     var progText = sec.querySelector('.task-prog-text');
     var progBar = sec.querySelector('.task-prog-bar');
     var progFill = sec.querySelector('.task-prog-fill');
@@ -1191,6 +1196,16 @@
     } else {
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
+        var badgeText = sm.badge, miniPill = '';
+        if(t.source === 'chore'){
+          if(t.chore_exempt) badgeText = '🌴 今日豁免';
+          else if(t.chore_missed) badgeText = '当天未完成';
+          else if(t.status === 'done') badgeText = '✅ 已完成' + (t.chore_done_count || 0) + '项';
+          else if(t.status === 'submitted') badgeText = '📤 已提交待审核';
+          else badgeText = '🧹 待提交';
+          if((t.chore_pending_review || 0) > 0 && !t.chore_exempt)
+            miniPill = '<span class="st-mini">审核中 ' + t.chore_pending_review + ' 项</span>';
+        }
         /* 三态显示名（2026-10-20 家长定）：pending 统一显示"📝 待提交"，
            不再按 deadline_today 拆分显示（原 P1-B 拆分取消）。 */
         var sub2 = esc(t.subject || '') + ' · ' + esc(SOURCE_LABEL[t.source] || t.source || '');
@@ -1225,7 +1240,7 @@
         html += '<div class="task ' + sm.cls + openCls + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-name">' + esc(t.title) + '</div>'
           + '<div class="task-progress">' + sub2 + '</div></div>'
-          + '<span class="st-zone"><span class="st-badge">' + sm.badge + '</span></span></div>'
+          + '<span class="st-zone"><span class="st-badge">' + badgeText + '</span>' + miniPill + '</span></div>'
           + corrBadge + corrPanel + '</div>';
       });
     }
@@ -3552,6 +3567,11 @@
     if(title.indexOf('家长事项') >= 0) return null;
     var grade = card.closest('[id^="tasks-g"]') && card.closest('[id^="tasks-g"]').id === 'tasks-g6' ? 6 : 5;
     if(tt === 'meta_register') return {grade: grade, type: 'register_book', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
+    if(src === 'chore'){
+      var btxt = (card.querySelector('.st-badge') || {}).textContent || '';
+      if(btxt.indexOf('豁免') >= 0 || btxt.indexOf('当天未完成') >= 0) return null;
+      return {grade: grade, type: 'chore', task_id: card.getAttribute('data-tid'), task_source: 'chore', title: title, choreCard: true};
+    }
     var ty = SRC_TYPE[src];
     if(!ty) return null;
     var st = card.getAttribute('data-status') || '';
@@ -3563,12 +3583,19 @@
       if(card.querySelector('.up-btn')) return;
       var info = eligible(card);
       if(!info) return;
-      var key = 'task:' + info.task_id;
-      var s = stateGet(); var it = s.items[key];
       var b = document.createElement('button');
-      b.type = 'button'; b.className = 'up-btn' + (it ? ' sent' : '');
-      b.textContent = it ? ('📤 已交' + it.batches + '批 · 再补交') : '📤 交这一项';
-      b.addEventListener('click', function(){ openSheet({mode:'task', info: info, key: key}); });
+      b.type = 'button';
+      if(info.choreCard){
+        b.className = 'up-btn';
+        b.textContent = '🧹 交家务照片';
+        b.addEventListener('click', function(){ openSheet({mode:'chore', grade: info.grade, key: 'chore'}); });
+      } else {
+        var key = 'task:' + info.task_id;
+        var s = stateGet(); var it = s.items[key];
+        b.className = 'up-btn' + (it ? ' sent' : '');
+        b.textContent = it ? ('📤 已交' + it.batches + '批 · 再补交') : '📤 交这一项';
+        b.addEventListener('click', function(){ openSheet({mode:'task', info: info, key: key}); });
+      }
       var zone = card.querySelector('.st-zone');
       if(zone) zone.appendChild(b);
       else {
@@ -3577,20 +3604,8 @@
         else card.appendChild(b);
       }
     });
-    paintBar();
   }
-  /* ---------- 入口：今日任务区顶部常驻栏（家务 + 通用） ---------- */
-  function paintBar(){
-    var sec = document.querySelector('section[aria-label="今日任务"]');
-    if(!sec || sec.querySelector('.up-bar')) return;
-    var bar = document.createElement('div'); bar.className = 'up-bar';
-    var b1 = document.createElement('button'); b1.type = 'button'; b1.className = 'up-btn';
-    b1.textContent = '🧹 交家务照片';
-    b1.addEventListener('click', function(){ openSheet({mode:'chore', key:'chore'}); });
-    bar.appendChild(b1);
-    var h2 = sec.querySelector('h2');
-    if(h2 && h2.nextSibling) sec.insertBefore(bar, h2.nextSibling); else sec.insertBefore(bar, sec.firstChild);
-  }
+  /* 顶部常驻栏已取消（2026-10-22 家长定）：家务改为日常任务卡入口 */
 
   /* ---------- 提交面板 ---------- */
   var cur = null; /* {mode, info?, key, grade, type, task_id, task_source, title} */
@@ -3608,8 +3623,13 @@
     } else if(ctx.mode === 'chore'){
       cur.type = 'chore';
       $('up-title').textContent = '交家务照片';
-      $('up-subtitle').textContent = '先选是哪个孩子做的，再选照片。是哪项家务不用选，看照片就知道啦。';
-      buildChildren();
+      if(ctx.grade){
+        cur.grade = ctx.grade;
+        $('up-subtitle').textContent = (ctx.grade === 6 ? '伟豪' : '彦均') + '做的家务，选照片就行。是哪项家务不用选，看照片就知道啦。';
+      } else {
+        $('up-subtitle').textContent = '先选是哪个孩子做的，再选照片。是哪项家务不用选，看照片就知道啦。';
+        buildChildren();
+      }
     } else {
       $('up-title').textContent = '交作业';
       $('up-subtitle').textContent = '任务卡上没有按钮、或者要补交的时候用这里。先选孩子，再选交的是什么。';
