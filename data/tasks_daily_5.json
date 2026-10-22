@@ -3,12 +3,12 @@
   "date": "2026-10-22",
   "grade": "五年级",
   "generated_at": "2026-10-22T15:59:46+08:00",
-  "updated_at": "2026-10-22T20:23:56+08:00",
+  "updated_at": "2026-10-22T20:37:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-22T20:23:56+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-22T20:37:47+08:00",
+      "new_lines": 6
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -87,19 +87,127 @@
       "title": "提交作业登记本",
       "detail": "拍登记本照片发回年级邮箱",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-22T19:00:11+08:00",
-      "updated_at": "2026-10-22T19:00:11+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-22T20:37:47+08:00",
+      "completed_at": "2026-10-22T20:37:47+08:00"
+    },
+    {
+      "task_id": "REG-20261022-5C99D2",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本及12课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-22T20:37:47+08:00",
+      "updated_at": "2026-10-22T20:37:47+08:00"
+    },
+    {
+      "task_id": "REG-20261022-665B72",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习13课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-22T20:37:47+08:00",
+      "updated_at": "2026-10-22T20:37:47+08:00"
+    },
+    {
+      "task_id": "REG-20261022-734E5F",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "背诵12课（小管家）。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-22T20:37:47+08:00",
+      "updated_at": "2026-10-22T20:37:47+08:00"
+    },
+    {
+      "task_id": "REG-20261022-23E98C",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本29页。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本29页。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-22T20:37:47+08:00",
+      "updated_at": "2026-10-22T20:37:47+08:00"
+    },
+    {
+      "task_id": "REG-20261022-C75208",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②抄M2单词4英4中。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-22T20:37:47+08:00",
+      "updated_at": "2026-10-22T20:37:47+08:00"
+    },
+    {
+      "task_id": "REG-20261022-993A83",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄M2单词4英4中。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②抄M2单词4英4中。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-22T20:37:47+08:00",
+      "updated_at": "2026-10-22T20:37:47+08:00"
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 11,
+    "pending": 10,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-22T22:00:00+08:00"
