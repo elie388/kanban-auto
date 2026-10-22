@@ -4358,15 +4358,24 @@ function kbOpenPrint(name, pages, pdfUrl){
   var pa = document.getElementById('printArea');
   if(!pa) return;
   var h = '<div class="pa-bar"><span class="pa-title">' + name + '</span>'
-    + '<button type="button" class="tfile" id="paPrint">🖨 打印</button>'
-    + (pdfUrl ? '<button type="button" class="tfile" id="paShare">分享 PDF</button>' : '')
+    + '<button type="button" class="tfile tprint1" id="paPrint">🖨 打印</button>'
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
-    + '<div class="pa-hint">打印没弹出来时，点「分享 PDF」，在菜单里选「打印」。</div>';
+    + '<div class="pa-hint">点「打印」后如果弹出菜单，在菜单里选「打印」即可。</div>';
   pages.forEach(function(u){ h += '<img src="' + u + '" alt="练习页">'; });
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
   pa.scrollTop = 0;
   function go(){ try { window.print(); } catch(e){} }
+  function goWithFallback(){
+    var fired = false;
+    function onBP(){ fired = true; window.removeEventListener('beforeprint', onBP); }
+    window.addEventListener('beforeprint', onBP);
+    go();
+    setTimeout(function(){
+      window.removeEventListener('beforeprint', onBP);
+      if(!fired && pdfUrl) kbSharePdf(pdfUrl, name);
+    }, 700);
+  }
   var imgs = pa.querySelectorAll('img'), left = imgs.length;
   if(!left) setTimeout(go, 200);
   imgs.forEach(function(im){
@@ -4375,9 +4384,7 @@ function kbOpenPrint(name, pages, pdfUrl){
     else { im.addEventListener('load', done); im.addEventListener('error', done); }
   });
   document.getElementById('paClose').addEventListener('click', kbClosePrint);
-  document.getElementById('paPrint').addEventListener('click', go);
-  var sh = document.getElementById('paShare');
-  if(sh) sh.addEventListener('click', function(){ kbSharePdf(pdfUrl, name); });
+  document.getElementById('paPrint').addEventListener('click', goWithFallback);
 }
 document.addEventListener('click', function(e){
   var b = (e.target && e.target.closest) ? e.target.closest('[data-print1]') : null;
