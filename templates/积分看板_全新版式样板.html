@@ -212,6 +212,10 @@
   .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
   .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
+  .corr-item .corr-audio{display:flex; align-items:center; gap:10px; margin-top:8px;}
+  .corr-item .corr-play{width:52px; height:52px; border-radius:50%; border:none; background:#3d9970; color:#fff; font-size:22px; line-height:1; cursor:pointer; flex:0 0 auto; padding:0;}
+  .corr-item .corr-alab{font-size:13px; color:#5A5145;}
+  .corr-item .corr-audio audio{display:none;}
   .task .task-info{flex:1; min-width:0; text-align:left;}
   .task .task-name{
     font-size:16px; font-weight:700;
@@ -1145,6 +1149,22 @@
     var tid = b.getAttribute('data-corr');
     if(tid){ if(open) OPEN_CORR[tid] = 1; else delete OPEN_CORR[tid]; }
   });
+  /* 待改正示范录音播放（2026-10-22）：委托切换，同时只播一个，播完复位 */
+  document.addEventListener('click', function(e){
+    var pb = e.target && e.target.closest ? e.target.closest('.corr-play') : null;
+    if(!pb) return;
+    var wrap = pb.closest ? pb.closest('.corr-audio') : null;
+    var au = wrap ? wrap.querySelector('audio') : null;
+    if(!au) return;
+    if(!au.paused){ au.pause(); pb.textContent = '\u25B6'; return; }
+    document.querySelectorAll('.corr-audio audio').forEach(function(o){ if(o !== au && !o.paused) o.pause(); });
+    document.querySelectorAll('.corr-play').forEach(function(o){ if(o !== pb) o.textContent = '\u25B6'; });
+    au.onended = function(){ pb.textContent = '\u25B6'; };
+    au.onpause = function(){ if(au.ended || !au.currentTime) pb.textContent = '\u25B6'; else if(au.paused) pb.textContent = '\u25B6'; };
+    var pr = au.play();
+    if(pr && pr.catch) pr.catch(function(){ pb.textContent = '\u25B6'; });
+    pb.textContent = '\u23F8';
+  });
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -1243,6 +1263,11 @@
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
                 + (c.img ? '<img class="corr-img" src="data/diagrams/' + esc(c.img) + '" alt="画图引导">' : '')
+                + (Array.isArray(c.audios) ? c.audios.map(function(a){
+                    return '<div class="corr-audio"><button type="button" class="corr-play" aria-label="播放示范录音">\u25B6</button>'
+                      + '<span class="corr-alab">' + esc(a.label || '示范录音') + '</span>'
+                      + '<audio preload="none" src="data/audio/' + esc(a.src) + '"></audio></div>';
+                  }).join('') : '')
                 + '</div>';
             });
           } else {

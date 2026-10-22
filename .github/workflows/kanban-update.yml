@@ -86,6 +86,17 @@ jobs:
             ls -la public/data/diagrams/ || true
           fi
 
+      # 读背示范录音通道（2026-10-22 家长定）：待改正明细里的示范录音
+      # data/audio/ 同步进 Pages 产物，供明细里的 <audio> 引用；
+      # 目录不存在或为空时跳过（不阻断构建）。
+      - name: 同步读背示范录音到 Pages 产物
+        run: |
+          if [ -d data/audio ]; then
+            mkdir -p public/data/audio
+            cp data/audio/* public/data/audio/ 2>/dev/null || true
+            ls -la public/data/audio/ || true
+          fi
+
       # 看板真实数据通道（KB-STATS-AUTO-2026-10-19，DeepSeek终审 B1/R1/R3）：
       # 同步 data/stats_grade_*.json、points_log_*.json、shop_grade_*.json 进 Pages 产物。
       # 硬断言：文件缺失/为空/schema异常/敏感词命中任一即构建失败（余额是家长最敏感字段，不允许静默坏数据）。
