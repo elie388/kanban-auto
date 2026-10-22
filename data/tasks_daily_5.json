@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T00:45:51+08:00",
+  "updated_at": "2026-10-23T00:55:29+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -45,7 +45,10 @@
       "carried_from": "2026-10-22",
       "carry_count": 1,
       "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:50+08:00"
+      "completed_at": "2026-10-23T00:45:50+08:00",
+      "orig_photos": [
+        "ac23fc4bd2d57efd.jpg"
+      ]
     },
     {
       "task_id": "REG-20261022-665B72",
@@ -71,7 +74,10 @@
       "carried_from": "2026-10-22",
       "carry_count": 1,
       "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:50+08:00"
+      "completed_at": "2026-10-23T00:45:50+08:00",
+      "orig_photos": [
+        "7e01549d0afdd660.jpg"
+      ]
     },
     {
       "task_id": "REG-20261022-734E5F",
@@ -97,7 +103,10 @@
       "carried_from": "2026-10-22",
       "carry_count": 1,
       "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00"
+      "completed_at": "2026-10-23T00:45:51+08:00",
+      "orig_photos": [
+        "780f82f3d8cbdafe.jpg"
+      ]
     },
     {
       "task_id": "REG-20261022-23E98C",
@@ -122,7 +131,10 @@
       "carried_from": "2026-10-22",
       "carry_count": 1,
       "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00"
+      "completed_at": "2026-10-23T00:45:51+08:00",
+      "orig_photos": [
+        "73e37b53e154b93e.jpg"
+      ]
     },
     {
       "task_id": "REG-20261022-C75208",
@@ -148,7 +160,10 @@
       "carried_from": "2026-10-22",
       "carry_count": 1,
       "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00"
+      "completed_at": "2026-10-23T00:45:51+08:00",
+      "orig_photos": [
+        "4ceda5c9c82a6ed5.jpg"
+      ]
     },
     {
       "task_id": "REG-20261022-993A83",
@@ -173,7 +188,10 @@
       "carried_from": "2026-10-22",
       "carry_count": 1,
       "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00"
+      "completed_at": "2026-10-23T00:45:51+08:00",
+      "orig_photos": [
+        "68a3e0575d28d5fd.jpg"
+      ]
     },
     {
       "task_id": "CHORE-20261023-G5",
