@@ -1148,14 +1148,14 @@
 
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
-      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}
-function fmtQ(t){
-  if(!t) return t;
-  var ms = t.match(/[A-E][.、．]/g);
-  if(!ms || ms.length < 3) return t;
-  return t.replace(/\s*([A-E])[.、．]\s*/g, '\n$1. ').replace(/^\n/, '').trim();
-}[c];
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
+  }
+  function fmtQ(t){
+    if(!t) return t;
+    var ms = t.match(/[A-E][.、．]/g);
+    if(!ms || ms.length < 3) return t;
+    return t.replace(/\s*([A-E])[.、．]\s*/g, '\n$1. ').replace(/^\n/, '').trim();
   }
   function todayStr(){
     try { return new Date().toLocaleDateString('en-CA', {timeZone: 'Asia/Shanghai'}); }
