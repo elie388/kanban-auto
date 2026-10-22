@@ -3483,6 +3483,19 @@
 .up-pickbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;padding:14px;border:1.5px dashed #b98a2f;border-radius:12px;background:#fdf6df;color:#7a5b12;font-size:18px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .up-pickbtn:active{transform:scale(.98)}
 .up-files-hidden{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.up-recbtn{display:block; width:100%; margin-top:10px; padding:13px; font-size:16px; font-weight:700; color:#1e6b4a; background:#e8f7ef; border:1.5px dashed #3d9970; border-radius:12px; cursor:pointer;}
+.up-reclive{display:flex; align-items:center; gap:10px; margin-top:10px; padding:10px 12px; border:1.5px solid #d66; border-radius:12px; background:#fdf0f0;}
+.up-recdot{width:12px; height:12px; border-radius:50%; background:#d33; animation:uprecblink 1s infinite;}
+@keyframes uprecblink{0%,100%{opacity:1}50%{opacity:.25}}
+.up-rectime{font-size:15px; font-weight:700; color:#a33; flex:1;}
+.up-recstop{padding:8px 14px; font-size:14px; font-weight:700; color:#fff; background:#d66; border:none; border-radius:9px; cursor:pointer;}
+.up-recprev{margin-top:10px; padding:10px; border:1.5px solid #e7e1cd; border-radius:12px; background:#fff;}
+.up-recprev audio{width:100%;}
+.up-recbtns{display:flex; gap:8px; margin-top:8px;}
+.up-recuse{flex:1; padding:10px; font-size:14.5px; font-weight:700; color:#fff; background:#3d9970; border:none; border-radius:9px; cursor:pointer;}
+.up-recredo{padding:10px 14px; font-size:14.5px; color:#6B7280; background:#F1F3F5; border:none; border-radius:9px; cursor:pointer;}
+.up-recnote{margin-top:8px; font-size:12.5px; color:#1e6b4a;}
+.up-recerr{margin-top:8px; font-size:13px; color:#c0392b;}
 .up-sub{color:#8a8378;font-size:13.5px;margin-bottom:10px;line-height:1.5}
 .up-row{margin:12px 0}
 .up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
@@ -3525,6 +3538,22 @@
       <button class="up-pickbtn" id="up-pickbtn" type="button">📷 选取文件</button>
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
+      <div id="up-rec" style="display:none">
+        <button class="up-recbtn" id="up-rec-start" type="button">🎤 直接录音（最长5分钟）</button>
+        <div class="up-reclive" id="up-rec-live" style="display:none">
+          <span class="up-recdot"></span><span class="up-rectime" id="up-rec-time">00:00 / 05:00</span>
+          <button class="up-recstop" id="up-rec-stop" type="button">⏹ 停止</button>
+        </div>
+        <div class="up-recprev" id="up-rec-prev" style="display:none">
+          <audio id="up-rec-audio" controls></audio>
+          <div class="up-recbtns">
+            <button class="up-recuse" id="up-rec-use" type="button">✅ 用这段录音</button>
+            <button class="up-recredo" id="up-rec-redo" type="button">🗑 重录</button>
+          </div>
+        </div>
+        <div class="up-recnote" id="up-rec-note" style="display:none"></div>
+        <div class="up-recerr" id="up-rec-err" style="display:none"></div>
+      </div>
     </div>
     <div class="up-row">
       <label>想说的话（可不写）</label>
@@ -3622,6 +3651,7 @@
     busy = false; var go = $('up-go'); go.disabled = false; go.textContent = '全部交完 ✅'; go.onclick = null;
     $('up-msg').textContent = ''; $('up-msg').className = 'up-msg';
     $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
+    recFiles = []; recSet = new Set();
     $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none';
     if(ctx.mode === 'task'){
       cur.grade = ctx.info.grade; cur.type = ctx.info.type;
@@ -3644,6 +3674,7 @@
       buildChildren(); buildTypes();
     }
     $('up-passrow').style.display = token() ? 'none' : 'block';
+    recGate();
     $('up-mask').classList.add('open');
   }
   function buildChildren(){
@@ -3662,12 +3693,122 @@
     TYPES.forEach(function(t){
       var b = document.createElement('button'); b.type = 'button'; b.className = 'up-chip' + (cur.type === t.v ? ' on' : '');
       b.textContent = t.t;
-      b.addEventListener('click', function(){ cur.type = t.v; buildTypes(); });
+      b.addEventListener('click', function(){ cur.type = t.v; buildTypes(); recGate(); });
       box.appendChild(b);
     });
   }
-  function closeSheet(){ if(busy) return; stopAutoExit(); $('up-mask').classList.remove('open'); }
-  function requestClose(){ if(busy) return; stopAutoExit(); $('up-mask').classList.remove('open'); }
+  function closeSheet(){ if(busy) return; stopAutoExit(); recReset(); $('up-mask').classList.remove('open'); }
+  function requestClose(){ if(busy) return; stopAutoExit(); recReset(); $('up-mask').classList.remove('open'); }
+  /* ---------- 直接录音（2026-10-22 家长定：仅读背/口语类；gemini+deepseek 评审） ---------- */
+  var recFiles = [], recSet = new Set();
+  var recMR = null, recStream = null, recChunks = [], recStartAt = 0, recTimer = null, recBlob = null, recMime = '', recStopWhy = '';
+  var REC_MAX_SEC = 300;
+  function recSupported(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
+  function recShouldShow(){
+    if(!recSupported() || !cur) return false;
+    if(cur.type === 'reading') return true;
+    if(cur.mode === 'task' && cur.title && /(读背|朗读|背诵|口语|诵读|听读|抽背|录音)/.test(cur.title)) return true;
+    return false;
+  }
+  function recGate(){
+    var b = $('up-rec'); if(!b) return;
+    recReset();
+    b.style.display = recShouldShow() ? 'block' : 'none';
+  }
+  function recStopTracks(){
+    if(recTimer){ clearInterval(recTimer); recTimer = null; }
+    if(recStream){ recStream.getTracks().forEach(function(t){ t.stop(); }); recStream = null; }
+  }
+  function recReset(){
+    if(recMR && recMR.state === 'recording'){ recStopWhy = 'discard'; try { recMR.stop(); } catch(e){} }
+    recMR = null; recBlob = null; recChunks = []; recStopTracks();
+    var st = $('up-rec-start'), l = $('up-rec-live'), p = $('up-rec-prev'), e = $('up-rec-err'), n = $('up-rec-note');
+    if(st) st.style.display = 'block';
+    if(l) l.style.display = 'none';
+    if(p) p.style.display = 'none';
+    if(e){ e.style.display = 'none'; e.textContent = ''; }
+    if(n) n.style.display = 'none';
+  }
+  function recErr(msg){ var e = $('up-rec-err'); if(e){ e.textContent = msg; e.style.display = 'block'; } }
+  function recFmt(sec){ var m = Math.floor(sec / 60), x = sec % 60; return (m < 10 ? '0' : '') + m + ':' + (x < 10 ? '0' : '') + x; }
+  function recPickMime(){
+    var cands = ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm', 'audio/ogg'];
+    for(var i = 0; i < cands.length; i++){ try { if(MediaRecorder.isTypeSupported(cands[i])) return cands[i]; } catch(e){} }
+    return '';
+  }
+  function recExt(mime){
+    if(mime.indexOf('mp4') >= 0) return 'm4a';
+    if(mime.indexOf('webm') >= 0) return 'webm';
+    if(mime.indexOf('ogg') >= 0) return 'ogg';
+    return 'm4a';
+  }
+  function recStart(){
+    recErr('');
+    if(!recSupported()){ recErr('这台设备不支持直接录音，可以用选文件上传录音。'); return; }
+    navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+      recStream = stream; recChunks = []; recMime = recPickMime(); recStopWhy = '';
+      try { recMR = recMime ? new MediaRecorder(stream, {mimeType: recMime}) : new MediaRecorder(stream); }
+      catch(e){ recMR = new MediaRecorder(stream); }
+      if(!recMime && recMR.mimeType) recMime = recMR.mimeType;
+      recMR.ondataavailable = function(ev){ if(ev.data && ev.data.size) recChunks.push(ev.data); };
+      recMR.onstop = recOnStop;
+      recMR.start(1000);
+      recStartAt = Date.now();
+      $('up-rec-start').style.display = 'none';
+      $('up-rec-prev').style.display = 'none';
+      $('up-rec-note').style.display = 'none';
+      $('up-rec-live').style.display = 'flex';
+      $('up-rec-time').textContent = '00:00 / 05:00';
+      recTimer = setInterval(function(){
+        var sec = Math.floor((Date.now() - recStartAt) / 1000);
+        $('up-rec-time').textContent = recFmt(sec) + ' / 05:00';
+        if(sec >= REC_MAX_SEC) recStop('max');
+      }, 250);
+    }).catch(function(err){
+      if(err && (err.name === 'NotAllowedError' || err.name === 'SecurityError')) recErr('没有麦克风权限哦。可以让爸爸妈妈在设置里打开，或者用选文件上传录音。');
+      else recErr('录音打不开，可以用选文件上传录音。');
+    });
+  }
+  function recStop(why){ recStopWhy = why || ''; if(recMR && recMR.state === 'recording'){ try { recMR.stop(); } catch(e){} } }
+  function recOnStop(){
+    if(recTimer){ clearInterval(recTimer); recTimer = null; }
+    if(recStream){ recStream.getTracks().forEach(function(t){ t.stop(); }); recStream = null; }
+    var why = recStopWhy; recStopWhy = '';
+    $('up-rec-live').style.display = 'none';
+    if(why === 'discard' || !$('up-mask').classList.contains('open')){ recBlob = null; return; }
+    recBlob = new Blob(recChunks, {type: recMime || 'audio/mp4'});
+    if(!recBlob.size){ $('up-rec-start').style.display = 'block'; recErr('没录到声音，再试一次？'); return; }
+    $('up-rec-audio').src = URL.createObjectURL(recBlob);
+    $('up-rec-prev').style.display = 'block';
+    var note = $('up-rec-note');
+    if(why === 'max'){ note.textContent = '已经录满5分钟啦，先听一听，可以就点「用这段录音」。'; note.style.display = 'block'; }
+    else if(why === 'interrupt'){ note.textContent = '刚才录音中断了，这是中断前的片段，听一听能不能用。'; note.style.display = 'block'; }
+    else note.style.display = 'none';
+  }
+  function recUse(){
+    if(!recBlob) return;
+    var d = new Date();
+    var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+    var name = '录音_' + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + '_' + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds()) + '.' + recExt(recMime || '');
+    var f = new File([recBlob], name, {type: (recMime || 'audio/mp4').split(';')[0]});
+    recFiles.push(f); recSet.add(f);
+    recBlob = null;
+    $('up-rec-prev').style.display = 'none';
+    $('up-rec-start').style.display = 'block';
+    var note = $('up-rec-note'); note.textContent = '录音已加入文件列表 ✅ 可以继续录下一段，或者直接点提交。'; note.style.display = 'block';
+    paintPicked();
+  }
+  function recRedo(){ recBlob = null; $('up-rec-prev').style.display = 'none'; $('up-rec-start').style.display = 'block'; $('up-rec-note').style.display = 'none'; }
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && recMR && recMR.state === 'recording') recStop('interrupt');
+  });
+  (function(){
+    var st = $('up-rec-start'); if(st) st.addEventListener('click', recStart);
+    var sp = $('up-rec-stop'); if(sp) sp.addEventListener('click', function(){ recStop(''); });
+    var us = $('up-rec-use'); if(us) us.addEventListener('click', recUse);
+    var rd = $('up-rec-redo'); if(rd) rd.addEventListener('click', recRedo);
+  })();
+
 
   /* ---------- 成功后自动退出（8 秒；2026-10-22 家长定，deepseek 复核） ---------- */
   var cdTimer = null, cdEndAt = 0;
@@ -3742,12 +3883,15 @@
       xhr.send(file);
     });
   }
+  function pickedFiles(){
+    return Array.prototype.slice.call($('up-files').files || []).concat(recFiles);
+  }
   function paintPicked(){
-    var files = Array.prototype.slice.call($('up-files').files || []);
+    var files = pickedFiles();
     var box = $('up-filelist'); box.innerHTML = '';
     files.forEach(function(f){
       var d = document.createElement('div'); d.className = 'up-file';
-      var nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = f.name || '文件';
+      var nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = (recSet.has(f) ? '🎤 ' : '') + (f.name || '文件');
       var sz = document.createElement('span'); sz.className = 'sz';
       sz.textContent = f.size >= 1048576 ? (f.size/1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(f.size/1024)) + 'KB';
       d.appendChild(nm); d.appendChild(sz); box.appendChild(d);
@@ -3769,7 +3913,7 @@
   function doSubmit(){
     if(busy) return;
     if($('up-go').textContent === '完成') return;
-    var files = Array.prototype.slice.call($('up-files').files || []);
+    var files = pickedFiles();
     if(!cur.grade){ setMsg('先选一下是哪个孩子哦', 'err'); return; }
     if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
     if(!files.length){ setMsg('还没有选照片/录音/视频哦', 'err'); return; }
@@ -3790,6 +3934,7 @@
         var meta = files.map(function(f, i){
           var m = {ext: extOf(f), kind: kindOf(f), size: f.size};
           if(shas[i]) m.sha256 = shas[i];
+          if(recSet.has(f)) m.recorded = true;
           if(f.type) m.content_type = f.type;
           return m;
         });
@@ -3843,7 +3988,7 @@
         busy = false; $('up-go').disabled = false;
       });
   }
-  function closeSheetForce(){ $('up-mask').classList.remove('open'); }
+  function closeSheetForce(){ recReset(); $('up-mask').classList.remove('open'); }
 
   document.addEventListener('DOMContentLoaded', function(){
     $('up-close').addEventListener('click', requestClose);
