@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "六年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T00:11:28+08:00",
+  "updated_at": "2026-10-23T00:45:09+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -29,7 +29,7 @@
       "title": "读背概念20、21",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念20、21；②思考题P2、3。→ 待完成（无佐证照片）",
@@ -38,13 +38,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:08+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:08+08:00",
+      "status_source": "manual"
     },
     {
       "task_id": "REG-20261022-146C0D",
@@ -53,7 +55,7 @@
       "title": "抄形容词最高级笔记3次，背10次",
       "detail": "【家长今晚定：背诵也要有录音】笔记抄写拍照交；背诵部分录一段背诵录音交回（读背类，用「交这一项」里的录音）。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄形容词最高级笔记3次，背10次；②读U3 speed up单词，P30对话5次。→ 待完成（无佐证照片）",
@@ -62,14 +64,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:08+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "bank_writeback",
+      "status_source": "manual",
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:08+08:00"
     },
     {
       "task_id": "REG-20261022-00E937",
@@ -78,7 +81,7 @@
       "title": "读U3 speed up单词，P30对话5次。",
       "detail": "原状态：待完成（无佐证照片） 【读背类】单词和对话朗读录音交回（用「交这一项」里的录音）。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄形容词最高级笔记3次，背10次；②读U3 speed up单词，P30对话5次。→ 待完成（无佐证照片）",
@@ -87,13 +90,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:08+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:08+08:00",
+      "status_source": "manual"
     },
     {
       "task_id": "REG-20261022-3D8BB2",
@@ -102,7 +107,7 @@
       "title": "U3单词，P30对话。",
       "detail": "原状态：待完成（无佐证照片）",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语早读：U3单词，P30对话。→ 待完成（无佐证照片）",
@@ -111,14 +116,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:09+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "task_type": "reading",
       "type_source": "regex_bao",
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:09+08:00",
+      "status_source": "manual"
     },
     {
       "task_id": "REG-20261022-743B82",
@@ -127,7 +134,7 @@
       "title": "第一单元过关小测",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
@@ -136,13 +143,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:09+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "bank_writeback",
+      "status_source": "manual",
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:09+08:00"
     },
     {
       "task_id": "REG-20261022-67E350",
@@ -151,7 +159,7 @@
       "title": "预习U1",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
@@ -160,13 +168,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:09+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:09+08:00",
+      "status_source": "manual"
     },
     {
       "task_id": "REG-20261022-36C2D1",
@@ -175,7 +185,7 @@
       "title": "读作文10分钟，记录。",
       "detail": "原状态：待完成（无佐证照片）",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①第一单元过关小测；②预习U1；③读作文10分钟，记录。→ 待完成（无佐证照片）",
@@ -184,14 +194,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-22T20:23:56+08:00",
-      "updated_at": "2026-10-23T00:05:10+08:00",
+      "updated_at": "2026-10-23T00:45:09+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "task_type": "reading",
       "type_source": "regex_bao",
       "carry_first_date": "2026-10-22",
       "carried_from": "2026-10-22",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-23T00:45:09+08:00",
+      "status_source": "manual"
     },
     {
       "task_id": "CHORE-20261023-G6",
@@ -214,9 +226,9 @@
   ],
   "counts": {
     "total": 8,
-    "pending": 6,
-    "in_progress": 2,
-    "done": 0,
+    "pending": 1,
+    "in_progress": 0,
+    "done": 7,
     "pending_review": 0
   },
   "deadline_today": null
