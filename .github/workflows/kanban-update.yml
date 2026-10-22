@@ -75,6 +75,17 @@ jobs:
           cp data/tasks_daily_5.json data/tasks_daily_6.json public/data/
           ls -la public/data/
 
+      # 待改正配图通道（2026-10-22 家长定）：待改正明细的画图引导图
+      # data/diagrams/ 同步进 Pages 产物，供明细里的 <img> 引用；
+      # 目录不存在或为空时跳过（不阻断构建）。
+      - name: 同步待改正配图到 Pages 产物
+        run: |
+          if [ -d data/diagrams ]; then
+            mkdir -p public/data/diagrams
+            cp data/diagrams/*.png public/data/diagrams/ 2>/dev/null || true
+            ls -la public/data/diagrams/ || true
+          fi
+
       # 看板真实数据通道（KB-STATS-AUTO-2026-10-19，DeepSeek终审 B1/R1/R3）：
       # 同步 data/stats_grade_*.json、points_log_*.json、shop_grade_*.json 进 Pages 产物。
       # 硬断言：文件缺失/为空/schema异常/敏感词命中任一即构建失败（余额是家长最敏感字段，不允许静默坏数据）。
