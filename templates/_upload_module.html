@@ -1,0 +1,322 @@
+<!-- ===== 交作业上传模块（规格 v2.2，2026-10-22）开始 ===== -->
+<style>
+.up-btn{margin-top:8px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid #b98a2f;background:#fdf6df;color:#7a5b12;font-size:14px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.up-btn:active{transform:scale(.97)}
+.up-btn.sent{border-color:#3d9970;background:#e8f7ef;color:#1e6b4a}
+.up-btn.busy{opacity:.55;pointer-events:none}
+.up-bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 2px 2px}
+.up-bar .up-btn{margin-top:0;font-size:15px;padding:10px 18px}
+.up-mask{position:fixed;inset:0;background:rgba(40,35,20,.45);z-index:9998;display:none;align-items:flex-end;justify-content:center}
+.up-mask.open{display:flex}
+.up-sheet{background:#fffdf5;width:min(560px,100%);max-height:88vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:18px 18px 26px;box-shadow:0 -6px 30px rgba(0,0,0,.25)}
+.up-sheet h3{margin:2px 0 6px;font-size:19px}
+.up-sub{color:#8a8378;font-size:13.5px;margin-bottom:10px;line-height:1.5}
+.up-row{margin:12px 0}
+.up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
+.up-pick{display:flex;gap:8px;flex-wrap:wrap}
+.up-chip{padding:8px 14px;border-radius:999px;border:1.5px solid #d8d2c0;background:#fff;font-size:14.5px;cursor:pointer}
+.up-chip.on{border-color:#b98a2f;background:#fdf6df;font-weight:700;color:#7a5b12}
+.up-sheet textarea{width:100%;box-sizing:border-box;border:1.5px solid #d8d2c0;border-radius:10px;padding:9px;font-size:15px;min-height:56px;background:#fff}
+.up-file{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid #e7e1cd;border-radius:10px;margin:6px 0;background:#fff;font-size:13.5px}
+.up-file .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-prog{height:6px;background:#eee7d2;border-radius:3px;overflow:hidden;margin-top:4px}
+.up-prog i{display:block;height:100%;width:0;background:#d9a441;transition:width .2s}
+.up-file.ok{border-color:#3d9970}.up-file.ok .up-prog i{background:#3d9970}
+.up-file.bad{border-color:#d66}.up-file.bad .up-prog i{background:#d66}
+.up-actions{display:flex;gap:10px;margin-top:16px}
+.up-go{flex:1;padding:13px;border:none;border-radius:12px;background:#d9a441;color:#fff;font-size:16.5px;font-weight:700;cursor:pointer}
+.up-go:disabled{opacity:.5}
+.up-cancel{padding:13px 18px;border-radius:12px;border:1.5px solid #d8d2c0;background:#fff;font-size:15px;cursor:pointer}
+.up-msg{margin-top:12px;font-size:14.5px;line-height:1.6}
+.up-msg.err{color:#b3372f}.up-msg.good{color:#1e6b4a}
+.up-pass{width:100%;box-sizing:border-box;border:1.5px solid #d8d2c0;border-radius:10px;padding:10px;font-size:16px;background:#fff}
+</style>
+<div class="up-mask" id="up-mask">
+  <div class="up-sheet" role="dialog" aria-label="交作业">
+    <h3 id="up-title">交作业</h3>
+    <div class="up-sub" id="up-subtitle"></div>
+    <div class="up-row" id="up-childrow" style="display:none">
+      <label>哪个孩子</label>
+      <div class="up-pick" id="up-children"></div>
+    </div>
+    <div class="up-row" id="up-typerow" style="display:none">
+      <label>交的是什么</label>
+      <div class="up-pick" id="up-types"></div>
+    </div>
+    <div class="up-row" id="up-passrow" style="display:none">
+      <label>第一次用要输一次家庭口令（之后这台设备就不用再输了）</label>
+      <input class="up-pass" id="up-pass" type="text" autocomplete="off" placeholder="家庭口令">
+    </div>
+    <div class="up-row">
+      <label>选照片、录音或视频（一次最多10个）</label>
+      <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" style="font-size:15px">
+      <div id="up-filelist"></div>
+    </div>
+    <div class="up-row">
+      <label>想说的话（可不写）</label>
+      <textarea id="up-message" placeholder="比如：有一道题我不太懂……"></textarea>
+    </div>
+    <div class="up-actions">
+      <button class="up-cancel" id="up-close" type="button">先不交</button>
+      <button class="up-go" id="up-go" type="button">全部交完 ✅</button>
+    </div>
+    <div class="up-msg" id="up-msg"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var WORKER = 'https://homework-upload.whyjjf.workers.dev';
+  var LS_TOKEN = 'hw-dev-token';
+  var LS_STATE = 'hw-up-state';
+  var TYPES = [
+    {v:'homework', t:'作业'}, {v:'practice', t:'练习'}, {v:'correction', t:'订正'},
+    {v:'tian53', t:'53天天练'}, {v:'register_book', t:'登记本'}, {v:'reading', t:'读背录音/视频'},
+    {v:'chore', t:'家务'}
+  ];
+  var TYPE_NAME = {}; TYPES.forEach(function(x){ TYPE_NAME[x.v] = x.t; });
+  var SRC_TYPE = {daily_53:'tian53', targeted_practice:'practice', exam_correction:'correction', register_book:'homework'};
+  var busy = false;
+
+  function $(id){ return document.getElementById(id); }
+  function todayStr(){ try { return new Date().toLocaleDateString('en-CA', {timeZone:'Asia/Shanghai'}); } catch(e){ return ''; } }
+  function stateGet(){
+    try { var s = JSON.parse(localStorage.getItem(LS_STATE) || '{}'); return (s.date === todayStr()) ? s : {date: todayStr(), items:{}}; }
+    catch(e){ return {date: todayStr(), items:{}}; }
+  }
+  function stateSet(s){ try { localStorage.setItem(LS_STATE, JSON.stringify(s)); } catch(e){} }
+  function markSubmitted(key, receipt){
+    var s = stateGet(); var it = s.items[key] || {batches: 0};
+    it.batches += 1; it.receipt = receipt; s.items[key] = it; stateSet(s);
+    paintButtons();
+  }
+  function token(){ try { return localStorage.getItem(LS_TOKEN) || ''; } catch(e){ return ''; } }
+
+  /* ---------- 入口：任务卡按钮 ---------- */
+  function eligible(card){
+    var src = card.getAttribute('data-src') || '';
+    var tt = card.getAttribute('data-ttype') || '';
+    var nameEl = card.querySelector('.task-name');
+    var title = nameEl ? nameEl.textContent : '';
+    if(title.indexOf('家长事项') >= 0) return null;
+    var grade = card.closest('[id^="tasks-g"]') && card.closest('[id^="tasks-g"]').id === 'tasks-g6' ? 6 : 5;
+    if(tt === 'meta_register') return {grade: grade, type: 'register_book', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
+    var ty = SRC_TYPE[src];
+    if(!ty) return null;
+    var st = card.getAttribute('data-status') || '';
+    if(st === 'done') return null;
+    return {grade: grade, type: ty, task_id: card.getAttribute('data-tid'), task_source: src, title: title};
+  }
+  function paintButtons(){
+    document.querySelectorAll('.task[data-tid]').forEach(function(card){
+      if(card.querySelector('.up-btn')) return;
+      var info = eligible(card);
+      if(!info) return;
+      var key = 'task:' + info.task_id;
+      var s = stateGet(); var it = s.items[key];
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'up-btn' + (it ? ' sent' : '');
+      b.textContent = it ? ('📤 已交' + it.batches + '批 · 再补交') : '📤 交这一项';
+      b.addEventListener('click', function(){ openSheet({mode:'task', info: info, key: key}); });
+      var main = card.querySelector('.task-main');
+      if(main && main.parentNode === card) card.insertBefore(b, card.children[1] || null);
+      else card.appendChild(b);
+    });
+    paintBar();
+  }
+  /* ---------- 入口：今日任务区顶部常驻栏（家务 + 通用） ---------- */
+  function paintBar(){
+    var sec = document.querySelector('section[aria-label="今日任务"]');
+    if(!sec || sec.querySelector('.up-bar')) return;
+    var bar = document.createElement('div'); bar.className = 'up-bar';
+    var b1 = document.createElement('button'); b1.type = 'button'; b1.className = 'up-btn';
+    b1.textContent = '🧹 交家务照片';
+    b1.addEventListener('click', function(){ openSheet({mode:'chore', key:'chore'}); });
+    var b2 = document.createElement('button'); b2.type = 'button'; b2.className = 'up-btn';
+    b2.textContent = '📥 交作业（找不到按钮时用）';
+    b2.addEventListener('click', function(){ openSheet({mode:'panel', key:'panel'}); });
+    bar.appendChild(b1); bar.appendChild(b2);
+    var h2 = sec.querySelector('h2');
+    if(h2 && h2.nextSibling) sec.insertBefore(bar, h2.nextSibling); else sec.insertBefore(bar, sec.firstChild);
+  }
+
+  /* ---------- 提交面板 ---------- */
+  var cur = null; /* {mode, info?, key, grade, type, task_id, task_source, title} */
+  function openSheet(ctx){
+    cur = {mode: ctx.mode, key: ctx.key, grade: null, type: null, task_id: null, task_source: null, title: ''};
+    busy = false; var go = $('up-go'); go.disabled = false; go.textContent = '全部交完 ✅'; go.onclick = null;
+    $('up-msg').textContent = ''; $('up-msg').className = 'up-msg';
+    $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
+    $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none';
+    if(ctx.mode === 'task'){
+      cur.grade = ctx.info.grade; cur.type = ctx.info.type;
+      cur.task_id = ctx.info.task_id; cur.task_source = ctx.info.task_source; cur.title = ctx.info.title;
+      $('up-title').textContent = '交这一项';
+      $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
+    } else if(ctx.mode === 'chore'){
+      cur.type = 'chore';
+      $('up-title').textContent = '交家务照片';
+      $('up-subtitle').textContent = '先选是哪个孩子做的，再选照片。是哪项家务不用选，看照片就知道啦。';
+      buildChildren();
+    } else {
+      $('up-title').textContent = '交作业';
+      $('up-subtitle').textContent = '任务卡上没有按钮、或者要补交的时候用这里。先选孩子，再选交的是什么。';
+      buildChildren(); buildTypes();
+    }
+    $('up-passrow').style.display = token() ? 'none' : 'block';
+    $('up-mask').classList.add('open');
+  }
+  function buildChildren(){
+    $('up-childrow').style.display = 'block';
+    var box = $('up-children'); box.innerHTML = '';
+    [{g:5, n:'彦均'}, {g:6, n:'伟豪'}].forEach(function(c){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'up-chip' + (cur.grade === c.g ? ' on' : '');
+      b.textContent = c.n;
+      b.addEventListener('click', function(){ cur.grade = c.g; buildChildren(); });
+      box.appendChild(b);
+    });
+  }
+  function buildTypes(){
+    $('up-typerow').style.display = 'block';
+    var box = $('up-types'); box.innerHTML = '';
+    TYPES.forEach(function(t){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'up-chip' + (cur.type === t.v ? ' on' : '');
+      b.textContent = t.t;
+      b.addEventListener('click', function(){ cur.type = t.v; buildTypes(); });
+      box.appendChild(b);
+    });
+  }
+  function closeSheet(){ if(busy) return; $('up-mask').classList.remove('open'); }
+
+  /* ---------- 文件与上传 ---------- */
+  function kindOf(f){
+    if(f.type.indexOf('image/') === 0) return 'photo';
+    if(f.type.indexOf('audio/') === 0) return 'audio';
+    if(f.type.indexOf('video/') === 0) return 'video';
+    return 'photo';
+  }
+  var EXT_BY_MIME = {'image/jpeg':'jpg','image/heic':'heic','image/heif':'heif','image/png':'png','audio/mp4':'m4a','audio/mpeg':'mp3','audio/aac':'aac','video/mp4':'mp4','video/quicktime':'mov'};
+  function extOf(f){
+    var m = /\.([A-Za-z0-9]{1,8})$/.exec(f.name || '');
+    if(m) return m[1].toLowerCase();
+    return EXT_BY_MIME[f.type] || 'bin';
+  }
+  function sha256Of(f){
+    if(f.size > 60 * 1024 * 1024 || !window.crypto || !crypto.subtle) return Promise.resolve(null);
+    return f.arrayBuffer().then(function(buf){ return crypto.subtle.digest('SHA-256', buf); })
+      .then(function(h){ return Array.from(new Uint8Array(h)).map(function(b){ return ('0'+b.toString(16)).slice(-2); }).join(''); })
+      .catch(function(){ return null; });
+  }
+  function api(path, body, method){
+    var headers = {'Content-Type': 'application/json'};
+    var tk = token(); if(tk) headers['X-Device-Token'] = tk;
+    return fetch(WORKER + path, {method: method || 'POST', headers: headers,
+      body: body ? JSON.stringify(body) : undefined})
+      .then(function(r){ return r.json().then(function(j){ return {status: r.status, body: j}; }); });
+  }
+  function putFile(url, file, contentType, onProg){
+    return new Promise(function(resolve, reject){
+      var xhr = new XMLHttpRequest();
+      xhr.open('PUT', url, true);
+      if(contentType) xhr.setRequestHeader('Content-Type', contentType);
+      xhr.upload.onprogress = function(e){ if(e.lengthComputable) onProg(e.loaded / e.total); };
+      xhr.onload = function(){ (xhr.status >= 200 && xhr.status < 300) ? resolve() : reject(new Error('上传失败(' + xhr.status + ')')); };
+      xhr.onerror = function(){ reject(new Error('网络不好，传不上去')); };
+      xhr.send(file);
+    });
+  }
+  function fileRow(f){
+    var d = document.createElement('div'); d.className = 'up-file';
+    d.innerHTML = '<span class="nm"></span><span class="sz"></span>';
+    d.querySelector('.nm').textContent = f.name || '文件';
+    d.querySelector('.sz').textContent = f.size >= 1048576 ? (f.size/1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(f.size/1024)) + 'KB';
+    var p = document.createElement('div'); p.className = 'up-prog'; p.innerHTML = '<i></i>';
+    var wrap = document.createElement('div'); wrap.appendChild(d); wrap.appendChild(p);
+    $('up-filelist').appendChild(wrap);
+    return {set: function(x){ p.querySelector('i').style.width = Math.round(x*100) + '%'; },
+            cls: function(c){ d.className = 'up-file ' + c; }};
+  }
+  function setMsg(txt, cls){ var m = $('up-msg'); m.textContent = txt; m.className = 'up-msg ' + (cls || ''); }
+
+  function doSubmit(){
+    if(busy) return;
+    var files = Array.prototype.slice.call($('up-files').files || []);
+    if(!cur.grade){ setMsg('先选一下是哪个孩子哦', 'err'); return; }
+    if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
+    if(!files.length){ setMsg('还没有选照片/录音/视频哦', 'err'); return; }
+    if(files.length > 10){ setMsg('一次最多交10个文件，可以分两次交', 'err'); return; }
+    busy = true; $('up-go').disabled = true; setMsg('正在准备…');
+    var pass = $('up-pass') ? $('up-pass').value.trim() : '';
+    var ensureToken = token() ? Promise.resolve() :
+      api('/auth', {passcode: pass}).then(function(r){
+        if(r.status !== 200 || !r.body.device_token) throw new Error('口令不对，再看看？');
+        try { localStorage.setItem(LS_TOKEN, r.body.device_token); } catch(e){}
+        $('up-passrow').style.display = 'none';
+      });
+    var rows = files.map(fileRow);
+    ensureToken
+      .then(function(){ return Promise.all(files.map(sha256Of)); })
+      .then(function(shas){
+        var meta = files.map(function(f, i){
+          var m = {ext: extOf(f), kind: kindOf(f), size: f.size};
+          if(shas[i]) m.sha256 = shas[i];
+          if(f.type) m.content_type = f.type;
+          return m;
+        });
+        return api('/upload/sign', {grade: cur.grade, type: cur.type, task_id: cur.task_id,
+          task_source: cur.task_source,
+          submit_channel: cur.mode === 'task' ? 'task_button' : (cur.mode === 'chore' ? 'chore_entry' : 'general_panel'),
+          message: $('up-message').value.trim() || null, files: meta});
+      })
+      .then(function(r){
+        if(r.status === 401){ try { localStorage.removeItem(LS_TOKEN); } catch(e){}
+          $('up-passrow').style.display = 'block'; throw new Error('这台设备还没登记，输一次家庭口令再交'); }
+        if(r.status !== 200) throw new Error((r.body && r.body.error) || '准备失败，再试一次');
+        var sign = r.body;
+        var chain = Promise.resolve();
+        sign.uploads.forEach(function(u, i){
+          chain = chain.then(function(){
+            return putFile(u.url, files[i], files[i].type || null, rows[i].set)
+              .then(function(){ rows[i].cls('ok'); }, function(e){
+                return api('/upload/resign', {batch_id: sign.batch_id, key: u.key}).then(function(rr){
+                  if(rr.status !== 200) throw e;
+                  return putFile(rr.body.url, files[i], files[i].type || null, rows[i].set)
+                    .then(function(){ rows[i].cls('ok'); }, function(){ rows[i].cls('bad'); throw e; });
+                });
+              });
+          });
+        });
+        return chain.then(function(){ return sign; });
+      })
+      .then(function(sign){
+        setMsg('都传上去了，正在确认…');
+        return api('/upload/complete', {batch_id: sign.batch_id});
+      })
+      .then(function(r){
+        if(r.status === 409) throw new Error('有文件没传成功，看看上面哪一行是红的，重新选它再交一次');
+        if(r.status !== 200) throw new Error((r.body && r.body.error) || '确认失败，再试一次');
+        var rc = r.body;
+        var when = '';
+        try { when = new Date(rc.server_ts).toLocaleTimeString('zh-CN', {timeZone:'Asia/Shanghai', hour:'2-digit', minute:'2-digit', hour12:false}); } catch(e){}
+        setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。', 'good');
+        if(cur.mode === 'task') markSubmitted(cur.key, rc.receipt_no);
+        $('up-go').textContent = '完成';
+        $('up-go').onclick = function(){ busy = false; $('up-go').disabled = false; $('up-go').textContent = '全部交完 ✅'; $('up-go').onclick = null; closeSheetForce(); };
+      })
+      .catch(function(e){
+        setMsg(e.message || '出了点问题，再试一次', 'err');
+        busy = false; $('up-go').disabled = false;
+      });
+  }
+  function closeSheetForce(){ $('up-mask').classList.remove('open'); }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    $('up-close').addEventListener('click', closeSheet);
+    $('up-go').addEventListener('click', function(){ if($('up-go').textContent === '完成') return; doSubmit(); });
+    $('up-mask').addEventListener('click', function(e){ if(e.target === $('up-mask')) closeSheet(); });
+    paintButtons();
+    new MutationObserver(function(){ paintButtons(); })
+      .observe(document.body, {childList: true, subtree: true});
+  });
+})();
+</script>
+<!-- ===== 交作业上传模块 结束 ===== -->
