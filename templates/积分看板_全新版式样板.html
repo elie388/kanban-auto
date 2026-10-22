@@ -177,16 +177,16 @@
     white-space:nowrap;
   }
   /* 状态呼吸灯（2026-10-22 家长定）：待提交=红、改正中=橙、已完成=绿，徽章前圆点做呼吸脉冲 */
-  .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 1.8s ease-in-out infinite;}
-  @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.35; transform:scale(.8);}}
+  .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 2.8s ease-in-out infinite;}
+  @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.6; transform:scale(.88);}}
   @media (prefers-reduced-motion: reduce){ .task .st-dot{animation:none;} }
   .task.pending .st-badge{background:#FDECEA; color:#C92A20;}
-  .task.pending .st-dot{background:#E5484D; box-shadow:0 0 6px rgba(229,72,77,.55);}
+  .task.pending .st-dot{background:#E5484D;}
   .task.correcting{border-color:#FFD97A;}
   .task.correcting .st-badge{background:#FFF3D6; color:#B54708;}
-  .task.correcting .st-dot{background:#F08C0A; box-shadow:0 0 6px rgba(240,140,10,.55);}
+  .task.correcting .st-dot{background:#F08C0A;}
   .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
-  .task.done .st-dot{background:#22B573; box-shadow:0 0 6px rgba(34,181,115,.5);}
+  .task.done .st-dot{background:#22B573;}
   .task .st-badge.is-calm{background:#F1F3F5; color:#6B7280;}
   .task .st-badge.is-calm .st-dot{background:#98A2B3; box-shadow:none; animation:none;}
   /* 操作区（A款）：主行之下右对齐一行，只放上传模块注入的「交这一项」按钮；
