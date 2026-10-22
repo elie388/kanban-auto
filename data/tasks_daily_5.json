@@ -3,7 +3,7 @@
   "date": "2026-10-22",
   "grade": "五年级",
   "generated_at": "2026-10-22T00:05:11+08:00",
-  "updated_at": "2026-10-22T11:39:23+08:00",
+  "updated_at": "2026-10-22T12:05:06+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -81,10 +81,30 @@
       "count_in_completion_rate": false,
       "created_at": "2026-10-22T11:39:22+08:00",
       "updated_at": "2026-10-22T11:39:23+08:00"
+    },
+    {
+      "task_id": "TEST-CORR-20261022-G5",
+      "source": "exam_correction",
+      "subject": "语文",
+      "title": "【效果测试】待改正明细 · 含引导（看完删）",
+      "detail": "排版效果测试卡：随机抽的真实待改正题，点开「待改正 1 题」看引导排版",
+      "status": "in_progress",
+      "review_status": "approved",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "语文 1",
+          "question": "迎 yíng／影 yǐng 拼音书写",
+          "reason": "前后鼻音拼写错误，第2次标高频",
+          "hint": "① 先自己念一遍：「迎」和「影」的韵尾，一个往前、一个往后，听听有什么不同？\n② 考的是前后鼻音：-n 是前鼻音，-ng 是后鼻音，拼写时不能混。\n③ 关键一步：把尾音拖长再读——声音停在口腔前面的是 -n，往鼻子后面走的是 -ng；再对照你写的拼音改过来。"
+        }
+      ],
+      "created_at": "2026-10-22T12:05:06+08:00",
+      "updated_at": "2026-10-22T12:05:06+08:00"
     }
   ],
   "counts": {
-    "total": 4,
+    "total": 5,
     "pending": 4,
     "in_progress": 0,
     "done": 0,
