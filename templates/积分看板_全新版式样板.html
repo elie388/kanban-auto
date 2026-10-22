@@ -1301,6 +1301,7 @@
     catch(e){ return ''; }
   }
   window.__taskOrig = window.__taskOrig || {};
+  window.__taskKousuan = window.__taskKousuan || {};
   function renderOne(secId, data){
     try{ (data.tasks || []).forEach(function(t){
       var seen = {}, parts = [];
@@ -1310,6 +1311,9 @@
       });
       if(parts.length) window.__taskOrig[t.task_id] = parts.join('\n');
       else delete window.__taskOrig[t.task_id];
+      var kq = (t.kousuan || []).filter(function(x){ return x && String(x).trim(); });
+      if(kq.length) window.__taskKousuan[t.task_id] = kq.map(function(x, i){ return (i + 1) + '）' + x; }).join('\n');
+      else delete window.__taskKousuan[t.task_id];
     }); }catch(e){}
     var sec = document.getElementById(secId);
     if(!sec || !data || data.date !== todayStr()) return false;
@@ -3832,7 +3836,7 @@
   <div class="up-sheet" role="dialog" aria-label="交作业">
     <h3 id="up-title">交作业</h3>
     <div class="up-sub" id="up-subtitle"></div>
-    <div class="up-orig" id="up-orig" style="display:none"><div class="up-orig-cap">原文 · 照着读</div><div class="up-orig-text" id="up-orig-text"></div></div>
+    <div class="up-orig" id="up-orig" style="display:none"><div class="up-orig-cap" id="up-orig-cap">原文 · 照着读</div><div class="up-orig-text" id="up-orig-text"></div></div>
     <div class="up-row" id="up-childrow" style="display:none">
       <label>哪个孩子</label>
       <div class="up-pick" id="up-children"></div>
@@ -3996,7 +4000,9 @@
       $('up-title').textContent = '交这一项';
       $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
       var _ot = (window.__taskOrig || {})[cur.task_id];
-      if(_ot){ $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
+      var _kq = (window.__taskKousuan || {})[cur.task_id];
+      if(_ot){ $('up-orig-cap').textContent = '原文 · 照着读'; $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
+      else if(_kq){ $('up-orig-cap').textContent = '口算题目 · 看题作答'; $('up-orig-text').textContent = _kq; $('up-orig').style.display = 'block'; }
       else { $('up-orig').style.display = 'none'; }
     } else if(ctx.mode === 'chore'){
       cur.type = 'chore';
