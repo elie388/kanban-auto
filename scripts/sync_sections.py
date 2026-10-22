@@ -31,71 +31,21 @@ LOCK_FILE = Path("/tmp/sync_sections.lock")
 BEIJING = sb.BEIJING
 LOG_KEEP_LINES = 2000
 
-# ---------- 徽章目录（v3.7 定稿，一律 +5/次；数量以 BADGE_CATALOG 实际条目为准，不再硬编码）+ 历史 key 兼容 ----------
-# key: 台账 badge_<key> 中的拼音；cond: 解锁条件（目标榜展示用）
-BADGE_CATALOG = [
-    ("quanduizhixing",   "全对之星",   "✅", "单次作业/小测全部题目正确"),
-    ("baifentupo",       "满分之星",     "💯", "收到卷面满分的考试试卷（任一科目，单次达成）"),
-    ("zonghezhixing",    "综合之星",   "🏅", "一周内≥4类不同徽章"),
-    ("tupoxiaoyongshi",  "突破小勇士", "🛡️", "同一类错题连续3次订正全对"),
-    ("jianchixiaoyongshi","坚持小勇士", "🔥", "家务/按时完成作业/按时睡觉，任一连续14天"),
-    ("hezuozhixing",     "合作之星",   "🤝", "兄弟连续3天一起做家务（达成后重计、可累加叠加）"),
-    ("sanheyi",          "三合一快手", "⚡", "同日独立完成3项不同基础家务（每日可达成1次）"),
-    ("xiaolvxiaoshandian", "效率小闪电", "💨", "当日所有任务22:00前全部完成（可叠加）"),
-    ("xidengxiaochaoren", "熄灯小超人", "🌙", "连续5天23:00前睡觉（中断重置）"),
-    ("jiawujielishou",   "家务接力手", "🔄", "兄弟接力：同周两兄弟各做≥2项家务（含1次接力动作）"),
-    ("sanribuduan",      "三日不断",   "📆", "连续3天不断档/全勤一周取高档"),
-    ("shuxiezhixing",    "书写之星",   "✍️", "连续5次作业书写零扣分"),
-    ("dancizhixing",     "单词之星",   "🔤", "单次单词听写全对（≥10词，每日可达成1次）"),
-    ("moxiezhixing",     "默写之星",   "📝", "单次古诗文/课文默写全对（每日可达成1次）"),
-    ("zhenglizhixing",   "整理之星",   "🗂️", "累计5天整理桌面（每日≤1次计）"),
-    ("jinbumiao",        "进步小苗",   "🌱", "同科同类型较上次提升≥15%且本次≥60分"),
-    ("biaodazhixing",    "表达之星",   "🗣️", "自然周内背诵/口语达标≥2次"),
-    ("jiawuxiaobangshou","家务小帮手", "🏠", "单次完成1项基础家务"),
-    ("zhengdalidaren",   "整理小达人", "🧹", "连续5天整理类家务"),
-    ("jiawuzhixing",     "家务之星",   "🏆", "周内≥5次（每日≤1次计）"),
-]
+# ---------- 徽章目录（单一数据源 scripts/badges.json，2026-10-22 目录收口） ----------
+# key: 台账 badge_<key> 中的拼音；cond: 解锁条件（目标榜展示用）。目录增删改
+# 一律改 badges.json（含 aliases 别名表），禁止在本文件另存副本。
+import catalog as _catalog
+BADGE_CATALOG = _catalog.badge_catalog()
 # 历史徽章 key（旧体系，台账中可能出现；展示用，不在目标榜目录内）
-LEGACY_BADGES = {
-    "xueba": ("学霸", "👑"),
-    "lingshiwu": ("零失误", "🛡️"),
-    "baifen": ("百分俱乐部", "💰"),
-    "quanduixiaodaren": ("全对小达人", "🎯"),
-    "shoushixiaodaren": ("守时小达人", "⏰"),
-    "manfenchaoren": ("满分超人", "💯"),
-    "dingzhengxiaonengshou": ("订正小能手", "✏️"),
-    "shuxiexiaodaren": ("书写小达人", "✍️"),
-    "quanqinxiaobiaobing": ("全勤小标兵", "📅"),
-    "kaoshibuzhixing": ("考试进步之星", "📈"),
-    "meirijinbuzhixing": ("每日进步之星", "🚀"),
-}
+LEGACY_BADGES = _catalog.legacy_badges()
 BADGE_MAP = {k: {"name": n, "icon": i} for k, n, i, _ in BADGE_CATALOG}
 BADGE_MAP.update({k: {"name": n, "icon": i} for k, (n, i) in LEGACY_BADGES.items()})
-# 历史落账 key 变体 -> 目录 canonical key（2026-10-21 修复）：三合一快手
-# 2026-10-20 补发落账时曾用 badge_sanheyikuaishou，与目录 sanheyi 不一致，
-# 导致目标榜永远匹配不到该徽章。解析时归一，冲正同理。
-KEY_ALIAS = {"sanheyikuaishou": "sanheyi",
-             # 2026-10-22：台账 10-21 家务接力手两行 key 误拼 jiwujielishou（少 a），
-             # 台账 append-only 不反写，解析侧归一到目录 key，否则目标榜 obtained 对不上
-             "jiwujielishou": "jiawujielishou"}
+# 历史落账 key 变体 -> 目录 canonical key：见 badges.json 的 aliases（单一数据源）。
+KEY_ALIAS = _catalog.key_alias()
 
-# ---------- 积分商店（规则手册兑换表） ----------
-# (id, name, cost, icon)
-SHOP_TABLE = [
-    ("mc30",   "30分钟Minecraft", 70, "🕹️"),
-    ("mc60",   "1小时Minecraft", 100, "🕹️"),
-    ("hy150",  "1小时和平精英\n或2小时Minecraft", 150, "🎮"),
-    ("hy250",  "2小时和平精英", 250, "🎮"),
-    ("wish600",  "达成愿望一次\n等额50元", 600, "🌟"),
-    ("wish1000", "达成愿望一次\n等额100元", 1000, "💫"),
-]
-
-# N1-E2（DeepSeek终审定案 2026-10-20）：SHOP_TABLE 配置期校验——
-# cost 缺失/非数值/<=0 视为真正数据异常，模块加载即熔断，不得等到运行时。
-for _sid, _name, _cost, _icon in SHOP_TABLE:
-    if not isinstance(_cost, (int, float)) or isinstance(_cost, bool) or _cost <= 0:
-        raise ValueError("E2 商店 cost 配置错误：%s cost=%r" % (_sid, _cost))
-del _sid, _name, _cost, _icon
+# ---------- 积分商店（单一数据源 scripts/shop_catalog.json，2026-10-22 目录收口） ----------
+# (id, name, cost, icon)；cost 配置期校验在 catalog.shop_table() 内（原 N1-E2 口径，加载即熔断）。
+SHOP_TABLE = _catalog.shop_table()
 
 KEY_PAT = re.compile(r"key:[^|]*?badge_([a-z]+)_")
 REV_PAT = re.compile(r"key:[^|]*?reverse_badge_([a-z]+)_")

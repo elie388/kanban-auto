@@ -25,14 +25,7 @@ PINNED_TIERS = [
     (1000, None, {5: "一百块心愿，你说了算！", 6: "攒到这份上，挑个大件吧！"}),
 ]
 
-_SHORT_BY_NAME = {
-    "30分钟Minecraft": "半小时Minecraft",
-    "1小时Minecraft": "一小时Minecraft",
-    "1小时和平精英或2小时Minecraft": "和平精英一小时",
-    "2小时和平精英": "和平精英两小时",
-    "愿望50元": "50元愿望",
-    "愿望100元": "100元愿望",
-}
+# 短称已收口到 shop_catalog.json 的 short 字段（2026-10-22 目录收口），此处不再另存副本。
 
 _GENERIC = {
     "start":      {5: "从坑里爬出来，就是新起点。", 6: "前面的路还长，慢慢走回来。"},
@@ -43,8 +36,11 @@ _GENERIC = {
 
 
 def _short_name(tier):
+    short = str(tier.get("short", "")).strip()
+    if short:
+        return short
     name = str(tier.get("name", "")).replace("\n", "").strip()
-    return _SHORT_BY_NAME.get(name, name or "这一档")
+    return name or "这一档"
 
 
 def compute_bal_sub(grade, balance, shop_tiers):

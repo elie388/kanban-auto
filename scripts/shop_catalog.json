@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "note": "兑换目录单一数据源（2026-10-22 目录收口，deepseek 路线第一批3）。sync_sections/build_stats/bal_sub 一律读本文件；name=商店卡名，stats_name=统计/进度条名，short=余额卡文案短称。",
+  "tiers": [
+    {"id": "mc30", "name": "30分钟Minecraft", "stats_name": "30分钟Minecraft", "cost": 70, "icon": "🕹️", "kind": "Minecraft", "short": "半小时Minecraft"},
+    {"id": "mc60", "name": "1小时Minecraft", "stats_name": "1小时Minecraft", "cost": 100, "icon": "🕹️", "kind": "Minecraft", "short": "一小时Minecraft"},
+    {"id": "hy150", "name": "1小时和平精英\n或2小时Minecraft", "stats_name": "1小时和平精英\n或2小时Minecraft", "cost": 150, "icon": "🎮", "kind": "和平精英", "short": "和平精英一小时"},
+    {"id": "hy250", "name": "2小时和平精英", "stats_name": "2小时和平精英", "cost": 250, "icon": "🎮", "kind": "和平精英", "short": "和平精英两小时"},
+    {"id": "wish600", "name": "达成愿望一次\n等额50元", "stats_name": "愿望50元", "cost": 600, "icon": "🌟", "kind": "愿望", "short": "50元愿望"},
+    {"id": "wish1000", "name": "达成愿望一次\n等额100元", "stats_name": "愿望100元", "cost": 1000, "icon": "💫", "kind": "愿望", "short": "100元愿望"}
+  ]
+}
