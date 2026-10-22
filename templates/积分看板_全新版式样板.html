@@ -4142,7 +4142,7 @@
     var pt0 = $('up-rec-ptime'); if(pt0) pt0.textContent = '00:00 / 00:00';
     $('up-rec-prev').style.display = 'block';
     var note = $('up-rec-note');
-    if(why === 'max'){ note.textContent = '已经录满5分钟啦，先听一听，可以就点「用这段录音」。'; note.style.display = 'block'; }
+    if(why === 'max'){ note.textContent = '已经录满15分钟啦，先听一听，可以就点「用这段录音」。'; note.style.display = 'block'; }
     else if(why === 'interrupt'){ note.textContent = '刚才录音中断了，这是中断前的片段，听一听能不能用。'; note.style.display = 'block'; }
     else note.style.display = 'none';
   }
