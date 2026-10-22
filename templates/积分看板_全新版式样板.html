@@ -3655,7 +3655,7 @@
    适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区）。
    默认自动往下滚（约 3 秒一行 ≈ 22px/s）；手动优先——触摸/点按/滚轮一律
    暂停，松手闲置 5 秒后从原位置缓入恢复；滚到底停 4 秒后平滑回顶重滚；
-   栏目折叠、区域可见比例低于 0.15（DeepSeek 复核定版）、页面切后台均停；
+   栏目折叠、区域与视口不相交（顶边进入判定、DeepSeek 二次定版）、页面切后台均停；
    系统“减少动态效果”时默认关（开关显式打开则尊重，回顶改瞬时）；
    三栏目开关各自独立、互不影响（2026-10-22 家长改定），状态按栏目
    localStorage 持久化。程序滚动用 rAF 逐帧写
@@ -3704,9 +3704,13 @@
       if(Date.now() - st.lastProg > 80){ st.lastUser = Date.now(); }
     }, { passive: true });
     if('IntersectionObserver' in window){
+      /* 可见判定（DeepSeek 二次定版 2026-10-22）：按位置事件而非面积比例——
+         元素与视口相交即算可见（顶边进入即触发），rootMargin 上下各 100px
+         预触发；threshold 的 0.02 仅作边界兜底。原 0.5/0.15 面积阈值在手机上
+         只露首行（比例约 0.09）时误拦，已废。 */
       new IntersectionObserver(function(es){
-        es.forEach(function(en){ st.visible = en.intersectionRatio >= 0.15; });
-      }, { threshold: [0, 0.15, 0.5, 1] }).observe(elm);
+        es.forEach(function(en){ st.visible = en.isIntersecting; });
+      }, { rootMargin: '100px 0px 100px 0px', threshold: [0, 0.02] }).observe(elm);
     } else { st.visible = true; }
   });
 
