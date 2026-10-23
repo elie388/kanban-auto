@@ -1607,9 +1607,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           var corrList = Array.isArray(t.corrections) ? t.corrections : [];
           if(corrList.length){
             corrList.forEach(function(c){
+              // 兜底去重（2026-10-23）：存量脏数据 question 与 label 完全相同时只显示一次
+              var qDup = !!(c.question && c.label && String(c.question).trim() === String(c.label).trim());
               items += '<div class="corr-item">'
                 + (c.label ? '<span class="corr-no">' + esc(c.label) + '</span>' : '')
-                + (c.question ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
+                + (c.question && !qDup ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
                 + (c.q_img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原题图</span><img class=\"corr-img\" src=\"data/diagrams/' + encodeURIComponent(c.q_img) + '\" alt=\"原题图\"></div>' : '')
                 + (c.orig_text ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原文</span><span class=\"corr-orig\">' + esc(c.orig_text) + '</span></div>' : '')
                 + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
@@ -4915,7 +4917,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2133';
+  var KB_BUILD = '20261023-2140';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
