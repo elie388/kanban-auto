@@ -3577,6 +3577,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       ui.okBtn.disabled = false; ui.okBtn.textContent = '确认';
       if(r.status === 200 && r.body && r.body.device_token){
         try { localStorage.setItem('hw-dev-token', r.body.device_token); } catch(e){}
+        if(window.kbGateAuthOk){ try { window.kbGateAuthOk(); } catch(e){} } /* 令牌巡检：刚验完，免立刻重复巡检 */
         var p = ui.pending; ui.pending = null;
         ui.mask.classList.remove('show');
         if(p && p.onOk) p.onOk();
@@ -4036,7 +4037,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0855';
+  var KB_BUILD = '20261023-0915';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5283,11 +5284,98 @@ document.addEventListener('click', function(e){
     lastOkTs = now;
   }, 3000);
 
+  /* ============ 令牌服务端巡检自动上锁（2026-10-23 家长拍板，DeepSeek 终审放行） ============
+     背景：口令门只看本机有无令牌，口令轮换后旧令牌在页面层仍能翻详情。
+     本巡检定期拿令牌去 Worker 的 /auth/check 核验，被判死立即清令牌+收口上锁。
+     与上方 3 秒「令牌消失巡检」分工不同：那个看本机令牌消失，这个看服务端判死，不合并。
+     fail-safe 红线：网络异常/非预期响应/解析失败/未知 code 一律不上锁，只计数降频。 */
+  var KB_HW_API = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev');
+  var CHK_BASE_MS = 5 * 60 * 1000, CHK_SLOW_MS = 15 * 60 * 1000;
+  var isLocking = false;        /* 已由判死回执上锁（去重：同一判死只弹一次 toast） */
+  var lockReason = null;        /* 上锁原因 code：version / ua / missing */
+  var checkFailStreak = 0;      /* 连续巡检失败（网络/解析/未知响应）次数，>=3 降频 */
+  var lastCheckTs = 0;          /* 上次巡检（含失败尝试）时刻 */
+  var chkNextDue = Date.now() + CHK_BASE_MS; /* 下次定时巡检到期时刻 */
+  var chkInFlight = false;
+
+  function gateToken(){ try { return window.kbPracticeToken() || ''; } catch(e){ return ''; } }
+
+  function lockByCheck(code){
+    if(isLocking) return; /* 去重：已锁不再重复 toast */
+    isLocking = true;
+    lockReason = code;
+    try { localStorage.removeItem('hw-dev-token'); } catch(e){}
+    lockNow();
+    try {
+      if(code === 'ua') window.kbToast('这台设备的验证已失效，点任意详情重新输入口令即可');
+      else window.kbToast('家庭口令已更新，请重新输入新口令');
+    } catch(e){}
+    console.log('[kb-gate] server check locked, reason=' + code);
+  }
+
+  function kbCheckToken(manual){
+    var tok = gateToken();
+    if(!tok) return;
+    var now = Date.now();
+    if(!manual && now - lastCheckTs < 60000) return; /* 60 秒内不重复打网络（回前台触发受此限） */
+    if(chkInFlight) return;
+    chkInFlight = true;
+    lastCheckTs = now;
+    fetch(KB_HW_API + '/auth/check', { headers: { 'X-Device-Token': tok }, cache: 'no-store' })
+      .then(function(resp){
+        return resp.json().catch(function(){ return null; }).then(function(j){ return { status: resp.status, body: j }; });
+      })
+      .then(function(r){
+        chkInFlight = false;
+        var t2 = Date.now();
+        if(r.status === 200 && r.body && r.body.ok === true){
+          /* 有效回执：清失败计数、清上锁标记、恢复 5 分钟周期（页面解锁仍靠用户输口令） */
+          checkFailStreak = 0;
+          chkNextDue = t2 + CHK_BASE_MS;
+          if(isLocking){ isLocking = false; lockReason = null; }
+          return;
+        }
+        if(r.status === 401 && r.body && (r.body.code === 'version' || r.body.code === 'ua' || r.body.code === 'missing')){
+          /* 判死回执：同样清失败计数与周期，只走上锁流程 */
+          checkFailStreak = 0;
+          chkNextDue = t2 + CHK_BASE_MS;
+          lockByCheck(r.body.code);
+          return;
+        }
+        throw new Error('unexpected check response');
+      })
+      .catch(function(){
+        /* fail-safe：绝不上锁，只计数；连续 3 次失败降频到 15 分钟 */
+        chkInFlight = false;
+        checkFailStreak++;
+        chkNextDue = Date.now() + (checkFailStreak >= 3 ? CHK_SLOW_MS : CHK_BASE_MS);
+        console.log('[kb-gate] token check failed (fail-open), streak=' + checkFailStreak);
+      });
+  }
+
+  /* kbAskPass 成功路径回调：刚签发的新令牌无需立刻巡检，顺延一个周期并清失败计数 */
+  window.kbGateAuthOk = function(){
+    var now = Date.now();
+    lastCheckTs = now;
+    checkFailStreak = 0;
+    chkNextDue = now + CHK_BASE_MS;
+  };
+
+  /* 触发点：定时到期（30 秒轻 tick 查到期时刻，降频只改到期时刻、不叠 interval） */
+  setInterval(function(){ if(Date.now() >= chkNextDue) kbCheckToken(false); }, 30000);
+  /* 触发点：回前台（内部 60 秒节流把关） */
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') kbCheckToken(false);
+  });
+
   /* 初始锁定（与 <head> 早锁脚本同口径） */
   if(!hasToken()){
     KB_LOCKED = true;
     document.documentElement.classList.add('kb-locked');
   }
+
+  /* 页面加载完成先巡检一次（无令牌内部直接返回） */
+  kbCheckToken(false);
 })();
 </script>
 </body>
