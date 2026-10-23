@@ -1298,6 +1298,71 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   <section id="tmp-pdf-test-1023" style="margin:14px 0 4px;padding:14px;border:2px dashed #B45309;border-radius:12px;background:#FFFBEB;text-align:center;">
     <div style="font-size:15px;font-weight:700;color:#92400E;margin-bottom:8px;">🧪 临时测试链接（约1小时后自动删除）</div>
     <a href="https://whyjjf.lol/data/files/%E4%BA%94%E5%B9%B4%E7%BA%A7%E9%92%88%E5%AF%B9%E6%80%A7%E7%BB%83%E4%B9%A0_2026-10-23.pdf" target="_blank" rel="noopener" style="font-size:16px;color:#1D4ED8;text-decoration:underline;">五年级针对性练习 PDF（点开测试打印）</a>
+    <div style="margin-top:12px;">
+      <button id="tmp-pdf-share-btn-1023" type="button" style="font-size:16px;padding:10px 20px;border:none;border-radius:8px;background:#1D4ED8;color:#fff;cursor:pointer;">📤 分享这份 PDF（测试打印）</button>
+      <div id="tmp-pdf-share-status-1023" style="margin-top:8px;font-size:13px;color:#92400E;min-height:18px;">正在准备 PDF 文件…</div>
+    </div>
+    <script>
+    (function(){
+      var PDF_URL = 'https://whyjjf.lol/data/files/%E4%BA%94%E5%B9%B4%E7%BA%A7%E9%92%88%E5%AF%B9%E6%80%A7%E7%BB%83%E4%B9%A0_2026-10-23.pdf';
+      var PDF_NAME = '五年级针对性练习_2026-10-23.pdf';
+      var btn = document.getElementById('tmp-pdf-share-btn-1023');
+      var st = document.getElementById('tmp-pdf-share-status-1023');
+      var cachedFile = null, fetching = null;
+      function say(m){ if(st) st.textContent = m; }
+      function errStr(e){ return (e && e.name ? e.name : 'Error') + ((e && e.message) ? '：' + e.message : ''); }
+      function fetchFile(){
+        if(cachedFile) return Promise.resolve(cachedFile);
+        if(fetching) return fetching;
+        fetching = fetch(PDF_URL).then(function(r){
+          if(!r.ok) throw new Error('HTTP ' + r.status);
+          return r.blob();
+        }).then(function(b){
+          var f = null;
+          try{ f = new File([b], PDF_NAME, {type:'application/pdf'}); }catch(e){ f = null; }
+          cachedFile = f || b;
+          fetching = null;
+          say('PDF 已准备好，点按钮即可分享（请看分享菜单里有没有「打印」）。');
+          return cachedFile;
+        }).catch(function(e){
+          fetching = null;
+          say('预取 PDF 失败：' + errStr(e));
+          throw e;
+        });
+        return fetching;
+      }
+      fetchFile().catch(function(){});
+      document.addEventListener('touchstart', function(){ fetchFile().catch(function(){}); }, {once:true, passive:true});
+      if(!btn) return;
+      btn.addEventListener('click', function(){
+        if(!navigator.share){
+          say('此环境不支持 navigator.share，无法调起系统分享菜单。');
+          return;
+        }
+        if(!cachedFile){
+          say('文件还没取好，正在准备…');
+          fetchFile().then(function(){ say('已准备好，再点一次按钮分享。'); }).catch(function(){});
+          return;
+        }
+        var canFiles = false;
+        try{ canFiles = (typeof navigator.canShare === 'function') && (cachedFile instanceof File) && navigator.canShare({files:[cachedFile]}); }catch(e){ canFiles = false; }
+        if(canFiles){
+          navigator.share({files:[cachedFile]}).then(function(){
+            say('已调起系统分享，走的是「文件」方式（share files）。请确认菜单里有没有「打印」。');
+          }).catch(function(e){
+            say('文件分享未完成：' + errStr(e));
+          });
+        } else {
+          say('此环境不支持分享文件（canShare files 不可用），降级走「链接 URL」方式…');
+          navigator.share({url: PDF_URL}).then(function(){
+            say('已调起系统分享，走的是降级「URL」方式。请确认菜单里有没有「打印」。');
+          }).catch(function(e){
+            say('URL 分享未完成：' + errStr(e));
+          });
+        }
+      });
+    })();
+    </script>
   </section>
   <!-- tmp-pdf-test-1023 END -->
 
@@ -4912,7 +4977,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2031';
+  var KB_BUILD = '20261023-2042';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
