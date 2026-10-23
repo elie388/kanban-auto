@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T19:53:12+08:00",
+  "updated_at": "2026-10-23T19:53:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -115,51 +115,8 @@
       },
       "created_at": "2026-10-23T19:01:16+08:00",
       "updated_at": "2026-10-23T19:40:28.815150+08:00",
-      "pending_corrections": 7,
-      "corrections": [
-        {
-          "q": "4",
-          "sub": "周长最短",
-          "错因": "审题",
-          "正确答案": "31分米"
-        },
-        {
-          "q": "4",
-          "sub": "周长最长",
-          "错因": "审题",
-          "正确答案": "51分米"
-        },
-        {
-          "q": "5",
-          "sub": "第三根最长",
-          "错因": "概念错误",
-          "正确答案": "15.7cm"
-        },
-        {
-          "q": "5",
-          "sub": "第三根最短",
-          "错因": "概念错误",
-          "正确答案": "3.3cm"
-        },
-        {
-          "q": "6",
-          "sub": "最小角",
-          "错因": "计算",
-          "正确答案": "35°"
-        },
-        {
-          "q": "9",
-          "sub": "摆n个",
-          "错因": "概念错误",
-          "正确答案": "(3n+1)根"
-        },
-        {
-          "q": "11",
-          "sub": "∠1∠2∠3",
-          "错因": "方法错误",
-          "正确答案": "∠1=50°,∠2=60°,∠3=70°"
-        }
-      ],
+      "pending_corrections": 0,
+      "corrections": [],
       "status_source": "realtime"
     },
     {
@@ -169,7 +126,7 @@
       "title": "生字13课",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
@@ -178,10 +135,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:49:07+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime"
+      "updated_at": "2026-10-23T19:53:19+08:00",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "生字13课 损（拼音）",
+          "question": "抄写生字\"损\"拼音5遍（sǔn）",
+          "reason": "第4遍拼音g与sǔn笔画叠加混写，字迹无法辨认 语文生字13课拼音+生字抄写（登记本语文①，任务REG-20261023-B96F50",
+          "hint": "①先看一看\"损\"那一列拼音的第4遍：你写的第一个字母，到底是g还是s？②拼音要一笔一画写清楚，写错了就把那一遍划掉重写，不要把两个字母叠在一起写。③把第4遍划掉，在旁边规范地重写sǔn（三声）共5遍，写完自己拼读一遍：s-ǔn，sǔn。",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "status_source": "bank_writeback"
     },
     {
       "task_id": "REG-20261023-2C714C",
@@ -314,13 +280,15 @@
       },
       "created_at": "2026-10-23T19:53:12+08:00",
       "updated_at": "2026-10-23T19:53:12+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     }
   ],
   "counts": {
     "total": 13,
     "pending": 8,
-    "in_progress": 1,
+    "in_progress": 2,
     "done": 3,
     "pending_review": 0
   },
