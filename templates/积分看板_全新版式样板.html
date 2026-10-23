@@ -147,6 +147,12 @@
   .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; color:rgba(255,255,255,.78); font-variant-numeric:tabular-nums;}
   .bal-card.is-neg{background:linear-gradient(135deg,#79818e,#59616d);}
   html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
+  /* 刻度条冲刺点亮（2026-10-23 家长拍板 Gemini 推荐方案）：距下一档差额 ≤ 下一档×10% 时，当前段已填充部分点亮薄荷绿＋大号数字旁呼吸圆点；底色不动。圆点呼吸参数家长/Gemini 定案：一轮 3.2s（长大 2.0s＝62.5%、回落 1.2s）、scale .2→1.3、opacity .35→1、生长段弹性缓动 cubic-bezier(0.34,1.56,0.64,1)；锁定态 CSS 硬隐藏（与刻度条整组同口径）、减少动态效果时静止常显 */
+  .bal-tier-fill.sprint{background:#8CF5C0; box-shadow:0 0 6px rgba(140,245,192,.55);}
+  .bal-sprint-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#8CF5C0; box-shadow:0 0 6px rgba(140,245,192,.8); margin-left:8px; vertical-align:middle; animation:balSprintBreathe 3.2s infinite;}
+  @keyframes balSprintBreathe{0%{transform:scale(.2); opacity:.35; animation-timing-function:cubic-bezier(0.34,1.56,0.64,1);}62.5%{transform:scale(1.3); opacity:1; animation-timing-function:ease-in;}100%{transform:scale(.2); opacity:.35;}}
+  @media (prefers-reduced-motion: reduce){ .bal-sprint-dot{animation:none;} }
+  html.kb-locked .bal-sprint-dot{display:none !important;}
   /* 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件） */
   .sum-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#2FA84F; margin-left:7px; vertical-align:middle; transform-origin:center;}
   /* 头点绿色呼吸灯（2026-10-23 家长令，22:47 改缩放呼吸，22:52 续令加大振幅防看漏）：亮态 scale .2→1.35 往复＋opacity .45↔1；ID 作用域防后加载规则覆盖；减少动态效果时静止常亮 */
@@ -156,6 +162,11 @@
   .sum-grade{margin-bottom:14px;}
   .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
   .sum-date{font-weight:800; font-size:15px; margin-bottom:6px;}
+  /* 小结条目级开合（2026-10-23 23:38 家长令）：条目默认收起、点日期标题行展开/收起，孩子版/家长版同口径 */
+  .sum-head{display:flex; justify-content:space-between; align-items:center; gap:8px; width:100%; background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer;}
+  .sum-head .sum-date{margin-bottom:0;}
+  .sum-chev{font-size:12px; color:#66707C; white-space:nowrap;}
+  .sum-body{margin-top:8px;}
   .sum-sec{margin:8px 0;}
   .sum-sec-t{font-weight:700; font-size:13px; color:#66707C; margin-bottom:4px;}
   .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:14px;}
@@ -2331,6 +2342,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!card) return;
     var bal = d.balance;
     card.classList.toggle('is-neg', bal < 0);
+    /* 冲刺点亮判定（2026-10-23 Gemini 推荐方案）：存在下一档且 0 < 差额 ≤ 下一档×10% 才触发；负余额/已达最高档（无 tier_next）不触发 */
+    var tn = (typeof d.tier_next === 'number' && isFinite(d.tier_next)) ? d.tier_next : null;
+    var sprint = false;
+    if(tn !== null && bal >= 0){ var gapN = tn - bal; if(gapN > 0 && gapN <= tn * 0.10) sprint = true; }
     var chip = card.querySelector('.bal-today');
     if(chip){
       if(!kbLocked() && typeof d.today_delta === 'number'){
@@ -2353,12 +2368,28 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           var frac = bal <= lo ? 0 : (bal >= hi ? 1 : (bal - lo) / (hi - lo));
           var seg = document.createElement('span'); seg.className = 'bal-tier-seg';
           var fill = document.createElement('span'); fill.className = 'bal-tier-fill';
+          if(sprint && costs[i] === tn && frac > 0) fill.classList.add('sprint'); /* 冲刺态：当前正在填充段的已填充部分点亮薄荷绿 */
           fill.style.width = (frac * 100).toFixed(1) + '%';
           seg.appendChild(fill); bar.appendChild(seg);
           var l = document.createElement('span'); l.textContent = costs[i]; lab.appendChild(l);
         }
       } else { tier.hidden = true; }
     }
+    /* 冲刺呼吸圆点：挂在 .bal-score 内大号数字（.bal-num）之后；创建走 !kbLocked() 守卫，锁定后由 html.kb-locked CSS 硬隐藏，双重覆盖不外露 */
+    var dot = card.querySelector('.bal-sprint-dot');
+    if(sprint && !kbLocked()){
+      if(!dot){
+        var score = card.querySelector('.bal-score');
+        var numEl = card.querySelector('.bal-num');
+        if(score){
+          dot = document.createElement('span');
+          dot.className = 'bal-sprint-dot';
+          dot.setAttribute('aria-hidden', 'true');
+          if(numEl && numEl.nextSibling) score.insertBefore(dot, numEl.nextSibling);
+          else score.appendChild(dot);
+        }
+      }
+    } else if(dot && dot.parentNode){ dot.parentNode.removeChild(dot); }
   }
 
   function loadBalance(grade, cardId){
@@ -2650,7 +2681,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     var html = '';
     items.forEach(function(it){
-      html += '<div class="sum-item"><div class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</div>';
+      html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden>';
       /* 孩子版晚间小结八段结构（规则手册「孩子版晚间小结结构」，2026-10-23 家长拍板恢复，顺序固定；
          旧四字段数据（无 improve 字段）按兼容口径渲染：知识点纯标签、无错题不显示全对句） */
       if(it.completed && it.completed.length){
@@ -2695,10 +2726,29 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(it.encouragement){
         html += '<div class="sum-sec"><div class="sum-sec-t">💪结尾鼓励</div><div class="sum-enc">' + sumEsc(it.encouragement) + '</div></div>';
       }
-      html += '</div>';
+      html += '</div></div>';
     });
     wrap.innerHTML = html;
   }
+  /* 小结条目级开合（2026-10-23 23:38 家长令）：每条默认收起、点日期标题行展开/再点收起，孩子版与家长版同口径；
+     展开状态不落存储——每次打开页面/重新渲染均为全收起（含最新一条）；与批改反馈 OPEN_FB 的当日记忆口径不同、互不影响 */
+  function toggleSumItem(item){
+    var body = item.querySelector('.sum-body');
+    var head = item.querySelector('.sum-head');
+    if(!body || !head) return;
+    var open = !!body.hidden;
+    body.hidden = !open;
+    item.classList.toggle('open-sum', open);
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var chev = head.querySelector('.sum-chev');
+    if(chev) chev.textContent = open ? '收起 ▴' : '展开 ▾';
+  }
+  document.addEventListener('click', function(e){
+    var head = e.target && e.target.closest ? e.target.closest('.sum-head') : null;
+    if(!head) return;
+    var item = head.closest ? head.closest('.sum-item') : null;
+    if(item) toggleSumItem(item);
+  });
   /* 头点合并（2026-10-23 批改反馈并入学习小结）：学习小结头点在小结或批改反馈
      任一有新内容时亮起。批改反馈子块行的点已按家长 2026-10-23 22:14 令删除，行内不再设点。锁定态头点全灭。
      2026-10-23 家长续令：头点改绿色呼吸灯（CSS .sum-dot），且只在最新新内容距今 6 小时内显示，超窗自动灭。
@@ -2821,7 +2871,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           any = true;
           html += '<div class="sum-p-grade"><div class="sum-p-name">' + (g === 5 ? '彦均' : '伟豪') + '</div>';
           items.forEach(function(it){
-            html += '<div class="sum-item"><div class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</div><div class="sum-p-html">' + (it.html || '') + '</div></div>';
+            html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
           html += '</div>';
         }
@@ -5051,7 +5101,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2324';
+  var KB_BUILD = '20261023-2340';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
