@@ -157,6 +157,42 @@ def grading_stay_event(st):
              "msg": "批改停留超60分钟 %d 张：%s" % (len(rows), desc)}]
 
 
+INGEST_AUDIT_PATH = os.path.join(BASE, "..", "logs", "task_ingest_audit.jsonl")
+INGEST_AUDIT_MAX_BYTES = 50 * 1024 * 1024  # 50MB
+INGEST_AUDIT_MAX_LINES = 200_000           # 20 万行（与大小阈值先到为准）
+
+
+def ingest_audit_capacity_event(st, path=None):
+    """C2 检查段（2026-10-23 DeepSeek 复核条件）：摄取审计日志
+    logs/task_ingest_audit.jsonl（H2 落点）容量监控——大小超 50MB 或
+    行数超 20 万行（先到为准）产事件；超限期间只报一次
+    （st.ingest_audit_over 闩锁），回落阈值下复位可再报。
+    文件缺失/读取失败一律静默跳过，不影响主决策。"""
+    p = path or INGEST_AUDIT_PATH
+    try:
+        size = os.path.getsize(p)
+        lines = 0
+        with open(p, "rb") as f:
+            for _ in f:
+                lines += 1
+    except Exception:
+        return []
+    over = []
+    if size > INGEST_AUDIT_MAX_BYTES:
+        over.append("大小 %.1fMB>50MB" % (size / 1048576.0))
+    if lines > INGEST_AUDIT_MAX_LINES:
+        over.append("行数 %d>200000" % lines)
+    if not over:
+        st.pop("ingest_audit_over", None)
+        return []
+    if st.get("ingest_audit_over"):
+        return []
+    st["ingest_audit_over"] = True
+    return [{"script": "sync_duty", "kind": "ingest_audit_capacity",
+             "msg": "摄取审计日志容量超限（%s）：logs/task_ingest_audit.jsonl"
+                    " 需轮转/归档处理" % "、".join(over)}]
+
+
 def main():
     st = load_state()
     stats_code = run_script("build_stats.py")
@@ -164,6 +200,7 @@ def main():
     sec_code = run_script("sync_sections.py")
     events = decide(st, stats_code, sec_code, sync, time.time())
     events += grading_stay_event(st)
+    events += ingest_audit_capacity_event(st)
     save_state(st)
     print("DECISION " + ("report" if events else "silent"))
     print(json.dumps({"events": events,
@@ -217,11 +254,55 @@ def run_scenarios(scenarios):
     return all_ok, results
 
 
+def _selftest_capacity():
+    """C2 容量检查段自测：临时小阈值 + 临时文件，验证触发/闩锁/复位。"""
+    import tempfile
+    global INGEST_AUDIT_MAX_BYTES, INGEST_AUDIT_MAX_LINES
+    saved = (INGEST_AUDIT_MAX_BYTES, INGEST_AUDIT_MAX_LINES)
+    results = []
+    try:
+        fd, path = tempfile.mkstemp(suffix=".jsonl")
+        os.close(fd)
+        st = {}
+        with open(path, "w") as f:
+            f.write("{}\n" * 5)
+        INGEST_AUDIT_MAX_LINES = 3
+        INGEST_AUDIT_MAX_BYTES = 50 * 1024 * 1024
+        ev1 = ingest_audit_capacity_event(st, path)
+        results.append(("capacity_lines_over_fires",
+                        len(ev1) == 1 and ev1[0]["kind"] == "ingest_audit_capacity"))
+        results.append(("capacity_latched_no_repeat",
+                        ingest_audit_capacity_event(st, path) == []))
+        with open(path, "w") as f:
+            f.write("{}\n")
+        results.append(("capacity_reset_under_threshold",
+                        ingest_audit_capacity_event(st, path) == []
+                        and "ingest_audit_over" not in st))
+        with open(path, "w") as f:
+            f.write("{}\n" * 5)
+        results.append(("capacity_refires_after_reset",
+                        len(ingest_audit_capacity_event(st, path)) == 1))
+        INGEST_AUDIT_MAX_LINES = 200_000
+        INGEST_AUDIT_MAX_BYTES = 4
+        st2 = {}
+        results.append(("capacity_bytes_over_fires",
+                        len(ingest_audit_capacity_event(st2, path)) == 1))
+        results.append(("capacity_missing_file_silent",
+                        ingest_audit_capacity_event({}, path + ".missing") == []))
+        os.unlink(path)
+    finally:
+        INGEST_AUDIT_MAX_BYTES, INGEST_AUDIT_MAX_LINES = saved
+    return results
+
+
 def selftest():
     ok, results = run_scenarios(_scenarios())
     for r in results:
         print(("PASS " if r["ok"] else "FAIL ") + r["case"]
               + ("" if r["ok"] else " expected=%s got=%s" % (r["expected"], r["got"])))
+    for name, cok in _selftest_capacity():
+        print(("PASS " if cok else "FAIL ") + name)
+        ok = ok and cok
     print("SELFTEST " + ("ALL_PASS" if ok else "FAILED"))
     return 0 if ok else 1
 
