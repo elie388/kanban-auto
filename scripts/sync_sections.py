@@ -51,6 +51,7 @@ KEY_PAT = re.compile(r"key:[^|]*?badge_([a-z]+)_")
 REV_PAT = re.compile(r"key:[^|]*?reverse_badge_([a-z]+)_")
 CYCLE_WEEK_RE = re.compile(r"cycle_week=(\d{4}-W\d{2})")
 LATE_CYCLE_RE = re.compile(r"late_cycle=(\d{4}-W\d{2})")
+BACKFILL_RE = re.compile(r"backfill=(\d{4}-\d{2}-\d{2})")
 
 
 def cycle_week_of(date_str):
@@ -146,12 +147,27 @@ def extract_badge_events():
             # late_cycle：补发标记（归属周早于落账周），由终审落账环节与
             # cycle_week 一并写入 key 注释；无此字段 -> 非补发条目。
             lcm = LATE_CYCLE_RE.search(line)
+            rec_cycle = cwm.group(1) if cwm else cycle_week_of(date)
+            late_c = lcm.group(1) if lcm else None
+            late_rec = bool(lcm)
+            # 补记字段缺口修复（DeepSeek 终审 2026-10-23，发现2）：带
+            # backfill= 的迟到补记若漏写 late_cycle（如百分俱乐部补记行），
+            # 按其 cycle_week（归属周）合成 late 标记，落账日取 backfill 日
+            # （post_date）；归属周仍以 cycle_week 为准、不并入当周计数，
+            # 使徽章带/目标榜显示与台账一致，杜绝"已发放未显示"。
+            bfm = BACKFILL_RE.search(line)
+            backfill = bfm.group(1) if bfm else None
+            post_date = backfill if backfill else date
+            if late_c is None and backfill and rec_cycle != cycle_week_of(post_date):
+                late_c, late_rec = rec_cycle, True
             active.setdefault(key, []).append(
                 {"key": key, "date": date, "icon": icon, "name": name,
-                 "cycle_week": cwm.group(1) if cwm else cycle_week_of(date),
+                 "cycle_week": rec_cycle,
                  "cycle_week_recorded": bool(cwm),
-                 "late_cycle": lcm.group(1) if lcm else None,
-                 "late_cycle_recorded": bool(lcm)})
+                 "late_cycle": late_c,
+                 "late_cycle_recorded": late_rec,
+                 "backfill": backfill,
+                 "post_date": post_date})
         # 净持有徽章：同徽章多次获得各自保留，按最早发放日排序
         events = []
         for key, evts in active.items():
@@ -202,7 +218,7 @@ def build_badges(events, now=None):
         late_events = [e for e in events.get(gk, [])
                        if e.get("late_cycle_recorded")
                        and (e.get("cycle_week") or cycle_week_of(e["date"])) != cur_cycle
-                       and cycle_week_of(e["date"]) == cur_cycle]
+                       and cycle_week_of(e.get("post_date") or e["date"]) == cur_cycle]
         late_grouped = {}
         for e in late_events:
             late_grouped.setdefault(e["key"], []).append(e)
@@ -310,6 +326,27 @@ def _streak_from_dates(date_set, today):
         n += 1
         d -= timedelta(days=1)
     return n
+
+
+def _streak_live(date_set, today, grace_days=2):
+    """与 _streak_from_dates 同源的"活进度"口径（DeepSeek 终审 2026-10-23，
+    发现4）：家务判定候选每晚 22:30 在当日数据齐备时运行，today/yesterday
+    锚成立；看板同步在任意时刻运行，家务定案顺延（如照片待识别、次日补
+    定案）时锚点会误断成 0，与候选公布值脱节。规则：标准锚有值用标准值；
+    否则最近记录日在 grace_days 内时，按截至最近记录日的连续段计（即候选
+    最近一期公布的同源数值）；再否则 0（连续段确已中断）。"""
+    n = _streak_from_dates(date_set, today)
+    if n > 0 or not date_set:
+        return n
+    last = max(date_set)
+    last_d = datetime.strptime(last, "%Y-%m-%d").date()
+    if (today - last_d).days > grace_days:
+        return 0
+    n2, d = 0, last_d
+    while d.isoformat() in date_set:
+        n2 += 1
+        d -= timedelta(days=1)
+    return n2
 
 
 def _parse_progress_notes():
@@ -625,8 +662,10 @@ def compute_badge_progress(events, now=None):
         sl = _sleep_streak(late_dates, now)
         p["xidengxiaochaoren"] = {"state": "ok", "current": min(sl, 5),
                                   "target": 5, "unit": "天", "mode": "连续"}
-        # 坚持小勇士：三通道取最长（家务通道按颁发基线归零重计）
-        chans = [("家务", _streak_from_dates(jian_dates, today)),
+        # 坚持小勇士：三通道取最长（家务通道按颁发基线归零重计；
+        # 家务通道用 _streak_live 与家务判定候选同源，防定案顺延误断，
+        # DeepSeek 终审 2026-10-23 发现4）
+        chans = [("家务", _streak_live(jian_dates, today)),
                  ("睡觉", sl)]
         hw = _homework_streak(flags, gk)
         if hw is not None:
@@ -639,16 +678,17 @@ def compute_badge_progress(events, now=None):
         # 合作之星：兄弟同日协同家务连续天数（需两年级数据，循环外补算见下）
         p["hezuozhixing"] = {"state": "ok", "current": 0, "target": 3,
                              "unit": "天", "mode": "连续"}
-        # 综合之星：本周已获不同徽章种类数 / 4。口径（DeepSeek 裁定3
-        # 2026-10-20）：对齐计数侧——仅落账记录了 cycle_week 的事件计入
-        # （与 chore_judge 已发累计同一口径），历史行（无 recorded
-        # cycle_week、仅按日期推算）不计。注意：机制上线周 W43 内，落账标注
-        # 启用（2026-10-20）之前的本周徽章行会因此少计一类，属过渡期已知
-        # 现象（W44 起自然消失），非 bug，勿按展示侧口径"修回"。
+        # 综合之星：本周已获不同徽章种类数 / 4。口径（DeepSeek 终审
+        # 2026-10-23 修订，覆盖 2026-10-20 裁定3）：按台账行名义日期
+        # 所属周计种类——终审按此重判彦均 5 类 / 伟豪 3 类（核查时点）。
+        # 旧口径要求 key 注释 cycle_week 已落账标注且等于当周，使家务
+        # 迟到补发（标注为达成归属周 W42、行日期在本周）的种类被系统性
+        # 漏计。综合之星自身不计入；current 不截断（如实显示种类数，
+        # 可大于 target）。
         kinds = {e["key"] for e in events.get(gk, [])
-                 if e.get("cycle_week_recorded")
-                 and e.get("cycle_week") == cycle_week_of(ws_s)}
-        p["zonghezhixing"] = {"state": "ok", "current": min(len(kinds), 4),
+                 if e["key"] != "zonghezhixing"
+                 and cycle_week_of(e["date"]) == cycle_week_of(ws_s)}
+        p["zonghezhixing"] = {"state": "ok", "current": len(kinds),
                               "target": 4, "unit": "类", "mode": "本周"}
         # 三日不断：台账日期覆盖连续天数 / 3
         all_dates = {r["date"] for r in rows}
@@ -743,7 +783,7 @@ def build_badge_goals(events, progress=None, now=None):
                 # 目标榜"已获取"标签须一致（2026-10-21 用户报障修复）；仅影响
                 # obtained 标签，count/进度计数仍按归属周不动（B方案口径）。
                 if (e.get("late_cycle_recorded")
-                        and cycle_week_of(e["date"]) == cur_cycle):
+                        and cycle_week_of(e.get("post_date") or e["date"]) == cur_cycle):
                     if e["key"] not in late_held or e["date"] < late_held[e["key"]]:
                         late_held[e["key"]] = e["date"]
                 continue
@@ -1017,6 +1057,63 @@ def run_git(*args):
                           capture_output=True, text=True, timeout=60)
 
 
+def _ledger_fingerprint():
+    """台账指纹（读入顺序保护，DeepSeek 终审 2026-10-23，发现2）：
+    生成期间台账被追加（补记与同步同刻竞态，如 09:58 撞点）时指纹
+    变化 -> main 以最新台账重跑一次，杜绝以半旧快照发布。"""
+    try:
+        st = LEDGER.stat()
+        return (st.st_mtime_ns, st.st_size)
+    except OSError:
+        return None
+
+
+def _assert_badge_consistency(events, badges_doc, goals_doc):
+    """一致性守卫（DeepSeek 终审 2026-10-23）：本周徽章带与目标榜
+    obtained/count 必须与台账徽章事件逐项对拍；不齐 -> 抛错熔断不发布
+    并留痕，杜绝"已发放未显示"静默重演。"""
+    cur = badges_doc["week"]["cycle_week"]
+    catalog_keys = {k for k, _, _, _ in BADGE_CATALOG}
+    legacy_keys = set(LEGACY_BADGES.keys())
+    problems = []
+    for gk in ("g5", "g6"):
+        evs = events.get(gk, [])
+        held, cnt, late_held = {}, {}, {}
+        for e in evs:
+            wk = e.get("cycle_week") or cycle_week_of(e["date"])
+            if wk == cur:
+                cnt[e["key"]] = cnt.get(e["key"], 0) + 1
+                if e["key"] not in held or e["date"] < held[e["key"]]:
+                    held[e["key"]] = e["date"]
+            elif e.get("late_cycle_recorded") and \
+                    cycle_week_of(e.get("post_date") or e["date"]) == cur:
+                if e["key"] not in late_held or e["date"] < late_held[e["key"]]:
+                    late_held[e["key"]] = e["date"]
+        strip_items = badges_doc["by_grade"].get(gk, [])
+        for k, c in cnt.items():
+            if not any(it["key"] == k and it.get("count") == c
+                       and not it.get("late") for it in strip_items):
+                problems.append("%s 徽章带 %s 当周计数不符" % (gk, k))
+        for k in late_held:
+            if not any(it["key"] == k and it.get("late") for it in strip_items):
+                problems.append("%s 徽章带 %s 补发条目缺失" % (gk, k))
+        goals = {en["key"]: en for en in goals_doc["by_grade"].get(gk, [])}
+        for k in set(list(held) + list(late_held)):
+            if k in legacy_keys or k not in catalog_keys:
+                continue
+            en = goals.get(k)
+            if not en or not en.get("obtained"):
+                problems.append("%s 目标榜 %s 未点亮" % (gk, k))
+            elif en.get("count", 0) != cnt.get(k, 0):
+                problems.append("%s 目标榜 %s count 不符" % (gk, k))
+    if problems:
+        log("badge_guard_fail", "; ".join(problems)[:200])
+        raise ValueError("徽章一致性守卫失败：" + "; ".join(problems))
+
+
+_RACE_RETRIED = [False]
+
+
 def main():
     # 静默窗闸门（DeepSeek 裁定1 2026-10-20：静默窗全域生效，闸门落脚本层）：
     # [00:00,06:00) 内不 build、退出码 0；与 build_stats/build_trends 同口径，
@@ -1038,6 +1135,7 @@ def main():
         log("parse_error", "规则手册不存在：" + str(RULEBOOK))
         return 2
 
+    led_fp = _ledger_fingerprint()
     try:
         grades = sb.parse_ledger(LEDGER)  # 含三重校验（期初/链式/余额范围）
         balances = {gk: grades[gk]["balance"] for gk in ("g5", "g6")}
@@ -1098,6 +1196,10 @@ def main():
                 # redeemable 一致性恒等式（恒成立）
                 if red != (bal >= it["cost"]):
                     raise ValueError("商店可兑换一致性失败：" + it["id"])
+        # 一致性守卫（DeepSeek 终审 2026-10-23）：徽章带/目标榜与台账
+        # 事件对拍不齐 -> 熔断不发布（走 parse_error 路径并留痕）。
+        _assert_badge_consistency(events, docs["data/badges.json"],
+                                  docs["data/badge_goals.json"])
     except Exception as e:
         fail("sections 解析失败：" + str(e))
         try:
@@ -1110,6 +1212,20 @@ def main():
         if alert:
             fail("ALERT: 连续 3 次解析失败，需人工介入")
         return 2
+
+    # 读入顺序保护：生成期间台账被追加（补记同刻竞态）-> 释放锁后以
+    # 最新台账完整重跑一次（仅一次，避免活锁）；重跑仍遇竞态则以其
+    # 最新构建发布并已留痕。
+    if _ledger_fingerprint() != led_fp and not _RACE_RETRIED[0]:
+        _RACE_RETRIED[0] = True
+        log("ledger_race_rebuild",
+            "生成期间台账被追加，以最新台账重跑一次（补记同刻竞态防护）")
+        try:
+            fcntl.flock(lock, fcntl.LOCK_UN)
+            lock.close()
+        except Exception:
+            pass
+        return main()
 
     now_iso = datetime.now(BEIJING).isoformat(timespec="seconds")
     changed_files = []
