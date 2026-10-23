@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-23T22:34:55+08:00",
+  "generated_at": "2026-10-23T22:44:58+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-23",
+      "time": "22:18",
+      "time_source": "entry",
+      "reason": "英语『背今天的作文和最高级笔记10次，提交小管家』达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-23",
       "time": "21:20",
