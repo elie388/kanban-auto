@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-23T19:44:08+08:00",
+  "generated_at": "2026-10-23T19:54:08+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-23",
+      "time": "19:58",
+      "time_source": "entry",
+      "reason": "语文·生字13课正确率档96.2%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-23",
       "time": "19:47",
