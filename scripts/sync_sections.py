@@ -260,6 +260,7 @@ WRITING_DECIDE_LOG = REPO / "logs" / "badge_writing_decide.log"
 WRITING_EFFECTIVE = "2026-10-20"   # 书写之星正式连续计数起日
 SLEEP_START = "2026-10-20"         # 睡眠默认口径数据积累起日
 BIAODA_EFFECTIVE = "2026-10-26"    # 表达之星正式计数起日（下个完整周一）
+BAIFEN_EFFECTIVE = "2026-10-26"    # 百分俱乐部周基准新规起算日（W44）
 
 EVENT_BADGES = {"quanduizhixing", "baifentupo", "sanheyi", "xiaolvxiaoshandian",
                 "dancizhixing", "moxiezhixing", "jiawuxiaobangshou", "jinbumiao"}
@@ -286,13 +287,21 @@ def _ledger_rows_full():
                 continue
             km = KEY_FULL_RE.search(line)
             cm = CAT_RE.search(mm.group(2))
+            key_text = km.group(1).strip() if km else ""
+            # 生效时刻（百分俱乐部周基准用）：补记行以 backfill 日为落账日，
+            # 其余以名义日期；时刻取 key 注释 @HH:MM，无则 00:00。
+            _tm = re.search(r"@(\d{2}:\d{2})", key_text)
+            _bm = BACKFILL_RE.search(key_text)
             rows.append({
                 "date": sb.norm_date(mm.group(1)),
                 "desc": mm.group(2),
                 "delta": int(mm.group(3)),
-                "key": km.group(1).strip() if km else "",
+                "balance_after": int(mm.group(4)),
+                "key": key_text,
                 "cat": cm.group(1).strip() if cm else "",
                 "idx": idx,
+                "eff_date": _bm.group(1) if _bm else sb.norm_date(mm.group(1)),
+                "eff_time": _tm.group(1) if _tm else "00:00",
             })
         out[gk] = rows
     return out
@@ -604,6 +613,26 @@ def _tupo_progress(gk):
             "mode": "连续", "detail": best_kp}
 
 
+def _baifen_week_state(rows, now):
+    """百分俱乐部周基准状态（2026-10-23 改版，规则手册《徽章判定》节）：
+    基准 = 台账链上周一 00:00 前最后一笔余额（按生效时刻判定，补记行以
+    backfill 日为落账日）；当前余额 = 台账链最后一笔余额；本周已涨分 =
+    当前 - 基准（可负，展示侧钳 0）。rows 为 _ledger_rows_full 的行序。"""
+    ws, _we = week_bounds(now)
+    ws_s = ws.strftime("%Y-%m-%d")
+    ws_dt = ws_s + " 00:00"
+    baseline = 0
+    current = 0
+    for r in rows:
+        current = r.get("balance_after", current)
+    for r in rows:
+        eff = (r.get("eff_date") or r["date"]) + " " + (r.get("eff_time") or "00:00")
+        if eff < ws_dt:
+            baseline = r.get("balance_after", baseline)
+    return {"week_start": ws_s, "baseline": baseline,
+            "current_balance": current, "gain": current - baseline}
+
+
 def compute_badge_progress(events, now=None):
     """返回 {gk: {badge_key: progress_obj}}。progress_obj:
     {"state":"ok", current, target, unit, mode, detail?} |
@@ -690,6 +719,13 @@ def compute_badge_progress(events, now=None):
                  and cycle_week_of(e["date"]) == cycle_week_of(ws_s)}
         p["zonghezhixing"] = {"state": "ok", "current": len(kinds),
                               "target": 4, "unit": "类", "mode": "本周"}
+        # 百分俱乐部（2026-10-26 起新规展示）：本周已涨分 / 100。
+        # 生效日前不挂进度（维持旧展示），生效日起按周基准口径显示。
+        if today.isoformat() >= BAIFEN_EFFECTIVE:
+            bfs = _baifen_week_state(rows, now)
+            p["baifen"] = {"state": "ok",
+                           "current": max(bfs["gain"], 0),
+                           "target": 100, "unit": "分", "mode": "本周"}
         # 三日不断：台账日期覆盖连续天数 / 3
         all_dates = {r["date"] for r in rows}
         p["sanribuduan"] = {"state": "ok",
@@ -776,8 +812,11 @@ def build_badge_goals(events, progress=None, now=None):
         cnt = {}
         total = {}
         late_held = {}
+        earliest = {}
         for e in events.get(gk, []):
             total[e["key"]] = total.get(e["key"], 0) + 1
+            if e["key"] not in earliest or e["date"] < earliest[e["key"]]:
+                earliest[e["key"]] = e["date"]
             if (e.get("cycle_week") or cycle_week_of(e["date"])) != cur_cycle:
                 # 补发落账本周期（与 build_badges 同口径）：徽章带已同带展示，
                 # 目标榜"已获取"标签须一致（2026-10-21 用户报障修复）；仅影响
@@ -797,6 +836,13 @@ def build_badge_goals(events, progress=None, now=None):
                    "count": cnt.get(k, 0),
                    "total_count": total.get(k, 0),
                    "via_late": (k not in held) and (k in late_held)}
+            # 百分俱乐部新规例外（2026-10-23 改版）：obtained 按累计已获
+            # 显示（曾获即点亮、不随周清空）；count 仍为当周新发口径，
+            # total_count 为累计次数。规则手册《徽章进度口径》节。
+            if k == "baifen" and total.get(k, 0) > 0:
+                ent["obtained"] = True
+                if not ent["date"]:
+                    ent["date"] = earliest.get(k, "")
             if progress and gk in progress and k in progress[gk]:
                 ent["progress"] = progress[gk][k]
             entries.append(ent)

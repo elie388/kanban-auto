@@ -4,7 +4,7 @@
   "badges": [
     {"key": "quanduizhixing", "name": "全对之星", "icon": "✅", "cond": "单次作业/小测全部题目正确"},
     {"key": "baifentupo", "name": "满分之星", "icon": "💯", "cond": "收到卷面满分的考试试卷（任一科目，单次达成）"},
-    {"key": "baifen", "name": "百分俱乐部", "icon": "💰", "cond": "余额首次突破100分（一次性）", "points": 10},
+    {"key": "baifen", "name": "百分俱乐部", "icon": "💰", "cond": "以每周一余额为基准，本周内每涨满100分颁发一次（每次+5，可多次；每周重置基准）", "points": 5},
     {"key": "zonghezhixing", "name": "综合之星", "icon": "🏅", "cond": "一周内≥4类不同徽章"},
     {"key": "tupoxiaoyongshi", "name": "突破小勇士", "icon": "🛡️", "cond": "同一类错题连续3次订正全对"},
     {"key": "jianchixiaoyongshi", "name": "坚持小勇士", "icon": "🔥", "cond": "家务/按时完成作业/按时睡觉，任一连续14天"},
