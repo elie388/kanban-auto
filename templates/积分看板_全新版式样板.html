@@ -4762,6 +4762,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 .up-orig{margin:2px 0 12px;padding:10px 12px;background:#FFFDF4;border:1.5px solid #EAD9A0;border-radius:12px}
 .up-orig-cap{font-size:12.5px;font-weight:700;color:#8A6D1F;margin-bottom:5px}
 .up-orig-text{font-size:16.5px;line-height:1.75;color:#26221A;white-space:pre-line}
+.up-kousuan{margin:10px 0 4px;padding:10px 12px;background:#FFFDF4;border:1.5px solid #EAD9A0;border-radius:12px}
+.up-kousuan-cap{font-size:13.5px;font-weight:700;color:#8A6D1F;margin-bottom:5px}
+.up-kousuan-list{font-size:16.5px;line-height:1.75;color:#26221A;white-space:pre-line}
 .up-row{margin:12px 0}
 .up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
 .up-pick{display:flex;gap:8px;flex-wrap:wrap}
@@ -4812,6 +4815,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <button class="up-pickbtn" id="up-pickbtn" type="button">📷 选取文件</button>
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
+      <div class="up-kousuan" id="up-kousuan" style="display:none"><div class="up-kousuan-cap">数学口算（看题语音作答，不用写）</div><div class="up-kousuan-list" id="up-kousuan-list"></div></div>
       <div id="up-rec" style="display:none">
         <div class="up-rechint" id="up-rec-hint" style="display:none">📖 这个要把<b>内容</b>一起交哦：先点上面的「📷 选取文件」把要读、要预习或要对话的内容拍照上传，再点下面的录音读一遍，一起交，老师会照着内容批改。</div>
         <button class="up-recbtn" id="up-rec-start" type="button">🎤 直接录音</button>
@@ -4849,7 +4853,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1923';
+  var KB_BUILD = '20261023-1932';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5022,9 +5026,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       $('up-title').textContent = '交这一项';
       $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
       var _ot = (window.__taskOrig || {})[cur.task_id];
-      var _kq = (window.__taskKousuan || {})[cur.task_id];
       if(_ot){ $('up-orig-cap').textContent = '原文 · 照着读'; $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
-      else if(_kq){ $('up-orig-cap').textContent = '口算题目 · 看题作答'; $('up-orig-text').textContent = _kq; $('up-orig').style.display = 'block'; }
       else { $('up-orig').style.display = 'none'; }
     } else if(ctx.mode === 'chore'){
       cur.type = 'chore';
@@ -5106,7 +5108,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(cur.task_id && window.__taskOrig && window.__taskOrig[cur.task_id]) return false;
     return true;
   }
+  /* 数学口算题面（2026-10-23 家长改定）：只放在提交面板录音区上方，数据取当前任务 kousuan 字段
+     （renderOne 已登记到 window.__taskKousuan，编号格式 1）2）…）；无口算数据的任务不显示。 */
+  function kousuanGate(){
+    var b = $('up-kousuan'); if(!b) return;
+    var txt = (cur && cur.mode === 'task' && cur.task_id) ? (window.__taskKousuan || {})[cur.task_id] : null;
+    if(txt){ $('up-kousuan-list').textContent = txt; b.style.display = 'block'; }
+    else { b.style.display = 'none'; var l = $('up-kousuan-list'); if(l) l.textContent = ''; }
+  }
   function recGate(){
+    kousuanGate();
     var b = $('up-rec'); if(!b) return;
     recReset();
     b.style.display = recShouldShow() ? 'block' : 'none';
