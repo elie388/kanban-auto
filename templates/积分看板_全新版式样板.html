@@ -165,7 +165,8 @@
   .sum-enc{margin-top:9px; font-size:14px; line-height:1.7; background:#F4F8EE; border-radius:10px; padding:8px 10px;}
   .sum-empty{color:#77808C; font-size:14px; padding:8px 2px;}
   .sum-parent{border-top:2px dashed #E5E7EB; margin-top:16px; padding-top:12px;}
-  .sum-parent-head{font-weight:800; font-size:15px;}
+  /* 家长版小结标题底色带（2026-10-24 家长令）：浅蓝整行圆角带，与孩子版条目卡奶油底 #FFFDF8 区分、同栏目 .sum-kp 同色系 */
+  .sum-parent-head{font-weight:800; font-size:15px; background:#EEF3FF; border-radius:10px; padding:9px 12px;}
   
   .sum-parent-form input{width:100%; box-sizing:border-box; font-size:16px; padding:11px; border:1px solid #CCC; border-radius:10px; margin:10px 0 8px;}
   .sum-parent-form button{font-size:15px; padding:9px 16px; border-radius:10px; border:0; background:#30343B; color:#FFF; cursor:pointer;}
@@ -5080,7 +5081,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-0028';
+  var KB_BUILD = '20261024-0032';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
