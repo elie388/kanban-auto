@@ -135,10 +135,10 @@
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
   /* 余额卡鼓励文案行已按家长 2026-10-23 令整行删除：元素/CSS/填充逻辑全删，不留占位 */
   /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，DeepSeek分档口径）：今日变化标/分档刻度条/负分态 */
-  .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0 9px; border-radius:999px; background:rgba(255,255,255,.22); color:#fff;}
-  .bal-today.pos{background:rgba(46,125,50,.45);}
-  .bal-today.neg{background:rgba(160,40,40,.45);}
-  .bal-today.zero{background:rgba(255,255,255,.16); opacity:.75; font-weight:600;}
+  .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
+  .bal-today.pos{background:transparent;}
+  .bal-today.neg{background:transparent;}
+  .bal-today.zero{background:transparent; opacity:.75; font-weight:600;}
   .bal-tier{margin-top:2px;}
   .bal-tier-bar{display:flex; gap:2px;}
   .bal-tier-seg{flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.28); overflow:hidden;}
@@ -178,7 +178,7 @@
   .sum-empty{color:#77808C; font-size:14px; padding:8px 2px;}
   .sum-parent{border-top:2px dashed #E5E7EB; margin-top:16px; padding-top:12px;}
   .sum-parent-head{font-weight:800; font-size:15px;}
-  .sum-parent-hint{font-weight:400; font-size:12.5px; color:#77808C;}
+  
   .sum-parent-form input{width:100%; box-sizing:border-box; font-size:16px; padding:11px; border:1px solid #CCC; border-radius:10px; margin:10px 0 8px;}
   .sum-parent-form button{font-size:15px; padding:9px 16px; border-radius:10px; border:0; background:#30343B; color:#FFF; cursor:pointer;}
   .sum-parent-err{color:#B3261E; font-size:13.5px; margin-top:8px;}
@@ -1142,7 +1142,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
         <div class="sum-parent" id="sum-parent">
-          <div class="sum-parent-head">🔒 家长版小结 <span class="sum-parent-hint">（输家长口令打开；全板任意口令框输家长口令也会一起开）</span></div>
+          <div class="sum-parent-head">🔒 家长版小结</div>
           <div class="sum-parent-body"></div>
         </div>
       </div>
@@ -2355,8 +2355,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(chip){
       if(!kbLocked() && typeof d.today_delta === 'number'){
         var td = d.today_delta;
+        /* 今日增量每日归零（2026-10-24 00:14 家长令、00:17 修正口径）：按北京时间（Asia/Shanghai）00:01 分界——
+           stats 快照日期（ledger_date，缺失时退回 generated_at 的日期部分）不是北京时间今天时，强制按 0 显示，不展示昨日数字 */
+        var snapDate = (typeof d.ledger_date === 'string' && d.ledger_date) ? d.ledger_date : ((typeof d.generated_at === 'string') ? d.generated_at.slice(0, 10) : '');
+        var staleDay = snapDate !== todayStr();
+        if(staleDay) td = 0;
         chip.hidden = false;
-        chip.textContent = td > 0 ? ('今日 +' + td) : (td < 0 ? ('今日 \u2212' + Math.abs(td)) : '今日 0');
+        chip.textContent = staleDay ? '今日 +0' : (td > 0 ? ('今日 +' + td) : (td < 0 ? ('今日 \u2212' + Math.abs(td)) : '今日 0'));
         chip.className = 'bal-today ' + (td > 0 ? 'pos' : (td < 0 ? 'neg' : 'zero'));
       } else { chip.hidden = true; }
     }
@@ -5091,7 +5096,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2350';
+  var KB_BUILD = '20261024-0019';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
