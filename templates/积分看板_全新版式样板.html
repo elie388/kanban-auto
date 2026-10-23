@@ -160,6 +160,9 @@
   .sum-sec-t{font-weight:700; font-size:13px; color:#66707C; margin-bottom:4px;}
   .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:14px;}
   .sum-kp{display:inline-block; background:#EEF3FF; color:#2F4A8A; border-radius:999px; padding:1px 9px; font-size:12.5px; margin:0 6px 6px 0; line-height:1.7;}
+  .sum-kp-row{margin:0 0 2px; line-height:1.65;}
+  .sum-kp-note{font-size:13.5px; color:#4A5568;}
+  .sum-week{font-weight:700; border-bottom:none;}
   .sum-pt{display:flex; justify-content:space-between; font-size:14px; line-height:1.7; border-bottom:1px dashed #EEE;}
   .sum-pt-d.pos{color:#2E7D32; font-weight:700;} .sum-pt-d.neg{color:#B3261E; font-weight:700;}
   .sum-enc{margin-top:9px; font-size:14px; line-height:1.7; background:#F4F8EE; border-radius:10px; padding:8px 10px;}
@@ -583,12 +586,12 @@
      ID 作用域压过 D2 的一次性 barGrow 入场动画（入场生长被循环生长吸收，不再单独触发）。 */
   #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ transform-origin:left center; animation:progGrowLoop 1.5s ease-out infinite; }
   @keyframes progGrowLoop{ 0%{ transform:scaleX(0); } 72%{ transform:scaleX(1); } 100%{ transform:scaleX(1); } }
-  /* 完成态：独立语义绿（优先于年级色）＋✓ 文字；旧 progPulse 透明度脉冲（2s）与循环生长动的不是同一属性，
-     按家长最新令双动画叠加保留（生长管 transform、脉冲管 opacity，互不覆盖）。
-     注意：年级色规则用了 #tasks-gX 的 ID 选择器，完成态规则必须同级 ID 作用域才压得过（类选择器会被 ID 压掉，2026-10-23 真机实测教训）。 */
-  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A); animation:progGrowLoop 1.5s ease-out infinite, progPulse 2s ease-in-out infinite;}
-  @keyframes progPulse{ 0%,100%{ opacity:.85; } 50%{ opacity:1; } }
-  @media (prefers-reduced-motion: reduce){ #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ animation:none; } #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{ opacity:1; } }
+  /* 颜色渐变（2026-10-23 23:08 家长改定）：填充色按百分比连续混合——≤70% 纯年级色、70%→100% 线性混入语义绿、
+     100% 纯绿；由渲染 JS 按 pct 计算两端 stop 的混合色并以 inline background 赋值（软刷新跟随）。
+     满格呼吸动画已按家长令删除，填充只保留 progGrowLoop 循环生长。
+     下行 is-full 绿色仅作无 JS 时的兜底（与 100% 混合终点同值），inline 赋值后以 inline 为准、不打架。 */
+  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A);}
+  @media (prefers-reduced-motion: reduce){ #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ animation:none; } }
 
 
   /* 积分商店 */
@@ -1518,10 +1521,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var progBar = sec.querySelector('.task-prog-bar');
     var progFill = sec.querySelector('.task-prog-fill');
     var progWrap = sec.querySelector('.task-prog');
-    /* 进度条优化（2026-10-23）：百分比四舍五入、total=0 不渲染百分比段；满格加 ✓ 并切完成态 */
+    /* 进度条优化（2026-10-23）：百分比四舍五入、total=0 不渲染百分比段；满格文案不带 ✓（2026-10-23 23:09 家长令） */
     var pct = total ? Math.round(done / total * 100) : null;
     var isFull = total > 0 && done === total;
-    var label = (isFull ? '✓ ' : '') + '已完成 ' + done + ' / ' + total + (pct !== null ? ' · ' + pct + '%' : '');
+    var label = '已完成 ' + done + ' / ' + total + (pct !== null ? ' · ' + pct + '%' : '');
     if(progWrap) progWrap.classList.toggle('is-full', isFull);
     if(progText) progText.textContent = label;
     if(progBar){
@@ -1529,7 +1532,19 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       progBar.setAttribute('aria-valuenow', done);
       progBar.setAttribute('aria-valuetext', label);
     }
-    if(progFill) progFill.style.width = (total ? (done / total * 100) : 0) + '%';
+    if(progFill){
+      var pctExact = total ? (done / total * 100) : 0;
+      progFill.style.width = pctExact + '%';
+      /* 填充色按百分比连续混合（2026-10-23 23:08 家长令）：pct≤70 纯年级色，70→100 线性混入语义绿，100 纯绿；
+         渐变两端 stop 分别混合，inline background 覆盖 CSS 兜底，渲染时每次重算（软刷新跟随） */
+      var gradeStops = secId === 'tasks-g5' ? [[255,138,91],[255,169,107]] : [[108,142,255],[143,169,255]];
+      var greenStops = [[91,163,107],[124,201,138]];
+      var mixT = pctExact <= 70 ? 0 : Math.min(1, (pctExact - 70) / 30);
+      function mixStop(a, b){
+        return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * mixT) + ',' + Math.round(a[1] + (b[1] - a[1]) * mixT) + ',' + Math.round(a[2] + (b[2] - a[2]) * mixT) + ')';
+      }
+      progFill.style.background = 'linear-gradient(90deg,' + mixStop(gradeStops[0], greenStops[0]) + ',' + mixStop(gradeStops[1], greenStops[1]) + ')';
+    }
     var taskList = sec.querySelector('.task-list');
     if(!taskList) return false;
     /* meta 置顶；完成后当天一直显示（2026-10-22 家长改定，取消原「完成超 30 分钟隐藏」：
@@ -2621,20 +2636,49 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var html = '';
     items.forEach(function(it){
       html += '<div class="sum-item"><div class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</div>';
+      /* 孩子版晚间小结八段结构（规则手册「孩子版晚间小结结构」，2026-10-23 家长拍板恢复，顺序固定；
+         旧四字段数据（无 improve 字段）按兼容口径渲染：知识点纯标签、无错题不显示全对句） */
       if(it.completed && it.completed.length){
-        html += '<div class="sum-sec"><div class="sum-sec-t">今天完成了</div><ul>' + it.completed.map(function(x){ return '<li>' + sumEsc(x) + '</li>'; }).join('') + '</ul></div>';
+        html += '<div class="sum-sec"><div class="sum-sec-t">🌟今晚的闪光点</div><ul>' + it.completed.map(function(x){ return '<li>' + sumEsc(x) + '</li>'; }).join('') + '</ul></div>';
+      }
+      if(it.improve && it.improve.length){
+        html += '<div class="sum-sec"><div class="sum-sec-t">🎯明天可以更好的地方</div><ul>' + it.improve.map(function(x){ return '<li>' + sumEsc(x) + '</li>'; }).join('') + '</ul></div>';
       }
       if(it.knowledge_points && it.knowledge_points.length){
-        html += '<div class="sum-sec"><div class="sum-sec-t">今晚错题知识点</div><div>' + it.knowledge_points.map(function(x){ return '<span class="sum-kp">' + sumEsc(x) + '</span>'; }).join('') + '</div></div>';
+        html += '<div class="sum-sec"><div class="sum-sec-t">📚今晚错题知识点</div><div>' + it.knowledge_points.map(function(x){
+          if(x && typeof x === 'object'){
+            return '<div class="sum-kp-row"><span class="sum-kp">' + sumEsc(x.tag || '') + '</span>' + (x.note ? '<span class="sum-kp-note">' + sumEsc(x.note) + '</span>' : '') + '</div>';
+          }
+          return '<div class="sum-kp-row"><span class="sum-kp">' + sumEsc(x) + '</span></div>';
+        }).join('') + '</div></div>';
+      } else if(it.improve !== undefined){
+        html += '<div class="sum-sec"><div class="sum-sec-t">📚今晚错题知识点</div><div>今晚全对，太棒了！</div></div>';
       }
-      if(it.points && it.points.length){
-        html += '<div class="sum-sec"><div class="sum-sec-t">今日积分</div>' + it.points.map(function(pt){
-          var d = typeof pt.delta === 'number' ? pt.delta : 0;
-          return '<div class="sum-pt"><span>' + sumEsc(pt.desc || '') + '</span><span class="sum-pt-d ' + (d >= 0 ? 'pos' : 'neg') + '">' + (d > 0 ? '+' + d : (d < 0 ? '\u2212' + Math.abs(d) : '0')) + '</span></div>';
-        }).join('') + '</div>';
+      if((it.points && it.points.length) || typeof it.week_points_total === 'number'){
+        html += '<div class="sum-sec"><div class="sum-sec-t">🪙今日积分</div>';
+        if(it.points && it.points.length){
+          html += it.points.map(function(pt){
+            var d = typeof pt.delta === 'number' ? pt.delta : 0;
+            return '<div class="sum-pt"><span>' + sumEsc(pt.desc || '') + '</span><span class="sum-pt-d ' + (d >= 0 ? 'pos' : 'neg') + '">' + (d > 0 ? '+' + d : (d < 0 ? '\u2212' + Math.abs(d) : '0')) + '</span></div>';
+          }).join('');
+        }
+        if(typeof it.week_points_total === 'number'){
+          var w = it.week_points_total;
+          html += '<div class="sum-pt sum-week"><span>本周累计</span><span class="sum-pt-d ' + (w >= 0 ? 'pos' : 'neg') + '">' + (w > 0 ? '+' + w : (w < 0 ? '\u2212' + Math.abs(w) : '0')) + '</span></div>';
+        }
+        html += '</div>';
+      }
+      if(it.achievements && it.achievements.length){
+        html += '<div class="sum-sec"><div class="sum-sec-t">🏅今日成就</div><ul>' + it.achievements.map(function(x){ return '<li>' + sumEsc(x) + '</li>'; }).join('') + '</ul></div>';
+      }
+      if(typeof it.streak === 'number' && it.streak > 0){
+        html += '<div class="sum-sec"><div class="sum-sec-t">🔥连续打卡</div><div>已经连续打卡 ' + it.streak + ' 天，继续保持！</div></div>';
+      }
+      if(it.tomorrow && it.tomorrow.length){
+        html += '<div class="sum-sec"><div class="sum-sec-t">📋明日预告</div><ul>' + it.tomorrow.map(function(x){ return '<li>' + sumEsc(x) + '</li>'; }).join('') + '</ul></div>';
       }
       if(it.encouragement){
-        html += '<div class="sum-enc">' + sumEsc(it.encouragement) + '</div>';
+        html += '<div class="sum-sec"><div class="sum-sec-t">💪结尾鼓励</div><div class="sum-enc">' + sumEsc(it.encouragement) + '</div></div>';
       }
       html += '</div>';
     });
@@ -4992,7 +5036,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2301';
+  var KB_BUILD = '20261023-2311';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
