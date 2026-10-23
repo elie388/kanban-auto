@@ -193,6 +193,42 @@ def ingest_audit_capacity_event(st, path=None):
                     " 需轮转/归档处理" % "、".join(over)}]
 
 
+GROQ_SEND_LOG_PATH = os.path.join(BASE, "..", "logs", "groq_send_log.jsonl")
+GROQ_SEND_LOG_MAX_BYTES = 50 * 1024 * 1024  # 50MB（与 C2 摄取审计同口径）
+GROQ_SEND_LOG_MAX_LINES = 200_000           # 20 万行（先到为准）
+
+
+def groq_send_log_capacity_event(st, path=None):
+    """Groq 送数日志容量监控（2026-10-23 G0 通过后 DeepSeek 数据纪律 3.2：
+    logs/groq_send_log.jsonl 纳入 sync_duty 容量监控，口径同 C2——
+    大小超 50MB 或行数超 20 万行产事件；超限期间只报一次
+    （st.groq_send_log_over 闩锁），回落后复位可再报。
+    文件缺失/读取失败一律静默跳过，不影响主决策。"""
+    p = path or GROQ_SEND_LOG_PATH
+    try:
+        size = os.path.getsize(p)
+        lines = 0
+        with open(p, "rb") as f:
+            for _ in f:
+                lines += 1
+    except Exception:
+        return []
+    over = []
+    if size > GROQ_SEND_LOG_MAX_BYTES:
+        over.append("大小 %.1fMB>50MB" % (size / 1048576.0))
+    if lines > GROQ_SEND_LOG_MAX_LINES:
+        over.append("行数 %d>200000" % lines)
+    if not over:
+        st.pop("groq_send_log_over", None)
+        return []
+    if st.get("groq_send_log_over"):
+        return []
+    st["groq_send_log_over"] = True
+    return [{"script": "sync_duty", "kind": "groq_send_log_capacity",
+             "msg": "Groq送数日志容量超限（%s）：logs/groq_send_log.jsonl"
+                    " 需轮转/归档处理" % "、".join(over)}]
+
+
 def main():
     st = load_state()
     stats_code = run_script("build_stats.py")
@@ -201,6 +237,7 @@ def main():
     events = decide(st, stats_code, sec_code, sync, time.time())
     events += grading_stay_event(st)
     events += ingest_audit_capacity_event(st)
+    events += groq_send_log_capacity_event(st)
     save_state(st)
     print("DECISION " + ("report" if events else "silent"))
     print(json.dumps({"events": events,
@@ -295,12 +332,51 @@ def _selftest_capacity():
     return results
 
 
+def _selftest_groq_capacity():
+    """Groq 送数日志容量检查段自测：同 C2 套路（触发/闩锁/复位/再触发/缺失静默）。"""
+    import tempfile
+    global GROQ_SEND_LOG_MAX_BYTES, GROQ_SEND_LOG_MAX_LINES
+    saved = (GROQ_SEND_LOG_MAX_BYTES, GROQ_SEND_LOG_MAX_LINES)
+    results = []
+    try:
+        fd, path = tempfile.mkstemp(suffix=".jsonl")
+        os.close(fd)
+        st = {}
+        with open(path, "w") as f:
+            f.write("{}\n" * 5)
+        GROQ_SEND_LOG_MAX_LINES = 3
+        GROQ_SEND_LOG_MAX_BYTES = 50 * 1024 * 1024
+        ev1 = groq_send_log_capacity_event(st, path)
+        results.append(("groq_capacity_lines_over_fires",
+                        len(ev1) == 1 and ev1[0]["kind"] == "groq_send_log_capacity"))
+        results.append(("groq_capacity_latched_no_repeat",
+                        groq_send_log_capacity_event(st, path) == []))
+        with open(path, "w") as f:
+            f.write("{}\n")
+        results.append(("groq_capacity_reset_under_threshold",
+                        groq_send_log_capacity_event(st, path) == []
+                        and "groq_send_log_over" not in st))
+        with open(path, "w") as f:
+            f.write("{}\n" * 5)
+        results.append(("groq_capacity_refires_after_reset",
+                        len(groq_send_log_capacity_event(st, path)) == 1))
+        results.append(("groq_capacity_missing_file_silent",
+                        groq_send_log_capacity_event({}, path + ".missing") == []))
+        os.unlink(path)
+    finally:
+        GROQ_SEND_LOG_MAX_BYTES, GROQ_SEND_LOG_MAX_LINES = saved
+    return results
+
+
 def selftest():
     ok, results = run_scenarios(_scenarios())
     for r in results:
         print(("PASS " if r["ok"] else "FAIL ") + r["case"]
               + ("" if r["ok"] else " expected=%s got=%s" % (r["expected"], r["got"])))
     for name, cok in _selftest_capacity():
+        print(("PASS " if cok else "FAIL ") + name)
+        ok = ok and cok
+    for name, cok in _selftest_groq_capacity():
         print(("PASS " if cok else "FAIL ") + name)
         ok = ok and cok
     print("SELFTEST " + ("ALL_PASS" if ok else "FAILED"))
