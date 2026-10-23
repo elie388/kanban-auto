@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
   "grade": 6,
-  "balance": 432,
+  "balance": 431,
   "bal_sub": "五十块的心愿，正一点点靠近。",
-  "today_delta": 0,
+  "today_delta": -1,
   "tier_prev": 250,
   "tier_next": 600,
   "tier_costs": [
@@ -14,8 +14,8 @@
     600,
     1000
   ],
-  "ledger_date": "2026-10-16",
-  "generated_at": "2026-10-23T19:54:08+08:00",
+  "ledger_date": "2026-10-23",
+  "generated_at": "2026-10-23T20:46:20+08:00",
   "source": "hidden_files/积分记录.md",
-  "checksum": "3e69ac05002fab43"
+  "checksum": "781ffb377a86aea4"
 }
