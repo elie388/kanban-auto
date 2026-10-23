@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T20:17:59+08:00",
+  "updated_at": "2026-10-23T20:28:24+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -156,7 +156,7 @@
       "title": "校本13课比照红笔错题",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
@@ -165,9 +165,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T20:28:24+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261023-CC9E78",
@@ -286,7 +287,7 @@
   ],
   "counts": {
     "total": 13,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 2,
     "done": 3,
     "pending_review": 0
