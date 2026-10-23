@@ -654,6 +654,8 @@
   .sub-wrap{margin-top:18px;}
   .lib-zone{padding:0 16px 4px}
   #panel-lib .collapse-pad{padding:0}
+  .fb-zone{padding:0 16px 4px}
+  #panel-feedback .collapse-pad{padding:0}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -1099,20 +1101,19 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           <div class="sum-parent-head">🔒 家长版小结 <span class="sum-parent-hint">（需家长口令，与家庭口令是两把）</span></div>
           <div class="sum-parent-body"></div>
         </div>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- 批改反馈（2026-10-23 家长知情改定全搬）：批改反馈全文/作文点评/提问回复，近3天 -->
-  <section class="card collapse" aria-label="批改反馈">
-    <span class="tag-demo" id="feedback-tag">离线数据</span>
-    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-feedback" id="btn-feedback">
-      <span class="emoji" aria-hidden="true">✏️</span>
-      <span class="cb-title">批改反馈</span><span class="sum-dot" id="feedback-dot" hidden aria-hidden="true"></span>
-      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
-    </button>
-    <div class="collapse-body" id="panel-feedback" role="region" aria-labelledby="btn-feedback">
-      <div class="collapse-inner"><div class="collapse-pad">
+      </div>
+    <!-- 批改反馈（2026-10-23 并入学习小结·子块，家长截图下令；原顶层栏目同日取消）：
+         结构同目标榜子块——位于小结主 .collapse-pad 之外、其后，且位于 .collapse-inner 之内
+         （防父栏收起时头行外露，2026-10-23 真机教训）；renderFeedback 按 #fb-g5/#fb-g6 定位、
+         不整表重建小结 pad，互不误清。子块二级开关 #feedback-toggle 默认收起、点击才展开；
+         红点 #feedback-dot 保留在子块标题旁，学习小结头红点已合并两边新内容（见 kbDotsRefresh）。 -->
+    <div class="sub-wrap fb-zone" id="panel-feedback" role="region" aria-label="批改反馈">
+      <button class="sub-toggle" type="button" id="feedback-toggle" aria-expanded="false" aria-controls="feedback-body">
+        <span class="sub-head-t">✏️ 批改反馈</span><span class="sum-dot" id="feedback-dot" hidden aria-hidden="true"></span>
+        <span class="sub-chev" id="feedback-chev">展开 ▾</span>
+      </button>
+      <div class="sub-body" id="feedback-body" role="region" aria-labelledby="feedback-toggle" hidden>
+        <div class="collapse-pad">
         <div class="sum-grade" id="fb-g5">
           <div class="grade-head"><span class="pill-grade g5">彦均</span></div>
           <div class="fb-items"><div class="sum-empty">反馈加载中…</div></div>
@@ -1121,7 +1122,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
           <div class="fb-items"><div class="sum-empty">反馈加载中…</div></div>
         </div>
-      </div></div>
+        </div>
+      </div>
+    </div>
+      </div>
     </div>
   </section>
 
@@ -1290,7 +1294,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['shop','achieve','trend','summary','feedback']; /* 2026-10-23 合并：bonus/deduct/log 三钮已并入商店为子块、lib 已并入本周徽章为子块，顶层钮删除 */
+  var ids = ['shop','achieve','trend','summary']; /* 2026-10-23 合并：bonus/deduct/log 三钮已并入商店为子块、lib 已并入本周徽章为子块、feedback 已并入学习小结为子块，顶层钮删除 */
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -2623,18 +2627,27 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
     wrap.innerHTML = html;
   }
-  function sumDotUpdate(){
-    var dot = $('summary-dot');
-    if(!dot) return;
-    if(document.documentElement.classList.contains('kb-locked')){ dot.hidden = true; return; }
+  /* 红点合并（2026-10-23 批改反馈并入学习小结）：学习小结头红点在小结或批改反馈
+     任一有新内容时亮起；批改反馈子块标题旁的红点只管反馈新内容。锁定态两点全灭。 */
+  function kbNewFlag(newestMap, seenPrefix){
     var hasNew = false;
     [5, 6].forEach(function(g){
       var seen = '';
-      try { seen = localStorage.getItem('kb-sum-seen-g' + g) || ''; } catch (e) {}
-      if(sumNewest[g] && sumNewest[g] > seen) hasNew = true;
+      try { seen = localStorage.getItem(seenPrefix + g) || ''; } catch (e) {}
+      if(newestMap[g] && newestMap[g] > seen) hasNew = true;
     });
-    dot.hidden = !hasNew;
+    return hasNew;
   }
+  function kbDotsRefresh(){
+    var locked = document.documentElement.classList.contains('kb-locked');
+    var sumNew = !locked && kbNewFlag(sumNewest, 'kb-sum-seen-g');
+    var fbNew = !locked && kbNewFlag(fbNewest, 'kb-fb-seen-g');
+    var sd = $('summary-dot');
+    if(sd) sd.hidden = !(sumNew || fbNew);
+    var fd = $('feedback-dot');
+    if(fd) fd.hidden = !fbNew;
+  }
+  function sumDotUpdate(){ kbDotsRefresh(); }
   function loadKidSummary(grade){
     fetchJson('daily_summary_' + grade + '.json', {}).then(function(d){
       var items = (d && d.items) || [];
@@ -2726,7 +2739,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
      标题行只留标题＋时间＋展开钮，不带孩子名（年级标签在栏目上方已有），正文内原有称呼不动。
      反馈条目无独立 id，以「年级|ts|标题|正文长度」指纹为 key；状态存 localStorage 且键带本地日期——
      当日软刷新/重载保持，次日自动回默认全收起（与年级段折叠同口径）。锁区登记：.fb-head 为 panel-feedback
-     内二级开关，可见性从属于 btn-feedback 父栏目，回锁收口按一般口径不单独复位（父区 CSS 硬隐藏兜底）。 */
+     子块内三级开关，可见性从属于学习小结父栏目（btn-summary）与子块开关（#feedback-toggle）；
+     回锁收口时子块开关经 __kbResetFbSub 复位，条目 OPEN_FB 按一般口径不单独复位（父区 CSS 硬隐藏兜底）。 */
   var OPEN_FB = {};
   function fbStoreKey(){
     var d = new Date();
@@ -2789,30 +2803,41 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var item = head.closest ? head.closest('.fb-item') : null;
     if(item) toggleFbItem(item);
   });
-  function fbDotUpdate(){
-    var dot = $('feedback-dot');
-    if(!dot) return;
-    if(document.documentElement.classList.contains('kb-locked')){ dot.hidden = true; return; }
-    var hasNew = false;
-    [5, 6].forEach(function(g){
-      var seen = '';
-      try { seen = localStorage.getItem('kb-fb-seen-g' + g) || ''; } catch (e) {}
-      if(fbNewest[g] && fbNewest[g] > seen) hasNew = true;
-    });
-    dot.hidden = !hasNew;
+  function fbDotUpdate(){ kbDotsRefresh(); }
+  /* 批改反馈子块二级开关（2026-10-23 并入学习小结，沿目标榜/日志子块形态：默认收起、点击才展开）。
+     点击开关即视为已查看反馈（对齐原 btn-feedback 的 seen 口径）：标记两年级反馈已读并刷新双红点。 */
+  var OPEN_FB_BLOCK = false;
+  function kbFbApply(){
+    var body = $('feedback-body'), btn = $('feedback-toggle'), chev = $('feedback-chev');
+    if(body) body.hidden = !OPEN_FB_BLOCK;
+    if(btn) btn.setAttribute('aria-expanded', OPEN_FB_BLOCK ? 'true' : 'false');
+    if(chev) chev.textContent = OPEN_FB_BLOCK ? '收起 ▴' : '展开 ▾';
   }
+  function kbWireFbToggle(){
+    var btn = $('feedback-toggle');
+    if(!btn || btn.dataset.wired) return;
+    btn.dataset.wired = '1';
+    btn.addEventListener('click', function(){
+      OPEN_FB_BLOCK = !OPEN_FB_BLOCK;
+      kbFbApply();
+      [5, 6].forEach(function(g){ if(fbNewest[g]){ try { localStorage.setItem('kb-fb-seen-g' + g, fbNewest[g]); } catch (e) {} } });
+      kbDotsRefresh();
+    });
+  }
+  /* 口令门收口钩子：回锁时复位批改反馈子块开关为收起态（条目 OPEN_FB 仍按原口径不单独复位） */
+  window.__kbResetFbSub = function(){
+    OPEN_FB_BLOCK = false;
+    kbFbApply();
+  };
   function loadFeedback(grade){
+    kbWireFbToggle();
     fetchJson('feedback_' + grade + '.json', {}).then(function(d){
       var items = (d && d.items) || [];
       if(items.length) fbNewest[grade] = items[0].ts || '';
       renderFeedback(grade, items);
       fbDotUpdate();
-      var tag = $('feedback-tag');
-      if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
     }).catch(function(){
       renderFeedback(grade, []);
-      var tag = $('feedback-tag');
-      if(tag) tag.textContent = '暂时无法连接';
     });
   }
 
@@ -2842,20 +2867,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     renderParentZone();
     loadFeedback(5);
     loadFeedback(6);
-    var fbb = $('btn-feedback');
-    if(fbb && !fbb.__fbSeenBound){
-      fbb.__fbSeenBound = true;
-      fbb.addEventListener('click', function(){
-        [5, 6].forEach(function(g){ if(fbNewest[g]){ try { localStorage.setItem('kb-fb-seen-g' + g, fbNewest[g]); } catch (e) {} } });
-        var dot = $('feedback-dot'); if(dot) dot.hidden = true;
-      });
-    }
+    kbWireFbToggle();
     var sb = $('btn-summary');
     if(sb && !sb.__sumSeenBound){
       sb.__sumSeenBound = true;
       sb.addEventListener('click', function(){
         [5, 6].forEach(function(g){ if(sumNewest[g]){ try { localStorage.setItem('kb-sum-seen-g' + g, sumNewest[g]); } catch (e) {} } });
-        var dot = $('summary-dot'); if(dot) dot.hidden = true;
+        kbDotsRefresh(); /* 只清小结已读；批改反馈仍有新内容时学习小结红点继续亮（合并口径） */
       });
     }
   }
@@ -4888,7 +4906,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2150';
+  var KB_BUILD = '20261023-2156';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5984,7 +6002,7 @@ document.addEventListener('click', function(e){
    - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
    ================================================================ */
 (function(){
-  var GATE_PANELS = ['btn-feedback', 'btn-summary', 'btn-trend', 'btn-achieve', 'btn-shop']; /* 2026-10-23 合并：btn-bonus/btn-deduct/btn-log 随四块并入商店删除、btn-lib 随目标榜并入本周徽章删除，子块一律归父栏目一口收口 */
+  var GATE_PANELS = ['btn-summary', 'btn-trend', 'btn-achieve', 'btn-shop']; /* 2026-10-23 合并：btn-bonus/btn-deduct/btn-log 随四块并入商店删除、btn-lib 随目标榜并入本周徽章删除、btn-feedback 随批改反馈并入学习小结删除，子块一律归父栏目一口收口 */
   var KB_LOCKED = false;
   var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
   var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
@@ -6035,6 +6053,7 @@ document.addEventListener('click', function(e){
       });
       try{ if(typeof window.__kbResetShopSubs === 'function') window.__kbResetShopSubs(); }catch(e){ console.warn('回锁复位商店子块失败（已隔离）:', e); }
       try{ if(typeof window.__kbResetGoalsSubs === 'function') window.__kbResetGoalsSubs(); }catch(e){ console.warn('回锁复位目标榜失败（已隔离）:', e); }
+      try{ if(typeof window.__kbResetFbSub === 'function') window.__kbResetFbSub(); }catch(e){ console.warn('回锁复位批改反馈子块失败（已隔离）:', e); }
       if(window.__kbSetGradeOpen){
         window.__kbSetGradeOpen('g5', false);
         window.__kbSetGradeOpen('g6', false);
