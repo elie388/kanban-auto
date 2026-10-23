@@ -149,10 +149,10 @@
   html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
   /* 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件） */
   .sum-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#2FA84F; margin-left:7px; vertical-align:middle; transform-origin:center;}
-  /* 头点绿色呼吸灯（2026-10-23 家长令，22:47 续令改缩放呼吸）：亮态 scale 极小→变大→变小往复＋轻微 opacity；减少动态效果时静止常亮 */
-  .sum-dot:not([hidden]){animation:sumDotBreathe 1.8s ease-in-out infinite;}
-  @keyframes sumDotBreathe{0%,100%{transform:scale(.35); opacity:.55}50%{transform:scale(1.15); opacity:1}}
-  @media (prefers-reduced-motion: reduce){ .sum-dot:not([hidden]){animation:none;} }
+  /* 头点绿色呼吸灯（2026-10-23 家长令，22:47 改缩放呼吸，22:52 续令加大振幅防看漏）：亮态 scale .2→1.35 往复＋opacity .45↔1；ID 作用域防后加载规则覆盖；减少动态效果时静止常亮 */
+  #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:sumDotBreathe 1.8s ease-in-out infinite;}
+  @keyframes sumDotBreathe{0%,100%{transform:scale(.2); opacity:.45}50%{transform:scale(1.35); opacity:1}}
+  @media (prefers-reduced-motion: reduce){ #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:none;} }
   .sum-grade{margin-bottom:14px;}
   .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
   .sum-date{font-weight:800; font-size:15px; margin-bottom:6px;}
@@ -4986,7 +4986,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2253';
+  var KB_BUILD = '20261023-2254';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
