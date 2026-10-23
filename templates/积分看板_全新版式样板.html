@@ -383,6 +383,24 @@
   circle.tr-pt{cursor:pointer}
   circle.tr-nodata{cursor:pointer}
   circle.tr-bad{stroke:#D64545 !important}
+  /* 走势图特效（2026-10-23 家长拍板 ABCD 全做）：A 入场画线 2s、B 达标点呼吸微光、C 点按浮层、D 破峰金星；
+     全部动效在 prefers-reduced-motion 下退化为终态（B 光晕直接不显示） */
+  .tr-line-anim{stroke-dasharray:100;stroke-dashoffset:100;animation:trFxDraw 2000ms linear forwards}
+  @keyframes trFxDraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+  .tr-pt-anim,.tr-lbl-anim{opacity:0;animation:trFxFade 240ms ease forwards}
+  @keyframes trFxFade{from{opacity:0}to{opacity:1}}
+  .tr-halo{animation:trFxBreath 2.4s ease-in-out infinite}
+  @keyframes trFxBreath{0%,100%{opacity:0}50%{opacity:.25}}
+  .tr-star{transform-box:fill-box;transform-origin:center}
+  .tr-star-anim{opacity:0;animation:trFxStar 380ms ease forwards}
+  @keyframes trFxStar{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:scale(1)}}
+  .tr-pop{position:absolute;z-index:6;background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.55;box-shadow:0 4px 14px rgba(0,0,0,.25);pointer-events:none;max-width:80%;white-space:nowrap}
+  .tr-pop b{font-size:14px}
+  @media (prefers-reduced-motion: reduce){
+    .tr-line-anim{animation:none;stroke-dashoffset:0}
+    .tr-pt-anim,.tr-lbl-anim,.tr-star-anim{animation:none;opacity:1}
+    .tr-halo{display:none}
+  }
   .tr-wrow{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px dashed #EFD9CF;cursor:pointer;-webkit-tap-highlight-color:transparent}
   .tr-wmain{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
   .tr-wname{font-weight:600;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -2987,6 +3005,31 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   var GRADES = ['五年级', '六年级'], SUBJS = ['语文', '数学', '英语'];
   var GKEY = {'五年级': 'g5', '六年级': 'g6'}, GCOL = {'五年级': C5, '六年级': C6};
   var GNAME = {'五年级': '彦均', '六年级': '伟豪'};
+  /* 走势图特效状态（2026-10-23 家长拍板 ABCD）：TR_ANIM_SIG 入场动画视图签名（同签名只播一次）；
+     TR_RM = 系统减少动态效果，JS 侧据此直接不挂动画类；TR_POP = 点按浮层当前状态（跨 renderMain 供关闭器用） */
+  var TR_ANIM_SIG = null, TR_POP = null, TR_RM = false;
+  try { TR_RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch(e){}
+  /* 破峰判定（D，克制口径，DeepSeek 不推荐下家长仍拍板、严按此口径）：当日 ≥TARGET，且紧邻前一日有数据
+     且 <TARGET、再前一日有数据且 <TARGET（至少连续 2 天在线下后首次冲回线上）；无数据日断链、
+     序列前两点不触发、已在线上延续的达标日不重复触发。只用图上 85% 线与当日综合正确率。 */
+  function starSet(vals){
+    var set = {};
+    for(var i = 2; i < vals.length; i++){
+      var v = vals[i], p1 = vals[i - 1], p2 = vals[i - 2];
+      if(v === null || v === undefined || v < TARGET) continue;
+      if(p1 === null || p1 === undefined || p1 >= TARGET) continue;
+      if(p2 === null || p2 === undefined || p2 >= TARGET) continue;
+      set[i] = true;
+    }
+    return set;
+  }
+  /* 点按浮层关闭（C）：摘除浮层并还原被放大的点；重绘时浮层随 #tr-chart 内容替换自动消失，此处只管手动关闭路径 */
+  function closeTrendPop(){
+    var pop = document.getElementById('tr-pop');
+    if(pop && pop.parentNode) pop.parentNode.removeChild(pop);
+    if(TR_POP && TR_POP.pt && TR_POP.pt.isConnected) TR_POP.pt.setAttribute('r', TR_POP.r0);
+    TR_POP = null;
+  }
   function el(id){ return document.getElementById(id); }
   function sl(arr, n){ return arr.slice(-n); }
   function nn(arr){ return arr.filter(function(v){ return v !== null && v !== undefined; }); }
@@ -3109,6 +3152,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     /* F4（2026-10-20）：空集防御——双年级在当前窗口都无数据点时直接占位 */
     var anyData = GRADES.some(function(gr){ return overallW[gr].some(function(v){ return v !== null && v !== undefined; }); });
     if(!anyData){ root.innerHTML = '<p class="rule-note" style="margin-top:0">📈 近' + RANGE + '天暂无走势数据。</p>'; return; }
+    /* 入场动画签名（A）：范围+数据版本+末数据日+窗口末日；同签名只播一次——软刷新同数据、
+       过滤切换、缩放重绘均同签名不重播；首次渲染与切换范围（签名必变）各播一次。 */
+    var lastDataDate = '';
+    GRADES.forEach(function(gr){
+      overallW[gr].forEach(function(v, i){ if(v !== null && v !== undefined) lastDataDate = DW.dates[i]; });
+    });
+    var animSig = RANGE + '|' + (TD.updated_at || '') + '|' + lastDataDate + '|' + (DW.dates[DW.dates.length - 1] || '');
+    var fxAnim = !TR_RM && animSig !== TR_ANIM_SIG;
+    if(fxAnim) TR_ANIM_SIG = animSig;
+    var starSets = {};
+    GRADES.forEach(function(gr){ starSets[gr] = starSet(overallW[gr]); });
     var h = '';
     /* 图例与页签分行（2026-10-21 修复）：图例独立一行常显，不再被页签挤出画面 */
     h += '<div class="tr-legend"><span><span class="tr-dot" style="background:' + C5 + '"></span>彦均</span>'
@@ -3117,7 +3171,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       + '<div class="tr-tabsrow"><span class="tr-tabs" id="tr-tabs">'
       + '<button data-r="7">近7天</button><button data-r="14">近14天</button><button data-r="30">近30天</button>'
       + '<button class="tr-filt" id="tr-filt" style="margin-left:6px">⚠️ 只看未达标</button></span></div>';
-    h += '<div id="tr-chart"></div>';
+    h += '<div id="tr-chart" style="position:relative"></div>';
     if(TD.updated_at){
       var udT = new Date(TD.updated_at);
       if(!isNaN(udT.getTime())){
@@ -3144,22 +3198,36 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var series = GRADES.map(function(gr){
       return { gr: gr, vals: overallW[gr], col: GCOL[gr] };
     });
-    series.forEach(function(sr){
+    series.forEach(function(sr, si){
       if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
-      s += '<path d="' + segPath(sr.vals, g.X, g.Y) + '" fill="none" stroke="' + sr.col + '" stroke-width="2.4" stroke-linejoin="round"/>';
+      /* A：入场画线——pathLength 归一化后 dashoffset 2 秒从左到右画出，两线错开 150ms（图例顺序先后） */
+      s += '<path d="' + segPath(sr.vals, g.X, g.Y) + '" fill="none" stroke="' + sr.col + '" stroke-width="2.4" stroke-linejoin="round"'
+        + (fxAnim ? ' pathLength="100" class="tr-line-anim" style="animation-delay:' + (si * 150) + 'ms"' : '') + '/>';
     });
-    var lblSpecs = [];
-    series.forEach(function(sr){
+    var lblSpecs = [], phit = '';
+    series.forEach(function(sr, si){
       if(!sr.vals.some(function(v){ return v !== null && v !== undefined; })) return;
+      /* A：点淡入延迟与画线进度同比例（线画到哪、点亮到哪），两线错开与 path 同步 */
+      var ptDelay = function(i){ return si * 150 + (labels.length > 1 ? Math.round(i * 1600 / (labels.length - 1)) : 0); };
       sr.vals.forEach(function(v, i){
         if(DW.fut[i]) return; /* 未来日：不画点、不画占位圈，折线不延伸 */
         if(v === null || v === undefined){
-          /* 历史空值日：灰色空心圈占位（虚线描边明示非数值点），点击仍走全图吸附到该日、提示「当天无数据」 */
-          s += '<circle class="tr-nodata" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + gapY(sr.vals, i, g.Y) + '" r="5" fill="#fff" stroke="#B9BDC4" stroke-width="1.6" stroke-dasharray="3 2"/>';
+          /* 历史空值日：灰色空心圈占位（虚线描边明示非数值点）；C：另加透明热区，点按出「暂无数据」浮层 */
+          var ndY = gapY(sr.vals, i, g.Y);
+          s += '<circle class="tr-nodata' + (fxAnim ? ' tr-pt-anim' : '') + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + ndY + '" r="5" fill="#fff" stroke="#B9BDC4" stroke-width="1.6" stroke-dasharray="3 2"' + (fxAnim ? ' style="animation-delay:' + ptDelay(i) + 'ms"' : '') + '/>';
+          phit += '<circle class="tr-phit" data-g="' + sr.gr + '" data-i="' + i + '" data-nodata="1" cx="' + g.X(i) + '" cy="' + ndY + '" r="14" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
           return;
         }
         if(ONLYBAD && v >= TARGET) return;
-        s += '<circle class="tr-pt' + (v < TARGET ? ' tr-bad' : '') + '" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="' + (v < TARGET ? 5 : 4) + '" fill="#fff" stroke="' + sr.col + '" stroke-width="2"/>';
+        /* B：达标点同心光晕（仅 opacity 呼吸、无滤镜；过滤态下达标点不渲染、光晕同步消失；reduced-motion 由 CSS 隐藏） */
+        if(v >= TARGET) s += '<circle class="tr-halo" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="9" fill="' + sr.col + '" opacity="0"/>';
+        s += '<circle class="tr-pt' + (v < TARGET ? ' tr-bad' : '') + (fxAnim ? ' tr-pt-anim' : '') + '" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="' + (v < TARGET ? 5 : 4) + '" fill="#fff" stroke="' + sr.col + '" stroke-width="2"' + (fxAnim ? ' style="animation-delay:' + ptDelay(i) + 'ms"' : '') + '/>';
+        /* C：每点透明热区（r=14，后置于全图日期热区之上绘制，保证点按优先命中浮层逻辑） */
+        phit += '<circle class="tr-phit" data-g="' + sr.gr + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="14" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
+        /* D：破峰金星（判定见 starSet 克制口径）——随入场在该点处淡入放大落定，之后静态常驻、不闪烁无粒子 */
+        if(starSets[sr.gr][i]){
+          s += '<text class="tr-star' + (fxAnim ? ' tr-star-anim' : '') + '" x="' + g.X(i) + '" y="' + (g.Y(v) - 10) + '" font-size="13" text-anchor="middle" fill="#F5B301" stroke="#fff" stroke-width="3" stroke-linejoin="round" style="paint-order:stroke' + (fxAnim ? ';animation-delay:' + (ptDelay(i) + 120) + 'ms' : '') + '">★</text>';
+        }
       });
       var lastV = null, lastI = -1, prevV = null;
       sr.vals.forEach(function(v, i){ if(v !== null && v !== undefined){ prevV = lastV; lastV = v; lastI = i; } });
@@ -3224,7 +3292,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     })();
     s += '<text x="' + (tgtPlace === 'left' ? (PL + 4) : (W - PR - 4)) + '" y="' + (g.Y(TARGET) - 6) + '" font-size="11.5" font-weight="700" fill="#1E9E52" text-anchor="' + (tgtPlace === 'left' ? 'start' : 'end') + '" stroke="#fff" stroke-width="3.5" stroke-linejoin="round" style="paint-order:stroke">目标 ' + TARGET + '%</text>';
     lblSpecs.forEach(function(L){
-      s += '<text x="' + (L.x + (L.dx || 0)) + '" y="' + (lblY(L) + (L.dy || 0)) + '" font-size="12" font-weight="700" fill="' + L.col + '" text-anchor="end" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="paint-order:stroke">' + L.txt + '</text>';
+      /* A：最新值标注在画线收尾时淡入（只淡入、不滚数，避免中间值误读） */
+      s += '<text x="' + (L.x + (L.dx || 0)) + '" y="' + (lblY(L) + (L.dy || 0)) + '"' + (fxAnim ? ' class="tr-lbl-anim"' : '') + ' font-size="12" font-weight="700" fill="' + L.col + '" text-anchor="end" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="paint-order:stroke' + (fxAnim ? ';animation-delay:1850ms' : '') + '">' + L.txt + '</text>';
     });
     var shownD = dateShown(labels.length, spec);
     labels.forEach(function(d, i){
@@ -3237,8 +3306,43 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     labels.forEach(function(d, i){
       s += '<circle class="tr-hit" cx="' + g.X(i) + '" cy="' + g.Y(50) + '" r="20" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
     });
+    s += phit;
     s += '</svg>';
     el('tr-chart').innerHTML = s;
+    /* 点按浮层（C，2026-10-23）：点热区出对应孩子当日小卡（姓名+日期+正确率+达标状态），无数据点出「暂无数据」；
+       同点再点收起、点图内别处（svg 根点击）收起、点图外（IIFE 级 document 监听）收起；
+       图重绘时浮层随 #tr-chart 内容整体替换自动消失，防错位残留。所点可见点同步放大 2px，关闭时还原。 */
+    function showTrendPop(gr, i, cx, cy, nodata){
+      closeTrendPop();
+      var chart = el('tr-chart'); if(!chart) return;
+      var pop = document.createElement('div');
+      pop.className = 'tr-pop'; pop.id = 'tr-pop';
+      if(nodata){
+        pop.innerHTML = '<b>' + GNAME[gr] + '</b> · ' + DW.dates[i] + '<br>暂无数据';
+      } else {
+        var v = overallW[gr][i];
+        pop.innerHTML = '<b>' + GNAME[gr] + '</b> · ' + DW.dates[i] + '<br>正确率 <b>' + fmt(v) + '%</b> · ' + (v >= TARGET ? '达标 ✓' : '未达标');
+      }
+      chart.appendChild(pop);
+      var svgEl = chart.querySelector('svg');
+      var cw = chart.clientWidth || W, ch = svgEl ? (svgEl.clientHeight || cw * H / W) : cw * H / W;
+      var px = cx / W * cw, py = cy / H * ch;
+      pop.style.left = Math.max(66, Math.min(cw - 66, px)) + 'px';
+      pop.style.transform = 'translateX(-50%)';
+      var ph = pop.offsetHeight || 56, top = py - ph - 14;
+      pop.style.top = (top >= 2 ? top : py + 16) + 'px';
+      var pt = chart.querySelector('.tr-pt[data-g="' + gr + '"][data-i="' + i + '"]'), r0 = null;
+      if(pt){ r0 = pt.getAttribute('r'); pt.setAttribute('r', +r0 + 2); }
+      TR_POP = { g: gr, i: i, pt: pt, r0: r0 };
+    }
+    el('tr-chart').querySelectorAll('.tr-phit').forEach(function(hz){
+      hz.addEventListener('click', function(e){
+        e.stopPropagation();
+        var gr = hz.getAttribute('data-g'), i = +hz.getAttribute('data-i');
+        if(TR_POP && TR_POP.g === gr && TR_POP.i === i){ closeTrendPop(); return; }
+        showTrendPop(gr, i, +hz.getAttribute('cx'), +hz.getAttribute('cy'), hz.getAttribute('data-nodata') === '1');
+      });
+    });
     function pickDay(i){
         var dd = labels[i];
         if(DW.fut[i]){ el('tr-tip').innerHTML = '📅 ' + dd + '：还没到这一天'; return; }
@@ -3273,7 +3377,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var mainSvg = el('tr-chart').querySelector('svg');
     if(mainSvg){
       var xsMain = labels.map(function(_, k){ return g.X(k); });
-      mainSvg.addEventListener('click', function(e){ pickDay(nearestIdx(mainSvg, e.clientX, xsMain)); });
+      mainSvg.addEventListener('click', function(e){ closeTrendPop(); pickDay(nearestIdx(mainSvg, e.clientX, xsMain)); });
     }
 
     /* 薄弱日点评（2026-10-20 改版，用户截图反馈"只显示一个年级"）：
@@ -3806,6 +3910,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(SHOW_SUBJ) showSubj(SHOW_SUBJ.g, SHOW_SUBJ.sn);
     }, 250);
   });
+  /* C 浮层图外关闭（IIFE 级只注册一次）：点到 #tr-chart 之外即收起；图内点击由图内逻辑收口（热区切换/svg 根关闭） */
+  document.addEventListener('click', function(e){
+    if(!TR_POP) return;
+    var chart = el('tr-chart');
+    if(chart && e.target && chart.contains(e.target)) return;
+    closeTrendPop();
+  });
   var btn = el('btn-trend');
   if(btn) btn.addEventListener('click', function(){ if(!TD) loadTrends(); });
 })();
@@ -4088,7 +4199,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0945';
+  var KB_BUILD = '20261023-1030';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
