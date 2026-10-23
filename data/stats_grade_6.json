@@ -3,8 +3,19 @@
   "grade": 6,
   "balance": 432,
   "bal_sub": "五十块的心愿，正一点点靠近。",
+  "today_delta": 0,
+  "tier_prev": 250,
+  "tier_next": 600,
+  "tier_costs": [
+    70,
+    100,
+    150,
+    250,
+    600,
+    1000
+  ],
   "ledger_date": "2026-10-16",
-  "generated_at": "2026-10-23T10:02:32+08:00",
+  "generated_at": "2026-10-23T17:00:49+08:00",
   "source": "hidden_files/积分记录.md",
   "checksum": "6cecd4d0f88b9f6f"
 }

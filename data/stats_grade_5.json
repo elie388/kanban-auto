@@ -3,8 +3,19 @@
   "grade": 5,
   "balance": 104,
   "bal_sub": "一小时Minecraft，已经攥在手里啦。",
+  "today_delta": 0,
+  "tier_prev": 100,
+  "tier_next": 150,
+  "tier_costs": [
+    70,
+    100,
+    150,
+    250,
+    600,
+    1000
+  ],
   "ledger_date": "2026-10-19",
-  "generated_at": "2026-10-23T10:02:32+08:00",
+  "generated_at": "2026-10-23T17:00:49+08:00",
   "source": "hidden_files/积分记录.md",
   "checksum": "6cecd4d0f88b9f6f"
 }
