@@ -1108,10 +1108,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
          结构同目标榜子块——位于小结主 .collapse-pad 之外、其后，且位于 .collapse-inner 之内
          （防父栏收起时头行外露，2026-10-23 真机教训）；renderFeedback 按 #fb-g5/#fb-g6 定位、
          不整表重建小结 pad，互不误清。子块二级开关 #feedback-toggle 默认收起、点击才展开；
-         红点 #feedback-dot 保留在子块标题旁，学习小结头红点已合并两边新内容（见 kbDotsRefresh）。 -->
+         子块行原有红点 #feedback-dot 已按家长 2026-10-23 22:14 令删除；学习小结头红点合并两边新内容口径不变（见 kbDotsRefresh）。 -->
     <div class="sub-wrap fb-zone" id="panel-feedback" role="region" aria-label="批改反馈">
       <button class="sub-toggle" type="button" id="feedback-toggle" aria-expanded="false" aria-controls="feedback-body">
-        <span class="sub-head-t">✏️ 批改反馈</span><span class="sum-dot" id="feedback-dot" hidden aria-hidden="true"></span>
+        <span class="sub-head-t">✏️ 批改反馈</span>
         <span class="sub-chev" id="feedback-chev">展开 ▾</span>
       </button>
       <div class="sub-body" id="feedback-body" role="region" aria-labelledby="feedback-toggle" hidden>
@@ -2630,7 +2630,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     wrap.innerHTML = html;
   }
   /* 红点合并（2026-10-23 批改反馈并入学习小结）：学习小结头红点在小结或批改反馈
-     任一有新内容时亮起；批改反馈子块标题旁的红点只管反馈新内容。锁定态两点全灭。 */
+     任一有新内容时亮起。批改反馈子块行的红点已按家长 2026-10-23 22:14 令删除，行内不再设点。锁定态头点全灭。 */
   function kbNewFlag(newestMap, seenPrefix){
     var hasNew = false;
     [5, 6].forEach(function(g){
@@ -2646,8 +2646,6 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var fbNew = !locked && kbNewFlag(fbNewest, 'kb-fb-seen-g');
     var sd = $('summary-dot');
     if(sd) sd.hidden = !(sumNew || fbNew);
-    var fd = $('feedback-dot');
-    if(fd) fd.hidden = !fbNew;
   }
   function sumDotUpdate(){ kbDotsRefresh(); }
   function loadKidSummary(grade){
@@ -2805,7 +2803,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   });
   function fbDotUpdate(){ kbDotsRefresh(); }
   /* 批改反馈子块二级开关（2026-10-23 并入学习小结，沿目标榜/日志子块形态：默认收起、点击才展开）。
-     点击开关即视为已查看反馈（对齐原 btn-feedback 的 seen 口径）：标记两年级反馈已读并刷新双红点。 */
+     点击开关即视为已查看反馈（对齐原 btn-feedback 的 seen 口径）：标记两年级反馈已读并刷新小结头红点。 */
   var OPEN_FB_BLOCK = false;
   function kbFbApply(){
     var body = $('feedback-body'), btn = $('feedback-toggle'), chev = $('feedback-chev');
@@ -4906,7 +4904,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2218';
+  var KB_BUILD = '20261023-2224';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
