@@ -197,6 +197,17 @@ jobs:
           PYEOF
           ls -la public/data/
 
+      # 学习小结数据通道（2026-10-23 家长拍板两版上看板）：孩子版脱敏小结
+      # data/daily_summary_*.json 同步进 Pages 产物；家长版数据不走此通道
+      # （只存 Worker KV、私有拉取，绝不进公开仓库）。硬断言防静默缺失。
+      - name: 同步学习小结数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          test -s data/daily_summary_5.json || { echo "::error::data/daily_summary_5.json 缺失或为空"; exit 1; }
+          test -s data/daily_summary_6.json || { echo "::error::data/daily_summary_6.json 缺失或为空"; exit 1; }
+          cp data/daily_summary_5.json data/daily_summary_6.json public/data/
+          ls -la public/data/
+
       # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：
       # 跨周边界定值测试必跑，防止周界回归。失败则构建失败。
       - name: 全栏目跨周边界单测
