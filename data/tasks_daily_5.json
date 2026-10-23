@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T19:43:19+08:00",
+  "updated_at": "2026-10-23T19:49:07+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -169,7 +169,7 @@
       "title": "生字13课",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
@@ -178,9 +178,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:49:07+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261023-2C714C",
@@ -247,7 +248,7 @@
       "task_id": "REG-20261023-8D1EA8",
       "source": "register_book",
       "subject": "英语",
-      "title": "口语阅读（原字迹近\"口物阅读\"，字迹待确认）。",
+      "title": "口语易",
       "detail": "已完成（19:14收到口语易App截图：今日任务\"口语易已完成/任务已提交\"，开始11:16，截图内完成日期与今日2026-10-23对应；依据家长2026-10-23裁定：口语易截图核对日期算完成，覆盖DeepSeek 2026-10-22\"截图不算发回\"裁定）",
       "estimate_min": null,
       "status": "done",
@@ -259,7 +260,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:23:42+08:00",
+      "updated_at": "2026-10-23T19:52:00+08:00",
       "task_type": "reading",
       "completed_at": "2026-10-23T19:23:42+08:00",
       "pending_corrections": 0,
@@ -299,7 +300,7 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 1,
     "done": 3,
     "pending_review": 0
