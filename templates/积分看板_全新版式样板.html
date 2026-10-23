@@ -2344,7 +2344,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         /* 今日增量每日归零（2026-10-24 00:14 家长令、00:17 修正口径）：按北京时间（Asia/Shanghai）00:01 分界——
            stats 快照日期（ledger_date，缺失时退回 generated_at 的日期部分）不是北京时间今天时，强制按 0 显示，不展示昨日数字 */
         var snapDate = (typeof d.ledger_date === 'string' && d.ledger_date) ? d.ledger_date : ((typeof d.generated_at === 'string') ? d.generated_at.slice(0, 10) : '');
-        var staleDay = snapDate !== todayStr();
+        /* 北京时间今天：本块作用域内没有 todayStr（其定义在任务块/上传块的 IIFE 内部），故自带 Intl 计算，不跨块依赖 */
+        var bjParts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+        var bjMap = {}; bjParts.forEach(function(p){ bjMap[p.type] = p.value; });
+        var todayBJ = bjMap.year + '-' + bjMap.month + '-' + bjMap.day;
+        var staleDay = snapDate !== todayBJ;
         if(staleDay) td = 0;
         chip.hidden = false;
         chip.textContent = staleDay ? '今日 +0' : (td > 0 ? ('今日 +' + td) : (td < 0 ? ('今日 \u2212' + Math.abs(td)) : '今日 0'));
@@ -5081,7 +5085,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-0032';
+  var KB_BUILD = '20261024-0034';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
