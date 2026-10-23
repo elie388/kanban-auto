@@ -1,73 +1,31 @@
 {
- "date": "2026-10-22",
+ "date": "2026-10-23",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "D53-2026-10-22-CHN",
-   "title": "53天天练·语文",
-   "subject": "语文",
-   "source": "daily_53",
-   "group": "study"
+   "task_id": "CHORE-20261023-G5",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
   },
   {
-   "task_id": "D53-2026-10-22-MATH",
-   "title": "53天天练·数学",
-   "subject": "数学",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-22-ENG",
-   "title": "53天天练·英语",
-   "subject": "英语",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-22",
+   "task_id": "META-REGISTER-2026-10-23",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261022-5C99D2",
-   "title": "校本及12课",
+   "task_id": "REG-20261023-CC9E78",
+   "title": "校对9-13课校本（红笔改正）。",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261022-665B72",
-   "title": "预习13课",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261022-734E5F",
-   "title": "背诵12课（小管家）。",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261022-23E98C",
-   "title": "校本29页。",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261022-C75208",
+   "task_id": "REG-20261023-8D1EA8",
    "title": "口语易",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261022-993A83",
-   "title": "抄M2单词4英4中。",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
