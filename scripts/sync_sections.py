@@ -719,7 +719,9 @@ def compute_badge_progress(events, now=None):
 
 
 def build_badge_goals(events, progress=None, now=None):
-    catalog = [{"key": k, "name": n, "icon": i, "cond": c, "points": 5}
+    _points = _catalog.badge_points()
+    catalog = [{"key": k, "name": n, "icon": i, "cond": c,
+                "points": _points.get(k, 5)}
                for k, n, i, c in BADGE_CATALOG]
     # 周期清空口径（2026-10-20）：obtained/date/count 按当前 cycle_week 计
     # （本周期是否已获得），历史累计另存 total_count；往期徽章不在看板

@@ -4,6 +4,7 @@
   "badges": [
     {"key": "quanduizhixing", "name": "全对之星", "icon": "✅", "cond": "单次作业/小测全部题目正确"},
     {"key": "baifentupo", "name": "满分之星", "icon": "💯", "cond": "收到卷面满分的考试试卷（任一科目，单次达成）"},
+    {"key": "baifen", "name": "百分俱乐部", "icon": "💰", "cond": "余额首次突破100分（一次性）", "points": 10},
     {"key": "zonghezhixing", "name": "综合之星", "icon": "🏅", "cond": "一周内≥4类不同徽章"},
     {"key": "tupoxiaoyongshi", "name": "突破小勇士", "icon": "🛡️", "cond": "同一类错题连续3次订正全对"},
     {"key": "jianchixiaoyongshi", "name": "坚持小勇士", "icon": "🔥", "cond": "家务/按时完成作业/按时睡觉，任一连续14天"},
@@ -24,17 +25,7 @@
     {"key": "jiawuzhixing", "name": "家务之星", "icon": "🏆", "cond": "周内≥5次（每日≤1次计）"}
   ],
   "legacy": [
-    {"key": "xueba", "name": "学霸", "icon": "👑"},
-    {"key": "lingshiwu", "name": "零失误", "icon": "🛡️"},
-    {"key": "baifen", "name": "百分俱乐部", "icon": "💰"},
-    {"key": "quanduixiaodaren", "name": "全对小达人", "icon": "🎯"},
-    {"key": "shoushixiaodaren", "name": "守时小达人", "icon": "⏰"},
-    {"key": "manfenchaoren", "name": "满分超人", "icon": "💯"},
-    {"key": "dingzhengxiaonengshou", "name": "订正小能手", "icon": "✏️"},
-    {"key": "shuxiexiaodaren", "name": "书写小达人", "icon": "✍️"},
-    {"key": "quanqinxiaobiaobing", "name": "全勤小标兵", "icon": "📅"},
-    {"key": "kaoshibuzhixing", "name": "考试进步之星", "icon": "📈"},
-    {"key": "meirijinbuzhixing", "name": "每日进步之星", "icon": "🚀"}
+    {"key": "xueba", "name": "学霸", "icon": "👑"}
   ],
   "aliases": {
     "sanheyikuaishou": "sanheyi",

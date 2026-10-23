@@ -59,6 +59,13 @@ def badge_catalog():
     return out
 
 
+def badge_points():
+    """{key: points}；条目未标 points 时默认 5（v3.7 一律 +5/次；
+    百分俱乐部 +10 一次性为例外，在 badges.json 条目上标 points）。"""
+    data = _load(_BADGES_PATH)
+    return {b["key"]: b.get("points", 5) for b in data["badges"]}
+
+
 def legacy_badges():
     """sync_sections 兼容形：{key: (name, icon)}"""
     data = _load(_BADGES_PATH)
