@@ -412,7 +412,6 @@
   .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
   .task.done .task-name{color:#1E9E52;}
   .task.done{background:#F2F9F4; position:relative; padding-top:20px;}
-  .task.done::before{content:''; position:absolute; top:0; left:0; right:0; height:8px; background:#D1E7DA; border-radius:var(--radius-sm) var(--radius-sm) 0 0;}
   .task.is-exempt{background:#FAFBFC; border-style:dashed;}
 
   /* 学习走势 */
@@ -4987,7 +4986,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2117';
+  var KB_BUILD = '20261023-2122';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
