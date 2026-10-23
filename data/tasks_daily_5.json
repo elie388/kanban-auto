@@ -1,317 +1,323 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-10-23",
-  "grade": "五年级",
-  "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T20:44:19+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-23T20:44:12+08:00",
-      "new_lines": 1
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-10-23T19:18:03+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-10-23T19:00:37+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-10-23",
+ "grade": "五年级",
+ "generated_at": "2026-10-23T00:05:10+08:00",
+ "updated_at": "2026-10-23T20:44:19+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-10-23T20:44:12+08:00",
+   "new_lines": 1
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261023-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-23T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-23T00:05:19+08:00",
-      "updated_at": "2026-10-23T19:43:19+08:00",
-      "completed_at": "2026-10-23T19:43:19+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-23-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-23T16:55:37+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-23-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-23T16:55:37+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-23-ENG",
-      "source": "daily_53",
-      "subject": "英语",
-      "title": "53天天练·英语",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-23T16:55:37+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-23",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-23T16:55:41+08:00",
-      "updated_at": "2026-10-23T19:01:16+08:00",
-      "completed_at": "2026-10-23T19:01:16+08:00",
-      "orig_photos": [
-        "551d1b224896f980.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261023-EAE721",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小状元练习册（三）（该条被涂黑，仅余此可辨）。",
-      "detail": "已批改：23小问对16错7（5道题7处错），正确率69.6%。7处待订正（见corrections）。批改批次B-20261023-G5-MATH-01。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①小状元练习册（三）（该条被涂黑，仅余此可辨）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:40:28.815150+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261023-B96F50",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "生字13课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:53:19+08:00",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "生字13课 损（拼音）",
-          "question": "抄写生字\"损\"拼音5遍（sǔn）",
-          "reason": "第4遍拼音g与sǔn笔画叠加混写，字迹无法辨认 语文生字13课拼音+生字抄写（登记本语文①，任务REG-20261023-B96F50",
-          "hint": "①先看一看\"损\"那一列拼音的第4遍：你写的第一个字母，到底是g还是s？②拼音要一笔一画写清楚，写错了就把那一遍划掉重写，不要把两个字母叠在一起写。③把第4遍划掉，在旁边规范地重写sǔn（三声）共5遍，写完自己拼读一遍：s-ǔn，sǔn。",
-          "img": "",
-          "q_img": ""
-        }
-      ],
-      "status_source": "bank_writeback"
-    },
-    {
-      "task_id": "REG-20261023-2C714C",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本13课比照红笔错题",
-      "detail": "",
-      "estimate_min": null,
-      "status": "grading",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T20:28:24+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261023-CC9E78",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校对9-13课校本（红笔改正）。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:01:16+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261023-71C90B",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "试卷打印",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:01:16+08:00",
-      "task_type": null,
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261023-8D1EA8",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "已完成（19:14收到口语易App截图：今日任务\"口语易已完成/任务已提交\"，开始11:16，截图内完成日期与今日2026-10-23对应；依据家长2026-10-23裁定：口语易截图核对日期算完成，覆盖DeepSeek 2026-10-22\"截图不算发回\"裁定）",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:52:00+08:00",
-      "task_type": "reading",
-      "completed_at": "2026-10-23T19:23:42+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "orig_photos": [
-        "c735bbdeec3c8c0d.jpg"
-      ]
-    },
-    {
-      "task_id": "PRACT-20261023-569ED6",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "Word：五年级针对性练习_2026-10-23.docx，按今日练习清单完成",
-      "kousuan": [
-        "3.5×4=",
-        "56+47=",
-        "2.4×5-6.5=",
-        "1.25×3.2=",
-        "39.6×2.1≈"
-      ],
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-23.docx",
-      "file_hash": null,
-      "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-23T19:29:00+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-10-23.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261023-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第九期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "rejected",
-      "created_by": "user",
-      "created_at": "2026-10-23T20:12:07+08:00",
-      "updated_at": "2026-10-23T20:17:59+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-10-23.pdf",
-          "label": "练习",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261023-9A7A56",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易（原识别为\"口语阅读/口物阅读\"，2026-10-23 家长更正：登记本原文是\"口语易\"）。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①试卷打印；②口语易（原识别为\"口语阅读/口物阅读\"，2026-10-23 家长更正：登记本原文是\"口语易\"）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T20:44:12+08:00",
-      "updated_at": "2026-10-23T20:44:12+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": []
-    }
-  ],
-  "counts": {
-    "total": 14,
-    "pending": 8,
-    "in_progress": 2,
-    "done": 3,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-10-23T19:18:03+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-10-23T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-10-23T19:00:37+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261023-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "appear_at": "2026-10-23T17:30:00+08:00",
+   "chore_done_count": 1,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-10-23T00:05:19+08:00",
+   "updated_at": "2026-10-23T19:43:19+08:00",
+   "completed_at": "2026-10-23T19:43:19+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-23-CHN",
+   "source": "daily_53",
+   "subject": "语文",
+   "title": "53天天练·语文",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-23T16:55:37+08:00",
+   "updated_at": "2026-10-23T16:55:37+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-23-MATH",
+   "source": "daily_53",
+   "subject": "数学",
+   "title": "53天天练·数学",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-23T16:55:37+08:00",
+   "updated_at": "2026-10-23T16:55:37+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-23-ENG",
+   "source": "daily_53",
+   "subject": "英语",
+   "title": "53天天练·英语",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-23T16:55:37+08:00",
+   "updated_at": "2026-10-23T16:55:37+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-10-23",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-10-23T16:55:41+08:00",
+   "updated_at": "2026-10-23T19:01:16+08:00",
+   "completed_at": "2026-10-23T19:01:16+08:00",
+   "orig_photos": [
+    "551d1b224896f980.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261023-EAE721",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小状元练习册（三）（该条被涂黑，仅余此可辨）。",
+   "detail": "已批改：23小问对16错7（5道题7处错），正确率69.6%。7处待订正（见corrections）。批改批次B-20261023-G5-MATH-01。",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①小状元练习册（三）（该条被涂黑，仅余此可辨）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T19:01:16+08:00",
+   "updated_at": "2026-10-23T19:40:28.815150+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "status_source": "realtime"
+  },
+  {
+   "task_id": "REG-20261023-B96F50",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "生字13课",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T19:01:16+08:00",
+   "updated_at": "2026-10-23T19:53:19+08:00",
+   "pending_corrections": 1,
+   "corrections": [
+    {
+     "label": "生字13课 损（拼音）",
+     "question": "抄写生字\"损\"拼音5遍（sǔn）",
+     "reason": "第4遍拼音g与sǔn笔画叠加混写，字迹无法辨认 语文生字13课拼音+生字抄写（登记本语文①，任务REG-20261023-B96F50",
+     "hint": "①先看一看\"损\"那一列拼音的第4遍：你写的第一个字母，到底是g还是s？②拼音要一笔一画写清楚，写错了就把那一遍划掉重写，不要把两个字母叠在一起写。③把第4遍划掉，在旁边规范地重写sǔn（三声）共5遍，写完自己拼读一遍：s-ǔn，sǔn。",
+     "img": "",
+     "q_img": ""
+    }
+   ],
+   "status_source": "bank_writeback"
+  },
+  {
+   "task_id": "REG-20261023-2C714C",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本13课比照红笔错题",
+   "detail": "",
+   "estimate_min": null,
+   "status": "grading",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T19:01:16+08:00",
+   "updated_at": "2026-10-23T20:28:24+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "status_source": "realtime"
+  },
+  {
+   "task_id": "REG-20261023-CC9E78",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校对9-13课校本（红笔改正）。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T19:01:16+08:00",
+   "updated_at": "2026-10-23T12:53:18",
+   "pending_corrections": 0,
+   "corrections": [],
+   "batch_notes": [
+    "红笔：0（图1/2/11/12 严格阈值 0 红像素，宽松检出均为桌面背景误检；对照图7 真红笔 16081 像素）",
+    "作答：完整（四页孩子黑笔作答齐全；图4归属经放大+笔迹对照确认为彦均本人）",
+    "校对动作：已做（红笔复核未见）。按 DeepSeek 2026-10-23 二次确认：不降'未见校对痕迹'，措辞锁'已完成校对'；追溯闸门：正式批改若发现明显错题红笔未触及→部分完成校对；红笔硬门槛交家长裁定，本次不阻塞；按时+2 按家长 10-24 起算不追溯令不发、不落账。"
+   ],
+   "status_source": "deepseek-2nd-confirm-20261023"
+  },
+  {
+   "task_id": "REG-20261023-71C90B",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "试卷打印",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T19:01:16+08:00",
+   "updated_at": "2026-10-23T19:01:16+08:00",
+   "task_type": null,
+   "pending_corrections": 0,
+   "corrections": []
+  },
+  {
+   "task_id": "REG-20261023-8D1EA8",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "已完成（19:14收到口语易App截图：今日任务\"口语易已完成/任务已提交\"，开始11:16，截图内完成日期与今日2026-10-23对应；依据家长2026-10-23裁定：口语易截图核对日期算完成，覆盖DeepSeek 2026-10-22\"截图不算发回\"裁定）",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T19:01:16+08:00",
+   "updated_at": "2026-10-23T19:52:00+08:00",
+   "task_type": "reading",
+   "completed_at": "2026-10-23T19:23:42+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "orig_photos": [
+    "c735bbdeec3c8c0d.jpg"
+   ]
+  },
+  {
+   "task_id": "PRACT-20261023-569ED6",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "Word：五年级针对性练习_2026-10-23.docx，按今日练习清单完成",
+   "kousuan": [
+    "3.5×4=",
+    "56+47=",
+    "2.4×5-6.5=",
+    "1.25×3.2=",
+    "39.6×2.1≈"
+   ],
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-23.docx",
+   "file_hash": null,
+   "created_at": "2026-10-23T19:08:41+08:00",
+   "updated_at": "2026-10-23T19:29:00+08:00",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-10-23.pdf",
+     "label": "练习",
+     "pages": 4
+    }
+   ]
+  },
+  {
+   "task_id": "MANUAL-20261023-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语阅读写作第九期",
+   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "rejected",
+   "created_by": "user",
+   "created_at": "2026-10-23T20:12:07+08:00",
+   "updated_at": "2026-10-23T20:17:59+08:00",
+   "files": [
+    {
+     "name": "五年级英语阅读写作_2026-10-23.pdf",
+     "label": "练习",
+     "pages": 2
+    }
+   ]
+  },
+  {
+   "task_id": "REG-20261023-9A7A56",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易（原识别为\"口语阅读/口物阅读\"，2026-10-23 家长更正：登记本原文是\"口语易\"）。",
+   "detail": "原状态：待完成（无佐证照片）",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①试卷打印；②口语易（原识别为\"口语阅读/口物阅读\"，2026-10-23 家长更正：登记本原文是\"口语易\"）。→ 待完成（无佐证照片）",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-23T20:44:12+08:00",
+   "updated_at": "2026-10-23T20:44:12+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": []
+  }
+ ],
+ "counts": {
+  "total": 14,
+  "pending": 8,
+  "in_progress": 2,
+  "done": 3,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-10-23T22:30:00+08:00"
 }
