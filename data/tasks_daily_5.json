@@ -108,7 +108,7 @@
    "status": "in_progress",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 数学：①小状元练习册（三）（该条被涂黑，仅余此可辨）。→ 待完成（无佐证照片）",
+   "raw_text": "- 数学：①小状元练习册（三）（该条被涂黑，仅余此可辨）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -186,7 +186,7 @@
    "status": "in_progress",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -216,7 +216,7 @@
    "status": "grading",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -232,12 +232,12 @@
    "source": "register_book",
    "subject": "语文",
    "title": "校对9-13课校本（红笔改正）。",
-   "detail": "原状态：待完成（无佐证照片）",
+   "detail": "原状态：待完成",
    "estimate_min": null,
    "status": "done",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -263,7 +263,7 @@
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
+   "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -284,7 +284,7 @@
    "status": "done",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
+   "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null

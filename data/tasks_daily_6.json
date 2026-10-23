@@ -125,12 +125,12 @@
    "source": "register_book",
    "subject": "语文",
    "title": "作文（成长中的一束光）",
-   "detail": "原状态：待完成（无佐证照片）；字形定案：家长 2026-10-23 19:39 看圈注原图最终确认原文为\"1.作文\"、无\"小\"字，原转写无误，待确认已销（其间一度误记为\"小作文\"，已复原）；家长已确认：作文顺延至周六（2026-10-24）再写（2026-10-23 19:34 确认），今晚不催该项。",
+   "detail": "原状态：待完成；字形定案：家长 2026-10-23 19:39 看圈注原图最终确认原文为\"1.作文\"、无\"小\"字，原转写无误，待确认已销（其间一度误记为\"小作文\"，已复原）；家长已确认：作文顺延至周六（2026-10-24）再写（2026-10-23 19:34 确认），今晚不催该项。",
    "estimate_min": null,
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -150,7 +150,7 @@
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -170,7 +170,7 @@
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -186,12 +186,12 @@
    "source": "register_book",
    "subject": "语文",
    "title": "看《项链》",
-   "detail": "原状态：待完成（无佐证照片）；更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"看《别饿连了》\"→全量复核改\"看《项链连习》\"→家长定案\"看《项链》\"（只有《项链》二字，\"连习\"系误读叠加，原初版亦错），已按定案更正为\"看《项链》\"。",
+   "detail": "原状态：待完成；更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"看《别饿连了》\"→全量复核改\"看《项链连习》\"→家长定案\"看《项链》\"（只有《项链》二字，\"连习\"系误读叠加，原初版亦错），已按定案更正为\"看《项链》\"。",
    "estimate_min": null,
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成（无佐证照片）",
+   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -213,7 +213,7 @@
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成（无佐证照片）",
+   "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -229,12 +229,12 @@
    "source": "register_book",
    "subject": "数学",
    "title": "资料（全做）。",
-   "detail": "原状态：待完成（无佐证照片）",
+   "detail": "原状态：待完成",
    "estimate_min": null,
    "status": "in_progress",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成（无佐证照片）",
+   "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -280,7 +280,7 @@
    "status": "grading",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成（无佐证照片）",
+   "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -296,12 +296,12 @@
    "source": "register_book",
    "subject": "英语",
    "title": "背今天的作文和最高级笔记10次，提交小管家。",
-   "detail": "原状态：待完成（无佐证照片）",
+   "detail": "原状态：待完成",
    "estimate_min": null,
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成（无佐证照片）",
+   "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
@@ -317,12 +317,12 @@
    "source": "register_book",
    "subject": "英语早读",
    "title": "U3知识清单。",
-   "detail": "原状态：待完成（无佐证照片）",
+   "detail": "原状态：待完成",
    "estimate_min": null,
    "status": "pending",
    "review_status": "approved",
    "ocr_confidence": null,
-   "raw_text": "- 英语早读：U3知识清单。→ 待完成（无佐证照片）",
+   "raw_text": "- 英语早读：U3知识清单。→ 待完成",
    "evidence": {
     "extracted_by": "task_ingest_freetext",
     "reviewed_by": null
