@@ -39,7 +39,8 @@
    "count_in_completion_rate": false,
    "created_at": "2026-10-23T00:05:19+08:00",
    "updated_at": "2026-10-23T19:43:19+08:00",
-   "completed_at": "2026-10-23T19:43:19+08:00"
+   "completed_at": "2026-10-23T19:43:19+08:00",
+   "evidence": "家务判定通过——洗衣服（2026-10-23 家长新增项首笔）；三方判定：gemini 主判（孩子本人将洗衣网袋放入波轮洗衣机、1 人、动作真实完整）＋Muse 复核（查重/身份/同项每日限一次限 1 人口径均通过）＋DeepSeek 终审有条件通过；依据为今晚看板家务上传批次 b17927555332983576d2f46ba94c95（chore_entry，2026-10-23 19:38:57+08:00 提交，verdict=approved，照片 attachments/2026-10-23/6ba94c95_1_a394992539a5.jpeg）；三方留痕：实时批改影子/5b21d535a2a9dbc8.json；积分正式结算走 00:05 家务定案（洗衣服 +3）。"
   },
   {
    "task_id": "D53-2026-10-23-CHN",
@@ -243,7 +244,8 @@
     "reviewed_by": null
    },
    "created_at": "2026-10-23T19:01:16+08:00",
-   "updated_at": "2026-10-23T12:53:18",
+   "updated_at": "2026-10-23T20:53:18+08:00",
+   "completed_at": "2026-10-23T20:53:18+08:00",
    "pending_corrections": 0,
    "corrections": [],
    "batch_notes": [
