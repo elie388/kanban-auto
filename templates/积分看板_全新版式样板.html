@@ -581,17 +581,30 @@
   /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、DeepSeek 核准）：年级色与余额卡同源变量、金色只留成就条 */
   #tasks-g5 .task-prog-fill{background:linear-gradient(90deg,var(--g5),var(--g5b));}
   #tasks-g6 .task-prog-fill{background:linear-gradient(90deg,var(--g6),var(--g6b));}
-  /* 循环生长（2026-10-23 家长续令，周期 23:15 改定为 3s）：标题行进度条每 3s 从 0 重新生长到当前百分比，循环往复（前约 72% 生长、后约 28% 停留到位）。
+  /* 循环生长（2026-10-23 DeepSeek 定版、家长 23:22 拍板）：整轮 4.8s＝生长 3.2s（0%→66.7%）＋停留 1.6s（66.7%→100%），
+     缓动 cubic-bezier(0.25,0.1,0.25,1) 标准 ease、恒定周期（不随百分比缩放）；参数落 CSS 变量单点定义，日后调参只改变量值。
      实现＝transform: scaleX（fill 的 width 仍为目标百分比，视觉与宽度生长一致、不动布局）；
-     ID 作用域压过 D2 的一次性 barGrow 入场动画（入场生长被循环生长吸收，不再单独触发）。 */
-  #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ transform-origin:left center; animation:progGrowLoop 3s ease-out infinite; }
-  @keyframes progGrowLoop{ 0%{ transform:scaleX(0); } 72%{ transform:scaleX(1); } 100%{ transform:scaleX(1); } }
+     ID 作用域压过 D2 的一次性 barGrow 入场动画（入场生长被循环生长吸收，不再单独触发）。
+     满格单独处理：is-full 时改走一次性动画 progGrowOnce（4s 同曲线、forwards 定格在 scaleX(1)），不循环。 */
+  #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{
+    --pb-cycle: 4.8s;                            /* 整轮周期：生长 3.2s + 停留 1.6s */
+    --pb-ease: cubic-bezier(0.25, 0.1, 0.25, 1); /* 标准 ease */
+    --pb-once: 4s;                               /* 满格一次性生长时长 */
+    transform-origin:left center;
+    animation: progGrowLoop var(--pb-cycle) var(--pb-ease) infinite;
+  }
+  @keyframes progGrowLoop{ 0%{ transform:scaleX(0); } 66.7%{ transform:scaleX(1); } 100%{ transform:scaleX(1); } }
+  @keyframes progGrowOnce{ 0%{ transform:scaleX(0); } 100%{ transform:scaleX(1); } }
   /* 颜色渐变（2026-10-23 23:08 家长改定）：填充色按百分比连续混合——≤70% 纯年级色、70%→100% 线性混入语义绿、
      100% 纯绿；由渲染 JS 按 pct 计算两端 stop 的混合色并以 inline background 赋值（软刷新跟随）。
-     满格呼吸动画已按家长令删除，填充只保留 progGrowLoop 循环生长。
-     下行 is-full 绿色仅作无 JS 时的兜底（与 100% 混合终点同值），inline 赋值后以 inline 为准、不打架。 */
-  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A);}
-  @media (prefers-reduced-motion: reduce){ #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ animation:none; } }
+     满格呼吸动画已按家长令删除；非满格只保留 progGrowLoop 循环生长，满格走 progGrowOnce 一次性生长后定格。
+     下行 is-full 绿色仅作无 JS 时的兜底（与 100% 混合终点同值），inline 赋值后以 inline 为准、不打架；
+     同行并置满格一次性动画（作用域比分更高，压过上方循环规则）。 */
+  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A); animation:progGrowOnce var(--pb-once, 4s) var(--pb-ease, cubic-bezier(0.25, 0.1, 0.25, 1)) 1 forwards;}
+  @media (prefers-reduced-motion: reduce){
+    #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill,
+    #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{ animation:none; }
+  }
 
 
   /* 积分商店 */
@@ -1534,7 +1547,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     if(progFill){
       var pctExact = total ? (done / total * 100) : 0;
-      progFill.style.width = pctExact + '%';
+      /* 最小可见宽度（2026-10-23 DeepSeek 定版）：0<pct<3 时视觉宽度按 3% 呈现，文案与配色仍按真实百分比；0% 仍为空 */
+      var visPct = (pctExact > 0 && pctExact < 3) ? 3 : pctExact;
+      progFill.style.width = visPct + '%';
       /* 填充色按百分比连续混合（2026-10-23 23:08 家长令）：pct≤70 纯年级色，70→100 线性混入语义绿，100 纯绿；
          渐变两端 stop 分别混合，inline background 覆盖 CSS 兜底，渲染时每次重算（软刷新跟随） */
       var gradeStops = secId === 'tasks-g5' ? [[255,138,91],[255,169,107]] : [[108,142,255],[143,169,255]];
@@ -5036,7 +5051,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2316';
+  var KB_BUILD = '20261023-2324';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
