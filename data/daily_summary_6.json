@@ -1,22 +1,6 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-10-23T17:56:39+08:00",
- "items": [
-  {
-   "date": "2026-10-23",
-   "completed": [
-    "读背概念20"
-   ],
-   "knowledge_points": [],
-   "points": [
-    {
-     "desc": "读背达标",
-     "delta": 3
-    }
-   ],
-   "encouragement": "",
-   "degraded": true
-  }
- ]
+ "generated_at": "2026-10-23T17:56:45+08:00",
+ "items": []
 }
