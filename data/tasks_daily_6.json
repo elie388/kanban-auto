@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "六年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T22:02:52+08:00",
+  "updated_at": "2026-10-23T22:12:09+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -284,7 +284,7 @@
       "title": "背今天的作文和最高级笔记10次，提交小管家。",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成",
@@ -293,10 +293,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-23T22:12:09+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261023-7172FF",
@@ -342,7 +343,7 @@
   ],
   "counts": {
     "total": 16,
-    "pending": 11,
+    "pending": 10,
     "in_progress": 1,
     "done": 1,
     "pending_review": 0
