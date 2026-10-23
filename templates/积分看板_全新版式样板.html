@@ -440,23 +440,20 @@
     font-size:18px; font-weight:800; color:var(--txt);
     margin:0 0 12px; padding-left:4px;
   }
-  /* 本周徽章：横向勋章带（2026-10-20 方案1，DeepSeek 终审放行）
-     大卡网格 → 64px 圆形勋章单行横滑；稀有度色环三档（金=普通/蓝=进阶/紫=稀有，仅颜色区分）；
+  /* 本周徽章：勋章带（2026-10-20 方案1，DeepSeek 终审放行；2026-10-23 A+ 改版，家长拍板+DeepSeek 咨询放行）
+     64px 圆形勋章、稀有度色环三档（金=普通/蓝=进阶/紫=稀有，仅颜色区分）；
+     排布由横滑改为自动换行：每行枚数随容器宽度自适应（手机约 4、iPad 6–8），不限行数、不缩小、不折叠——
+     横滑曾致第 5 枚起无声滑出屏幕（2026-10-23 彦均 5 枚实测漏看），故废止横滑/右缘渐隐/隐藏滚动条；
      BADGE_TIER / BADGE_BLURB 为展示层静态数据，仅决定色环与气泡文案，禁止被判定器/积分逻辑引用。 */
   .badge-strip{
-    display:flex; flex-wrap:nowrap; gap:10px;
-    overflow-x:auto; overflow-y:hidden;
+    display:flex; flex-wrap:wrap; gap:10px;
     padding:8px 2px 10px;
-    scroll-snap-type:x proximity;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-    -webkit-mask-image:linear-gradient(90deg,#000 93%,rgba(0,0,0,0));
-            mask-image:linear-gradient(90deg,#000 93%,rgba(0,0,0,0));
   }
-  .badge-strip::-webkit-scrollbar{display:none;}
+  /* 详情气泡进带时整行占位：JS 把 .medal-pop 插到被点勋章所在行末尾之后，气泡自然落在该行正下方 */
+  .badge-strip .medal-pop{flex:0 0 100%; margin-top:0;}
   .medal{
     flex:0 0 auto; width:76px; position:relative;
-    text-align:center; cursor:pointer; scroll-snap-align:start;
+    text-align:center; cursor:pointer;
     -webkit-tap-highlight-color:transparent;
   }
   .medal-disc{
@@ -485,7 +482,8 @@
     font-size:11px; font-weight:700; line-height:1;
     padding:3px 6px; border-radius:999px;
   }
-  /* 已读徽章入带飞入（DeepSeek 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入，单带前 6 枚，第 7 枚起不加此类（延迟硬归零） */
+  /* 已读徽章入带飞入（DeepSeek 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入。
+     2026-10-23 A+：去掉"只前 6 枚"写死上限，全量覆盖——JS 按勋章实测行分组错峰（行内 70ms 递增、行间 +200ms） */
   .medal.fly-in{animation:medalFly .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay:var(--fly-d,0ms);}
   @keyframes medalFly{
     from{transform:translateX(26px) scale(.6); opacity:0;}
@@ -2591,18 +2589,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var da = String(a.date || ''), db = String(b.date || '');
         return da < db ? -1 : (da > db ? 1 : 0);
       });
+      var flyList = [];
       if(list.length){
         var strip = mkEl('div','badge-strip');
-        /* 桌面可用性（DeepSeek 终审约束）：竖向滚轮在带上转横向滚动；滚到边缘后不拦截，页面照常滚 */
-        strip.addEventListener('wheel', function(e){
-          if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-          var max = strip.scrollWidth - strip.clientWidth;
-          if(max <= 0) return;
-          var nl = strip.scrollLeft + e.deltaY;
-          if(nl < 0) nl = 0;
-          if(nl > max) nl = max;
-          if(nl !== strip.scrollLeft){ e.preventDefault(); strip.scrollLeft = nl; }
-        }, {passive:false});
         var pop = mkEl('div','medal-pop');
         pop.hidden = true;
         var popIc = mkEl('span','pop-ic');
@@ -2622,7 +2611,6 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         pop.appendChild(popIc);
         pop.appendChild(popMain);
         pop.appendChild(popClose);
-        var flyIdx = 0;
         list.forEach(function(b){
           var medal = mkEl('div','medal');
           var sid = b.key ? badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key + (b.late ? ':late' : '')) : '';
@@ -2635,12 +2623,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             medal.title = '新徽章！点一下收下这份光';
           }else if(sid && !FLY_PLAYED[sid]){
             FLY_PLAYED[sid] = 1;
-            if(flyIdx < 6){
-              medal.classList.add('fly-in');
-              medal.style.setProperty('--fly-d', (flyIdx * 70) + 'ms');
-              flyIdx++;
-              medal.addEventListener('animationend', function(){ medal.classList.remove('fly-in'); });
-            }
+            /* 飞入全量覆盖（2026-10-23 A+）：不再有"前 6 枚"上限；--fly-d 先按序号暂注，
+               带入文档后由下方错峰段按实测行重注（行内 70ms 递增、行间 +200ms） */
+            medal.classList.add('fly-in');
+            medal.style.setProperty('--fly-d', (flyList.length * 70) + 'ms');
+            flyList.push(medal);
+            medal.addEventListener('animationend', function(){ medal.classList.remove('fly-in'); });
           }
           var disc = mkEl('div','medal-disc ' + (BADGE_TIER[b.key] || 'ring-gold'));
           disc.appendChild(mkEl('span','ic', b.icon || '🏅'));
@@ -2668,6 +2656,20 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             popDate.textContent = badgeDateText(b.date) + (b.late ? ' · 补发' : '');
             /* 兜底句：cond 字段不在 badges.json（在 badge_goals.json），设计稿表述有误，改通用童趣句——2026-10-20 报备确认 */
             popBlurb.textContent = BADGE_BLURB[b.key] || '这枚徽章已经被你收进口袋啦！';
+            /* 详情卡锚定（2026-10-23 A+）：气泡跟随被点勋章——先按可视行 top 找本行最后一枚，
+               再把 pop 插到它之后；pop 在带内整行占位（flex:0 0 100%），自然落在该行正下方。
+               切换点另一行时同一逻辑把 pop 迁到新行下方；关闭只置 hidden、不迁位。 */
+            if(strip.contains(medal)){
+              var rowTop = medal.getBoundingClientRect().top;
+              var lastInRow = medal;
+              var sibs = strip.children;
+              for(var ci = 0; ci < sibs.length; ci++){
+                var cel = sibs[ci];
+                if(cel === pop || !cel.classList || !cel.classList.contains('medal')) continue;
+                if(Math.abs(cel.getBoundingClientRect().top - rowTop) <= 2) lastInRow = cel;
+              }
+              if(lastInRow.nextSibling !== pop) strip.insertBefore(pop, lastInRow.nextSibling);
+            }
             pop.hidden = false;
           });
           strip.appendChild(medal);
@@ -2679,6 +2681,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         block.appendChild(mkEl('div','rule-note','本周徽章等你来拿 🏅'));
       }
       pad.appendChild(block);
+      /* 飞入按行错峰（2026-10-23 A+）：带已入文档，按勋章 offsetTop 实测分组——
+         行内序号 70ms 递增、行间 +200ms；面板未展开等测不到行距时全部同 top 退化为单行序号错峰，
+         全量覆盖不变（无任何枚数上限）。 */
+      if(flyList.length){
+        var rowIdx = -1, prevTop = null, colIdx = 0;
+        flyList.forEach(function(m){
+          var t = m.offsetTop;
+          if(prevTop === null || Math.abs(t - prevTop) > 2){ rowIdx++; colIdx = 0; prevTop = t; }
+          m.style.setProperty('--fly-d', (rowIdx * 200 + colIdx * 70) + 'ms');
+          colIdx++;
+        });
+      }
     });
     return true;
   }
@@ -4369,7 +4383,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1727';
+  var KB_BUILD = '20261023-1740';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
