@@ -208,6 +208,15 @@ jobs:
           cp data/daily_summary_5.json data/daily_summary_6.json public/data/
           ls -la public/data/
 
+      # 批改反馈数据通道（2026-10-23 家长知情改定全搬）：data/feedback_*.json
+      - name: 同步批改反馈数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          test -s data/feedback_5.json || { echo "::error::data/feedback_5.json 缺失或为空"; exit 1; }
+          test -s data/feedback_6.json || { echo "::error::data/feedback_6.json 缺失或为空"; exit 1; }
+          cp data/feedback_5.json data/feedback_6.json public/data/
+          ls -la public/data/
+
       # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：
       # 跨周边界定值测试必跑，防止周界回归。失败则构建失败。
       - name: 全栏目跨周边界单测

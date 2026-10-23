@@ -171,6 +171,16 @@
   .sum-p-name{font-weight:800; margin:10px 0 4px;}
   .sum-p-html{font-size:14px; line-height:1.75;}
   .sum-p-html p{margin:6px 0;}
+  /* 批改反馈（2026-10-23 家长知情改定：反馈全文上看板） */
+  .fb-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
+  .fb-title{font-weight:800; font-size:15px; margin-bottom:2px;}
+  .fb-time{font-size:12px; color:#77808C; margin-bottom:6px;}
+  .fb-html{font-size:14px; line-height:1.75;}
+  .fb-html p{margin:6px 0;}
+  .fb-html img{max-width:100%; border-radius:8px;}
+  .fb-qa-q{background:#EEF3FF; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
+  .fb-qa-a{background:#F4F8EE; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
+  .fb-qa-tag{font-weight:700; font-size:12px; color:#66707C;}
 
   /* 今日任务 */
   .task-section{margin-bottom:18px;}
@@ -1076,6 +1086,28 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </div>
   </section>
 
+  <!-- 批改反馈（2026-10-23 家长知情改定全搬）：批改反馈全文/作文点评/提问回复，近3天 -->
+  <section class="card collapse" aria-label="批改反馈">
+    <span class="tag-demo" id="feedback-tag">离线数据</span>
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-feedback" id="btn-feedback">
+      <span class="emoji" aria-hidden="true">✏️</span>
+      <span class="cb-title">批改反馈</span><span class="sum-dot" id="feedback-dot" hidden aria-hidden="true"></span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-feedback" role="region" aria-labelledby="btn-feedback">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <div class="sum-grade" id="fb-g5">
+          <div class="grade-head"><span class="pill-grade g5">彦均</span></div>
+          <div class="fb-items"><div class="sum-empty">反馈加载中…</div></div>
+        </div>
+        <div class="sum-grade" id="fb-g6">
+          <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
+          <div class="fb-items"><div class="sum-empty">反馈加载中…</div></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
   <!-- 学习走势（折叠按钮） -->
   <section class="card collapse" aria-label="学习走势">
     <span class="tag-live">实时数据</span>
@@ -1249,7 +1281,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['bonus','deduct','log','shop','achieve','lib','trend','summary'];
+  var ids = ['bonus','deduct','log','shop','achieve','lib','trend','summary','feedback'];
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -2615,6 +2647,57 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }).catch(function(){ renderParentZone('网络不通，请稍后再试。'); });
   }
 
+  /* ---------- 批改反馈（2026-10-23 全搬） ---------- */
+  var fbNewest = { 5: '', 6: '' };
+  function renderFeedback(grade, items){
+    var wrap = document.querySelector('#fb-g' + grade + ' .fb-items');
+    if(!wrap) return;
+    if(!items || !items.length){
+      wrap.innerHTML = '<div class="sum-empty">还没有批改反馈。今晚批改完成后会出现在这里。</div>';
+      return;
+    }
+    var html = '';
+    items.forEach(function(it){
+      html += '<div class="fb-item">';
+      if(it.kind === 'qa'){
+        html += '<div class="fb-title">💬 提问回复</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
+          + '<div class="fb-qa-q"><span class="fb-qa-tag">你问：</span>' + sumEsc(it.q || '') + '</div>'
+          + '<div class="fb-qa-a"><span class="fb-qa-tag">回复：</span><div class="fb-html">' + (it.a_html || '') + '</div></div>';
+      } else {
+        html += '<div class="fb-title">' + sumEsc(it.title || '批改反馈') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
+          + '<div class="fb-html">' + (it.html || '') + '</div>';
+      }
+      html += '</div>';
+    });
+    wrap.innerHTML = html;
+  }
+  function fbDotUpdate(){
+    var dot = $('feedback-dot');
+    if(!dot) return;
+    if(document.documentElement.classList.contains('kb-locked')){ dot.hidden = true; return; }
+    var hasNew = false;
+    [5, 6].forEach(function(g){
+      var seen = '';
+      try { seen = localStorage.getItem('kb-fb-seen-g' + g) || ''; } catch (e) {}
+      if(fbNewest[g] && fbNewest[g] > seen) hasNew = true;
+    });
+    dot.hidden = !hasNew;
+  }
+  function loadFeedback(grade){
+    fetchJson('feedback_' + grade + '.json', {}).then(function(d){
+      var items = (d && d.items) || [];
+      if(items.length) fbNewest[grade] = items[0].ts || '';
+      renderFeedback(grade, items);
+      fbDotUpdate();
+      var tag = $('feedback-tag');
+      if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
+    }).catch(function(){
+      renderFeedback(grade, []);
+      var tag = $('feedback-tag');
+      if(tag) tag.textContent = '暂时无法连接';
+    });
+  }
+
   /* ---------- 启动 ---------- */
   function boot(){
     loadBalance(5, 'bal-jump-g5');
@@ -2625,6 +2708,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     loadKidSummary(5);
     loadKidSummary(6);
     renderParentZone();
+    loadFeedback(5);
+    loadFeedback(6);
+    var fbb = $('btn-feedback');
+    if(fbb && !fbb.__fbSeenBound){
+      fbb.__fbSeenBound = true;
+      fbb.addEventListener('click', function(){
+        [5, 6].forEach(function(g){ if(fbNewest[g]){ try { localStorage.setItem('kb-fb-seen-g' + g, fbNewest[g]); } catch (e) {} } });
+        var dot = $('feedback-dot'); if(dot) dot.hidden = true;
+      });
+    }
     var sb = $('btn-summary');
     if(sb && !sb.__sumSeenBound){
       sb.__sumSeenBound = true;
@@ -4581,7 +4674,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1905';
+  var KB_BUILD = '20261023-1935';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5697,7 +5790,7 @@ document.addEventListener('click', function(e){
    - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
    ================================================================ */
 (function(){
-  var GATE_PANELS = ['btn-summary', 'btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop', 'btn-bonus', 'btn-deduct', 'btn-log'];
+  var GATE_PANELS = ['btn-feedback', 'btn-summary', 'btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop', 'btn-bonus', 'btn-deduct', 'btn-log'];
   var KB_LOCKED = false;
   var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
   var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
