@@ -1100,7 +1100,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
         <div class="sum-parent" id="sum-parent">
-          <div class="sum-parent-head">🔒 家长版小结 <span class="sum-parent-hint">（需家长口令，与家庭口令是两把）</span></div>
+          <div class="sum-parent-head">🔒 家长版小结 <span class="sum-parent-hint">（输家长口令打开；全板任意口令框输家长口令也会一起开）</span></div>
           <div class="sum-parent-body"></div>
         </div>
       </div>
@@ -2715,7 +2715,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var inp = $('sum-parent-pass');
     var v = inp ? inp.value : '';
     if(!v) return;
-    fetch(SUM_HW_API + '/parent-auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ passcode: v }) }).then(function(r){
+    /* 双认（2026-10-23 方案 B）：小结内家长框改走统一校验 /auth-dual（scene=summary），
+       与全板口令框同一个服务端入口、一次校验，不再单独调 /parent-auth。 */
+    fetch(SUM_HW_API + '/auth-dual', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ passcode: v, scene: 'summary' }) }).then(function(r){
       return r.json().then(function(d){ return { st: r.status, d: d }; });
     }).then(function(res){
       var tk = res.d && res.d['parent' + '_token'];
@@ -2723,8 +2725,14 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         try {
           localStorage.setItem('hw-parent-token', tk);
           localStorage.setItem('hw-parent-last', String(Date.now()));
+          if(res.d.device_token) localStorage.setItem('hw-dev-token', res.d.device_token);
         } catch (e) {}
         renderParentZone();
+      } else if(res.st === 200 && res.d && res.d.device_token){
+        /* 输的是家庭口令：看板照常解锁（设备令牌一并落存），家长版仍需家长口令，给指路提示不报错 */
+        try { localStorage.setItem('hw-dev-token', res.d.device_token); } catch (e) {}
+        if(window.kbGateAuthOk){ try { window.kbGateAuthOk(); } catch (e) {} }
+        renderParentZone('这是家庭口令，孩子版小结在上方就能看；家长版请输家长口令。');
       } else {
         renderParentZone((res.d && res.d.error) || '解锁失败，请再试一次。');
       }
@@ -4367,9 +4375,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var mask = document.createElement('div');
     mask.className = 'kb-pass-mask';
     mask.innerHTML = '<div class="kb-pass-card">'
-      + '<div class="kb-pass-title">🔐 输入家庭口令</div>'
-      + '<div class="kb-pass-hint">和交作业同一个口令。验证一次后，这台设备看详情、交作业、打印都不用再输。</div>'
-      + '<input class="kb-pass-input" type="text" autocomplete="off" placeholder="家庭口令">'
+      + '<div class="kb-pass-title">🔐 输入口令</div>'
+      + '<div class="kb-pass-hint">家庭口令、家长口令都可以：输家庭口令解锁看板；输家长口令会连家长版小结一起打开。验证一次后，这台设备看详情、交作业、打印都不用再输。</div>'
+      + '<input class="kb-pass-input" type="text" autocomplete="off" placeholder="输入口令">'
       + '<div class="kb-pass-err"></div>'
       + '<div class="kb-pass-row"><button type="button" class="kb-pass-cancel">取消</button><button type="button" class="kb-pass-ok">确认</button></div>'
       + '</div>';
@@ -4403,9 +4411,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var p = ui.pending; ui.pending = null;
     if(p && p.onCancel) p.onCancel();
   }
-  function kbAskPass(onOk, onCancel){
+  /* scene 仅作服务端日志/文案用途（2026-10-23 方案 B）：双认签发不分场景——
+     家长口令在任一入口命中都双令牌同发（家长 22:24 改定，取消场景围栏）。 */
+  function kbAskPass(onOk, onCancel, scene){
     var ui = kbEnsurePracticeUi();
-    ui.pending = { onOk: onOk, onCancel: onCancel };
+    ui.pending = { onOk: onOk, onCancel: onCancel, scene: scene || 'board' };
     ui.err.textContent = '';
     ui.input.value = '';
     ui.okBtn.disabled = false; ui.okBtn.textContent = '确认';
@@ -4415,23 +4425,37 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function kbConfirmPass(){
     var ui = kbEnsurePracticeUi();
     var pass = (ui.input.value || '').trim();
-    if(!pass){ ui.err.textContent = '先输入家庭口令'; return; }
+    if(!pass){ ui.err.textContent = '先输入口令'; return; }
     ui.okBtn.disabled = true; ui.okBtn.textContent = '校验中…';
     ui.err.textContent = '';
-    fetch((location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev') + '/auth', {
+    /* 双认（2026-10-23 方案 B）：只发一次 /auth-dual 请求，服务端一次校验两把口令，
+       严禁前端顺序试探 /auth 与 /parent-auth 两端点（DeepSeek B1）。 */
+    var scene = (ui.pending && ui.pending.scene) || 'board';
+    fetch((location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev') + '/auth-dual', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ passcode: pass })
+      body: JSON.stringify({ passcode: pass, scene: scene })
     }).then(function(resp){
       return resp.json().catch(function(){ return null; }).then(function(j){ return { status: resp.status, body: j }; });
     }).then(function(r){
       ui.okBtn.disabled = false; ui.okBtn.textContent = '确认';
       if(r.status === 200 && r.body && r.body.device_token){
         try { localStorage.setItem('hw-dev-token', r.body.device_token); } catch(e){}
+        var parentMatched = false;
+        if(r.body.parent_token){
+          parentMatched = true;
+          try {
+            localStorage.setItem('hw-parent-token', r.body.parent_token);
+            localStorage.setItem('hw-parent-last', String(Date.now()));
+          } catch(e){}
+        }
         if(window.kbGateAuthOk){ try { window.kbGateAuthOk(); } catch(e){} } /* 令牌巡检：刚验完，免立刻重复巡检 */
         var p = ui.pending; ui.pending = null;
         ui.mask.classList.remove('show');
         if(p && p.onOk) p.onOk();
+        if(parentMatched) kbToast('已用家长口令解锁，家长版小结也已打开');
+      } else if(r.status === 429 && r.body && r.body.error) {
+        ui.err.textContent = r.body.error;
       } else {
         ui.err.textContent = '口令不对，再看看？';
       }
@@ -4501,7 +4525,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         btns.forEach(function(b){ b.disabled = true; });
         kbAskPass(function(){ doSubmit(mode); }, function(){
           btns.forEach(function(b){ b.disabled = false; });
-        });
+        }, 'practice');
       });
     });
   }
@@ -4904,7 +4928,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2224';
+  var KB_BUILD = '20261023-2245';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5366,7 +5390,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     /* 2026-10-22晚改：连接类请求改走 XMLHttpRequest（与文件本体 PUT 同通道）。
        此前 fetch 在该 iPad 的 webview 里对 /auth、/sign 等小请求会无响应假死（单文件偶合成功、多文件必卡），
        服务器实测 auth/sign 均约 1.2~1.5 秒、与文件数无关。XHR 自带 timeout，报错带步骤名便于定位。 */
-    var STEP = {'/auth': '验证口令', '/upload/sign': '准备上传', '/upload/resign': '续传文件', '/upload/complete': '最后确认'};
+    var STEP = {'/auth': '验证口令', '/auth-dual': '验证口令', '/upload/sign': '准备上传', '/upload/resign': '续传文件', '/upload/complete': '最后确认'};
     function attempt(){
       return new Promise(function(resolve, reject){
         var xhr = new XMLHttpRequest();
@@ -5466,9 +5490,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     busy = true; $('up-go').disabled = true; setMsg(token() ? '正在准备…' : '正在验证口令…');
     var pass = $('up-pass') ? $('up-pass').value.trim() : '';
     var ensureToken = token() ? Promise.resolve() :
-      api('/auth', {passcode: pass}).then(function(r){
+      /* 双认（2026-10-23 方案 B）：上传面板也走 /auth-dual 一次校验；家长口令在此输对
+         同样双令牌同发（家长 22:24 改定），家长令牌一并落存，学习小结家长版随之打开。 */
+      api('/auth-dual', {passcode: pass, scene: 'submit'}).then(function(r){
         if(r.status !== 200 || !r.body.device_token) throw new Error('口令不对，再看看？');
         try { localStorage.setItem(LS_TOKEN, r.body.device_token); } catch(e){}
+        if(r.body.parent_token){
+          try {
+            localStorage.setItem('hw-parent-token', r.body.parent_token);
+            localStorage.setItem('hw-parent-last', String(Date.now()));
+          } catch(e){}
+        }
         $('up-passrow').style.display = 'none';
       });
     $('up-filelist').innerHTML = '';
@@ -5873,7 +5905,7 @@ function kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn){
 function kbPrintShare(name, pages, pdfUrl, fileName, gradeName, btn){
   /* 与 kbOpenPrint 同一道打印口令门：无设备令牌先过口令，通过后继续分享 */
   if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
-    window.kbAskPass(function(){ kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn); }, null);
+    window.kbAskPass(function(){ kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn); }, null, 'print');
     return;
   }
   kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn);
@@ -5938,7 +5970,7 @@ function kbOvClose(){
 }
 function kbOpenOriginals(tid){
   if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
-    window.kbAskPass(function(){ kbOpenOriginals(tid); }, null);
+    window.kbAskPass(function(){ kbOpenOriginals(tid); }, null, 'view');
     return;
   }
   var list = (window.__taskOrigPhotos || {})[tid] || [];
@@ -5953,7 +5985,7 @@ document.addEventListener('click', function(e){
 });
 function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
   if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
-    window.kbAskPass(function(){ kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName); }, null);
+    window.kbAskPass(function(){ kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName); }, null, 'print');
     return;
   }
   kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName);
@@ -6142,11 +6174,12 @@ document.addEventListener('click', function(e){
     if(pendingReplay) return; /* 口令框已在处理一单，不叠单 */
     pendingReplay = { el: t.el, type: e.type, isTrusted: e.isTrusted };
     if(window.kbAskPass){
+      var gateScene = (pendingReplay.el && pendingReplay.el.id === 'btn-summary') ? 'summary' : 'board';
       window.kbAskPass(function(){
         var rec = pendingReplay; pendingReplay = null;
         unlockNow();
         replay(rec);
-      }, function(){ pendingReplay = null; });
+      }, function(){ pendingReplay = null; }, gateScene);
     } else { pendingReplay = null; }
   }, true);
 
