@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "六年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T19:43:19+08:00",
+  "updated_at": "2026-10-23T19:45:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -124,19 +124,19 @@
       "task_id": "REG-20261023-FF4D78",
       "source": "register_book",
       "subject": "语文",
-      "title": "小作文（成长中的一束光）",
-      "detail": "原状态：待完成（无佐证照片）；标题更正：家长 2026-10-23 看圈注原图确认\"1.\"后为没写完的\"小\"字，本项应为\"小作文\"（原转写\"作文\"，待确认已销）；家长已确认：小作文顺延至周六（2026-10-24）再写（2026-10-23 19:34确认），今晚不催该项。",
+      "title": "作文（成长中的一束光）",
+      "detail": "原状态：待完成（无佐证照片）；字形定案：家长 2026-10-23 19:39 看圈注原图最终确认原文为\"1.作文\"、无\"小\"字，原转写无误，待确认已销（其间一度误记为\"小作文\"，已复原）；家长已确认：作文顺延至周六（2026-10-24）再写（2026-10-23 19:34 确认），今晚不催该项。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①作文（成长中的一束光）；②41生字；③每天读1小时作文，记录③；④看《别饿连了》。→ 待完成（无佐证照片）",
+      "raw_text": "- 语文：①作文（成长中的一束光）；②411生字；③每天读1小时作文，记录③；④看《项链连习》。→ 待完成（无佐证照片）",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:40:00+08:00",
+      "updated_at": "2026-10-23T19:45:04+08:00",
       "pending_corrections": 0,
       "corrections": []
     },
@@ -144,19 +144,19 @@
       "task_id": "REG-20261023-3F2545",
       "source": "register_book",
       "subject": "语文",
-      "title": "41生字",
-      "detail": "",
+      "title": "411生字",
+      "detail": "更正（2026-10-23 全量复核原图）：原转写\"41生字\"漏读一位——原图为三个数字字形\"4、1、1\"（首形为带斜笔、竖笔与底横的手写\"4\"，后接两个独立的\"1\"），已更正为\"411生字\"。依据：家长指出多处识别错误后全量复核原图；Groq 独立转写读作\"L11\"，异议经放大像素定案为\"411\"。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①作文（成长中的一束光）；②41生字；③每天读1小时作文，记录③；④看《别饿连了》。→ 待完成（无佐证照片）",
+      "raw_text": "- 语文：①作文（成长中的一束光）；②411生字；③每天读1小时作文，记录③；④看《项链连习》。→ 待完成（无佐证照片）",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-23T19:45:04+08:00",
       "pending_corrections": 0,
       "corrections": []
     },
@@ -170,13 +170,13 @@
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①作文（成长中的一束光）；②41生字；③每天读1小时作文，记录③；④看《别饿连了》。→ 待完成（无佐证照片）",
+      "raw_text": "- 语文：①作文（成长中的一束光）；②411生字；③每天读1小时作文，记录③；④看《项链连习》。→ 待完成（无佐证照片）",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-23T19:45:04+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": []
@@ -185,19 +185,19 @@
       "task_id": "REG-20261023-85311E",
       "source": "register_book",
       "subject": "语文",
-      "title": "看《别饿连了》。",
-      "detail": "原状态：待完成（无佐证照片）",
+      "title": "看《项链连习》。",
+      "detail": "原状态：待完成（无佐证照片）；更正（2026-10-23 全量复核原图）：原转写\"看《别饿连了》\"四字全误——原图逐字为\"项链连习\"（末字为内外双层折钩的\"习\"，与英语①\"练习\"之\"习\"同构；原图《后未见闭合》，标题按体例补》），已更正为\"看《项链连习》\"。依据：家长指出多处识别错误后全量复核原图；Groq 独立转写读作《项链连刀》，异议经放大像素定案为\"习\"。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①作文（成长中的一束光）；②41生字；③每天读1小时作文，记录③；④看《别饿连了》。→ 待完成（无佐证照片）",
+      "raw_text": "- 语文：①作文（成长中的一束光）；②411生字；③每天读1小时作文，记录③；④看《项链连习》。→ 待完成（无佐证照片）",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-23T19:45:04+08:00",
       "pending_corrections": 0,
       "corrections": []
     },
