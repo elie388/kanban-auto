@@ -168,7 +168,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00"
+      "updated_at": "2026-10-23T19:30:19+08:00",
+      "task_type": "reading"
     },
     {
       "task_id": "REG-20261023-85311E",
@@ -223,8 +224,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00",
-      "task_type": "reading"
+      "updated_at": "2026-10-23T19:30:19+08:00"
     },
     {
       "task_id": "REG-20261023-37028D",
@@ -260,7 +260,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00"
+      "updated_at": "2026-10-23T19:30:19+08:00",
+      "task_type": "reading"
     },
     {
       "task_id": "REG-20261023-7172FF",
@@ -278,7 +279,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-23T19:30:19+08:00"
+      "updated_at": "2026-10-23T19:30:19+08:00",
+      "task_type": "reading"
     }
   ],
   "counts": {
