@@ -1249,7 +1249,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['bonus','deduct','log','shop','achieve','lib','trend'];
+  var ids = ['bonus','deduct','log','shop','achieve','lib','trend','summary'];
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -4581,7 +4581,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1850';
+  var KB_BUILD = '20261023-1851';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5697,7 +5697,7 @@ document.addEventListener('click', function(e){
    - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
    ================================================================ */
 (function(){
-  var GATE_PANELS = ['btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop', 'btn-bonus', 'btn-deduct', 'btn-log'];
+  var GATE_PANELS = ['btn-summary', 'btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop', 'btn-bonus', 'btn-deduct', 'btn-log'];
   var KB_LOCKED = false;
   var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
   var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
