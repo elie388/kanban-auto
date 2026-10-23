@@ -14,7 +14,7 @@
 <style>
   :root{
     --bg1:#FFE8C2; --bg2:#FFD1DC; --bg3:#C9E7FF;
-    --g5:#FF8A5B; --g6:#6C8EFF;
+    --g5:#FF8A5B; --g6:#6C8EFF; --g5b:#FFA96B; --g6b:#8FA9FF;
     --gold:#FFC93C; --ok:#4CD07D; --warn:#FFB020; --wait:#9AA5B1;
     --txt:#30343B; --sub:#6B7280;
     --card:rgba(255,255,255,.96);
@@ -110,8 +110,8 @@
     width:110px; height:110px; border-radius:50%;
     background:rgba(255,255,255,.18);
   }
-  .bal-card.g5{background:linear-gradient(135deg,#FF8A5B,#FFA96B);}
-  .bal-card.g6{background:linear-gradient(135deg,#6C8EFF,#8FA9FF);}
+  .bal-card.g5{background:linear-gradient(135deg,var(--g5),var(--g5b));}
+  .bal-card.g6{background:linear-gradient(135deg,var(--g6),var(--g6b));}
   /* 2026-10-19：余额离线数据标记（KB-BALANCE-AUTO-2026-10-19） */
   .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
     color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
@@ -528,6 +528,13 @@
   .task-prog-text{font-size:13px; font-weight:700; color:var(--sub); white-space:nowrap; font-variant-numeric:tabular-nums; flex:0 0 auto;}
   .task-prog-bar{width:96px; flex:1 1 64px; min-width:64px; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
   .task-prog-fill{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+  /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、DeepSeek 核准）：年级色与余额卡同源变量、金色只留成就条 */
+  #tasks-g5 .task-prog-fill{background:linear-gradient(90deg,var(--g5),var(--g5b));}
+  #tasks-g6 .task-prog-fill{background:linear-gradient(90deg,var(--g6),var(--g6b));}
+  /* 完成态：独立语义绿（优先于年级色）＋持续生长＝透明度脉冲 2 秒一周期（只动 opacity、不设 will-change） */
+  .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A); animation:progPulse 2s ease-in-out infinite;}
+  @keyframes progPulse{ 0%,100%{ opacity:.85; } 50%{ opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ .task-prog.is-full .task-prog-fill{ animation:none; opacity:1; } }
 
 
   /* 积分商店 */
@@ -1391,7 +1398,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var progText = sec.querySelector('.task-prog-text');
     var progBar = sec.querySelector('.task-prog-bar');
     var progFill = sec.querySelector('.task-prog-fill');
-    var label = '已完成 ' + done + ' / ' + total;
+    var progWrap = sec.querySelector('.task-prog');
+    /* 进度条优化（2026-10-23）：百分比四舍五入、total=0 不渲染百分比段；满格加 ✓ 并切完成态 */
+    var pct = total ? Math.round(done / total * 100) : null;
+    var isFull = total > 0 && done === total;
+    var label = (isFull ? '✓ ' : '') + '已完成 ' + done + ' / ' + total + (pct !== null ? ' · ' + pct + '%' : '');
+    if(progWrap) progWrap.classList.toggle('is-full', isFull);
     if(progText) progText.textContent = label;
     if(progBar){
       progBar.setAttribute('aria-valuemax', total);
@@ -4303,7 +4315,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1050';
+  var KB_BUILD = '20261023-1510';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
