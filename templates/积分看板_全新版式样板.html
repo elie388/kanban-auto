@@ -251,6 +251,9 @@
   html.kb-locked .task-section .task-list, html.kb-locked .task-section .yd-zone{display:none !important;}
   html.kb-locked .task-head::after{content:'🔐';font-size:14px;margin-left:6px;}
   html.kb-locked .collapse-btn::after{content:'🔐';font-size:14px;margin-left:6px;}
+  /* 锁定态概览打码（2026-10-23 家长拍板 DeepSeek 混合案）：鼓励语与今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
+  html.kb-locked .bal-sub{display:none !important;}
+  html.kb-locked .task-prog{display:none !important;}
   .task[data-tid]:not(.open-task) .tfiles{display:none;}
   .task[data-tid]:not(.open-task) .st-mini{display:none;}
   .task[data-tid]:not(.open-task) .st-zone{display:none;}
@@ -1897,6 +1900,42 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
   }
 
+  /* ---------- 锁定态判定（2026-10-23 概览打码守卫） ----------
+     优先口令门暴露的 window.__kbLocked；该块在文末、后于本块执行，未就绪时直接读
+     <html> 类（早锁脚本在解析期已置类），两口径同源不冲突。 */
+  function kbLockedNow(){
+    if(typeof window.__kbLocked === 'function'){ try { return !!window.__kbLocked(); } catch(e){} }
+    return document.documentElement.classList.contains('kb-locked');
+  }
+
+  /* 把一个 .bal-num 收敛为打码态： bump 版本号令牌作废在飞滚轮、清其动画句柄、摘除滚轮 DOM、
+     不留 data-target/aria 真值，纯文本 **。解锁后重拉余额走正常路径，_odo 已摘除会触发重建写终值。 */
+  function maskBalanceNum(el){
+    if(!el) return;
+    window.__kanbanBalanceVersion++;
+    el._rollV = window.__kanbanBalanceVersion;
+    if(el._rafId){ try { cancelAnimationFrame(el._rafId); } catch(e){} el._rafId = 0; }
+    if(el._transEl && el._transH){
+      try { el._transEl.removeEventListener('transitionend', el._transH); } catch(e){}
+      el._transEl = null; el._transH = null;
+    }
+    if(el._finishTimer){ clearTimeout(el._finishTimer); el._finishTimer = 0; }
+    var odoM = el._odo;
+    if(odoM && odoM.parentNode) odoM.parentNode.removeChild(odoM);
+    el._odo = null;
+    el.removeAttribute('data-target');
+    el.removeAttribute('aria-label');
+    var scM = el.closest ? el.closest('.bal-score') : null;
+    if(scM) scM.removeAttribute('aria-busy');
+    el.textContent = '**';
+    el.dataset.rolled = '1';
+  }
+  /* 供口令门上锁路径调用：已在显示真值的数字也要立即收敛为 **（不只拦后续写入） */
+  window.__kbMaskBalances = function(){
+    var nums = document.querySelectorAll('.bal-num');
+    for(var i = 0; i < nums.length; i++) maskBalanceNum(nums[i]);
+  };
+
   /* ---------- fetch / 任务自动更新：直接写终值，不触发滚动 ---------- */
   function setFinalBalance(el, target){
     var t = parseInt(target, 10);
@@ -1910,6 +1949,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       el._transEl = null; el._transH = null;
     }
     if(el._finishTimer){ clearTimeout(el._finishTimer); el._finishTimer = 0; }
+    /* 锁定态概览打码（2026-10-23）：不写真实值，收敛为纯文本 **（maskBalanceNum）；
+       data-target 全板唯一赋值点即此处，故写入守卫收口于本函数一处。 */
+    if(kbLockedNow()){ maskBalanceNum(el); return; }
     el.setAttribute('data-target', String(t));
     /* B2：负余额分支 —— 静态显示 −N（U+2212 全角减号），不走滚轮动画 */
     if(t < 0){
@@ -1971,6 +2013,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   var vCache = {}; /* ?v= 缓存：文件名 -> 上次成功的 generated_at（§3.4） */
 
   function $(id){ return document.getElementById(id); }
+
+  /* 锁定态判定（2026-10-23 概览打码）：优先口令门 window.__kbLocked，未就绪读 <html> 类，与余额块同口径 */
+  function kbLocked(){
+    if(typeof window.__kbLocked === 'function'){ try { return !!window.__kbLocked(); } catch(e){} }
+    return document.documentElement.classList.contains('kb-locked');
+  }
 
   /* ---------- 方案E（2026-10-20，DeepSeek 仲裁）：拉取重试 + 本地缓存兜底 ----------
      根因：数据 push 触发 Pages 全站重部署，窗口内 fetch 可能 404/超时，旧逻辑
@@ -2095,7 +2143,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(!num) throw new Error('no bal-num');
       window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
       var sub = card ? card.querySelector('.bal-sub') : null;
-      if(sub && typeof d.bal_sub === 'string' && d.bal_sub){
+      /* 锁定态打码双保险：.bal-sub 已被 CSS 整行隐藏，此处再跳过写入，不让真实鼓励语落进 DOM 文本 */
+      if(sub && !kbLocked() && typeof d.bal_sub === 'string' && d.bal_sub){
         /* 排版（2026-10-22 家长定）：按中文逗号断成两行显示，不让尾字孤行 */
         var parts = d.bal_sub.split('，');
         sub.textContent = '';
@@ -4037,7 +4086,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0915';
+  var KB_BUILD = '20261023-0935';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5160,6 +5209,35 @@ document.addEventListener('click', function(e){
 
   function hasToken(){ try { return !!window.kbPracticeToken(); } catch(e){ return false; } }
 
+  /* 锁定态判定对外暴露（余额块/数据块打码守卫用）：以 <html> 类为准，与 <head> 早锁脚本同口径 */
+  window.__kbLocked = function(){ return document.documentElement.classList.contains('kb-locked'); };
+
+  /* ---------- 锁定态概览打码·文本部分（2026-10-23 家长拍板 DeepSeek 混合案） ----------
+     本函数只管文本替换：余额卡姓名、今日任务年级标题 pill、余额卡 aria-label（原含真实姓名，同步去名）。
+     分数由余额 setter 守卫写 **、鼓励语与进度组由 CSS 整组隐藏，均不在此处。
+     pill 只作用于 .task-head 内两枚（锁定态唯一可见的 pill）；折叠面板内 grade-head 的 pill
+     在 .collapse-body 内、锁定态已被 CSS 隐藏，且由各栏目渲染函数维护，不在此收口。 */
+  var KB_MASK = [
+    { cardId: 'bal-jump-g5', name: '彦均', maskedName: '彦*', pillSel: '.task-head .pill-grade.g5', pill: '五年级·彦均', pillMasked: '五年级·彦*' },
+    { cardId: 'bal-jump-g6', name: '伟豪', maskedName: '伟*', pillSel: '.task-head .pill-grade.g6', pill: '六年级·伟豪', pillMasked: '六年级·伟*' }
+  ];
+  function kbApplyMask(){
+    var locked = document.documentElement.classList.contains('kb-locked');
+    KB_MASK.forEach(function(m){
+      var card = document.getElementById(m.cardId);
+      if(card){
+        var nm = card.querySelector('.bal-name');
+        if(nm) nm.textContent = locked ? m.maskedName : m.name;
+        card.setAttribute('aria-label', locked ? '查看积分日志' : ('查看' + m.name + '积分日志'));
+      }
+      var pill = document.querySelector(m.pillSel);
+      if(pill) pill.textContent = locked ? m.pillMasked : m.pill;
+    });
+    /* 锁定瞬间把已在显示真值的余额数字一并收敛为 **（余额块提供 __kbMaskBalances，含在飞滚轮作废）；
+       后续写入由余额 setter 的锁定守卫拦截，两段配合无窗口。解锁方向不碰数字，靠 unlockNow 重拉恢复。 */
+    if(locked){ try { if(typeof window.__kbMaskBalances === 'function') window.__kbMaskBalances(); } catch(e){} }
+  }
+
   /* 单一收口函数：把全部受控区置收起（栏目经其自身按钮路径、年级段经登记钩子，
      均为同步状态切换；区内二级展开态随父区收起不可见，判定残留无影响，不单独清理）。 */
   function kbCollapseAll(){
@@ -5184,11 +5262,16 @@ document.addEventListener('click', function(e){
     kbCollapseAll();
     KB_LOCKED = true;
     document.documentElement.classList.add('kb-locked');
+    kbApplyMask(); /* 锁定即打码：全部回锁路径（巡检判死/令牌消失/点击拦截）都经此函数，一处收口 */
   }
   function unlockNow(){
     kbCollapseAll(); /* 先收口再开门：解锁后仅重演的那一处展开，无多块齐弹 */
     KB_LOCKED = false;
     document.documentElement.classList.remove('kb-locked');
+    kbApplyMask(); /* 恢复真实姓名/pill/aria-label */
+    /* 恢复余额数字与鼓励语：经既有统计刷新入口重拉（其内部正是以 loadBalance(5,'bal-jump-g5')、
+       loadBalance(6,'bal-jump-g6') 原实参回填）；loadBalance 未挂 window，故走此公开入口。失败不回锁。 */
+    try { if(typeof window.__kanbanRefreshStats === 'function') window.__kanbanRefreshStats(); } catch(e){}
   }
 
   function gateTargetOf(e){
@@ -5373,6 +5456,7 @@ document.addEventListener('click', function(e){
     KB_LOCKED = true;
     document.documentElement.classList.add('kb-locked');
   }
+  kbApplyMask(); /* 初始化对齐：按当前锁定态打码或还原姓名/pill（静态 HTML 是明文，此处为首个替换点） */
 
   /* 页面加载完成先巡检一次（无令牌内部直接返回） */
   kbCheckToken(false);
