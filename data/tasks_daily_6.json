@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "六年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T19:01:16+08:00",
+  "updated_at": "2026-10-23T19:08:41+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-10-23T19:08:41+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -93,14 +93,29 @@
       "created_at": "2026-10-23T16:55:41+08:00",
       "updated_at": "2026-10-23T18:23:06+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "PRACT-20261023-D49065",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "Word：六年级针对性练习_2026-10-23.docx，按今日练习清单完成",
+      "kousuan": [],
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-23.docx",
+      "file_hash": null,
+      "created_at": "2026-10-23T19:08:41+08:00",
+      "updated_at": "2026-10-23T19:08:41+08:00"
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 6,
+    "pending": 6,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-10-23T22:30:00+08:00"
 }
