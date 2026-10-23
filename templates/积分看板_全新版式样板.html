@@ -364,6 +364,7 @@
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
   .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
+  .tprint-hint{flex:1 1 100%; font-size:12px; color:#8a8171; line-height:1.5;}
   #printArea{display:none;}
   body.kb-printing #printArea{display:block; position:fixed; inset:0; z-index:9999; background:#fff; overflow:auto; padding:10px;}
   #printArea .pa-bar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
@@ -1495,6 +1496,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     var tid = card.getAttribute('data-tid');
     if(tid){ if(open) OPEN_TASK[tid] = 1; else delete OPEN_TASK[tid]; }
+    /* 展开即预取该卡练习 PDF（打印改走分享文件，见 kbPrefetchPdf）：就绪后点打印立即调起分享 */
+    if(open && window.kbPrefetchCardPdfs) window.kbPrefetchCardPdfs(card);
   }
   document.addEventListener('click', function(e){
     if(!e.target || !e.target.closest) return;
@@ -1745,6 +1748,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       });
     }
     taskList.innerHTML = html;
+    /* 刷新后恢复展开的卡同样预取打印 PDF（与 toggleTaskCard 展开预取同口径） */
+    if(window.kbPrefetchOpenCards) window.kbPrefetchOpenCards(taskList);
     return true;
   }
   var taskVer = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at），替代 ?t= 时间戳破缓存 */
@@ -4977,7 +4982,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2042';
+  var KB_BUILD = '20261023-2050';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5842,7 +5847,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
 /* 练习文件打印（2026-10-22 家长定版）：卡上只有一个「打印XX」按钮，
    点开打印页（整页图片版式），自动调起系统打印；WebView 里若打印不弹，
-   页内有「分享 PDF」兜底（分享菜单内含打印）。 */
+   页内有「分享 PDF」兜底（分享菜单内含打印）。
+   2026-10-23 家长真机定版：卡上按钮改走 kbPrintShare「分享 PDF 文件」
+   （见下），本打印页仅作不支持文件分享环境时的降级回退，代码保留不删。 */
 function kbSharePdf(url, name){
   function openPdf(){ alert('当前浏览器不支持分享这份 PDF，请用 Safari 打开看板（whyjjf.lol）后再点打印。'); }
   try {
@@ -5854,6 +5861,101 @@ function kbSharePdf(url, name){
       }).catch(openPdf);
     } else openPdf();
   } catch(err){ openPdf(); }
+}
+/* 打印按钮改走「分享 PDF 文件」（2026-10-23 家长真机定版，替换原「打开打印页」行为）：
+   20:44 家长从主屏幕独立模式实测——以 File 对象 navigator.share({files}) 调起的
+   系统分享菜单内含「打印」（AirPrint 出纸）；分享网页/URL 的菜单则没有。故卡上绿色
+   「打印{label}」外观文案不变，点击改为分享该文件 PDF 本体（严禁退回分享 URL）：
+   - 任务卡展开时预取该卡 PDF 缓存为 File，点击已就绪立即 share；
+   - 未就绪在按钮旁提示「准备中，再点一次」；预取失败回退原行为；
+   - 环境不支持 canShare({files}) 时回退原行为（kbOpenPrint 打开打印页）；
+   - 用户取消分享（AbortError）静默复位，不报错扰人。
+   口令门与 kbOpenPrint 同一道（无设备令牌先过 kbAskPass，过了门再分享）。 */
+var KB_PDF_FILE_CACHE = {}; /* pdfUrl -> {file, promise, failed} */
+function kbPdfFileName(url, fallback){
+  var n = fallback || '';
+  if(!n && url){ try { n = decodeURIComponent(String(url).split('/').pop() || ''); } catch(e){ n = ''; } }
+  if(!n) n = 'file.pdf';
+  if(!/\.pdf$/i.test(n)) n += '.pdf';
+  return n;
+}
+function kbPrefetchPdf(url, fileName){
+  if(!url) return null;
+  var ent = KB_PDF_FILE_CACHE[url];
+  if(ent) return ent;
+  ent = { file: null, promise: null, failed: false };
+  KB_PDF_FILE_CACHE[url] = ent;
+  ent.promise = fetch(url).then(function(r){
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    return r.blob();
+  }).then(function(blob){
+    var f = null;
+    try { f = new File([blob], kbPdfFileName(url, fileName), { type: 'application/pdf' }); } catch(e){ f = null; }
+    ent.file = f;
+    ent.promise = null;
+    if(!f) ent.failed = true;
+    return f;
+  }).catch(function(){ ent.promise = null; ent.failed = true; return null; });
+  return ent;
+}
+window.kbPrefetchCardPdfs = function(card){
+  if(!card || !card.querySelectorAll) return;
+  card.querySelectorAll('[data-print1]').forEach(function(b){
+    kbPrefetchPdf(b.getAttribute('data-pdf') || '', b.getAttribute('data-file') || '');
+  });
+};
+window.kbPrefetchOpenCards = function(root){
+  if(!root || !root.querySelectorAll) return;
+  root.querySelectorAll('.task.open-task').forEach(function(card){ window.kbPrefetchCardPdfs(card); });
+};
+function kbPrintHint(btn, msg){
+  var wrap = btn && btn.closest ? btn.closest('.tfiles') : null;
+  if(!wrap) return;
+  var h = wrap.querySelector('.tprint-hint');
+  if(!h){
+    h = document.createElement('span');
+    h.className = 'tprint-hint';
+    wrap.appendChild(h);
+  }
+  h.textContent = msg || '';
+  h.style.display = msg ? '' : 'none';
+}
+function kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn){
+  function fallback(){ kbOpenPrint(name, pages, pdfUrl, fileName, gradeName); }
+  if(!pdfUrl || typeof navigator === 'undefined' || !navigator.share || typeof navigator.canShare !== 'function'){ fallback(); return; }
+  var ent = kbPrefetchPdf(pdfUrl, fileName);
+  if(ent && ent.failed){ fallback(); return; }
+  var file = ent && ent.file;
+  if(file && !file.size){ /* 缓存 File 失效（大小为 0，DeepSeek 备案提示①）：清缓存重新预取，走「准备中」路径 */
+    delete KB_PDF_FILE_CACHE[pdfUrl];
+    ent = kbPrefetchPdf(pdfUrl, fileName);
+    file = null;
+  }
+  if(!file){
+    if(btn) kbPrintHint(btn, '打印文件准备中，请再点一次「打印」。');
+    if(ent && ent.promise) ent.promise.then(function(f){
+      if(f && btn) kbPrintHint(btn, '打印文件已准备好，再点一次「打印」。');
+    });
+    return;
+  }
+  var ok = false;
+  try { ok = navigator.canShare({ files: [file] }); } catch(e){ ok = false; }
+  if(!ok){ fallback(); return; }
+  if(btn) kbPrintHint(btn, '');
+  var pr;
+  try { pr = navigator.share({ files: [file] }); } catch(e){ fallback(); return; }
+  if(pr && pr.catch) pr.catch(function(err){
+    if(err && err.name === 'AbortError') return; /* 用户取消分享：静默复位 */
+    fallback();
+  });
+}
+function kbPrintShare(name, pages, pdfUrl, fileName, gradeName, btn){
+  /* 与 kbOpenPrint 同一道打印口令门：无设备令牌先过口令，通过后继续分享 */
+  if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
+    window.kbAskPass(function(){ kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn); }, null);
+    return;
+  }
+  kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn);
 }
 function kbClosePrint(){
   document.body.classList.remove('kb-printing');
@@ -6083,8 +6185,10 @@ document.addEventListener('click', function(e){
   if(!b) return;
   e.preventDefault();
   var pages = (b.getAttribute('data-pages') || '').split(',').filter(function(x){ return !!x; });
-  kbOpenPrint(b.getAttribute('data-name') || '练习文件', pages, b.getAttribute('data-pdf') || '',
-    b.getAttribute('data-file') || '', b.getAttribute('data-grade') || '');
+  /* 2026-10-23 起改走「分享 PDF 文件」（kbPrintShare）；不支持文件分享的环境
+     由 kbPrintShare 内部回退到 kbOpenPrint 打开原打印页，行为不失效。 */
+  kbPrintShare(b.getAttribute('data-name') || '练习文件', pages, b.getAttribute('data-pdf') || '',
+    b.getAttribute('data-file') || '', b.getAttribute('data-grade') || '', b);
 });
 </script>
 
