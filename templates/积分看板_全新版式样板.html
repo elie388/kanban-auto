@@ -147,6 +147,30 @@
   .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; color:rgba(255,255,255,.78); font-variant-numeric:tabular-nums;}
   .bal-card.is-neg{background:linear-gradient(135deg,#79818e,#59616d);}
   html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
+  /* 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件） */
+  .sum-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#E5484D; margin-left:7px; vertical-align:middle;}
+  .sum-grade{margin-bottom:14px;}
+  .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
+  .sum-date{font-weight:800; font-size:15px; margin-bottom:6px;}
+  .sum-sec{margin:8px 0;}
+  .sum-sec-t{font-weight:700; font-size:13px; color:#66707C; margin-bottom:4px;}
+  .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:14px;}
+  .sum-kp{display:inline-block; background:#EEF3FF; color:#2F4A8A; border-radius:999px; padding:1px 9px; font-size:12.5px; margin:0 6px 6px 0; line-height:1.7;}
+  .sum-pt{display:flex; justify-content:space-between; font-size:14px; line-height:1.7; border-bottom:1px dashed #EEE;}
+  .sum-pt-d.pos{color:#2E7D32; font-weight:700;} .sum-pt-d.neg{color:#B3261E; font-weight:700;}
+  .sum-enc{margin-top:9px; font-size:14px; line-height:1.7; background:#F4F8EE; border-radius:10px; padding:8px 10px;}
+  .sum-empty{color:#77808C; font-size:14px; padding:8px 2px;}
+  .sum-parent{border-top:2px dashed #E5E7EB; margin-top:16px; padding-top:12px;}
+  .sum-parent-head{font-weight:800; font-size:15px;}
+  .sum-parent-hint{font-weight:400; font-size:12.5px; color:#77808C;}
+  .sum-parent-form input{width:100%; box-sizing:border-box; font-size:16px; padding:11px; border:1px solid #CCC; border-radius:10px; margin:10px 0 8px;}
+  .sum-parent-form button{font-size:15px; padding:9px 16px; border-radius:10px; border:0; background:#30343B; color:#FFF; cursor:pointer;}
+  .sum-parent-err{color:#B3261E; font-size:13.5px; margin-top:8px;}
+  .sum-parent-tools{text-align:right; margin-bottom:6px;}
+  .sum-parent-tools button{background:#8A8F98; font-size:13px; padding:6px 12px; border-radius:10px; border:0; color:#FFF; cursor:pointer;}
+  .sum-p-name{font-weight:800; margin:10px 0 4px;}
+  .sum-p-html{font-size:14px; line-height:1.75;}
+  .sum-p-html p{margin:6px 0;}
 
   /* 今日任务 */
   .task-section{margin-bottom:18px;}
@@ -1023,6 +1047,32 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
       </div>
       <div class="yd-zone" id="yd-g6"></div>
+    </div>
+  </section>
+
+  <!-- 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件）：孩子版脱敏近3天（公开数据）；家长版凭独立家长令牌经 hw-api 私有拉取、不进公开仓库 -->
+  <section class="card collapse" aria-label="学习小结">
+    <span class="tag-demo" id="summary-tag">离线数据</span>
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-summary" id="btn-summary">
+      <span class="emoji" aria-hidden="true">🌙</span>
+      <span class="cb-title">学习小结</span><span class="sum-dot" id="summary-dot" hidden aria-hidden="true"></span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-summary" role="region" aria-labelledby="btn-summary">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <div class="sum-grade" id="sum-g5">
+          <div class="grade-head"><span class="pill-grade g5">彦均</span></div>
+          <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
+        </div>
+        <div class="sum-grade" id="sum-g6">
+          <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
+          <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
+        </div>
+        <div class="sum-parent" id="sum-parent">
+          <div class="sum-parent-head">🔒 家长版小结 <span class="sum-parent-hint">（需家长口令，与家庭口令是两把）</span></div>
+          <div class="sum-parent-body"></div>
+        </div>
+      </div></div>
     </div>
   </section>
 
@@ -2428,6 +2478,143 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     renderShopProgress();
   }
 
+  /* ---------- 学习小结（2026-10-23 两版上看板） ---------- */
+  var SUM_HW_API = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev');
+  var sumNewest = { 5: '', 6: '' };
+
+  function sumEsc(x){
+    return String(x == null ? '' : x).replace(/[&<>"']/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+  function sumDateTitle(iso){
+    var m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return m ? (parseInt(m[2], 10) + '月' + parseInt(m[3], 10) + '日小结') : '小结';
+  }
+  function renderKidSummary(grade, items){
+    var wrap = document.querySelector('#sum-g' + grade + ' .sum-items');
+    if(!wrap) return;
+    if(!items || !items.length){
+      wrap.innerHTML = '<div class="sum-empty">还没有小结。今晚的小结生成后会出现在这里。</div>';
+      return;
+    }
+    var html = '';
+    items.forEach(function(it){
+      html += '<div class="sum-item"><div class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</div>';
+      if(it.completed && it.completed.length){
+        html += '<div class="sum-sec"><div class="sum-sec-t">今天完成了</div><ul>' + it.completed.map(function(x){ return '<li>' + sumEsc(x) + '</li>'; }).join('') + '</ul></div>';
+      }
+      if(it.knowledge_points && it.knowledge_points.length){
+        html += '<div class="sum-sec"><div class="sum-sec-t">今晚错题知识点</div><div>' + it.knowledge_points.map(function(x){ return '<span class="sum-kp">' + sumEsc(x) + '</span>'; }).join('') + '</div></div>';
+      }
+      if(it.points && it.points.length){
+        html += '<div class="sum-sec"><div class="sum-sec-t">今日积分</div>' + it.points.map(function(pt){
+          var d = typeof pt.delta === 'number' ? pt.delta : 0;
+          return '<div class="sum-pt"><span>' + sumEsc(pt.desc || '') + '</span><span class="sum-pt-d ' + (d >= 0 ? 'pos' : 'neg') + '">' + (d > 0 ? '+' + d : (d < 0 ? '\u2212' + Math.abs(d) : '0')) + '</span></div>';
+        }).join('') + '</div>';
+      }
+      if(it.encouragement){
+        html += '<div class="sum-enc">' + sumEsc(it.encouragement) + '</div>';
+      }
+      html += '</div>';
+    });
+    wrap.innerHTML = html;
+  }
+  function sumDotUpdate(){
+    var dot = $('summary-dot');
+    if(!dot) return;
+    if(document.documentElement.classList.contains('kb-locked')){ dot.hidden = true; return; }
+    var hasNew = false;
+    [5, 6].forEach(function(g){
+      var seen = '';
+      try { seen = localStorage.getItem('kb-sum-seen-g' + g) || ''; } catch (e) {}
+      if(sumNewest[g] && sumNewest[g] > seen) hasNew = true;
+    });
+    dot.hidden = !hasNew;
+  }
+  function loadKidSummary(grade){
+    fetchJson('daily_summary_' + grade + '.json', {}).then(function(d){
+      var items = (d && d.items) || [];
+      if(items.length) sumNewest[grade] = items[0].date || '';
+      renderKidSummary(grade, items);
+      sumDotUpdate();
+      var tag = $('summary-tag');
+      if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
+    }).catch(function(){
+      renderKidSummary(grade, []);
+      var tag = $('summary-tag');
+      if(tag) tag.textContent = '暂时无法连接';
+    });
+  }
+
+  function parentTokenGet(){ try { return localStorage.getItem('hw-parent-token') || ''; } catch (e) { return ''; } }
+  function parentClear(){ try { localStorage.removeItem('hw-parent-token'); localStorage.removeItem('hw-parent-last'); } catch (e) {} }
+  function renderParentZone(msg){
+    var body = document.querySelector('#sum-parent .sum-parent-body');
+    if(!body) return;
+    var tok = parentTokenGet();
+    if(tok){
+      var last = 0;
+      try { last = parseInt(localStorage.getItem('hw-parent-last') || '0', 10); } catch (e) {}
+      if(last > 0 && Date.now() - last > 30 * 24 * 3600 * 1000){
+        parentClear(); tok = ''; msg = '已超过 30 天未使用，请重新输入家长口令。';
+      }
+    }
+    if(!tok){
+      body.innerHTML = '<div class="sum-parent-form">'
+        + (msg ? '<div class="sum-parent-err">' + sumEsc(msg) + '</div>' : '')
+        + '<input type="password" id="sum-parent-pass" placeholder="输入家长口令" autocomplete="current-password">'
+        + '<button type="button" id="sum-parent-unlock">解锁家长版</button></div>';
+      var btn = $('sum-parent-unlock');
+      if(btn) btn.addEventListener('click', parentUnlock);
+      return;
+    }
+    body.innerHTML = '<div class="sum-empty">正在加载家长版小结…</div>';
+    fetch(SUM_HW_API + '/parent-summary', { headers: { 'X-Parent-Token': tok }, cache: 'no-store' }).then(function(r){
+      if(r.status === 401) throw new Error('unauth');
+      return r.json();
+    }).then(function(d){
+      try { localStorage.setItem('hw-parent-last', String(Date.now())); } catch (e) {}
+      var html = '<div class="sum-parent-tools"><button type="button" id="sum-parent-lock">一键上锁</button></div>';
+      var any = false;
+      [5, 6].forEach(function(g){
+        var items = (d && d.grades && d.grades[g] && d.grades[g].items) || [];
+        if(items.length){
+          any = true;
+          html += '<div class="sum-p-grade"><div class="sum-p-name">' + (g === 5 ? '彦均' : '伟豪') + '</div>';
+          items.forEach(function(it){
+            html += '<div class="sum-item"><div class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</div><div class="sum-p-html">' + (it.html || '') + '</div></div>';
+          });
+          html += '</div>';
+        }
+      });
+      if(!any) html += '<div class="sum-empty">还没有家长版小结。今晚总结生成后会出现在这里。</div>';
+      body.innerHTML = html;
+      var lock = $('sum-parent-lock');
+      if(lock) lock.addEventListener('click', function(){ parentClear(); renderParentZone(); });
+    }).catch(function(e){
+      if(e && e.message === 'unauth'){ parentClear(); renderParentZone('家长登录已过期，请重新输入家长口令。'); }
+      else { body.innerHTML = '<div class="sum-empty">家长版小结加载失败，请稍后再试。</div>'; }
+    });
+  }
+  function parentUnlock(){
+    var inp = $('sum-parent-pass');
+    var v = inp ? inp.value : '';
+    if(!v) return;
+    fetch(SUM_HW_API + '/parent-auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ passcode: v }) }).then(function(r){
+      return r.json().then(function(d){ return { st: r.status, d: d }; });
+    }).then(function(res){
+      var tk = res.d && res.d['parent' + '_token'];
+      if(res.st === 200 && tk){
+        try {
+          localStorage.setItem('hw-parent-token', tk);
+          localStorage.setItem('hw-parent-last', String(Date.now()));
+        } catch (e) {}
+        renderParentZone();
+      } else {
+        renderParentZone((res.d && res.d.error) || '解锁失败，请再试一次。');
+      }
+    }).catch(function(){ renderParentZone('网络不通，请稍后再试。'); });
+  }
+
   /* ---------- 启动 ---------- */
   function boot(){
     loadBalance(5, 'bal-jump-g5');
@@ -2435,6 +2622,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     loadLog(5, 'log-g5');
     loadLog(6, 'log-g6');
     loadShop();
+    loadKidSummary(5);
+    loadKidSummary(6);
+    renderParentZone();
+    var sb = $('btn-summary');
+    if(sb && !sb.__sumSeenBound){
+      sb.__sumSeenBound = true;
+      sb.addEventListener('click', function(){
+        [5, 6].forEach(function(g){ if(sumNewest[g]){ try { localStorage.setItem('kb-sum-seen-g' + g, sumNewest[g]); } catch (e) {} } });
+        var dot = $('summary-dot'); if(dot) dot.hidden = true;
+      });
+    }
   }
   window.__kanbanRefreshStats = boot; /* 2026-10-20：供倒计时软刷新调用 */
 
@@ -4383,7 +4581,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1740';
+  var KB_BUILD = '20261023-1850';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
