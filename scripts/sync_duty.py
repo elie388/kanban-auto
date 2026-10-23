@@ -131,12 +131,12 @@ def read_sync_state():
 
 def grading_stay_event(st):
     """H6 批改停留检查段（2026-10-23）：只读调用 hidden_files/scripts/
-    grading_stay_check.py --json，有 grading 卡停留超 60 分钟才产事件；
+    grading_stay_check.py --json，有 grading 卡停留超 20 分钟才产事件（2026-10-23 由 60 分钟下调：当晚 4 张卡 grading 长挂 16–96 分钟、60 分钟阈值下仅 1 张达线且事件无人回收，见 hidden_files/程序异常记录.md）；
     以 task_id@updated_at 签名去重（同一批卡不重复报，成员/时刻变化
     才再报）。子脚本缺失/失败/超时一律静默跳过，不影响主决策。"""
     script = os.path.join(BASE, "..", "scripts", "grading_stay_check.py")
     try:
-        r = subprocess.run([sys.executable, script, "--json"],
+        r = subprocess.run([sys.executable, script, "--json", "--threshold-min", "20"],
                            capture_output=True, text=True, timeout=60)
         rows = json.loads(r.stdout or "[]")
     except Exception:
@@ -154,7 +154,7 @@ def grading_stay_event(st):
                         (x.get("title") or "")[:16], x.get("stay_minutes"))
                      for x in rows[:5])
     return [{"script": "grading_stay_check", "kind": "grading_stay",
-             "msg": "批改停留超60分钟 %d 张：%s" % (len(rows), desc)}]
+             "msg": "批改停留超20分钟 %d 张：%s" % (len(rows), desc)}]
 
 
 INGEST_AUDIT_PATH = os.path.join(BASE, "..", "logs", "task_ingest_audit.jsonl")
