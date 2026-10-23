@@ -59,6 +59,15 @@
   ],
   "g6": [
    {
+    "key": "baifen",
+    "name": "百分俱乐部",
+    "icon": "💰",
+    "date": "2026-10-16",
+    "count": 1,
+    "late": true,
+    "origin_cycle": "2026-W42"
+   },
+   {
     "key": "sanribuduan",
     "name": "三日不断",
     "icon": "📆",
@@ -90,5 +99,5 @@
    }
   ]
  },
- "generated_at": "2026-10-23T21:09:54+08:00"
+ "generated_at": "2026-10-23T21:13:06+08:00"
 }
