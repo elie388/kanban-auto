@@ -48,6 +48,13 @@
     "icon": "🔄",
     "date": "2026-10-21",
     "count": 1
+   },
+   {
+    "key": "zonghezhixing",
+    "name": "综合之星",
+    "icon": "🏅",
+    "date": "2026-10-21",
+    "count": 1
    }
   ],
   "g6": [
@@ -73,8 +80,15 @@
     "icon": "🔄",
     "date": "2026-10-21",
     "count": 1
+   },
+   {
+    "key": "shuxiezhixing",
+    "name": "书写之星",
+    "icon": "✍️",
+    "date": "2026-10-21",
+    "count": 1
    }
   ]
  },
- "generated_at": "2026-10-23T09:58:13+08:00"
+ "generated_at": "2026-10-23T21:09:54+08:00"
 }
