@@ -578,11 +578,17 @@
   /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、DeepSeek 核准）：年级色与余额卡同源变量、金色只留成就条 */
   #tasks-g5 .task-prog-fill{background:linear-gradient(90deg,var(--g5),var(--g5b));}
   #tasks-g6 .task-prog-fill{background:linear-gradient(90deg,var(--g6),var(--g6b));}
-  /* 完成态：独立语义绿（优先于年级色）＋持续生长＝透明度脉冲 2 秒一周期（只动 opacity、不设 will-change）。
+  /* 循环生长（2026-10-23 家长续令）：标题行进度条每 1.5s 从 0 重新生长到当前百分比，循环往复。
+     实现＝transform: scaleX（fill 的 width 仍为目标百分比，视觉与宽度生长一致、不动布局）；
+     ID 作用域压过 D2 的一次性 barGrow 入场动画（入场生长被循环生长吸收，不再单独触发）。 */
+  #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ transform-origin:left center; animation:progGrowLoop 1.5s ease-out infinite; }
+  @keyframes progGrowLoop{ 0%{ transform:scaleX(0); } 72%{ transform:scaleX(1); } 100%{ transform:scaleX(1); } }
+  /* 完成态：独立语义绿（优先于年级色）＋✓ 文字；旧 progPulse 透明度脉冲（2s）与循环生长动的不是同一属性，
+     按家长最新令双动画叠加保留（生长管 transform、脉冲管 opacity，互不覆盖）。
      注意：年级色规则用了 #tasks-gX 的 ID 选择器，完成态规则必须同级 ID 作用域才压得过（类选择器会被 ID 压掉，2026-10-23 真机实测教训）。 */
-  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A); animation:progPulse 2s ease-in-out infinite;}
+  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A); animation:progGrowLoop 1.5s ease-out infinite, progPulse 2s ease-in-out infinite;}
   @keyframes progPulse{ 0%,100%{ opacity:.85; } 50%{ opacity:1; } }
-  @media (prefers-reduced-motion: reduce){ #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{ animation:none; opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ animation:none; } #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{ opacity:1; } }
 
 
   /* 积分商店 */
@@ -4986,7 +4992,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2254';
+  var KB_BUILD = '20261023-2301';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
