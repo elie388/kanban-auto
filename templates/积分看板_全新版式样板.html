@@ -254,6 +254,8 @@
   /* 锁定态概览打码（2026-10-23 家长拍板 DeepSeek 混合案）：鼓励语与今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
   html.kb-locked .bal-sub{display:none !important;}
   html.kb-locked .task-prog{display:none !important;}
+  /* 姓名防闪现（2026-10-23 Muse 补修）：锁定态且打码尚未执行（kb-masked 未置）时姓名与 pill 先不可见，kbApplyMask 替换为星号形后才显示，消除冷加载解析窗口的明文闪现；visibility 保留布局不跳版 */
+  html.kb-locked:not(.kb-masked) .bal-name, html.kb-locked:not(.kb-masked) .pill-grade{visibility:hidden !important;}
   .task[data-tid]:not(.open-task) .tfiles{display:none;}
   .task[data-tid]:not(.open-task) .st-mini{display:none;}
   .task[data-tid]:not(.open-task) .st-zone{display:none;}
@@ -4086,7 +4088,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0935';
+  var KB_BUILD = '20261023-0945';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5236,6 +5238,8 @@ document.addEventListener('click', function(e){
     /* 锁定瞬间把已在显示真值的余额数字一并收敛为 **（余额块提供 __kbMaskBalances，含在飞滚轮作废）；
        后续写入由余额 setter 的锁定守卫拦截，两段配合无窗口。解锁方向不碰数字，靠 unlockNow 重拉恢复。 */
     if(locked){ try { if(typeof window.__kbMaskBalances === 'function') window.__kbMaskBalances(); } catch(e){} }
+    /* 文本替换完成后才放行姓名可见（与 CSS 的 kb-masked 门配合，防冷加载闪现）；解锁方向摘除，下次上锁重新走先藏后换 */
+    if(locked) document.documentElement.classList.add('kb-masked'); else document.documentElement.classList.remove('kb-masked');
   }
 
   /* 单一收口函数：把全部受控区置收起（栏目经其自身按钮路径、年级段经登记钩子，
