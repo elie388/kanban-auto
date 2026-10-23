@@ -1,223 +1,52 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-10-23",
-  "grade": "五年级",
-  "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T00:55:29+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-23T00:11:25+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-10-23",
+ "grade": "五年级",
+ "generated_at": "2026-10-23T00:05:10+08:00",
+ "updated_at": "2026-10-23T00:55:29+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-10-23T00:11:25+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "REG-20261022-5C99D2",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本及12课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:37:47+08:00",
-      "updated_at": "2026-10-23T00:45:50+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-22",
-      "carried_from": "2026-10-22",
-      "carry_count": 1,
-      "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:50+08:00",
-      "orig_photos": [
-        "ac23fc4bd2d57efd.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261022-665B72",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习13课",
-      "detail": "【家长今晚定：预习也要读】把13课课文朗读一遍，用「交这一项」里的录音交回（读背类）。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:37:47+08:00",
-      "updated_at": "2026-10-23T00:45:50+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-22",
-      "carried_from": "2026-10-22",
-      "carry_count": 1,
-      "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:50+08:00",
-      "orig_photos": [
-        "7e01549d0afdd660.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261022-734E5F",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "背诵12课（小管家）。",
-      "detail": "原状态：待完成（无佐证照片） 【读背类】背诵录音交回（用「交这一项」里的录音）。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本及12课；②预习13课；③背诵12课（小管家）。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:37:47+08:00",
-      "updated_at": "2026-10-23T00:45:51+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-22",
-      "carried_from": "2026-10-22",
-      "carry_count": 1,
-      "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00",
-      "orig_photos": [
-        "780f82f3d8cbdafe.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261022-23E98C",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本29页。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①校本29页。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:37:47+08:00",
-      "updated_at": "2026-10-23T00:45:51+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-22",
-      "carried_from": "2026-10-22",
-      "carry_count": 1,
-      "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00",
-      "orig_photos": [
-        "73e37b53e154b93e.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261022-C75208",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②抄M2单词4英4中。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:37:47+08:00",
-      "updated_at": "2026-10-23T00:45:51+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-22",
-      "carried_from": "2026-10-22",
-      "carry_count": 1,
-      "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00",
-      "orig_photos": [
-        "4ceda5c9c82a6ed5.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261022-993A83",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄M2单词4英4中。",
-      "detail": "原状态：待完成（无佐证照片）",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②抄M2单词4英4中。→ 待完成（无佐证照片）",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-22T20:37:47+08:00",
-      "updated_at": "2026-10-23T00:45:51+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-22",
-      "carried_from": "2026-10-22",
-      "carry_count": 1,
-      "status_source": "manual",
-      "completed_at": "2026-10-23T00:45:51+08:00",
-      "orig_photos": [
-        "68a3e0575d28d5fd.jpg"
-      ]
-    },
-    {
-      "task_id": "CHORE-20261023-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-10-23T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-23T00:05:19+08:00",
-      "updated_at": "2026-10-23T00:05:19+08:00"
-    }
-  ],
-  "counts": {
-    "total": 7,
-    "pending": 1,
-    "in_progress": 0,
-    "done": 6,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": null
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261023-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-10-23T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-10-23T00:05:19+08:00",
+   "updated_at": "2026-10-23T00:05:19+08:00"
+  }
+ ],
+ "counts": {
+  "total": 7,
+  "pending": 1,
+  "in_progress": 0,
+  "done": 6,
+  "pending_review": 0
+ },
+ "deadline_today": null
 }

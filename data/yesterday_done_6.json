@@ -36,6 +36,55 @@
    "subject": "数学",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-4939B9",
+   "title": "读背概念20、21",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-146C0D",
+   "title": "抄形容词最高级笔记3次，背10次",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-00E937",
+   "title": "读U3 speed up单词，P30对话5次。",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-3D8BB2",
+   "title": "U3单词，P30对话。",
+   "subject": "英语早读",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-743B82",
+   "title": "第一单元过关小测",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-67E350",
+   "title": "预习U1",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-36C2D1",
+   "title": "读作文10分钟，记录。",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }

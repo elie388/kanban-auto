@@ -29,6 +29,48 @@
    "subject": "登记本",
    "source": "meta",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-5C99D2",
+   "title": "校本及12课",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-665B72",
+   "title": "预习13课",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-734E5F",
+   "title": "背诵12课（小管家）。",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-23E98C",
+   "title": "校本29页。",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-C75208",
+   "title": "口语易",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261022-993A83",
+   "title": "抄M2单词4英4中。",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }
