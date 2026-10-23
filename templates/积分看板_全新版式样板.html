@@ -3008,6 +3008,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   /* 走势图特效状态（2026-10-23 家长拍板 ABCD）：TR_ANIM_SIG 入场动画视图签名（同签名只播一次）；
      TR_RM = 系统减少动态效果，JS 侧据此直接不挂动画类；TR_POP = 点按浮层当前状态（跨 renderMain 供关闭器用） */
   var TR_ANIM_SIG = null, TR_POP = null, TR_RM = false;
+  /* 分科图特效（2026-10-23 家长拍板扩展，与主图同口径）：TR_MINI_SIGS 逐小图（年级|科目）入场签名、
+     TR_SUBJ_SIG 大图入场签名——均与主图 TR_ANIM_SIG 隔离、互不影响；TR_SPOP 为分科浮层状态（与主图 TR_POP 隔离，
+     两处浮层互斥：打开一处先关另一处）。 */
+  var TR_MINI_SIGS = {}, TR_SUBJ_SIG = null, TR_SPOP = null;
   try { TR_RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch(e){}
   /* 破峰判定（D，克制口径，DeepSeek 不推荐下家长仍拍板、严按此口径）：当日 ≥TARGET，且紧邻前一日有数据
      且 <TARGET、再前一日有数据且 <TARGET（至少连续 2 天在线下后首次冲回线上）；无数据日断链、
@@ -3029,6 +3033,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(pop && pop.parentNode) pop.parentNode.removeChild(pop);
     if(TR_POP && TR_POP.pt && TR_POP.pt.isConnected) TR_POP.pt.setAttribute('r', TR_POP.r0);
     TR_POP = null;
+  }
+  /* 分科浮层关闭（C 扩展）：与主图 closeTrendPop 同构，作用域只限 #tr-subj 内的 #tr-fxpop */
+  function closeFxPop(){
+    var pop = document.getElementById('tr-fxpop');
+    if(pop && pop.parentNode) pop.parentNode.removeChild(pop);
+    if(TR_SPOP && TR_SPOP.pt && TR_SPOP.pt.isConnected) TR_SPOP.pt.setAttribute('r', TR_SPOP.r0);
+    TR_SPOP = null;
   }
   function el(id){ return document.getElementById(id); }
   function sl(arr, n){ return arr.slice(-n); }
@@ -3187,7 +3198,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       + '<div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap" id="tr-incrow"></div></div>';
     h += '<div class="tr-ft" id="tr-ft"></div>';
     h += '<div class="tr-sec-t">📊 分科正确率</div><div class="tr-sub">点任意一科，看大图和薄弱点</div><div id="tr-minis"></div>';
-    h += '<div class="tr-subj" id="tr-subj"></div>';
+    h += '<div class="tr-subj" id="tr-subj" style="position:relative"></div>';
     root.innerHTML = h;
 
     /* 主图 */
@@ -3314,6 +3325,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
        图重绘时浮层随 #tr-chart 内容整体替换自动消失，防错位残留。所点可见点同步放大 2px，关闭时还原。 */
     function showTrendPop(gr, i, cx, cy, nodata){
       closeTrendPop();
+      closeFxPop(); /* 浮层互斥：主图浮层打开时先关分科浮层 */
       var chart = el('tr-chart'); if(!chart) return;
       var pop = document.createElement('div');
       pop.className = 'tr-pop'; pop.id = 'tr-pop';
@@ -3504,22 +3516,42 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     renderMinis();
   }
 
-  function sparkSVG(vals, color, fut){
+  function sparkSVG(vals, color, fut, fxAnim){
     var W = 210, H = 90, PL = 6, PR = 6, PT = 8, PB = 8;
     var g = gridSVG(W, H, PL, PR, PT, PB, vals.map(function(){ return ''; }), 99);
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block">';
     s += '<line x1="' + PL + '" y1="' + g.Y(TARGET) + '" x2="' + (W - PR) + '" y2="' + g.Y(TARGET) + '" stroke="#1E9E52" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>';
-    s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round"/>';
-    /* 空值日与主图同口径：历史无数据画灰圈占位，未来日不画 */
+    /* A（分科扩展）：与主图同机制——pathLength 归一化 + dashoffset 2 秒画线；单线图无第二条线，错开量为 0 */
+    s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round"'
+      + (fxAnim ? ' pathLength="100" class="tr-line-anim"' : '') + '/>';
+    var ptDelay = function(i){ return vals.length > 1 ? Math.round(i * 1600 / (vals.length - 1)) : 0; };
+    var single = nn(vals).length === 1, stars = starSet(vals);
+    /* B（分科扩展）：达标点同心光晕，与主图同 CSS（trFxBreath 2.4s/峰值 0.25/只动 opacity）；
+       小图点 r≈2.6，光晕 r=6 按比例适配（主图点 4~5 → 光晕 9）。单点场景同样出光晕（点由 F4 实心点承担）。 */
     vals.forEach(function(v, i){
-      if(v !== null && v !== undefined) return;
+      if(v === null || v === undefined || v < TARGET) return;
       if(fut && fut[i]) return;
-      s += '<circle cx="' + g.X(i) + '" cy="' + gapY(vals, i, g.Y) + '" r="3.5" fill="#fff" stroke="#B9BDC4" stroke-width="1.3" stroke-dasharray="2.5 2"/>';
+      s += '<circle class="tr-halo" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="6" fill="' + color + '" opacity="0"/>';
+    });
+    vals.forEach(function(v, i){
+      if(fut && fut[i]) return; /* 未来日：不画点、不画占位圈（与主图同口径） */
+      if(v === null || v === undefined){
+        /* 空值日与主图同口径：历史无数据画灰圈占位 */
+        s += '<circle class="tr-nodata' + (fxAnim ? ' tr-pt-anim' : '') + '" cx="' + g.X(i) + '" cy="' + gapY(vals, i, g.Y) + '" r="3.5" fill="#fff" stroke="#B9BDC4" stroke-width="1.3" stroke-dasharray="2.5 2"' + (fxAnim ? ' style="animation-delay:' + ptDelay(i) + 'ms"' : '') + '/>';
+        return;
+      }
+      if(single) return; /* 单点由下方 F4 实心点绘制 */
+      s += '<circle class="tr-mpt' + (v < TARGET ? ' tr-bad' : '') + (fxAnim ? ' tr-pt-anim' : '') + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="' + (v < TARGET ? 2.9 : 2.6) + '" fill="#fff" stroke="' + color + '" stroke-width="1.6"' + (fxAnim ? ' style="animation-delay:' + ptDelay(i) + 'ms"' : '') + '/>';
     });
     /* F4（2026-10-20）：单点场景补圆点，纯路径看不见 */
-    if(nn(vals).length === 1){
+    if(single){
       vals.forEach(function(v, i){ if(v !== null && v !== undefined) s += '<circle cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="' + color + '"/>'; });
     }
+    /* D（分科扩展）：破峰金星，判定与主图共用 starSet（逐科序列独立跑）；小图字号 9 略缩，其余同主图 */
+    vals.forEach(function(v, i){
+      if(!stars[i]) return;
+      s += '<text class="tr-star' + (fxAnim ? ' tr-star-anim' : '') + '" x="' + g.X(i) + '" y="' + (g.Y(v) - 6) + '" font-size="9" text-anchor="middle" fill="#F5B301" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" style="paint-order:stroke' + (fxAnim ? ';animation-delay:' + (ptDelay(i) + 120) + 'ms' : '') + '">★</text>';
+    });
     s += '</svg>';
     return s;
   }
@@ -3531,7 +3563,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var minis = SUBJS.map(function(sn){
         var vals = winVals(TD.grades[gr].subjects[sn].days, DWm);
         var a = avg(vals);
-        return '<div class="tr-mini" data-g="' + gr + '" data-sn="' + sn + '"><div class="tr-mhd"><span>' + sn + '</span><b>' + (a === null ? '—' : fmt(a) + '%') + '</b></div>' + sparkSVG(vals, GCOL[gr], DWm.fut) + '</div>';
+        /* A（分科扩展）：逐图入场签名（年级|科目键，内容同主图口径：范围+数据版本+该科末数据日+窗口末日）；
+           同签名重绘（软刷新同数据/缩放）不重播，切范围/数据更新必重播；与主图签名互不影响 */
+        var mLd = '';
+        vals.forEach(function(v, i){ if(v !== null && v !== undefined) mLd = DWm.dates[i]; });
+        var mSig = RANGE + '|' + (TD.updated_at || '') + '|' + mLd + '|' + (DWm.dates[DWm.dates.length - 1] || '');
+        var mKey = gr + '|' + sn;
+        var mAnim = !TR_RM && TR_MINI_SIGS[mKey] !== mSig;
+        if(mAnim) TR_MINI_SIGS[mKey] = mSig;
+        return '<div class="tr-mini" data-g="' + gr + '" data-sn="' + sn + '"><div class="tr-mhd"><span>' + sn + '</span><b>' + (a === null ? '—' : fmt(a) + '%') + '</b></div>' + sparkSVG(vals, GCOL[gr], DWm.fut, mAnim) + '</div>';
       }).join('');
       return '<div class="tr-mrow"><div class="tr-mlab">' + gr + '</div>' + minis + '</div>';
     }).join('');
@@ -3547,22 +3587,43 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var DW = dispWindow();
     var dates = DW.dates, labels = dates.map(function(d){ return d.slice(5); });
     var vals = winVals(TD.grades[gr].subjects[sn].days, DW), color = GCOL[gr];
+    /* A（分科扩展）：大图入场签名（图标识=年级|科目，余同主图口径）；软刷新同数据重入不重播、切换科目/范围重播 */
+    var sLd = '';
+    vals.forEach(function(v, i){ if(v !== null && v !== undefined) sLd = dates[i]; });
+    var sSig = gr + '|' + sn + '|' + RANGE + '|' + (TD.updated_at || '') + '|' + sLd + '|' + (dates[dates.length - 1] || '');
+    var fxAnimS = !TR_RM && sSig !== TR_SUBJ_SIG;
+    if(fxAnimS) TR_SUBJ_SIG = sSig;
+    var starsS = starSet(vals); /* D：逐科序列独立判定，与主图共用 starSet */
     var spec = axisSpec(box.clientWidth, labels.length);
     var W = 680, H = 280, PL = spec.pl, PR = 16, PT = 18, PB = 34;
     var g = gridSVG(W, H, PL, PR, PT, PB, labels, spec.step, spec.scaleF);
     var h = '<div class="tr-sec-t">' + gr + ' · ' + sn + ' 正确率走势</div>';
     h += '<div class="tr-sub">近' + RANGE + '天 · 点小图可切换科目</div>';
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;margin-top:6px;touch-action:manipulation">' + g.s;
-    s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2.4" stroke-linejoin="round"/>';
+    /* A：画线入场与主图同机制（2 秒、点按同比例延迟淡入）；单线图错开量为 0 */
+    s += '<path d="' + segPath(vals, g.X, g.Y) + '" fill="none" stroke="' + color + '" stroke-width="2.4" stroke-linejoin="round"'
+      + (fxAnimS ? ' pathLength="100" class="tr-line-anim"' : '') + '/>';
+    var ptDelayS = function(i){ return labels.length > 1 ? Math.round(i * 1600 / (labels.length - 1)) : 0; };
+    var phitS = '';
     /* 目标线标注（2026-10-21，同主图）：虚线右端标「目标 85%」（分科大图无末点值标签，无需避让） */
     s += '<text x="' + (W - PR - 4) + '" y="' + (g.Y(TARGET) - 6) + '" font-size="11.5" font-weight="700" fill="#1E9E52" text-anchor="end" stroke="#fff" stroke-width="3.5" stroke-linejoin="round" style="paint-order:stroke">目标 ' + TARGET + '%</text>';
     vals.forEach(function(v, i){
       if(DW.fut[i]) return; /* 未来日：不画点、不画占位圈 */
       if(v === null || v === undefined){
-        s += '<circle class="tr-nodata" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + gapY(vals, i, g.Y) + '" r="5" fill="#fff" stroke="#B9BDC4" stroke-width="1.6" stroke-dasharray="3 2"/>';
+        var ndYs = gapY(vals, i, g.Y);
+        s += '<circle class="tr-nodata' + (fxAnimS ? ' tr-pt-anim' : '') + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + ndYs + '" r="5" fill="#fff" stroke="#B9BDC4" stroke-width="1.6" stroke-dasharray="3 2"' + (fxAnimS ? ' style="animation-delay:' + ptDelayS(i) + 'ms"' : '') + '/>';
+        /* C（分科扩展）：无数据点同样加透明热区，点按出「暂无数据」浮层 */
+        phitS += '<circle class="tr-phit" data-i="' + i + '" data-nodata="1" cx="' + g.X(i) + '" cy="' + ndYs + '" r="14" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
         return;
       }
-      s += '<circle class="tr-spt" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="#fff" stroke="' + color + '" stroke-width="2" style="cursor:pointer"/>';
+      /* B（分科扩展）：达标点同心光晕，与主图同参数（r=9、trFxBreath）；分科小图/大图均不读 ONLYBAD（过滤只作用于主图，既有行为），故无联动隐藏 */
+      if(v >= TARGET) s += '<circle class="tr-halo" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="9" fill="' + color + '" opacity="0"/>';
+      s += '<circle class="tr-spt' + (fxAnimS ? ' tr-pt-anim' : '') + '" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="4" fill="#fff" stroke="' + color + '" stroke-width="2" style="cursor:pointer"' + (fxAnimS ? ' style="animation-delay:' + ptDelayS(i) + 'ms"' : '') + '/>';
+      phitS += '<circle class="tr-phit" data-i="' + i + '" cx="' + g.X(i) + '" cy="' + g.Y(v) + '" r="14" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
+      /* D（分科扩展）：破峰金星，样式与主图一致（13px 金星、入场时一次性淡入放大后静态常驻） */
+      if(starsS[i]){
+        s += '<text class="tr-star' + (fxAnimS ? ' tr-star-anim' : '') + '" x="' + g.X(i) + '" y="' + (g.Y(v) - 10) + '" font-size="13" text-anchor="middle" fill="#F5B301" stroke="#fff" stroke-width="3" stroke-linejoin="round" style="paint-order:stroke' + (fxAnimS ? ';animation-delay:' + (ptDelayS(i) + 120) + 'ms' : '') + '">★</text>';
+      }
     });
     var shownD = dateShown(labels.length, spec);
     labels.forEach(function(d, i){
@@ -3574,6 +3635,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     labels.forEach(function(d, i){
       s += '<circle class="tr-hit" cx="' + g.X(i) + '" cy="' + g.Y(50) + '" r="20" fill="#000" fill-opacity="0" pointer-events="all" style="cursor:pointer"/>';
     });
+    s += phitS; /* C：点热区后置于日期热区之上，保证点按优先命中浮层逻辑（同主图） */
     s += '</svg>';
     h += s;
     var a = avg(vals), nvals = nn(vals);
@@ -3594,6 +3656,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       });
       h += '<div style="font-size:11.5px;color:#9AA0A6;margin-top:6px">来自题目库真实记录（错误次数排序，取前3）</div></div>';
     }
+    closeFxPop(); /* 重绘前清掉上一视图的分科浮层状态（浮层元素随 innerHTML 替换一并消失） */
     box.innerHTML = h;
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     function pickSubjDay(i){
@@ -3601,11 +3664,47 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var v = vals[i];
       el('tr-stip').textContent = '📅 ' + labels[i] + '：' + gr + sn + ' ' + (v === null || v === undefined ? '无数据' : fmt(v) + '%' + (v < TARGET ? '（未达标）' : '（达标 ✓）'));
     }
+    /* 点按浮层（C 分科扩展，2026-10-23）：作用域只限本大图容器 #tr-subj（浮层 id=tr-fxpop，
+       与主图 #tr-chart 的 tr-pop 隔离、互斥）；内容＝姓名+科目+日期+该科当日正确率+达标状态，
+       无数据点出「暂无数据」。点按同时保留既有 #tr-stip 明细条更新（pickSubjDay），不改变原有读图路径。
+       小图（tr-mini）整卡点击是打开大图的导航，故小图不加浮层（点小图任意处仍进大图，再在大图内点点看浮层）。 */
+    function showFxPop(i, cx, cy, nodata){
+      closeFxPop();
+      closeTrendPop(); /* 浮层互斥：分科浮层打开时先关主图浮层 */
+      var pop = document.createElement('div');
+      pop.className = 'tr-pop'; pop.id = 'tr-fxpop';
+      if(nodata){
+        pop.innerHTML = '<b>' + GNAME[gr] + '</b> · ' + sn + ' · ' + dates[i] + '<br>暂无数据';
+      } else {
+        var v = vals[i];
+        pop.innerHTML = '<b>' + GNAME[gr] + '</b> · ' + sn + ' · ' + dates[i] + '<br>正确率 <b>' + fmt(v) + '%</b> · ' + (v >= TARGET ? '达标 ✓' : '未达标');
+      }
+      box.appendChild(pop);
+      var svgEl = box.querySelector('svg');
+      var cw = box.clientWidth || W, ch = svgEl ? (svgEl.clientHeight || cw * H / W) : cw * H / W;
+      var px = cx / W * cw, py = cy / H * ch;
+      pop.style.left = Math.max(66, Math.min(cw - 66, px)) + 'px';
+      pop.style.transform = 'translateX(-50%)';
+      var ph = pop.offsetHeight || 56, top = py - ph - 14;
+      pop.style.top = (top >= 2 ? top : py + 16) + 'px';
+      var pt = box.querySelector('.tr-spt[data-i="' + i + '"]'), r0 = null;
+      if(pt){ r0 = pt.getAttribute('r'); pt.setAttribute('r', +r0 + 2); }
+      TR_SPOP = { key: gr + '|' + sn + '|' + i, pt: pt, r0: r0 };
+    }
+    box.querySelectorAll('.tr-phit').forEach(function(hz){
+      hz.addEventListener('click', function(e){
+        e.stopPropagation();
+        var i = +hz.getAttribute('data-i');
+        pickSubjDay(i); /* 保留既有明细条行为 */
+        if(TR_SPOP && TR_SPOP.key === gr + '|' + sn + '|' + i){ closeFxPop(); return; }
+        showFxPop(i, +hz.getAttribute('cx'), +hz.getAttribute('cy'), hz.getAttribute('data-nodata') === '1');
+      });
+    });
     /* 全图统一选日（DeepSeek 终审 C1/C5）：与主图共用 nearestIdx 工具，但 pick 逻辑与黑条渲染独立。 */
     var subjSvg = box.querySelector('svg');
     if(subjSvg){
       var xsSubj = labels.map(function(_, k){ return g.X(k); });
-      subjSvg.addEventListener('click', function(e){ pickSubjDay(nearestIdx(subjSvg, e.clientX, xsSubj)); });
+      subjSvg.addEventListener('click', function(e){ closeFxPop(); pickSubjDay(nearestIdx(subjSvg, e.clientX, xsSubj)); });
     }
     box.querySelectorAll('.tr-wrow').forEach(function(r){
       r.addEventListener('click', function(){
@@ -3912,10 +4011,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   });
   /* C 浮层图外关闭（IIFE 级只注册一次）：点到 #tr-chart 之外即收起；图内点击由图内逻辑收口（热区切换/svg 根关闭） */
   document.addEventListener('click', function(e){
-    if(!TR_POP) return;
-    var chart = el('tr-chart');
-    if(chart && e.target && chart.contains(e.target)) return;
-    closeTrendPop();
+    if(TR_POP){
+      var chart = el('tr-chart');
+      if(!(chart && e.target && chart.contains(e.target))) closeTrendPop();
+    }
+    /* 分科浮层同口径：点到 #tr-subj 之外即收起（图内由热区/svg 根逻辑收口） */
+    if(TR_SPOP){
+      var sbox = el('tr-subj');
+      if(!(sbox && e.target && sbox.contains(e.target))) closeFxPop();
+    }
   });
   var btn = el('btn-trend');
   if(btn) btn.addEventListener('click', function(){ if(!TD) loadTrends(); });
@@ -4199,7 +4303,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1030';
+  var KB_BUILD = '20261023-1050';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
