@@ -1407,10 +1407,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(t.appear_at){ var at = new Date(t.appear_at).getTime(); if(!isNaN(at) && at > Date.now()) return false; }
       return t.review_status === 'approved';
     });
-    /* meta 常驻任务「提交作业登记本」（2026-10-20，DeepSeek 方案）：不计入完成率分母 */
+    /* 完成率分母口径（2026-10-23 家长改定，覆盖 2026-10-20/22 旧口径）：登记本（meta_register）与家务卡（chore，一卡=1 项）均计入分母，分子按 status==='done' 计；豁免家务卡（chore_exempt）不计入 */
     var metas = list.filter(function(t){ return t.task_type === 'meta_register'; });
     var normals = list.filter(function(t){ return t.task_type !== 'meta_register'; });
-    var counted = normals.filter(function(t){ return t.source !== 'chore'; });
+    var counted = list.filter(function(t){ return !(t.source === 'chore' && t.chore_exempt); });
     var total = counted.length;
     var done = counted.filter(function(t){ return t.status === 'done'; }).length;
     var progText = sec.querySelector('.task-prog-text');
@@ -4369,7 +4369,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1715';
+  var KB_BUILD = '20261023-1727';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
