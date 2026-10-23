@@ -655,6 +655,8 @@
   .sub-block{margin-top:18px;}
   .sub-head{font-size:16px; font-weight:800; margin-bottom:8px;}
   .sub-wrap{margin-top:18px;}
+  .lib-zone{padding:0 16px 4px}
+  #panel-lib .collapse-pad{padding:0}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -1164,22 +1166,23 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
       </div></div>
-    </div>
-  </section>
-
-  <!-- 徽章目标榜（折叠按钮） -->
-  <section class="card collapse" aria-label="徽章目标榜">
-    <span class="tag-live">实时数据</span>
-    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-lib" id="btn-lib">
-      <span class="emoji" aria-hidden="true">🎯</span>
-      <span class="cb-title">徽章目标榜</span>
-      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
-    </button>
-    <div class="collapse-body" id="panel-lib" role="region" aria-labelledby="btn-lib">
-      <div class="collapse-inner"><div class="collapse-pad">
+    <!-- 徽章目标榜（2026-10-23 并入本周徽章·子块，DeepSeek 裁定二级开关 (b) 默认收起）：
+         结构红线——本子块必须位于 renderBadges 所有的 .collapse-pad 之外、其后：
+         renderBadges 以 '#panel-achieve .collapse-pad' 整表重建（文档序首中＝徽章 pad），
+         renderGoals 以 '#panel-lib .collapse-pad' 整表重建（仅子块内层 pad），互不误清；
+         调换此文档序前必须先改两渲染器选择器，并重跑"两数据到达顺序互换"验收。 -->
+    <div class="sub-wrap lib-zone" id="panel-lib" role="region" aria-label="徽章目标榜">
+      <button class="sub-toggle" type="button" id="goals-toggle" aria-expanded="false" aria-controls="goals-body">
+        <span class="sub-head-t">🎯 徽章目标榜</span>
+        <span class="sub-chev" id="goals-chev">展开 ▾</span>
+      </button>
+      <div class="sub-body" id="goals-body" role="region" aria-labelledby="goals-toggle" hidden>
+        <div class="collapse-pad">
         <!-- S4（2026-10-20）：兜底不再展示 8 枚旧徽章。数据拉取失败时显示"暂不可用"。 -->
         <p class="rule-note" style="margin-top:0; margin-bottom:14px;" id="lib-fallback">🚀 徽章目标榜数据加载中…若持续显示，请稍后刷新。</p>
-      </div></div>
+        </div>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -1202,24 +1205,34 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       </div>
 
       </div>
-    <!-- 加分规则（2026-10-23 并入积分商店·子块一，DeepSeek C 形态：随商店直接展开、无二级开关；
+    <!-- 加分规则（2026-10-23 并入积分商店·子块一；修订：家长定＋DeepSeek C1'——二级开关默认收起、点击才展开，与其余子块形态统一；
          内容与口径同迁移前：开关/滚动区/兜底原样保留，renderRules 按 panel-bonus 找 .rule-list） -->
-    <div class="sub-block" id="panel-bonus" role="region" aria-label="加分规则">
-      <div class="sub-head">🎯 加分规则</div>
+    <div class="sub-wrap" id="panel-bonus" role="region" aria-label="加分规则">
+      <button class="sub-toggle" type="button" id="bonus-toggle" aria-expanded="false" aria-controls="bonus-body">
+        <span class="sub-head-t">🎯 加分规则</span>
+        <span class="sub-chev" id="bonus-chev">展开 ▾</span>
+      </button>
+      <div class="sub-body" id="bonus-body" role="region" aria-labelledby="bonus-toggle" hidden>
       <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="bonus"> 自动滚动</label></div>
       <!-- 兜底（2026-10-20，DeepSeek终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
       <div class="auto-scroll rule-scroll" data-as-key="bonus"><ul class="rule-list">
         <li><span>规则数据暂不可用，请稍后刷新。</span></li>
       </ul></div>
+      </div>
     </div>
-    <!-- 扣分规则（2026-10-23 并入积分商店·子块二，同加分规则形态） -->
-    <div class="sub-block" id="panel-deduct" role="region" aria-label="扣分规则">
-      <div class="sub-head">📉 扣分规则</div>
+    <!-- 扣分规则（2026-10-23 并入积分商店·子块二，同加分规则形态：二级开关默认收起） -->
+    <div class="sub-wrap" id="panel-deduct" role="region" aria-label="扣分规则">
+      <button class="sub-toggle" type="button" id="deduct-toggle" aria-expanded="false" aria-controls="deduct-body">
+        <span class="sub-head-t">📉 扣分规则</span>
+        <span class="sub-chev" id="deduct-chev">展开 ▾</span>
+      </button>
+      <div class="sub-body" id="deduct-body" role="region" aria-labelledby="deduct-toggle" hidden>
       <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="deduct"> 自动滚动</label></div>
       <!-- 兜底（2026-10-20，DeepSeek终审定案b）：同加分规则，不硬编码条目。 -->
       <div class="auto-scroll rule-scroll" data-as-key="deduct"><ul class="rule-list">
         <li><span>规则数据暂不可用，请稍后刷新。</span></li>
       </ul></div>
+      </div>
     </div>
     <!-- 积分日志（2026-10-23 并入积分商店·子块三，DeepSeek C 形态：二级开关默认收起、沿 redeem 模式；
          年级块 #log-g5/#log-g6 整体随迁（bal-jump 的 data-jump 依赖），内容口径同迁移前） -->
@@ -1280,7 +1293,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['shop','achieve','lib','trend','summary','feedback']; /* 2026-10-23 四块合并：bonus/deduct/log 三钮已并入商店为子块，顶层钮删除 */
+  var ids = ['shop','achieve','trend','summary','feedback']; /* 2026-10-23 合并：bonus/deduct/log 三钮已并入商店为子块、lib 已并入本周徽章为子块，顶层钮删除 */
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -2556,6 +2569,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     kbLogApplyState();
   };
   /* 口令门收口钩子（DeepSeek C4）：回锁时复位日志子块为收起态 */
+  window.__kbSyncLogSub = function(){ kbLogApplyState(); };
   window.__kbResetLogSub = function(){
     OPEN_LOG = false;
     kbLogApplyState();
@@ -3071,7 +3085,33 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   /* ---- 2. 徽章目标榜（全目录 + 获得状态；数量随 catalog 数据自动同步，不再硬编码） ---- */
   var OPEN_GOALS = {};  /* 目标榜细节展开状态（2026-10-20 用户要求细节默认隐藏、点击徽章才显示；软刷新后按此恢复） */
+  /* 目标榜二级开关（2026-10-23 并入本周徽章，DeepSeek 裁定 (b) 默认收起）＋回锁复位（C-2：开关与行内详情双清） */
+  var OPEN_GOALS_BLOCK = false;
+  function kbGoalsApply(){
+    var body = $('goals-body'), btn = $('goals-toggle'), chev = $('goals-chev');
+    if(body) body.hidden = !OPEN_GOALS_BLOCK;
+    if(btn) btn.setAttribute('aria-expanded', OPEN_GOALS_BLOCK ? 'true' : 'false');
+    if(chev) chev.textContent = OPEN_GOALS_BLOCK ? '收起 ▴' : '展开 ▾';
+  }
+  function kbWireGoalsToggle(){
+    var btn = $('goals-toggle');
+    if(!btn || btn.dataset.wired) return;
+    btn.dataset.wired = '1';
+    btn.addEventListener('click', function(){ OPEN_GOALS_BLOCK = !OPEN_GOALS_BLOCK; kbGoalsApply(); });
+  }
+  window.__kbResetGoalsSubs = function(){
+    OPEN_GOALS_BLOCK = false;
+    OPEN_GOALS = {};
+    kbGoalsApply();
+    var lis = document.querySelectorAll('#panel-lib .rule-list li.open');
+    for(var i = 0; i < lis.length; i++){
+      lis[i].classList.remove('open');
+      var cv = lis[i].querySelector('.lib-chev');
+      if(cv) cv.textContent = '详情 ▾';
+    }
+  };
   function renderGoals(d){
+    kbWireGoalsToggle();
     var pad = document.querySelector('#panel-lib .collapse-pad');
     if(!pad || !d || !d.catalog || !d.catalog.length) return false;
     pad.textContent = '';
@@ -3329,6 +3369,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         sc.appendChild(item);
       });
     });
+    if(typeof window.__kbRestoreShopSubs === 'function') window.__kbRestoreShopSubs();
     return true;
   }
 
@@ -3341,7 +3382,44 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(body) body.hidden = true;
     if(btn) btn.setAttribute('aria-expanded', 'false');
     if(chev) chev.textContent = '展开 ▾';
-    if(typeof window.__kbResetLogSub === 'function') window.__kbResetLogSub();
+    try{ if(typeof window.__kbResetLogSub === 'function') window.__kbResetLogSub(); }catch(e){ console.warn('回锁复位日志子块失败（已隔离）:', e); }
+    try{ if(typeof window.__kbResetRuleSubs === 'function') window.__kbResetRuleSubs(); }catch(e){ console.warn('回锁复位规则子块失败（已隔离）:', e); }
+  };
+
+  /* 规则两块二级开关（2026-10-23 家长定＋DeepSeek 修订 C1'/C3'）：OPEN_BONUS/OPEN_DEDUCT 与日志/兑换
+     同一套 状态-接线-恢复-复位 模式；恢复统一经 __kbRestoreShopSubs 一段代码路径处理四子块（C3'）。 */
+  var OPEN_BONUS = false, OPEN_DEDUCT = false;
+  function kbRuleApply(kind){
+    var open = kind === 'bonus' ? OPEN_BONUS : OPEN_DEDUCT;
+    var body = $(kind + '-body'), btn = $(kind + '-toggle'), chev = $(kind + '-chev');
+    if(body) body.hidden = !open;
+    if(btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(chev) chev.textContent = open ? '收起 ▴' : '展开 ▾';
+  }
+  function kbWireRuleToggles(){
+    ['bonus', 'deduct'].forEach(function(kind){
+      var btn = $(kind + '-toggle');
+      if(!btn || btn.dataset.wired) return;
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', function(){
+        if(kind === 'bonus') OPEN_BONUS = !OPEN_BONUS; else OPEN_DEDUCT = !OPEN_DEDUCT;
+        kbRuleApply(kind);
+      });
+    });
+  }
+  window.__kbResetRuleSubs = function(){
+    OPEN_BONUS = false; OPEN_DEDUCT = false;
+    kbRuleApply('bonus'); kbRuleApply('deduct');
+  };
+  /* 统一恢复（C3'）：规则两块＋兑换在本函数同步，日志经 block 7 的 __kbSyncLogSub 钩子同路径调用；
+     由数据回调（规则 fetch、renderRedeem）触发，软刷新重渲染后四子块展开态一致恢复。 */
+  window.__kbRestoreShopSubs = function(){
+    kbRuleApply('bonus'); kbRuleApply('deduct');
+    var rBody = $('redeem-body'), rBtn = $('redeem-toggle'), rChev = $('redeem-chev');
+    if(rBody) rBody.hidden = !OPEN_REDEEM;
+    if(rBtn) rBtn.setAttribute('aria-expanded', OPEN_REDEEM ? 'true' : 'false');
+    if(rChev) rChev.textContent = OPEN_REDEEM ? '收起 ▴' : '展开 ▾';
+    if(typeof window.__kbSyncLogSub === 'function') window.__kbSyncLogSub();
   };
 
   function boot(){
@@ -3358,6 +3436,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     fetchJson('rules.json').then(function(d){
       renderRules(d, 'add', 'panel-bonus');
       renderRules(d, 'deduct', 'panel-deduct');
+      kbWireRuleToggles();
+      if(typeof window.__kbRestoreShopSubs === 'function') window.__kbRestoreShopSubs();
     }).catch(function(e){ console.warn('规则拉取失败，显示占位:', e); });
   }
   window.__kanbanRefreshSections = boot; /* 2026-10-20：供倒计时软刷新调用 */
@@ -4767,7 +4847,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2017';
+  var KB_BUILD = '20261023-2019';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5883,7 +5963,7 @@ document.addEventListener('click', function(e){
    - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
    ================================================================ */
 (function(){
-  var GATE_PANELS = ['btn-feedback', 'btn-summary', 'btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop']; /* 2026-10-23 四块合并：btn-bonus/btn-deduct/btn-log 已随栏目并入商店删除，商店子块归 btn-shop 一口收口 */
+  var GATE_PANELS = ['btn-feedback', 'btn-summary', 'btn-trend', 'btn-achieve', 'btn-shop']; /* 2026-10-23 合并：btn-bonus/btn-deduct/btn-log 随四块并入商店删除、btn-lib 随目标榜并入本周徽章删除，子块一律归父栏目一口收口 */
   var KB_LOCKED = false;
   var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
   var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
@@ -5932,7 +6012,8 @@ document.addEventListener('click', function(e){
         var btn = document.getElementById(id);
         if(btn && btn.getAttribute('aria-expanded') === 'true') btn.click();
       });
-      if(typeof window.__kbResetShopSubs === 'function') window.__kbResetShopSubs();
+      try{ if(typeof window.__kbResetShopSubs === 'function') window.__kbResetShopSubs(); }catch(e){ console.warn('回锁复位商店子块失败（已隔离）:', e); }
+      try{ if(typeof window.__kbResetGoalsSubs === 'function') window.__kbResetGoalsSubs(); }catch(e){ console.warn('回锁复位目标榜失败（已隔离）:', e); }
       if(window.__kbSetGradeOpen){
         window.__kbSetGradeOpen('g5', false);
         window.__kbSetGradeOpen('g6', false);
