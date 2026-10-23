@@ -166,8 +166,6 @@
   .sum-parent-form input{width:100%; box-sizing:border-box; font-size:16px; padding:11px; border:1px solid #CCC; border-radius:10px; margin:10px 0 8px;}
   .sum-parent-form button{font-size:15px; padding:9px 16px; border-radius:10px; border:0; background:#30343B; color:#FFF; cursor:pointer;}
   .sum-parent-err{color:#B3261E; font-size:13.5px; margin-top:8px;}
-  .sum-parent-tools{text-align:right; margin-bottom:6px;}
-  .sum-parent-tools button{background:#8A8F98; font-size:13px; padding:6px 12px; border-radius:10px; border:0; color:#FFF; cursor:pointer;}
   .sum-p-name{font-weight:800; margin:10px 0 4px;}
   .sum-p-html{font-size:14px; line-height:1.75;}
   .sum-p-html p{margin:6px 0;}
@@ -2695,7 +2693,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       return r.json();
     }).then(function(d){
       try { localStorage.setItem('hw-parent-last', String(Date.now())); } catch (e) {}
-      var html = '<div class="sum-parent-tools"><button type="button" id="sum-parent-lock">一键上锁</button></div>';
+      var html = ''; /* 2026-10-23 家长令：删除「一键上锁」按钮及其 handler——家长令牌长期有效，仅闲置 30 天自动重锁（parentClear 保留供过期/未授权路径使用） */
       var any = false;
       [5, 6].forEach(function(g){
         var items = (d && d.grades && d.grades[g] && d.grades[g].items) || [];
@@ -2710,8 +2708,6 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       });
       if(!any) html += '<div class="sum-empty">还没有家长版小结。今晚总结生成后会出现在这里。</div>';
       body.innerHTML = html;
-      var lock = $('sum-parent-lock');
-      if(lock) lock.addEventListener('click', function(){ parentClear(); renderParentZone(); });
     }).catch(function(e){
       if(e && e.message === 'unauth'){ parentClear(); renderParentZone('家长登录已过期，请重新输入家长口令。'); }
       else { body.innerHTML = '<div class="sum-empty">家长版小结加载失败，请稍后再试。</div>'; }
@@ -4910,7 +4906,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2212';
+  var KB_BUILD = '20261023-2218';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
