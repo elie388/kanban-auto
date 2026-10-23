@@ -319,7 +319,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 2,
      "target": 5,
      "unit": "次",
      "mode": "连续"
@@ -706,5 +706,5 @@
   ]
  },
  "cycle_week": "2026-W43",
- "generated_at": "2026-10-23T21:33:28+08:00"
+ "generated_at": "2026-10-23T23:21:35+08:00"
 }
