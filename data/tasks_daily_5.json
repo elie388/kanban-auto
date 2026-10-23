@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T21:50:15+08:00",
+  "updated_at": "2026-10-23T22:41:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -214,7 +214,7 @@
       "title": "校本13课比照红笔错题",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成",
@@ -223,10 +223,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T20:28:24+08:00",
+      "updated_at": "2026-10-23T22:41:19+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "batch_notes": "批次备注三行制：红笔／作答／校对动作 ＝ 未限定红笔／作答完整／已比照红笔错题（与CC9E78同口径）。批改结论已过DeepSeek终审（有条件通过、C-fix1已补）、任务作答完整判定完成；按P0放行门（P0未全上线前批次不得标done），状态落in_progress，待放行门通过后另行转done。积分：零落账（校对类无达标分；按时+2按家长令2026-10-24起算、今晚不追溯）。"
     },
     {
       "task_id": "REG-20261023-CC9E78",
@@ -353,7 +354,7 @@
   "counts": {
     "total": 13,
     "pending": 6,
-    "in_progress": 2,
+    "in_progress": 3,
     "done": 4,
     "pending_review": 0
   },
