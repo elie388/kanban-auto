@@ -3,7 +3,7 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T22:59:41+08:00",
+  "updated_at": "2026-10-23T23:18:22+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -263,7 +263,7 @@
       "title": "试卷打印",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成",
@@ -272,10 +272,89 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T22:43:48+08:00",
+      "updated_at": "2026-10-23T23:18:22+08:00",
       "task_type": null,
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 13,
+      "corrections": [
+        {
+          "label": "P1-二-5",
+          "question": "Mike is ____ ____ with two other boys.（词库：to, play）你写了 'play to'",
+          "reason": "两个词的顺序放反了",
+          "hint": "be to + 动词原形表示'将要做某事'，哪个词应该在前？"
+        },
+        {
+          "label": "P1-三-3",
+          "question": "We enjoy ____ (play/playing) basketball. 你写了 'play'",
+          "reason": "enjoy 后面的动词形式用错了",
+          "hint": "enjoy 后面跟动词的什么形式？想想 'enjoy doing' 这个搭配。"
+        },
+        {
+          "label": "P1-三-4",
+          "question": "He may not ____ (comes/come) today. 你写了 'comes'",
+          "reason": "情态动词后动词形式用错了",
+          "hint": "may 是情态动词，后面跟动词的什么形式？"
+        },
+        {
+          "label": "P1-三-5",
+          "question": "Daming and I ____ (live/lives) in the same street. 你写了 'lives'",
+          "reason": "主语是复数，动词形式没对应",
+          "hint": "'Daming and I' 是几个人？复数主语后面的动词还加 s 吗？"
+        },
+        {
+          "label": "P1-四-1",
+          "question": "We live near each other. ____ we always have fun.（A.because B.but C.and）你选了 B",
+          "reason": "前后两句是顺承关系，不是转折",
+          "hint": "'住得近'和'玩得开心'之间是转折还是顺承？哪个连词表示顺承？"
+        },
+        {
+          "label": "P1-五-2",
+          "question": "I like singing and my friend likes dancing. 你把 'like' 改成了 'likes'",
+          "reason": "误改致错（主动误改，非知识性错误）：原句没有错误",
+          "hint": "再读一遍原句。主语是 I 时，动词要加 s 吗？到底哪一个才是错的？"
+        },
+        {
+          "label": "P2-一-2",
+          "question": "Study hard, ____ your English will be better.（A.or B.and C.but）你选了 A",
+          "reason": "前后是'努力'与'结果'的关系，选错连词",
+          "hint": "'努力学习，你的英语会更好'——前因后果之间用哪个连词？"
+        },
+        {
+          "label": "P2-一-3",
+          "question": "-What do you want to do with your best friend? -I want to ____.（A.play games B.playing games C.play game）你选了 B",
+          "reason": "want to 后面动词形式用错了",
+          "hint": "want to do 里 to 后面跟什么？再对比一下 A 和 B 的区别。"
+        },
+        {
+          "label": "P2-二-1",
+          "question": "We want to be ____ (friend/friends) but we can't. 你写了 'friend'",
+          "reason": "固定搭配用了单数",
+          "hint": "'be friends with' 是固定搭配，friend 应该用什么数？"
+        },
+        {
+          "label": "P2-二-2",
+          "question": "You ____ (can/can't) be friends... 你写了 'cant'",
+          "reason": "拼写：漏写了撇号",
+          "hint": "can't 里的撇号表示省略了哪个字母？没有撇号就变成另一个词了。"
+        },
+        {
+          "label": "P2-四-4",
+          "question": "He often ____（讲） interesting stories. 你写了 'tell'",
+          "reason": "第三人称单数动词没加 s",
+          "hint": "主语是 He，often 后面的动词要怎么变？"
+        },
+        {
+          "label": "P2-四-7",
+          "question": "He likes ____（s___ing） songs. 你写了 'sing'",
+          "reason": "单词补全不完整",
+          "hint": "s 开头、ing 结尾，'唱歌'的动名词是什么？把缺的字母补上。"
+        },
+        {
+          "label": "P2-五-仿写",
+          "question": "Venn 仿写段落有 4 处 be 动词问题：'you thin' 'I cool' 'you funny' 'We are often play'",
+          "reason": "be 动词缺失或多余",
+          "hint": "每一句的主语和 be 动词配对检查：I 配什么？you 配什么？'are' 和 'play' 能同时用吗？"
+        }
+      ],
       "status_source": "realtime"
     },
     {
@@ -355,7 +434,7 @@
   "counts": {
     "total": 13,
     "pending": 5,
-    "in_progress": 3,
+    "in_progress": 4,
     "done": 4,
     "pending_review": 0
   },
