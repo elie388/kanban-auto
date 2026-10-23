@@ -241,6 +241,11 @@
   .yd-item{display:flex;gap:6px;align-items:baseline;padding:3px 2px;font-size:13.5px;color:#6B7280;}
   .yd-item .yd-check{color:#1E9E52;flex:none;}
   .yd-tag{flex:none;font-size:10.5px;color:#6B7280;border:1px solid #D8DCE2;border-radius:999px;padding:0 6px;}
+  /* 年级段总折叠（2026-10-23 A案，家长拍板）：两段默认全收起、点标题行展开；手动状态按「本地日期+设备」记 localStorage，当日内刷新不丢、次日自动回到全收起 */
+  .task-head{cursor:pointer;}
+  .grade-caret{flex:none;font-size:13px;color:var(--sub);transition:transform .25s ease;margin-left:4px;}
+  .task-section.grade-folded .grade-caret{transform:rotate(-90deg);}
+  .task-section.grade-folded .task-list, .task-section.grade-folded .yd-zone{display:none;}
   .task[data-tid]:not(.open-task) .tfiles{display:none;}
   .task[data-tid]:not(.open-task) .st-mini{display:none;}
   .task[data-tid]:not(.open-task) .st-zone{display:none;}
@@ -932,8 +937,8 @@
   <section class="card" aria-label="今日任务">
     <h2><span class="emoji">📝</span>今日任务<span class="tag-demo" id="tasks-tag">离线数据</span></h2>
 
-    <div class="task-section" id="tasks-g5">
-      <div class="task-head">
+    <div class="task-section grade-folded" id="tasks-g5">
+      <div class="task-head" role="button" aria-expanded="false" title="点击展开/收起">
         <span class="pill-grade g5">五年级·彦均</span>
         <div class="task-prog" role="group" aria-label="五年级彦均今日任务完成进度">
           <span class="task-prog-text">加载中…</span>
@@ -941,6 +946,7 @@
             <div class="task-prog-fill" style="width:0%"></div>
           </div>
         </div>
+        <span class="grade-caret" aria-hidden="true">▾</span>
       </div>
       <div class="task-list">
         <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
@@ -949,8 +955,8 @@
     </div>
 
 
-    <div class="task-section" id="tasks-g6">
-      <div class="task-head">
+    <div class="task-section grade-folded" id="tasks-g6">
+      <div class="task-head" role="button" aria-expanded="false" title="点击展开/收起">
         <span class="pill-grade g6">六年级·伟豪</span>
         <div class="task-prog" role="group" aria-label="六年级伟豪今日任务完成进度">
           <span class="task-prog-text">加载中…</span>
@@ -958,6 +964,7 @@
             <div class="task-prog-fill" style="width:0%"></div>
           </div>
         </div>
+        <span class="grade-caret" aria-hidden="true">▾</span>
       </div>
       <div class="task-list">
         <div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据加载中…若持续显示，请稍后刷新</div>
@@ -1334,6 +1341,7 @@
     }); }catch(e){}
     var sec = document.getElementById(secId);
     if(!sec || !data || data.date !== todayStr()) return false;
+    applyGradeFold(secId); /* 年级段折叠状态在每次重渲染时重申，软刷新不冲掉（2026-10-23 A案） */
     /* P2（DeepSeek 审查 2026-10-20）：栏目与数据年级一致性——错位文件宁可不渲染 */
     var wantGrade = secId === 'tasks-g5' ? '五年级' : '六年级';
     if(data.grade && data.grade !== wantGrade){
@@ -1595,6 +1603,42 @@
         });
     });
   }
+  /* ================================================================
+     年级段总折叠（2026-10-23 A 案，家长拍板）：两段默认全收起，点标题行展开/收起。
+     手动状态记 localStorage（键带本地日期）：当日软刷新/重载不丢，次日自动回到默认全收起。
+     ================================================================ */
+  var GRADE_OPEN = {};
+  function gradeOpenKey(g){
+    var d = new Date(); function p(n){ return (n < 10 ? '0' : '') + n; }
+    return 'kb-grade-open-' + d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + '-' + g;
+  }
+  function applyGradeFold(secId){
+    var sec = document.getElementById(secId);
+    if(!sec) return;
+    var g = (secId === 'tasks-g6') ? 'g6' : 'g5';
+    var open = !!GRADE_OPEN[g];
+    sec.classList.toggle('grade-folded', !open);
+    var head = sec.querySelector('.task-head');
+    if(head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  (function initGradeFold(){
+    ['g5', 'g6'].forEach(function(g){
+      var stored = null;
+      try{ stored = window.localStorage.getItem(gradeOpenKey(g)); }catch(e){}
+      GRADE_OPEN[g] = (stored === '1');
+      applyGradeFold('tasks-' + g);
+    });
+  })();
+  document.addEventListener('click', function(e){
+    var head = (e.target && e.target.closest) ? e.target.closest('.task-head') : null;
+    if(!head) return;
+    var sec = head.closest('.task-section');
+    if(!sec || (sec.id !== 'tasks-g5' && sec.id !== 'tasks-g6')) return;
+    var g = (sec.id === 'tasks-g6') ? 'g6' : 'g5';
+    GRADE_OPEN[g] = !GRADE_OPEN[g];
+    try{ window.localStorage.setItem(gradeOpenKey(g), GRADE_OPEN[g] ? '1' : '0'); }catch(e){}
+    applyGradeFold(sec.id);
+  });
   load();
   window.__kanbanRefreshTasks = load; /* 2026-10-20：供倒计时软刷新调用（只刷内容不刷页面） */
   /* ================================================================
@@ -3978,7 +4022,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0820';
+  var KB_BUILD = '20261023-0830';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
