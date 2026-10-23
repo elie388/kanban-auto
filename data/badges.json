@@ -11,6 +11,13 @@
  "by_grade": {
   "g5": [
    {
+    "key": "baifen",
+    "name": "百分俱乐部",
+    "icon": "💰",
+    "date": "2026-10-19",
+    "count": 1
+   },
+   {
     "key": "sanribuduan",
     "name": "三日不断",
     "icon": "📆",
@@ -69,5 +76,5 @@
    }
   ]
  },
- "generated_at": "2026-10-22T09:29:11+08:00"
+ "generated_at": "2026-10-23T09:58:13+08:00"
 }

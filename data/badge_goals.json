@@ -16,6 +16,13 @@
    "points": 5
   },
   {
+   "key": "baifen",
+   "name": "百分俱乐部",
+   "icon": "💰",
+   "cond": "余额首次突破100分（一次性）",
+   "points": 10
+  },
+  {
    "key": "zonghezhixing",
    "name": "综合之星",
    "icon": "🏅",
@@ -167,6 +174,14 @@
     }
    },
    {
+    "key": "baifen",
+    "obtained": true,
+    "date": "2026-10-19",
+    "count": 1,
+    "total_count": 1,
+    "via_late": false
+   },
+   {
     "key": "zonghezhixing",
     "obtained": false,
     "date": "",
@@ -175,7 +190,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -436,6 +451,14 @@
     }
    },
    {
+    "key": "baifen",
+    "obtained": false,
+    "date": "",
+    "count": 0,
+    "total_count": 1,
+    "via_late": false
+   },
+   {
     "key": "zonghezhixing",
     "obtained": false,
     "date": "",
@@ -683,5 +706,5 @@
   ]
  },
  "cycle_week": "2026-W43",
- "generated_at": "2026-10-23T06:00:16+08:00"
+ "generated_at": "2026-10-23T09:58:13+08:00"
 }
