@@ -1270,7 +1270,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <!-- 兑换记录（2026-10-21）：默认收起，点击标题行展开；内容由 renderRedeem 渲染 -->
     <div class="redeem-wrap" id="redeem-box">
       <button class="redeem-toggle" type="button" id="redeem-toggle" aria-expanded="false" aria-controls="redeem-body">
-        <span class="redeem-head">兑换记录<span class="redeem-sub">最近 15 天</span></span>
+        <span class="redeem-head">🎁 兑换记录<span class="redeem-sub">最近 15 天</span></span>
         <span class="redeem-chev" id="redeem-chev">展开 ▾</span>
       </button>
       <div id="redeem-body" hidden>
@@ -4847,7 +4847,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2019';
+  var KB_BUILD = '20261023-2021';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
