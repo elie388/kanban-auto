@@ -650,6 +650,16 @@
     text-align:center; font-size:13px; color:var(--sub); background:#FAFBFC;}
   .redeem-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
 
+  /* 商店子块（2026-10-23 四块合并，DeepSeek C 形态）：加分/扣分规则随商店直接展开，
+     积分日志沿 redeem 模式二级开关默认收起；子块不套 .collapse/.collapse-btn（防折叠JS与口令门 closest 语义污染） */
+  .sub-block{margin-top:18px;}
+  .sub-head{font-size:16px; font-weight:800; margin-bottom:8px;}
+  .sub-wrap{margin-top:18px;}
+  .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
+    padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
+  .sub-head-t{font-size:16px; font-weight:800; flex:1;}
+  .sub-chev{font-size:13px; color:var(--sub);}
+
   /* 规则列表 */
   .rule-list{list-style:none; margin:0; padding:0;}
   .rule-list li{
@@ -1192,70 +1202,33 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       </div>
 
       </div>
-    <!-- 兑换记录（2026-10-21）：默认收起，点击标题行展开；内容由 renderRedeem 渲染 -->
-    <div class="redeem-wrap" id="redeem-box">
-      <button class="redeem-toggle" type="button" id="redeem-toggle" aria-expanded="false" aria-controls="redeem-body">
-        <span class="redeem-head">兑换记录<span class="redeem-sub">最近 15 天</span></span>
-        <span class="redeem-chev" id="redeem-chev">展开 ▾</span>
+    <!-- 加分规则（2026-10-23 并入积分商店·子块一，DeepSeek C 形态：随商店直接展开、无二级开关；
+         内容与口径同迁移前：开关/滚动区/兜底原样保留，renderRules 按 panel-bonus 找 .rule-list） -->
+    <div class="sub-block" id="panel-bonus" role="region" aria-label="加分规则">
+      <div class="sub-head">🎯 加分规则</div>
+      <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="bonus"> 自动滚动</label></div>
+      <!-- 兜底（2026-10-20，DeepSeek终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
+      <div class="auto-scroll rule-scroll" data-as-key="bonus"><ul class="rule-list">
+        <li><span>规则数据暂不可用，请稍后刷新。</span></li>
+      </ul></div>
+    </div>
+    <!-- 扣分规则（2026-10-23 并入积分商店·子块二，同加分规则形态） -->
+    <div class="sub-block" id="panel-deduct" role="region" aria-label="扣分规则">
+      <div class="sub-head">📉 扣分规则</div>
+      <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="deduct"> 自动滚动</label></div>
+      <!-- 兜底（2026-10-20，DeepSeek终审定案b）：同加分规则，不硬编码条目。 -->
+      <div class="auto-scroll rule-scroll" data-as-key="deduct"><ul class="rule-list">
+        <li><span>规则数据暂不可用，请稍后刷新。</span></li>
+      </ul></div>
+    </div>
+    <!-- 积分日志（2026-10-23 并入积分商店·子块三，DeepSeek C 形态：二级开关默认收起、沿 redeem 模式；
+         年级块 #log-g5/#log-g6 整体随迁（bal-jump 的 data-jump 依赖），内容口径同迁移前） -->
+    <div class="sub-wrap" id="panel-log">
+      <button class="sub-toggle" type="button" id="log-toggle" aria-expanded="false" aria-controls="log-body">
+        <span class="sub-head-t">🧾 积分日志</span>
+        <span class="sub-chev" id="log-chev">展开 ▾</span>
       </button>
-      <div id="redeem-body" hidden>
-        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="redeem"> 自动滚动</label></div>
-        <div class="redeem-grade">彦均</div>
-        <div class="redeem-scroll auto-scroll" data-as-key="redeem" id="redeem-scroll-g5"></div>
-        <div class="redeem-grade">伟豪</div>
-        <div class="redeem-scroll auto-scroll" data-as-key="redeem" id="redeem-scroll-g6"></div>
-      </div>
-    </div>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- 加分规则（折叠按钮） -->
-  <section class="card collapse" aria-label="加分规则">
-    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-bonus" id="btn-bonus">
-      <span class="emoji" aria-hidden="true">🎯</span>
-      <span class="cb-title">加分规则</span>
-      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
-    </button>
-    <div class="collapse-body" id="panel-bonus" role="region" aria-labelledby="btn-bonus">
-      <div class="collapse-inner"><div class="collapse-pad">
-        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="bonus"> 自动滚动</label></div>
-        <!-- 兜底（2026-10-20，DeepSeek终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
-        <div class="auto-scroll rule-scroll" data-as-key="bonus"><ul class="rule-list">
-          <li><span>规则数据暂不可用，请稍后刷新。</span></li>
-        </ul></div>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- 扣分规则（折叠按钮） -->
-  <section class="card collapse" aria-label="扣分规则">
-    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-deduct" id="btn-deduct">
-      <span class="emoji" aria-hidden="true">📉</span>
-      <span class="cb-title">扣分规则</span>
-      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
-    </button>
-    <div class="collapse-body" id="panel-deduct" role="region" aria-labelledby="btn-deduct">
-      <div class="collapse-inner"><div class="collapse-pad">
-        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="deduct"> 自动滚动</label></div>
-        <!-- 兜底（2026-10-20，DeepSeek终审定案b）：同加分规则，不硬编码条目。 -->
-        <div class="auto-scroll rule-scroll" data-as-key="deduct"><ul class="rule-list">
-          <li><span>规则数据暂不可用，请稍后刷新。</span></li>
-        </ul></div>
-      </div></div>
-    </div>
-  </section>
-
-  <!-- 积分日志（KB-POST2-2026-10-22 家长定折叠保留版：默认折叠、打开后约5条高滚动区） -->
-  <section class="card collapse" aria-label="积分日志">
-    <span class="tag-live">实时数据</span>
-    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-log" id="btn-log">
-      <span class="emoji" aria-hidden="true">🧾</span>
-      <span class="cb-title">积分日志</span>
-      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
-    </button>
-    <div class="collapse-body" id="panel-log" role="region" aria-labelledby="btn-log">
-      <div class="collapse-inner"><div class="collapse-pad">
+      <div id="log-body" role="region" aria-labelledby="log-toggle" hidden>
         <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="log"> 自动滚动</label></div>
         <div class="grade-block" id="log-g5" aria-label="彦均积分日志">
           <div class="grade-head"><span class="pill-grade g5">彦均</span>积分日志</div>
@@ -1279,6 +1252,22 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           </ul></div></div>
           <div class="log-count" hidden></div>
         </div>
+      </div>
+    </div>
+    <!-- 兑换记录（2026-10-21）：默认收起，点击标题行展开；内容由 renderRedeem 渲染 -->
+    <div class="redeem-wrap" id="redeem-box">
+      <button class="redeem-toggle" type="button" id="redeem-toggle" aria-expanded="false" aria-controls="redeem-body">
+        <span class="redeem-head">兑换记录<span class="redeem-sub">最近 15 天</span></span>
+        <span class="redeem-chev" id="redeem-chev">展开 ▾</span>
+      </button>
+      <div id="redeem-body" hidden>
+        <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="redeem"> 自动滚动</label></div>
+        <div class="redeem-grade">彦均</div>
+        <div class="redeem-scroll auto-scroll" data-as-key="redeem" id="redeem-scroll-g5"></div>
+        <div class="redeem-grade">伟豪</div>
+        <div class="redeem-scroll auto-scroll" data-as-key="redeem" id="redeem-scroll-g6"></div>
+      </div>
+    </div>
       </div></div>
     </div>
   </section>
@@ -1291,7 +1280,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['bonus','deduct','log','shop','achieve','lib','trend','summary','feedback'];
+  var ids = ['shop','achieve','lib','trend','summary','feedback']; /* 2026-10-23 四块合并：bonus/deduct/log 三钮已并入商店为子块，顶层钮删除 */
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -1313,12 +1302,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     card.addEventListener('click', function(){
       var target = document.getElementById(card.getAttribute('data-jump'));
       if(!target) return;
-      var btnLog = document.getElementById('btn-log');
-      var panelLog = document.getElementById('panel-log');
-      /* 2026-10-19跳转位置修复：open类挂在section.card.collapse上（见折叠JS），
-         panel-log本身永远没有open类，故以 closest('.collapse') 为准，避免已展开时误收起 */
-      var collapseHost = btnLog ? btnLog.closest('.collapse') : null;
-      var needOpen = !!(collapseHost && !collapseHost.classList.contains('open'));
+      /* 2026-10-23 四块合并后跳转链：先展开积分商店（btn-shop 所属 section 的 open 类为准，
+         判定口径同 2026-10-19 修复：open 类挂宿主 section、panel 本身无 open 类）→
+         再展开商店内积分日志子块（日志模块 window.__kbOpenLogSub，未就绪时点 #log-toggle 兜底）→
+         settle 后定位。DeepSeek C3：双段 settle 以 350ms 兜底为主、settle 后再 rAF 一帧，
+         不串联 transitionend（防只捕第一段结束就定位偏差）；两块都已展开时直接 rAF 定位。 */
+      var btnShop = document.getElementById('btn-shop');
+      var shopHost = btnShop ? btnShop.closest('.collapse') : null;
+      var needShopOpen = !!(shopHost && !shopHost.classList.contains('open'));
+      var logBody = document.getElementById('log-body');
+      var needLogOpen = !!(logBody && logBody.hidden);
       var scrollTo = function(){
         var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         target.scrollIntoView(smooth ? {behavior:'smooth', block:'start'} : {block:'start'});
@@ -1326,25 +1319,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         target.focus({preventScroll:true});
         target.removeAttribute('tabindex');
       };
-      if(needOpen && btnLog && collapseHost){
-        /* 等待.collapse-body展开动画(.3s，见CSS)完成后再定位：
-           transitionend结算 + 350ms兜底（与transition时长联动，改CSS时长需同步改此值） */
-        var body = panelLog;
-        var done = false;
-        var settle = function(){
-          if(done) return;
-          done = true;
-          if(body) body.removeEventListener('transitionend', onEnd);
-          scrollTo();
-        };
-        var onEnd = function(e){
-          if(e.target === body && e.propertyName === 'grid-template-rows'){ settle(); }
-        };
-        if(body) body.addEventListener('transitionend', onEnd);
-        btnLog.click();                       /* 复用现有折叠JS，只展开不收起 */
-        setTimeout(settle, 350);              /* 兜底：reduced-motion/过渡被中断时仍可跳转 */
+      if(needShopOpen && btnShop) btnShop.click();      /* 复用现有折叠JS，只展开不收起 */
+      if(needLogOpen){
+        if(typeof window.__kbOpenLogSub === 'function') window.__kbOpenLogSub();
+        else { var lt = document.getElementById('log-toggle'); if(lt) lt.click(); }
+      }
+      if(needShopOpen){
+        setTimeout(function(){ requestAnimationFrame(scrollTo); }, 350);
       }else{
-        scrollTo();
+        requestAnimationFrame(scrollTo);
       }
     });
   });
@@ -2499,6 +2482,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var list = block ? block.querySelector('.log-list') : null;
       if(!list) throw new Error('no log-list');
       renderLogItems(list, d.items);
+      kbWireLogToggle();
+      kbLogApplyState(); /* 软刷新恢复 OPEN_LOG 展开态；展开中灌入新数据后重算溢出提示（DeepSeek 补充评审双触发） */
       var si = srcInfo[name];
       if(si && si.fromCache){
         setLogTag(blockId, '数据更新于 ' + fmtHHMM(si.ts), null); /* 方案E：缓存渲染，明示数据时刻 */
@@ -2510,9 +2495,71 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }).catch(function(e){
       setLogTag(blockId, '暂时无法连接', null); /* 方案E：最终失败且无缓存，保留静态内容 */
       if(window.console && console.warn) console.warn('日志拉取失败，保留静态内容:', e);
+      kbWireLogToggle();
       startRecheck(key, function(){ loadLog(grade, blockId); });
     });
   }
+
+  /* ---------- 积分日志子块开关（2026-10-23 并入积分商店，DeepSeek C 形态：二级开关默认收起，
+     沿兑换记录 redeem 模式：OPEN_LOG 变量 + hidden 切换 + aria 同步，软刷新后由 loadLog 回调恢复） ---------- */
+  var OPEN_LOG = false;
+  function kbLogHintRefresh(blockEl){
+    if(!blockEl) return;
+    var listEl = blockEl.querySelector('.log-list');
+    var wrapEl = blockEl.querySelector('.log-scrollwrap');
+    var scrollEl = blockEl.querySelector('.log-scroll');
+    var cntEl = blockEl.querySelector('.log-count');
+    if(!listEl || !scrollEl) return;
+    var shown = listEl.querySelectorAll('.log-item').length;
+    var overflow = scrollEl.scrollHeight > scrollEl.clientHeight + 4;
+    if(wrapEl) wrapEl.classList.toggle('has-more', overflow);
+    if(cntEl){
+      if(overflow){ cntEl.hidden = false; cntEl.textContent = '共 ' + shown + ' 条 · 上下滑动查看更多'; }
+      else { cntEl.hidden = true; cntEl.textContent = ''; }
+    }
+    if(overflow && wrapEl){
+      /* 与 renderLogItems 同口径：滚到底自动收起渐隐；先摘旧监听防叠加 */
+      if(scrollEl._kbLogScrollH) scrollEl.removeEventListener('scroll', scrollEl._kbLogScrollH);
+      scrollEl._kbLogScrollH = function(){
+        var atBottom = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight < 8;
+        wrapEl.classList.toggle('has-more', !atBottom);
+      };
+      scrollEl.addEventListener('scroll', scrollEl._kbLogScrollH);
+    }
+  }
+  function kbLogApplyState(){
+    var body = $('log-body'), btn = $('log-toggle'), chev = $('log-chev');
+    if(body) body.hidden = !OPEN_LOG;
+    if(btn) btn.setAttribute('aria-expanded', OPEN_LOG ? 'true' : 'false');
+    if(chev) chev.textContent = OPEN_LOG ? '收起 ▴' : '展开 ▾';
+    if(OPEN_LOG){
+      /* 子块收起时 body 为 display:none，scrollHeight/clientHeight 均为 0，溢出判定失真；
+         展开后补重算渐隐与计数（DeepSeek 补充评审处置：展开时重算 + 灌入后重算双触发）。
+         商店展开过渡约 .3s，布局未稳时再补一轮（重算幂等）。 */
+      requestAnimationFrame(function(){ kbLogHintRefresh($('log-g5')); kbLogHintRefresh($('log-g6')); });
+      setTimeout(function(){ kbLogHintRefresh($('log-g5')); kbLogHintRefresh($('log-g6')); }, 400);
+    }
+  }
+  function kbWireLogToggle(){
+    var btn = $('log-toggle');
+    if(!btn || btn.dataset.wired) return;
+    btn.dataset.wired = '1';
+    btn.addEventListener('click', function(){
+      OPEN_LOG = !OPEN_LOG;
+      kbLogApplyState();
+    });
+  }
+  /* 余额卡联动入口：只开不收（已展开为 no-op，软刷新恢复态下不打架，DeepSeek C3/R2） */
+  window.__kbOpenLogSub = function(){
+    kbWireLogToggle();
+    if(!OPEN_LOG){ OPEN_LOG = true; }
+    kbLogApplyState();
+  };
+  /* 口令门收口钩子（DeepSeek C4）：回锁时复位日志子块为收起态 */
+  window.__kbResetLogSub = function(){
+    OPEN_LOG = false;
+    kbLogApplyState();
+  };
 
   /* ---------- 商店手续费注记（2026-10-19 用户要求：删除各年级汇总行，只保留手续费小字） ---------- */
   function renderShopProgress(){
@@ -3284,6 +3331,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
     return true;
   }
+
+  /* 口令门收口钩子（2026-10-23 DeepSeek C4 改口径）：回锁收口时一并复位商店内
+     积分日志/兑换记录两个子块开关为收起态（aria-expanded=false、body hidden、OPEN_* 清零），
+     不留残留展开态；kbCollapseAll 经此钩子调用。 */
+  window.__kbResetShopSubs = function(){
+    OPEN_REDEEM = false;
+    var body = $('redeem-body'), btn = $('redeem-toggle'), chev = $('redeem-chev');
+    if(body) body.hidden = true;
+    if(btn) btn.setAttribute('aria-expanded', 'false');
+    if(chev) chev.textContent = '展开 ▾';
+    if(typeof window.__kbResetLogSub === 'function') window.__kbResetLogSub();
+  };
 
   function boot(){
     /* S4（2026-10-20）：标题日期由脚本写入，不再硬编码。
@@ -4708,7 +4767,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2015';
+  var KB_BUILD = '20261023-2017';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5824,7 +5883,7 @@ document.addEventListener('click', function(e){
    - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
    ================================================================ */
 (function(){
-  var GATE_PANELS = ['btn-feedback', 'btn-summary', 'btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop', 'btn-bonus', 'btn-deduct', 'btn-log'];
+  var GATE_PANELS = ['btn-feedback', 'btn-summary', 'btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop']; /* 2026-10-23 四块合并：btn-bonus/btn-deduct/btn-log 已随栏目并入商店删除，商店子块归 btn-shop 一口收口 */
   var KB_LOCKED = false;
   var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
   var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
@@ -5863,7 +5922,9 @@ document.addEventListener('click', function(e){
   }
 
   /* 单一收口函数：把全部受控区置收起（栏目经其自身按钮路径、年级段经登记钩子，
-     均为同步状态切换；区内二级展开态随父区收起不可见，判定残留无影响，不单独清理）。 */
+     均为同步状态切换）。区内二级展开态一般随父区收起不可见、不单独清理；
+     例外（2026-10-23 DeepSeek C4 改口径）：积分商店内积分日志/兑换记录两子块被
+     余额卡联动与 OPEN_* 恢复逻辑依赖，回锁收口时必须经 __kbResetShopSubs 一并复位为收起态。 */
   function kbCollapseAll(){
     KB_GATE_INTERNAL = true;
     try {
@@ -5871,6 +5932,7 @@ document.addEventListener('click', function(e){
         var btn = document.getElementById(id);
         if(btn && btn.getAttribute('aria-expanded') === 'true') btn.click();
       });
+      if(typeof window.__kbResetShopSubs === 'function') window.__kbResetShopSubs();
       if(window.__kbSetGradeOpen){
         window.__kbSetGradeOpen('g5', false);
         window.__kbSetGradeOpen('g6', false);
