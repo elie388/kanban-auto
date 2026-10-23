@@ -39,19 +39,7 @@
   }
   .wrap{max-width:980px; margin:0 auto;}
 
-  /* 标题区 */
-  .hero{text-align:center; margin:6px 0 18px;}
-  .hero h1{
-    font-size:clamp(24px,6.5vw,30px); /* 2026-10-19：自适应字号，替代硬编码30px */
-    margin:0 0 4px;
-    color:#E2643A; /* 不支持 background-clip:text 时的回退色 */
-    background:linear-gradient(90deg,#FF8A5B,#6C8EFF);
-    -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; color:transparent;
-    font-weight:900; letter-spacing:1px;
-    filter:drop-shadow(0 2px 6px rgba(255,138,91,.28));
-  }
-  .hero .date{font-size:14px; color:var(--sub);}
+  /* 标题区样式已随标题整行删除（2026-10-24 家长令）：顶部不再有大标题与时间戳，时钟迁至页脚 .refresh-countdown 位置 */
 
   /* 卡片通用 */
   .card{
@@ -1061,11 +1049,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <div class="ptr-bar" id="ptr-bar" aria-hidden="true"><span class="ptr-ico" id="ptr-ico">↓</span><span id="ptr-txt">下拉刷新</span></div>
 <div class="wrap">
 
-  <!-- 标题 -->
-  <header class="hero">
-    <h1>🌟 积分看板 🌟</h1>
-    <div class="date" id="board-date">2026-10-19</div>
-  </header>
+  <!-- 标题区已按 2026-10-24 家长令移除：大标题整行删除、顶部时间戳下线，时钟元素 #board-date 整体迁至页脚（见 footer） -->
 
   <!-- 余额卡片 -->
   <section class="balance-grid" aria-label="积分余额">
@@ -1331,7 +1315,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   </section>
 
   <footer class="footer">
-    <div class="refresh-countdown" id="refreshCountdown" aria-live="off"></div>
+    <!-- 2026-10-24 家长令：原倒计时位置改放时钟元素 #board-date（自顶部整体迁来，tickClock 逻辑不变）；点击刷新由底部刷新 IIFE 绑在此元素上 -->
+    <div class="refresh-countdown" id="board-date" aria-live="off"></div>
   </footer>
 
 </div>
@@ -3685,7 +3670,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   'use strict';
   try{
     var REFRESH_SEC = 300; /* 5分钟 */
-    var el = document.getElementById('refreshCountdown');
+    var el = document.getElementById('board-date'); /* 2026-10-24 家长令：绑定对象改为迁至页脚的时钟元素（原 refreshCountdown 已被其替换） */
     if(!el) return;
 
     var deadline = Date.now() + REFRESH_SEC * 1000;
@@ -3719,10 +3704,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
 
     function render(){
-      var r = remainSec();
-      var m = Math.floor(r / 60), s = r % 60;
-      el.textContent = '数据' + m + '分' + s + '秒后更新';
-      if(r <= 0){ expire(); }
+      /* 2026-10-24 家长令：底部元素改显示当前时间，文字由时钟 tickClock 写入 #board-date；
+         本处不再写倒计时文字，只做到期检测（5 分钟自动软刷新与点击整页刷新保持不变） */
+      if(remainSec() <= 0){ expire(); }
     }
 
     function stop(){
@@ -5096,7 +5080,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-0019';
+  var KB_BUILD = '20261024-0028';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
