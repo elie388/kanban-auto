@@ -581,10 +581,10 @@
   /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、DeepSeek 核准）：年级色与余额卡同源变量、金色只留成就条 */
   #tasks-g5 .task-prog-fill{background:linear-gradient(90deg,var(--g5),var(--g5b));}
   #tasks-g6 .task-prog-fill{background:linear-gradient(90deg,var(--g6),var(--g6b));}
-  /* 循环生长（2026-10-23 家长续令）：标题行进度条每 1.5s 从 0 重新生长到当前百分比，循环往复。
+  /* 循环生长（2026-10-23 家长续令，周期 23:15 改定为 3s）：标题行进度条每 3s 从 0 重新生长到当前百分比，循环往复（前约 72% 生长、后约 28% 停留到位）。
      实现＝transform: scaleX（fill 的 width 仍为目标百分比，视觉与宽度生长一致、不动布局）；
      ID 作用域压过 D2 的一次性 barGrow 入场动画（入场生长被循环生长吸收，不再单独触发）。 */
-  #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ transform-origin:left center; animation:progGrowLoop 1.5s ease-out infinite; }
+  #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{ transform-origin:left center; animation:progGrowLoop 3s ease-out infinite; }
   @keyframes progGrowLoop{ 0%{ transform:scaleX(0); } 72%{ transform:scaleX(1); } 100%{ transform:scaleX(1); } }
   /* 颜色渐变（2026-10-23 23:08 家长改定）：填充色按百分比连续混合——≤70% 纯年级色、70%→100% 线性混入语义绿、
      100% 纯绿；由渲染 JS 按 pct 计算两端 stop 的混合色并以 inline background 赋值（软刷新跟随）。
@@ -5036,7 +5036,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2311';
+  var KB_BUILD = '20261023-2316';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
