@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-23T22:44:58+08:00",
+  "generated_at": "2026-10-23T23:07:05+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -9,10 +9,64 @@
   "items": [
     {
       "date": "10-23",
+      "time": "22:31",
+      "time_source": "entry",
+      "reason": "六年级『英语早读U3知识清单』发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
       "time": "22:18",
       "time_source": "entry",
       "reason": "英语『背今天的作文和最高级笔记10次，提交小管家』达标",
       "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "21:51",
+      "time_source": "entry",
+      "reason": "六年级『每天读1小时作文，记录③』发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "21:51",
+      "time_source": "entry",
+      "reason": "六年级『每天读1小时作文，记录③』达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "21:48",
+      "time_source": "entry",
+      "reason": "L11生字抄写完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "21:48",
+      "time_source": "entry",
+      "reason": "L11生字正确率档81.8%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "21:48",
+      "time_source": "entry",
+      "reason": "L11生字书写+2",
+      "pts": 2,
       "sign": "plus",
       "filtered": false
     },
