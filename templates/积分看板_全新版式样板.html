@@ -246,6 +246,11 @@
   .grade-caret{flex:none;font-size:13px;color:var(--sub);transition:transform .25s ease;margin-left:4px;}
   .task-section.grade-folded .grade-caret{transform:rotate(-90deg);}
   .task-section.grade-folded .task-list, .task-section.grade-folded .yd-zone{display:none;}
+  /* 全板口令门（2026-10-23 家长拍板合并选项1，DeepSeek 终审）：无设备令牌时 kb-locked 硬兜底隐藏全部详情体（门帘口径，服务端校验不变）；锁定入口带 🔐 标记 */
+  html.kb-locked .collapse-body{display:none !important;}
+  html.kb-locked .task-section .task-list, html.kb-locked .task-section .yd-zone{display:none !important;}
+  html.kb-locked .task-head::after{content:'🔐';font-size:14px;margin-left:6px;}
+  html.kb-locked .collapse-btn::after{content:'🔐';font-size:14px;margin-left:6px;}
   .task[data-tid]:not(.open-task) .tfiles{display:none;}
   .task[data-tid]:not(.open-task) .st-mini{display:none;}
   .task[data-tid]:not(.open-task) .st-zone{display:none;}
@@ -908,6 +913,8 @@
   .ptr-bar.ptr-busy .ptr-ico{animation:ptrSpin .8s linear infinite;}
   @keyframes ptrSpin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
 </style>
+<script>/* 口令门早锁（2026-10-23 选项1）：无设备令牌先给 <html> 上 kb-locked，避免详情闪现；门逻辑在文末 script 块 */
+try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classList.add('kb-locked'); } catch (e) {}</script>
 </head>
 <body>
 <div class="ptr-bar" id="ptr-bar" aria-hidden="true"><span class="ptr-ico" id="ptr-ico">↓</span><span id="ptr-txt">下拉刷新</span></div>
@@ -1621,6 +1628,13 @@
     var head = sec.querySelector('.task-head');
     if(head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
+  /* 口令门收口钩子（2026-10-23 登记于 docs/口令门拦截清单_2026-10-23.md）：
+     口令门只以 open=false 调用（收起方向）；往展开方向使用须重新报 DeepSeek 终审。 */
+  window.__kbSetGradeOpen = function(g, open){
+    GRADE_OPEN[g] = !!open;
+    try { window.localStorage.setItem(gradeOpenKey(g), open ? '1' : '0'); } catch(e){}
+    applyGradeFold('tasks-' + g);
+  };
   (function initGradeFold(){
     ['g5', 'g6'].forEach(function(g){
       var stored = null;
@@ -3503,7 +3517,7 @@
     mask.className = 'kb-pass-mask';
     mask.innerHTML = '<div class="kb-pass-card">'
       + '<div class="kb-pass-title">🔐 输入家庭口令</div>'
-      + '<div class="kb-pass-hint">和提交作业同一个口令。第一次用要输一次，之后这台设备就不用再输了。</div>'
+      + '<div class="kb-pass-hint">和交作业同一个口令。验证一次后，这台设备看详情、交作业、打印都不用再输。</div>'
       + '<input class="kb-pass-input" type="text" autocomplete="off" placeholder="家庭口令">'
       + '<div class="kb-pass-err"></div>'
       + '<div class="kb-pass-row"><button type="button" class="kb-pass-cancel">取消</button><button type="button" class="kb-pass-ok">确认</button></div>'
@@ -4022,7 +4036,7 @@
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-0830';
+  var KB_BUILD = '20261023-0855';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5127,5 +5141,154 @@ document.addEventListener('click', function(e){
 </script>
 
 <div id="printArea"></div>
+
+<script>
+/* ================================================================
+   全板口令门（2026-10-23 家长拍板合并选项 1，DeepSeek 终审放行编码）
+   - 无设备令牌（hw-dev-token）时只显概览：受控入口点击被拦截 → 弹全板唯一的
+     口令框（window.kbAskPass，与交作业同一体系）→ 输对后收口解锁并重演那一次点击。
+   - 门帘口径：本门只管前端可见性，服务端校验一行不动；拦截清单见
+     docs/口令门拦截清单_2026-10-23.md（新增可展开区先登记此表）。
+   - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
+   ================================================================ */
+(function(){
+  var GATE_PANELS = ['btn-trend', 'btn-achieve', 'btn-lib', 'btn-shop', 'btn-bonus', 'btn-deduct', 'btn-log'];
+  var KB_LOCKED = false;
+  var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
+  var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
+
+  function hasToken(){ try { return !!window.kbPracticeToken(); } catch(e){ return false; } }
+
+  /* 单一收口函数：把全部受控区置收起（栏目经其自身按钮路径、年级段经登记钩子，
+     均为同步状态切换；区内二级展开态随父区收起不可见，判定残留无影响，不单独清理）。 */
+  function kbCollapseAll(){
+    KB_GATE_INTERNAL = true;
+    try {
+      GATE_PANELS.forEach(function(id){
+        var btn = document.getElementById(id);
+        if(btn && btn.getAttribute('aria-expanded') === 'true') btn.click();
+      });
+      if(window.__kbSetGradeOpen){
+        window.__kbSetGradeOpen('g5', false);
+        window.__kbSetGradeOpen('g6', false);
+      } else {
+        ['tasks-g5', 'tasks-g6'].forEach(function(id){
+          var sec = document.getElementById(id);
+          if(sec) sec.classList.add('grade-folded');
+        });
+      }
+    } finally { KB_GATE_INTERNAL = false; }
+  }
+  function lockNow(){
+    kbCollapseAll();
+    KB_LOCKED = true;
+    document.documentElement.classList.add('kb-locked');
+  }
+  function unlockNow(){
+    kbCollapseAll(); /* 先收口再开门：解锁后仅重演的那一处展开，无多块齐弹 */
+    KB_LOCKED = false;
+    document.documentElement.classList.remove('kb-locked');
+  }
+
+  function gateTargetOf(e){
+    if(!e.target || !e.target.closest) return null;
+    var head = e.target.closest('.task-head');
+    if(head){
+      var sec = head.closest('.task-section');
+      if(sec && (sec.id === 'tasks-g5' || sec.id === 'tasks-g6')){
+        return { el: head, kind: sec.classList.contains('grade-folded') ? 'expand' : 'collapse-dir' };
+      }
+    }
+    var btn = e.target.closest('.collapse-btn');
+    if(btn && GATE_PANELS.indexOf(btn.id) >= 0){
+      return { el: btn, kind: btn.getAttribute('aria-expanded') === 'true' ? 'collapse-dir' : 'expand' };
+    }
+    var card = e.target.closest('.bal-card');
+    if(card) return { el: card, kind: 'expand' };
+    return null;
+  }
+
+  /* 重演前防御性断言：目标仍在 DOM、仍在受控父区内、且父区当前收起 */
+  function parentAreaState(el){
+    var sec = el.closest ? el.closest('.task-section') : null;
+    if(sec) return sec.classList.contains('grade-folded') ? 'collapsed' : 'expanded';
+    var host = el.closest ? el.closest('.collapse') : null;
+    if(host) return host.classList.contains('open') ? 'expanded' : 'collapsed';
+    if(el.classList && (el.classList.contains('collapse-btn') || el.classList.contains('bal-card'))) return 'self';
+    return 'unknown';
+  }
+  function replay(rec){
+    if(!rec || !rec.el) return;
+    /* 只对真实用户点按（isTrusted===true）重演；合成点击只收口不重演，不替脚本放行 */
+    if(rec.isTrusted !== true){
+      console.log('[kb-gate] skip replay: untrusted event');
+      return;
+    }
+    var st = parentAreaState(rec.el);
+    if(!document.contains(rec.el) || st === 'expanded' || st === 'unknown'){
+      console.warn('[kb-gate] replay assertion failed:', st);
+      try { window.kbToast('打开时出了点问题，再点一次试试'); } catch(e){}
+      return;
+    }
+    try { rec.el.click(); }
+    catch(err){
+      /* 重演异常不回锁（回锁只由巡检触发），toast 一次、console 留痕 */
+      console.warn('[kb-gate] replay threw:', err);
+      try { window.kbToast('打开时出了点问题，再点一次试试'); } catch(e2){}
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    if(KB_GATE_INTERNAL) return;
+    var t = gateTargetOf(e);
+    if(!t) return;
+    if(!KB_LOCKED){
+      if(hasToken()) return;
+      lockNow(); /* 令牌刚消失（巡检窗口内）：立即回锁，再按锁定路径处理本次点击 */
+    }
+    if(t.kind === 'collapse-dir') return; /* 收起方向永不拦截 */
+    if(hasToken()){ unlockNow(); return; } /* 令牌已被其他流程恢复：收口解锁，本次点击放行 */
+    e.preventDefault();
+    e.stopPropagation();
+    if(pendingReplay) return; /* 口令框已在处理一单，不叠单 */
+    pendingReplay = { el: t.el, type: e.type, isTrusted: e.isTrusted };
+    if(window.kbAskPass){
+      window.kbAskPass(function(){
+        var rec = pendingReplay; pendingReplay = null;
+        unlockNow();
+        replay(rec);
+      }, function(){ pendingReplay = null; });
+    } else { pendingReplay = null; }
+  }, true);
+
+  /* 令牌消失巡检回锁：只看客户端令牌存在性（不是服务端 401 处理，401 仍归各动作流程）。
+     已知窗口：令牌消失到回锁上限 3 秒，窗口内看板不抓新详情、不自动展开受控区。
+     每次触发把时延上界（disappearance 落在 lastOkTs 与回锁时刻之间）记入本机日志供首周观测。 */
+  var lastOkTs = Date.now();
+  setInterval(function(){
+    if(KB_LOCKED) return;
+    if(hasToken()){ lastOkTs = Date.now(); return; }
+    var now = Date.now();
+    var latencyUpper = now - lastOkTs;
+    lockNow();
+    try {
+      var log = [];
+      try { log = JSON.parse(localStorage.getItem('kb-gate-relock-log') || '[]'); } catch(e1){ log = []; }
+      log.push({ last_ok_ts: lastOkTs, relock_ts: now, latency_upper_ms: latencyUpper });
+      if(log.length > 50) log = log.slice(log.length - 50);
+      localStorage.setItem('kb-gate-relock-log', JSON.stringify(log));
+    } catch(e2){}
+    console.log('[kb-gate] patrol relock, latency_upper_ms=' + latencyUpper);
+    try { window.kbToast('验证已过期，再点一次需口令的区域，重新输一次口令即可'); } catch(e3){}
+    lastOkTs = now;
+  }, 3000);
+
+  /* 初始锁定（与 <head> 早锁脚本同口径） */
+  if(!hasToken()){
+    KB_LOCKED = true;
+    document.documentElement.classList.add('kb-locked');
+  }
+})();
+</script>
 </body>
 </html>
