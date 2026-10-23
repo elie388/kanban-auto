@@ -3,11 +3,11 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T20:28:24+08:00",
+  "updated_at": "2026-10-23T20:44:12+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-23T19:53:12+08:00",
+      "ingested_at": "2026-10-23T20:44:12+08:00",
       "new_lines": 1
     },
     "targeted_practice": {
@@ -283,11 +283,30 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "REG-20261023-9A7A56",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易（原识别为\"口语阅读/口物阅读\"，2026-10-23 家长更正：登记本原文是\"口语易\"）。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①试卷打印；②口语易（原识别为\"口语阅读/口物阅读\"，2026-10-23 家长更正：登记本原文是\"口语易\"）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T20:44:12+08:00",
+      "updated_at": "2026-10-23T20:44:12+08:00",
+      "task_type": "reading"
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 7,
+    "total": 14,
+    "pending": 8,
     "in_progress": 2,
     "done": 3,
     "pending_review": 0
