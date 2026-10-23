@@ -47,6 +47,12 @@ def compute_bal_sub(grade, balance, shop_tiers):
     """grade: 5/6；balance: int；shop_tiers: [{'pts':int,'name':str}, ...]"""
     tiers = sorted(shop_tiers, key=lambda t: t["pts"])
     costs = [t["pts"] for t in tiers]
+    # 冲刺档（2026-10-23 家长拍板第 4 项）：距下一档 ≤20 分时切冲刺文案，
+    # 句式与家长口径一致（还差X分就可以兑换XX）。已达最高档/无下一档不触发。
+    if balance > 0:
+        _nxt = next((t for t in tiers if t["pts"] > balance), None)
+        if _nxt is not None and 0 < _nxt["pts"] - balance <= 20:
+            return "还差%d分就可以兑换%s，冲一冲！" % (_nxt["pts"] - balance, _short_name(_nxt))
     if costs == PINNED_COSTS:
         for lo, hi, lines in PINNED_TIERS:
             if (lo is None or balance >= lo) and (hi is None or balance <= hi):

@@ -131,9 +131,22 @@
   .odo-slot{position:relative; display:inline-block; width:1ch; height:1em; overflow:hidden; vertical-align:baseline;}
   .odo-strip{position:absolute; top:0; left:0; display:block; transform:translate3d(0,0,0);}
   .odo-strip > span{display:block; height:1em; line-height:1em; text-align:center;}
-  .odo--anim .odo-strip{transition-property:transform; transition-duration:720ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
+  .odo--anim .odo-strip{transition-property:transform; transition-duration:450ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
   .bal-sub{font-size:13px; opacity:.9;}
+  /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，DeepSeek分档口径）：今日变化标/分档刻度条/负分态 */
+  .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0 9px; border-radius:999px; background:rgba(255,255,255,.22); color:#fff;}
+  .bal-today.pos{background:rgba(46,125,50,.45);}
+  .bal-today.neg{background:rgba(160,40,40,.45);}
+  .bal-today.zero{background:rgba(255,255,255,.16); opacity:.75; font-weight:600;}
+  .bal-tier{margin-top:2px;}
+  .bal-tier-bar{display:flex; gap:2px;}
+  .bal-tier-seg{flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.28); overflow:hidden;}
+  .bal-tier-fill{display:block; height:100%; border-radius:3px; background:rgba(255,255,255,.92);}
+  .bal-tier-labels{display:flex; gap:2px; margin-top:2px;}
+  .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; color:rgba(255,255,255,.78); font-variant-numeric:tabular-nums;}
+  .bal-card.is-neg{background:linear-gradient(135deg,#79818e,#59616d);}
+  html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
 
   /* 今日任务 */
   .task-section{margin-bottom:18px;}
@@ -963,11 +976,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <div class="bal-name">彦均</div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
       <div class="bal-sub">继续加油攒分！</div>
+      <div class="bal-today" hidden></div>
+      <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
     <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看伟豪积分日志">
       <div class="bal-name">伟豪</div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
       <div class="bal-sub">高分冲刺中！</div>
+      <div class="bal-today" hidden></div>
+      <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
   </section>
 
@@ -1765,7 +1782,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   'use strict';
 
   var DURATION = 720;   /* 必须与 CSS transition-duration 一致 */
-  var STAGGER  = 55;    /* 逐位 delay 步长：低位 delay 小先停，高位 delay 大后停 */
+  var STAGGER  = 30;    /* 逐位 delay 步长：低位 delay 小先停，高位 delay 大后停 */
 
   var reduceMotion = window.matchMedia
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2164,6 +2181,41 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     tag.classList.toggle('tag-live', text === '实时数据'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */
   }
 
+  /* 余额卡优化（2026-10-23）：今日变化标 + 分档刻度条 + 负分态；数据全由服务端 stats 给出 */
+  function renderBalExtras(card, d){
+    if(!card) return;
+    var bal = d.balance;
+    card.classList.toggle('is-neg', bal < 0);
+    var chip = card.querySelector('.bal-today');
+    if(chip){
+      if(!kbLocked() && typeof d.today_delta === 'number'){
+        var td = d.today_delta;
+        chip.hidden = false;
+        chip.textContent = td > 0 ? ('今日 +' + td) : (td < 0 ? ('今日 \u2212' + Math.abs(td)) : '今日 0');
+        chip.className = 'bal-today ' + (td > 0 ? 'pos' : (td < 0 ? 'neg' : 'zero'));
+      } else { chip.hidden = true; }
+    }
+    var tier = card.querySelector('.bal-tier');
+    if(tier){
+      var costs = (d.tier_costs && d.tier_costs.length) ? d.tier_costs : null;
+      if(!kbLocked() && costs && bal >= 0){
+        tier.hidden = false;
+        var bar = tier.querySelector('.bal-tier-bar');
+        var lab = tier.querySelector('.bal-tier-labels');
+        bar.textContent = ''; lab.textContent = '';
+        for(var i = 0; i < costs.length; i++){
+          var lo = i === 0 ? 0 : costs[i - 1], hi = costs[i];
+          var frac = bal <= lo ? 0 : (bal >= hi ? 1 : (bal - lo) / (hi - lo));
+          var seg = document.createElement('span'); seg.className = 'bal-tier-seg';
+          var fill = document.createElement('span'); fill.className = 'bal-tier-fill';
+          fill.style.width = (frac * 100).toFixed(1) + '%';
+          seg.appendChild(fill); bar.appendChild(seg);
+          var l = document.createElement('span'); l.textContent = costs[i]; lab.appendChild(l);
+        }
+      } else { tier.hidden = true; }
+    }
+  }
+
   function loadBalance(grade, cardId){
     var key = 'bal' + grade;
     var name = 'stats_grade_' + grade + '.json';
@@ -2186,6 +2238,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           sub.appendChild(document.createTextNode(parts[pi] + (pi < parts.length - 1 ? '，' : '')));
         }
       }
+      renderBalExtras(card, d);
       var si = srcInfo[name];
       if(si && si.fromCache){
         setBalTag(cardId, '数据更新于 ' + fmtHHMM(si.ts)); /* 方案E：缓存渲染，明示数据时刻 */
@@ -4316,7 +4369,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1640';
+  var KB_BUILD = '20261023-1715';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {

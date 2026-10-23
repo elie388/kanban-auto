@@ -355,11 +355,27 @@ def resolve_log_time(r, grade, today, sources):
 # ---------------------------------------------------------------------------
 def build_stats(grade, rows, ledger_sha16, today, generated_at):
     last = rows[-1]
+    # 余额卡优化（2026-10-23 家长拍板）：今日净变化（台账名义日期口径，DeepSeek 定）+ 分档信息
+    _today_s = today.isoformat()
+    _today_delta = sum(r["pts"] for r in rows
+                       if complete_year(r["date"], today) == _today_s)
+    _costs = sorted(t["pts"] for t in SHOP_TIERS)
+    _prev_t = None
+    _next_t = None
+    for _c in _costs:
+        if _c <= last["balance"]:
+            _prev_t = _c
+        elif _next_t is None:
+            _next_t = _c
     d = {
         "schema_version": "1.0",
         "grade": grade,
         "balance": last["balance"],
         "bal_sub": bal_sub.compute_bal_sub(grade, last["balance"], SHOP_TIERS),
+        "today_delta": _today_delta,
+        "tier_prev": _prev_t,
+        "tier_next": _next_t,
+        "tier_costs": _costs,
         "ledger_date": complete_year(last["date"], today),
         "generated_at": generated_at,
         "source": "hidden_files/积分记录.md",
