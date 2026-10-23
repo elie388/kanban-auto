@@ -368,19 +368,10 @@
   #printArea{display:none;}
   body.kb-printing #printArea{display:block; position:fixed; inset:0; z-index:9999; background:#fff; overflow:auto; padding:10px;}
   #printArea .pa-bar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
-  /* 标题独占一行（2026-10-22 家长截图报障）：标题与三按钮同行时「发到打印机」被挤到文字内部折行（机字掉到第二行）；按钮一律不折行、不收缩 */
+  /* 标题独占一行（2026-10-22 家长截图报障）：标题与按钮同行时按钮被挤到文字内部折行；按钮一律不折行、不收缩 */
   #printArea .pa-title{font-weight:700; margin-right:auto; font-size:16px; flex:1 1 100%;}
   #printArea .pa-bar .tfile{white-space:nowrap; flex:0 0 auto;}
   #printArea .pa-hint{color:#8a8171; font-size:12px; margin-bottom:10px;}
-  /* ePrint 二次确认框（2026-10-22 定稿）：样式与口令框同系，层级高于打印页 */
-  .kbcf-mask{position:fixed;inset:0;background:rgba(40,32,24,.45);display:none;align-items:center;justify-content:center;z-index:10001;padding:20px}
-  .kbcf-mask.show{display:flex}
-  .kbcf-card{background:#FFFBF2;border-radius:16px;max-width:340px;width:100%;padding:18px 16px 14px;box-shadow:0 12px 32px rgba(0,0,0,.28)}
-  .kbcf-title{font-weight:800;font-size:16px;margin-bottom:6px;color:#3D2E22}
-  .kbcf-hint{color:#8A7A68;font-size:13px;line-height:1.55}
-  .kbcf-row{display:flex;gap:10px;margin-top:12px}
-  .kbcf-cancel{flex:1;border:0;border-radius:10px;padding:11px 0;background:#EFE7D8;color:#6B5B45;font-size:15px;cursor:pointer}
-  .kbcf-ok{flex:1;border:0;border-radius:10px;padding:11px 0;background:#3E7C4F;color:#fff;font-size:15px;cursor:pointer}
   #printArea .pa-bar .tfile:disabled{opacity:.55;cursor:default}
   #printArea img{display:block; width:100%; margin:0 auto 10px; border:1px solid #ddd;}
   @media print{
@@ -4982,7 +4973,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2050';
+  var KB_BUILD = '20261023-2057';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5444,7 +5435,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     /* 2026-10-22晚改：连接类请求改走 XMLHttpRequest（与文件本体 PUT 同通道）。
        此前 fetch 在该 iPad 的 webview 里对 /auth、/sign 等小请求会无响应假死（单文件偶合成功、多文件必卡），
        服务器实测 auth/sign 均约 1.2~1.5 秒、与文件数无关。XHR 自带 timeout，报错带步骤名便于定位。 */
-    var STEP = {'/auth': '验证口令', '/upload/sign': '准备上传', '/upload/resign': '续传文件', '/upload/complete': '最后确认', '/print/req': '发送打印'};
+    var STEP = {'/auth': '验证口令', '/upload/sign': '准备上传', '/upload/resign': '续传文件', '/upload/complete': '最后确认'};
     function attempt(){
       return new Promise(function(resolve, reject){
         var xhr = new XMLHttpRequest();
@@ -5845,11 +5836,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   window.requestAnimationFrame(tick);
 })();
 
-/* 练习文件打印（2026-10-22 家长定版）：卡上只有一个「打印XX」按钮，
-   点开打印页（整页图片版式），自动调起系统打印；WebView 里若打印不弹，
-   页内有「分享 PDF」兜底（分享菜单内含打印）。
+/* 练习文件打印（2026-10-22 家长定版）：卡上只有一个「打印XX」按钮。
    2026-10-23 家长真机定版：卡上按钮改走 kbPrintShare「分享 PDF 文件」
-   （见下），本打印页仅作不支持文件分享环境时的降级回退，代码保留不删。 */
+   （见下）；本打印页仅作不支持文件分享环境时的降级回退，页内按钮
+   直接分享 PDF 文件调起系统分享菜单，不自动调用系统打印。 */
 function kbSharePdf(url, name){
   function openPdf(){ alert('当前浏览器不支持分享这份 PDF，请用 Safari 打开看板（whyjjf.lol）后再点打印。'); }
   try {
@@ -5962,104 +5952,10 @@ function kbClosePrint(){
   var pa = document.getElementById('printArea');
   if(pa) pa.innerHTML = '';
 }
-/* ePrint 一键打印（2026-10-22 定稿，设计见 hidden_files/ePrint打印_设计与验证.md）：
-   打印页点「发到打印机」→ 二次确认 → 口令门（无设备令牌先校验，复用补练口令门）
-   → POST homework-upload /print/req（只入队，服务端轮询进程再发邮件到打印机）。
-   结果用 kbToast 反馈：已发送／20 分钟内已打过／今日页数已达上限／降级文案。
-   发送成功后按钮 20 分钟内置灰（localStorage 计时，重开打印页同样生效；与服务端防重窗口同为 20 分钟，A3 对齐）。 */
-var KB_EPRINT_API = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev') + '/print/req';
-function kbEprintGrayKey(grade, file){ return 'kb-eprint-gray:' + grade + ':' + file; }
-function kbEprintGrayed(grade, file){
-  try {
-    var ts = parseInt(localStorage.getItem(kbEprintGrayKey(grade, file)) || '0', 10);
-    return !!ts && (Date.now() - ts) < 20 * 60 * 1000;
-  } catch(e){ return false; }
-}
-function kbEprintMarkSent(grade, file){
-  try { localStorage.setItem(kbEprintGrayKey(grade, file), String(Date.now())); } catch(e){}
-}
-var KB_CF_PENDING = null;
-function kbEnsurePrintConfirm(){
-  var m = document.getElementById('kbcf-mask');
-  if(m) return m;
-  m = document.createElement('div');
-  m.id = 'kbcf-mask';
-  m.className = 'kbcf-mask';
-  m.innerHTML = '<div class="kbcf-card"><div class="kbcf-title">🖨 发到打印机</div>'
-    + '<div class="kbcf-hint"></div>'
-    + '<div class="kbcf-row"><button type="button" class="kbcf-cancel">再想想</button>'
-    + '<button type="button" class="kbcf-ok">确认发送</button></div></div>';
-  document.body.appendChild(m);
-  m.addEventListener('click', function(e){ if(e.target === m) kbHidePrintConfirm(); });
-  m.querySelector('.kbcf-cancel').addEventListener('click', kbHidePrintConfirm);
-  m.querySelector('.kbcf-ok').addEventListener('click', function(){
-    var f = KB_CF_PENDING;
-    kbHidePrintConfirm();
-    if(f) f();
-  });
-  return m;
-}
-function kbAskPrintConfirm(text, onOk){
-  var m = kbEnsurePrintConfirm();
-  m.querySelector('.kbcf-hint').textContent = text;
-  KB_CF_PENDING = onOk;
-  m.classList.add('show');
-}
-function kbHidePrintConfirm(){
-  var m = document.getElementById('kbcf-mask');
-  if(m) m.classList.remove('show');
-  KB_CF_PENDING = null;
-}
-function kbEprintSubmit(file, grade, label, pages, btn, depth){
-  depth = depth || 0;
-  function post(tok){
-    if(btn) btn.disabled = true; /* B10（2026-10-22 三方审查修复）：请求在途禁用按钮，防连点重复请求/堆叠口令框；终局分支再恢复 */
-    fetch(KB_EPRINT_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Device-Token': tok },
-      body: JSON.stringify({ file: file, grade: grade, label: label, pages: pages })
-    }).then(function(resp){
-      return resp.json().catch(function(){ return null; }).then(function(j){ return { status: resp.status, body: j }; });
-    }).then(function(r){
-      if(r.status === 401 && r.body && r.body.code === 'stale_token'){
-        try { localStorage.removeItem('hw-dev-token'); } catch(e){}
-        /* B10：stale 重试最多递归一层，防服务端持续 401 时无限递归 */
-        if(depth < 1){ kbEprintSubmit(file, grade, label, pages, btn, depth + 1); }
-        else { if(btn) btn.disabled = false; kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印'); }
-        return;
-      }
-      if(r.status === 200 && r.body && r.body.result === 'queued'){
-        kbEprintMarkSent(grade, file);
-        if(btn){ btn.disabled = true; btn.textContent = '🖨 已发送到打印机'; }
-        kbToast('已发送到打印机，稍等几分钟就会打出来');
-      } else if(r.status === 200 && r.body && r.body.result === 'duplicate'){
-        var mins = (typeof r.body.minutes_ago === 'number') ? r.body.minutes_ago : 0;
-        if(btn) btn.disabled = false;
-        kbToast(mins + '分钟前打印了，请等待打印～');
-      } else if(r.status === 200 && r.body && r.body.result === 'capped'){
-        if(btn) btn.disabled = false;
-        kbToast('今天打印页数已达上限（20 页），明天再打吧');
-      } else {
-        if(btn) btn.disabled = false;
-        kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
-      }
-    }).catch(function(){
-      if(btn) btn.disabled = false;
-      kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
-    });
-  }
-  var tok = kbPracticeToken();
-  if(tok){ post(tok); return; }
-  kbAskPass(function(){
-    var t2 = kbPracticeToken();
-    if(t2) post(t2);
-    else kbToast('打印通道暂时不可用，请家长手动打开 PDF 打印');
-  }, function(){});
-}
 /* 打印口令门（2026-10-22 家长定）：点卡片上的打印按钮先过口令——
    与提交作业同一体系：本机有设备令牌直接打开打印页；没有令牌先弹
    口令框（复用补练口令门 window.kbAskPass），校验通过存令牌并自动
-   继续打开；口令错在框内报错。打印页内的「发到打印机」另有其口令门。 */
+   继续打开；口令错在框内报错。 */
 /* 已完成任务原图查看器（2026-10-22 家长定，三方定案）。入口按钮在任务卡
    操作区（renderOne 的 origRow），点击先过口令门（与打印/补练同一体系，
    家长追加要求：无设备令牌先弹口令框、通过存令牌后自动打开）。照片清单
@@ -6136,49 +6032,18 @@ function kbEscT(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').rep
 function kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName){
   var pa = document.getElementById('printArea');
   if(!pa) return;
-  var pageCount = Math.max(pages.length, 1);
   var h = '<div class="pa-bar"><span class="pa-title">' + kbEscT(name) + '</span>'
-    + (pdfUrl && fileName ? '<button type="button" class="tfile tprint1" id="paEprint">🖨 发到打印机</button>' : '')
     + '<button type="button" class="tfile" id="paPrint">打印 / 分享文件</button>'
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
-    + '<div class="pa-hint">点「发到打印机」：这份 PDF 会发到家里的打印机自动打印，稍等几分钟。点「打印 / 分享文件」：在弹出菜单中选「保存到文件」，再到「文件」App 打开这份 PDF，点分享选「打印」。</div>';
+    + '<div class="pa-hint">点「打印 / 分享文件」：会调起系统分享菜单，请在菜单中选「打印」。</div>';
   pages.forEach(function(u){ h += '<img src="' + kbEscT(u) + '" alt="练习页">'; });
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
   pa.scrollTop = 0;
-  function go(){ try { window.print(); } catch(e){} }
-  function goWithFallback(){
-    var fired = false;
-    function onBP(){ fired = true; window.removeEventListener('beforeprint', onBP); }
-    window.addEventListener('beforeprint', onBP);
-    go();
-    setTimeout(function(){
-      window.removeEventListener('beforeprint', onBP);
-      if(!fired && pdfUrl) kbSharePdf(pdfUrl, name);
-    }, 700);
-  }
-  var imgs = pa.querySelectorAll('img'), left = imgs.length;
-  if(!left) setTimeout(go, 200);
-  imgs.forEach(function(im){
-    function done(){ if(--left === 0) setTimeout(go, 250); }
-    if(im.complete) done();
-    else { im.addEventListener('load', done); im.addEventListener('error', done); }
-  });
   document.getElementById('paClose').addEventListener('click', kbClosePrint);
-  document.getElementById('paPrint').addEventListener('click', goWithFallback);
-  var ep = document.getElementById('paEprint');
-  if(ep){
-    if(kbEprintGrayed(gradeName, fileName)){
-      ep.disabled = true;
-      ep.textContent = '🖨 已发送（20 分钟内不可重复）';
-    }
-    ep.addEventListener('click', function(){
-      if(ep.disabled) return;
-      kbAskPrintConfirm('把「' + name + '」发到家里的打印机打印吗？共 ' + pageCount + ' 页。', function(){
-        kbEprintSubmit(fileName, gradeName, name, pageCount, ep);
-      });
-    });
-  }
+  document.getElementById('paPrint').addEventListener('click', function(){
+    if(pdfUrl) kbSharePdf(pdfUrl, fileName || name);
+  });
 }
 document.addEventListener('click', function(e){
   var b = (e.target && e.target.closest) ? e.target.closest('[data-print1]') : null;
