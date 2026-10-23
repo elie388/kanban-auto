@@ -1,1 +1,29 @@
-{"schema_version": "1.0", "grade": 5, "items": []}
+{
+ "schema_version": "1.0",
+ "grade": 5,
+ "generated_at": "2026-10-23T17:56:39+08:00",
+ "items": [
+  {
+   "date": "2026-10-23",
+   "completed": [
+    "53天天练·语文",
+    "校本及12课"
+   ],
+   "knowledge_points": [
+    "小数乘法",
+    "近义词辨析"
+   ],
+   "points": [
+    {
+     "desc": "作业完成分",
+     "delta": 10
+    },
+    {
+     "desc": "迟交",
+     "delta": -3
+    }
+   ],
+   "encouragement": "今天小数乘法稳多了，继续加油！"
+  }
+ ]
+}
