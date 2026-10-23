@@ -659,6 +659,10 @@
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
+  /* 批改反馈子块标题放大（2026-10-23 晚家长更正口径：「和学习小结一样大」＝仅字号/字重对齐 .cb-title，
+     批改反馈仍留在学习小结卡内为子块，不独立成栏；字重随 .cb-title 的 700、字号含 ≥1024px 的 24px 镜像） */
+  #feedback-toggle .sub-head-t{font-size:22px; font-weight:700;}
+  @media(min-width:1024px){ #feedback-toggle .sub-head-t{font-size:24px;} }
   .sub-chev{font-size:13px; color:var(--sub);}
 
   /* 规则列表 */
@@ -4906,7 +4910,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2156';
+  var KB_BUILD = '20261023-2212';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
