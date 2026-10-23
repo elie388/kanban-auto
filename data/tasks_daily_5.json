@@ -85,7 +85,7 @@
       "task_type": "meta_register",
       "subject": "登记本",
       "title": "提交作业登记本",
-      "detail": "拍登记本照片发回年级邮箱",
+      "detail": "在看板上传登记本照片",
       "estimate_min": null,
       "status": "done",
       "review_status": "approved",
