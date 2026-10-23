@@ -25,7 +25,7 @@ from datetime import datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sync_sections as ss  # noqa: E402
 
-BASIC_ITEMS = ("洗碗", "扫地", "拖地", "晾衣服", "晾袜子", "整理桌面")
+BASIC_ITEMS = ("洗碗", "扫地", "拖地", "晾衣服", "晾袜子", "洗衣服", "整理桌面")
 PSEUDO_ITEMS = ("其他（连做链）",)
 GNAME = {"g5": "五年级", "g6": "六年级"}
 

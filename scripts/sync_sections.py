@@ -247,8 +247,8 @@ BIAODA_EFFECTIVE = "2026-10-26"    # 表达之星正式计数起日（下个完�
 
 EVENT_BADGES = {"quanduizhixing", "baifentupo", "sanheyi", "xiaolvxiaoshandian",
                 "dancizhixing", "moxiezhixing", "jiawuxiaobangshou", "jinbumiao"}
-CHORE_KEY_TOKENS = ("xiwan", "saodi", "tuodi", "liangyifu", "liangwazi", "zhengli")
-CHORE_DESC_ITEMS = ("洗碗", "扫地", "拖地", "晾衣服", "晾袜子", "整理桌面", "晾衣")
+CHORE_KEY_TOKENS = ("xiwan", "saodi", "tuodi", "liangyifu", "liangwazi", "xiyifu", "zhengli")
+CHORE_DESC_ITEMS = ("洗碗", "扫地", "拖地", "晾衣服", "晾袜子", "洗衣服", "整理桌面", "晾衣")
 KEY_FULL_RE = re.compile(r"<!--\s*key:\s*(.*?)\s*-->")
 CAT_RE = re.compile(r"【规则归类[:：]\s*([^】]+)】")
 BATCH_MARK_RE = re.compile(r"第\s*[0-9０-９一二三四五六七八九十]+\s*[-—~～]\s*[0-9０-９一二三四五六七八九十]+\s*页|第\s*[0-9０-９]+\s*页")
