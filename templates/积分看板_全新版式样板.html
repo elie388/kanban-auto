@@ -134,13 +134,14 @@
   .odo--anim .odo-strip{transition-property:transform; transition-duration:450ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
   .bal-sub{font-size:13px; opacity:.9; overflow:hidden; white-space:nowrap;}
-  /* 余额卡鼓励文案单行跑马灯（2026-10-23 家长定，取代 2026-10-22 逗号断两行排版；2026-10-23 家长二次改定）：
-     一行显示，从右到左滚动一遍 5s linear、滚完完全移出不显示、循环重复（infinite）。
+  /* 余额卡鼓励文案单行跑马灯（2026-10-23 家长定，取代 2026-10-22 逗号断两行排版；2026-10-23 家长三次改定）：
+     一行显示，总周期 38s 循环（infinite）：从右到左匀速滚动 8s、滚完完全移出消失、消失状态停 30s 后再滚下一遍。
+     关键帧分段：0% 在卡外右侧 translateX(100%)，21.05%（=8/38）到达 translateX(-100%) 完全移出，21.05%→100% 保持 -100% 不动。
      track min-width:100%：短文案时 track 宽=卡宽、长文案时 track 宽=文宽；
      translateX(100%) 整段在卡外右侧待入场，translateX(-100%) 右缘恰抵容器左缘、整段完全移出不可见。
      只改呈现，文案内容与 bal_sub 生成逻辑不动。 */
-  .bal-sub-track{display:inline-block; min-width:100%; white-space:nowrap; animation-name:balSubScroll; animation-duration:5s; animation-timing-function:linear; animation-iteration-count:infinite;}
-  @keyframes balSubScroll{from{transform:translateX(100%);} to{transform:translateX(-100%);}}
+  .bal-sub-track{display:inline-block; min-width:100%; white-space:nowrap; animation-name:balSubScroll; animation-duration:38s; animation-timing-function:linear; animation-iteration-count:infinite;}
+  @keyframes balSubScroll{0%{transform:translateX(100%);} 21.05%{transform:translateX(-100%);} 100%{transform:translateX(-100%);}}
   @media (prefers-reduced-motion: reduce){
     /* 减少动态效果：不滚动，静态单行，超长在 track 内截断省略 */
     .bal-sub-track{animation:none; display:block; overflow:hidden; text-overflow:ellipsis;}
@@ -4986,7 +4987,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2122';
+  var KB_BUILD = '20261023-2127';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
