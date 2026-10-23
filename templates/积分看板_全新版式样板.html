@@ -182,7 +182,8 @@
   .fb-qa-a{background:#F4F8EE; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
   .fb-qa-tag{font-weight:700; font-size:12px; color:#66707C;}
   /* 任务项催促（2026-10-23 家长改定：催促改任务项、不再邮件催） */
-  .task-urge{margin-top:6px; background:#FDECEA; color:#B3261E; border:1px solid #F5C6C0; border-radius:9px; padding:6px 10px; font-size:13.5px; font-weight:700; line-height:1.5;}
+  .task-urge{margin-top:6px; color:#B3261E; font-size:13.5px; font-weight:700; line-height:1.5;}
+  .urge-mute{margin-left:8px; font-size:12px; font-weight:600; color:#8A4B45; background:#fff; border:1px solid #E5C4C0; border-radius:999px; padding:2px 9px; cursor:pointer;}
 
   /* 今日任务 */
   .task-section{margin-bottom:18px;}
@@ -993,6 +994,13 @@
 </style>
 <script>/* 口令门早锁（2026-10-23 选项1）：无设备令牌先给 <html> 上 kb-locked，避免详情闪现；门逻辑在文末 script 块 */
 try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classList.add('kb-locked'); } catch (e) {}</script>
+<style>
+  /* 任务催促整卡闪烁（2026-10-23 家长定、DeepSeek 有条件赞成）：只动边框与底色、文字按钮静止；周期2s；reduced-motion 静止；JS 侧同屏最多3卡动、20分钟转静态、可单卡暂停 */
+  .task.urging{border:2px solid #E5484D !important;}
+  .task.urging:not(.urging-static){animation:urgePulse 2s ease-in-out infinite;}
+  @keyframes urgePulse{0%,100%{background-color:#FFF7F5; box-shadow:0 0 0 0 rgba(229,72,77,0);}50%{background-color:#FDE3E1; box-shadow:0 0 0 3px rgba(229,72,77,.30);}}
+  @media (prefers-reduced-motion: reduce){ .task.urging{animation:none !important; background-color:#FDECEA;} }
+</style>
 </head>
 <body>
 <div class="ptr-bar" id="ptr-bar" aria-hidden="true"><span class="ptr-ico" id="ptr-ico">↓</span><span id="ptr-txt">下拉刷新</span></div>
@@ -1516,6 +1524,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     /* meta 置顶；完成后当天一直显示（2026-10-22 家长改定，取消原「完成超 30 分钟隐藏」：
        伟豪当天 12:05 就交完登记本，卡 12:35 后消失、家长下午看不到；任务数据本来就是当天的，第二天自然不在列表） */
     var visible = [];
+    var urgeAnimCount = 0;
     metas.forEach(function(t){
       visible.push(t);
     });
@@ -1640,10 +1649,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if((t.carry_count || t.carried_from) && (t.status === 'submitted' || t.status === 'grading')){
           carryTag = '<span class="carry-tag">待批改</span>';
         }
-        html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
+        /* 催促整卡闪烁（2026-10-23）：未完成才闪；单卡暂停（localStorage）与同屏上限在渲染时定格 */
+        var urgCls = '';
+        if(t.urge && t.urge.text && t.status !== 'done'){
+          var urgMuted = false;
+          try { urgMuted = localStorage.getItem('kb-urge-mute-' + (t.task_id || '')) === '1'; } catch (e) {}
+          if(urgMuted || urgeAnimCount >= 3){ urgCls = 'urging urging-static'; }
+          else { urgCls = 'urging'; urgeAnimCount++; }
+        }
+        html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + (urgCls ? ' ' + urgCls : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeText + '</span>' + miniPill + carryTag + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
-          + ((t.urge && t.urge.text && t.status !== 'done') ? '<div class="task-urge">⏰ ' + esc(t.urge.text) + '</div>' : '')
+          + ((t.urge && t.urge.text && t.status !== 'done') ? '<div class="task-urge">⏰ ' + esc(t.urge.text) + '<button type="button" class="urge-mute" data-urge-mute="' + esc(t.task_id || '') + '">暂停闪烁</button></div>' : '')
           + '<div class="task-progress">' + sub2 + '</div></div>'
           + toggleBtn + '</div>'
           + corrBadge + corrPanel
@@ -2700,6 +2717,20 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(tag) tag.textContent = '暂时无法连接';
     });
   }
+
+  /* ---------- 催促闪烁：暂停与超时转静态（2026-10-23） ---------- */
+  document.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('[data-urge-mute]') : null;
+    if(!b) return;
+    var tid = b.getAttribute('data-urge-mute') || '';
+    try { localStorage.setItem('kb-urge-mute-' + tid, '1'); } catch (err) {}
+    var card = b.closest('.task');
+    if(card) card.classList.add('urging-static');
+    b.remove();
+  });
+  setTimeout(function(){
+    document.querySelectorAll('.task.urging:not(.urging-static)').forEach(function(el){ el.classList.add('urging-static'); });
+  }, 20 * 60 * 1000);
 
   /* ---------- 启动 ---------- */
   function boot(){
@@ -4677,7 +4708,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1950';
+  var KB_BUILD = '20261023-2015';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
