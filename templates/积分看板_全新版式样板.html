@@ -175,6 +175,13 @@
   .fb-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
   .fb-title{font-weight:800; font-size:15px; margin-bottom:2px;}
   .fb-time{font-size:12px; color:#77808C; margin-bottom:6px;}
+  /* 批改反馈条目级开合（2026-10-23 家长定：默认收起、点标题行才展开，仿今日任务卡口径；标题行不带孩子名，年级标签在栏目上方已有） */
+  .fb-head{display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; box-sizing:border-box; background:none; border:0; padding:0; margin:0; cursor:pointer; text-align:left; font:inherit; color:inherit; -webkit-tap-highlight-color:transparent;}
+  .fb-head-main{min-width:0;}
+  .fb-head .fb-title{margin-bottom:2px;}
+  .fb-head .fb-time{margin-bottom:0;}
+  .fb-chev{flex:0 0 auto; font-size:12.5px; font-weight:700; color:#66707C; background:#F1F3F5; border-radius:999px; padding:4px 11px; white-space:nowrap;}
+  .fb-body{margin-top:8px;}
   .fb-html{font-size:14px; line-height:1.75;}
   .fb-html p{margin:6px 0;}
   .fb-html img{max-width:100%; border-radius:8px;}
@@ -2732,6 +2739,23 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   /* ---------- 批改反馈（2026-10-23 全搬） ---------- */
   var fbNewest = { 5: '', 6: '' };
+  /* 条目级开合（2026-10-23 家长定：每条默认收起、点标题行才展开，仿今日任务 OPEN_TASK 按条目记忆、独立 key；
+     标题行只留标题＋时间＋展开钮，不带孩子名（年级标签在栏目上方已有），正文内原有称呼不动。
+     反馈条目无独立 id，以「年级|ts|标题|正文长度」指纹为 key；状态存 localStorage 且键带本地日期——
+     当日软刷新/重载保持，次日自动回默认全收起（与年级段折叠同口径）。锁区登记：.fb-head 为 panel-feedback
+     内二级开关，可见性从属于 btn-feedback 父栏目，回锁收口按一般口径不单独复位（父区 CSS 硬隐藏兜底）。 */
+  var OPEN_FB = {};
+  function fbStoreKey(){
+    var d = new Date();
+    function p(n){ return (n < 10 ? '0' : '') + n; }
+    return 'kb-open-fb-' + d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  }
+  function fbLoadState(){ try { OPEN_FB = JSON.parse(localStorage.getItem(fbStoreKey()) || '{}') || {}; } catch (e) { OPEN_FB = {}; } }
+  function fbSaveState(){ try { localStorage.setItem(fbStoreKey(), JSON.stringify(OPEN_FB)); } catch (e) {} }
+  fbLoadState();
+  function fbKeyOf(grade, it){
+    return grade + '|' + (it.ts || '') + '|' + (it.title || (it.kind === 'qa' ? 'qa' : '')) + '|' + String((it.html || it.q || '').length);
+  }
   function renderFeedback(grade, items){
     var wrap = document.querySelector('#fb-g' + grade + ' .fb-items');
     if(!wrap) return;
@@ -2741,19 +2765,47 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     var html = '';
     items.forEach(function(it){
-      html += '<div class="fb-item">';
+      var key = fbKeyOf(grade, it);
+      var open = !!OPEN_FB[key];
+      html += '<div class="fb-item' + (open ? ' open-fb' : '') + '" data-fbk="' + sumEsc(key) + '">'
+        + '<button class="fb-head" type="button" aria-expanded="' + (open ? 'true' : 'false') + '">'
+        + '<span class="fb-head-main">';
       if(it.kind === 'qa'){
-        html += '<div class="fb-title">💬 提问回复</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
-          + '<div class="fb-qa-q"><span class="fb-qa-tag">你问：</span>' + sumEsc(it.q || '') + '</div>'
+        html += '<div class="fb-title">💬 提问回复</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
+      } else {
+        html += '<div class="fb-title">' + sumEsc(it.title || '批改反馈') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
+      }
+      html += '</span><span class="fb-chev" aria-hidden="true">' + (open ? '收起 ▴' : '展开 ▾') + '</span></button>'
+        + '<div class="fb-body"' + (open ? '' : ' hidden') + '>';
+      if(it.kind === 'qa'){
+        html += '<div class="fb-qa-q"><span class="fb-qa-tag">你问：</span>' + sumEsc(it.q || '') + '</div>'
           + '<div class="fb-qa-a"><span class="fb-qa-tag">回复：</span><div class="fb-html">' + (it.a_html || '') + '</div></div>';
       } else {
-        html += '<div class="fb-title">' + sumEsc(it.title || '批改反馈') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
-          + '<div class="fb-html">' + (it.html || '') + '</div>';
+        html += '<div class="fb-html">' + (it.html || '') + '</div>';
       }
-      html += '</div>';
+      html += '</div></div>';
     });
     wrap.innerHTML = html;
   }
+  function toggleFbItem(item){
+    var body = item.querySelector('.fb-body');
+    var head = item.querySelector('.fb-head');
+    if(!body || !head) return;
+    var open = !!body.hidden;
+    body.hidden = !open;
+    item.classList.toggle('open-fb', open);
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var chev = head.querySelector('.fb-chev');
+    if(chev) chev.textContent = open ? '收起 ▴' : '展开 ▾';
+    var key = item.getAttribute('data-fbk');
+    if(key){ if(open) OPEN_FB[key] = 1; else delete OPEN_FB[key]; fbSaveState(); }
+  }
+  document.addEventListener('click', function(e){
+    var head = e.target && e.target.closest ? e.target.closest('.fb-head') : null;
+    if(!head) return;
+    var item = head.closest ? head.closest('.fb-item') : null;
+    if(item) toggleFbItem(item);
+  });
   function fbDotUpdate(){
     var dot = $('feedback-dot');
     if(!dot) return;
@@ -4853,7 +4905,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1932';
+  var KB_BUILD = '20261023-2006';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
