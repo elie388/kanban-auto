@@ -1165,9 +1165,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <div class="grade-head"><span class="pill-grade g6">伟豪</span>成就</div>
       <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
-      </div></div>
+      </div>
     <!-- 徽章目标榜（2026-10-23 并入本周徽章·子块，DeepSeek 裁定二级开关 (b) 默认收起）：
-         结构红线——本子块必须位于 renderBadges 所有的 .collapse-pad 之外、其后：
+         结构红线——本子块必须位于 renderBadges 所有的 .collapse-pad 之外、其后，
+         且必须位于 .collapse-inner 之内（2026-10-23 真机缺陷修正：曾置于 inner 之外、body 之内，父栏收起时头行外露）：
          renderBadges 以 '#panel-achieve .collapse-pad' 整表重建（文档序首中＝徽章 pad），
          renderGoals 以 '#panel-lib .collapse-pad' 整表重建（仅子块内层 pad），互不误清；
          调换此文档序前必须先改两渲染器选择器，并重跑"两数据到达顺序互换"验收。 -->
@@ -1183,6 +1184,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         </div>
       </div>
     </div>
+      </div>
     </div>
   </section>
 
@@ -4847,7 +4849,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2021';
+  var KB_BUILD = '20261023-1923';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
