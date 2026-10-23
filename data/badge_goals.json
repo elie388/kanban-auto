@@ -460,10 +460,10 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 0,
+    "obtained": true,
+    "date": "2026-10-21",
+    "count": 1,
+    "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -706,5 +706,5 @@
   ]
  },
  "cycle_week": "2026-W43",
- "generated_at": "2026-10-23T21:13:06+08:00"
+ "generated_at": "2026-10-23T21:16:57+08:00"
 }
