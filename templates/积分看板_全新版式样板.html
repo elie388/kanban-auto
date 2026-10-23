@@ -1050,7 +1050,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </div>
   </section>
 
-  <!-- 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件）：孩子版脱敏近3天（公开数据）；家长版凭独立家长令牌经 hw-api 私有拉取、不进公开仓库 -->
+  <!-- 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件）：孩子版近3天（公开数据，2026-10-23晚家长改定不脱敏）；家长版凭独立家长令牌经 hw-api 私有拉取、不进公开仓库 -->
   <section class="card collapse" aria-label="学习小结">
     <span class="tag-demo" id="summary-tag">离线数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-summary" id="btn-summary">
@@ -4581,7 +4581,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-1851';
+  var KB_BUILD = '20261023-1905';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
