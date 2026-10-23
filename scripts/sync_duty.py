@@ -129,12 +129,41 @@ def read_sync_state():
         return None
 
 
+def grading_stay_event(st):
+    """H6 批改停留检查段（2026-10-23）：只读调用 hidden_files/scripts/
+    grading_stay_check.py --json，有 grading 卡停留超 60 分钟才产事件；
+    以 task_id@updated_at 签名去重（同一批卡不重复报，成员/时刻变化
+    才再报）。子脚本缺失/失败/超时一律静默跳过，不影响主决策。"""
+    script = os.path.join(BASE, "..", "scripts", "grading_stay_check.py")
+    try:
+        r = subprocess.run([sys.executable, script, "--json"],
+                           capture_output=True, text=True, timeout=60)
+        rows = json.loads(r.stdout or "[]")
+    except Exception:
+        return []
+    if not rows:
+        st.pop("grading_stay_sig", None)
+        return []
+    sig = "|".join(sorted("%s@%s" % (x.get("task_id"), x.get("updated_at"))
+                          for x in rows))
+    if st.get("grading_stay_sig") == sig:
+        return []
+    st["grading_stay_sig"] = sig
+    desc = "；".join("%s %s「%s」（停留%s分钟）"
+                     % (x.get("grade"), x.get("task_id"),
+                        (x.get("title") or "")[:16], x.get("stay_minutes"))
+                     for x in rows[:5])
+    return [{"script": "grading_stay_check", "kind": "grading_stay",
+             "msg": "批改停留超60分钟 %d 张：%s" % (len(rows), desc)}]
+
+
 def main():
     st = load_state()
     stats_code = run_script("build_stats.py")
     sync = read_sync_state()
     sec_code = run_script("sync_sections.py")
     events = decide(st, stats_code, sec_code, sync, time.time())
+    events += grading_stay_event(st)
     save_state(st)
     print("DECISION " + ("report" if events else "silent"))
     print(json.dumps({"events": events,
