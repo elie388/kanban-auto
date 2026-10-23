@@ -190,9 +190,9 @@
       "source": "register_book",
       "subject": "英语",
       "title": "口语阅读（原字迹近\"口物阅读\"，字迹待确认）。",
-      "detail": "待补录音（19:14收到口语易App截图：今日任务\"口语易已完成/任务已提交\"，开始11:16；按DeepSeek 2026-10-22裁定截图不算\"发回\"，需补交朗读录音；任务保持未完成）",
+      "detail": "已完成（19:14收到口语易App截图：今日任务\"口语易已完成/任务已提交\"，开始11:16，截图内完成日期与今日2026-10-23对应；依据家长2026-10-23裁定：口语易截图核对日期算完成，覆盖DeepSeek 2026-10-22\"截图不算发回\"裁定）",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
@@ -201,8 +201,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-23T19:18:00+08:00",
-      "task_type": "reading"
+      "updated_at": "2026-10-23T19:23:42+08:00",
+      "task_type": "reading",
+      "completed_at": "2026-10-23T19:23:42+08:00"
     },
     {
       "task_id": "PRACT-20261023-569ED6",
