@@ -38,7 +38,6 @@ sys.path.insert(0, SCRIPT_DIR)
 import _assert_lib
 from build_kanban import simplify_desc  # 只读复用，不得私改（§5.2）
 import sync_balance as sb  # M1（2026-10-20）：复用 norm_date，统一日期归一口径
-import bal_sub  # 余额卡小字文案生成（2026-10-22 家长定脚本化，目录增减自动更新）
 import catalog  # 目录单一数据源（shop_catalog.json / badges.json）
 
 LEDGER = os.environ.get(
@@ -371,7 +370,6 @@ def build_stats(grade, rows, ledger_sha16, today, generated_at):
         "schema_version": "1.0",
         "grade": grade,
         "balance": last["balance"],
-        "bal_sub": bal_sub.compute_bal_sub(grade, last["balance"], SHOP_TIERS),
         "today_delta": _today_delta,
         "tier_prev": _prev_t,
         "tier_next": _next_t,

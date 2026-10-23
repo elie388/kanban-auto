@@ -133,19 +133,7 @@
   .odo-strip > span{display:block; height:1em; line-height:1em; text-align:center;}
   .odo--anim .odo-strip{transition-property:transform; transition-duration:450ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
-  .bal-sub{font-size:13px; opacity:.9; overflow:hidden; white-space:nowrap;}
-  /* 余额卡鼓励文案单行跑马灯（2026-10-23 家长定，取代 2026-10-22 逗号断两行排版；2026-10-23 家长三次改定）：
-     一行显示，总周期 38s 循环（infinite）：从右到左匀速滚动 8s、滚完完全移出消失、消失状态停 30s 后再滚下一遍。
-     关键帧分段：0% 在卡外右侧 translateX(100%)，21.05%（=8/38）到达 translateX(-100%) 完全移出，21.05%→100% 保持 -100% 不动。
-     track min-width:100%：短文案时 track 宽=卡宽、长文案时 track 宽=文宽；
-     translateX(100%) 整段在卡外右侧待入场，translateX(-100%) 右缘恰抵容器左缘、整段完全移出不可见。
-     只改呈现，文案内容与 bal_sub 生成逻辑不动。 */
-  .bal-sub-track{display:inline-block; min-width:100%; white-space:nowrap; animation-name:balSubScroll; animation-duration:38s; animation-timing-function:linear; animation-iteration-count:infinite;}
-  @keyframes balSubScroll{0%{transform:translateX(100%);} 21.05%{transform:translateX(-100%);} 100%{transform:translateX(-100%);}}
-  @media (prefers-reduced-motion: reduce){
-    /* 减少动态效果：不滚动，静态单行，超长在 track 内截断省略 */
-    .bal-sub-track{animation:none; display:block; overflow:hidden; text-overflow:ellipsis;}
-  }
+  /* 余额卡鼓励文案行已按家长 2026-10-23 令整行删除：元素/CSS/填充逻辑全删，不留占位 */
   /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，DeepSeek分档口径）：今日变化标/分档刻度条/负分态 */
   .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0 9px; border-radius:999px; background:rgba(255,255,255,.22); color:#fff;}
   .bal-today.pos{background:rgba(46,125,50,.45);}
@@ -320,8 +308,7 @@
   html.kb-locked .task-section .task-list, html.kb-locked .task-section .yd-zone{display:none !important;}
   html.kb-locked .task-head::after{content:'🔐';font-size:14px;margin-left:6px;}
   html.kb-locked .collapse-btn::after{content:'🔐';font-size:14px;margin-left:6px;}
-  /* 锁定态概览打码（2026-10-23 家长拍板 DeepSeek 混合案）：鼓励语与今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
-  html.kb-locked .bal-sub{display:none !important;}
+  /* 锁定态概览打码（2026-10-23 家长拍板 DeepSeek 混合案）：今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
   html.kb-locked .task-prog{display:none !important;}
   /* 姓名防闪现（2026-10-23 Muse 补修）：锁定态且打码尚未执行（kb-masked 未置）时姓名与 pill 先不可见，kbApplyMask 替换为星号形后才显示，消除冷加载解析窗口的明文闪现；visibility 保留布局不跳版 */
   html.kb-locked:not(.kb-masked) .bal-name, html.kb-locked:not(.kb-masked) .pill-grade{visibility:hidden !important;}
@@ -1039,14 +1026,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看彦均积分日志">
       <div class="bal-name">彦均</div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
-      <div class="bal-sub"><span class="bal-sub-track">继续加油攒分！</span></div>
       <div class="bal-today" hidden></div>
       <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
     <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看伟豪积分日志">
       <div class="bal-name">伟豪</div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
-      <div class="bal-sub"><span class="bal-sub-track">高分冲刺中！</span></div>
       <div class="bal-today" hidden></div>
       <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
@@ -2341,20 +2326,6 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var num = card ? card.querySelector('.bal-num') : null;
       if(!num) throw new Error('no bal-num');
       window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
-      var sub = card ? card.querySelector('.bal-sub') : null;
-      /* 锁定态打码双保险：.bal-sub 已被 CSS 整行隐藏，此处再跳过写入，不让真实鼓励语落进 DOM 文本 */
-      if(sub && !kbLocked() && typeof d.bal_sub === 'string' && d.bal_sub){
-        /* 排版（2026-10-23 家长改定）：单行跑马灯，不再按中文逗号断两行（取代 2026-10-22 两行排版）。
-           只更新 track 的文本、不重建节点：CSS 动画绑在节点上循环滚动，换文本不重播、不重置动画相位。 */
-        var track = sub.querySelector('.bal-sub-track');
-        if(!track){
-          track = document.createElement('span');
-          track.className = 'bal-sub-track';
-          sub.textContent = '';
-          sub.appendChild(track);
-        }
-        track.textContent = d.bal_sub;
-      }
       renderBalExtras(card, d);
       var si = srcInfo[name];
       if(si && si.fromCache){
@@ -4917,7 +4888,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261023-2140';
+  var KB_BUILD = '20261023-2150';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
