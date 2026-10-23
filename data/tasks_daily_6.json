@@ -3,11 +3,11 @@
   "date": "2026-10-23",
   "grade": "六年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T19:00:37+08:00",
+  "updated_at": "2026-10-23T19:01:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-23T16:55:33+08:00",
+      "ingested_at": "2026-10-23T19:01:16+08:00",
       "new_lines": 0
     },
     "targeted_practice": {

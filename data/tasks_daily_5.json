@@ -3,12 +3,12 @@
   "date": "2026-10-23",
   "grade": "五年级",
   "generated_at": "2026-10-23T00:05:10+08:00",
-  "updated_at": "2026-10-23T19:00:37+08:00",
+  "updated_at": "2026-10-23T19:01:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-23T16:55:32+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-23T19:01:16+08:00",
+      "new_lines": 6
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -87,19 +87,129 @@
       "title": "提交作业登记本",
       "detail": "拍登记本照片发回年级邮箱",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-23T16:55:41+08:00",
-      "updated_at": "2026-10-23T16:55:41+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-23T19:01:16+08:00",
+      "completed_at": "2026-10-23T19:01:16+08:00"
+    },
+    {
+      "task_id": "REG-20261023-EAE721",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "小状元练习册（三）（该条被涂黑，仅余此可辨）。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①小状元练习册（三）（该条被涂黑，仅余此可辨）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:01:16+08:00"
+    },
+    {
+      "task_id": "REG-20261023-B96F50",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字13课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:01:16+08:00"
+    },
+    {
+      "task_id": "REG-20261023-2C714C",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本13课比照红笔错题",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:01:16+08:00"
+    },
+    {
+      "task_id": "REG-20261023-CC9E78",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校对9-13课校本（红笔改正）。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:01:16+08:00"
+    },
+    {
+      "task_id": "REG-20261023-71C90B",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "试卷打印",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:01:16+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261023-8D1EA8",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语阅读（原字迹近\"口物阅读\"，字迹待确认）。",
+      "detail": "原状态：待完成（无佐证照片）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成（无佐证照片）",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:01:16+08:00",
+      "updated_at": "2026-10-23T19:01:16+08:00",
+      "task_type": "reading"
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 11,
+    "pending": 10,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
