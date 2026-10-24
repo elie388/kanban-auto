@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-24T18:09:37+08:00",
+  "generated_at": "2026-10-24T18:10:56+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -17,6 +17,33 @@
       "filtered": false,
       "backfill": true,
       "posted_date": "10-24"
+    },
+    {
+      "date": "10-24",
+      "time": "18:10",
+      "time_source": "entry",
+      "reason": "针对性练习完成分",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "18:10",
+      "time_source": "entry",
+      "reason": "针对性练习正确率分·语文",
+      "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "18:10",
+      "time_source": "entry",
+      "reason": "针对性练习正确率分·数学",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
     },
     {
       "date": "10-24",
