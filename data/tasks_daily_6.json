@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T18:03:53+08:00",
+  "updated_at": "2026-10-24T18:20:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -94,12 +94,12 @@
       "detail": "Word：六年级针对性练习_2026-10-23.docx，按今日练习清单完成",
       "kousuan": [],
       "estimate_min": 30,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-24T17:23:58+08:00",
+      "updated_at": "2026-10-24T18:20:11+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-23.pdf",
@@ -111,7 +111,66 @@
       "carried_from": "2026-10-23",
       "carry_count": 1,
       "recite_text": "语文背诵：《观书有感》（其二）\n半亩方塘一鉴开，天光云影共徘徊。\n问渠那得清如许？为有源头活水来。\n英语口语：请围绕“A busy street”主题进行看图说话练习，录音时长控制在1分钟以内。\n提示问题：1. What can you see on the busy street? 2. What are the people doing? 3. How do you feel about this busy street?\n语音语调自然，声音洪亮，句子连贯，无明显语法错误。",
-      "status_source": "realtime"
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "针对性练习10-23 语文(3)",
+          "question": "下面一段短文中有一处语病，请找出并修改。①为了丰富同学们的课余生活，学校开展了各项文体活动。②在活动中，使大家锻炼了身体，也磨炼了意志。③同学们纷纷表示，今后一定要再接再厉。第（ ）处语病修改为：____________________",
+          "reason": "②处找对了，但改法不对：②句缺主语，换关联词没有解决缺主语的问题；错因是没抓住缺主语本质",
+          "hint": "①再读②句，找找这句话的主语去哪了？②缺主语的句子，要删掉一个多余的字。③“使”字让“大家”做不了主语，删掉它再读读看？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "针对性练习10-23 语文(5)-4",
+          "question": "选字填空：【扬杨汤】沸（ ）",
+          "reason": "沸空用字错误：扬/汤形近混淆（放大复核确认提手旁）",
+          "hint": "①想想“沸”字常和什么连在一起？②沸字组词和水开有关。③两个候选字一个是提手旁、一个是三点水，哪个和水有关？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "针对性练习10-23 英语(10)-2",
+          "question": "用所给词的正确形式填空：Look! The children ________ (play) games in the park.",
+          "reason": "错因：Look!提示现在进行时，复数主语的 be 动词形式不对",
+          "hint": "①Look!在提醒你什么时态？②现在进行时。③主语children是复数，be动词用哪个？动词后面要加什么？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "针对性练习10-23 英语(11)-2",
+          "question": "用所给词的正确形式填空：There ________ (be) a lot of books on the desk ten years ago.",
+          "reason": "错因：ten years ago 提示过去时，be 动词的时态不对",
+          "hint": "①ten years ago是现在还是以前？②过去时。③a lot of books是单数还是复数？过去时的be动词复数形式是？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "针对性练习10-23 英语(12)-4",
+          "question": "阅读短文，用所给词的适当形式填空：Now he ________ (read) a book in the study.",
+          "reason": "错因：Now 提示现在进行时，动词形式不对",
+          "hint": "①Now在提醒你什么时态？②现在进行时。③he是单数，be动词用什么？动词后面要加什么？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "针对性练习10-23 英语(12)-5",
+          "question": "阅读短文，用所给词的适当形式填空：He ________ (want) to be a writer in the future.",
+          "reason": "错因：表意愿用一般现在时，he 后动词形式不对",
+          "hint": "①“想当作家”是现在的愿望，还是过去的事？②一般现在时。③he后面动词要变什么形式？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "针对性练习10-23 小练笔(15)",
+          "question": "题目：观察今晚家里的一件小事，写 100-200 字片段，要求语句通顺、没有语病。",
+          "reason": "①“大家拿手里拿着饮料”拿字重复；②“其它人”用字不当",
+          "hint": "①读读“大家拿手里拿着饮料”这句，有没有哪个动作词出现了两次？②有两个读音一样的词，查一查指人的时候规范写法是哪个？",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "pending_corrections": 7
     },
     {
       "task_id": "REG-20261023-FF4D78",
@@ -438,7 +497,7 @@
   "counts": {
     "total": 16,
     "pending": 1,
-    "in_progress": 8,
+    "in_progress": 9,
     "done": 1,
     "pending_review": 0
   },
