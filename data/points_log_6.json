@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-24T12:22:17+08:00",
+  "generated_at": "2026-10-24T16:05:49+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -17,6 +17,96 @@
       "filtered": false,
       "backfill": true,
       "posted_date": "10-24"
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "作文完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "作文语病组错",
+      "pts": -6,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "作文错字个",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "作文写作涂改×15处",
+      "pts": -15,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "数学思考题P1第2题面积订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "数学思考题P1第5题半圆周长订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "数学订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "英语校本P20一.1订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "英语校本P20三.5订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "英语订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
     },
     {
       "date": "10-24",
