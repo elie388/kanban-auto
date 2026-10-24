@@ -15,6 +15,13 @@
    "subject": "英语",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-85311E",
+   "title": "看《项链》",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }
