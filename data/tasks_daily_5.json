@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T16:55:29+08:00",
+  "updated_at": "2026-10-24T17:14:26+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -440,7 +440,7 @@
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-24T15:29:27+08:00",
+      "updated_at": "2026-10-24T17:14:26+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-10-23.pdf",
@@ -451,7 +451,8 @@
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "recite_text": "语文朗读：圆明园的毁灭是中国文化史上不可估量的损失，也是世界文化史上不可估量的损失！这座辉煌的皇家园林，就这样化为了一片灰烬。\n朗读要求：语速稍慢，语气低沉而坚定，读出痛惜与惋惜之情。\n英语口语：想象你的教室，用英语进行 30-45 秒的介绍。\n提示问题：1. What's in your classroom? 2. Where is the teacher's desk? 3. How many windows are there?\n语音语调自然、语句连贯、尽量脱稿。"
     },
     {
       "task_id": "CHORE-20261024-G5",

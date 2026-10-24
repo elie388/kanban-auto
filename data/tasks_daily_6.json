@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T17:11:22+08:00",
+  "updated_at": "2026-10-24T17:14:26+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -108,7 +108,7 @@
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-24T17:14:26+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-23.pdf",
@@ -118,7 +118,8 @@
       ],
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carry_count": 1,
+      "recite_text": "语文背诵：《观书有感》（其二）\n半亩方塘一鉴开，天光云影共徘徊。\n问渠那得清如许？为有源头活水来。\n英语口语：请围绕“A busy street”主题进行看图说话练习，录音时长控制在1分钟以内。\n提示问题：1. What can you see on the busy street? 2. What are the people doing? 3. How do you feel about this busy street?\n语音语调自然，声音洪亮，句子连贯，无明显语法错误。"
     },
     {
       "task_id": "REG-20261023-FF4D78",
