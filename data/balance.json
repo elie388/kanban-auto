@@ -2,257 +2,257 @@
  "schema_version": 1,
  "grades": {
   "g5": {
-   "balance": 175,
+   "balance": 145,
    "recent_logs": [
     {
-     "date": "2026-10-20",
-     "desc": "📆三日不断徽章【规则归类：badge】",
-     "delta": 5,
-     "balance_after": 175
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "不整理书桌（2026-10-19晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌面仅设加分项，未做无标准扣分条…",
-     "delta": -5,
-     "balance_after": 170
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "冲正：第六期英语阅读写作\"没交-5\"——2026-10-19 20:00记录时称\"DeepSeek终审确认\"，经核实De…",
-     "delta": 5,
-     "balance_after": 175
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "英语口语易+写作范文粘贴完成分【规则归类：homework_completion】",
-     "delta": 10,
-     "balance_after": 170
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "语文正确率100%【规则归类：homework_accuracy】",
-     "delta": 10,
-     "balance_after": 160
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "语文练习8/9/10页完成分【规则归类：homework_completion】",
-     "delta": 10,
-     "balance_after": 150
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "数学书写-2【规则归类：writing_deduct】",
+     "date": "2026-10-23",
+     "desc": "53天天练英语正确率 65.2%",
      "delta": -2,
+     "balance_after": 145
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "53天天练英语完成分",
+     "delta": 3,
+     "balance_after": 147
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "53天天练数学正确率 82.4%",
+     "delta": 1,
+     "balance_after": 144
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "53天天练数学完成分",
+     "delta": 3,
+     "balance_after": 143
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "53天天练语文正确率 92.3%",
+     "delta": 2,
      "balance_after": 140
     },
     {
-     "date": "2026-10-19",
-     "desc": "数学正确率83.3%【规则归类：homework_accuracy】",
+     "date": "2026-10-23",
+     "desc": "53天天练语文完成分",
      "delta": 3,
+     "balance_after": 138
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=265：53天天练英语单元阅读完成分旧结算作废，以正式结论为准",
+     "delta": -3,
+     "balance_after": 135
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=264：53天天练数学P29完成分旧结算作废，以正式结论为准",
+     "delta": -3,
+     "balance_after": 138
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=263：53天天练语文习作正确率旧结算作废，以正式结论为准",
+     "delta": -1,
+     "balance_after": 141
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=262：53天天练语文习作完成分旧结算作废，以正式结论为准",
+     "delta": -3,
      "balance_after": 142
     },
     {
-     "date": "2026-10-19",
-     "desc": "数学《校本24页·包装》完成分【规则归类：homework_completion】",
-     "delta": 10,
-     "balance_after": 139
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "冲正：10-17 53天天练数学P17正确率——原78.6%按旧\"60-80%\"档-1；家长2026-10-19 21:…",
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=261：53天天练英语P38正确率旧结算作废，以正式结论为准",
      "delta": 2,
-     "balance_after": 129
+     "balance_after": 145
     },
     {
-     "date": "2026-10-19",
-     "desc": "第六期英语阅读写作练习没交【规则归类：practice_no_submit】",
-     "delta": -5,
-     "balance_after": 127
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=260：53天天练英语P38完成分旧结算作废，以正式结论为准",
+     "delta": -3,
+     "balance_after": 143
     },
     {
-     "date": "2026-10-19",
-     "desc": "数学练习第3-4页书写+2【规则归类：writing】",
-     "delta": 2,
-     "balance_after": 132
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=259：53天天练数学P28正确率旧结算作废，以正式结论为准",
+     "delta": -1,
+     "balance_after": 146
     },
     {
-     "date": "2026-10-19",
-     "desc": "数学练习第3-4页完成分【规则归类：homework_completion】",
-     "delta": 10,
-     "balance_after": 130
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=258：53天天练数学P28完成分旧结算作废，以正式结论为准",
+     "delta": -3,
+     "balance_after": 147
     },
     {
-     "date": "2026-10-19",
-     "desc": "数学《三角形的再认识》单元测试卷81分【规则归类：exam_unit】",
-     "delta": 16,
-     "balance_after": 120
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=257：53天天练语文P7正确率旧结算作废，以正式结论为准",
+     "delta": -3,
+     "balance_after": 150
     },
     {
-     "date": "2026-10-19",
-     "desc": "英语《随堂练习》书写+2【规则归类：writing】",
-     "delta": 2,
-     "balance_after": 104
+     "date": "2026-10-24",
+     "desc": "冲正旧结算 id=256：53天天练语文P7完成分旧结算作废，以正式结论为准",
+     "delta": -3,
+     "balance_after": 153
     },
     {
-     "date": "2026-10-19",
-     "desc": "英语《随堂练习》Unit1正确率84.5%【规则归类：homework_accuracy】",
+     "date": "2026-10-24",
+     "desc": "抵销UTC冲正 id=275：时间标签误标@06:43，以北京时间重走",
      "delta": 3,
-     "balance_after": 102
+     "balance_after": 156
     },
     {
-     "date": "2026-10-19",
-     "desc": "英语《随堂练习》Unit1完成分【规则归类：homework_completion】",
-     "delta": 10,
-     "balance_after": 99
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "家务连做第3天【规则归类：chore_streak_day3】",
+     "date": "2026-10-24",
+     "desc": "抵销UTC冲正 id=274：时间标签误标@06:43，以北京时间重走",
      "delta": 3,
-     "balance_after": 89
+     "balance_after": 153
     },
     {
-     "date": "2026-10-19",
-     "desc": "洗碗【规则归类：chore_xiwan】",
-     "delta": 5,
-     "balance_after": 86
+     "date": "2026-10-24",
+     "desc": "抵销UTC冲正 id=273：时间标签误标@06:43，以北京时间重走",
+     "delta": 1,
+     "balance_after": 150
     },
     {
-     "date": "2026-10-18",
-     "desc": "洗碗【规则归类：chore_xiwan】",
-     "delta": 5,
-     "balance_after": 81
+     "date": "2026-10-24",
+     "desc": "抵销UTC冲正 id=272：时间标签误标@06:43，以北京时间重走",
+     "delta": 3,
+     "balance_after": 149
     }
    ]
   },
   "g6": {
-   "balance": 279,
+   "balance": 513,
    "recent_logs": [
     {
-     "date": "2026-10-20",
-     "desc": "📆三日不断徽章【规则归类：badge】",
-     "delta": 5,
-     "balance_after": 279
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "不整理书桌（2026-10-19晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌面仅设加分项，未做无标准扣分条…",
-     "delta": -5,
-     "balance_after": 274
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "冲正：第六期英语阅读写作\"没交-5\"——2026-10-19 20:00记录时称\"DeepSeek终审确认\"，经核实De…",
-     "delta": 5,
-     "balance_after": 279
-    },
-    {
-     "date": "2026-10-19",
-     "desc": "第六期英语阅读写作练习没交【规则归类：practice_no_submit】",
-     "delta": -5,
-     "balance_after": 274
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "晾衣服",
-     "delta": 3,
-     "balance_after": 279
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "六年级数学周试卷正确率92.1%【规则归类：practice_accuracy_90】",
-     "delta": 3,
-     "balance_after": 276
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "六年级数学周试卷按时发回【规则归类：practice_ontime】",
-     "delta": 5,
-     "balance_after": 273
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "六年级语文周试卷按时发回【规则归类：practice_ontime】",
-     "delta": 5,
-     "balance_after": 268
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "六年级英语周试卷正确率96.6%【规则归类：practice_accuracy_90】",
-     "delta": 3,
-     "balance_after": 263
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "六年级英语周试卷按时发回【规则归类：practice_ontime】",
-     "delta": 5,
-     "balance_after": 260
-    },
-    {
-     "date": "2026-10-18",
-     "desc": "六年级英语周试卷写作补写按时发回【规则归类：makeup_ontime】",
+     "date": "2026-10-24",
+     "desc": "英语订正当天发回",
      "delta": 2,
-     "balance_after": 255
+     "balance_after": 513
     },
     {
-     "date": "2026-10-18",
-     "desc": "六年级英语周试卷Q25订正当天发回【规则归类：correction_ontime】",
+     "date": "2026-10-24",
+     "desc": "英语校本P20三.5订正改对",
      "delta": 2,
-     "balance_after": 253
+     "balance_after": 511
     },
     {
-     "date": "2026-10-18",
-     "desc": "六年级英语周试卷Q25订正一次改对【规则归类：correction_correct】",
+     "date": "2026-10-24",
+     "desc": "英语校本P20一.1订正改对",
      "delta": 2,
-     "balance_after": 251
+     "balance_after": 509
     },
     {
-     "date": "2026-10-18",
-     "desc": "冲正：10-17 15:47/15:54批次数学53正确率93.3%——原误用\"当日交齐档\"+6，现按53天天练90%~…",
-     "delta": -4,
-     "balance_after": 249
-    },
-    {
-     "date": "2026-10-17",
-     "desc": "六年级乱放毛巾",
-     "delta": -3,
-     "balance_after": 253
-    },
-    {
-     "date": "2026-10-17",
-     "desc": "英语写作重写按时发回",
-     "delta": 5,
-     "balance_after": 256
-    },
-    {
-     "date": "2026-10-17",
-     "desc": "英语阅读写作第1题补做按时发回",
+     "date": "2026-10-24",
+     "desc": "数学订正当天发回",
      "delta": 2,
-     "balance_after": 251
+     "balance_after": 507
     },
     {
-     "date": "2026-10-17",
-     "desc": "19:34语文背诵达标",
+     "date": "2026-10-24",
+     "desc": "数学思考题P1第5题半圆周长订正改对",
+     "delta": 2,
+     "balance_after": 505
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "数学思考题P1第2题面积订正改对",
+     "delta": 2,
+     "balance_after": 503
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "作文《成长中的一束光》写作涂改×15处",
+     "delta": -15,
+     "balance_after": 501
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "作文《成长中的一束光》错字4-5个",
+     "delta": -2,
+     "balance_after": 516
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "作文《成长中的一束光》语病组错",
+     "delta": -6,
+     "balance_after": 518
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "作文《成长中的一束光》完成分",
+     "delta": 10,
+     "balance_after": 524
+    },
+    {
+     "date": "2026-10-24",
+     "desc": "妈妈奖励",
+     "delta": 50,
+     "balance_after": 514
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "连续第五晚超23点睡觉额外扣分【规则归类：sleep_late_streak】",
+     "delta": -10,
+     "balance_after": 464
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "晚上超11点睡觉【规则归类：sleep_late】",
+     "delta": -10,
+     "balance_after": 474
+    },
+    {
+     "date": "2026-10-22",
+     "desc": "晾衣服【规则归类：chore_liangyifu】",
      "delta": 3,
-     "balance_after": 249
+     "balance_after": 484
     },
     {
-     "date": "2026-10-17",
-     "desc": "19:34语文背诵按时发回",
+     "date": "2026-10-23",
+     "desc": "六年级『英语早读U3知识清单』发回【规则归类：reading_return】",
      "delta": 5,
-     "balance_after": 246
+     "balance_after": 481
     },
     {
-     "date": "2026-10-17",
-     "desc": "19:33英语口语按时发回",
+     "date": "2026-10-23",
+     "desc": "六年级『每天读1小时作文，记录③』达标【规则归类：reading_standard】",
+     "delta": 3,
+     "balance_after": 476
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "六年级『每天读1小时作文，记录③』发回【规则归类：reading_return】",
      "delta": 5,
-     "balance_after": 241
+     "balance_after": 473
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "六年级L11生字书写+2【规则归类：writing】",
+     "delta": 2,
+     "balance_after": 468
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "六年级L11生字正确率档81.8%【规则归类：homework】",
+     "delta": 3,
+     "balance_after": 466
+    },
+    {
+     "date": "2026-10-23",
+     "desc": "六年级L11生字抄写完成分【规则归类：homework】",
+     "delta": 10,
+     "balance_after": 463
     }
    ]
   }
  },
- "generated_at": "2026-10-20T18:03:53+08:00",
- "source_mtime": "2026-10-20T17:56:06+08:00",
- "source_sha256": "6e3c8dbc52ecc998ab3943ec6f8b5e5c1afea93d511eac690ac5cf8409e793d0"
+ "generated_at": "2026-10-24T16:18:09+08:00",
+ "source_mtime": "2026-10-24T16:05:11+08:00",
+ "source_sha256": "9186949a25c1f4ec042613d31928020022593a81bedcca892ac4947940708cb3"
 }
