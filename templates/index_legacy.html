@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- DEPRECATED（2026-10-20，DeepSeek 审查 P2）：旧版产物已停用（现行产物由
+<!-- DEPRECATED（2026-10-20，终审 审查 P2）：旧版产物已停用（现行产物由
      templates/积分看板_全新版式样板.html 部署）。本文件仅作历史保留，禁止部署/引用。 -->
 <!-- GENERATED: 2026-10-19 11:23:15 from 积分看板.template.html（源=积分记录.md），勿手改 -->
 <!-- TEMPLATE: 积分看板.template.html —— 动态区用注释占位符，生成器 build_kanban.py 填充。勿直接改产物文件。 -->
@@ -28,7 +28,7 @@
   .card.g6 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ccircle cx='14' cy='14' r='2.5' fill='%23ffffff' fill-opacity='0.10'/%3E%3Ccircle cx='58' cy='34' r='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3Ccircle cx='34' cy='66' r='3' fill='%23ffffff' fill-opacity='0.09'/%3E%3Cpath d='M72 62 l2.2 5.4 5.4 2.2 -5.4 2.2 -2.2 5.4 -2.2 -5.4 -5.4 -2.2 5.4 -2.2z' fill='%23ffffff' fill-opacity='0.09'/%3E%3C/svg%3E"), linear-gradient(135deg, #1565c0, #00acc1); }
   .card .grade { font-size: 26px; font-weight: bold; margin-bottom: 10px; }
   .card .score { font-size: 80px; font-weight: bold; line-height: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-  /* S-1（DeepSeek仲裁2026-10-18，返工修正版）：排布余量只能加在 .digit 视口，不得加到 span——
+  /* S-1（终审仲裁2026-10-18，返工修正版）：排布余量只能加在 .digit 视口，不得加到 span——
      span 高必须与 JS 位移步长 translateY(calc(-1em * target)) 严格同源（=1em），否则累计错位 */
   .score .digit { display: inline-block; height: 1.05em; line-height: 1; overflow: hidden; vertical-align: top; padding-top: .02em; }
   .score .digit-strip { display: flex; flex-direction: column; will-change: auto; }
@@ -36,11 +36,11 @@
   .score .digit-sign { display: inline-block; height: 1em; line-height: 1; vertical-align: top; }
   .card .unit { font-size: 20px; opacity: 0.92; }
   .card .next { margin-top: 14px; font-size: 17px; line-height: 1.6; background: rgba(255,255,255,0.28); border-radius: 14px; padding: 10px 12px; max-width: 100%; word-break: break-word; overflow-wrap: anywhere; }
-  /* B-1（DeepSeek仲裁2026-10-18）：.next 断行保护，防320px撑破圆角 */
+  /* B-1（终审仲裁2026-10-18）：.next 断行保护，防320px撑破圆角 */
   .section { background: #fff; border-radius: 24px; padding: 24px 28px; margin-bottom: 22px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); border: 3px solid #fff7e6; }
   .section h2 { font-size: 28px; margin: 0 0 14px; border-bottom: 3px solid #ffe9b8; padding-bottom: 10px; }
   .collapse-btn { display: block; width: 100%; text-align: center; font-size: 28px; font-weight: bold; font-family: inherit; color: #30343B; background: none; border: none; border-bottom: 3px solid #ffe9b8; padding: 8px 0 10px; margin: 0 0 14px; cursor: pointer; min-height: 44px; }
-  /* I-1（DeepSeek仲裁2026-10-18）：触摸目标≥44px（Apple HIG/WCAG 2.5.5） */
+  /* I-1（终审仲裁2026-10-18）：触摸目标≥44px（Apple HIG/WCAG 2.5.5） */
   .collapse-body[hidden] { display: none; }
   /* 赚分/扣分区两栏居中（2026-10-19用户定） */
   #earn-body tr, #deduct-body tr { break-inside: avoid; }
@@ -58,7 +58,7 @@
   .badge-icon { flex: 0 0 auto; font-size: 20px; line-height: 1; }
   .badge-name { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: keep-all; overflow-wrap: normal; }
   .badge-score { flex: 0 0 auto; white-space: nowrap; word-break: keep-all; overflow-wrap: normal; font-size: 15px; color: #bf360c; max-width: 50%; overflow: hidden; text-overflow: ellipsis; }
-  /* B-2（DeepSeek仲裁2026-10-18）：score 设50%上限防吃光；name 优先收缩（flex:0 1 auto已设） */
+  /* B-2（终审仲裁2026-10-18）：score 设50%上限防吃光；name 优先收缩（flex:0 1 auto已设） */
   .badge-grid { display: flex; flex-direction: column; gap: 10px; }
   .badge-grade-label { font-size: 20px; font-weight: bold; margin: 10px 0 8px; text-align: center; }
   .badge-empty { text-align: center; color: #a08030; font-size: 18px; padding: 18px 8px; background: #fff8e1; border-radius: 14px; border: 2px dashed #ffcc80; margin-bottom: 6px; }
@@ -109,13 +109,13 @@
     .ticker-section { padding: 20px 20px; }
     .grade-cols { flex-direction: column; gap: 12px; }
   }
-  /* S-4（DeepSeek仲裁2026-10-18）：641-768区间两列挤压，@768也改纵向 */
+  /* S-4（终审仲裁2026-10-18）：641-768区间两列挤压，@768也改纵向 */
   @media (min-width: 769px) and (max-width: 1023px) {
     body { padding: 12px; }
     .page { max-width: 100%; }
     .section, .ticker-section { padding: 22px 24px; }
   }
-  /* I-2（DeepSeek仲裁2026-10-18）：769-1023区间专属规则，消除与768以下全宽切换的跳变 */
+  /* I-2（终审仲裁2026-10-18）：769-1023区间专属规则，消除与768以下全宽切换的跳变 */
   @media (max-width: 640px) {
     body { padding: 10px; }
     h1 { font-size: 36px; }
@@ -129,7 +129,7 @@
     th, td { padding: 9px 6px; }
     th { font-size: 15px; }
     .plus, .minus { font-size: 19px; }
-    /* S-2（DeepSeek仲裁2026-10-18）：删除与 width/max-width 矛盾的 min-width:64px */
+    /* S-2（终审仲裁2026-10-18）：删除与 width/max-width 矛盾的 min-width:64px */
     .ticker-cols { gap: 10px; }
     .ticker-col h3 { font-size: 18px; }
     .ticker-item { font-size: 16px; }
@@ -164,16 +164,16 @@
     .history th:nth-child(1), .history td.dt { width: 88px; max-width: 88px; }
     .grade-col .dt { font-size: 12px; }
     .ticker-item { font-size: 15px; padding: 0 8px; }
-    /* I-5（DeepSeek仲裁2026-10-18）：只缩ttime，不改item高（viewport 156px=52×3不动，避S-5联动坑） */
+    /* I-5（终审仲裁2026-10-18）：只缩ttime，不改item高（viewport 156px=52×3不动，避S-5联动坑） */
     .ticker-item .ttime { min-width: 56px; padding: 2px 6px; font-size: 12px; margin-right: 5px; }
     .card { padding: 12px 5px; }
     .card .score { font-size: 44px; }
     .card .grade { font-size: 15px; }
-    /* B-1（DeepSeek仲裁2026-10-18）：320px下.next靠断行消化，不缩score到40、不缩next到11（可读底线12px） */
+    /* B-1（终审仲裁2026-10-18）：320px下.next靠断行消化，不缩score到40、不缩next到11（可读底线12px） */
     .card .next { font-size: 12px; padding: 5px 3px; line-height: 1.35; word-break: break-word; overflow-wrap: anywhere; }
-    /* S-3（DeepSeek仲裁2026-10-18）：delta-tag 320px压字 */
+    /* S-3（终审仲裁2026-10-18）：delta-tag 320px压字 */
     .delta-tag { font-size: 13px; padding: 1px 6px; right: 6px; top: 4px; }
-    /* B-3（DeepSeek仲裁2026-10-18，方案A）：历史表纵向卡片化；label文案与thead表头同字（日期时间/事项/积分/余额） */
+    /* B-3（终审仲裁2026-10-18，方案A）：历史表纵向卡片化；label文案与thead表头同字（日期时间/事项/积分/余额） */
     .history tr:first-child { display: none; }
     .history, .history tbody, .history tr, .history td { display: block; width: 100% !important; max-width: none !important; min-width: 0 !important; }
     .history tr { padding: 10px 12px; border-bottom: 1px solid rgba(48,52,59,.12); }
@@ -198,10 +198,10 @@
   .progress-label { display: flex; justify-content: space-between; font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 6px; }
   .progress-num b { color: #fff; }
   .progress-wrap.progress-done .progress-fill { animation: progressBreathe 0.6s ease-in-out 2; }
-  /* S-4（DeepSeek仲裁2026-10-18）：原 filter:brightness 在低端机/微信内嵌有抖动风险，改 opacity 脉冲 */
+  /* S-4（终审仲裁2026-10-18）：原 filter:brightness 在低端机/微信内嵌有抖动风险，改 opacity 脉冲 */
   @keyframes progressBreathe { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
   /* === 方案B：徽章解锁弹跳入场 + 微光 === */
-  /* B-1（DeepSeek仲裁2026-10-18）：统一用 data-new 属性选择器，去掉对 .is-new 类的双契约依赖 */
+  /* B-1（终审仲裁2026-10-18）：统一用 data-new 属性选择器，去掉对 .is-new 类的双契约依赖 */
   /* 阻塞1修复（2026-10-18审查报告3）：.badge 去掉 overflow:hidden，保证键盘聚焦outline可见（WCAG 2.4.7）；
      高光裁剪改由内层 .badge-clip 承接，::after 迁移到 .badge-clip 上 */
   .badge { position: relative; }
@@ -213,7 +213,7 @@
   .badge[data-new="true"].badge-bounce .badge-clip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.75) 50%, transparent 70%); transform: translateX(-120%); animation: badgeShine .9s ease .15s; pointer-events: none; }
   @keyframes badgeShine { to { transform: translateX(120%); } }
   /* === 方案C：兑换区可兑换脉冲 + 差一点提示 === */
-  /* I-2（DeepSeek仲裁2026-10-18）：按年级分治，不用 maxBalance；五年级紫色系呼应🟣，六年级蓝色系呼应🔵 */
+  /* I-2（终审仲裁2026-10-18）：按年级分治，不用 maxBalance；五年级紫色系呼应🟣，六年级蓝色系呼应🔵 */
   .grade-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 13px; font-weight: bold; border: 2px solid; vertical-align: middle; text-align: center; line-height: 1.4; }
   .grade-cell { text-align: center; }
   /* 兑换表三列居中（2026-10-19用户定） */
@@ -241,7 +241,7 @@
   .card { position: relative; }
   /* === 全局：减弱动态效果降级 === */
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
-  /* S-6（DeepSeek仲裁2026-10-18）：reduced-motion 下同步清理合成层，不白占内存 */
+  /* S-6（终审仲裁2026-10-18）：reduced-motion 下同步清理合成层，不白占内存 */
   @media (prefers-reduced-motion: reduce) { .progress-fill, .badge[data-new="true"] { will-change: auto !important; } }
 /* === flex双栏修复 2026-10-19 === */
 #earn-body .two-col, #deduct-body .two-col { display: flex; gap: 24px; align-items: flex-start; }
@@ -293,7 +293,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
 @keyframes bgFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
 .bg-particle { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; animation: bgFloat 12s ease-in-out infinite; }
 
-/* 版式排版优化 2026-10-19（DeepSeek） */
+/* 版式排版优化 2026-10-19（终审） */
 /* 第1项：积分明细正负分流配色 */
 .history tr[data-sign="+"] { background: #f1f8e9; }
 .history tr[data-sign="-"] { background: #f5f5f5; }
@@ -348,7 +348,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   gap: 24px;
   align-items: start;
 }
-/* 2026-10-19 文字拥挤修复（deepseek方案）：grid子项防撑破+温和换行 */
+/* 2026-10-19 文字拥挤修复（终审方案）：grid子项防撑破+温和换行 */
 #earn-body .col,
 #deduct-body .col { min-width: 0; }
 #earn-body td,
@@ -370,13 +370,13 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   #deduct-body .two-col { grid-template-columns: 1fr; }
 }
 
-/* 2026-10-19 双栏表头去重（deepseek终审方案）：共享表头横跨两栏 */
+/* 2026-10-19 双栏表头去重（终审终审方案）：共享表头横跨两栏 */
 #earn-body, #deduct-body { --score-col-w: 90px; }
 #earn-body .two-col, #deduct-body .two-col { column-gap: 24px; row-gap: 0; }
 #earn-body .two-col .col-head, #deduct-body .two-col .col-head {
   grid-column: 1 / -1;
   display: grid;
-  /* 5轨：事项1 积分1 | 外层24px gap | 事项2 积分2 —— 与下方两张table列宽严格相等（2026-10-19 对齐修复，deepseek方案） */
+  /* 5轨：事项1 积分1 | 外层24px gap | 事项2 积分2 —— 与下方两张table列宽严格相等（2026-10-19 对齐修复，终审方案） */
   grid-template-columns: minmax(0,1fr) var(--score-col-w) 24px minmax(0,1fr) var(--score-col-w);
   column-gap: 0;
   align-items: center;
@@ -449,7 +449,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
   </div>
 
   <div class="section">
-    <!--徽章区动态生成（2026-10-18用户定：每周更新，只显示当周获得，分年级；DeepSeek仲裁确认）-->
+    <!--徽章区动态生成（2026-10-18用户定：每周更新，只显示当周获得，分年级；终审仲裁确认）-->
     <!--旧STATIC_BADGE静态区已作废：9徽章硬编码改为按台账badge_key每周动态过滤-->
     <button type="button" class="collapse-btn" aria-expanded="false" data-target="badge-body">🏅 成就墙 🏅</button>
     <div class="collapse-body" id="badge-body" hidden>
@@ -659,7 +659,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     if (reset) reset.addEventListener('click', function () { show('all'); });
   })();
 
-  // S-6（DeepSeek仲裁2026-10-18）：减弱动态效果开关全局只定义一次，各 IIFE 复用；
+  // S-6（终审仲裁2026-10-18）：减弱动态效果开关全局只定义一次，各 IIFE 复用；
   // 须在所有使用它的 IIFE 执行前定义（脚本顶部）
   var REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -699,7 +699,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
         st0.style.transform = 'translateY(0)';
       }
       void scoreEl.offsetHeight; // 强制reflow，让复位先生效
-      // S-1（DeepSeek仲裁2026-10-18）：计数 strip 的 transitionend，全部完成后尽早调 finishScore
+      // S-1（终审仲裁2026-10-18）：计数 strip 的 transitionend，全部完成后尽早调 finishScore
       // （data-rolling=0 以真实动画结束为准，比兜底 timer 早约120ms；兜底 timer 保留防 transition 不触发）
       var doneCount = 0;
       for (var i = 0; i < n; i++) {
@@ -801,7 +801,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
           e.target.addEventListener('animationend', function handler(ev) {
             if (ev.animationName === 'badgeBounce') {
               e.target.classList.remove('badge-bounce');
-              // B-1（DeepSeek仲裁2026-10-18）：用完即摘——摘除 data-new，保证只弹跳一次，不反复触发
+              // B-1（终审仲裁2026-10-18）：用完即摘——摘除 data-new，保证只弹跳一次，不反复触发
               e.target.removeAttribute('data-new');
               e.target.removeEventListener('animationend', handler);
             }
@@ -873,7 +873,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     function triggerRedeem() {
       if (triggered) return;
       triggered = true;
-      // I-2（DeepSeek仲裁2026-10-18）：按年级分别取余额，不用 maxBalance——
+      // I-2（终审仲裁2026-10-18）：按年级分别取余额，不用 maxBalance——
       // 低余额年级不应看到自己够不着的档位在脉冲
       var balances = {}; // grade -> int
       document.querySelectorAll('.card[data-grade] .score[data-value]').forEach(function (scoreEl) {
@@ -890,7 +890,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
       var invalid = 0;
       for (var i = 1; i < rows.length; i++) {
         var row = rows[i];
-        // I-1（DeepSeek仲裁2026-10-18）：档位单一数据源 = HTML 表格本身（用户逐字确认的文案）；
+        // I-1（终审仲裁2026-10-18）：档位单一数据源 = HTML 表格本身（用户逐字确认的文案）；
         // 从首个 td.plus（如"70分"）实时解析 cost；解析失败不静默跳过
         var firstTd = row.querySelector('td.plus');
         var cost = firstTd ? parseInt(firstTd.textContent, 10) : NaN;

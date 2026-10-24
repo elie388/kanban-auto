@@ -571,8 +571,21 @@ def semantic_diff(old_obj, new_obj, generated_at):
     return True, "changed"
 
 
+def _strip_board_names(obj):
+    """看板禁词（2026-10-24 家长令）：发布数据不得出现 deepseek/gemini 两词。
+    递归做中性替换（终审/初审），只动发布副本，源文件原文不动。"""
+    if isinstance(obj, str):
+        return re.sub(r'(?i)deepseek', '终审', re.sub(r'(?i)gemini', '初审', obj))
+    if isinstance(obj, list):
+        return [_strip_board_names(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _strip_board_names(v) for k, v in obj.items()}
+    return obj
+
+
 def write_json_atomic(path, obj):
     """写 JSON 后读回校验（§7.3 生成端）；失败 raise。"""
+    obj = _strip_board_names(obj)
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)

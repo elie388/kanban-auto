@@ -1160,6 +1160,17 @@ def _assert_badge_consistency(events, badges_doc, goals_doc):
 _RACE_RETRIED = [False]
 
 
+def _strip_board_names(obj):
+    """看板禁词（2026-10-24 家长令）：发布数据不得出现 deepseek/gemini 两词。
+    递归做中性替换（终审/初审），只动发布副本，源文件原文不动。"""
+    if isinstance(obj, str):
+        return re.sub(r'(?i)deepseek', '终审', re.sub(r'(?i)gemini', '初审', obj))
+    if isinstance(obj, list):
+        return [_strip_board_names(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _strip_board_names(v) for k, v in obj.items()}
+    return obj
+
 def main():
     # 静默窗闸门（DeepSeek 裁定1 2026-10-20：静默窗全域生效，闸门落脚本层）：
     # [00:00,06:00) 内不 build、退出码 0；与 build_stats/build_trends 同口径，
@@ -1214,6 +1225,8 @@ def main():
             "data/redeem_log.json": build_redeem_log(
                 LEDGER.read_text(encoding="utf-8")),
         }
+        # 看板禁词（2026-10-24 家长令）：发布数据中性替换，源文件原文不动。
+        docs = {k: _strip_board_names(v) for k, v in docs.items()}
         # 校验门：往返 + 白名单 + PII/注入熔断
         for path, doc in docs.items():
             s = json.dumps(doc, ensure_ascii=False)

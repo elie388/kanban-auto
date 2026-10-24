@@ -53,7 +53,7 @@
     animation:fadeUp .4s ease both;
     position:relative;
   }
-  /* 2026-10-20 折叠卡片右上角实时数据标签（DeepSeek方案） */
+  /* 2026-10-20 折叠卡片右上角实时数据标签（终审方案） */
   .card.collapse > .tag-live{
     position:absolute; top:8px; right:12px; z-index:2;
   }
@@ -97,7 +97,7 @@
     background:transparent;
     border:1px solid rgba(255,255,255,.25);
   }
-  /* 年级识别锚（DeepSeek 附加条件①三重锚定）：左侧 6px 年级色竖条（inset 阴影）＋卡面一圈年级色描边（inset 1px 环）；
+  /* 年级识别锚（终审 附加条件①三重锚定）：左侧 6px 年级色竖条（inset 阴影）＋卡面一圈年级色描边（inset 1px 环）；
      姓名旁年级色圆点见 .bal-name::before；今日变化数值在带内继承白字，不另着色（描边已作第三重锚） */
   .bal-card.g5{box-shadow:inset 6px 0 0 var(--g5), inset 0 0 0 1px rgba(255,138,91,.9), var(--shadow);}
   .bal-card.g6{box-shadow:inset 6px 0 0 var(--g6), inset 0 0 0 1px rgba(108,142,255,.9), var(--shadow);}
@@ -118,9 +118,9 @@
   .bal-name{font-size:16px; font-weight:700; opacity:.95;}
   .bal-score{font-size:40px; font-weight:900; line-height:1.1; font-variant-numeric:tabular-nums;}
   .bal-score small{font-size:16px; font-weight:600;}
-  /* 总分滚动动画用数字包层（2026-10-19，deepseek 方案 H1+C1）：固定最小宽度防位数变化抖动 */
+  /* 总分滚动动画用数字包层（2026-10-19，终审 方案 H1+C1）：固定最小宽度防位数变化抖动 */
   .bal-num{display:inline-block; min-width:3ch; text-align:center; font-variant-numeric:tabular-nums;}
-  /* 余额卡片总分机械滚轮 v2（2026-10-19 重写，deepseek 方案）：纯 CSS transition 驱动，合成器动画。
+  /* 余额卡片总分机械滚轮 v2（2026-10-19 重写，终审 方案）：纯 CSS transition 驱动，合成器动画。
      只动 transform；单格 = 1em；逐位 transition-delay，低位先停（里程表视觉） */
   .odo{display:inline-flex; font-variant-numeric:tabular-nums; contain:layout style paint;}
   .odo--anim{will-change:transform;}
@@ -130,7 +130,7 @@
   .odo--anim .odo-strip{transition-property:transform; transition-duration:450ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
   /* 余额卡鼓励文案行已按家长 2026-10-23 令整行删除：元素/CSS/填充逻辑全删，不留占位 */
-  /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，DeepSeek分档口径）：今日变化标/分档刻度条/负分态 */
+  /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，终审分档口径）：今日变化标/分档刻度条/负分态 */
   .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
   .bal-today.pos{background:transparent;}
   .bal-today.neg{background:transparent;}
@@ -143,7 +143,7 @@
   .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; font-weight:600; color:rgba(255,255,255,.95); font-variant-numeric:tabular-nums;}
   .bal-card.is-neg{background:transparent;}
   html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
-  /* 刻度条冲刺点亮（2026-10-23 家长拍板 Gemini 推荐方案，23:43 改定）：距下一档差额 ≤ 下一档×10% 时，当前段已填充部分点亮薄荷绿并自身脉冲闪动——一轮 3.2s 非对称（62.5%≈2.0s 渐亮、37.5%≈1.2s 回落）、opacity .55↔1、渐亮段弹性缓动 cubic-bezier(0.34,1.56,0.64,1)；只作用于冲刺段已填充部分，未填充/已满段不闪；底色不动；锁定态随刻度条整组隐藏；减少动态效果时静止常亮。原「大号数字旁呼吸圆点」已按家长 23:43 令彻底删除 */
+  /* 刻度条冲刺点亮（2026-10-23 家长拍板 初审 推荐方案，23:43 改定）：距下一档差额 ≤ 下一档×10% 时，当前段已填充部分点亮薄荷绿并自身脉冲闪动——一轮 3.2s 非对称（62.5%≈2.0s 渐亮、37.5%≈1.2s 回落）、opacity .55↔1、渐亮段弹性缓动 cubic-bezier(0.34,1.56,0.64,1)；只作用于冲刺段已填充部分，未填充/已满段不闪；底色不动；锁定态随刻度条整组隐藏；减少动态效果时静止常亮。原「大号数字旁呼吸圆点」已按家长 23:43 令彻底删除 */
   .bal-tier-fill.sprint{background:#8CF5C0; box-shadow:0 0 6px rgba(140,245,192,.55); animation:balSprintPulse 3.2s infinite;}
   @keyframes balSprintPulse{0%{opacity:.55; animation-timing-function:cubic-bezier(0.34,1.56,0.64,1);}62.5%{opacity:1; animation-timing-function:ease-in;}100%{opacity:.55;}}
   @media (prefers-reduced-motion: reduce){ .bal-tier-fill.sprint{animation:none; opacity:1;} }
@@ -179,7 +179,7 @@
   .sky-alert.orange{background:rgba(224,122,58,.88);}
   .sky-alert.red{background:rgba(196,62,58,.88);}
   .sky-alert[hidden]{display:none;}
-  /* 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件） */
+  /* 学习小结（2026-10-23 家长拍板两版上看板，终审 五条件） */
   .sum-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#2FA84F; margin-left:7px; vertical-align:middle; transform-origin:center;}
   /* 头点绿色呼吸灯（2026-10-23 家长令，22:47 改缩放呼吸，22:52 续令加大振幅防看漏）：亮态 scale .2→1.35 往复＋opacity .45↔1；ID 作用域防后加载规则覆盖；减少动态效果时静止常亮 */
   #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:sumDotBreathe 1.8s ease-in-out infinite;}
@@ -329,7 +329,7 @@
   .task[data-tid]:not(.open-task) .corr-badge{display:none;}
   /* 待批改角标（2026-10-23 B案）：昨日已交/批改中被携带到今日的任务，提示「交了、在等批改」 */
   .task .carry-tag{font-size:10.5px;color:#1D5FA8;background:#EAF2FB;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap;}
-  /* 昨日完成折叠区（2026-10-23 B案，DeepSeek 定案）：只读回顾、灰色淡出，本地时间12:00后不再渲染 */
+  /* 昨日完成折叠区（2026-10-23 B案，终审 定案）：只读回顾、灰色淡出，本地时间12:00后不再渲染 */
   .yd-zone{margin-top:10px;}
   .yd-zone:empty{display:none;}
   .yd-head{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;cursor:pointer;padding:6px 2px;font-size:13px;color:var(--sub);text-align:left;}
@@ -344,12 +344,12 @@
   .grade-caret{flex:none;font-size:13px;color:var(--sub);transition:transform .25s ease;margin-left:4px;}
   .task-section.grade-folded .grade-caret{transform:rotate(-90deg);}
   .task-section.grade-folded .task-list, .task-section.grade-folded .yd-zone{display:none;}
-  /* 全板口令门（2026-10-23 家长拍板合并选项1，DeepSeek 终审）：无设备令牌时 kb-locked 硬兜底隐藏全部详情体（门帘口径，服务端校验不变）；锁定入口带 🔐 标记 */
+  /* 全板口令门（2026-10-23 家长拍板合并选项1，终审 终审）：无设备令牌时 kb-locked 硬兜底隐藏全部详情体（门帘口径，服务端校验不变）；锁定入口带 🔐 标记 */
   html.kb-locked .collapse-body{display:none !important;}
   html.kb-locked .task-section .task-list, html.kb-locked .task-section .yd-zone{display:none !important;}
   html.kb-locked .task-head::after{content:'🔐';font-size:14px;margin-left:6px;}
   html.kb-locked .collapse-btn::after{content:'🔐';font-size:14px;margin-left:6px;}
-  /* 锁定态概览打码（2026-10-23 家长拍板 DeepSeek 混合案）：今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
+  /* 锁定态概览打码（2026-10-23 家长拍板 终审 混合案）：今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
   html.kb-locked .task-prog{display:none !important;}
   /* 姓名防闪现（2026-10-23 Muse 补修）：锁定态且打码尚未执行（kb-masked 未置）时姓名与 pill 先不可见，kbApplyMask 替换为星号形后才显示，消除冷加载解析窗口的明文闪现；visibility 保留布局不跳版 */
   html.kb-locked:not(.kb-masked) .bal-name, html.kb-locked:not(.kb-masked) .pill-grade{visibility:hidden !important;}
@@ -515,7 +515,7 @@
     font-size:18px; font-weight:800; color:var(--txt);
     margin:0 0 12px; padding-left:4px;
   }
-  /* 本周徽章：勋章带（2026-10-20 方案1，DeepSeek 终审放行；2026-10-23 A+ 改版，家长拍板+DeepSeek 咨询放行）
+  /* 本周徽章：勋章带（2026-10-20 方案1，终审 终审放行；2026-10-23 A+ 改版，家长拍板+终审 咨询放行）
      64px 圆形勋章、稀有度色环三档（金=普通/蓝=进阶/紫=稀有，仅颜色区分）；
      排布由横滑改为自动换行：每行枚数随容器宽度自适应（手机约 4、iPad 6–8），不限行数、不缩小、不折叠——
      横滑曾致第 5 枚起无声滑出屏幕（2026-10-23 彦均 5 枚实测漏看），故废止横滑/右缘渐隐/隐藏滚动条；
@@ -557,7 +557,7 @@
     font-size:11px; font-weight:700; line-height:1;
     padding:3px 6px; border-radius:999px;
   }
-  /* 已读徽章入带飞入（DeepSeek 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入。
+  /* 已读徽章入带飞入（终审 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入。
      2026-10-23 A+：去掉"只前 6 枚"写死上限，全量覆盖——JS 按勋章实测行分组错峰（行内 70ms 递增、行间 +200ms） */
   .medal.fly-in{animation:medalFly .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay:var(--fly-d,0ms);}
   @keyframes medalFly{
@@ -614,10 +614,10 @@
   .task-prog-text{font-size:13px; font-weight:700; color:var(--sub); white-space:nowrap; font-variant-numeric:tabular-nums; flex:0 0 auto;}
   .task-prog-bar{width:96px; flex:1 1 64px; min-width:64px; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
   .task-prog-fill{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
-  /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、DeepSeek 核准）：年级色与余额卡同源变量、金色只留成就条 */
+  /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、终审 核准）：年级色与余额卡同源变量、金色只留成就条 */
   #tasks-g5 .task-prog-fill{background:linear-gradient(90deg,var(--g5),var(--g5b));}
   #tasks-g6 .task-prog-fill{background:linear-gradient(90deg,var(--g6),var(--g6b));}
-  /* 往复生长（2026-10-23 23:48 家长改定、Gemini 定参，覆盖原「生长＋停留＋跳回 0」口径）：整轮 5.2s＝
+  /* 往复生长（2026-10-23 23:48 家长改定、初审 定参，覆盖原「生长＋停留＋跳回 0」口径）：整轮 5.2s＝
      生长 2.4s（0%→46.2%，ease-out）＋满位停 0.6s（46.2%→57.7%）＋回缩 2.0s（57.7%→96.2%，ease-in）＋零位停 0.2s（96.2%→100%），
      长满后沿原路缩回 0 再长出、无瞬间跳变；恒定周期（不随百分比缩放）；分段缓动由 keyframe 内 animation-timing-function 实现。
      实现＝transform: scaleX（fill 的 width 仍为目标百分比，视觉与宽度生长一致、不动布局）；
@@ -689,7 +689,7 @@
   .shop-hint b{color:#E25C1D;}
   .shop-hint .ok-line{color:#1E9E52; font-weight:700;}
 
-  /* 兑换记录（2026-10-21 DeepSeek 方案+家长拍板：商店样式不变，记录沿用商店卡；
+  /* 兑换记录（2026-10-21 终审 方案+家长拍板：商店样式不变，记录沿用商店卡；
      默认收起、点击展开，与目标榜详情同交互） */
   .redeem-wrap{margin-top:18px;}
   .redeem-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
@@ -714,7 +714,7 @@
     text-align:center; font-size:13px; color:var(--sub); background:#FAFBFC;}
   .redeem-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
 
-  /* 商店子块（2026-10-23 四块合并，DeepSeek C 形态）：加分/扣分规则随商店直接展开，
+  /* 商店子块（2026-10-23 四块合并，终审 C 形态）：加分/扣分规则随商店直接展开，
      积分日志沿 redeem 模式二级开关默认收起；子块不套 .collapse/.collapse-btn（防折叠JS与口令门 closest 语义污染） */
   .sub-block{margin-top:18px;}
   .sub-head{font-size:16px; font-weight:800; margin-bottom:8px;}
@@ -798,7 +798,7 @@
   .log-scrollwrap.has-more::after{content:''; position:absolute; left:0; right:0; bottom:26px; height:34px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.97)); pointer-events:none;}
   .log-count{font-size:12px; color:var(--sub); text-align:center; padding-top:6px; min-height:18px;}
   .log-day{font-size:13px; font-weight:700; color:var(--sub); padding:10px 0 0; list-style:none;}
-  /* 自动滚动（2026-10-22 家长定、DeepSeek定版）：规则区滚动容器＋总开关行 */
+  /* 自动滚动（2026-10-22 家长定、终审定版）：规则区滚动容器＋总开关行 */
   .rule-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
   .as-row{display:flex; justify-content:flex-end; margin-bottom:8px;}
   .as-label{font-size:13px; color:var(--sub); display:flex; align-items:center; gap:6px; cursor:pointer;}
@@ -812,7 +812,7 @@
     line-height:1.8;
   }
 
-  /* 2026-10-19：5分钟自刷新倒计时（DeepSeek方案） */
+  /* 2026-10-19：5分钟自刷新倒计时（终审方案） */
   .footer .refresh-countdown{
     margin-top:4px;
     font-size:12px;
@@ -822,7 +822,7 @@
     line-height:1.4;
   }
 
-  /* === 2026-10-19 动效增补（DeepSeek方案，类名已按实际文件适配） === */
+  /* === 2026-10-19 动效增补（终审方案，类名已按实际文件适配） === */
   :root{
     --ease-pop: cubic-bezier(.25,.8,.35,1);
     --dur-fast: .18s;
@@ -857,7 +857,7 @@
     .task-list.in .task:nth-child(3){ animation-delay:.08s; }
     .task-list.in .task:nth-child(4){ animation-delay:.12s; }
     @keyframes taskIn{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform:translateY(0);} }
-    /* === 余额卡片动效 E1/E2/E3/E5/E8（2026-10-19，DeepSeek+Gemini联合方案，DeepSeek仲裁放行） === */
+    /* === 余额卡片动效 E1/E2/E3/E5/E8（2026-10-19，终审+初审联合方案，终审仲裁放行） === */
     /* E2 卡片微抬升 + 装饰圆光晕呼应（hover限精确指针设备，focus-visible保证键盘可达） */
     .bal-card{ transition:transform .18s var(--ease-pop), box-shadow .2s ease; }
     .bal-card:focus-visible{ transform:translateY(-3px); }
@@ -916,13 +916,13 @@
     background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
     margin-left:8px;
   }
-  /* 2026-10-19 KB-TAG-LIVE v2：实时数据标签绿色呼吸动效（DeepSeek方案·终审版）
+  /* 2026-10-19 KB-TAG-LIVE v2：实时数据标签绿色呼吸动效（终审方案·终审版）
      定位：绝对定位仅保留给余额卡（.bal-demo-tag 本身已 position:absolute）；
           今日任务、积分日志标签留在文档流内，靠 flex margin 右置。
      动效：仅 transform/opacity；reduced-motion 下只保留静态绿底。
      扫光 ::after 已删除（违反 E8"一次性扫光不循环"规范）。 */
   .tag-live{
-    position:relative; /* 2026-10-19 终审补：给 ::before 提供定位含块（Gemini初审发现，DeepSeek终审确认） */
+    position:relative; /* 2026-10-19 终审补：给 ::before 提供定位含块（初审初审发现，终审终审确认） */
     background:#E6F9ED; color:#16A34A; opacity:1;
     overflow:hidden; isolation:isolate;
     animation:tagLiveBreathe 2.2s ease-in-out infinite;
@@ -931,9 +931,9 @@
   .bal-demo-tag.tag-live{
     position:absolute; top:6px; right:8px;
   }
-  /* 余额卡实时圆点（2026-10-24 家长令，Gemini 定参）：实时态不用文字胶囊，改绿色呼吸圆点——
+  /* 余额卡实时圆点（2026-10-24 家长令，初审 定参）：实时态不用文字胶囊，改绿色呼吸圆点——
      基准 8px、scale .5→1.2＋opacity .6→1、纯色 #22C55E 无光晕；周期 2.4s 非对称（长 25%/停至 42%/缩到底）；
-     两卡错相位 .8s；reduced-motion 定格静止（全站口径，覆盖 Gemini"保留微弱渐隐"建议） */
+     两卡错相位 .8s；reduced-motion 定格静止（全站口径，覆盖 初审"保留微弱渐隐"建议） */
   .bal-demo-tag.is-dot{
     top:10px; right:12px;
     width:8px; height:8px; min-width:8px; padding:0; border-radius:50%;
@@ -952,11 +952,11 @@
   .card h2 .tag-demo.tag-live{ margin-left:auto; }
   .grade-head .tag-demo.tag-live{ margin-left:auto; }
 
-  /* 2026-10-20 KB-TAG-LIVE-FONT10：栏目"实时数据"标签字号调小（DeepSeek方案，用户反馈"偏大"）
+  /* 2026-10-20 KB-TAG-LIVE-FONT10：栏目"实时数据"标签字号调小（终审方案，用户反馈"偏大"）
      根因：第678/702/718/781行 4 处静态栏目标签(.card.collapse > .tag-live)原先无字号声明、继承 16px 偏大；
      上版 override(.card h2 .tag-demo.tag-live)未命中这些元素，属选择器错配，本版纠正。
      分治：4 处栏目标签 10px / 余额卡·今日任务·积分日志标签 11px 维持。
-     (Gemini初审意见已落实：今日任务标签不再波及，保持 11px；letter-spacing 删除，避免低分屏渲染劣化)
+     (初审初审意见已落实：今日任务标签不再波及，保持 11px；letter-spacing 删除，避免低分屏渲染劣化)
      动效 scale(1.10) 峰值等效约 11px，不超改动前静息值。override 不改原规则，可回滚。 */
   .card.collapse > .tag-live{
     font-size:10px;
@@ -1092,7 +1092,7 @@
 <script>/* 口令门早锁（2026-10-23 选项1）：无设备令牌先给 <html> 上 kb-locked，避免详情闪现；门逻辑在文末 script 块 */
 try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classList.add('kb-locked'); } catch (e) {}</script>
 <style>
-  /* 任务催促整卡闪烁（2026-10-23 家长定、DeepSeek 有条件赞成）：只动边框与底色、文字按钮静止；周期2s；reduced-motion 静止；JS 侧同屏最多3卡动、20分钟转静态、可单卡暂停 */
+  /* 任务催促整卡闪烁（2026-10-23 家长定、终审 有条件赞成）：只动边框与底色、文字按钮静止；周期2s；reduced-motion 静止；JS 侧同屏最多3卡动、20分钟转静态、可单卡暂停 */
   .task.urging{border:2px solid #E5484D !important;}
   .task.urging:not(.urging-static){animation:urgePulse 2s ease-in-out infinite;}
   @keyframes urgePulse{0%,100%{background-color:#FFF7F5; box-shadow:0 0 0 0 rgba(229,72,77,0);}50%{background-color:#FDE3E1; box-shadow:0 0 0 3px rgba(229,72,77,.30);}}
@@ -1168,7 +1168,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </div>
   </section>
 
-  <!-- 学习小结（2026-10-23 家长拍板两版上看板，DeepSeek 五条件）：孩子版近3天（公开数据，2026-10-23晚家长改定不脱敏）；家长版凭独立家长令牌经 hw-api 私有拉取、不进公开仓库 -->
+  <!-- 学习小结（2026-10-23 家长拍板两版上看板，终审 五条件）：孩子版近3天（公开数据，2026-10-23晚家长改定不脱敏）；家长版凭独立家长令牌经 hw-api 私有拉取、不进公开仓库 -->
   <section class="card collapse" aria-label="学习小结">
     <span class="tag-demo" id="summary-tag">离线数据</span>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-summary" id="btn-summary">
@@ -1251,7 +1251,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <div class="rule-note">本周徽章等你来拿 🏅</div>
     </div>
       </div>
-    <!-- 徽章目标榜（2026-10-23 并入本周徽章·子块，DeepSeek 裁定二级开关 (b) 默认收起）：
+    <!-- 徽章目标榜（2026-10-23 并入本周徽章·子块，终审 裁定二级开关 (b) 默认收起）：
          结构红线——本子块必须位于 renderBadges 所有的 .collapse-pad 之外、其后，
          且必须位于 .collapse-inner 之内（2026-10-23 真机缺陷修正：曾置于 inner 之外、body 之内，父栏收起时头行外露）：
          renderBadges 以 '#panel-achieve .collapse-pad' 整表重建（文档序首中＝徽章 pad），
@@ -1292,7 +1292,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       </div>
 
       </div>
-    <!-- 加分规则（2026-10-23 并入积分商店·子块一；修订：家长定＋DeepSeek C1'——二级开关默认收起、点击才展开，与其余子块形态统一；
+    <!-- 加分规则（2026-10-23 并入积分商店·子块一；修订：家长定＋终审 C1'——二级开关默认收起、点击才展开，与其余子块形态统一；
          内容与口径同迁移前：开关/滚动区/兜底原样保留，renderRules 按 panel-bonus 找 .rule-list） -->
     <div class="sub-wrap" id="panel-bonus" role="region" aria-label="加分规则">
       <button class="sub-toggle" type="button" id="bonus-toggle" aria-expanded="false" aria-controls="bonus-body">
@@ -1301,7 +1301,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       </button>
       <div class="sub-body" id="bonus-body" role="region" aria-labelledby="bonus-toggle" hidden>
       <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="bonus"> 自动滚动</label></div>
-      <!-- 兜底（2026-10-20，DeepSeek终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
+      <!-- 兜底（2026-10-20，终审终审定案b）：不硬编码任何规则条目，防口径漂移误导孩子。rules.json 拉取成功后 renderRules 整体替换本列表；失败时只显示暂不可用。 -->
       <div class="auto-scroll rule-scroll" data-as-key="bonus"><ul class="rule-list">
         <li><span>规则数据暂不可用，请稍后刷新。</span></li>
       </ul></div>
@@ -1315,13 +1315,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       </button>
       <div class="sub-body" id="deduct-body" role="region" aria-labelledby="deduct-toggle" hidden>
       <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="deduct"> 自动滚动</label></div>
-      <!-- 兜底（2026-10-20，DeepSeek终审定案b）：同加分规则，不硬编码条目。 -->
+      <!-- 兜底（2026-10-20，终审终审定案b）：同加分规则，不硬编码条目。 -->
       <div class="auto-scroll rule-scroll" data-as-key="deduct"><ul class="rule-list">
         <li><span>规则数据暂不可用，请稍后刷新。</span></li>
       </ul></div>
       </div>
     </div>
-    <!-- 积分日志（2026-10-23 并入积分商店·子块三，DeepSeek C 形态：二级开关默认收起、沿 redeem 模式；
+    <!-- 积分日志（2026-10-23 并入积分商店·子块三，终审 C 形态：二级开关默认收起、沿 redeem 模式；
          年级块 #log-g5/#log-g6 整体随迁（bal-jump 的 data-jump 依赖），内容口径同迁移前） -->
     <div class="sub-wrap" id="panel-log">
       <button class="sub-toggle" type="button" id="log-toggle" aria-expanded="false" aria-controls="log-body">
@@ -1406,7 +1406,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       /* 2026-10-23 四块合并后跳转链：先展开积分商店（btn-shop 所属 section 的 open 类为准，
          判定口径同 2026-10-19 修复：open 类挂宿主 section、panel 本身无 open 类）→
          再展开商店内积分日志子块（日志模块 window.__kbOpenLogSub，未就绪时点 #log-toggle 兜底）→
-         settle 后定位。DeepSeek C3：双段 settle 以 350ms 兜底为主、settle 后再 rAF 一帧，
+         settle 后定位。终审 C3：双段 settle 以 350ms 兜底为主、settle 后再 rAF 一帧，
          不串联 transitionend（防只捕第一段结束就定位偏差）；两块都已展开时直接 rAF 定位。 */
       var btnShop = document.getElementById('btn-shop');
       var shopHost = btnShop ? btnShop.closest('.collapse') : null;
@@ -1447,7 +1447,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 })();
 </script>
 <script>
-/* 2026-10-19 动效：进入视口触发（DeepSeek方案，类名已按实际文件适配） */
+/* 2026-10-19 动效：进入视口触发（终审方案，类名已按实际文件适配） */
 (function(){
   if(!('IntersectionObserver' in window)) return;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1477,7 +1477,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 })();
 </script>
 <script>
-/* 今日任务自动更新（KB-TASK-AUTO-2026-10-19，DeepSeek 方案 §5.2）：
+/* 今日任务自动更新（KB-TASK-AUTO-2026-10-19，终审 方案 §5.2）：
    从 https://whyjjf.lol/data/tasks_daily_{5,6}.json 拉取当日任务，
    仅渲染 review_status=approved 的任务；失败则保留兜底数据。 */
 (function(){
@@ -1573,7 +1573,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var sec = document.getElementById(secId);
     if(!sec || !data || data.date !== todayStr()) return false;
     applyGradeFold(secId); /* 年级段折叠状态在每次重渲染时重申，软刷新不冲掉（2026-10-23 A案） */
-    /* P2（DeepSeek 审查 2026-10-20）：栏目与数据年级一致性——错位文件宁可不渲染 */
+    /* P2（终审 审查 2026-10-20）：栏目与数据年级一致性——错位文件宁可不渲染 */
     var wantGrade = secId === 'tasks-g5' ? '五年级' : '六年级';
     if(data.grade && data.grade !== wantGrade){
       console.warn('今日任务年级错位：栏目', secId, '收到', data.grade, '数据，已跳过');
@@ -1606,7 +1606,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     if(progFill){
       var pctExact = total ? (done / total * 100) : 0;
-      /* 最小可见宽度（2026-10-23 DeepSeek 定版）：0<pct<3 时视觉宽度按 3% 呈现，文案与配色仍按真实百分比；0% 仍为空 */
+      /* 最小可见宽度（2026-10-23 终审 定版）：0<pct<3 时视觉宽度按 3% 呈现，文案与配色仍按真实百分比；0% 仍为空 */
       var visPct = (pctExact > 0 && pctExact < 3) ? 3 : pctExact;
       progFill.style.width = visPct + '%';
       /* 填充色按百分比连续混合（2026-10-23 23:08 家长令）：pct≤70 纯年级色，70→100 线性混入语义绿，100 纯绿；
@@ -1775,7 +1775,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     return true;
   }
   var taskVer = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at），替代 ?t= 时间戳破缓存 */
-  /* 方案E（2026-10-20，DeepSeek 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径。
+  /* 方案E（2026-10-20，终审 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径。
      缓存渲染时角标明示"数据更新于 HH:MM"（取两路中较旧的一路时刻）。 */
   var TASK_RETRY_DELAYS = [1000, 2000, 4000];
   var taskRecheckTimer = 0;
@@ -1849,7 +1849,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         })
         .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); })
         .then(function(){
-          /* P2（DeepSeek 审查 2026-10-20）：两路都结算后才定标签——一成一败时
+          /* P2（终审 审查 2026-10-20）：两路都结算后才定标签——一成一败时
              明示"部分数据更新失败"，不再长期挂"离线数据"误导 */
           settled++;
           if(settled < 2) return;
@@ -1886,7 +1886,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
   /* 口令门收口钩子（2026-10-23 登记于 docs/口令门拦截清单_2026-10-23.md）：
-     口令门只以 open=false 调用（收起方向）；往展开方向使用须重新报 DeepSeek 终审。 */
+     口令门只以 open=false 调用（收起方向）；往展开方向使用须重新报 终审 终审。 */
   window.__kbSetGradeOpen = function(g, open){
     GRADE_OPEN[g] = !!open;
     try { window.localStorage.setItem(gradeOpenKey(g), open ? '1' : '0'); } catch(e){}
@@ -1913,7 +1913,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   load();
   window.__kanbanRefreshTasks = load; /* 2026-10-20：供倒计时软刷新调用（只刷内容不刷页面） */
   /* ================================================================
-     昨日完成折叠区（2026-10-23 B 案，家长拍板、DeepSeek 定案）：
+     昨日完成折叠区（2026-10-23 B 案，家长拍板、终审 定案）：
      - 数据 data/yesterday_done_{5,6}.json，由 rollover 从昨日归档抽 done 生成；
      - 只读展示，不计今日完成率，无任何操作按钮；
      - 浏览器本地时间 >= YESTERDAY_CUTOFF_HOUR 不渲染（时区必须用本地时间，勿改 UTC）；
@@ -1974,7 +1974,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </script>
 <script>
 /* ============================================================
-   余额卡片总分机械滚轮 v2（2026-10-19 重写，deepseek 方案终审）
+   余额卡片总分机械滚轮 v2（2026-10-19 重写，终审 方案终审）
    - 纯 CSS transition 驱动（合成器动画，iPhone Safari 不掉帧）
    - 修 v1 bug：单格高度 = strip.scrollHeight/10（=1em），不是 slot.clientHeight/10
    - 逐位 delay：delay = (n-1-i)*STAGGER，低位先停、高位后停（里程表视觉）
@@ -2043,10 +2043,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   /* ---------- 写终值（零动画） ---------- */
   function writeFinal(el, odo, target){
     if(el._rollV !== undefined && el._rollV !== window.__kanbanBalanceVersion) return; /* B3：旧动画不写 */
-    /* P2（DeepSeek 审查 2026-10-20）：位数增长防御——target 位数与现有滚轮槽数
+    /* P2（终审 审查 2026-10-20）：位数增长防御——target 位数与现有滚轮槽数
        不一致时先重建（setFinalBalance 已有此重建，此处兜底其他调用路径），
        防 padStart 不截断导致的错位显示。
-       前提（DeepSeek 终审条件登记）：target 为非负整数——负余额走
+       前提（终审 终审条件登记）：target 为非负整数——负余额走
        setFinalBalance 的静态 −N 分支，不入本函数。 */
     if(String(target).length !== odo.children.length){ odo = buildOdometer(el, target); el._odo = odo; }
     var cellH = measureCellH(odo);
@@ -2255,7 +2255,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
 <script>
 /* ============================================================
-   2026-10-19：看板真实数据（DeepSeek方案 KB-STATS-AUTO，独立IIFE）
+   2026-10-19：看板真实数据（终审方案 KB-STATS-AUTO，独立IIFE）
    - 拉取 data/stats_grade_{5,6}.json → 余额（__kanbanSetBalance 直接写终值，不重滚）
    - 拉取 data/points_log_{5,6}.json → 积分日志（textContent 渲染，防 XSS）
    - 商店手续费小字静态渲染（#shop-progress，仅注记；2026-10-19 用户要求删除各年级汇总行）
@@ -2274,7 +2274,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     return document.documentElement.classList.contains('kb-locked');
   }
 
-  /* ---------- 方案E（2026-10-20，DeepSeek 仲裁）：拉取重试 + 本地缓存兜底 ----------
+  /* ---------- 方案E（2026-10-20，终审 仲裁）：拉取重试 + 本地缓存兜底 ----------
      根因：数据 push 触发 Pages 全站重部署，窗口内 fetch 可能 404/超时，旧逻辑
      直接误标静态值。现：失败自动重试（≤3 次，间隔 1s/2s/4s，±20% 抖动）；
      最终失败用 localStorage 上次成功数据渲染，角标明示"数据更新于 HH:MM"；
@@ -2383,7 +2383,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     var live = (text === '实时数据');
     tag.classList.toggle('tag-live', live); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */
-    tag.classList.toggle('is-dot', live); /* 2026-10-24 家长令：余额卡实时态改呼吸圆点（Gemini 定参），文字清空、aria 保留 */
+    tag.classList.toggle('is-dot', live); /* 2026-10-24 家长令：余额卡实时态改呼吸圆点（初审 定参），文字清空、aria 保留 */
     tag.textContent = live ? '' : text;
     if(live){ tag.setAttribute('aria-label', '实时数据'); } else { tag.removeAttribute('aria-label'); }
   }
@@ -2393,7 +2393,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!card) return;
     var bal = d.balance;
     card.classList.toggle('is-neg', bal < 0);
-    /* 冲刺点亮判定（2026-10-23 Gemini 推荐方案）：存在下一档且 0 < 差额 ≤ 下一档×10% 才触发；负余额/已达最高档（无 tier_next）不触发 */
+    /* 冲刺点亮判定（2026-10-23 初审 推荐方案）：存在下一档且 0 < 差额 ≤ 下一档×10% 才触发；负余额/已达最高档（无 tier_next）不触发 */
     var tn = (typeof d.tier_next === 'number' && isFinite(d.tier_next)) ? d.tier_next : null;
     var sprint = false;
     if(tn !== null && bal >= 0){ var gapN = tn - bal; if(gapN > 0 && gapN <= tn * 0.10) sprint = true; }
@@ -2507,7 +2507,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(it.sign !== 'plus' && it.sign !== 'minus') { dropped++; continue; }
       valid.push(it);
     }
-    /* KB-POST2-2026-10-22（DeepSeek 改良版）：数据保留 7 天，前端只展示最近
+    /* KB-POST2-2026-10-22（终审 改良版）：数据保留 7 天，前端只展示最近
        3 个自然日（名义日期），常量可调；3 天内全量按入账时间倒序（数据顺序
        即排序结果），不分正负、不再截断。 */
     var LOG_DISPLAY_DAYS = 3;
@@ -2528,7 +2528,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var shown = valid.filter(function(it){
       return Object.prototype.hasOwnProperty.call(allowDay, dayKey(it));
     });
-    /* P1#7（DeepSeek 审查 2026-10-20）：丢弃不再静默——计数并 console 告警；
+    /* P1#7（终审 审查 2026-10-20）：丢弃不再静默——计数并 console 告警；
        下方空态在"全丢弃（数据异常）"与"真无记录"之间区分文案。 */
     if(dropped && window.console && console.warn) console.warn('积分日志：丢弃不合规条目 ' + dropped + ' 条（共 ' + items.length + ' 条）');
     if(!shown.length){
@@ -2545,7 +2545,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var lastDay = null;
     shown.forEach(function(it){
       var dk = dayKey(it);
-      if(dk !== lastDay){ /* 按天分组小标题（DeepSeek 改良版：滚动锚点） */
+      if(dk !== lastDay){ /* 按天分组小标题（终审 改良版：滚动锚点） */
         lastDay = dk;
         var hd = document.createElement('li');
         hd.className = 'log-day';
@@ -2574,7 +2574,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       li.appendChild(dot); li.appendChild(body);
       listEl.appendChild(li);
     });
-    /* 滚动提示（DeepSeek 改良版硬性要求）：内容超出滚动区高度时，底部渐隐
+    /* 滚动提示（终审 改良版硬性要求）：内容超出滚动区高度时，底部渐隐
        ＋"共 N 条"双重提示；滚到底部自动收起渐隐。 */
     var blockEl = listEl.closest('.grade-block');
     var wrapEl = listEl.closest('.log-scrollwrap');
@@ -2610,7 +2610,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(!list) throw new Error('no log-list');
       renderLogItems(list, d.items);
       kbWireLogToggle();
-      kbLogApplyState(); /* 软刷新恢复 OPEN_LOG 展开态；展开中灌入新数据后重算溢出提示（DeepSeek 补充评审双触发） */
+      kbLogApplyState(); /* 软刷新恢复 OPEN_LOG 展开态；展开中灌入新数据后重算溢出提示（终审 补充评审双触发） */
       var si = srcInfo[name];
       if(si && si.fromCache){
         setLogTag(blockId, '数据更新于 ' + fmtHHMM(si.ts), null); /* 方案E：缓存渲染，明示数据时刻 */
@@ -2627,7 +2627,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
   }
 
-  /* ---------- 积分日志子块开关（2026-10-23 并入积分商店，DeepSeek C 形态：二级开关默认收起，
+  /* ---------- 积分日志子块开关（2026-10-23 并入积分商店，终审 C 形态：二级开关默认收起，
      沿兑换记录 redeem 模式：OPEN_LOG 变量 + hidden 切换 + aria 同步，软刷新后由 loadLog 回调恢复） ---------- */
   var OPEN_LOG = false;
   function kbLogHintRefresh(blockEl){
@@ -2661,7 +2661,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(chev) chev.textContent = OPEN_LOG ? '收起 ▴' : '展开 ▾';
     if(OPEN_LOG){
       /* 子块收起时 body 为 display:none，scrollHeight/clientHeight 均为 0，溢出判定失真；
-         展开后补重算渐隐与计数（DeepSeek 补充评审处置：展开时重算 + 灌入后重算双触发）。
+         展开后补重算渐隐与计数（终审 补充评审处置：展开时重算 + 灌入后重算双触发）。
          商店展开过渡约 .3s，布局未稳时再补一轮（重算幂等）。 */
       requestAnimationFrame(function(){ kbLogHintRefresh($('log-g5')); kbLogHintRefresh($('log-g6')); });
       setTimeout(function(){ kbLogHintRefresh($('log-g5')); kbLogHintRefresh($('log-g6')); }, 400);
@@ -2676,13 +2676,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       kbLogApplyState();
     });
   }
-  /* 余额卡联动入口：只开不收（已展开为 no-op，软刷新恢复态下不打架，DeepSeek C3/R2） */
+  /* 余额卡联动入口：只开不收（已展开为 no-op，软刷新恢复态下不打架，终审 C3/R2） */
   window.__kbOpenLogSub = function(){
     kbWireLogToggle();
     if(!OPEN_LOG){ OPEN_LOG = true; }
     kbLogApplyState();
   };
-  /* 口令门收口钩子（DeepSeek C4）：回锁时复位日志子块为收起态 */
+  /* 口令门收口钩子（终审 C4）：回锁时复位日志子块为收起态 */
   window.__kbSyncLogSub = function(){ kbLogApplyState(); };
   window.__kbResetLogSub = function(){
     OPEN_LOG = false;
@@ -3095,7 +3095,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
 <script>
 /* ============================================================
-   2026-10-19：全栏目实时同步（DeepSeek方案 KB-SECTIONS-AUTO，独立IIFE）
+   2026-10-19：全栏目实时同步（终审方案 KB-SECTIONS-AUTO，独立IIFE）
    - 拉取 data/badges.json / badge_goals.json / shop.json / rules.json / redeem_log.json
    - 任一失败按栏目独立降级（保留硬编码 DOM），不影响其他栏目
    - 全部文本经 textContent 渲染（天然转义），禁用 innerHTML 拼用户数据
@@ -3113,7 +3113,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     return e;
   }
   var SEC_VER = {}; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=generated_at） */
-  /* 方案E（2026-10-20，DeepSeek 仲裁）：与 stats 模块同款重试 + 缓存兜底。
+  /* 方案E（2026-10-20，终审 仲裁）：与 stats 模块同款重试 + 缓存兜底。
      本栏目无角标：缓存仅用于渲染兜底；最终失败且无缓存时维持原有占位降级。 */
   var SEC_RETRY_DELAYS = [1000, 2000, 4000];
   function secCacheWrite(name, d){
@@ -3180,7 +3180,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
 
   /* ---- 1. 荣耀徽章（当周，台账 badge_ 事件） ----
-     2026-10-20 方案1 横向勋章带（DeepSeek 终审放行）：大卡网格 → 64px 圆形勋章单行横滑。
+     2026-10-20 方案1 横向勋章带（终审 终审放行）：大卡网格 → 64px 圆形勋章单行横滑。
      展示层静态数据 BADGE_TIER / BADGE_BLURB 仅决定色环与气泡文案，禁止被判定器/积分逻辑引用。 */
   var SHINE_PLAYED = {};  /* A+B 动效：扫光会话内已播标记（软刷新重渲染不重播） */
   var FLY_PLAYED = {};    /* 飞入会话内已播标记（与 SHINE_PLAYED 同策略） */
@@ -3261,7 +3261,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         list.forEach(function(b){
           var medal = mkEl('div','medal');
           var sid = b.key ? badgeSeenId((d.week && d.week.cycle_week) || '', gk, b.key + (b.late ? ':late' : '')) : '';
-          /* 动效合并（DeepSeek 终审 R1/R3）：先判已读态——未读只走光晕+扫光不飞入；已读才判飞入，会话内只播一次 */
+          /* 动效合并（终审 终审 R1/R3）：先判已读态——未读只走光晕+扫光不飞入；已读才判飞入，会话内只播一次 */
           var isNew = !!sid && !badgeIsSeen(sid);
           if(isNew){
             medal.classList.add('is-new');
@@ -3324,7 +3324,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         block.appendChild(strip);
         block.appendChild(pop);
       }else{
-        /* 无徽章空态：只显示已审文案，不渲染灰度占位（DeepSeek 终审 D4/D2 约束） */
+        /* 无徽章空态：只显示已审文案，不渲染灰度占位（终审 终审 D4/D2 约束） */
         block.appendChild(mkEl('div','rule-note','本周徽章等你来拿 🏅'));
       }
       pad.appendChild(block);
@@ -3346,7 +3346,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   /* ---- 2. 徽章目标榜（全目录 + 获得状态；数量随 catalog 数据自动同步，不再硬编码） ---- */
   var OPEN_GOALS = {};  /* 目标榜细节展开状态（2026-10-20 用户要求细节默认隐藏、点击徽章才显示；软刷新后按此恢复） */
-  /* 目标榜二级开关（2026-10-23 并入本周徽章，DeepSeek 裁定 (b) 默认收起）＋回锁复位（C-2：开关与行内详情双清） */
+  /* 目标榜二级开关（2026-10-23 并入本周徽章，终审 裁定 (b) 默认收起）＋回锁复位（C-2：开关与行内详情双清） */
   var OPEN_GOALS_BLOCK = false;
   function kbGoalsApply(){
     var body = $('goals-body'), btn = $('goals-toggle'), chev = $('goals-chev');
@@ -3560,7 +3560,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   /* 标题时钟（2026-10-20 用户要求）：秒级实时跳动，强制北京时间（Asia/Shanghai），
      不受设备时区影响。格式 YYYY-MM-DD HH:MM:SS，formatToParts 组装，免受 locale 分隔符差异影响。 */
   var clockTimer = null;
-  /* DeepSeek 终审建议：formatter 在模块级创建一次复用，每秒不再新建。 */
+  /* 终审 终审建议：formatter 在模块级创建一次复用，每秒不再新建。 */
   var bjClockFmt = new Intl.DateTimeFormat('zh-CN', {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
     hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
@@ -3634,7 +3634,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     return true;
   }
 
-  /* 口令门收口钩子（2026-10-23 DeepSeek C4 改口径）：回锁收口时一并复位商店内
+  /* 口令门收口钩子（2026-10-23 终审 C4 改口径）：回锁收口时一并复位商店内
      积分日志/兑换记录两个子块开关为收起态（aria-expanded=false、body hidden、OPEN_* 清零），
      不留残留展开态；kbCollapseAll 经此钩子调用。 */
   window.__kbResetShopSubs = function(){
@@ -3647,7 +3647,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     try{ if(typeof window.__kbResetRuleSubs === 'function') window.__kbResetRuleSubs(); }catch(e){ console.warn('回锁复位规则子块失败（已隔离）:', e); }
   };
 
-  /* 规则两块二级开关（2026-10-23 家长定＋DeepSeek 修订 C1'/C3'）：OPEN_BONUS/OPEN_DEDUCT 与日志/兑换
+  /* 规则两块二级开关（2026-10-23 家长定＋终审 修订 C1'/C3'）：OPEN_BONUS/OPEN_DEDUCT 与日志/兑换
      同一套 状态-接线-恢复-复位 模式；恢复统一经 __kbRestoreShopSubs 一段代码路径处理四子块（C3'）。 */
   var OPEN_BONUS = false, OPEN_DEDUCT = false;
   function kbRuleApply(kind){
@@ -3712,7 +3712,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </script>
 
 <script>
-/* 2026-10-19：5分钟自刷新 + 倒计时（DeepSeek方案，独立IIFE） */
+/* 2026-10-19：5分钟自刷新 + 倒计时（终审方案，独立IIFE） */
 (function(){
   'use strict';
   try{
@@ -3731,7 +3731,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       return r;
     }
 
-    /* 2026-10-20（用户要求，DeepSeek方案）：自动到期只刷内容不刷页面 */
+    /* 2026-10-20（用户要求，终审方案）：自动到期只刷内容不刷页面 */
     function softRefresh(){
       var ok = false;
       try{ if(typeof window.__kanbanRefreshStats === 'function'){ window.__kanbanRefreshStats(); ok = true; } }catch(e){ console.warn('软刷新 stats 入口异常:', e); }
@@ -3801,7 +3801,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </script>
 
 <script>
-/* ===== 学习走势（2026-10-20：DeepSeek 方案，数据 data/trends.json 由 build_trends.py 生成） ===== */
+/* ===== 学习走势（2026-10-20：终审 方案，数据 data/trends.json 由 build_trends.py 生成） ===== */
 (function(){
   var TD = null, RANGE = 14, ONLYBAD = false;
   var SHOW_SUBJ = null, OPEN_WEAK = null; /* F2：刷新恢复用（已展开单科卡/薄弱点条） */
@@ -3817,7 +3817,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
      两处浮层互斥：打开一处先关另一处）。 */
   var TR_MINI_SIGS = {}, TR_SUBJ_SIG = null, TR_SPOP = null;
   try { TR_RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch(e){}
-  /* 破峰判定（D，克制口径，DeepSeek 不推荐下家长仍拍板、严按此口径）：当日 ≥TARGET，且紧邻前一日有数据
+  /* 破峰判定（D，克制口径，终审 不推荐下家长仍拍板、严按此口径）：当日 ≥TARGET，且紧邻前一日有数据
      且 <TARGET、再前一日有数据且 <TARGET（至少连续 2 天在线下后首次冲回线上）；无数据日断链、
      序列前两点不触发、已在线上延续的达标日不重复触发。只用图上 85% 线与当日综合正确率。 */
   function starSet(vals){
@@ -3849,15 +3849,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function sl(arr, n){ return arr.slice(-n); }
   function nn(arr){ return arr.filter(function(v){ return v !== null && v !== undefined; }); }
   function fmt(v){ return v === null || v === undefined ? '—' : (Math.round(v * 10) / 10); }
-  /* P2 转义（DeepSeek 审查 2026-10-20）：知识点名/链接来自题目库数据，拼 innerHTML 前统一转义 */
+  /* P2 转义（终审 审查 2026-10-20）：知识点名/链接来自题目库数据，拼 innerHTML 前统一转义 */
   function escHtml(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
-  /* 触控就近吸附（2026-10-20，DeepSeek 终审有条件通过）：由点击视口坐标换算 SVG x，
+  /* 触控就近吸附（2026-10-20，终审 终审有条件通过）：由点击视口坐标换算 SVG x，
      取与各日期 X(i) 横向距离最近的 i。比较用严格 <（先遍历者胜）→ 两日正中点归左日。
      clientX 与 rect.left 同为视口坐标，相减自带滚动补偿。 */
-  /* 响应式轴规格（2026-10-20，DeepSeek 终审有条件通过；取代刻度14/日期12固定值裁决）：
+  /* 响应式轴规格（2026-10-20，终审 终审有条件通过；取代刻度14/日期12固定值裁决）：
      视觉字号 = SVG字号 × s（s=容器宽/680），故按目标视觉字号反算 SVG 字号并钳制
-     （刻度 9–19、日期 9–18；上限经 390 档离线量测按 DeepSeek C2 回归微调）——小屏保可读、大屏设上限。Gemini 初审曾要求正向缩放，
-     经 DeepSeek 裁决为机制性误判（两端都失败），不得改回。
+     （刻度 9–19、日期 9–18；上限经 390 档离线量测按 终审 C2 回归微调）——小屏保可读、大屏设上限。初审 初审曾要求正向缩放，
+     经 终审 裁决为机制性误判（两端都失败），不得改回。
      pl 随刻度字号联动（2.69=实测「100%」每单位字号宽，+14 余量，下限40防宽屏塌陷）；
      step 按串宽/日间隔几何推导：30 天窗口串宽>日间隔是物理上限、必须抽样，非可优化项；
      日期末日必标为硬要求，不得被抽样掉。 */
@@ -3871,7 +3871,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(n > 1) step = Math.max(1, Math.ceil(dateF * 2.7 * 1.15 / (iw / (n - 1))));
     return { scaleF: scaleF, dateF: dateF, pl: pl, step: step, iw: iw, dateW: dateF * 2.7 };
   }
-  /* 日期标签显示集（DeepSeek 终审 C3）：按 step 抽样 + 末日必标；
+  /* 日期标签显示集（终审 终审 C3）：按 step 抽样 + 末日必标；
      末日标签改 end 锚点贴右界绘制，其占用左界为 X(n-1)-dateW，与紧邻常规标签
      （居中占用 ±dateW/2）间距不足 1.5×dateW 时剔除紧邻者，保证不重叠不截断。 */
   function dateShown(n, spec){
@@ -4163,7 +4163,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var dd = labels[i];
         if(DW.fut[i]){ el('tr-tip').innerHTML = '📅 ' + dd + '：还没到这一天'; return; }
         var srcI = DW.src[i];
-        /* 明细条文案（2026-10-20 用户反馈模糊，DeepSeek 终审定稿）：逐年级分段，各自报正确率与达标状态
+        /* 明细条文案（2026-10-20 用户反馈模糊，终审 终审定稿）：逐年级分段，各自报正确率与达标状态
            （≥TARGET 达标；未达标段整段橙色高亮，并带当日最弱科目与补练建议——最弱科目口径与薄弱日点评一致：
            分科非 null 最低、并列按 SUBJS 顺序）；当日无分科数据则只报状态不给科目；overall 为 null 报
            "当天无数据"，不编造数字。结尾肯定句仅在两年级都有数据且都达标时追加。 */
@@ -4188,7 +4188,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var tail = (nData === GRADES.length && !anyBad) ? '——两个年级都达到目标线，继续保持！' : '';
         el('tr-tip').innerHTML = '📅 ' + dd + '：' + segs.join(' · ') + tail;
     }
-    /* 全图统一选日（DeepSeek 终审 C1）：可见点/热区/空白都冒泡到 svg 根，按坐标吸附最近日期，
+    /* 全图统一选日（终审 终审 C1）：可见点/热区/空白都冒泡到 svg 根，按坐标吸附最近日期，
        不再给单点单独绑 click，避免热区重叠抢答。 */
     var mainSvg = el('tr-chart').querySelector('svg');
     if(mainSvg){
@@ -4224,7 +4224,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       wk.innerHTML = wkLines.join('<br>');
     }
 
-    /* 本周行动建议（F5·2026-10-20，DeepSeek 终审方案：按年级各出一条，顺序固定五年级→六年级）。
+    /* 本周行动建议（F5·2026-10-20，终审 终审方案：按年级各出一条，顺序固定五年级→六年级）。
        度量口径（C2，与现行单条逻辑一致）：
          最弱日 = 该年级在当前窗口内 overall 正确率最低的日期（跳过 null，相同值取较早日期）；
          最弱科目 = 当日各科正确率（subjects[科].days[最弱日全量索引]）最低者，并列时按 SUBJS 顺序（语→数→英）取前者；
@@ -4504,7 +4504,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         showFxPop(i, +hz.getAttribute('cx'), +hz.getAttribute('cy'), hz.getAttribute('data-nodata') === '1');
       });
     });
-    /* 全图统一选日（DeepSeek 终审 C1/C5）：与主图共用 nearestIdx 工具，但 pick 逻辑与黑条渲染独立。 */
+    /* 全图统一选日（终审 终审 C1/C5）：与主图共用 nearestIdx 工具，但 pick 逻辑与黑条渲染独立。 */
     var subjSvg = box.querySelector('svg');
     if(subjSvg){
       var xsSubj = labels.map(function(_, k){ return g.X(k); });
@@ -4532,10 +4532,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
   }
 
-  /* 补练按钮直提（2026-10-20 乙'方案，DeepSeek 定案+用户拍板）：点按钮 → Worker
+  /* 补练按钮直提（2026-10-20 乙'方案，终审 定案+用户拍板）：点按钮 → Worker
      中转写 KV → 回执确认后才提示"已收到"；失败保留打开表单手动提交的兜底。
      先到先得：当日同知识点只入队一次（Worker 幂等 + poll 双源去重双保险）。 */
-  /* 补练按钮口令门 + toast 通知（2026-10-22 家长定、DeepSeek 定版）：
+  /* 补练按钮口令门 + toast 通知（2026-10-22 家长定、终审 定版）：
      与提交作业同一口令体系——本机已有设备令牌（hw-dev-token，由
      homework-upload 的 /auth 签发）直接提交；没有令牌先弹口令框，
      校验通过存令牌并自动继续刚才那次提交，口令错在框内报错重试。
@@ -4628,7 +4628,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     ui.okBtn.disabled = true; ui.okBtn.textContent = '校验中…';
     ui.err.textContent = '';
     /* 双认（2026-10-23 方案 B）：只发一次 /auth-dual 请求，服务端一次校验两把口令，
-       严禁前端顺序试探 /auth 与 /parent-auth 两端点（DeepSeek B1）。 */
+       严禁前端顺序试探 /auth 与 /parent-auth 两端点（终审 B1）。 */
     var scene = (ui.pending && ui.pending.scene) || 'board';
     fetch((location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev') + '/auth-dual', {
       method: 'POST',
@@ -4731,7 +4731,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
 
   var TREND_VER = ''; /* M3（2026-10-20）：版本缓存与 stats 模块同款（?v=updated_at） */
-  /* 方案E（2026-10-20，DeepSeek 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径 */
+  /* 方案E（2026-10-20，终审 仲裁）：重试 + 本地缓存兜底，与其余栏目同款口径 */
   var TREND_RETRY_DELAYS = [1000, 2000, 4000];
   var trendRecheckTimer = 0;
   var trendRetryCount = 0; /* A6（2026-10-22 三方审查修复）：自动复查最多 5 次，防服务端长期故障时无限重试 */
@@ -5128,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1602';
+  var KB_BUILD = '20261024-1616';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5146,7 +5146,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         }
       }).catch(function(){});
   } catch(e){}
-  /* 软刷新构建号复查（2026-10-23 DeepSeek 终审(d)）：页面长开时软刷新只换数据不换代码，
+  /* 软刷新构建号复查（2026-10-23 终审 终审(d)）：页面长开时软刷新只换数据不换代码，
      若期间有新版部署，旧页会一直跑旧代码（2026-10-22 录音区复发根因）。与页面 5 分钟
      软刷新同周期复查构建号，不一致时顶部提示条引导整页重载；sessionStorage
      kb-buildSeen 保证同一构建号只提示一次，节流 ≥4 分钟、每周期最多 1 次请求。 */
@@ -5243,7 +5243,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       return {grade: grade, type: 'practice', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
     }
     if(tt === 'reading'){
-      /* 2026-10-22 deepseek 全面排查定案（主修）：任务自身类型 task_type 优先于来源推断。
+      /* 2026-10-22 终审 全面排查定案（主修）：任务自身类型 task_type 优先于来源推断。
          口头类任务（摄取层标 task_type=reading）的提交类型必须是 reading，
          否则面板录音区不显示、提交还会以 homework 类型上行。 */
       if((card.getAttribute('data-status') || '') === 'done') return null;
@@ -5319,7 +5319,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       buildChildren(); buildTypes();
     }
     $('up-passrow').style.display = token() ? 'none' : 'block';
-    var _uv = $('up-ver'); if(_uv) _uv.textContent = '版本 ' + KB_BUILD; /* 2026-10-23 DeepSeek 终审(d)：打开面板即显示版本号（此前仅提交成功后才写，旧页无从自证） */
+    var _uv = $('up-ver'); if(_uv) _uv.textContent = '版本 ' + KB_BUILD; /* 2026-10-23 终审 终审(d)：打开面板即显示版本号（此前仅提交成功后才写，旧页无从自证） */
     recGate();
     $('up-mask').classList.add('open');
   }
@@ -5345,13 +5345,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   function closeSheet(){ if(busy) return; stopAutoExit(); recReset(); $('up-mask').classList.remove('open'); }
   function requestClose(){ if(busy) return; stopAutoExit(); recReset(); $('up-mask').classList.remove('open'); }
-  /* ---------- 直接录音（2026-10-22 家长定：仅读背/口语类；gemini+deepseek 评审） ---------- */
+  /* ---------- 直接录音（2026-10-22 家长定：仅读背/口语类；初审+终审 评审） ---------- */
   var recFiles = [], recSet = new Set();
   var recMR = null, recStream = null, recChunks = [], recStartAt = 0, recTimer = null, recBlob = null, recMime = '', recStopWhy = '';
   var recGen = 0; /* A8（2026-10-22 三方审查修复）：录音代次——面板关闭/重置后到达的 getUserMedia 回调一律作废并关流 */
   var REC_MAX_SEC = 900; /* 2026-10-22 家长改定：录音上限 15 分钟（原 5 分钟） */
   function recSupported(){ return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder); }
-  /* 裸词补判（与摄取层 task_ingest._oral_bao_hit 同源口径，2026-10-23 DeepSeek 终审 (b)）：
+  /* 裸词补判（与摄取层 task_ingest._oral_bao_hit 同源口径，2026-10-23 终审 终审 (b)）：
      仅面板渲染层兜底，不改存储的 task_type。 */
   function oralBaoHit(t){
     if(!t) return false;
@@ -5527,7 +5527,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   })();
 
 
-  /* ---------- 成功后自动退出（8 秒；2026-10-22 家长定，deepseek 复核） ---------- */
+  /* ---------- 成功后自动退出（8 秒；2026-10-22 家长定，终审 复核） ---------- */
   var cdTimer = null, cdEndAt = 0;
   function cdSpan(){
     var m = $('up-msg'); if(!m) return null;
@@ -5802,16 +5802,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <!-- ===== 交作业上传模块 结束 ===== -->
 
 <script>
-/* 自动滚动引擎（2026-10-22 家长定、DeepSeek 定版口径）：
+/* 自动滚动引擎（2026-10-22 家长定、终审 定版口径）：
    适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区 + 兑换记录两区，
    兑换记录 2026-10-22 家长追加，独立开关 redeem）。
    默认自动往下滚（约 3 秒一行 ≈ 22px/s）；手动优先——触摸/点按/滚轮一律
    暂停，松手闲置 8 秒后从原位置缓入恢复（2026-10-22 家长由 5 秒改定 8 秒）；无缝循环滚动（内容克隆一份接在后面、滚满一轮接回开头，2026-10-22 家长改定，不再到底回顶重滚）；
-   栏目折叠、区域与视口不相交（顶边进入判定、DeepSeek 二次定版）、页面切后台均停；
+   栏目折叠、区域与视口不相交（顶边进入判定、终审 二次定版）、页面切后台均停；
    系统“减少动态效果”时默认关（开关显式打开则尊重，回顶改瞬时）；
    各栏目开关各自独立、互不影响（2026-10-22 家长改定），状态按栏目
    localStorage 持久化。程序滚动用 rAF 逐帧写
-   scrollTop，并以时间戳标志区分程序/用户滚动，防自激暂停（DeepSeek iOS 注意点）。 */
+   scrollTop，并以时间戳标志区分程序/用户滚动，防自激暂停（终审 iOS 注意点）。 */
 (function(){
   var SPEED = 22, IDLE_MS = 8000, DWELL_MS = 4000, RAMP_MS = 450, RET_MS = 400;
   var store = null;
@@ -5853,7 +5853,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       elm.addEventListener(ev, function(){ st.touching = false; st.lastUser = Date.now(); }, { passive: true });
     });
     elm.addEventListener('scroll', function(){
-      /* 回声判定（DeepSeek 终审三条件：写入基准差＋交互标志＋时间窗）：
+      /* 回声判定（终审 终审三条件：写入基准差＋交互标志＋时间窗）：
          非交互中且与上次程序写入值相差 ≤1px 的，一律视为程序写入的回声
          （含 iOS 迟到的 scroll 事件），不刷新闲置计时；其余视为用户滚动，
          刷新闲置计时并把位置基准同步回真实 scrollTop。 */
@@ -5865,7 +5865,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       }
     }, { passive: true });
     if('IntersectionObserver' in window){
-      /* 可见判定（DeepSeek 二次定版 2026-10-22）：按位置事件而非面积比例——
+      /* 可见判定（终审 二次定版 2026-10-22）：按位置事件而非面积比例——
          元素与视口相交即算可见（顶边进入即触发），rootMargin 上下各 100px
          预触发；threshold 的 0.02 仅作边界兜底。原 0.5/0.15 面积阈值在手机上
          只露首行（比例约 0.09）时误拦，已废。 */
@@ -5886,10 +5886,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
   });
 
-  /* 无缝循环（2026-10-22 家长改定、DeepSeek 终审）：内容整组克隆一份接在
+  /* 无缝循环（2026-10-22 家长改定、终审 终审）：内容整组克隆一份接在
      后面，pos 滚满一轮原始高度 loopH 即取模接回开头，克隆与原件一致、
      跳变不可见；到底停留与回顶动画在循环模式下不可达。
-     硬性约束（DeepSeek）：loopH 用首个克隆与首个原件的实际位置差测得；
+     硬性约束（终审）：loopH 用首个克隆与首个原件的实际位置差测得；
      重建走断开观察→改 DOM→恢复观察防自触发，重建后 pos 按当前视觉
      位置对新 loopH 取模归一；归一用 while 循环；重建不碰闲置计时。 */
   function ensureLoop(st){
@@ -5956,7 +5956,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(st.hold){
         if(now - st.lastUser < IDLE_MS){ st.rampFrom = 0; return; }
         st.hold = false; st.rampFrom = ts; /* 闲置满 8 秒：自此缓入恢复 */
-        /* 恢复时按当前视觉位置对 loopH 取模归一（DeepSeek 约束） */
+        /* 恢复时按当前视觉位置对 loopH 取模归一（终审 约束） */
         st.pos = st.loopH > 0 ? (elm.scrollTop % st.loopH) : elm.scrollTop;
         st.lastWritten = elm.scrollTop;
       }
@@ -5979,7 +5979,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       /* 关键修复（2026-10-22）：位置由 JS 变量 pos 以小数累积、写出时取整。
          旧写法逐帧 elm.scrollTop += 约 0.37px 依赖读回累积；iOS WebKit 把
          scrollTop 按整数存储，增量写后读回原值，永远原地踏步（桌面 Blink
-         保留小数故正常）。根因经 deepseek 终审确认。 */
+         保留小数故正常）。根因经 终审 终审确认。 */
       st.pos += SPEED * factor * dt / 1000;
       if(st.loopH > 0){
         /* 循环模式：滚满一轮取模接回开头（while 归一防外部大改），无停留无回顶 */
@@ -6079,7 +6079,7 @@ function kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn){
   var ent = kbPrefetchPdf(pdfUrl, fileName);
   if(ent && ent.failed){ fallback(); return; }
   var file = ent && ent.file;
-  if(file && !file.size){ /* 缓存 File 失效（大小为 0，DeepSeek 备案提示①）：清缓存重新预取，走「准备中」路径 */
+  if(file && !file.size){ /* 缓存 File 失效（大小为 0，终审 备案提示①）：清缓存重新预取，走「准备中」路径 */
     delete KB_PDF_FILE_CACHE[pdfUrl];
     ent = kbPrefetchPdf(pdfUrl, fileName);
     file = null;
@@ -6224,7 +6224,7 @@ document.addEventListener('click', function(e){
 
 <script>
 /* ================================================================
-   全板口令门（2026-10-23 家长拍板合并选项 1，DeepSeek 终审放行编码）
+   全板口令门（2026-10-23 家长拍板合并选项 1，终审 终审放行编码）
    - 无设备令牌（hw-dev-token）时只显概览：受控入口点击被拦截 → 弹全板唯一的
      口令框（window.kbAskPass，与交作业同一体系）→ 输对后收口解锁并重演那一次点击。
    - 门帘口径：本门只管前端可见性，服务端校验一行不动；拦截清单见
@@ -6242,7 +6242,7 @@ document.addEventListener('click', function(e){
   /* 锁定态判定对外暴露（余额块/数据块打码守卫用）：以 <html> 类为准，与 <head> 早锁脚本同口径 */
   window.__kbLocked = function(){ return document.documentElement.classList.contains('kb-locked'); };
 
-  /* ---------- 锁定态概览打码·文本部分（2026-10-23 家长拍板 DeepSeek 混合案） ----------
+  /* ---------- 锁定态概览打码·文本部分（2026-10-23 家长拍板 终审 混合案） ----------
      本函数只管文本替换：余额卡姓名、今日任务年级标题 pill、余额卡 aria-label（原含真实姓名，同步去名）。
      分数由余额 setter 守卫写 **、鼓励语与进度组由 CSS 整组隐藏，均不在此处。
      pill 只作用于 .task-head 内两枚（锁定态唯一可见的 pill）；折叠面板内 grade-head 的 pill
@@ -6272,7 +6272,7 @@ document.addEventListener('click', function(e){
 
   /* 单一收口函数：把全部受控区置收起（栏目经其自身按钮路径、年级段经登记钩子，
      均为同步状态切换）。区内二级展开态一般随父区收起不可见、不单独清理；
-     例外（2026-10-23 DeepSeek C4 改口径）：积分商店内积分日志/兑换记录两子块被
+     例外（2026-10-23 终审 C4 改口径）：积分商店内积分日志/兑换记录两子块被
      余额卡联动与 OPEN_* 恢复逻辑依赖，回锁收口时必须经 __kbResetShopSubs 一并复位为收起态。 */
   function kbCollapseAll(){
     KB_GATE_INTERNAL = true;
@@ -6405,7 +6405,7 @@ document.addEventListener('click', function(e){
     lastOkTs = now;
   }, 3000);
 
-  /* ============ 令牌服务端巡检自动上锁（2026-10-23 家长拍板，DeepSeek 终审放行） ============
+  /* ============ 令牌服务端巡检自动上锁（2026-10-23 家长拍板，终审 终审放行） ============
      背景：口令门只看本机有无令牌，口令轮换后旧令牌在页面层仍能翻详情。
      本巡检定期拿令牌去 Worker 的 /auth/check 核验，被判死立即清令牌+收口上锁。
      与上方 3 秒「令牌消失巡检」分工不同：那个看本机令牌消失，这个看服务端判死，不合并。
@@ -6502,7 +6502,7 @@ document.addEventListener('click', function(e){
 </script>
 <script>
 /* ===== 活天空一期引擎（2026-10-24 三方定版 B′＋V2）：天文层（纯前端算法、零依赖）＋天气调制矩阵（单点声明式数据表） =====
-   定位口径（2026-10-24 家长改定，覆盖 DeepSeek「永不自动弹授权」）：页面加载即自动 getCurrentPosition（低精度、
+   定位口径（2026-10-24 家长改定，覆盖 终审「永不自动弹授权」）：页面加载即自动 getCurrentPosition（低精度、
    同一会话最多试一次、被拒/失败/超时静默用占位坐标北京、不阻塞渲染）；授权后每 2h 重取＋回前台补刷；
    坐标只以 0.1° 粗格缓存与发送，精坐标不落盘。变化缓动约 800ms＋天气保持窗 5 分钟防抖；后台全停；
    prefers-reduced-motion 全静态（静态帧、无粒子）；无双模式/精简开关（家长定版）。
@@ -6607,7 +6607,7 @@ function resolveMod(w){
   /* 互斥硬规则（定版）：①降水在场星空必关 ②云量>0.7 天体只剩光晕、>0.9 全灭 ③沙尘与雾二选一 */
   if(m.precip) m.star = 0;
   if(cls === 'dust'){
-    /* 沙尘档豁免（DeepSeek 终审阻断项·矩阵内单点声明）：天体 base body 不乘云量压制因子、alpha 下限 0.45，
+    /* 沙尘档豁免（终审 终审阻断项·矩阵内单点声明）：天体 base body 不乘云量压制因子、alpha 下限 0.45，
        保苍白日盘可见；豁免仅本档，其余档云量规则一字不动 */
     m.body = Math.max(m.body, 0.45);
   }
@@ -7020,7 +7020,7 @@ function hslToRgb(h, s, l){
   }
   return [Math.round(f(h + 1 / 3) * 255), Math.round(f(h) * 255), Math.round(f(h - 1 / 3) * 255)];
 }
-/* 沙尘苍白日盘（DeepSeek 终审阻断项）：以当前正常日盘色为基准——饱和度压到正常日的 30%、明度比正常日高约 10%（相对），色相随降饱和向灰白压 */
+/* 沙尘苍白日盘（终审 终审阻断项）：以当前正常日盘色为基准——饱和度压到正常日的 30%、明度比正常日高约 10%（相对），色相随降饱和向灰白压 */
 function paleSunColor(c){
   var hsl = rgbToHsl(c);
   return hslToRgb(hsl[0], hsl[1] * 0.30, clamp(hsl[2] * 1.10, 0, 0.96));
@@ -7050,7 +7050,7 @@ function sunProgress(d, sunC){
 }
 
 /* 光雾合成层：离屏画光晕后以竖向遮罩 clamp（y=130 起衰减、y=148 卡顶归零；按 H/330 缩放），再贴回主画布
-   返修（DeepSeek 终审阻断项）：靠近卡顶的收尾区改用 smoothstep 收尾（收尾长度＝光雾半径 0.15–0.2 倍、钳制 8–12px，
+   返修（终审 终审阻断项）：靠近卡顶的收尾区改用 smoothstep 收尾（收尾长度＝光雾半径 0.15–0.2 倍、钳制 8–12px，
    由调用方传入 tailCss），末端斜率→0，消除原线性衰减的截断感；y=148 仍严格归零 */
 var glowCv = document.createElement('canvas');
 var hlCv = null; /* 云透光高光离屏合成层（按云 sprite alpha 蒙版，手机修复用，懒创建复用） */
@@ -7241,7 +7241,7 @@ function drawMeteor(nowSec, dt, starA){
   }
 }
 
-/* 闪电（弱化版定版参数，单点配置；2026-10-24 家长拍板开启——五项安全实测＋DeepSeek 终审签字已过，家长令开，弱化参数不变，改参须重走终审）：
+/* 闪电（弱化版定版参数，单点配置；2026-10-24 家长拍板开启——五项安全实测＋终审 终审签字已过，家长令开，弱化参数不变，改参须重走终审）：
    仅雷暴档、≤3 次/10min、间隔 ≥90s、单次总时长 ≤600ms（2–3 段、每段 ≤150ms、段间暗间隙 ≥100ms）、
    云内亮度增量 ≤+18%（gain 为证据包实测校准增益）、只画云内闷闪禁叉形、段后指数衰减（τ=130ms，200–400ms 内衰尽）、
    reduced-motion 强制关、页面后台即停 */

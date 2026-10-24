@@ -164,6 +164,17 @@ def run_git(*args):
         capture_output=True, text=True, timeout=60)
 
 
+def _strip_board_names(obj):
+    """看板禁词（2026-10-24 家长令）：发布数据不得出现 deepseek/gemini 两词。
+    递归做中性替换（终审/初审），只动发布副本，源文件原文不动。"""
+    if isinstance(obj, str):
+        return re.sub(r'(?i)deepseek', '终审', re.sub(r'(?i)gemini', '初审', obj))
+    if isinstance(obj, list):
+        return [_strip_board_names(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _strip_board_names(v) for k, v in obj.items()}
+    return obj
+
 def main():
     try:
         lock = open(LOCK_FILE, "w")
@@ -225,6 +236,8 @@ def main():
 
     changed = (old_doc is None) or (strip_volatile(old_doc) != strip_volatile(new_doc))
     git_dirty = bool(run_git("status", "--porcelain", "data/balance.json").stdout.strip())
+    # 看板禁词（2026-10-24 家长令）：发布数据中性替换，台账原文不动。
+    new_doc = _strip_board_names(new_doc)
 
     if not changed and not git_dirty:
         log("no_change", "内容无变化且工作区干净", {"sha256": sha[:12]})
