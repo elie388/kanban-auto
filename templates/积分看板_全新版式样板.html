@@ -208,9 +208,7 @@
   /* 家长版小结标题底色带（2026-10-24 家长令）：浅蓝整行圆角带，与孩子版条目卡奶油底 #FFFDF8 区分、同栏目 .sum-kp 同色系 */
   .sum-parent-head{font-weight:800; font-size:15px; background:#EEF3FF; border-radius:10px; padding:9px 12px;}
   
-  .sum-parent-form input{width:100%; box-sizing:border-box; font-size:16px; padding:11px; border:1px solid #CCC; border-radius:10px; margin:10px 0 8px;}
-  .sum-parent-form button{font-size:15px; padding:9px 16px; border-radius:10px; border:0; background:#30343B; color:#FFF; cursor:pointer;}
-  .sum-parent-err{color:#B3261E; font-size:13.5px; margin-top:8px;}
+  /* 家长版独立口令表单样式已随表单删除（2026-10-24 家长令：子块显隐改由家长令牌决定、无独立表单） */
   .sum-p-name{font-weight:800; margin:10px 0 4px;}
   .sum-p-html{font-size:14px; line-height:1.75;}
   .sum-p-html p{margin:6px 0;}
@@ -1188,10 +1186,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
-        <div class="sum-parent" id="sum-parent">
-          <div class="sum-parent-head">🔒 家长版小结</div>
-          <div class="sum-parent-body"></div>
-        </div>
+        <!-- 家长版小结子块：静态 HTML 已删除（2026-10-24 家长令）——仅家长令牌存在时由 renderParentZone 动态生成整块；孩子口令/未解锁时不渲染、不留占位 -->
       </div>
     <!-- 批改反馈（2026-10-23 并入学习小结·子块，家长截图下令；原顶层栏目同日取消）：
          结构同目标榜子块——位于小结主 .collapse-pad 之外、其后，且位于 .collapse-inner 之内
@@ -2887,26 +2882,32 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   function parentTokenGet(){ try { return localStorage.getItem('hw-parent-token') || ''; } catch (e) { return ''; } }
   function parentClear(){ try { localStorage.removeItem('hw-parent-token'); localStorage.removeItem('hw-parent-last'); } catch (e) {} }
-  function renderParentZone(msg){
-    var body = document.querySelector('#sum-parent .sum-parent-body');
-    if(!body) return;
+  /* 家长版小结显隐（2026-10-24 家长令改定）：子块不再自带独立口令表单——渲染时只看家长令牌：
+     存在（家长口令经 kbAskPass 双认签发）→动态生成整块并直接拉取渲染内容，无输入框、无解锁点击；
+     不存在（孩子口令解锁/未解锁/闲置 30 天过期）→整块不生成、无占位。升级路径仍走 kbAskPass 双认。 */
+  function renderParentZone(){
     var tok = parentTokenGet();
     if(tok){
       var last = 0;
       try { last = parseInt(localStorage.getItem('hw-parent-last') || '0', 10); } catch (e) {}
-      if(last > 0 && Date.now() - last > 30 * 24 * 3600 * 1000){
-        parentClear(); tok = ''; msg = '已超过 30 天未使用，请重新输入家长口令。';
-      }
+      if(last > 0 && Date.now() - last > 30 * 24 * 3600 * 1000){ parentClear(); tok = ''; }
     }
+    var zone = $('sum-parent');
     if(!tok){
-      body.innerHTML = '<div class="sum-parent-form">'
-        + (msg ? '<div class="sum-parent-err">' + sumEsc(msg) + '</div>' : '')
-        + '<input type="password" id="sum-parent-pass" placeholder="输入家长口令" autocomplete="current-password">'
-        + '<button type="button" id="sum-parent-unlock">解锁家长版</button></div>';
-      var btn = $('sum-parent-unlock');
-      if(btn) btn.addEventListener('click', parentUnlock);
+      if(zone) zone.remove();
       return;
     }
+    if(!zone){
+      var pad = document.querySelector('#panel-summary .collapse-pad');
+      if(!pad) return;
+      zone = document.createElement('div');
+      zone.className = 'sum-parent';
+      zone.id = 'sum-parent';
+      zone.innerHTML = '<div class="sum-parent-head">家长版小结</div><div class="sum-parent-body"></div>';
+      pad.appendChild(zone);
+    }
+    var body = zone.querySelector('.sum-parent-body');
+    if(!body) return;
     body.innerHTML = '<div class="sum-empty">正在加载家长版小结…</div>';
     fetch(SUM_HW_API + '/parent-summary', { headers: { 'X-Parent-Token': tok }, cache: 'no-store' }).then(function(r){
       if(r.status === 401) throw new Error('unauth');
@@ -2929,37 +2930,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(!any) html += '<div class="sum-empty">还没有家长版小结。今晚总结生成后会出现在这里。</div>';
       body.innerHTML = html;
     }).catch(function(e){
-      if(e && e.message === 'unauth'){ parentClear(); renderParentZone('家长登录已过期，请重新输入家长口令。'); }
+      if(e && e.message === 'unauth'){ parentClear(); renderParentZone(); /* 令牌失效：清令牌并整块撤下，不再回落到口令表单 */ }
       else { body.innerHTML = '<div class="sum-empty">家长版小结加载失败，请稍后再试。</div>'; }
     });
   }
-  function parentUnlock(){
-    var inp = $('sum-parent-pass');
-    var v = inp ? inp.value : '';
-    if(!v) return;
-    /* 双认（2026-10-23 方案 B）：小结内家长框改走统一校验 /auth-dual（scene=summary），
-       与全板口令框同一个服务端入口、一次校验，不再单独调 /parent-auth。 */
-    fetch(SUM_HW_API + '/auth-dual', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ passcode: v, scene: 'summary' }) }).then(function(r){
-      return r.json().then(function(d){ return { st: r.status, d: d }; });
-    }).then(function(res){
-      var tk = res.d && res.d['parent' + '_token'];
-      if(res.st === 200 && tk){
-        try {
-          localStorage.setItem('hw-parent-token', tk);
-          localStorage.setItem('hw-parent-last', String(Date.now()));
-          if(res.d.device_token) localStorage.setItem('hw-dev-token', res.d.device_token);
-        } catch (e) {}
-        renderParentZone();
-      } else if(res.st === 200 && res.d && res.d.device_token){
-        /* 输的是家庭口令：看板照常解锁（设备令牌一并落存），家长版仍需家长口令，给指路提示不报错 */
-        try { localStorage.setItem('hw-dev-token', res.d.device_token); } catch (e) {}
-        if(window.kbGateAuthOk){ try { window.kbGateAuthOk(); } catch (e) {} }
-        renderParentZone('这是家庭口令，孩子版小结在上方就能看；家长版请输家长口令。');
-      } else {
-        renderParentZone((res.d && res.d.error) || '解锁失败，请再试一次。');
-      }
-    }).catch(function(){ renderParentZone('网络不通，请稍后再试。'); });
-  }
+  window.__kbParentZoneRefresh = renderParentZone; /* 供 kbAskPass 双认成功后即时刷新（家长令牌刚签发即生成整块） */
+  /* 小结内独立家长口令表单及其校验函数已删除（2026-10-24 家长令）：口令校验只保留全板 kbAskPass 双认一处入口；
+     家长版显隐由 renderParentZone 按家长令牌决定。服务端 /auth-dual、/parent-summary 与 KV 数据面未动。 */
 
   /* ---------- 批改反馈（2026-10-23 全搬） ---------- */
   var fbNewest = { 5: '', 6: '' };
@@ -4672,6 +4649,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           } catch(e){}
         }
         if(window.kbGateAuthOk){ try { window.kbGateAuthOk(); } catch(e){} } /* 令牌巡检：刚验完，免立刻重复巡检 */
+        if(window.__kbParentZoneRefresh){ try { window.__kbParentZoneRefresh(); } catch(e){} } /* 家长令牌刚签发（或孩子口令解锁）→家长版子块按令牌即时生成/撤下（2026-10-24 家长令） */
         var p = ui.pending; ui.pending = null;
         ui.mask.classList.remove('show');
         if(p && p.onOk) p.onOk();
@@ -5150,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1124';
+  var KB_BUILD = '20261024-1201';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6527,7 +6505,9 @@ document.addEventListener('click', function(e){
    定位口径（2026-10-24 家长改定，覆盖 DeepSeek「永不自动弹授权」）：页面加载即自动 getCurrentPosition（低精度、
    同一会话最多试一次、被拒/失败/超时静默用占位坐标北京、不阻塞渲染）；授权后每 2h 重取＋回前台补刷；
    坐标只以 0.1° 粗格缓存与发送，精坐标不落盘。变化缓动约 800ms＋天气保持窗 5 分钟防抖；后台全停；
-   prefers-reduced-motion 全静态（静态帧、无粒子）；无双模式/精简开关（家长定版）。 */
+   prefers-reduced-motion 全静态（静态帧、无粒子）；无双模式/精简开关（家长定版）。
+   2026-10-24 iOS 化并批（家长审图批准施工）：太阳光源式四层渐变＋限高轨迹＋光雾 y-clamp、月亮离屏柔边＋冷辉光同 clamp、
+   云羽化 sprite＋过日透光、雨/雪/雾分层景深、彩虹/流星落地；闪电代码落地但开关 OFF（待五项安全实测＋DeepSeek 终审签字）。 */
 (function(){
 'use strict';
 var band = document.getElementById('sky-band');
@@ -6600,7 +6580,7 @@ var SKY = {
     [503,'dust'],[504,'dust'],[507,'dust'],[508,'dust'],
     [900,'clear'],[901,'clear'],[999,'clear']
   ],
-  phase2: { rainbow:false, meteor:false, lightning:false } /* 二期扩展位（彩虹/流星/闪电，定版第二批） */
+  phase2: { rainbow:true, meteor:true, lightning:false } /* 二期（2026-10-24 并批 iOS 化）：彩虹/流星已落地；闪电代码落地但开关 OFF、待五项安全实测＋DeepSeek 终审签字后开启（LIGHTNING_CFG.enabled） */
 };
 function skyClassOf(code){
   var n = parseInt(code, 10), i;
@@ -6626,7 +6606,12 @@ function resolveMod(w){
   };
   /* 互斥硬规则（定版）：①降水在场星空必关 ②云量>0.7 天体只剩光晕、>0.9 全灭 ③沙尘与雾二选一 */
   if(m.precip) m.star = 0;
-  if(cc > 0.9){ m.body = 0; m.halo = Math.min(m.halo, 0.35); }
+  if(cls === 'dust'){
+    /* 沙尘档豁免（DeepSeek 终审阻断项·矩阵内单点声明）：天体 base body 不乘云量压制因子、alpha 下限 0.45，
+       保苍白日盘可见；豁免仅本档，其余档云量规则一字不动 */
+    m.body = Math.max(m.body, 0.45);
+  }
+  else if(cc > 0.9){ m.body = 0; m.halo = Math.min(m.halo, 0.35); }
   else if(cc > 0.7){ m.body *= 0.22; }
   if(m.dust > 0) m.fog = 0;
   if(m.tier === 2) m.dark = Math.max(m.dark, 0.45); /* 台风档2：天色最暗（定版） */
@@ -6667,6 +6652,7 @@ function acceptWeather(w){
   prevWx = appliedWx;
   appliedWx = w; appliedAt = now; pendingWx = null;
   syncWeatherDom();
+  noteWeatherTransition(prevWx, appliedWx); /* 二期彩虹状态机（雨转晴触发） */
   if(REDUCED) drawStatic();
 }
 setInterval(function(){
@@ -6725,21 +6711,40 @@ function moonIllum(d){
 }
 
 /* ---------------- 场景素材（星/云/粒子） ---------------- */
-var stars = [], clouds = [], parts = { rain: [], snow: [], hail: [] }, sprites = [];
+var stars = [], clouds = [], parts = { rainFar: [], rainNear: [], snowFar: [], snowNear: [], hail: [] }, sprites = [], fogSpr = null, snowSpr = null;
 (function initScene(){
   var i;
   for(i=0;i<100;i++) stars.push({ x: Math.random(), y: Math.random()*0.72, r: 0.3 + Math.random()*1.1, p: Math.random()*6.283 });
   function makeSprite(){
-    var c = document.createElement('canvas'); c.width = 300; c.height = 170;
+    var c = document.createElement('canvas'); c.width = 340; c.height = 210;
     var g = c.getContext('2d'), n = 7 + Math.floor(Math.random()*5), j, px, py, pr, gr;
     for(j=0;j<n;j++){
-      px = 55 + Math.random()*190; py = 68 + Math.random()*48; pr = 22 + Math.random()*36;
+      px = 75 + Math.random()*190; py = 82 + Math.random()*48; pr = 22 + Math.random()*36;
       gr = g.createRadialGradient(px, py, pr*0.12, px, py, pr);
       gr.addColorStop(0, 'rgba(255,255,255,0.55)');
       gr.addColorStop(1, 'rgba(255,255,255,0)');
       g.fillStyle = gr; g.beginPath(); g.arc(px, py, pr, 0, 6.2832); g.fill();
     }
-    return c;
+    /* iOS 化：云缘羽化 8–12px 烤进 sprite（离屏两程 blur、运行时零成本；filter 不可用时保留径向柔边原图） */
+    try {
+      var f1 = document.createElement('canvas'); f1.width = c.width; f1.height = c.height;
+      var g1 = f1.getContext('2d'); g1.filter = 'blur(6px)'; g1.drawImage(c, 0, 0);
+      var f2 = document.createElement('canvas'); f2.width = c.width; f2.height = c.height;
+      var g2 = f2.getContext('2d'); g2.filter = 'blur(5px)'; g2.drawImage(f1, 0, 0);
+      /* 边缘渐隐：椭圆 vignette 把四边 alpha 压到 0，杜绝 sprite 矩形直边接缝（验收帧实测修） */
+      g2.globalCompositeOperation = 'destination-out';
+      g2.save();
+      g2.translate(c.width / 2, c.height / 2);
+      g2.scale(1, c.height / c.width);
+      var vg = g2.createRadialGradient(0, 0, c.width * 0.30, 0, 0, c.width * 0.52);
+      vg.addColorStop(0, 'rgba(0,0,0,0)');
+      vg.addColorStop(1, 'rgba(0,0,0,1)');
+      g2.fillStyle = vg;
+      g2.fillRect(-c.width / 2, -c.width / 2, c.width, c.width);
+      g2.restore();
+      g2.globalCompositeOperation = 'source-over';
+      return f2;
+    } catch(e){ return c; }
   }
   function variant(src, mode){
     var c = document.createElement('canvas'); c.width = src.width; c.height = src.height;
@@ -6771,10 +6776,38 @@ var stars = [], clouds = [], parts = { rain: [], snow: [], hail: [] }, sprites =
       thresh: (i + 0.5) / 16
     });
   }
+  /* 雾带 sprite（iOS 化：水平柔雾、横向无缝平铺）与大雪片软 sprite（景深虚化层） */
+  (function makeFog(){
+    var c = document.createElement('canvas'); c.width = 640; c.height = 150;
+    var g = c.getContext('2d'), j, k, px, py, pr, gr;
+    for(j=0;j<16;j++){
+      px = Math.random()*640; py = 40 + Math.random()*70; pr = 42 + Math.random()*85;
+      for(k=-1;k<=1;k++){
+        gr = g.createRadialGradient(px + k*640, py, 2, px + k*640, py, pr);
+        gr.addColorStop(0, 'rgba(233,240,247,0.20)');
+        gr.addColorStop(1, 'rgba(233,240,247,0)');
+        g.fillStyle = gr; g.beginPath(); g.arc(px + k*640, py, pr, 0, 6.2832); g.fill();
+      }
+    }
+    fogSpr = c;
+  })();
+  (function makeFlake(){
+    var c = document.createElement('canvas'); c.width = 32; c.height = 32;
+    var g = c.getContext('2d');
+    var gr = g.createRadialGradient(16, 16, 1, 16, 16, 15);
+    gr.addColorStop(0, 'rgba(255,255,255,0.85)');
+    gr.addColorStop(0.55, 'rgba(255,255,255,0.38)');
+    gr.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 32, 32);
+    snowSpr = c;
+  })();
   function fillParts(arr, n, fn){ for(var j=0;j<n;j++) arr.push(fn()); }
-  fillParts(parts.rain, 80, function(){ return { x: Math.random(), y: Math.random(), v: 0.75 + Math.random()*0.5 }; });
-  fillParts(parts.snow, 70, function(){ return { x: Math.random(), y: Math.random(), r: 1 + Math.random()*1.8, v: 0.5 + Math.random()*0.7, p: Math.random()*6.283 }; });
-  fillParts(parts.hail, 55, function(){ return { x: Math.random(), y: Math.random(), v: 0.8 + Math.random()*0.5 }; });
+  /* iOS 化分层粒子：雨远细淡/近粗实（近层含少量虚化滴）、雪远小近大（近层含大片虚化）、冰雹 1–2px */
+  fillParts(parts.rainFar, 55, function(){ return { x: Math.random(), y: Math.random(), v: 0.55 + Math.random()*0.3, blur: false }; });
+  fillParts(parts.rainNear, 42, function(){ return { x: Math.random(), y: Math.random(), v: 0.95 + Math.random()*0.4, blur: Math.random() < 0.16 }; });
+  fillParts(parts.snowFar, 45, function(){ return { x: Math.random(), y: Math.random(), r: 0.8 + Math.random()*0.7, v: 0.35 + Math.random()*0.25, p: Math.random()*6.283, big: false }; });
+  fillParts(parts.snowNear, 32, function(){ return { x: Math.random(), y: Math.random(), r: 1.8 + Math.random()*1.3, v: 0.5 + Math.random()*0.35, p: Math.random()*6.283, big: Math.random() < 0.18 }; });
+  fillParts(parts.hail, 55, function(){ return { x: Math.random(), y: Math.random(), r: 1 + Math.random()*1, v: 0.8 + Math.random()*0.5 }; });
 })();
 
 /* ---------------- 底色：按太阳高度角插值 ---------------- */
@@ -6842,32 +6875,301 @@ window.addEventListener('resize', resize);
 function azToX(az){ return W * clamp(0.5 + (az / Math.PI) * 0.86, 0.03, 0.97); }
 function altToY(alt){ return H * 0.94 - Math.sin(alt) * H * 0.80; }
 
-function drawMoon(x, y, r, ill, alpha){
+/* ---------------- iOS 化素材与二期（2026-10-24 并批）：光雾合成/太阳配方/月亮 sprite/彩虹/流星/闪电 ---------------- */
+function mixArr(c1, c2, k){ return [ Math.round(lerp(c1[0], c2[0], k)), Math.round(lerp(c1[1], c2[1], k)), Math.round(lerp(c1[2], c2[2], k)) ]; }
+function rgbaS(c, a){ return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + clamp(a, 0, 1).toFixed(3) + ')'; }
+function rgbToHsl(c){
+  var r = c[0] / 255, g = c[1] / 255, b = c[2] / 255;
+  var mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn;
+  if(d === 0) return [0, 0, l];
+  var s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+  var h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : (mx === g ? (b - r) / d + 2 : (r - g) / d + 4);
+  return [h / 6, s, l];
+}
+function hslToRgb(h, s, l){
+  if(s === 0){ var v = Math.round(l * 255); return [v, v, v]; }
+  var q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
+  function f(t){
+    if(t < 0) t += 1; if(t > 1) t -= 1;
+    if(t < 1 / 6) return p + (q - p) * 6 * t;
+    if(t < 1 / 2) return q;
+    if(t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  }
+  return [Math.round(f(h + 1 / 3) * 255), Math.round(f(h) * 255), Math.round(f(h - 1 / 3) * 255)];
+}
+/* 沙尘苍白日盘（DeepSeek 终审阻断项）：以当前正常日盘色为基准——饱和度压到正常日的 30%、明度比正常日高约 10%（相对），色相随降饱和向灰白压 */
+function paleSunColor(c){
+  var hsl = rgbToHsl(c);
+  return hslToRgb(hsl[0], hsl[1] * 0.30, clamp(hsl[2] * 1.10, 0, 0.96));
+}
+
+/* 太阳四层配方（定版）：正午档为基准值，黄昏/日出低角档按高度角插值（az≥0 为西·黄昏、<0 为东·日出） */
+var SUN_NOON = { l1a:[255,254,245], l1b:[255,233,168], l2:[255,212,99], l3:[255,201,77], l4:[255,184,77], l3a:0.22, l4a:0.06, fogR:1.00 };
+var SUN_DUSK = { l1a:[255,239,192], l1b:[255,206,130], l2:[255,176,80], l3:[255,144,64], l4:[232,112,58], l3a:0.28, l4a:0.08, fogR:1.15 };
+var SUN_DAWN = { l1a:[255,244,214], l1b:[255,220,170], l2:[255,182,104], l3:[255,166,128], l4:[240,138,104], l3a:0.224, l4a:0.07, fogR:1.12 };
+function solarStyle(altD, az){
+  var k = clamp((altD - 2) / 13, 0, 1); /* 高度角 ≥15° 正午档、≤2° 低角档 */
+  var low = az >= 0 ? SUN_DUSK : SUN_DAWN;
+  return {
+    l1a: mixArr(low.l1a, SUN_NOON.l1a, k), l1b: mixArr(low.l1b, SUN_NOON.l1b, k),
+    l2: mixArr(low.l2, SUN_NOON.l2, k), l3: mixArr(low.l3, SUN_NOON.l3, k), l4: mixArr(low.l4, SUN_NOON.l4, k),
+    l3a: lerp(low.l3a, SUN_NOON.l3a, k), l4a: lerp(low.l4a, SUN_NOON.l4a, k), fogR: lerp(low.fogR, SUN_NOON.fogR, k)
+  };
+}
+/* 日出/日落归一化进度 p∈[0,1]（时角法：H0 为半日弧长） */
+function sunProgress(d, sunC){
+  var H = sidereal(d, -pos.lon * RAD) - sunC.ra;
+  while(H > Math.PI) H -= 2 * Math.PI;
+  while(H < -Math.PI) H += 2 * Math.PI;
+  var H0 = Math.acos(clamp(-Math.tan(pos.lat * RAD) * Math.tan(sunC.dec), -1, 1));
+  if(!(H0 > 0.01)) H0 = Math.PI / 2;
+  return clamp(0.5 + H / (2 * H0), 0, 1);
+}
+
+/* 光雾合成层：离屏画光晕后以竖向遮罩 clamp（y=130 起衰减、y=148 卡顶归零；按 H/330 缩放），再贴回主画布
+   返修（DeepSeek 终审阻断项）：靠近卡顶的收尾区改用 smoothstep 收尾（收尾长度＝光雾半径 0.15–0.2 倍、钳制 8–12px，
+   由调用方传入 tailCss），末端斜率→0，消除原线性衰减的截断感；y=148 仍严格归零 */
+var glowCv = document.createElement('canvas');
+function smoothstep01(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
+function paintGlow(alpha, drawFn, tailCss){
+  if(alpha <= 0.003 || !W) return;
+  var DPR = Math.min(2, window.devicePixelRatio || 1);
+  if(glowCv.width !== cv.width || glowCv.height !== cv.height){ glowCv.width = cv.width; glowCv.height = cv.height; }
+  var g2 = glowCv.getContext('2d');
+  g2.setTransform(DPR, 0, 0, DPR, 0, 0);
+  g2.globalCompositeOperation = 'source-over';
+  g2.globalAlpha = 1;
+  g2.clearRect(0, 0, W, H);
+  drawFn(g2);
+  var scY = H / 330;
+  var y0 = 130 * scY * DPR, y1 = 148 * scY * DPR;
+  var tail = clamp((tailCss || 10) * scY, 8 * scY, 12 * scY) * DPR; /* smoothstep 收尾区（设备 px） */
+  var yT = y1 - tail, span = Math.max(1, y1 - y0);
+  var eT = clamp((yT - y0) / span, 0, 1); /* 线性段末端的抹除量（destination-out alpha） */
+  var mask = g2.createLinearGradient(0, y0, 0, y1);
+  mask.addColorStop(0, 'rgba(0,0,0,0)');
+  mask.addColorStop(eT, 'rgba(0,0,0,' + eT.toFixed(3) + ')');
+  var tailStops = [0.25, 0.5, 0.75, 1];
+  for(var ti = 0; ti < tailStops.length; ti++){
+    var tt = tailStops[ti];
+    var e = eT + (1 - eT) * smoothstep01(tt);
+    mask.addColorStop(clamp((yT + tt * tail - y0) / span, 0, 1), 'rgba(0,0,0,' + e.toFixed(3) + ')');
+  }
+  g2.setTransform(1, 0, 0, 1, 0, 0);
+  g2.globalCompositeOperation = 'destination-out';
+  g2.fillStyle = mask;
+  g2.fillRect(0, Math.floor(y0), glowCv.width, glowCv.height);
+  g2.globalCompositeOperation = 'source-over';
   ctx.save();
   ctx.globalAlpha = alpha;
-  /* 地影面（暗面微光） */
-  ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832);
-  ctx.fillStyle = 'rgba(186,202,232,0.35)'; ctx.fill();
-  /* 亮面：外侧半圆＋终止线椭圆（北半球朝向：盈月右亮、亏月左亮） */
-  var phase = ill.frac, rx = Math.abs(Math.cos(2*Math.PI*phase)) * r;
-  ctx.beginPath();
-  if(phase < 0.5){
-    ctx.arc(x, y, r, -Math.PI/2, Math.PI/2, false);
-    ctx.ellipse(x, y, rx, r, 0, Math.PI/2, -Math.PI/2, phase < 0.25);
-  } else {
-    ctx.arc(x, y, r, Math.PI/2, Math.PI*1.5, false);
-    ctx.ellipse(x, y, rx, r, 0, -Math.PI/2, Math.PI/2, phase < 0.75);
+  ctx.drawImage(glowCv, 0, 0, glowCv.width, glowCv.height, 0, 0, W, H);
+  ctx.restore();
+}
+
+/* 太阳绘制：L4/L3 光雾（走 clamp 合成层）＋L2/L1 核层（主画布，层界由配方透明度衔接） */
+function drawSunLayers(x, y, R, altD, az, sunUp){
+  var st = solarStyle(altD, az);
+  var haloA = disp.halo * sunUp, coreA = disp.body * sunUp;
+  var l3a = st.l3a * (1 + 0.35 * disp.warm); /* 高温暖档：强光晕（定版） */
+  var fogR = st.fogR * (1 + 0.15 * disp.warm);
+  if(haloA > 0.01){
+    paintGlow(haloA, function(g2){
+      var R4 = R * 6 * fogR, R3 = R * 3.5 * fogR, gr;
+      gr = g2.createRadialGradient(x, y, R * 1.6, x, y, Math.max(R4, R * 1.7));
+      gr.addColorStop(0, rgbaS(st.l4, st.l4a * 0.5));
+      gr.addColorStop(0.62, rgbaS(st.l4, st.l4a));
+      gr.addColorStop(1, rgbaS(st.l4, 0));
+      g2.fillStyle = gr; g2.fillRect(x - R4, y - R4, R4 * 2, R4 * 2);
+      gr = g2.createRadialGradient(x, y, 0, x, y, Math.max(R3, 1));
+      gr.addColorStop(0, rgbaS(st.l3, l3a * 0.80));
+      gr.addColorStop(clamp(1 / (3.5 * fogR), 0.05, 0.9), rgbaS(st.l3, l3a));
+      gr.addColorStop(1, rgbaS(st.l3, 0));
+      g2.fillStyle = gr; g2.fillRect(x - R3, y - R3, R3 * 2, R3 * 2);
+      /* 桥层：核外 1–2.1R 的暖色过渡，消除核缘与光雾之间的色阶断环（验收帧实测修） */
+      var Rb = R * 2.1;
+      gr = g2.createRadialGradient(x, y, 0, x, y, Rb);
+      gr.addColorStop(0, rgbaS(st.l2, 0.22));
+      gr.addColorStop(0.48, rgbaS(st.l2, 0.20));
+      gr.addColorStop(1, rgbaS(st.l2, 0));
+      g2.fillStyle = gr; g2.fillRect(x - Rb, y - Rb, Rb * 2, Rb * 2);
+    }, clamp(0.18 * R * 2.1, 8, 12)); /* 收尾区＝光雾桥层半径 2.1R 的 0.18 倍（0.15–0.2 口径内）、钳制 8–12px */
   }
-  ctx.closePath();
-  ctx.fillStyle = '#F4F7FF'; ctx.fill();
+  if(coreA > 0.01){
+    /* 核层单渐变平滑衔接：L1 炽核（0–.5R）→L2 暖黄（.5–1R），径向亮度单调衰减、无层界台阶 */
+    ctx.save();
+    ctx.globalAlpha = coreA;
+    var cg = ctx.createRadialGradient(x, y, 0, x, y, R);
+    cg.addColorStop(0, rgbaS(st.l1a, 1));
+    cg.addColorStop(0.5, rgbaS(st.l1b, 0.95));
+    cg.addColorStop(0.74, rgbaS(st.l2, 0.62));
+    cg.addColorStop(0.9, rgbaS(st.l2, 0.24));
+    cg.addColorStop(1, rgbaS(st.l2, 0.06));
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(x, y, R, 0, 6.2832); ctx.fill();
+    ctx.restore();
+  }
+}
+
+/* 月亮：离屏 sprite（相位键缓存）——暗面地影＋亮面同色自阴影柔边（盘缘 2–3px、弦边 1.5–2px，北半球朝向：盈月右亮、亏月左亮） */
+function phasePath(g, x, y, r, ill){
+  var phase = ill.frac, rx = Math.abs(Math.cos(2 * Math.PI * phase)) * r;
+  g.beginPath();
+  if(phase < 0.5){
+    g.arc(x, y, r, -Math.PI/2, Math.PI/2, false);
+    g.ellipse(x, y, rx, r, 0, Math.PI/2, -Math.PI/2, phase < 0.25);
+  } else {
+    g.arc(x, y, r, Math.PI/2, Math.PI*1.5, false);
+    g.ellipse(x, y, rx, r, 0, -Math.PI/2, Math.PI/2, phase < 0.75);
+  }
+  g.closePath();
+}
+var moonSprCache = { key: -1, cv: null, half: 0, size: 0 };
+function buildMoonSprite(ill){
+  var key = Math.round(ill.frac * 240);
+  if(moonSprCache.key === key && moonSprCache.cv) return moonSprCache;
+  var R = 15, pad = 7, S = (R + pad) * 2, SS = 2;
+  var c = document.createElement('canvas'); c.width = S * SS; c.height = S * SS;
+  var g = c.getContext('2d'); g.scale(SS, SS);
+  var x = S / 2, y = S / 2;
+  g.beginPath(); g.arc(x, y, R, 0, 6.2832);
+  g.fillStyle = 'rgba(186,202,232,0.35)'; g.fill();
+  phasePath(g, x, y, R, ill);
+  g.save();
+  g.shadowColor = 'rgba(244,247,255,0.95)';
+  g.shadowBlur = 5; /* 设备 px（SS=2）≈2.5 CSS px */
+  g.fillStyle = '#F4F7FF'; g.fill(); g.fill();
+  g.restore();
+  phasePath(g, x, y, R, ill);
+  g.fillStyle = '#F4F7FF'; g.fill();
+  moonSprCache = { key: key, cv: c, half: S / 2, size: S };
+  return moonSprCache;
+}
+
+/* 彩虹（定版）：prevWeather 状态机——雨/雷雨 → 晴或低云量时触发，30–45s、透明度 ≤40%、低饱和；刷新丢失可接受 */
+var rb = { until: 0, dur: 0 };
+function noteWeatherTransition(prevW, newW){
+  if(REDUCED || !prevW || !newW) return;
+  var pc = skyClassOf(prevW.code), nc = skyClassOf(newW.code);
+  var nMod = resolveMod(newW);
+  if((pc === 'rain' || pc === 'thunder') && (nc === 'clear' || ((nc === 'few' || nc === 'cloudy') && nMod.cc <= 0.35)) && nMod.cc <= 0.45){
+    rb.dur = (30 + Math.random() * 15) * 1000;
+    rb.until = Date.now() + skyTimeOffset + rb.dur;
+  }
+}
+function drawRainbow(dayness){
+  if(REDUCED || !rb.until) return;
+  var nowMs = Date.now() + skyTimeOffset;
+  if(nowMs > rb.until) return;
+  var env = Math.sin(Math.PI * clamp((rb.dur - (rb.until - nowMs)) / rb.dur, 0, 1)) * 0.40 * dayness;
+  if(env <= 0.004) return;
+  var cx = W * 0.80, cy = H * 1.02, R0 = H * 0.98, bw = H * 0.026;
+  var cols = ['#E86A5E', '#F2A65A', '#F7DC6F', '#7FBF7F', '#5B8DEF', '#8E6FC8'];
+  ctx.save();
+  ctx.globalAlpha = env;
+  ctx.lineWidth = bw;
+  for(var i = 0; i < cols.length; i++){
+    ctx.strokeStyle = cols[i];
+    ctx.beginPath();
+    ctx.arc(cx, cy, R0 - i * bw, Math.PI * 1.06, Math.PI * 1.60, false);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/* 流星（定版）：仅晴夜、20–40s 随机一颗、单颗、约 0.5s 划过带拖尾；星空被天气关掉时不显 */
+var mt = { nextAt: 0, cur: null };
+function drawMeteor(nowSec, dt, starA){
+  var nowMs = Date.now() + skyTimeOffset;
+  if(!mt.nextAt) mt.nextAt = nowMs + (20 + Math.random() * 20) * 1000;
+  if(!mt.cur && nowMs >= mt.nextAt && starA > 0.35 && disp.star > 0.5){
+    mt.cur = { x: W * (0.2 + Math.random() * 0.65), y: H * (0.03 + Math.random() * 0.16),
+               vx: -W * (0.62 + Math.random() * 0.25), vy: H * (0.5 + Math.random() * 0.2), t: 0 };
+  }
+  if(!mt.cur) return;
+  var m = mt.cur; m.t += dt;
+  var k = m.t / 0.55;
+  if(k >= 1){ mt.cur = null; mt.nextAt = nowMs + (20 + Math.random() * 20) * 1000; return; }
+  var hx = m.x + m.vx * m.t, hy = m.y + m.vy * m.t;
+  var fade = Math.sin(Math.PI * clamp(k, 0, 1));
+  var tx = m.x + m.vx * Math.max(0, m.t - 0.16), ty = m.y + m.vy * Math.max(0, m.t - 0.16);
+  var lg = ctx.createLinearGradient(tx, ty, hx, hy);
+  lg.addColorStop(0, 'rgba(255,255,255,0)');
+  lg.addColorStop(1, 'rgba(255,255,255,' + (0.85 * fade).toFixed(3) + ')');
+  ctx.strokeStyle = lg; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(hx, hy); ctx.stroke();
+  var hg = ctx.createRadialGradient(hx, hy, 0, hx, hy, 7);
+  hg.addColorStop(0, 'rgba(255,255,255,' + (0.9 * fade).toFixed(3) + ')');
+  hg.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = hg; ctx.fillRect(hx - 8, hy - 8, 16, 16);
+}
+
+/* 闪电（弱化版定版参数，单点配置；本次部署 enabled=false——五项安全实测＋DeepSeek 终审签字后才开启，改参须重走终审）：
+   仅雷暴档、≤3 次/10min、间隔 ≥90s、单次总时长 ≤600ms（2–3 段、每段 ≤150ms、段间暗间隙 ≥100ms）、
+   云内亮度增量 ≤+18%（gain 为证据包实测校准增益）、只画云内闷闪禁叉形、段后指数衰减（τ=130ms，200–400ms 内衰尽）、
+   reduced-motion 强制关、页面后台即停 */
+var LIGHTNING_CFG = { enabled: false, maxPer10Min: 3, minGapSec: 90, maxTotalMs: 600, segMaxMs: 150, minDarkGapMs: 100, maxBoost: 0.18, gain: 0.55 };
+var lt = { times: [], cur: null, nextAt: 0 };
+var curBoost = 0;
+var frameClouds = [];
+function lightningTick(){
+  curBoost = 0;
+  if(!LIGHTNING_CFG.enabled || REDUCED || document.hidden){ lt.cur = null; return; }
+  if(resolveMod(appliedWx).cls !== 'thunder'){ lt.cur = null; return; }
+  var nowMs = performance.now();
+  if(!lt.cur){
+    if(!lt.nextAt) lt.nextAt = nowMs + (15 + Math.random() * 25) * 1000;
+    lt.times = lt.times.filter(function(t){ return nowMs - t < 600000; });
+    var last = lt.times.length ? lt.times[lt.times.length - 1] : 0;
+    if(nowMs >= lt.nextAt && lt.times.length < LIGHTNING_CFG.maxPer10Min && (!last || nowMs - last >= LIGHTNING_CFG.minGapSec * 1000)){
+      var segs = [], t = 0, n = 2 + (Math.random() < 0.5 ? 1 : 0), i, on;
+      for(i = 0; i < n; i++){
+        on = 70 + Math.random() * (LIGHTNING_CFG.segMaxMs - 70);
+        if(t + on > LIGHTNING_CFG.maxTotalMs) break;
+        segs.push({ start: t, dur: on });
+        t += on + LIGHTNING_CFG.minDarkGapMs + Math.random() * 40;
+      }
+      if(segs.length){ lt.cur = { born: nowMs, segs: segs, total: Math.min(t, LIGHTNING_CFG.maxTotalMs) }; lt.times.push(nowMs); }
+      lt.nextAt = nowMs + (20 + Math.random() * 40) * 1000;
+    }
+    return;
+  }
+  var el = nowMs - lt.cur.born, b = 0, s, j, local, env;
+  if(el > lt.cur.total + 420){ lt.cur = null; return; }
+  for(j = 0; j < lt.cur.segs.length; j++){
+    s = lt.cur.segs[j];
+    var isLast = j === lt.cur.segs.length - 1;
+    var segEnd = isLast ? s.start + s.dur + 380 : lt.cur.segs[j + 1].start;
+    if(el >= s.start && el <= segEnd){
+      local = el - s.start;
+      if(local <= s.dur) env = 0.35 + 0.65 * (local / s.dur);
+      else if(isLast) env = Math.exp(-(local - s.dur) / 130); /* 末段尾：200–400ms 指数衰减（定版） */
+      else env = 0.06 * Math.exp(-(local - s.dur) / 60); /* 段间暗间隙：快速落到 ≤6% 地板、保持 ≥100ms 近暗 */
+      b = Math.max(b, LIGHTNING_CFG.maxBoost * env);
+    }
+  }
+  curBoost = b * LIGHTNING_CFG.gain;
+}
+
+/* 雾带（iOS 化）：雾 sprite 双层漂移绘制（横向无缝平铺） */
+var fogOff = 0;
+function drawFogBand(alpha, y, h, off, scaleW){
+  if(alpha <= 0.004 || !fogSpr) return;
+  var w = W * scaleW, x0 = -(off % w), x;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  for(x = x0; x < W; x += w) ctx.drawImage(fogSpr, x, y, w, h);
   ctx.restore();
 }
 
 function draw(nowSec, dt){
   if(!W) resize();
+  frameClouds = [];
+  if(dt > 0) fogOff += dt * 5; /* 雾带漂移（静态帧不漂） */
   var now = new Date(Date.now() + skyTimeOffset);
   var d = toDays(now);
-  var sun = altAz(sunCoords(d), d, pos.lat, pos.lon);
+  var sunC = sunCoords(d);
+  var sun = altAz(sunC, d, pos.lat, pos.lon);
   var mon = altAz(moonCoords(d), d, pos.lat, pos.lon);
   var ill = moonIllum(d);
   var altD = sun.alt / RAD;
@@ -6880,6 +7182,11 @@ function draw(nowSec, dt){
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 
   var sx = azToX(sun.az), sy = altToY(sun.alt);
+  /* iOS 化太阳轨迹（定版限高）：x 沿方位角，y 按日出/日落归一化进度映射进 [35,90] 带（按 H/330 缩放，与效果图同式） */
+  var sH = clamp(H / 330, 0.8, 1.3);
+  var sunX = sx, sunY = (90 - 55 * Math.sin(Math.PI * sunProgress(d, sunC))) * sH;
+  var coreR = clamp(28 * sH, 22, 32);
+  var sunUp = clamp((altD + 2.2) / 2.6, 0, 1);
   /* 黄昏/黎明地平线暖辉 */
   if(altD > -9 && altD < 7){
     var hg = ctx.createRadialGradient(sx, H*0.94, 8, sx, H*0.94, W*0.55);
@@ -6890,7 +7197,7 @@ function draw(nowSec, dt){
   }
   /* 高温暖辉（定版：暖调＋强光晕） */
   if(disp.warm > 0.02 && altD > 0){
-    var wg = ctx.createRadialGradient(sx, sy, 6, sx, sy, W*0.5);
+    var wg = ctx.createRadialGradient(sunX, sunY, 6, sunX, sunY, W*0.5);
     wg.addColorStop(0, 'rgba(255,120,40,' + (0.30 * disp.warm).toFixed(3) + ')');
     wg.addColorStop(1, 'rgba(255,120,40,0)');
     ctx.fillStyle = wg; ctx.fillRect(0, 0, W, H);
@@ -6908,41 +7215,49 @@ function draw(nowSec, dt){
     ctx.globalAlpha = 1;
   }
 
-  /* 太阳（沙尘档：无光晕苍白圆盘——矩阵 halo=0＋此处尘重时强制圆盘色） */
-  var sunUp = clamp((altD + 2.5) / 3, 0, 1);
+  /* 流星（装饰层：在天体之前画，云层随后自然遮挡；reduced-motion 不显） */
+  if(!REDUCED) drawMeteor(nowSec, dt, starA);
+
+  /* 太阳（iOS 化光源式四层渐变；沙尘档：无光晕苍白圆盘——矩阵 halo=0、盘色走 paleSunColor 苍白处理、alpha 走 resolveMod 沙尘豁免） */
   if(sunUp > 0 && (disp.body > 0.01 || disp.halo > 0.01)){
-    if(disp.halo > 0.01 && disp.dust < 0.3){
-      var sg = ctx.createRadialGradient(sx, sy, 4, sx, sy, 110);
-      sg.addColorStop(0, 'rgba(255,238,186,' + (0.55 * disp.halo * sunUp).toFixed(3) + ')');
-      sg.addColorStop(1, 'rgba(255,238,186,0)');
-      ctx.fillStyle = sg; ctx.fillRect(sx - 115, sy - 115, 230, 230);
+    if(disp.dust > 0.3){
+      var pale = paleSunColor(solarStyle(altD, sun.az).l2); /* 正常日盘色（L2）→ 苍白：饱和 30%、明度 +10% */
+      ctx.globalAlpha = disp.body * sunUp;
+      ctx.beginPath(); ctx.arc(sunX, sunY, coreR * 0.82, 0, 6.2832);
+      ctx.fillStyle = rgbaS(pale, 1); ctx.fill();
+      ctx.globalAlpha = 1;
+    } else {
+      drawSunLayers(sunX, sunY, coreR, altD, sun.az, sunUp);
     }
-    ctx.globalAlpha = disp.body * sunUp;
-    ctx.beginPath(); ctx.arc(sx, sy, 16, 0, 6.2832);
-    if(disp.dust > 0.3){ ctx.fillStyle = '#EDE6D6'; }
-    else {
-      var sd = ctx.createRadialGradient(sx - 4, sy - 4, 2, sx, sy, 16);
-      sd.addColorStop(0, '#FFE9A8'); sd.addColorStop(1, '#FFB84D');
-      ctx.fillStyle = sd;
-    }
-    ctx.fill();
-    ctx.globalAlpha = 1;
   }
 
-  /* 月亮 */
+  /* 月亮（iOS 化：离屏柔边 sprite＋冷辉光 r120 峰值 .12、同套 y-clamp 合成层） */
   var monUp = clamp((mon.alt / RAD + 2) / 3, 0, 1);
   var moonWeight = clamp((9 - altD) / 11, 0, 1); /* 白天月亮压淡 */
   var monA = disp.body * monUp * moonWeight;
-  if(monA > 0.01){
+  if(monUp > 0 && (monA > 0.01 || disp.halo > 0.01)){
     var mx = azToX(mon.az), my = altToY(mon.alt);
-    if(disp.halo > 0.01){
-      var mg = ctx.createRadialGradient(mx, my, 3, mx, my, 62);
-      mg.addColorStop(0, 'rgba(198,214,255,' + (0.20 * disp.halo * monA).toFixed(3) + ')');
-      mg.addColorStop(1, 'rgba(198,214,255,0)');
-      ctx.fillStyle = mg; ctx.fillRect(mx - 65, my - 65, 130, 130);
+    var moonGlowA = disp.halo * monUp * moonWeight * clamp(0.35 + monA, 0, 1);
+    if(moonGlowA > 0.01){
+      paintGlow(moonGlowA, function(g2){
+        var mg = g2.createRadialGradient(mx, my, 4, mx, my, 120 * sH);
+        mg.addColorStop(0, 'rgba(200,220,255,0.12)');
+        mg.addColorStop(1, 'rgba(200,220,255,0)');
+        g2.fillStyle = mg;
+        g2.fillRect(mx - 130 * sH, my - 130 * sH, 260 * sH, 260 * sH);
+      }, 12); /* 月辉光半径 120 之 0.15 倍已超上限，收尾区取钳制值 12px */
     }
-    drawMoon(mx, my, 13, ill, monA);
+    if(monA > 0.01){
+      var ms = buildMoonSprite(ill);
+      ctx.save();
+      ctx.globalAlpha = monA;
+      ctx.drawImage(ms.cv, mx - ms.half, my - ms.half, ms.size, ms.size);
+      ctx.restore();
+    }
   }
+
+  /* 彩虹（装饰层：雨转晴状态机触发，见 noteWeatherTransition；画在云层之前，云与天体自然叠覆不穿核） */
+  drawRainbow(dayness);
 
   /* 云：双层、数量/密度由 cloudCover 驱动、双速横移绕回；后层先画、前层最后（定版绘制序） */
   var speedMul = 1 + disp.tier * 0.5; /* 档1 ×1.5、档2 ×2 */
@@ -6958,7 +7273,7 @@ function draw(nowSec, dt){
     if(vis <= 0.01) continue;
     var a = vis * (c.layer ? 0.85 : 0.6) * (0.45 + 0.55 * dayness);
     var sp = sprites[c.spr];
-    var w2 = 300 * c.scale, h2 = 170 * c.scale;
+    var w2 = 340 * c.scale, h2 = 210 * c.scale;
     var x = c.x * W - w2 / 2, y = c.y * H - h2 / 2;
     var s = clamp(disp.dark * 1.5 + (1 - dayness) * 0.55, 0, 0.9);
     ctx.globalAlpha = a * (1 - s);
@@ -6968,17 +7283,62 @@ function draw(nowSec, dt){
       ctx.globalAlpha = a * sunsetF * 0.85;
       ctx.drawImage(sp.tint, x, y, w2, h2);
     }
+    frameClouds.push({ x: x, y: y, w: w2, h: h2, a: a, vis: vis, img: sp.img });
+    /* 云过日透光（iOS 化）：云近太阳时朝日方向叠 'lighter' 暖高光，强度上限＝核亮度×0.35（定版） */
+    if(sunUp > 0.05 && disp.dust < 0.3){
+      var ccx = c.x * W, ccy = c.y * H;
+      var cdx = ccx - sunX, cdy = ccy - sunY;
+      var cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+      var cinf = w2 * 0.72 + coreR * 5.2;
+      if(cdist < cinf){
+        var cstr = Math.pow(1 - cdist / cinf, 1.5) * 0.35 * clamp(0.45 * disp.body + 0.55 * disp.halo, 0, 1) * sunUp * vis;
+        if(cstr > 0.01){
+          ctx.save();
+          ctx.beginPath(); ctx.rect(x, y, w2, h2); ctx.clip();
+          ctx.globalCompositeOperation = 'lighter';
+          var cg2 = ctx.createRadialGradient(sunX, sunY, coreR * 0.4, sunX, sunY, cinf);
+          cg2.addColorStop(0, 'rgba(255,196,110,' + cstr.toFixed(3) + ')');
+          cg2.addColorStop(1, 'rgba(255,196,110,0)');
+          ctx.fillStyle = cg2; ctx.fillRect(x, y, w2, h2);
+          ctx.restore();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  /* 闪电（云内闷闪）：curBoost 由主循环 lightningTick 维护；开关 OFF 时恒 0、此处无-op */
+  if(curBoost > 0.002 && frameClouds.length){
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    var fcSort = frameClouds.slice().sort(function(p, q){ return q.a - p.a; });
+    for(var li = 0; li < Math.min(3, fcSort.length); li++){
+      var fcc = fcSort[li];
+      ctx.globalAlpha = clamp(curBoost * fcc.vis * 2.4, 0, 0.42);
+      ctx.drawImage(fcc.img, fcc.x, fcc.y, fcc.w, fcc.h);
+    }
+    ctx.restore();
     ctx.globalAlpha = 1;
   }
 
   /* 降水粒子（canvas，触底即消/绕回） */
-  drawPrecip('rain', dt);
-  drawPrecip('snow', dt);
-  drawPrecip('hail', dt);
+  drawPrecip('rain', dt, nowSec);
+  drawPrecip('snow', dt, nowSec);
+  drawPrecip('hail', dt, nowSec);
 
   /* 天气罩：暗沉（阴/雨/台风）→雾（降对比）→沙尘（土黄蒙版）→高温暖罩，单向叠加 */
   if(disp.dark > 0.01){ ctx.fillStyle = 'rgba(30,38,54,' + (disp.dark * 0.62).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H); }
-  if(disp.fog > 0.01){ ctx.fillStyle = 'rgba(228,233,240,' + (disp.fog * 0.5).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H); }
+  if(disp.fog > 0.01){
+    /* iOS 化雾（定版）：多层水平雾带缓慢漂移＋底部近浓渐变，非整块灰罩；另留一层极淡全场提雾保整体感 */
+    var fA = clamp(disp.fog * 1.15, 0, 1);
+    ctx.fillStyle = 'rgba(228,233,240,' + (disp.fog * 0.10).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H);
+    drawFogBand(fA * 0.85, H * 0.00, H * 0.42, fogOff, 1.15);
+    drawFogBand(fA * 0.95, H * 0.30, H * 0.46, fogOff * 1.7 + W * 0.4, 1.30);
+    var fbg = ctx.createLinearGradient(0, H * 0.45, 0, H);
+    fbg.addColorStop(0, 'rgba(230,236,244,0)');
+    fbg.addColorStop(1, 'rgba(230,236,244,' + (disp.fog * 0.55).toFixed(3) + ')');
+    ctx.fillStyle = fbg; ctx.fillRect(0, H * 0.45, W, H * 0.55);
+  }
   if(disp.dust > 0.01){ ctx.fillStyle = 'rgba(194,166,119,' + (disp.dust * 0.45).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H); }
   if(disp.warm > 0.02){ ctx.fillStyle = 'rgba(255,110,30,' + (disp.warm * 0.07).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H); }
   if(disp.cold > 0.02){ ctx.fillStyle = 'rgba(140,190,255,' + (disp.cold * 0.10).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H); } /* 严寒冷青色温（定版） */
@@ -6986,46 +7346,79 @@ function draw(nowSec, dt){
   if(cv.style.filter !== wantFilter) cv.style.filter = wantFilter;
 }
 
-function drawPrecip(kind, dt){
-  var alpha = disp.pa[kind];
-  if(alpha <= 0.01) return;
-  var arr = parts[kind], i, p;
-  var slantDeg = disp.tier <= 1 ? lerp(7, 15, disp.tier) : lerp(15, 30, disp.tier - 1); /* 定版：大风档1=15°、档2=30° */
-  var slant = kind === 'rain' ? Math.tan(slantDeg * RAD) : 0;
-  if(kind === 'rain'){
-    ctx.strokeStyle = 'rgba(198,224,255,' + (0.5 * alpha).toFixed(3) + ')';
-    ctx.lineWidth = 1.1;
+/* 雨层（iOS 化景深）：远层细淡慢、近层粗实快，近层少量虚化滴（粗线低透明）示景深 */
+function drawRainLayer(arr, alpha, lw, lenMul, speedMul, slant, dt){
+  if(alpha <= 0.004) return;
+  ctx.lineCap = 'round';
+  var pass, i, p;
+  for(pass = 0; pass < 2; pass++){
+    var blurPass = pass === 1;
+    ctx.strokeStyle = 'rgba(198,224,255,' + (blurPass ? alpha * 0.20 : alpha).toFixed(3) + ')';
+    ctx.lineWidth = blurPass ? lw * 2.6 : lw;
     ctx.beginPath();
-    for(i=0;i<arr.length;i++){
+    for(i = 0; i < arr.length; i++){
       p = arr[i];
+      if(!!p.blur !== blurPass) continue;
       if(dt > 0){
-        p.y += dt * p.v * 1.35; p.x += dt * p.v * 1.35 * slant;
+        p.y += dt * p.v * speedMul; p.x += dt * p.v * speedMul * slant;
         if(p.y > 1.02){ p.y = -0.03; p.x = Math.random(); }
-        if(p.x > 1.02) p.x = -0.02;
+        if(p.x > 1.02) p.x = -0.02; else if(p.x < -0.02) p.x = 1.02;
       }
-      var x = p.x * W, y = p.y * H, len = 11 + p.v * 6;
+      var x = p.x * W, y = p.y * H, len = (8 + p.v * 7) * lenMul;
       ctx.moveTo(x, y); ctx.lineTo(x - len * slant, y + len);
     }
     ctx.stroke();
-  } else if(kind === 'snow'){
-    ctx.fillStyle = 'rgba(255,255,255,' + (0.88 * alpha).toFixed(3) + ')';
-    for(i=0;i<arr.length;i++){
-      p = arr[i];
-      if(dt > 0){
-        p.y += dt * p.v * 0.11; p.x += Math.sin(p.y * 9 + p.p) * dt * 0.008;
-        if(p.y > 1.02){ p.y = -0.02; p.x = Math.random(); }
-      }
-      ctx.beginPath(); ctx.arc(p.x * W, p.y * H, p.r, 0, 6.2832); ctx.fill();
+  }
+}
+/* 雪层（iOS 化）：大小分层＋飘摆，大片走软 sprite 低透明虚化层 */
+function drawSnowLayer(arr, alpha, dt, drift){
+  if(alpha <= 0.004) return;
+  var i, p;
+  ctx.fillStyle = 'rgba(255,255,255,' + alpha.toFixed(3) + ')';
+  for(i = 0; i < arr.length; i++){
+    p = arr[i];
+    if(dt > 0){
+      p.y += dt * p.v * 0.11; p.x += (Math.sin(p.y * 9 + p.p) * 0.008 + drift) * dt;
+      if(p.y > 1.02){ p.y = -0.02; p.x = Math.random(); }
+      if(p.x > 1.02) p.x = -0.02; else if(p.x < -0.02) p.x = 1.02;
     }
-  } else { /* hail：近白微蓝小粒、快速、触底即消（定版） */
+    if(p.big) continue;
+    ctx.beginPath(); ctx.arc(p.x * W, p.y * H, p.r, 0, 6.2832); ctx.fill();
+  }
+  if(snowSpr){
+    ctx.save();
+    ctx.globalAlpha = alpha * 0.20;
+    for(i = 0; i < arr.length; i++){
+      p = arr[i];
+      if(!p.big) continue;
+      var s2 = p.r * 9;
+      ctx.drawImage(snowSpr, p.x * W - s2 / 2, p.y * H - s2 / 2, s2, s2);
+    }
+    ctx.restore();
+  }
+}
+function drawPrecip(kind, dt, nowSec){
+  var alpha = disp.pa[kind];
+  if(alpha <= 0.01) return;
+  var slantDeg = disp.tier <= 1 ? lerp(7, 15, disp.tier) : lerp(15, 30, disp.tier - 1); /* 定版：大风档1=15°、档2=30° */
+  if(kind === 'rain'){
+    var slant = Math.tan(slantDeg * RAD);
+    drawRainLayer(parts.rainFar, alpha * 0.30, 0.75, 0.95, 1.00, slant, dt);
+    drawRainLayer(parts.rainNear, alpha * 0.55, 1.35, 1.45, 1.60, slant, dt);
+  } else if(kind === 'snow'){
+    var drift = disp.tier * 0.010;
+    drawSnowLayer(parts.snowFar, alpha * 0.50, dt, drift);
+    drawSnowLayer(parts.snowNear, alpha * 0.88, dt, drift);
+  } else { /* hail：近白微蓝小粒 1–2px、快速、触底即消（定版） */
+    var arr = parts.hail, i, p;
     ctx.fillStyle = 'rgba(234,240,245,' + (0.92 * alpha).toFixed(3) + ')';
-    for(i=0;i<arr.length;i++){
+    for(i = 0; i < arr.length; i++){
       p = arr[i];
       if(dt > 0){
         p.y += dt * p.v * 1.8;
         if(p.y > 1.0){ p.y = -0.02; p.x = Math.random(); } /* 触底即消（自顶重生） */
       }
-      ctx.beginPath(); ctx.arc(p.x * W, p.y * H, 1.6, 0, 6.2832); ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x * W, p.y * H, p.r, 0, 6.2832); ctx.fill();
     }
   }
 }
@@ -7037,6 +7430,7 @@ function frame(t){
   var dt = Math.min(0.05, lastT ? (t - lastT) / 1000 : 0.016);
   lastT = t;
   lerpDisp(dt);
+  lightningTick(); /* 闪电状态机（开关 OFF 时恒无-op） */
   draw(t / 1000, REDUCED ? 0 : dt);
   rafId = requestAnimationFrame(frame);
 }
@@ -7072,7 +7466,14 @@ if(/(^#|&)skytest/.test(location.hash || '')){
     setWeather: function(w){ appliedAt = 0; acceptWeather(w); if(!REDUCED){ snapDisp(); draw(0, 0); } },
     setTimeOffset: function(ms){ skyTimeOffset = ms; if(REDUCED || !running) draw(0, 0); },
     setPos: function(lat, lon){ pos = { lat: lat, lon: lon }; if(REDUCED || !running) draw(0, 0); },
-    mod: function(){ return resolveMod(appliedWx); }
+    mod: function(){ return resolveMod(appliedWx); },
+    /* 闪电证据包专用（生产开关仍 OFF，此处仅验收时页内临时开启/强制触发） */
+    lightningCfg: LIGHTNING_CFG,
+    setLightning: function(on){ LIGHTNING_CFG.enabled = !!on; },
+    forceLightning: function(){ lt.times.length = 0; lt.cur = null; lt.nextAt = 0; },
+    boost: function(){ return curBoost; },
+    forceRainbow: function(){ rb.dur = 40000; rb.until = Date.now() + skyTimeOffset + 20000; if(!running) draw(0, 0); },
+    spawnMeteor: function(){ mt.nextAt = 0; if(!running) draw(0, 0); }
   };
 }
 
