@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "grade": "五年级",
-  "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T22:56:57+08:00",
+  "generated_at": "2026-10-25T00:05:11+08:00",
+  "updated_at": "2026-10-25T00:05:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-24T22:56:57+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -17,36 +17,11 @@
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-10-24T19:00:59+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "D53-2026-10-23-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "done",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T18:59:27+08:00",
-      "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
-      "status_source": "closeout_writeback",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-10-24T18:59:27+08:00",
-      "orig_photos": [
-        "7831350371b5c3af.jpg",
-        "cbc4abb4161fbf1d.jpg",
-        "77c516ac82e1d227.jpg"
-      ]
-    },
     {
       "task_id": "D53-2026-10-23-MATH",
       "source": "daily_53",
@@ -58,10 +33,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T14:32:38+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "closeout_writeback",
       "corrections": [
         {
@@ -86,10 +61,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T14:32:38+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "closeout_writeback",
       "corrections": [
         {
@@ -143,7 +118,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "pending_corrections": 7,
       "corrections": [
         {
@@ -205,8 +180,8 @@
       ],
       "status_source": "realtime",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261023-B96F50",
@@ -224,7 +199,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "pending_corrections": 1,
       "corrections": [
         {
@@ -238,8 +213,8 @@
       ],
       "status_source": "bank_writeback",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261023-2C714C",
@@ -257,14 +232,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "realtime",
       "batch_notes": "批次备注三行制：红笔／作答／校对动作 ＝ 未限定红笔／作答完整／已比照红笔错题（与CC9E78同口径）。批改结论已过终审终审（有条件通过、C-fix1已补）、任务作答完整判定完成；按P0放行门（P0未全上线前批次不得标done），状态落in_progress，待放行门通过后另行转done。积分：零落账（校对类无达标分；按时+2按家长令2026-10-24起算、今晚不追溯）。",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261023-71C90B",
@@ -282,7 +257,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "task_type": null,
       "pending_corrections": 13,
       "corrections": [
@@ -367,8 +342,8 @@
       ],
       "status_source": "realtime",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "PRACT-20261023-569ED6",
@@ -389,7 +364,7 @@
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-24T17:14:26+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-10-23.pdf",
@@ -398,31 +373,10 @@
         }
       ],
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "realtime",
       "recite_text": "语文朗读：圆明园的毁灭是中国文化史上不可估量的损失，也是世界文化史上不可估量的损失！这座辉煌的皇家园林，就这样化为了一片灰烬。\n朗读要求：语速稍慢，语气低沉而坚定，读出痛惜与惋惜之情。\n英语口语：想象你的教室，用英语进行 30-45 秒的介绍。\n提示问题：1. What's in your classroom? 2. Where is the teacher's desk? 3. How many windows are there?\n语音语调自然、语句连贯、尽量脱稿。"
-    },
-    {
-      "task_id": "CHORE-20261024-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-24T08:00:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-24T00:05:16+08:00",
-      "updated_at": "2026-10-24T16:54:38+08:00",
-      "status_source": "realtime",
-      "completed_at": "2026-10-24T15:50:18+08:00",
-      "evidence": "家务判定通过——洗衣服；证据：看板家务上传批次 b179282755179150fa46a316bc0cbb（approved）；回写 chore_task_writeback。"
     },
     {
       "task_id": "D53-2026-10-24-CHN",
@@ -435,7 +389,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T16:55:29+08:00"
+      "updated_at": "2026-10-25T00:05:11+08:00",
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -448,7 +405,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T16:55:29+08:00"
+      "updated_at": "2026-10-25T00:05:11+08:00",
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261024-001",
@@ -461,22 +421,25 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-24T18:10:19+08:00",
-      "updated_at": "2026-10-24T18:10:19+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "files": [
         {
           "name": "五年级补练_数学_小数点移动_2026-10-24.pdf",
           "label": "练习",
           "pages": 1
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 12,
+    "total": 10,
     "pending": 3,
     "in_progress": 6,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-24T22:00:00+08:00"
+  "deadline_today": null
 }

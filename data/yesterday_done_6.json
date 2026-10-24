@@ -1,41 +1,13 @@
 {
- "date": "2026-10-23",
+ "date": "2026-10-24",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-10-23",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-ED3B07",
-   "title": "背今天的作文和最高级笔记10次，提交小管家。",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-85311E",
-   "title": "看《项链》",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-3F2545",
-   "title": "L11生字",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-787A74",
-   "title": "资料（全做）。",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
+   "task_id": "CHORE-20261024-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
   }
  ]
 }

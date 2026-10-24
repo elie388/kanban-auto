@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "grade": "六年级",
-  "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T22:56:58+08:00",
+  "generated_at": "2026-10-25T00:05:11+08:00",
+  "updated_at": "2026-10-25T00:05:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-24T22:56:58+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -17,8 +17,8 @@
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-10-24T19:00:59+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
@@ -33,10 +33,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T18:03:53+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "closeout_writeback",
       "corrections": [],
       "pending_corrections": 0
@@ -52,10 +52,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T16:31:02+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "closeout_writeback",
       "corrections": [
         {
@@ -80,10 +80,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T16:21:50+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "realtime"
     },
     {
@@ -99,7 +99,7 @@
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-24T18:20:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-23.pdf",
@@ -108,8 +108,8 @@
         }
       ],
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "recite_text": "语文背诵：《观书有感》（其二）\n半亩方塘一鉴开，天光云影共徘徊。\n问渠那得清如许？为有源头活水来。\n英语口语：请围绕“A busy street”主题进行看图说话练习，录音时长控制在1分钟以内。\n提示问题：1. What can you see on the busy street? 2. What are the people doing? 3. How do you feel about this busy street?\n语音语调自然，声音洪亮，句子连贯，无明显语法错误。",
       "status_source": "closeout_writeback",
       "corrections": [
@@ -156,7 +156,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T16:05:25+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "pending_corrections": 2,
       "corrections": [
         {
@@ -177,8 +177,8 @@
         }
       ],
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "closeout_writeback"
     },
     {
@@ -197,15 +197,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "realtime",
       "batch_notes": "批改记录（2026-10-23）：条目⑤（10-22）/⑥（10-23）摘录完整，今日完成成立。注：条目⑦日期'10-24'有涂改，按'待确认（涂改）'处理不采信；条目⑧日期10-25为未来日期，到期日重新判定、不预核销（终审 H3/H4）。",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261023-F15501",
@@ -223,13 +223,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T15:48:20+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
+      "carried_from": "2026-10-24",
+      "carry_count": 2,
       "status_source": "realtime"
     },
     {
@@ -248,7 +248,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "pending_corrections": 1,
       "corrections": [
         {
@@ -262,8 +262,8 @@
       ],
       "status_source": "manual_closeout",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261023-7172FF",
@@ -281,35 +281,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "realtime",
       "batch_notes": "请补拍：把所读的U3知识清单内容拍照、与录音同批再交一次，批改以内容照片为比对原文（2026-10-23读背口径）。达标+3待补拍后判（终审 H5）。",
       "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261024-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-24T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-24T16:54:38+08:00",
-      "updated_at": "2026-10-24T16:54:38+08:00",
-      "completed_at": "2026-10-24T16:54:38+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1792831203826c8b6ffbbd589d9fb（approved）；回写 chore_task_writeback。"
+      "carried_from": "2026-10-24",
+      "carry_count": 2
     },
     {
       "task_id": "D53-2026-10-24-CHN",
@@ -322,8 +302,11 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T17:34:47+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-25T00:05:11+08:00",
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-24-MATH",
@@ -336,7 +319,7 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T20:47:14+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "status_source": "closeout_writeback",
       "corrections": [
         {
@@ -348,7 +331,10 @@
           "q_img": "g6_d53_p11_20261024_orig.png"
         }
       ],
-      "pending_corrections": 1
+      "pending_corrections": 1,
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -361,8 +347,11 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T17:34:46+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-25T00:05:11+08:00",
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261024-001",
@@ -375,22 +364,25 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-24T17:11:22+08:00",
-      "updated_at": "2026-10-24T17:19:18+08:00",
+      "updated_at": "2026-10-25T00:05:11+08:00",
       "files": [
         {
           "name": "六年级补练_数学_圆的面积_2026-10-24.pdf",
           "label": "练习",
           "pages": 2
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-24",
+      "carried_from": "2026-10-24",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 14,
+    "total": 13,
     "pending": 1,
     "in_progress": 8,
-    "done": 1,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-24T22:00:00+08:00"
+  "deadline_today": null
 }

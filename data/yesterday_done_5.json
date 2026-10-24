@@ -1,34 +1,20 @@
 {
- "date": "2026-10-23",
+ "date": "2026-10-24",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "CHORE-20261023-G5",
+   "task_id": "D53-2026-10-23-CHN",
+   "title": "53天天练·语文",
+   "subject": "语文",
+   "source": "daily_53",
+   "group": "study"
+  },
+  {
+   "task_id": "CHORE-20261024-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-23",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-CC9E78",
-   "title": "校对9-13课校本（红笔改正）。",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-8D1EA8",
-   "title": "口语易",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
   }
  ]
 }
