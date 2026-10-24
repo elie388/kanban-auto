@@ -3,7 +3,7 @@
   "date": "2026-10-25",
   "grade": "五年级",
   "generated_at": "2026-10-25T00:05:11+08:00",
-  "updated_at": "2026-10-25T01:29:47+08:00",
+  "updated_at": "2026-10-25T01:47:31+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -378,7 +378,9 @@
           "label": "P2-五-仿写",
           "question": "Venn 仿写段落有 4 处 be 动词问题：'you thin' 'I cool' 'you funny' 'We are often play'",
           "reason": "be 动词缺失或多余",
-          "hint": "每一句的主语和 be 动词配对检查：I 配什么？you 配什么？'are' 和 'play' 能同时用吗？"
+          "hint": "每一句的主语和 be 动词配对检查：I 配什么？you 配什么？'are' 和 'play' 能同时用吗？",
+          "q_img": "g5_venn_sam_orig_20261023.png",
+          "img_exempt": "英语仿写段落题（写作题），原题全文（定位短语）已在位，画图无助于思考。"
         }
       ],
       "status_source": "realtime",

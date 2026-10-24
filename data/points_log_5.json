@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-24T19:00:57+08:00",
+  "generated_at": "2026-10-25T06:05:17+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -17,6 +17,15 @@
       "filtered": false,
       "backfill": true,
       "posted_date": "10-24"
+    },
+    {
+      "date": "10-24",
+      "time": "23:59",
+      "time_source": "entry",
+      "reason": "洗衣服连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
     },
     {
       "date": "10-22",
@@ -63,6 +72,24 @@
       "reason": "兑换1小时和平精英",
       "pts": -150,
       "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "16:39",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:39",
+      "time_source": "entry",
+      "reason": "洗衣服",
+      "pts": 3,
+      "sign": "plus",
       "filtered": false
     },
     {
@@ -1501,69 +1528,6 @@
       "time_source": null,
       "reason": "家务连做第2天",
       "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "22:25",
-      "time_source": "submit",
-      "reason": "订正当天发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "22:25",
-      "time_source": "submit",
-      "reason": "补做按时发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "21:41",
-      "time_source": "parent_confirm",
-      "reason": "晾袜子",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": "21:33",
-      "time_source": "submit",
-      "reason": "53天天练P17交一页",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "家长奖励",
-      "pts": 100,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "53天天练P17正确率78.6%",
-      "pts": -1,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-17",
-      "time": null,
-      "time_source": null,
-      "reason": "P17订正改对2题",
-      "pts": 4,
       "sign": "plus",
       "filtered": false
     }
