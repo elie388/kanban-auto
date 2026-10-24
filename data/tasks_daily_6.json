@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T20:47:21+08:00",
+  "updated_at": "2026-10-24T20:57:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -201,8 +201,8 @@
         },
         {
           "label": "作文《成长中的一束光》错字组",
-          "question": "作文《成长中的一束光》错字组：制（蓝制服，形错）、帽（形错）、的写成丽、划应为滑、碘药（应用碘酒），共4-5个（3个起每3个-2）",
-          "reason": "错字4-5个：形近错3个＋别字1-2个；3个起每3个-2，计-2",
+          "question": "作文《成长中的一束光》错字组：制（蓝制服，形错）、帽（形错）、的写成丽、划应为滑，共 4 个（已删除碘药一项）（3个起每3个-2）",
+          "reason": "错字4个：形近错3个＋别字1个；3个起每3个-2，计-2（终审 DSFINAL-2026-10-24-WH1024-B8F2D1：碘药为误读已删，金额不变）",
           "hint": "①先检查什么：把这几个字单独写一遍，和课本里的字形对一对。②知识点方向：形近字看偏旁、别字看意思。③关键一步：制/帽/的这三个字各错在哪一笔？划和滑意思一样吗？",
           "img": "",
           "q_img": ""
@@ -271,7 +271,7 @@
       "title": "资料（全做）。",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
@@ -280,22 +280,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "思考题P4 11(2)",
-          "question": "日历框5个数之和与中间数的关系（原判取数错误；04_复核改判对但终审终审未完成；本批照片无P4页，未核对）",
-          "reason": "原判错后复核改判对，但终审未完成；本批无P4页，不得凭本批消项，仍挂待订正",
-          "hint": "①复核结论待终审终审确认后，再定是否销项。②本批未交P4页，不作新判定。",
-          "img": "",
-          "q_img": ""
-        }
-      ],
+      "updated_at": "2026-10-24T20:50:31+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
       "status_source": "realtime",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-24T20:50:31+08:00"
     },
     {
       "task_id": "REG-20261023-37028D",
@@ -453,8 +445,8 @@
   "counts": {
     "total": 15,
     "pending": 1,
-    "in_progress": 9,
-    "done": 1,
+    "in_progress": 8,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-10-24T22:00:00+08:00"
