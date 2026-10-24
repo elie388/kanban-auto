@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T21:15:24+08:00",
+  "updated_at": "2026-10-24T21:21:12+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -101,14 +101,6 @@
           "q_img": ""
         },
         {
-          "label": "图2九(二)开头",
-          "question": "Dear Cathy, ___（书信开头填词）",
-          "reason": "词形变化错误：书信开头用词形式不当",
-          "hint": "①信的开头称呼后该接什么？②这里要填的词该用什么形式？③你填的词放在句首通顺吗？",
-          "img": "",
-          "q_img": ""
-        },
-        {
           "label": "图2九(二)1",
           "question": "Please follow these ___",
           "reason": "名词单复数错误：these 后须用复数形式",
@@ -119,21 +111,21 @@
         {
           "label": "图2九(二)2",
           "question": "First, talk ___",
-          "reason": "词形变化错误：单复数与搭配不当",
-          "hint": "①talk 后面说的是几条建议？②一条建议和多条建议的形式有什么不同？③这里该用单数还是复数？",
+          "reason": "词形变化错误：动词后须用副词修饰",
+          "hint": "①talk 是动词，后面该用什么词性的词来修饰它？②openly 是副词，talk openly 是什么意思？③tips 是名词，能直接跟在 talk 后面吗？",
           "img": "",
           "q_img": ""
         },
         {
           "label": "图2九(二)4",
           "question": "some ___ things",
-          "reason": "词形变化错误：此处应用副词形式",
-          "hint": "①空格后的 things 是名词，修饰它的该是什么词性的词？②open 变成副词要加什么后缀？③你填的 open 是原形还是副词形式？",
+          "reason": "词形变化错误：名词前须用形容词修饰",
+          "hint": "①空格后的 things 是名词，修饰它的该是什么词性的词？②different 是形容词，different things 是什么意思？③openly 是副词，能修饰名词吗？",
           "img": "",
           "q_img": ""
         }
       ],
-      "pending_corrections": 5
+      "pending_corrections": 4
     },
     {
       "task_id": "REG-20261023-EAE721",
