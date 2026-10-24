@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T17:23:58+08:00",
+  "updated_at": "2026-10-24T17:34:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -413,11 +413,12 @@
       "title": "53天天练·语文",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T16:55:29+08:00"
+      "updated_at": "2026-10-24T17:34:47+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "D53-2026-10-24-MATH",
@@ -426,11 +427,12 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T16:55:29+08:00"
+      "updated_at": "2026-10-24T17:34:46+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -439,11 +441,12 @@
       "title": "53天天练·英语",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T16:55:29+08:00"
+      "updated_at": "2026-10-24T17:34:46+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "MANUAL-20261024-001",
@@ -468,7 +471,7 @@
   ],
   "counts": {
     "total": 17,
-    "pending": 5,
+    "pending": 2,
     "in_progress": 8,
     "done": 1,
     "pending_review": 0
