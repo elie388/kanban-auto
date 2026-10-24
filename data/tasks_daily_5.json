@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T13:54:36+08:00",
+  "updated_at": "2026-10-24T14:32:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -29,15 +29,26 @@
       "title": "53天天练·语文",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T13:54:35+08:00",
+      "updated_at": "2026-10-24T14:32:35+08:00",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "图1思维导图",
+          "question": "补全《诺曼底号遇难记》情节思维导图（共四段）",
+          "reason": "情节概括错：首段背景概括错误",
+          "hint": "①回读课文开头，故事发生在一个什么样的夜晚？②思维导图第一格要写的是故事发生的背景，还是别的内容？③你写的第一格和课文开头的背景对得上吗？对不上该怎么改？",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "pending_corrections": 1
     },
     {
       "task_id": "D53-2026-10-23-MATH",
@@ -46,15 +57,42 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T13:54:36+08:00",
+      "updated_at": "2026-10-24T14:32:38+08:00",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "图1-Q5超声波海底深度",
+          "question": "声波在海水中速度约1.5千米/秒，从发出到收到回声用6秒，海底深多少？",
+          "reason": "原理错误：往返时间未换算成单程",
+          "hint": "①声波从发出到收到一共走了几趟？②求海底深度该用单程时间还是往返时间？③6秒里有几个单程，单程是几秒？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2-Q2表格",
+          "question": "表格：算式、小方格边长、积的组成及结论",
+          "reason": "积的组成理解错：第2、3行计数单位错误（结论“不同”本身对）",
+          "hint": "①0.4×3的积里有几个0.1？②第2行写的“5个3”表示几个几，和积对得上吗？③对照第1行，积的组成该怎么数？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2-Q3涂白剂",
+          "question": "一棵树干底部涂白面积1.2m²，每平方米用0.4kg涂白剂，需多少千克？",
+          "reason": "计算错误：小数乘法结果错误，写成0.4",
+          "hint": "①1.2×0.4先按12×4算得多少？②两个因数一共几位小数？③积的小数点该点在哪一位？",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "pending_corrections": 3
     },
     {
       "task_id": "D53-2026-10-23-ENG",
@@ -63,15 +101,82 @@
       "title": "53天天练·英语",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T13:54:36+08:00",
+      "updated_at": "2026-10-24T14:32:38+08:00",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "图1一3",
+          "question": "The word “false” means ___ here.（A.right B.wrong C.important）",
+          "reason": "词义理解错：false 的意思理解错",
+          "hint": "①false 在文中修饰什么样的信息？②那个信息是真的还是假的？③哪个选项表示“错误的”意思？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图1二(一)4",
+          "question": "Then Tortoise can ___ the river",
+          "reason": "句意理解错：过河动作用词不当",
+          "hint": "①乌龟要到河对岸去，需要做什么动作？②can 后面接动词原形，哪个动作表示“过河”？③你填的词和“过河”的意思对得上吗？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图1二(一)5",
+          "question": "All of them are ___",
+          "reason": "词性错误：系动词后应用形容词或分词形式",
+          "hint": "①are 后面接什么词性的词？②表示“大家都很开心”的状态，该用什么形式？③你填的名词形式能放在 are 后面吗？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2九(二)开头",
+          "question": "Dear Cathy, ___（书信开头填词）",
+          "reason": "词形变化错误：书信开头用词形式不当",
+          "hint": "①信的开头称呼后该接什么？②这里要填的词该用什么形式？③你填的词放在句首通顺吗？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2九(二)1",
+          "question": "Please follow these ___",
+          "reason": "名词单复数错误：these 后须用复数形式",
+          "hint": "①these 后面跟单数还是复数？②你填的词是单数还是复数？③该怎么改才和 these 搭配？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2九(二)2",
+          "question": "First, talk ___",
+          "reason": "词形变化错误：单复数与搭配不当",
+          "hint": "①talk 后面说的是几条建议？②一条建议和多条建议的形式有什么不同？③这里该用单数还是复数？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2九(二)4",
+          "question": "some ___ things",
+          "reason": "词形变化错误：此处应用副词形式",
+          "hint": "①空格后的 things 是名词，修饰它的该是什么词性的词？②open 变成副词要加什么后缀？③你填的 open 是原形还是副词形式？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "图2九(二)5",
+          "question": "keep your ___ strong",
+          "reason": "词形变化错误：名词派生形式不当",
+          "hint": "①句子的意思是“保持你们的友谊牢固”，空格处该填表示“友谊”的词还是表示“朋友”的词？②friend 变成表示“友谊”的名词要加什么后缀？③你填的词意思对吗？",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "pending_corrections": 8
     },
     {
       "task_id": "REG-20261023-EAE721",
@@ -369,7 +474,7 @@
   "counts": {
     "total": 9,
     "pending": 2,
-    "in_progress": 4,
+    "in_progress": 7,
     "done": 0,
     "pending_review": 0
   },
