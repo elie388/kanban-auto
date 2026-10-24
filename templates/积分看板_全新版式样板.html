@@ -5128,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1545';
+  var KB_BUILD = '20261024-1558';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6886,30 +6886,36 @@ function drawScrollLayer(img, key, alpha, dt, vy, vx){
   for(xi = 0; xi < 2; xi++) for(yi = 0; yi < 2; yi++) ctx.drawImage(img, xs[xi], ys[yi], dw, dh);
   ctx.restore();
 }
-/* 降水图层编排（和风码细分，码义以引擎 codeMap 为准、未核实的不猜）：
-   300/301 阵雨（阵发包络）、309 毛毛雨（降量）、404/405/406 雨夹雪（雨雪混用）、407 阵雪（阵发）、
-   313 冻雨（雨＋冰粒）、304 雷阵雨伴冰雹（补雹层）；其余走类级降水 */
+/* 降水图层编排（和风码细分，码义以引擎 codeMap 为准、未核实的不猜；GPT 复审 B1–B4 修复）：
+   混合类天气的派生层一律从本类已有强度派生（404/405/406 雪类→雨层取雪强 0.7；304 雹类→雨层取雹强 0.7），
+   禁止从对侧零强度派生；407 阵雪包络改乘雪层；reduced-motion 下包络固定为 1（静态帧不随时间变）：
+   300/301 阵雨（阵发包络）、309 毛毛雨（降量）、404/405/406 雨夹雪（雪强派生雨层＋雪层）、407 阵雪（包络乘雪层）、
+   313 冻雨（雨＋冰粒，冰粒图未就绪回退雹粒子）、304 雷阵雨伴冰雹（雹强派生雨层＋雹层）；其余走类级降水 */
 function drawImgPrecip(dt){
   var code = appliedWx ? parseInt(appliedWx.code, 10) : NaN;
   var tm = Date.now() / 1000;
-  var gust = (code === 300 || code === 301 || code === 407) ? (0.55 + 0.45 * Math.sin(tm * 0.9)) : 1;
+  var gust = REDUCED ? 1 : ((code === 300 || code === 301 || code === 407) ? (0.55 + 0.45 * Math.sin(tm * 0.9)) : 1);
   var rainA = disp.pa.rain * gust, snowA = disp.pa.snow, hailA = disp.pa.hail;
   if(code === 309) rainA *= 0.45;
-  if(code === 404 || code === 405 || code === 406){ rainA = disp.pa.rain * 0.7; snowA = Math.max(disp.pa.snow, disp.pa.rain * 0.8); }
-  if(code === 304) hailA = Math.max(hailA, disp.pa.rain * 0.7);
+  if(code === 404 || code === 405 || code === 406){ rainA = disp.pa.snow * 0.7; snowA = disp.pa.snow; }
+  if(code === 407) snowA = disp.pa.snow * gust;
+  if(code === 304){ rainA = disp.pa.hail * 0.7; hailA = disp.pa.hail; }
   if(rainA > 0.01){
     if(skyImgOk(SKY_IMG.rain)) drawScrollLayer(SKY_IMG.rain, 'rain', rainA, dt, 240, 60);
-    else drawPrecip('rain', dt, 0);
+    else drawPrecip('rain', dt, 0, rainA);
   }
   if(snowA > 0.01){
     if(skyImgOk(SKY_IMG.snow)) drawScrollLayer(SKY_IMG.snow, 'snow', snowA, dt, 60, 8);
-    else drawPrecip('snow', dt, 0);
+    else drawPrecip('snow', dt, 0, snowA);
   }
   if(hailA > 0.01){
     if(skyImgOk(SKY_IMG.hail)) drawScrollLayer(SKY_IMG.hail, 'hail', hailA, dt, 320, 0);
-    else drawPrecip('hail', dt, 0);
+    else drawPrecip('hail', dt, 0, hailA);
   }
-  if(code === 313 && skyImgOk(SKY_IMG.icepellet)) drawScrollLayer(SKY_IMG.icepellet, 'icepellet', disp.pa.rain * 0.8, dt, 300, 0);
+  if(code === 313){
+    if(skyImgOk(SKY_IMG.icepellet)) drawScrollLayer(SKY_IMG.icepellet, 'icepellet', disp.pa.rain * 0.8, dt, 300, 0);
+    else drawPrecip('hail', dt, 0, disp.pa.rain * 0.8); /* GPT 复审 B5：冰粒图未就绪回退雹粒子形态 */
+  }
 }
 /* 月相亮面蒙版（GPT 月面图＋既有 phasePath 亮面形，缓存按 240 档月龄键） */
 var moonPhaseCache = { key: -1, cv: null };
@@ -7605,8 +7611,8 @@ function drawSnowLayer(arr, alpha, dt, drift){
     ctx.restore();
   }
 }
-function drawPrecip(kind, dt, nowSec){
-  var alpha = disp.pa[kind];
+function drawPrecip(kind, dt, nowSec, alphaOv){
+  var alpha = (typeof alphaOv === 'number') ? alphaOv : disp.pa[kind];
   if(alpha <= 0.01) return;
   var slantDeg = disp.tier <= 1 ? lerp(7, 15, disp.tier) : lerp(15, 30, disp.tier - 1); /* 定版：大风档1=15°、档2=30° */
   if(kind === 'rain'){
