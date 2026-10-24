@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T17:14:26+08:00",
+  "updated_at": "2026-10-24T18:10:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -513,11 +513,24 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
       "updated_at": "2026-10-24T16:55:29+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261024-001",
+      "source": "manual",
+      "subject": "数学",
+      "title": "补练·小数点移动（5题）",
+      "detail": "孩子自助申请，5道变式题，邮件主题：补练·数学·小数点移动",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-10-24T18:10:19+08:00",
+      "updated_at": "2026-10-24T18:10:19+08:00"
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 3,
+    "total": 13,
+    "pending": 4,
     "in_progress": 7,
     "done": 1,
     "pending_review": 0
