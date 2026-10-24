@@ -93,14 +93,14 @@
     animation:fadeUp .4s ease backwards;
     min-height:44px;
     /* 活天空余额卡（2026-10-24 家长改定）：全透明背景——不用磨砂（原 V2 纯磨砂上线后家长真机否决），
-       卡面直接透出天空；卡形由左侧年级色竖条界定（2026-10-24 家长令：一圈年级色描边已去掉）；文字无阴影（2026-10-24 家长真机令） */
+       卡面直接透出天空；年级识别锚仅剩姓名旁圆点（2026-10-24 家长令：一圈描边与左侧竖条均已去掉）；文字无阴影（2026-10-24 家长真机令） */
     background:transparent;
     border:1px solid rgba(255,255,255,.25);
   }
-  /* 年级识别锚：左侧 6px 年级色竖条（inset 阴影）＋姓名旁年级色圆点见 .bal-name::before；
-     一圈年级色描边（inset 1px 环）已按 2026-10-24 家长令去掉；今日变化数值在带内继承白字，不另着色 */
-  .bal-card.g5{box-shadow:inset 6px 0 0 var(--g5), var(--shadow);}
-  .bal-card.g6{box-shadow:inset 6px 0 0 var(--g6), var(--shadow);}
+  /* 年级识别锚：仅剩姓名旁年级色圆点（见 .bal-name::before）；
+     左侧 6px 年级色竖条与一圈年级色描边均已按 2026-10-24 家长令去掉；今日变化数值在带内继承白字，不另着色 */
+  .bal-card.g5{box-shadow:var(--shadow);}
+  .bal-card.g6{box-shadow:var(--shadow);}
   .bal-name::before{
     content:""; display:inline-block; width:9px; height:9px; border-radius:50%;
     margin-right:7px; vertical-align:1px;
@@ -1050,8 +1050,8 @@
   @media (hover:hover) and (pointer:fine){
     .card:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.12);}
     .ach:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(232,176,75,.28);}
-    .bal-card.g5:hover{box-shadow:inset 6px 0 0 var(--g5), 0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
-    .bal-card.g6:hover{box-shadow:inset 6px 0 0 var(--g6), 0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
+    .bal-card.g5:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
+    .bal-card.g6:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
     .task:hover{background:#FFFFFF; box-shadow:0 4px 14px rgba(48,52,59,.08);}
     .collapse-btn:hover .cb-state{background:#E7EAEE;}
   }
@@ -1565,6 +1565,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if(tx && !seen[tx]){ seen[tx] = 1; parts.push(tx); }
       });
       if(parts.length) window.__taskOrig[t.task_id] = parts.join('\n');
+      /* 2026-10-24 读背原文回落：任务无待改正原文时，用任务 recite_text 填原文区；有待改正原文时仍以待改正为准 */
+      else if((t.recite_text || '').trim()) window.__taskOrig[t.task_id] = t.recite_text.trim();
       else delete window.__taskOrig[t.task_id];
       var kq = (t.kousuan || []).filter(function(x){ return x && String(x).trim(); });
       if(kq.length) window.__taskKousuan[t.task_id] = kq.map(function(x, i){ return (i + 1) + '）' + x; }).join('\n');
@@ -5128,7 +5130,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1710';
+  var KB_BUILD = '20261024-1727';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
