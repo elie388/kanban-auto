@@ -185,6 +185,11 @@
   #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:sumDotBreathe 1.8s ease-in-out infinite;}
   @keyframes sumDotBreathe{0%,100%{transform:scale(.2); opacity:.45}50%{transform:scale(1.35); opacity:1}}
   @media (prefers-reduced-motion: reduce){ #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:none;} }
+  /* 未读红圆点（2026-10-24 家长定开工，替代原红标题方案：未读条目标题旁红色闪烁圆点，读后消失；圆点颜色与闪烁待家长真机定稿） */
+  .unread-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#DC2626; margin-left:6px; vertical-align:middle; animation:unreadDotBlink 1.2s ease-in-out infinite;}
+  .unread-dot[hidden]{display:none;}
+  @keyframes unreadDotBlink{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion: reduce){ .unread-dot{animation:none;} }
   .sum-grade{margin-bottom:14px;}
   .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
   .sum-date{font-weight:800; font-size:15px; margin-bottom:6px;}
@@ -2726,9 +2731,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       wrap.innerHTML = '<div class="sum-empty">还没有小结。今晚的小结生成后会出现在这里。</div>';
       return;
     }
+    kbReadMigrateSum(grade, items);
     var html = '';
     items.forEach(function(it){
-      html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden>';
+      var sumk = kbReadSumKey('kid', grade, it);
+      var sumUnread = !kbReadGet(sumk);
+      html += '<div class="sum-item" data-sumk="' + sumEsc(sumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (sumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden>';
       /* 孩子版晚间小结八段结构（规则手册「孩子版晚间小结结构」，2026-10-23 家长拍板恢复，顺序固定；
          旧四字段数据（无 improve 字段）按兼容口径渲染：知识点纯标签、无错题不显示全对句） */
       if(it.completed && it.completed.length){
@@ -2789,6 +2797,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     head.setAttribute('aria-expanded', open ? 'true' : 'false');
     var chev = head.querySelector('.sum-chev');
     if(chev) chev.textContent = open ? '收起 ▴' : '展开 ▾';
+    /* 未读红圆点：点展开即已读；收起不反悔；data-sumk 区分孩子版/家长版（家长版带 parent 前缀，硬隔离）。 */
+    if(open){
+      try {
+        var sk = item.getAttribute('data-sumk');
+        if(sk) localStorage.setItem(sk, '1');
+        var sdot = item.querySelector('.unread-dot');
+        if(sdot) sdot.hidden = true;
+      } catch(e){}
+    }
   }
   document.addEventListener('click', function(e){
     var head = e.target && e.target.closest ? e.target.closest('.sum-head') : null;
@@ -2925,7 +2942,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
           html += '<div class="sum-p-grade"><div class="sum-p-name"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span></div>';
           items.forEach(function(it){
-            html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+            var psumk = kbReadSumKey('parent', g, it);
+            var psumUnread = !kbReadGet(psumk);
+            html += '<div class="sum-item" data-sumk="' + sumEsc(psumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (psumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
           html += '</div>';
         }
@@ -2961,6 +2980,47 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function fbKeyOf(grade, it){
     return grade + '|' + (it.ts || '') + '|' + (it.title || (it.kind === 'qa' ? 'qa' : '')) + '|' + String((it.html || it.q || '').length);
   }
+/* 未读红圆点 helpers 起（2026-10-24 家长定开工；终审 C1–C7） */
+  function kbHashStr(s){ var h=2166136261; s=String(s||''); for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return (h>>>0).toString(16); }
+  function kbReadGet(key){ try { return localStorage.getItem(key) === '1'; } catch(e){ return false; } }
+  function kbReadSet(key){ try { localStorage.setItem(key, '1'); } catch(e){} }
+  function kbReadFbKey(grade, it){ return 'kb-read-fb-' + fbKeyOf(grade, it); }
+  /* 小结已读 key：有发布端 hash 用 hash（C3 首选）；无 hash 用次选兜底 date＋正文长度＋首 100 字哈希。
+     已知限制（C3 次选）：同 date 内容微改会复红；不得只按 date 计已读（同 date 重发/修正会静默误判为已读）。
+     家长版 key 带 parent 前缀，与孩子版硬隔离（C2）。 */
+  function kbReadSumKey(kind, grade, it){
+    var h = it.hash || '';
+    var base;
+    if(h){ base = h; }
+    else {
+      var txt = (kind === 'parent') ? (it.html || '') : JSON.stringify(it);
+      base = (it.date || '') + '|' + String(txt.length) + '|' + kbHashStr(txt.slice(0, 100));
+    }
+    return (kind === 'parent' ? 'kb-read-sum-parent-' : 'kb-read-sum-') + grade + '-' + base;
+  }
+  function kbTimeVal(v){ var t = Date.parse(v || ''); return isNaN(t) ? null : t; }
+  function kbLeq(a, b){ var ta = kbTimeVal(a), tb = kbTimeVal(b); if(ta !== null && tb !== null) return ta <= tb; return String(a || '') <= String(b || ''); }
+  /* 一次性迁移（C5）：新功能首跑时，用既有栏目级水位给旧条目补已读，避免已看过的旧条目首屏全红。
+     仅首跑一次（flag 守卫），此后新条目一律未读、须逐条展开才清（双轨）；家长版无水位，不迁移（首跑红点须逐条点开清）。 */
+  function kbReadMigrateFb(grade, items){
+    try {
+      var flag = 'kb-read-dot-migrated-fb-' + grade;
+      if(localStorage.getItem(flag)) return;
+      var wm = localStorage.getItem('kb-fb-seen-g' + grade) || '';
+      if(wm){ items.forEach(function(it){ if(it.ts && kbLeq(it.ts, wm)) kbReadSet(kbReadFbKey(grade, it)); }); }
+      localStorage.setItem(flag, '1');
+    } catch(e){}
+  }
+  function kbReadMigrateSum(grade, items){
+    try {
+      var flag = 'kb-read-dot-migrated-sum-' + grade;
+      if(localStorage.getItem(flag)) return;
+      var wm = localStorage.getItem('kb-sum-seen-g' + grade) || '';
+      if(wm){ items.forEach(function(it){ if(it.date && kbLeq(it.date, wm)) kbReadSet(kbReadSumKey('kid', grade, it)); }); }
+      localStorage.setItem(flag, '1');
+    } catch(e){}
+  }
+/* 未读红圆点 helpers 止 */
   function renderFeedback(grade, items){
     var wrap = document.querySelector('#fb-g' + grade + ' .fb-items');
     if(!wrap) return;
@@ -2968,17 +3028,20 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       wrap.innerHTML = '<div class="sum-empty">还没有批改反馈。今晚批改完成后会出现在这里。</div>';
       return;
     }
+    kbReadMigrateFb(grade, items);
     var html = '';
     items.forEach(function(it){
       var key = fbKeyOf(grade, it);
       var open = !!OPEN_FB[key];
+      /* C4 已知限制：反馈指纹含正文长度，正文微改会复红（视为新内容，可接受）。 */
+      var fbUnread = !kbReadGet(kbReadFbKey(grade, it));
       html += '<div class="fb-item' + (open ? ' open-fb' : '') + '" data-fbk="' + sumEsc(key) + '">'
         + '<button class="fb-head" type="button" aria-expanded="' + (open ? 'true' : 'false') + '">'
         + '<span class="fb-head-main">';
       if(it.kind === 'qa'){
-        html += '<div class="fb-title">💬 提问回复</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
+        html += '<div class="fb-title">💬 提问回复' + (fbUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
       } else {
-        html += '<div class="fb-title">' + sumEsc(it.title || '批改反馈') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
+        html += '<div class="fb-title">' + sumEsc(it.title || '批改反馈') + (fbUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
       }
       html += '</span><span class="fb-chev" aria-hidden="true">' + (open ? '收起 ▴' : '展开 ▾') + '</span></button>'
         + '<div class="fb-body"' + (open ? '' : ' hidden') + '>';
@@ -3004,6 +3067,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(chev) chev.textContent = open ? '收起 ▴' : '展开 ▾';
     var key = item.getAttribute('data-fbk');
     if(key){ if(open) OPEN_FB[key] = 1; else delete OPEN_FB[key]; fbSaveState(); }
+    /* 未读红圆点：点展开即已读（读了定义）；收起不反悔（close 时不清除已读，圆点不复现）；栏目开关/数据加载不同步已读（双轨）。 */
+    if(open){
+      try {
+        var rk = 'kb-read-fb-' + key;
+        localStorage.setItem(rk, '1');
+        var fdot = item.querySelector('.unread-dot');
+        if(fdot) fdot.hidden = true;
+      } catch(e){}
+    }
   }
   document.addEventListener('click', function(e){
     var head = e.target && e.target.closest ? e.target.closest('.fb-head') : null;
@@ -5131,7 +5203,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1943';
+  var KB_BUILD = '20261024-2043';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
