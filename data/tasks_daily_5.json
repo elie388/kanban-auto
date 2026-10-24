@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T14:32:38+08:00",
+  "updated_at": "2026-10-24T15:29:27+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -435,12 +435,12 @@
         "39.6×2.1≈"
       ],
       "estimate_min": 30,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-24T00:05:11+08:00",
+      "updated_at": "2026-10-24T15:29:27+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-10-23.pdf",
@@ -450,7 +450,8 @@
       ],
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
-      "carry_count": 1
+      "carry_count": 1,
+      "status_source": "realtime"
     },
     {
       "task_id": "CHORE-20261024-G5",
@@ -473,7 +474,7 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 2,
+    "pending": 1,
     "in_progress": 7,
     "done": 0,
     "pending_review": 0
