@@ -22,6 +22,13 @@
    "subject": "语文",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-3F2545",
+   "title": "L11生字",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }

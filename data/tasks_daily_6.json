@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T19:00:59+08:00",
+  "updated_at": "2026-10-24T20:47:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -214,37 +214,6 @@
       "status_source": "closeout_writeback"
     },
     {
-      "task_id": "REG-20261023-3F2545",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "L11生字",
-      "detail": "更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"41生字\"→全量复核改\"411生字\"→家长定案\"L11生字\"（字母 L＋11，Groq 原读正确，此前两版均错），已按定案更正为\"L11生字\"。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T18:39:17+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
-      "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
-      "qa": [
-        {
-          "q": "这两道题你判错了（黎拼音、呻组词）",
-          "a": "黎：字典没错，黎就是 lí，但原图里你写的是 tí（4 遍皆是），所以仍错，订正仍是把 lí 写 4 遍。呻：网上那个表确实列了呻唤（不否认），但学校作业以课本为准，课本《桥》生字组词和复习表都没有呻唤，只有呻吟／悲呻／无病呻吟，所以呻唤仍不算对，订正仍是呻吟。"
-        }
-      ],
-      "completed_at": "2026-10-24T18:39:17+08:00"
-    },
-    {
       "task_id": "REG-20261023-19DB4D",
       "source": "register_book",
       "subject": "语文",
@@ -345,21 +314,13 @@
       },
       "created_at": "2026-10-23T19:30:19+08:00",
       "updated_at": "2026-10-24T00:05:11+08:00",
-      "pending_corrections": 2,
+      "pending_corrections": 1,
       "corrections": [
         {
-          "label": "校本P20 一.5 one of后接复数",
-          "question": "Dali is one of Yunnan's ______ to visit. A. famous places B. more famous places C. most famous places D. most famous place（原D）",
-          "reason": "仍错：one of后应接最高级加复数名词，应为C most famous places，不是B more famous places",
-          "hint": "①先检查什么：看看 one of 后面跟的名词。②知识点方向：one of 表示“……之一”，后面要接复数名词，还要加最高级。③关键一步：most famous places里，most和复数places哪一个都不能少，你写的B缺了哪一个？",
-          "img": "",
-          "q_img": ""
-        },
-        {
           "label": "校本P21 二.1 very后接原级",
-          "question": "The river is very ______.（原写longest）",
-          "reason": "仍错：very后面只能接原级，不能接最高级，应为long",
-          "hint": "①先检查什么：看看 very 后面跟的是什么词。②知识点方向：very 只能修饰原级，最高级前面要加 the。③关键一步：longest是最高级，very longest能不能搭配？去掉什么就对了？",
+          "question": "The river is very ______.（原写longest；R2改longer仍错）",
+          "reason": "仍错（第2轮）：very后面只能接原级；longer是比较级（-er结尾），不是原级；应为long",
+          "hint": "①先检查什么：看看你现在写的longer是什么形式（-er结尾叫什么？）②知识点方向：very后面只能跟原级，原级是什么后缀都不加的形式。③关键一步：long、longer、longest三个里面，哪一个是什么后缀都不加的？",
           "img": "",
           "q_img": ""
         }
@@ -436,12 +397,23 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-24T17:34:46+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-24T20:47:14+08:00",
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "53天天练P11 4",
+          "question": "莱洛三角形（曲线AB,AC,BC分别是以正三角形顶点C,B,A为中心点的圆的一部分）沿地面滚动，图形最高点和中心点O留下的轨迹可能是（）。A.上直线下波浪；B.上波浪下波浪；C.双直线；D.上波浪下直线",
+          "reason": "莱洛三角形是定宽曲线：滚动时图形最高点高度恒定、中心点O高度起伏；孩子把上下两条线的形状颠倒了。",
+          "hint": "①先看上下两条线各是什么形状、上下顺序是怎样的；②想一想最高点轨迹与中心点轨迹各有什么特点；③关键一步：先分别说出两条线各自的形状，再对照自己的答案，看看上下是不是颠倒了。",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "pending_corrections": 1
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -479,11 +451,11 @@
     }
   ],
   "counts": {
-    "total": 16,
+    "total": 15,
     "pending": 1,
-    "in_progress": 8,
-    "done": 2,
+    "in_progress": 9,
+    "done": 1,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-10-24T22:00:00+08:00"
 }

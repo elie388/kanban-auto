@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T19:26:16+08:00",
+  "updated_at": "2026-10-24T20:47:26+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -40,7 +40,12 @@
       "status_source": "closeout_writeback",
       "corrections": [],
       "pending_corrections": 0,
-      "completed_at": "2026-10-24T18:59:27+08:00"
+      "completed_at": "2026-10-24T18:59:27+08:00",
+      "orig_photos": [
+        "7831350371b5c3af.jpg",
+        "cbc4abb4161fbf1d.jpg",
+        "77c516ac82e1d227.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-23-MATH",
