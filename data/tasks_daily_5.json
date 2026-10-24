@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T18:51:24+08:00",
+  "updated_at": "2026-10-24T19:00:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -17,7 +17,7 @@
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-10-24T16:55:29+08:00",
+      "ingested_at": "2026-10-24T19:00:59+08:00",
       "status": "done"
     }
   },
@@ -29,26 +29,18 @@
       "title": "53天天练·语文",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-24T14:32:35+08:00",
+      "updated_at": "2026-10-24T18:59:27+08:00",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1,
       "status_source": "closeout_writeback",
-      "corrections": [
-        {
-          "label": "图1思维导图",
-          "question": "补全《诺曼底号遇难记》情节思维导图（共四段）",
-          "reason": "情节概括错：首段背景概括错误",
-          "hint": "①回读课文开头，故事发生在一个什么样的夜晚？②思维导图第一格要写的是故事发生的背景，还是别的内容？③你写的第一格和课文开头的背景对得上吗？对不上该怎么改？",
-          "img": "",
-          "q_img": ""
-        }
-      ],
-      "pending_corrections": 1
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-10-24T18:59:27+08:00"
     },
     {
       "task_id": "D53-2026-10-23-MATH",
@@ -96,26 +88,10 @@
       "status_source": "closeout_writeback",
       "corrections": [
         {
-          "label": "图1一3",
-          "question": "The word “false” means ___ here.（A.right B.wrong C.important）",
-          "reason": "词义理解错：false 的意思理解错",
-          "hint": "①false 在文中修饰什么样的信息？②那个信息是真的还是假的？③哪个选项表示“错误的”意思？",
-          "img": "",
-          "q_img": ""
-        },
-        {
           "label": "图1二(一)4",
           "question": "Then Tortoise can ___ the river",
           "reason": "句意理解错：过河动作用词不当",
           "hint": "①乌龟要到河对岸去，需要做什么动作？②can 后面接动词原形，哪个动作表示“过河”？③你填的词和“过河”的意思对得上吗？",
-          "img": "",
-          "q_img": ""
-        },
-        {
-          "label": "图1二(一)5",
-          "question": "All of them are ___",
-          "reason": "词性错误：系动词后应用形容词或分词形式",
-          "hint": "①are 后面接什么词性的词？②表示“大家都很开心”的状态，该用什么形式？③你填的名词形式能放在 are 后面吗？",
           "img": "",
           "q_img": ""
         },
@@ -150,17 +126,9 @@
           "hint": "①空格后的 things 是名词，修饰它的该是什么词性的词？②open 变成副词要加什么后缀？③你填的 open 是原形还是副词形式？",
           "img": "",
           "q_img": ""
-        },
-        {
-          "label": "图2九(二)5",
-          "question": "keep your ___ strong",
-          "reason": "词形变化错误：名词派生形式不当",
-          "hint": "①句子的意思是“保持你们的友谊牢固”，空格处该填表示“友谊”的词还是表示“朋友”的词？②friend 变成表示“友谊”的名词要加什么后缀？③你填的词意思对吗？",
-          "img": "",
-          "q_img": ""
         }
       ],
-      "pending_corrections": 8
+      "pending_corrections": 5
     },
     {
       "task_id": "REG-20261023-EAE721",
@@ -522,8 +490,8 @@
   "counts": {
     "total": 13,
     "pending": 4,
-    "in_progress": 7,
-    "done": 1,
+    "in_progress": 6,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": null
