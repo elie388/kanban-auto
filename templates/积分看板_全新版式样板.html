@@ -5128,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1558';
+  var KB_BUILD = '20261024-1602';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6507,7 +6507,7 @@ document.addEventListener('click', function(e){
    坐标只以 0.1° 粗格缓存与发送，精坐标不落盘。变化缓动约 800ms＋天气保持窗 5 分钟防抖；后台全停；
    prefers-reduced-motion 全静态（静态帧、无粒子）；无双模式/精简开关（家长定版）。
    2026-10-24 iOS 化并批（家长审图批准施工）：太阳光源式四层渐变＋限高轨迹＋光雾 y-clamp、月亮离屏柔边＋冷辉光同 clamp、
-   云羽化 sprite＋过日透光、雨/雪/雾分层景深、彩虹/流星落地；闪电代码落地但开关 OFF（待五项安全实测＋DeepSeek 终审签字）。 */
+   云羽化 sprite＋过日透光、雨/雪/雾分层景深、彩虹/流星落地；闪电 2026-10-24 家长拍板开启（弱化版参数不变）。 */
 (function(){
 'use strict';
 var band = document.getElementById('sky-band');
@@ -6580,7 +6580,7 @@ var SKY = {
     [503,'dust'],[504,'dust'],[507,'dust'],[508,'dust'],
     [900,'clear'],[901,'clear'],[999,'clear']
   ],
-  phase2: { rainbow:true, meteor:true, lightning:false } /* 二期（2026-10-24 并批 iOS 化）：彩虹/流星已落地；闪电代码落地但开关 OFF、待五项安全实测＋DeepSeek 终审签字后开启（LIGHTNING_CFG.enabled） */
+  phase2: { rainbow:true, meteor:true, lightning:true } /* 二期（2026-10-24 并批 iOS 化）：彩虹/流星已落地；闪电 2026-10-24 家长拍板开启（LIGHTNING_CFG.enabled，弱化版参数不变） */
 };
 function skyClassOf(code){
   var n = parseInt(code, 10), i;
@@ -7241,11 +7241,11 @@ function drawMeteor(nowSec, dt, starA){
   }
 }
 
-/* 闪电（弱化版定版参数，单点配置；本次部署 enabled=false——五项安全实测＋DeepSeek 终审签字后才开启，改参须重走终审）：
+/* 闪电（弱化版定版参数，单点配置；2026-10-24 家长拍板开启——五项安全实测＋DeepSeek 终审签字已过，家长令开，弱化参数不变，改参须重走终审）：
    仅雷暴档、≤3 次/10min、间隔 ≥90s、单次总时长 ≤600ms（2–3 段、每段 ≤150ms、段间暗间隙 ≥100ms）、
    云内亮度增量 ≤+18%（gain 为证据包实测校准增益）、只画云内闷闪禁叉形、段后指数衰减（τ=130ms，200–400ms 内衰尽）、
    reduced-motion 强制关、页面后台即停 */
-var LIGHTNING_CFG = { enabled: false, maxPer10Min: 3, minGapSec: 90, maxTotalMs: 600, segMaxMs: 150, minDarkGapMs: 100, maxBoost: 0.18, gain: 0.55 };
+var LIGHTNING_CFG = { enabled: true, maxPer10Min: 3, minGapSec: 90, maxTotalMs: 600, segMaxMs: 150, minDarkGapMs: 100, maxBoost: 0.18, gain: 0.55 };
 var lt = { times: [], cur: null, nextAt: 0 };
 var curBoost = 0;
 var frameClouds = [];
@@ -7523,7 +7523,7 @@ function draw(nowSec, dt){
 
   }
 
-  /* 闪电（云内闷闪）：curBoost 由主循环 lightningTick 维护；开关 OFF 时恒 0、此处无-op */
+  /* 闪电（云内闷闪）：curBoost 由主循环 lightningTick 维护；开关 OFF 时恒 0，开启后按弱化参数提亮云内 */
   if(curBoost > 0.002 && frameClouds.length){
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
@@ -7644,7 +7644,7 @@ function frame(t){
   var dt = Math.min(0.05, lastT ? (t - lastT) / 1000 : 0.016);
   lastT = t;
   lerpDisp(dt);
-  lightningTick(); /* 闪电状态机（开关 OFF 时恒无-op） */
+  lightningTick(); /* 闪电状态机（弱化版参数；开关 OFF 时无-op） */
   draw(t / 1000, REDUCED ? 0 : dt);
   rafId = requestAnimationFrame(frame);
 }
@@ -7681,7 +7681,7 @@ if(/(^#|&)skytest/.test(location.hash || '')){
     setTimeOffset: function(ms){ skyTimeOffset = ms; if(REDUCED || !running) draw(0, 0); },
     setPos: function(lat, lon){ pos = { lat: lat, lon: lon }; if(REDUCED || !running) draw(0, 0); },
     mod: function(){ return resolveMod(appliedWx); },
-    /* 闪电证据包专用（生产开关仍 OFF，此处仅验收时页内临时开启/强制触发） */
+    /* 闪电验收专用（生产开关已开；此处仍可页内临时开关/强制触发） */
     lightningCfg: LIGHTNING_CFG,
     setLightning: function(on){ LIGHTNING_CFG.enabled = !!on; },
     forceLightning: function(){ lt.times.length = 0; lt.cur = null; lt.nextAt = 0; },
