@@ -5128,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1201';
+  var KB_BUILD = '20261024-1336';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6931,6 +6931,7 @@ function sunProgress(d, sunC){
    返修（DeepSeek 终审阻断项）：靠近卡顶的收尾区改用 smoothstep 收尾（收尾长度＝光雾半径 0.15–0.2 倍、钳制 8–12px，
    由调用方传入 tailCss），末端斜率→0，消除原线性衰减的截断感；y=148 仍严格归零 */
 var glowCv = document.createElement('canvas');
+var hlCv = null; /* 云透光高光离屏合成层（按云 sprite alpha 蒙版，手机修复用，懒创建复用） */
 function smoothstep01(t){ t = clamp(t, 0, 1); return t * t * (3 - 2 * t); }
 function paintGlow(alpha, drawFn, tailCss){
   if(alpha <= 0.003 || !W) return;
@@ -6976,14 +6977,15 @@ function drawSunLayers(x, y, R, altD, az, sunUp){
   if(haloA > 0.01){
     paintGlow(haloA, function(g2){
       var R4 = R * 6 * fogR, R3 = R * 3.5 * fogR, gr;
+      /* L4 远雾：自 1.6R 起单调衰减（手机修复：原 0.62 处由 0.5→1.0 倍 l4a 的隆起取消，防径向剖面回升） */
       gr = g2.createRadialGradient(x, y, R * 1.6, x, y, Math.max(R4, R * 1.7));
-      gr.addColorStop(0, rgbaS(st.l4, st.l4a * 0.5));
-      gr.addColorStop(0.62, rgbaS(st.l4, st.l4a));
+      gr.addColorStop(0, rgbaS(st.l4, st.l4a));
       gr.addColorStop(1, rgbaS(st.l4, 0));
       g2.fillStyle = gr; g2.fillRect(x - R4, y - R4, R4 * 2, R4 * 2);
-      gr = g2.createRadialGradient(x, y, 0, x, y, Math.max(R3, 1));
-      gr.addColorStop(0, rgbaS(st.l3, l3a * 0.80));
-      gr.addColorStop(clamp(1 / (3.5 * fogR), 0.05, 0.9), rgbaS(st.l3, l3a));
+      /* L3 柔光雾：起点移至核外 1.0R、自峰值单调衰减至 3.5R（手机修复：原渐变在 r≈1.0R 升至峰值，
+         与核层边缘（1R 处 alpha 0.06）叠出可见黄色环；效果图口径为单调衰减） */
+      gr = g2.createRadialGradient(x, y, R, x, y, Math.max(R3, R * 1.01));
+      gr.addColorStop(0, rgbaS(st.l3, l3a));
       gr.addColorStop(1, rgbaS(st.l3, 0));
       g2.fillStyle = gr; g2.fillRect(x - R3, y - R3, R3 * 2, R3 * 2);
       /* 桥层：核外 1–2.1R 的暖色过渡，消除核缘与光雾之间的色阶断环（验收帧实测修） */
@@ -7284,22 +7286,39 @@ function draw(nowSec, dt){
       ctx.drawImage(sp.tint, x, y, w2, h2);
     }
     frameClouds.push({ x: x, y: y, w: w2, h: h2, a: a, vis: vis, img: sp.img });
-    /* 云过日透光（iOS 化）：云近太阳时朝日方向叠 'lighter' 暖高光，强度上限＝核亮度×0.35（定版） */
+    /* 云过日透光（iOS 化）：云近太阳时朝日方向叠 'lighter' 暖高光，强度上限＝核亮度×0.35（定版）
+       手机修复：原实现把径向渐变 ctx.rect 裁进云的矩形包围盒、渐变在盒边不为 0，窄画布下每朵云
+       带一个硬边矩形、拼贴成竖条/横条。改法：高光先在离屏按云 sprite 自身 alpha 蒙版
+       （destination-in）合成，再以 'lighter' 贴回——边缘严格跟随云羽化 alpha，禁止矩形裁剪填充；
+       影响半径 cinf 钳到 ≤1.2×云宽；强度乘云总透明度 a（原实现误用上一笔残留 globalAlpha，一并纠正） */
     if(sunUp > 0.05 && disp.dust < 0.3){
       var ccx = c.x * W, ccy = c.y * H;
       var cdx = ccx - sunX, cdy = ccy - sunY;
       var cdist = Math.sqrt(cdx * cdx + cdy * cdy);
-      var cinf = w2 * 0.72 + coreR * 5.2;
+      var cinf = Math.min(w2 * 0.72 + coreR * 5.2, w2 * 1.2);
       if(cdist < cinf){
         var cstr = Math.pow(1 - cdist / cinf, 1.5) * 0.35 * clamp(0.45 * disp.body + 0.55 * disp.halo, 0, 1) * sunUp * vis;
         if(cstr > 0.01){
+          var sw = sp.img.width, sh = sp.img.height, kx = sw / w2, ky = sh / h2;
+          if(!hlCv) hlCv = document.createElement('canvas');
+          if(hlCv.width !== sw || hlCv.height !== sh){ hlCv.width = sw; hlCv.height = sh; }
+          var hg = hlCv.getContext('2d');
+          hg.setTransform(1, 0, 0, 1, 0, 0);
+          hg.globalCompositeOperation = 'source-over';
+          hg.globalAlpha = 1;
+          hg.clearRect(0, 0, sw, sh);
+          var hsx = (sunX - x) * kx, hsy = (sunY - y) * ky;
+          var hgr = hg.createRadialGradient(hsx, hsy, coreR * 0.4 * kx, hsx, hsy, Math.max(cinf * kx, 1));
+          hgr.addColorStop(0, 'rgba(255,196,110,' + clamp(cstr * a, 0, 1).toFixed(3) + ')');
+          hgr.addColorStop(1, 'rgba(255,196,110,0)');
+          hg.fillStyle = hgr; hg.fillRect(0, 0, sw, sh);
+          hg.globalCompositeOperation = 'destination-in';
+          hg.drawImage(sp.img, 0, 0);
+          hg.globalCompositeOperation = 'source-over';
           ctx.save();
-          ctx.beginPath(); ctx.rect(x, y, w2, h2); ctx.clip();
           ctx.globalCompositeOperation = 'lighter';
-          var cg2 = ctx.createRadialGradient(sunX, sunY, coreR * 0.4, sunX, sunY, cinf);
-          cg2.addColorStop(0, 'rgba(255,196,110,' + cstr.toFixed(3) + ')');
-          cg2.addColorStop(1, 'rgba(255,196,110,0)');
-          ctx.fillStyle = cg2; ctx.fillRect(x, y, w2, h2);
+          ctx.globalAlpha = 1;
+          ctx.drawImage(hlCv, x, y, w2, h2);
           ctx.restore();
         }
       }
