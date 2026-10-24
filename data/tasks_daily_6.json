@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T15:50:18+08:00",
+  "updated_at": "2026-10-24T16:05:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -123,7 +123,7 @@
       "title": "作文（成长中的一束光）",
       "detail": "原状态：待完成；字形定案：家长 2026-10-23 19:39 看圈注原图最终确认原文为\"1.作文\"、无\"小\"字，原转写无误，待确认已销（其间一度误记为\"小作文\"，已复原）；家长已确认：作文顺延至周六（2026-10-24）再写（2026-10-23 19:34 确认），今晚不催该项。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
@@ -132,13 +132,30 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:30:19+08:00",
-      "updated_at": "2026-10-24T15:41:55+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-10-24T16:05:25+08:00",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "作文《成长中的一束光》语病组",
+          "question": "作文《成长中的一束光》语言问题组：向四周环顾主语杂糅、晨曦阳光语义重复、不好意说一趟成分残缺、两步跨跨动词重复、身手臂杂糅、继续续重复、听谁听杂糅、人人们语义重复、背背地里重复，共9处以上（每处-2，上限-6）",
+          "reason": "语病多处：主语杂糅、语义重复、动词重复、成分残缺；每处-2，上限-6",
+          "hint": "①先检查什么：把这几个句子单独读一遍，哪个词多余、哪个成分缺了？②知识点方向：一个句子只能有一个主语、重复的词留一个。③关键一步：把“向四周环顾”那句的主语补上、把重复的词删到只剩一个，再读一遍顺不顺？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "作文《成长中的一束光》错字组",
+          "question": "作文《成长中的一束光》错字组：制（蓝制服，形错）、帽（形错）、的写成丽、划应为滑、碘药（应用碘酒），共4-5个（3个起每3个-2）",
+          "reason": "错字4-5个：形近错3个＋别字1-2个；3个起每3个-2，计-2",
+          "hint": "①先检查什么：把这几个字单独写一遍，和课本里的字形对一对。②知识点方向：形近字看偏旁、别字看意思。③关键一步：制/帽/的这三个字各错在哪一笔？划和滑意思一样吗？",
+          "img": "",
+          "q_img": ""
+        }
+      ],
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261023-3F2545",
@@ -277,11 +294,11 @@
       "pending_corrections": 1,
       "corrections": [
         {
-          "label": "P1第5题半圆周长",
-          "question": "《数学思考题（上册）》第1页第5题：在长8cm、宽6cm的长方形内剪出最大的半圆，求这个半圆的周长。你当时的作答：41.12cm。",
-          "reason": "方法错误：公式对、直径当半径代入",
-          "hint": "①先确认图里给你的那条线：它是直径还是半径？在图上把它标出来。②想一想半圆的周长由哪两部分组成：不只是半个圆弧，还要加上那条直的边，别漏掉。③先求整圆的周长再除以2，最后检查一遍：你代入的到底是直径还是半径？",
-          "img": "g6_semicircle_20261023_guide.png",
+          "label": "思考题P4 11(2)",
+          "question": "日历框5个数之和与中间数的关系（原判取数错误；04_复核改判对但DeepSeek终审未完成；本批照片无P4页，未核对）",
+          "reason": "原判错后复核改判对，但终审未完成；本批无P4页，不得凭本批消项，仍挂待订正",
+          "hint": "①复核结论待DeepSeek终审确认后，再定是否销项。②本批未交P4页，不作新判定。",
+          "img": "",
           "q_img": ""
         }
       ],
@@ -307,53 +324,21 @@
       },
       "created_at": "2026-10-23T19:30:19+08:00",
       "updated_at": "2026-10-24T00:05:11+08:00",
-      "pending_corrections": 6,
+      "pending_corrections": 2,
       "corrections": [
         {
-          "label": "P20 一.1 时态选择",
-          "question": "《校本》P20 一.1：He ______ angry and always ______ for people to take care of nature. A. was; calls B. was; called C. is; call D. is; called。你原来选 B，后来划掉改成了 D。",
-          "reason": "语法：两个动词时态不一致（现在时与过去时混搭）",
-          "hint": "①先检查什么：看看这句话里两个动词的时态。②知识点方向：was 和 called 都是过去时，前后时态要一致才通顺。③关键一步：is 是现在时，called 是过去时——它们能放在一句话里搭配吗？你改掉的那个选项再想想。",
+          "label": "校本P20 一.5 one of后接复数",
+          "question": "Dali is one of Yunnan's ______ to visit. A. famous places B. more famous places C. most famous places D. most famous place（原D）",
+          "reason": "仍错：one of后应接最高级加复数名词，应为C most famous places，不是B more famous places",
+          "hint": "①先检查什么：看看 one of 后面跟的名词。②知识点方向：one of 表示“……之一”，后面要接复数名词，还要加最高级。③关键一步：most famous places里，most和复数places哪一个都不能少，你写的B缺了哪一个？",
           "img": "",
           "q_img": ""
         },
         {
-          "label": "P20 一.5 one of 后接复数",
-          "question": "《校本》P20 一.5：Dali is one of Yunnan's ______ to visit. A. famous places B. more famous places C. most famous places D. most famous place。",
-          "reason": "语法：one of 后应接最高级加复数名词",
-          "hint": "①先检查什么：看看 one of 后面跟的名词。②知识点方向：one of 表示「……之一」，后面要接复数名词。③关键一步：places 是单数还是复数？one of the most famous ___ 里该填单数还是复数？",
-          "img": "",
-          "q_img": ""
-        },
-        {
-          "label": "P20 三.5 go boating 固定搭配",
-          "question": "《校本》P20 三.5（Huangyan 短文第 5 空）：People often go ______ at the Dragon Boat Festival.（请用方框词 boat 的适当形式；你填的是 boat）",
-          "reason": "语法：固定搭配 go boating，boat 需变为 -ing 形式",
-          "hint": "①先检查什么：看看 go 后面动词的样子。②知识点方向：go boating（去划船）是固定搭配，go 后面跟动词要加 -ing。③关键一步：boat 要变成什么形式，才能跟在 go 后面表示「去划船」？",
-          "img": "",
-          "q_img": ""
-        },
-        {
-          "label": "P21 二.1 very 后接原级",
-          "question": "《校本》P21 二.1：The river is very ______.（你写的是 longest）",
-          "reason": "语法：very 后接形容词原级，不接最高级",
-          "hint": "①先检查什么：看看 very 后面你写的是什么形式。②知识点方向：very 后面接形容词原级，不接最高级（最高级前面一般有 the）。③关键一步：long 的最高级是 longest，原级是什么？very 后面应该用哪一个？",
-          "img": "",
-          "q_img": ""
-        },
-        {
-          "label": "P21 四.1 one of 后接复数",
-          "question": "《校本》P21 四.1（Zheng He 短文第 1 空）：Zheng He is one of the most famous ______ in China.（你写的是 traveller）",
-          "reason": "语法：one of the most famous 后应接复数名词",
-          "hint": "①先检查什么：和 P20 一.5 一样，看看 one of 后面的名词。②知识点方向：one of the most famous 后面同样要接复数。③关键一步：traveller 是单数，它的复数形式怎么写？",
-          "img": "",
-          "q_img": ""
-        },
-        {
-          "label": "P22 一.2 涂改覆盖无法辨认",
-          "question": "《校本》P22 一.2：We should protect ______ and keep our planet clean and beautiful.（你的答案被涂改覆盖，看不清最终写的是什么）",
-          "reason": "书写致误：涂改覆盖，最终答案无法辨认，未能判对",
-          "hint": "①先检查什么：看看你的答案区，涂改之后还能认出最终答案吗？②方向：想改答案时，用一条横线划掉旧答案、在旁边写新的，不要反复涂抹覆盖。③要求：把这题在订正本上重写一遍，写清楚。",
+          "label": "校本P21 二.1 very后接原级",
+          "question": "The river is very ______.（原写longest）",
+          "reason": "仍错：very后面只能接原级，不能接最高级，应为long",
+          "hint": "①先检查什么：看看 very 后面跟的是什么词。②知识点方向：very 只能修饰原级，最高级前面要加 the。③关键一步：longest是最高级，very longest能不能搭配？去掉什么就对了？",
           "img": "",
           "q_img": ""
         }
@@ -393,7 +378,7 @@
   "counts": {
     "total": 13,
     "pending": 6,
-    "in_progress": 5,
+    "in_progress": 6,
     "done": 0,
     "pending_review": 0
   },
