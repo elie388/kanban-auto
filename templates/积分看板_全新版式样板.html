@@ -5128,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1616';
+  var KB_BUILD = '20261024-1647';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6818,7 +6818,7 @@ var SKY_IMG = {};
     'rain','snow','hail','graupel','icepellet','icecrystal','lightning','stars','rainbow','meteor','sun','moon','tornado','dustdevil'];
   for(var i = 0; i < names.length; i++){
     var im = new Image();
-    im.src = 'data/sky/' + names[i] + '.webp';
+    im.src = 'data/sky/' + names[i] + '.webp?v=' + (window.__KB_BUILD || '');
     SKY_IMG[names[i]] = im;
   }
 })();
