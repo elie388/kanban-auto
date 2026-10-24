@@ -5128,7 +5128,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1437';
+  var KB_BUILD = '20261024-1545';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6810,6 +6810,122 @@ var stars = [], clouds = [], parts = { rainFar: [], rainNear: [], snowFar: [], s
   fillParts(parts.hail, 55, function(){ return { x: Math.random(), y: Math.random(), r: 1 + Math.random()*1, v: 0.8 + Math.random()*0.5 }; });
 })();
 
+/* ---------------- GPT 图层（2026-10-24 家长定：天气形状一律 GPT 透明图层，代码只做平移/淡入淡出/缩放，不画形状；
+   程序化画法保留作图片未就绪时的回退；闪电/龙卷/尘卷/极光/烟幕/霾/霰/冰针图层已备但暂无自动触发条件，不启用） ---------------- */
+var SKY_IMG = {};
+(function preloadSkyImg(){
+  var names = ['cumulus','overcast','raincloud','snowcloud','fog','dust','storm','smoke','haze','aurora',
+    'rain','snow','hail','graupel','icepellet','icecrystal','lightning','stars','rainbow','meteor','sun','moon','tornado','dustdevil'];
+  for(var i = 0; i < names.length; i++){
+    var im = new Image();
+    im.src = 'data/sky/' + names[i] + '.webp';
+    SKY_IMG[names[i]] = im;
+  }
+})();
+function skyImgOk(im){ return !!(im && im.complete && im.naturalWidth > 0); }
+function bandForClass(cls){
+  if(cls === 'clear' || cls === 'few') return SKY_IMG.cumulus;
+  if(cls === 'cloudy' || cls === 'overcast') return SKY_IMG.overcast;
+  if(cls === 'rain' || cls === 'thunder') return SKY_IMG.raincloud;
+  if(cls === 'hail') return SKY_IMG.storm;
+  if(cls === 'snow') return SKY_IMG.snowcloud;
+  if(cls === 'fog') return SKY_IMG.fog;
+  if(cls === 'dust') return SKY_IMG.dust;
+  return SKY_IMG.cumulus;
+}
+/* 黄昏染橙变体：离屏按原图 alpha 蒙版烤一份（与旧 variant() 同路），懒生成缓存 */
+var bandTintCache = {};
+function bandTinted(img){
+  var key = img.src;
+  if(bandTintCache[key]) return bandTintCache[key];
+  var c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+  var g = c.getContext('2d');
+  g.drawImage(img, 0, 0);
+  g.globalCompositeOperation = 'source-atop';
+  var gr = g.createLinearGradient(0, c.height * 0.35, 0, c.height);
+  gr.addColorStop(0, 'rgba(255,138,64,0)');
+  gr.addColorStop(1, 'rgba(255,118,52,0.55)');
+  g.fillStyle = gr; g.fillRect(0, 0, c.width, c.height);
+  bandTintCache[key] = c;
+  return c;
+}
+/* 云带往复漂移（无接缝方案：图宽取带宽 1.15 倍，来回平移不绕回） */
+var bandOff = { back: 0, front: 0 }, bandDir = { back: 1, front: 1 };
+function advanceBandOff(key, dx, span){
+  var o = bandOff[key] + bandDir[key] * dx;
+  if(o > span){ o = span; bandDir[key] = -1; }
+  else if(o < 0){ o = 0; bandDir[key] = 1; }
+  return o;
+}
+function drawBandLayer(img, zoneY, alpha, tintA, off){
+  if(!skyImgOk(img) || alpha <= 0.004 || !W) return;
+  var dw = W * 1.15, dh = dw * (img.naturalHeight / img.naturalWidth);
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.drawImage(img, -off, zoneY - dh / 2, dw, dh);
+  if(tintA > 0.03){
+    ctx.globalAlpha = alpha * tintA;
+    ctx.drawImage(bandTinted(img), -off, zoneY - dh / 2, dw, dh);
+  }
+  ctx.restore();
+}
+/* 满幅滚动图层（雨/雪/雹：上下绕回滚动；接缝为单线，远近双速叠加弱化） */
+var precipOff = {};
+function drawScrollLayer(img, key, alpha, dt, vy, vx){
+  if(!skyImgOk(img) || alpha <= 0.004 || !W) return;
+  var sc = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+  var dw = img.naturalWidth * sc, dh = img.naturalHeight * sc;
+  var o = precipOff[key] || (precipOff[key] = { x: 0, y: 0 });
+  if(dt > 0){
+    o.y = (o.y + dt * vy) % dh;
+    o.x = (o.x + dt * vx) % dw;
+  }
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  var xs = [o.x - dw, o.x], ys = [o.y - dh, o.y], xi, yi;
+  for(xi = 0; xi < 2; xi++) for(yi = 0; yi < 2; yi++) ctx.drawImage(img, xs[xi], ys[yi], dw, dh);
+  ctx.restore();
+}
+/* 降水图层编排（和风码细分，码义以引擎 codeMap 为准、未核实的不猜）：
+   300/301 阵雨（阵发包络）、309 毛毛雨（降量）、404/405/406 雨夹雪（雨雪混用）、407 阵雪（阵发）、
+   313 冻雨（雨＋冰粒）、304 雷阵雨伴冰雹（补雹层）；其余走类级降水 */
+function drawImgPrecip(dt){
+  var code = appliedWx ? parseInt(appliedWx.code, 10) : NaN;
+  var tm = Date.now() / 1000;
+  var gust = (code === 300 || code === 301 || code === 407) ? (0.55 + 0.45 * Math.sin(tm * 0.9)) : 1;
+  var rainA = disp.pa.rain * gust, snowA = disp.pa.snow, hailA = disp.pa.hail;
+  if(code === 309) rainA *= 0.45;
+  if(code === 404 || code === 405 || code === 406){ rainA = disp.pa.rain * 0.7; snowA = Math.max(disp.pa.snow, disp.pa.rain * 0.8); }
+  if(code === 304) hailA = Math.max(hailA, disp.pa.rain * 0.7);
+  if(rainA > 0.01){
+    if(skyImgOk(SKY_IMG.rain)) drawScrollLayer(SKY_IMG.rain, 'rain', rainA, dt, 240, 60);
+    else drawPrecip('rain', dt, 0);
+  }
+  if(snowA > 0.01){
+    if(skyImgOk(SKY_IMG.snow)) drawScrollLayer(SKY_IMG.snow, 'snow', snowA, dt, 60, 8);
+    else drawPrecip('snow', dt, 0);
+  }
+  if(hailA > 0.01){
+    if(skyImgOk(SKY_IMG.hail)) drawScrollLayer(SKY_IMG.hail, 'hail', hailA, dt, 320, 0);
+    else drawPrecip('hail', dt, 0);
+  }
+  if(code === 313 && skyImgOk(SKY_IMG.icepellet)) drawScrollLayer(SKY_IMG.icepellet, 'icepellet', disp.pa.rain * 0.8, dt, 300, 0);
+}
+/* 月相亮面蒙版（GPT 月面图＋既有 phasePath 亮面形，缓存按 240 档月龄键） */
+var moonPhaseCache = { key: -1, cv: null };
+function moonPhaseClip(ill){
+  var key = Math.round(ill.frac * 240);
+  if(moonPhaseCache.key === key && moonPhaseCache.cv) return moonPhaseCache.cv;
+  var S = 200, c = document.createElement('canvas'); c.width = S; c.height = S;
+  var g = c.getContext('2d');
+  g.drawImage(SKY_IMG.moon, 0, 0, S, S);
+  g.globalCompositeOperation = 'destination-in';
+  phasePath(g, S / 2, S / 2, S / 2, ill);
+  g.fill();
+  moonPhaseCache = { key: key, cv: c };
+  return c;
+}
+
 /* ---------------- 底色：按太阳高度角插值 ---------------- */
 var SKY_STOPS = [
   [-18, [11,16,38],    [26,40,72]],
@@ -7069,12 +7185,16 @@ function drawRainbow(dayness){
   var cols = ['#E86A5E', '#F2A65A', '#F7DC6F', '#7FBF7F', '#5B8DEF', '#8E6FC8'];
   ctx.save();
   ctx.globalAlpha = env;
+  if(skyImgOk(SKY_IMG.rainbow)){
+    ctx.drawImage(SKY_IMG.rainbow, cx - R0, cy - R0, R0 * 2, R0);
+  } else {
   ctx.lineWidth = bw;
   for(var i = 0; i < cols.length; i++){
     ctx.strokeStyle = cols[i];
     ctx.beginPath();
     ctx.arc(cx, cy, R0 - i * bw, Math.PI * 1.06, Math.PI * 1.60, false);
     ctx.stroke();
+  }
   }
   ctx.restore();
 }
@@ -7094,6 +7214,14 @@ function drawMeteor(nowSec, dt, starA){
   if(k >= 1){ mt.cur = null; mt.nextAt = nowMs + (20 + Math.random() * 20) * 1000; return; }
   var hx = m.x + m.vx * m.t, hy = m.y + m.vy * m.t;
   var fade = Math.sin(Math.PI * clamp(k, 0, 1));
+  if(skyImgOk(SKY_IMG.meteor)){
+    /* GPT 流星图：图内星头在左下、尾在右上，与下左运动方向一致，星头锚在 (hx,hy)，不旋转 */
+    var mw = W * 0.30, mh = mw * (SKY_IMG.meteor.naturalHeight / SKY_IMG.meteor.naturalWidth);
+    ctx.save();
+    ctx.globalAlpha = fade;
+    ctx.drawImage(SKY_IMG.meteor, hx - mw * 0.15, hy - mh * 0.85, mw, mh);
+    ctx.restore();
+  } else {
   var tx = m.x + m.vx * Math.max(0, m.t - 0.16), ty = m.y + m.vy * Math.max(0, m.t - 0.16);
   var lg = ctx.createLinearGradient(tx, ty, hx, hy);
   lg.addColorStop(0, 'rgba(255,255,255,0)');
@@ -7104,6 +7232,7 @@ function drawMeteor(nowSec, dt, starA){
   hg.addColorStop(0, 'rgba(255,255,255,' + (0.9 * fade).toFixed(3) + ')');
   hg.addColorStop(1, 'rgba(255,255,255,0)');
   ctx.fillStyle = hg; ctx.fillRect(hx - 8, hy - 8, 16, 16);
+  }
 }
 
 /* 闪电（弱化版定版参数，单点配置；本次部署 enabled=false——五项安全实测＋DeepSeek 终审签字后才开启，改参须重走终审）：
@@ -7156,7 +7285,21 @@ function lightningTick(){
 /* 雾带（iOS 化）：雾 sprite 双层漂移绘制（横向无缝平铺） */
 var fogOff = 0;
 function drawFogBand(alpha, y, h, off, scaleW){
-  if(alpha <= 0.004 || !fogSpr) return;
+  if(alpha <= 0.004) return;
+  if(skyImgOk(SKY_IMG.fog)){
+    /* GPT 雾带：横向往复漂移（三角波，无接缝） */
+    var img = SKY_IMG.fog;
+    var dw = W * 1.3, dh = dw * (img.naturalHeight / img.naturalWidth);
+    var span = Math.max(0, dw - W);
+    var p = span > 0 ? (off % (2 * span)) : 0;
+    var fx = -(p <= span ? p : 2 * span - p);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(img, fx, y + h / 2 - dh / 2, dw, dh);
+    ctx.restore();
+    return;
+  }
+  if(!fogSpr) return;
   var w = W * scaleW, x0 = -(off % w), x;
   ctx.save();
   ctx.globalAlpha = alpha;
@@ -7208,6 +7351,15 @@ function draw(nowSec, dt){
   /* 星空（硬规则：降水关、云量调制在 resolveMod；此处只按显示态画） */
   var starA = disp.star * clamp((-altD - 1) / 7, 0, 1);
   if(starA > 0.01){
+    if(skyImgOk(SKY_IMG.stars)){
+      /* GPT 星星图层：满幅覆盖＋缓慢闪烁；未就绪回退程序化星点 */
+      ctx.save();
+      ctx.globalAlpha = starA * (0.75 + 0.25 * Math.sin(nowSec * 1.6));
+      var ssc = Math.max(W / SKY_IMG.stars.naturalWidth, H / SKY_IMG.stars.naturalHeight);
+      var ssw = SKY_IMG.stars.naturalWidth * ssc, ssh = SKY_IMG.stars.naturalHeight * ssc;
+      ctx.drawImage(SKY_IMG.stars, (W - ssw) / 2, (H - ssh) / 2, ssw, ssh);
+      ctx.restore();
+    } else {
     ctx.fillStyle = '#FFFFFF';
     for(var i=0;i<stars.length;i++){
       var st = stars[i];
@@ -7215,6 +7367,7 @@ function draw(nowSec, dt){
       ctx.beginPath(); ctx.arc(st.x * W, st.y * H, st.r, 0, 6.2832); ctx.fill();
     }
     ctx.globalAlpha = 1;
+    }
   }
 
   /* 流星（装饰层：在天体之前画，云层随后自然遮挡；reduced-motion 不显） */
@@ -7222,7 +7375,16 @@ function draw(nowSec, dt){
 
   /* 太阳（iOS 化光源式四层渐变；沙尘档：无光晕苍白圆盘——矩阵 halo=0、盘色走 paleSunColor 苍白处理、alpha 走 resolveMod 沙尘豁免） */
   if(sunUp > 0 && (disp.body > 0.01 || disp.halo > 0.01)){
-    if(disp.dust > 0.3){
+    if(skyImgOk(SKY_IMG.sun)){
+      /* GPT 太阳图（含 baked 光晕）：沙尘档加低饱和＋提亮，贴近旧苍白圆盘口径 */
+      var sd = coreR * 3.4;
+      var sunA = clamp(Math.max(disp.body, disp.halo * 0.5) * sunUp, 0, 1);
+      ctx.save();
+      if(disp.dust > 0.3){ try { ctx.filter = 'saturate(0.35) brightness(1.08)'; } catch(e){} }
+      ctx.globalAlpha = sunA;
+      ctx.drawImage(SKY_IMG.sun, sunX - sd / 2, sunY - sd / 2, sd, sd);
+      ctx.restore();
+    } else if(disp.dust > 0.3){
       var pale = paleSunColor(solarStyle(altD, sun.az).l2); /* 正常日盘色（L2）→ 苍白：饱和 30%、明度 +10% */
       ctx.globalAlpha = disp.body * sunUp;
       ctx.beginPath(); ctx.arc(sunX, sunY, coreR * 0.82, 0, 6.2832);
@@ -7240,7 +7402,7 @@ function draw(nowSec, dt){
   if(monUp > 0 && (monA > 0.01 || disp.halo > 0.01)){
     var mx = azToX(mon.az), my = altToY(mon.alt);
     var moonGlowA = disp.halo * monUp * moonWeight * clamp(0.35 + monA, 0, 1);
-    if(moonGlowA > 0.01){
+    if(moonGlowA > 0.01 && !skyImgOk(SKY_IMG.moon)){
       paintGlow(moonGlowA, function(g2){
         var mg = g2.createRadialGradient(mx, my, 4, mx, my, 120 * sH);
         mg.addColorStop(0, 'rgba(200,220,255,0.12)');
@@ -7250,11 +7412,25 @@ function draw(nowSec, dt){
       }, 12); /* 月辉光半径 120 之 0.15 倍已超上限，收尾区取钳制值 12px */
     }
     if(monA > 0.01){
+      if(skyImgOk(SKY_IMG.moon)){
+        /* GPT 月面图＋月相亮面蒙版（暗面留极淡地影，月相口径不变） */
+        var md = 36 * sH;
+        ctx.save();
+        ctx.globalAlpha = monA * 0.14;
+        ctx.drawImage(SKY_IMG.moon, mx - md / 2, my - md / 2, md, md);
+        ctx.restore();
+        var mc = moonPhaseClip(ill);
+        ctx.save();
+        ctx.globalAlpha = monA;
+        ctx.drawImage(mc, mx - md / 2, my - md / 2, md, md);
+        ctx.restore();
+      } else {
       var ms = buildMoonSprite(ill);
       ctx.save();
       ctx.globalAlpha = monA;
       ctx.drawImage(ms.cv, mx - ms.half, my - ms.half, ms.size, ms.size);
       ctx.restore();
+      }
     }
   }
 
@@ -7262,8 +7438,21 @@ function draw(nowSec, dt){
   drawRainbow(dayness);
 
   /* 云：双层、数量/密度由 cloudCover 驱动、双速横移绕回；后层先画、前层最后（定版绘制序） */
-  var speedMul = 1 + disp.tier * 0.5; /* 档1 ×1.5、档2 ×2 */
   var sunsetF = (altD > -3 && altD < 11) ? Math.sin(clamp((altD + 3) / 14, 0, 1) * Math.PI) : 0;
+  /* 云：GPT 云带双层往复漂移（类→带单点映射见 bandForClass）；图片未就绪回退程序化云朵 */
+  var curCls = resolveMod(appliedWx).cls;
+  var bandImg = bandForClass(curCls);
+  if(skyImgOk(bandImg)){
+    var spMul = 1 + disp.tier * 0.5; /* 档1 ×1.5、档2 ×2 */
+    if(dt > 0){
+      bandOff.back = advanceBandOff('back', W / 115 * spMul * dt, Math.max(0, W * 1.15 - W));
+      bandOff.front = advanceBandOff('front', W / 70 * spMul * dt, Math.max(0, W * 1.15 - W));
+    }
+    var dayF = 0.45 + 0.55 * dayness;
+    drawBandLayer(bandImg, H * 0.17, clamp(disp.cc * 0.95, 0, 1) * 0.55 * dayF, sunsetF * 0.85, bandOff.back);
+    drawBandLayer(bandImg, H * 0.37, clamp(disp.cc * 1.15, 0, 1) * 0.70 * dayF, sunsetF * 0.85, bandOff.front);
+  } else {
+  var speedMul = 1 + disp.tier * 0.5; /* 档1 ×1.5、档2 ×2 */
   var order = clouds.slice().sort(function(a, b){ return a.layer - b.layer; });
   for(var ci=0; ci<order.length; ci++){
     var c = order[ci];
@@ -7326,6 +7515,8 @@ function draw(nowSec, dt){
     ctx.globalAlpha = 1;
   }
 
+  }
+
   /* 闪电（云内闷闪）：curBoost 由主循环 lightningTick 维护；开关 OFF 时恒 0、此处无-op */
   if(curBoost > 0.002 && frameClouds.length){
     ctx.save();
@@ -7340,10 +7531,8 @@ function draw(nowSec, dt){
     ctx.globalAlpha = 1;
   }
 
-  /* 降水粒子（canvas，触底即消/绕回） */
-  drawPrecip('rain', dt, nowSec);
-  drawPrecip('snow', dt, nowSec);
-  drawPrecip('hail', dt, nowSec);
+  /* 降水图层（GPT 透明图层滚动；单项图片未就绪时回退程序化粒子） */
+  drawImgPrecip(dt);
 
   /* 天气罩：暗沉（阴/雨/台风）→雾（降对比）→沙尘（土黄蒙版）→高温暖罩，单向叠加 */
   if(disp.dark > 0.01){ ctx.fillStyle = 'rgba(30,38,54,' + (disp.dark * 0.62).toFixed(3) + ')'; ctx.fillRect(0, 0, W, H); }
