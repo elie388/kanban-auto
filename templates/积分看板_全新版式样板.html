@@ -92,12 +92,10 @@
     position:relative; overflow:hidden;
     animation:fadeUp .4s ease backwards;
     min-height:44px;
-    /* 活天空 V2 纯磨砂（2026-10-24 家长拍板，DeepSeek 附加条件全带）：半透明白＋模糊饱和，天空从卡背透出；
-       装饰圆 ::after 已按定版删除；文字加柔和投影保底亮天对比度 */
-    background:rgba(255,255,255,.22);
-    -webkit-backdrop-filter:blur(14px) saturate(1.3);
-    backdrop-filter:blur(14px) saturate(1.3);
-    border:1px solid rgba(255,255,255,.6);
+    /* 活天空余额卡（2026-10-24 家长改定）：全透明背景——不用磨砂（原 V2 纯磨砂上线后家长真机否决），
+       卡面直接透出天空；卡形由年级色描边环＋左侧竖条界定；文字加柔和投影保底亮天对比度 */
+    background:transparent;
+    border:1px solid rgba(255,255,255,.25);
     text-shadow:0 1px 2px rgba(8,22,40,.55), 0 2px 10px rgba(8,22,40,.42);
   }
   /* 年级识别锚（DeepSeek 附加条件①三重锚定）：左侧 6px 年级色竖条（inset 阴影）＋卡面一圈年级色描边（inset 1px 环）；
@@ -115,7 +113,7 @@
   .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
     color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
   /* 2026-10-19：余额卡片可点击跳转（button重置）；2026-10-24 V2：边框改为 1px 半透明白边（定版），不再归零 */
-  button.bal-card{border:1px solid rgba(255,255,255,.6); -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
+  button.bal-card{border:1px solid rgba(255,255,255,.25); -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
   button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
   #log-g5, #log-g6{scroll-margin-top:12px;}
   .bal-name{font-size:16px; font-weight:700; opacity:.95;}
@@ -144,14 +142,13 @@
   .bal-tier-fill{display:block; height:100%; border-radius:3px; background:rgba(255,255,255,.92);}
   .bal-tier-labels{display:flex; gap:2px; margin-top:2px;}
   .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; font-weight:600; color:rgba(255,255,255,.95); font-variant-numeric:tabular-nums;}
-  .bal-card.is-neg{background:rgba(89,97,109,.5);}
+  .bal-card.is-neg{background:transparent;}
   html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
   /* 刻度条冲刺点亮（2026-10-23 家长拍板 Gemini 推荐方案，23:43 改定）：距下一档差额 ≤ 下一档×10% 时，当前段已填充部分点亮薄荷绿并自身脉冲闪动——一轮 3.2s 非对称（62.5%≈2.0s 渐亮、37.5%≈1.2s 回落）、opacity .55↔1、渐亮段弹性缓动 cubic-bezier(0.34,1.56,0.64,1)；只作用于冲刺段已填充部分，未填充/已满段不闪；底色不动；锁定态随刻度条整组隐藏；减少动态效果时静止常亮。原「大号数字旁呼吸圆点」已按家长 23:43 令彻底删除 */
   .bal-tier-fill.sprint{background:#8CF5C0; box-shadow:0 0 6px rgba(140,245,192,.55); animation:balSprintPulse 3.2s infinite;}
   @keyframes balSprintPulse{0%{opacity:.55; animation-timing-function:cubic-bezier(0.34,1.56,0.64,1);}62.5%{opacity:1; animation-timing-function:ease-in;}100%{opacity:.55;}}
   @media (prefers-reduced-motion: reduce){ .bal-tier-fill.sprint{animation:none; opacity:1;} }
-  /* 冲刺点亮瞬间该卡临时提不透明（DeepSeek 定版兜底：磨砂下薄荷绿可辨优先）：任一段冲刺点亮时卡底 .22→.5 */
-  .bal-card:has(.bal-tier-fill.sprint){background:rgba(255,255,255,.5);}
+  /* 冲刺提不透明兜底已随全透明定版撤销（2026-10-24 家长改定，无卡底可提；薄荷绿段自身带辉光与脉冲） */
   /* ===== 活天空一期（2026-10-24 三方定版 B′＋V2）：顶部天空带（约330px）内含两张余额卡，天气由 canvas 引擎绘制 ===== */
   .sky-band{
     position:relative; border-radius:24px; overflow:hidden;
@@ -5134,7 +5131,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1056';
+  var KB_BUILD = '20261024-1113';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
