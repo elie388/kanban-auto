@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-24T14:45:03+08:00",
+  "generated_at": "2026-10-24T15:02:30+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -28,6 +28,186 @@
       "filtered": false,
       "backfill": true,
       "posted_date": "10-24"
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=266：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=267：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=268：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=269：时间标签误标@06:43，以北京时间重走",
+      "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=270：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=271：时间标签误标@06:43，以北京时间重走",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=272：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=273：时间标签误标@06:43，以北京时间重走",
+      "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=274：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "抵销UTC冲正 id=275：时间标签误标@06:43，以北京时间重走",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=256：53天天练P7完成分旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=257：53天天练P7正确率旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=258：53天天练P28完成分旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=259：53天天练P28正确率旧结算作废，以正式结论为准",
+      "pts": -1,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=260：53天天练P38完成分旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=261：53天天练P38正确率旧结算作废，以正式结论为准",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=262：53天天练习作完成分旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=263：53天天练习作正确率旧结算作废，以正式结论为准",
+      "pts": -1,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=264：53天天练P29完成分旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-24",
+      "time": "15:01",
+      "time_source": "entry",
+      "reason": "冲正旧结算 id=265：53天天练单元阅读完成分旧结算作废，以正式结论为准",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
     },
     {
       "date": "10-24",
@@ -287,6 +467,42 @@
     },
     {
       "date": "10-23",
+      "time": "13:48",
+      "time_source": "entry",
+      "reason": "53天天练完成分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "13:48",
+      "time_source": "entry",
+      "reason": "53天天练正确率 82.4%",
+      "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "13:48",
+      "time_source": "entry",
+      "reason": "53天天练完成分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "13:48",
+      "time_source": "entry",
+      "reason": "53天天练正确率 65.2%",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
       "time": "13:47",
       "time_source": "entry",
       "reason": "53天天练P7完成分",
@@ -300,6 +516,24 @@
       "time_source": "entry",
       "reason": "53天天练P7正确率100%",
       "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "13:47",
+      "time_source": "entry",
+      "reason": "53天天练完成分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-23",
+      "time": "13:47",
+      "time_source": "entry",
+      "reason": "53天天练正确率 92.3%",
+      "pts": 2,
       "sign": "plus",
       "filtered": false
     },
