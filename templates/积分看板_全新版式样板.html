@@ -2922,7 +2922,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var items = (d && d.grades && d.grades[g] && d.grades[g].items) || [];
         if(items.length){
           any = true;
-          html += '<div class="sum-p-grade"><div class="sum-p-name">' + (g === 5 ? '彦均' : '伟豪') + '</div>';
+          /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
+          html += '<div class="sum-p-grade"><div class="sum-p-name"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span></div>';
           items.forEach(function(it){
             html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + '</span><span class="sum-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
@@ -5130,7 +5131,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1727';
+  var KB_BUILD = '20261024-1759';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
