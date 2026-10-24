@@ -1711,7 +1711,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
                 + (c.question && !qDup ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
                 + (c.q_img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原题图</span><img class=\"corr-img\" src=\"data/diagrams/' + encodeURIComponent(c.q_img) + '\" alt=\"原题图\"></div>' : '')
                 + (c.orig_text ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原文</span><span class=\"corr-orig\">' + esc(c.orig_text) + '</span></div>' : '')
-                + (c.reason ? '<span class="corr-r">错因：' + esc(c.reason) + '</span>' : '')
+                // 2026-10-24 清洗选项3：reason 不再直出卡面，答案值永不进入卡面；引导走下方 hint 三级提示，无 hint 用通用句杜绝空白错因。
+                // 本栏禁止插值：不得把 question/reason/题干片段等任何变量塞进错因栏（esc 习惯保留，仅包固定文案）。
+                + (c.reason ? '<span class="corr-r">错因：' + esc(c.hint ? '先看下方三级提示，从第①步开始想' : '这题还没改对，对照原题再想一想错在哪一步') + '</span>' : '')
                 + (c.hint ? '<span class="corr-h">' + esc(c.hint) + '</span>' : '')
                 + (c.img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">引导图</span><img class=\"corr-img\" src=\"data/diagrams/' + encodeURIComponent(c.img) + '\" alt=\"画图引导\"></div>' : '')
                 + ((Array.isArray(c.audios) && c.audios.length) ? '<div class="corr-audios">' + c.audios.map(function(a){
@@ -5203,7 +5205,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-2043';
+  var KB_BUILD = '20261024-2132';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
