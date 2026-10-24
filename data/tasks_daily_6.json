@@ -1,399 +1,400 @@
 {
- "schema_version": "1.0",
- "date": "2026-10-24",
- "grade": "六年级",
- "generated_at": "2026-10-24T00:05:11+08:00",
- "updated_at": "2026-10-24T00:05:11+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": null,
-   "new_lines": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "CHORE-20261023-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-10-23T17:30:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": true,
-   "count_in_completion_rate": false,
-   "created_at": "2026-10-23T00:05:19+08:00",
-   "updated_at": "2026-10-24T00:25:00+08:00",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "D53-2026-10-23-CHN",
-   "source": "daily_53",
-   "subject": "语文",
-   "title": "53天天练·语文",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-23T16:55:37+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "D53-2026-10-23-MATH",
-   "source": "daily_53",
-   "subject": "数学",
-   "title": "53天天练·数学",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-23T16:55:37+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "D53-2026-10-23-ENG",
-   "source": "daily_53",
-   "subject": "英语",
-   "title": "53天天练·英语",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-23T16:55:37+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "PRACT-20261023-D49065",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "针对性练习（含口语+背诵）",
-   "detail": "Word：六年级针对性练习_2026-10-23.docx，按今日练习清单完成",
-   "kousuan": [],
-   "estimate_min": 30,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-23.docx",
-   "file_hash": null,
-   "created_at": "2026-10-23T19:08:41+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "files": [
-    {
-     "name": "六年级针对性练习_2026-10-23.pdf",
-     "label": "练习",
-     "pages": 4
+  "schema_version": "1.0",
+  "date": "2026-10-24",
+  "grade": "六年级",
+  "generated_at": "2026-10-24T00:05:11+08:00",
+  "updated_at": "2026-10-24T15:41:55+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": null,
+      "new_lines": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
     }
-   ],
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
   },
-  {
-   "task_id": "REG-20261023-FF4D78",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "作文（成长中的一束光）",
-   "detail": "原状态：待完成；字形定案：家长 2026-10-23 19:39 看圈注原图最终确认原文为\"1.作文\"、无\"小\"字，原转写无误，待确认已销（其间一度误记为\"小作文\"，已复原）；家长已确认：作文顺延至周六（2026-10-24）再写（2026-10-23 19:34 确认），今晚不催该项。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261023-3F2545",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "L11生字",
-   "detail": "更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"41生字\"→全量复核改\"411生字\"→家长定案\"L11生字\"（字母 L＋11，Groq 原读正确，此前两版均错），已按定案更正为\"L11生字\"。",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "pending_corrections": 2,
-   "corrections": [
+  "tasks": [
     {
-     "label": "L11生字 「黎」拼音",
-     "question": "L11生字第2页第1行：「黎」的拼音你写了4遍。请对照语文课本L11生字表，把这个字正确的拼音再写4遍。",
-     "reason": "拼音：你写的声母和课本上的不一样（4遍都写错了）。",
-     "hint": "① 这个字的声母是翘舌音还是平舌音？② 对照课本生字表，看看「黎」的拼音第一个字母是什么？③ 声调是第几声？",
-     "img": "",
-     "q_img": ""
+      "task_id": "CHORE-20261023-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-10-23T17:30:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": true,
+      "count_in_completion_rate": false,
+      "created_at": "2026-10-23T00:05:19+08:00",
+      "updated_at": "2026-10-24T00:25:00+08:00",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
     },
     {
-     "label": "L11生字 「呻」组词",
-     "question": "L11生字第2页第8行：「呻」的组词你写了「呻吟、呻＿」，第二个词的第二个字写错了，请对照课本改过来。",
-     "reason": "组词：「呻唤」不是规范词语（「唤」是呼唤的意思，和「呻」组不成词）。",
-     "hint": "① 「呻」是痛苦时发出的声音，哪个词表示轻轻地痛苦哼声？② 查课本L11「呻」的组词栏；③ 把正确的词抄写两遍。",
-     "img": "",
-     "q_img": ""
+      "task_id": "D53-2026-10-23-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-23T16:55:37+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "D53-2026-10-23-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-23T16:55:37+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "D53-2026-10-23-ENG",
+      "source": "daily_53",
+      "subject": "英语",
+      "title": "53天天练·英语",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-23T16:55:37+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "PRACT-20261023-D49065",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "Word：六年级针对性练习_2026-10-23.docx，按今日练习清单完成",
+      "kousuan": [],
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-23.docx",
+      "file_hash": null,
+      "created_at": "2026-10-23T19:08:41+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-10-23.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ],
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-FF4D78",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "作文（成长中的一束光）",
+      "detail": "原状态：待完成；字形定案：家长 2026-10-23 19:39 看圈注原图最终确认原文为\"1.作文\"、无\"小\"字，原转写无误，待确认已销（其间一度误记为\"小作文\"，已复原）；家长已确认：作文顺延至周六（2026-10-24）再写（2026-10-23 19:34 确认），今晚不催该项。",
+      "estimate_min": null,
+      "status": "grading",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T15:41:55+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1,
+      "status_source": "realtime"
+    },
+    {
+      "task_id": "REG-20261023-3F2545",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "L11生字",
+      "detail": "更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"41生字\"→全量复核改\"411生字\"→家长定案\"L11生字\"（字母 L＋11，Groq 原读正确，此前两版均错），已按定案更正为\"L11生字\"。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "L11生字 「黎」拼音",
+          "question": "L11生字第2页第1行：「黎」的拼音你写了4遍。请对照语文课本L11生字表，把这个字正确的拼音再写4遍。",
+          "reason": "拼音：你写的声母和课本上的不一样（4遍都写错了）。",
+          "hint": "① 这个字的声母是翘舌音还是平舌音？② 对照课本生字表，看看「黎」的拼音第一个字母是什么？③ 声调是第几声？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "L11生字 「呻」组词",
+          "question": "L11生字第2页第8行：「呻」的组词你写了「呻吟、呻＿」，第二个词的第二个字写错了，请对照课本改过来。",
+          "reason": "组词：「呻唤」不是规范词语（「唤」是呼唤的意思，和「呻」组不成词）。",
+          "hint": "① 「呻」是痛苦时发出的声音，哪个词表示轻轻地痛苦哼声？② 查课本L11「呻」的组词栏；③ 把正确的词抄写两遍。",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-19DB4D",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "每天读1小时作文，记录③",
+      "detail": "",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "realtime",
+      "batch_notes": "批改记录（2026-10-23）：条目⑤（10-22）/⑥（10-23）摘录完整，今日完成成立。注：条目⑦日期'10-24'有涂改，按'待确认（涂改）'处理不采信；条目⑧日期10-25为未来日期，到期日重新判定、不预核销（DeepSeek H3/H4）。",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-85311E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看《项链》",
+      "detail": "原状态：待完成；更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"看《别饿连了》\"→全量复核改\"看《项链连习》\"→家长定案\"看《项链》\"（只有《项链》二字，\"连习\"系误读叠加，原初版亦错），已按定案更正为\"看《项链》\"。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "task_type": "reading",
+      "type_source": "look_book_merge_20261023",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-F15501",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念50、51",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": [],
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-787A74",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "资料（全做）。",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "P1第5题半圆周长",
+          "question": "《数学思考题（上册）》第1页第5题：在长8cm、宽6cm的长方形内剪出最大的半圆，求这个半圆的周长。你当时的作答：41.12cm。",
+          "reason": "方法错误：公式对、直径当半径代入",
+          "hint": "①先确认图里给你的那条线：它是直径还是半径？在图上把它标出来。②想一想半圆的周长由哪两部分组成：不只是半个圆弧，还要加上那条直的边，别漏掉。③先求整圆的周长再除以2，最后检查一遍：你代入的到底是直径还是半径？",
+          "img": "g6_semicircle_20261023_guide.png",
+          "q_img": ""
+        }
+      ],
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-37028D",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成《校本》P20、21、22的练习",
+      "detail": "",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "pending_corrections": 6,
+      "corrections": [
+        {
+          "label": "P20 一.1 时态选择",
+          "question": "《校本》P20 一.1：He ______ angry and always ______ for people to take care of nature. A. was; calls B. was; called C. is; call D. is; called。你原来选 B，后来划掉改成了 D。",
+          "reason": "语法：两个动词时态不一致（现在时与过去时混搭）",
+          "hint": "①先检查什么：看看这句话里两个动词的时态。②知识点方向：was 和 called 都是过去时，前后时态要一致才通顺。③关键一步：is 是现在时，called 是过去时——它们能放在一句话里搭配吗？你改掉的那个选项再想想。",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "P20 一.5 one of 后接复数",
+          "question": "《校本》P20 一.5：Dali is one of Yunnan's ______ to visit. A. famous places B. more famous places C. most famous places D. most famous place。",
+          "reason": "语法：one of 后应接最高级加复数名词",
+          "hint": "①先检查什么：看看 one of 后面跟的名词。②知识点方向：one of 表示「……之一」，后面要接复数名词。③关键一步：places 是单数还是复数？one of the most famous ___ 里该填单数还是复数？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "P20 三.5 go boating 固定搭配",
+          "question": "《校本》P20 三.5（Huangyan 短文第 5 空）：People often go ______ at the Dragon Boat Festival.（请用方框词 boat 的适当形式；你填的是 boat）",
+          "reason": "语法：固定搭配 go boating，boat 需变为 -ing 形式",
+          "hint": "①先检查什么：看看 go 后面动词的样子。②知识点方向：go boating（去划船）是固定搭配，go 后面跟动词要加 -ing。③关键一步：boat 要变成什么形式，才能跟在 go 后面表示「去划船」？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "P21 二.1 very 后接原级",
+          "question": "《校本》P21 二.1：The river is very ______.（你写的是 longest）",
+          "reason": "语法：very 后接形容词原级，不接最高级",
+          "hint": "①先检查什么：看看 very 后面你写的是什么形式。②知识点方向：very 后面接形容词原级，不接最高级（最高级前面一般有 the）。③关键一步：long 的最高级是 longest，原级是什么？very 后面应该用哪一个？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "P21 四.1 one of 后接复数",
+          "question": "《校本》P21 四.1（Zheng He 短文第 1 空）：Zheng He is one of the most famous ______ in China.（你写的是 traveller）",
+          "reason": "语法：one of the most famous 后应接复数名词",
+          "hint": "①先检查什么：和 P20 一.5 一样，看看 one of 后面的名词。②知识点方向：one of the most famous 后面同样要接复数。③关键一步：traveller 是单数，它的复数形式怎么写？",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "P22 一.2 涂改覆盖无法辨认",
+          "question": "《校本》P22 一.2：We should protect ______ and keep our planet clean and beautiful.（你的答案被涂改覆盖，看不清最终写的是什么）",
+          "reason": "书写致误：涂改覆盖，最终答案无法辨认，未能判对",
+          "hint": "①先检查什么：看看你的答案区，涂改之后还能认出最终答案吗？②方向：想改答案时，用一条横线划掉旧答案、在旁边写新的，不要反复涂抹覆盖。③要求：把这题在订正本上重写一遍，写清楚。",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "status_source": "manual_closeout",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261023-7172FF",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3知识清单。",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U3知识清单。→ 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-23T19:30:19+08:00",
+      "updated_at": "2026-10-24T00:05:11+08:00",
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "realtime",
+      "batch_notes": "请补拍：把所读的U3知识清单内容拍照、与录音同批再交一次，批改以内容照片为比对原文（2026-10-23读背口径）。达标+3待补拍后判（DeepSeek H5）。",
+      "carry_first_date": "2026-10-23",
+      "carried_from": "2026-10-23",
+      "carry_count": 1
     }
-   ],
-   "status_source": "realtime",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
+  ],
+  "counts": {
+    "total": 13,
+    "pending": 7,
+    "in_progress": 5,
+    "done": 0,
+    "pending_review": 0
   },
-  {
-   "task_id": "REG-20261023-19DB4D",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "每天读1小时作文，记录③",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "task_type": "reading",
-   "pending_corrections": 0,
-   "corrections": [],
-   "status_source": "realtime",
-   "batch_notes": "批改记录（2026-10-23）：条目⑤（10-22）/⑥（10-23）摘录完整，今日完成成立。注：条目⑦日期'10-24'有涂改，按'待确认（涂改）'处理不采信；条目⑧日期10-25为未来日期，到期日重新判定、不预核销（DeepSeek H3/H4）。",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261023-85311E",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "看《项链》",
-   "detail": "原状态：待完成；更正（家长 2026-10-23 19:49 定案）：错误链——原转写\"看《别饿连了》\"→全量复核改\"看《项链连习》\"→家长定案\"看《项链》\"（只有《项链》二字，\"连习\"系误读叠加，原初版亦错），已按定案更正为\"看《项链》\"。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①作文（成长中的一束光）；②L11生字；③每天读1小时作文，记录③；④看《项链》。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "task_type": "reading",
-   "type_source": "look_book_merge_20261023",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261023-F15501",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念50、51",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "task_type": "reading",
-   "pending_corrections": 0,
-   "corrections": [],
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261023-787A74",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "资料（全做）。",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念50、51；②资料（全做）。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "pending_corrections": 1,
-   "corrections": [
-    {
-     "label": "P1第5题半圆周长",
-     "question": "《数学思考题（上册）》第1页第5题：在长8cm、宽6cm的长方形内剪出最大的半圆，求这个半圆的周长。你当时的作答：41.12cm。",
-     "reason": "方法错误：公式对、直径当半径代入",
-     "hint": "①先确认图里给你的那条线：它是直径还是半径？在图上把它标出来。②想一想半圆的周长由哪两部分组成：不只是半个圆弧，还要加上那条直的边，别漏掉。③先求整圆的周长再除以2，最后检查一遍：你代入的到底是直径还是半径？",
-     "img": "g6_semicircle_20261023_guide.png",
-     "q_img": ""
-    }
-   ],
-   "status_source": "realtime",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261023-37028D",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "完成《校本》P20、21、22的练习",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①完成《校本》P20、21、22的练习；②背今天的作文和最高级笔记10次，提交小管家。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "pending_corrections": 6,
-   "corrections": [
-    {
-     "label": "P20 一.1 时态选择",
-     "question": "《校本》P20 一.1：He ______ angry and always ______ for people to take care of nature. A. was; calls B. was; called C. is; call D. is; called。你原来选 B，后来划掉改成了 D。",
-     "reason": "语法：两个动词时态不一致（现在时与过去时混搭）",
-     "hint": "①先检查什么：看看这句话里两个动词的时态。②知识点方向：was 和 called 都是过去时，前后时态要一致才通顺。③关键一步：is 是现在时，called 是过去时——它们能放在一句话里搭配吗？你改掉的那个选项再想想。",
-     "img": "",
-     "q_img": ""
-    },
-    {
-     "label": "P20 一.5 one of 后接复数",
-     "question": "《校本》P20 一.5：Dali is one of Yunnan's ______ to visit. A. famous places B. more famous places C. most famous places D. most famous place。",
-     "reason": "语法：one of 后应接最高级加复数名词",
-     "hint": "①先检查什么：看看 one of 后面跟的名词。②知识点方向：one of 表示「……之一」，后面要接复数名词。③关键一步：places 是单数还是复数？one of the most famous ___ 里该填单数还是复数？",
-     "img": "",
-     "q_img": ""
-    },
-    {
-     "label": "P20 三.5 go boating 固定搭配",
-     "question": "《校本》P20 三.5（Huangyan 短文第 5 空）：People often go ______ at the Dragon Boat Festival.（请用方框词 boat 的适当形式；你填的是 boat）",
-     "reason": "语法：固定搭配 go boating，boat 需变为 -ing 形式",
-     "hint": "①先检查什么：看看 go 后面动词的样子。②知识点方向：go boating（去划船）是固定搭配，go 后面跟动词要加 -ing。③关键一步：boat 要变成什么形式，才能跟在 go 后面表示「去划船」？",
-     "img": "",
-     "q_img": ""
-    },
-    {
-     "label": "P21 二.1 very 后接原级",
-     "question": "《校本》P21 二.1：The river is very ______.（你写的是 longest）",
-     "reason": "语法：very 后接形容词原级，不接最高级",
-     "hint": "①先检查什么：看看 very 后面你写的是什么形式。②知识点方向：very 后面接形容词原级，不接最高级（最高级前面一般有 the）。③关键一步：long 的最高级是 longest，原级是什么？very 后面应该用哪一个？",
-     "img": "",
-     "q_img": ""
-    },
-    {
-     "label": "P21 四.1 one of 后接复数",
-     "question": "《校本》P21 四.1（Zheng He 短文第 1 空）：Zheng He is one of the most famous ______ in China.（你写的是 traveller）",
-     "reason": "语法：one of the most famous 后应接复数名词",
-     "hint": "①先检查什么：和 P20 一.5 一样，看看 one of 后面的名词。②知识点方向：one of the most famous 后面同样要接复数。③关键一步：traveller 是单数，它的复数形式怎么写？",
-     "img": "",
-     "q_img": ""
-    },
-    {
-     "label": "P22 一.2 涂改覆盖无法辨认",
-     "question": "《校本》P22 一.2：We should protect ______ and keep our planet clean and beautiful.（你的答案被涂改覆盖，看不清最终写的是什么）",
-     "reason": "书写致误：涂改覆盖，最终答案无法辨认，未能判对",
-     "hint": "①先检查什么：看看你的答案区，涂改之后还能认出最终答案吗？②方向：想改答案时，用一条横线划掉旧答案、在旁边写新的，不要反复涂抹覆盖。③要求：把这题在订正本上重写一遍，写清楚。",
-     "img": "",
-     "q_img": ""
-    }
-   ],
-   "status_source": "manual_closeout",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261023-7172FF",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "U3知识清单。",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语早读：U3知识清单。→ 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-23T19:30:19+08:00",
-   "updated_at": "2026-10-24T00:05:11+08:00",
-   "task_type": "reading",
-   "pending_corrections": 0,
-   "corrections": [],
-   "status_source": "realtime",
-   "batch_notes": "请补拍：把所读的U3知识清单内容拍照、与录音同批再交一次，批改以内容照片为比对原文（2026-10-23读背口径）。达标+3待补拍后判（DeepSeek H5）。",
-   "carry_first_date": "2026-10-23",
-   "carried_from": "2026-10-23",
-   "carry_count": 1
-  }
- ],
- "counts": {
-  "total": 13,
-  "pending": 8,
-  "in_progress": 5,
-  "done": 0,
-  "pending_review": 0
- },
- "deadline_today": null
+  "deadline_today": null
 }
