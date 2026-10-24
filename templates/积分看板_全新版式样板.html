@@ -933,6 +933,23 @@
   .bal-demo-tag.tag-live{
     position:absolute; top:6px; right:8px;
   }
+  /* 余额卡实时圆点（2026-10-24 家长令，Gemini 定参）：实时态不用文字胶囊，改绿色呼吸圆点——
+     基准 8px、scale .5→1.2＋opacity .6→1、纯色 #22C55E 无光晕；周期 2.4s 非对称（长 25%/停至 42%/缩到底）；
+     两卡错相位 .8s；reduced-motion 定格静止（全站口径，覆盖 Gemini"保留微弱渐隐"建议） */
+  .bal-demo-tag.is-dot{
+    top:10px; right:12px;
+    width:8px; height:8px; min-width:8px; padding:0; border-radius:50%;
+    background:#22C55E; color:transparent; overflow:visible;
+    animation:balLiveDot 2.4s infinite;
+  }
+  .bal-card.g6 .bal-demo-tag.is-dot{ animation-delay:.8s; }
+  @keyframes balLiveDot{
+    0%{ transform:scale(.5); opacity:.6; animation-timing-function:cubic-bezier(0.16,1,0.3,1); }
+    25%{ transform:scale(1.2); opacity:1; }
+    42%{ transform:scale(1.2); opacity:1; animation-timing-function:ease-in-out; }
+    100%{ transform:scale(.5); opacity:.6; }
+  }
+  @media (prefers-reduced-motion: reduce){ .bal-demo-tag.is-dot{ animation:none; transform:none; opacity:1; } }
   /* 今日任务 / 积分日志：文档流内 flex 右置（覆盖原 margin-left:8px 使其真正靠右） */
   .card h2 .tag-demo.tag-live{ margin-left:auto; }
   .grade-head .tag-demo.tag-live{ margin-left:auto; }
@@ -2369,8 +2386,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       tag.className = 'bal-demo-tag';
       card.appendChild(tag);
     }
-    tag.textContent = text;
-    tag.classList.toggle('tag-live', text === '实时数据'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */
+    var live = (text === '实时数据');
+    tag.classList.toggle('tag-live', live); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */
+    tag.classList.toggle('is-dot', live); /* 2026-10-24 家长令：余额卡实时态改呼吸圆点（Gemini 定参），文字清空、aria 保留 */
+    tag.textContent = live ? '' : text;
+    if(live){ tag.setAttribute('aria-label', '实时数据'); } else { tag.removeAttribute('aria-label'); }
   }
 
   /* 余额卡优化（2026-10-23）：今日变化标 + 分档刻度条 + 负分态；数据全由服务端 stats 给出 */
@@ -5130,7 +5150,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261024-1116';
+  var KB_BUILD = '20261024-1124';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
