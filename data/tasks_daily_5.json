@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "五年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T16:43:59+08:00",
+  "updated_at": "2026-10-24T16:54:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -469,7 +469,7 @@
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-10-24T00:05:16+08:00",
-      "updated_at": "2026-10-24T16:43:59+08:00",
+      "updated_at": "2026-10-24T16:54:38+08:00",
       "status_source": "realtime",
       "completed_at": "2026-10-24T15:50:18+08:00",
       "evidence": "家务判定通过——洗衣服；证据：看板家务上传批次 b179282755179150fa46a316bc0cbb（approved）；回写 chore_task_writeback。"

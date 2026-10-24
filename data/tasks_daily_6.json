@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "grade": "六年级",
   "generated_at": "2026-10-24T00:05:11+08:00",
-  "updated_at": "2026-10-24T16:43:59+08:00",
+  "updated_at": "2026-10-24T16:54:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,29 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261023-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-23T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-23T00:05:19+08:00",
-      "updated_at": "2026-10-24T16:43:59+08:00",
-      "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-23",
-      "carry_count": 1,
-      "completed_at": "2026-10-24T16:43:59+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1792831203826c8b6ffbbd589d9fb（approved）；回写 chore_task_writeback。"
-    },
     {
       "task_id": "D53-2026-10-23-CHN",
       "source": "daily_53",
@@ -406,6 +383,26 @@
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-23",
       "carry_count": 1
+    },
+    {
+      "task_id": "CHORE-20261024-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-10-24T08:00:00+08:00",
+      "chore_done_count": 1,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-10-24T16:54:38+08:00",
+      "updated_at": "2026-10-24T16:54:38+08:00",
+      "completed_at": "2026-10-24T16:54:38+08:00",
+      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1792831203826c8b6ffbbd589d9fb（approved）；回写 chore_task_writeback。"
     }
   ],
   "counts": {
