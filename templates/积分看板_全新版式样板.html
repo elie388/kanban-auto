@@ -1501,7 +1501,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
-  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '手工补录', meta: '每日任务', exam_correction: '考试订正', chore: '日常打卡', daily_53: '每日练习'};
+  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '', meta: '每日任务', exam_correction: '考试订正', chore: '日常打卡', daily_53: '每日练习'};
   var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击后才展开，不分状态；同日续定方案1：整卡可点＋入口带内容预告 */
   function toggleTaskCard(card){
     var open = card.classList.toggle('open-task');
@@ -5222,7 +5222,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-0925';
+  var KB_BUILD = '20261025-1054';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
