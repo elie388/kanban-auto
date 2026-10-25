@@ -29,15 +29,15 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
       "carry_count": 2,
-      "status_source": "closeout_writeback",
+      "status_source": "exempt_writeback",
       "corrections": [
         {
           "label": "图2-Q2表格",
@@ -49,7 +49,16 @@
           "q_img_status": "原题图未附：原题表格第2、3列边长格与积的组成格均为孩子手写，裁切表格区域无法避开手写，按避不开不登记处理。"
         }
       ],
-      "pending_corrections": 1
+      "pending_corrections": 0,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 1,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "D53-2026-10-23-ENG",
@@ -58,15 +67,15 @@
       "title": "53天天练·英语",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
       "carry_count": 2,
-      "status_source": "closeout_writeback",
+      "status_source": "exempt_writeback",
       "corrections": [
         {
           "label": "图1二(一)4",
@@ -109,7 +118,16 @@
           "q_img_status": "原题无图：题面无图指示，不附原题图。"
         }
       ],
-      "pending_corrections": 4
+      "pending_corrections": 0,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 4,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "REG-20261023-EAE721",
@@ -118,7 +136,7 @@
       "title": "小状元练习册（三）（该条被涂黑，仅余此可辨）。",
       "detail": "已批改：23小问对16错7（5道题7处错），正确率69.6%。7处待订正（见corrections）。批改批次B-20261023-G5-MATH-01。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①小状元练习册（三）（该条被涂黑，仅余此可辨）。→ 待完成",
@@ -127,8 +145,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
-      "pending_corrections": 7,
+      "updated_at": "2026-10-25T21:31:53+08:00",
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "思考练习(3) 第4题（周长最短）",
@@ -193,10 +211,19 @@
           "q_img_status": "原题无图：题面无图指示，不附原题图。"
         }
       ],
-      "status_source": "realtime",
+      "status_source": "exempt_writeback",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
-      "carry_count": 2
+      "carry_count": 2,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 7,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "REG-20261023-B96F50",
@@ -205,7 +232,7 @@
       "title": "生字13课",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成",
@@ -214,8 +241,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
-      "pending_corrections": 1,
+      "updated_at": "2026-10-25T21:31:53+08:00",
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "生字13课 损（拼音）",
@@ -228,10 +255,19 @@
           "q_img_status": "原题无图：题面无图指示，不附原题图。"
         }
       ],
-      "status_source": "bank_writeback",
+      "status_source": "exempt_writeback",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
-      "carry_count": 2
+      "carry_count": 2,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 1,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "REG-20261023-2C714C",
@@ -240,7 +276,7 @@
       "title": "校本13课比照红笔错题",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字13课；②校本13课比照红笔错题；③校对9-13课校本（红笔改正）。→ 待完成",
@@ -249,14 +285,23 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime",
+      "status_source": "exempt_writeback",
       "batch_notes": "批次备注三行制：红笔／作答／校对动作 ＝ 未限定红笔／作答完整／已比照红笔错题（与CC9E78同口径）。批改结论已过终审终审（有条件通过、C-fix1已补）、任务作答完整判定完成；按P0放行门（P0未全上线前批次不得标done），状态落in_progress，待放行门通过后另行转done。积分：零落账（校对类无达标分；按时+2按家长令2026-10-24起算、今晚不追溯）。",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
-      "carry_count": 2
+      "carry_count": 2,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 0,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "REG-20261023-71C90B",
@@ -265,7 +310,7 @@
       "title": "试卷打印",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①试卷打印；②口语阅读（原字迹近\"口物阅读\"，字迹待确认）。→ 待完成",
@@ -274,9 +319,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-23T19:01:16+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "task_type": null,
-      "pending_corrections": 13,
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "P1-二-5",
@@ -383,10 +428,19 @@
           "img_exempt": "英语仿写段落题（写作题），原题全文（定位短语）已在位，画图无助于思考。"
         }
       ],
-      "status_source": "realtime",
+      "status_source": "exempt_writeback",
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
-      "carry_count": 2
+      "carry_count": 2,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 13,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "PRACT-20261023-569ED6",
@@ -402,12 +456,12 @@
         "39.6×2.1≈"
       ],
       "estimate_min": 30,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-23.docx",
       "file_hash": null,
       "created_at": "2026-10-23T19:08:41+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-10-23.pdf",
@@ -418,9 +472,18 @@
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
       "carry_count": 2,
-      "status_source": "realtime",
+      "status_source": "exempt_writeback",
       "recite_text": "语文朗读：圆明园的毁灭是中国文化史上不可估量的损失，也是世界文化史上不可估量的损失！这座辉煌的皇家园林，就这样化为了一片灰烬。\n朗读要求：语速稍慢，语气低沉而坚定，读出痛惜与惋惜之情。\n英语口语：想象你的教室，用英语进行 30-45 秒的介绍。\n提示问题：1. What's in your classroom? 2. Where is the teacher's desk? 3. How many windows are there?\n语音语调自然、语句连贯、尽量脱稿。",
-      "pending_note": "【缺件提醒】题17英语口语和题18语文朗读已经收到了，读得不错。下面这些还没收到，收齐了才能一起批改：书面1–16题、19题，口算5题。请点『交这一项』补交，谢谢！"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "grading",
+        "prev_pending_corrections": null,
+        "prev_pending_note": "【缺件提醒】题17英语口语和题18语文朗读已经收到了，读得不错。下面这些还没收到，收齐了才能一起批改：书面1–16题、19题，口算5题。请点『交这一项』补交，谢谢！"
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_corrections": 0
     },
     {
       "task_id": "D53-2026-10-24-CHN",
@@ -429,14 +492,25 @@
       "title": "53天天练·语文",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "carry_first_date": "2026-10-24",
       "carried_from": "2026-10-24",
-      "carry_count": 1
+      "carry_count": 1,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "pending",
+        "prev_pending_corrections": null,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "status_source": "exempt_writeback",
+      "pending_corrections": 0,
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -445,14 +519,25 @@
       "title": "53天天练·英语",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-24T16:55:29+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "carry_first_date": "2026-10-24",
       "carried_from": "2026-10-24",
-      "carry_count": 1
+      "carry_count": 1,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "pending",
+        "prev_pending_corrections": null,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "status_source": "exempt_writeback",
+      "pending_corrections": 0,
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
     },
     {
       "task_id": "MANUAL-20261024-001",
@@ -461,11 +546,11 @@
       "title": "补练·小数点移动（5题）",
       "detail": "孩子自助申请，5道变式题",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-24T18:10:19+08:00",
-      "updated_at": "2026-10-25T12:42:40+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "files": [
         {
           "name": "五年级补练_数学_小数点移动_2026-10-24.pdf",
@@ -476,8 +561,17 @@
       "carry_first_date": "2026-10-24",
       "carried_from": "2026-10-24",
       "carry_count": 1,
-      "status_source": "realtime",
-      "pending_note": "已收到补交件（15:56，1 张，5 题齐全），正在批改。"
+      "status_source": "exempt_writeback",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "grading",
+        "prev_pending_corrections": null,
+        "prev_pending_note": "已收到补交件（15:56，1 张，5 题齐全），正在批改。"
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_corrections": 0
     },
     {
       "task_id": "CHORE-20261025-G5",
@@ -506,11 +600,11 @@
       "title": "数学小数突击模拟卷",
       "detail": "第二单元模拟考、建议40分钟独立完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-25T10:05:42+08:00",
-      "updated_at": "2026-10-25T13:41:15+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "files": [
         {
           "name": "小数突击模拟卷_彦均_20261025.pdf",
@@ -518,7 +612,7 @@
           "pages": 4
         }
       ],
-      "status_source": "closeout_writeback",
+      "status_source": "exempt_writeback",
       "corrections": [
         {
           "label": "突击卷 一-7",
@@ -604,7 +698,16 @@
           "q_img": ""
         }
       ],
-      "pending_corrections": 10
+      "pending_corrections": 0,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 10,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "MANUAL-20261025-002",
@@ -613,11 +716,11 @@
       "title": "周日综合试卷（语文·数学·英语）",
       "detail": "今晚截止22:30，做完拍照交回",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-25T10:06:46+08:00",
-      "updated_at": "2026-10-25T12:56:47+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "files": [
         {
           "name": "五年级语文周试卷_2026-10-25.pdf",
@@ -635,7 +738,7 @@
           "pages": 4
         }
       ],
-      "status_source": "closeout_writeback",
+      "status_source": "exempt_writeback",
       "corrections": [
         {
           "label": "数学填空第2题",
@@ -813,7 +916,16 @@
           "img_exempt": "写作类题：完善靠文字重写，配图无助于思考"
         }
       ],
-      "pending_corrections": 18
+      "pending_corrections": 0,
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "in_progress",
+        "prev_pending_corrections": 18,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
     },
     {
       "task_id": "MANUAL-20261025-003",
@@ -822,18 +934,29 @@
       "title": "英语阅读写作第10期",
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-25T20:07:36+08:00",
-      "updated_at": "2026-10-25T20:07:36+08:00",
+      "updated_at": "2026-10-25T21:31:53+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-10-25.pdf",
           "label": "练习",
           "pages": 2
         }
-      ]
+      ],
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "pending",
+        "prev_pending_corrections": null,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "status_source": "exempt_writeback",
+      "pending_corrections": 0,
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
     },
     {
       "task_id": "MANUAL-20261025-004",
@@ -842,11 +965,22 @@
       "title": "英语阅读写作第10期",
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "rejected",
       "created_by": "user",
       "created_at": "2026-10-25T20:07:47+08:00",
-      "updated_at": "2026-10-25T20:07:58+08:00"
+      "updated_at": "2026-10-25T21:31:53+08:00",
+      "exempted": true,
+      "exempt_info": {
+        "at": "2026-10-25T21:31:53+08:00",
+        "prev_status": "pending",
+        "prev_pending_corrections": null,
+        "prev_pending_note": null
+      },
+      "completed_at": "2026-10-25T21:31:53+08:00",
+      "status_source": "exempt_writeback",
+      "pending_corrections": 0,
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
     }
   ],
   "counts": {
