@@ -328,6 +328,10 @@
   .task.open-task .corr-caret{transform:rotate(90deg);}
   .task .corr-panel{display:none; width:100%; margin-top:8px; border-top:1px dashed #F0C4A8; padding-top:4px;}
   .task.open-task .corr-panel{display:block;}
+  /* 任务级待确认说明（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-2/B3/B4）：静态块、无过渡；收起态隐藏全文，仅展开显示。 */
+  .task .task-note{display:none; margin-top:8px; padding:8px 10px; background:#FFF7E6; border-left:3px solid #D97706; color:#7A4A00; font-size:13px; line-height:1.65;}
+  .task.open-task .task-note{display:block;}
+  .task .task-note-cap{color:#B54708; margin-right:6px;}
   /* 任务卡默认收起（2026-10-22 家长定：每项任务点击后才展开，不分状态）：
      收起时只留标题、状态徽章与「展开」按钮，其余（说明、待改正、文件、交作业按钮）展开后才显示 */
   .task[data-tid]:not(.open-task) .task-progress{display:none;}
@@ -1655,6 +1659,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
         var badgeText = sm.badge, miniPill = '';
+        /* 待确认徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3）：仅显示层，三元AND缺一不可；底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响。 */
+        if(t.status === 'in_progress' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0 && t.pending_note){
+          badgeText = '🔄 待确认';
+        }
         if(t.source === 'chore'){
           if(t.chore_exempt) badgeText = '🌴 今日豁免';
           else if(t.chore_missed) badgeText = '当天未完成';
@@ -1742,6 +1750,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           corrBadge = '<span class="corr-badge">' + badgeTxt + '</span>';
           corrPanel = '<div class="corr-panel">' + items + '</div>';
         }
+        /* 任务级待确认说明（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-2）：展开区顶部、明细区门条件之外，pending_note非空即渲染；收起态由CSS隐藏全文。 */
+        var noteHtml = '';
+        if(t.pending_note){
+          noteHtml = '<div class="task-note"><span class="task-note-cap">待确认说明</span><span class="task-note-t">' + esc(t.pending_note) + '</span></div>';
+        }
         var taskOpen = !!OPEN_TASK[t.task_id];
         /* 入口预告文案（2026-10-22 方案1）：收起时按钮先告诉家长里面有什么 */
         var previewTxt = (pendN > 0)
@@ -1778,7 +1791,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           + ((t.urge && t.urge.text && t.status !== 'done') ? '<div class="task-urge">⏰ ' + esc(t.urge.text) + '<button type="button" class="urge-mute" data-urge-mute="' + esc(t.task_id || '') + '">暂停闪烁</button></div>' : '')
           + '<div class="task-progress">' + sub2 + '</div></div>'
           + toggleBtn + '</div>'
-          + corrBadge + corrPanel
+          + noteHtml + corrBadge + corrPanel
           + '<div class=\"task-acts\"><span class=\"st-zone\"></span>' + filesRow + origRow + '</div></div>';
       });
     }
@@ -5209,7 +5222,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-0126';
+  var KB_BUILD = '20261025-0925';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
