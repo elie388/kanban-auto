@@ -234,6 +234,14 @@ jobs:
           python3 scripts/test_sections_week.py
 
 
+      # TEMP-SKY-DEMO-START（临时：2026-10-25 家长令，15分钟后连同文件一起删除）
+      - name: 同步临时天空演示页到 Pages 产物
+        run: |
+          mkdir -p public/data
+          cp data/Live_Sky_V11_3_All_Weather_Demo.html public/data/ 2>/dev/null || true
+          ls -la public/data/ | grep -i Live_Sky || true
+      # TEMP-SKY-DEMO-END
+
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
         run: |
