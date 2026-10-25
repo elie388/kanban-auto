@@ -1772,10 +1772,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             badgeText += ' · ' + mRem[0].replace(/\s+/g, '');
           }
         }
-        /* 待批改角标（2026-10-23 B案）：被跨日携带的 submitted/grading 任务，提示孩子「交了、在等批改」 */
+        /* 待批改角标（2026-10-23 B案）：被跨日携带的 submitted/grading 任务，提示孩子「交了、在等批改」；缺件提醒（2026-10-25 家长定）：pending_note 以【缺件提醒】开头时，提示改为「待补件」 */
         var carryTag = '';
         if((t.carry_count || t.carried_from) && (t.status === 'submitted' || t.status === 'grading')){
-          carryTag = '<span class="carry-tag">待批改</span>';
+          var isMissing = t.pending_note && t.pending_note.indexOf('【缺件提醒】') === 0;
+          carryTag = '<span class="carry-tag">' + (isMissing ? '待补件' : '待批改') + '</span>';
         }
         /* 催促整卡闪烁（2026-10-23）：未完成才闪；单卡暂停（localStorage）与同屏上限在渲染时定格 */
         var urgCls = '';
@@ -5222,7 +5223,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-1107';
+  var KB_BUILD = '20261025-1410';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
