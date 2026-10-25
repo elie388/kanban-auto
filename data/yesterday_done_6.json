@@ -1,13 +1,118 @@
 {
- "date": "2026-10-24",
+ "date": "2026-10-25",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "CHORE-20261024-G6",
+   "task_id": "D53-2026-10-23-CHN",
+   "title": "53天天练·语文",
+   "subject": "语文",
+   "source": "daily_53",
+   "group": "study"
+  },
+  {
+   "task_id": "D53-2026-10-23-ENG",
+   "title": "53天天练·英语",
+   "subject": "英语",
+   "source": "daily_53",
+   "group": "study"
+  },
+  {
+   "task_id": "PRACT-20261023-D49065",
+   "title": "针对性练习（含口语+背诵）",
+   "subject": "综合",
+   "source": "targeted_practice",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-FF4D78",
+   "title": "作文（成长中的一束光）",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-19DB4D",
+   "title": "每天读1小时作文，记录③",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-F15501",
+   "title": "读背概念50、51",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-37028D",
+   "title": "完成《校本》P20、21、22的练习",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261023-7172FF",
+   "title": "U3知识清单。",
+   "subject": "英语早读",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "D53-2026-10-24-CHN",
+   "title": "53天天练·语文",
+   "subject": "语文",
+   "source": "daily_53",
+   "group": "study"
+  },
+  {
+   "task_id": "D53-2026-10-24-MATH",
+   "title": "53天天练·数学",
+   "subject": "数学",
+   "source": "daily_53",
+   "group": "study"
+  },
+  {
+   "task_id": "D53-2026-10-24-ENG",
+   "title": "53天天练·英语",
+   "subject": "英语",
+   "source": "daily_53",
+   "group": "study"
+  },
+  {
+   "task_id": "MANUAL-20261024-001",
+   "title": "补练·圆的面积（5题）",
+   "subject": "数学",
+   "source": "manual",
+   "group": "study"
+  },
+  {
+   "task_id": "CHORE-20261025-G6",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
+  },
+  {
+   "task_id": "MANUAL-20261025-001",
+   "title": "周日综合试卷（语文·数学·英语）",
+   "subject": "综合",
+   "source": "manual",
+   "group": "study"
+  },
+  {
+   "task_id": "MANUAL-20261025-002",
+   "title": "英语阅读写作第10期",
+   "subject": "英语",
+   "source": "manual",
+   "group": "study"
+  },
+  {
+   "task_id": "MANUAL-20261025-003",
+   "title": "英语阅读写作第10期",
+   "subject": "英语",
+   "source": "manual",
+   "group": "study"
   }
  ]
 }
