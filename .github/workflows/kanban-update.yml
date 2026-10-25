@@ -235,6 +235,16 @@ jobs:
           cp data/feedback_5.json data/feedback_6.json public/data/
           ls -la public/data/
 
+      # 本周学习周报数据通道（2026-10-26 家长令：由批改反馈移入学习小结）：
+      # data/weekly_*.json 同步进 Pages 产物，供学习小结栏目直接渲染。硬断言防静默缺失。
+      - name: 同步本周学习周报数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          test -s data/weekly_5.json || { echo "::error::data/weekly_5.json 缺失或为空"; exit 1; }
+          test -s data/weekly_6.json || { echo "::error::data/weekly_6.json 缺失或为空"; exit 1; }
+          cp data/weekly_5.json data/weekly_6.json public/data/
+          ls -la public/data/
+
       # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：
       # 跨周边界定值测试必跑，防止周界回归。失败则构建失败。
       - name: 全栏目跨周边界单测
