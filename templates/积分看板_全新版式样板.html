@@ -5222,7 +5222,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-1054';
+  var KB_BUILD = '20261025-1107';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5285,7 +5285,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     {v:'chore', t:'家务'}
   ];
   var TYPE_NAME = {}; TYPES.forEach(function(x){ TYPE_NAME[x.v] = x.t; });
-  var SRC_TYPE = {daily_53:'tian53', targeted_practice:'practice', exam_correction:'correction', register_book:'homework'};
+  var SRC_TYPE = {daily_53:'tian53', targeted_practice:'practice', exam_correction:'correction', register_book:'homework', manual:'practice'};
   var busy = false;
 
   function $(id){ return document.getElementById(id); }
