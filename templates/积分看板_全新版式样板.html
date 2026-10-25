@@ -1223,10 +1223,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <div class="collapse-inner"><div class="collapse-pad">
         <div class="sum-grade" id="sum-g5">
           <div class="grade-head"><span class="pill-grade g5">彦均</span></div>
+          <!-- 本周学习周报（2026-10-26 家长令：由批改反馈移入学习小结，各年级小结上方直接渲染，周报行复用反馈条样式与已读口径） -->
+          <div class="wk-items"></div>
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
         <div class="sum-grade" id="sum-g6">
           <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
+          <div class="wk-items"></div>
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
         <!-- 家长版小结子块：静态 HTML 已删除（2026-10-24 家长令）——仅家长令牌存在时由 renderParentZone 动态生成整块；孩子口令/未解锁时不渲染、不留占位 -->
@@ -1235,7 +1238,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
          结构同目标榜子块——位于小结主 .collapse-pad 之外、其后，且位于 .collapse-inner 之内
          （防父栏收起时头行外露，2026-10-23 真机教训）；renderFeedback 按 #fb-g5/#fb-g6 定位、
          不整表重建小结 pad，互不误清。子块二级开关 #feedback-toggle 默认收起、点击才展开；
-         子块行原有红点 #feedback-dot 已按家长 2026-10-23 22:14 令删除；学习小结头红点合并两边新内容口径不变（见 kbDotsRefresh）。 -->
+         子块行原有红点 #feedback-dot 已按家长 2026-10-23 22:14 令删除；学习小结头红点合并三边新内容口径（小结＋反馈＋周报，见 kbDotsRefresh）。 -->
     <div class="sub-wrap fb-zone" id="panel-feedback" role="region" aria-label="批改反馈">
       <button class="sub-toggle" type="button" id="feedback-toggle" aria-expanded="false" aria-controls="feedback-body">
         <span class="sub-head-t">✏️ 批改反馈</span>
@@ -2772,6 +2775,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   /* ---------- 学习小结（2026-10-23 两版上看板） ---------- */
   var SUM_HW_API = (location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev');
   var sumNewest = { 5: '', 6: '' };
+  var wkNewest = { 5: '', 6: '' }; /* 本周学习周报最新 ts（2026-10-26 移入学习小结后，头点合并三边口径用） */
   var sumTsNewest = { 5: '', 6: '' }; /* 小结条目若带完整 ts 则记录（现发布数据只有 date，恒空），供头点 6 小时窗口精确判定，缺 ts 时按日期兜底 */
 
   function sumEsc(x){
@@ -2890,7 +2894,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   /* 6 小时窗口：反馈按条目 ts 精确判；小结条目只有 date——带 ts 时按 ts 判，
      无 ts 时以「最新小结日期＝今天且未读」兜底视为窗口内（发布端补 ts 后自动转精确口径）。 */
-  function kbDotFresh(sumNew, fbNew){
+  function kbDotFresh(sumNew, fbNew, wkNew){
     var now = Date.now(), WIN = 6 * 3600 * 1000;
     if(fbNew){
       var fbMax = 0, fbParseFail = false;
@@ -2902,6 +2906,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       });
       if(fbParseFail) return true; /* ts 无法解析时不因窗口误灭，沿用未读口径 */
       if(fbMax && now - fbMax < WIN) return true;
+    }
+    if(wkNew){
+      var wkMax = 0, wkParseFail = false;
+      [5, 6].forEach(function(g){
+        if(wkNewest[g] && wkNewest[g] > kbSeenGet('kb-wk-seen-g', g)){
+          var t = Date.parse(wkNewest[g]);
+          if(isNaN(t)) wkParseFail = true; else if(t > wkMax) wkMax = t;
+        }
+      });
+      if(wkParseFail) return true;
+      if(wkMax && now - wkMax < WIN) return true;
     }
     if(sumNew){
       var d = new Date(), pad = function(n){ return (n < 10 ? '0' : '') + n; };
@@ -2928,6 +2943,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function kbSyncSeen(kind, grade){
     if(kind === 'sum'){
       if(sumNewest[grade]){ try { localStorage.setItem('kb-sum-seen-g' + grade, sumNewest[grade]); } catch (e) {} }
+    } else if(kind === 'wk'){
+      if(wkNewest[grade]){ try { localStorage.setItem('kb-wk-seen-g' + grade, wkNewest[grade]); } catch (e) {} }
     } else {
       if(fbNewest[grade]){ try { localStorage.setItem('kb-fb-seen-g' + grade, fbNewest[grade]); } catch (e) {} }
     }
@@ -2936,8 +2953,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var locked = document.documentElement.classList.contains('kb-locked');
     var sumNew = !locked && kbNewFlag(sumNewest, 'kb-sum-seen-g');
     var fbNew = !locked && kbNewFlag(fbNewest, 'kb-fb-seen-g');
+    var wkNew = !locked && kbNewFlag(wkNewest, 'kb-wk-seen-g');
     var sd = $('summary-dot');
-    if(sd) sd.hidden = !((sumNew || fbNew) && kbDotFresh(sumNew, fbNew));
+    if(sd) sd.hidden = !((sumNew || fbNew || wkNew) && kbDotFresh(sumNew, fbNew, wkNew));
   }
   function sumDotUpdate(){ kbDotsRefresh(); }
   function loadKidSummary(grade){
@@ -3112,6 +3130,29 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
     wrap.innerHTML = html;
   }
+  /* 本周学习周报（2026-10-26 家长令：由批改反馈移入学习小结）：条目复用反馈条样式与
+     已读口径（fbKeyOf/kb-read-fb- 键，移前已读状态直接沿用；开关复用文档级 .fb-head 监听，
+     故此处不另设监听）；容器在各年级小结上方（#sum-g .wk-items），无周报时留空不占位。 */
+  function renderWeekly(grade, items){
+    var wrap = document.querySelector('#sum-g' + grade + ' .wk-items');
+    if(!wrap) return;
+    if(!items || !items.length){ wrap.innerHTML = ''; return; }
+    var html = '';
+    items.forEach(function(it){
+      var key = fbKeyOf(grade, it);
+      var open = !!OPEN_FB[key];
+      var wkUnread = !kbReadGet(kbReadFbKey(grade, it));
+      html += '<div class="fb-item' + (open ? ' open-fb' : '') + '" data-fbk="' + sumEsc(key) + '">'
+        + '<button class="fb-head" type="button" aria-expanded="' + (open ? 'true' : 'false') + '">'
+        + '<span class="fb-head-main">'
+        + '<div class="fb-title">' + sumEsc(it.title || '本周学习周报') + (wkUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
+        + '</span><span class="fb-chev" aria-hidden="true">' + (open ? '收起 ▴' : '展开 ▾') + '</span></button>'
+        + '<div class="fb-body"' + (open ? '' : ' hidden') + '>'
+        + '<div class="fb-html">' + (it.html || '') + '</div>'
+        + '</div></div>';
+    });
+    wrap.innerHTML = html;
+  }
   function toggleFbItem(item){
     var body = item.querySelector('.fb-body');
     var head = item.querySelector('.fb-head');
@@ -3178,6 +3219,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       renderFeedback(grade, []);
     });
   }
+  function loadWeekly(grade){
+    fetchJson('weekly_' + grade + '.json', {}).then(function(d){
+      var items = (d && d.items) || [];
+      if(items.length) wkNewest[grade] = items[0].ts || '';
+      renderWeekly(grade, items);
+      if(kbSumVisible()) kbSyncSeen('wk', grade); /* 周报行在小结区内直接可见，小结展开时迟到的数据视为已看过，不复亮头点 */
+      kbDotsRefresh();
+    }).catch(function(){
+      renderWeekly(grade, []);
+    });
+  }
 
   /* ---------- 催促闪烁：暂停与超时转静态（2026-10-23） ---------- */
   document.addEventListener('click', function(e){
@@ -3205,13 +3257,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     renderParentZone();
     loadFeedback(5);
     loadFeedback(6);
+    loadWeekly(5);
+    loadWeekly(6);
     kbWireFbToggle();
     var sb = $('btn-summary');
     if(sb && !sb.__sumSeenBound){
       sb.__sumSeenBound = true;
       sb.addEventListener('click', function(){
         [5, 6].forEach(function(g){ if(sumNewest[g]){ try { localStorage.setItem('kb-sum-seen-g' + g, sumNewest[g]); } catch (e) {} } });
-        kbDotsRefresh(); /* 只清小结已读；批改反馈仍有新内容时学习小结红点继续亮（合并口径） */
+        [5, 6].forEach(function(g){ if(wkNewest[g]){ try { localStorage.setItem('kb-wk-seen-g' + g, wkNewest[g]); } catch (e) {} } });
+        kbDotsRefresh(); /* 清小结与周报已读；批改反馈仍有新内容时学习小结红点继续亮（合并口径） */
       });
     }
   }
@@ -5261,7 +5316,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-2116-ico-spin-ccw';
+  var KB_BUILD = '20261026-0007-weekly-to-summary';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
