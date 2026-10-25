@@ -188,3 +188,183 @@ html body .up-go { background: linear-gradient(145deg,#4189ea,#246ace); }
 @media (forced-colors: active) {
   .card, .task, .sky-band .bal-card, html body .up-btn { box-shadow:none; }
 }
+
+/* ================================================================
+ * iOS 27 visual refinement v2 — screenshot-based optical tuning
+ * 2026-10-25. Pure paint-only overrides; no layout or data changes.
+ * Do not change DOM dimensions, positioning, display or animations.
+ * ================================================================ */
+:root {
+  --bg1: #eef5fe;
+  --bg2: #f8fbff;
+  --bg3: #edf5fc;
+  --txt: #263447;
+  --sub: #62748a;
+  --card: rgba(255,255,255,.97);
+}
+
+/* Calm ambient tone; unchanged weather canvas and sky geometry. */
+body {
+  background:
+    radial-gradient(630px 390px at 7% 5%,rgba(255,255,255,.92),transparent 64%),
+    radial-gradient(560px 350px at 92% 25%,rgba(209,230,253,.42),transparent 67%),
+    linear-gradient(155deg,var(--bg1),var(--bg2) 53%,var(--bg3));
+}
+
+/* Subtle specular lip and dark return edge — iOS 27 glass cues without
+   putting dense reading content behind a transparent layer. */
+.card {
+  background-color: rgba(255,255,255,.975);
+  background-image: linear-gradient(162deg,rgba(255,255,255,.99) 0%,rgba(255,255,255,.87) 61%,rgba(240,248,255,.75) 100%);
+  border-color: rgba(255,255,255,.98);
+  box-shadow: inset 0 1px 0 #fff,
+              inset 0 -1px 0 rgba(120,154,198,.12),
+              0 1px 3px rgba(39,76,118,.042),
+              0 12px 28px rgba(51,90,138,.075);
+}
+
+/* Sky cards were too pale against moving clouds in the supplied capture:
+   darken the glass itself — do not add a text shadow (user's earlier rule). */
+.sky-band .bal-card,
+.sky-band button.bal-card,
+.sky-band .bal-card.is-neg {
+  background: linear-gradient(166deg,
+       rgba(33,70,116,.19) 0%,
+       rgba(35,66,104,.24) 62%,
+       rgba(40,59,87,.30) 100%);
+  border-color: rgba(242,250,255,.60);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.49),
+              inset 1px 0 0 rgba(255,255,255,.18),
+              inset 0 -1px 0 rgba(18,47,84,.20),
+              0 7px 19px rgba(19,55,99,.13);
+  -webkit-backdrop-filter: blur(5px) saturate(1.10);
+  backdrop-filter: blur(5px) saturate(1.10);
+}
+.sky-band .bal-tier-seg { background: rgba(26,53,86,.31); }
+.sky-band .bal-tier-fill { background: rgba(255,255,255,.98); }
+.sky-band .bal-tier-labels span { color: rgba(255,255,255,1); }
+
+/* Easier-to-read status distinctions; semantic colors unchanged. */
+.task {
+  background: linear-gradient(153deg,#fff 0%,#f9fbff 100%);
+  border-color: rgba(204,220,238,.76);
+  box-shadow: inset 0 1px 0 #fff,
+              inset 0 -1px 0 rgba(135,162,193,.085),
+              0 2px 6px rgba(32,69,113,.043);
+}
+.task.pending {
+  background: linear-gradient(152deg,#fff,#fffafa 100%);
+  border-color: rgba(235,208,211,.85);
+}
+.task.correcting {
+  background: linear-gradient(152deg,#fff,#fffaf2 100%);
+  border-color: rgba(236,215,185,.87);
+}
+.task.grading {
+  background: linear-gradient(152deg,#fff,#fbf8ff 100%);
+  border-color: rgba(220,207,246,.86);
+}
+.task.done {
+  background: linear-gradient(152deg,#fff,#f5fcf8 100%);
+  border-color: rgba(199,229,208,.88);
+}
+.task .st-badge {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.66), 0 1px 4px rgba(31,57,95,.048);
+}
+.task .task-toggle { color: #536274; }
+.task.correcting .task-toggle { color: #a76008; }
+
+/* Secondary hints had low contrast in the long correction explanation. */
+.corr-item .corr-r,
+.corr-item .corr-note-t { color: #5c6d80; }
+.corr-item .corr-h { color: #415b75; border-left-color: #bacce0; }
+.corr-item .corr-cap {
+  background: linear-gradient(155deg,#fffaf0,#fff1d9);
+  border-color: #ecd5a6;
+  color: #856a2a;
+}
+.corr-item .corr-img { border-color: #cadceb; }
+
+/* Unify '实时数据' labels. The four collapsed section labels were square
+   because they are direct children of the card, not h2 .tag-demo. */
+.card.collapse > .tag-live,
+.card h2 .tag-demo.tag-live,
+.grade-head .tag-demo.tag-live {
+  border-radius: 999px;
+  background: linear-gradient(158deg,rgba(234,252,243,.99),rgba(212,244,228,.94));
+  color: #197b56;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.99),
+              inset 0 -1px 0 rgba(45,130,88,.06),
+              0 2px 5px rgba(26,113,78,.07);
+}
+
+/* A soft refraction edge on the existing collapse pill; no box changes. */
+.collapse-btn .cb-state,
+.fb-chev {
+  background: linear-gradient(162deg,rgba(255,255,255,.97),rgba(230,240,254,.86));
+  color: #435d7c;
+  box-shadow: inset 0 1px 0 #fff,
+              inset 0 -1px 0 rgba(91,130,187,.12),
+              0 2px 6px rgba(32,79,141,.075);
+}
+.collapse-btn:active .cb-state {
+  background: linear-gradient(160deg,#e6f1ff,#f9fcff);
+  box-shadow: inset 0 1px 3px rgba(47,91,155,.14),0 1px 2px rgba(47,91,155,.06);
+}
+
+/* Existing grade-pill sizes/identity retained, but softened. */
+.pill-grade.g5 { background: linear-gradient(151deg,#ff9d7a,#f77e62); }
+.pill-grade.g6 { background: linear-gradient(151deg,#8eacff,#6482f5); }
+
+/* De-emphasize outlines; glassiness from inner rim and local reflections. */
+html body .up-btn {
+  background: linear-gradient(153deg,rgba(255,255,255,.99),rgba(229,240,254,.95));
+  border-color: rgba(152,186,235,.69);
+  color: #275c9f;
+  box-shadow: inset 0 1px 0 #fff,
+              inset 0 -1px 0 rgba(62,121,200,.14),
+              0 3px 8px rgba(29,74,132,.085);
+}
+html body .up-btn:active {
+  background: linear-gradient(157deg,#e0edfe,#f7fbff);
+  box-shadow: inset 0 1px 4px rgba(42,101,179,.16),0 1px 2px rgba(29,74,132,.05);
+}
+
+/* Printing is an action, not a visually dominant banner. */
+.tfile.tprint1 {
+  background: linear-gradient(150deg,#3d936b,#2b815c);
+  border-color: #2d805c;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.24),
+              inset 0 -1px 0 rgba(0,53,31,.18),
+              0 3px 8px rgba(22,107,65,.08);
+}
+.tfile.tprint1:active {
+  background: linear-gradient(150deg,#2f825e,#286d51);
+}
+
+.sum-item,.fb-item,.shop-item,.redeem-item {
+  background: linear-gradient(160deg,#fff,#f8fbff);
+  border-color: #dae5f0;
+  box-shadow: inset 0 1px 0 #fff,0 2px 7px rgba(32,72,113,.05);
+}
+.footer {
+  background: rgba(252,254,255,.89);
+  box-shadow: inset 0 1px 0 #fff,0 4px 14px rgba(31,74,114,.055);
+}
+
+/* Respect reduced-transparency preferences; keep functional contrast. */
+@media (prefers-reduced-transparency: reduce) {
+  .sky-band .bal-card, .sky-band button.bal-card,
+  .sky-band .bal-card.is-neg {
+    background: linear-gradient(165deg,#416c9a,#435d7d);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .card { background-color: #fff; background-image: none; }
+}
+@media (forced-colors: active) {
+  .card, .task, .sky-band .bal-card, html body .up-btn, .tfile.tprint1 {
+    box-shadow: none;
+  }
+}
