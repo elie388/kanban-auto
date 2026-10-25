@@ -368,3 +368,147 @@ html body .up-btn:active {
     box-shadow: none;
   }
 }
+
+/* ================================================================
+ * whyjjf.lol · iPhone / iPad Safari adaptation · V3
+ * 2026-10-25
+ * This is a focused responsive safeguard on top of the existing V2 skin.
+ * Preserve DOM, content, module order, responsive column count, data,
+ * privacy gate, original Live Sky, and existing interactions.
+ * ================================================================ */
+
+/* Long homework questions (including English / mathematical expressions)
+   must wrap *inside* a task instead of expanding an iPad split column. */
+@media screen {
+  .wrap, .card, .collapse-inner, .task-section,
+  .task-list, .task, .task .task-main, .task .task-info,
+  .corr-panel, .corr-item, .sum-item, .fb-item,
+  .shop-grid, .shop-item, .redeem-item, .log-body { min-width: 0; }
+
+  .task .task-name, .task .task-progress,
+  .corr-item .corr-q, .corr-item .corr-h, .corr-item .corr-note,
+  .corr-item .corr-orig, .task .task-note,
+  .sum-p-html, .fb-html, .fb-qa-q, .fb-qa-a,
+  .shop-hint, .redeem-hint, .log-reason {
+    overflow-wrap: anywhere;
+  }
+
+  .corr-item img, .corr-item svg,
+  .fb-html img, .sum-p-html img { max-width: 100%; height: auto; }
+
+  /* Prevent native iOS zoom-on-focus for the homework note field.
+     This does NOT alter the parent's original viewport / pinch policy. */
+  html body .up-sheet textarea { font-size: 16px; }
+
+  /* Side and bottom safe areas for modal surfaces, especially iPhones
+     with Dynamic Island / Home Indicator in landscape orientation. */
+  html body .up-sheet {
+    padding-bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  html body #origViewer .ov-bar,
+  html body #upPreview > div:first-child {
+    padding-top: max(12px, env(safe-area-inset-top, 0px));
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+  }
+  html body #origViewer .ov-nav {
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    padding-left: max(12px, env(safe-area-inset-left, 0px));
+    padding-right: max(12px, env(safe-area-inset-right, 0px));
+  }
+  html body #upPreview { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
+
+/* Dynamic viewport is supported on modern iPhone / iPad Safari. The
+   previous vh declarations above are retained as browser fallbacks. */
+@supports (height: 100dvh) {
+  html body { min-height: 100dvh; }
+  html body .up-sheet {
+    max-height: min(88dvh, calc(100dvh - env(safe-area-inset-top, 0px) - 8px));
+  }
+  html body #origViewer { min-height: 100dvh; }
+  html body #upPreview { min-height: 100dvh; }
+}
+
+/* iPhone portrait / narrow iPad Split View: keep grade identifier,
+   completion count, progress meter, and disclosure arrow IN THE SAME ROW.
+   Shrink their optical margins before text or the row can be clipped. */
+@media screen and (max-width: 430px) {
+  .task-head { gap: 5px; }
+  .task-section .pill-grade {
+    font-size: clamp(13px, 3.9vw, 17px);
+    padding-left: clamp(8px, 2.6vw, 14px);
+    padding-right: clamp(8px, 2.6vw, 14px);
+  }
+  .task-prog { gap: 4px; min-width: 0; }
+  .task-prog-text { font-size: clamp(11px, 2.9vw, 12px); }
+  .task-prog-bar {
+    width: clamp(42px, 14vw, 60px);
+    min-width: 40px;
+    flex: 1 1 40px;
+  }
+  .grade-caret { margin-left: 0; }
+  .task .task-main { gap: 8px; }
+  .task .task-toggle { padding-left: 8px; }
+}
+
+/* Compact iPhone SE / reduced-size Safari window: preserve full task text
+   and use the existing one-column balance-card behavior below 380px. */
+@media screen and (max-width: 359px) {
+  .task-section .pill-grade { font-size: 13px; padding-left: 8px; padding-right: 8px; }
+  .task-prog-text { font-size: 11px; }
+  .task-prog-bar { width: 42px; min-width: 36px; flex-basis: 36px; }
+  .task-head { gap: 3px; }
+}
+
+/* iPad landscape: the original >=1024px two-grade grid remains unchanged.
+   Only allow its children to shrink and action controls to wrap naturally
+   if a long printable file title would otherwise overflow a column. */
+@media screen and (min-width: 1024px) {
+  section[aria-label="今日任务"] > .task-section,
+  section[aria-label="今日任务"] .task-list,
+  section[aria-label="今日任务"] .task,
+  section[aria-label="今日任务"] .task-acts { min-width: 0; }
+  section[aria-label="今日任务"] .task-acts { flex-wrap: wrap; }
+  section[aria-label="今日任务"] .task-acts > .st-zone { margin-left: auto; }
+}
+
+/* Short landscape screens need a usable scrollable upload sheet without
+   moving the sky or changing the normal portrait appearance. */
+@media screen and (orientation: landscape) and (max-height: 550px) {
+  html body .up-sheet { max-height: calc(100dvh - 10px); }
+}
+
+/* Larger system text / font zoom can make the status label and arrow overlap.
+   Prefer wrapping explanation text; never truncate the task title. */
+@media screen and (prefers-contrast: more) {
+  .sky-band .bal-card,
+  .sky-band button.bal-card {
+    background: linear-gradient(160deg, rgba(27, 56, 94, .68), rgba(29, 54, 89, .74));
+    border-color: rgba(255,255,255,.94);
+  }
+  html body .up-btn, .collapse-btn .cb-state { color: #234e84; }
+}
+
+/* Touch affordance for tiny secondary affordances. Keep existing spacing,
+   just ensure visible focus state for keyboard users on iPad. */
+@media screen and (hover: none) and (pointer: coarse) {
+  html body .up-chip { min-height: 44px; }
+  html body .up-cancel { min-height: 44px; }
+  .medal-pop .pop-close { min-width: 44px; min-height: 44px; }
+  .sum-head, .fb-head { min-height: 44px; }
+}
+@media screen {
+  .sum-head:focus-visible,
+  .fb-head:focus-visible,
+  .task-head:focus-visible,
+  .task .task-toggle:focus-visible,
+  .medal:focus-visible {
+    outline: 2px solid #397be0;
+    outline-offset: 2px;
+  }
+}
