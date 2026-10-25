@@ -58,7 +58,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "D53-2026-10-23-ENG",
@@ -127,7 +127,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-EAE721",
@@ -223,7 +223,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-B96F50",
@@ -267,7 +267,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-2C714C",
@@ -301,7 +301,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-71C90B",
@@ -440,7 +440,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "PRACT-20261023-569ED6",
@@ -474,7 +474,7 @@
       "carry_count": 2,
       "status_source": "exempt_writeback",
       "recite_text": "语文朗读：圆明园的毁灭是中国文化史上不可估量的损失，也是世界文化史上不可估量的损失！这座辉煌的皇家园林，就这样化为了一片灰烬。\n朗读要求：语速稍慢，语气低沉而坚定，读出痛惜与惋惜之情。\n英语口语：想象你的教室，用英语进行 30-45 秒的介绍。\n提示问题：1. What's in your classroom? 2. Where is the teacher's desk? 3. How many windows are there?\n语音语调自然、语句连贯、尽量脱稿。",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -510,7 +510,7 @@
       "completed_at": "2026-10-25T21:31:53+08:00",
       "status_source": "exempt_writeback",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：待提交）"
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -537,7 +537,7 @@
       "completed_at": "2026-10-25T21:31:53+08:00",
       "status_source": "exempt_writeback",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：待提交）"
     },
     {
       "task_id": "MANUAL-20261024-001",
@@ -562,7 +562,7 @@
       "carried_from": "2026-10-24",
       "carry_count": 1,
       "status_source": "exempt_writeback",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -707,7 +707,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "MANUAL-20261025-002",
@@ -925,7 +925,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "MANUAL-20261025-003",
@@ -956,7 +956,7 @@
       "completed_at": "2026-10-25T21:31:53+08:00",
       "status_source": "exempt_writeback",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：待提交）"
     },
     {
       "task_id": "MANUAL-20261025-004",
@@ -980,7 +980,7 @@
       "completed_at": "2026-10-25T21:31:53+08:00",
       "status_source": "exempt_writeback",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：待提交）"
     }
   ],
   "counts": {

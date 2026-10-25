@@ -40,7 +40,7 @@
       "status_source": "exempt_writeback",
       "corrections": [],
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -66,7 +66,7 @@
       "carried_from": "2026-10-24",
       "carry_count": 2,
       "status_source": "exempt_writeback",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -144,7 +144,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-FF4D78",
@@ -198,7 +198,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-19DB4D",
@@ -255,7 +255,7 @@
       "carried_from": "2026-10-24",
       "carry_count": 2,
       "status_source": "exempt_writeback",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -307,7 +307,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "REG-20261023-7172FF",
@@ -342,7 +342,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "D53-2026-10-24-CHN",
@@ -360,7 +360,7 @@
       "carry_first_date": "2026-10-24",
       "carried_from": "2026-10-24",
       "carry_count": 1,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -406,7 +406,7 @@
         "prev_pending_note": null
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：in_progress）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：进行中）"
     },
     {
       "task_id": "D53-2026-10-24-ENG",
@@ -424,7 +424,7 @@
       "carry_first_date": "2026-10-24",
       "carried_from": "2026-10-24",
       "carry_count": 1,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）",
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）",
       "exempted": true,
       "exempt_info": {
         "at": "2026-10-25T21:31:53+08:00",
@@ -467,7 +467,7 @@
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）"
     },
     {
       "task_id": "CHORE-20261025-G6",
@@ -528,7 +528,7 @@
       },
       "completed_at": "2026-10-25T21:31:53+08:00",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：grading）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：批改中）"
     },
     {
       "task_id": "MANUAL-20261025-002",
@@ -559,7 +559,7 @@
       "completed_at": "2026-10-25T21:31:53+08:00",
       "status_source": "exempt_writeback",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：待提交）"
     },
     {
       "task_id": "MANUAL-20261025-003",
@@ -583,7 +583,7 @@
       "completed_at": "2026-10-25T21:31:53+08:00",
       "status_source": "exempt_writeback",
       "pending_corrections": 0,
-      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：pending）"
+      "pending_note": "【豁免】2026-10-25 家长豁免，记为已完成（豁免前：待提交）"
     }
   ],
   "counts": {
