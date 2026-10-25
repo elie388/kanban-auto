@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>iOS27换肤独立演示页（外观示意）</title>
+<style>
+  :root{
+    --bg1:#FFE8C2; --bg2:#FFD1DC; --bg3:#C9E7FF;
+    --g5:#FF8A5B; --g6:#6C8EFF; --g5b:#FFA96B; --g6b:#8FA9FF;
+    --gold:#FFC93C; --ok:#4CD07D; --warn:#FFB020; --wait:#9AA5B1;
+    --txt:#30343B; --sub:#6B7280;
+    --card:rgba(255,255,255,.96);
+    --radius:20px; --radius-sm:12px;
+    --shadow:0 6px 18px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0; overflow-x:hidden; -webkit-text-size-adjust:100%; text-size-adjust:100%;
+    touch-action:pan-y; -ms-touch-action:pan-y; overscroll-behavior-y:contain;} /* 2026-10-19：完全禁用缩放（双击+捏合），仅保留纵向滚动 */
+  img,svg,video,canvas,table{max-width:100%; height:auto;}
+  body{
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    color:var(--txt);
+    background:
+      radial-gradient(600px 320px at 12% -40px, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(520px 280px at 92% 60px, rgba(255,255,255,.38), transparent 60%),
+      linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%);
+    line-height:1.6;
+    padding:max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:980px; margin:0 auto;}
+
+  /* 标题区样式已随标题整行删除（2026-10-24 家长令）：顶部不再有大标题与时间戳，时钟迁至页脚 .refresh-countdown 位置 */
+
+  /* 卡片通用 */
+  .card{
+    background:var(--card);
+    background-image:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0) 140px);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:var(--radius);
+    box-shadow:0 1px 2px rgba(48,52,59,.05), 0 10px 28px rgba(48,52,59,.08);
+    padding:18px 16px;
+    margin-bottom:16px;
+    animation:fadeUp .4s ease both;
+    position:relative;
+  }
+  /* 2026-10-20 折叠卡片右上角实时数据标签（终审方案） */
+  .card.collapse > .tag-live{
+    position:absolute; top:8px; right:12px; z-index:2;
+  }
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+  .card h2{
+    font-size:22px; margin:0 0 14px; display:flex;
+    align-items:center; gap:8px;
+  }
+  .card h2::before{
+    content:""; width:5px; align-self:stretch; border-radius:3px; flex:0 0 auto;
+    background:linear-gradient(180deg,#FF8A5B,#FFC93C);
+  }
+  .card h2 .emoji{font-size:26px;}
+  .card h2 .tag-demo{
+    margin-left:auto; font-size:12px; font-weight:500;
+    color:var(--sub); background:#F1F3F5;
+    padding:2px 10px; border-radius:999px; white-space:nowrap;
+  }
+
+  /* 余额卡片区 */
+  .balance-grid{
+    display:grid; gap:14px;
+    grid-template-columns:1fr;
+    margin-bottom:16px;
+  }
+  @media(min-width:380px){
+    .balance-grid{grid-template-columns:1fr 1fr;}
+  }
+  .bal-card{
+    border-radius:var(--radius);
+    padding:18px 18px 18px 24px;
+    color:#fff;
+    min-width:0;
+    box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:6px;
+    position:relative; overflow:hidden;
+    animation:fadeUp .4s ease backwards;
+    min-height:44px;
+    /* 活天空余额卡（2026-10-24 家长改定）：全透明背景——不用磨砂（原 V2 纯磨砂上线后家长真机否决），
+       卡面直接透出天空；年级识别锚仅剩姓名旁圆点（2026-10-24 家长令：一圈描边与左侧竖条均已去掉）；文字无阴影（2026-10-24 家长真机令） */
+    background:transparent;
+    border:1px solid rgba(255,255,255,.25);
+  }
+  /* 年级识别锚：仅剩姓名旁年级色圆点（见 .bal-name::before）；
+     左侧 6px 年级色竖条与一圈年级色描边均已按 2026-10-24 家长令去掉；今日变化数值在带内继承白字，不另着色 */
+  .bal-card.g5{box-shadow:var(--shadow);}
+  .bal-card.g6{box-shadow:var(--shadow);}
+  .bal-name::before{
+    content:""; display:inline-block; width:9px; height:9px; border-radius:50%;
+    margin-right:7px; vertical-align:1px;
+    box-shadow:0 0 0 2px rgba(255,255,255,.55);
+  }
+  .bal-card.g5 .bal-name::before{background:var(--g5);}
+  .bal-card.g6 .bal-name::before{background:var(--g6);}
+  /* 2026-10-19：余额离线数据标记（KB-BALANCE-AUTO-2026-10-19） */
+  .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
+    color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
+  /* 2026-10-19：余额卡片可点击跳转（button重置）；2026-10-24 V2：边框改为 1px 半透明白边（定版），不再归零 */
+  button.bal-card{border:1px solid rgba(255,255,255,.25); -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
+  button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
+  #log-g5, #log-g6{scroll-margin-top:12px;}
+  .bal-name{font-size:16px; font-weight:700; opacity:.95;}
+  .bal-score{font-size:40px; font-weight:900; line-height:1.1; font-variant-numeric:tabular-nums;}
+  .bal-score small{font-size:16px; font-weight:600;}
+  /* 总分滚动动画用数字包层（2026-10-19，终审 方案 H1+C1）：固定最小宽度防位数变化抖动 */
+  .bal-num{display:inline-block; min-width:3ch; text-align:center; font-variant-numeric:tabular-nums;}
+  /* 余额卡片总分机械滚轮 v2（2026-10-19 重写，终审 方案）：纯 CSS transition 驱动，合成器动画。
+     只动 transform；单格 = 1em；逐位 transition-delay，低位先停（里程表视觉） */
+  .odo{display:inline-flex; font-variant-numeric:tabular-nums; contain:layout style paint;}
+  .odo--anim{will-change:transform;}
+  .odo-slot{position:relative; display:inline-block; width:1ch; height:1em; overflow:hidden; vertical-align:baseline;}
+  .odo-strip{position:absolute; top:0; left:0; display:block; transform:translate3d(0,0,0);}
+  .odo-strip > span{display:block; height:1em; line-height:1em; text-align:center;}
+  .odo--anim .odo-strip{transition-property:transform; transition-duration:450ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
+  @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
+  /* 余额卡鼓励文案行已按家长 2026-10-23 令整行删除：元素/CSS/填充逻辑全删，不留占位 */
+  /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，终审分档口径）：今日变化标/分档刻度条/负分态 */
+  .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
+  .bal-today.pos{background:transparent;}
+  .bal-today.neg{background:transparent;}
+  .bal-today.zero{background:transparent; opacity:.75; font-weight:600;}
+  .bal-tier{margin-top:2px;}
+  .bal-tier-bar{display:flex; gap:2px;}
+  .bal-tier-seg{flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.28); overflow:hidden;}
+  .bal-tier-fill{display:block; height:100%; border-radius:3px; background:rgba(255,255,255,.92);}
+  .bal-tier-labels{display:flex; gap:2px; margin-top:2px;}
+  .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; font-weight:600; color:rgba(255,255,255,.95); font-variant-numeric:tabular-nums;}
+  .bal-card.is-neg{background:transparent;}
+  html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
+  /* 刻度条冲刺点亮（2026-10-23 家长拍板 初审 推荐方案，23:43 改定）：距下一档差额 ≤ 下一档×10% 时，当前段已填充部分点亮薄荷绿并自身脉冲闪动——一轮 3.2s 非对称（62.5%≈2.0s 渐亮、37.5%≈1.2s 回落）、opacity .55↔1、渐亮段弹性缓动 cubic-bezier(0.34,1.56,0.64,1)；只作用于冲刺段已填充部分，未填充/已满段不闪；底色不动；锁定态随刻度条整组隐藏；减少动态效果时静止常亮。原「大号数字旁呼吸圆点」已按家长 23:43 令彻底删除 */
+  .bal-tier-fill.sprint{background:#8CF5C0; box-shadow:0 0 6px rgba(140,245,192,.55); animation:balSprintPulse 3.2s infinite;}
+  @keyframes balSprintPulse{0%{opacity:.55; animation-timing-function:cubic-bezier(0.34,1.56,0.64,1);}62.5%{opacity:1; animation-timing-function:ease-in;}100%{opacity:.55;}}
+  @media (prefers-reduced-motion: reduce){ .bal-tier-fill.sprint{animation:none; opacity:1;} }
+  /* 冲刺提不透明兜底已随全透明定版撤销（2026-10-24 家长改定，无卡底可提；薄荷绿段自身带辉光与脉冲） */
+  /* ===== 活天空一期（2026-10-24 三方定版 B′＋V2）：顶部天空带（约330px）内含两张余额卡，天气由 canvas 引擎绘制 ===== */
+  .sky-band{
+    position:relative; border-radius:24px; overflow:hidden;
+    min-height:330px; margin-bottom:16px;
+    display:flex; flex-direction:column;
+    padding:14px 12px 12px;
+    background:linear-gradient(180deg,#5E9BE0 0%,#A8D4F5 70%,#D8EFFC 100%);
+    box-shadow:0 1px 2px rgba(48,52,59,.05), 0 10px 28px rgba(48,52,59,.10);
+  }
+  .sky-canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block;}
+  .sky-spacer{flex:1 1 auto; min-height:104px; position:relative; z-index:1;}
+  /* 严寒霜带（定版：顶边 ≤4px 薄霜带） */
+  .sky-frost{
+    position:absolute; top:0; left:0; right:0; height:4px; z-index:1; display:none;
+    background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(210,235,255,.55));
+    box-shadow:0 1px 6px rgba(190,225,255,.8);
+  }
+  .sky-band.has-frost .sky-frost{display:block;}
+  .sky-band .balance-grid{position:relative; z-index:2; margin-bottom:0;}
+  /* 天气预警条（定版：带底边、高 20–24px、官方色降饱和 20%、静态不滚动、多条淡入淡出轮播、只显橙/红） */
+  .sky-alert{
+    position:relative; z-index:2; margin-top:10px;
+    min-height:22px; border-radius:8px; padding:2px 10px;
+    font-size:12.5px; font-weight:700; line-height:1.55; color:#fff;
+    display:flex; align-items:center; gap:6px;
+    text-shadow:0 1px 3px rgba(15,35,60,.4);
+    transition:opacity .6s ease;
+  }
+  .sky-alert.orange{background:rgba(224,122,58,.88);}
+  .sky-alert.red{background:rgba(196,62,58,.88);}
+  .sky-alert[hidden]{display:none;}
+  /* 学习小结（2026-10-23 家长拍板两版上看板，终审 五条件） */
+  .sum-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#2FA84F; margin-left:7px; vertical-align:middle; transform-origin:center;}
+  /* 头点绿色呼吸灯（2026-10-23 家长令，22:47 改缩放呼吸，22:52 续令加大振幅防看漏）：亮态 scale .2→1.35 往复＋opacity .45↔1；ID 作用域防后加载规则覆盖；减少动态效果时静止常亮 */
+  #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:sumDotBreathe 1.8s ease-in-out infinite;}
+  @keyframes sumDotBreathe{0%,100%{transform:scale(.2); opacity:.45}50%{transform:scale(1.35); opacity:1}}
+  @media (prefers-reduced-motion: reduce){ #summary-dot:not([hidden]), .sum-dot:not([hidden]){animation:none;} }
+  /* 未读红圆点（2026-10-24 家长定开工，替代原红标题方案：未读条目标题旁红色闪烁圆点，读后消失；圆点颜色与闪烁待家长真机定稿） */
+  .unread-dot{display:inline-block; width:9px; height:9px; border-radius:50%; background:#DC2626; margin-left:6px; vertical-align:middle; animation:unreadDotBlink 1.2s ease-in-out infinite;}
+  .unread-dot[hidden]{display:none;}
+  @keyframes unreadDotBlink{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion: reduce){ .unread-dot{animation:none;} }
+  .sum-grade{margin-bottom:14px;}
+  .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
+  .sum-date{font-weight:800; font-size:15px; margin-bottom:6px;}
+  /* 小结条目级开合（2026-10-23 23:38 家长令）：条目默认收起、点日期标题行展开/收起，孩子版/家长版同口径 */
+  .sum-head{display:flex; justify-content:space-between; align-items:center; gap:8px; width:100%; background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer;}
+  .sum-head .sum-date{margin-bottom:0;}
+  .sum-chev{font-size:12px; color:#66707C; white-space:nowrap;}
+  .sum-body{margin-top:8px;}
+  .sum-sec{margin:8px 0;}
+  .sum-sec-t{font-weight:700; font-size:13px; color:#66707C; margin-bottom:4px;}
+  .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:14px;}
+  .sum-kp{display:inline-block; background:#EEF3FF; color:#2F4A8A; border-radius:999px; padding:1px 9px; font-size:12.5px; margin:0 6px 6px 0; line-height:1.7;}
+  .sum-kp-row{margin:0 0 2px; line-height:1.65;}
+  .sum-kp-note{font-size:13.5px; color:#4A5568;}
+  .sum-week{font-weight:700; border-bottom:none;}
+  .sum-pt{display:flex; justify-content:space-between; font-size:14px; line-height:1.7; border-bottom:1px dashed #EEE;}
+  .sum-pt-d.pos{color:#2E7D32; font-weight:700;} .sum-pt-d.neg{color:#B3261E; font-weight:700;}
+  .sum-enc{margin-top:9px; font-size:14px; line-height:1.7; background:#F4F8EE; border-radius:10px; padding:8px 10px;}
+  .sum-empty{color:#77808C; font-size:14px; padding:8px 2px;}
+  .sum-parent{border-top:2px dashed #E5E7EB; margin-top:16px; padding-top:12px;}
+  /* 家长版小结标题底色带（2026-10-24 家长令）：浅蓝整行圆角带，与孩子版条目卡奶油底 #FFFDF8 区分、同栏目 .sum-kp 同色系 */
+  .sum-parent-head{font-weight:800; font-size:15px; background:#EEF3FF; border-radius:10px; padding:9px 12px;}
+  
+  /* 家长版独立口令表单样式已随表单删除（2026-10-24 家长令：子块显隐改由家长令牌决定、无独立表单） */
+  .sum-p-name{font-weight:800; margin:10px 0 4px;}
+  .sum-p-html{font-size:14px; line-height:1.75;}
+  .sum-p-html p{margin:6px 0;}
+  /* 批改反馈（2026-10-23 家长知情改定：反馈全文上看板） */
+  .fb-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
+  .fb-title{font-weight:800; font-size:15px; margin-bottom:2px;}
+  .fb-time{font-size:12px; color:#77808C; margin-bottom:6px;}
+  /* 批改反馈条目级开合（2026-10-23 家长定：默认收起、点标题行才展开，仿今日任务卡口径；标题行不带孩子名，年级标签在栏目上方已有） */
+  .fb-head{display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; box-sizing:border-box; background:none; border:0; padding:0; margin:0; cursor:pointer; text-align:left; font:inherit; color:inherit; -webkit-tap-highlight-color:transparent;}
+  .fb-head-main{min-width:0;}
+  .fb-head .fb-title{margin-bottom:2px;}
+  .fb-head .fb-time{margin-bottom:0;}
+  .fb-chev{flex:0 0 auto; font-size:12.5px; font-weight:700; color:#66707C; background:#F1F3F5; border-radius:999px; padding:4px 11px; white-space:nowrap;}
+  .fb-body{margin-top:8px;}
+  .fb-html{font-size:14px; line-height:1.75;}
+  .fb-html p{margin:6px 0;}
+  .fb-html img{max-width:100%; border-radius:8px;}
+  .fb-qa-q{background:#EEF3FF; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
+  .fb-qa-a{background:#F4F8EE; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
+  .fb-qa-tag{font-weight:700; font-size:12px; color:#66707C;}
+  /* 任务项催促（2026-10-23 家长改定：催促改任务项、不再邮件催） */
+  .task-urge{margin-top:6px; color:#B3261E; font-size:13.5px; font-weight:700; line-height:1.5;}
+  .urge-mute{margin-left:8px; font-size:12px; font-weight:600; color:#8A4B45; background:#fff; border:1px solid #E5C4C0; border-radius:999px; padding:2px 9px; cursor:pointer;}
+
+  /* 今日任务 */
+  .task-section{margin-bottom:18px;}
+  .task-section:last-child{margin-bottom:0;}
+  .task-head{
+    font-size:16px; font-weight:800;
+    display:flex; align-items:center; gap:8px;
+    justify-content:space-between; /* 进度条右置 */
+    flex-wrap:nowrap; min-width:0; /* 小屏不换行、不溢出 */
+    margin-bottom:10px; padding-left:4px;
+  }
+  .pill-grade{
+    font-size:12px; padding:2px 10px; border-radius:999px;
+    color:#fff; font-weight:700; white-space:nowrap;
+  }
+  .task-section .pill-grade{font-size:17px; padding:6px 14px;}
+  .pill-grade.g5{background:var(--g5);}
+  .pill-grade.g6{background:var(--g6);}
+
+  .task-list{display:flex; flex-direction:column; gap:10px;}
+  .task{
+    display:flex; flex-direction:column; align-items:stretch;
+    padding:12px 14px; border-radius:var(--radius-sm);
+    border:1.5px solid #E5E7EB;
+    background:#FAFBFC;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    min-height:56px;
+    transition:transform .15s ease;
+  }
+  /* 卡片主行（A款，2026-10-22 家长拍板、三方定案）：左侧一列＝状态徽章在上、
+     标题在下；右侧只留一行「详情」文字链（待改正徽标/明细面板在主行之下另起行） */
+  .task .task-main{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; width:100%;
+  }
+  .task:active{transform:scale(.98);}
+  .task .task-top{display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:5px;}
+  .task .st-badge{
+    flex:0 0 auto;
+    font-size:12px; font-weight:700;
+    padding:3px 10px; border-radius:999px;
+    display:inline-flex; align-items:center; justify-content:center; gap:4px;
+    white-space:nowrap;
+  }
+  /* 状态呼吸灯（2026-10-22 家长定）：待提交=红、改正中=橙、已完成=绿，徽章前圆点做呼吸脉冲 */
+  .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 2.8s ease-in-out infinite;}
+  @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.6; transform:scale(.88);}}
+  @media (prefers-reduced-motion: reduce){ .task .st-dot{animation:none;} }
+  .task.pending{background:#FCF2F2;}
+  .task.pending .st-badge{background:#FDECEA; color:#C92A20;}
+  .task.submitted{background:#F0F4F8;}
+  .task.submitted .st-badge{background:#E1EDF9; color:#1D5FA8;}
+  .task.submitted .st-dot{background:#3D77A8;}
+  .task.pending .st-dot{background:#E5484D;}
+  .task.grading{background:#F4F1FA;}
+  .task.grading .st-badge{background:#E7E1F7; color:#4B3F8F;}
+  .task.grading .st-dot{background:#7C6BD6;}
+  .task.correcting{background:#FEF8EC;}
+  .task.correcting .st-badge{background:#FFF3D6; color:#B54708;}
+  .task.correcting .st-dot{background:#F08C0A;}
+  .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
+  .task.done .st-dot{background:#22B573;}
+  .task .st-badge.is-calm{background:#F1F3F5; color:#6B7280;}
+  .task .st-badge.is-calm .st-dot{background:#98A2B3; box-shadow:none; animation:none;}
+  /* 操作区（A款）：主行之下右对齐一行，只放上传模块注入的「交这一项」按钮；
+     空时不占位，收起时整行隐藏 */
+  .task .st-zone{
+    display:flex; justify-content:flex-end; gap:6px;
+    width:100%; margin-top:8px;
+  }
+  .task .st-zone:empty{display:none;}
+  .task .st-mini{font-size:11px; font-weight:600; color:#8a8378; background:#F1F3F5; border-radius:999px; padding:2px 8px; white-space:nowrap;}
+  /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
+     徽标独占一行（主行之下左对齐），不再与状态徽章同行挤压；
+     展开区逐题列题号/题目/错因。2026-10-22 家长改定：整个任务卡
+     默认收起、点「展开」后才展开（见 .open-task 规则），本徽标
+     随卡展开后显示，为纯标签不再承担展开开关。 */
+  .task .corr-badge{
+    align-self:flex-start;
+    margin-top:10px;
+    font-size:13px; font-weight:700; font-family:inherit;
+    padding:5px 12px; border-radius:999px; border:none; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center; gap:5px;
+    white-space:nowrap; min-height:36px;
+    background:#FFE9E0; color:#C2410C;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .task .corr-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
+  .task.open-task .corr-caret{transform:rotate(90deg);}
+  .task .corr-panel{display:none; width:100%; margin-top:8px; border-top:1px dashed #F0C4A8; padding-top:4px;}
+  .task.open-task .corr-panel{display:block;}
+  /* 任务级待确认说明（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-2/B3/B4）：静态块、无过渡；收起态隐藏全文，仅展开显示。 */
+  .task .task-note{display:none; margin-top:8px; padding:8px 10px; background:#FFF7E6; border-left:3px solid #D97706; color:#7A4A00; font-size:13px; line-height:1.65;}
+  .task.open-task .task-note{display:block;}
+  .task .task-note-cap{color:#B54708; margin-right:6px;}
+  /* 任务卡默认收起（2026-10-22 家长定：每项任务点击后才展开，不分状态）：
+     收起时只留标题、状态徽章与「展开」按钮，其余（说明、待改正、文件、交作业按钮）展开后才显示 */
+  .task[data-tid]:not(.open-task) .task-progress{display:none;}
+  .task[data-tid]:not(.open-task) .corr-badge{display:none;}
+  /* 待批改角标（2026-10-23 B案）：昨日已交/批改中被携带到今日的任务，提示「交了、在等批改」 */
+  .task .carry-tag{font-size:10.5px;color:#1D5FA8;background:#EAF2FB;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap;}
+  /* 昨日完成折叠区（2026-10-23 B案，终审 定案）：只读回顾、灰色淡出，本地时间12:00后不再渲染 */
+  .yd-zone{margin-top:10px;}
+  .yd-zone:empty{display:none;}
+  .yd-head{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;cursor:pointer;padding:6px 2px;font-size:13px;color:var(--sub);text-align:left;}
+  .yd-count{background:#E4F8EC;color:#1E9E52;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:600;}
+  .yd-body{padding:2px 2px 6px;}
+  .yd-group{font-size:12px;color:var(--sub);margin:6px 0 2px;}
+  .yd-item{display:flex;gap:6px;align-items:baseline;padding:3px 2px;font-size:13.5px;color:#6B7280;}
+  .yd-item .yd-check{color:#1E9E52;flex:none;}
+  .yd-tag{flex:none;font-size:10.5px;color:#6B7280;border:1px solid #D8DCE2;border-radius:999px;padding:0 6px;}
+  /* 年级段总折叠（2026-10-23 A案，家长拍板）：两段默认全收起、点标题行展开；手动状态按「本地日期+设备」记 localStorage，当日内刷新不丢、次日自动回到全收起 */
+  .task-head{cursor:pointer;}
+  .grade-caret{flex:none;font-size:13px;color:var(--sub);transition:transform .25s ease;margin-left:4px;}
+  .task-section.grade-folded .grade-caret{transform:rotate(-90deg);}
+  .task-section.grade-folded .task-list, .task-section.grade-folded .yd-zone{display:none;}
+  /* 全板口令门（2026-10-23 家长拍板合并选项1，终审 终审）：无设备令牌时 kb-locked 硬兜底隐藏全部详情体（门帘口径，服务端校验不变）；锁定入口带 🔐 标记 */
+  html.kb-locked .collapse-body{display:none !important;}
+  html.kb-locked .task-section .task-list, html.kb-locked .task-section .yd-zone{display:none !important;}
+  html.kb-locked .task-head::after{content:'🔐';font-size:14px;margin-left:6px;}
+  html.kb-locked .collapse-btn::after{content:'🔐';font-size:14px;margin-left:6px;}
+  /* 锁定态概览打码（2026-10-23 家长拍板 终审 混合案）：今日进度组整组隐藏（纯隐藏走 CSS 与锁定类严格同步）；姓名/分数为文本替换，走口令门 kbApplyMask 与余额 setter 守卫 */
+  html.kb-locked .task-prog{display:none !important;}
+  /* 姓名防闪现（2026-10-23 Muse 补修）：锁定态且打码尚未执行（kb-masked 未置）时姓名与 pill 先不可见，kbApplyMask 替换为星号形后才显示，消除冷加载解析窗口的明文闪现；visibility 保留布局不跳版 */
+  html.kb-locked:not(.kb-masked) .bal-name, html.kb-locked:not(.kb-masked) .pill-grade{visibility:hidden !important;}
+  .task[data-tid]:not(.open-task) .tfiles{display:none;}
+  .task[data-tid]:not(.open-task) .st-mini{display:none;}
+  .task[data-tid]:not(.open-task) .st-zone{display:none;}
+  .task[data-tid]:not(.open-task) .task-acts{display:none;}
+  .task[data-tid]:not(.open-task){cursor:pointer;}
+  .task .task-toggle{
+    font-size:13.5px; font-weight:600; font-family:inherit;
+    padding:10px 2px 10px 14px; border:none; background:transparent; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center; gap:4px;
+    white-space:nowrap; min-height:44px; /* 文字链热区不缩水 */
+    color:#8A8378; flex:0 0 auto; align-self:center;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .task.correcting .task-toggle{color:#C77700; font-weight:700;}
+  span.corr-badge{cursor:default;}
+  .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
+  .corr-item:last-child{border-bottom:none;}
+  .corr-item .corr-no{font-weight:700; color:#C2410C;}
+  .corr-item .corr-q{color:#30343B; white-space:pre-line;}
+  .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
+  .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
+  .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
+  .corr-item .corr-qimg{margin-top:8px;}
+  .corr-item .corr-cap{display:inline-block; font-size:11px; font-weight:700; color:#8A6D2B; background:#FFF3D6; border:1px solid #F0DFB8; border-radius:6px; padding:1px 7px; margin-bottom:4px;}
+  .corr-item .corr-qimg .corr-img{margin-top:0;}
+  .corr-item .corr-note{margin-top:8px;}
+  .corr-item .corr-note-t{display:block; color:#6B7280; font-size:12.5px; line-height:1.65;}
+  .corr-item .corr-orig{display:block; color:#30343B; white-space:pre-line; line-height:1.65;}
+  .corr-item.corr-qa{border-left:2px solid #D8C9A8; padding-left:10px; background:#FDFAF1;}
+  .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  /* 操作横排（2026-10-22 家长定）：「交这一项」与打印按钮放同一横排 */
+  .task .task-acts{display:flex; gap:8px; width:100%; margin-top:10px; align-items:stretch;}
+  .task .task-acts .st-zone{width:auto; margin-top:0; flex:none;}
+  .task-acts .st-zone{flex:none; order:2;}
+  .task-acts .tfiles{flex:1; min-width:0; order:1; margin-top:0;}
+  .task .task-acts:not(:has(.tfile)){justify-content:flex-end;}
+  /* 已完成任务「查看原图」按钮＋全屏查看器（2026-10-22 家长定，三方定案） */
+  .tfile.torig{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#EEF4FA; border-color:#B9CFE4; color:#1F4E79;}
+  #origViewer{position:fixed; inset:0; z-index:9990; background:rgba(12,14,18,.95); display:none; flex-direction:column;}
+  #origViewer.open{display:flex;}
+  #origViewer .ov-bar{display:flex; align-items:center; justify-content:space-between; padding:12px 14px;}
+  #origViewer .ov-count{font-size:14px; color:#d7dce3;}
+  #origViewer .ov-close{background:none; border:1px solid rgba(255,255,255,.4); color:#fff; border-radius:999px; min-width:44px; min-height:44px; font-size:16px; cursor:pointer;}
+  #origViewer .ov-stage{flex:1; overflow:auto; display:flex; align-items:center; justify-content:center;}
+  #origViewer .ov-stage img{max-width:100%; max-height:100%; object-fit:contain;}
+  #origViewer .ov-stage img.zoomed{max-width:none; max-height:none; width:200%;}
+  #origViewer .ov-err{color:#ffb4a2; font-size:15px; padding:20px; text-align:center; line-height:1.7;}
+  #origViewer .ov-nav{display:flex; gap:10px; justify-content:center; padding:12px;}
+  #origViewer .ov-nav button{flex:1; max-width:170px; min-height:46px; border-radius:12px; border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.08); color:#fff; font-size:15px; cursor:pointer;}
+  #origViewer .ov-nav button:disabled{opacity:.35;}
+  .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
+  .tfile:active{background:#EAE2CC;}
+  .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
+  .tprint-hint{flex:1 1 100%; font-size:12px; color:#8a8171; line-height:1.5;}
+  #printArea{display:none;}
+  body.kb-printing #printArea{display:block; position:fixed; inset:0; z-index:9999; background:#fff; overflow:auto; padding:10px;}
+  #printArea .pa-bar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
+  /* 标题独占一行（2026-10-22 家长截图报障）：标题与按钮同行时按钮被挤到文字内部折行；按钮一律不折行、不收缩 */
+  #printArea .pa-title{font-weight:700; margin-right:auto; font-size:16px; flex:1 1 100%;}
+  #printArea .pa-bar .tfile{white-space:nowrap; flex:0 0 auto;}
+  #printArea .pa-hint{color:#8a8171; font-size:12px; margin-bottom:10px;}
+  #printArea .pa-bar .tfile:disabled{opacity:.55;cursor:default}
+  #printArea img{display:block; width:100%; margin:0 auto 10px; border:1px solid #ddd;}
+  @media print{
+    body>*{display:none !important;}
+    body>#printArea{display:block !important; position:static; overflow:visible; padding:0;}
+    #printArea .pa-bar, #printArea .pa-hint{display:none !important;}
+    #printArea img{border:none; page-break-after:always; margin:0;}
+  }
+  .corr-item .corr-audios{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .corr-item .corr-audio{display:inline-flex;}
+  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 13px; border-radius:999px; border:1.5px solid #E09A45; background:#FFF4E3; color:#6B3F0E; font-size:14px; font-weight:600; line-height:1; cursor:pointer; flex:0 0 auto;}
+  /* 图标定宽（2026-10-22 家长报障修复）：▶ 与 ⏸ 字形宽度不同，播放时换图标会把按钮撑宽、
+     三个按钮总宽正好卡在换行临界点上，一点播放按钮行就从两行跳成一行；图标盒定宽后两种状态同宽，不再跳行 */
+  .corr-item .corr-play .corr-ic{display:inline-block; width:15px; text-align:center; flex:0 0 auto; font-size:13px; color:#D97A2B;}
+  .corr-item .corr-play.orig{border-color:#5B8DB8; background:#EAF4FB; color:#1F4E79;}
+  .corr-item .corr-play.orig .corr-ic{color:#3D77A8;}
+  .corr-item .corr-play.playing{background:#D97A2B; border-color:#D97A2B; color:#fff;}
+  .corr-item .corr-play.playing .corr-ic{color:#fff;}
+  .corr-item .corr-play.orig.playing{background:#2F6D9E; border-color:#2F6D9E; color:#fff;}
+  .corr-item .corr-play.orig.playing .corr-ic{color:#fff;}
+  .corr-item .corr-audio audio{display:none;}
+  .task .task-info{flex:1; min-width:0; text-align:left;}
+  .task .task-name{
+    font-size:16px; font-weight:700;
+    overflow:visible; white-space:pre-line; word-break:break-word;
+  }
+  .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
+  .task.done .task-name{color:#1E9E52;}
+  .task.done{background:#F2F9F4; position:relative; padding-top:20px;}
+  .task.is-exempt{background:#FAFBFC; border-style:dashed;}
+
+  /* 学习走势 */
+  .tr-legend{display:flex;gap:14px;margin:10px 0 4px;font-size:13px;align-items:center;flex-wrap:wrap;color:var(--sub)}
+  .tr-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+  .tr-tabs{margin-left:auto;display:flex;gap:6px}
+  .tr-tabsrow{display:flex;width:100%;margin:0 0 4px}
+  .tr-tabs button{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
+  .tr-tabs button.on{background:#E8873A;border-color:#E8873A;color:#fff;font-weight:700}
+  .tr-filt{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
+  .tr-filt.on{background:#D64545;border-color:#D64545;color:#fff;font-weight:700}
+  #tr-tip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;min-height:18px}
+  .tr-updated{font-size:11.5px;color:#9AA0A6;margin-top:4px}
+  .tr-note{background:#FFF7E6;border:1px solid #F0DFB8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;color:#8A6D2B}
+  .tr-act{display:none;background:#FFF;border:1.5px dashed #E8873A;border-radius:12px;padding:10px 12px;margin-top:8px;font-size:13px}
+  .tr-inc{background:#F8F4E9;border-radius:12px;padding:10px 12px;margin-top:12px}
+  .tr-stat{flex:1;min-width:140px;background:#F8F4E9;border-radius:12px;padding:9px 12px;font-size:12.5px;color:#6B7280}
+  .tr-stat b{display:block;font-size:16px;color:#30343B;margin-top:2px}
+  .tr-up{color:#1E9E52}.tr-dn{color:#D64545}
+  .tr-mrow{display:flex;gap:10px;align-items:stretch;margin-top:10px}
+  .tr-mlab{writing-mode:vertical-rl;font-size:13px;font-weight:700;color:#6B7280;display:flex;align-items:center}
+  .tr-mini{flex:1;background:#F8F4E9;border-radius:12px;padding:8px 8px 2px;cursor:pointer;min-width:0}
+  .tr-mhd{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:2px}
+  .tr-mhd b{font-size:14px}
+  .tr-sec-t{font-size:15px;font-weight:800;margin:14px 0 2px}
+  .tr-sub{font-size:12px;color:#9AA0A6}
+  .tr-ft{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  circle.tr-pt{cursor:pointer}
+  circle.tr-nodata{cursor:pointer}
+  circle.tr-bad{stroke:#D64545 !important}
+  /* 走势图特效（2026-10-23 家长拍板 ABCD 全做）：A 入场画线 2s、B 达标点呼吸微光、C 点按浮层、D 破峰金星；
+     全部动效在 prefers-reduced-motion 下退化为终态（B 光晕直接不显示） */
+  .tr-line-anim{stroke-dasharray:100;stroke-dashoffset:100;animation:trFxDraw 2000ms linear forwards}
+  @keyframes trFxDraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+  .tr-pt-anim,.tr-lbl-anim{opacity:0;animation:trFxFade 240ms ease forwards}
+  @keyframes trFxFade{from{opacity:0}to{opacity:1}}
+  .tr-halo{animation:trFxBreath 2.4s ease-in-out infinite}
+  @keyframes trFxBreath{0%,100%{opacity:0}50%{opacity:.25}}
+  .tr-star{transform-box:fill-box;transform-origin:center}
+  .tr-star-anim{opacity:0;animation:trFxStar 380ms ease forwards}
+  @keyframes trFxStar{0%{opacity:0;transform:scale(.3)}70%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:scale(1)}}
+  .tr-pop{position:absolute;z-index:6;background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.55;box-shadow:0 4px 14px rgba(0,0,0,.25);pointer-events:none;max-width:80%;white-space:nowrap}
+  .tr-pop b{font-size:14px}
+  @media (prefers-reduced-motion: reduce){
+    .tr-line-anim{animation:none;stroke-dashoffset:0}
+    .tr-pt-anim,.tr-lbl-anim,.tr-star-anim{animation:none;opacity:1}
+    .tr-halo{display:none}
+  }
+  .tr-wrow{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px dashed #EFD9CF;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .tr-wmain{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .tr-wname{font-weight:600;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tr-wmeta{font-size:12px;color:#9AA0A6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tr-wrow.open{background:#FBF3E7}
+  .tr-wrow .row-cta{flex:none;color:#E8873A;background:#FDF0E1;border:1px solid #F3C491;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:700;white-space:nowrap;margin-left:8px}
+  .weak-hint{font-size:12px;color:#9AA0A6;margin-bottom:6px}
+  .tr-wstrip{display:none;background:#FFF8EC;border-radius:10px;padding:9px 12px;margin:4px 0;font-size:12.5px}
+  .tr-wstrip a{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;text-decoration:none}
+  .tr-go-a{background:#E8873A;color:#fff}
+  .tr-go-b{background:#F1EAD8;color:#6B7280}
+  .tr-wstrip button{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;border:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .tr-wstrip button:disabled{opacity:.55;cursor:default}
+  .tr-submit-status{margin-top:4px;font-size:12.5px;color:#2E7D32;min-height:16px}
+  .tr-fallback a{display:inline;padding:0;margin:0;color:#B4552D;text-decoration:underline;font-size:11.5px}
+  .tr-subj{margin-top:12px;border-top:1px solid #EFEAD9;padding-top:4px}
+  #tr-stip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px}
+
+  /* 荣耀徽章 */
+  .grade-block{margin-top:18px;}
+  .grade-block:first-of-type{margin-top:0;}
+  .grade-head{
+    display:flex; align-items:center; gap:10px;
+    font-size:18px; font-weight:800; color:var(--txt);
+    margin:0 0 12px; padding-left:4px;
+  }
+  /* 本周徽章：勋章带（2026-10-20 方案1，终审 终审放行；2026-10-23 A+ 改版，家长拍板+终审 咨询放行）
+     64px 圆形勋章、稀有度色环三档（金=普通/蓝=进阶/紫=稀有，仅颜色区分）；
+     排布由横滑改为自动换行：每行枚数随容器宽度自适应（手机约 4、iPad 6–8），不限行数、不缩小、不折叠——
+     横滑曾致第 5 枚起无声滑出屏幕（2026-10-23 彦均 5 枚实测漏看），故废止横滑/右缘渐隐/隐藏滚动条；
+     BADGE_TIER / BADGE_BLURB 为展示层静态数据，仅决定色环与气泡文案，禁止被判定器/积分逻辑引用。 */
+  .badge-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    padding:8px 2px 10px;
+  }
+  /* 详情气泡进带时整行占位：JS 把 .medal-pop 插到被点勋章所在行末尾之后，气泡自然落在该行正下方 */
+  .badge-strip .medal-pop{flex:0 0 100%; margin-top:0;}
+  .medal{
+    flex:0 0 auto; width:76px; position:relative;
+    text-align:center; cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .medal-disc{
+    width:64px; height:64px; margin:0 auto; border-radius:50%;
+    box-sizing:border-box; border:3px solid #E8B04B;
+    background:radial-gradient(circle at 32% 28%, #FFF6D8, #FFE9A8 58%, #F6D47E);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+    box-shadow:0 2px 6px rgba(232,176,75,.25);
+  }
+  .medal-disc.ring-blue{border-color:#4EA1FF;}
+  .medal-disc.ring-purple{border-color:#B678F0;}
+  .medal-disc .ic{font-size:28px; line-height:1; filter:drop-shadow(0 1px 2px rgba(232,176,75,.4));}
+  .medal-name{font-size:11px; font-weight:700; color:var(--txt); margin-top:5px; line-height:1.25; white-space:nowrap;}
+  /* 同徽章当周多次获得次数角标（如 ×3），静态小圆点，无动效 */
+  .medal-count{
+    position:absolute; top:0; right:2px; z-index:2;
+    background:#D64545; color:#fff;
+    font-size:11px; font-weight:700; line-height:1;
+    padding:3px 6px; border-radius:999px;
+  }
+  /* 补发角标（2026-10-20 B方案）：左上，与右上 ×N 计数角标错开不冲突 */
+  .medal-late{
+    position:absolute; top:0; left:2px; z-index:2;
+    background:#E8862E; color:#fff;
+    font-size:11px; font-weight:700; line-height:1;
+    padding:3px 6px; border-radius:999px;
+  }
+  /* 已读徽章入带飞入（终审 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入。
+     2026-10-23 A+：去掉"只前 6 枚"写死上限，全量覆盖——JS 按勋章实测行分组错峰（行内 70ms 递增、行间 +200ms） */
+  .medal.fly-in{animation:medalFly .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay:var(--fly-d,0ms);}
+  @keyframes medalFly{
+    from{transform:translateX(26px) scale(.6); opacity:0;}
+    to{transform:translateX(0) scale(1); opacity:1;}
+  }
+  /* 新徽章动效 A+B（2026-10-20 沿用，载体由大卡改为勋章圆盘）：
+     A 呼吸光晕——未读新徽章金色光晕缓慢脉动，点开查看后停（localStorage 记已读，按周+年级+徽章区分）；
+     B 扫光掠过——首次渲染时一道高光斜扫过圆盘一次即停（会话内不重播，软刷新不重复打扰）。
+     合并规则 R1：未读只走光晕+扫光、不飞入；已读只飞入、不带光晕，二者互斥不同帧叠加。 */
+  .medal.is-new .medal-disc{animation:medalGlow 2.4s ease-in-out infinite alternate;}
+  @keyframes medalGlow{
+    from{box-shadow:0 2px 6px rgba(232,176,75,.25), 0 0 0 0 rgba(246,212,126,.45);}
+    to{box-shadow:0 2px 6px rgba(232,176,75,.25), 0 0 14px 4px rgba(246,212,126,.85);}
+  }
+  .medal.is-new .medal-disc::after{
+    content:''; position:absolute; top:0; bottom:0; left:0; width:55%;
+    background:linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0));
+    transform:translateX(-140%) skewX(-18deg);
+    animation:badgeShine 1.15s ease-out .3s 1 forwards;
+    pointer-events:none;
+  }
+  @keyframes badgeShine{ to{transform:translateX(340%) skewX(-18deg);} }
+  .medal.is-new.shine-done .medal-disc::after{display:none;}
+  @media (prefers-reduced-motion: reduce){
+    .medal.fly-in{animation:none;}
+    .medal.is-new .medal-disc{animation:none;}
+    .medal.is-new .medal-disc::after{display:none;}
+  }
+  /* 勋章详情气泡：点勋章展开（大图 + 点亮日期 + 一句童趣解释） */
+  .medal-pop{
+    display:flex; align-items:flex-start; gap:10px;
+    margin-top:6px; padding:10px 12px;
+    background:#FFFDF5; border:1.5px solid #FFD97A; border-radius:12px;
+  }
+  .medal-pop[hidden]{display:none;}
+  .medal-pop .pop-ic{font-size:34px; line-height:1.15;}
+  .medal-pop .pop-main{flex:1; min-width:0;}
+  .medal-pop .pop-name-t{font-size:14px; font-weight:800; color:var(--txt);}
+  .medal-pop .pop-date{font-size:12px; font-weight:600; color:var(--sub); margin-left:6px;}
+  .medal-pop .pop-blurb{font-size:13px; color:var(--txt); margin-top:2px;}
+  .medal-pop .pop-close{
+    background:none; border:none; padding:2px 4px;
+    font-size:16px; line-height:1; color:var(--sub); cursor:pointer;
+  }
+  /* 成就进度条（2026-10-19新增） */
+  .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
+  .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
+  .ach-prog-bar > i{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+  .ach-prog-num{font-size:14px; color:var(--sub); font-variant-numeric:tabular-nums; white-space:nowrap;}
+
+  /* 今日任务进度条（2026-10-19新增）：复用 ach 视觉，右置收敛 */
+  .task-prog{display:inline-flex; align-items:center; gap:8px; flex:0 1 auto; min-width:0; margin-left:auto;}
+  .task-prog-text{font-size:13px; font-weight:700; color:var(--sub); white-space:nowrap; font-variant-numeric:tabular-nums; flex:0 0 auto;}
+  .task-prog-bar{width:96px; flex:1 1 64px; min-width:64px; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
+  .task-prog-fill{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+  /* 进度条优化（2026-10-23 家长拍板 1+2+3+5、终审 核准）：年级色与余额卡同源变量、金色只留成就条 */
+  #tasks-g5 .task-prog-fill{background:linear-gradient(90deg,var(--g5),var(--g5b));}
+  #tasks-g6 .task-prog-fill{background:linear-gradient(90deg,var(--g6),var(--g6b));}
+  /* 往复生长（2026-10-23 23:48 家长改定、初审 定参，覆盖原「生长＋停留＋跳回 0」口径）：整轮 5.2s＝
+     生长 2.4s（0%→46.2%，ease-out）＋满位停 0.6s（46.2%→57.7%）＋回缩 2.0s（57.7%→96.2%，ease-in）＋零位停 0.2s（96.2%→100%），
+     长满后沿原路缩回 0 再长出、无瞬间跳变；恒定周期（不随百分比缩放）；分段缓动由 keyframe 内 animation-timing-function 实现。
+     实现＝transform: scaleX（fill 的 width 仍为目标百分比，视觉与宽度生长一致、不动布局）；
+     ID 作用域压过 D2 的一次性 barGrow 入场动画（入场生长被循环生长吸收，不再单独触发）。
+     满格单独处理：is-full 时改走一次性动画 progGrowOnce（4s、forwards 定格在 scaleX(1)），不循环（本次改定不动）。 */
+  #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill{
+    --pb-cycle: 5.2s;                            /* 整轮往复周期：生长 2.4s + 满位停 0.6s + 回缩 2.0s + 零位停 0.2s */
+    --pb-ease: cubic-bezier(0.25, 0.1, 0.25, 1); /* 标准 ease（满格 progGrowOnce 用） */
+    --pb-once: 4s;                               /* 满格一次性生长时长 */
+    transform-origin:left center;
+    animation: progGrowLoop var(--pb-cycle) infinite;
+  }
+  @keyframes progGrowLoop{
+    0%{ transform:scaleX(0); animation-timing-function:ease-out; }
+    46.2%{ transform:scaleX(1); }
+    57.7%{ transform:scaleX(1); animation-timing-function:ease-in; }
+    96.2%{ transform:scaleX(0); }
+    100%{ transform:scaleX(0); }
+  }
+  @keyframes progGrowOnce{ 0%{ transform:scaleX(0); } 100%{ transform:scaleX(1); } }
+  /* 颜色渐变（2026-10-23 23:08 家长改定）：填充色按百分比连续混合——≤70% 纯年级色、70%→100% 线性混入语义绿、
+     100% 纯绿；由渲染 JS 按 pct 计算两端 stop 的混合色并以 inline background 赋值（软刷新跟随）。
+     满格呼吸动画已按家长令删除；非满格只保留 progGrowLoop 循环生长，满格走 progGrowOnce 一次性生长后定格。
+     下行 is-full 绿色仅作无 JS 时的兜底（与 100% 混合终点同值），inline 赋值后以 inline 为准、不打架；
+     同行并置满格一次性动画（作用域比分更高，压过上方循环规则）。 */
+  #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{background:linear-gradient(90deg,#5BA36B,#7CC98A); animation:progGrowOnce var(--pb-once, 4s) var(--pb-ease, cubic-bezier(0.25, 0.1, 0.25, 1)) 1 forwards;}
+  @media (prefers-reduced-motion: reduce){
+    #tasks-g5 .task-prog-fill, #tasks-g6 .task-prog-fill,
+    #tasks-g5 .task-prog.is-full .task-prog-fill, #tasks-g6 .task-prog.is-full .task-prog-fill{ animation:none; }
+  }
+
+
+  /* 积分商店 */
+  .shop-grid{
+    display:grid; gap:12px;
+    grid-template-columns:minmax(0,1fr);
+  }
+  @media(min-width:768px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  .shop-item{
+    border-radius:var(--radius-sm);
+    padding:14px; background:#FAFBFC;
+    border:1px solid #EEF1F4;
+    min-height:44px; min-width:0;
+  }
+  .shop-top{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+  .shop-top .ic{font-size:30px; flex:0 0 auto;}
+  .shop-top .nm{font-size:16px; font-weight:800; flex:1; min-width:0;
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2;
+    overflow:hidden; white-space:pre-line; text-overflow:clip; word-break:break-all;}
+  .shop-top .cost{
+    font-size:14px; font-weight:800; color:#E25C1D;
+    background:#FFEEDD; padding:2px 10px; border-radius:999px;
+    white-space:nowrap; flex:0 0 auto; flex-shrink:0;
+  }
+  .bar-track{
+    height:12px; border-radius:999px; background:#EDEFF2;
+    box-shadow:inset 0 1px 2px rgba(48,52,59,.10);
+    overflow:hidden; margin:8px 0 6px; width:100%;
+  }
+  .bar-fill{
+    height:100%; width:100%; display:block; border-radius:999px;
+    transform-origin:left center;
+    background:linear-gradient(90deg,#FFC93C,#FF8A5B);
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .bar-fill.g6{background:linear-gradient(90deg,#8FA9FF,#6C8EFF);}
+  .bar-fill.ready{background:linear-gradient(90deg,#4CD07D,#2FBF71);}
+  .shop-hint{font-size:13px; color:var(--sub); line-height:1.7; overflow-wrap:break-word; word-break:break-word;}
+  .shop-hint b{color:#E25C1D;}
+  .shop-hint .ok-line{color:#1E9E52; font-weight:700;}
+
+  /* 兑换记录（2026-10-21 终审 方案+家长拍板：商店样式不变，记录沿用商店卡；
+     默认收起、点击展开，与目标榜详情同交互） */
+  .redeem-wrap{margin-top:18px;}
+  .redeem-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
+    padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
+  .redeem-head{font-size:16px; font-weight:800; flex:1;}
+  .redeem-sub{font-size:12px; color:var(--sub); font-weight:400; margin-left:6px;}
+  .redeem-chev{font-size:13px; color:var(--sub);}
+  .redeem-grade{font-size:14px; font-weight:800; margin:14px 0 8px;}
+  .redeem-item{border-radius:var(--radius-sm); padding:12px 14px; background:#FAFBFC;
+    border:1px solid #EEF1F4; margin-bottom:10px;}
+  .redeem-top{display:flex; align-items:center; gap:10px;}
+  .redeem-top .ic{font-size:26px; flex:0 0 auto;}
+  .redeem-top .nm{font-size:15px; font-weight:800; flex:1; min-width:0;}
+  .redeem-top .spent{font-size:14px; font-weight:800; color:#D64541; background:#FDECEA;
+    padding:2px 10px; border-radius:999px; white-space:nowrap; flex:0 0 auto;}
+  .redeem-hint{font-size:13px; color:var(--sub); margin-top:6px; line-height:1.6;}
+  .redeem-item.rev{opacity:.72;}
+  .redeem-item.rev .nm{text-decoration:line-through;}
+  .redeem-back{font-size:12px; font-weight:700; color:#1E7E34; background:#E7F8E7;
+    border-radius:999px; padding:2px 10px; white-space:nowrap; flex:0 0 auto;}
+  .redeem-empty{border:1.5px dashed #D8D2C2; border-radius:var(--radius-sm); padding:14px;
+    text-align:center; font-size:13px; color:var(--sub); background:#FAFBFC;}
+  .redeem-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
+
+  /* 商店子块（2026-10-23 四块合并，终审 C 形态）：加分/扣分规则随商店直接展开，
+     积分日志沿 redeem 模式二级开关默认收起；子块不套 .collapse/.collapse-btn（防折叠JS与口令门 closest 语义污染） */
+  .sub-block{margin-top:18px;}
+  .sub-head{font-size:16px; font-weight:800; margin-bottom:8px;}
+  .sub-wrap{margin-top:18px;}
+  .lib-zone{padding:0 16px 4px}
+  #panel-lib .collapse-pad{padding:0}
+  .fb-zone{padding:0 16px 4px}
+  #panel-feedback .collapse-pad{padding:0}
+  .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
+    padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
+  .sub-head-t{font-size:16px; font-weight:800; flex:1;}
+  /* 批改反馈子块标题放大（2026-10-23 晚家长更正口径：「和学习小结一样大」＝仅字号/字重对齐 .cb-title，
+     批改反馈仍留在学习小结卡内为子块，不独立成栏；字重随 .cb-title 的 700、字号含 ≥1024px 的 24px 镜像） */
+  #feedback-toggle .sub-head-t{font-size:22px; font-weight:700;}
+  @media(min-width:1024px){ #feedback-toggle .sub-head-t{font-size:24px;} }
+  .sub-chev{font-size:13px; color:var(--sub);}
+
+  /* 规则列表 */
+  .rule-list{list-style:none; margin:0; padding:0;}
+  .rule-list li{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:10px 0;
+    border-bottom:1px dashed #EDEFF2;
+    font-size:15px; min-height:44px;
+  }
+  .rule-list li:last-child{border-bottom:none;}
+  .rule-pts{
+    font-weight:800; font-size:14px;
+    padding:2px 10px; border-radius:999px; white-space:nowrap; flex:0 0 auto;
+  }
+  .rule-pts.plus{background:#E4F8EC; color:#1E9E52;}
+  .rule-pts.minus{background:#FFE9E9; color:#D64545;}
+  .rule-pts.note{background:#EFF1F3; color:#8A8F98;}
+  .rule-remark{font-size:12px; color:#9AA0A6; margin-left:6px;}
+  /* 2026-10-20：多档规则子项分行（用户要求"分开列，不要挤一起"） */
+  .rule-list li.rule-multi{display:block; padding:10px 0;}
+  .rule-head{font-weight:700;}
+  .rule-subs{list-style:none; margin:8px 0 2px 14px; padding:0;}
+  .rule-subs li{display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:6px 0; border-top:1px dashed #E8E4D8; border-bottom:none;
+    font-size:14px; min-height:0;}
+  .rule-note{font-size:13px; color:var(--sub); margin-top:10px; line-height:1.7;}
+
+  /* 徽章目标榜：获得条件小字 */
+  .lib-cond{display:block; font-size:13px; font-weight:400; color:var(--sub); margin-top:2px;}
+  .lib-prog{display:block; font-size:12.5px; font-weight:400; color:#5B6470; margin-top:3px;}
+  .lib-prog .prog-nodata{color:#B3B8BE;}
+  .lib-prog .prog-seg{display:block; margin-top:2px}
+  .lib-prog .prog-seg:first-child{margin-top:0}
+  .lib-detail{display:none}
+  li.open .lib-detail{display:block}
+  .lib-chev{font-size:12px; color:#9AA0A6; margin-left:6px; white-space:nowrap}
+  #panel-lib .rule-list li{cursor:pointer}
+
+  /* 日志时间线 */
+  .log-list{list-style:none; margin:0; padding:0;}
+  .log-item{
+    display:flex; gap:12px; padding:12px 0;
+    border-bottom:1px dashed #EDEFF2;
+    align-items:flex-start; min-height:44px;
+  }
+  .log-item:last-child{border-bottom:none;}
+  .log-dot{
+    flex:0 0 auto; width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:800;
+  }
+  .log-dot.plus{background:#E4F8EC; color:#1E9E52;}
+  .log-dot.minus{background:#FFE9E9; color:#D64545;}
+  .log-body{flex:1; min-width:0;}
+  .log-line1{display:flex; justify-content:space-between; gap:10px; align-items:baseline;}
+  .log-reason{font-size:15px; font-weight:600; word-break:break-word;}
+  .log-pts{font-size:15px; font-weight:800; flex:0 0 auto;}
+  .log-pts.plus{color:#1E9E52;}
+  .log-pts.minus{color:#D64545;}
+  .log-line2{font-size:12px; color:var(--sub); margin-top:2px;}
+  /* KB-POST2-2026-10-22：日志滚动区（最多约5条高、区内滚动、防穿透、底部渐隐＋条数提示、按天分组） */
+
+  .log-scrollwrap{position:relative;}
+  .log-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
+  .log-scrollwrap.has-more::after{content:''; position:absolute; left:0; right:0; bottom:26px; height:34px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.97)); pointer-events:none;}
+  .log-count{font-size:12px; color:var(--sub); text-align:center; padding-top:6px; min-height:18px;}
+  .log-day{font-size:13px; font-weight:700; color:var(--sub); padding:10px 0 0; list-style:none;}
+  /* 自动滚动（2026-10-22 家长定、终审定版）：规则区滚动容器＋总开关行 */
+  .rule-scroll{max-height:332px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;}
+  .as-row{display:flex; justify-content:flex-end; margin-bottom:8px;}
+  .as-label{font-size:13px; color:var(--sub); display:flex; align-items:center; gap:6px; cursor:pointer;}
+  .as-toggle{width:18px; height:18px;}
+
+  /* 页脚 */
+  .footer{
+    text-align:center; font-size:13px; color:#5A6169;
+    margin-top:10px; padding:14px;
+    background:rgba(255,255,255,.6); border-radius:var(--radius-sm);
+    line-height:1.8;
+  }
+
+  /* 2026-10-19：5分钟自刷新倒计时（终审方案） */
+  .footer .refresh-countdown{
+    margin-top:4px;
+    font-size:12px;
+    color:#8A929A;
+    text-align:center;
+    font-variant-numeric:tabular-nums; /* 数字等宽，防每秒跳动布局抖动 */
+    line-height:1.4;
+  }
+
+  /* === 2026-10-19 动效增补（终审方案，类名已按实际文件适配） === */
+  :root{
+    --ease-pop: cubic-bezier(.25,.8,.35,1);
+    --dur-fast: .18s;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    /* E1 余额数字淡入+落脚回弹（合并为单关键帧，避免transform双重动画冲突；scale峰值1.04） */
+    .bal-card .bal-score.is-in{ animation: numInPop .67s var(--ease-pop) both; }
+    @keyframes numInPop{
+      0%{ opacity:0; transform:translateY(4px) scale(1); }
+      67%{ opacity:1; transform:translateY(0) scale(1); }
+      82%{ opacity:1; transform:translateY(0) scale(1.04); }
+      100%{ opacity:1; transform:translateY(0) scale(1); }
+    }
+    /* D2 进度条生长（width型：task-prog-fill / ach-prog-bar>i） */
+    .task-prog-fill, .ach-prog-bar > i{ transform-origin: left center; }
+    .task-prog-bar.in > .task-prog-fill{ animation: barGrow .6s var(--ease-pop) both; }
+    .ach-prog-bar.in > i{ animation: barGrow .6s var(--ease-pop) both; }
+    @keyframes barGrow{ from{ transform: scaleX(0);} to{ transform: scaleX(1);} }
+    /* D3 卡片按压回弹（:active） */
+    .task, .shop-item, .medal{ -webkit-tap-highlight-color: transparent; }
+    .task:active, .shop-item:active, .medal:active{
+      transform: scale(.97);
+      transition: transform var(--dur-fast) var(--ease-pop);
+    }
+    /* D4 折叠头按压反馈 */
+    .collapse-btn:active{ transform: scale(.985); transition: transform var(--dur-fast) var(--ease-pop); }
+    /* D5 徽章呼吸微光：2026-10-20 随勋章带改造退役（未读光晕改由 .medal-disc 的 medalGlow 接管，避免全员呼吸与色环/扫光叠加打架） */
+    /* D6 今日任务错落淡入 */
+    .task-list.in .task{ animation: taskIn .4s var(--ease-pop) both; }
+    .task-list.in .task:nth-child(1){ animation-delay:0s; }
+    .task-list.in .task:nth-child(2){ animation-delay:.04s; }
+    .task-list.in .task:nth-child(3){ animation-delay:.08s; }
+    .task-list.in .task:nth-child(4){ animation-delay:.12s; }
+    @keyframes taskIn{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+    /* === 余额卡片动效 E1/E2/E3/E5/E8（2026-10-19，终审+初审联合方案，终审仲裁放行） === */
+    /* E2 卡片微抬升 + 装饰圆光晕呼应（hover限精确指针设备，focus-visible保证键盘可达） */
+    .bal-card{ transition:transform .18s var(--ease-pop), box-shadow .2s ease; }
+    .bal-card:focus-visible{ transform:translateY(-3px); }
+    @media (hover:hover) and (pointer:fine){
+      .bal-card:hover{ transform:translateY(-3px); }
+    }
+    /* E3 按压回弹（触屏/鼠标按下即时反馈） */
+    .bal-card:active{ transform:translateY(-1px) scale(.985); transition:transform .08s ease-out, box-shadow .2s ease; }
+    /* E5 两卡错峰入场（g6延迟120ms，复用fadeUp） */
+    .bal-card.g6{ animation-delay:.12s; }
+    /* E8 光泽扫过（一次性、首屏1s后触发、时长.55s；纯CSS，无JS；不循环） */
+    .bal-card::before{
+      content:""; position:absolute; top:-25%; bottom:-25%; left:0;
+      width:34%; pointer-events:none;
+      background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
+      transform:skewX(-18deg) translateX(-260%);
+      opacity:0;
+    }
+    .bal-card::before{ animation:balSheen .55s ease 1s both; }
+    @keyframes balSheen{
+      0%{ opacity:0; transform:skewX(-18deg) translateX(-260%); }
+      20%{ opacity:.9; }
+      80%{ opacity:.9; }
+      100%{ opacity:0; transform:skewX(-18deg) translateX(760%); }
+    }
+  }
+
+  /* 减少动效 */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation:none !important;
+      transition:none !important;
+    }
+  }
+
+  /* 折叠栏目：加分规则 / 扣分规则 / 积分日志（按钮点击展开） */
+  .collapse{padding:0;}
+  .collapse-btn{
+    display:flex; align-items:center; gap:8px;
+    width:100%; min-height:68px; padding:18px 16px;
+    margin-right:24px;
+    background:none; border:0; cursor:pointer; text-align:left;
+    font-family:inherit; color:var(--txt);
+    border-radius:var(--radius);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .collapse-btn .emoji{font-size:26px;}
+  .collapse-btn .cb-title{font-size:22px; font-weight:700;}
+  .collapse-btn .tag-demo{
+    font-size:12px; font-weight:500; color:var(--sub);
+    background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
+  }
+  /* 2026-10-19 KB-STATS-AUTO：日志区块标签/更新时间/商店进度 */
+  .grade-head .tag-demo{
+    font-size:12px; font-weight:500; color:var(--sub);
+    background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
+    margin-left:8px;
+  }
+  /* 2026-10-19 KB-TAG-LIVE v2：实时数据标签绿色呼吸动效（终审方案·终审版）
+     定位：绝对定位仅保留给余额卡（.bal-demo-tag 本身已 position:absolute）；
+          今日任务、积分日志标签留在文档流内，靠 flex margin 右置。
+     动效：仅 transform/opacity；reduced-motion 下只保留静态绿底。
+     扫光 ::after 已删除（违反 E8"一次性扫光不循环"规范）。 */
+  .tag-live{
+    position:relative; /* 2026-10-19 终审补：给 ::before 提供定位含块（初审初审发现，终审终审确认） */
+    background:#E6F9ED; color:#16A34A; opacity:1;
+    overflow:hidden; isolation:isolate;
+    animation:tagLiveBreathe 2.2s ease-in-out infinite;
+  }
+  /* 余额卡：沿用其自身绝对定位锚点（.bal-card 为 position:relative） */
+  .bal-demo-tag.tag-live{
+    position:absolute; top:6px; right:8px;
+  }
+  /* 余额卡实时圆点（2026-10-24 家长令，初审 定参）：实时态不用文字胶囊，改绿色呼吸圆点——
+     基准 8px、scale .5→1.2＋opacity .6→1、纯色 #22C55E 无光晕；周期 2.4s 非对称（长 25%/停至 42%/缩到底）；
+     两卡错相位 .8s；reduced-motion 定格静止（全站口径，覆盖 初审"保留微弱渐隐"建议） */
+  .bal-demo-tag.is-dot{
+    top:10px; right:12px;
+    width:8px; height:8px; min-width:8px; padding:0; border-radius:50%;
+    background:#22C55E; color:transparent; overflow:visible;
+    animation:balLiveDot 2.4s infinite;
+  }
+  .bal-card.g6 .bal-demo-tag.is-dot{ animation-delay:.8s; }
+  @keyframes balLiveDot{
+    0%{ transform:scale(.5); opacity:.6; animation-timing-function:cubic-bezier(0.16,1,0.3,1); }
+    25%{ transform:scale(1.2); opacity:1; }
+    42%{ transform:scale(1.2); opacity:1; animation-timing-function:ease-in-out; }
+    100%{ transform:scale(.5); opacity:.6; }
+  }
+  @media (prefers-reduced-motion: reduce){ .bal-demo-tag.is-dot{ animation:none; transform:none; opacity:1; } }
+  /* 今日任务 / 积分日志：文档流内 flex 右置（覆盖原 margin-left:8px 使其真正靠右） */
+  .card h2 .tag-demo.tag-live{ margin-left:auto; }
+  .grade-head .tag-demo.tag-live{ margin-left:auto; }
+
+  /* 2026-10-20 KB-TAG-LIVE-FONT10：栏目"实时数据"标签字号调小（终审方案，用户反馈"偏大"）
+     根因：第678/702/718/781行 4 处静态栏目标签(.card.collapse > .tag-live)原先无字号声明、继承 16px 偏大；
+     上版 override(.card h2 .tag-demo.tag-live)未命中这些元素，属选择器错配，本版纠正。
+     分治：4 处栏目标签 10px / 余额卡·今日任务·积分日志标签 11px 维持。
+     (初审初审意见已落实：今日任务标签不再波及，保持 11px；letter-spacing 删除，避免低分屏渲染劣化)
+     动效 scale(1.10) 峰值等效约 11px，不超改动前静息值。override 不改原规则，可回滚。 */
+  .card.collapse > .tag-live{
+    font-size:10px;
+    font-weight:400;
+    line-height:1.4;
+    padding:1px 7px;
+  }
+  /* 余额卡档(.bal-demo-tag 自带 11px)、今日任务档、积分日志档：维持 11px 不变 */
+  .card h2 .tag-demo.tag-live,
+  .grade-head .tag-demo.tag-live{
+    font-size:11px;
+    font-weight:400;
+    line-height:1.4;
+    padding:1px 8px;
+  }
+
+  .tag-live::before{
+    content:""; position:absolute; inset:0; border-radius:999px;
+    background:#16A34A; opacity:0; pointer-events:none;
+    animation:tagLiveGlow 2.2s ease-in-out infinite;
+  }
+  @keyframes tagLiveBreathe{
+    0%,100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.10); opacity:.82; }
+  }
+  @keyframes tagLiveGlow{
+    0%,100%{ opacity:0; }
+    50%{ opacity:.28; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tag-live, .tag-live::before{ animation:none; }
+  }
+  .log-updated{font-size:12px; color:var(--sub); margin-left:8px; white-space:nowrap;}
+  #shop-progress{margin:0 0 12px;}
+  .shop-prog-line{font-size:14px; line-height:1.9;}
+  .shop-fee-note{font-size:12px; color:var(--sub); margin-top:6px;}
+  .collapse-btn .cb-state{
+    margin-left:auto; flex:0 0 auto;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:700; color:var(--sub);
+    background:#F1F3F5; padding:6px 12px; border-radius:999px; white-space:nowrap;
+  }
+  .collapse-btn .cb-chev{font-size:13px; transition:transform .25s ease;}
+  .collapse-btn[aria-expanded="true"] .cb-chev{transform:rotate(180deg);}
+  .collapse-btn:focus-visible{outline:3px solid var(--g6); outline-offset:-3px;}
+  .collapse-body{
+    display:grid; grid-template-rows:0fr;
+    grid-template-columns:minmax(0,1fr);
+    transition:grid-template-rows .3s ease;
+  }
+  .collapse.open .collapse-body{grid-template-rows:1fr;}
+  .collapse-inner{overflow:hidden; min-height:0; min-width:0;}
+  .collapse-pad{padding:0 16px 18px;}
+
+  /* 2026-10-19：D1 440px；iPhone 17 Pro Max 主力档 */
+  @media(min-width:440px){
+    .card{padding:20px 18px;}
+    .bal-card{padding:20px;}
+    .bal-score{font-size:clamp(38px,9vw,44px);}
+    .task{padding:14px 16px;}
+  }
+  /* 2026-10-19：D2 768px；iPad mini/老iPad竖屏 */
+  @media(min-width:768px){
+    .wrap{max-width:720px;}
+    .card{padding:22px 20px;}
+  }
+  /* 2026-10-19：D3 820px；iPad 10.9竖屏 */
+  @media(min-width:820px){
+    .wrap{max-width:780px;}
+  }
+  /* 2026-10-19：D4 834px；iPad Air竖屏 */
+  @media(min-width:834px){
+    .wrap{max-width:800px;}
+    .bal-score{font-size:46px;}
+  }
+  /* 桌面端增强（2026-10-19：≥1024px 宽屏自适应） */
+  @media(min-width:1024px){
+    .wrap{max-width:980px;}
+    .bal-card{padding:22px;}
+    .collapse-btn .cb-title{font-size:24px;}
+    /* iPad横屏/桌面：今日任务两年级并排 */
+    section[aria-label="今日任务"]{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+    section[aria-label="今日任务"] > h2{grid-column:1/-1;}
+    section[aria-label="今日任务"] > .task-section{margin-bottom:0;}
+  }
+  /* 2026-10-19：D6 1280px；桌面宽屏封顶 */
+  @media(min-width:1280px){
+    .wrap{max-width:1100px;}
+  }
+  /* 2026-10-19：精致悬停态（仅精确指针设备，触屏不受影响；transform被fadeUp填充占用处只改阴影） */
+  @media (hover:hover) and (pointer:fine){
+    .card:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.12);}
+    .ach:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(232,176,75,.28);}
+    .bal-card.g5:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
+    .bal-card.g6:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
+    .task:hover{background:#FFFFFF; box-shadow:0 4px 14px rgba(48,52,59,.08);}
+    .collapse-btn:hover .cb-state{background:#E7EAEE;}
+  }
+
+  /* 小屏微调 */
+  @media (max-width:420px){
+    .task{gap:10px;} /* 窄屏收紧行内间距 */
+    .task .st-badge{padding:3px 8px; font-size:12px;} .task .st-zone .up-btn{padding:5px 8px;} /* 窄屏徽章轻微收紧 */
+    .task .task-name{
+      white-space:pre-line; word-break:break-word; overflow:visible; /* 窄屏亦多行完整展示，与主样式同口径 */
+    }
+    .task-prog{gap:6px;}
+    .task-prog-bar{width:64px; flex:1 1 56px; min-width:56px;}
+    .task-prog-text{font-size:12px;}
+  }
+  @media (max-width:379px){
+    .bal-score{font-size:34px;}
+    .card h2{font-size:20px;}
+    .task .task-name{font-size:15px;}
+  }
+  /* 下拉刷新指示条（2026-10-21）：固定顶部居中胶囊，跟随下拉位移；仅触摸手势驱动，桌面端无影响 */
+  .ptr-bar{
+    position:fixed; left:50%; top:calc(env(safe-area-inset-top, 0px) + 10px);
+    transform:translate(-50%,-72px); opacity:0; z-index:999;
+    background:var(--card); color:var(--txt);
+    border:1px solid rgba(255,255,255,.7); border-radius:999px;
+    box-shadow:var(--shadow);
+    padding:7px 16px; font-size:13px; line-height:1.3; white-space:nowrap;
+    display:flex; align-items:center; gap:6px;
+    pointer-events:none;
+  }
+  .ptr-bar.ptr-anim{transition:transform .25s ease, opacity .25s ease;}
+  .ptr-bar .ptr-ico{display:inline-block; transition:transform .15s ease;}
+  .ptr-bar.ptr-ready .ptr-ico{transform:rotate(180deg);}
+  .ptr-bar.ptr-busy .ptr-ico{animation:ptrSpin .8s linear infinite;}
+  @keyframes ptrSpin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+
+
+  /* 任务催促整卡闪烁（2026-10-23 家长定、终审 有条件赞成）：只动边框与底色、文字按钮静止；周期2s；reduced-motion 静止；JS 侧同屏最多3卡动、20分钟转静态、可单卡暂停 */
+  .task.urging{border:2px solid #E5484D !important;}
+  .task.urging:not(.urging-static){animation:urgePulse 2s ease-in-out infinite;}
+  @keyframes urgePulse{0%,100%{background-color:#FFF7F5; box-shadow:0 0 0 0 rgba(229,72,77,0);}50%{background-color:#FDE3E1; box-shadow:0 0 0 3px rgba(229,72,77,.30);}}
+  @media (prefers-reduced-motion: reduce){ .task.urging{animation:none !important; background-color:#FDECEA;} }
+
+
+.up-btn{margin-top:8px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid #b98a2f;background:#fdf6df;color:#7a5b12;font-size:14px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.up-btn:active{transform:scale(.97)}
+.up-btn.sent{border-color:#3d9970;background:#e8f7ef;color:#1e6b4a}
+.st-zone .up-btn{margin-top:0;min-width:44px;min-height:44px;font-size:13px;padding:5px 12px}
+.up-btn.busy{opacity:.55;pointer-events:none}
+.up-bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 2px 2px}
+.up-bar .up-btn{margin-top:0;font-size:15px;padding:10px 18px}
+.up-mask{position:fixed;inset:0;background:rgba(40,35,20,.45);z-index:9998;display:none;align-items:flex-end;justify-content:center}
+.up-mask.open{display:flex}
+.up-sheet{background:#fffdf5;width:min(560px,100%);max-height:88vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:18px 18px 26px;box-shadow:0 -6px 30px rgba(0,0,0,.25)}
+.up-sheet h3{margin:2px 0 6px;font-size:19px}
+.up-cd{display:block;margin-top:2px;font-size:13px;color:#8a8378}
+.up-pickbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;padding:14px;border:1.5px dashed #b98a2f;border-radius:12px;background:#fdf6df;color:#7a5b12;font-size:18px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.up-pickbtn:active{transform:scale(.98)}
+.up-files-hidden{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.up-recbtn{display:block; width:100%; margin-top:10px; padding:13px; font-size:16px; font-weight:700; color:#1e6b4a; background:#e8f7ef; border:1.5px dashed #3d9970; border-radius:12px; cursor:pointer;}
+.up-reclive{display:flex; align-items:center; gap:10px; margin-top:10px; padding:10px 12px; border:1.5px solid #d66; border-radius:12px; background:#fdf0f0;}
+.up-recdot{width:12px; height:12px; border-radius:50%; background:#d33; animation:uprecblink 1s infinite;}
+@keyframes uprecblink{0%,100%{opacity:1}50%{opacity:.25}}
+.up-rectime{font-size:15px; font-weight:700; color:#a33; flex:1;}
+.up-recstop{padding:8px 14px; font-size:14px; font-weight:700; color:#fff; background:#d66; border:none; border-radius:9px; cursor:pointer;}
+.up-recprev{margin-top:10px; padding:10px; border:1.5px solid #e7e1cd; border-radius:12px; background:#fff;}
+.up-recprev audio{width:100%;}
+.up-recbtns{display:flex; gap:8px; margin-top:8px;}
+.up-recuse{flex:1; padding:10px; font-size:14.5px; font-weight:700; color:#fff; background:#3d9970; border:none; border-radius:9px; cursor:pointer;}
+.up-recredo{padding:10px 14px; font-size:14.5px; color:#6B7280; background:#F1F3F5; border:none; border-radius:9px; cursor:pointer;}
+.up-recnote{margin-top:8px; font-size:12.5px; color:#1e6b4a;}
+.up-rechint{margin-top:10px; padding:9px 11px; font-size:14px; line-height:1.6; color:#6B4E00; background:#FFF7E0; border:1.5px solid #EAD9A0; border-radius:10px;}
+.up-recerr{margin-top:8px; font-size:13px; color:#c0392b;}
+.up-player{display:flex; align-items:center; gap:12px; padding:4px 2px 2px;}
+.up-playbtn{width:60px; height:60px; border-radius:50%; background:#3d9970; color:#fff; font-size:25px; line-height:1; border:none; flex:0 0 auto; cursor:pointer;}
+.up-seek{flex:1; min-width:0; height:10px; -webkit-appearance:none; appearance:none; background:#E7E1CD; border-radius:99px; outline:none;}
+.up-seek::-webkit-slider-thumb{-webkit-appearance:none; width:30px; height:30px; border-radius:50%; background:#3d9970; border:3px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,.25);}
+.up-seek::-moz-range-thumb{width:26px; height:26px; border-radius:50%; background:#3d9970; border:3px solid #fff;}
+.up-ptime{font-size:14px; color:#6B7280; min-width:88px; text-align:right; font-variant-numeric:tabular-nums;}
+.up-sub{color:#8a8378;font-size:13.5px;margin-bottom:10px;line-height:1.5}
+.up-orig{margin:2px 0 12px;padding:10px 12px;background:#FFFDF4;border:1.5px solid #EAD9A0;border-radius:12px}
+.up-orig-cap{font-size:12.5px;font-weight:700;color:#8A6D1F;margin-bottom:5px}
+.up-orig-text{font-size:16.5px;line-height:1.75;color:#26221A;white-space:pre-line}
+.up-kousuan{margin:10px 0 4px;padding:10px 12px;background:#FFFDF4;border:1.5px solid #EAD9A0;border-radius:12px}
+.up-kousuan-cap{font-size:13.5px;font-weight:700;color:#8A6D1F;margin-bottom:5px}
+.up-kousuan-list{font-size:16.5px;line-height:1.75;color:#26221A;white-space:pre-line}
+.up-row{margin:12px 0}
+.up-row label{display:block;font-size:13px;color:#6b6558;margin-bottom:6px}
+.up-pick{display:flex;gap:8px;flex-wrap:wrap}
+.up-chip{padding:8px 14px;border-radius:999px;border:1.5px solid #d8d2c0;background:#fff;font-size:14.5px;cursor:pointer}
+.up-chip.on{border-color:#b98a2f;background:#fdf6df;font-weight:700;color:#7a5b12}
+.up-sheet textarea{width:100%;box-sizing:border-box;border:1.5px solid #d8d2c0;border-radius:10px;padding:9px;font-size:15px;min-height:56px;background:#fff}
+.up-file{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid #e7e1cd;border-radius:10px;margin:6px 0;background:#fff;font-size:13.5px}
+.up-file .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-prog{height:6px;background:#eee7d2;border-radius:3px;overflow:hidden;margin-top:4px}
+.up-prog i{display:block;height:100%;width:0;background:#d9a441;transition:width .2s}
+.up-file.ok{border-color:#3d9970}.up-file.ok .up-prog i{background:#3d9970}
+.up-file.bad{border-color:#d66}.up-file.bad .up-prog i{background:#d66}
+.up-actions{display:flex;gap:10px;margin-top:16px}
+.up-go{flex:1;padding:13px;border:none;border-radius:12px;background:#d9a441;color:#fff;font-size:16.5px;font-weight:700;cursor:pointer}
+.up-go:disabled{opacity:.5}
+.up-cancel{padding:13px 18px;border-radius:12px;border:1.5px solid #d8d2c0;background:#fff;font-size:15px;cursor:pointer}
+.up-msg{margin-top:12px;font-size:14.5px;line-height:1.6}
+.up-msg.err{color:#b3372f}.up-msg.good{color:#1e6b4a}
+.up-pass{width:100%;box-sizing:border-box;border:1.5px solid #d8d2c0;border-radius:10px;padding:10px;font-size:16px;background:#fff}
+</style>
+<style>/*
+ * whyjjf.lol · iOS 27-style visual skin / 2026-10-25
+ * Visual layer ONLY. No DOM, content, size, geometry, display, animation timing,
+ * state logic, API, privacy gate or Live Sky canvas changes.
+ * Based on Apple HIG materials: content uses readable standard surfaces;
+ * glass treatments are primarily for floating/interactive controls.
+ */
+:root {
+  --bg1: #e9f2ff;
+  --bg2: #f8faff;
+  --bg3: #e8f2fb;
+  --txt: #202d3d;
+  --sub: #667589;
+  --card: rgba(255, 255, 255, .94);
+  --shadow: 0 2px 5px rgba(26, 62, 105, .07), 0 14px 30px rgba(28, 67, 113, .12);
+}
+
+/* Background is behind (not inside) the original sky/canvas module. */
+body {
+  background:
+    radial-gradient(600px 320px at 12% -40px, rgba(255,255,255,.79), transparent 64%),
+    radial-gradient(520px 280px at 92% 60px, rgba(226,239,255,.63), transparent 66%),
+    linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%);
+}
+
+/* Content is intentionally NOT full transparent glass: long correction notes
+   must stay clear as they scroll. Shadows and thin optical highlights add depth. */
+.card {
+  background-color: var(--card);
+  background-image: linear-gradient(170deg,rgba(255,255,255,.96),rgba(255,255,255,.17) 65%,rgba(232,242,255,.1));
+  border-color: rgba(255,255,255,.94);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1),
+              0 1px 2px rgba(24,57,102,.04),
+              0 10px 28px rgba(33,68,107,.085);
+}
+.card h2::before {
+  background: linear-gradient(180deg, #6ba9fa, #b7d9ff);
+  box-shadow: 0 0 6px rgba(80,151,251,.19);
+}
+
+/* Keep all Live Sky rendering and geometry unmodified. Clear glass is appropriate
+   over the moving sky; use a low-opacity surface so clouds remain visible. */
+.sky-band {
+  box-shadow: 0 1px 2px rgba(31,70,118,.08), 0 12px 28px rgba(34,81,129,.12);
+}
+.sky-band .bal-card,
+.sky-band button.bal-card,
+.sky-band .bal-card.is-neg {
+  background: linear-gradient(160deg, rgba(255,255,255,.16), rgba(255,255,255,.055) 58%, rgba(255,255,255,.105));
+  border-color: rgba(255,255,255,.48);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.34),
+              inset 0 -1px 0 rgba(255,255,255,.09),
+              0 8px 24px rgba(11,49,91,.11);
+  -webkit-backdrop-filter: blur(7px) saturate(1.18);
+  backdrop-filter: blur(7px) saturate(1.18);
+}
+.sky-band .bal-card.g5:hover,
+.sky-band .bal-card.g6:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.42), 0 12px 28px rgba(11,49,91,.18);
+}
+.sky-band .bal-tier-seg { background: rgba(255,255,255,.31); }
+.sky-band .bal-tier-fill { background: rgba(255,255,255,.94); }
+
+/* Main content cards retain all dimensions, children, ordering and states. */
+.task {
+  background: linear-gradient(155deg, rgba(255,255,255,.96), rgba(244,249,255,.88));
+  border-color: rgba(205,221,240,.86);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 2px 7px rgba(37,71,109,.045);
+}
+.task.pending {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(255,246,247,.92));
+  border-color: rgba(238,214,218,.9);
+}
+.task.submitted {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(239,247,255,.94));
+  border-color: rgba(210,225,245,.9);
+}
+.task.grading {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(247,243,255,.94));
+  border-color: rgba(222,212,245,.9);
+}
+.task.correcting {
+  background: linear-gradient(155deg,rgba(255,255,255,.98),rgba(255,249,239,.95));
+  border-color: rgba(242,224,200,.95);
+}
+.task.done {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(239,250,244,.91));
+  border-color: rgba(208,233,216,.9);
+}
+.task .st-badge, .task .corr-badge,
+.pill-grade, .yd-count, .sum-kp, .fb-chev,
+.redeem-top .spent, .redeem-back,
+.shop-top .cost, .corr-item .corr-cap {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.68), 0 1px 3px rgba(34,59,94,.055);
+}
+/* Do not overwrite the completion/verification colors. */
+.task .task-note {
+  background: linear-gradient(145deg,rgba(255,252,244,.95),rgba(255,246,227,.96));
+}
+.task .corr-panel { border-top-color: rgba(208,217,232,.8); }
+.corr-item { border-bottom-color: rgba(214,225,238,.9); }
+.corr-item.corr-qa { background: rgba(246,250,255,.88); border-left-color: #adc3dd; }
+.corr-item .corr-h { border-left-color: #b7cbe4; color: #42566e; }
+.corr-item .corr-img { border-color: #dbe6f2; }
+
+/* Floating action surfaces: the only deliberately glassy controls. */
+.collapse-btn .cb-state,
+.card h2 .tag-demo,
+.grade-head .tag-demo,
+.task .st-mini,
+.fb-chev {
+  background: linear-gradient(155deg,rgba(255,255,255,.9),rgba(229,239,253,.74));
+  color: #4b6280;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.96), 0 1px 4px rgba(28,67,114,.08);
+  -webkit-backdrop-filter: blur(8px) saturate(1.22);
+  backdrop-filter: blur(8px) saturate(1.22);
+}
+.collapse-btn:hover .cb-state {
+  background: linear-gradient(150deg,rgba(255,255,255,.98),rgba(219,234,254,.88));
+}
+.tag-live::before { background: #35bc82; }
+/* Grade identifiers retain their warm/orange and cool/blue identities. */
+.pill-grade.g5 { background: linear-gradient(145deg,#ff9c79,#f77959); }
+.pill-grade.g6 { background: linear-gradient(145deg,#8ba8ff,#607fff); }
+
+/* Submission controls: original padding, borders, min touch area and events stay. */
+html body .up-btn {
+  background: linear-gradient(155deg,rgba(255,255,255,.95),rgba(236,245,255,.85));
+  border-color: rgba(151,186,232,.85);
+  color: #2a63ae;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 2px 5px rgba(44,93,157,.1);
+  -webkit-backdrop-filter: blur(7px) saturate(1.2);
+  backdrop-filter: blur(7px) saturate(1.2);
+}
+html body .up-btn.sent {
+  background: linear-gradient(155deg,#f1fff8,#dcf5e9);
+  border-color: #8bcbaa;
+  color: #19764e;
+}
+html body .up-sheet {
+  background: rgba(248,251,255,.97);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 -10px 36px rgba(15,41,77,.18);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  backdrop-filter: blur(20px) saturate(1.15);
+}
+html body .up-mask { background: rgba(19,34,57,.38); }
+html body .up-chip,
+html body .up-cancel,
+html body .up-sheet textarea,
+html body .up-pass,
+html body .up-file {
+  border-color: #d4e0ee;
+  background-color: #fff;
+}
+html body .up-chip.on { background: #eaf3ff; border-color: #82aee9; color: #225eaa; }
+html body .up-go { background: linear-gradient(145deg,#4189ea,#246ace); }
+
+/* Other existing sections: polished standard material, no re-layout. */
+.sum-item,.fb-item,.shop-item,.redeem-item {
+  background: linear-gradient(155deg,#fff, #f5f9ff);
+  border-color: #dbe6f3;
+  box-shadow: inset 0 1px 0 #fff, 0 2px 7px rgba(34,77,128,.055);
+}
+.sum-parent-head,.fb-qa-q { background: #eaf3ff; }
+.sum-enc,.fb-qa-a { background: #eef9f3; }
+.redeem-empty { background: #f7faff; border-color: #c6d7ee; }
+.log-item { border-bottom-color: #dfe9f4; }
+.log-scrollwrap.has-more::after {
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.98));
+}
+.footer {
+  background: rgba(255,255,255,.75);
+  box-shadow: inset 0 1px 0 #fff, 0 3px 12px rgba(23,59,103,.06);
+}
+.ptr-bar {
+  background: rgba(249,252,255,.94);
+  box-shadow: inset 0 1px 0 #fff, 0 6px 16px rgba(23,59,103,.18);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Accessibility: do not trade readability for transparency. */
+@media (prefers-reduced-transparency: reduce) {
+  .sky-band .bal-card, .sky-band button.bal-card { background: rgba(40,87,139,.79); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .collapse-btn .cb-state, .card h2 .tag-demo, .grade-head .tag-demo,
+  html body .up-btn, html body .up-sheet { -webkit-backdrop-filter:none; backdrop-filter:none; }
+}
+@media (forced-colors: active) {
+  .card, .task, .sky-band .bal-card, html body .up-btn { box-shadow:none; }
+}
+</style>
+<style>
+/* 演示专用（不在生产皮肤内）：切换条与B1/B2/B3对照 */
+.demo-banner{background:#fffbe6;border:1.5px solid #f5c542;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:14px;line-height:1.6;color:#5a4300}
+.demo-toggles{background:#fff;border:1.5px solid #dbe6f3;border-radius:12px;padding:12px 14px;margin:12px 0}
+.demo-toggles h3{margin:0 0 8px;font-size:15px}
+.demo-group{margin:8px 0}
+.demo-group span{font-size:14px}
+.demo-group button{margin:4px 6px 4px 0;padding:6px 12px;border-radius:999px;border:1.5px solid #82aee9;background:#fff;color:#225eaa;font-size:14px;cursor:pointer}
+.demo-group button.on{background:#246ace;color:#fff;border-color:#246ace}
+body.demo-b1-transparent .sky-band .bal-card{background:transparent !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;box-shadow:var(--shadow) !important;border-color:rgba(255,255,255,.25) !important;background-image:none !important}
+body.demo-b2-original .task.pending{background:#FCF2F2 !important;background-image:none !important;border-color:#E5E7EB !important}
+body.demo-b2-original .task.submitted{background:#F0F4F8 !important;background-image:none !important;border-color:#E5E7EB !important}
+body.demo-b2-original .task.grading{background:#F0F4F8 !important;background-image:none !important;border-color:#E5E7EB !important}
+body.demo-b2-original .task.correcting{background:#FEF8EC !important;background-image:none !important;border-color:#E5E7EB !important}
+body.demo-b2-original .task.done{background:#F2F9F4 !important;background-image:none !important;border-color:#E5E7EB !important}
+body.demo-b2-original .task{border-color:#E5E7EB !important}
+body.demo-b3-grade .bal-card.g5 .bal-tier-fill{background:#FF8A5B !important}
+body.demo-b3-grade .bal-card.g6 .bal-tier-fill{background:#6C8EFF !important}
+.demo-note{font-size:13px;color:var(--sub);line-height:1.6}
+.sky-demo-img{width:100%;height:180px;object-fit:cover;border-radius:12px;display:block}
+.task-title{font-size:16px;font-weight:700}
+.task-sub{font-size:13px;color:var(--sub);margin-top:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="demo-banner"><b>独立演示页 · iOS27换肤外观示意</b><br>非正式看板，数据为示意，非实时；功能按钮仅示意，不可提交。正式看板仍在 https://whyjjf.lol 。本页未动线上仓库与生产模板，皮肤为补丁原案（未含B2/B3整改）。</div>
+<div class="demo-toggles">
+<h3>对照切换（演示专用，点一下即换，正式皮肤无此条）</h3>
+<div class="demo-group"><span>B1余额卡：</span><button type="button" class="on" data-group="b1" data-val="glass">玻璃（皮肤原案）</button><button type="button" data-group="b1" data-val="transparent">全透明（2026-10-24定版）</button></div>
+<div class="demo-group"><span>B2任务状态色：</span><button type="button" class="on" data-group="b2" data-val="skin">皮肤稀释</button><button type="button" data-group="b2" data-val="original">定版hex</button></div>
+<div class="demo-group"><span>B3刻度填充：</span><button type="button" class="on" data-group="b3" data-val="white">白（皮肤原案，底版亦为白.92，几乎无差）</button><button type="button" data-group="b3" data-val="grade">年级色（DeepSeek新提议，非底版原色）</button></div>
+<p class="demo-note">B1看余额卡玻璃与全透明在天空下的差别；B2看任务卡底色深浅与grading紫调；B3看刻度填充白与年级色的差别。看完请回B1/B2/B3各选A还是B。</p>
+</div>
+<div class="sky-band" id="sky-band">
+<img class="sky-demo-img" src="https://whyjjf.lol/data/sky/sun.webp" alt="天空示意">
+<section class="balance-grid" aria-label="积分余额示意">
+<button type="button" class="bal-card g5"><div class="bal-name">彦均</div><div class="bal-score"><span class="bal-num">45</span> <small>分</small></div><div class="bal-today">示意数值（2026-10-25 14:35对账值，仅作外观参考）</div><div class="bal-tier"><div class="bal-tier-bar"><span class="bal-tier-seg"><span class="bal-tier-fill" style="width:60%"></span></span><span class="bal-tier-seg"><span class="bal-tier-fill" style="width:0%"></span></span></div><div class="bal-tier-labels"><span>0</span><span>100</span></div></div></button>
+<button type="button" class="bal-card g6"><div class="bal-name">伟豪</div><div class="bal-score"><span class="bal-num">305</span> <small>分</small></div><div class="bal-today">示意数值（2026-10-25 14:35对账值，仅作外观参考）</div><div class="bal-tier"><div class="bal-tier-bar"><span class="bal-tier-seg"><span class="bal-tier-fill" style="width:80%"></span></span><span class="bal-tier-seg"><span class="bal-tier-fill" style="width:20%"></span></span></div><div class="bal-tier-labels"><span>0</span><span>500</span></div></div></button>
+</section>
+</div>
+<section class="card" aria-label="今日任务示意">
+<h2><span class="emoji">📝</span>今日任务（示意）</h2>
+<div class="task-section" id="tasks-g5"><div class="task-head"><span class="pill-grade g5">五年级·彦均</span></div><div class="task-list">
+<div class="task pending"><div class="task-title">数学 · 53天天练（示意）</div><div class="task-sub"><span class="st-badge">待提交</span> 皮肤pending底色对照</div></div>
+<div class="task submitted"><div class="task-title">语文 · 周试卷（示意）</div><div class="task-sub"><span class="st-badge">已提交</span> 皮肤submitted底色对照</div></div>
+<div class="task grading"><div class="task-title">英语 · 校本（示意）</div><div class="task-sub"><span class="st-badge">批改中</span> 皮肤grading紫调对照（定版四状态之外）</div></div>
+<div class="task correcting"><div class="task-title">数学 · 订正（示意）</div><div class="task-sub"><span class="st-badge">改正中</span> 皮肤correcting底色对照</div></div>
+<div class="task done"><div class="task-title">家务 · 晾衣服（示意）</div><div class="task-sub"><span class="st-badge">已完成</span> 皮肤done底色对照</div></div>
+<div class="task is-exempt"><div class="task-title">家务 · 今日豁免（示意）</div><div class="task-sub">豁免卡中性底＋虚线，皮肤未动</div></div>
+</div></div>
+<div class="task-section" id="tasks-g6"><div class="task-head"><span class="pill-grade g6">六年级·伟豪</span></div><div class="task-list">
+<div class="task pending"><div class="task-title">数学 · 补练（示意）</div><div class="task-sub"><span class="st-badge">待提交</span></div></div>
+<div class="task done"><div class="task-title">语文 · 读背（示意）</div><div class="task-sub"><span class="st-badge">已完成</span></div></div>
+</div></div>
+</section>
+<section class="card" aria-label="控件示意">
+<h2>控件示意</h2>
+<p><button class="collapse-btn" type="button"><span class="cb-title">学习小结</span> <span class="cb-state"><span class="cb-text">点击查看</span></span></button></p>
+<p><button class="up-btn" type="button">交这一项（示意，不可提交）</button> <span class="pill-grade g5">五年级</span> <span class="pill-grade g6">六年级</span></p>
+<p class="demo-note">以上仅外观示意：天空图为公开sky素材单张示意，非实时天气；余额与任务均为示意内容，不代表实时状态；口令门、上传、结算等功能均未接入演示页。</p>
+</section>
+<div class="footer"><p>独立演示页 · 皮肤来源：补丁ios27-skin.css原案 ＋ 工作区模板底版样式 · 未动线上仓库与生产模板 · 正式看板：https://whyjjf.lol</p></div>
+</div>
+<script>
+document.querySelectorAll('.demo-group button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var g = btn.getAttribute('data-group');
+    var v = btn.getAttribute('data-val');
+    document.querySelectorAll('.demo-group button[data-group="'+g+'"]').forEach(function(b){ b.classList.remove('on'); });
+    btn.classList.add('on');
+    document.body.classList.remove('demo-b1-transparent','demo-b2-original','demo-b3-grade');
+    document.querySelectorAll('.demo-group button.on').forEach(function(b){
+      var gg = b.getAttribute('data-group'); var vv = b.getAttribute('data-val');
+      if(gg==='b1' && vv==='transparent') document.body.classList.add('demo-b1-transparent');
+      if(gg==='b2' && vv==='original') document.body.classList.add('demo-b2-original');
+      if(gg==='b3' && vv==='grade') document.body.classList.add('demo-b3-grade');
+    });
+  });
+});
+</script>
+</body>
+</html>
