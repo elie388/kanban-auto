@@ -306,7 +306,7 @@
   /* 状态图标动效（2026-10-25 家长定）：全部状态徽章图标都动，各按图标语义取动作；圆点呼吸不动 */
   .task .st-ico{display:inline-block;}
   .task .st-ico-spin{animation:kbIcoSpin 2.4s linear infinite;}
-  @keyframes kbIcoSpin{to{transform:rotate(360deg);}}
+  @keyframes kbIcoSpin{to{transform:rotate(-360deg);}}
   .task .st-ico-pulse{animation:kbIcoPulse 2.4s ease-in-out infinite;}
   @keyframes kbIcoPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.18);}}
   .task .st-ico-bob{animation:kbIcoBob 2.4s ease-in-out infinite;}
@@ -5261,7 +5261,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-2021-badge-anim';
+  var KB_BUILD = '20261025-2116-ico-spin-ccw';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
