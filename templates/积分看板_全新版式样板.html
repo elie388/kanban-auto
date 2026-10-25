@@ -5239,12 +5239,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <button class="up-go" id="up-go" type="button">全部交完 ✅</button>
     </div>
     <div class="up-msg" id="up-msg"></div>
-        <div id="up-ver" style="font-size:11px; color:#b6ad96; text-align:right; margin-top:2px;"></div>
+        <!-- 2026-10-25 家长令：版本号不再显示（自检机制与 KB_BUILD 不动） -->
+        <div id="up-ver" style="font-size:11px; color:#b6ad96; text-align:right; margin-top:2px; display:none;"></div>
   </div>
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-1810-livesky-shell-rush-fix1';
+  var KB_BUILD = '20261025-1810-livesky-shell-rush-fix2';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
