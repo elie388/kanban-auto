@@ -234,13 +234,6 @@ jobs:
           python3 scripts/test_sections_week.py
 
 
-      # TEMP-IOS27-DEMO-START（临时：2026-10-25 家长令，30分钟后连同文件一起删除）
-      - name: 同步临时iOS27演示页到 Pages 产物
-        run: |
-          mkdir -p public/data
-          cp data/ios27-skin-demo.html public/data/ 2>/dev/null || true
-          ls -la public/data/ | grep -i ios27-skin-demo || true
-      # TEMP-IOS27-DEMO-END
 
       # iOS27皮肤CSS同步（2026-10-25 家长令，安装包版本上线）：模板引用 /ios27-skin.css，须拷进 Pages 产物根目录，缺失即构建失败
       - name: 同步iOS27皮肤CSS到 Pages 产物
