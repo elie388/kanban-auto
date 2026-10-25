@@ -3,7 +3,7 @@
   "date": "2026-10-25",
   "grade": "五年级",
   "generated_at": "2026-10-25T00:05:11+08:00",
-  "updated_at": "2026-10-25T12:42:40+08:00",
+  "updated_at": "2026-10-25T12:57:36+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -524,11 +524,11 @@
       "title": "周日综合试卷（语文·数学·英语）",
       "detail": "今晚截止22:30，做完拍照交回",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-25T10:06:46+08:00",
-      "updated_at": "2026-10-25T12:28:34+08:00",
+      "updated_at": "2026-10-25T12:56:47+08:00",
       "files": [
         {
           "name": "五年级语文周试卷_2026-10-25.pdf",
@@ -546,13 +546,191 @@
           "pages": 4
         }
       ],
-      "status_source": "realtime"
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "数学填空第2题",
+          "question": "一个数的小数点向左移动一位，得到的数比原来少63，原来这个数是（ ）。",
+          "reason": "差是9份的关系算反：原数10份、移位后1份，差9份=63，应先63÷9=7求1份，再×10=70；孩子用63×9得567。",
+          "hint": "①移位后是原数的几份？②原数与移位后的数差几份？③差63对应几份，先求一份是多少，再求原数。",
+          "img": "g5_sunday_fill2_20261025_guide.png",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。"
+        },
+        {
+          "label": "数学填空第9题",
+          "question": "2.4×5=（ ）；0.8×0.8=（ ）。",
+          "reason": "第一空对；第二空错：8×8=64、共2位小数应得0.64，作答0.16与之不符。",
+          "hint": "①先算8×8得几？②两个因数一共几位小数，积就该点几位小数？",
+          "img": "g5_sunday_fill9_20261025_guide.png",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。"
+        },
+        {
+          "label": "数学竖式第1题",
+          "question": "列竖式计算：2.35×4.2=",
+          "reason": "第二部分积应为235×4=940（移位后9400），孩子写成9480；且470+9480=9950≠9870，部分积与最终得数不一致；最终9.870虽对，关键步骤错。",
+          "hint": "①第二部分积是235乘几？移位后该写成几？②两部分积加起来，和你写的得数对得上吗？请重列一遍。",
+          "img": "g5_sunday_vert1_20261025_guide.png",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。"
+        },
+        {
+          "label": "数学应用第1题",
+          "question": "一支钢笔6.5元，小明买4支钢笔和一本3.2元的笔记本，一共要付多少元？",
+          "reason": "第一步错：4×6.5应为26（6×4=24，0.5×4=2），孩子写成30，导致最终33.2；第二步30+3.2=33.2本身加法无误，但建立在错误的第一步上。",
+          "hint": "①4支钢笔一共多少？6×4与0.5×4分别是多少？②再加笔记本，一共多少？",
+          "img": "g5_sunday_app1_20261025_guide.png",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。"
+        },
+        {
+          "label": "数学应用第3题",
+          "question": "甲数的小数点向左移动一位就等于乙数，甲、乙两数的和是77，甲数和乙数各是多少？",
+          "reason": "最终甲70、乙7虽对，但关键第一步等式不成立：77÷10=7.7≠70；正确关系是甲=10乙、共11份=77，应为乙=77÷11=7、甲=70。",
+          "hint": "①甲是乙的几倍？②甲加乙一共是乙的几份？③一份是多少，再求甲和乙。注意：不能写77÷10=70。",
+          "img": "g5_sunday_app3_20261025_guide.png",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。"
+        },
+        {
+          "label": "英语词汇第2题",
+          "question": "We shouldn't waste ______ clean water or ______ plastic bags.（ ）A. too much; too many B. too many; too much C. too much; too much D. many; much",
+          "reason": "water是不可数名词，bags是可数复数；D项many不能修饰water、much不能修饰bags，且两处都缺too；正确A。",
+          "hint": "water可数吗？bags呢？太多在不可数和可数复数前分别用什么？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语词汇第3题",
+          "question": "My hobby is ______ stamps.（ ）A. collect B. collecting C. collects D. collected",
+          "reason": "hobby is后接动名词作表语，应用collecting；原形collect不能直接跟在is后；正确B。",
+          "hint": "hobby is后面跟动词什么形式？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语词汇第4题",
+          "question": "I like to ______ my books with my friends.（ ）A. hobby B. share C. funny D. share with",
+          "reason": "空后已有with my friends，share with会造成with重复；share sth with sb结构中，空处只填share；正确B。",
+          "hint": "share＋东西＋with＋人；空后面已经有了with my friends，空里还用不用再写with？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语词汇第10题",
+          "question": "Let's ______ a picnic this Sunday.（ ）A. have B. has C. having D. had",
+          "reason": "Let's后接动词原形，应用have；has是第三人称单数形式，不能跟在Let's后；正确A。",
+          "hint": "Let's后面跟动词什么形式？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语单选第15题",
+          "question": "My father ______ TV every evening.（ ）A. watch B. watches C. watching D. watched",
+          "reason": "主语My father是第三人称单数，every evening表一般现在时，动词须加s；正确B。",
+          "hint": "My father是第几人称？every evening用什么时态，动词要变吗？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语单选第16题",
+          "question": "______ your mother like singing?（ ）A. Do B. Does C. Is D. Are",
+          "reason": "主语your mother是第三人称单数，疑问句须用Does＋动词原形like；Is后不能接like原形；正确B。",
+          "hint": "your mother是第几人称？问句开头用什么＋动词原形？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语单选第20题",
+          "question": "We ______ in the park last Sunday.（ ）A. play B. plays C. played D. playing",
+          "reason": "last Sunday是过去时间，须用过去式played；原形play表现在，与时间状语冲突；正确C。",
+          "hint": "last Sunday是什么时间？动词用什么形式？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "英语写作",
+          "question": "以My Hobby为题，写5—6句话介绍爱好；提示词：hobby, collecting, share, friends, happy。",
+          "reason": "5个句号句、完整句4句；缺collecting、share两提示词；hobby is play动名词错；for weekend、on school残片；句首小写；friend单数问题；得分18/30。",
+          "hint": "请重写一版：5—6句完整句（每句主谓齐全），提示词5个齐全（hobby、collecting、share、friends、happy）；检查hobby is后面、时间地点状语是不是附在完整句上、每个句号后句首字母是否大写、friend／friends单复数是否一致。",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "写作类题：完善靠文字重写，配图无助于思考"
+        },
+        {
+          "label": "语文基础第5(1)题",
+          "question": "修改病句。(1)通过这次参观，使我增长了见识。改：",
+          "reason": "病因未去掉：原句缺主语，病在通过……使……连用；改句仍同时保留通过和使，主语仍缺失；只换动词不改结构，不算改对。",
+          "hint": "通过和使能不能同时留着？去掉一个，主语是谁？请重写。",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "语文基础第5(2)题",
+          "question": "修改病句。(2)我们全班同学都参加了植树活动，只有小明除外。改：",
+          "reason": "病因未去掉：原句都与只有……除外自相矛盾；改句仅删去全字，仍保留都和只有小明除外，矛盾仍在。",
+          "hint": "都和只有……除外能不能同时留着？请重写。",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "语文阅读第4题",
+          "question": "文中把辣椒比作什么？这样写有什么好处？",
+          "reason": "本体基本对（小红灯笼与原文小红灯同一意象，不扣本体分）；好处只写笼统的突出事物的特点，未点明关键好处形象生动；半对3/6分，须补写。",
+          "hint": "好处补写一句：把辣椒红艳、挂满枝头的样子写得怎么样？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "语文阅读第5题",
+          "question": "我为什么觉得晚饭格外香甜？请用自己的话回答。",
+          "reason": "方向对（点到劳动），但要素不全：未说明是自己摘的菜做成的饭菜／自己劳动得来的果实，而这正是文中劳动得来的果实，吃起来格外香甜的因果关键；半对3/6分，须补写。",
+          "hint": "补写完整句：晚饭里有什么是自己摘的？为什么吃起来格外香甜？",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "语言类题：以原题全文与文字引导为主，配图无助于思考"
+        },
+        {
+          "label": "语文习作",
+          "question": "一件让我难忘的事。要求：①写一篇400字左右的习作；②把事情的经过写清楚，写出你当时的心情；③语句通顺，不写错别字，标点正确。",
+          "reason": "正文含标点241字，仅约60%；经过大体有但细节与因果不清、心情仅一句、未写为何难忘；语病3处、标点漏1处、首尾重复一句；得分18/30。",
+          "hint": "请完善：①补足至400字左右；②把争抢写具体（小孩抢什么、两人各怎么说怎么做、为什么最后扔进海里）；③把心情写具体（争抢时、扔掉后、现在回想）；④改掉3处语病与1处标点漏；⑤删去首尾重复的一句。",
+          "img": "",
+          "q_img": "",
+          "q_img_status": "原题无图：题面无图指示，不附原题图。",
+          "img_exempt": "写作类题：完善靠文字重写，配图无助于思考"
+        }
+      ],
+      "pending_corrections": 18
     }
   ],
   "counts": {
     "total": 13,
     "pending": 3,
-    "in_progress": 6,
+    "in_progress": 7,
     "done": 1,
     "pending_review": 0
   },
