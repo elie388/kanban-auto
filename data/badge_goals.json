@@ -177,20 +177,27 @@
     "key": "baifen",
     "obtained": true,
     "date": "2026-10-19",
-    "count": 1,
-    "total_count": 1,
-    "via_late": false
-   },
-   {
-    "key": "zonghezhixing",
-    "obtained": true,
-    "date": "2026-10-21",
-    "count": 1,
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 6,
+     "current": 0,
+     "target": 100,
+     "unit": "分",
+     "mode": "本周"
+    }
+   },
+   {
+    "key": "zonghezhixing",
+    "obtained": false,
+    "date": "",
+    "count": 0,
+    "total_count": 1,
+    "via_late": false,
+    "progress": {
+     "state": "ok",
+     "current": 0,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -221,7 +228,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 8,
+     "current": 9,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -245,9 +252,9 @@
    },
    {
     "key": "sanheyi",
-    "obtained": true,
-    "date": "2026-10-25",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 2,
     "via_late": false,
     "progress": {
@@ -282,14 +289,14 @@
    },
    {
     "key": "jiawujielishou",
-    "obtained": true,
-    "date": "2026-10-21",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 0,
      "target": 2,
      "unit": "项/人",
      "mode": "本周"
@@ -297,9 +304,9 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": true,
-    "date": "2026-10-20",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
@@ -381,17 +388,20 @@
     "total_count": 0,
     "via_late": false,
     "progress": {
-     "state": "nodata",
-     "note": "2026-10-26 起正式计数"
+     "state": "ok",
+     "current": 0,
+     "target": 2,
+     "unit": "次",
+     "mode": "本周"
     }
    },
    {
     "key": "jiawuxiaobangshou",
-    "obtained": true,
-    "date": "2026-10-20",
+    "obtained": false,
+    "date": "",
     "count": 0,
     "total_count": 1,
-    "via_late": true,
+    "via_late": false,
     "progress": {
      "state": "event"
     }
@@ -413,14 +423,14 @@
    },
    {
     "key": "jiawuzhixing",
-    "obtained": true,
-    "date": "2026-10-25",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -456,18 +466,25 @@
     "date": "2026-10-16",
     "count": 0,
     "total_count": 1,
-    "via_late": true
+    "via_late": false,
+    "progress": {
+     "state": "ok",
+     "current": 0,
+     "target": 100,
+     "unit": "分",
+     "mode": "本周"
+    }
    },
    {
     "key": "zonghezhixing",
-    "obtained": true,
-    "date": "2026-10-21",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -498,7 +515,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 2,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -559,14 +576,14 @@
    },
    {
     "key": "jiawujielishou",
-    "obtained": true,
-    "date": "2026-10-21",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 0,
      "target": 2,
      "unit": "项/人",
      "mode": "本周"
@@ -574,9 +591,9 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": true,
-    "date": "2026-10-20",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
@@ -589,9 +606,9 @@
    },
    {
     "key": "shuxiezhixing",
-    "obtained": true,
-    "date": "2026-10-21",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
@@ -658,17 +675,20 @@
     "total_count": 0,
     "via_late": false,
     "progress": {
-     "state": "nodata",
-     "note": "2026-10-26 起正式计数"
+     "state": "ok",
+     "current": 0,
+     "target": 2,
+     "unit": "次",
+     "mode": "本周"
     }
    },
    {
     "key": "jiawuxiaobangshou",
-    "obtained": true,
-    "date": "2026-10-20",
+    "obtained": false,
+    "date": "",
     "count": 0,
     "total_count": 1,
-    "via_late": true,
+    "via_late": false,
     "progress": {
      "state": "event"
     }
@@ -690,14 +710,14 @@
    },
    {
     "key": "jiawuzhixing",
-    "obtained": true,
-    "date": "2026-10-25",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -705,6 +725,6 @@
    }
   ]
  },
- "cycle_week": "2026-W43",
- "generated_at": "2026-10-25T23:02:37+08:00"
+ "cycle_week": "2026-W44",
+ "generated_at": "2026-10-26T06:00:18+08:00"
 }
