@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-25T22:53:52+08:00",
+  "generated_at": "2026-10-26T06:00:15+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -9,10 +9,28 @@
   "items": [
     {
       "date": "10-25",
+      "time": "23:59",
+      "time_source": "entry",
+      "reason": "晾衣服连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-25",
       "time": "22:52",
       "time_source": "entry",
       "reason": "🏅家务之星徽章",
       "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-25",
+      "time": "16:05",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
       "sign": "plus",
       "filtered": false
     },
@@ -1231,96 +1249,6 @@
       "reason": "不整理书桌（2026-晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
       "pts": -5,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "18:58",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "16:45",
-      "time_source": "submit",
-      "reason": "数学周试卷按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "16:16",
-      "time_source": "submit",
-      "reason": "英语周试卷Q25订正当天发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "16:16",
-      "time_source": "submit",
-      "reason": "英语周试卷写作补写按时发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "15:47",
-      "time_source": "entry",
-      "reason": "冲正",
-      "pts": -4,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "15:25",
-      "time_source": "submit",
-      "reason": "英语周试卷按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": "15:22",
-      "time_source": "submit",
-      "reason": "语文周试卷按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "英语周试卷Q25订正一次改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "英语周试卷正确率96.6%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-18",
-      "time": null,
-      "time_source": null,
-      "reason": "数学周试卷正确率92.1%",
-      "pts": 3,
-      "sign": "plus",
       "filtered": false
     }
   ],
