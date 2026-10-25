@@ -1,0 +1,190 @@
+/*
+ * whyjjf.lol · iOS 27-style visual skin / 2026-10-25
+ * Visual layer ONLY. No DOM, content, size, geometry, display, animation timing,
+ * state logic, API, privacy gate or Live Sky canvas changes.
+ * Based on Apple HIG materials: content uses readable standard surfaces;
+ * glass treatments are primarily for floating/interactive controls.
+ */
+:root {
+  --bg1: #e9f2ff;
+  --bg2: #f8faff;
+  --bg3: #e8f2fb;
+  --txt: #202d3d;
+  --sub: #667589;
+  --card: rgba(255, 255, 255, .94);
+  --shadow: 0 2px 5px rgba(26, 62, 105, .07), 0 14px 30px rgba(28, 67, 113, .12);
+}
+
+/* Background is behind (not inside) the original sky/canvas module. */
+body {
+  background:
+    radial-gradient(600px 320px at 12% -40px, rgba(255,255,255,.79), transparent 64%),
+    radial-gradient(520px 280px at 92% 60px, rgba(226,239,255,.63), transparent 66%),
+    linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%);
+}
+
+/* Content is intentionally NOT full transparent glass: long correction notes
+   must stay clear as they scroll. Shadows and thin optical highlights add depth. */
+.card {
+  background-color: var(--card);
+  background-image: linear-gradient(170deg,rgba(255,255,255,.96),rgba(255,255,255,.17) 65%,rgba(232,242,255,.1));
+  border-color: rgba(255,255,255,.94);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1),
+              0 1px 2px rgba(24,57,102,.04),
+              0 10px 28px rgba(33,68,107,.085);
+}
+.card h2::before {
+  background: linear-gradient(180deg, #6ba9fa, #b7d9ff);
+  box-shadow: 0 0 6px rgba(80,151,251,.19);
+}
+
+/* Keep all Live Sky rendering and geometry unmodified. Clear glass is appropriate
+   over the moving sky; use a low-opacity surface so clouds remain visible. */
+.sky-band {
+  box-shadow: 0 1px 2px rgba(31,70,118,.08), 0 12px 28px rgba(34,81,129,.12);
+}
+.sky-band .bal-card,
+.sky-band button.bal-card,
+.sky-band .bal-card.is-neg {
+  background: linear-gradient(160deg, rgba(255,255,255,.16), rgba(255,255,255,.055) 58%, rgba(255,255,255,.105));
+  border-color: rgba(255,255,255,.48);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.34),
+              inset 0 -1px 0 rgba(255,255,255,.09),
+              0 8px 24px rgba(11,49,91,.11);
+  -webkit-backdrop-filter: blur(7px) saturate(1.18);
+  backdrop-filter: blur(7px) saturate(1.18);
+}
+.sky-band .bal-card.g5:hover,
+.sky-band .bal-card.g6:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.42), 0 12px 28px rgba(11,49,91,.18);
+}
+.sky-band .bal-tier-seg { background: rgba(255,255,255,.31); }
+.sky-band .bal-tier-fill { background: rgba(255,255,255,.94); }
+
+/* Main content cards retain all dimensions, children, ordering and states. */
+.task {
+  background: linear-gradient(155deg, rgba(255,255,255,.96), rgba(244,249,255,.88));
+  border-color: rgba(205,221,240,.86);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 2px 7px rgba(37,71,109,.045);
+}
+.task.pending {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(255,246,247,.92));
+  border-color: rgba(238,214,218,.9);
+}
+.task.submitted {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(239,247,255,.94));
+  border-color: rgba(210,225,245,.9);
+}
+.task.grading {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(247,243,255,.94));
+  border-color: rgba(222,212,245,.9);
+}
+.task.correcting {
+  background: linear-gradient(155deg,rgba(255,255,255,.98),rgba(255,249,239,.95));
+  border-color: rgba(242,224,200,.95);
+}
+.task.done {
+  background: linear-gradient(155deg,rgba(255,255,255,.97),rgba(239,250,244,.91));
+  border-color: rgba(208,233,216,.9);
+}
+.task .st-badge, .task .corr-badge,
+.pill-grade, .yd-count, .sum-kp, .fb-chev,
+.redeem-top .spent, .redeem-back,
+.shop-top .cost, .corr-item .corr-cap {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.68), 0 1px 3px rgba(34,59,94,.055);
+}
+/* Do not overwrite the completion/verification colors. */
+.task .task-note {
+  background: linear-gradient(145deg,rgba(255,252,244,.95),rgba(255,246,227,.96));
+}
+.task .corr-panel { border-top-color: rgba(208,217,232,.8); }
+.corr-item { border-bottom-color: rgba(214,225,238,.9); }
+.corr-item.corr-qa { background: rgba(246,250,255,.88); border-left-color: #adc3dd; }
+.corr-item .corr-h { border-left-color: #b7cbe4; color: #42566e; }
+.corr-item .corr-img { border-color: #dbe6f2; }
+
+/* Floating action surfaces: the only deliberately glassy controls. */
+.collapse-btn .cb-state,
+.card h2 .tag-demo,
+.grade-head .tag-demo,
+.task .st-mini,
+.fb-chev {
+  background: linear-gradient(155deg,rgba(255,255,255,.9),rgba(229,239,253,.74));
+  color: #4b6280;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.96), 0 1px 4px rgba(28,67,114,.08);
+  -webkit-backdrop-filter: blur(8px) saturate(1.22);
+  backdrop-filter: blur(8px) saturate(1.22);
+}
+.collapse-btn:hover .cb-state {
+  background: linear-gradient(150deg,rgba(255,255,255,.98),rgba(219,234,254,.88));
+}
+.tag-live::before { background: #35bc82; }
+/* Grade identifiers retain their warm/orange and cool/blue identities. */
+.pill-grade.g5 { background: linear-gradient(145deg,#ff9c79,#f77959); }
+.pill-grade.g6 { background: linear-gradient(145deg,#8ba8ff,#607fff); }
+
+/* Submission controls: original padding, borders, min touch area and events stay. */
+html body .up-btn {
+  background: linear-gradient(155deg,rgba(255,255,255,.95),rgba(236,245,255,.85));
+  border-color: rgba(151,186,232,.85);
+  color: #2a63ae;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 2px 5px rgba(44,93,157,.1);
+  -webkit-backdrop-filter: blur(7px) saturate(1.2);
+  backdrop-filter: blur(7px) saturate(1.2);
+}
+html body .up-btn.sent {
+  background: linear-gradient(155deg,#f1fff8,#dcf5e9);
+  border-color: #8bcbaa;
+  color: #19764e;
+}
+html body .up-sheet {
+  background: rgba(248,251,255,.97);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), 0 -10px 36px rgba(15,41,77,.18);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  backdrop-filter: blur(20px) saturate(1.15);
+}
+html body .up-mask { background: rgba(19,34,57,.38); }
+html body .up-chip,
+html body .up-cancel,
+html body .up-sheet textarea,
+html body .up-pass,
+html body .up-file {
+  border-color: #d4e0ee;
+  background-color: #fff;
+}
+html body .up-chip.on { background: #eaf3ff; border-color: #82aee9; color: #225eaa; }
+html body .up-go { background: linear-gradient(145deg,#4189ea,#246ace); }
+
+/* Other existing sections: polished standard material, no re-layout. */
+.sum-item,.fb-item,.shop-item,.redeem-item {
+  background: linear-gradient(155deg,#fff, #f5f9ff);
+  border-color: #dbe6f3;
+  box-shadow: inset 0 1px 0 #fff, 0 2px 7px rgba(34,77,128,.055);
+}
+.sum-parent-head,.fb-qa-q { background: #eaf3ff; }
+.sum-enc,.fb-qa-a { background: #eef9f3; }
+.redeem-empty { background: #f7faff; border-color: #c6d7ee; }
+.log-item { border-bottom-color: #dfe9f4; }
+.log-scrollwrap.has-more::after {
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.98));
+}
+.footer {
+  background: rgba(255,255,255,.75);
+  box-shadow: inset 0 1px 0 #fff, 0 3px 12px rgba(23,59,103,.06);
+}
+.ptr-bar {
+  background: rgba(249,252,255,.94);
+  box-shadow: inset 0 1px 0 #fff, 0 6px 16px rgba(23,59,103,.18);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Accessibility: do not trade readability for transparency. */
+@media (prefers-reduced-transparency: reduce) {
+  .sky-band .bal-card, .sky-band button.bal-card { background: rgba(40,87,139,.79); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .collapse-btn .cb-state, .card h2 .tag-demo, .grade-head .tag-demo,
+  html body .up-btn, html body .up-sheet { -webkit-backdrop-filter:none; backdrop-filter:none; }
+}
+@media (forced-colors: active) {
+  .card, .task, .sky-band .bal-card, html body .up-btn { box-shadow:none; }
+}

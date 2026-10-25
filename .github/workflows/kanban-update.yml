@@ -242,6 +242,12 @@ jobs:
           ls -la public/data/ | grep -i ios27-skin-demo || true
       # TEMP-IOS27-DEMO-END
 
+      # iOS27皮肤CSS同步（2026-10-25 家长令，安装包版本上线）：模板引用 /ios27-skin.css，须拷进 Pages 产物根目录，缺失即构建失败
+      - name: 同步iOS27皮肤CSS到 Pages 产物
+        run: |
+          cp ios27-skin.css public/ios27-skin.css
+          test -s public/ios27-skin.css || { echo "::error::public/ios27-skin.css 缺失，皮肤不生效"; exit 1; }
+
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
         run: |
