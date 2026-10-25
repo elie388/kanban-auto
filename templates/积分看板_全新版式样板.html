@@ -303,17 +303,6 @@
   .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 2.8s ease-in-out infinite;}
   @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.6; transform:scale(.88);}}
   @media (prefers-reduced-motion: reduce){ .task .st-dot{animation:none;} }
-  /* 状态图标动效（2026-10-25 家长定）：全部状态徽章图标都动，各按图标语义取动作；圆点呼吸不动 */
-  .task .st-ico{display:inline-block;}
-  .task .st-ico-spin{animation:kbIcoSpin 2.4s linear infinite;}
-  @keyframes kbIcoSpin{to{transform:rotate(360deg);}}
-  .task .st-ico-pulse{animation:kbIcoPulse 2.4s ease-in-out infinite;}
-  @keyframes kbIcoPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.18);}}
-  .task .st-ico-bob{animation:kbIcoBob 2.4s ease-in-out infinite;}
-  @keyframes kbIcoBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-2px);}}
-  .task .st-ico-sway{animation:kbIcoSway 3.0s ease-in-out infinite; transform-origin:50% 90%;}
-  @keyframes kbIcoSway{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(6deg);}}
-  @media (prefers-reduced-motion: reduce){ .task .st-ico-spin, .task .st-ico-pulse, .task .st-ico-bob, .task .st-ico-sway{animation:none;} }
   .task.pending{background:#FCF2F2;}
   .task.pending .st-badge{background:#FDECEA; color:#C92A20;}
   .task.submitted{background:#F0F4F8;}
@@ -1819,12 +1808,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           else { urgCls = 'urging'; urgeAnimCount++; }
         }
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + (urgCls ? ' ' + urgCls : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
-        /* 状态图标动效（2026-10-25 家长定）：全部状态徽章图标都动，按图标语义取动作；无图标徽章不动 */
-        var badgeHtml = badgeText;
-        var ICO_ANIM = {'🔄':'st-ico-spin','🔍':'st-ico-pulse','📝':'st-ico-bob','📤':'st-ico-bob','✅':'st-ico-pulse','🌴':'st-ico-sway','🧹':'st-ico-sway'};
-        var mIco = badgeText.match(/^(\S+)/);
-        if(mIco && ICO_ANIM[mIco[1]]) badgeHtml = '<span class="st-ico ' + ICO_ANIM[mIco[1]] + '">' + mIco[1] + '</span>' + badgeText.slice(mIco[1].length);
-          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeHtml + '</span>' + miniPill + carryTag + '</div>'
+          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeText + '</span>' + miniPill + carryTag + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + ((t.urge && t.urge.text && t.status !== 'done') ? '<div class="task-urge">⏰ ' + esc(t.urge.text) + '<button type="button" class="urge-mute" data-urge-mute="' + esc(t.task_id || '') + '">暂停闪烁</button></div>' : '')
           + '<div class="task-progress">' + sub2 + '</div></div>'
@@ -5260,7 +5244,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261025-1810-livesky-shell-rush';
+  var KB_BUILD = '20261025-1810-livesky-shell-rush-fix1';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
