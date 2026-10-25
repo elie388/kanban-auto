@@ -3,7 +3,7 @@
   "date": "2026-10-25",
   "grade": "六年级",
   "generated_at": "2026-10-25T00:05:11+08:00",
-  "updated_at": "2026-10-25T20:07:49+08:00",
+  "updated_at": "2026-10-25T20:08:00+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -450,10 +450,10 @@
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
       "status": "pending",
-      "review_status": "approved",
+      "review_status": "rejected",
       "created_by": "user",
       "created_at": "2026-10-25T20:07:49+08:00",
-      "updated_at": "2026-10-25T20:07:49+08:00"
+      "updated_at": "2026-10-25T20:08:00+08:00"
     }
   ],
   "counts": {
