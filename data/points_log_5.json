@@ -1,12 +1,23 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-26T07:09:10+08:00",
+  "generated_at": "2026-10-26T07:58:51+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-24",
+      "time": "07:57",
+      "time_source": "entry",
+      "reason": "53天天练三科正式结算补记",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-26"
+    },
     {
       "date": "10-24",
       "time": "07:07",
