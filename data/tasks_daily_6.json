@@ -57,7 +57,8 @@
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
       "carry_count": 2,
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "pending_note": "【缺件提醒】10月23日的53天天练·英语第19页已经收到了，前面几部分做得不错。第五题阅读题与作答所在的后续页还没收到，请把后续页拍照，通过『交这一项』发回，收齐了才能一起批改。"
     },
     {
       "task_id": "PRACT-20261023-D49065",
@@ -218,7 +219,8 @@
       "carry_first_date": "2026-10-23",
       "carried_from": "2026-10-24",
       "carry_count": 2,
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "pending_note": "【缺件提醒】概念50、51的朗读已经收到了，读得很完整。要逐字比对，还需要原文页的照片，请把概念50、51所在的原文页拍照，通过『交这一项』发回。"
     },
     {
       "task_id": "REG-20261023-37028D",
@@ -341,7 +343,8 @@
       "status_source": "realtime",
       "carry_first_date": "2026-10-24",
       "carried_from": "2026-10-24",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_note": "【缺件提醒】10月24日的53天天练·英语第19页已经收到了，前面几部分做得不错。第五题阅读题与写作续写所在的后续页还没收到，请把后续页拍照，通过『交这一项』发回，收齐了才能一起批改。"
     },
     {
       "task_id": "MANUAL-20261024-001",
