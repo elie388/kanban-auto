@@ -3,7 +3,7 @@
   "date": "2026-10-25",
   "grade": "六年级",
   "generated_at": "2026-10-25T00:05:11+08:00",
-  "updated_at": "2026-10-25T11:09:38+08:00",
+  "updated_at": "2026-10-25T11:33:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -41,34 +41,6 @@
       "corrections": [],
       "pending_corrections": 0,
       "pending_note": "Q3已于10-24二次终审改判对（9/9），待改正已撤销；本卡保持待确认是因为Q2(3)改病句仍待确认（原结论记为对、替换词不可辨认）；家长2026-10-25定：孩子把替换词重写清楚再拍发回，以原答为准复核，等孩子重拍。请点『交这一项』上传重拍照片。"
-    },
-    {
-      "task_id": "D53-2026-10-23-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "in_progress",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-23T16:55:37+08:00",
-      "updated_at": "2026-10-25T00:05:11+08:00",
-      "carry_first_date": "2026-10-23",
-      "carried_from": "2026-10-24",
-      "carry_count": 2,
-      "status_source": "closeout_writeback",
-      "corrections": [
-        {
-          "label": "53天天练P11 4",
-          "question": "莱洛三角形（曲线AB,AC,BC分别是以正三角形顶点C,B,A为中心点的圆的一部分）沿地面滚动，图形最高点和中心点O留下的轨迹可能是（）。A.上直线下波浪；B.上波浪下波浪；C.双直线；D.上波浪下直线",
-          "reason": "定宽曲线滚动时，最高点与中心点O的高度变化规律不同；本批把两条轨迹的对应关系弄反了——先分清哪条线对应最高点、哪条线对应中心点，再对照形状判断。",
-          "hint": "①先看定宽曲线滚动时，最高点到地面的高度变不变、中心点O到地面的高度变不变；②想一想最高点轨迹和中心点轨迹各是什么样的线，分别对应哪个点；③把两条轨迹和两个点一一对上，再对照选项描述判断哪一条对得上。",
-          "img": "g6_d53_p11_20261024_guide.png",
-          "q_img": "g6_d53_p11_20261024_orig.png"
-        }
-      ],
-      "pending_corrections": 1
     },
     {
       "task_id": "D53-2026-10-23-ENG",
@@ -439,9 +411,9 @@
     }
   ],
   "counts": {
-    "total": 15,
+    "total": 14,
     "pending": 3,
-    "in_progress": 8,
+    "in_progress": 7,
     "done": 0,
     "pending_review": 0
   },
