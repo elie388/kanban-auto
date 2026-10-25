@@ -96,6 +96,14 @@ jobs:
           for f in data/sky/*.webp; do test -s "$f" || { echo "::error::$f 为空"; exit 1; }; done
           cp data/sky/*.webp public/data/sky/
           ls -la public/data/sky/
+      # 渲染壳资产通道（2026-10-25 rushed 版）：data/livesky/*.webp/*.png
+      - name: Sync livesky shell assets
+        run: |
+          mkdir -p public/data/livesky
+          test -n "$(ls data/livesky/* 2>/dev/null)" || { echo "::error::data/livesky/* 缺失"; exit 1; }
+          for f in data/livesky/*; do test -s "$f" || { echo "::error::$f 为空"; exit 1; }; done
+          cp data/livesky/* public/data/livesky/
+          ls -la public/data/livesky/
 
       # 读背示范录音通道（2026-10-22 家长定）：待改正明细里的示范录音
       # data/audio/ 同步进 Pages 产物，供明细里的 <audio> 引用；
