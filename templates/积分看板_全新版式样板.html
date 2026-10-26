@@ -5311,7 +5311,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-full';
+  var KB_BUILD = '20261026-livesky-keepalive';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -7687,10 +7687,13 @@ void main(){
   };
   const $$ = sel => Array.from(document.querySelectorAll(sel));
   const canvas = $('#skyCanvas');
-  const glCanvas = $('#volumetricCanvas');
+  let glCanvas = $('#volumetricCanvas');
   const precipitationCanvas = $('#precipitationCanvas');
   const precipitationCtx = precipitationCanvas.getContext('2d', {alpha:true});
-  const volume = new window.VolumetricSky(glCanvas);
+  let volume = new window.VolumetricSky(glCanvas);
+  // Keep-alive: low-memory devices skip temporal targets (3 full-size buffers).
+  var kbLowMem = (Number(navigator.deviceMemory)||4) <= 4;
+  if (kbLowMem) { volume.temporalRequested = false; }
   const frameClock = new window.LiveSkyFrameScheduler.FrameScheduler(60);
   const cloudMotion = new window.LiveSkyCloudMotion.CloudMotion();
   const cloudKind = weather => weather==='clear'?1:weather==='few_clouds'?0:['partly_cloudy','windstorm'].includes(weather)?0:weather==='overcast'?2:['rain','snow','freezing_rain'].includes(weather)?2:['downpour','thunder','hail','blizzard'].includes(weather)?3:weather==='sandstorm'?4:weather.includes('fog')?5:0;
@@ -7711,6 +7714,8 @@ void main(){
     canvas.style.background='transparent';
     $('#engineLabel').textContent=useVolume?'渲染引擎：WebGL2 · 3D Ray Marching':'渲染引擎：Canvas 2D · 回退模式';
   }
+  function kbOnGlFallback(){ updateEngine(); resizeCanvas(); kbScheduleRebuild(); }
+  function kbOnGlRestored(){ autoWebglDisabled=false; severeSlowCount=0; if (!kbLowMem) { volume.configureTemporal?.($('#temporalMode').value!=='off'); } volume.resetHistory?.(); updateEngine(); resizeCanvas(); }
   const ctx = canvas.getContext('2d');
   const realisticRain = new window.LiveSkyRain();
   const solidEffects = new window.LiveSkyEffects();
@@ -8042,12 +8047,13 @@ void main(){
     precipitationCtx.setTransform(fxW/rect.width,0,0,fxH/rect.height,0,0);
     $('#sizeText').textContent = `${Math.round(rect.width)} × ${Math.round(rect.height)}`;
     if(canvasSize!==lastViewState){generateCloudLayers();lastViewState=canvasSize;}
-    const glScale = state.quality===2?0.80:state.quality===1?0.60:0.42;
+    // Keep-alive: halve volume pixels (glScale x0.71, maxPixels /2) so the GL context survives on iPad.
+    const glScale = state.quality===2?0.57:state.quality===1?0.42:0.30;
     const density=Math.min(window.devicePixelRatio||1,1.35);
     // Constrain total fragment workload on Retina screens / giant monitors.
     const desired=glScale*density;
     const deviceMemory=Number(navigator.deviceMemory)||4;
-    const maxPixels=(state.quality===2?850000:state.quality===1?520000:280000)*(deviceMemory<=2?.68:deviceMemory<=4?.86:1);
+    const maxPixels=(state.quality===2?425000:state.quality===1?260000:140000)*(deviceMemory<=2?.68:deviceMemory<=4?.86:1);
     const pixelScale=Math.min(desired,Math.sqrt(maxPixels/Math.max(1,rect.width*rect.height)));
     volume.resize(rect.width,rect.height,pixelScale);
   }
@@ -8731,8 +8737,8 @@ void main(){
     });
     window.addEventListener('online',()=>{if(state.mode==='live')loadLiveWeather(false);});
     window.addEventListener('offline',()=>{if(state.mode==='live'){$('#headerStatus').textContent='离线 · 历史天气';state.liveStatus='网络中断，历史数据';}});
-    glCanvas.addEventListener('sky-gl-fallback',()=>{updateEngine();resizeCanvas();});
-    glCanvas.addEventListener('sky-gl-restored',()=>{autoWebglDisabled=false;severeSlowCount=0;volume.configureTemporal?.($('#temporalMode').value!=='off');volume.resetHistory?.();updateEngine();resizeCanvas();});
+    glCanvas.addEventListener('sky-gl-fallback', kbOnGlFallback);
+    glCanvas.addEventListener('sky-gl-restored', kbOnGlRestored);
     function scheduleCanvasResize(){
       if(resizeQueued)return;resizeQueued=true;
       requestAnimationFrame(()=>{resizeQueued=false;resizeCanvas();});
@@ -8805,6 +8811,10 @@ void main(){
   var kbShell = document.getElementById('livesky-shell');
   var kbWeatherOK = false;
   var kbStale = false;
+  var kbOldReleased = false;
+  var kbLastMapped = null;
+  var kbRebuilds = 0;
+  var kbRebuildTimer = 0;
   var kbTempEl = null;
   function kbSetActive(on){ window.__v121ShellActive = !!on; }
   function kbTempElFn(){
@@ -8844,6 +8854,7 @@ void main(){
   function kbApplySkyState(w){
     if (!w || typeof w !== 'object' || w.code === null || w.code === undefined || w.code === '') { kbDegrade(); return; }
     var mapped = kbMapSkyState(w);
+    kbLastMapped = mapped;
     var nowSec = Math.floor(Date.now() / 1000);
     var fa = Number(w.fetchedAt);
     kbStale = isFinite(fa) && fa > 0 && (nowSec - fa) > 1800;
@@ -8855,6 +8866,11 @@ void main(){
     try { resizeCanvas(); } catch (e) {}
     applyNormalizedLive(mapped);
     kbSetActive(true);
+    try {
+      var ocv = document.getElementById('sky-canvas');
+      if (ocv && ocv.width > 0) { ocv.width = 0; ocv.height = 0; kbOldReleased = true; }
+    } catch (e) {}
+    if (volume && volume.lost) kbScheduleRebuild();
     state.visible = !kbStale;
     var te = kbTempElFn();
     if (te) {
@@ -8867,6 +8883,11 @@ void main(){
     kbStale = false;
     if (kbShell) { kbShell.style.display = 'none'; kbShell.classList.remove('stale'); }
     kbSetActive(false);
+    if (kbRebuildTimer) { clearTimeout(kbRebuildTimer); kbRebuildTimer = 0; }
+    if (kbOldReleased) {
+      kbOldReleased = false;
+      try { window.dispatchEvent(new Event('resize')); } catch (e) {}
+    }
     state.visible = false;
     var te = kbTempElFn();
     if (te) { te.style.display = 'none'; te.textContent = ''; }
@@ -8883,13 +8904,48 @@ void main(){
       .then(function(data){ if (!data || !data.weather) { kbDegrade(); return; } kbApplySkyState(data.weather); })
       .catch(function(){ kbDegrade(); });
   }
+  function kbScheduleRebuild(){
+    if (kbRebuilds >= 3) return;
+    if (kbRebuildTimer) return;
+    kbRebuildTimer = setTimeout(function(){
+      kbRebuildTimer = 0;
+      kbRebuildVolume();
+    }, 1500);
+  }
+  function kbRebuildVolume(){
+    try {
+      if (kbRebuilds >= 3) return;
+      if (!kbWeatherOK || kbStale) return;
+      if (document.hidden) return;
+      if (!volume || !volume.lost) return;
+      kbRebuilds++;
+      var oldCanvas = glCanvas;
+      var shell = document.getElementById('livesky-shell');
+      if (!shell || !oldCanvas) return;
+      var nc = document.createElement('canvas');
+      nc.id = 'volumetricCanvas';
+      try { oldCanvas.removeEventListener('sky-gl-fallback', kbOnGlFallback); } catch (e) {}
+      try { oldCanvas.removeEventListener('sky-gl-restored', kbOnGlRestored); } catch (e) {}
+      shell.replaceChild(nc, oldCanvas);
+      glCanvas = nc;
+      volume = new window.VolumetricSky(nc);
+      volume.temporalRequested = false;
+      glCanvas.addEventListener('sky-gl-fallback', kbOnGlFallback);
+      glCanvas.addEventListener('sky-gl-restored', kbOnGlRestored);
+      updateEngine();
+      resizeCanvas();
+      if (kbLastMapped) { try { applyNormalizedLive(kbLastMapped); } catch (e) {} }
+    } catch (e) {}
+  }
   window.__skyTest = {
     setWeather: function(w){ kbApplySkyState(w); },
     key: function(){ return state.weather; },
     mode: function(){ return useVolume ? 'webgl' : 'canvas2d'; },
     particleCount: function(){ return state.lastParticleCount || 0; },
     stale: function(){ return !!kbStale; },
-    temp: function(){ return state.temp; }
+    temp: function(){ return state.temp; },
+    glLost: function(){ return !!(volume && volume.lost); },
+    rebuilds: function(){ return kbRebuilds; }
   };
   if (kbShell) kbShell.style.display = 'none';
   kbSetActive(false);
