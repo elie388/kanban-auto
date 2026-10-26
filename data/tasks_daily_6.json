@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "六年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:10:55+08:00",
+  "updated_at": "2026-10-26T19:10:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,7 +12,7 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-10-26T19:10:55+08:00",
+      "ingested_at": "2026-10-26T19:10:59+08:00",
       "status": "done"
     },
     "daily_53": {
@@ -107,8 +107,8 @@
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-26.docx",
       "file_hash": "267b2196dace34f9e52cee4d108266533285fad13ae714c1a323616fbd3f64f7",
-      "created_at": "2026-10-26T19:10:48+08:00",
-      "updated_at": "2026-10-26T19:10:48+08:00",
+      "created_at": "2026-10-26T19:10:52+08:00",
+      "updated_at": "2026-10-26T19:10:52+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-26.pdf",
