@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "六年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:37:16+08:00",
+  "updated_at": "2026-10-26T19:39:40+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -148,7 +148,7 @@
       "title": "生字没有100分的重写2遍",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
@@ -157,9 +157,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T19:26:04+08:00",
-      "updated_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:39:40+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261026-3AF14E",
@@ -308,7 +309,7 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 14,
+    "pending": 13,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
