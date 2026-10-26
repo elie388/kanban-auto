@@ -544,6 +544,20 @@ def _writing_streak(verdicts):
     return n
 
 
+def _writing_streak_after_award(verdicts, last_date):
+    """书写之星颁发后重计（2026-10-26 家长定接通自动颁发）：
+    只计上次颁发日之后的 verdict 尾部连续 zero 数；无上次颁发时
+    等同 _writing_streak。颁发日以台账徽章行名义日期为准（非补记日）。"""
+    seq = [v for dstr, v in verdicts
+           if dstr >= WRITING_EFFECTIVE and (last_date is None or dstr > last_date)]
+    n = 0
+    for v in reversed(seq):
+        if v != "zero":
+            break
+        n += 1
+    return n
+
+
 def _load_daily_flags():
     """日结记录.jsonl -> {(gk, date): bool}。文件不存在返回空。"""
     out = {}
@@ -731,10 +745,13 @@ def compute_badge_progress(events, now=None):
         p["sanribuduan"] = {"state": "ok",
                             "current": min(_streak_from_dates(all_dates, today), 3),
                             "target": 3, "unit": "天", "mode": "连续"}
-        # 书写之星：正式计数连续零扣分 / 5
+        # 书写之星：正式计数连续零扣分 / 5（颁发后重计，2026-10-26）
         verdicts = _writing_verdicts(rows, gk, now_iso, decide_lines)
+        _last_shuxie = max([e["date"] for e in events.get(gk, [])
+                            if e["key"] == "shuxiezhixing"], default=None)
         p["shuxiezhixing"] = {"state": "ok",
-                              "current": min(_writing_streak(verdicts), 5),
+                              "current": min(_writing_streak_after_award(
+                                  verdicts, _last_shuxie), 5),
                               "target": 5, "unit": "次", "mode": "连续"}
         # 表达之星：正式计数自 2026-10-26 起
         if today.isoformat() < BIAODA_EFFECTIVE:
