@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "六年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:00:28+08:00",
+  "updated_at": "2026-10-26T19:10:55+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-10-26T19:10:55+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -93,14 +93,37 @@
       "created_at": "2026-10-26T16:55:37+08:00",
       "updated_at": "2026-10-26T16:55:37+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "PRACT-20261026-4D878E",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-10-26.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《七律·长征》（毛泽东）\n原文：红军不怕远征难，万水千山只等闲。五岭逶迤腾细浪，乌蒙磅礴走泥丸。金沙水拍云崖暖，大渡桥横铁索寒。更喜岷山千里雪，三军过后尽开颜。\n朗读要求：语气豪迈坚定高亢，注意韵脚（难、闲、丸、寒、颜），颔联读得豪迈洒脱，颈联读出波澜起伏，尾联读出喜悦欢快。\n英语口语：先读短文再用自己的话复述大意（5分钟内完成）。短文：Last week, I was very busy moving into my new house. I was so tired that I did not know how to finish packing. Suddenly, a kind neighbour, Mr. Smith, came to help. He carried heavy boxes and even helped me fix the broken chair. Thanks to his help, I finished everything quickly. I am very lucky to have such a helpful neighbour.\n提示问题：1. What was the writer doing last week? 2. Who came to help the writer? 3. How did the writer feel at last?\n口语要求：语音语调自然，包含搬家、邻居帮忙、感激之情三个核心信息，尽量脱稿表达。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-26.docx",
+      "file_hash": "267b2196dace34f9e52cee4d108266533285fad13ae714c1a323616fbd3f64f7",
+      "created_at": "2026-10-26T19:10:48+08:00",
+      "updated_at": "2026-10-26T19:10:48+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-10-26.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 6,
+    "pending": 6,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-10-26T22:30:00+08:00"
 }
