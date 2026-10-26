@@ -1,110 +1,33 @@
 {
- "date": "2026-10-25",
+ "date": "2026-10-26",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "D53-2026-10-23-MATH",
-   "title": "53天天练·数学",
-   "subject": "数学",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-23-ENG",
-   "title": "53天天练·英语",
-   "subject": "英语",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-EAE721",
-   "title": "小状元练习册（三）（该条被涂黑，仅余此可辨）。",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-B96F50",
-   "title": "生字13课",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-2C714C",
-   "title": "校本13课比照红笔错题",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261023-71C90B",
-   "title": "试卷打印",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "PRACT-20261023-569ED6",
-   "title": "针对性练习（含口语+背诵）",
-   "subject": "综合",
-   "source": "targeted_practice",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-24-CHN",
-   "title": "53天天练·语文",
-   "subject": "语文",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-24-ENG",
-   "title": "53天天练·英语",
-   "subject": "英语",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "MANUAL-20261024-001",
-   "title": "补练·小数点移动（5题）",
-   "subject": "数学",
-   "source": "manual",
-   "group": "study"
-  },
-  {
-   "task_id": "CHORE-20261025-G5",
+   "task_id": "CHORE-20261026-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "MANUAL-20261025-001",
-   "title": "数学小数突击模拟卷",
-   "subject": "数学",
-   "source": "manual",
+   "task_id": "D53-2026-10-26-CHN",
+   "title": "53天天练·语文",
+   "subject": "语文",
+   "source": "daily_53",
    "group": "study"
   },
   {
-   "task_id": "MANUAL-20261025-002",
-   "title": "周日综合试卷（语文·数学·英语）",
-   "subject": "综合",
-   "source": "manual",
+   "task_id": "META-REGISTER-2026-10-26",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "MANUAL-20261025-003",
-   "title": "英语阅读写作第10期",
+   "task_id": "REG-20261026-0F571E",
+   "title": "口语易",
    "subject": "英语",
-   "source": "manual",
-   "group": "study"
-  },
-  {
-   "task_id": "MANUAL-20261025-004",
-   "title": "英语阅读写作第10期",
-   "subject": "英语",
-   "source": "manual",
+   "source": "register_book",
    "group": "study"
   }
  ]

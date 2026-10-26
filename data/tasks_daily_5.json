@@ -1,97 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "grade": "五年级",
-  "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-27T00:07:18+08:00",
+  "generated_at": "2026-10-27T00:17:08+08:00",
+  "updated_at": "2026-10-27T00:17:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-26T23:15:05+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-10-26T19:10:52+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-10-26T19:00:28+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261026-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-26T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-26T00:18:00+08:00",
-      "updated_at": "2026-10-27T00:07:18+08:00",
-      "completed_at": "2026-10-26T21:41:13+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b179302183736428e8dc9fe4b545ac（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "D53-2026-10-26-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "done",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T21:18:15+08:00",
-      "status_source": "manual_review_20261026",
-      "pending_corrections": 0,
-      "corrections": [
-        {
-          "label": "一、1(1)看拼音写词语",
-          "question": "一、1(1)拼音dà chén原写大巨。",
-          "reason": true,
-          "hint": "提示1：蔺相如是赵国的什么官？提示2：chén这个音的字里，哪个是官员的意思？提示3：再想想这个词两个字怎么写。",
-          "img_exempt": "语文题，无需配图",
-          "orig_text": "（1）看拼音，写词语：dà chén（ ）。"
-        },
-        {
-          "label": "一、1(3)联想表达",
-          "question": "一、1(3)坚韧不拔联想表达原写刘胡兰一句话概括，未展开具体情景。",
-          "reason": true,
-          "hint": "提示1：敌人是怎样诱惑、威胁刘胡兰的？提示2：刘胡兰说了什么、做了什么？提示3：事情的结果怎样？把经过和结果写成一段具体的情景。",
-          "img_exempt": "语文题，无需配图",
-          "orig_text": "（3）看到“坚韧不拔”一词，你想到了哪些人和事？把你想到的用具体的情景表现出来。"
-        },
-        {
-          "label": "2读音",
-          "question": "2下列加点字的读音全部正确的是哪一项？原选B（任丘、怒发冲冠）。",
-          "reason": true,
-          "hint": "提示1：任丘这个地名读几声？提示2：四个选项里，哪一项两个词的读音都对？提示3：逐个查一查每个加点字的读音。",
-          "img_exempt": "语文题，无需配图",
-          "orig_text": "下列加点字的读音全部正确的是哪一项？（ ）A. 强迫（qiǎng）、削弱（xuē） B. 任丘（rèn）、怒发冲冠（guān） C. 冠军（guàn）、剖开（pāo） D. 卿大夫（qīng）、哗啦啦（huá）。"
-        },
-        {
-          "label": "4概括",
-          "question": "4二十四小时城市书房特点概括原选D。",
-          "reason": true,
-          "hint": "提示1：语段里提到了哪些特点？提示2：人性化在语段里有没有依据？提示3：哪一项特点语段里根本没提到？",
-          "img_exempt": "语文题，无需配图",
-          "orig_text": "阅读有关“24 小时城市书房”的语段，下列对其特点概括不恰当的是哪一项？（ ）A. 全天候 B. 智能化 C. 藏书多 D. 人性化。"
-        }
-      ],
-      "completed_at": "2026-10-26T22:56:31+08:00"
-    },
     {
       "task_id": "D53-2026-10-26-MATH",
       "source": "daily_53",
@@ -103,7 +33,7 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T21:09:51+08:00",
+      "updated_at": "2026-10-27T00:17:08+08:00",
       "status_source": "manual_review_20261026",
       "pending_corrections": 4,
       "corrections": [
@@ -139,7 +69,10 @@
           "img": "g5_math53_p22_q23_guide.png",
           "orig_text": "公园有两个三角形花坛，第一个花坛的两条边分别长 3 m 和 7 m，第二个花坛的两条边分别长 9 m 和 17 m。这两个花坛的第三条边长度相等，且为整米数，第三条边长（ ）m。"
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-26",
+      "carried_from": "2026-10-26",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-26-ENG",
@@ -152,7 +85,7 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T20:59:50+08:00",
+      "updated_at": "2026-10-27T00:17:08+08:00",
       "status_source": "manual_review_20261026",
       "pending_corrections": 4,
       "corrections": [
@@ -188,41 +121,10 @@
           "img_exempt": "英语题，无需配图",
           "orig_text": "（二）根据故事内容，比较大象和蚂蚁的异同，填空补全韦恩图。（每空一词）They’re （ ）."
         }
-      ]
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-26",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-26T16:55:37+08:00",
-      "updated_at": "2026-10-26T19:05:44+08:00",
-      "status_source": "fix_partial_reg_flip",
-      "corrections": [
-        {
-          "label": "语文第2项续行",
-          "question": "段落号：全图读作“第二三段”，裁图读作“第一三段”，二读不一致，请确认后写清楚重写上传",
-          "hint": "请把这一处的段落号写清楚，重写后拍照上传",
-          "resubmit": "待补交",
-          "orig_text": "2. 抄默12课一、三段（用稿纸）"
-        },
-        {
-          "label": "语文第3项",
-          "question": "措辞：三读不一致（“作文看到班群”／“写作看到班群群”／“作文看班群”），且独立一行“看”的归属不明，请写清楚重写上传",
-          "hint": "请把这一项完整写清楚，重写后拍照上传",
-          "resubmit": "待补交",
-          "orig_text": "3. 看作文（看班群）"
-        }
       ],
-      "pending_corrections": 0,
-      "pending_note": "页首日期为10.24（周六），提交日为10.26（周一），请重写时确认是周六补交还是今日任务；另：语第2项整两行已划掉（孩子写错划掉），不计入、不要求重写。",
-      "completed_at": "2026-10-26T22:27:30+08:00"
+      "carry_first_date": "2026-10-26",
+      "carried_from": "2026-10-26",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261026-7B7398",
@@ -240,7 +142,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:42:58+08:00",
+      "updated_at": "2026-10-27T00:17:08+08:00",
       "pending_corrections": 5,
       "corrections": [
         {
@@ -285,30 +187,10 @@
           "orig_text": "摆1个三角形需要3根小棒，摆2个三角形需要5根小棒，摆5个三角形需要（ ）根小棒，摆n个三角形需要（ ）根小棒，51根小棒可以摆（ ）个三角形。"
         }
       ],
-      "status_source": "manual_review_20261026"
-    },
-    {
-      "task_id": "REG-20261026-0F571E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T20:00:35+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "parent_decision_20261026",
-      "completed_at": "2026-10-26T20:00:35+08:00"
+      "status_source": "manual_review_20261026",
+      "carry_first_date": "2026-10-26",
+      "carried_from": "2026-10-26",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261026-C5B3F5",
@@ -326,7 +208,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T21:25:45+08:00",
+      "updated_at": "2026-10-27T00:17:08+08:00",
       "pending_corrections": 5,
       "corrections": [
         {
@@ -383,7 +265,10 @@
           "orig_text": "这篇文章按（ ）顺序写，主要讲了三件事，分别是：③（ ）。"
         }
       ],
-      "status_source": "manual_review_20261026"
+      "status_source": "manual_review_20261026",
+      "carry_first_date": "2026-10-26",
+      "carried_from": "2026-10-26",
+      "carry_count": 1
     },
     {
       "task_id": "PRACT-20261026-643BE6",
@@ -405,22 +290,25 @@
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-26.docx",
       "file_hash": "1d4a769b77909b6354f72721330d1514badce25174b08e430ef5813dca2db0c0",
       "created_at": "2026-10-26T19:10:45+08:00",
-      "updated_at": "2026-10-26T19:10:45+08:00",
+      "updated_at": "2026-10-27T00:17:08+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-10-26.pdf",
           "label": "练习",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-26",
+      "carried_from": "2026-10-26",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 9,
+    "total": 5,
     "pending": 1,
     "in_progress": 4,
-    "done": 4,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-26T22:30:00+08:00"
+  "deadline_today": null
 }
