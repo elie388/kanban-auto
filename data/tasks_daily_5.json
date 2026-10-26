@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "五年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:29:45+08:00",
+  "updated_at": "2026-10-26T19:42:58+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -117,7 +117,7 @@
       "title": "校本3页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：校本3页 → 待完成",
@@ -126,10 +126,41 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:29:45+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime"
+      "updated_at": "2026-10-26T19:42:58+08:00",
+      "pending_corrections": 5,
+      "corrections": [
+        {
+          "label": "Q1（4头牛）",
+          "question": "4头牛的腿数，原填12。错因：头数和腿数没有一一对应乘出来。",
+          "hint": "提示1：一头牛几条腿？提示2：4头牛就是几个4加起来？提示3：用乘法算一算4个4是多少，再填。",
+          "img_exempt": "纯文字题，无需配图"
+        },
+        {
+          "label": "Q3（摆10个、摆a个正方形）",
+          "question": "摆10个正方形原填30，摆a个原填3a。错因：只乘了个数，漏了最开始的那1根。",
+          "hint": "提示1：摆1个要几根？摆2个比1个多几根？提示2：每多摆1个多几根，这个规律一直不变吗？提示3：摆10个就是10次每次加几根、再加上最开始那1根，摆a个也一样想。",
+          "img_exempt": "纯文字题，无需配图"
+        },
+        {
+          "label": "Q4（周长）",
+          "question": "图形周长原填88a。错因：外圈边数未数全导致周长表达式错误。",
+          "hint": "提示1：先数一数这个图形外圈一共有几条边。提示2：每条边长多少？提示3：把外圈的边一条一条加起来，看看和你写的是不是一样。",
+          "img_exempt": "纯文字题，无需配图"
+        },
+        {
+          "label": "Q5哈雷",
+          "question": "哈雷彗星第二空原填一个三位数。错因：把字母式写成了具体数字。",
+          "hint": "提示1：题目里出现的是哪一年？提示2：76年后再出现，是在那一年上加76，还是直接写一个数？提示3：用字母式把“那一年加76”写出来。",
+          "img_exempt": "纯文字题，无需配图"
+        },
+        {
+          "label": "拓展n个三角形",
+          "question": "摆n个三角形原填2n。错因和Q3一样，漏了最开始的那1根。",
+          "hint": "提示1：摆1个要几根？摆2个要几根？提示2：每多摆1个多几根？提示3：摆n个就是n次每次加几根、再加上最开始那1根。",
+          "img_exempt": "纯文字题，无需配图"
+        }
+      ],
+      "status_source": "manual_review_20261026"
     },
     {
       "task_id": "REG-20261026-0F571E",
@@ -138,7 +169,7 @@
       "title": "口语易",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：口语易 → 待完成",
@@ -147,11 +178,18 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:29:44+08:00",
+      "updated_at": "2026-10-26T19:42:58+08:00",
       "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime"
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "口语易",
+          "question": "今天的口语易任务已经提交了，但截图上还没有得分，只有查看得分按钮。请点一下查看得分，把显示得分的那一页再截一张图上传，这样才能按今天的任务评分。注意：下面那张86.0分是10月23日的旧任务，不能算今天的。",
+          "hint": "请点查看得分后截图上传",
+          "resubmit": "待补交"
+        }
+      ],
+      "status_source": "manual_review_20261026"
     },
     {
       "task_id": "REG-20261026-C5B3F5",
@@ -206,7 +244,7 @@
   "counts": {
     "total": 9,
     "pending": 6,
-    "in_progress": 1,
+    "in_progress": 3,
     "done": 0,
     "pending_review": 0
   },
