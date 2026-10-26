@@ -275,6 +275,8 @@
   /* 2026-10-26 家长令：周报底色恢复邮件原版米色（只动底色；640 表格与大边距不恢复，溢出根源不动）
      用 .fb-item.fb-wk 双 class＋background 简写，压过换肤 .fb-item 的渐变底 */
   .fb-item.fb-wk{background:#F5F3EB;}
+  /* 2026-10-26 家长令：家长版周报条目底色与孩子版周报卡一致（米色 #F5F3EB）；双 class＋background 简写，与 .fb-item.fb-wk 同理压过换肤 .sum-item 的渐变底（只写 background-color 压不住渐变，必须用简写） */
+  #sum-parent .sum-item.sum-weekly{background:#F5F3EB;}
   /* 2026-10-26 周报溢出兜底：卡片内表格一律压到卡宽（防邮件整页 table 640px 之类宽表再撑出屏） */
   .fb-html table{width:100% !important; max-width:100% !important;}
   .fb-html td{overflow-wrap:anywhere;}
@@ -3071,7 +3073,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var wkItems = '';
       if(wk && Array.isArray(wk.weeks)){
         wk.weeks.forEach(function(it){
-          wkItems += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+          wkItems += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
         });
       }
       if(wkItems) html += wkItems;
@@ -3085,7 +3087,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
           html += '<div class="sum-p-grade sum-folded"><button class="sum-p-name sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>';
           gWeeks.forEach(function(it){
-            html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+            html += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
           items.forEach(function(it){
             var psumk = kbReadSumKey('parent', g, it);
@@ -5387,7 +5389,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly2';
+  var KB_BUILD = '20261026-livesky-pweekly3';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
