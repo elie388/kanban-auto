@@ -241,6 +241,9 @@
   
   /* 家长版独立口令表单样式已随表单删除（2026-10-24 家长令：子块显隐改由家长令牌决定、无独立表单） */
   .sum-p-name{font-weight:800; margin:10px 0 4px;}
+  /* 2026-10-26 家长令：家长版小结年级组也默认折叠（与孩子版同口径；点年级头展开/收起） */
+  #sum-parent .sum-p-grade.sum-folded .sum-item{ display:none; }
+  button.sum-p-name{ background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer; width:100%; display:flex; align-items:center; }
   .sum-p-html{font-size:14px; line-height:1.75;}
   .sum-p-html p{margin:6px 0;}
   /* 批改反馈（2026-10-23 家长知情改定：反馈全文上看板） */
@@ -2889,7 +2892,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   });
   /* 年级组开合（2026-10-26 家长令）：默认折叠，点年级头展开/再点收起；展开状态不落存储，每次打开页面均为折叠 */
   function toggleSumGrade(btn){
-    var grade = btn.closest ? btn.closest('.sum-grade') : null;
+    var grade = btn.closest ? btn.closest('.sum-grade, .sum-p-grade') : null;
     if(!grade) return;
     var folded = grade.classList.toggle('sum-folded');
     btn.setAttribute('aria-expanded', folded ? 'false' : 'true');
@@ -3041,7 +3044,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if(items.length){
           any = true;
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
-          html += '<div class="sum-p-grade"><div class="sum-p-name"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span></div>';
+          html += '<div class="sum-p-grade sum-folded"><button class="sum-p-name sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span><span class="sum-grade-chev" aria-hidden="true">展开 ▾</span></button>';
           items.forEach(function(it){
             var psumk = kbReadSumKey('parent', g, it);
             var psumUnread = !kbReadGet(psumk);
@@ -5342,7 +5345,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-scorecenter';
+  var KB_BUILD = '20261026-livesky-sumfoldp';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
