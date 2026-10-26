@@ -210,6 +210,11 @@
   @keyframes unreadDotBlink{0%,100%{opacity:1}50%{opacity:.25}}
   @media (prefers-reduced-motion: reduce){ .unread-dot{animation:none;} }
   .sum-grade{margin-bottom:14px;}
+  /* 2026-10-26 家长令：学习小结年级组默认折叠、点年级头展开/收起（仅孩子版两年级组；反馈组与家长版不动） */
+  #sum-g5.sum-folded .wk-items, #sum-g5.sum-folded .sum-items,
+  #sum-g6.sum-folded .wk-items, #sum-g6.sum-folded .sum-items{ display:none; }
+  .sum-grade-toggle{ background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer; width:100%; }
+  .sum-grade-chev{ margin-left:auto; font-size:12px; color:#66707C; white-space:nowrap; }
   .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
   .sum-date{font-weight:800; font-size:15px; margin-bottom:6px;}
   /* 小结条目级开合（2026-10-23 23:38 家长令）：条目默认收起、点日期标题行展开/收起，孩子版/家长版同口径 */
@@ -1228,14 +1233,14 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </button>
     <div class="collapse-body" id="panel-summary" role="region" aria-labelledby="btn-summary">
       <div class="collapse-inner"><div class="collapse-pad">
-        <div class="sum-grade" id="sum-g5">
-          <div class="grade-head"><span class="pill-grade g5">彦均</span></div>
+        <div class="sum-grade sum-folded" id="sum-g5">
+          <button class="grade-head sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade g5">彦均</span><span class="sum-grade-chev" aria-hidden="true">展开 ▾</span></button>
           <!-- 本周学习周报（2026-10-26 家长令：由批改反馈移入学习小结，各年级小结上方直接渲染，周报行复用反馈条样式与已读口径） -->
           <div class="wk-items"></div>
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
-        <div class="sum-grade" id="sum-g6">
-          <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
+        <div class="sum-grade sum-folded" id="sum-g6">
+          <button class="grade-head sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade g6">伟豪</span><span class="sum-grade-chev" aria-hidden="true">展开 ▾</span></button>
           <div class="wk-items"></div>
           <div class="sum-items"><div class="sum-empty">小结加载中…</div></div>
         </div>
@@ -2880,6 +2885,19 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!head) return;
     var item = head.closest ? head.closest('.sum-item') : null;
     if(item) toggleSumItem(item);
+  });
+  /* 年级组开合（2026-10-26 家长令）：默认折叠，点年级头展开/再点收起；展开状态不落存储，每次打开页面均为折叠 */
+  function toggleSumGrade(btn){
+    var grade = btn.closest ? btn.closest('.sum-grade') : null;
+    if(!grade) return;
+    var folded = grade.classList.toggle('sum-folded');
+    btn.setAttribute('aria-expanded', folded ? 'false' : 'true');
+    var chev = btn.querySelector('.sum-grade-chev');
+    if(chev) chev.textContent = folded ? '展开 ▾' : '收起 ▴';
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest ? e.target.closest('.sum-grade-toggle') : null;
+    if(btn) toggleSumGrade(btn);
   });
   /* 头点合并（2026-10-23 批改反馈并入学习小结）：学习小结头点在小结或批改反馈
      任一有新内容时亮起。批改反馈子块行的点已按家长 2026-10-23 22:14 令删除，行内不再设点。锁定态头点全灭。
@@ -5323,7 +5341,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-dotbreathe';
+  var KB_BUILD = '20261026-livesky-sumfold';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
