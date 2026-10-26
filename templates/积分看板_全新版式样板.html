@@ -3078,10 +3078,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var any = false;
       [5, 6].forEach(function(g){
         var items = (d && d.grades && d.grades[g] && d.grades[g].items) || [];
-        if(items.length){
+        /* 2026-10-26 测试分放：grades 条目渲染进对应年级组内、排在当日小结之前；组内无小结但有组内周报时组仍渲染 */
+        var gWeeks = (wk && wk.grades && wk.grades[g] && wk.grades[g]) || [];
+        if(items.length || gWeeks.length){
           any = true;
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
           html += '<div class="sum-p-grade sum-folded"><button class="sum-p-name sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>';
+          gWeeks.forEach(function(it){
+            html += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+          });
           items.forEach(function(it){
             var psumk = kbReadSumKey('parent', g, it);
             var psumUnread = !kbReadGet(psumk);
@@ -5382,7 +5387,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly';
+  var KB_BUILD = '20261026-livesky-pweekly2';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
