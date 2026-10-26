@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "五年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:42:58+08:00",
+  "updated_at": "2026-10-26T19:51:13+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -114,7 +114,7 @@
       "task_id": "REG-20261026-7B7398",
       "source": "register_book",
       "subject": "数学",
-      "title": "校本3页",
+      "title": "校本第30页",
       "detail": "原状态：待完成",
       "estimate_min": null,
       "status": "in_progress",
@@ -169,7 +169,7 @@
       "title": "口语易",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：口语易 → 待完成",
@@ -178,18 +178,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:42:58+08:00",
+      "updated_at": "2026-10-26T19:51:13+08:00",
       "task_type": "reading",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "口语易",
-          "question": "今天的口语易任务已经提交了，但截图上还没有得分，只有查看得分按钮。请点一下查看得分，把显示得分的那一页再截一张图上传，这样才能按今天的任务评分。注意：下面那张86.0分是10月23日的旧任务，不能算今天的。",
-          "hint": "请点查看得分后截图上传",
-          "resubmit": "待补交"
-        }
-      ],
-      "status_source": "manual_review_20261026"
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "parent_rule_20261026"
     },
     {
       "task_id": "REG-20261026-C5B3F5",
@@ -244,7 +237,7 @@
   "counts": {
     "total": 9,
     "pending": 6,
-    "in_progress": 3,
+    "in_progress": 2,
     "done": 0,
     "pending_review": 0
   },
