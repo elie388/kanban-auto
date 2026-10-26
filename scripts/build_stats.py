@@ -544,6 +544,74 @@ def r4_diff_check(snapshot_before):
             raise ValueError("R4 拦截：模板行数变动 %d 超限（≤4）" % (added + deleted))
     return True
 
+def _r4_recovery_alert(kind, detail):
+    """R4恢复 fail-closed 告警落盘（只写日志，不改工作区、不碰 stash）。"""
+    try:
+        os.makedirs(LOGS_DIR, exist_ok=True)
+        rec = {"ts": datetime.now(TZ).isoformat(timespec="seconds"), "kind": kind,
+               "detail": detail[:300], "pid": os.getpid()}
+        with open(os.path.join(LOGS_DIR, "r4_recovery_alert.log"), "a", encoding="utf-8") as _f:
+            _f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
+
+
+def _r4_try_recover(exc_msg):
+    """c项 R4恢复：仅处理“全部非预期文件均为 data/*.json 自动化脏”的情形。
+
+    返回 (recovered, detail)：
+    - True：已归档（logs/dirty_archive/<时间戳>_<pid>/ + manifest.json）并 checkout 重置，
+      调用方应重跑 r4_diff_check 复检；复检通过方可继续提交。
+    - False：不满足归档条件（非 data 脏 / 含已暂存文件 / 解析失败）→ fail-closed：
+      已写 logs/r4_recovery_alert.log 告警，不归档、不重置、不碰 stash，调用方走原流程。
+    归档范围铁律：data/*.json（单层）才可归档——看板 data 均为可再生副本（源在 hidden_files），
+    归档仅保全重置前字节；模板/css/docs/scripts/其它一律不可归档。stash 绝不触碰（不用 git stash）。
+    """
+    import ast as _ast
+    import re as _re
+    m = _re.search(r"非预期变更文件\s*(\[.*\])", exc_msg)
+    if not m:
+        _r4_recovery_alert("unparsed", exc_msg[:200])
+        return False, "非 R4 非预期文件异常，不恢复"
+    try:
+        files = _ast.literal_eval(m.group(1))
+    except Exception:
+        _r4_recovery_alert("unparsed", exc_msg[:200])
+        return False, "非预期文件列表解析失败，不恢复"
+    if not isinstance(files, list) or not files or not all(isinstance(f, str) for f in files):
+        _r4_recovery_alert("unparsed", exc_msg[:200])
+        return False, "非预期文件列表非法，不恢复"
+    staged = git("-c", "core.quotepath=false", "diff", "--cached", "--name-only").stdout.split()
+    if set(files) & set(staged):
+        _r4_recovery_alert("staged", ",".join(sorted(set(files) & set(staged)))[:200])
+        return False, "含已暂存文件，不恢复"
+    non_data = [f for f in files if not _re.fullmatch(r"data/[^/]+\.json", f)]
+    if non_data:
+        _r4_recovery_alert("non_data", ",".join(sorted(non_data))[:300])
+        return False, "含不可归档改动：" + ",".join(sorted(non_data))
+    stamp = datetime.now(TZ).strftime("%Y%m%d-%H%M%S")
+    adir = os.path.join(LOGS_DIR, "dirty_archive", "%s_%d" % (stamp, os.getpid()))
+    os.makedirs(adir, exist_ok=True)
+    head = git("rev-parse", "HEAD").stdout.strip()
+    manifest = {"ts": datetime.now(TZ).isoformat(timespec="seconds"), "pid": os.getpid(),
+                "head": head, "reason": "R4 data dirt recovery", "files": sorted(files),
+                "note": "data 均为可再生副本（源在 hidden_files）；归档仅保全重置前字节"}
+    for f in sorted(files):
+        src_p = os.path.join(REPO_DIR, f)
+        if os.path.exists(src_p):
+            with open(src_p, "rb") as _fi:
+                blob = _fi.read()
+            with open(os.path.join(adir, os.path.basename(f)), "wb") as _fo:
+                _fo.write(blob)
+    with open(os.path.join(adir, "manifest.json"), "w", encoding="utf-8") as _fm:
+        _fm.write(json.dumps(manifest, ensure_ascii=False, indent=1))
+    r = git("checkout", "--", *sorted(files))
+    if r.returncode != 0:
+        _r4_recovery_alert("checkout_fail", r.stderr[:200])
+        return False, "checkout 重置失败，不恢复"
+    return True, "已归档 %d 个 data 文件至 %s 并重置" % (len(files), adir)
+
+
 
 # ---------------------------------------------------------------------------
 # 主流程
@@ -911,28 +979,48 @@ def main():
         msg = "NEED-REVIEW R4 diff 校验失败：%s" % e
         warn(msg)
         err_write(msg)
-        # A 方案 1e（定案问题②：6 产物+模板）：回滚 checkout 前脏检查——
-        # 检查范围内任一路径有未提交改动则全部跳过 checkout，宁可不回滚
-        # 也不静默抹掉改动，留 NEED-REVIEW 由人工处置。
-        _rb_dirty = git("-c", "core.quotepath=false", "status", "--porcelain",
-                        "--", *(STASH_PATHS + TEMPLATE_PATHS)).stdout.strip()
-        if _rb_dirty:
-            msg2 = ("rollback_blocked_dirty：回滚范围存在未提交改动，"
-                    "跳过 checkout（首行：%s）" % _rb_dirty.splitlines()[0][:120])
-            warn(msg2)
-            err_write("NEED-REVIEW " + msg2)
+        # c项 R4恢复（2026-10-26）：仅当全部非预期文件均为 data/*.json 自动化脏时，
+        # 归档+重置后重试一次；含人工/预览脏（模板/css/docs/其他）或解析不出时 fail-closed：
+        # 不归档不重置，走原回滚+return 2。恢复绝不碰 stash（只 cp 归档 + checkout 指定文件）。
+        _rec_done = False
+        try:
+            _rec_done, _rec_detail = _r4_try_recover(str(e))
+        except Exception as _rec_e:
+            warn("R4恢复异常（不阻断原流程）：%s" % _rec_e)
+            _rec_done = False
+        if _rec_done:
+            try:
+                r4_diff_check(snap)
+            except (AssertionError, ValueError) as e2:
+                warn("R4恢复后复检仍失败：%s" % e2)
+                err_write("NEED-REVIEW R4恢复后复检仍失败：%s" % e2)
+                _rec_done = False
+            else:
+                warn("R4恢复成功：%s，校验通过，继续提交" % _rec_detail)
+                err_write("R4恢复成功：" + _rec_detail)
+        if not _rec_done:
+            # A 方案 1e（定案问题②：6 产物+模板）：回滚 checkout 前脏检查——
+            # 检查范围内任一路径有未提交改动则全部跳过 checkout，宁可不回滚
+            # 也不静默抹掉改动，留 NEED-REVIEW 由人工处置。
+            _rb_dirty = git("-c", "core.quotepath=false", "status", "--porcelain",
+                            "--", *(STASH_PATHS + TEMPLATE_PATHS)).stdout.strip()
+            if _rb_dirty:
+                msg2 = ("rollback_blocked_dirty：回滚范围存在未提交改动，"
+                        "跳过 checkout（首行：%s）" % _rb_dirty.splitlines()[0][:120])
+                warn(msg2)
+                err_write("NEED-REVIEW " + msg2)
+                _restore_stash()
+                return 2
+            # 回滚：模板 checkout；数据文件：新建的删除、已存在的 checkout
+            git("checkout", "--", TEMPLATE)
+            for rel, was_new in changed_files:
+                p = os.path.join(REPO_DIR, rel)
+                if was_new and os.path.exists(p):
+                    os.remove(p)
+                elif not was_new:
+                    git("checkout", "--", rel)
             _restore_stash()
             return 2
-        # 回滚：模板 checkout；数据文件：新建的删除、已存在的 checkout
-        git("checkout", "--", TEMPLATE)
-        for rel, was_new in changed_files:
-            p = os.path.join(REPO_DIR, rel)
-            if was_new and os.path.exists(p):
-                os.remove(p)
-            elif not was_new:
-                git("checkout", "--", rel)
-        _restore_stash()
-        return 2
 
     # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
     # 提交前检查 scripts/ 是否有未提交改动；有则本次不提交 + 告警日志（fail-safe）。

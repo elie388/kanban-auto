@@ -1343,42 +1343,57 @@ def main():
             pass
         return 0
 
-    r = run_git("add", *changed_files)
-    if r.returncode != 0:
-        log("push_failed", "git add 失败 rc=%d" % r.returncode)
-        return 3
-    # M4（DeepSeek终审 2026-10-20，B1 复审补强）：显式检查 commit 返回码。
-    # git 无变更时 rc=1 且输出标准串 "nothing to commit, working tree clean"。
-    # 判定必须严格匹配完整标准串（双子串合取），防 pre-commit hook 误输出子串被误判为无变更。
-    # 注：依赖 git 英文标准输出（locale 需为 C/en）；若未来 git 措辞变化，安全降级走 rc=3 失败分支（fail-safe）。
-    # rc!=0 且非标准无变更串 → 一律视为真失败（return 3，与 push 失败共用返回码）。
-    cr = run_git("commit", "-m",
-            "chore(sections): sync badges/shop/rules @ " +
-            datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
-    if cr.returncode != 0:
-        # P1#3 修复（DeepSeek 审查 2026-10-20）：git 的 "nothing to commit" 标准串
-        # 实际输出在 stdout（本机 git 2.43 实测、stderr 为空），只查 stderr 会把
-        # 无变更误判为真失败 return 3。改查 stdout+stderr 合并文本，双子串合取不变。
-        _err = (cr.stdout or "") + (cr.stderr or "")
-        if "nothing to commit" in _err and "working tree clean" in _err:
-            log("no_change", "git commit 无变更（working tree clean），跳过推送")
+    # c项串行化（2026-10-26）：git 区段持共享 git_push.lock（与 do_push/build_stats/watchd 同一把），
+    # 60s 未获得则跳过本次推送（fail-safe，本地文件保留待下次重试）；/tmp 本锁仍作本进程单例。
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import repo_lock as _repo_lock
+    except Exception as _rl_e:
+        log("repo_lock_import_fail", "repo_lock 导入失败，跳过本次推送：%s" % _rl_e)
+        return 4
+    _rl = _repo_lock.repo_lock(timeout=60)
+    if not _rl.__enter__():
+        log("repo_lock_busy", "git_push.lock 60s 未获得，跳过本次推送")
+        return 4
+    try:
+        r = run_git("add", *changed_files)
+        if r.returncode != 0:
+            log("push_failed", "git add 失败 rc=%d" % r.returncode)
+            return 3
+        # M4（DeepSeek终审 2026-10-20，B1 复审补强）：显式检查 commit 返回码。
+        # git 无变更时 rc=1 且输出标准串 "nothing to commit, working tree clean"。
+        # 判定必须严格匹配完整标准串（双子串合取），防 pre-commit hook 误输出子串被误判为无变更。
+        # 注：依赖 git 英文标准输出（locale 需为 C/en）；若未来 git 措辞变化，安全降级走 rc=3 失败分支（fail-safe）。
+        # rc!=0 且非标准无变更串 → 一律视为真失败（return 3，与 push 失败共用返回码）。
+        cr = run_git("commit", "-m",
+                "chore(sections): sync badges/shop/rules @ " +
+                datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
+        if cr.returncode != 0:
+            # P1#3 修复（DeepSeek 审查 2026-10-20）：git 的 "nothing to commit" 标准串
+            # 实际输出在 stdout（本机 git 2.43 实测、stderr 为空），只查 stderr 会把
+            # 无变更误判为真失败 return 3。改查 stdout+stderr 合并文本，双子串合取不变。
+            _err = (cr.stdout or "") + (cr.stderr or "")
+            if "nothing to commit" in _err and "working tree clean" in _err:
+                log("no_change", "git commit 无变更（working tree clean），跳过推送")
+                return 0
+            log("push_failed", "git commit 真失败 rc=%d: %s" % (cr.returncode, _err[:200]))
+            return 3
+        push_ok = False
+        last_rc = None
+        for _ in range(3):
+            r = run_git("push")
+            last_rc = r.returncode
+            if r.returncode == 0:
+                push_ok = True
+                break
+            time.sleep(30)
+        if push_ok:
+            log("pushed", "已推送", {"files": ",".join(changed_files)})
             return 0
-        log("push_failed", "git commit 真失败 rc=%d: %s" % (cr.returncode, _err[:200]))
+        log("push_failed", "push 3 次失败 rc=%s" % last_rc)
         return 3
-    push_ok = False
-    last_rc = None
-    for _ in range(3):
-        r = run_git("push")
-        last_rc = r.returncode
-        if r.returncode == 0:
-            push_ok = True
-            break
-        time.sleep(30)
-    if push_ok:
-        log("pushed", "已推送", {"files": ",".join(changed_files)})
-        return 0
-    log("push_failed", "push 3 次失败 rc=%s" % last_rc)
-    return 3
+    finally:
+        _rl.__exit__()
 
 
 if __name__ == "__main__":
