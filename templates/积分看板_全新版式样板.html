@@ -781,7 +781,7 @@
      批改反馈仍留在学习小结卡内为子块，不独立成栏；字重随 .cb-title 的 700、字号含 ≥1024px 的 24px 镜像） */
   #feedback-toggle .sub-head-t{font-size:22px; font-weight:700;}
   @media(min-width:1024px){ #feedback-toggle .sub-head-t{font-size:24px;} }
-  .sub-chev{font-size:13px; color:var(--sub);}
+  .sub-chev{font-size:14px; font-weight:700; color:#66707C; background:#F1F3F5; border-radius:999px; padding:6px 14px; white-space:nowrap;}
 
   /* 规则列表 */
   .rule-list{list-style:none; margin:0; padding:0;}
@@ -1047,8 +1047,8 @@
   .collapse-btn .cb-state{
     margin-left:auto; flex:0 0 auto;
     display:inline-flex; align-items:center; gap:6px;
-    font-size:13px; font-weight:700; color:var(--sub);
-    background:#F1F3F5; padding:6px 12px; border-radius:999px; white-space:nowrap;
+    font-size:14px; font-weight:700; color:#66707C;
+    background:#F1F3F5; padding:6px 14px; border-radius:999px; white-space:nowrap;
   }
   .collapse-btn .cb-chev{font-size:13px; transition:transform .25s ease;}
   .collapse-btn[aria-expanded="true"] .cb-chev{transform:rotate(180deg);}
@@ -1258,7 +1258,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <div class="sub-wrap fb-zone" id="panel-feedback" role="region" aria-label="批改反馈">
       <button class="sub-toggle" type="button" id="feedback-toggle" aria-expanded="false" aria-controls="feedback-body">
         <span class="sub-head-t">✏️ 批改反馈</span>
-        <span class="sub-chev" id="feedback-chev">展开 ▾</span>
+        <span class="sub-chev fb-chev" id="feedback-chev">展开 ▾</span>
       </button>
       <div class="sub-body" id="feedback-body" role="region" aria-labelledby="feedback-toggle" hidden>
         <div class="collapse-pad">
@@ -1322,7 +1322,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <div class="sub-wrap lib-zone" id="panel-lib" role="region" aria-label="徽章目标榜">
       <button class="sub-toggle" type="button" id="goals-toggle" aria-expanded="false" aria-controls="goals-body">
         <span class="sub-head-t">🎯 徽章目标榜</span>
-        <span class="sub-chev" id="goals-chev">展开 ▾</span>
+        <span class="sub-chev fb-chev" id="goals-chev">展开 ▾</span>
       </button>
       <div class="sub-body" id="goals-body" role="region" aria-labelledby="goals-toggle" hidden>
         <div class="collapse-pad">
@@ -1359,7 +1359,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <div class="sub-wrap" id="panel-bonus" role="region" aria-label="加分规则">
       <button class="sub-toggle" type="button" id="bonus-toggle" aria-expanded="false" aria-controls="bonus-body">
         <span class="sub-head-t">🎯 加分规则</span>
-        <span class="sub-chev" id="bonus-chev">展开 ▾</span>
+        <span class="sub-chev fb-chev" id="bonus-chev">展开 ▾</span>
       </button>
       <div class="sub-body" id="bonus-body" role="region" aria-labelledby="bonus-toggle" hidden>
       <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="bonus"> 自动滚动</label></div>
@@ -1373,7 +1373,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <div class="sub-wrap" id="panel-deduct" role="region" aria-label="扣分规则">
       <button class="sub-toggle" type="button" id="deduct-toggle" aria-expanded="false" aria-controls="deduct-body">
         <span class="sub-head-t">📉 扣分规则</span>
-        <span class="sub-chev" id="deduct-chev">展开 ▾</span>
+        <span class="sub-chev fb-chev" id="deduct-chev">展开 ▾</span>
       </button>
       <div class="sub-body" id="deduct-body" role="region" aria-labelledby="deduct-toggle" hidden>
       <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="deduct"> 自动滚动</label></div>
@@ -1388,7 +1388,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <div class="sub-wrap" id="panel-log">
       <button class="sub-toggle" type="button" id="log-toggle" aria-expanded="false" aria-controls="log-body">
         <span class="sub-head-t">🧾 积分日志</span>
-        <span class="sub-chev" id="log-chev">展开 ▾</span>
+        <span class="sub-chev fb-chev" id="log-chev">展开 ▾</span>
       </button>
       <div id="log-body" role="region" aria-labelledby="log-toggle" hidden>
         <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="log"> 自动滚动</label></div>
@@ -5345,7 +5345,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pillbig';
+  var KB_BUILD = '20261026-livesky-pillall';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
