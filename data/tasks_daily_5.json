@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "五年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:51:13+08:00",
+  "updated_at": "2026-10-26T19:54:57+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -191,7 +191,7 @@
       "title": "校本14课",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：校本14课 → 待完成",
@@ -200,9 +200,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T18:55:39+08:00",
+      "updated_at": "2026-10-26T19:54:57+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     },
     {
       "task_id": "PRACT-20261026-643BE6",
@@ -236,7 +237,7 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 6,
+    "pending": 5,
     "in_progress": 2,
     "done": 0,
     "pending_review": 0
