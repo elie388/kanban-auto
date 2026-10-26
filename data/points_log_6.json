@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-26T22:47:50+08:00",
+  "generated_at": "2026-10-27T06:00:04+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -772,17 +772,6 @@
       "filtered": false
     },
     {
-      "date": "10-19",
-      "time": "22:30",
-      "time_source": "entry",
-      "reason": "针对性练习没交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-21"
-    },
-    {
       "date": "10-21",
       "time": "21:55",
       "time_source": "entry",
@@ -1230,150 +1219,6 @@
       "reason": "📆三日不断徽章",
       "pts": 5,
       "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:44",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:44",
-      "time_source": "entry",
-      "reason": "晾衣服连做第2天",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "数学作业完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "数学作业正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "数学书写表扬",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "语文作业完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "语文作业正确率85.7%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "语文书写表扬",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "英语作业完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "英语作业正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "英语书写表扬",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "作业迟交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "22:20",
-      "time_source": "entry",
-      "reason": "冲正：第六期英语阅读写作\"没交-5\"",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "22:00",
-      "time_source": "entry",
-      "reason": "53天天练三科未交",
-      "pts": -9,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "20:00",
-      "time_source": "deadline",
-      "reason": "第六期英语阅读写作练习没交",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-19",
-      "time": "11:03",
-      "time_source": "entry",
-      "reason": "不整理书桌（2026-晚未整理书桌；规则依据：家长临时裁定；规则手册家务·整理桌…",
-      "pts": -5,
-      "sign": "minus",
       "filtered": false
     }
   ],
