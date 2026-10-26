@@ -182,8 +182,8 @@
    },
    {
     "key": "baifen",
-    "obtained": true,
-    "date": "2026-10-19",
+    "obtained": false,
+    "date": "",
     "count": 0,
     "total_count": 1,
     "via_late": false,
@@ -477,8 +477,8 @@
    },
    {
     "key": "baifen",
-    "obtained": true,
-    "date": "2026-10-16",
+    "obtained": false,
+    "date": "",
     "count": 0,
     "total_count": 1,
     "via_late": false,
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W44",
- "generated_at": "2026-10-26T12:40:11+08:00"
+ "generated_at": "2026-10-26T12:52:41+08:00"
 }

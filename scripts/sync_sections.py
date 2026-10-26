@@ -836,13 +836,9 @@ def build_badge_goals(events, progress=None, now=None):
                    "count": cnt.get(k, 0),
                    "total_count": total.get(k, 0),
                    "via_late": (k not in held) and (k in late_held)}
-            # 百分俱乐部新规例外（2026-10-23 改版）：obtained 按累计已获
-            # 显示（曾获即点亮、不随周清空）；count 仍为当周新发口径，
-            # total_count 为累计次数。规则手册《徽章进度口径》节。
-            if k == "baifen" and total.get(k, 0) > 0:
-                ent["obtained"] = True
-                if not ent["date"]:
-                    ent["date"] = earliest.get(k, "")
+            # 百分俱乐部（2026-10-26 家长定，覆盖 2026-10-23 累计点亮口径）：
+            # 目标榜不再显示曾获取，obtained 按本周新发计（本周未获即
+            # 待解锁）；total_count 仍为累计次数，date 为本周获得日。
             if progress and gk in progress and k in progress[gk]:
                 ent["progress"] = progress[gk][k]
             entries.append(ent)
