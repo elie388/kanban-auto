@@ -802,6 +802,10 @@
   section.card[aria-label="学习小结"]{padding-left:0; padding-right:0;}
   #panel-summary .sum-item, #panel-summary .fb-item, #panel-feedback .fb-item{margin-left:18px; margin-right:18px;}
   #panel-summary .sum-item.open-sum, #panel-summary .fb-item.open-fb, #panel-feedback .fb-item.open-fb{margin-left:-16px; margin-right:-16px;}
+  /* 家长版周报展开按钮对齐（2026-10-26 家长令）：周报卡与年级行同宽、按钮右缘与年级行按钮对齐（卡内边距 14px 须由 head 负边距补齐）；展开时仍按 pweekly5 破出 */
+  #sum-parent .sum-item.sum-weekly{margin-left:0; margin-right:0;}
+  #sum-parent .sum-item.sum-weekly .sum-head{margin-right:-14px;}
+  #sum-parent .sum-item.sum-weekly.open-sum{margin-left:-16px; margin-right:-16px;}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -5410,7 +5414,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly5';
+  var KB_BUILD = '20261026-livesky-pweekly6';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
