@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "五年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T18:55:39+08:00",
+  "updated_at": "2026-10-26T19:00:25+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -87,12 +87,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-26T16:55:37+08:00",
-      "updated_at": "2026-10-26T18:55:35+08:00",
-      "completed_at": null,
+      "updated_at": "2026-10-26T18:55:39+08:00",
+      "completed_at": "2026-10-26T18:55:39+08:00",
       "status_source": "manual_partial_reg",
       "corrections": [
         {
@@ -170,8 +170,8 @@
   "counts": {
     "total": 8,
     "pending": 7,
-    "in_progress": 1,
-    "done": 0,
+    "in_progress": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
