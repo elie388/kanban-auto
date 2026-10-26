@@ -803,9 +803,9 @@
   #panel-summary .sum-item, #panel-summary .fb-item, #panel-feedback .fb-item{margin-left:18px; margin-right:18px;}
   #panel-summary .sum-pending{margin:0 18px 10px; padding:8px 12px; background:#FEF8EC; border:1px solid #E8C87A; border-radius:8px; font-size:14px; color:#7A5A12;}
   #panel-summary .sum-item.open-sum, #panel-summary .fb-item.open-fb, #panel-feedback .fb-item.open-fb{margin-left:-16px; margin-right:-16px;}
-  /* 家长版周报展开按钮对齐（2026-10-26 家长令）：周报卡与年级行同宽、按钮右缘与年级行按钮对齐（卡内边距 14px 须由 head 负边距补齐）；展开时仍按 pweekly5 破出 */
+  /* 家长版周报展开按钮对齐（2026-10-26 家长令）：周报卡与年级行同宽、按钮右缘与年级行按钮对齐；教训：.sum-head 是 width:100% 的按钮，margin-right 负值不起作用（仍差 14px），必须用 width:calc(100% + 14px) 把卡内边距补回来；展开时仍按 pweekly5 破出 */
   #sum-parent .sum-item.sum-weekly{margin-left:0; margin-right:0;}
-  #sum-parent .sum-item.sum-weekly .sum-head{margin-right:-14px;}
+  #sum-parent .sum-item.sum-weekly .sum-head{width:calc(100% + 14px);}
   #sum-parent .sum-item.sum-weekly.open-sum{margin-left:-16px; margin-right:-16px;}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
