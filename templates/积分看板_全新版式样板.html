@@ -801,6 +801,7 @@
   /* 2026-10-26 家长令：只有展开后才贴边、折叠保持原样（小结/周报/批改）：学习小结卡左右内边距清零；折叠条目左右各留 18px（与卡片原内边距等量，折叠宽度与改动前一致）；展开条目（.open-sum/.open-fb）负边距破出 pad/zone 的 16px，框边贴到离屏幕 12px（页面边距），一行多显示字 */
   section.card[aria-label="学习小结"]{padding-left:0; padding-right:0;}
   #panel-summary .sum-item, #panel-summary .fb-item, #panel-feedback .fb-item{margin-left:18px; margin-right:18px;}
+  #panel-summary .sum-pending{margin:0 18px 10px; padding:8px 12px; background:#FEF8EC; border:1px solid #E8C87A; border-radius:8px; font-size:14px; color:#7A5A12;}
   #panel-summary .sum-item.open-sum, #panel-summary .fb-item.open-fb, #panel-feedback .fb-item.open-fb{margin-left:-16px; margin-right:-16px;}
   /* 家长版周报展开按钮对齐（2026-10-26 家长令）：周报卡与年级行同宽、按钮右缘与年级行按钮对齐（卡内边距 14px 须由 head 负边距补齐）；展开时仍按 pweekly5 破出 */
   #sum-parent .sum-item.sum-weekly{margin-left:0; margin-right:0;}
@@ -3027,12 +3028,36 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(kbSumVisible()) kbSyncSeen('sum', grade); /* 展开状态下迟到的小结数据视为已看过，不复亮头点 */
       sumDotUpdate();
       var tag = $('summary-tag');
-      if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
+      if(tag && !window.__sumPending){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
     }).catch(function(){
       renderKidSummary(grade, []);
       var tag = $('summary-tag');
-      if(tag) tag.textContent = '暂时无法连接';
+      if(tag) tag.textContent = window.__sumPending ? '总结顺延中' : '暂时无法连接';
     });
+  }
+
+  /* 总结顺延标记（V10，2026-10-26）：总结 cron 未收口时写 data/summary_status.json；
+     pending 且 date 为浏览器本地今日时，标题 tag 改「总结顺延中」并在小结区顶部挂横幅；
+     404/过期/非 pending 一律无横幅（fail-soft，不影响小结渲染）。 */
+  function loadSummaryStatus(){
+    fetchJson('summary_status.json', {}).then(function(d){
+      var today = new Date();
+      var tstr = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+      var on = !!(d && d.pending && d.date === tstr);
+      window.__sumPending = on;
+      var tag = $('summary-tag');
+      if(tag && on){ tag.textContent = '总结顺延中'; tag.classList.remove('tag-live'); }
+      var old = $('sum-pending-banner');
+      if(old) old.remove();
+      if(!on) return;
+      var pad = document.querySelector('#panel-summary .collapse-pad');
+      if(!pad) return;
+      var b = document.createElement('div');
+      b.className = 'sum-pending';
+      b.id = 'sum-pending-banner';
+      b.textContent = '今日总结顺延中（批改未收口，最晚 23:30 发布）';
+      pad.insertBefore(b, pad.firstChild);
+    }).catch(function(){ /* 无标记文件＝无顺延，不影响小结 */ });
   }
 
   function parentTokenGet(){ try { return localStorage.getItem('hw-parent-token') || ''; } catch (e) { return ''; } }
@@ -3352,6 +3377,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     loadShop();
     loadKidSummary(5);
     loadKidSummary(6);
+    loadSummaryStatus();
     renderParentZone();
     loadFeedback(5);
     loadFeedback(6);
@@ -5414,7 +5440,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly6';
+  var KB_BUILD = '20261026-livesky-v10';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {

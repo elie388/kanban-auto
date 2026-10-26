@@ -224,6 +224,7 @@ jobs:
           test -s data/daily_summary_5.json || { echo "::error::data/daily_summary_5.json 缺失或为空"; exit 1; }
           test -s data/daily_summary_6.json || { echo "::error::data/daily_summary_6.json 缺失或为空"; exit 1; }
           cp data/daily_summary_5.json data/daily_summary_6.json public/data/
+          cp data/summary_status.json public/data/ 2>/dev/null || true
           ls -la public/data/
 
       # 批改反馈数据通道（2026-10-23 家长知情改定全搬）：data/feedback_*.json
