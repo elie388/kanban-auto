@@ -811,13 +811,17 @@
   /* 栏目头行对齐（2026-10-26 家长令，18:44 截图实测）：pweekly5 把学习小结卡左右内边距清零后，其头行按钮比其它栏目右偏 16px（实测点击查看中心 x 803 vs 788）；头行左右内边距补到 32px，与其它栏目（卡 16px＋按钮 16px）完全同位；年级行右内边距补 16px，使展开态头行与年级行仍对齐；条目区与破出规则不动 */
   section.card[aria-label="学习小结"] > .collapse-btn{padding-left:32px; padding-right:32px;}
   #panel-summary .sum-grade-toggle{padding-right:16px;}
-  /* 收起态淡紫（2026-10-26 家长点选 A＋全板统一；Gemini 初审＋DeepSeek 终审附条件通过）：只改收起态、展开态不动；aria-expanded 直系子选择器防嵌套误染；特异度高于换肤两类选择器，换肤下仍生效；无新增动效；对比度 6.04:1 过 AA */
+  /* 收起态淡紫（2026-10-26 家长点选 A＋全板统一；Gemini 初审＋DeepSeek 终审附条件通过）：只改收起态、展开态不动；aria-expanded 直系子选择器防嵌套误染；特异度高于换肤两类选择器，换肤下仍生效；无新增动效；对比度 6.04:1 过 AA；2026-10-26 19:26 家长令条目按钮改任务卡格式后，小结/周报/批改条目按钮不再套淡紫（下条任务卡格式规则接管），淡紫仅留栏目头/年级行/子块开关 */
   button.collapse-btn[aria-expanded="true"] > .cb-state,
-  button.sum-head[aria-expanded="true"] > .sum-chev,
-  button.fb-head[aria-expanded="true"] > .fb-chev,
   button.sum-grade-toggle[aria-expanded="true"] > .sum-grade-chev,
   button.sub-toggle[aria-expanded="true"] > .sub-chev,
   button.redeem-toggle[aria-expanded="true"] > .redeem-chev{background:#E8E4F5; color:#5B4A8A;}
+  /* 条目按钮任务卡格式（2026-10-26 家长令：格式和任务卡里一样）：小结/周报/批改条目按钮不再是灰 pill，改任务卡文字链格式——透明底、13.5px/600、#8A8378、文字＋▸、展开时 ▸ 旋转 90°（与 .task-toggle/.corr-caret 同款）；仅条目头直系子选择器，不动年级行/子块开关 */
+  button.sum-head > .sum-chev,
+  button.fb-head > .fb-chev{background:transparent; color:#8A8378; font-size:13.5px; font-weight:600; padding:10px 2px 10px 14px; border-radius:0; display:inline-flex; align-items:center; gap:4px; min-height:44px;}
+  .sum-chev-caret, .fb-chev-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
+  button.sum-head[aria-expanded="true"] .sum-chev-caret,
+  button.fb-head[aria-expanded="true"] .fb-chev-caret{transform:rotate(90deg);}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -2858,7 +2862,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     items.forEach(function(it){
       var sumk = kbReadSumKey('kid', grade, it);
       var sumUnread = !kbReadGet(sumk);
-      html += '<div class="sum-item" data-sumk="' + sumEsc(sumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (sumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev fb-chev" aria-hidden="true">详情 ▾</span></button><div class="sum-body" hidden>';
+      html += '<div class="sum-item" data-sumk="' + sumEsc(sumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (sumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden>';
       /* 孩子版晚间小结八段结构（规则手册「孩子版晚间小结结构」，2026-10-23 家长拍板恢复，顺序固定；
          旧四字段数据（无 improve 字段）按兼容口径渲染：知识点纯标签、无错题不显示全对句） */
       if(it.completed && it.completed.length){
@@ -2917,8 +2921,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     body.hidden = !open;
     item.classList.toggle('open-sum', open);
     head.setAttribute('aria-expanded', open ? 'true' : 'false');
-    var chev = head.querySelector('.sum-chev');
-    if(chev) chev.textContent = open ? '收起 ▴' : '详情 ▾';
+    var chevTxt = head.querySelector('.sum-chev-txt');
+    if(chevTxt) chevTxt.textContent = open ? '收起' : '详情';
     /* 未读红圆点：点展开即已读；收起不反悔；data-sumk 区分孩子版/家长版（家长版带 parent 前缀，硬隔离）。 */
     if(open){
       try {
@@ -3135,7 +3139,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var wkItems = '';
       if(wk && Array.isArray(wk.weeks)){
         wk.weeks.filter(wkVisible).forEach(function(it){
-          wkItems += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">详情 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+          wkItems += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
         });
       }
       if(wkItems) html += wkItems;
@@ -3149,12 +3153,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
           html += '<div class="sum-p-grade sum-folded"><button class="sum-p-name sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>';
           gWeeks.filter(wkVisible).forEach(function(it){
-            html += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">详情 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+            html += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
           items.forEach(function(it){
             var psumk = kbReadSumKey('parent', g, it);
             var psumUnread = !kbReadGet(psumk);
-            html += '<div class="sum-item" data-sumk="' + sumEsc(psumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (psumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev fb-chev" aria-hidden="true">详情 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+            html += '<div class="sum-item" data-sumk="' + sumEsc(psumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (psumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
           html += '</div>';
         }
@@ -3253,7 +3257,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       } else {
         html += '<div class="fb-title">' + sumEsc(it.title || '批改反馈') + (fbUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>';
       }
-      html += '</span><span class="fb-chev" aria-hidden="true">' + (open ? '收起 ▴' : '详情 ▾') + '</span></button>'
+      html += '</span><span class="fb-chev" aria-hidden="true"><span class="fb-chev-txt">' + (open ? '收起' : '详情') + '</span> <span class="fb-chev-caret" aria-hidden="true">▸</span></span></button>'
         + '<div class="fb-body"' + (open ? '' : ' hidden') + '>';
       if(it.kind === 'qa'){
         html += '<div class="fb-qa-q"><span class="fb-qa-tag">你问：</span>' + sumEsc(it.q || '') + '</div>'
@@ -3281,7 +3285,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         + '<button class="fb-head" type="button" aria-expanded="' + (open ? 'true' : 'false') + '">'
         + '<span class="fb-head-main">'
         + '<div class="fb-title">' + sumEsc(it.title || '本周学习周报') + (wkUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
-        + '</span><span class="fb-chev" aria-hidden="true">' + (open ? '收起 ▴' : '详情 ▾') + '</span></button>'
+        + '</span><span class="fb-chev" aria-hidden="true"><span class="fb-chev-txt">' + (open ? '收起' : '详情') + '</span> <span class="fb-chev-caret" aria-hidden="true">▸</span></span></button>'
         + '<div class="fb-body"' + (open ? '' : ' hidden') + '>'
         + '<div class="fb-html">' + (it.html || '') + '</div>'
         + '</div></div>';
@@ -3296,8 +3300,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     body.hidden = !open;
     item.classList.toggle('open-fb', open);
     head.setAttribute('aria-expanded', open ? 'true' : 'false');
-    var chev = head.querySelector('.fb-chev');
-    if(chev) chev.textContent = open ? '收起 ▴' : '详情 ▾';
+    var chevTxt = head.querySelector('.fb-chev-txt');
+    if(chevTxt) chevTxt.textContent = open ? '收起' : '详情';
     var key = item.getAttribute('data-fbk');
     if(key){ if(open) OPEN_FB[key] = 1; else delete OPEN_FB[key]; fbSaveState(); }
     /* 未读红圆点：点展开即已读（读了定义）；收起不反悔（close 时不清除已读，圆点不复现）；栏目开关/数据加载不同步已读（双轨）。 */
@@ -5452,7 +5456,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly10';
+  var KB_BUILD = '20261026-livesky-pweekly11';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
