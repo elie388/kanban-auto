@@ -348,7 +348,7 @@
       "title": "读第四单元作文十分钟，记录①",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
@@ -358,8 +358,19 @@
       },
       "created_at": "2026-10-26T19:26:04+08:00",
       "updated_at": "2026-10-26T22:26:05+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "摘录·第3行句子不通顺",
+          "question": "摘录里有一句读起来不通顺，请对照你写的这句，把它改通顺。",
+          "orig_text": "微风一吹，花［涂改］有［涂改］沁人心脾。",
+          "reason": true,
+          "hint": "① 把这句大声读一遍，看看哪里读着别扭。② 想想“花”和“沁人心脾”之间，缺了什么、哪个字显得多余。③ 把这句重新写一遍，再读一遍确认通顺。",
+          "img_exempt": "语文题，无需配图",
+          "q_img_status": "无图不适用",
+          "resubmit": "待补交"
+        }
+      ],
       "status_source": "realtime"
     },
     {
