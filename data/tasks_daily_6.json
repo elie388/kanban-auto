@@ -1,340 +1,341 @@
 {
- "schema_version": "1.0",
- "date": "2026-10-26",
- "grade": "六年级",
- "generated_at": "2026-10-26T00:17:14+08:00",
- "updated_at": "2026-10-26T20:11:51+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-10-26T19:26:04+08:00",
-   "new_lines": 9
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": "2026-10-26T19:10:59+08:00",
-   "status": "done"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": "2026-10-26T19:00:28+08:00",
-   "status": "done"
-  }
- },
- "tasks": [
-  {
-   "task_id": "CHORE-20261026-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-10-26T17:30:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-10-26T00:18:00+08:00",
-   "updated_at": "2026-10-26T00:18:00+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-26-CHN",
-   "source": "daily_53",
-   "subject": "语文",
-   "title": "53天天练·语文",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-26T16:55:33+08:00",
-   "updated_at": "2026-10-26T16:55:33+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-26-MATH",
-   "source": "daily_53",
-   "subject": "数学",
-   "title": "53天天练·数学",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-26T16:55:33+08:00",
-   "updated_at": "2026-10-26T16:55:33+08:00"
-  },
-  {
-   "task_id": "D53-2026-10-26-ENG",
-   "source": "daily_53",
-   "subject": "英语",
-   "title": "53天天练·英语",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-10-26T16:55:33+08:00",
-   "updated_at": "2026-10-26T16:55:33+08:00"
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-26",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "在看板上传登记本照片",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-10-26T16:55:37+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "completed_at": "2026-10-26T19:26:04+08:00",
-   "status_source": "realtime",
-   "orig_photos": [
-    "556c5d4fed42960d.jpg"
-   ]
-  },
-  {
-   "task_id": "PRACT-20261026-4D878E",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "针对性练习（含口语+背诵）",
-   "detail": "六年级针对性练习_2026-10-26.docx，按今日练习清单完成",
-   "kousuan": [],
-   "recite_text": "语文背诵：《七律·长征》（毛泽东）\n原文：红军不怕远征难，万水千山只等闲。五岭逶迤腾细浪，乌蒙磅礴走泥丸。金沙水拍云崖暖，大渡桥横铁索寒。更喜岷山千里雪，三军过后尽开颜。\n朗读要求：语气豪迈坚定高亢，注意韵脚（难、闲、丸、寒、颜），颔联读得豪迈洒脱，颈联读出波澜起伏，尾联读出喜悦欢快。\n英语口语：先读短文再用自己的话复述大意（5分钟内完成）。短文：Last week, I was very busy moving into my new house. I was so tired that I did not know how to finish packing. Suddenly, a kind neighbour, Mr. Smith, came to help. He carried heavy boxes and even helped me fix the broken chair. Thanks to his help, I finished everything quickly. I am very lucky to have such a helpful neighbour.\n提示问题：1. What was the writer doing last week? 2. Who came to help the writer? 3. How did the writer feel at last?\n口语要求：语音语调自然，包含搬家、邻居帮忙、感激之情三个核心信息，尽量脱稿表达。",
-   "estimate_min": 30,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-26.docx",
-   "file_hash": "267b2196dace34f9e52cee4d108266533285fad13ae714c1a323616fbd3f64f7",
-   "created_at": "2026-10-26T19:10:52+08:00",
-   "updated_at": "2026-10-26T19:10:52+08:00",
-   "files": [
-    {
-     "name": "六年级针对性练习_2026-10-26.pdf",
-     "label": "练习",
-     "pages": 4
+  "schema_version": "1.0",
+  "date": "2026-10-26",
+  "grade": "六年级",
+  "generated_at": "2026-10-26T00:17:14+08:00",
+  "updated_at": "2026-10-26T21:22:42+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-10-26T19:26:04+08:00",
+      "new_lines": 9
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": "2026-10-26T19:10:59+08:00",
+      "status": "done"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": "2026-10-26T19:00:28+08:00",
+      "status": "done"
     }
-   ]
   },
-  {
-   "task_id": "REG-20261026-F432E2",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "90分以下用信纸抄试卷错题，作文扣10分以上重写",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261026-422AD4",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "生字没有100分的重写2遍",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T20:10:34+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "status_source": "parent_decision_20261026",
-   "completed_at": "2026-10-26T20:10:34+08:00"
-  },
-  {
-   "task_id": "REG-20261026-3AF14E",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "小练笔抄试卷P6.5",
-   "detail": "",
-   "estimate_min": null,
-   "status": "grading",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T20:11:51+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "status_source": "realtime"
-  },
-  {
-   "task_id": "REG-20261026-B42E0E",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "读第四单元作文十分钟，记录①",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261026-6D66F1",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念49、50、31",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "task_type": "reading",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261026-A118CF",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "思考题P1、4",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:48:32+08:00",
-   "task_type": null,
-   "pending_corrections": 2,
-   "corrections": [
+  "tasks": [
     {
-     "label": "思考题第2题（面积）",
-     "question": "面积原填18.84。（红笔归属待确认，暂按黑笔原错计）",
-     "hint": "提示1：你写的18.84其实是哪个量，是周长还是面积？提示2：圆的面积要用什么公式？提示3：这个圆的半径是多少？用公式算一算。",
-     "reason": true,
-     "img": "g6_think_q2_20261026_guide.png",
-     "q_img_status": "无图不适用",
-     "orig_text": "把一个圆分成若干等份，拼成一个近似的长方形。已知长方形的宽是3分米，则长方形的周长是多少分米？面积是多少平方分米？"
+      "task_id": "CHORE-20261026-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-10-26T17:30:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-10-26T00:18:00+08:00",
+      "updated_at": "2026-10-26T00:18:00+08:00"
     },
     {
-     "label": "思考题第5题",
-     "question": "半圆周长原答41.12（式3.14×8=25.12）。（红笔归属待确认，暂按黑笔原错计）",
-     "hint": "提示1：长方形里能剪的最大的半圆，它的直径是长方形的哪条边？提示2：半圆的周长是哪两部分加起来？提示3：先算弯的那部分，再加上直的那条边。",
-     "reason": true,
-     "img": "g6_think_q5_20261026_guide.png",
-     "q_img_status": "无图不适用",
-     "orig_text": "一个长方形长8cm，宽6cm，在它里面剪一个最大的半圆，半圆的周长是多少cm？"
+      "task_id": "D53-2026-10-26-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-26T16:55:33+08:00",
+      "updated_at": "2026-10-26T16:55:33+08:00"
+    },
+    {
+      "task_id": "D53-2026-10-26-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-26T16:55:33+08:00",
+      "updated_at": "2026-10-26T16:55:33+08:00"
+    },
+    {
+      "task_id": "D53-2026-10-26-ENG",
+      "source": "daily_53",
+      "subject": "英语",
+      "title": "53天天练·英语",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-26T16:55:33+08:00",
+      "updated_at": "2026-10-26T16:55:33+08:00"
+    },
+    {
+      "task_id": "META-REGISTER-2026-10-26",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-10-26T16:55:37+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "completed_at": "2026-10-26T19:26:04+08:00",
+      "status_source": "realtime",
+      "orig_photos": [
+        "556c5d4fed42960d.jpg"
+      ]
+    },
+    {
+      "task_id": "PRACT-20261026-4D878E",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-10-26.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《七律·长征》（毛泽东）\n原文：红军不怕远征难，万水千山只等闲。五岭逶迤腾细浪，乌蒙磅礴走泥丸。金沙水拍云崖暖，大渡桥横铁索寒。更喜岷山千里雪，三军过后尽开颜。\n朗读要求：语气豪迈坚定高亢，注意韵脚（难、闲、丸、寒、颜），颔联读得豪迈洒脱，颈联读出波澜起伏，尾联读出喜悦欢快。\n英语口语：先读短文再用自己的话复述大意（5分钟内完成）。短文：Last week, I was very busy moving into my new house. I was so tired that I did not know how to finish packing. Suddenly, a kind neighbour, Mr. Smith, came to help. He carried heavy boxes and even helped me fix the broken chair. Thanks to his help, I finished everything quickly. I am very lucky to have such a helpful neighbour.\n提示问题：1. What was the writer doing last week? 2. Who came to help the writer? 3. How did the writer feel at last?\n口语要求：语音语调自然，包含搬家、邻居帮忙、感激之情三个核心信息，尽量脱稿表达。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-26.docx",
+      "file_hash": "267b2196dace34f9e52cee4d108266533285fad13ae714c1a323616fbd3f64f7",
+      "created_at": "2026-10-26T19:10:52+08:00",
+      "updated_at": "2026-10-26T19:10:52+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-10-26.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
+    },
+    {
+      "task_id": "REG-20261026-F432E2",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "90分以下用信纸抄试卷错题，作文扣10分以上重写",
+      "detail": "",
+      "estimate_min": null,
+      "status": "grading",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T21:22:42+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "realtime"
+    },
+    {
+      "task_id": "REG-20261026-422AD4",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字没有100分的重写2遍",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T20:10:34+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "parent_decision_20261026",
+      "completed_at": "2026-10-26T20:10:34+08:00"
+    },
+    {
+      "task_id": "REG-20261026-3AF14E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔抄试卷P6.5",
+      "detail": "",
+      "estimate_min": null,
+      "status": "grading",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T20:11:51+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "realtime"
+    },
+    {
+      "task_id": "REG-20261026-B42E0E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读第四单元作文十分钟，记录①",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261026-6D66F1",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念49、50、31",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261026-A118CF",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "思考题P1、4",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:48:32+08:00",
+      "task_type": null,
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "思考题第2题（面积）",
+          "question": "面积原填18.84。（红笔归属待确认，暂按黑笔原错计）",
+          "hint": "提示1：你写的18.84其实是哪个量，是周长还是面积？提示2：圆的面积要用什么公式？提示3：这个圆的半径是多少？用公式算一算。",
+          "reason": true,
+          "img": "g6_think_q2_20261026_guide.png",
+          "q_img_status": "无图不适用",
+          "orig_text": "把一个圆分成若干等份，拼成一个近似的长方形。已知长方形的宽是3分米，则长方形的周长是多少分米？面积是多少平方分米？"
+        },
+        {
+          "label": "思考题第5题",
+          "question": "半圆周长原答41.12（式3.14×8=25.12）。（红笔归属待确认，暂按黑笔原错计）",
+          "hint": "提示1：长方形里能剪的最大的半圆，它的直径是长方形的哪条边？提示2：半圆的周长是哪两部分加起来？提示3：先算弯的那部分，再加上直的那条边。",
+          "reason": true,
+          "img": "g6_think_q5_20261026_guide.png",
+          "q_img_status": "无图不适用",
+          "orig_text": "一个长方形长8cm，宽6cm，在它里面剪一个最大的半圆，半圆的周长是多少cm？"
+        }
+      ],
+      "status_source": "manual_review_20261026"
+    },
+    {
+      "task_id": "REG-20261026-0A99E0",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄《知识清单》U3中的短文和中文4次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261026-A59BEE",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "背U3的作文10次，抽背",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261026-3838F7",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3《知识清单》",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U3《知识清单》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     }
-   ],
-   "status_source": "manual_review_20261026"
+  ],
+  "counts": {
+    "total": 15,
+    "pending": 10,
+    "in_progress": 1,
+    "done": 2,
+    "pending_review": 0
   },
-  {
-   "task_id": "REG-20261026-0A99E0",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "抄《知识清单》U3中的短文和中文4次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "task_type": "reading",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261026-A59BEE",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "背U3的作文10次，抽背",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "task_type": "reading",
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261026-3838F7",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "U3《知识清单》",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语早读：U3《知识清单》 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-26T19:26:04+08:00",
-   "updated_at": "2026-10-26T19:26:04+08:00",
-   "pending_corrections": 0,
-   "corrections": []
-  }
- ],
- "counts": {
-  "total": 15,
-  "pending": 11,
-  "in_progress": 0,
-  "done": 2,
-  "pending_review": 0
- },
- "deadline_today": "2026-10-26T22:30:00+08:00"
+  "deadline_today": "2026-10-26T22:30:00+08:00"
 }
