@@ -300,6 +300,10 @@
     color:#fff; font-weight:700; white-space:nowrap;
   }
   .task-section .pill-grade{font-size:17px; padding:6px 14px;}
+  /* 2026-10-26 家长令：小结/家长版/批改三处年级名 pill 放大（仅这三处组头，任务栏与徽章/日志组头不动） */
+  #sum-g5 .grade-head .pill-grade, #sum-g6 .grade-head .pill-grade,
+  #fb-g5 .grade-head .pill-grade, #fb-g6 .grade-head .pill-grade,
+  #sum-parent .sum-p-name .pill-grade{font-size:15px; padding:4px 13px;}
   .pill-grade.g5{background:var(--g5);}
   .pill-grade.g6{background:var(--g6);}
 
@@ -5363,7 +5367,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-fmt';
+  var KB_BUILD = '20261026-livesky-pillgrade';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
