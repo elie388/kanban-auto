@@ -225,11 +225,11 @@
   .sum-head{display:flex; justify-content:space-between; align-items:center; gap:8px; width:100%; background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer;}
   .sum-head .sum-date{margin-bottom:0;}
   .sum-chev{font-size:12px; color:#66707C; white-space:nowrap;}
-  .sum-body{margin-top:8px;}
+  .sum-body{margin-top:8px; font-size:16px; line-height:1.7;}
   .sum-sec{margin:8px 0;}
-  .sum-sec-t{font-weight:700; font-size:13px; color:#66707C; margin-bottom:4px;}
-  .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:14px;}
-  .sum-kp{display:inline-block; background:#EEF3FF; color:#2F4A8A; border-radius:999px; padding:1px 9px; font-size:12.5px; margin:0 6px 6px 0; line-height:1.7;}
+  .sum-sec-t{font-weight:700; font-size:15px; color:#66707C; margin-bottom:4px;}
+  .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:16px;}
+  .sum-kp{display:inline-block; background:#EEF3FF; color:#2F4A8A; border-radius:999px; padding:1px 9px; font-size:14px; margin:0 6px 6px 0; line-height:1.7;}
   .sum-kp-row{margin:0 0 2px; line-height:1.65;}
   .sum-kp-note{font-size:13.5px; color:#4A5568;}
   .sum-week{font-weight:700; border-bottom:none;}
@@ -246,7 +246,7 @@
   /* 2026-10-26 家长令：家长版小结年级组也默认折叠（与孩子版同口径；点年级头展开/收起） */
   #sum-parent .sum-p-grade.sum-folded .sum-item{ display:none; }
   button.sum-p-name{ background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer; width:100%; display:flex; align-items:center; }
-  .sum-p-html{font-size:14px; line-height:1.75;}
+  .sum-p-html{font-size:16px; line-height:1.75;}
   .sum-p-html p{margin:6px 0;}
   /* 批改反馈（2026-10-23 家长知情改定：反馈全文上看板） */
   .fb-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
@@ -262,6 +262,8 @@
   .fb-html{font-size:14px; line-height:1.75;}
   .fb-html p{margin:6px 0;}
   .fb-html img{max-width:100%; border-radius:8px;}
+  /* 2026-10-26 家长令：周报正文放大（仅周报条，批改反馈条仍 14px） */
+  .fb-wk .fb-html{font-size:16px;}
   /* 2026-10-26 周报溢出兜底：卡片内表格一律压到卡宽（防邮件整页 table 640px 之类宽表再撑出屏） */
   .fb-html table{width:100% !important; max-width:100% !important;}
   .fb-html td{overflow-wrap:anywhere;}
@@ -3176,7 +3178,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var key = fbKeyOf(grade, it);
       var open = !!OPEN_FB[key];
       var wkUnread = !kbReadGet(kbReadFbKey(grade, it));
-      html += '<div class="fb-item' + (open ? ' open-fb' : '') + '" data-fbk="' + sumEsc(key) + '">'
+      html += '<div class="fb-item fb-wk' + (open ? ' open-fb' : '') + '" data-fbk="' + sumEsc(key) + '">'
         + '<button class="fb-head" type="button" aria-expanded="' + (open ? 'true' : 'false') + '">'
         + '<span class="fb-head-main">'
         + '<div class="fb-title">' + sumEsc(it.title || '本周学习周报') + (wkUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
@@ -5350,7 +5352,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-wkfix';
+  var KB_BUILD = '20261026-livesky-font16';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
