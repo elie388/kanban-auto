@@ -431,7 +431,7 @@
       "title": "抄《知识清单》U3中的短文和中文4次",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
@@ -442,8 +442,29 @@
       "created_at": "2026-10-26T19:26:04+08:00",
       "updated_at": "2026-10-26T22:12:29+08:00",
       "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "英语抄写·do bad things to",
+          "question": "英语抄写有一处与原文不一致，需对照原文找出不一致的地方并改对。",
+          "orig_text": "do bad things to …… 破坏……；对……做坏事",
+          "reason": true,
+          "hint": "① 先把你抄的这句和原文这句逐词对一遍，看看哪处词形对不上。② 找到词形对不上的地方，前后各读一遍，想想原文那个词应该是什么样子。③ 把不对的地方改成原文的样子，再整句读一遍，确认和原文一致。",
+          "img_exempt": "英语题，无需配图",
+          "q_img_status": "无图不适用",
+          "resubmit": "待补交"
+        },
+        {
+          "label": "英语抄写·run across",
+          "question": "英语抄写有两处与原文不一致，需对照原文找出不一致的地方并改对。",
+          "orig_text": "run across ……（河流）流经……",
+          "reason": true,
+          "hint": "① 先把你抄的这句和原文这句逐词对一遍，看看哪几处多写了词。② 找到多写的词，前后各读一遍，想想原文这句应该有哪几个词。③ 把多写的词去掉，再整句读一遍，确认和原文一致。",
+          "img_exempt": "英语题，无需配图",
+          "q_img_status": "无图不适用",
+          "resubmit": "待补交"
+        }
+      ],
       "status_source": "realtime"
     },
     {
