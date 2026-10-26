@@ -22,7 +22,8 @@
     {"key": "biaodazhixing", "name": "表达之星", "icon": "🗣️", "cond": "自然周内背诵/口语达标≥2次"},
     {"key": "jiawuxiaobangshou", "name": "家务小帮手", "icon": "🏠", "cond": "单次完成1项基础家务"},
     {"key": "zhengdalidaren", "name": "整理小达人", "icon": "🧹", "cond": "连续5天整理类家务"},
-    {"key": "jiawuzhixing", "name": "家务之星", "icon": "🏆", "cond": "周内≥5次（每日≤1次计）"}
+    {"key": "jiawuzhixing", "name": "家务之星", "icon": "🏆", "cond": "周内≥5次（每日≤1次计）"},
+    {"key": "langduzhixing", "name": "朗读之星", "icon": "🎙️", "cond": "连续4天朗读合格（读书任务done且时长语速通过，每日≤1次计）", "points": 5}
   ],
   "legacy": [
     {"key": "xueba", "name": "学霸", "icon": "👑"}
