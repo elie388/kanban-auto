@@ -204,7 +204,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 2,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -259,10 +259,10 @@
    },
    {
     "key": "sanheyi",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 2,
+    "obtained": true,
+    "date": "2026-10-26",
+    "count": 1,
+    "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -311,10 +311,10 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 1,
+    "obtained": true,
+    "date": "2026-10-26",
+    "count": 1,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -499,7 +499,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 1,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -606,10 +606,10 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 1,
+    "obtained": true,
+    "date": "2026-10-26",
+    "count": 1,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W44",
- "generated_at": "2026-10-26T13:00:50+08:00"
+ "generated_at": "2026-10-26T20:10:29+08:00"
 }

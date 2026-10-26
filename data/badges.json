@@ -9,8 +9,31 @@
   "week_end": "2026-11-01T23:59:59+08:00"
  },
  "by_grade": {
-  "g5": [],
-  "g6": []
+  "g5": [
+   {
+    "key": "sanribuduan",
+    "name": "三日不断",
+    "icon": "📆",
+    "date": "2026-10-26",
+    "count": 1
+   },
+   {
+    "key": "sanheyi",
+    "name": "三合一快手",
+    "icon": "⚡",
+    "date": "2026-10-26",
+    "count": 1
+   }
+  ],
+  "g6": [
+   {
+    "key": "sanribuduan",
+    "name": "三日不断",
+    "icon": "📆",
+    "date": "2026-10-26",
+    "count": 1
+   }
+  ]
  },
- "generated_at": "2026-10-26T06:00:18+08:00"
+ "generated_at": "2026-10-26T20:10:29+08:00"
 }
