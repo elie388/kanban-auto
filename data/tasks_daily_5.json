@@ -61,12 +61,43 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T20:44:06+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-26T21:09:51+08:00",
+      "status_source": "manual_review_20261026",
+      "pending_corrections": 4,
+      "corrections": [
+        {
+          "label": "一、2内角和",
+          "question": "一、2长方形纸剪开，最后一个三角形的内角和原选C（90°）。",
+          "reason": true,
+          "hint": "提示1：不管三角形是什么形状，内角和都是多少度？提示2：最后一个三角形也是三角形，它的内角和会变吗？提示3：三个角加起来是多少？",
+          "img": "g5_math53_p22_q12_guide.png"
+        },
+        {
+          "label": "一、3结论正误",
+          "question": "一、3线段CE中点D、CD=AB，原选B（AB=DE）。",
+          "reason": true,
+          "hint": "提示1：D是中点则CD与DE什么关系？提示2：CD=AB则AB与DE什么关系？提示3：CE等于几段CD？",
+          "img": "g5_math53_p22_q13_guide.png"
+        },
+        {
+          "label": "一、4∠2",
+          "question": "一、4三角板拼图，∠2原选A（45°）。",
+          "reason": true,
+          "hint": "提示1：一副三角板每个角各是多少度？提示2：找出角2所在小三角形，它另外两个角各是多少度？提示3：三角形内角和180°，算一算角2。",
+          "img": "g5_math53_p22_q14_guide.png"
+        },
+        {
+          "label": "二、3第三边",
+          "question": "二、3两个花坛第三条边原填两位数。",
+          "reason": true,
+          "hint": "提示1：第一个花坛两边3和7，第三边比几大、比几小？提示2：第二个花坛两边9和17，第三边比几大、比几小？提示3：两个范围都要满足，又是整米数，是几？",
+          "img": "g5_math53_p22_q23_guide.png"
+        }
+      ]
     },
     {
       "task_id": "D53-2026-10-26-ENG",
