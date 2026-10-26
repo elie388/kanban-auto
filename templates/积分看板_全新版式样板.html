@@ -1611,7 +1611,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     in_progress: {cls: 'correcting', badge: '🔄 改正中'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
-  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '', meta: '每日任务', exam_correction: '考试订正', chore: '日常打卡', daily_53: '每日练习'};
+  var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '', meta: '每日任务', exam_correction: '考试订正', exam: '学校考试', chore: '日常打卡', daily_53: '每日练习'};
   var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击后才展开，不分状态；同日续定方案1：整卡可点＋入口带内容预告 */
   function toggleTaskCard(card){
     var open = card.classList.toggle('open-task');
@@ -5419,6 +5419,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <label>交的是什么</label>
       <div class="up-pick" id="up-types"></div>
     </div>
+    <div class="up-row" id="up-examrow" style="display:none">
+      <label><input type="checkbox" id="up-is-exam"> 这是学校考试卷（不是家务，交完按考试批改计分）</label>
+    </div>
     <div class="up-row" id="up-passrow" style="display:none">
       <label>第一次用要输一次家庭口令（之后这台设备就不用再输了）</label>
       <input class="up-pass" id="up-pass" type="text" autocomplete="off" placeholder="家庭口令">
@@ -5467,7 +5470,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-fbalign1';
+  var KB_BUILD = '20261026-livesky-examroute';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -5529,8 +5532,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     {v:'tian53', t:'53天天练'}, {v:'register_book', t:'登记本'}, {v:'reading', t:'读背录音/视频'},
     {v:'chore', t:'家务'}
   ];
-  var TYPE_NAME = {}; TYPES.forEach(function(x){ TYPE_NAME[x.v] = x.t; });
-  var SRC_TYPE = {daily_53:'tian53', targeted_practice:'practice', exam_correction:'correction', register_book:'homework', manual:'practice'};
+  var TYPE_NAME = {}; TYPES.forEach(function(x){ TYPE_NAME[x.v] = x.t; }); TYPE_NAME['exam'] = '考试卷'; /* 2026-10-26 家务面板考试卷入口（A方案）：考试卷类型名，成功提示用 */
+  var SRC_TYPE = {daily_53:'tian53', targeted_practice:'practice', exam_correction:'correction', register_book:'homework', manual:'practice', exam:'correction'};
   var busy = false;
 
   function $(id){ return document.getElementById(id); }
@@ -5633,7 +5636,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
     $('up-orig').style.display = 'none';
     recFiles = []; recSet = new Set();
-    $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none';
+    $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none'; $('up-examrow').style.display = 'none'; if($('up-is-exam')) $('up-is-exam').checked = false;
     if(ctx.mode === 'task'){
       cur.grade = ctx.info.grade; cur.type = ctx.info.type;
       cur.task_id = ctx.info.task_id; cur.task_source = ctx.info.task_source; cur.title = ctx.info.title;
@@ -5643,7 +5646,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(_ot){ $('up-orig-cap').textContent = '原文 · 照着读'; $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
       else { $('up-orig').style.display = 'none'; }
     } else if(ctx.mode === 'chore'){
-      cur.type = 'chore';
+      cur.type = 'chore'; $('up-examrow').style.display = 'block';
       $('up-title').textContent = '交家务照片';
       if(ctx.grade){
         cur.grade = ctx.grade;
@@ -5661,6 +5664,24 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var _uv = $('up-ver'); if(_uv) _uv.textContent = '版本 ' + KB_BUILD; /* 2026-10-23 终审 终审(d)：打开面板即显示版本号（此前仅提交成功后才写，旧页无从自证） */
     recGate();
     $('up-mask').classList.add('open');
+  }
+  /* 2026-10-26 家务面板考试卷入口（A方案）：家务模式下勾选“考试卷”则改走考试提交（type=exam、task_source=exam），不勾则仍是家务；仅家务模式生效，其他模式不触 cur。 */
+  function syncExamToggle(){
+    var on = $('up-is-exam') && $('up-is-exam').checked;
+    if(!cur || cur.mode !== 'chore') return;
+    if(on){
+      cur.type = 'exam'; cur.task_source = 'exam';
+      $('up-title').textContent = '交考试卷';
+      $('up-subtitle').textContent = '这是学校考试卷，选照片就行，交完按考试批改计分（不算家务分）。';
+    } else {
+      cur.type = 'chore'; cur.task_source = null;
+      $('up-title').textContent = '交家务照片';
+      if(cur.grade){
+        $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + '做的家务，选照片就行。是哪项家务不用选，看照片就知道啦。';
+      } else {
+        $('up-subtitle').textContent = '先选是哪个孩子做的，再选照片。是哪项家务不用选，看照片就知道啦。';
+      }
+    }
   }
   function buildChildren(){
     $('up-childrow').style.display = 'block';
@@ -6113,6 +6134,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   document.addEventListener('DOMContentLoaded', function(){
     $('up-close').addEventListener('click', requestClose);
+    var _ex = $('up-is-exam'); if(_ex) _ex.addEventListener('change', syncExamToggle);
     var pickBtn = $('up-pickbtn'); if(pickBtn) pickBtn.addEventListener('click', function(){ $('up-files').click(); });
     $('up-files').addEventListener('change', paintPicked);
     var pvc = $('upPreviewClose'); if(pvc) pvc.addEventListener('click', closePreview);
