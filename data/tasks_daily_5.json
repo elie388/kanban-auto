@@ -1,365 +1,383 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-10-26",
-  "grade": "五年级",
-  "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T20:51:38+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-26T19:26:04+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-10-26T19:10:52+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-10-26T19:00:28+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-10-26",
+ "grade": "五年级",
+ "generated_at": "2026-10-26T00:17:14+08:00",
+ "updated_at": "2026-10-26T20:51:38+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-10-26T19:26:04+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261026-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-10-26T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-26T00:18:00+08:00",
-      "updated_at": "2026-10-26T00:18:00+08:00"
-    },
-    {
-      "task_id": "D53-2026-10-26-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "grading",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T20:51:38+08:00",
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "D53-2026-10-26-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "in_progress",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T21:09:51+08:00",
-      "status_source": "manual_review_20261026",
-      "pending_corrections": 4,
-      "corrections": [
-        {
-          "label": "一、2内角和",
-          "question": "一、2长方形纸剪开，最后一个三角形的内角和原选C（90°）。",
-          "reason": true,
-          "hint": "提示1：不管三角形是什么形状，内角和都是多少度？提示2：最后一个三角形也是三角形，它的内角和会变吗？提示3：三个角加起来是多少？",
-          "img": "g5_math53_p22_q12_guide.png"
-        },
-        {
-          "label": "一、3结论正误",
-          "question": "一、3线段CE中点D、CD=AB，原选B（AB=DE）。",
-          "reason": true,
-          "hint": "提示1：D是中点则CD与DE什么关系？提示2：CD=AB则AB与DE什么关系？提示3：CE等于几段CD？",
-          "img": "g5_math53_p22_q13_guide.png"
-        },
-        {
-          "label": "一、4∠2",
-          "question": "一、4三角板拼图，∠2原选A（45°）。",
-          "reason": true,
-          "hint": "提示1：一副三角板每个角各是多少度？提示2：找出角2所在小三角形，它另外两个角各是多少度？提示3：三角形内角和180°，算一算角2。",
-          "img": "g5_math53_p22_q14_guide.png"
-        },
-        {
-          "label": "二、3第三边",
-          "question": "二、3两个花坛第三条边原填两位数。",
-          "reason": true,
-          "hint": "提示1：第一个花坛两边3和7，第三边比几大、比几小？提示2：第二个花坛两边9和17，第三边比几大、比几小？提示3：两个范围都要满足，又是整米数，是几？",
-          "img": "g5_math53_p22_q23_guide.png"
-        }
-      ]
-    },
-    {
-      "task_id": "D53-2026-10-26-ENG",
-      "source": "daily_53",
-      "subject": "英语",
-      "title": "53天天练·英语",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "in_progress",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-26T16:55:33+08:00",
-      "updated_at": "2026-10-26T20:59:50+08:00",
-      "status_source": "manual_review_20261026",
-      "pending_corrections": 4,
-      "corrections": [
-        {
-          "label": "六、（一）排序",
-          "question": "六、（一）配图排序原填：道谢3、啃藤5、缠藤4、面包1、过河2。",
-          "reason": true,
-          "hint": "提示1：故事里先发生什么——蚂蚁带面包，还是大象过河？提示2：大象鼻子被缠住，和蚂蚁啃藤，哪个先哪个后？提示3：道谢是故事的开头还是结尾？",
-          "img_exempt": "排序题，无需配图"
-        },
-        {
-          "label": "六、（二）2空",
-          "question": "六、（二）2空原填chews：He can chews the vines。",
-          "reason": true,
-          "hint": "提示1：can后面跟动词的什么形式？提示2：chews是原形还是第三人称单数？提示3：把can后面的词换成原形再读一遍。",
-          "img_exempt": "英语题，无需配图"
-        },
-        {
-          "label": "六、（二）4空",
-          "question": "六、（二）4空原填walks across：He can walks across the river。",
-          "reason": true,
-          "hint": "提示1：can后面跟动词的什么形式？提示2：walks是原形还是第三人称单数？提示3：把can后面的词换成原形再读一遍。",
-          "img_exempt": "英语题，无需配图"
-        },
-        {
-          "label": "六、（二）5空",
-          "question": "六、（二）5空原填help each other：They're help each other。",
-          "reason": true,
-          "hint": "提示1：They're是They are的缩写，are后面跟动词的什么形式？提示2：help的现在分词怎么写？提示3：把空里的词换成现在分词再读一遍。",
-          "img_exempt": "英语题，无需配图"
-        }
-      ]
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-26",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-26T16:55:37+08:00",
-      "updated_at": "2026-10-26T19:05:44+08:00",
-      "status_source": "fix_partial_reg_flip",
-      "corrections": [
-        {
-          "label": "语文第2项续行",
-          "question": "段落号：全图读作“第二三段”，裁图读作“第一三段”，二读不一致，请确认后写清楚重写上传",
-          "hint": "请把这一处的段落号写清楚，重写后拍照上传",
-          "resubmit": "待补交"
-        },
-        {
-          "label": "语文第3项",
-          "question": "措辞：三读不一致（“作文看到班群”／“写作看到班群群”／“作文看班群”），且独立一行“看”的归属不明，请写清楚重写上传",
-          "hint": "请把这一项完整写清楚，重写后拍照上传",
-          "resubmit": "待补交"
-        }
-      ],
-      "pending_corrections": 2,
-      "pending_note": "页首日期为10.24（周六），提交日为10.26（周一），请重写时确认是周六补交还是今日任务；另：语第2项整两行已划掉（孩子写错划掉），不计入、不要求重写。"
-    },
-    {
-      "task_id": "REG-20261026-7B7398",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本第30页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：校本3页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:42:58+08:00",
-      "pending_corrections": 5,
-      "corrections": [
-        {
-          "label": "Q1（4头牛）",
-          "question": "4头牛的腿数，原填12。",
-          "hint": "提示1：一头牛几条腿？提示2：4头牛就是几个4加起来？提示3：用乘法算一算4个4是多少，再填。",
-          "reason": true,
-          "img": "g5_cal30_q1_20261026_guide.png"
-        },
-        {
-          "label": "Q3（摆10个、摆a个正方形）",
-          "question": "摆10个正方形原填30，摆a个原填3a。",
-          "hint": "提示1：摆1个要几根？摆2个比1个多几根？提示2：每多摆1个多几根，这个规律一直不变吗？提示3：摆10个就是10次每次加几根、再加上最开始那1根，摆a个也一样想。",
-          "reason": true,
-          "img": "g5_cal30_q3_20261026_guide.png"
-        },
-        {
-          "label": "Q4（周长）",
-          "question": "左图由1个等边三角形和2个相同的正方形组成，求它的周长。原填88a。",
-          "hint": "提示1：先数一数这个图形外圈一共有几条边。提示2：每条边长多少？提示3：把外圈的边一条一条加起来，看看和你写的是不是一样。",
-          "reason": true,
-          "img": "g5_cal30_q4_20261026_guide.png",
-          "q_img": "g5_cal30_q4_20261026_orig.png"
-        },
-        {
-          "label": "Q5哈雷",
-          "question": "哈雷彗星第二空原填一个三位数。",
-          "hint": "提示1：题目里出现的是哪一年？提示2：76年后再出现，是在那一年上加76，还是直接写一个数？提示3：用字母式把“那一年加76”写出来。",
-          "reason": true,
-          "img": "g5_cal30_q5_20261026_guide.png"
-        },
-        {
-          "label": "拓展n个三角形",
-          "question": "摆1个三角形需要3根小棒，摆2个需要5根，摆n个需要几根？原填2n。",
-          "hint": "提示1：摆1个要几根？摆2个要几根？提示2：每多摆1个多几根？提示3：摆n个就是n次每次加几根、再加上最开始那1根。",
-          "reason": true,
-          "img": "g5_cal30_ext_20261026_guide.png"
-        }
-      ],
-      "status_source": "manual_review_20261026"
-    },
-    {
-      "task_id": "REG-20261026-0F571E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T20:00:35+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "parent_decision_20261026",
-      "completed_at": "2026-10-26T20:00:35+08:00"
-    },
-    {
-      "task_id": "REG-20261026-C5B3F5",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本14课",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：校本14课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:54:57+08:00",
-      "pending_corrections": 7,
-      "corrections": [
-        {
-          "label": "一、1“宁愿”",
-          "question": "“宁愿”的宁原画níng。",
-          "hint": "提示1：宁愿这个词，你平时怎么读？提示2：查一下字典，宁愿的拼音是什么？提示3：把正确的声调标出来。",
-          "img_exempt": "语文题，无需配图",
-          "reason": true
-        },
-        {
-          "label": "三、再查画数",
-          "question": "三、查字典，“妄”再查几画？原写4。",
-          "hint": "提示1：妄字去掉部首还剩哪部分？提示2：那部分有几画，数一数？提示3：再查画数应该写几？",
-          "img_exempt": "语文题，无需配图",
-          "reason": true
-        },
-        {
-          "label": "五、1寻求/寻找",
-          "question": "“寻求/寻找”原划去寻求留寻找。",
-          "hint": "提示1：这里的道路是真的路，还是抽象的救国道路？提示2：抽象的东西用寻求还是寻找？提示3：应该划去哪一个、留哪一个？",
-          "img_exempt": "语文题，无需配图",
-          "reason": true
-        },
-        {
-          "label": "五、1入神/凝神",
-          "question": "“非常入神/凝神”两词均未划。",
-          "hint": "提示1：非常后面跟入神还是凝神更顺？提示2：入神是什么意思？提示3：把不合适的那个划去。",
-          "img_exempt": "语文题，无需配图",
-          "reason": true
-        },
-        {
-          "label": "五、3三处横线",
-          "question": "五、3三处横线均未填。横线都在，需补填。",
-          "hint": "提示1：这三处横线是让你写画线句的描写和思想感情；提示2：以书本上的画线句为准，翻书找到画了下划线的那一句；提示3：按那句话的内容，把描写和思想感情填上。",
-          "img_exempt": "语文题，无需配图"
-        },
-        {
-          "label": "五、2①萌发",
-          "question": "五、2①“萌发”的解释意思到位但句子不完整，需写成一个完整句。",
-          "hint": "提示1：你的句子主语是谁？提示2：把志向和种子分清楚，谁在谁心中生？提示3：写成一个主语清楚、意思完整的句子。",
-          "img_exempt": "语文题，无需配图"
-        },
-        {
-          "label": "五、4③补全",
-          "question": "五、4③只写“爱国思想又进一步”，不完整，需补全。",
-          "hint": "提示1：进一步之后怎么样了？提示2：他立志要做什么？提示3：把进一步的结果写完整。",
-          "img_exempt": "语文题，无需配图"
-        }
-      ],
-      "status_source": "manual_review_20261026"
-    },
-    {
-      "task_id": "PRACT-20261026-643BE6",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-10-26.docx，按今日练习清单完成",
-      "kousuan": [
-        "4.6×3=",
-        "78+29=",
-        "3.2×4+5.6=",
-        "2.5×3.6×4=",
-        "31.7×4.8≈"
-      ],
-      "recite_text": "语文背诵：《枫桥夜泊》（唐·张继）\n原文：月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。\n朗读要求：语速稍慢，语气深沉低缓，读出羁旅愁绪。\n英语口语：围绕“My school day”进行问答。提示问题：1. What time do you get up every morning? 2. How do you go to school? 3. What is your favourite subject at school?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-26.docx",
-      "file_hash": "1d4a769b77909b6354f72721330d1514badce25174b08e430ef5813dca2db0c0",
-      "created_at": "2026-10-26T19:10:45+08:00",
-      "updated_at": "2026-10-26T19:10:45+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-10-26.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
-    }
-  ],
-  "counts": {
-    "total": 9,
-    "pending": 2,
-    "in_progress": 3,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-10-26T19:10:52+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-10-26T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-10-26T19:00:28+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261026-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-10-26T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-10-26T00:18:00+08:00",
+   "updated_at": "2026-10-26T00:18:00+08:00"
+  },
+  {
+   "task_id": "D53-2026-10-26-CHN",
+   "source": "daily_53",
+   "subject": "语文",
+   "title": "53天天练·语文",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "grading",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-26T16:55:33+08:00",
+   "updated_at": "2026-10-26T20:51:38+08:00",
+   "status_source": "realtime"
+  },
+  {
+   "task_id": "D53-2026-10-26-MATH",
+   "source": "daily_53",
+   "subject": "数学",
+   "title": "53天天练·数学",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "in_progress",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-26T16:55:33+08:00",
+   "updated_at": "2026-10-26T21:09:51+08:00",
+   "status_source": "manual_review_20261026",
+   "pending_corrections": 4,
+   "corrections": [
+    {
+     "label": "一、2内角和",
+     "question": "一、2长方形纸剪开，最后一个三角形的内角和原选C（90°）。",
+     "reason": true,
+     "hint": "提示1：不管三角形是什么形状，内角和都是多少度？提示2：最后一个三角形也是三角形，它的内角和会变吗？提示3：三个角加起来是多少？",
+     "img": "g5_math53_p22_q12_guide.png"
+    },
+    {
+     "label": "一、3结论正误",
+     "question": "一、3线段CE中点D、CD=AB，原选B（AB=DE）。",
+     "reason": true,
+     "hint": "提示1：D是中点则CD与DE什么关系？提示2：CD=AB则AB与DE什么关系？提示3：CE等于几段CD？",
+     "img": "g5_math53_p22_q13_guide.png"
+    },
+    {
+     "label": "一、4∠2",
+     "question": "一、4三角板拼图，∠2原选A（45°）。",
+     "reason": true,
+     "hint": "提示1：一副三角板每个角各是多少度？提示2：找出角2所在小三角形，它另外两个角各是多少度？提示3：三角形内角和180°，算一算角2。",
+     "img": "g5_math53_p22_q14_guide.png"
+    },
+    {
+     "label": "二、3第三边",
+     "question": "二、3两个花坛第三条边原填两位数。",
+     "reason": true,
+     "hint": "提示1：第一个花坛两边3和7，第三边比几大、比几小？提示2：第二个花坛两边9和17，第三边比几大、比几小？提示3：两个范围都要满足，又是整米数，是几？",
+     "img": "g5_math53_p22_q23_guide.png"
+    }
+   ]
+  },
+  {
+   "task_id": "D53-2026-10-26-ENG",
+   "source": "daily_53",
+   "subject": "英语",
+   "title": "53天天练·英语",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "in_progress",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-26T16:55:33+08:00",
+   "updated_at": "2026-10-26T20:59:50+08:00",
+   "status_source": "manual_review_20261026",
+   "pending_corrections": 4,
+   "corrections": [
+    {
+     "label": "六、（一）排序",
+     "question": "六、（一）配图排序原填：道谢3、啃藤5、缠藤4、面包1、过河2。",
+     "reason": true,
+     "hint": "提示1：故事里先发生什么——蚂蚁带面包，还是大象过河？提示2：大象鼻子被缠住，和蚂蚁啃藤，哪个先哪个后？提示3：道谢是故事的开头还是结尾？",
+     "img_exempt": "排序题，无需配图",
+     "orig_text": "（一）根据故事内容，用数字给下列配图排序。（配图依次为：道谢、啃藤、缠藤、面包、过河）"
+    },
+    {
+     "label": "六、（二）2空",
+     "question": "六、（二）2空原填chews：He can chews the vines。",
+     "reason": true,
+     "hint": "提示1：can后面跟动词的什么形式？提示2：chews是原形还是第三人称单数？提示3：把can后面的词换成原形再读一遍。",
+     "img_exempt": "英语题，无需配图",
+     "orig_text": "（二）根据故事内容，比较大象和蚂蚁的异同，填空补全韦恩图。（每空一词）He can （ ） the vines."
+    },
+    {
+     "label": "六、（二）4空",
+     "question": "六、（二）4空原填walks across：He can walks across the river。",
+     "reason": true,
+     "hint": "提示1：can后面跟动词的什么形式？提示2：walks是原形还是第三人称单数？提示3：把can后面的词换成原形再读一遍。",
+     "img_exempt": "英语题，无需配图",
+     "orig_text": "（二）根据故事内容，比较大象和蚂蚁的异同，填空补全韦恩图。（每空一词）He can （ ） the river."
+    },
+    {
+     "label": "六、（二）5空",
+     "question": "六、（二）5空原填help each other：They're help each other。",
+     "reason": true,
+     "hint": "提示1：They're是They are的缩写，are后面跟动词的什么形式？提示2：help的现在分词怎么写？提示3：把空里的词换成现在分词再读一遍。",
+     "img_exempt": "英语题，无需配图",
+     "orig_text": "（二）根据故事内容，比较大象和蚂蚁的异同，填空补全韦恩图。（每空一词）They’re （ ）."
+    }
+   ]
+  },
+  {
+   "task_id": "META-REGISTER-2026-10-26",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-10-26T16:55:37+08:00",
+   "updated_at": "2026-10-26T19:05:44+08:00",
+   "status_source": "fix_partial_reg_flip",
+   "corrections": [
+    {
+     "label": "语文第2项续行",
+     "question": "段落号：全图读作“第二三段”，裁图读作“第一三段”，二读不一致，请确认后写清楚重写上传",
+     "hint": "请把这一处的段落号写清楚，重写后拍照上传",
+     "resubmit": "待补交",
+     "orig_text": "2. 抄默12课一、三段（用稿纸）"
+    },
+    {
+     "label": "语文第3项",
+     "question": "措辞：三读不一致（“作文看到班群”／“写作看到班群群”／“作文看班群”），且独立一行“看”的归属不明，请写清楚重写上传",
+     "hint": "请把这一项完整写清楚，重写后拍照上传",
+     "resubmit": "待补交",
+     "orig_text": "3. 看作文（看班群）"
+    }
+   ],
+   "pending_corrections": 2,
+   "pending_note": "页首日期为10.24（周六），提交日为10.26（周一），请重写时确认是周六补交还是今日任务；另：语第2项整两行已划掉（孩子写错划掉），不计入、不要求重写。"
+  },
+  {
+   "task_id": "REG-20261026-7B7398",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "校本第30页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：校本3页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-26T18:55:39+08:00",
+   "updated_at": "2026-10-26T19:42:58+08:00",
+   "pending_corrections": 5,
+   "corrections": [
+    {
+     "label": "Q1（4头牛）",
+     "question": "4头牛的腿数，原填12。",
+     "hint": "提示1：一头牛几条腿？提示2：4头牛就是几个4加起来？提示3：用乘法算一算4个4是多少，再填。",
+     "reason": true,
+     "img": "g5_cal30_q1_20261026_guide.png",
+     "orig_text": "一头牛有4条腿，2头牛有（ ）条腿，4头牛有（ ）条腿，a头牛有（ ）条腿。"
+    },
+    {
+     "label": "Q3（摆10个、摆a个正方形）",
+     "question": "摆10个正方形原填30，摆a个原填3a。",
+     "hint": "提示1：摆1个要几根？摆2个比1个多几根？提示2：每多摆1个多几根，这个规律一直不变吗？提示3：摆10个就是10次每次加几根、再加上最开始那1根，摆a个也一样想。",
+     "reason": true,
+     "img": "g5_cal30_q3_20261026_guide.png",
+     "orig_text": "摆1个正方形需要4根小棒，摆2个正方形需要（ ）根小棒，摆3个正方形需要（ ）根小棒，摆10个正方形需要（ ）根小棒，摆a个正方形需要（ ）根小棒。"
+    },
+    {
+     "label": "Q4（周长）",
+     "question": "左图由1个等边三角形和2个相同的正方形组成，求它的周长。原填88a。",
+     "hint": "提示1：先数一数这个图形外圈一共有几条边。提示2：每条边长多少？提示3：把外圈的边一条一条加起来，看看和你写的是不是一样。",
+     "reason": true,
+     "img": "g5_cal30_q4_20261026_guide.png",
+     "q_img": "g5_cal30_q4_20261026_orig.png",
+     "orig_text": "左图由1个等边三角形和2个相同的正方形组成，它的周长是（ ）。（图中边长为a）"
+    },
+    {
+     "label": "Q5哈雷",
+     "question": "哈雷彗星第二空原填一个三位数。",
+     "hint": "提示1：题目里出现的是哪一年？提示2：76年后再出现，是在那一年上加76，还是直接写一个数？提示3：用字母式把“那一年加76”写出来。",
+     "reason": true,
+     "img": "g5_cal30_q5_20261026_guide.png",
+     "orig_text": "我们每76年才能见到一次的哈雷彗星，在公元s年出现后，再一次出现将是公元（ ）年。"
+    },
+    {
+     "label": "拓展n个三角形",
+     "question": "摆1个三角形需要3根小棒，摆2个需要5根，摆n个需要几根？原填2n。",
+     "hint": "提示1：摆1个要几根？摆2个要几根？提示2：每多摆1个多几根？提示3：摆n个就是n次每次加几根、再加上最开始那1根。",
+     "reason": true,
+     "img": "g5_cal30_ext_20261026_guide.png",
+     "orig_text": "摆1个三角形需要3根小棒，摆2个三角形需要5根小棒，摆5个三角形需要（ ）根小棒，摆n个三角形需要（ ）根小棒，51根小棒可以摆（ ）个三角形。"
+    }
+   ],
+   "status_source": "manual_review_20261026"
+  },
+  {
+   "task_id": "REG-20261026-0F571E",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-26T18:55:39+08:00",
+   "updated_at": "2026-10-26T20:00:35+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": [],
+   "status_source": "parent_decision_20261026",
+   "completed_at": "2026-10-26T20:00:35+08:00"
+  },
+  {
+   "task_id": "REG-20261026-C5B3F5",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本14课",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：校本14课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-26T18:55:39+08:00",
+   "updated_at": "2026-10-26T19:54:57+08:00",
+   "pending_corrections": 7,
+   "corrections": [
+    {
+     "label": "一、1“宁愿”",
+     "question": "“宁愿”的宁原画níng。",
+     "hint": "提示1：宁愿这个词，你平时怎么读？提示2：查一下字典，宁愿的拼音是什么？提示3：把正确的声调标出来。",
+     "img_exempt": "语文题，无需配图",
+     "reason": true,
+     "orig_text": "用“—”画出加点字的正确读音：奶奶宁（níng nìng）愿自己生活在这个宁静（níng nìng）的村子里。"
+    },
+    {
+     "label": "三、再查画数",
+     "question": "三、查字典，“妄”再查几画？原写4。",
+     "hint": "提示1：妄字去掉部首还剩哪部分？提示2：那部分有几画，数一数？提示3：再查画数应该写几？",
+     "img_exempt": "语文题，无需配图",
+     "reason": true,
+     "orig_text": "查字典填空：“妄”字用部首查字法应先查（ ），再查画（ ）。"
+    },
+    {
+     "label": "五、1寻求/寻找",
+     "question": "“寻求/寻找”原划去寻求留寻找。",
+     "hint": "提示1：这里的道路是真的路，还是抽象的救国道路？提示2：抽象的东西用寻求还是寻找？提示3：应该划去哪一个、留哪一个？",
+     "img_exempt": "语文题，无需配图",
+     "reason": true,
+     "orig_text": "用“\\”划去文中括号里不准确的词语：他胸怀大志，（寻求/寻找）中国独立富强的道路。"
+    },
+    {
+     "label": "五、1入神/凝神",
+     "question": "“非常入神/凝神”两词均未划。",
+     "hint": "提示1：非常后面跟入神还是凝神更顺？提示2：入神是什么意思？提示3：把不合适的那个划去。",
+     "img_exempt": "语文题，无需配图",
+     "reason": true,
+     "orig_text": "用“\\”划去文中括号里不准确的词语：他听得非常（入神/凝神）。"
+    },
+    {
+     "label": "五、3三处横线",
+     "question": "五、3三处横线均未填。横线都在，需补填。",
+     "hint": "提示1：这三处横线是让你写画线句的描写和思想感情；提示2：以书本上的画线句为准，翻书找到画了下划线的那一句；提示3：按那句话的内容，把描写和思想感情填上。",
+     "img_exempt": "语文题，无需配图",
+     "orig_text": "画线句子是对李大钊的（ ）和（ ）的描写，从中可以看出他（ ）的思想感情。"
+    },
+    {
+     "label": "五、2①萌发",
+     "question": "五、2①“萌发”的解释意思到位但句子不完整，需写成一个完整句。",
+     "hint": "提示1：你的句子主语是谁？提示2：把志向和种子分清楚，谁在谁心中生？提示3：写成一个主语清楚、意思完整的句子。",
+     "img_exempt": "语文题，无需配图",
+     "orig_text": "联系上下文，理解词语的意思：①“萌发”在文中指（ ）。"
+    },
+    {
+     "label": "五、4③补全",
+     "question": "五、4③只写“爱国思想又进一步”，不完整，需补全。",
+     "hint": "提示1：进一步之后怎么样了？提示2：他立志要做什么？提示3：把进一步的结果写完整。",
+     "img_exempt": "语文题，无需配图",
+     "orig_text": "这篇文章按（ ）顺序写，主要讲了三件事，分别是：③（ ）。"
+    }
+   ],
+   "status_source": "manual_review_20261026"
+  },
+  {
+   "task_id": "PRACT-20261026-643BE6",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "五年级针对性练习_2026-10-26.docx，按今日练习清单完成",
+   "kousuan": [
+    "4.6×3=",
+    "78+29=",
+    "3.2×4+5.6=",
+    "2.5×3.6×4=",
+    "31.7×4.8≈"
+   ],
+   "recite_text": "语文背诵：《枫桥夜泊》（唐·张继）\n原文：月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。\n朗读要求：语速稍慢，语气深沉低缓，读出羁旅愁绪。\n英语口语：围绕“My school day”进行问答。提示问题：1. What time do you get up every morning? 2. How do you go to school? 3. What is your favourite subject at school?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-26.docx",
+   "file_hash": "1d4a769b77909b6354f72721330d1514badce25174b08e430ef5813dca2db0c0",
+   "created_at": "2026-10-26T19:10:45+08:00",
+   "updated_at": "2026-10-26T19:10:45+08:00",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-10-26.pdf",
+     "label": "练习",
+     "pages": 4
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "total": 9,
+  "pending": 2,
+  "in_progress": 3,
+  "done": 1,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-10-26T22:30:00+08:00"
 }
