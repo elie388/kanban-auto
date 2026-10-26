@@ -149,10 +149,10 @@
   @keyframes balSprintPulse{0%{opacity:.55; animation-timing-function:cubic-bezier(0.34,1.56,0.64,1);}62.5%{opacity:1; animation-timing-function:ease-in;}100%{opacity:.55;}}
   @media (prefers-reduced-motion: reduce){ .bal-tier-fill.sprint{animation:none; opacity:1;} }
   /* 冲刺提不透明兜底已随全透明定版撤销（2026-10-24 家长改定，无卡底可提；薄荷绿段自身带辉光与脉冲） */
-  /* ===== 活天空一期（2026-10-24 三方定版 B′＋V2）：顶部天空带（约330px）内含两张余额卡，天气由 canvas 引擎绘制 ===== */
+  /* ===== 活天空一期（2026-10-24 三方定版 B′＋V2）：顶部天空带（定死 200px＝收起态今日任务栏目高）内含两张余额卡，天气由 canvas 引擎绘制 ===== */
   .sky-band{
     position:relative; border-radius:24px; overflow:hidden;
-    min-height:116px; margin-bottom:16px;
+    min-height:200px; margin-bottom:16px;
     display:flex; flex-direction:column;
     padding:14px 12px 12px;
     background:linear-gradient(180deg,#5E9BE0 0%,#A8D4F5 70%,#D8EFFC 100%);
@@ -5316,7 +5316,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-bal76';
+  var KB_BUILD = '20261026-livesky-band200';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
