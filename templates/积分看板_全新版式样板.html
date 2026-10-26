@@ -838,6 +838,8 @@
      批改反馈仍留在学习小结卡内为子块，不独立成栏；字重随 .cb-title 的 700、字号含 ≥1024px 的 24px 镜像） */
   #feedback-toggle .sub-head-t{font-size:22px; font-weight:700;}
   @media(min-width:1024px){ #feedback-toggle .sub-head-t{font-size:24px;} }
+  /* 批改反馈开关右对齐（2026-10-26 家长令“对齐”：真机实测反馈开关右边缘比上面年级行多出约一截；与 #panel-summary 年级行开关同取右内边距 16px；全局 border-box 下右内边距可缩内容区；只动 #feedback-toggle，不动年级行开关与其他子块开关） */
+  #feedback-toggle{padding-right:16px;}
   .sub-chev{font-size:14px; font-weight:700; color:#66707C; background:#F1F3F5; border-radius:999px; padding:6px 14px; white-space:nowrap;}
 
   /* 规则列表 */
@@ -5465,7 +5467,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly13';
+  var KB_BUILD = '20261026-livesky-fbalign1';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
