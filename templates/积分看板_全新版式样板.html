@@ -798,6 +798,10 @@
   #panel-lib .collapse-pad{padding:0}
   .fb-zone{padding:0 16px 4px}
   #panel-feedback .collapse-pad{padding:0}
+  /* 2026-10-26 家长令：小结/周报/批改框贴边（一行多显示字）：学习小结卡左右内边距清零＋主 pad 与反馈区左右内边距清零；框边离屏幕只剩页面本身 12px 边距（卡内标题按钮自带 16px 内边距，标题字不贴边；年级 pill 与条目卡自带内边距，字不贴边） */
+  section.card[aria-label="学习小结"]{padding-left:0; padding-right:0;}
+  #panel-summary > .collapse-inner > .collapse-pad{padding:0 0 18px;}
+  .fb-zone{padding:0 0 4px;}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -3070,9 +3074,26 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       try { localStorage.setItem('hw-parent-last', String(Date.now())); } catch (e) {}
       var html = ''; /* 2026-10-23 家长令：删除「一键上锁」按钮及其 handler——家长令牌长期有效，仅闲置 30 天自动重锁（parentClear 保留供过期/未授权路径使用） */
       /* 家长版周报条目（2026-10-26 家长改定：不另加周报块，直接以条目放进家长版小结里、排在每日小结之前；合报一篇故不按年级拆组，点条目头展开看全文，无数据时无条目） */
+      /* 家长版周报板上保留2天（2026-10-26 家长令）：上板日＋次日可见，第3天起隐藏；数据仍在 KV（4周保留期不变），只是板上不显示。锚＝published（无戳时取 week 结束日＋1天，即次日上板常规）；日期取设备本地日 */
+      function wkVisible(it){
+        var anchor = it.published || '';
+        if(!anchor && it.week){
+          var parts = String(it.week).split('~');
+          var end = parts[parts.length - 1];
+          var m = end.match(/(\d{4})-(\d{2})-(\d{2})/);
+          if(m){ var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3])); d.setUTCDate(d.getUTCDate() + 1); anchor = d.toISOString().slice(0, 10); }
+        }
+        if(!anchor) return true;
+        var mm = anchor.match(/(\d{4})-(\d{2})-(\d{2})/);
+        if(!mm) return true;
+        var now = new Date();
+        var today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+        var a = Date.UTC(+mm[1], +mm[2] - 1, +mm[3]);
+        return (today - a) / 86400000 < 2;
+      }
       var wkItems = '';
       if(wk && Array.isArray(wk.weeks)){
-        wk.weeks.forEach(function(it){
+        wk.weeks.filter(wkVisible).forEach(function(it){
           wkItems += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
         });
       }
@@ -3086,7 +3107,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           any = true;
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
           html += '<div class="sum-p-grade sum-folded"><button class="sum-p-name sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>';
-          gWeeks.forEach(function(it){
+          gWeeks.filter(wkVisible).forEach(function(it){
             html += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
           });
           items.forEach(function(it){
@@ -5389,7 +5410,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly3';
+  var KB_BUILD = '20261026-livesky-pweekly4';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
