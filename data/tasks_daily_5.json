@@ -3,12 +3,12 @@
   "date": "2026-10-26",
   "grade": "五年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T18:40:25+08:00",
+  "updated_at": "2026-10-26T18:55:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-26T16:55:28+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-26T18:55:39+08:00",
+      "new_lines": 3
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -87,19 +87,90 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-26T16:55:37+08:00",
-      "updated_at": "2026-10-26T18:40:25+08:00",
+      "updated_at": "2026-10-26T18:55:35+08:00",
       "completed_at": null,
-      "status_source": "realtime"
+      "status_source": "manual_partial_reg",
+      "corrections": [
+        {
+          "label": "语文第2项续行",
+          "question": "段落号：全图读作“第二三段”，裁图读作“第一三段”，二读不一致，请确认后写清楚重写上传",
+          "hint": "请把这一处的段落号写清楚，重写后拍照上传",
+          "resubmit": "待补交"
+        },
+        {
+          "label": "语文第3项",
+          "question": "措辞：三读不一致（“作文看到班群”／“写作看到班群群”／“作文看班群”），且独立一行“看”的归属不明，请写清楚重写上传",
+          "hint": "请把这一项完整写清楚，重写后拍照上传",
+          "resubmit": "待补交"
+        }
+      ],
+      "pending_corrections": 2,
+      "pending_note": "页首日期为10.24（周六），提交日为10.26（周一），请重写时确认是周六补交还是今日任务；另：语第2项整两行已划掉（孩子写错划掉），不计入、不要求重写。"
+    },
+    {
+      "task_id": "REG-20261026-7B7398",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本3页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：校本3页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T18:55:39+08:00",
+      "updated_at": "2026-10-26T18:55:39+08:00"
+    },
+    {
+      "task_id": "REG-20261026-0F571E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T18:55:39+08:00",
+      "updated_at": "2026-10-26T18:55:39+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261026-C5B3F5",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本14课",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：校本14课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T18:55:39+08:00",
+      "updated_at": "2026-10-26T18:55:39+08:00"
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 4,
-    "in_progress": 0,
+    "total": 8,
+    "pending": 7,
+    "in_progress": 1,
     "done": 0,
     "pending_review": 0
   },
