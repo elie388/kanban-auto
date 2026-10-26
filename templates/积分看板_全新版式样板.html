@@ -3054,12 +3054,27 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var body = zone.querySelector('.sum-parent-body');
     if(!body) return;
     body.innerHTML = '<div class="sum-empty">正在加载家长版小结…</div>';
-    fetch(SUM_HW_API + '/parent-summary', { headers: { 'X-Parent-Token': tok }, cache: 'no-store' }).then(function(r){
+    var sumReq = fetch(SUM_HW_API + '/parent-summary', { headers: { 'X-Parent-Token': tok }, cache: 'no-store' }).then(function(r){
       if(r.status === 401) throw new Error('unauth');
       return r.json();
-    }).then(function(d){
+    });
+    /* 家长版周报私有区（2026-10-26 开发稿＋家长改定：不另加块，直接以条目放进家长版小结里）：与小结并行拉取；周报拉取失败只跳过周报条目，不影响小结渲染、不清令牌 */
+    var wkReq = fetch(SUM_HW_API + '/parent-weekly', { headers: { 'X-Parent-Token': tok }, cache: 'no-store' }).then(function(r){
+      if(!r.ok) return null;
+      return r.json();
+    }).catch(function(){ return null; });
+    Promise.all([sumReq, wkReq]).then(function(res){
+      var d = res[0]; var wk = res[1];
       try { localStorage.setItem('hw-parent-last', String(Date.now())); } catch (e) {}
       var html = ''; /* 2026-10-23 家长令：删除「一键上锁」按钮及其 handler——家长令牌长期有效，仅闲置 30 天自动重锁（parentClear 保留供过期/未授权路径使用） */
+      /* 家长版周报条目（2026-10-26 家长改定：不另加周报块，直接以条目放进家长版小结里、排在每日小结之前；合报一篇故不按年级拆组，点条目头展开看全文，无数据时无条目） */
+      var wkItems = '';
+      if(wk && Array.isArray(wk.weeks)){
+        wk.weeks.forEach(function(it){
+          wkItems += '<div class="sum-item"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true">展开 ▾</span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+        });
+      }
+      if(wkItems) html += wkItems;
       var any = false;
       [5, 6].forEach(function(g){
         var items = (d && d.grades && d.grades[g] && d.grades[g].items) || [];
@@ -5367,7 +5382,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pillgrade';
+  var KB_BUILD = '20261026-livesky-pweekly';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
