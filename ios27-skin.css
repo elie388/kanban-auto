@@ -409,6 +409,8 @@ html body .up-btn:active {
   .grade-caret { margin-left: 0; }
   .task .task-main { gap: 8px; }
   .task .task-toggle { padding-left: 8px; }
+  /* 学习小结条目按钮手机左 padding 与任务卡按钮镜像（2026-10-26 pweekly13：skin 只改任务卡，条目不跟即差 6px） */
+  button.sum-head > .sum-chev, button.fb-head > .fb-chev { padding-left: 8px; }
 }
 
 /* Compact iPhone SE / reduced-size Safari window: preserve full task text

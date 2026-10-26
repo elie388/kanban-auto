@@ -436,7 +436,7 @@
     padding:10px 2px 10px 14px; border:none; background:transparent; cursor:pointer;
     display:inline-flex; align-items:center; justify-content:center; gap:4px;
     white-space:nowrap; min-height:44px; /* 文字链热区不缩水 */
-    color:#8A8378; flex:0 0 auto; align-self:center;
+    color:#536274; flex:0 0 auto; align-self:center;
     -webkit-tap-highlight-color:transparent;
   }
   .task.correcting .task-toggle{color:#C77700; font-weight:700;}
@@ -816,15 +816,17 @@
   button.sum-grade-toggle[aria-expanded="true"] > .sum-grade-chev,
   button.sub-toggle[aria-expanded="true"] > .sub-chev,
   button.redeem-toggle[aria-expanded="true"] > .redeem-chev{background:#E8E4F5; color:#5B4A8A;}
-  /* 条目按钮与任务卡按钮逐字一致（2026-10-26 家长令：一模一样）：小结/周报/批改条目按钮的声明与 .task-toggle 逐条同值同序（含 tap 高亮、nowrap、居中、flex）；仅条目头直系子选择器，不动年级行/子块开关 */
+  /* 条目按钮与任务卡按钮渲染一致（2026-10-26 家长令：一模一样；晚更正：pweekly12 只比了模板，漏了后加载的 ios27-skin.css 层——skin 给 .fb-chev 加了圆角/阴影/磨砂、给任务卡按钮改了颜色与手机左 padding，致真机仍是 pill；本轮按渲染层对齐：模板层清圆角/阴影/磨砂、两色同步为 skin 下任务色 #536274，手机左 padding 在 skin 同断点镜像；仅条目头直系子选择器，不动年级行/子块开关） */
   button.sum-head > .sum-chev,
   button.fb-head > .fb-chev{
     font-size:13.5px; font-weight:600; font-family:inherit;
     padding:10px 2px 10px 14px; border:none; background:transparent; cursor:pointer;
     display:inline-flex; align-items:center; justify-content:center; gap:4px;
     white-space:nowrap; min-height:44px;
-    color:#8A8378; flex:0 0 auto; align-self:center;
+    color:#536274; flex:0 0 auto; align-self:center;
     -webkit-tap-highlight-color:transparent;
+    border-radius:0; box-shadow:none;
+    -webkit-backdrop-filter:none; backdrop-filter:none;
   }
   .sum-chev-caret, .fb-chev-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
   button.sum-head[aria-expanded="true"] .sum-chev-caret,
@@ -1212,7 +1214,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   @media (prefers-reduced-motion: reduce){ .task.urging{animation:none !important; background-color:#FDECEA;} }
 </style>
 <!-- KB-IOS27-SKIN: appearance-only, original DOM and logic preserved -->
-<link rel="stylesheet" href="/ios27-skin.css?v=20261026-6">
+<link rel="stylesheet" href="/ios27-skin.css?v=20261026-7">
 </head>
 <body>
 <div class="ptr-bar" id="ptr-bar" aria-hidden="true"><span class="ptr-ico" id="ptr-ico">↓</span><span id="ptr-txt">下拉刷新</span></div>
@@ -5463,7 +5465,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly12';
+  var KB_BUILD = '20261026-livesky-pweekly13';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
