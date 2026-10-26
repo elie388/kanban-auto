@@ -84,11 +84,11 @@
   }
   .bal-card{
     border-radius:var(--radius);
-    padding:18px 18px 18px 24px;
+    padding:10px 12px; height:76px;
     color:#fff;
     min-width:0;
     box-shadow:var(--shadow);
-    display:flex; flex-direction:column; gap:6px;
+    display:flex; flex-direction:column; gap:4px;
     position:relative; overflow:hidden;
     animation:fadeUp .4s ease backwards;
     min-height:44px;
@@ -112,12 +112,13 @@
   .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
     color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
   /* 2026-10-19：余额卡片可点击跳转（button重置）；2026-10-24 V2：边框改为 1px 半透明白边（定版），不再归零 */
-  button.bal-card{border:1px solid rgba(255,255,255,.25); -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
+  button.bal-card{border:1px solid rgba(255,255,255,.25); -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:left; cursor:pointer;}
   button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
   #log-g5, #log-g6{scroll-margin-top:12px;}
-  .bal-name{font-size:16px; font-weight:700; opacity:.95;}
-  .bal-score{font-size:40px; font-weight:900; line-height:1.1; font-variant-numeric:tabular-nums;}
-  .bal-score small{font-size:16px; font-weight:600;}
+  .bal-name{font-size:13px; font-weight:700; opacity:.95;}
+  .bal-top{display:flex; justify-content:space-between; align-items:baseline; gap:8px;}
+  .bal-score{font-size:20px; font-weight:900; line-height:1; font-variant-numeric:tabular-nums;}
+  .bal-score small{font-size:10px; font-weight:600;}
   /* 总分滚动动画用数字包层（2026-10-19，终审 方案 H1+C1）：固定最小宽度防位数变化抖动 */
   .bal-num{display:inline-block; min-width:3ch; text-align:center; font-variant-numeric:tabular-nums;}
   /* 余额卡片总分机械滚轮 v2（2026-10-19 重写，终审 方案）：纯 CSS transition 驱动，合成器动画。
@@ -131,15 +132,15 @@
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
   /* 余额卡鼓励文案行已按家长 2026-10-23 令整行删除：元素/CSS/填充逻辑全删，不留占位 */
   /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，终审分档口径）：今日变化标/分档刻度条/负分态 */
-  .bal-today{align-self:center; font-size:11.5px; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
+  .bal-today{align-self:auto; font-size:10px; white-space:nowrap; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
   .bal-today.pos{background:transparent;}
   .bal-today.neg{background:transparent;}
   .bal-today.zero{background:transparent; opacity:.75; font-weight:600;}
   .bal-tier{margin-top:2px;}
   .bal-tier-bar{display:flex; gap:2px;}
-  .bal-tier-seg{flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.28); overflow:hidden;}
+  .bal-tier-seg{flex:1; height:2px; border-radius:3px; background:rgba(255,255,255,.28); overflow:hidden;}
   .bal-tier-fill{display:block; height:100%; border-radius:3px; background:rgba(255,255,255,.92);}
-  .bal-tier-labels{display:flex; gap:2px; margin-top:2px;}
+  .bal-tier-labels{display:none;}
   .bal-tier-labels span{flex:1; text-align:center; font-size:8.5px; line-height:1.2; font-weight:600; color:rgba(255,255,255,.95); font-variant-numeric:tabular-nums;}
   .bal-card.is-neg{background:transparent;}
   html.kb-locked .bal-today, html.kb-locked .bal-tier{display:none !important;}
@@ -151,14 +152,14 @@
   /* ===== 活天空一期（2026-10-24 三方定版 B′＋V2）：顶部天空带（约330px）内含两张余额卡，天气由 canvas 引擎绘制 ===== */
   .sky-band{
     position:relative; border-radius:24px; overflow:hidden;
-    min-height:330px; margin-bottom:16px;
+    min-height:116px; margin-bottom:16px;
     display:flex; flex-direction:column;
     padding:14px 12px 12px;
     background:linear-gradient(180deg,#5E9BE0 0%,#A8D4F5 70%,#D8EFFC 100%);
     box-shadow:0 1px 2px rgba(48,52,59,.05), 0 10px 28px rgba(48,52,59,.10);
   }
   .sky-canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block;}
-  .sky-spacer{flex:1 1 auto; min-height:104px; position:relative; z-index:1;}
+  .sky-spacer{flex:1 1 auto; min-height:14px; position:relative; z-index:1;}
   /* 严寒霜带（定版：顶边 ≤4px 薄霜带） */
   .sky-frost{
     position:absolute; top:0; left:0; right:0; height:4px; z-index:1; display:none;
@@ -1118,6 +1119,10 @@
     display:flex; align-items:center; gap:6px;
     pointer-events:none;
   }
+  /* 余额卡 76px 两行（2026-10-26 选项2）：覆盖各档媒体查询的 bal padding/score */
+  .bal-card{padding:10px 12px; height:76px;}
+  .bal-score{font-size:20px;}
+  .bal-score small{font-size:10px;}
   .ptr-bar.ptr-anim{transition:transform .25s ease, opacity .25s ease;}
   .ptr-bar .ptr-ico{display:inline-block; transition:transform .15s ease;}
   .ptr-bar.ptr-ready .ptr-ico{transform:rotate(180deg);}
@@ -1151,20 +1156,20 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   <!-- 余额卡片 -->
   <section class="balance-grid" aria-label="积分余额">
     <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看彦均积分日志">
-      <div class="bal-name">彦均</div>
+      <div class="bal-top"><div class="bal-name">彦均</div>
+      <div class="bal-today" hidden></div></div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
-      <div class="bal-today" hidden></div>
       <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
     <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看伟豪积分日志">
-      <div class="bal-name">伟豪</div>
+      <div class="bal-top"><div class="bal-name">伟豪</div>
+      <div class="bal-today" hidden></div></div>
       <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
-      <div class="bal-today" hidden></div>
       <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
   </section>
-    <div class="sky-alert" id="sky-alert" hidden><span aria-hidden="true">⚠️</span><span id="sky-alert-txt"></span></div>
   </div>
+  <div class="sky-alert" id="sky-alert" hidden><span aria-hidden="true">⚠️</span><span id="sky-alert-txt"></span></div>
 
   <!-- 今日任务（显眼位：余额卡片下方第一位） -->
   <section class="card" aria-label="今日任务">
@@ -5311,7 +5316,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-rebuildfix';
+  var KB_BUILD = '20261026-livesky-bal76';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
