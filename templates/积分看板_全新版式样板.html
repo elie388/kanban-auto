@@ -444,6 +444,7 @@
   .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
   .corr-item .corr-no{font-weight:700; color:#C2410C;}
+  .corr-item .corr-resubmit{display:inline-block; font-size:11.5px; color:#92400E; background:#FEF3C7; border:1px solid #FDE68A; border-radius:999px; padding:1px 7px; margin-left:6px; vertical-align:1px;}
   .corr-item .corr-q{color:#30343B; white-space:pre-line;}
   .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
   .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
@@ -1805,6 +1806,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
               var qDup = !!(c.question && c.label && String(c.question).trim() === String(c.label).trim());
               items += '<div class="corr-item">'
                 + (c.label ? '<span class="corr-no">' + esc(c.label) + '</span>' : '')
+                + (c.resubmit ? '<span class="corr-resubmit">' + esc(c.resubmit) + '</span>' : '')
                 + (c.question && !qDup ? ' <span class="corr-q">' + esc(fmtQ(c.question)) + '</span>' : '')
                 + (c.q_img ? '<div class=\"corr-qimg\"><span class=\"corr-cap\">原题图</span><img class=\"corr-img\" src=\"data/diagrams/' + encodeURIComponent(c.q_img) + '\" alt=\"原题图\"></div>' : '')
                 + (c.q_img_status ? '<div class=\"corr-note\"><span class=\"corr-cap\">原题图说明</span><span class=\"corr-note-t\">' + esc(c.q_img_status) + '</span></div>' : '')
@@ -5443,7 +5445,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly8';
+  var KB_BUILD = '20261026-regpartial';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
