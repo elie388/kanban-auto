@@ -212,9 +212,11 @@
   @keyframes unreadDotBlink{0%,100%{opacity:1}50%{opacity:.25}}
   @media (prefers-reduced-motion: reduce){ .unread-dot{animation:none;} }
   .sum-grade{margin-bottom:14px;}
-  /* 2026-10-26 家长令：学习小结年级组默认折叠、点年级头展开/收起（仅孩子版两年级组；反馈组与家长版不动） */
+  /* 2026-10-26 家长令：年级组默认折叠、点年级头展开/收起（孩子版＋家长版＋批改反馈组均同口径） */
   #sum-g5.sum-folded .wk-items, #sum-g5.sum-folded .sum-items,
   #sum-g6.sum-folded .wk-items, #sum-g6.sum-folded .sum-items{ display:none; }
+  /* 2026-10-26 家长令：批改反馈两年级组也默认折叠（点年级头展开/收起；条目本身仍是点条目头才展开） */
+  #fb-g5.sum-folded .fb-items, #fb-g6.sum-folded .fb-items{ display:none; }
   .sum-grade-toggle{ background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer; width:100%; }
   .sum-grade-chev{ margin-left:auto; font-size:12px; color:#66707C; white-space:nowrap; }
   .sum-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
@@ -747,7 +749,7 @@
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .redeem-head{font-size:16px; font-weight:800; flex:1;}
   .redeem-sub{font-size:12px; color:var(--sub); font-weight:400; margin-left:6px;}
-  .redeem-chev{font-size:13px; color:var(--sub);}
+  .redeem-chev{font-size:14px; font-weight:700; color:#66707C; background:#F1F3F5; border-radius:999px; padding:6px 14px; white-space:nowrap;}
   .redeem-grade{font-size:14px; font-weight:800; margin:14px 0 8px;}
   .redeem-item{border-radius:var(--radius-sm); padding:12px 14px; background:#FAFBFC;
     border:1px solid #EEF1F4; margin-bottom:10px;}
@@ -1262,12 +1264,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       </button>
       <div class="sub-body" id="feedback-body" role="region" aria-labelledby="feedback-toggle" hidden>
         <div class="collapse-pad">
-        <div class="sum-grade" id="fb-g5">
-          <div class="grade-head"><span class="pill-grade g5">彦均</span></div>
+        <div class="sum-grade sum-folded" id="fb-g5">
+          <button class="grade-head sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade g5">彦均</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>
           <div class="fb-items"><div class="sum-empty">反馈加载中…</div></div>
         </div>
-        <div class="sum-grade" id="fb-g6">
-          <div class="grade-head"><span class="pill-grade g6">伟豪</span></div>
+        <div class="sum-grade sum-folded" id="fb-g6">
+          <button class="grade-head sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade g6">伟豪</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>
           <div class="fb-items"><div class="sum-empty">反馈加载中…</div></div>
         </div>
         </div>
@@ -1420,7 +1422,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <div class="redeem-wrap" id="redeem-box">
       <button class="redeem-toggle" type="button" id="redeem-toggle" aria-expanded="false" aria-controls="redeem-body">
         <span class="redeem-head">🎁 兑换记录<span class="redeem-sub">最近 15 天</span></span>
-        <span class="redeem-chev" id="redeem-chev">展开 ▾</span>
+        <span class="redeem-chev fb-chev" id="redeem-chev">展开 ▾</span>
       </button>
       <div id="redeem-body" hidden>
         <div class="as-row"><label class="as-label"><input type="checkbox" class="as-toggle" data-as-key="redeem"> 自动滚动</label></div>
@@ -5345,7 +5347,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pillall';
+  var KB_BUILD = '20261026-livesky-fbfold';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
