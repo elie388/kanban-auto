@@ -121,7 +121,9 @@
   button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
   #log-g5, #log-g6{scroll-margin-top:12px;}
   .bal-name{font-size:13px; font-weight:700; opacity:.95;}
-  .bal-top{display:flex; justify-content:space-between; align-items:baseline; gap:8px;}
+  /* 2026-10-26 家长令：分数移到名字后面、整行居中（今日因居中行放不下，移到第二行居中，分档条在其下） */
+  .bal-top{display:flex; justify-content:center; align-items:center; gap:6px;}
+  .bal-top .bal-score{ white-space:nowrap; }
   .bal-score{font-size:20px; font-weight:900; line-height:1; font-variant-numeric:tabular-nums;}
   .bal-score small{font-size:10px; font-weight:600;}
   /* 总分滚动动画用数字包层（2026-10-19，终审 方案 H1+C1）：固定最小宽度防位数变化抖动 */
@@ -137,7 +139,7 @@
   @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
   /* 余额卡鼓励文案行已按家长 2026-10-23 令整行删除：元素/CSS/填充逻辑全删，不留占位 */
   /* 余额卡优化（2026-10-23 家长拍板1+2+3+5，终审分档口径）：今日变化标/分档刻度条/负分态 */
-  .bal-today{align-self:auto; font-size:10px; white-space:nowrap; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
+  .bal-today{align-self:center; font-size:10px; white-space:nowrap; text-align:center; font-weight:700; line-height:1.5; padding:0; background:transparent; color:#fff;}
   .bal-today.pos{background:transparent;}
   .bal-today.neg{background:transparent;}
   .bal-today.zero{background:transparent; opacity:.75; font-weight:600;}
@@ -1130,6 +1132,7 @@
     pointer-events:none;
   }
   /* 余额卡 76px 两行（2026-10-26 选项2）：覆盖各档媒体查询的 bal padding/score */
+  .bal-card{ justify-content:center; }
   .bal-card{padding:10px 12px; height:76px;}
   .bal-score{font-size:20px;}
   .bal-score small{font-size:10px;}
@@ -1168,15 +1171,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   <!-- 余额卡片 -->
   <section class="balance-grid" aria-label="积分余额">
     <button type="button" class="bal-card g5" id="bal-jump-g5" data-jump="log-g5" aria-controls="panel-log" aria-label="查看彦均积分日志">
-      <div class="bal-top"><div class="bal-name">彦均</div>
-      <div class="bal-today" hidden></div></div>
-      <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
+      <div class="bal-top"><div class="bal-name">彦均</div><div class="bal-score"><span class="bal-num">—</span> <small>分</small></div></div>
+      <div class="bal-today" hidden></div>
       <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
     <button type="button" class="bal-card g6" id="bal-jump-g6" data-jump="log-g6" aria-controls="panel-log" aria-label="查看伟豪积分日志">
-      <div class="bal-top"><div class="bal-name">伟豪</div>
-      <div class="bal-today" hidden></div></div>
-      <div class="bal-score"><span class="bal-num">—</span> <small>分</small></div>
+      <div class="bal-top"><div class="bal-name">伟豪</div><div class="bal-score"><span class="bal-num">—</span> <small>分</small></div></div>
+      <div class="bal-today" hidden></div>
       <div class="bal-tier" hidden><div class="bal-tier-bar"></div><div class="bal-tier-labels"></div></div>
     </button>
   </section>
@@ -5341,7 +5342,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-sumfold';
+  var KB_BUILD = '20261026-livesky-scorecenter';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
