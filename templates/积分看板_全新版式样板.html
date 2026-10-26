@@ -798,10 +798,10 @@
   #panel-lib .collapse-pad{padding:0}
   .fb-zone{padding:0 16px 4px}
   #panel-feedback .collapse-pad{padding:0}
-  /* 2026-10-26 家长令：小结/周报/批改框贴边（一行多显示字）：学习小结卡左右内边距清零＋主 pad 与反馈区左右内边距清零；框边离屏幕只剩页面本身 12px 边距（卡内标题按钮自带 16px 内边距，标题字不贴边；年级 pill 与条目卡自带内边距，字不贴边） */
+  /* 2026-10-26 家长令：只有展开后才贴边、折叠保持原样（小结/周报/批改）：学习小结卡左右内边距清零；折叠条目左右各留 18px（与卡片原内边距等量，折叠宽度与改动前一致）；展开条目（.open-sum/.open-fb）负边距破出 pad/zone 的 16px，框边贴到离屏幕 12px（页面边距），一行多显示字 */
   section.card[aria-label="学习小结"]{padding-left:0; padding-right:0;}
-  #panel-summary > .collapse-inner > .collapse-pad{padding:0 0 18px;}
-  .fb-zone{padding:0 0 4px;}
+  #panel-summary .sum-item, #panel-summary .fb-item, #panel-feedback .fb-item{margin-left:18px; margin-right:18px;}
+  #panel-summary .sum-item.open-sum, #panel-summary .fb-item.open-fb, #panel-feedback .fb-item.open-fb{margin-left:-16px; margin-right:-16px;}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -5410,7 +5410,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-pweekly4';
+  var KB_BUILD = '20261026-livesky-pweekly5';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
