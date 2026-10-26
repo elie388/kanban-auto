@@ -5450,7 +5450,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     fetch(location.pathname + '?_cb=' + Date.now(), {cache: 'no-store'})
       .then(function(r){ return r.text(); })
       .then(function(t){
-        var m = t.match(/KB_BUILD = '20261026-livesky-pweekly8']+)'/);
+        var m = t.match(/KB_BUILD = '([^']+)'/);
         if(m && m[1] !== KB_BUILD){
           try {
             if(sessionStorage.getItem('kb-reload-for') !== m[1]){
@@ -5475,7 +5475,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       fetch(location.pathname + '?_cb=' + now, {cache: 'no-store'})
         .then(function(r){ return r.text(); })
         .then(function(t){
-          var m = t.match(/KB_BUILD = '20261026-livesky-pweekly8']+)'/);
+          var m = t.match(/KB_BUILD = '([^']+)'/);
           if(!m) return;
           var bar = document.getElementById('kb-upd-bar');
           if(!bar) return;
