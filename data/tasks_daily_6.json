@@ -3,12 +3,12 @@
   "date": "2026-10-26",
   "grade": "六年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:10:59+08:00",
+  "updated_at": "2026-10-26T19:26:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-26T18:55:39+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-26T19:26:04+08:00",
+      "new_lines": 9
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -87,12 +87,13 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-26T16:55:37+08:00",
-      "updated_at": "2026-10-26T16:55:37+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "completed_at": "2026-10-26T19:26:04+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "PRACT-20261026-4D878E",
@@ -116,13 +117,179 @@
           "pages": 4
         }
       ]
+    },
+    {
+      "task_id": "REG-20261026-F432E2",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "90分以下用信纸抄试卷错题，作文扣10分以上重写",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00"
+    },
+    {
+      "task_id": "REG-20261026-422AD4",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字没有100分的重写2遍",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00"
+    },
+    {
+      "task_id": "REG-20261026-3AF14E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔抄试卷P6.5",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00"
+    },
+    {
+      "task_id": "REG-20261026-B42E0E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读第四单元作文十分钟，记录①",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①90分以下用信纸抄试卷错题，作文扣10分以上重写；②生字没有100分的重写2遍；③小练笔抄试卷P6.5；④读第四单元作文十分钟，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00"
+    },
+    {
+      "task_id": "REG-20261026-6D66F1",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念49、50、31",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261026-A118CF",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "思考题P1、4",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261026-0A99E0",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄《知识清单》U3中的短文和中文4次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261026-A59BEE",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "背U3的作文10次，抽背",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《知识清单》U3中的短文和中文4次；②背U3的作文10次，抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261026-3838F7",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3《知识清单》",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U3《知识清单》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:26:04+08:00"
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 15,
+    "pending": 14,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-26T22:30:00+08:00"
