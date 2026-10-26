@@ -807,6 +807,9 @@
   #sum-parent .sum-item.sum-weekly{margin-left:0; margin-right:0;}
   #sum-parent .sum-item.sum-weekly .sum-head{width:calc(100% + 14px);}
   #sum-parent .sum-item.sum-weekly.open-sum{margin-left:-16px; margin-right:-16px;}
+  /* 栏目头行对齐（2026-10-26 家长令，18:44 截图实测）：pweekly5 把学习小结卡左右内边距清零后，其头行按钮比其它栏目右偏 16px（实测点击查看中心 x 803 vs 788）；头行左右内边距补到 32px，与其它栏目（卡 16px＋按钮 16px）完全同位；年级行右内边距补 16px，使展开态头行与年级行仍对齐；条目区与破出规则不动 */
+  section.card[aria-label="学习小结"] > .collapse-btn{padding-left:32px; padding-right:32px;}
+  #panel-summary .sum-grade-toggle{padding-right:16px;}
   .sub-toggle{display:flex; align-items:center; width:100%; background:none; border:none;
     padding:6px 0; cursor:pointer; font:inherit; text-align:left; min-height:44px;}
   .sub-head-t{font-size:16px; font-weight:800; flex:1;}
@@ -5440,14 +5443,14 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-v12c';
+  var KB_BUILD = '20261026-livesky-pweekly8';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
     fetch(location.pathname + '?_cb=' + Date.now(), {cache: 'no-store'})
       .then(function(r){ return r.text(); })
       .then(function(t){
-        var m = t.match(/KB_BUILD = '([^']+)'/);
+        var m = t.match(/KB_BUILD = '20261026-livesky-pweekly8']+)'/);
         if(m && m[1] !== KB_BUILD){
           try {
             if(sessionStorage.getItem('kb-reload-for') !== m[1]){
@@ -5472,7 +5475,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       fetch(location.pathname + '?_cb=' + now, {cache: 'no-store'})
         .then(function(r){ return r.text(); })
         .then(function(t){
-          var m = t.match(/KB_BUILD = '([^']+)'/);
+          var m = t.match(/KB_BUILD = '20261026-livesky-pweekly8']+)'/);
           if(!m) return;
           var bar = document.getElementById('kb-upd-bar');
           if(!bar) return;
