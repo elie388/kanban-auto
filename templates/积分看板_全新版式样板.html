@@ -264,6 +264,9 @@
   .fb-html img{max-width:100%; border-radius:8px;}
   /* 周报条正文 16px（与反馈条同值，规则保留作兜底） */
   .fb-wk .fb-html{font-size:16px;}
+  /* 2026-10-26 家长令：周报底色恢复邮件原版米色（只动底色；640 表格与大边距不恢复，溢出根源不动）
+     用 .fb-item.fb-wk 双 class＋background 简写，压过换肤 .fb-item 的渐变底 */
+  .fb-item.fb-wk{background:#F5F3EB;}
   /* 2026-10-26 周报溢出兜底：卡片内表格一律压到卡宽（防邮件整页 table 640px 之类宽表再撑出屏） */
   .fb-html table{width:100% !important; max-width:100% !important;}
   .fb-html td{overflow-wrap:anywhere;}
@@ -5352,7 +5355,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-font16fb';
+  var KB_BUILD = '20261026-livesky-wkbg';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
