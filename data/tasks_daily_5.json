@@ -303,7 +303,7 @@
       "source": "register_book",
       "subject": "语文",
       "title": "校本14课",
-      "detail": "原状态：待完成",
+      "detail": "原状态：待完成\n迟到补做核查（2026-10-26，提交20:36）：五、2①萌发已成完整句、五、2②一尘不染两空正确、五、4③爱国思想已补全、五、5志向已具体化；五、3三处横线仍空白，属提交早于以书本为准提示上线的预期未闭合、不是新失败；待改正7改5（扣减萌发与4③；三处横线与宁愿、再查画数、寻求寻找、入神凝神仍待改正）；任务保持进行中不置完成；触发行2b6518e576cfc706销账；本项不发新反馈、不记分。",
       "estimate_min": null,
       "status": "in_progress",
       "review_status": "approved",
@@ -314,8 +314,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T18:55:39+08:00",
-      "updated_at": "2026-10-26T19:54:57+08:00",
-      "pending_corrections": 7,
+      "updated_at": "2026-10-26T21:25:45+08:00",
+      "pending_corrections": 5,
       "corrections": [
         {
           "label": "一、1“宁愿”",
