@@ -197,7 +197,7 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-26T16:55:37+08:00",
@@ -219,8 +219,9 @@
           "orig_text": "3. 看作文（看班群）"
         }
       ],
-      "pending_corrections": 2,
-      "pending_note": "页首日期为10.24（周六），提交日为10.26（周一），请重写时确认是周六补交还是今日任务；另：语第2项整两行已划掉（孩子写错划掉），不计入、不要求重写。"
+      "pending_corrections": 0,
+      "pending_note": "页首日期为10.24（周六），提交日为10.26（周一），请重写时确认是周六补交还是今日任务；另：语第2项整两行已划掉（孩子写错划掉），不计入、不要求重写。",
+      "completed_at": "2026-10-26T22:27:30+08:00"
     },
     {
       "task_id": "REG-20261026-7B7398",
