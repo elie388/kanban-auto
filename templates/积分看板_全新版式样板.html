@@ -262,6 +262,9 @@
   .fb-html{font-size:14px; line-height:1.75;}
   .fb-html p{margin:6px 0;}
   .fb-html img{max-width:100%; border-radius:8px;}
+  /* 2026-10-26 周报溢出兜底：卡片内表格一律压到卡宽（防邮件整页 table 640px 之类宽表再撑出屏） */
+  .fb-html table{width:100% !important; max-width:100% !important;}
+  .fb-html td{overflow-wrap:anywhere;}
   .fb-qa-q{background:#EEF3FF; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
   .fb-qa-a{background:#F4F8EE; border-radius:10px; padding:8px 10px; font-size:14px; line-height:1.7; margin:6px 0;}
   .fb-qa-tag{font-weight:700; font-size:12px; color:#66707C;}
@@ -5347,7 +5350,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-fbfold';
+  var KB_BUILD = '20261026-livesky-wkfix';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
