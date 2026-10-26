@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-26T22:37:28+08:00",
+  "generated_at": "2026-10-26T22:47:50+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-26",
+      "time": "22:46",
+      "time_source": "entry",
+      "reason": "B42E0E摘录发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-26",
+      "time": "22:46",
+      "time_source": "entry",
+      "reason": "B42E0E摘录达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-26",
       "time": "22:36",
