@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "grade": "六年级",
   "generated_at": "2026-10-26T00:17:14+08:00",
-  "updated_at": "2026-10-26T19:39:40+08:00",
+  "updated_at": "2026-10-26T19:48:32+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -230,7 +230,7 @@
       "title": "思考题P1、4",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念49、50、31；②思考题P1、4 → 待完成",
@@ -239,10 +239,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-26T19:26:04+08:00",
-      "updated_at": "2026-10-26T19:26:04+08:00",
+      "updated_at": "2026-10-26T19:48:32+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261026-0A99E0",
@@ -309,7 +310,7 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 13,
+    "pending": 12,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
