@@ -227,7 +227,7 @@
   .sum-chev{font-size:12px; color:#66707C; white-space:nowrap;}
   .sum-body{margin-top:8px; font-size:16px; line-height:1.7;}
   .sum-sec{margin:8px 0;}
-  .sum-sec-t{font-weight:700; font-size:15px; color:#66707C; margin-bottom:4px;}
+  .sum-sec-t{font-weight:700; font-size:16px; color:#30343B; margin-bottom:4px;}
   .sum-sec ul{margin:0; padding-left:18px; line-height:1.65; font-size:16px;}
   .sum-kp{display:inline-block; background:#EEF3FF; color:#2F4A8A; border-radius:999px; padding:1px 9px; font-size:14px; margin:0 6px 6px 0; line-height:1.7;}
   .sum-kp-row{margin:0 0 2px; line-height:1.65;}
@@ -247,6 +247,11 @@
   #sum-parent .sum-p-grade.sum-folded .sum-item{ display:none; }
   button.sum-p-name{ background:none; border:0; padding:0; font:inherit; color:inherit; text-align:left; cursor:pointer; width:100%; display:flex; align-items:center; }
   .sum-p-html{font-size:16px; line-height:1.75;}
+  /* 2026-10-26 家长令：家长版小结也要有格式（与周报章节标题同口径） */
+  .sum-p-html h4{font-size:18px; font-weight:700; color:#30343B; margin:16px 0 8px; line-height:1.5;}
+  .sum-p-html ul{margin:6px 0; padding-left:18px;}
+  .sum-p-html li{margin:4px 0;}
+  .sum-p-html .report-section{margin-bottom:10px;}
   .sum-p-html p{margin:6px 0;}
   /* 批改反馈（2026-10-23 家长知情改定：反馈全文上看板） */
   .fb-item{border:1px solid #E5E7EB; border-radius:12px; padding:12px 14px; margin:10px 0; background:#FFFDF8;}
@@ -261,6 +266,9 @@
   .fb-body{margin-top:8px;}
   .fb-html{font-size:16px; line-height:1.75;}
   .fb-html p{margin:6px 0;}
+  /* 2026-10-26 家长令：批改反馈正文标题也要有格式（与周报章节标题同口径） */
+  .fb-html h3{font-size:18px; font-weight:700; color:#30343B; margin:14px 0 8px; line-height:1.5;}
+  .fb-html h4{font-size:16px; font-weight:700; color:#30343B; margin:12px 0 6px; line-height:1.5;}
   .fb-html img{max-width:100%; border-radius:8px;}
   /* 周报条正文 16px（与反馈条同值，规则保留作兜底） */
   .fb-wk .fb-html{font-size:16px;}
@@ -5355,7 +5363,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-wkbg';
+  var KB_BUILD = '20261026-livesky-fmt';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
