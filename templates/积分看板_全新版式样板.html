@@ -5311,7 +5311,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-keepalive';
+  var KB_BUILD = '20261026-livesky-rebuildfix';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -7136,10 +7136,19 @@ void main(){
     initGraphics(){
       const canvas=this.canvas;
       this.gl=null;this.program=null;this.locations={};this.needsResize=true;
-      this.error='';this.lost=false;this.ext=null;this.query=null;
+      this.error='';this.lost=false;this.ext=null;this.query=null;this.powerTier='';
       this.gpuMs=null;this.quality='medium';this.drawCount=0;
       try{
-        const gl=canvas.getContext('webgl2',{antialias:false,alpha:false,depth:false,stencil:false,premultipliedAlpha:false,preserveDrawingBuffer:false,powerPreference:'high-performance'});
+        let gl=null;
+        const glAttrList=[
+          {antialias:false,alpha:false,depth:false,stencil:false,premultipliedAlpha:false,preserveDrawingBuffer:false,powerPreference:'high-performance'},
+          {antialias:false,alpha:false,depth:false,stencil:false,premultipliedAlpha:false,preserveDrawingBuffer:false,powerPreference:'default'},
+          null
+        ];
+        for (const at of glAttrList) {
+          try { gl = at ? canvas.getContext('webgl2', at) : canvas.getContext('webgl2'); } catch (e) { gl = null; }
+          if (gl) { this.powerTier = at ? at.powerPreference : 'none'; break; }
+        }
         if(!gl)throw Error('WebGL2 不可用');
         const sh=(type,src)=>{const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
         const vs=sh(gl.VERTEX_SHADER,VS),fs=sh(gl.FRAGMENT_SHADER,FS);
@@ -7714,8 +7723,8 @@ void main(){
     canvas.style.background='transparent';
     $('#engineLabel').textContent=useVolume?'渲染引擎：WebGL2 · 3D Ray Marching':'渲染引擎：Canvas 2D · 回退模式';
   }
-  function kbOnGlFallback(){ updateEngine(); resizeCanvas(); kbScheduleRebuild(); }
-  function kbOnGlRestored(){ autoWebglDisabled=false; severeSlowCount=0; if (!kbLowMem) { volume.configureTemporal?.($('#temporalMode').value!=='off'); } volume.resetHistory?.(); updateEngine(); resizeCanvas(); }
+  function kbOnGlFallback(){ updateEngine(); if (kbVolDead || state.reducedMotion) return; if (kbVolPhase === 'verify') { kbVolState = 'lost'; return; } kbVolState = 'lost'; if (kbVolEpisode !== 'lost') { kbVolEpisode = 'lost'; kbVolTries = 0; } kbVolSetTimer('window', kbVolWindowExpired, 3000); }
+  function kbOnGlRestored(){ kbVolClearTimer(); kbVolDead = false; kbVolState = 'active'; kbVolEpisode = ''; kbVolTries = 0; autoWebglDisabled=false; severeSlowCount=0; if (!kbLowMem) { volume.configureTemporal?.($('#temporalMode').value!=='off'); } volume.resetHistory?.(); updateEngine(); resizeCanvas(); }
   const ctx = canvas.getContext('2d');
   const realisticRain = new window.LiveSkyRain();
   const solidEffects = new window.LiveSkyEffects();
@@ -8815,6 +8824,13 @@ void main(){
   var kbLastMapped = null;
   var kbRebuilds = 0;
   var kbRebuildTimer = 0;
+  // Volume context state machine: idle/creating/active/lost/null/degraded.
+  // A replaced canvas is disposed (listeners removed, detached from the shell).
+  var kbVolState = 'idle';
+  var kbVolEpisode = '';
+  var kbVolTries = 0;
+  var kbVolPhase = '';
+  var kbVolDead = false;
   var kbTempEl = null;
   function kbSetActive(on){ window.__v121ShellActive = !!on; }
   function kbTempElFn(){
@@ -8870,7 +8886,11 @@ void main(){
       var ocv = document.getElementById('sky-canvas');
       if (ocv && ocv.width > 0) { ocv.width = 0; ocv.height = 0; kbOldReleased = true; }
     } catch (e) {}
-    if (volume && volume.lost) kbScheduleRebuild();
+    kbVolSyncState();
+    if (!kbVolDead && !kbRebuildTimer && !kbStale && !document.hidden && !state.reducedMotion) {
+      if (kbVolState === 'lost') { if (kbVolEpisode !== 'lost') { kbVolEpisode = 'lost'; kbVolTries = 0; } kbVolSetTimer('window', kbVolWindowExpired, 3000); }
+      else if (kbVolState === 'null') { if (kbVolEpisode !== 'cold') { kbVolEpisode = 'cold'; kbVolTries = 0; } kbVolColdSchedule(); }
+    }
     state.visible = !kbStale;
     var te = kbTempElFn();
     if (te) {
@@ -8883,7 +8903,7 @@ void main(){
     kbStale = false;
     if (kbShell) { kbShell.style.display = 'none'; kbShell.classList.remove('stale'); }
     kbSetActive(false);
-    if (kbRebuildTimer) { clearTimeout(kbRebuildTimer); kbRebuildTimer = 0; }
+    kbVolClearTimer();
     if (kbOldReleased) {
       kbOldReleased = false;
       try { window.dispatchEvent(new Event('resize')); } catch (e) {}
@@ -8904,38 +8924,121 @@ void main(){
       .then(function(data){ if (!data || !data.weather) { kbDegrade(); return; } kbApplySkyState(data.weather); })
       .catch(function(){ kbDegrade(); });
   }
-  function kbScheduleRebuild(){
-    if (kbRebuilds >= 3) return;
-    if (kbRebuildTimer) return;
+  function kbVolClearTimer(){
+    if (kbRebuildTimer) { clearTimeout(kbRebuildTimer); kbRebuildTimer = 0; }
+    kbVolPhase = '';
+  }
+  function kbVolSetTimer(phase, fn, delay){
+    kbVolClearTimer();
+    kbVolPhase = phase;
     kbRebuildTimer = setTimeout(function(){
       kbRebuildTimer = 0;
-      kbRebuildVolume();
-    }, 1500);
+      kbVolPhase = '';
+      fn();
+    }, delay);
   }
-  function kbRebuildVolume(){
+  function kbVolSyncState(){
+    if (kbVolDead) { kbVolState = 'degraded'; return; }
+    if (!volume) { kbVolState = 'null'; return; }
+    if (volume.lost) { kbVolState = 'lost'; return; }
+    if (!volume.gl) { kbVolState = 'null'; return; }
+    try { if (volume.gl.isContextLost && volume.gl.isContextLost()) { kbVolState = 'lost'; return; } } catch (e) {}
+    kbVolState = 'active';
+  }
+  function kbProbeGL(){
     try {
-      if (kbRebuilds >= 3) return;
-      if (!kbWeatherOK || kbStale) return;
-      if (document.hidden) return;
-      if (!volume || !volume.lost) return;
-      kbRebuilds++;
+      var pc = document.createElement('canvas');
+      pc.width = 1; pc.height = 1;
+      var g = pc.getContext('webgl2', {antialias:false, alpha:false, depth:false, stencil:false, powerPreference:'default'});
+      if (!g) return false;
+      try { var ext = g.getExtension('WEBGL_lose_context'); if (ext) ext.loseContext(); } catch (e) {}
+      return true;
+    } catch (e) { return false; }
+  }
+  function kbVolDegraded(){
+    kbVolClearTimer();
+    kbVolDead = true;
+    kbVolState = 'degraded';
+    kbVolEpisode = '';
+    kbVolTries = 0;
+    try { updateEngine(); } catch (e) {}
+  }
+  function kbVolSwapCanvas(){
+    try {
       var oldCanvas = glCanvas;
       var shell = document.getElementById('livesky-shell');
-      if (!shell || !oldCanvas) return;
+      if (!shell || !oldCanvas) return false;
       var nc = document.createElement('canvas');
       nc.id = 'volumetricCanvas';
       try { oldCanvas.removeEventListener('sky-gl-fallback', kbOnGlFallback); } catch (e) {}
       try { oldCanvas.removeEventListener('sky-gl-restored', kbOnGlRestored); } catch (e) {}
       shell.replaceChild(nc, oldCanvas);
       glCanvas = nc;
+      kbVolState = 'creating';
       volume = new window.VolumetricSky(nc);
       volume.temporalRequested = false;
       glCanvas.addEventListener('sky-gl-fallback', kbOnGlFallback);
       glCanvas.addEventListener('sky-gl-restored', kbOnGlRestored);
+      kbRebuilds++;
       updateEngine();
-      resizeCanvas();
-      if (kbLastMapped) { try { applyNormalizedLive(kbLastMapped); } catch (e) {} }
-    } catch (e) {}
+      if (volume.gl) {
+        resizeCanvas();
+        if (kbLastMapped) { try { applyNormalizedLive(kbLastMapped); } catch (e) {} }
+      }
+      kbVolSyncState();
+      return !!volume.gl;
+    } catch (e) { return false; }
+  }
+  function kbVolColdSchedule(){
+    var ladder = [0, 300, 800, 2000, 5000];
+    if (kbVolTries >= 5) { kbVolDegraded(); return; }
+    kbVolSetTimer('ladder', kbVolColdStep, ladder[kbVolTries]);
+  }
+  function kbVolColdStep(){
+    if (kbVolDead || !kbWeatherOK || kbStale || document.hidden || state.reducedMotion) return;
+    kbVolTries++;
+    if (!kbProbeGL()) {
+      if (kbVolTries >= 5) kbVolDegraded();
+      else kbVolColdSchedule();
+      return;
+    }
+    if (kbVolSwapCanvas()) {
+      kbVolEpisode = '';
+      kbVolTries = 0;
+    } else {
+      if (kbVolTries >= 5) kbVolDegraded();
+      else kbVolColdSchedule();
+    }
+  }
+  function kbVolWindowExpired(){
+    if (kbVolDead || !kbWeatherOK || kbStale || document.hidden) return;
+    kbVolSyncState();
+    if (kbVolState !== 'lost') return;
+    kbVolLostSwap();
+  }
+  function kbVolLostSwap(){
+    if (kbVolDead || !kbWeatherOK || kbStale || document.hidden) return;
+    kbVolTries++;
+    if (kbVolSwapCanvas()) {
+      kbVolSetTimer('verify', kbVolVerifyStep, 300);
+    } else {
+      kbVolLostFailed();
+    }
+  }
+  function kbVolVerifyStep(){
+    if (kbVolDead) return;
+    kbVolSyncState();
+    if (kbVolState === 'active') {
+      kbVolEpisode = '';
+      kbVolTries = 0;
+      return;
+    }
+    kbVolLostFailed();
+  }
+  function kbVolLostFailed(){
+    if (kbVolTries >= 3) { kbVolDegraded(); return; }
+    var backoff = [1000, 2000][kbVolTries - 1] || 2000;
+    kbVolSetTimer('backoff', kbVolLostSwap, backoff);
   }
   window.__skyTest = {
     setWeather: function(w){ kbApplySkyState(w); },
@@ -8945,7 +9048,9 @@ void main(){
     stale: function(){ return !!kbStale; },
     temp: function(){ return state.temp; },
     glLost: function(){ return !!(volume && volume.lost); },
-    rebuilds: function(){ return kbRebuilds; }
+    rebuilds: function(){ return kbRebuilds; },
+    powerTier: function(){ return (volume && volume.powerTier) || ''; },
+    volState: function(){ return kbVolState; }
   };
   if (kbShell) kbShell.style.display = 'none';
   kbSetActive(false);
@@ -8954,6 +9059,20 @@ void main(){
   document.addEventListener('visibilitychange', function(){
     if (document.hidden) { state.visible = false; }
     else if (!kbWeatherOK || kbStale) { state.visible = false; }
+    else if (!kbVolDead && !kbRebuildTimer && !state.reducedMotion && state.inViewport !== false) {
+      kbVolSyncState();
+      if (kbVolState === 'null') {
+        if (kbProbeGL()) {
+          if (kbVolEpisode !== 'cold') { kbVolEpisode = 'cold'; kbVolTries = 0; }
+          kbVolColdSchedule();
+        }
+      } else if (kbVolState === 'lost') {
+        if (kbProbeGL()) {
+          if (kbVolEpisode !== 'lost') { kbVolEpisode = 'lost'; kbVolTries = 0; }
+          kbVolSetTimer('swap', kbVolLostSwap, 0);
+        }
+      }
+    }
   });
 })();
 </script>
