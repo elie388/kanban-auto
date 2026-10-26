@@ -750,3 +750,13 @@ html body .up-sheet {
   html body .sky-band .bal-card.is-neg { background:linear-gradient(162deg,rgba(30,61,100,.83),rgba(26,49,79,.90)); }
   html body .up-btn,.collapse-btn .cb-state { background:linear-gradient(160deg,#fff,#e8f3ff); }
 }
+
+/* 2026-10-26 家长令：余额卡全透明（底色与磨砂全去掉，只留白边与文字；负余额态同理） */
+html body .sky-band .bal-card,
+html body .sky-band button.bal-card,
+html body .sky-band .bal-card.is-neg {
+  background: transparent;
+  background-image: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
