@@ -95,7 +95,7 @@
     /* 活天空余额卡（2026-10-24 家长改定）：全透明背景——不用磨砂（原 V2 纯磨砂上线后家长真机否决），
        卡面直接透出天空；年级识别锚仅剩姓名旁圆点（2026-10-24 家长令：一圈描边与左侧竖条均已去掉）；文字无阴影（2026-10-24 家长真机令） */
     background:transparent;
-    border:1px solid rgba(255,255,255,.25);
+    border:none;
   }
   /* 年级识别锚：仅剩姓名旁年级色圆点（见 .bal-name::before）；
      左侧 6px 年级色竖条与一圈年级色描边均已按 2026-10-24 家长令去掉；今日变化数值在带内继承白字，不另着色 */
@@ -106,13 +106,18 @@
     margin-right:7px; vertical-align:1px;
     box-shadow:0 0 0 2px rgba(255,255,255,.55);
   }
+  /* 2026-10-26 家长令：姓名前圆点呼吸（频率由 Gemini 定参）：周期 2.0s、缩放 0.85→1.15、透明度 0.7→1.0、cubic-bezier(0.4,0,0.2,1)；六年级卡错相位 0.5s；减动效下静止 */
+  .bal-name::before{ animation:balNameDotBreathe 2.0s cubic-bezier(0.4,0,0.2,1) infinite; }
+  .bal-card.g6 .bal-name::before{ animation-delay:0.5s; }
+  @keyframes balNameDotBreathe{ 0%{ transform:scale(0.85); opacity:0.7; } 50%{ transform:scale(1.15); opacity:1; } 100%{ transform:scale(0.85); opacity:0.7; } }
+  @media (prefers-reduced-motion: reduce){ .bal-name::before{ animation:none; transform:none; opacity:1; } }
   .bal-card.g5 .bal-name::before{background:var(--g5);}
   .bal-card.g6 .bal-name::before{background:var(--g6);}
   /* 2026-10-19：余额离线数据标记（KB-BALANCE-AUTO-2026-10-19） */
   .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
     color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
   /* 2026-10-19：余额卡片可点击跳转（button重置）；2026-10-24 V2：边框改为 1px 半透明白边（定版），不再归零 */
-  button.bal-card{border:1px solid rgba(255,255,255,.25); -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:left; cursor:pointer;}
+  button.bal-card{border:none; -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:left; cursor:pointer;}
   button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
   #log-g5, #log-g6{scroll-margin-top:12px;}
   .bal-name{font-size:13px; font-weight:700; opacity:.95;}
@@ -5318,7 +5323,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261026-livesky-clear';
+  var KB_BUILD = '20261026-livesky-dotbreathe';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {

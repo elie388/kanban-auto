@@ -760,3 +760,10 @@ html body .sky-band .bal-card.is-neg {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
+
+/* 2026-10-26 家长令：余额卡白边也去掉（模板层已去 border，换肤层再压一次，免得换肤 border-color 把边带回来） */
+html body .sky-band .bal-card,
+html body .sky-band button.bal-card,
+html body .sky-band .bal-card.is-neg {
+  border: none;
+}
