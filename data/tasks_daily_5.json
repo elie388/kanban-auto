@@ -3,7 +3,7 @@
   "date": "2026-10-27",
   "grade": "五年级",
   "generated_at": "2026-10-27T00:17:08+08:00",
-  "updated_at": "2026-10-27T20:19:40+08:00",
+  "updated_at": "2026-10-27T20:20:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -103,7 +103,7 @@
       "title": "口语易",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②校本21页 → 待完成",
@@ -112,11 +112,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-27T20:19:01+08:00",
+      "updated_at": "2026-10-27T20:20:50+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "completed_at": "2026-10-27T20:20:50+08:00"
     },
     {
       "task_id": "REG-20261027-C30A0C",
@@ -204,7 +205,7 @@
     "total": 9,
     "pending": 7,
     "in_progress": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-10-27T22:00:00+08:00"
