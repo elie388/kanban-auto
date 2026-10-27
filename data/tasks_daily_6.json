@@ -3,7 +3,7 @@
   "date": "2026-10-27",
   "grade": "六年级",
   "generated_at": "2026-10-27T00:17:08+08:00",
-  "updated_at": "2026-10-27T22:53:34+08:00",
+  "updated_at": "2026-10-27T23:06:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -280,7 +280,7 @@
       "title": "课本P8 1到4题，P10 第5题",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：课本P8 1到4题，P10 第5题 → 待完成",
@@ -289,14 +289,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:19:40+08:00",
-      "updated_at": "2026-10-27T20:19:40+08:00",
+      "updated_at": "2026-10-27T23:06:37+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "realtime"
     }
   ],
   "counts": {
     "total": 13,
-    "pending": 7,
+    "pending": 6,
     "in_progress": 1,
     "done": 2,
     "pending_review": 0
