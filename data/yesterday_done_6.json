@@ -1,25 +1,25 @@
 {
- "date": "2026-10-26",
+ "date": "2026-10-27",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-10-26",
+   "task_id": "CHORE-20261027-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "META-REGISTER-2026-10-27",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261026-422AD4",
-   "title": "生字没有100分的重写2遍",
+   "task_id": "REG-20261027-66B616",
+   "title": "做校本L11",
    "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261026-3838F7",
-   "title": "U3《知识清单》",
-   "subject": "英语早读",
    "source": "register_book",
    "group": "study"
   }

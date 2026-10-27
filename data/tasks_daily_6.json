@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "grade": "六年级",
-  "generated_at": "2026-10-27T00:17:08+08:00",
-  "updated_at": "2026-10-28T00:06:33+08:00",
+  "generated_at": "2026-10-28T00:17:05+08:00",
+  "updated_at": "2026-10-28T00:17:05+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-27T23:10:34+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -22,26 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261027-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-27T17:30:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-27T00:17:16+08:00",
-      "updated_at": "2026-10-28T00:06:33+08:00",
-      "completed_at": "2026-10-28T00:06:33+08:00",
-      "evidence": "家务判定通过——其他（家长聊天确认，项目未明）、其他（跑腿）；证据：家务定案 家务定案/家务定案_2026-10-27.json（items_done）；回写 chore_task_writeback。"
-    },
     {
       "task_id": "READ-20261027-G6",
       "source": "reading_daily",
@@ -58,26 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-27T00:17:22+08:00",
-      "updated_at": "2026-10-27T00:17:22+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-27",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-27T16:55:47+08:00",
-      "updated_at": "2026-10-27T20:09:03+08:00",
-      "completed_at": "2026-10-27T20:09:03+08:00",
-      "orig_photos": [
-        "1b605a8aad8d1146.jpg",
-        "592bc8ffaca7ebc3.jpg"
-      ]
+      "updated_at": "2026-10-28T00:17:05+08:00",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261027-001",
@@ -90,14 +54,17 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-27T20:07:58+08:00",
-      "updated_at": "2026-10-27T20:08:04+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "files": [
         {
           "name": "六年级英语阅读写作_2026-10-27.pdf",
           "label": "练习",
           "pages": 2
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-D8FE37",
@@ -115,11 +82,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T23:09:30+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-E3B6FE",
@@ -137,11 +107,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T22:43:54+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-78D36F",
@@ -159,10 +132,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-49E092",
@@ -180,12 +156,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T23:19:01+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-4249C6",
@@ -203,34 +182,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T22:52:16+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": null,
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261027-66B616",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "做校本L11",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T22:53:34+08:00",
-      "task_type": null,
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "manual",
-      "completed_at": "2026-10-27T22:53:34+08:00"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-70F32D",
@@ -248,11 +207,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T21:18:08+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": null,
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-A3C0B3",
@@ -270,12 +232,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T22:52:34+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "parent_rule_recording_20261027",
-      "pending_note": "【缺件提醒】摘录记录已收到，还缺朗读录音：请把第四单元作文读一遍，录音交上来。"
+      "pending_note": "【缺件提醒】摘录记录已收到，还缺朗读录音：请把第四单元作文读一遍，录音交上来。",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261027-80268C",
@@ -293,18 +258,21 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:19:40+08:00",
-      "updated_at": "2026-10-27T23:06:37+08:00",
+      "updated_at": "2026-10-28T00:17:05+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-27",
+      "carried_from": "2026-10-27",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 13,
+    "total": 10,
     "pending": 3,
     "in_progress": 1,
-    "done": 3,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-27T22:00:00+08:00"
+  "deadline_today": null
 }
