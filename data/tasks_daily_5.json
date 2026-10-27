@@ -3,12 +3,12 @@
   "date": "2026-10-27",
   "grade": "五年级",
   "generated_at": "2026-10-27T00:17:08+08:00",
-  "updated_at": "2026-10-27T20:08:04+08:00",
+  "updated_at": "2026-10-27T20:09:03+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-27T19:52:12+08:00",
-      "new_lines": 5
+      "ingested_at": "2026-10-27T20:09:03+08:00",
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -71,7 +71,10 @@
       "created_by": "system",
       "created_at": "2026-10-27T16:55:47+08:00",
       "updated_at": "2026-10-27T19:52:12+08:00",
-      "completed_at": "2026-10-27T19:52:12+08:00"
+      "completed_at": "2026-10-27T19:52:12+08:00",
+      "orig_photos": [
+        "b50dc1f52e4a8066.jpg"
+      ]
     },
     {
       "task_id": "REG-20261027-7759F2",
@@ -89,7 +92,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-27T19:52:12+08:00"
+      "updated_at": "2026-10-27T19:52:12+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261027-1CFECD",
@@ -108,7 +113,9 @@
       },
       "created_at": "2026-10-27T19:52:12+08:00",
       "updated_at": "2026-10-27T19:52:12+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261027-C30A0C",
@@ -127,7 +134,9 @@
       },
       "created_at": "2026-10-27T19:52:12+08:00",
       "updated_at": "2026-10-27T19:52:12+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261027-8FB033",
@@ -145,7 +154,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-27T19:52:12+08:00"
+      "updated_at": "2026-10-27T19:52:12+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261027-E66FDA",
@@ -163,7 +174,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-27T19:52:12+08:00"
+      "updated_at": "2026-10-27T19:52:12+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "MANUAL-20261027-001",

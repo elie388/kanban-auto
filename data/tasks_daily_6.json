@@ -3,12 +3,12 @@
   "date": "2026-10-27",
   "grade": "六年级",
   "generated_at": "2026-10-27T00:17:08+08:00",
-  "updated_at": "2026-10-27T20:08:04+08:00",
+  "updated_at": "2026-10-27T20:09:03+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-27T19:52:12+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-27T20:09:03+08:00",
+      "new_lines": 8
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -66,12 +66,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-27T16:55:47+08:00",
-      "updated_at": "2026-10-27T16:55:47+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "completed_at": "2026-10-27T20:09:03+08:00"
     },
     {
       "task_id": "MANUAL-20261027-001",
@@ -92,13 +92,166 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "REG-20261027-D8FE37",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念19、20",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：读背概念19、20 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261027-E3B6FE",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成《三单》P33的一、二，P35的二，P36的一、二",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成《三单》P33的一、二，P35的二，P36的一、二；②读P28、背29的对话5次，笔记5次 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261027-78D36F",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "读P28、背29的对话5次，笔记5次",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成《三单》P33的一、二，P35的二，P36的一、二；②读P28、背29的对话5次，笔记5次 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261027-49E092",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "P30、31的对话",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：P30、31的对话 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading",
+      "type_source": "regex_bao"
+    },
+    {
+      "task_id": "REG-20261027-4249C6",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "写42生字",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261027-66B616",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "做校本211",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261027-70F32D",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习213",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261027-A3C0B3",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读第四单元作文，记录",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-27T20:09:03+08:00",
+      "updated_at": "2026-10-27T20:09:03+08:00",
+      "task_type": "reading"
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 12,
+    "pending": 11,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-27T22:00:00+08:00"
