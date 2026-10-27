@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-27T21:22:37+08:00",
+  "generated_at": "2026-10-27T21:37:15+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-27",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "读第四单元作文记录发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-27",
+      "time": "21:34",
+      "time_source": "entry",
+      "reason": "读第四单元作文记录达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-27",
       "time": "21:22",
