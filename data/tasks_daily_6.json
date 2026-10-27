@@ -263,7 +263,7 @@
       "title": "读第四单元作文，记录",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -272,10 +272,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T20:46:08+08:00",
+      "updated_at": "2026-10-27T21:34:47+08:00",
       "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "路灯句",
+          "question": "请把下面这句改通顺：街道两旁在路灯闪烁这温暖在光芒",
+          "orig_text": "冬日的黄昏，天色早已暗淡下来，寒风刺骨，街道两旁在路灯闪烁这温暖在光芒，为这寒冷的天气增添几分暖意。街头车来人往，每个人都行色匆匆，想要早点回到温暖的家中。然而，在这样一个繁忙的街头，却发生了一件令人［划掉一字］暖心的事情。",
+          "reason": "句子主语与动作搭配不当，读着不通顺。",
+          "hint": "提示一：先把这句慢慢读两遍，找找读着卡住的地方：这句的主语是谁？是“路灯”，还是“光芒”？提示二：“在路灯闪烁这温暖在光芒”——“闪烁”后面直接跟“这温暖在光芒”，动作和对象对得上吗？哪几个字是多余的？提示三：想清楚你想写的画面，再用自己的话重新写一句，写完自己读一遍：主语清楚、动作对得上、读着顺，才算改好。",
+          "resubmit": true
+        }
+      ],
       "status_source": "kanban_upload_watch"
     },
     {
