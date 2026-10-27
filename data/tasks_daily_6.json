@@ -210,7 +210,7 @@
       "title": "做校本L11",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -219,10 +219,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-27T20:46:08+08:00",
+      "updated_at": "2026-10-27T21:22:44.735171+08:00",
       "task_type": null,
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "二、第1空",
+          "question": "看拼音写句子：páoxiào",
+          "orig_text": "在 páoxiào( ) 的洪水冲击下，小木楼开始发抖，开始痛苦地 shēn yín( )。一个脸上淌满泪水的小孩子用 sìyǎ( ) 的声音，大声疾呼。",
+          "reason": "首字涂改成黑团无法辨认，无法确认是否为正确汉字，按不猜口径作待补交（非知识性错误）。",
+          "hint": "提示：这个词在《桥》里形容洪水的声音，读 páo xiào；请把两个字都写清楚，不要涂黑。",
+          "resubmit": true
+        }
+      ],
       "status_source": "kanban_upload_watch"
     },
     {
