@@ -5470,7 +5470,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261027-livesky-moon';
+  var KB_BUILD = '20261027-livesky-moonleft';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -7073,7 +7073,7 @@ window.__KB_SKY_ASSETS__={"moon-real.png":"data:image/png;base64,iVBORw0KGgoAAAA
   const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
   function project(horizontal,kind){
     // Stylized horizon-limited banner projection; direction mapped to horizontal field of view.
-    return {x:clamp(.5+.40*Math.sin(horizontal.azimuth*rad),.07,.93),
+    return {x:clamp(.5-.40*Math.sin(horizontal.azimuth*rad),.07,.93),
       y:clamp(.82-.68*Math.sin(Math.max(0,horizontal.elevation)*rad),.07,.89),
       aboveHorizon:horizontal.elevation>-1,kind};
   }
@@ -8258,7 +8258,7 @@ void main(){
   const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
   function project(horizontal,kind){
     // Stylized horizon-limited banner projection; direction mapped to horizontal field of view.
-    return {x:clamp(.5+.40*Math.sin(horizontal.azimuth*rad),.07,.93),
+    return {x:clamp(.5-.40*Math.sin(horizontal.azimuth*rad),.07,.93),
       y:clamp(.82-.68*Math.sin(Math.max(0,horizontal.elevation)*rad),.07,.89),
       aboveHorizon:horizontal.elevation>-1,kind};
   }
