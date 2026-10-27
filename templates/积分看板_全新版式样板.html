@@ -5456,7 +5456,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261027-livesky-stars3';
+  var KB_BUILD = '20261027-livesky-stars4';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -7590,7 +7590,7 @@ vec3 celestial(vec2 uv,vec3 sky,float aspect){
   float rnd=h21(coord);
   float enabledStar=step(.980,rnd)*step(.28,n3(vec3(coord*.018,4.1)));
   float d=length(f);
-  float star=enabledStar*exp(-d*d*16.);
+  float star=enabledStar*exp(-d*d*4.);
   float brightness=.45+.55*pow(h21(coord+23.7),1.7);
   float tone=h21(coord+11.3);
   vec3 starTone=mix(vec3(.78,.87,1.),vec3(1.,.93,.84),tone);
@@ -8052,7 +8052,7 @@ void main(){
      if(night>.15){
        ctx.fillStyle='#dbe8ff';
        const count=Math.min(260,Math.round(width*height/1000));
-       for(let i=0;i<count;i++){const x=((Math.sin(i*17.17)*43758.3)%1+1)%1*width,y=((Math.sin(i*35.31)*21463.8)%1+1)%1*height;ctx.globalAlpha=night*(.65+(i%7)*.09)*(1-smooth.cover*.6);ctx.beginPath();ctx.arc(x,y,i%11===0?1.6:i%4===0?1.1:.6,0,Math.PI*2);ctx.fill();if(i%11===0){ctx.globalAlpha*=.13;ctx.beginPath();ctx.arc(x,y,5.0,0,Math.PI*2);ctx.fill();}}ctx.globalAlpha=1;
+       for(let i=0;i<count;i++){const x=((Math.sin(i*17.17)*43758.3)%1+1)%1*width,y=((Math.sin(i*35.31)*21463.8)%1+1)%1*height;ctx.globalAlpha=night*(.65+(i%7)*.09)*(1-smooth.cover*.6);ctx.beginPath();ctx.arc(x,y,i%11===0?2.4:i%4===0?1.7:1.0,0,Math.PI*2);ctx.fill();if(i%11===0){ctx.globalAlpha*=.13;ctx.beginPath();ctx.arc(x,y,6.5,0,Math.PI*2);ctx.fill();}}ctx.globalAlpha=1;
      }
      if(phase<2.65||phase>3.7){
        const x=astro.sun.x*width,y=astro.sun.y*height,r=Math.min(width,height)*.037;
