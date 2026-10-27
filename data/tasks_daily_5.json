@@ -83,7 +83,7 @@
       "title": "小校本3页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：小校本3页 → 待完成",
@@ -92,9 +92,26 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-27T20:27:23+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-10-27T21:16:09.447759+08:00",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "基础练习1(1)",
+          "question": "回声测距：列式求距离",
+          "orig_text": "小明对着山谷大喊，经过3.2秒听到回声。如果声音每秒大约传播340米，那么他们到山谷石壁的距离是多少？",
+          "reason": "式子方法正确，但未写出计算结果，属于作答不完整。",
+          "hint": "提示一：回声是往返路，时间要先除以2，再乘速度。提示二：(3.2÷2)×340，先算括号里，再乘340。提示三：算出的结果是多少米？把结果写出来才算完整。",
+          "img_exempt": "纯列式计算题，无需配图；提示已含分步算式"
+        },
+        {
+          "label": "基础练习1(3)",
+          "question": "回声测距：用字母表示时间",
+          "orig_text": "如果小明到对面的山的距离为s米，怎样表示小明从发出声音到听到回声的时间？",
+          "reason": "数量关系理解错误：回声走的是往返路，时间与路程、速度的关系没有理清。",
+          "hint": "提示一：回声走的是往返路，总路程是多少？提示二：时间＝路程÷速度。提示三：把往返路程和速度代进去，时间该怎么写？",
+          "img_exempt": "纯字母关系式题，无需配图；提示已含数量关系引导"
+        }
+      ],
       "status_source": "realtime"
     },
     {
@@ -130,7 +147,7 @@
       "title": "校本21页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②校本21页 → 待完成",
@@ -139,10 +156,46 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-27T20:54:14+08:00",
+      "updated_at": "2026-10-27T21:16:09.447759+08:00",
       "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 5,
+      "corrections": [
+        {
+          "label": "一、圈词",
+          "question": "圈出含/ju:/音的单词",
+          "orig_text": "一、圈词：从歌谣中圈出含/ju:/音的单词",
+          "reason": "漏圈：歌谣里含/ju:/音的词有三个，只圈了两个。",
+          "hint": "提示一：再读一读歌谣的第一句。提示二：哪个词的发音里有/ju:/，却还没被圈出来？提示三：把那个词也圈出来。"
+        },
+        {
+          "label": "二、2",
+          "question": "It is important for us to learn to solve ___ with friends.",
+          "orig_text": "It is important for us to learn to solve ___ with friends.",
+          "reason": "选词错误：解决的对象是问题，不是寻求帮助。",
+          "hint": "提示一：解决的对象是什么？提示二：词库里哪个词表示问题？提示三：把那个词填进去，再读一遍句子通不通顺。"
+        },
+        {
+          "label": "二、3",
+          "question": "When you have any problems about friendship, tell your parents and ___.",
+          "orig_text": "When you have any problems about friendship, tell your parents and ___.",
+          "reason": "选词错误：遇到友谊问题，除了告诉父母，还可以寻求帮助，不是做计划。",
+          "hint": "提示一：遇到友谊问题，除了告诉父母，还可以做什么？提示二：词库里哪个短语表示寻求帮助？提示三：把那个短语填进去。"
+        },
+        {
+          "label": "二、4",
+          "question": "We should talk ___ when we have different ideas.",
+          "orig_text": "We should talk ___ when we have different ideas.",
+          "reason": "选词错误：有不同想法时，应该坦诚地谈，不是谈问题。",
+          "hint": "提示一：有不同想法时，应该怎样谈？提示二：词库里哪个词表示坦诚地、公开地？提示三：把那个词填进去。"
+        },
+        {
+          "label": "二、5",
+          "question": "Make a ___ and travel together.",
+          "orig_text": "Make a ___ and travel together.",
+          "reason": "选词错误：一起旅行前，先要做计划，不是坦诚地谈。",
+          "hint": "提示一：一起旅行前，先要做什么？提示二：词库里哪个词表示计划？提示三：把那个词填进去。"
+        }
+      ],
       "status_source": "realtime"
     },
     {
