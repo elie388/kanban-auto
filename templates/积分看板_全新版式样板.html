@@ -3055,36 +3055,22 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if(kbSumVisible()) kbSyncSeen('sum', grade); /* 展开状态下迟到的小结数据视为已看过，不复亮头点 */
       sumDotUpdate();
       var tag = $('summary-tag');
-      if(tag && !window.__sumPending){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
+      if(tag){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); }
     }).catch(function(){
       renderKidSummary(grade, []);
       var tag = $('summary-tag');
-      if(tag) tag.textContent = window.__sumPending ? '总结顺延中' : '暂时无法连接';
+      if(tag) tag.textContent = '暂时无法连接';
     });
   }
 
-  /* 总结顺延标记（V10，2026-10-26）：总结 cron 未收口时写 data/summary_status.json；
-     pending 且 date 为浏览器本地今日时，标题 tag 改「总结顺延中」并在小结区顶部挂横幅；
-     404/过期/非 pending 一律无横幅（fail-soft，不影响小结渲染）。 */
+  /* 顺延标记已停用（2026-10-27 家长令：看板不再显示该顺延字样）：
+     data/summary_status.json 仍由总结 cron 写/清（供内部对账），渲染层不再读取 pending；
+     标题 tag 不再改顺延字样，小结区顶部不再挂横幅；小结内容、标题、绿点、
+     批改反馈子块、点击查看按钮与展开方式一律不动。 */
   function loadSummaryStatus(){
-    fetchJson('summary_status.json', {}).then(function(d){
-      var today = new Date();
-      var tstr = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-      var on = !!(d && d.pending && d.date === tstr);
-      window.__sumPending = on;
-      var tag = $('summary-tag');
-      if(tag && on){ tag.textContent = '总结顺延中'; tag.classList.remove('tag-live'); }
-      var old = $('sum-pending-banner');
-      if(old) old.remove();
-      if(!on) return;
-      var pad = document.querySelector('#panel-summary .collapse-pad');
-      if(!pad) return;
-      var b = document.createElement('div');
-      b.className = 'sum-pending';
-      b.id = 'sum-pending-banner';
-      b.textContent = '今日总结顺延中（批改未收口，最晚 23:30 发布）';
-      pad.insertBefore(b, pad.firstChild);
-    }).catch(function(){ /* 无标记文件＝无顺延，不影响小结 */ });
+    window.__sumPending = false;
+    var old = $('sum-pending-banner');
+    if(old) old.remove();
   }
 
   function parentTokenGet(){ try { return localStorage.getItem('hw-parent-token') || ''; } catch (e) { return ''; } }
@@ -5470,7 +5456,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261027-livesky-moonleft';
+  var KB_BUILD = '20261027-sumtag-off';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
