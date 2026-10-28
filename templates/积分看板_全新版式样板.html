@@ -169,25 +169,13 @@
   .sky-spacer{flex:1 1 auto; min-height:14px; position:relative; z-index:1;}
   /* 严寒霜带（定版：顶边 ≤4px 薄霜带） */
   .sky-frost{
-    position:absolute; top:0; left:0; right:0; height:4px; z-index:1; display:none;
+    position:absolute; top:0; left:0; right:0; height:4px; z-index:1; display:none; pointer-events:none;
     background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(210,235,255,.55));
     box-shadow:0 1px 6px rgba(190,225,255,.8);
   }
   .sky-band.has-frost .sky-frost{display:block;}
   .sky-band .balance-grid{position:relative; z-index:2; margin-bottom:0;}
-  /* V12.1 完整版渲染（2026-10-26）：原包渲染进看板带，演示 UI 不进模板 */
-  .sky-band #livesky-shell{position:absolute; inset:0; z-index:1; overflow:hidden; pointer-events:none; display:none;}
-  .sky-band #livesky-shell.stale{filter:brightness(.75) saturate(.85);}
-  .sky-band #livesky-shell canvas{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
-  .sky-band #livesky-shell #livesky-cloud,
-  .sky-band #livesky-shell #livesky-cloud2,
-  .sky-band #livesky-shell #livesky-sun,
-  .sky-band #livesky-shell #livesky-moon,
-  .sky-band #livesky-shell #livesky-stars,
-  .sky-band #livesky-shell #livesky-fog,
-  .sky-band #livesky-shell #livesky-flash,
-  .sky-band #livesky-shell #livesky-canvas{display:none; pointer-events:none;}
-  #livesky-temp{position:absolute; left:12px; top:12px; z-index:3; font-size:13px; line-height:1; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.45); pointer-events:none; display:none;}
+  /* 旧天空 livesky 壳样式已于 2026-10-28 晚随死样式清理删除（DOM 与 JS 均已无引用，霜带样式保留在用）。 */
   /* 天气预警条（定版：带底边、高 20–24px、官方色降饱和 20%、静态不滚动、多条淡入淡出轮播、只显橙/红） */
   .sky-alert{
     position:relative; z-index:2; margin-top:10px;
@@ -1226,6 +1214,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   <!-- 活天空带（2026-10-24 一期）：canvas 天空层（天文＋天气调制）＋霜带＋两张 V2 磨砂余额卡＋预警条；引擎在文末 sky script 块 -->
   <div class="sky-band" id="sky-band">
+    <div class="sky-frost" aria-hidden="true"></div>
     <div class="sky-spacer" aria-hidden="true"></div>
   <!-- 余额卡片 -->
   <section class="balance-grid" aria-label="积分余额">
@@ -5453,7 +5442,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261028-weather-vnext2';
+  var KB_BUILD = '20261028-weather-vnext3';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6906,7 +6895,7 @@ function mixColor(a,b,t){return '#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i
 function background(){const now=Date.now(),r=timestamp(state.astro.sunrise),s=timestamp(state.astro.sunset);let warm=0;if(Number.isFinite(r)&&Number.isFinite(s)&&!state.night)warm=Math.max(clamp(1-(now-r)/2700000,0,1),clamp(1-(s-now)/2700000,0,1));let colors=state.night?['#405c84','#9bb9ce']:state.code==='900'?['#f1d5a6','#f8e9d1']:warm>0&&['sun','cloud'].includes(state.kind)?[mixColor('#aad8f8','#edc1b4',warm),mixColor('#dcf1f8','#e3edf5',warm)]:state.kind==='thunder'?['#879eb7','#c8d9e4']:['rain','overcast','sleet'].includes(state.kind)?['#a8c0d2','#dcebf0']:['snow','cold'].includes(state.kind)?['#c0dceb','#eff9fd']:state.kind==='sand'?['#d8c19e','#f3e9d6']:['fog','haze'].includes(state.kind)?['#c7d6d7','#eaf1ef']:['#aad8f8','#dcf1f8'];const gr=ctx.createLinearGradient(0,0,0,h);gr.addColorStop(0,colors[0]);gr.addColorStop(1,colors[1]);ctx.fillStyle=gr;ctx.fillRect(0,0,w,h)}
 // Illuminated part of a lunar disc, north-hemisphere screen convention.
 function paintMoon(x,y,r,index,opacity){if(index==null||index===0)return;const waxing=index<=4,theta=(waxing?index:8-index)*Math.PI/4,cos=Math.cos(theta);ctx.save();ctx.globalAlpha=opacity;ctx.fillStyle='#fff1cd';ctx.shadowColor='rgba(255,244,206,.45)';ctx.shadowBlur=index===4?10:5;const rows=96;ctx.beginPath();for(let i=0;i<=rows;i++){const dy=-r+i*2*r/rows,half=Math.sqrt(Math.max(0,r*r-dy*dy)),right=waxing?half:-half*cos;if(i===0)ctx.moveTo(x+right,y+dy);else ctx.lineTo(x+right,y+dy)}for(let i=rows;i>=0;i--){const dy=-r+i*2*r/rows,half=Math.sqrt(Math.max(0,r*r-dy*dy)),left=waxing?half*cos:-half;ctx.lineTo(x+left,y+dy)}ctx.closePath();ctx.fill();ctx.restore()}
-function sky(now){litBody=null;if(state.night){if(['sun','cloud','cold'].includes(state.kind)){ctx.fillStyle='#fff';for(const p of stars){ctx.globalAlpha=(.3+.35*(1+Math.sin(now/1900+p.phase))/2)*(state.cloudCover==null?1:clamp(1-state.cloudCover,0,1));ctx.beginPath();ctx.arc(p.x*w,p.y*h,p.r,0,7);ctx.fill()}ctx.globalAlpha=1}const phases={'new-moon':0,'waxing-crescent':1,'first-quarter':2,'waxing-gibbous':3,'full-moon':4,'waning-gibbous':5,'last-quarter':6,'waning-crescent':7,'800':0,'801':1,'802':2,'803':3,'804':4,'805':5,'806':6,'807':7};const index=phases[state.phase];const moonX=state.lunarPoint?state.lunarPoint.x:(.12+(state.moonProgress??.5)*.76),moonY=clamp(state.lunarPoint?state.lunarPoint.y:(.35-Math.sin(Math.PI*(state.moonProgress??.5))*.22),Math.min(.5,20/h),Math.max(.5,1-20/h));if(index!=null&&state.moonVisible&&['sun','cloud','cold'].includes(state.kind)){litBody={x:w*moonX,y:h*moonY,moon:true};paintMoon(w*moonX,h*moonY,18,index,1)}return}if(!['sun','cloud'].includes(state.kind)&&!['300','301','350','351'].includes(state.code))return;let x=.72,y=.2;const sol=state.solar||{},at=timestamp(sol.observedAt),e=Number(sol.solarElevationAngle),a=Number(sol.solarAzimuthAngle);if(Number.isFinite(at)&&Math.abs(Date.now()-at)<1800000&&Number.isFinite(e)&&e>=-90&&e<=90&&Number.isFinite(a)&&a>=0&&a<=360){if(e<=0||a<90||a>270)return;x=.08+(a-90)/180*.76;y=.34-clamp(e,0,90)/90*.27}else{const r=timestamp(state.astro.sunrise),s=timestamp(state.astro.sunset);if(Number.isFinite(r)&&Number.isFinite(s)&&s>r){const t=clamp((Date.now()-r)/(s-r),0,1);x=.12+t*.76;y=.34-Math.sin(Math.PI*t)*.22}}litBody={x:x*w,y:y*h,moon:false};y=clamp(y,Math.min(.5,22/h),Math.max(.5,1-22/h));const glow=ctx.createRadialGradient(x*w,y*h,1,x*w,y*h,48);glow.addColorStop(0,'rgba(255,238,174,.8)');glow.addColorStop(1,'rgba(255,238,174,0)');ctx.fillStyle=glow;ctx.fillRect(x*w-48,y*h-48,96,96);ctx.fillStyle='#ffe8a4';ctx.beginPath();ctx.arc(x*w,y*h,20,0,7);ctx.fill()}
+function sky(now){litBody=null;if(state.night){if(['sun','cloud','cold'].includes(state.kind)){ctx.fillStyle='#fff';for(const p of stars){ctx.globalAlpha=(.3+.35*(1+Math.sin(now/1900+p.phase))/2)*(state.cloudCover==null?1:clamp(1-state.cloudCover,0,1));ctx.beginPath();ctx.arc(p.x*w,p.y*h,p.r,0,7);ctx.fill()}ctx.globalAlpha=1}const phases={'new-moon':0,'waxing-crescent':1,'first-quarter':2,'waxing-gibbous':3,'full-moon':4,'waning-gibbous':5,'last-quarter':6,'waning-crescent':7,'800':0,'801':1,'802':2,'803':3,'804':4,'805':5,'806':6,'807':7};const index=phases[state.phase];const moonX=state.lunarPoint?state.lunarPoint.x:(.12+(state.moonProgress??.5)*.76),moonY=clamp(state.lunarPoint?state.lunarPoint.y:(.35-Math.sin(Math.PI*(state.moonProgress??.5))*.22),Math.min(.5,20/h),Math.max(.5,1-20/h));if(index!=null&&state.moonVisible&&['sun','cloud','cold'].includes(state.kind)){litBody={x:w*moonX,y:h*moonY,moon:true};paintMoon(w*moonX,h*moonY,18,index,1)}return}if(!['sun','cloud'].includes(state.kind)&&!['300','301','350','351'].includes(state.code))return;let x=.72,y=.2;const sol=state.solar||{},at=timestamp(sol.observedAt),e=Number(sol.solarElevationAngle),a=Number(sol.solarAzimuthAngle);if(Number.isFinite(at)&&Math.abs(Date.now()-at)<1800000&&Number.isFinite(e)&&e>=-90&&e<=90&&Number.isFinite(a)&&a>=0&&a<=360){if(e<=0)return;x=clamp(.08+(a-90)/180*.76,.08,.84);y=.34-clamp(e,0,90)/90*.27}else{const r=timestamp(state.astro.sunrise),s=timestamp(state.astro.sunset);if(Number.isFinite(r)&&Number.isFinite(s)&&s>r){const t=clamp((Date.now()-r)/(s-r),0,1);x=.12+t*.76;y=.34-Math.sin(Math.PI*t)*.22}}litBody={x:x*w,y:y*h,moon:false};y=clamp(y,Math.min(.5,22/h),Math.max(.5,1-22/h));const glow=ctx.createRadialGradient(x*w,y*h,1,x*w,y*h,48);glow.addColorStop(0,'rgba(255,238,174,.8)');glow.addColorStop(1,'rgba(255,238,174,0)');ctx.fillStyle=glow;ctx.fillRect(x*w-48,y*h-48,96,96);ctx.fillStyle='#ffe8a4';ctx.beginPath();ctx.arc(x*w,y*h,20,0,7);ctx.fill()}
 function drawDayMoon(){if(state.night||!state.lunarPoint||!state.phase||!['sun','cloud','cold'].includes(state.kind))return;const phases={'new-moon':0,'waxing-crescent':1,'first-quarter':2,'waxing-gibbous':3,'full-moon':4,'waning-gibbous':5,'last-quarter':6,'waning-crescent':7,'800':0,'801':1,'802':2,'803':3,'804':4,'805':5,'806':6,'807':7},index=phases[state.phase];paintMoon(w*state.lunarPoint.x,h*state.lunarPoint.y,16,index,.35)}
 function drawRainbow(){if(rainbowAlpha<=.001)return;const s=state.solar||{},a=Number(s.solarAzimuthAngle),e=Number(s.solarElevationAngle),t=timestamp(s.observedAt);if(!Number.isFinite(t)||Math.abs(Date.now()-t)>1800000||!Number.isFinite(a)||a<0||a>360||!Number.isFinite(e)||e<0||e>=42)return;const rad=Math.PI/180,az=a*rad,el=e*rad,anti=[-Math.sin(az)*Math.cos(el),-Math.cos(az)*Math.cos(el),-Math.sin(el)];let u=[-anti[1],anti[0],0],l=Math.hypot(...u);if(l<1e-8)u=[1,0,0];else u=u.map(v=>v/l);const v=[anti[1]*u[2]-anti[2]*u[1],anti[2]*u[0]-anti[0]*u[2],anti[0]*u[1]-anti[1]*u[0]];const pts=[];for(let i=0;i<=240;i++){const t=i*Math.PI*2/240,q=anti.map((x,j)=>x*Math.cos(42*rad)+(u[j]*Math.cos(t)+v[j]*Math.sin(t))*Math.sin(42*rad)),alt=Math.asin(clamp(q[2],-1,1))/rad,bearing=(Math.atan2(q[0],q[1])/rad+360)%360;pts.push(bearing>=90&&bearing<=270&&alt>=0?{x:(.08+(bearing-90)/180*.76)*w,y:(.34-clamp(alt,0,90)/90*.27)*h}:null)}ctx.save();ctx.globalAlpha=.35*rainbowAlpha;for(const [color,width] of [['#e9a5b2',18],['#f3c6a5',14],['#f5e4b5',10],['#c3e3cb',6],['#bbdcef',3]]){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();let active=false;for(const p of pts){if(p){if(active)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);active=true}else active=false}ctx.stroke()}ctx.restore()}
 function drawCloud(c,dt){c.x+=visualWind*dt*c.rate/Math.max(w,1);if(c.x>1.3){c.x=-.3;c.scale=rnd(.7,1.2);{const q=makeCloud(c.index);c.puffs=q.puffs;c.shapeA=q.shapeA;c.shapeB=q.shapeB;c.shapeC=q.shapeC;c.shapeD=q.shapeD}}else if(c.x<-.3){c.x=1.3;c.scale=rnd(.7,1.2);{const q=makeCloud(c.index);c.puffs=q.puffs;c.shapeA=q.shapeA;c.shapeB=q.shapeB;c.shapeC=q.shapeC;c.shapeD=q.shapeD}}const wet=['overcast','rain','thunder','sleet'].includes(state.kind);ctx.save();ctx.fillStyle=flash>0&&c.index===flashCloud?'#fff1d5':state.night?'#c2d5e7':wet?'#d3e3ed':'#fafdff';ctx.globalAlpha=(state.night?.65:.87)*(state.cloudCover==null?1:clamp(.3+state.cloudCover,.3,1));const near=litBody?clamp(1-Math.hypot(c.x*w-litBody.x,c.y*h-litBody.y)/120,0,1):0;ctx.shadowColor=near>0?(litBody.moon?'rgba(224,238,255,'+(near*.35)+')':'rgba(255,230,184,'+(near*.42)+')'):'rgba(90,135,170,.15)';ctx.shadowBlur=10+near*8;c.depthPhase=(c.depthPhase+visualDepth*dt*.002)%(2*Math.PI);const x=c.x*w,y=c.y*h,scale=Math.min(w*.32,165)*c.scale*(1-Math.sin(c.depthPhase)*.1);const base=scale*(state.kind==='overcast'?.17:.12)*c.shapeA,high=scale*((state.kind==='thunder'?.30:state.kind==='sun'?.16:.20)+c.puffs[2].r*.18)*c.shapeB;ctx.globalAlpha*=.75+c.index*.08;ctx.beginPath();ctx.moveTo(x-scale*.48,y+base);ctx.bezierCurveTo(x-scale*.65,y+base*.9,x-scale*.60,y-base*.9,x-scale*.40*c.shapeD,y-base);ctx.bezierCurveTo(x-scale*.42,y-high*.9,x-scale*.27,y-high*1.15*c.shapeC,x-scale*.12,y-high*.85);ctx.bezierCurveTo(x-scale*.03,y-high*1.5,x+scale*.22,y-high*1.45*c.shapeA,x+scale*.27*c.shapeD,y-high*.8);ctx.bezierCurveTo(x+scale*.50*c.shapeD,y-high,x+scale*.57,y-base*.45,x+scale*.48,y+base*.4);ctx.bezierCurveTo(x+scale*.46,y+base*1.4,x-scale*.3,y+base*1.45,x-scale*.48,y+base);ctx.closePath();ctx.fill();ctx.restore()}
@@ -6917,8 +6906,10 @@ function draw(now,dt){if(!w||!h)return;transitionElapsed=Math.min(3,transitionEl
 function loop(now){if(dead||hidden||!visible||media.matches){raf=0;last=0;return}const dt=last?Math.min((now-last)/1000,.08):0;last=now;if(lastInput!==null&&Date.now()-lastClock>=60000){lastClock=Date.now();update(lastInput,lastOptions)}draw(now,dt);raf=requestAnimationFrame(loop)}function start(){if(!raf&&!dead&&!hidden&&visible&&!media.matches)raf=requestAnimationFrame(loop)}function onVisibility(){hidden=document.hidden;if(hidden){cancelAnimationFrame(raf);raf=0;last=0}else start()}function onMotion(){if(media.matches){cancelAnimationFrame(raf);raf=0;oldFrame=null;fade=0;draw(0,0)}else start()}
 init();size();if(typeof ResizeObserver!=='undefined'){resizeObs=new ResizeObserver(size);resizeObs.observe(host)}else window.addEventListener('resize',size);if(typeof IntersectionObserver!=='undefined'){interObs=new IntersectionObserver(e=>{visible=!!e[0]?.isIntersecting;if(visible)start();else{cancelAnimationFrame(raf);raf=0;last=0}});interObs.observe(host)}document.addEventListener('visibilitychange',onVisibility);media.addEventListener?.('change',onMotion);start();return{update,destroy(){dead=true;oldFrame=null;cancelAnimationFrame(raf);document.removeEventListener('visibilitychange',onVisibility);media.removeEventListener?.('change',onMotion);resizeObs?.disconnect();interObs?.disconnect();window.removeEventListener('resize',size);canvas.remove();Object.assign(host.style,original)}}}
 g.WeatherCanvas={mount};})(window);
-/* 新版天气 Canvas 接线（2026-10-28，2026-10-28 晚补齐 v1 四项）：
-   数据源：Worker /hw-api/weather（SkyState，含 windDirection/daily/lastRain/alerts）；
+/* 新版天气 Canvas 接线（2026-10-28，2026-10-28 晚补齐 v1 四项，晚间继续完善 vnext3）：
+   数据源：Worker /hw-api/weather（SkyState，含 windDirection/daily/lastRain/alerts，风速已按米/秒换算为公里/小时）；
+   画布太阳边缘补丁（仅模板内联画布改一行，原包 stage 文件不动）：太阳方位出南天时不再隐藏，x 贴边钳制在 .08–.84，彩虹同理可用；
+   霜带：sky-band 内 .sky-frost 顶带，天气代码 901（严寒）或实况气温 ≤0℃ 时加 has-frost 显示；
    位置：复用 kb-sky-daily-location-v13 当日缓存，缺失时单次定位并回写同格式；
    太阳：前端按经纬度＋当前时间算 NOAA 太阳高度/方位（南天时段才传 solar，其余时段回落日出日落插值）；
    月亮：Worker daily 的日出日落/月出月落/月相经 environment.daily 传组件；
@@ -6943,7 +6934,7 @@ g.WeatherCanvas={mount};})(window);
   function coarse(x){ return Math.round(x*10)/10; }
   function endpoint(){ return location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev'; }
   function token(){ try { return localStorage.getItem('hw-dev-token') || ''; } catch (e) { return ''; } }
-  function showDefault(){ try { wc.update({now:{icon:'999'}}, {timeZone:'Asia/Shanghai'}); } catch (e) {} showAlert(null); }
+  function showDefault(){ try { wc.update({now:{icon:'999'}}, {timeZone:'Asia/Shanghai'}); } catch (e) {} showAlert(null); try { band.classList.remove('has-frost'); } catch (e) {} }
   function mapState(s){
     var obs = null;
     if (s.fetchedAt) { var d = new Date(Number(s.fetchedAt)*1000); if (!isNaN(d.getTime())) obs = d.toISOString(); }
@@ -7054,11 +7045,12 @@ g.WeatherCanvas={mount};})(window);
       var env = {};
       if (s.daily && s.daily.length) env.daily = {days: s.daily};
       var sp = solarPos(pos.lat, pos.lon, now);
-      if (sp && sp.elevation > 0 && sp.azimuth >= 90 && sp.azimuth <= 270) {
+      if (sp && sp.elevation > 0) {
         env.solar = {observedAt: now.toISOString(), solarElevationAngle: sp.elevation, solarAzimuthAngle: sp.azimuth};
       }
       wc.update(mapState(s), {timeZone:'Asia/Shanghai', environment: env, recentWeather: recent});
       showAlert(s.alerts);
+      try { band.classList.toggle('has-frost', String(s.code) === '901' || (isFinite(Number(s.temp)) && Number(s.temp) <= 0)); } catch (e) {}
     } catch (e) {
       if (!hadSuccess) showDefault();
     }
