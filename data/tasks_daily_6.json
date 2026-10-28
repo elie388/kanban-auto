@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "grade": "六年级",
-  "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-29T00:07:36+08:00",
+  "generated_at": "2026-10-29T00:17:18+08:00",
+  "updated_at": "2026-10-29T00:17:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-28T23:10:37+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -22,46 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261028-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-28T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-28T00:17:10+08:00",
-      "updated_at": "2026-10-29T00:07:36+08:00",
-      "status_source": "realtime",
-      "completed_at": "2026-10-28T22:56:55+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1793199190371546b7f2bc8dbac3d（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-28",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-28T16:56:38+08:00",
-      "updated_at": "2026-10-28T19:23:01+08:00",
-      "completed_at": "2026-10-28T19:23:01+08:00",
-      "status_source": "realtime",
-      "orig_photos": [
-        "f15a19be5d26c1c9.jpg"
-      ]
-    },
     {
       "task_id": "REG-20261028-84CAA2",
       "source": "register_book",
@@ -78,7 +38,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T21:32:12+08:00",
+      "updated_at": "2026-10-29T00:17:18+08:00",
       "pending_corrections": 1,
       "corrections": [
         {
@@ -89,29 +49,10 @@
           "hint": "提示一：你读读“或着”这个词，这里是表示选择，还是表示动作正在进行？提示二：表示选择的那个词，第二个字和“作者”的“者”是同一个字吗？提示三：你把这个词换成表示选择的写法，再读一遍句子顺不顺。"
         }
       ],
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261028-942BA4",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "L13找句子，在旁边批注（3句以上）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T21:57:34+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
       "status_source": "realtime",
-      "completed_at": "2026-10-28T21:57:34+08:00"
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-A9DC5F",
@@ -129,7 +70,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T21:03:30+08:00",
+      "updated_at": "2026-10-29T00:17:18+08:00",
       "pending_corrections": 1,
       "corrections": [
         {
@@ -140,35 +81,10 @@
           "hint": "提示一：重读老汉掏皱巴巴硬币那一段，他最怕什么？提示二：王婶换一种说法，是替他想到了哪一步？提示三：如果直接说便宜、免费，老汉心里会怎么想？再想想王婶为什么要换说法。"
         }
       ],
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261028-8EDFF6",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读课外书，记录",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T20:41:38+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
       "status_source": "realtime",
-      "completed_at": "2026-10-28T20:41:38+08:00",
-      "orig_photos": [
-        "d1f3f5ced8128c8a.jpg",
-        "7f2ca51bffd187b0.jpg",
-        "c4b2e94d2933b083.jpg",
-        "fea58d45a41a808f.jpg"
-      ]
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-38E4A8",
@@ -186,10 +102,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-29T00:17:18+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-CE31B3",
@@ -207,7 +126,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T20:49:25+08:00",
+      "updated_at": "2026-10-29T00:17:18+08:00",
       "pending_corrections": 1,
       "corrections": [
         {
@@ -219,7 +138,10 @@
           "img": "g6_math32_q4_20261028_guide.png"
         }
       ],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-A23D13",
@@ -237,7 +159,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T21:57:00+08:00",
+      "updated_at": "2026-10-29T00:17:18+08:00",
       "pending_corrections": 2,
       "corrections": [
         {
@@ -255,7 +177,10 @@
           "hint": "这个空填的是表示年龄的词，你写的词读起来和它像不像？数一数你写的词有几个字母，再找一找三、1听力排序里关于他开始旅行年龄的那一句，对照着把这个词重新写一遍。"
         }
       ],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-284BB9",
@@ -273,34 +198,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T19:23:01+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261028-7980FE",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "读《校本》U3练习",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：读《校本》U3练习 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T20:16:49+08:00",
+      "updated_at": "2026-10-29T00:17:18+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime",
-      "completed_at": "2026-10-28T20:16:49+08:00",
-      "orig_photos": [
-        "88dfe53487d23532.jpg"
-      ]
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "READ-20261028-G6",
@@ -318,31 +221,19 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-28T20:35:34+08:00",
-      "updated_at": "2026-10-28T22:47:06+08:00",
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "MANUAL-20261028-001",
-      "source": "manual",
-      "subject": "语文",
-      "title": "校本42",
-      "detail": "原状态：待完成（2026-10-28登记本③校本42；当日提交的L12已另立校本L12任务，本项仍待交）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "rejected",
-      "created_by": "user",
-      "created_at": "2026-10-28T21:03:19+08:00",
-      "updated_at": "2026-10-28T21:04:50+08:00",
-      "pending_corrections": 0,
-      "corrections": []
+      "updated_at": "2026-10-29T00:17:18+08:00",
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 3,
+    "total": 7,
+    "pending": 2,
     "in_progress": 4,
-    "done": 5,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-28T22:30:00+08:00"
+  "deadline_today": null
 }

@@ -1,5 +1,41 @@
 {
-  "date": "2026-10-27",
-  "grade": "六年级",
-  "items": []
+ "date": "2026-10-28",
+ "grade": "六年级",
+ "items": [
+  {
+   "task_id": "CHORE-20261028-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "META-REGISTER-2026-10-28",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261028-942BA4",
+   "title": "L13找句子，在旁边批注（3句以上）",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261028-8EDFF6",
+   "title": "读课外书，记录",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261028-7980FE",
+   "title": "读《校本》U3练习",
+   "subject": "英语早读",
+   "source": "register_book",
+   "group": "study"
+  }
+ ]
 }

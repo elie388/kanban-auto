@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "grade": "五年级",
-  "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-29T00:07:36+08:00",
+  "generated_at": "2026-10-29T00:17:17+08:00",
+  "updated_at": "2026-10-29T00:17:17+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-28T23:10:37+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -22,45 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261028-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-28T17:30:00+08:00",
-      "chore_done_count": 3,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-28T00:17:10+08:00",
-      "updated_at": "2026-10-29T00:07:36+08:00",
-      "status_source": "realtime",
-      "completed_at": "2026-10-28T22:56:55+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17931991646709135706695296997（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-28",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-28T16:56:37+08:00",
-      "updated_at": "2026-10-28T18:23:12+08:00",
-      "completed_at": "2026-10-28T18:23:12+08:00",
-      "orig_photos": [
-        "f013efba3e6acf3e.jpg"
-      ]
-    },
     {
       "task_id": "REG-20261028-0B0B88",
       "source": "register_book",
@@ -77,7 +38,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T19:59:17+08:00",
+      "updated_at": "2026-10-29T00:17:17+08:00",
       "pending_corrections": 1,
       "corrections": [
         {
@@ -90,33 +51,10 @@
           "orig_text": "短跑选手速度：12米/秒；无人机测速设备速度：30米/秒。跑完一段m米的赛程，无人机测速设备比短跑选手快多少秒？"
         }
       ],
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261028-205297",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②小校本22页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T19:59:17+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
       "status_source": "realtime",
-      "completed_at": "2026-10-28T19:59:17+08:00",
-      "orig_photos": [
-        "8a41440451546582.jpg"
-      ]
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-E34758",
@@ -134,7 +72,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T20:06:59+08:00",
+      "updated_at": "2026-10-29T00:17:17+08:00",
       "pending_corrections": 6,
       "corrections": [
         {
@@ -192,7 +130,10 @@
           "orig_text": "My Best Friend：My friend name is Damning. He is tall. He is kind. He can run fast. He play football. He is great.（要求：不少于5句话，含姓名、外貌、性格，并写出相同点和不同点）"
         }
       ],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261028-0E3D5D",
@@ -210,62 +151,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T21:13:45+08:00",
+      "updated_at": "2026-10-29T00:17:17+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "realtime",
-      "pending_note": "正式批改未出，待确认要改哪道题，暂无可改正内容"
-    },
-    {
-      "task_id": "REG-20261028-D62316",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄背园地四的日积月累（小管家）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①园地四小试卷；②抄背园地四的日积月累（小管家）；③抄一次、默一次园地四日积月累（用稿纸） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T19:30:46+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
-      "completed_at": "2026-10-28T19:30:46+08:00",
-      "orig_photos": [
-        "056ed85bbea8a3d4.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261028-88E4B6",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄一次、默一次园地四日积月累（用稿纸）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①园地四小试卷；②抄背园地四的日积月累（小管家）；③抄一次、默一次园地四日积月累（用稿纸） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T19:59:17+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
-      "completed_at": "2026-10-28T19:59:17+08:00",
-      "orig_photos": [
-        "0616a09fc9a5eade.jpg",
-        "dfb9a59c2b3f36b5.jpg"
-      ]
+      "pending_note": "正式批改未出，待确认要改哪道题，暂无可改正内容",
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     },
     {
       "task_id": "READ-20261028-G5",
@@ -283,79 +176,19 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-28T20:35:34+08:00",
-      "updated_at": "2026-10-28T22:32:20+08:00",
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "EXAM-20261028-C8E2B3",
-      "source": "exam",
-      "title": "学校考试卷",
-      "detail": "家务面板考试卷入口提交",
-      "subject": "",
-      "status": "in_progress",
+      "updated_at": "2026-10-29T00:17:17+08:00",
       "status_source": "realtime",
-      "corrections": [
-        {
-          "label": "听力四",
-          "question": "听短文填空",
-          "orig_text": "Today is April 22nd. It is Earth day. I plant a tree ____ our home. My ____ plants some flowers in front of our home.",
-          "reason": "填空处与短文语义不符，老师扣2分",
-          "hint": "提示：再读短文，树种在家的什么位置？种花的是谁？把这两个空重新填一遍。"
-        },
-        {
-          "label": "听力五",
-          "question": "听独白判断对错",
-          "orig_text": "1. This is a picture of the river. 2. The blue parts of the earth are forests and the land. 3. Some parts of the earth are dirty now. 4. We should throw rubbish into rivers. 5. We can recycle old things and make something new.",
-          "reason": "判断与独白内容不符，老师扣3分",
-          "hint": "提示：蓝色部分指什么？地球现在干净吗？垃圾该扔进河里吗？逐句对照独白再判一次。"
-        },
-        {
-          "label": "笔试六选词",
-          "question": "There ____ a small recycling bin in our classroom.",
-          "orig_text": "There ____ a small recycling bin in our classroom.",
-          "reason": "there be句型动词与后面名词不一致，老师扣1分",
-          "hint": "提示：there be句型里，看横线后面紧跟的名词是单数还是复数，再选动词。"
-        },
-        {
-          "label": "七短文填空",
-          "question": "根据首字母或中文提示写出所缺单词",
-          "orig_text": "Amy and her mum are ____ the house. She ____ some bottles and cans. They are not ____. Mum says, 'Don't do that. They are ____ and ____!' She puts some ____ in the bottles. Amy is ____. To ____ the world green, we should use ____, metal and paper again. It's easy to ____ them.",
-          "reason": "本节老师扣6分，含拼写与单复数、语义问题",
-          "hint": "提示：把本节10个空逐个对照首字母/中文提示，检查单复数、拼写和语义，拼错的词重新写一遍。"
-        },
-        {
-          "label": "八对话补全",
-          "question": "选择适当的句子补全对话",
-          "orig_text": "Tim: Look, Tom! There is a plastic bag here. 1. ____ Tom: You're right. Let's clean it up. Tim: Yes. 2. ____ Tom: 3. ____ They are dry. Tim: We can use the water after washing hands. 4. ____ Tom: That's a good idea. Tim: Let's go home by taxi. Tom: Why not take a bus? 5. ____",
-          "reason": "对话衔接不符，老师扣4分",
-          "hint": "提示：第一句看到塑料袋该说什么？最后坐公交的好处是什么？按对话上下句重新选一次。"
-        },
-        {
-          "label": "九(二)阅读选择",
-          "question": "阅读短文选择正确答案",
-          "orig_text": "I'm Maomao. My room is beautiful now. There is a little basket on my desk. Fanfan and Lanlan use two cans to make them lovely. There is a vase behind my photo. We make the vase with a bottle. Xiaoyong and Heping use paper boxes to make it. We should try to recycle the used things.",
-          "reason": "人物与物品对应混淆，老师扣3分",
-          "hint": "提示：花瓶在谁照片后面？花瓶用什么做的？短文最后两句总结了什么？逐题对照短文再选一次。"
-        },
-        {
-          "label": "十书面表达",
-          "question": "以“My green life”为题，写一写你将如何实现绿色生活，不少于5句话",
-          "orig_text": "My green life: I can go to school on foot. I can use food waste in garden. I can make a home for bird. I can use paper. I can use cans.",
-          "reason": "语法与表达问题，老师扣5分",
-          "hint": "提示：检查每个句子名词前是否漏了冠词，名词复数对不对，有没有重复的词，句子是不是完整通顺？"
-        }
-      ],
-      "pending_corrections": 7,
-      "created_at": "2026-10-28T21:57:46+08:00",
-      "updated_at": "2026-10-28T22:42:28+08:00"
+      "carry_first_date": "2026-10-28",
+      "carried_from": "2026-10-28",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 10,
+    "total": 4,
     "pending": 0,
-    "in_progress": 5,
-    "done": 5,
+    "in_progress": 4,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-28T22:30:00+08:00"
+  "deadline_today": null
 }

@@ -1,5 +1,41 @@
 {
-  "date": "2026-10-27",
-  "grade": "五年级",
-  "items": []
+ "date": "2026-10-28",
+ "grade": "五年级",
+ "items": [
+  {
+   "task_id": "CHORE-20261028-G5",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "META-REGISTER-2026-10-28",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261028-205297",
+   "title": "口语易",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261028-D62316",
+   "title": "抄背园地四的日积月累（小管家）",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261028-88E4B6",
+   "title": "抄一次、默一次园地四日积月累（用稿纸）",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  }
+ ]
 }
