@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-28T22:54:02+08:00",
+  "generated_at": "2026-10-29T06:00:04+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-28",
+      "time": "22:52",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-28",
       "time": "22:15",
@@ -1004,17 +1013,6 @@
       "filtered": false
     },
     {
-      "date": "10-21",
-      "time": "13:09",
-      "time_source": "entry",
-      "reason": "🏅综合之星徽章",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
       "date": "10-22",
       "time": "07:51",
       "time_source": "entry",
@@ -1233,251 +1231,6 @@
       "reason": "兑换手续费",
       "pts": -23,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "00:01",
-      "time_source": "entry",
-      "reason": "连续第三晚超23点睡觉额外加扣",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-22"
-    },
-    {
-      "date": "10-21",
-      "time": "23:19",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "22:47",
-      "time_source": "entry",
-      "reason": "🏅家务接力手徽章",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "22:38",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "22:38",
-      "time_source": "entry",
-      "reason": "晾衣服连做第2天",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "21:06",
-      "time_source": "entry",
-      "reason": "11课古诗订正默写\"已亥杂诗\"改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "21:06",
-      "time_source": "entry",
-      "reason": "11课古诗订正当天发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:24",
-      "time_source": "entry",
-      "reason": "语文11课古诗完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:24",
-      "time_source": "entry",
-      "reason": "语文11课古诗正确率66.7%",
-      "pts": 0,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:24",
-      "time_source": "entry",
-      "reason": "语文11课古诗书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:14",
-      "time_source": "entry",
-      "reason": "英语口语按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:14",
-      "time_source": "entry",
-      "reason": "生字12课订正泻改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:14",
-      "time_source": "entry",
-      "reason": "生字12课订正腾改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:14",
-      "time_source": "entry",
-      "reason": "生字12课订正胎改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:14",
-      "time_source": "entry",
-      "reason": "生字12课订正当天发回",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:13",
-      "time_source": "entry",
-      "reason": "语文生字抄写完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:13",
-      "time_source": "entry",
-      "reason": "语文生字抄写正确率62.5%",
-      "pts": 0,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:13",
-      "time_source": "entry",
-      "reason": "语文生字抄写书写-2",
-      "pts": -2,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "数学26页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "数学26页正确率100%",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "数学26页书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语19页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语19页正确率93.3%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语19页书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语20页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语20页正确率65%",
-      "pts": 0,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-21",
-      "time": "20:06",
-      "time_source": "entry",
-      "reason": "英语20页书写+2",
-      "pts": 2,
-      "sign": "plus",
       "filtered": false
     }
   ],
