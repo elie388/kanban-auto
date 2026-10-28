@@ -27,9 +27,9 @@
       "source": "reading_daily",
       "subject": "读书",
       "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "detail": "【缺件提醒】内容照片已收到，还缺朗读录音：请把所读内容读一遍，录音同批交上来。无录音不得置已完成，不给达标分。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "pending",
       "review_status": "approved",
       "appear_at": "2026-10-28T17:00:00+08:00",
       "task_type": "reading",
@@ -38,11 +38,13 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-27T00:17:22+08:00",
-      "updated_at": "2026-10-28T00:17:16+08:00",
-      "status_source": "realtime",
+      "updated_at": "2026-10-28T10:23:58+08:00",
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261027-7759F2",
@@ -151,9 +153,9 @@
       "source": "register_book",
       "subject": "语文",
       "title": "写作文（第四单元）",
-      "detail": "",
+      "detail": "已批改：成篇完整，计分+8（完成+10、涂改2处-2），语言改进建议4条不列硬错。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写作文（第四单元）；②12课第二段抄一次默一次（用稿纸） → 待完成",
@@ -162,10 +164,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime",
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
@@ -175,9 +177,9 @@
       "source": "register_book",
       "subject": "语文",
       "title": "12课第二段抄一次默一次（用稿纸）",
-      "detail": "原状态：待完成",
+      "detail": "已批改：抄默各1页齐全，计分+16（完成+10、正确率98.8%+6），待改正1项。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写作文（第四单元）；②12课第二段抄一次默一次（用稿纸） → 待完成",
@@ -186,10 +188,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
+      "updated_at": "2026-10-28T10:23:58+08:00",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "风尘后一字",
+          "question": "12课第二段抄默：风尘后一字",
+          "orig_text": "12课第二段：鹰隼试翼，风尘后一字（抄、默两页同字）",
+          "reason": "同音字写错了，抄、默两页同错，计1项",
+          "hint": "提示：这个字和吸同音，但写法不一样，查一查课本里这一句是怎么写的，再把抄、默两页这个字都改过来。",
+          "resubmit": true
+        }
+      ],
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
@@ -199,13 +210,13 @@
       "source": "manual",
       "subject": "英语",
       "title": "英语阅读写作第11期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "detail": "已批改：阅读5题+写作1题全部作答，计分+5（练习完成分+5，正确率33.3%无加分），待改正4项，练习订正上限+6。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-27T20:07:58+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-10-27.pdf",
@@ -213,10 +224,45 @@
           "pages": 2
         }
       ],
-      "status_source": "realtime",
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 4,
+      "corrections": [
+        {
+          "label": "三、判断",
+          "question": "Tom waters the green plants in the yard after the rain stops.（判断加依据词组）",
+          "orig_text": "英语阅读写作第11期三、判断题",
+          "reason": "只写判断，未补依据词组，且判断与短文最后两句不符",
+          "hint": "提示：再读短文最后两句，雨停后 Tom 去哪儿、做了什么？把那句话抄下来当依据，再判断是 T 还是 F，依据词组也要补上。",
+          "resubmit": true
+        },
+        {
+          "label": "四、翻译填空",
+          "question": "Tom ______ TV in the living room in the afternoon.",
+          "orig_text": "英语阅读写作第11期四、翻译填空题",
+          "reason": "第三人称单数动词形式错",
+          "hint": "提示：Tom 是他，动词要变第三人称单数；这个动词结尾是 ch，想一想以 ch 结尾的动词要加 -s 还是 -es？再把这个词的拼写写一遍。",
+          "resubmit": true
+        },
+        {
+          "label": "五、问答",
+          "question": "What does Tom eat for lunch?",
+          "orig_text": "英语阅读写作第11期五、问答题",
+          "reason": "动词未变第三人称单数，介词搭配错，缺句末标点",
+          "hint": "提示：短文里 Tom 午饭吃面条那句，动词和介词是怎么写的？照着短文那句，用完整句子再回答一遍，别忘了句末标点。",
+          "resubmit": true
+        },
+        {
+          "label": "写作",
+          "question": "My Rainy Day（30-50词）",
+          "orig_text": "英语阅读写作第11期写作题",
+          "reason": "第三人称单数系统缺失，拼写、双动词、介词、大小写、重复句多处错，按整题计错",
+          "hint": "提示：先把 Tom、He 作主语的动词都圈出来，逐个检查有没有加 -s 或 -es；往外看那个词对照课本再拼一遍，注意字母顺序；最后一句有两个动词连在一起，留一个、改一个；句首小写的那句改成大写，重复的那句删掉一句；下雨天这个时间短语，介词用 in 还是 on？再想一想，再数一数字数是不是 30–50 词。",
+          "resubmit": true
+        }
+      ]
     },
     {
       "task_id": "CHORE-20261028-G5",

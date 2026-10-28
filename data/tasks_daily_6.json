@@ -71,9 +71,9 @@
       "source": "register_book",
       "subject": "数学",
       "title": "读背概念19、20",
-      "detail": "原状态：待完成",
+      "detail": "已批改：发回+5，未达标待补读（19漏1字、20中间表述待确认，不硬算达标，达标分暂不结）。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：读背概念19、20 → 待完成",
@@ -82,11 +82,30 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "概念19",
+          "question": "读背概念19",
+          "orig_text": "把铜镜残片放在纸上画出其轮廓，对折几次纸片，折痕是圆的直径，折痕的交点是圆心，绕圆心旋转补全残缺的部分。",
+          "reason": "漏读一字",
+          "hint": "提示：再慢慢读一遍19条，哪一个字漏读了？把漏的那一个字补上再读一遍。",
+          "resubmit": true,
+          "img_exempt": "读背口头概念，非数学解题，无配图题面，引导图不适用"
+        },
+        {
+          "label": "概念20",
+          "question": "读背概念20",
+          "orig_text": "在长方形（正方形）里画最大的圆，圆就是先画两条对角线。",
+          "reason": "中间表述两遍转写不一致，未确认为错也不确认为对，需重读整句核对",
+          "hint": "提示：再慢慢读一遍20条，中间那几个字要读清楚、读完整，读完自己对照原文照片看一看有没有漏字、多字。",
+          "resubmit": true,
+          "img_exempt": "读背口头概念，非数学解题，无配图题面，引导图不适用"
+        }
+      ],
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
@@ -96,9 +115,9 @@
       "source": "register_book",
       "subject": "英语",
       "title": "完成《三单》P33的一、二，P35的二，P36的一、二",
-      "detail": "",
+      "detail": "已批改：43题全部作答，对42错1，计分+16（完成+10、正确率97.7%+6），待改正1项；从宽：most clear接受不计错，仅作提醒。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P33的一、二，P35的二，P36的一、二；②读P28、背29的对话5次，笔记5次 → 待完成",
@@ -107,11 +126,20 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "P36一（二）",
+          "question": "《三单》P36一（二）：珠穆朗玛峰高度（含单位）",
+          "orig_text": "《三单》P36一（二）题面：珠穆朗玛峰高8848.86（填单位）",
+          "reason": "单位选错了",
+          "hint": "提示：珠穆朗玛峰那么高，用千米量和用米量，哪一个更合适？想一想一千米有多远，再想一想这个高度写成数字时配哪个单位才顺。",
+          "resubmit": true
+        }
+      ],
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
@@ -145,9 +173,9 @@
       "source": "register_book",
       "subject": "英语早读",
       "title": "P30、31的对话",
-      "detail": "原状态：待完成",
+      "detail": "【已作废】本批仅1张全黑不可读照片且无录音，无法判读；附言称明天早读任务不用交。作废处理，不计分、不计缺交，明天按学校早读正常交。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语早读：P30、31的对话 → 待完成",
@@ -156,24 +184,25 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime",
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "count_in_completion_rate": false
     },
     {
       "task_id": "REG-20261027-4249C6",
       "source": "register_book",
       "subject": "语文",
       "title": "写42生字",
-      "detail": "",
+      "detail": "已批改：11字均已写，计分+10（完成+10，正确率72.7%无加分），待改正3项；娜部外与唉读音待课本核对不计错，空组词已接受。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -182,11 +211,36 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "task_type": null,
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
+      "pending_corrections": 3,
+      "corrections": [
+        {
+          "label": "缰组词",
+          "question": "写42生字：缰组词",
+          "orig_text": "写42生字：缰字组词",
+          "reason": "组词用字混淆",
+          "hint": "提示：缰和僵长得很像，一个和马有关，一个和身体硬邦邦有关，你写的这个词是什么意思？再想一想该用哪一个字组词。",
+          "resubmit": true
+        },
+        {
+          "label": "熬部外笔画",
+          "question": "写42生字：熬部外笔画",
+          "orig_text": "写42生字：熬字部外笔画",
+          "reason": "部外笔画数错",
+          "hint": "提示：先数一数敖有几画，再想一想部外笔画是数哪一部分，把两部分分开数一数。",
+          "resubmit": true
+        },
+        {
+          "label": "霉部外笔画",
+          "question": "写42生字：霉部外笔画",
+          "orig_text": "写42生字：霉字部外笔画",
+          "reason": "部外笔画数错",
+          "hint": "提示：先数一数每有几画，再想一想部外笔画是数哪一部分，把两部分分开数一数。",
+          "resubmit": true
+        }
+      ],
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
@@ -196,9 +250,9 @@
       "source": "register_book",
       "subject": "语文",
       "title": "预习L13",
-      "detail": "",
+      "detail": "已批改：第1题错、第2题对、第3题未完成，计分+3（完成C档），待改正2项（第1题+第3题续写，续写非订正不计+2，续写后重算完成分）。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -207,11 +261,28 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "task_type": null,
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "第1题",
+          "question": "预习L13课堂反馈第1题：注音选择",
+          "orig_text": "预习L13课堂反馈第1题：给加点字注音，选正确的一项",
+          "reason": "A项读音错，且题面多解：C、D两项均全对，无唯一全对选项",
+          "hint": "提示：和面那个字平时怎么读？再逐项读一读每一组注音，有没有全对的项？全对的项有几个？",
+          "resubmit": true
+        },
+        {
+          "label": "第3题续写",
+          "question": "预习L13第3题：小小讲解员续写讲解稿",
+          "orig_text": "预习L13第3题：以小小讲解员身份讲《金色的鱼钩》故事",
+          "reason": "只写问候加一句概括，下方空白，未讲完整情节",
+          "hint": "提示：小小讲解员要把故事讲完整，老班长接受任务、缝衣针做鱼钩、钓鱼、吃草根鱼骨头、牺牲这些情节，哪些还没讲到？按顺序把没讲到的情节补上，讲清楚、讲感人。",
+          "resubmit": true
+        }
+      ],
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
@@ -247,9 +318,9 @@
       "source": "register_book",
       "subject": "数学",
       "title": "课本P8 1到4题，P10 第5题",
-      "detail": "原状态：待完成",
+      "detail": "【待补交】P8第1到4题基本空白，未交齐，属半份，禁止下发半份批改，暂不计分。请补交P8第1到4题，补交后并批再计分。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：课本P8 1到4题，P10 第5题 → 待完成",
@@ -258,10 +329,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:19:40+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:23:58+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime",
+      "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
       "carry_count": 1
