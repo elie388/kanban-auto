@@ -29,7 +29,7 @@
       "title": "每日读书",
       "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "appear_at": "2026-10-28T17:00:00+08:00",
       "task_type": "reading",
@@ -38,10 +38,11 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-27T00:17:22+08:00",
-      "updated_at": "2026-10-28T00:17:16+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "MANUAL-20261027-001",
@@ -50,11 +51,11 @@
       "title": "英语阅读写作第11期",
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-27T20:07:58+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "files": [
         {
           "name": "六年级英语阅读写作_2026-10-27.pdf",
@@ -64,7 +65,8 @@
       ],
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-D8FE37",
@@ -73,7 +75,7 @@
       "title": "读背概念19、20",
       "detail": "已批改：发回+5，未达标待补读（19漏1字、20中间表述待确认，不硬算达标，达标分暂不结）。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：读背概念19、20 → 待完成",
@@ -82,9 +84,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T10:23:58+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "task_type": "reading",
-      "pending_corrections": 2,
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "概念19",
@@ -108,7 +110,8 @@
       "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-E3B6FE",
@@ -117,7 +120,7 @@
       "title": "完成《三单》P33的一、二，P35的二，P36的一、二",
       "detail": "已批改：43题全部作答，对42错1，计分+16（完成+10、正确率97.7%+6），待改正1项；从宽：most clear接受不计错，仅作提醒。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P33的一、二，P35的二，P36的一、二；②读P28、背29的对话5次，笔记5次 → 待完成",
@@ -126,9 +129,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T10:23:58+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "task_type": "reading",
-      "pending_corrections": 1,
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "P36一（二）",
@@ -142,7 +145,8 @@
       "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-78D36F",
@@ -151,7 +155,7 @@
       "title": "读P28、背29的对话5次，笔记5次",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P33的一、二，P35的二，P36的一、二；②读P28、背29的对话5次，笔记5次 → 待完成",
@@ -160,13 +164,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-49E092",
@@ -202,7 +207,7 @@
       "title": "写42生字",
       "detail": "已批改：11字均已写，计分+10（完成+10，正确率72.7%无加分），待改正3项；娜部外与唉读音待课本核对不计错，空组词已接受。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -211,9 +216,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T10:23:58+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "task_type": null,
-      "pending_corrections": 3,
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "缰组词",
@@ -243,7 +248,8 @@
       "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-70F32D",
@@ -252,7 +258,7 @@
       "title": "预习L13",
       "detail": "已批改：第1题错、第2题对、第3题未完成，计分+3（完成C档），待改正2项（第1题+第3题续写，续写非订正不计+2，续写后重算完成分）。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -261,9 +267,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T10:23:58+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "task_type": null,
-      "pending_corrections": 2,
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "第1题",
@@ -285,7 +291,8 @@
       "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-A3C0B3",
@@ -294,7 +301,7 @@
       "title": "读第四单元作文，记录",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写42生字；②做校本211；③预习213；④读第四单元作文，记录 → 待完成",
@@ -303,7 +310,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:09:03+08:00",
-      "updated_at": "2026-10-28T00:17:05+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
       "corrections": [],
@@ -311,7 +318,8 @@
       "pending_note": "【缺件提醒】摘录记录已收到，还缺朗读录音：请把第四单元作文读一遍，录音交上来。",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "REG-20261027-80268C",
@@ -320,7 +328,7 @@
       "title": "课本P8 1到4题，P10 第5题",
       "detail": "【待补交】P8第1到4题基本空白，未交齐，属半份，禁止下发半份批改，暂不计分。请补交P8第1到4题，补交后并批再计分。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：课本P8 1到4题，P10 第5题 → 待完成",
@@ -329,13 +337,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-27T20:19:40+08:00",
-      "updated_at": "2026-10-28T10:23:58+08:00",
+      "updated_at": "2026-10-28T10:53:30+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "manual_direct_20261028",
       "carry_first_date": "2026-10-27",
       "carried_from": "2026-10-27",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-28T10:53:30+08:00"
     },
     {
       "task_id": "CHORE-20261028-G6",
