@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "六年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T21:25:43+08:00",
+  "updated_at": "2026-10-28T21:32:12+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -66,7 +66,7 @@
       "title": "写书P57小练笔",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
@@ -75,9 +75,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T21:25:43+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-10-28T21:32:12+08:00",
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "写书P57小练笔",
+          "question": "小练笔：沉默中，桑娜会想些什么呢？联系课文内容，写一写桑娜的心理活动。",
+          "orig_text": "小练笔：沉默中，桑娜会想些什么呢？联系课文内容，写一写桑娜的心理活动。孩子写：他会不会打我或着骂我",
+          "reason": "错别字：表示选择的连词写错字",
+          "hint": "提示一：你读读“或着”这个词，这里是表示选择，还是表示动作正在进行？提示二：表示选择的那个词，第二个字和“作者”的“者”是同一个字吗？提示三：你把这个词换成表示选择的写法，再读一遍句子顺不顺。"
+        }
+      ],
       "status_source": "realtime"
     },
     {
@@ -301,7 +309,7 @@
   "counts": {
     "total": 13,
     "pending": 7,
-    "in_progress": 2,
+    "in_progress": 3,
     "done": 3,
     "pending_review": 0
   },
