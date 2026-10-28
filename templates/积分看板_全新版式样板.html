@@ -1755,8 +1755,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
         var badgeText = sm.badge, miniPill = '';
-        /* 待确认徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3）：仅显示层，三元AND缺一不可；底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响。 */
-        if(t.status === 'in_progress' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0 && t.pending_note){
+        /* 待确认徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3；2026-10-28家长令杜绝空改正中：in_progress且待改正数为0一律显待确认，不再要求pending_note；仅显示层，底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响）。 */
+        if(t.status === 'in_progress' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0){
           badgeText = '🔄 待确认';
         }
         if(t.source === 'chore'){
@@ -5442,7 +5442,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261028-weather-vnext6';
+  var KB_BUILD = '20261028-emptycorr-fix';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
