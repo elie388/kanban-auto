@@ -3,12 +3,12 @@
   "date": "2026-10-28",
   "grade": "六年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T18:56:03+08:00",
+  "updated_at": "2026-10-28T19:23:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-28T18:23:28+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-28T19:23:01+08:00",
+      "new_lines": 9
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -48,20 +48,184 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-28T16:56:38+08:00",
-      "updated_at": "2026-10-28T16:56:38+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-28T19:23:01+08:00",
+      "completed_at": "2026-10-28T19:23:01+08:00",
+      "status_source": "realtime"
+    },
+    {
+      "task_id": "REG-20261028-84CAA2",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "写书P57小练笔",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-942BA4",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "L13找句子，在旁边批注（3句以上）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-A9DC5F",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本42",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-8EDFF6",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读课外书，记录",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-38E4A8",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念26-28",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念26-28；②校本P32 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261028-CE31B3",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P32",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念26-28；②校本P32 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-A23D13",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成《三单》P38三的2、P39二的1、2、P40三的1、P43（二）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成《三单》P38三的2、P39二的1、2、P40三的1、P43（二）；②复习U3的单词、课文、《校本》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-284BB9",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "复习U3的单词、课文、《校本》",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成《三单》P38三的2、P39二的1、2、P40三的1、P43（二）；②复习U3的单词、课文、《校本》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
+    },
+    {
+      "task_id": "REG-20261028-7980FE",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "读《校本》U3练习",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：读《校本》U3练习 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T19:23:01+08:00",
+      "updated_at": "2026-10-28T19:23:01+08:00"
     }
   ],
   "counts": {
-    "total": 2,
-    "pending": 2,
+    "total": 11,
+    "pending": 10,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-10-28T22:30:00+08:00"
 }
