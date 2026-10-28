@@ -23,6 +23,13 @@
     "icon": "⚡",
     "date": "2026-10-26",
     "count": 1
+   },
+   {
+    "key": "jiawujielishou",
+    "name": "家务接力手",
+    "icon": "🔄",
+    "date": "2026-10-28",
+    "count": 1
    }
   ],
   "g6": [
@@ -34,6 +41,13 @@
     "count": 1
    },
    {
+    "key": "jiawujielishou",
+    "name": "家务接力手",
+    "icon": "🔄",
+    "date": "2026-10-28",
+    "count": 1
+   },
+   {
     "key": "baifen",
     "name": "百分俱乐部",
     "icon": "💰",
@@ -42,5 +56,5 @@
    }
   ]
  },
- "generated_at": "2026-10-28T22:11:28+08:00"
+ "generated_at": "2026-10-28T22:54:09+08:00"
 }
