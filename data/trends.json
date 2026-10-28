@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T12:19:51+08:00",
+ "updated_at": "2026-10-28T21:39:51+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-09-29",
@@ -523,6 +523,20 @@
      "small_sample": false
     }
    },
+   "数学": {
+    "2026-10-28": {
+     "reason": "all_wrong",
+     "rules": [
+      "all_wrong"
+     ],
+     "judged": 1,
+     "correct": 0,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.0,
+     "small_sample": false
+    }
+   },
    "英语": {
     "2026-10-16": {
      "reason": "adjudicated_group_isolation",
@@ -629,6 +643,17 @@
     "pending_ratio=0.43"
    ],
    "judged": 4,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-28",
+   "grade": "五年级",
+   "subject": "数学",
+   "reason": "all_wrong",
+   "rules": [
+    "all_wrong"
+   ],
+   "judged": 1,
    "small_sample_flag": true
   },
   {
