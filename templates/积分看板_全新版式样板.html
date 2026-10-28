@@ -10747,7 +10747,7 @@ void main(){
     'feedback_5.json': 'feedback-5', 'feedback_6.json': 'feedback-6',
     'daily_summary_5.json': 'summary-5', 'daily_summary_6.json': 'summary-6',
     'weekly_5.json': 'weekly-5', 'weekly_6.json': 'weekly-6',
-    'balance.json': 'balances', 'stats_grade_5.json': 'balances', 'stats_grade_6.json': 'balances',
+    'stats_grade_5.json': 'balances', 'stats_grade_6.json': 'balances',
     'points_log_5.json': 'points-5', 'points_log_6.json': 'points-6',
     'badges.json': 'badges-parent', 'badge_goals.json': 'badges-parent',
     'shop.json': 'shop-parent', 'shop_grade_5.json': 'shop-parent', 'shop_grade_6.json': 'shop-parent',
@@ -10828,7 +10828,7 @@ void main(){
       var dec = null;
       try { dec = decide ? decide() : { source: 'dynamic' }; } catch (e) { dec = { source: 'static' }; }
       if (!dec || dec.source !== 'dynamic') return staticFetch(name, hooks);
-      if (!FILE_TO_SECTION[name] && name !== 'manifest.json') return staticFetch(name, hooks);
+      if (!FILE_TO_SECTION[name]) return staticFetch(name, hooks);
       return dynamicFetch(name).then(function (d) { return d; }, function () { return staticFetch(name, hooks); });
     };
   }
