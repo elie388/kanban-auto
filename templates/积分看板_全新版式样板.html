@@ -167,7 +167,6 @@
   }
   .sky-canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block;}
   .sky-spacer{flex:1 1 auto; min-height:14px; position:relative; z-index:1;}
-  .sky-info{position:relative; z-index:2; text-align:center; font-size:13px; line-height:1.4; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.45); pointer-events:none; margin:2px 4px 4px;}
   /* 严寒霜带（定版：顶边 ≤4px 薄霜带） */
   .sky-frost{
     position:absolute; top:0; left:0; right:0; height:4px; z-index:1; display:none; pointer-events:none;
@@ -1216,7 +1215,6 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   <!-- 活天空带（2026-10-24 一期）：canvas 天空层（天文＋天气调制）＋霜带＋两张 V2 磨砂余额卡＋预警条；引擎在文末 sky script 块 -->
   <div class="sky-band" id="sky-band">
     <div class="sky-frost" aria-hidden="true"></div>
-    <div class="sky-info" id="sky-info" hidden></div>
     <div class="sky-spacer" aria-hidden="true"></div>
   <!-- 余额卡片 -->
   <section class="balance-grid" aria-label="积分余额">
@@ -5444,7 +5442,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261028-weather-vnext5';
+  var KB_BUILD = '20261028-weather-vnext6';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6910,6 +6908,7 @@ init();size();if(typeof ResizeObserver!=='undefined'){resizeObs=new ResizeObserv
 g.WeatherCanvas={mount};})(window);
 /* 新版天气 Canvas 接线（2026-10-28，2026-10-28 晚补齐 v1 四项，晚间继续完善 vnext3、vnext4、vnext5）：
    vnext5（家长 2026-10-28 令“没做的一起做了，不要留尾巴”）：月球精确位置（前端低精度公式＋画布月球边缘贴边，与太阳同口径）、黄昏过渡（夜里日落日出前后 45 分钟内底色向暖色渐变、星星变暗）、气温与天气文字（天空带顶部一行小字）、未来 6 小时趋势（服务端逐小时接口，前 6 小时）、分钟降水（服务端 v7 接口，粗化坐标下只算“附近”，失败只丢本段）、夜间降帧（晴夜静态类画面约 10 帧/秒，雨雪雷阵雨夜里不限帧）；画布补丁仅模板内联那份，原包 stage 文件不动；
+   vnext6（家长 2026-10-28 截图令不要显示顶部信息行）：撤下顶部信息行显示（元素、样式、文字映射与汇总函数、刷新调用一并删净），月球精确、黄昏过渡、夜间降帧不动；服务端逐小时与分钟降水两路调用先不动（只停显示），如需连调用一起停再定；
    vnext4（家长 2026-10-28 点选 10 分钟刷新＋丰富动效）：阵风接线（Worker gustKmh，米/秒换算后以公里/小时传画布，15 分钟有效窗内起脉动）、预警红在前排序、页面可见时 10 分钟到期刷新（每分钟检查一次，距上次成功超 10 分钟才刷；服务端缓存也是 10 分钟，短于 10 分钟无意义）、画布动效丰富补丁（仅模板内联画布改，原包 stage 文件不动：云远近分层、雨雪粒子约 1.5 倍、雷暴闪电频率分级、星星闪烁更明显）；
    数据源：Worker /hw-api/weather（SkyState，含 windDirection/daily/lastRain/alerts，风速已按米/秒换算为公里/小时）；
    画布太阳边缘补丁（仅模板内联画布改一行，原包 stage 文件不动）：太阳方位出南天时不再隐藏，x 贴边钳制在 .08–.84，彩虹同理可用；
@@ -6938,21 +6937,8 @@ g.WeatherCanvas={mount};})(window);
   function coarse(x){ return Math.round(x*10)/10; }
   function endpoint(){ return location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev'; }
   function token(){ try { return localStorage.getItem('hw-dev-token') || ''; } catch (e) { return ''; } }
-  function showDefault(){ try { wc.update({now:{icon:'999'}}, {timeZone:'Asia/Shanghai'}); } catch (e) {} showAlert(null); try { band.classList.remove('has-frost'); } catch (e) {} try { var info = document.getElementById('sky-info'); if (info) info.hidden = true; } catch (e) {} }
-    var WEATHER_TEXT = {'100':'晴','101':'多云','102':'少云','103':'晴间多云','104':'阴','150':'晴','151':'多云','152':'少云','153':'晴间多云','300':'阵雨','301':'强阵雨','302':'雷阵雨','303':'强雷阵雨','304':'雷阵雨伴冰雹','305':'小雨','306':'中雨','307':'大雨','308':'极端降雨','309':'毛毛雨','310':'暴雨','311':'大暴雨','312':'特大暴雨','313':'冻雨','314':'小到中雨','315':'中到大雨','316':'大到暴雨','317':'暴雨到大暴雨','318':'大暴雨到特大暴雨','350':'雨','351':'雨','399':'雨','400':'小雪','401':'中雪','402':'大雪','403':'暴雪','404':'雨夹雪','405':'雨夹雪','406':'雨夹雪','407':'阵雪','408':'小到中雪','409':'中到大雪','410':'大到暴雪','499':'雪','500':'轻雾','501':'雾','502':'霾','503':'扬沙','504':'浮尘','507':'沙尘暴','508':'强沙尘暴','509':'浓雾','510':'强浓雾','511':'中度霾','512':'重度霾','513':'严重霾','514':'大雾','515':'特强浓雾','900':'高温','901':'严寒','999':'未知'};
-  function weatherText(code){ return WEATHER_TEXT[String(code)] || ''; }
-  function summarizeHourly(arr){
-    if (!arr || !arr.length) return null;
-    var t0 = weatherText(arr[0].code), t1 = weatherText(arr[arr.length-1].code);
-    if (!t0 || !t1) return null;
-    var temps = [];
-    for (var i = 0; i < arr.length; i++) { if (isFinite(Number(arr[i].temp))) temps.push(Number(arr[i].temp)); }
-    var range = '';
-    if (temps.length) { var mn = Math.min.apply(null, temps), mx = Math.max.apply(null, temps); range = (Math.round(mn) === Math.round(mx)) ? Math.round(mn) + '°' : Math.round(mn) + '°-' + Math.round(mx) + '°'; }
-    var cond = (t0 === t1) ? t0 : (t0 + '转' + t1);
-    return '未来6小时' + cond + (range ? '，' + range : '');
-  }
-  // 月球位置（低精度天文公式，误差约零点几度，看板示意够用；方位角自北顺时针，与太阳同口径）。
+  function showDefault(){ try { wc.update({now:{icon:'999'}}, {timeZone:'Asia/Shanghai'}); } catch (e) {} showAlert(null); try { band.classList.remove('has-frost'); } catch (e) {} }
+    // 月球位置（低精度天文公式，误差约零点几度，看板示意够用；方位角自北顺时针，与太阳同口径）。
   function moonPos(lat, lon, now){
     var rad = Math.PI/180;
     var jd = now.getTime()/86400000 + 2440587.5;
@@ -6975,21 +6961,6 @@ g.WeatherCanvas={mount};})(window);
     az = ((az % 360) + 360) % 360;
     if (!isFinite(alt) || !isFinite(az)) return null;
     return {elevation: alt, azimuth: az};
-  }
-  function updateSkyInfo(s){
-    var el = document.getElementById('sky-info');
-    if (!el) return;
-    var parts = [];
-    var txt = weatherText(String(s.code));
-    if (isFinite(Number(s.temp)) && txt) parts.push(Math.round(Number(s.temp)) + '° ' + txt);
-    else if (txt) parts.push(txt);
-    else if (isFinite(Number(s.temp))) parts.push(Math.round(Number(s.temp)) + '°');
-    var trend = summarizeHourly(s.hourly6);
-    if (trend) parts.push(trend);
-    if (s.minutely && s.minutely.text) parts.push(s.minutely.text);
-    if (!parts.length) { el.hidden = true; return; }
-    el.textContent = parts.join(' · ');
-    el.hidden = false;
   }
 function mapState(s){
     var obs = null;
@@ -7112,7 +7083,6 @@ function mapState(s){
       wc.update(mapState(s), {timeZone:'Asia/Shanghai', environment: env, recentWeather: recent, gust: gustOpt});
       showAlert(s.alerts);
       try { band.classList.toggle('has-frost', String(s.code) === '901' || (isFinite(Number(s.temp)) && Number(s.temp) <= 0)); } catch (e) {}
-      updateSkyInfo(s);
     } catch (e) {
       if (!hadSuccess) showDefault();
     }
