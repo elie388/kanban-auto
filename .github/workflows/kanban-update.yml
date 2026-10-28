@@ -87,23 +87,9 @@ jobs:
             ls -la public/data/diagrams/ || true
           fi
 
-      # 天空分层素材通道（2026-10-24 家长定 GPT 图层）：data/sky/*.webp
-      # 同步进 Pages 产物，供天空带 canvas 引用；缺失或为空即构建失败。
-      - name: 同步天空分层素材到 Pages 产物
-        run: |
-          mkdir -p public/data/sky
-          test -n "$(ls data/sky/*.webp 2>/dev/null)" || { echo "::error::data/sky/*.webp 缺失"; exit 1; }
-          for f in data/sky/*.webp; do test -s "$f" || { echo "::error::$f 为空"; exit 1; }; done
-          cp data/sky/*.webp public/data/sky/
-          ls -la public/data/sky/
-      # 渲染壳资产通道（2026-10-25 rushed 版）：data/livesky/*.webp/*.png
-      - name: Sync livesky shell assets
-        run: |
-          mkdir -p public/data/livesky
-          test -n "$(ls data/livesky/* 2>/dev/null)" || { echo "::error::data/livesky/* 缺失"; exit 1; }
-          for f in data/livesky/*; do test -s "$f" || { echo "::error::$f 为空"; exit 1; }; done
-          cp data/livesky/* public/data/livesky/
-          ls -la public/data/livesky/
+      # 旧天空素材通道已于 2026-10-28 随新版天气 Canvas 上线清理：
+      # data/sky（GPT 图层）与 data/livesky（渲染壳）均已无人引用、已从仓库删除，
+      # 此处两步硬断言同步删除，否则缺文件会让每次构建失败。旧图备份在 /tmp/old_sky_backup_20261028，git 历史亦可恢复。
 
       # 读背示范录音通道（2026-10-22 家长定）：待改正明细里的示范录音
       # data/audio/ 同步进 Pages 产物，供明细里的 <audio> 引用；
