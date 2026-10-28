@@ -23,6 +23,21 @@
   },
   "tasks": [
     {
+      "task_id": "TEST-PUSH-20261028",
+      "source": "manual",
+      "subject": "测试",
+      "title": "临时测试（20分钟后删）",
+      "detail": "临时测试卡：仅用于上传测试，不计分、不计完成率、不进台账，2026-10-28 09:24前删除。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "task_type": "practice",
+      "count_in_completion_rate": false,
+      "appear_at": "2026-10-28T09:03:45+08:00",
+      "created_at": "2026-10-28T09:03:45+08:00",
+      "updated_at": "2026-10-28T09:03:45+08:00"
+    },
+    {
       "task_id": "READ-20261027-G6",
       "source": "reading_daily",
       "subject": "读书",
