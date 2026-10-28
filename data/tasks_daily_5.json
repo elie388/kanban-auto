@@ -3,11 +3,11 @@
   "date": "2026-10-28",
   "grade": "五年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T16:56:37+08:00",
+  "updated_at": "2026-10-28T18:23:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-28T16:56:16+08:00",
+      "ingested_at": "2026-10-28T18:23:28+08:00",
       "new_lines": 0
     },
     "targeted_practice": {
@@ -48,19 +48,128 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-28T16:56:37+08:00",
-      "updated_at": "2026-10-28T16:56:37+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-28T18:23:12+08:00",
+      "completed_at": "2026-10-28T18:23:12+08:00"
+    },
+    {
+      "task_id": "REG-20261028-0B0B88",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本32页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：校本32页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T18:23:12+08:00",
+      "updated_at": "2026-10-28T18:23:12+08:00"
+    },
+    {
+      "task_id": "REG-20261028-205297",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②小校本22页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T18:23:12+08:00",
+      "updated_at": "2026-10-28T18:23:12+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261028-E34758",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "小校本22页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②小校本22页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T18:23:12+08:00",
+      "updated_at": "2026-10-28T18:23:12+08:00"
+    },
+    {
+      "task_id": "REG-20261028-0E3D5D",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "园地四小试卷",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①园地四小试卷；②抄背园地四的日积月累（小管家）；③抄一次、默一次园地四日积月累（用稿纸） → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T18:23:12+08:00",
+      "updated_at": "2026-10-28T18:23:12+08:00"
+    },
+    {
+      "task_id": "REG-20261028-D62316",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄背园地四的日积月累（小管家）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①园地四小试卷；②抄背园地四的日积月累（小管家）；③抄一次、默一次园地四日积月累（用稿纸） → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T18:23:12+08:00",
+      "updated_at": "2026-10-28T18:23:12+08:00"
+    },
+    {
+      "task_id": "REG-20261028-88E4B6",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄一次、默一次园地四日积月累（用稿纸）",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①园地四小试卷；②抄背园地四的日积月累（小管家）；③抄一次、默一次园地四日积月累（用稿纸） → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-28T18:23:12+08:00",
+      "updated_at": "2026-10-28T18:23:12+08:00"
     }
   ],
   "counts": {
-    "total": 2,
-    "pending": 2,
+    "total": 8,
+    "pending": 7,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
