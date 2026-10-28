@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "五年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T11:00:19+08:00",
+  "updated_at": "2026-10-28T11:05:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,30 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "REG-20261027-8FB033",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "写作文（第四单元）",
-      "detail": "已批改：成篇完整，计分+8（完成+10、涂改2处-2），语言改进建议4条不列硬错。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写作文（第四单元）；②12课第二段抄一次默一次（用稿纸） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-27T19:52:12+08:00",
-      "updated_at": "2026-10-28T10:23:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "manual_direct_20261028",
-      "carry_first_date": "2026-10-27",
-      "carried_from": "2026-10-27",
-      "carry_count": 1
-    },
     {
       "task_id": "CHORE-20261028-G5",
       "source": "chore",
@@ -81,10 +57,10 @@
     }
   ],
   "counts": {
-    "total": 3,
+    "total": 2,
     "pending": 1,
     "in_progress": 0,
-    "done": 1,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null
