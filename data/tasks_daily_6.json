@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "六年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T20:35:34+08:00",
+  "updated_at": "2026-10-28T20:41:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -126,7 +126,7 @@
       "title": "读课外书，记录",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写书P57小练笔；②L13找句子，在旁边批注（3句以上）；③校本42；④读课外书，记录 → 待完成",
@@ -135,10 +135,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T20:16:49+08:00",
+      "updated_at": "2026-10-28T20:41:38+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "completed_at": "2026-10-28T20:41:38+08:00"
     },
     {
       "task_id": "REG-20261028-38E4A8",
@@ -265,8 +266,8 @@
   "counts": {
     "total": 12,
     "pending": 9,
-    "in_progress": 1,
-    "done": 2,
+    "in_progress": 0,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-10-28T22:30:00+08:00"
