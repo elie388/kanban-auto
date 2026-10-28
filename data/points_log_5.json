@@ -1,12 +1,45 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-28T08:43:04+08:00",
+  "generated_at": "2026-10-28T10:25:20+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "写作文完成与涂改",
+      "pts": 8,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "12课第二段抄默完成与正确率",
+      "pts": 16,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "英语阅读写作练习完成",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
     {
       "date": "10-28",
       "time": "08:42",

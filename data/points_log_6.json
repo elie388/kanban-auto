@@ -1,12 +1,56 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-28T08:43:04+08:00",
+  "generated_at": "2026-10-28T10:25:20+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "读背概念19、20发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "英语完成与正确率",
+      "pts": 16,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "写42生字完成",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
+    {
+      "date": "10-27",
+      "time": "10:24",
+      "time_source": "entry",
+      "reason": "预习L13完成C档",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "10-28"
+    },
     {
       "date": "10-28",
       "time": "08:42",
