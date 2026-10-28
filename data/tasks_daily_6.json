@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "六年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T21:03:30+08:00",
+  "updated_at": "2026-10-28T21:04:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -104,7 +104,7 @@
       "source": "register_book",
       "subject": "语文",
       "title": "校本L12《穷人》",
-      "detail": "原登记本③校本42，孩子附言“这个是校本L12，不是校本42”，家长2026-10-28 21:02点选改判为L12；校本42另立 MANUAL-20261028-001 仍待交",
+      "detail": "原登记本③误读为校本42，实为校本L12《穷人》，家长2026-10-28 21:04确认没有校本42此项；原误立的校本42任务 MANUAL-20261028-001 已撤回",
       "estimate_min": null,
       "status": "in_progress",
       "review_status": "approved",
@@ -289,10 +289,10 @@
       "detail": "原状态：待完成（2026-10-28登记本③校本42；当日提交的L12已另立校本L12任务，本项仍待交）",
       "estimate_min": null,
       "status": "pending",
-      "review_status": "approved",
+      "review_status": "rejected",
       "created_by": "user",
       "created_at": "2026-10-28T21:03:19+08:00",
-      "updated_at": "2026-10-28T21:03:19+08:00",
+      "updated_at": "2026-10-28T21:04:50+08:00",
       "pending_corrections": 0,
       "corrections": []
     }
