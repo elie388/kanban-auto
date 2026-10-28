@@ -9,6 +9,10 @@ silent/wake。状态（连续失败计数/已报标记/已报 event_ts）存 log
 - kanban-stats-sync：exit0 静默 / exit2 立即报 / exit3 连续2次报一次；
   同步对账：sync_state.last_event_ts 存在且 last_build_ts<last_event_ts 且滞后>600s 报一次，
   以 last_event_ts 去重。
+  2026-10-29 修复：watchd 软静默窗 [00:00,06:00) 内事件本就不触发构建，
+  故静默窗内及静默窗结束后的 15 分钟收敛期内不报 sync_stale，
+  避免每夜误报；静默窗结束 15 分钟后仍未构建才报。窗口定义复用
+  sync_balance.BUILD_SILENT_WINDOW 单点定义，导入失败回退 (0,6)。
 - kanban-balance-sync：exit0/4 静默 / exit2 连续3次报一次 / exit3 连续3次报一次。
 混合退出码语义（原 cron 未明示，本包装器口径，C1 回放覆盖）：某码连续计数被异码打断
 （exit0 重置全部；exit4 为锁冲突跳过，计数中性不增不减）。
@@ -23,6 +27,38 @@ import os
 import subprocess
 import sys
 import time
+from datetime import datetime, timedelta, timezone
+
+BEIJING = timezone(timedelta(hours=8))
+try:
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+    import sync_balance as _sb
+    BUILD_SILENT_WINDOW = tuple(_sb.BUILD_SILENT_WINDOW)
+except Exception:
+    BUILD_SILENT_WINDOW = (0, 6)
+
+
+def _in_silent_window(now):
+    dt = datetime.fromtimestamp(now, tz=BEIJING)
+    start, end = BUILD_SILENT_WINDOW
+    if start <= end:
+        return start <= dt.hour < end
+    return dt.hour >= start or dt.hour < end
+
+
+def _silent_grace_active(now, et):
+    # 事件发生在静默窗内，且当前仍在静默窗内，或在静默窗结束后的 15 分钟收敛期内
+    dt_now = datetime.fromtimestamp(now, tz=BEIJING)
+    dt_et = datetime.fromtimestamp(et, tz=BEIJING)
+    if _in_silent_window(now):
+        return True
+    if _in_silent_window(et):
+        end = dt_now.replace(hour=BUILD_SILENT_WINDOW[1], minute=0, second=0, microsecond=0)
+        if end <= dt_now and (dt_now - end).total_seconds() < 900:
+            return True
+        if end > dt_now:
+            return True
+    return False
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # kanban-deploy/
 LOGS = os.path.join(BASE, "logs")
@@ -56,7 +92,7 @@ def decide_stats(st, code, sync, now):
     if sync and sync.get("last_event_ts"):
         et = sync["last_event_ts"]
         bt = sync.get("last_build_ts") or 0
-        if bt < et and (now - et) > 600 and st.get("reported_event_ts") != et:
+        if bt < et and (now - et) > 600 and not _silent_grace_active(now, et) and st.get("reported_event_ts") != et:
             ev.append({"script": "build_stats", "kind": "sync_stale", "msg": MSG_STATS_STALE})
             st["reported_event_ts"] = et
     return ev
@@ -265,6 +301,15 @@ def _scenarios():
          [["sync_stale"], []]),
         ("stats_stale_not_yet", [(0, 0, {"last_event_ts": now - 300,
                                           "last_build_ts": now - 400}, now)], [[]]),
+        ("stats_stale_silent_window_no_report",
+         [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
+           1793216403 + 900)], [[]]),
+        ("stats_stale_silent_grace_no_report",
+         [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
+           1793226000 - 600)], [[]]),
+        ("stats_stale_after_silent_grace_report",
+         [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
+           1793226000)], [["sync_stale"]]),
         ("sections_exit2_x3", [(0, 2, None, now), (0, 2, None, now), (0, 2, None, now)],
          [[], [], ["exit2x3"]]),
         ("sections_exit3_x3", [(0, 3, None, now), (0, 3, None, now), (0, 3, None, now)],
