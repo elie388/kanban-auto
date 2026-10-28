@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "五年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T20:04:14+08:00",
+  "updated_at": "2026-10-28T20:06:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -118,7 +118,7 @@
       "title": "小校本22页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②小校本22页 → 待完成",
@@ -127,9 +127,59 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T18:23:12+08:00",
-      "updated_at": "2026-10-28T20:04:14+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-10-28T20:06:59+08:00",
+      "pending_corrections": 7,
+      "corrections": [
+        {
+          "label": "一、2",
+          "question": "ask sb. 结构",
+          "orig_text": "My mother always asks me ____ (finish) my homework first after school.",
+          "reason": "漏了 ask sb. 结构中的小词，只写了动词原形。",
+          "hint": "提示一：妈妈要求你做作业，用 ask sb. 结构时，动词前面通常要加一个什么小词？提示二：先想想这个固定搭配，再看看你写的空里缺了什么。提示三：把缺的小词补上，再通读一遍句子顺不顺。"
+        },
+        {
+          "label": "一、4",
+          "question": "球队输了的心情与拼写",
+          "orig_text": "He was ____ (happy) because his favourite team lost the important game.",
+          "reason": "球队输了重要比赛，心情应是难过不是开心；且所写词字母顺序有误，拼写也不对。",
+          "hint": "提示一：后半句说最喜欢的球队输了比赛，这时心情是高兴还是难过？提示二：was 后面要接表示状态的词，想想与开心意思相反的词前面常加什么。提示三：再逐个字母检查你写的词，字母顺序有没有颠倒。"
+        },
+        {
+          "label": "二、3",
+          "question": "来自湖北的表达",
+          "orig_text": "He is ____.（信息卡：From: Hubei）",
+          "reason": "空里有涂改，可辨部分多写了一个小词，句子读起来不通。",
+          "hint": "提示一：信息卡说他来自湖北，表示来自时通常用哪个介词开头？提示二：数一数你空里写了几个小词，多余的要去掉吗？提示三：涂改处先划清，最后只留一个表示来自的小词加地名，再读一遍。"
+        },
+        {
+          "label": "二、4",
+          "question": "他的爱好",
+          "orig_text": "He ____ hobby is reading.（信息卡：Hobby: reading）",
+          "reason": "表示他的爱好时，主语 He 不能直接放在 hobby 前面；你最后写的是 is，意思变成了他是爱好，不通。",
+          "hint": "提示一：他的爱好里，他的在英语里要用哪类词？提示二：He 是主格，用在名词前面表示所属时要换成什么形式？提示三：把换好的词放进空里，读读他的爱好是阅读顺不顺。"
+        },
+        {
+          "label": "二、5",
+          "question": "can 后动词形式",
+          "orig_text": "He can ____ poems.（信息卡：Ability: writing poems）",
+          "reason": "can 后面要接动词原形，writing 是动词加 ing 的形式，不能直接跟在 can 后面。",
+          "hint": "提示一：can 后面的动词通常用什么形式？提示二：writing 是加了 ing 的形式，和原形有什么不同？提示三：把动词换回原形，再读一遍句子。"
+        },
+        {
+          "label": "三、思维导图共同点",
+          "question": "like 后动词形式",
+          "orig_text": "Me 与 My friend 的 Hobbies 交集处：we like play football",
+          "reason": "like 后面接另一个动词时，不能直接用原形连用。",
+          "hint": "提示一：like 后面跟动词时，动词要不要变形？提示二：想想 like doing 和 like to do 两种说法，动词分别变成什么样？提示三：选一种说法改好，再读一遍。"
+        },
+        {
+          "label": "三、小练笔 My Best Friend",
+          "question": "小练笔语法与思维导图一致性",
+          "orig_text": "My Best Friend：My friend name is Damning. He is tall. He is kind. He can run fast. He play football. He is great.（要求：不少于5句话，含姓名、外貌、性格，并写出相同点和不同点）",
+          "reason": "朋友名字前缺所有格；He 后面的 play 没按第三人称单数变化；思维导图里朋友是 short、你是 tall，短文却写朋友 tall，与思维导图不一致，且相同点和不同点没有分开说清楚。",
+          "hint": "提示一：朋友的名字里，friend 后面要加什么符号表示所属？提示二：主语是 He 时，动词 play 后面通常要加什么？提示三：对照思维导图：你和朋友一个 tall、一个 short，这是相同还是不同？相同点要不要用我们都说出来？"
+        }
+      ],
       "status_source": "realtime"
     },
     {
@@ -203,7 +253,7 @@
   "counts": {
     "total": 8,
     "pending": 2,
-    "in_progress": 1,
+    "in_progress": 2,
     "done": 4,
     "pending_review": 0
   },
