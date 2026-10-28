@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "五年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T11:05:59+08:00",
+  "updated_at": "2026-10-28T11:15:17+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -46,15 +46,15 @@
       "subject": "测试",
       "title": "全流程测试（计时用）",
       "detail": "仅全流程计时测试用：上传后计时上传→推送→取件→批改→发布全程；不计完成率；测试照片请勿用真实作业，批改计时核对用。",
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "task_type": "practice",
       "count_in_completion_rate": false,
       "appear_at": "2026-10-28T10:55:00+08:00",
       "created_at": "2026-10-28T10:55:00+08:00",
-      "updated_at": "2026-10-28T11:08:00+08:00",
+      "updated_at": "2026-10-28T11:15:17+08:00",
       "status_source": "realtime",
-      "pending_corrections": 1,
+      "pending_corrections": 0,
       "corrections": [
         {
           "label": "第3题（0.8×0.8）",
@@ -66,14 +66,15 @@
           "q_img": "",
           "q_img_status": "原题图未附：原题为手写竖式练习，无印刷配图，按不适用处理。"
         }
-      ]
+      ],
+      "completed_at": "2026-10-28T11:15:17+08:00"
     }
   ],
   "counts": {
     "total": 2,
     "pending": 1,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
