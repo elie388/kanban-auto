@@ -5456,7 +5456,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261028-compress2500';
+  var KB_BUILD = '20261028-dynamic1';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -10608,5 +10608,413 @@ void main(){
   });
 })();
 </script>
+<script>
+/* kb-dynamic-client.js — 阶段 0 测试用动态模块（浏览器 + Node 单元测试共用）。
+   设计依据 R4 §3.3：递归 setTimeout 轮询（防重入）、仅可见时轮询、5 秒超时、
+   R0>R1>R2>R3>R4 判定、锁定态渲染入口掩码分支、回落链 动态→静态→缓存→兜底、
+   开关优先级 URL ?dynamic=0 > Worker 410 > KB_DYNAMIC_ENABLED。
+   注意：本模块不拦截生产模板的 fetchJson；阶段 0 只验证数据通路与横条/掩码/回落，
+   全板 fetchJson 接管是阶段 2 的工作，不在本页声称已完成。 */
+(function (global) {
+  'use strict';
+  var KB_DYNAMIC_ENABLED = true;
+  function parseQuery(search) {
+    var q = {}; if (!search) return q;
+    search.replace(/^\?/, '').split('&').forEach(function (p) {
+      var kv = p.split('='); if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+    }); return q;
+  }
+  function isLocked(doc, storage) {
+    try {
+      if (doc && doc.documentElement && doc.documentElement.classList && doc.documentElement.classList.contains('kb-locked')) return true;
+    } catch (e) {}
+    try { if (storage && !storage.getItem('hw-dev-token')) return true; } catch (e) {}
+    return false;
+  }
+  // decide(snapshot, staticVersion): snapshot={manifest,publish_state,dynamic_status,publish_intent}
+  function decide(snap, staticVersion) {
+    var man = (snap && snap.manifest) || { version: 0, git_head: null };
+    var intent = snap && snap.publish_intent;
+    if (intent && intent.state === 'announced' && intent.target_git_head && intent.target_git_head !== man.git_head) {
+      return { source: 'publishing', banner: true, reason: 'R0' };
+    }
+    var ps = snap && snap.publish_state;
+    if (ps && ps.state === 'publishing') return { source: 'static', banner: false, reason: 'R1' };
+    var ds = snap && snap.dynamic_status;
+    if (ds && ds.status === 'degraded') return { source: 'static', banner: false, reason: 'R2' };
+    if (typeof staticVersion === 'number' && man.version < staticVersion) return { source: 'static', banner: false, reason: 'R3' };
+    return { source: 'dynamic', banner: false, reason: 'ok' };
+  }
+  function createClient(opts) {
+    opts = opts || {};
+    var base = opts.base || '';
+    var fetchFn = opts.fetchFn;
+    var doc = opts.doc || (typeof document !== 'undefined' ? document : null);
+    var storage = opts.storage || (typeof localStorage !== 'undefined' ? localStorage : null);
+    var session = opts.session || (typeof sessionStorage !== 'undefined' ? sessionStorage : null);
+    var query = opts.query || parseQuery(typeof location !== 'undefined' ? location.search : '');
+    var enabled = opts.enabled !== undefined ? opts.enabled : KB_DYNAMIC_ENABLED;
+    if (query.dynamic === '0') enabled = false;
+    if (query.dynamic === '1' && session) { try { session.removeItem('kb-dynamic-disabled'); } catch (e) {} }
+    var state = { enabled: enabled, inFlight: false, lastDecision: null, lastManifest: null,
+      fallbackReason: null, fetchCalls: [], log: [] };
+    function log(msg) { state.log.push(msg); if (opts.onLog) opts.onLog(msg); }
+    function sessionDisabled() {
+      try { return !!(session && session.getItem('kb-dynamic-disabled')); } catch (e) { return false; }
+    }
+    function fetchWithTimeout(url, ms) {
+      var ctrl = null, timer = null;
+      if (typeof AbortController !== 'undefined') { ctrl = new AbortController(); timer = setTimeout(function () { ctrl.abort(); }, ms || 5000); }
+      var p = fetchFn(url, ctrl ? { signal: ctrl.signal } : {});
+      return p.then(function (r) { if (timer) clearTimeout(timer); return r; }, function (e) { if (timer) clearTimeout(timer); throw e; });
+    }
+    function pollOnce() {
+      if (!state.enabled || sessionDisabled()) return Promise.resolve({ skipped: true, reason: sessionDisabled() ? 'session-410' : 'disabled' });
+      if (state.inFlight) return Promise.resolve({ skipped: true, reason: 'reentrancy' });
+      state.inFlight = true;
+      return fetchWithTimeout(base + '/kb-manifest', 5000).then(function (r) {
+        if (r.status === 410) {
+          try { if (session) session.setItem('kb-dynamic-disabled', '1'); } catch (e) {}
+          state.fallbackReason = '410'; state.lastDecision = { source: 'static', banner: false, reason: '410' };
+          return state.lastDecision;
+        }
+        if (!r.ok) throw new Error('manifest http ' + r.status);
+        return r.json();
+      }).then(function (snap) {
+        // 410 那轮上一 then 已直接返回判定对象（带 source），不得再当快照重判
+        if (snap && snap.source) return snap;
+        state.lastManifest = snap;
+        var dec = decide(snap, opts.staticVersion);
+        state.lastDecision = dec;
+        if (dec.source === 'static') state.fallbackReason = dec.reason;
+        return dec;
+      }).catch(function (e) {
+        state.fallbackReason = 'R4'; state.lastDecision = { source: 'static', banner: false, reason: 'R4' };
+        return state.lastDecision;
+      }).then(function (dec) { state.inFlight = false; return dec; });
+    }
+    function fetchDynamicFile(name) {
+      // 锁定态取数 gating：只拉 manifest，不拉 detail 文件
+      if (isLocked(doc, storage)) { log('locked: refused detail fetch ' + name); return Promise.resolve(null); }
+      state.fetchCalls.push(name);
+      return fetchWithTimeout(base + '/kb-data/' + encodeURIComponent(name), 5000).then(function (r) {
+        if (!r.ok) throw new Error('kb-data http ' + r.status);
+        return r.json();
+      });
+    }
+    function renderMaskBranch(panel) {
+      // 渲染入口掩码分支：只写栏目通用名 + 锁标记，不传入、不写真实字段
+      if (!panel) return 'masked';
+      panel.textContent = '栏目 🔐';
+      return 'masked';
+    }
+    function startPolling(intervalMs, onDecision) {
+      var timer = null, stopped = false;
+      function tick() {
+        if (stopped) return;
+        var hidden = false;
+        try { hidden = !!(doc && doc.hidden); } catch (e) {}
+        if (hidden) { timer = setTimeout(tick, intervalMs || 10000); return; }
+        pollOnce().then(function (dec) { if (onDecision) onDecision(dec); }).then(function () {
+          if (!stopped) timer = setTimeout(tick, intervalMs || 10000);
+        });
+      }
+      timer = setTimeout(tick, 0);
+      return function stop() { stopped = true; if (timer) clearTimeout(timer); };
+    }
+    return { state: state, decide: decide, pollOnce: pollOnce, fetchDynamicFile: fetchDynamicFile,
+      renderMaskBranch: renderMaskBranch, startPolling: startPolling, isLocked: function () { return isLocked(doc, storage); } };
+  }
+  var api = { createClient: createClient, decide: decide, KB_DYNAMIC_ENABLED: KB_DYNAMIC_ENABLED };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else global.KbDynamic = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+</script>
+<script>
+/* kb-dynamic-stage2-client.js — 阶段 2 模板动态读代码（独立副本用，浏览器 + Node 共用）。
+   依据 R4 §1.1 映射（实测 23 个公开文件，manifest.json 仅作版本比对、不渲染）、
+   §3.3（轮询 10 秒、仅可见时、递归 setTimeout 防重入、R0 横条、锁定态掩码分支、
+   回落链 动态→静态→缓存→兜底、开关优先级 URL ?dynamic=0 > Worker 410 > 常量）。
+   本文件不含任何密钥、口令或私有数据；家长版私有数据绝不进动态读路径。
+   副本内 KB_DYNAMIC_ENABLED 默认 false，须 ?dynamic=1 才在副本内开启测试。 */
+(function (global) {
+  'use strict';
+  var KB_DYNAMIC_ENABLED = false;
+  var FILE_TO_SECTION = {
+    'tasks_daily_5.json': 'tasks-5', 'yesterday_done_5.json': 'tasks-5',
+    'tasks_daily_6.json': 'tasks-6', 'yesterday_done_6.json': 'tasks-6',
+    'feedback_5.json': 'feedback-5', 'feedback_6.json': 'feedback-6',
+    'daily_summary_5.json': 'summary-5', 'daily_summary_6.json': 'summary-6',
+    'weekly_5.json': 'weekly-5', 'weekly_6.json': 'weekly-6',
+    'balance.json': 'balances', 'stats_grade_5.json': 'balances', 'stats_grade_6.json': 'balances',
+    'points_log_5.json': 'points-5', 'points_log_6.json': 'points-6',
+    'badges.json': 'badges-parent', 'badge_goals.json': 'badges-parent',
+    'shop.json': 'shop-parent', 'shop_grade_5.json': 'shop-parent', 'shop_grade_6.json': 'shop-parent',
+    'rules.json': 'shop-parent', 'redeem_log.json': 'shop-parent',
+    'trends.json': 'trends'
+  };
+  var WHITELIST = Object.keys(FILE_TO_SECTION);
+  // 绝不进动态读的：静态版本比对文件（不渲染）与家长版私有数据（不在白名单内）。
+  function sectionForFile(name) { return FILE_TO_SECTION[name] || null; }
+  function sectionsForChanged(changedFiles) {
+    var out = [], seen = {};
+    (changedFiles || []).forEach(function (f) {
+      var s = sectionForFile(f);
+      if (s && !seen[s]) { seen[s] = true; out.push(s); }
+    });
+    return out;
+  }
+  function changedFiles(oldMan, newMan) {
+    var out = [];
+    var oldFiles = (oldMan && oldMan.files) || {}, newFiles = (newMan && newMan.files) || {};
+    Object.keys(newFiles).forEach(function (name) {
+      if (!FILE_TO_SECTION[name]) return;
+      var o = oldFiles[name], n = newFiles[name];
+      if (!o || o.sha256 !== n.sha256) out.push(name);
+    });
+    return out;
+  }
+  function parseQuery(search) {
+    var q = {}; if (!search) return q;
+    search.replace(/^\?/, '').split('&').forEach(function (p) {
+      var kv = p.split('='); if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+    }); return q;
+  }
+  function isLocked(doc, storage) {
+    try {
+      if (doc && doc.documentElement && doc.documentElement.classList && doc.documentElement.classList.contains('kb-locked')) return true;
+    } catch (e) {}
+    try { if (storage && !storage.getItem('hw-dev-token')) return true; } catch (e) {}
+    return false;
+  }
+  function resolveEnabled(opts, query, session) {
+    // 优先级：URL ?dynamic=0 > Worker 410 会话 > 常量；?dynamic=1 清除 410 会话并开启本次测试。
+    if (query.dynamic === '0') return false;
+    if (query.dynamic === '1') {
+      try { if (session) session.removeItem('kb-dynamic-disabled'); } catch (e) {}
+      return true;
+    }
+    try { if (session && session.getItem('kb-dynamic-disabled')) return false; } catch (e) {}
+    if (opts && opts.enabled !== undefined) return opts.enabled;
+    return KB_DYNAMIC_ENABLED;
+  }
+  function createPendingStore() {
+    var pending = {}; // section -> {version, files[]}
+    return {
+      mark: function (section, version, files) { pending[section] = { version: version, files: files.slice() }; },
+      flush: function (section) { var v = pending[section] || null; delete pending[section]; return v; },
+      list: function () { return Object.keys(pending); },
+      get: function (section) { return pending[section] || null; }
+    };
+  }
+  function snapshotViewState(getState) {
+    // 调用方传入取态函数：展开态、滚动位置、自动滚动开关；渲染后原样恢复。
+    try { return getState ? getState() : null; } catch (e) { return null; }
+    return null;
+  }
+  function restoreViewState(setState, snap) {
+    try { if (setState && snap) setState(snap); } catch (e) {}
+  }
+  // fetchJson 接管：dynamic 成功用动态，失败/锁定/判定静态时回落静态取数，再回落缓存由静态层处理。
+  function createDynamicFetchJson(opts) {
+    opts = opts || {};
+    var staticFetch = opts.staticFetch;
+    var dynamicFetch = opts.dynamicFetch; // function(name) -> Promise<json>
+    var decide = opts.decide; // function() -> {source}，由阶段 0 客户端的 decide 复用
+    var lockedFn = opts.isLocked || function () { return false; };
+    return function fetchJsonDynamic(name, hooks) {
+      if (lockedFn()) return staticFetch(name, hooks);
+      var dec = null;
+      try { dec = decide ? decide() : { source: 'dynamic' }; } catch (e) { dec = { source: 'static' }; }
+      if (!dec || dec.source !== 'dynamic') return staticFetch(name, hooks);
+      if (!FILE_TO_SECTION[name] && name !== 'manifest.json') return staticFetch(name, hooks);
+      return dynamicFetch(name).then(function (d) { return d; }, function () { return staticFetch(name, hooks); });
+    };
+  }
+  // 轮询一轮的纯逻辑（可单测）：输入旧 manifest、新 manifest、判定、折叠态，输出渲染/待刷/横条决策。
+  function handleManifestUpdate(args) {
+    args = args || {};
+    var changed = changedFiles(args.oldManifest, args.newManifest);
+    var sections = sectionsForChanged(changed);
+    var render = [], pending = [], banner = false;
+    if (args.decision && args.decision.source === 'publishing') banner = true;
+    if (banner) return { changed: changed, sections: sections, render: [], pending: [], banner: true, renderCalls: 0 };
+    if (args.decision && args.decision.source !== 'dynamic') return { changed: changed, sections: sections, render: [], pending: [], banner: false, renderCalls: 0, fallback: args.decision.source };
+    sections.forEach(function (s) {
+      var collapsed = false;
+      try { collapsed = args.isCollapsed ? !!args.isCollapsed(s) : false; } catch (e) { collapsed = false; }
+      if (collapsed) pending.push(s); else render.push(s);
+    });
+    return { changed: changed, sections: sections, render: render, pending: pending, banner: false, renderCalls: render.length };
+  }
+  var api = {
+    KB_DYNAMIC_ENABLED: KB_DYNAMIC_ENABLED, FILE_TO_SECTION: FILE_TO_SECTION, WHITELIST: WHITELIST,
+    sectionForFile: sectionForFile, sectionsForChanged: sectionsForChanged, changedFiles: changedFiles,
+    parseQuery: parseQuery, isLocked: isLocked, resolveEnabled: resolveEnabled,
+    createPendingStore: createPendingStore, snapshotViewState: snapshotViewState, restoreViewState: restoreViewState,
+    createDynamicFetchJson: createDynamicFetchJson, handleManifestUpdate: handleManifestUpdate
+  };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else global.KbDynamicStage2 = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+
+</script>
+
+<script>
+/* kb-dynamic-live（2026-10-28 直接上线，内联版）：动态读绑定。
+   诚实说明：各栏目渲染函数都在各自独立模块内部，外部无法直接调用；
+   因此绑定走两条公开路径：①拦截全局 fetch，对白名单数据文件在动态缓存命中时
+   返回动态 JSON；②按文件映射调用各模块已公开的全局刷新入口（其内部渲染器
+   随即用动态数据重渲染）。这等价于现有软刷新语义，粒度为模块级而非单栏目级。
+   家长版私有数据绝不进动态路径；summary_status 不在白名单内。 */
+(function(){
+  'use strict';
+  var FILE_TO_REFRESH = {
+    'tasks_daily_5.json': '__kanbanRefreshTasks', 'tasks_daily_6.json': '__kanbanRefreshTasks',
+    'yesterday_done_5.json': '__kanbanRefreshTasks', 'yesterday_done_6.json': '__kanbanRefreshTasks',
+    'stats_grade_5.json': '__kanbanRefreshStats', 'stats_grade_6.json': '__kanbanRefreshStats',
+    'points_log_5.json': '__kanbanRefreshStats', 'points_log_6.json': '__kanbanRefreshStats',
+    'daily_summary_5.json': '__kanbanRefreshStats', 'daily_summary_6.json': '__kanbanRefreshStats',
+    'feedback_5.json': '__kanbanRefreshStats', 'feedback_6.json': '__kanbanRefreshStats',
+    'weekly_5.json': '__kanbanRefreshStats', 'weekly_6.json': '__kanbanRefreshStats',
+    'badges.json': '__kanbanRefreshSections', 'badge_goals.json': '__kanbanRefreshSections',
+    'shop.json': '__kanbanRefreshSections', 'rules.json': '__kanbanRefreshSections',
+    'redeem_log.json': '__kanbanRefreshSections',
+    'trends.json': '__kanbanRefreshTrends'
+  };
+  /* balance.json / shop_grade_*.json 在白名单内但模板内无模块拉取它们，故无绑定入口、无渲染影响。 */
+  window.KB_DYNAMIC_ENABLED = true;
+  var S2 = window.KbDynamicStage2;
+  var Dyn = window.KbDynamic;
+  if(!S2 || !Dyn) return;
+  var q = S2.parseQuery(window.location.search);
+  var base = (window.location.hostname === 'whyjjf.lol') ? window.location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev';
+  var client = null;
+  try{
+    client = Dyn.createClient({base: base, enabled: true, query: q});
+  }catch(e){ client = null; }
+  if(!client) return;
+  var cache = {}; /* 文件名 -> 动态 JSON */
+  var lastManifest = null;
+  var bannerEl = null;
+  function isLocked(){
+    try{ if(typeof window.__kbLocked === 'function' && window.__kbLocked()) return true; }catch(e){}
+    try{ if(document.documentElement.classList.contains('kb-locked')) return true; }catch(e){}
+    try{ if(!window.localStorage.getItem('hw-dev-token')) return true; }catch(e){}
+    return false;
+  }
+  function showBanner(on){
+    try{
+      if(on && !bannerEl){
+        bannerEl = document.createElement('div');
+        bannerEl.id = 'kb-dynamic-banner';
+        bannerEl.textContent = '新数据发布中，当前显示为旧版';
+        bannerEl.setAttribute('style', 'background:#FEF8EC;color:#7A5A00;text-align:center;padding:6px 8px;font-size:14px;');
+        if(document.body) document.body.insertBefore(bannerEl, document.body.firstChild);
+      }
+      if(bannerEl) bannerEl.style.display = on ? '' : 'none';
+    }catch(e){}
+  }
+  function fileFromUrl(url){
+    try{
+      var u = String(url);
+      var m = u.match(/\/data\/([^\/\?#]+\.json)(?:[\?#]|$)/);
+      return m ? decodeURIComponent(m[1]) : null;
+    }catch(e){ return null; }
+  }
+  var nativeFetch = window.fetch.bind(window);
+  window.fetch = function(input, init){
+    try{
+      var url = (typeof input === 'string') ? input : (input && input.url ? input.url : '');
+      var name = fileFromUrl(url);
+      if(name && cache.hasOwnProperty(name) && !isLocked()){
+        var dec = client.state && client.state.lastDecision;
+        if(dec && dec.source === 'dynamic'){
+          var body = JSON.stringify(cache[name]);
+          return Promise.resolve(new Response(body, {status: 200, headers: {'Content-Type': 'application/json'}}));
+        }
+      }
+    }catch(e){}
+    return nativeFetch(input, init);
+  };
+  window.__kbDynamicRender = function(section, dataMap){
+    /* 分发点：按栏目查其模块刷新入口并调用；dataMap 内的动态数据已由 fetch 拦截生效。 */
+    var files = [];
+    try{
+      Object.keys(S2.FILE_TO_SECTION).forEach(function(f){ if(S2.FILE_TO_SECTION[f] === section) files.push(f); });
+    }catch(e){}
+    var entry = null;
+    for(var i = 0; i < files.length; i++){ if(FILE_TO_REFRESH[files[i]]){ entry = FILE_TO_REFRESH[files[i]]; break; } }
+    if(!entry) return 'pending-no-renderer';
+    try{
+      var fn = window[entry];
+      if(typeof fn !== 'function') return 'pending-no-renderer';
+      fn();
+      return entry;
+    }catch(e){ return 'pending-error'; }
+  };
+  function refreshForFiles(changed){
+    var entries = [], seen = {};
+    changed.forEach(function(f){
+      var e = FILE_TO_REFRESH[f];
+      if(e && !seen[e]){ seen[e] = true; entries.push(e); }
+    });
+    entries.forEach(function(e){
+      try{ if(typeof window[e] === 'function') window[e](); }catch(err){}
+    });
+    return entries;
+  }
+  var probeAt = 0;
+  function tick(){
+    try{
+      if(document.hidden){ setTimeout(tick, 10000); return; }
+      if(isLocked()){ showBanner(false); setTimeout(tick, 10000); return; }
+      var sessDisabled = false;
+      try{ sessDisabled = !!(window.sessionStorage && window.sessionStorage.getItem('kb-dynamic-disabled')); }catch(e){}
+      if(sessDisabled){
+        var now = Date.now();
+        if(now - probeAt < 300000){ setTimeout(tick, 10000); return; }
+        probeAt = now;
+        try{ window.sessionStorage.removeItem('kb-dynamic-disabled'); }catch(e){}
+      }
+      client.pollOnce().then(function(dec){
+        if(!dec) return;
+        if(dec.source === 'publishing'){ showBanner(true); return; }
+        showBanner(false);
+        if(dec.source !== 'dynamic') return;
+        var snap = client.state && client.state.lastManifest;
+        if(!snap || !snap.manifest) return;
+        var newMan = snap.manifest;
+        var changed = lastManifest ? S2.changedFiles(lastManifest, newMan) : [];
+        lastManifest = newMan;
+        if(!changed.length) return;
+        var jobs = changed.map(function(name){
+          return client.fetchDynamicFile(name).then(function(d){
+            if(d !== null) cache[name] = d;
+          }, function(){});
+        });
+        Promise.all(jobs).then(function(){ refreshForFiles(changed); });
+      }).catch(function(){});
+    }catch(e){}
+    setTimeout(tick, 10000);
+  }
+  /* 解锁回调：口令门摘掉 kb-locked 后强制拉一次并全量刷新一次。 */
+  try{
+    var mo = new MutationObserver(function(){
+      if(!isLocked()){
+        try{ client.pollOnce().then(function(){ ['__kanbanRefreshTasks','__kanbanRefreshStats','__kanbanRefreshSections','__kanbanRefreshTrends'].forEach(function(e){ try{ if(typeof window[e] === 'function') window[e](); }catch(err){} }); }); }catch(e){}
+      }
+    });
+    mo.observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
+  }catch(e){}
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1000); }, {once: true});
+  }else{
+    setTimeout(tick, 1000);
+  }
+})();
+</script>
+
 </body>
 </html>
