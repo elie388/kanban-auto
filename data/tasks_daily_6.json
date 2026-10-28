@@ -169,7 +169,7 @@
       "title": "校本P32",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念26-28；②校本P32 → 待完成",
@@ -179,8 +179,17 @@
       },
       "created_at": "2026-10-28T19:23:01+08:00",
       "updated_at": "2026-10-28T20:49:25+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "四、※4",
+          "question": "三天修路还剩几分之几",
+          "orig_text": "一段路，第一天修了全长的2/5，第二天修了第一天的1/6，第三天修了第二天的4/5。三天后还剩全长的几分之几没有修？",
+          "reason": "分步都对，但把三天修的分数加起来时算错了，合计错了，剩余也就跟着错了。",
+          "hint": "提示一：第一天、第二天、第三天各修了全长的几分之几？先分步列出来。提示二：把三天修的分数加起来，分母不同时，先把分母化成同一个数再加分子，分母不变。提示三：三天合计加对后，用1减去它，还剩多少？请重算一遍通分后的分子加法。",
+          "img": "g6_math32_q4_20261028_guide.png"
+        }
+      ],
       "status_source": "realtime"
     },
     {
