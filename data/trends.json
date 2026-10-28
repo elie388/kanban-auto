@@ -1,8 +1,7 @@
 {
- "updated_at": "2026-10-28T21:51:43+08:00",
+ "updated_at": "2026-10-29T06:05:09+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
-  "2026-09-29",
   "2026-09-30",
   "2026-10-01",
   "2026-10-02",
@@ -31,12 +30,12 @@
   "2026-10-25",
   "2026-10-26",
   "2026-10-27",
-  "2026-10-28"
+  "2026-10-28",
+  "2026-10-29"
  ],
  "grades": {
   "五年级": {
    "overall": [
-    null,
     null,
     null,
     null,
@@ -65,14 +64,14 @@
     76.8,
     null,
     66.7,
-    14.3
+    14.3,
+    null
    ],
    "empty": false,
    "sparse": false,
    "subjects": {
     "语文": {
      "days": [
-      null,
       null,
       null,
       null,
@@ -99,6 +98,7 @@
       96.2,
       null,
       73.3,
+      null,
       null,
       null,
       null
@@ -140,7 +140,6 @@
       null,
       null,
       null,
-      null,
       68.8,
       93.3,
       78.1,
@@ -161,6 +160,7 @@
       69.6,
       null,
       79.2,
+      null,
       null,
       null,
       null
@@ -202,7 +202,6 @@
       null,
       null,
       null,
-      null,
       79.5,
       93.8,
       63.6,
@@ -225,7 +224,8 @@
       72.0,
       null,
       66.7,
-      14.3
+      14.3,
+      null
      ],
      "weak": [
       {
@@ -266,7 +266,6 @@
     null,
     null,
     null,
-    null,
     52.4,
     100.0,
     100.0,
@@ -289,6 +288,7 @@
     null,
     null,
     null,
+    null,
     null
    ],
    "empty": false,
@@ -296,7 +296,6 @@
    "subjects": {
     "语文": {
      "days": [
-      null,
       null,
       null,
       null,
@@ -322,6 +321,7 @@
       90.7,
       null,
       100.0,
+      null,
       null,
       null,
       null,
@@ -364,7 +364,6 @@
       null,
       null,
       null,
-      null,
       52.4,
       100.0,
       100.0,
@@ -384,6 +383,7 @@
       92.6,
       89.7,
       88.9,
+      null,
       null,
       null,
       null,
@@ -427,7 +427,6 @@
       null,
       null,
       null,
-      null,
       100.0,
       100.0,
       62.3,
@@ -444,6 +443,7 @@
       100.0,
       76.2,
       97.5,
+      null,
       null,
       null,
       null,
