@@ -22,6 +22,41 @@
    "subject": "英语",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "READ-20261027-G5",
+   "title": "每日读书",
+   "subject": "读书",
+   "source": "reading_daily",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261027-7759F2",
+   "title": "小校本3页",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261027-C30A0C",
+   "title": "校本21页",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261027-E66FDA",
+   "title": "12课第二段抄一次默一次（用稿纸）",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "MANUAL-20261027-001",
+   "title": "英语阅读写作第11期",
+   "subject": "英语",
+   "source": "manual",
+   "group": "study"
   }
  ]
 }
