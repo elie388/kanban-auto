@@ -225,7 +225,7 @@
       "title": "完成《三单》P38三的2、P39二的1、2、P40三的1、P43（二）",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P38三的2、P39二的1、2、P40三的1、P43（二）；②复习U3的单词、课文、《校本》 → 待完成",
@@ -234,9 +234,24 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-28T19:23:01+08:00",
-      "updated_at": "2026-10-28T21:52:32+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-10-28T21:57:00+08:00",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "P40三的1第4题",
+          "question": "Which sentence is TRUE according to the passage?",
+          "orig_text": "Which sentence is TRUE according to the passage? A. Du Fu didn't care about his country. B. Li Daoyuan wanted people to protect nature. C. Du Fu wrote thousands of rivers in his books. 孩子选：C",
+          "reason": "把写书、记河的人物弄混了",
+          "hint": "重读短文第二段，写《水经注》、记下几千条河的是哪一位？告诉人们要保护环境的是哪一位？再逐个核对三个选项，哪一句和短文说的一致？"
+        },
+        {
+          "label": "P38三的2第3空",
+          "question": "He started to travel at ___ .",
+          "orig_text": "Xu Xiake is one of the most famous travellers in China. He was interested in nature when he was young. He started to travel at ___ . 孩子填：the gage of 21",
+          "reason": "表示年龄的词拼写错了，数字21是对的",
+          "hint": "这个空填的是表示年龄的词，你写的词读起来和它像不像？数一数你写的词有几个字母，再找一找三、1听力排序里关于他开始旅行年龄的那一句，对照着把这个词重新写一遍。"
+        }
+      ],
       "status_source": "realtime"
     },
     {
