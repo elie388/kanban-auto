@@ -3,7 +3,7 @@
   "date": "2026-10-28",
   "grade": "五年级",
   "generated_at": "2026-10-28T00:17:05+08:00",
-  "updated_at": "2026-10-28T20:35:34+08:00",
+  "updated_at": "2026-10-28T21:37:56+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -79,11 +79,12 @@
       "corrections": [
         {
           "label": "三、2",
-          "question": "时间差列式",
-          "orig_text": "短跑选手速度：12米/秒；无人机测速设备速度：30米/秒。跑完一段m米的赛程，无人机测速设备比短跑选手快多少秒？",
-          "reason": "时间差算反了：无人机用时更短，却用它的时间减去了运动员的时间。",
+          "question": "短跑选手速度：12米/秒；无人机测速设备速度：30米/秒。跑完一段m米的赛程，无人机测速设备比短跑选手快多少秒？",
+          "reason": "订正后最终红笔式仍把两个时间的顺序写反了：短跑选手用时更长，无人机用时更短，时间差应为用时长的减去用时短的。",
           "hint": "提示一：短跑选手和无人机，谁的速度快？提示二：速度快的跑完同样路程，用的时间是长还是短？提示三：求无人机比短跑选手快多少秒，应该用哪个时间减去哪个时间？",
-          "img": "g5_math32_san2_20261028_guide.png"
+          "img": "g5_math32_san2_20261028_guide.png",
+          "q_img": "",
+          "orig_text": "短跑选手速度：12米/秒；无人机测速设备速度：30米/秒。跑完一段m米的赛程，无人机测速设备比短跑选手快多少秒？"
         }
       ],
       "status_source": "realtime"
@@ -109,7 +110,10 @@
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "realtime",
-      "completed_at": "2026-10-28T19:59:17+08:00"
+      "completed_at": "2026-10-28T19:59:17+08:00",
+      "orig_photos": [
+        "8a41440451546582.jpg"
+      ]
     },
     {
       "task_id": "REG-20261028-E34758",
@@ -249,7 +253,11 @@
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "realtime",
-      "completed_at": "2026-10-28T19:59:17+08:00"
+      "completed_at": "2026-10-28T19:59:17+08:00",
+      "orig_photos": [
+        "0616a09fc9a5eade.jpg",
+        "dfb9a59c2b3f36b5.jpg"
+      ]
     },
     {
       "task_id": "READ-20261028-G5",
@@ -258,7 +266,7 @@
       "title": "每日读书",
       "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "appear_at": "2026-10-28T17:00:00+08:00",
       "task_type": "reading",
@@ -267,12 +275,13 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-28T20:35:34+08:00",
-      "updated_at": "2026-10-28T20:35:34+08:00"
+      "updated_at": "2026-10-28T21:37:35+08:00",
+      "status_source": "realtime"
     }
   ],
   "counts": {
     "total": 9,
-    "pending": 2,
+    "pending": 1,
     "in_progress": 3,
     "done": 4,
     "pending_review": 0
