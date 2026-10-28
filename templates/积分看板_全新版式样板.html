@@ -5456,7 +5456,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261027-livesky-stars4';
+  var KB_BUILD = '20261028-compress2500';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
@@ -6025,6 +6025,41 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   function setMsg(txt, cls){ var m = $('up-msg'); m.textContent = txt; m.className = 'up-msg ' + (cls || ''); }
 
+  /* 2026-10-28 家长定：上传前适度压缩（本地画布处理，不花 token）。
+     图片最长边压到 2500、JPEG 质量 0.85；已够小（边长<=2500 且 <=300KB）或非图片/动图原样放行。
+     浏览器 <img> 本身按方向信息渲染，画到画布后即为正向，压完不再带方向信息问题。
+     压后反而更大或压图失败时原样放行，绝不因压缩卡住提交。 */
+  function compressImageFile(f){
+    try{
+      if(!f || !f.type || f.type.indexOf('image/') !== 0) return Promise.resolve(f);
+      if(f.type === 'image/gif') return Promise.resolve(f);
+      return new Promise(function(res){
+        var img = new Image();
+        var url = URL.createObjectURL(f);
+        img.onload = function(){
+          try{
+            var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+            var maxEdge = 2500;
+            if(w <= maxEdge && h <= maxEdge && f.size <= 300*1024){ URL.revokeObjectURL(url); res(f); return; }
+            var scale = Math.min(1, maxEdge / Math.max(w, h));
+            var cw = Math.max(1, Math.round(w*scale)), ch = Math.max(1, Math.round(h*scale));
+            var cv = document.createElement('canvas'); cv.width = cw; cv.height = ch;
+            cv.getContext('2d').drawImage(img, 0, 0, cw, ch);
+            URL.revokeObjectURL(url);
+            if(cv.toBlob){
+              cv.toBlob(function(blob){
+                if(!blob || blob.size >= f.size){ res(f); return; }
+                var name = (f.name || 'photo').replace(/\.[A-Za-z0-9]{1,8}$/, '') + '.jpg';
+                try{ res(new File([blob], name, {type:'image/jpeg'})); }catch(e){ res(f); }
+              }, 'image/jpeg', 0.85);
+            } else { res(f); }
+          }catch(e){ try{URL.revokeObjectURL(url);}catch(_){} res(f); }
+        };
+        img.onerror = function(){ try{URL.revokeObjectURL(url);}catch(_){} res(f); };
+        img.src = url;
+      });
+    }catch(e){ return Promise.resolve(f); }
+  }
   function doSubmit(){
     if(busy) return;
     if($('up-go').textContent === '完成') return;
@@ -6050,9 +6085,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         $('up-passrow').style.display = 'none';
       });
     $('up-filelist').innerHTML = '';
-    var rows = files.map(fileRow);
+    var rows = null;
     ensureToken
-      .then(function(){ return Promise.all(files.map(sha256Of)); })
+      .then(function(){ setMsg('正在压缩照片…'); return Promise.all(files.map(compressImageFile)); })
+      .then(function(cf){ files = cf; rows = files.map(fileRow); return Promise.all(files.map(sha256Of)); })
       .then(function(shas){
         setMsg('正在准备上传…');
         var meta = files.map(function(f, i){
