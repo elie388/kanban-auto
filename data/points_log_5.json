@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-29T20:56:11+08:00",
+  "generated_at": "2026-10-30T06:02:03+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -429,17 +429,6 @@
       "filtered": false
     },
     {
-      "date": "10-22",
-      "time": "23:59",
-      "time_source": "entry",
-      "reason": "晾衣服连做第3天",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-24"
-    },
-    {
       "date": "10-24",
       "time": "23:59",
       "time_source": "entry",
@@ -447,17 +436,6 @@
       "pts": 2,
       "sign": "plus",
       "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "23:39",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-24"
     },
     {
       "date": "10-24",
@@ -1019,227 +997,6 @@
       "reason": "53天天练正确率 92.3%",
       "pts": 2,
       "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "07:51",
-      "time_source": "entry",
-      "reason": "冲正：任务类积分清零",
-      "pts": -35,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "07:50",
-      "time_source": "entry",
-      "reason": "语文·校本12课完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "07:50",
-      "time_source": "entry",
-      "reason": "数学·校本29页完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "07:50",
-      "time_source": "entry",
-      "reason": "数学·校本29页正确率档90.9%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "07:50",
-      "time_source": "entry",
-      "reason": "英语·抄M2单词完成分C档",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "07:50",
-      "time_source": "entry",
-      "reason": "英语·抄M2单词正确率档92.9%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "01:38",
-      "time_source": "entry",
-      "reason": "冲正：校本及12课完成分",
-      "pts": -6,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "01:38",
-      "time_source": "entry",
-      "reason": "冲正：校本29页完成分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "01:38",
-      "time_source": "entry",
-      "reason": "冲正：校本29页书写分",
-      "pts": -2,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "01:38",
-      "time_source": "entry",
-      "reason": "冲正：抄M2单词完成分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "01:38",
-      "time_source": "entry",
-      "reason": "冲正：抄M2单词正确率档",
-      "pts": -6,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "数学·校本及12课完成分B档",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "数学·校本29页完成分A档",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "数学·校本29页书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "英语·抄M2单词完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "英语·抄M2单词正确率档97.9%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "连续第四晚超23点睡觉额外扣分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "22:37",
-      "time_source": "entry",
-      "reason": "未主动做完作业看电视",
-      "pts": -20,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "19:27",
-      "time_source": "entry",
-      "reason": "兑换1小时和平精英",
-      "pts": -150,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "19:27",
-      "time_source": "entry",
-      "reason": "兑换手续费",
-      "pts": -23,
-      "sign": "minus",
       "filtered": false
     }
   ],

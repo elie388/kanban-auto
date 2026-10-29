@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-29T21:26:12+08:00",
+  "generated_at": "2026-10-30T06:02:03+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -418,17 +418,6 @@
       "pts": 3,
       "sign": "plus",
       "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "23:40",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-24"
     },
     {
       "date": "10-24",
@@ -855,121 +844,6 @@
       "filtered": false,
       "backfill": true,
       "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "数学思考题P2、3完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "数学正确率档96.2%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "数学书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "语文第一单元过关小测完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "语文书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:55",
-      "time_source": "entry",
-      "reason": "英语抄形容词最高级笔记完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:41",
-      "time_source": "entry",
-      "reason": "冲正：任务类积分清零",
-      "pts": -46,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "00:28",
-      "time_source": "entry",
-      "reason": "语文正确率档94.4%补发",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-23"
-    },
-    {
-      "date": "10-22",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "23:16",
-      "time_source": "entry",
-      "reason": "连续第四晚超23点睡觉额外扣分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-22",
-      "time": "22:37",
-      "time_source": "entry",
-      "reason": "未主动做完作业看电视",
-      "pts": -20,
-      "sign": "minus",
-      "filtered": false
     }
   ],
   "truncated": false,
