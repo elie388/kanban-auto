@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T20:56:10+08:00",
+  "updated_at": "2026-10-29T21:33:43+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -338,7 +338,7 @@
       "title": "小校本园地四（订正）",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
@@ -347,7 +347,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00"
+      "updated_at": "2026-10-29T21:33:43+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261029-53992A",
@@ -446,7 +447,7 @@
   ],
   "counts": {
     "total": 10,
-    "pending": 6,
+    "pending": 5,
     "in_progress": 2,
     "done": 2,
     "pending_review": 0
