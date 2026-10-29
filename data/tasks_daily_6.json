@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "六年级",
   "generated_at": "2026-10-29T00:17:18+08:00",
-  "updated_at": "2026-10-29T16:55:50+08:00",
+  "updated_at": "2026-10-29T16:56:12+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -21,10 +21,26 @@
       "status": "pending"
     }
   },
-  "tasks": [],
+  "tasks": [
+    {
+      "task_id": "META-REGISTER-2026-10-29",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-10-29T16:56:12+08:00",
+      "updated_at": "2026-10-29T16:56:12+08:00",
+      "completed_at": null
+    }
+  ],
   "counts": {
-    "total": 0,
-    "pending": 0,
+    "total": 1,
+    "pending": 1,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
