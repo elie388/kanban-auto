@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "六年级",
   "generated_at": "2026-10-29T00:17:18+08:00",
-  "updated_at": "2026-10-29T21:37:16+08:00",
+  "updated_at": "2026-10-29T21:43:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -98,7 +98,7 @@
       "title": "完成《三单》P44四、P45一到二",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P44四、P45一到二；②写U2单元试卷第一题中文；③背U3作文十次 → 待完成",
@@ -107,7 +107,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00"
+      "updated_at": "2026-10-29T21:43:30+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261029-EA8985",
@@ -344,7 +345,7 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 5,
+    "pending": 4,
     "in_progress": 2,
     "done": 4,
     "pending_review": 0
