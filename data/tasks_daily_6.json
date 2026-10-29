@@ -92,55 +92,6 @@
       ]
     },
     {
-      "task_id": "REG-20261029-B61510",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "完成《三单》P44四、P45一到二",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成《三单》P44四、P45一到二；②写U2单元试卷第一题中文；③背U3作文十次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T23:33:10+08:00",
-      "status_source": "closeout_writeback",
-      "corrections": [
-        {
-          "label": "景点图片配对图3",
-          "question": "景点图片配对图3 完成《三单》P44四、P45一到二",
-          "reason": "图3是黄山云海，应选D不是B。",
-          "hint": "图3云雾缭绕像云海，黄山最出名的是什么？再选一次。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "基础作业1.选出匹配的景点图片。图3黄山。"
-        },
-        {
-          "label": "茂名以什么出名",
-          "question": "What is Maoming famous for",
-          "reason": "Maoming拼成Maomig，少了n。",
-          "hint": "茂名拼写是M-a-o-m-i-n-g，最后是n加g，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "四、海报素材征集。2.What is Maoming famous for?"
-        },
-        {
-          "label": "在茂名能做什么",
-          "question": "What can you do in Maoming",
-          "reason": "beaches拼成beachs，少了e。",
-          "hint": "沙滩复数是b-e-a-c-h-e-s，中间有个e，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "四、海报素材征集。3.What can you do in Maoming?"
-        }
-      ],
-      "pending_corrections": 3
-    },
-    {
       "task_id": "REG-20261029-EA8985",
       "source": "register_book",
       "subject": "英语",
@@ -167,26 +118,6 @@
         "4f616d477aadead6.jpg",
         "04b56830621f0822.jpg"
       ]
-    },
-    {
-      "task_id": "REG-20261029-AF552E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "背U3作文十次",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成《三单》P44四、P45一到二；②写U2单元试卷第一题中文；③背U3作文十次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00",
-      "task_type": "reading",
-      "type_source": "manual-fix-20261029"
     },
     {
       "task_id": "REG-20261029-21666B",
@@ -269,104 +200,6 @@
         "1c7017a8dbad1ac4.jpg",
         "ba2352ccee1f821a.jpg"
       ]
-    },
-    {
-      "task_id": "MANUAL-20261029-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第12期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-10-29T20:03:38+08:00",
-      "updated_at": "2026-10-29T20:03:38+08:00",
-      "files": [
-        {
-          "name": "六年级英语阅读写作_2026-10-29.pdf",
-          "label": "练习",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "CHORE-20261029-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-10-29T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-29T00:17:47+08:00",
-      "updated_at": "2026-10-29T21:08:00+08:00"
-    },
-    {
-      "task_id": "EXAM-20261029-90EF69",
-      "source": "exam",
-      "title": "学校考试卷",
-      "detail": "家务面板考试卷入口提交",
-      "subject": "",
-      "status": "in_progress",
-      "status_source": "closeout_writeback",
-      "corrections": [
-        {
-          "label": "短文选择填空1",
-          "question": "I love fairy tales",
-          "reason": "love后面接动名词，应为reading不是read。",
-          "hint": "love后面跟动词要加ing，love reading，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "六、在短文中选择填空。1.I love fairy tales very much。"
-        },
-        {
-          "label": "短文选择填空4",
-          "question": "she goes into the forest",
-          "reason": "主语she是第三人称单数，应为goes不是go。",
-          "hint": "主语是she，动词要加s，she goes，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "六、在短文中选择填空。4.One day, she into the forest to visit her grandma。"
-        },
-        {
-          "label": "根据提示写单词1",
-          "question": "are having a picnic",
-          "reason": "are后面接动名词，应为having不是have。",
-          "hint": "are后面跟动词加ing，are having，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "七、根据首字母或中文提示写出所缺单词。1.Lingling and Sam are a picnic in the park。"
-        },
-        {
-          "label": "根据提示写单词3",
-          "question": "根据提示写单词3 六年级上册unit2综合训练英语试卷，第2、3、4页新件，第1页与EA8985重复不重复批",
-          "reason": "主语Amy是第三人称单数，应为says不是say。",
-          "hint": "主语是Amy，动词要加s，Amy says，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "七、根据首字母或中文提示写出所缺单词。3.Amy the apple peel is dirty。"
-        },
-        {
-          "label": "书面表达语病",
-          "question": "it help应it helps",
-          "reason": "主语it是第三人称单数，help应为helps。",
-          "hint": "主语是it，动词要加s，it helps，再写一遍这句。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "十、书面表达。Is life better with technology?"
-        }
-      ],
-      "pending_corrections": 5,
-      "created_at": "2026-10-29T21:34:33+08:00",
-      "review_status": "approved",
-      "updated_at": "2026-10-29T23:37:31+08:00"
     }
   ],
   "counts": {
