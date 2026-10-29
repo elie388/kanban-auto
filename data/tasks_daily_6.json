@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "六年级",
   "generated_at": "2026-10-29T00:17:18+08:00",
-  "updated_at": "2026-10-29T20:39:01+08:00",
+  "updated_at": "2026-10-29T20:42:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -67,7 +67,7 @@
       "title": "校本P33",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念40、41；②校本P33 → 待完成",
@@ -76,8 +76,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:39:01+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-29T20:42:11+08:00",
+      "status_source": "closeout_writeback",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-10-29T20:42:11+08:00",
+      "orig_photos": [
+        "18bcb772b117547e.jpg"
+      ]
     },
     {
       "task_id": "REG-20261029-B61510",
@@ -236,7 +242,7 @@
     "total": 11,
     "pending": 9,
     "in_progress": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-10-29T22:00:00+08:00"
