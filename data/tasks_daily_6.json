@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "六年级",
   "generated_at": "2026-10-29T00:17:18+08:00",
-  "updated_at": "2026-10-29T18:56:07+08:00",
+  "updated_at": "2026-10-29T19:59:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -30,20 +30,21 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-29T16:56:12+08:00",
-      "updated_at": "2026-10-29T16:56:12+08:00",
-      "completed_at": null
+      "updated_at": "2026-10-29T19:59:30+08:00",
+      "completed_at": null,
+      "status_source": "realtime"
     }
   ],
   "counts": {
     "total": 1,
-    "pending": 1,
+    "pending": 0,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-10-29T22:00:00+08:00"
 }
