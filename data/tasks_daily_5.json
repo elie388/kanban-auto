@@ -3,11 +3,11 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T19:59:29+08:00",
+  "updated_at": "2026-10-29T20:02:45+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-29T16:55:50+08:00",
+      "ingested_at": "2026-10-29T20:02:45+08:00",
       "new_lines": 0
     },
     "targeted_practice": {
@@ -30,20 +30,149 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-29T16:56:12+08:00",
-      "updated_at": "2026-10-29T19:59:29+08:00",
-      "completed_at": null,
+      "updated_at": "2026-10-29T20:01:45+08:00",
+      "completed_at": "2026-10-29T20:01:45+08:00",
       "status_source": "realtime"
+    },
+    {
+      "task_id": "REG-20261029-A5BEC6",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本33页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：校本33页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00"
+    },
+    {
+      "task_id": "REG-20261029-BC237E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261029-94752B",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "小试卷",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00"
+    },
+    {
+      "task_id": "REG-20261029-1EC037",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小校本园地四（订正）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00"
+    },
+    {
+      "task_id": "REG-20261029-53992A",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄[涂黑]二次P63",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00"
+    },
+    {
+      "task_id": "REG-20261029-EB6E71",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "词语和13课（稿纸）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00"
+    },
+    {
+      "task_id": "REG-20261029-C792B3",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看《二十年后的家乡》",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:01:45+08:00",
+      "updated_at": "2026-10-29T20:01:45+08:00",
+      "task_type": "reading",
+      "type_source": "look_book"
     }
   ],
   "counts": {
-    "total": 1,
-    "pending": 0,
+    "total": 8,
+    "pending": 7,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-29T22:00:00+08:00"
