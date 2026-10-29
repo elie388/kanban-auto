@@ -147,7 +147,7 @@
       "title": "写U2单元试卷第一题中文",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P44四、P45一到二；②写U2单元试卷第一题中文；③背U3作文十次 → 待完成",
@@ -156,38 +156,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T23:32:13+08:00",
+      "updated_at": "2026-10-29T23:28:57+08:00",
       "status_source": "closeout_writeback",
-      "corrections": [
-        {
-          "label": "U2第一题-2-C（第2轮）",
-          "question": "一、听句子，找出你所听到的单词：第2小题 C.mouth 旁边的中文是什么？",
-          "reason": "现写“月嘴”，旧的“月”没有去掉，两个字连在一起不成词，仍有误。",
-          "hint": "①mouth 是脸上用来吃饭、说话的部位，再想想是哪个部位；②你现在是两个字连在一起写，读一读像不像一个词；③把不是身体部位的那个字划掉或擦掉，只留一个词，再读一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "一、听句子，找出你所听到的单词：第2小题 C.mouth"
-        },
-        {
-          "label": "U2第一题-7-C（第2轮）",
-          "question": "一、听句子，找出你所听到的单词：第7小题 C.explore 旁边的中文是什么？",
-          "reason": "现写“探＋涂黑不可读＋计”，中间字涂黑按规则标不可读、不推断，后面的“计”还是多余的，仍有误。",
-          "hint": "①explore 是到没去过的地方看一看、了解一下，是哪个动词；②你现在中间的字涂黑了看不清，后面还多了一个字；③擦干净，把整格重写成两个字的动词，数一数是不是两个字。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "一、听句子，找出你所听到的单词：第7小题 C.explore"
-        },
-        {
-          "label": "U2第一题-10-C（第2轮）",
-          "question": "一、听句子，找出你所听到的单词：第10小题 C.green 旁边的中文是什么？",
-          "reason": "现写“绿绿色”，第一个“绿”还是多余的，与首轮错因相同，仍有误。",
-          "hint": "①green 只代表一种颜色；②你现在写了三个字，第一个字和后面两个字重复了；③把重复的那个字划掉或擦掉，只留一种颜色的中文，再读一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "一、听句子，找出你所听到的单词：第10小题 C.green"
-        }
-      ],
-      "pending_corrections": 3,
+      "corrections": [],
+      "pending_corrections": 0,
       "completed_at": "2026-10-29T23:28:57+08:00",
       "orig_photos": [
         "bb693a80ccd57919.jpg",
