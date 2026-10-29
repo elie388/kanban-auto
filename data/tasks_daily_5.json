@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T20:32:16+08:00",
+  "updated_at": "2026-10-29T20:33:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -36,7 +36,10 @@
       "created_at": "2026-10-29T16:56:12+08:00",
       "updated_at": "2026-10-29T20:01:45+08:00",
       "completed_at": "2026-10-29T20:01:45+08:00",
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "orig_photos": [
+        "69fb4713eb65ba61.jpg"
+      ]
     },
     {
       "task_id": "REG-20261029-A5BEC6",
@@ -45,7 +48,7 @@
       "title": "校本35页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：校本33页 → 待完成",
@@ -54,8 +57,41 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:32:16+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-29T20:33:59+08:00",
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "校本33页 2-表",
+          "question": "用小棒摆正方形，填写表格：正方形1-5、n个，小棒根数依次为？",
+          "reason": "第3个正方形应为10根，写成11根，后面14、17也随之错位；但n的式子3n+1本身正确",
+          "hint": "①先数一数第3个正方形实际用了几根小棒，对照你写的11根；②每添一个正方形，是多加几根？③从第1个4根起，每次加3，重新列一列，再看第4、5个是多少。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "用小棒摆正方形，填写表格：正方形1-5、n个，小棒根数依次为？",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "校本33页 拓展-表1",
+          "question": "根据摆放规律填表：图1、图2、图3、图n，周长依次为？",
+          "reason": "周长每次增加6，不是7；图n的式子应为6n-2，7n+1是八边形那题的规律，写串了",
+          "hint": "①图1周长4，图2周长10，图3周长16，每次多多少？②周长增加的数和图形序号有什么关系？③试着写成“每次增加的数×序号－2”，再代入图1、图2验算。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "根据摆放规律填表：图1、图2、图3、图n，周长依次为？",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "校本33页 拓展-表2",
+          "question": "根据摆放规律填表：八边形数1-4、n，小棒根数依次为？",
+          "reason": "小棒每次增加7，图n的式子应为7n+1，n+7只在n=1时碰巧等于8",
+          "hint": "①1个8根，2个15根，每次多几根？②第3个22根是对的，从8起每次加7，第n个怎么表示？③先写“7×序号＋1”，再代入1、2验算。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "根据摆放规律填表：八边形数1-4、n，小棒根数依次为？",
+          "img_exempt": "图后补"
+        }
+      ],
+      "pending_corrections": 3
     },
     {
       "task_id": "REG-20261029-BC237E",
@@ -192,7 +228,7 @@
   "counts": {
     "total": 9,
     "pending": 7,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 1,
     "pending_review": 0
   },
