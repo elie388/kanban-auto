@@ -226,103 +226,11 @@
           "pages": 2
         }
       ]
-    },
-    {
-      "task_id": "REGB-20261029-FC93AE",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "概念40、41",
-      "detail": "登记本识别（证据：数学：1.概念40、41）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "business_date": "2026-10-29",
-      "raw_text": "数学：概念40、41",
-      "evidence": {
-        "extracted_by": "register_book_channel",
-        "channel": "manual",
-        "source_mail_id": "b1793275056243472d507c65934269",
-        "attachment_hash": "sha256:00aca7ffd098c9249e2d10818f6d80d45aa52ee0ff21b240dea6ab9e8ae29f42",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:05:25+08:00",
-      "updated_at": "2026-10-29T20:05:25+08:00"
-    },
-    {
-      "task_id": "REGB-20261029-240CE1",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "《三单》P44四、P45一到二",
-      "detail": "登记本识别（证据：英语：1.《三单》的P44四、P45一到二）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "business_date": "2026-10-29",
-      "raw_text": "英语：《三单》P44四、P45一到二",
-      "evidence": {
-        "extracted_by": "register_book_channel",
-        "channel": "manual",
-        "source_mail_id": "b1793275056243472d507c65934269",
-        "attachment_hash": "sha256:00aca7ffd098c9249e2d10818f6d80d45aa52ee0ff21b240dea6ab9e8ae29f42",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:05:25+08:00",
-      "updated_at": "2026-10-29T20:05:25+08:00"
-    },
-    {
-      "task_id": "REGB-20261029-D54843",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "复习U2单词、对话（早读）",
-      "detail": "登记本识别（证据：早读：复习U2单词、对话）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "business_date": "2026-10-29",
-      "raw_text": "英语：复习U2单词、对话（早读）",
-      "evidence": {
-        "extracted_by": "register_book_channel",
-        "channel": "manual",
-        "source_mail_id": "b1793275056243472d507c65934269",
-        "attachment_hash": "sha256:00aca7ffd098c9249e2d10818f6d80d45aa52ee0ff21b240dea6ab9e8ae29f42",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:05:25+08:00",
-      "updated_at": "2026-10-29T20:05:25+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao"
-    },
-    {
-      "task_id": "REGB-20261029-A899AF",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读15分钟第四单元作文，记录",
-      "detail": "登记本识别（证据：语文：3.读15分钟第四单元作文，记录）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "business_date": "2026-10-29",
-      "raw_text": "语文：读15分钟第四单元作文，记录",
-      "evidence": {
-        "extracted_by": "register_book_channel",
-        "channel": "manual",
-        "source_mail_id": "b1793275056243472d507c65934269",
-        "attachment_hash": "sha256:00aca7ffd098c9249e2d10818f6d80d45aa52ee0ff21b240dea6ab9e8ae29f42",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:05:25+08:00",
-      "updated_at": "2026-10-29T20:05:25+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao"
     }
   ],
   "counts": {
-    "total": 15,
-    "pending": 14,
+    "total": 11,
+    "pending": 10,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
