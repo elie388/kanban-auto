@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "六年级",
   "generated_at": "2026-10-29T00:17:18+08:00",
-  "updated_at": "2026-10-29T21:25:44+08:00",
+  "updated_at": "2026-10-29T21:31:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -112,7 +112,7 @@
       "title": "写U2单元试卷第一题中文",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成《三单》P44四、P45一到二；②写U2单元试卷第一题中文；③背U3作文十次 → 待完成",
@@ -121,8 +121,65 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T21:25:44+08:00",
-      "status_source": "realtime"
+      "updated_at": "2026-10-29T21:31:37+08:00",
+      "status_source": "realtime",
+      "corrections": [
+        {
+          "label": "U2第一题-1-C",
+          "question": "一、听句子，找出你所听到的单词：第1小题 C.fairy 旁边的中文是什么？",
+          "reason": "fairy 旁边的中文没有写，缺写。",
+          "hint": "①fairy 是带翅膀的传说中的小精灵，中文怎么说？②想一想课本里这个词旁边通常配什么中文？③把你想到的中文写在 fairy 旁边，再读一遍对不对。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、听句子，找出你所听到的单词：第1小题 C.fairy"
+        },
+        {
+          "label": "U2第一题-2-C",
+          "question": "一、听句子，找出你所听到的单词：第2小题 C.mouth 旁边的中文是什么？",
+          "reason": "mouth 旁写了“月”，身体部位的意思不对。",
+          "hint": "①mouth 是身体上的一个部位，用来吃饭、说话，是哪个部位？②“月”是天上的，和身体部位一样吗？③以 m 开头、th 结尾的那个身体部位词，中文是什么？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、听句子，找出你所听到的单词：第2小题 C.mouth"
+        },
+        {
+          "label": "U2第一题-6-C",
+          "question": "一、听句子，找出你所听到的单词：第6小题 C.bear 旁边的中文是什么？",
+          "reason": "bear 旁写了“能”，意思不对。",
+          "hint": "①bear 在这里是一种动物，体形大、毛茸茸的，是什么动物？②“能”表示能力，和动物一样吗？③想一想森林里那种大动物的中文，再对照你写的字。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、听句子，找出你所听到的单词：第6小题 C.bear"
+        },
+        {
+          "label": "U2第一题-7-C",
+          "question": "一、听句子，找出你所听到的单词：第7小题 C.explore 旁边的中文是什么？",
+          "reason": "explore 旁写了“探讨”后面还多写了字，意思也不对，不是“探索”。",
+          "hint": "①explore 是去未知的地方看看、了解一下，是哪个动词？②“探讨”是讨论，和去探险一样吗？③想一想课本里“探索、探险”那个动词的中文，再数一数你写了几个字。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、听句子，找出你所听到的单词：第7小题 C.explore"
+        },
+        {
+          "label": "U2第一题-9-B",
+          "question": "一、听句子，找出你所听到的单词：第9小题 B.fly 旁边的中文是什么？",
+          "reason": "fly 旁只写了“放”，意思不完整、不对。",
+          "hint": "①fly 是鸟儿在天上做的事，是什么动作？②只写“放”，能表示鸟儿在天上的动作吗？③想一想“放风筝”里那个飞的动作，单独写 fly 时中文是什么？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、听句子，找出你所听到的单词：第9小题 B.fly"
+        },
+        {
+          "label": "U2第一题-10-C",
+          "question": "一、听句子，找出你所听到的单词：第10小题 C.green 旁边的中文是什么？",
+          "reason": "green 旁在“绿色”前面多写了一个字，颜色不对。",
+          "hint": "①green 只代表一种颜色，是哪种颜色？②你写的第一个字是不是另一种颜色？③把多余的那个字去掉，只留这一种颜色的中文，再读一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、听句子，找出你所听到的单词：第10小题 C.green"
+        }
+      ],
+      "pending_corrections": 6
     },
     {
       "task_id": "REG-20261029-AF552E",
@@ -245,7 +302,7 @@
   "counts": {
     "total": 11,
     "pending": 5,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 4,
     "pending_review": 0
   },
