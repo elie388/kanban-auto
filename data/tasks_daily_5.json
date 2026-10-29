@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T20:05:25+08:00",
+  "updated_at": "2026-10-29T20:32:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -45,7 +45,7 @@
       "title": "校本35页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：校本33页 → 待完成",
@@ -54,7 +54,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00"
+      "updated_at": "2026-10-29T20:32:16+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261029-BC237E",
@@ -190,7 +191,7 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
