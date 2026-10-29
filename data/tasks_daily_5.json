@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T20:42:08+08:00",
+  "updated_at": "2026-10-29T20:44:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -138,178 +138,196 @@
       "status_source": "closeout_writeback",
       "corrections": [
         {
-          "label": "Unit3校本练习 基础一-6",
-          "question": "Unit3校本练习 基础一-6 2026秋五年级Unit3校本练习第1-2页",
-          "reason": "坦诚沟通是坦诚地交谈，只写 openly 加 take 不成短语",
-          "hint": "①中文是坦诚地交谈，动词是什么？②副词放在动词后面还是前面？③把动词和副词连起来读一遍，看看通不通顺。",
+          "label": "Unit3小试卷 基础一-5",
+          "question": "基础训练一、英汉互译：5.父，母",
+          "reason": "单复数与中文意思对不上",
+          "hint": "①中文“父母”是指一个人还是两个人？②名词单数和复数有什么区别？③你写的词是单数还是复数？",
           "img": "",
           "q_img": "",
-          "orig_text": "Unit3校本练习 基础一-6 2026秋五年级Unit3校本练习第1-2页"
+          "orig_text": "基础训练一、英汉互译：5.父，母"
         },
         {
-          "label": "Unit3校本练习 基础一-10",
-          "question": "英汉互译：next to",
-          "reason": "next to 表示位置上的紧挨着，不是下一个",
-          "hint": "①中文是紧挨着，不是时间上的下一个；②想想表示位置的短语结构；③用这个短语说一句你在谁旁边。",
+          "label": "Unit3小试卷 基础一-6",
+          "question": "基础训练一、英汉互译：6.坦诚沟通",
+          "reason": "动词搭配不对",
+          "hint": "①“坦诚沟通”里，沟通这个动作通常用哪个动词？②openly是副词，它要修饰哪个词？③把你写的两个词换个搭配再读一遍，顺不顺？",
           "img": "",
           "q_img": "",
-          "orig_text": "英汉互译：next to"
+          "orig_text": "基础训练一、英汉互译：6.坦诚沟通"
         },
         {
-          "label": "Unit3校本练习 基础一-11",
-          "question": "英汉互译：walk away",
-          "reason": "walk away 是走开、离开，和一起是另一个短语",
-          "hint": "①walk 是走，away 是离开的意思；②合起来是走开还是和一起？③想想离开教室时老师会怎么说。",
+          "label": "Unit3小试卷 基础一-10",
+          "question": "基础训练一、英汉互译：10.next to",
+          "reason": "介词短语意思理解错了",
+          "hint": "①next to里next后面跟的是什么词？②“下一个”和“在……旁边”意思一样吗？③再想想表示位置的那个短语是什么？",
           "img": "",
           "q_img": "",
-          "orig_text": "英汉互译：walk away"
+          "orig_text": "基础训练一、英汉互译：10.next to"
         },
         {
-          "label": "Unit3校本练习 基础二-2",
-          "question": "补全单词：My p___ are teachers.",
-          "reason": "主语是复数 are，名词要用复数形式",
-          "hint": "①主语后面是 are，说明主语是单数还是复数？②这个词的复数形式怎么变？③再读一遍整句。",
+          "label": "Unit3小试卷 基础一-11",
+          "question": "基础训练一、英汉互译：11.walk away",
+          "reason": "短语意思与中文对不上",
+          "hint": "①walk away里away是靠近还是离开？②“和……一起”通常用哪个介词短语开头？③你写的中文意思和英文短语方向一致吗？",
           "img": "",
           "q_img": "",
-          "orig_text": "补全单词：My p___ are teachers."
+          "orig_text": "基础训练一、英汉互译：11.walk away"
         },
         {
-          "label": "Unit3校本练习 基础二-3",
-          "question": "补全单词：How are you and your best friend s___ or different?",
-          "reason": "问的是和朋友相似还是不同，sports 与句意不符",
-          "hint": "①这句在问相似还是不同？②sports 是运动，和相似相对吗？③想想和 different 相对的词。",
+          "label": "Unit3小试卷 基础二-2",
+          "question": "基础训练二、根据首字母或句意补全单词：2.My p___ are teachers.",
+          "reason": "主语与are的单复数不一致",
+          "hint": "①are后面的主语是单数还是复数？②你写的词是单数还是复数？③主语和are要不要一致？",
           "img": "",
           "q_img": "",
-          "orig_text": "补全单词：How are you and your best friend s___ or different?"
+          "orig_text": "基础训练二、根据首字母或句意补全单词：2.My p___ are teachers."
         },
         {
-          "label": "Unit3校本练习 提高一-3",
-          "question": "选词填空：My friend and I have different ___.",
-          "reason": "different 后面接可数名词复数，hobby 要变复数形式",
-          "hint": "①different 后面是单数还是复数？②hobby 的复数形式怎么变？③再读一遍整句。",
+          "label": "Unit3小试卷 基础二-3",
+          "question": "基础训练二、根据首字母或句意补全单词：3.How are you and your best friends s___ or different?",
+          "reason": "与or different相对的词选错了",
+          "hint": "①or different前面应该填表示什么的词？②sports是名词还是形容词？③找找和different相对的那个词。",
           "img": "",
           "q_img": "",
-          "orig_text": "选词填空：My friend and I have different ___."
+          "orig_text": "基础训练二、根据首字母或句意补全单词：3.How are you and your best friends s___ or different?"
         },
         {
-          "label": "Unit3校本练习 提高一-5",
-          "question": "选词填空：Sometimes we have problems, but we often talk ___.",
-          "reason": "talk 后面修饰动词要用副词形式，open 是形容词",
-          "hint": "①talk 是动词，修饰动词用什么词性？②open 的副词形式怎么变？③再读一遍整句。",
+          "label": "Unit3小试卷 提高一-3",
+          "question": "提高训练一、选词填空：3.My friend and I have different ___.",
+          "reason": "different后面可数名词的单复数错了",
+          "hint": "①different后面跟可数名词时用单数还是复数？②hobby这个词复数怎么写？③再读一遍句子，名词部分对吗？",
           "img": "",
           "q_img": "",
-          "orig_text": "选词填空：Sometimes we have problems, but we often talk ___."
+          "orig_text": "提高训练一、选词填空：3.My friend and I have different ___."
         },
         {
-          "label": "Unit3校本练习 三-1",
-          "question": "写出所缺单词：Tom looks ___ (担心的).",
-          "reason": "looks 后面接形容词，表示担心的状态，不是动词原形",
-          "hint": "①looks 后面接什么词性？②担心这个意思，形容词形式是什么？③再读一遍整句。",
+          "label": "Unit3小试卷 提高一-5",
+          "question": "提高训练一、选词填空：5.Sometimes we have problems, but we often talk ___.",
+          "reason": "修饰动词要用副词形式",
+          "hint": "①talk是动词，修饰动词应该用什么词性？②open和openly哪个是副词？③你写的词放在talk后面，词性对吗？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：Tom looks ___ (担心的)."
+          "orig_text": "提高训练一、选词填空：5.Sometimes we have problems, but we often talk ___."
         },
         {
-          "label": "Unit3校本练习 三-2",
-          "question": "写出所缺单词：He thinks he can't ___ good friends with Jack.",
-          "reason": "can't 后面接动词，和朋友交朋友是 make friends，musical 与句意不符",
-          "hint": "①can't 后面接动词还是名词？②和朋友交朋友，动词是什么？③再读一遍整句。",
+          "label": "Unit3小试卷 提高二-3",
+          "question": "提高训练二、读一读选选项补全短文：And they like ___3___ their favourite things.",
+          "reason": "选项意思与句子搭配不通",
+          "hint": "①like后面跟动词时，这个动词表示什么动作？②sharing、finding、looking哪个和“最喜欢的东西”搭配最顺？③把三个选项分别代入句子读一遍，哪个意思通？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：He thinks he can't ___ good friends with Jack."
+          "orig_text": "提高训练二、读一读选选项补全短文：And they like ___3___ their favourite things."
         },
         {
-          "label": "Unit3校本练习 三-3",
-          "question": "写出所缺单词：because they are very ___.",
-          "reason": "这里说两人很不同，不是危险，different 与 different 相对",
-          "hint": "①这句在说两人不同还是危险？②different 的拼写再想想；③和前面的 different 对照一下。",
+          "label": "Unit3小试卷 页二三-1",
+          "question": "三、根据首字母或中文提示写出所缺单词：Tom looks 1.___ (担心的).",
+          "reason": "系动词后面要用形容词形式",
+          "hint": "①looks后面跟的是什么词性？②“担心的”这个词，名词、动词、形容词形式一样吗？③你写的词是什么词性？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：because they are very ___."
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：Tom looks 1.___ (担心的)."
         },
         {
-          "label": "Unit3校本练习 三-5",
-          "question": "写出所缺单词：Every afternoon, Jack ___ with Tom to the park.",
-          "reason": "每天下午和 Tom 去公园，动词是去，第三人称单数要加 s",
-          "hint": "①主语是 Jack，动词第三人称单数怎么变？②去公园的动词是什么？③再读一遍整句。",
+          "label": "Unit3小试卷 页二三-2",
+          "question": "三、根据首字母或中文提示写出所缺单词：He thinks he can't 2.m___ good friends with Jack.",
+          "reason": "词义与句意不符",
+          "hint": "①can't后面跟动词原形，这个空在句中起什么作用？②你写的词在句中是什么意思？③把句子完整读一遍，这个词放进去通顺吗？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：Every afternoon, Jack ___ with Tom to the park."
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：He thinks he can't 2.m___ good friends with Jack."
         },
         {
-          "label": "Unit3校本练习 三-6",
-          "question": "写出所缺单词：___ (紧挨着) to the school.",
-          "reason": "紧挨着学校是 next to，只写 in 意思不完整",
-          "hint": "①中文是紧挨着，不是里面；②表示位置的短语有几个词？③用这个短语说一句你在学校旁边。",
+          "label": "Unit3小试卷 页二三-3",
+          "question": "三、根据首字母或中文提示写出所缺单词：because they are very 3.___ .",
+          "reason": "系动词后面要用形容词形式",
+          "hint": "①are very后面跟的是什么词性？②danger是名词还是形容词？③形容词形式和名词形式有什么不同？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：___ (紧挨着) to the school."
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：because they are very 3.___ ."
         },
         {
-          "label": "Unit3校本练习 三-7",
-          "question": "写出所缺单词：They make new ___ (计划).",
-          "reason": "make new plans，plan 是可数名词，new 后面用复数",
-          "hint": "①new 后面接单数还是复数？②plan 的复数形式怎么变？③再读一遍整句。",
+          "label": "Unit3小试卷 页二三-5",
+          "question": "三、根据首字母或中文提示写出所缺单词：Every afternoon, Jack 5.___ with Tom to the park.",
+          "reason": "词义与句意不符",
+          "hint": "①Every afternoon, Jack ___ with Tom to the park，这个空填的是什么动作？②你写的词是什么意思？③和Tom一起去公园，这个动作应该怎么写？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：They make new ___ (计划)."
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：Every afternoon, Jack 5.___ with Tom to the park."
         },
         {
-          "label": "Unit3校本练习 三-8",
-          "question": "写出所缺单词：They have great ___ together.",
-          "reason": "have great fun 是玩得很开心，fries 是薯条，与句意不符",
-          "hint": "①have great ___ together，在说玩得开心还是吃东西？②开心这个词是什么？③再读一遍整句。",
+          "label": "Unit3小试卷 页二三-6",
+          "question": "三、根据首字母或中文提示写出所缺单词：6.___ (紧挨着) to the school.",
+          "reason": "介词短语不完整",
+          "hint": "①“紧挨着”是一个介词短语，有几个词？②你只写了一个词，完整吗？③再想想表示“紧挨着”的完整短语。",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：They have great ___ together."
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：6.___ (紧挨着) to the school."
         },
         {
-          "label": "Unit3校本练习 三-10",
-          "question": "写出所缺单词：needs two people to ___ with each other.",
-          "reason": "好朋友关系需要两个人互相分享，只写 low 意思不通",
-          "hint": "①好朋友之间需要互相做什么？②这个词以 s 开头；③再读一遍整句。",
+          "label": "Unit3小试卷 页二三-7",
+          "question": "三、根据首字母或中文提示写出所缺单词：They make new 7.___ (计划).",
+          "reason": "单复数错了",
+          "hint": "①make new后面跟的计划是一个还是多个？②plan的复数形式怎么写？③你写的词是单数还是复数？",
           "img": "",
           "q_img": "",
-          "orig_text": "写出所缺单词：needs two people to ___ with each other."
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：They make new 7.___ (计划)."
         },
         {
-          "label": "Unit3校本练习 四-2",
-          "question": "补全对话：What's Zhong Ziqi like?",
-          "reason": "问的是他是什么样的人，回答应是友好聪明，不是喜欢音乐",
-          "hint": "①What's ... like 问的是长相还是性格？②喜欢音乐回答的是什么问题？③再看选项里哪句在说性格。",
+          "label": "Unit3小试卷 页二三-8",
+          "question": "三、根据首字母或中文提示写出所缺单词：They have great 8.___ together.",
+          "reason": "词义与句意不符",
+          "hint": "①They have great ___ together，这句话想表达什么？②你写的词是什么意思，和句子想表达的一致吗？③表示“愉快的时光”通常用哪个词？",
           "img": "",
           "q_img": "",
-          "orig_text": "补全对话：What's Zhong Ziqi like?"
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：They have great 8.___ together."
         },
         {
-          "label": "Unit3校本练习 四-3",
-          "question": "补全对话：Why are you friends?",
-          "reason": "问为什么成为朋友，回答应是都喜欢古琴音乐，不是性格描述",
-          "hint": "①Why 问的是原因还是样子？②都喜欢古琴音乐是原因吗？③再看选项里哪句在说原因。",
+          "label": "Unit3小试卷 页二三-10",
+          "question": "三、根据首字母或中文提示写出所缺单词：needs two people to 10.s___ with each other.",
+          "reason": "首字母s的动词与句意不符",
+          "hint": "①首字母s提示，这个动词和with each other搭配是什么意思？②你写的词是什么意思？③把你的词代入句子，意思通吗？",
           "img": "",
           "q_img": "",
-          "orig_text": "补全对话：Why are you friends?"
+          "orig_text": "三、根据首字母或中文提示写出所缺单词：needs two people to 10.s___ with each other."
         },
         {
-          "label": "Unit3校本练习 四-5",
-          "question": "补全对话：What is the rule of your friendship?",
-          "reason": "问友谊的规则，回答应是真正的朋友要互相理解，不是喜欢古琴的原因",
-          "hint": "①rule 是规则还是原因？②互相理解是规则吗？③再看选项里哪句在说规则。",
+          "label": "Unit3小试卷 页二四-2",
+          "question": "四、补全对话：Li Yue: What's Zhong Ziqi like? Boya: 2.___",
+          "reason": "问答不匹配：问的是怎样的人",
+          "hint": "①问句问的是钟子期是个怎样的人，回答应该描述什么？②F选项说的是喜欢什么，回答的是“怎样”吗？③再看看哪个选项在描述性格或特点？",
           "img": "",
           "q_img": "",
-          "orig_text": "补全对话：What is the rule of your friendship?"
+          "orig_text": "四、补全对话：Li Yue: What's Zhong Ziqi like? Boya: 2.___"
         },
         {
-          "label": "Unit3校本练习 五-1",
-          "question": "书面表达：以 My best friend 为题，介绍好朋友，不少于5句。",
-          "reason": "标题用了复数 friends；like 后动词形式、we 首字母大小写、hobbies 主谓、最后一句意思不完整，均需重写",
-          "hint": "①先按提示的5个问题各写一句；②检查每句主语和动词是否搭配；③最后一句想表达什么，用完整的一句写出来。",
+          "label": "Unit3小试卷 页二四-3",
+          "question": "四、补全对话：Li Yue: Why are you friends? Boya: 3.___",
+          "reason": "问答不匹配：问的是为什么成为朋友",
+          "hint": "①问句问的是为什么成为朋友，回答里应该有什么词？②A选项在说什么，和“为什么”对得上吗？③找找哪个选项里有表示原因的词？",
           "img": "",
           "q_img": "",
-          "orig_text": "书面表达：以 My best friend 为题，介绍好朋友，不少于5句。"
+          "orig_text": "四、补全对话：Li Yue: Why are you friends? Boya: 3.___"
+        },
+        {
+          "label": "Unit3小试卷 页二四-5",
+          "question": "四、补全对话：Li Yue: What is the rule of your friendship? Boya: 5.___",
+          "reason": "问答不匹配：问的是友谊的规则",
+          "hint": "①问句问的是友谊的规则，回答应该讲什么道理？②E选项在说因为什么成为朋友，和“规则”对得上吗？③哪个选项在讲真正朋友应该怎样相处？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "四、补全对话：Li Yue: What is the rule of your friendship? Boya: 5.___"
+        },
+        {
+          "label": "Unit3小试卷 页二五",
+          "question": "五、书面表达：以“My best friend”为题介绍你的好朋友，要求语句通顺、内容完整，不少于5句，注意规范书写。",
+          "reason": "多处语法与句子完整问题",
+          "hint": "①He后面动词的形式要不要变化？②每句话开头字母要不要大写？③“我们的爱好”这个主语应该怎么写？④最后一句想表达的意思完整吗，动词部分齐全吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "五、书面表达：以“My best friend”为题介绍你的好朋友，要求语句通顺、内容完整，不少于5句，注意规范书写。"
         }
       ],
-      "pending_corrections": 19
+      "pending_corrections": 21
     },
     {
       "task_id": "REG-20261029-1EC037",
