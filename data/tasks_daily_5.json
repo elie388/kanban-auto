@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T20:03:47+08:00",
+  "updated_at": "2026-10-29T20:05:25+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -186,11 +186,79 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "REGB-20261029-FEC1D9",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本33页",
+      "detail": "登记本识别（证据：数：1.校本33页）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "business_date": "2026-10-29",
+      "raw_text": "数学：校本33页",
+      "evidence": {
+        "extracted_by": "register_book_channel",
+        "channel": "manual",
+        "source_mail_id": "b179327496638707a441054ec76284",
+        "attachment_hash": "sha256:69fb4713eb65ba6183614e47eac5bff830f8f8987579e358dcd45458f1b8f6a9",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:05:25+08:00",
+      "updated_at": "2026-10-29T20:05:25+08:00"
+    },
+    {
+      "task_id": "REGB-20261029-4652BE",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄二次P63词语和13课（稿纸）",
+      "detail": "登记本识别（证据：语：2.抄[涂黑]二次P63，词语和13课（稿纸））",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "business_date": "2026-10-29",
+      "raw_text": "语文：抄二次P63词语和13课（稿纸）",
+      "evidence": {
+        "extracted_by": "register_book_channel",
+        "channel": "manual",
+        "source_mail_id": "b179327496638707a441054ec76284",
+        "attachment_hash": "sha256:69fb4713eb65ba6183614e47eac5bff830f8f8987579e358dcd45458f1b8f6a9",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:05:25+08:00",
+      "updated_at": "2026-10-29T20:05:25+08:00"
+    },
+    {
+      "task_id": "REGB-20261029-240863",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看《二十年后[涂黑]家乡》",
+      "detail": "登记本识别（证据：语：3.看作《二十年后，的[涂黑]家乡》）",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "business_date": "2026-10-29",
+      "raw_text": "语文：看《二十年后[涂黑]家乡》",
+      "evidence": {
+        "extracted_by": "register_book_channel",
+        "channel": "manual",
+        "source_mail_id": "b179327496638707a441054ec76284",
+        "attachment_hash": "sha256:69fb4713eb65ba6183614e47eac5bff830f8f8987579e358dcd45458f1b8f6a9",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-29T20:05:25+08:00",
+      "updated_at": "2026-10-29T20:05:25+08:00",
+      "task_type": "reading",
+      "type_source": "look_book"
     }
   ],
   "counts": {
-    "total": 9,
-    "pending": 8,
+    "total": 12,
+    "pending": 11,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
