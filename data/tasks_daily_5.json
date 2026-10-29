@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T20:33:59+08:00",
+  "updated_at": "2026-10-29T20:39:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -125,7 +125,7 @@
       "title": "小试卷",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
@@ -134,7 +134,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00"
+      "updated_at": "2026-10-29T20:39:01+08:00",
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261029-1EC037",
@@ -233,7 +234,7 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 7,
+    "pending": 6,
     "in_progress": 1,
     "done": 1,
     "pending_review": 0
