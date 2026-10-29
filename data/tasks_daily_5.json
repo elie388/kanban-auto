@@ -3,7 +3,7 @@
   "date": "2026-10-29",
   "grade": "五年级",
   "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T21:41:01+08:00",
+  "updated_at": "2026-10-29T21:47:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -372,7 +372,7 @@
       "title": "抄[涂黑]二次P63",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
@@ -381,7 +381,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00"
+      "updated_at": "2026-10-29T21:47:47+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-10-29T21:47:47+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "3108f4a940c29b71.jpg"
+      ]
     },
     {
       "task_id": "REG-20261029-EB6E71",
@@ -390,7 +397,7 @@
       "title": "词语和13课（稿纸）",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
@@ -399,7 +406,20 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00"
+      "updated_at": "2026-10-29T21:47:44+08:00",
+      "corrections": [
+        {
+          "label": "13课词语 侃侃而谈",
+          "question": "13课词语 侃侃而谈 抄两次P63、13课词语（稿纸），下半13课词语",
+          "reason": "而误作其，两次均错。",
+          "hint": "先看第三个字：而和其长得像吗？再想想这个成语是侃侃而谈，第三个字是而，不是其。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄两次：侃侃而谈"
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261029-C792B3",
@@ -462,9 +482,9 @@
   ],
   "counts": {
     "total": 10,
-    "pending": 5,
-    "in_progress": 3,
-    "done": 2,
+    "pending": 3,
+    "in_progress": 4,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-10-29T22:00:00+08:00"
