@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "grade": "五年级",
-  "generated_at": "2026-10-29T00:17:17+08:00",
-  "updated_at": "2026-10-29T23:31:19+08:00",
+  "generated_at": "2026-10-30T00:17:07+08:00",
+  "updated_at": "2026-10-30T00:17:07+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-29T23:10:39+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -21,82 +21,13 @@
       "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "META-REGISTER-2026-10-29",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-29T16:56:12+08:00",
-      "updated_at": "2026-10-29T20:01:45+08:00",
-      "completed_at": "2026-10-29T20:01:45+08:00",
-      "status_source": "realtime",
-      "orig_photos": [
-        "69fb4713eb65ba61.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261029-BC237E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T20:56:10+08:00",
-      "task_type": "reading",
-      "status_source": "realtime",
-      "completed_at": "2026-10-29T20:56:10+08:00",
-      "orig_photos": [
-        "7a3fda333ba76ea5.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261029-53992A",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄[涂黑]二次P63",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小校本园地四（订正）；②抄[涂黑]二次P63；词语和13课（稿纸）；③看《二十年后的家乡》 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-29T21:47:47+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-10-29T21:47:47+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "3108f4a940c29b71.jpg"
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 10,
-    "pending": 3,
-    "in_progress": 4,
-    "done": 3,
+    "total": 0,
+    "pending": 0,
+    "in_progress": 0,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-29T22:00:00+08:00"
+  "deadline_today": null
 }
