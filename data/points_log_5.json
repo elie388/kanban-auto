@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-30T23:44:51+08:00",
+  "generated_at": "2026-10-31T06:00:11+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-30",
+      "time": "23:59",
+      "time_source": "entry",
+      "reason": "晾衣服连做第2天",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-30",
+      "time": "23:52",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-30",
       "time": "23:43",
@@ -22,6 +40,15 @@
       "time_source": "entry",
       "reason": "试卷订正改对4题",
       "pts": 8,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-30",
+      "time": "22:02",
+      "time_source": "entry",
+      "reason": "洗衣服",
+      "pts": 3,
       "sign": "plus",
       "filtered": false
     },
@@ -831,208 +858,6 @@
       "reason": "冲正旧结算 id=265：53天天练单元阅读完成分旧结算作废，以正式结论为准",
       "pts": -3,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "00:15",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-24"
-    },
-    {
-      "date": "10-23",
-      "time": "00:15",
-      "time_source": "entry",
-      "reason": "连续第五晚超23点睡觉额外扣分",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-24"
-    },
-    {
-      "date": "10-23",
-      "time": "23:48",
-      "time_source": "entry",
-      "reason": "整理桌面",
-      "pts": 1,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "23:45",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "23:20",
-      "time_source": "entry",
-      "reason": "五年级『试卷打印』英语试卷完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "23:20",
-      "time_source": "entry",
-      "reason": "五年级『试卷打印』英语试卷书写+2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "19:58",
-      "time_source": "entry",
-      "reason": "语文·生字13课正确率档96.2%",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "19:47",
-      "time_source": "entry",
-      "reason": "数学思考练习按时提交完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "19:38",
-      "time_source": "entry",
-      "reason": "洗衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "19:23",
-      "time_source": "entry",
-      "reason": "英语口语阅读发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练P28完成分",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练P28正确率86.4%",
-      "pts": 1,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练P38完成分",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练P38正确率58.3%",
-      "pts": -2,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练完成分",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练正确率 82.4%",
-      "pts": 1,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练完成分",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:48",
-      "time_source": "entry",
-      "reason": "53天天练正确率 65.2%",
-      "pts": -2,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:47",
-      "time_source": "entry",
-      "reason": "53天天练P7完成分",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:47",
-      "time_source": "entry",
-      "reason": "53天天练P7正确率100%",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:47",
-      "time_source": "entry",
-      "reason": "53天天练完成分",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-23",
-      "time": "13:47",
-      "time_source": "entry",
-      "reason": "53天天练正确率 92.3%",
-      "pts": 2,
-      "sign": "plus",
       "filtered": false
     }
   ],
