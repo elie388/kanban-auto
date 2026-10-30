@@ -1,47 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "grade": "六年级",
-  "generated_at": "2026-10-30T00:17:08+08:00",
-  "updated_at": "2026-10-31T00:09:02+08:00",
+  "generated_at": "2026-10-31T00:09:14+08:00",
+  "updated_at": "2026-10-31T00:09:14+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-30T23:10:40+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-10-30T19:11:04+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-10-30T18:55:36+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261030-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-30T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-30T00:17:22+08:00",
-      "updated_at": "2026-10-31T00:09:02+08:00",
-      "completed_at": "2026-10-30T23:56:20+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1793375505891616ec61666974c7e（approved）；回写 chore_task_writeback。"
-    },
     {
       "task_id": "READ-20261030-G6",
       "source": "reading_daily",
@@ -58,7 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-30T00:17:32+08:00",
-      "updated_at": "2026-10-30T00:17:32+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-30-CHN",
@@ -71,7 +54,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-30T16:55:46+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-30-MATH",
@@ -84,7 +70,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-30T16:55:46+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-30-ENG",
@@ -97,26 +86,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-30T16:55:46+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-30",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-30T16:55:54+08:00",
-      "updated_at": "2026-10-30T21:09:04+08:00",
-      "completed_at": "2026-10-30T21:09:04+08:00",
-      "status_source": "realtime",
-      "orig_photos": [
-        "0517ff7417d22d93.jpg"
-      ]
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "PRACT-20261030-259397",
@@ -132,14 +105,17 @@
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-30.docx",
       "file_hash": "df0b32e65d68687ff06c8276582c8215b17a885462cbca22a6431b3b23e966f5",
       "created_at": "2026-10-30T19:03:15+08:00",
-      "updated_at": "2026-10-30T19:03:15+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-30.pdf",
           "label": "练习",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "EXAM-20261030-DF1F0A",
@@ -183,7 +159,10 @@
       "pending_corrections": 3,
       "created_at": "2026-10-30T19:17:44+08:00",
       "review_status": "approved",
-      "updated_at": "2026-10-30T19:43:16+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-4E5D9D",
@@ -201,7 +180,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:37:51+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 2,
       "corrections": [
         {
@@ -223,34 +202,10 @@
           "orig_text": "七、根据首字母或中文提示，写出所缺单词。2.He ___ gold very much.（首字母l）"
         }
       ],
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261030-218789",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄U1的单词和中文各4次，读10次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成试卷笔试部分，写语法；②抄U1的单词和中文各4次，读10次；③读小管家U2的内容 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:26:18+08:00",
-      "task_type": "reading",
       "status_source": "closeout_writeback",
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-10-30T21:26:18+08:00",
-      "orig_photos": [
-        "75ed2ef0a08e85ca.jpg",
-        "f86d4b923fed4708.jpg"
-      ]
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-F9C24F",
@@ -268,9 +223,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-C57C86",
@@ -288,7 +246,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:41:04+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
       "pending_corrections": 2,
@@ -320,7 +278,10 @@
         "ea8f6efe40d2b0bd.jpg",
         "417fafb871d3b9d0.jpg",
         "54e16716d4e0b5f2.jpg"
-      ]
+      ],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-1B2184",
@@ -338,9 +299,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-B6A1FF",
@@ -358,37 +322,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:09:04+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261030-58BC55",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习14课和读背P66日积月累",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T23:01:43+08:00",
-      "task_type": "reading",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "grading_closeout",
-      "completed_at": "2026-10-30T23:01:43+08:00",
-      "orig_photos": [
-        "a14f18f0e8d4c8a3.jpg",
-        "59f0e28a345c5cee.jpg",
-        "9a48a4d5de41ea08.jpg"
-      ]
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-0445BB",
@@ -406,33 +345,24 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T23:41:03+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "task_type": "reading",
       "type_source": "look_book",
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "parent_decision_20261030_补录音",
-      "supplement_required": "audio_3min"
-    },
-    {
-      "task_id": "EXAM-20261030-6B7B1B",
-      "source": "exam",
-      "title": "学校考试卷",
-      "detail": "家务面板考试卷入口提交",
-      "subject": "",
-      "status": "grading",
-      "status_source": "exam_route",
-      "corrections": [],
-      "pending_corrections": 0,
-      "created_at": "2026-10-30T23:52:13+08:00"
+      "supplement_required": "audio_3min",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 17,
+    "total": 12,
     "pending": 8,
     "in_progress": 3,
-    "done": 4,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-30T22:00:00+08:00"
+  "deadline_today": null
 }

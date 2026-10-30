@@ -1,47 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-10-30",
+  "date": "2026-10-31",
   "grade": "五年级",
-  "generated_at": "2026-10-30T00:17:07+08:00",
-  "updated_at": "2026-10-31T00:09:02+08:00",
+  "generated_at": "2026-10-31T00:09:14+08:00",
+  "updated_at": "2026-10-31T00:09:14+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-30T23:10:40+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-10-30T19:11:04+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-10-30T18:55:36+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261030-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-30T17:30:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-30T00:17:22+08:00",
-      "updated_at": "2026-10-31T00:09:02+08:00",
-      "completed_at": "2026-10-30T22:07:23+08:00",
-      "evidence": "家务判定通过——洗衣服；证据：看板家务上传批次 b1793368925418acf1e7875a4416d7（approved）；回写 chore_task_writeback。"
-    },
     {
       "task_id": "READ-20261030-G5",
       "source": "reading_daily",
@@ -58,7 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-10-30T00:17:32+08:00",
-      "updated_at": "2026-10-30T00:17:32+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-30-CHN",
@@ -71,7 +54,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-30T16:55:46+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-30-MATH",
@@ -84,7 +70,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-30T16:55:46+08:00"
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "D53-2026-10-30-ENG",
@@ -97,26 +86,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-30T16:55:46+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-10-30",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-10-30T16:55:53+08:00",
-      "updated_at": "2026-10-30T20:37:12+08:00",
-      "completed_at": "2026-10-30T20:37:12+08:00",
-      "status_source": "realtime",
-      "orig_photos": [
-        "18bd31d3e2cf315a.jpg"
-      ]
+      "updated_at": "2026-10-31T00:09:14+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "PRACT-20261030-79293B",
@@ -138,14 +111,17 @@
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-30.docx",
       "file_hash": "65a9e4cd9d8371de782398c87f51671b5ad40bf38c46686ebef68b833e9e168b",
       "created_at": "2026-10-30T19:03:14+08:00",
-      "updated_at": "2026-10-30T19:03:14+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-10-30.pdf",
           "label": "练习",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-9BE154",
@@ -163,7 +139,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 9,
       "corrections": [
         {
@@ -253,7 +229,10 @@
           "orig_text": "3.根据24×15=360填数。（2.4）×（15）=3.6",
           "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
         }
-      ]
+      ],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-7ADB44",
@@ -271,9 +250,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-B54034",
@@ -291,10 +273,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "task_type": "reading",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261030-8EC0A8",
@@ -312,7 +297,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-30T23:07:39+08:00",
+      "updated_at": "2026-10-31T00:09:14+08:00",
       "pending_corrections": 2,
       "corrections": [
         {
@@ -338,15 +323,18 @@
           "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
         }
       ],
-      "status_source": "realtime"
+      "status_source": "realtime",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 11,
+    "total": 9,
     "pending": 7,
     "in_progress": 2,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-10-30T22:00:00+08:00"
+  "deadline_today": null
 }
