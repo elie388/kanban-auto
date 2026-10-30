@@ -1,8 +1,7 @@
 {
- "updated_at": "2026-10-30T06:00:17+08:00",
+ "updated_at": "2026-10-31T06:05:16+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
-  "2026-10-01",
   "2026-10-02",
   "2026-10-03",
   "2026-10-04",
@@ -31,12 +30,12 @@
   "2026-10-27",
   "2026-10-28",
   "2026-10-29",
-  "2026-10-30"
+  "2026-10-30",
+  "2026-10-31"
  ],
  "grades": {
   "五年级": {
    "overall": [
-    null,
     null,
     null,
     null,
@@ -65,6 +64,7 @@
     66.7,
     14.3,
     58.9,
+    null,
     null
    ],
    "empty": false,
@@ -72,7 +72,6 @@
    "subjects": {
     "语文": {
      "days": [
-      null,
       null,
       null,
       null,
@@ -101,6 +100,7 @@
       null,
       null,
       100.0,
+      null,
       null
      ],
      "weak": [
@@ -138,7 +138,6 @@
       null,
       null,
       null,
-      null,
       68.8,
       93.3,
       78.1,
@@ -163,6 +162,7 @@
       null,
       null,
       55.6,
+      null,
       null
      ],
      "weak": [
@@ -200,7 +200,6 @@
       null,
       null,
       null,
-      null,
       79.5,
       93.8,
       63.6,
@@ -225,6 +224,7 @@
       66.7,
       14.3,
       58.8,
+      null,
       null
      ],
      "weak": [
@@ -264,7 +264,6 @@
     null,
     null,
     null,
-    null,
     52.4,
     100.0,
     100.0,
@@ -289,6 +288,7 @@
     null,
     null,
     90.5,
+    null,
     null
    ],
    "empty": false,
@@ -296,7 +296,6 @@
    "subjects": {
     "语文": {
      "days": [
-      null,
       null,
       null,
       null,
@@ -325,6 +324,7 @@
       null,
       null,
       66.7,
+      null,
       null
      ],
      "weak": [
@@ -362,7 +362,6 @@
       null,
       null,
       null,
-      null,
       52.4,
       100.0,
       100.0,
@@ -387,6 +386,7 @@
       null,
       null,
       100.0,
+      null,
       null
      ],
      "weak": [
@@ -425,7 +425,6 @@
       null,
       null,
       null,
-      null,
       100.0,
       100.0,
       62.3,
@@ -449,6 +448,7 @@
       null,
       null,
       100.0,
+      null,
       null
      ],
      "weak": [
