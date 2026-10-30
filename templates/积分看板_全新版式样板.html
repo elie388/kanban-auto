@@ -5451,28 +5451,33 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261030-task-full';
-  /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
-     页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
+  var KB_BUILD = '20261030-auto-reload';
+  /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
+     旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
+     新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
+     交作业面板正开着（#up-mask.open，含上传/录音）时不强制，改显示提示条，等面板关了再由下一次复查强制换版，避免打断正在交的作业。 */
+  function __kbForceReload(ver){
+    try {
+      var mask = document.getElementById('up-mask');
+      if(mask && mask.classList.contains('open')) return false;
+      if(location.search.indexOf('kbforced=' + ver) !== -1) return false;
+      location.replace(location.pathname + '?v=' + ver + '&kbforced=' + ver);
+      return true;
+    } catch(e){ return false; }
+  }
   try {
     fetch(location.pathname + '?_cb=' + Date.now(), {cache: 'no-store'})
       .then(function(r){ return r.text(); })
       .then(function(t){
         var m = t.match(/KB_BUILD = '([^']+)'/);
-        if(m && m[1] !== KB_BUILD){
-          try {
-            if(sessionStorage.getItem('kb-reload-for') !== m[1]){
-              sessionStorage.setItem('kb-reload-for', m[1]);
-              location.replace(location.pathname + '?v=' + m[1]);
-            }
-          } catch(e){}
+        if(m && m[1] !== KB_BUILD && !__kbForceReload(m[1])){
+          var bar = document.getElementById('kb-upd-bar');
+          if(bar){ bar.style.display = 'block'; bar.onclick = function(){ location.reload(); }; }
         }
       }).catch(function(){});
   } catch(e){}
-  /* 软刷新构建号复查（2026-10-23 终审 终审(d)）：页面长开时软刷新只换数据不换代码，
-     若期间有新版部署，旧页会一直跑旧代码（2026-10-22 录音区复发根因）。与页面 5 分钟
-     软刷新同周期复查构建号，不一致时顶部提示条引导整页重载；sessionStorage
-     kb-buildSeen 保证同一构建号只提示一次，节流 ≥4 分钟、每周期最多 1 次请求。 */
+  /* 软刷新构建号复查（2026-10-30 家长令改定）：与页面 5 分钟软刷新同周期复查，含回前台复查。
+     以前不一致只显示顶部提示条、等手动点；现在与打开时同口径，直接强制重载（交作业面板正开或已强制过仍读旧版时除外，改显示提示条兜底）。 */
   window.__KB_BUILD = KB_BUILD;
   var _kbLastCheck = 0;
   window.__kbBuildCheck = function(){
@@ -5488,14 +5493,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           var bar = document.getElementById('kb-upd-bar');
           if(!bar) return;
           if(m[1] !== KB_BUILD){
-            var seen = '';
-            try { seen = sessionStorage.getItem('kb-buildSeen') || ''; } catch(e){}
-            if(seen !== m[1]){
+            if(!__kbForceReload(m[1])){
               bar.style.display = 'block';
-              bar.onclick = function(){
-                try { sessionStorage.setItem('kb-buildSeen', m[1]); } catch(e){}
-                location.reload();
-              };
+              bar.onclick = function(){ location.reload(); };
             }
           } else {
             bar.style.display = 'none';
