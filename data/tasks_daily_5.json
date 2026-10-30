@@ -1,359 +1,358 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-10-31",
-  "grade": "五年级",
-  "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T00:17:29+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": null,
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-10-31",
+ "grade": "五年级",
+ "generated_at": "2026-10-31T00:09:14+08:00",
+ "updated_at": "2026-10-31T00:17:29+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": null,
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "READ-20261030-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-10-31T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-10-30T00:17:32+08:00",
-      "updated_at": "2026-10-31T00:17:29+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "D53-2026-10-30-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "D53-2026-10-30-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "D53-2026-10-30-ENG",
-      "source": "daily_53",
-      "subject": "英语",
-      "title": "53天天练·英语",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "PRACT-20261030-79293B",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-10-30.docx，按今日练习清单完成",
-      "kousuan": [
-        "3.8×4=",
-        "68+57=",
-        "1.5×6+2.4=",
-        "2.5×4.8×4=",
-        "28.9×5.2≈（估算，结果取整数）"
-      ],
-      "recite_text": "语文背诵：《泊船瓜洲》（王安石）\n原文：京口瓜洲一水间，钟山只隔数重山。春风又绿江南岸，明月何时照我还。\n朗读要求：声音洪亮，吐字清晰，注意“间”读jiān、“还”读huán，以及停顿节奏。\n英语口语：围绕“My family weekend”进行问答。提示问题：1. What do you usually do on the weekend? 2. Does your mother help you with your homework? 3. Where do you go on Sunday afternoon?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-30.docx",
-      "file_hash": "65a9e4cd9d8371de782398c87f51671b5ad40bf38c46686ebef68b833e9e168b",
-      "created_at": "2026-10-30T19:03:14+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-10-30.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261030-9BE154",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "思考题（四）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：思考题（四） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "pending_corrections": 9,
-      "corrections": [
-        {
-          "label": "第4题 3.5×4.7",
-          "question": "照2.5×2.8的面积模型，算3.5×4.7。",
-          "reason": "只抄了例题的前两块2×0.5和2×0.8，后两块空着，和只加了前两块得2.6，不是16.45。",
-          "hint": "①先把3.5和4.7各拆成整数加小数；②拆开后一共有几块？③把四块的积加起来。",
-          "img": "g5_think4_q4_guide.png",
-          "q_img": "",
-          "orig_text": "4.笑笑在计算2.5×2.8的方式如下图所示：请你试试：3.5×4.7",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        },
-        {
-          "label": "第5题",
-          "question": "整数部分是0的最大一位小数与最小的两位小数的积是多少？",
-          "reason": "最大一位小数是0.9，最小两位小数是0.01，积是0.009，写成10不对。",
-          "hint": "①最大一位小数是几？②最小的两位小数是几？③积有几位小数？",
-          "img": "g5_think4_q5_guide.png",
-          "q_img": "",
-          "orig_text": "5.整数部分是0的最大一位小数与最小的两位小数的积是（ ）。",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        },
-        {
-          "label": "第7题",
-          "question": "已知△×0.99＝□×1.01＝☆×1，△、□、☆都不为0，三个数中最大的是哪一个？",
-          "reason": "积相等时乘数越小另一个数越大，0.99最小，所以△最大，写成☆不对。",
-          "hint": "①三个算式的积相等；②乘数越小，另一个数越大还是越小？③0.99、1.01、1里哪个乘数最小？",
-          "img": "g5_think4_q7_guide.png",
-          "q_img": "",
-          "orig_text": "7.已知△×0.99＝□×1.01＝☆×1（△、□、☆都不为0），△、□、☆表示的三个数中最大的是（ ）。",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        },
-        {
-          "label": "第9题",
-          "question": "把一个数的小数点向右移动一位，得到的数和原数的和是55，原来这个数是多少？",
-          "reason": "新数是原数的10倍，和是原数的11倍，原数是5，写成49.5不对，55÷10和55-5.5都不对。",
-          "hint": "①向右移一位，新数是原数的几倍？②新数加原数是原数的几倍？③用和除以倍数。",
-          "img": "g5_think4_q9_guide.png",
-          "q_img": "",
-          "orig_text": "9.把一个数的小数点向右移动一位，得到的数和原数的和是55，原来这个数是多少？",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        },
-        {
-          "label": "第10题",
-          "question": "把一个数的小数点向右移动一位，得到的数比原数多54，原来这个数是多少？",
-          "reason": "新数是原数的10倍，差是原数的9倍，原数是6，写成59.4不对，54÷10和5.4+54都不对。",
-          "hint": "①向右移一位，新数是原数的几倍？②新数减原数是原数的几倍？③用差除以倍数。",
-          "img": "g5_think4_q10_guide.png",
-          "q_img": "",
-          "orig_text": "10.把一个数的小数点向右移动一位，得到的数比原数多54，原来这个数是多少？",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        },
-        {
-          "label": "第11题（1）客厅面积",
-          "question": "右图是乐乐家的住房平面图，客厅的面积是多少平方米？",
-          "reason": "客厅长6.8米，宽是9.6-5.2=4.4米，面积是29.92平方米，写成6.8×(4.8+1.6)=43.52不对，宽不是6.4。",
-          "hint": "①先从图上找出客厅的长和宽；②客厅的宽是总宽减去小卧室的宽；③长乘宽。",
-          "img": "g5_think4_q11_1_guide.png",
-          "q_img": "g5_think4_q11_orig.png",
-          "orig_text": "11.右图是乐乐家的住房平面图。（1）客厅的面积是多少平方米？"
-        },
-        {
-          "label": "第11题（2）大卧室比小卧室大多少",
-          "question": "大卧室的面积比小卧室的面积大多少平方米？",
-          "reason": "大卧室4.6×5.2=23.92，小卧室3.2×5.2=16.64，差是7.28，写成大23.92不对，第二步把小卧室面积抄成了23.92。",
-          "hint": "①大卧室面积是多少？②小卧室面积是多少？③相减。",
-          "img": "g5_think4_q11_2_guide.png",
-          "q_img": "g5_think4_q11_orig.png",
-          "orig_text": "11.（2）大卧室的面积比小卧室的面积大多少平方米？"
-        },
-        {
-          "label": "第12题（3）水泥",
-          "question": "如果给这个院子的地面铺水泥，每平方米地面需要40千克水泥，那么一共需要多少千克水泥？",
-          "reason": "院子面积3.4×8.6=29.24平方米，乘40是1169.6千克，写成29.4×40=1176不对，面积先约错了。",
-          "hint": "①先算院子面积，3.4乘8.6是多少？②再乘40，不要先把面积约成29.4。",
-          "img": "g5_think4_q12_3_guide.png",
-          "q_img": "g5_think4_q12_orig.png",
-          "orig_text": "12.（3）如果给这个院子的地面铺水泥，每平方米地面需要40千克水泥，那么一共需要多少千克水泥？"
-        },
-        {
-          "label": "第3题第三空",
-          "question": "根据24×15=360填数，第三空（ ）×（ ）=3.6",
-          "reason": "2.4×15=36不是3.6，应为0.24×15=3.6或2.4×1.5=3.6",
-          "hint": "①24缩小到多少是2.4？②15缩小到多少是1.5？③积3.6要同时缩小多少倍？",
-          "img": "g5_think4_q3_guide.png",
-          "q_img": "",
-          "orig_text": "3.根据24×15=360填数。（2.4）×（15）=3.6",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        }
-      ],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261030-7ADB44",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "小试卷（打印）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "grading",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-31T00:17:20+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1,
-      "status_source": "realtime"
-    },
-    {
-      "task_id": "REG-20261030-B54034",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261030-8EC0A8",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "试卷（不写作文）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：试卷（不写作文） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "活动四探究成果发现1",
-          "question": "梳理探究选文（一）（二），写下探究成果：发现1",
-          "reason": "孩子写琦君之情，作者名代替了情感，情感应为思乡之情。",
-          "hint": "①桂花和灰汤粽都让作者想起了什么地方？②作者写这两样东西，是在表达对哪里的感情？③把作者的名字换成这种感情的名字再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "3.梳理探究选文（一）（二），写下你的探究成果。发现1：我知道了无论是桂花还是灰汤粽都蕴含着（ ）之情。",
-          "img_exempt": "引导图图后补例外：卡住收口优先，图补齐后重推",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        },
-        {
-          "label": "活动五宣传卡",
-          "question": "学校要开展“大国工匠进校园”主题活动，需要为材料中的四位工匠设计宣传卡。请你选择一位完成宣传卡。",
-          "reason": "家长2026-10-30 23:42定严格口径：订正红字整包虽有徐立平事迹，但旧黑字袁隆平、杂交水稻、米饭、端稳饭碗未划掉，内容混杂未清理，未完全改对。",
-          "hint": "①把旧黑字的袁隆平、杂交水稻、米饭那部分划掉或重写；②只留徐立平：所属领域、核心事迹、赞美都要是徐立平的；③再检查一遍，卡上不要同时出现两个人。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "2.学校要开展“大国工匠进校园”主题活动，需要为材料中的四位工匠设计宣传卡。请你选择一位完成宣传卡。姓名、所属领域、核心事迹、我的赞美。",
-          "img_exempt": "引导图图后补例外：卡住收口优先，图补齐后重推",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
-        }
-      ],
-      "status_source": "realtime",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261031-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-10-31T08:00:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-10-31T00:17:15+08:00",
-      "updated_at": "2026-10-31T00:17:15+08:00"
-    }
-  ],
-  "counts": {
-    "total": 10,
-    "pending": 7,
-    "in_progress": 2,
-    "done": 0,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": null
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "READ-20261030-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-10-31T08:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-10-30T00:17:32+08:00",
+   "updated_at": "2026-10-31T00:17:29+08:00",
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "D53-2026-10-30-CHN",
+   "source": "daily_53",
+   "subject": "语文",
+   "title": "53天天练·语文",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-30T16:55:46+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "D53-2026-10-30-MATH",
+   "source": "daily_53",
+   "subject": "数学",
+   "title": "53天天练·数学",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-30T16:55:46+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "D53-2026-10-30-ENG",
+   "source": "daily_53",
+   "subject": "英语",
+   "title": "53天天练·英语",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-10-30T16:55:46+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "PRACT-20261030-79293B",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "五年级针对性练习_2026-10-30.docx，按今日练习清单完成",
+   "kousuan": [
+    "3.8×4=",
+    "68+57=",
+    "1.5×6+2.4=",
+    "2.5×4.8×4=",
+    "28.9×5.2≈（估算，结果取整数）"
+   ],
+   "recite_text": "语文背诵：《泊船瓜洲》（王安石）\n原文：京口瓜洲一水间，钟山只隔数重山。春风又绿江南岸，明月何时照我还。\n朗读要求：声音洪亮，吐字清晰，注意“间”读jiān、“还”读huán，以及停顿节奏。\n英语口语：围绕“My family weekend”进行问答。提示问题：1. What do you usually do on the weekend? 2. Does your mother help you with your homework? 3. Where do you go on Sunday afternoon?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-30.docx",
+   "file_hash": "65a9e4cd9d8371de782398c87f51671b5ad40bf38c46686ebef68b833e9e168b",
+   "created_at": "2026-10-30T19:03:14+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-10-30.pdf",
+     "label": "练习",
+     "pages": 4
+    }
+   ],
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261030-9BE154",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "思考题（四）",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：思考题（四） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-30T20:37:12+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "pending_corrections": 9,
+   "corrections": [
+    {
+     "label": "第4题 3.5×4.7",
+     "question": "照2.5×2.8的面积模型，算3.5×4.7。",
+     "reason": "只抄了例题的前两块2×0.5和2×0.8，后两块空着，和只加了前两块得2.6，不是16.45。",
+     "hint": "①先把3.5和4.7各拆成整数加小数；②拆开后一共有几块？③把四块的积加起来。",
+     "img": "g5_think4_q4_guide.png",
+     "q_img": "g5_think4_q4_orig.png",
+     "orig_text": "4.笑笑在计算2.5×2.8的方式如下图所示：请你试试：3.5×4.7"
+    },
+    {
+     "label": "第5题",
+     "question": "整数部分是0的最大一位小数与最小的两位小数的积是多少？",
+     "reason": "最大一位小数是0.9，最小两位小数是0.01，积是0.009，写成10不对。",
+     "hint": "①最大一位小数是几？②最小的两位小数是几？③积有几位小数？",
+     "img": "g5_think4_q5_guide.png",
+     "q_img": "",
+     "orig_text": "5.整数部分是0的最大一位小数与最小的两位小数的积是（ ）。",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    },
+    {
+     "label": "第7题",
+     "question": "已知△×0.99＝□×1.01＝☆×1，△、□、☆都不为0，三个数中最大的是哪一个？",
+     "reason": "积相等时乘数越小另一个数越大，0.99最小，所以△最大，写成☆不对。",
+     "hint": "①三个算式的积相等；②乘数越小，另一个数越大还是越小？③0.99、1.01、1里哪个乘数最小？",
+     "img": "g5_think4_q7_guide.png",
+     "q_img": "",
+     "orig_text": "7.已知△×0.99＝□×1.01＝☆×1（△、□、☆都不为0），△、□、☆表示的三个数中最大的是（ ）。",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    },
+    {
+     "label": "第9题",
+     "question": "把一个数的小数点向右移动一位，得到的数和原数的和是55，原来这个数是多少？",
+     "reason": "新数是原数的10倍，和是原数的11倍，原数是5，写成49.5不对，55÷10和55-5.5都不对。",
+     "hint": "①向右移一位，新数是原数的几倍？②新数加原数是原数的几倍？③用和除以倍数。",
+     "img": "g5_think4_q9_guide.png",
+     "q_img": "",
+     "orig_text": "9.把一个数的小数点向右移动一位，得到的数和原数的和是55，原来这个数是多少？",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    },
+    {
+     "label": "第10题",
+     "question": "把一个数的小数点向右移动一位，得到的数比原数多54，原来这个数是多少？",
+     "reason": "新数是原数的10倍，差是原数的9倍，原数是6，写成59.4不对，54÷10和5.4+54都不对。",
+     "hint": "①向右移一位，新数是原数的几倍？②新数减原数是原数的几倍？③用差除以倍数。",
+     "img": "g5_think4_q10_guide.png",
+     "q_img": "",
+     "orig_text": "10.把一个数的小数点向右移动一位，得到的数比原数多54，原来这个数是多少？",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    },
+    {
+     "label": "第11题（1）客厅面积",
+     "question": "右图是乐乐家的住房平面图，客厅的面积是多少平方米？",
+     "reason": "客厅长6.8米，宽是9.6-5.2=4.4米，面积是29.92平方米，写成6.8×(4.8+1.6)=43.52不对，宽不是6.4。",
+     "hint": "①先从图上找出客厅的长和宽；②客厅的宽是总宽减去小卧室的宽；③长乘宽。",
+     "img": "g5_think4_q11_1_guide.png",
+     "q_img": "g5_think4_q11_orig.png",
+     "orig_text": "11.右图是乐乐家的住房平面图。（1）客厅的面积是多少平方米？"
+    },
+    {
+     "label": "第11题（2）大卧室比小卧室大多少",
+     "question": "大卧室的面积比小卧室的面积大多少平方米？",
+     "reason": "大卧室4.6×5.2=23.92，小卧室3.2×5.2=16.64，差是7.28，写成大23.92不对，第二步把小卧室面积抄成了23.92。",
+     "hint": "①大卧室面积是多少？②小卧室面积是多少？③相减。",
+     "img": "g5_think4_q11_2_guide.png",
+     "q_img": "g5_think4_q11_orig.png",
+     "orig_text": "11.（2）大卧室的面积比小卧室的面积大多少平方米？"
+    },
+    {
+     "label": "第12题（3）水泥",
+     "question": "如果给这个院子的地面铺水泥，每平方米地面需要40千克水泥，那么一共需要多少千克水泥？",
+     "reason": "院子面积3.4×8.6=29.24平方米，乘40是1169.6千克，写成29.4×40=1176不对，面积先约错了。",
+     "hint": "①先算院子面积，3.4乘8.6是多少？②再乘40，不要先把面积约成29.4。",
+     "img": "g5_think4_q12_3_guide.png",
+     "q_img": "g5_think4_q12_orig.png",
+     "orig_text": "12.（3）如果给这个院子的地面铺水泥，每平方米地面需要40千克水泥，那么一共需要多少千克水泥？"
+    },
+    {
+     "label": "第3题第三空",
+     "question": "根据24×15=360填数，第三空（ ）×（ ）=3.6",
+     "reason": "2.4×15=36不是3.6，应为0.24×15=3.6或2.4×1.5=3.6",
+     "hint": "①24缩小到多少是2.4？②15缩小到多少是1.5？③积3.6要同时缩小多少倍？",
+     "img": "g5_think4_q3_guide.png",
+     "q_img": "",
+     "orig_text": "3.根据24×15=360填数。（2.4）×（15）=3.6",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    }
+   ],
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261030-7ADB44",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "小试卷（打印）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "grading",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-30T20:37:12+08:00",
+   "updated_at": "2026-10-31T00:17:20+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1,
+   "status_source": "realtime"
+  },
+  {
+   "task_id": "REG-20261030-B54034",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-30T20:37:12+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261030-8EC0A8",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "试卷（不写作文）",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：试卷（不写作文） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-10-30T20:37:12+08:00",
+   "updated_at": "2026-10-31T00:09:14+08:00",
+   "pending_corrections": 2,
+   "corrections": [
+    {
+     "label": "活动四探究成果发现1",
+     "question": "梳理探究选文（一）（二），写下探究成果：发现1",
+     "reason": "孩子写琦君之情，作者名代替了情感，情感应为思乡之情。",
+     "hint": "①桂花和灰汤粽都让作者想起了什么地方？②作者写这两样东西，是在表达对哪里的感情？③把作者的名字换成这种感情的名字再写一遍。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "3.梳理探究选文（一）（二），写下你的探究成果。发现1：我知道了无论是桂花还是灰汤粽都蕴含着（ ）之情。",
+     "img_exempt": "引导图图后补例外：卡住收口优先，图补齐后重推",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    },
+    {
+     "label": "活动五宣传卡",
+     "question": "学校要开展“大国工匠进校园”主题活动，需要为材料中的四位工匠设计宣传卡。请你选择一位完成宣传卡。",
+     "reason": "家长2026-10-30 23:42定严格口径：订正红字整包虽有徐立平事迹，但旧黑字袁隆平、杂交水稻、米饭、端稳饭碗未划掉，内容混杂未清理，未完全改对。",
+     "hint": "①把旧黑字的袁隆平、杂交水稻、米饭那部分划掉或重写；②只留徐立平：所属领域、核心事迹、赞美都要是徐立平的；③再检查一遍，卡上不要同时出现两个人。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "2.学校要开展“大国工匠进校园”主题活动，需要为材料中的四位工匠设计宣传卡。请你选择一位完成宣传卡。姓名、所属领域、核心事迹、我的赞美。",
+     "img_exempt": "引导图图后补例外：卡住收口优先，图补齐后重推",
+     "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+    }
+   ],
+   "status_source": "realtime",
+   "carry_first_date": "2026-10-30",
+   "carried_from": "2026-10-30",
+   "carry_count": 1
+  },
+  {
+   "task_id": "CHORE-20261031-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-10-31T08:00:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-10-31T00:17:15+08:00",
+   "updated_at": "2026-10-31T00:17:15+08:00"
+  }
+ ],
+ "counts": {
+  "total": 10,
+  "pending": 7,
+  "in_progress": 2,
+  "done": 0,
+  "pending_review": 0
+ },
+ "deadline_today": null
 }
