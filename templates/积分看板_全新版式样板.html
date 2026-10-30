@@ -386,6 +386,8 @@
   .task.open-task .corr-item{margin-left:-14px; margin-right:-14px; padding-left:16px; padding-right:16px; position:relative; border-bottom:none;}
   .task.open-task .corr-item::after{content:""; position:absolute; left:50%; bottom:0; width:100vw; transform:translateX(-50%); border-bottom:1px dashed #F6E3D3;}
   .task.open-task .corr-item:last-child::after{display:none;}
+  /* 展开整卡贴屏幕两边（2026-10-30 家长再指：截图里虚线已到屏边、卡框仍缩在里面）：展开的任务卡本身满屏宽、卡框顶到屏幕左右边，卡内文字位置不动（左右内边距各补回卡到屏边的距离），圆角去掉防边框在屏边打弯 */
+  .task.open-task{width:100vw; margin-left:calc(50% - 50vw); padding-left:calc(14px + 50vw - 50%); padding-right:calc(14px + 50vw - 50%); border-radius:0;}
   /* 任务级待确认说明（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-2/B3/B4）：静态块、无过渡；收起态隐藏全文，仅展开显示。 */
   .task .task-note{display:none; margin-top:8px; padding:8px 10px; background:#FFF7E6; border-left:3px solid #D97706; color:#7A4A00; font-size:13px; line-height:1.65;}
   .task.open-task .task-note{display:block;}
@@ -1121,6 +1123,7 @@
     .bal-card{padding:20px;}
     .bal-score{font-size:clamp(38px,9vw,44px);}
     .task{padding:14px 16px;}
+    .task.open-task{padding-left:calc(16px + 50vw - 50%); padding-right:calc(16px + 50vw - 50%);}
   }
   /* 2026-10-19：D2 768px；iPad mini/老iPad竖屏 */
   @media(min-width:768px){
@@ -5448,7 +5451,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261030-corr-screen';
+  var KB_BUILD = '20261030-task-full';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
