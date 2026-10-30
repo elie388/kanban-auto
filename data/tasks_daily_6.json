@@ -3,12 +3,12 @@
   "date": "2026-10-30",
   "grade": "六年级",
   "generated_at": "2026-10-30T00:17:08+08:00",
-  "updated_at": "2026-10-30T21:06:32+08:00",
+  "updated_at": "2026-10-30T21:09:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-30T20:37:12+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-30T21:09:04+08:00",
+      "new_lines": 8
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -105,12 +105,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-30T16:55:54+08:00",
-      "updated_at": "2026-10-30T21:06:32+08:00",
-      "completed_at": null,
+      "updated_at": "2026-10-30T21:09:04+08:00",
+      "completed_at": "2026-10-30T21:09:04+08:00",
       "status_source": "realtime"
     },
     {
@@ -236,13 +236,163 @@
       "created_at": "2026-10-30T19:17:44+08:00",
       "review_status": "approved",
       "updated_at": "2026-10-30T19:43:16+08:00"
+    },
+    {
+      "task_id": "REG-20261030-4E5D9D",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成试卷笔试部分，写语法",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成试卷笔试部分，写语法；②抄U1的单词和中文各4次，读10次；③读小管家U2的内容 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00"
+    },
+    {
+      "task_id": "REG-20261030-218789",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄U1的单词和中文各4次，读10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成试卷笔试部分，写语法；②抄U1的单词和中文各4次，读10次；③读小管家U2的内容 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261030-F9C24F",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "读小管家U2的内容",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成试卷笔试部分，写语法；②抄U1的单词和中文各4次，读10次；③读小管家U2的内容 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00"
+    },
+    {
+      "task_id": "REG-20261030-C57C86",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "背U2单词、对话",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：背U2单词、对话 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00",
+      "task_type": "reading",
+      "type_source": "regex_bao"
+    },
+    {
+      "task_id": "REG-20261030-1B2184",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读知识要点，做小测卷",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00"
+    },
+    {
+      "task_id": "REG-20261030-B6A1FF",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "作文-①续写小说",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00"
+    },
+    {
+      "task_id": "REG-20261030-58BC55",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习14课和读背P66日积月累",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261030-0445BB",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "每日看书1小时，并做记录",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-10-30T21:09:04+08:00",
+      "task_type": "reading",
+      "type_source": "look_book"
     }
   ],
   "counts": {
-    "total": 8,
-    "pending": 6,
+    "total": 16,
+    "pending": 14,
     "in_progress": 1,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-30T22:00:00+08:00"
