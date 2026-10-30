@@ -380,6 +380,9 @@
   .task.open-task .corr-caret{transform:rotate(90deg);}
   .task .corr-panel{display:none; width:100%; margin-top:8px; border-top:1px dashed #F0C4A8; padding-top:4px;}
   .task.open-task .corr-panel{display:block;}
+  /* 展开贴边（2026-10-30 家长点选）：展开时待改正区虚线顶到卡边，文字位置不动 */
+  .task.open-task .corr-panel{width:calc(100% + 28px); margin-left:-14px; margin-right:-14px; padding-left:14px; padding-right:14px;}
+  .task.open-task .corr-item{margin-left:-14px; margin-right:-14px; padding-left:16px; padding-right:16px;}
   /* 任务级待确认说明（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-2/B3/B4）：静态块、无过渡；收起态隐藏全文，仅展开显示。 */
   .task .task-note{display:none; margin-top:8px; padding:8px 10px; background:#FFF7E6; border-left:3px solid #D97706; color:#7A4A00; font-size:13px; line-height:1.65;}
   .task.open-task .task-note{display:block;}
@@ -5442,7 +5445,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261028-emptycorr-fix';
+  var KB_BUILD = '20261030-corr-flush';
   /* 版本自检（2026-10-22晚三方协查后加）：App 内置浏览器会强缓存旧页，导致修了也测不到。
      页面加载后拉一次最新 HTML 比对构建号，不一致就带版本参数自动重载一次（sessionStorage 防循环）。 */
   try {
