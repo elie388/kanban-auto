@@ -3,7 +3,7 @@
   "date": "2026-10-30",
   "grade": "六年级",
   "generated_at": "2026-10-30T00:17:08+08:00",
-  "updated_at": "2026-10-30T21:37:51+08:00",
+  "updated_at": "2026-10-30T21:49:17+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -277,7 +277,7 @@
       "title": "背U2单词、对话",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语早读：背U2单词、对话 → 待完成",
@@ -286,12 +286,53 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:36:33+08:00",
+      "updated_at": "2026-10-30T21:41:04+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "realtime"
+      "pending_corrections": 4,
+      "corrections": [
+        {
+          "label": "对话eat",
+          "question": "对话eat 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "reason": "实词读错，改变句意，吃读成坐",
+          "hint": "①这句是说直接带皮吃吗？②eat是什么意思？③再读一遍eat it with the peel。",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "Grey信now",
+          "question": "Grey信now 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "reason": "实词读错，改变句意，现在更短读成不更短",
+          "hint": "①灰色蜡笔为什么变短了？②now是什么意思？③再读一遍I'm now shorter。",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "对话taste",
+          "question": "对话taste 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "reason": "主谓不一致，taste多读了s",
+          "hint": "①主语是Apples，复数吗？②复数主语动词加s吗？③再读一遍taste better。",
+          "img": "",
+          "q_img": ""
+        },
+        {
+          "label": "Duncan结尾all",
+          "question": "Duncan结尾all 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "reason": "转写为will，改变句意，都喜欢读成将会喜欢，此处转写存疑，复听确认后若确实读错再重读",
+          "hint": "①这幅画大家都喜欢吗？②all是什么意思？③再读一遍they all like。",
+          "img": "",
+          "q_img": ""
+        }
+      ],
+      "status_source": "realtime",
+      "completed_at": "2026-10-30T21:41:04+08:00",
+      "orig_photos": [
+        "b6250f7d10f43b1c.jpg",
+        "d229a874142a14ac.jpg",
+        "ea8f6efe40d2b0bd.jpg",
+        "417fafb871d3b9d0.jpg",
+        "54e16716d4e0b5f2.jpg"
+      ]
     },
     {
       "task_id": "REG-20261030-1B2184",
@@ -381,7 +422,7 @@
     "total": 16,
     "pending": 11,
     "in_progress": 2,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-10-30T22:00:00+08:00"
