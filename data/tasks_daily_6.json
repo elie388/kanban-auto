@@ -3,7 +3,7 @@
   "date": "2026-10-30",
   "grade": "六年级",
   "generated_at": "2026-10-30T00:17:08+08:00",
-  "updated_at": "2026-10-30T23:56:20+08:00",
+  "updated_at": "2026-10-30T23:56:51+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -291,47 +291,25 @@
       "updated_at": "2026-10-30T21:41:04+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
-      "pending_corrections": 4,
+      "pending_corrections": 2,
       "corrections": [
         {
-          "label": "对话eat",
-          "question": "Why not just eat it with the peel?",
-          "reason": "实词读错，改变句意，吃读成坐",
-          "hint": "①这句是说直接带皮吃吗？②eat是什么意思？③再读一遍eat it with the peel。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Why not just eat it with the peel?",
-          "q_img_exempt": "读背类：错处为发音，不附原题图。"
-        },
-        {
           "label": "Grey信now",
-          "question": "I'm now shorter than my friends!",
+          "question": "I am now shorter than my friends!",
           "reason": "实词读错，改变句意，现在更短读成不更短",
           "hint": "①灰色蜡笔为什么变短了？②now是什么意思？③再读一遍I'm now shorter。",
           "img": "",
           "q_img": "",
-          "orig_text": "I'm now shorter than my friends!",
-          "q_img_exempt": "读背类：错处为发音，不附原题图。"
-        },
-        {
-          "label": "对话taste",
-          "question": "Apples with no peel taste better.",
-          "reason": "主谓不一致，taste多读了s",
-          "hint": "①主语是Apples，复数吗？②复数主语动词加s吗？③再读一遍taste better。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Apples with no peel taste better.",
-          "q_img_exempt": "读背类：错处为发音，不附原题图。"
+          "orig_text": "I'm now shorter than my friends!"
         },
         {
           "label": "Duncan结尾all",
           "question": "Duncan listens to them, and draws a picture they all like.",
-          "reason": "转写为will，改变句意，都喜欢读成将会喜欢，此处转写存疑，复听确认后若确实读错再重读",
+          "reason": "实词读错，改变句意，都喜欢读成将会喜欢",
           "hint": "①这幅画大家都喜欢吗？②all是什么意思？③再读一遍they all like。",
           "img": "",
           "q_img": "",
-          "orig_text": "Duncan listens to them, and draws a picture they all like.",
-          "q_img_exempt": "读背类：错处为发音，不附原题图。"
+          "orig_text": "Duncan listens to them, and draws a picture they all like."
         }
       ],
       "status_source": "grading_closeout_corrected",
@@ -405,7 +383,12 @@
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "grading_closeout",
-      "completed_at": "2026-10-30T23:01:43+08:00"
+      "completed_at": "2026-10-30T23:01:43+08:00",
+      "orig_photos": [
+        "a14f18f0e8d4c8a3.jpg",
+        "59f0e28a345c5cee.jpg",
+        "9a48a4d5de41ea08.jpg"
+      ]
     },
     {
       "task_id": "REG-20261030-0445BB",
