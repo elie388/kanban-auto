@@ -277,7 +277,7 @@
       "title": "背U2单词、对话",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "done",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语早读：背U2单词、对话 → 待完成",
@@ -293,39 +293,47 @@
       "corrections": [
         {
           "label": "对话eat",
-          "question": "对话eat 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "question": "Why not just eat it with the peel?",
           "reason": "实词读错，改变句意，吃读成坐",
           "hint": "①这句是说直接带皮吃吗？②eat是什么意思？③再读一遍eat it with the peel。",
           "img": "",
-          "q_img": ""
+          "q_img": "",
+          "orig_text": "Why not just eat it with the peel?",
+          "q_img_exempt": "读背类：错处为发音，不附原题图。"
         },
         {
           "label": "Grey信now",
-          "question": "Grey信now 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "question": "I'm now shorter than my friends!",
           "reason": "实词读错，改变句意，现在更短读成不更短",
           "hint": "①灰色蜡笔为什么变短了？②now是什么意思？③再读一遍I'm now shorter。",
           "img": "",
-          "q_img": ""
+          "q_img": "",
+          "orig_text": "I'm now shorter than my friends!",
+          "q_img_exempt": "读背类：错处为发音，不附原题图。"
         },
         {
           "label": "对话taste",
-          "question": "对话taste 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "question": "Apples with no peel taste better.",
           "reason": "主谓不一致，taste多读了s",
           "hint": "①主语是Apples，复数吗？②复数主语动词加s吗？③再读一遍taste better。",
           "img": "",
-          "q_img": ""
+          "q_img": "",
+          "orig_text": "Apples with no peel taste better.",
+          "q_img_exempt": "读背类：错处为发音，不附原题图。"
         },
         {
           "label": "Duncan结尾all",
-          "question": "Duncan结尾all 六年级英语早读背U2单词、对话，照片5张加录音141.95秒，按家长选定按今晚读背评分",
+          "question": "Duncan listens to them, and draws a picture they all like.",
           "reason": "转写为will，改变句意，都喜欢读成将会喜欢，此处转写存疑，复听确认后若确实读错再重读",
           "hint": "①这幅画大家都喜欢吗？②all是什么意思？③再读一遍they all like。",
           "img": "",
-          "q_img": ""
+          "q_img": "",
+          "orig_text": "Duncan listens to them, and draws a picture they all like.",
+          "q_img_exempt": "读背类：错处为发音，不附原题图。"
         }
       ],
-      "status_source": "realtime",
-      "completed_at": "2026-10-30T21:41:04+08:00",
+      "status_source": "grading_closeout_corrected",
+      "completed_at": null,
       "orig_photos": [
         "b6250f7d10f43b1c.jpg",
         "d229a874142a14ac.jpg",
