@@ -138,9 +138,9 @@
     {
       "task_id": "EXAM-20261030-DF1F0A",
       "source": "exam",
-      "title": "学校考试卷",
-      "detail": "家务面板考试卷入口提交",
-      "subject": "",
+      "title": "学校考试卷·六年级数学上册第二单元＋第三单元综合练习",
+      "detail": "六年级数学上册第二单元综合练习（全卷100分，80分钟完成）＋第三单元综合练习（全卷100分，80分钟完成）· 家务面板考试卷入口提交",
+      "subject": "数学",
       "status": "in_progress",
       "status_source": "closeout_writeback",
       "corrections": [
