@@ -412,7 +412,7 @@
       "title": "每日看书1小时，并做记录",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "done",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
@@ -426,8 +426,8 @@
       "type_source": "look_book",
       "pending_corrections": 0,
       "corrections": [],
-      "status_source": "grading_closeout",
-      "completed_at": "2026-10-30T23:41:03+08:00"
+      "status_source": "parent_decision_20261030_补录音",
+      "supplement_required": "audio_3min"
     }
   ],
   "counts": {
