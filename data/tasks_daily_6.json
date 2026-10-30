@@ -3,7 +3,7 @@
   "date": "2026-10-30",
   "grade": "六年级",
   "generated_at": "2026-10-30T00:17:08+08:00",
-  "updated_at": "2026-10-30T21:36:33+08:00",
+  "updated_at": "2026-10-30T21:37:51+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -190,7 +190,7 @@
       "title": "完成试卷笔试部分，写语法",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成试卷笔试部分，写语法；②抄U1的单词和中文各4次，读10次；③读小管家U2的内容 → 待完成",
@@ -199,9 +199,29 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-30T21:09:04+08:00",
-      "pending_corrections": 0,
-      "corrections": []
+      "updated_at": "2026-10-30T21:37:51+08:00",
+      "pending_corrections": 2,
+      "corrections": [
+        {
+          "label": "六6选词填空",
+          "question": "He ___ thin clothes",
+          "reason": "过去时态用成现在时wears",
+          "hint": "①故事是过去的事，动词用什么时态？②wore是wear的过去式吗？③所以选哪一个？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "六、在短文中选择填空。6.He ___ thin clothes and looked very cold.（A washed B wore C wears）"
+        },
+        {
+          "label": "七2填词",
+          "question": "He loved gold very much",
+          "reason": "loved拼成loveed，多了一个e",
+          "hint": "①love的过去式怎么变？②e结尾加什么？③拼出来是多少？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "七、根据首字母或中文提示，写出所缺单词。2.He ___ gold very much.（首字母l）"
+        }
+      ],
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261030-218789",
@@ -359,8 +379,8 @@
   ],
   "counts": {
     "total": 16,
-    "pending": 12,
-    "in_progress": 1,
+    "pending": 11,
+    "in_progress": 2,
     "done": 2,
     "pending_review": 0
   },
