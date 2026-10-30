@@ -3,7 +3,7 @@
   "date": "2026-10-30",
   "grade": "六年级",
   "generated_at": "2026-10-30T00:17:08+08:00",
-  "updated_at": "2026-10-30T23:52:13+08:00",
+  "updated_at": "2026-10-30T23:56:20+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -29,16 +29,18 @@
       "title": "家务打卡",
       "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "appear_at": "2026-10-30T17:30:00+08:00",
-      "chore_done_count": 0,
+      "chore_done_count": 1,
       "chore_pending_review": 0,
       "chore_exempt": false,
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-10-30T00:17:22+08:00",
-      "updated_at": "2026-10-30T22:07:23+08:00"
+      "updated_at": "2026-10-30T23:56:20+08:00",
+      "completed_at": "2026-10-30T23:56:20+08:00",
+      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1793375505891616ec61666974c7e（approved）；回写 chore_task_writeback。"
     },
     {
       "task_id": "READ-20261030-G6",
@@ -444,9 +446,9 @@
   ],
   "counts": {
     "total": 17,
-    "pending": 9,
+    "pending": 8,
     "in_progress": 3,
-    "done": 3,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-10-30T22:00:00+08:00"
