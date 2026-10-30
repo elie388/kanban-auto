@@ -3,12 +3,12 @@
   "date": "2026-10-30",
   "grade": "五年级",
   "generated_at": "2026-10-30T00:17:07+08:00",
-  "updated_at": "2026-10-30T20:34:56+08:00",
+  "updated_at": "2026-10-30T20:37:12+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-10-30T16:55:35+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-10-30T20:37:12+08:00",
+      "new_lines": 4
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -105,12 +105,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "grading",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-10-30T16:55:53+08:00",
-      "updated_at": "2026-10-30T20:34:56+08:00",
-      "completed_at": null,
+      "updated_at": "2026-10-30T20:37:12+08:00",
+      "completed_at": "2026-10-30T20:37:12+08:00",
       "status_source": "realtime"
     },
     {
@@ -141,13 +141,86 @@
           "pages": 4
         }
       ]
+    },
+    {
+      "task_id": "REG-20261030-9BE154",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "思考题（四）",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：思考题（四） → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-30T20:37:12+08:00"
+    },
+    {
+      "task_id": "REG-20261030-7ADB44",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "小试卷（打印）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-30T20:37:12+08:00"
+    },
+    {
+      "task_id": "REG-20261030-B54034",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-30T20:37:12+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261030-8EC0A8",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "试卷（不写作文）",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：试卷（不写作文） → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-30T20:37:12+08:00"
     }
   ],
   "counts": {
-    "total": 7,
-    "pending": 6,
+    "total": 11,
+    "pending": 10,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-10-30T22:00:00+08:00"
