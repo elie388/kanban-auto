@@ -336,7 +336,7 @@
           "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
         }
       ],
-      "status_source": "grading_closeout"
+      "status_source": "realtime"
     }
   ],
   "counts": {
