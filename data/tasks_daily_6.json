@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T00:17:29+08:00",
+  "updated_at": "2026-10-31T00:48:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -290,7 +290,7 @@
       "title": "读知识要点，做小测卷",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
@@ -299,12 +299,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
+      "updated_at": "2026-10-31T00:48:59+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
-      "carry_count": 1
+      "carry_count": 1,
+      "status_source": "realtime"
     },
     {
       "task_id": "REG-20261030-B6A1FF",
@@ -377,7 +378,7 @@
   ],
   "counts": {
     "total": 13,
-    "pending": 9,
+    "pending": 8,
     "in_progress": 3,
     "done": 0,
     "pending_review": 0
