@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T14:56:02+08:00",
+  "updated_at": "2026-10-31T15:04:54+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -159,9 +159,9 @@
       "corrections": [
         {
           "label": "六6选词填空",
-          "question": "He ___ thin clothes",
-          "reason": "过去时态用成现在时wears",
-          "hint": "①故事是过去的事，动词用什么时态？②wore是wear的过去式吗？③所以选哪一个？",
+          "question": "六6选词填空订正复核：括号内最终答案认定",
+          "reason": "括号内黑C未划掉、红B叠写，C与B并存；页边另划掉一个B，最终答案无法认定为B",
+          "hint": "按终审要求做：括号内把C划掉，清晰写一个B；不要只在页边涂改，页边标记不能替代括号内作答",
           "img": "g6_engwork_4E5D9D_guide_wore.png",
           "q_img": "",
           "orig_text": "六、在短文中选择填空。6.He ___ thin clothes and looked very cold.（A washed B wore C wears）"
