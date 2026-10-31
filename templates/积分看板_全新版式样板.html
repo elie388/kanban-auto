@@ -5384,6 +5384,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 .up-sheet textarea{width:100%;box-sizing:border-box;border:1.5px solid #d8d2c0;border-radius:10px;padding:9px;font-size:15px;min-height:56px;background:#fff}
 .up-file{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid #e7e1cd;border-radius:10px;margin:6px 0;background:#fff;font-size:13.5px}
 .up-file .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-del{flex:none;padding:4px 10px;border:1.5px solid #e0c9c0;background:#fff;border-radius:999px;color:#b3372f;font-size:13px;cursor:pointer}
 .up-prog{height:6px;background:#eee7d2;border-radius:3px;overflow:hidden;margin-top:4px}
 .up-prog i{display:block;height:100%;width:0;background:#d9a441;transition:width .2s}
 .up-file.ok{border-color:#3d9970}.up-file.ok .up-prog i{background:#3d9970}
@@ -5425,7 +5426,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <input class="up-pass" id="up-pass" type="text" autocomplete="off" placeholder="家庭口令">
     </div>
     <div class="up-row">
-      <label>选照片、录音或视频（一次最多10个）</label>
+      <label>选照片、录音或视频（可分多次选，拍一张加一张，累计最多10个）</label>
       <button class="up-pickbtn" id="up-pickbtn" type="button">📷 选取文件</button>
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
@@ -5468,7 +5469,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261031-ocean3d';
+  var KB_BUILD = '20261031-photos-accum';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -5633,7 +5634,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     $('up-msg').textContent = ''; $('up-msg').className = 'up-msg';
     $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
     $('up-orig').style.display = 'none';
-    recFiles = []; recSet = new Set();
+    upPicked = []; recFiles = []; recSet = new Set();
     $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none'; $('up-examrow').style.display = 'none'; if($('up-is-exam')) $('up-is-exam').checked = false;
     if(ctx.mode === 'task'){
       cur.grade = ctx.info.grade; cur.type = ctx.info.type;
@@ -5987,19 +5988,43 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       xhr.send(file);
     });
   }
+  /* 2026-10-31 拍照多张修复：浏览器 FileList 只读、每次重选会替换上一次，
+     拍照一次只能拍一张，所以用 upPicked 数组累计每次选到的文件，提交读它。 */
+  var upPicked = [];
   function pickedFiles(){
-    return Array.prototype.slice.call($('up-files').files || []).concat(recFiles);
+    return upPicked.slice().concat(recFiles);
+  }
+  function onPickedChange(){
+    var fresh = Array.prototype.slice.call($('up-files').files || []);
+    $('up-files').value = '';
+    fresh.forEach(function(f){
+      var dup = upPicked.some(function(x){ return x.name === f.name && x.size === f.size && x.lastModified === f.lastModified; });
+      if(!dup) upPicked.push(f);
+    });
+    var room = 10 - recFiles.length;
+    if(upPicked.length > room){
+      upPicked = upPicked.slice(0, Math.max(0, room));
+      setMsg('一次最多交10个文件，多出的先没加进来，删掉不要的再加', 'err');
+    }
+    paintPicked();
   }
   function paintPicked(){
     var files = pickedFiles();
     var box = $('up-filelist'); box.innerHTML = '';
+    var pb = $('up-pickbtn'); if(pb) pb.textContent = files.length ? ('📷 再选一张（已选' + files.length + '个）') : '📷 选取文件';
     files.forEach(function(f){
       var d = document.createElement('div'); d.className = 'up-file';
       var nm = document.createElement('span'); nm.className = 'nm'; nm.textContent = (recSet.has(f) ? '🎤 ' : '') + (f.name || '文件');
       var sz = document.createElement('span'); sz.className = 'sz';
       sz.textContent = f.size >= 1048576 ? (f.size/1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(f.size/1024)) + 'KB';
       var eye = document.createElement('span'); eye.textContent = '👁'; eye.style.flex = 'none';
-      d.appendChild(nm); d.appendChild(eye); d.appendChild(sz); box.appendChild(d);
+      d.appendChild(nm); d.appendChild(eye); d.appendChild(sz);
+      if(!recSet.has(f)){
+        var del = document.createElement('button'); del.type = 'button'; del.className = 'up-del'; del.textContent = '✕ 删掉';
+        del.addEventListener('click', function(e){ e.stopPropagation(); var i = upPicked.indexOf(f); if(i >= 0) upPicked.splice(i, 1); setMsg('', ''); paintPicked(); });
+        d.appendChild(del);
+      }
+      box.appendChild(d);
       d.style.cursor = 'pointer';
       d.addEventListener('click', function(){ previewFile(f); });
     });
@@ -6171,7 +6196,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     $('up-close').addEventListener('click', requestClose);
     var _ex = $('up-is-exam'); if(_ex) _ex.addEventListener('change', syncExamToggle);
     var pickBtn = $('up-pickbtn'); if(pickBtn) pickBtn.addEventListener('click', function(){ $('up-files').click(); });
-    $('up-files').addEventListener('change', paintPicked);
+    $('up-files').addEventListener('change', onPickedChange);
     var pvc = $('upPreviewClose'); if(pvc) pvc.addEventListener('click', closePreview);
     var pvm = $('upPreview'); if(pvm) pvm.addEventListener('click', function(e){ if(e.target === pvm) closePreview(); });
     $('up-go').addEventListener('click', function(){ if($('up-go').textContent === '完成') return; doSubmit(); });
