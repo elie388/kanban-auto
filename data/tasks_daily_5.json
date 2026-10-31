@@ -1,67 +1,24 @@
 {
   "tasks": [
     {
-      "task_id": "PRACT-20261030-79293B",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-10-30.docx，按今日练习清单完成",
-      "kousuan": [
-        "3.8×4=",
-        "68+57=",
-        "1.5×6+2.4=",
-        "2.5×4.8×4=",
-        "28.9×5.2≈（估算，结果取整数）"
-      ],
-      "recite_text": "语文背诵：《泊船瓜洲》（王安石）\n原文：京口瓜洲一水间，钟山只隔数重山。春风又绿江南岸，明月何时照我还。\n朗读要求：声音洪亮，吐字清晰，注意“间”读jiān、“还”读huán，以及停顿节奏。\n英语口语：围绕“My family weekend”进行问答。提示问题：1. What do you usually do on the weekend? 2. Does your mother help you with your homework? 3. Where do you go on Sunday afternoon?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
-      "estimate_min": 30,
-      "status": "in_progress",
+      "task_id": "CHORE-20261031-G5",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "done",
       "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-30.docx",
-      "file_hash": "65a9e4cd9d8371de782398c87f51671b5ad40bf38c46686ebef68b833e9e168b",
-      "created_at": "2026-10-30T19:03:14+08:00",
-      "updated_at": "2026-10-31T08:55:37+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-10-30.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1,
-      "status_source": "grading_closeout",
-      "pending_corrections": 3,
-      "corrections": [
-        {
-          "label": "(7)错题反问",
-          "question": "说出出错原因：上次写成Tom play chess with his grandpa on Sundays（错），请改正并用一句话说出出错原因。",
-          "reason": "句子已改对（Tom plays），但仍未写一句话说出出错原因。",
-          "hint": "句子是对的，差一句话：把“Tom是第三人称单数，动词要加s，所以play要写成plays”这句话写在句子下面，拍来。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Tom play chess with his grandpa on Sundays."
-        },
-        {
-          "label": "(10)小数点右移",
-          "question": "说出原数：一个数的小数点向右移动一位后，比原来大36，原来这个数是多少？",
-          "reason": "最终答案并存32.4、36、40三处，没有“答是4”；正确原数为4。",
-          "hint": "只留一个答案：把“答是32.4”“答是36”“答是40”全部划掉，在旁边只写“答是4”。因为36÷9=4，4就是原数，不用再乘10。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "一个数的小数点向右移动一位后，比原来大36，原来这个数是多少？"
-        },
-        {
-          "label": "(19)语文小练笔",
-          "question": "说出结尾句：小练笔结尾句子未写完。",
-          "reason": "结尾仍为“因为妈妈干了”且“家务活”被划掉，句子无宾语、未写完。",
-          "hint": "把最后一句完整重写一遍：“因为妈妈干了家务活，家里变干净了。”不要只改一个词、不要划掉宾语，整句写完拍来。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "(19) 题目：写家里一位家人在做一件家务或手头小事时的动作与神态片段（100-200字）。写作小提示：1.动词要准确、连贯；2.写一写当时的眼神或面部表情，不能只写干巴巴的动作；3.字数在100至200字之间。"
-        }
-      ]
+      "appear_at": "2026-10-31T08:00:00+08:00",
+      "chore_done_count": 1,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-10-31T00:17:15+08:00",
+      "updated_at": "2026-10-31T15:44:18+08:00",
+      "completed_at": "2026-10-31T15:44:18+08:00",
+      "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1793432333834fd198a03e9069135（approved）；回写 chore_task_writeback。"
     },
     {
       "task_id": "CHORE-20261031-G5",
@@ -259,13 +216,49 @@
         "40219b5c38d849e7.jpg",
         "2eac82eead5d9cf3.jpg"
       ]
+    },
+    {
+      "task_id": "PRACT-20261030-79293B",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-10-30.docx，按今日练习清单完成",
+      "kousuan": [
+        "3.8×4=",
+        "68+57=",
+        "1.5×6+2.4=",
+        "2.5×4.8×4=",
+        "28.9×5.2≈（估算，结果取整数）"
+      ],
+      "recite_text": "语文背诵：《泊船瓜洲》（王安石）\n原文：京口瓜洲一水间，钟山只隔数重山。春风又绿江南岸，明月何时照我还。\n朗读要求：声音洪亮，吐字清晰，注意“间”读jiān、“还”读huán，以及停顿节奏。\n英语口语：围绕“My family weekend”进行问答。提示问题：1. What do you usually do on the weekend? 2. Does your mother help you with your homework? 3. Where do you go on Sunday afternoon?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
+      "estimate_min": 30,
+      "status": "done",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-10-30.docx",
+      "file_hash": "65a9e4cd9d8371de782398c87f51671b5ad40bf38c46686ebef68b833e9e168b",
+      "created_at": "2026-10-30T19:03:14+08:00",
+      "updated_at": "2026-10-31T19:20:19+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-10-30.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1,
+      "status_source": "grading_closeout",
+      "pending_corrections": 0,
+      "corrections": [],
+      "completed_at": "2026-10-31T19:20:19+08:00"
     }
   ],
   "schema_version": "1.0",
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T19:07:08+08:00",
+  "updated_at": "2026-10-31T19:20:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -284,9 +277,9 @@
     }
   },
   "counts": {
-    "total": 2,
+    "total": 1,
     "pending": 0,
-    "in_progress": 1,
+    "in_progress": 0,
     "done": 1,
     "pending_review": 0
   },
