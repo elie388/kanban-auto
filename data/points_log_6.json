@@ -1,12 +1,138 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-31T13:44:51+08:00",
+  "generated_at": "2026-10-31T15:06:49+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-31",
+      "time": "14:56",
+      "time_source": "entry",
+      "reason": "读知识要点小测卷发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "14:42",
+      "time_source": "entry",
+      "reason": "针对性练习订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "14:42",
+      "time_source": "entry",
+      "reason": "针对性练习订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "14:42",
+      "time_source": "entry",
+      "reason": "针对性练习订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "14:42",
+      "time_source": "entry",
+      "reason": "针对性练习订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "14:42",
+      "time_source": "entry",
+      "reason": "针对性练习订正改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:55",
+      "time_source": "entry",
+      "reason": "💰百分俱乐部徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:55",
+      "time_source": "entry",
+      "reason": "冲正重复落账：每日读书朗读达标重复",
+      "pts": -12,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:55",
+      "time_source": "entry",
+      "reason": "冲正：百分俱乐部第2段徽章因重复落账虚增余额触发，冲正+5",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:53",
+      "time_source": "entry",
+      "reason": "冲正重复落账：53英语第20页完成分重复",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:53",
+      "time_source": "entry",
+      "reason": "冲正重复落账：53英语第20页正确率分重复",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:49",
+      "time_source": "entry",
+      "reason": "53天天练第20页完成分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:49",
+      "time_source": "entry",
+      "reason": "53天天练第20页正确率分",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "13:49",
+      "time_source": "entry",
+      "reason": "每日读书朗读达标",
+      "pts": 12,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-31",
       "time": "09:44",
@@ -166,6 +292,15 @@
       "time_source": "entry",
       "reason": "登记本当晚20:30后发回补回1分",
       "pts": 1,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-30",
+      "time": "13:49",
+      "time_source": "entry",
+      "reason": "每日朗读达标405秒",
+      "pts": 12,
       "sign": "plus",
       "filtered": false
     },
