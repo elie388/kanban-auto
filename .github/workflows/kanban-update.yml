@@ -246,18 +246,29 @@ jobs:
           cp ios27-skin.css public/ios27-skin.css
           test -s public/ios27-skin.css || { echo "::error::public/ios27-skin.css 缺失，皮肤不生效"; exit 1; }
 
-      # 积分鱼缸 v21 资源同步（2026-10-31 家长令：鱼缸替换看板天气）
-      # 模板引用 assets/aquarium/ 相对路径，须拷进 Pages 产物同路径，缺失或哈希不符即构建失败。
-      # 只同步当前 v21 哈希命名的一对文件，不要只换一半。
-      - name: 同步积分鱼缸 v21 资源到 Pages 产物
+      # 积分鱼缸资源同步（2026-10-31 家长令：鱼缸替换看板天气；2026-10-31 晚补：3D 海洋鱼缸 ocean3d 上线）
+      # 模板引用 assets/aquarium/ 相对路径，须拷进 Pages 产物同路径，缺失即构建失败。
+      # 2026-10-31 实测教训：本步此前只拷 v21 旧 pair（embed 4fd3d8c4c4c0 + CSS），
+      # 新模板引用的 ocean3d.js、新 embed、模型 100 个 GLB 全没进产物，线上 404、鱼缸空白；
+      # 此后凡模板新增引用的鱼缸文件，必须同步补进本步清单，否则不得上线。
+      - name: 同步积分鱼缸资源到 Pages 产物
         run: |
-          mkdir -p public/assets/aquarium
+          mkdir -p public/assets/aquarium public/assets/aquarium/models
           cp assets/aquarium/aquarium-embed.4fd3d8c4c4c0.js assets/aquarium/aquarium.5939e0cef9ec.css public/assets/aquarium/
-          test -s public/assets/aquarium/aquarium-embed.4fd3d8c4c4c0.js || { echo "::error::鱼缸 JS 缺失" ; exit 1; }
+          cp assets/aquarium/aquarium-embed.4444c12cb131.js assets/aquarium/ocean3d.js assets/aquarium/seabed-ecosystem.js assets/aquarium/habitat-stages.js assets/aquarium/species-manifest.json assets/aquarium/asset-quality-audit.json public/assets/aquarium/
+          cp assets/aquarium/models/*.glb public/assets/aquarium/models/
+          test -s public/assets/aquarium/aquarium-embed.4fd3d8c4c4c0.js || { echo "::error::鱼缸旧 JS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium.5939e0cef9ec.css || { echo "::error::鱼缸 CSS 缺失" ; exit 1; }
+          test -s public/assets/aquarium/aquarium-embed.4444c12cb131.js || { echo "::error::鱼缸新 embed 缺失" ; exit 1; }
+          test -s public/assets/aquarium/ocean3d.js || { echo "::error::ocean3d.js 缺失" ; exit 1; }
+          test -s public/assets/aquarium/seabed-ecosystem.js || { echo "::error::seabed-ecosystem.js 缺失" ; exit 1; }
+          test -s public/assets/aquarium/habitat-stages.js || { echo "::error::habitat-stages.js 缺失" ; exit 1; }
+          test -s public/assets/aquarium/species-manifest.json || { echo "::error::species-manifest.json 缺失" ; exit 1; }
+          test "$(ls public/assets/aquarium/models/*.glb 2>/dev/null | wc -l)" -ge 1 || { echo "::error::鱼缸模型 GLB 缺失" ; exit 1; }
           echo "4fd3d8c4c4c046859484219e19636211f9346d675e25318fbd6508570a8866e8  public/assets/aquarium/aquarium-embed.4fd3d8c4c4c0.js" | sha256sum -c -
           echo "5939e0cef9ecca8993a6cef8c13e349b1645c7f2389e6f1aa0ebf3184a79e01a  public/assets/aquarium/aquarium.5939e0cef9ec.css" | sha256sum -c -
-          ls -la public/assets/aquarium/
+          ls -la public/assets/aquarium/ | head -20
+          ls public/assets/aquarium/models/ | wc -l
 
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
