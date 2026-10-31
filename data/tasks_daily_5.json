@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T08:47:27+08:00",
+  "updated_at": "2026-10-31T08:51:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -134,15 +134,88 @@
       "title": "53天天练·英语",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T00:29:33+08:00",
+      "updated_at": "2026-10-31T08:51:11+08:00",
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "grading_closeout",
+      "pending_corrections": 7,
+      "corrections": [
+        {
+          "label": "（一）图片排序第3张",
+          "question": "根据制作步骤，给图片排序：第3张剪刀剪花形袋子是第几步？",
+          "reason": "剪刀剪成喜欢的形状是第2步，不是第3步；第3步是把形状放在平片上，两张写反了。",
+          "hint": "①材料第1步、第2步、第3步分别是什么动作？②剪刀那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍。",
+          "img": "eng_d53_order_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面图片为步骤示意图，非题意必需的原题配图，引导图已附步骤顺序，不另附原题图。",
+          "orig_text": "（一）根据材料，按制作步骤给下列图片排序。材料：Cut plastic bags into square pieces. Make them flat. Cut a colourful bag into your favourite shape, like a flower. Put the shape on a flat piece. Use a hot iron to press them together. Do it again, then heat the edges. Now you have a new bag!"
+        },
+        {
+          "label": "（一）图片排序第4张",
+          "question": "根据制作步骤，给图片排序：第4张把形状放在平片上是第几步？",
+          "reason": "把形状放在平片上是第3步，不是第2步；第2步是剪成喜欢的形状，两张写反了。",
+          "hint": "①材料第2步、第3步分别是什么动作？②放平片那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍。",
+          "img": "eng_d53_order_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面图片为步骤示意图，非题意必需的原题配图，引导图已附步骤顺序，不另附原题图。",
+          "orig_text": "（一）根据材料，按制作步骤给下列图片排序。材料同上。"
+        },
+        {
+          "label": "（二）第2题",
+          "question": "Lingling only uses one plastic bag to make the new bag. 判断正(T)误(F)。",
+          "reason": "材料里是plastic bags（复数），还有一个colourful bag，不只一个袋子，应为F，孩子写T错了。",
+          "hint": "①材料里plastic bag是单数还是复数？②除了方块袋子，还有没有一个彩色袋子？③一共用了几个袋子？",
+          "img": "eng_d53_tf2_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "( )2. Lingling only uses one plastic bag to make the new bag."
+        },
+        {
+          "label": "（二）第3题",
+          "question": "Making a new bag from old plastic bags helps cut down plastic waste. 判断正(T)误(F)。",
+          "reason": "旧袋子做新袋子就是减少塑料垃圾，应为T，孩子写F错了。",
+          "hint": "①旧袋子做新袋子，旧袋子是扔掉了还是再用了？②再用旧袋子，塑料垃圾是变多还是变少？③cut down是什么意思？",
+          "img": "eng_d53_tf3_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "( )3. Making a new bag from old plastic bags helps cut down plastic waste."
+        },
+        {
+          "label": "绿色生活衣",
+          "question": "Clothing: We should recycle ___. 填空并拼写正确。",
+          "reason": "衣服是clothes，不是clothers，多了一个r，拼写错了。",
+          "hint": "①clothes怎么拼，c-l-o-t-h-e-s；②clothers里多了一个什么字母？③把clothes抄三遍。",
+          "img": "eng_d53_clothing_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "Clothing: (recycle) We should ___."
+        },
+        {
+          "label": "绿色生活住",
+          "question": "Housing: Don't ___ water! 根据提示（keep ... running）写句子。",
+          "reason": "水是不可数名词，要用much water，不是many water；提示是keep ... running，孩子写use many water既没用提示词，语法也错了。",
+          "hint": "①water是可数还是不可数？②much和many分别跟什么名词？③刷牙时水龙头开着，用keep ... running怎么说？",
+          "img": "eng_d53_housing_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "Housing: (keep ... running) Don't ___!"
+        },
+        {
+          "label": "绿色生活行",
+          "question": "Transportation: We should go to school ___. 根据提示（take a bus）写句子。",
+          "reason": "go to school take a bus缺少连接，两个动词直接连在一起不对；正确说法是go to school by bus，或者take a bus to school，两种说法不要混在一起。",
+          "hint": "①by后面跟什么，by bus还是by take a bus？②take a bus to school里，take和to school怎么连？③选一种说法，把整句重写一遍。",
+          "img": "eng_d53_transport_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "Transportation: (take a bus) We should go to school ___."
+        }
+      ]
     },
     {
       "task_id": "PRACT-20261030-79293B",
@@ -456,7 +529,7 @@
   "counts": {
     "total": 10,
     "pending": 3,
-    "in_progress": 4,
+    "in_progress": 5,
     "done": 1,
     "pending_review": 0
   },
