@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T17:21:16+08:00",
+  "updated_at": "2026-10-31T17:29:56+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -95,43 +95,25 @@
       "carried_from": "2026-10-30",
       "carry_count": 1,
       "status_source": "grading_closeout",
-      "pending_corrections": 4,
+      "pending_corrections": 2,
       "corrections": [
         {
-          "label": "（一）图片排序第3张",
-          "question": "根据制作步骤，给图片排序：剪刀剪花形袋子那张是第几步，步骤是剪方块压平、剪成喜欢的形状、放平片、熨斗压、再做加热成袋。",
-          "reason": "订正仍错：剪刀图现为红笔4，应为2；正确顺序是压平图1、剪刀图2、放平片图3、熨斗图4、成品袋图5。",
-          "hint": "①材料第2步是什么动作，用的工具是什么？②剪刀那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍，熨斗图这次被改成3也错了，应改回4。",
-          "img": "eng_d53_order_guide.png",
-          "q_img": "",
-          "orig_text": "（一）根据材料，按制作步骤给下列图片排序。材料：Cut plastic bags into square pieces. Make them flat. Cut a colourful bag into your favourite shape, like a flower. Put the shape on a flat piece. Use a hot iron to press them together. Do it again, then heat the edges. Now you have a new bag!"
-        },
-        {
           "label": "（一）图片排序第4张",
-          "question": "根据制作步骤，给图片排序：把形状放在平片上那张是第几步，步骤是剪方块压平、剪成喜欢的形状、放平片、熨斗压、再做加热成袋。",
-          "reason": "订正仍错：放平片图现仍为2，应为3；另熨斗图原为正确的4，这次被改成红笔3，也错了，应改回4。",
-          "hint": "①材料第3步是什么动作？②放平片那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍，熨斗图改回4。",
-          "img": "eng_d53_order_guide.png",
+          "question": "（一）根据材料，按制作步骤给下列图片排序：放平片图是第几步",
+          "reason": "仍未改对：放平片图现为1，应为3；同时压平图现为3、应为1，两张又写反了。正确顺序：压平图1、剪刀图2、放平片图3、熨斗图4、成品袋图5。",
+          "hint": "把两张换回来：压平图（切成方块并压平）是第1步，放平片图（把形状放在平片上）是第3步。",
+          "img": "",
           "q_img": "",
           "orig_text": "（一）根据材料，按制作步骤给下列图片排序。材料同上。"
         },
         {
           "label": "绿色生活住",
-          "question": "Housing: Don't ___ water! 根据提示keep ... running写句子，图为刷牙时水龙头开着。",
-          "reason": "订正仍错：现为Don't use much water!，many改成much只改了量词，提示词keep ... running仍未用；正确句子如Don't keep the water running!。",
-          "hint": "①提示词是keep ... running，不是use；②刷牙时水龙头开着，用keep ... running怎么说？③把整句重写一遍，不要只改量词。",
-          "img": "eng_d53_housing_guide.png",
+          "question": "绿色生活住：Housing: (keep ... running) Don't ___!",
+          "reason": "仍未改对：现为Don't use much water!，提示词keep ... running仍未用；正确如Don't keep the water running!（不要让水一直流着）。",
+          "hint": "按提示写：Don't keep the water running!（keep ... running是固定搭配，图片里水龙头正开着）。",
+          "img": "",
           "q_img": "",
           "orig_text": "Housing: (keep ... running) Don't ___!"
-        },
-        {
-          "label": "绿色生活行",
-          "question": "Transportation: We should go to school ___. 根据提示take a bus写句子。",
-          "reason": "订正仍错：现为go to school by take a bus，红笔在take前补by，但take未去掉，两个动词仍连在一起；正确说法是go to school by bus，或者take a bus to school，两种说法不要混在一起。",
-          "hint": "①by后面跟什么，by bus还是by take a bus？②take a bus to school里，take和to school怎么连？③选一种说法，把整句重写一遍。",
-          "img": "eng_d53_transport_guide.png",
-          "q_img": "",
-          "orig_text": "Transportation: (take a bus) We should go to school ___."
         }
       ]
     },
