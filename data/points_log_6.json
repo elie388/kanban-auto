@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-10-31T19:49:51+08:00",
+  "generated_at": "2026-10-31T20:39:51+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-31",
+      "time": "20:39",
+      "time_source": "entry",
+      "reason": "兑换2小时和平精英",
+      "pts": -250,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "10-31",
       "time": "19:48",
