@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T11:17:09+08:00",
+  "updated_at": "2026-10-31T11:24:42+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -100,12 +100,12 @@
       "kousuan": [],
       "recite_text": "语文背诵：《石灰吟》（于谦）\n原文：千锤万凿出深山，烈火焚烧若等闲。粉骨碎身浑不怕，要留清白在人间。\n朗读要求：声音洪亮，吐字清晰，语速适中，前两句读出坚定与豪迈，后两句读出正气凛然与坚定不移的决心，注意停顿和节拍。\n英语口语：先读短文再用自己的话复述大意（5分钟内完成）。短文：Last Saturday, Lucy went to the city library. She wanted to find a book about science for her school project. When she walked into the library, it was quiet and clean. There were lots of books on the tall shelves. Lucy looked for a long time, but she couldn't find the right book. Suddenly, a friendly librarian came over and helped her. With the librarian's help, Lucy found a wonderful book quickly. She was very happy and thanked the librarian politely.\n提示问题：1. Where did Lucy go last Saturday? 2. What was she looking for? 3. Who helped her at last?\n口语要求：语音语调自然，包含图书馆、找科学书、管理员帮忙、感谢四个核心信息，尽量脱稿表达。",
       "estimate_min": 30,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-30.docx",
       "file_hash": "df0b32e65d68687ff06c8276582c8215b17a885462cbca22a6431b3b23e966f5",
       "created_at": "2026-10-30T19:03:15+08:00",
-      "updated_at": "2026-10-31T11:17:09+08:00",
+      "updated_at": "2026-10-31T11:24:42+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-30.pdf",
@@ -116,7 +116,60 @@
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "第7题 数学环形面积",
+          "question": "一个环形铁片，外圆直径是12米，内圆直径是8米，这个环形铁片的面积是多少平方米？圆周率取3.14",
+          "reason": "单位错误：数值62.8对，答句写成62.8米，应为62.8平方米",
+          "hint": "第一步：面积的单位是什么？第二步：长度单位和面积单位有什么不同？第三步：把答句里的米改成平方米，再读一遍答案。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一个环形铁片，外圆直径是12米，内圆直径是8米，这个环形铁片的面积是多少平方米？圆周率取3.14",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+        },
+        {
+          "label": "第8题 数学半圆形周长和面积",
+          "question": "列式计算：一个半圆形花园的直径是10米，求这个半圆形花园的周长和面积（半圆周长包括弧长和直径）。圆周率取3.14",
+          "reason": "步骤不完整：周长列式写成3.14×5=25.7，漏了加直径10米一步（弧长应为15.7米，15.7+10=25.7）；面积39.25平方米对",
+          "hint": "第一步：半圆周长由哪两部分组成？第二步：弧长是多少？第三步：把弧长加直径写成完整列式，再算一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "列式计算：一个半圆形花园的直径是10米，求这个半圆形花园的周长和面积（半圆周长包括弧长和直径）。圆周率取3.14",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+        },
+        {
+          "label": "第11题 英语词形填空",
+          "question": "用所给词的正确形式填空：1. There are many ___（child）in the park on Sundays. 2. The farmer has a lot of ___（mouse）in the old barn.",
+          "reason": "第二空错误：mouse的复数不是mouses，应为mice（不规则复数）",
+          "hint": "第一步：mouse的复数是规则加s吗？第二步：想一想不规则复数的例子；第三步：把mouses改成mice，再读一遍句子。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "用所给词的正确形式填空：1. There are many ___（child）in the park on Sundays. 2. The farmer has a lot of ___（mouse）in the old barn.",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+        },
+        {
+          "label": "第12题 英语代词填空",
+          "question": "用适当的代词填空：1. ___（I）like English very much, and English teacher loves ___（we）. 2. This is ___（he）pencil box. Where is ___（you）?",
+          "reason": "第二空错误：Where is ___（you）应填名词性物主代词yours，不是主格you",
+          "hint": "第一步：这里问的是你的铅笔盒在哪里，缺的是什么词性的词？第二步：主格you和名词性物主代词yours有什么不同？第三步：把you改成yours，再读一遍问句。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "用适当的代词填空：1. ___（I）like English very much, and English teacher loves ___（we）. 2. This is ___（he）pencil box. Where is ___（you）?",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+        },
+        {
+          "label": "英语口语复述",
+          "question": "英语口语：先读短文再用自己的话复述大意，短文为Lucy去图书馆找科学书、管理员帮忙、感谢的故事，复述须含图书馆、找科学书、管理员帮忙、感谢四个核心信息",
+          "reason": "具体缺英语复述大意：71秒录音只有读短文和语文背诵，没有用自己的话复述大意的一段",
+          "hint": "第一步：短文讲了谁、去哪、找什么？第二步：谁帮了她、她怎么感谢？第三步：用自己的话把这四点连成一段话，补录一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "英语口语：先读短文再用自己的话复述大意，短文为Lucy去图书馆找科学书、管理员帮忙、感谢的故事，复述须含图书馆、找科学书、管理员帮忙、感谢四个核心信息",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+        }
+      ],
+      "pending_corrections": 5
     },
     {
       "task_id": "EXAM-20261030-DF1F0A",
@@ -361,7 +414,7 @@
   "counts": {
     "total": 13,
     "pending": 7,
-    "in_progress": 3,
+    "in_progress": 5,
     "done": 0,
     "pending_review": 0
   },
