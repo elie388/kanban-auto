@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T15:44:18+08:00",
+  "updated_at": "2026-10-31T15:46:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -45,7 +45,11 @@
       "pending_note": "朗读已达标：录音405.55秒（390-419秒档），语速239.8字/分钟，看社戏、尿床记录、捉月亮三篇顺序完整无跳段。",
       "pending_corrections": 0,
       "status_source": "grading_closeout",
-      "completed_at": "2026-10-31T13:49:57+08:00"
+      "completed_at": "2026-10-31T13:49:57+08:00",
+      "orig_photos": [
+        "0f7202f657ce2e50.jpg",
+        "af021878b63c24dc.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-CHN",
@@ -97,7 +101,10 @@
       "completed_at": "2026-10-31T13:44:23+08:00",
       "status_source": "grading_closeout",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "orig_photos": [
+        "60540aaae8e6db52.jpg"
+      ]
     },
     {
       "task_id": "PRACT-20261030-259397",
