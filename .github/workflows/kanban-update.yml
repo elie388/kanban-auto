@@ -246,6 +246,19 @@ jobs:
           cp ios27-skin.css public/ios27-skin.css
           test -s public/ios27-skin.css || { echo "::error::public/ios27-skin.css 缺失，皮肤不生效"; exit 1; }
 
+      # 积分鱼缸 v21 资源同步（2026-10-31 家长令：鱼缸替换看板天气）
+      # 模板引用 assets/aquarium/ 相对路径，须拷进 Pages 产物同路径，缺失或哈希不符即构建失败。
+      # 只同步当前 v21 哈希命名的一对文件，不要只换一半。
+      - name: 同步积分鱼缸 v21 资源到 Pages 产物
+        run: |
+          mkdir -p public/assets/aquarium
+          cp assets/aquarium/aquarium-embed.008d4e20add4.js assets/aquarium/aquarium.5939e0cef9ec.css public/assets/aquarium/
+          test -s public/assets/aquarium/aquarium-embed.008d4e20add4.js || { echo "::error::鱼缸 JS 缺失" ; exit 1; }
+          test -s public/assets/aquarium/aquarium.5939e0cef9ec.css || { echo "::error::鱼缸 CSS 缺失" ; exit 1; }
+          echo "008d4e20add49dbd31f21bf6ba1bc1c5ce4c8bbe3334a457ba54693cc957cf18  public/assets/aquarium/aquarium-embed.008d4e20add4.js" | sha256sum -c -
+          echo "5939e0cef9ecca8993a6cef8c13e349b1645c7f2389e6f1aa0ebf3184a79e01a  public/assets/aquarium/aquarium.5939e0cef9ec.css" | sha256sum -c -
+          ls -la public/assets/aquarium/
+
       # 产物断言（DeepSeek 部署要求）：CNAME、数据文件、新版标识缺一即失败
       - name: 产物断言
         run: |

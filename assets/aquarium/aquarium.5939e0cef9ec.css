@@ -1,0 +1,19 @@
+/* Host-safe card styles. Demo-page typography and controls are intentionally excluded. */
+#aquariumCard,#aquariumCard *{box-sizing:border-box}
+#aquariumCard{position:relative;width:100%;aspect-ratio:2.08;border-radius:28px;overflow:hidden;isolation:isolate;box-shadow:0 14px 38px #17627e20,inset 0 0 0 1px #ffffff88;background:#1a6c8c;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}
+#aquariumCard canvas{position:relative;display:block;width:100%;height:100%;touch-action:pan-y;opacity:0}
+#aquariumCard canvas:focus-visible{outline:2px solid #e5f9ff;outline-offset:-4px}
+#aquariumCard .scores{position:absolute;left:3%;right:3%;bottom:6%;display:flex;gap:3%;pointer-events:none}
+#aquariumCard .score{flex:1;min-width:0;text-align:center;padding:11px 8px 10px;border:1px solid #e9ffff70;border-radius:18px;background:linear-gradient(130deg,#e6fcff26,#d1eaf414);backdrop-filter:blur(2px);color:#f4fdff}
+#aquariumCard .score b{font-size:29px;font-weight:650;font-variant-numeric:tabular-nums;text-shadow:0 1px 6px #16536c55}
+#aquariumCard .dot{display:inline-block;width:8px;height:8px;margin-right:11px;border-radius:50%;background:#ffb179;box-shadow:0 0 0 3px #ffffff44;vertical-align:4px}
+#aquariumCard .blue .dot{background:#a6d7e6;border-radius:2px;transform:rotate(45deg)}
+#aquariumCard .segments{display:flex;gap:4px;margin:9px 9px 0}#aquariumCard .segments i{height:2px;flex:1;border-radius:3px;background:#164f6a38}#aquariumCard .segments i.on{background:#e5fbffe0}
+#aquariumCard .aquarium-fallback{position:absolute;inset:0;background:linear-gradient(#b6dce8 0 20%,#62b9cc 20%,#28667f 100%);pointer-events:none}
+#aquariumCard .aquarium-fallback i{position:absolute;left:25%;top:45%;width:13%;height:12%;border-radius:60%;background:linear-gradient(#b59d70,#e3d1a8)}#aquariumCard .aquarium-fallback i+i{left:65%;top:50%;background:linear-gradient(#7198aa,#c7dadd)}
+#aquariumCard .aquarium-fallback i:before{content:"";position:absolute;right:95%;top:15%;border-right:12px solid #bdd0c7;border-top:8px solid transparent;border-bottom:8px solid transparent}
+#aquariumCard .aquarium-fallback i:after{content:"";position:absolute;right:13%;top:32%;width:3px;height:3px;border-radius:50%;background:#263d49}
+#aquariumCard[data-state="ready"] canvas{opacity:1}#aquariumCard[data-state="ready"] .aquarium-fallback{visibility:hidden}#aquariumCard[data-state="fallback"] canvas{visibility:hidden}
+#aquariumStatus{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:480px){#aquariumCard{border-radius:22px}#aquariumCard .score{padding:8px 5px;border-radius:14px}#aquariumCard .score b{font-size:24px}#aquariumCard .dot{width:7px;height:7px;margin-right:8px;vertical-align:3px}}
+@media(prefers-reduced-motion:reduce){#aquariumCard,#aquariumCard *{transition:none!important}}

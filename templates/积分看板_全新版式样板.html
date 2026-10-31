@@ -175,6 +175,10 @@
   }
   .sky-band.has-frost .sky-frost{display:block;}
   .sky-band .balance-grid{position:relative; z-index:2; margin-bottom:0;}
+  /* 2026-10-31 鱼缸 v21 替换天气画布：鱼缸只作天空带背景层，余额仍用原余额卡显示，鱼缸自带分数条隐藏，避免双份分数。 */
+  #sky-band #aquariumCard{position:absolute; inset:0; width:100%; height:100%; aspect-ratio:auto; border-radius:0; box-shadow:none; z-index:0;}
+  #sky-band #aquariumCard .scores{display:none !important;}
+  #sky-band #aquariumCard canvas{width:100%; height:100%;}
   /* 旧天空 livesky 壳样式已于 2026-10-28 晚随死样式清理删除（DOM 与 JS 均已无引用，霜带样式保留在用）。 */
   /* 天气预警条（定版：带底边、高 20–24px、官方色降饱和 20%、静态不滚动、多条淡入淡出轮播、只显橙/红） */
   .sky-alert{
@@ -1223,6 +1227,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 
   <!-- 活天空带（2026-10-24 一期）：canvas 天空层（天文＋天气调制）＋霜带＋两张 V2 磨砂余额卡＋预警条；引擎在文末 sky script 块 -->
   <div class="sky-band" id="sky-band">
+    <link rel="stylesheet" href="assets/aquarium/aquarium.5939e0cef9ec.css">
+    <section class="aquarium" id="aquariumCard" data-state="loading" data-score-mode="external" aria-label="积分鱼缸">
+      <div class="aquarium-fallback" aria-hidden="true"><i></i><i></i></div>
+      <canvas id="tank" tabindex="0" role="button" aria-label="互动鱼缸" aria-describedby="aquariumStatus"></canvas>
+      <div class="scores">
+        <div class="score" aria-label="暖色鱼积分"><span class="dot"></span><b id="score0">—</b><div class="segments" id="seg0"></div></div>
+        <div class="score blue" aria-label="冷色鱼积分"><span class="dot"></span><b id="score1">—</b><div class="segments" id="seg1"></div></div>
+      </div>
+    </section>
+    <p id="aquariumStatus" role="status"></p>
+    <script defer src="assets/aquarium/aquarium-embed.008d4e20add4.js"></script>
     <div class="sky-frost" aria-hidden="true"></div>
     <div class="sky-spacer" aria-hidden="true"></div>
   <!-- 余额卡片 -->
@@ -5451,7 +5466,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261030-auto-reload';
+  var KB_BUILD = '20261031-aquarium-v21';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6932,8 +6947,15 @@ g.WeatherCanvas={mount};})(window);
   'use strict';
   var band = document.getElementById('sky-band');
   if (!band || !window.WeatherCanvas) return;
-  var wc;
-  try { wc = window.WeatherCanvas.mount(band); } catch (e) { return; }
+  var wc = null;
+  /* 2026-10-31 鱼缸 v21 替换天气画布：旧 WeatherCanvas 不再挂载（省一层动画），本块仍负责拉取 /hw-api/weather、预警与霜带，并把同一份天气喂给鱼缸；余额卡不动。 */
+  window.__aquariumWeatherPending = undefined;
+  function pushAquariumWeather(s){
+    try {
+      if (window.AquariumWeather) { window.AquariumWeather.setWeather({weather: s || null}); }
+      else { window.__aquariumWeatherPending = s || null; }
+    } catch (e) {}
+  }
   var LOC_KEY = 'kb-sky-daily-location-v13';
   function dayKey(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
   function readLoc(){
@@ -6946,7 +6968,7 @@ g.WeatherCanvas={mount};})(window);
   function coarse(x){ return Math.round(x*10)/10; }
   function endpoint(){ return location.hostname === 'whyjjf.lol' ? location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev'; }
   function token(){ try { return localStorage.getItem('hw-dev-token') || ''; } catch (e) { return ''; } }
-  function showDefault(){ try { wc.update({now:{icon:'999'}}, {timeZone:'Asia/Shanghai'}); } catch (e) {} showAlert(null); try { band.classList.remove('has-frost'); } catch (e) {} }
+  function showDefault(){ try { if (wc) wc.update({now:{icon:'999'}}, {timeZone:'Asia/Shanghai'}); pushAquariumWeather(null); } catch (e) {} showAlert(null); try { band.classList.remove('has-frost'); } catch (e) {} }
     // 月球位置（低精度天文公式，误差约零点几度，看板示意够用；方位角自北顺时针，与太阳同口径）。
   function moonPos(lat, lon, now){
     var rad = Math.PI/180;
@@ -7089,7 +7111,7 @@ function mapState(s){
       if (mp) env.lunar = {observedAt: now.toISOString(), elevation: mp.elevation, azimuth: mp.azimuth};
       var gustOpt = null;
       if (isFinite(Number(s.gustKmh))) gustOpt = {value: Number(s.gustKmh), unit: 'km/h', observedAt: new Date(obsMs).toISOString()};
-      wc.update(mapState(s), {timeZone:'Asia/Shanghai', environment: env, recentWeather: recent, gust: gustOpt});
+      if (wc) { try { wc.update(mapState(s), {timeZone:'Asia/Shanghai', environment: env, recentWeather: recent, gust: gustOpt}); } catch (e) {} } pushAquariumWeather(s);
       showAlert(s.alerts);
       try { band.classList.toggle('has-frost', String(s.code) === '901' || (isFinite(Number(s.temp)) && Number(s.temp) <= 0)); } catch (e) {}
     } catch (e) {
@@ -7109,6 +7131,61 @@ function mapState(s){
       if (lastGood && Date.now() - lastGood >= 600000) { var p = refresh(); if (p && p.catch) p.catch(function(){}); }
     } catch (e) {}
   }, 60000);
+})();
+</script>
+<script>
+/* 2026-10-31 鱼缸 v21 接线：天气由旧天气块喂给鱼缸（本块只做重送与分数推送，不新增轮询、不另建积分源）。
+   分数来源是原余额卡 .bal-num 的已显示值，锁定态（html.kb-locked）推 0,0，鱼体不泄漏余额；解锁后余额重拉会再次触发推送。 */
+(function(){
+  'use strict';
+  var rev = 0, last = null, timer = null;
+  function locked(){ try { return document.documentElement.classList.contains('kb-locked'); } catch(e){ return false; } }
+  function readNum(id){
+    var el = document.querySelector('#' + id + ' .bal-num');
+    if(!el) return null;
+    var t = (el.textContent || '').replace(/[^\d\-]/g, '');
+    if(!/^-?\d+$/.test(t)) return null;
+    var n = parseInt(t, 10);
+    return isFinite(n) ? n : null;
+  }
+  function push(g5, g6){
+    var want = g5 + ',' + g6;
+    if(want === last) return;
+    if(!window.AquariumScores) return;
+    try {
+      var r = window.AquariumScores.setScores({protocolVersion:1, revision:++rev, entries:[{id:'orange', points:g5},{id:'blue', points:g6}]});
+      if(r && r.status === 'updated') last = want;
+    } catch(e){}
+  }
+  function sync(){
+    if(locked()){ push(0, 0); return; }
+    var g5 = readNum('bal-jump-g5'), g6 = readNum('bal-jump-g6');
+    if(g5 === null || g6 === null) return;
+    push(g5, g6);
+  }
+  function syncSoon(){
+    if(timer) clearTimeout(timer);
+    timer = setTimeout(sync, 800);
+  }
+  function flushWeather(){
+    try {
+      if(window.AquariumWeather && typeof window.__aquariumWeatherPending !== 'undefined'){
+        window.AquariumWeather.setWeather({weather: window.__aquariumWeatherPending});
+      }
+    } catch(e){}
+    sync();
+  }
+  window.addEventListener('aquarium:ready', flushWeather);
+  try {
+    var obs = new MutationObserver(syncSoon);
+    ['bal-jump-g5','bal-jump-g6'].forEach(function(id){
+      var c = document.getElementById(id);
+      if(c) obs.observe(c, {childList:true, characterData:true, subtree:true});
+    });
+    var clsObs = new MutationObserver(function(){ syncSoon(); });
+    clsObs.observe(document.documentElement, {attributes:true, attributeFilter:['class']});
+  } catch(e){}
+  if(window.AquariumScores) syncSoon();
 })();
 </script>
 <script>
