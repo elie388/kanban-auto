@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-31T10:19:51+08:00",
+  "generated_at": "2026-10-31T10:39:51+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-31",
+      "time": "10:35",
+      "time_source": "entry",
+      "reason": "针对性练习订正6题改对",
+      "pts": 12,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-31",
       "time": "10:15",
