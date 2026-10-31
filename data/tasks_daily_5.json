@@ -64,49 +64,6 @@
       ]
     },
     {
-      "task_id": "REG-20261030-7ADB44",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "小试卷（打印）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-31T08:46:47+08:00",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "五（一）第2题",
-          "question": "五、阅读理解。（一）你知道哪些结交朋友的方法吗？阅读短文，判断句子正（T）误（F）。2. We should wear a smile first when making friends.",
-          "reason": "仍为黑笔F、无红笔改动，正确为T（结交朋友要先微笑，短文原句you should always wear a smile）。",
-          "hint": "把F改成T：短文说you should always wear a smile，结交朋友先微笑是对的，所以是T。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "( )2. We should wear a smile first when making friends."
-        },
-        {
-          "label": "六书面表达",
-          "question": "六、书面表达。假如你是Xiaoxiao，请向大家介绍你的好朋友Lily。内容包括：朋友的基本信息、你们之间的相同点/不同点、你们经常在一起做的事情、语句通顺并且不少于5句话。",
-          "reason": "likes running已改对，但句中仍为We often drawing together，红笔draw只写在句下作注、未入句；正确为We often draw together（often后用动词原形draw）。",
-          "hint": "把句中的drawing划掉、改成draw：We often draw together（often后跟动词原形，不是drawing）。光在句下写draw不算改，句中改掉才算。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "假如你是Xiaoxiao，请向大家介绍你的好朋友Lily。内容包括：1.朋友的基本信息。2.你们之间的相同点/不同点。3.你们经常在一起做的事情。4.语句通顺，并且不少于5句话。孩子原文：My best friend is Lily. She is tall. She likes reading but like running. We are friends because we both like drawing. We often drawing together. We are so happy."
-        }
-      ],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1,
-      "status_source": "grading_closeout"
-    },
-    {
       "task_id": "CHORE-20261031-G5",
       "source": "chore",
       "subject": "家务",
@@ -125,6 +82,31 @@
       "updated_at": "2026-10-31T15:44:18+08:00",
       "completed_at": "2026-10-31T15:44:18+08:00",
       "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1793432333834fd198a03e9069135（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "REG-20261030-7ADB44",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "小试卷（打印）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T20:37:12+08:00",
+      "updated_at": "2026-10-31T19:09:00+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1,
+      "status_source": "grading_closeout",
+      "completed_at": "2026-10-31T19:09:00+08:00"
     },
     {
       "task_id": "REG-20261030-8EC0A8",
@@ -283,7 +265,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T19:05:14+08:00",
+  "updated_at": "2026-10-31T19:07:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -302,9 +284,9 @@
     }
   },
   "counts": {
-    "total": 3,
+    "total": 2,
     "pending": 0,
-    "in_progress": 2,
+    "in_progress": 1,
     "done": 1,
     "pending_review": 0
   },
