@@ -45,7 +45,7 @@
           "question": "（一）根据材料，按制作步骤给下列图片排序：放平片图是第几步",
           "reason": "仍未改对：放平片图现为1，应为3；同时压平图现为3、应为1，两张又写反了。正确顺序：压平图1、剪刀图2、放平片图3、熨斗图4、成品袋图5。",
           "hint": "把两张换回来：压平图（切成方块并压平）是第1步，放平片图（把形状放在平片上）是第3步。",
-          "img": "",
+          "img": "eng_d53_order_guide.png",
           "q_img": "",
           "orig_text": "（一）根据材料，按制作步骤给下列图片排序。材料同上。"
         },
@@ -54,7 +54,7 @@
           "question": "绿色生活住：Housing: (keep ... running) Don't ___!",
           "reason": "仍未改对：现为Don't use much water!，提示词keep ... running仍未用；正确如Don't keep the water running!（不要让水一直流着）。",
           "hint": "按提示写：Don't keep the water running!（keep ... running是固定搭配，图片里水龙头正开着）。",
-          "img": "",
+          "img": "eng_d53_housing_guide.png",
           "q_img": "",
           "orig_text": "Housing: (keep ... running) Don't ___!"
         }
@@ -279,6 +279,26 @@
       "updated_at": "2026-10-31T15:44:18+08:00",
       "completed_at": "2026-10-31T15:44:18+08:00",
       "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1793432333834fd198a03e9069135（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "D53-2026-10-30-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "done",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-30T16:55:46+08:00",
+      "updated_at": "2026-10-31T17:29:59+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1,
+      "status_source": "grading_closeout",
+      "pending_corrections": 0,
+      "corrections": [],
+      "completed_at": "2026-10-31T17:29:59+08:00"
     }
   ],
   "counts": {
