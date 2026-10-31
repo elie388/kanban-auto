@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T00:48:59+08:00",
+  "updated_at": "2026-10-31T08:59:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -143,20 +143,9 @@
           "img": "g6_exam2_bike_guide.png",
           "q_img": "g6_exam2_q_bike_orig.png",
           "orig_text": "五、综合运用，解决问题。3.武汉长江大桥是中华人民共和国成立后在长江上修建的第一座公路、铁路两用桥，被誉为“万里长江第一桥”，全长约1670米。小新骑自行车过桥，如果自行车车轮每分钟转100圈，那么小新10分钟能通过大桥吗？自行车轮子的直径是0.6米。"
-        },
-        {
-          "label": "第三单元直接计算3",
-          "question": "第三单元直接计算3 六年级考试订正，红笔写了也算，答案对了就行；5项改对，3项未改对",
-          "reason": "未提交订正",
-          "hint": "①分子乘分子是多少？②分母乘分母是多少？③28/50能约分吗，约成多少？",
-          "img": "g6_exam2_frac_guide.png",
-          "q_img": "",
-          "orig_text": "三、直接写出得数。4/5×7/10=（ ）",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "q_img_status": "原题无图：题面无图指示，不附原题图。"
         }
       ],
-      "pending_corrections": 3,
+      "pending_corrections": 2,
       "created_at": "2026-10-30T19:17:44+08:00",
       "review_status": "approved",
       "updated_at": "2026-10-31T00:09:14+08:00",
@@ -181,7 +170,7 @@
       },
       "created_at": "2026-10-30T21:09:04+08:00",
       "updated_at": "2026-10-31T00:09:14+08:00",
-      "pending_corrections": 2,
+      "pending_corrections": 1,
       "corrections": [
         {
           "label": "六6选词填空",
@@ -191,15 +180,6 @@
           "img": "g6_engwork_4E5D9D_guide_wore.png",
           "q_img": "",
           "orig_text": "六、在短文中选择填空。6.He ___ thin clothes and looked very cold.（A washed B wore C wears）"
-        },
-        {
-          "label": "七2填词",
-          "question": "He loved gold very much",
-          "reason": "loved拼成loveed，多了一个e",
-          "hint": "①love的过去式怎么变？②e结尾加什么？③拼出来是多少？",
-          "img": "g6_engwork_4E5D9D_guide_loved.png",
-          "q_img": "",
-          "orig_text": "七、根据首字母或中文提示，写出所缺单词。2.He ___ gold very much.（首字母l）"
         }
       ],
       "status_source": "closeout_writeback",
