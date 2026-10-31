@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T15:09:07+08:00",
+  "updated_at": "2026-10-31T15:15:49+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -63,7 +63,11 @@
       "pending_note": "阅读二第1-5题已批全对，无待改正；待确认项为习作作答（400字左右，写印象深刻的同学）待补交，补交后结算。",
       "completed_at": "2026-10-31T15:09:07+08:00",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "orig_photos": [
+        "40219b5c38d849e7.jpg",
+        "2eac82eead5d9cf3.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-MATH",
@@ -492,10 +496,10 @@
     }
   ],
   "counts": {
-    "total": 8,
+    "total": 9,
     "pending": 2,
     "in_progress": 6,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
