@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T18:52:36+08:00",
+  "updated_at": "2026-10-31T19:05:24+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -110,7 +110,11 @@
       "completed_at": "2026-10-31T13:49:57+08:00",
       "status_source": "grading_closeout",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "orig_photos": [
+        "0f7202f657ce2e50.jpg",
+        "af021878b63c24dc.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-CHN",
@@ -127,7 +131,10 @@
       "completed_at": "2026-10-31T16:50:17+08:00",
       "status_source": "grading_closeout",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "orig_photos": [
+        "2a6942e3e29f00a0.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-MATH",
@@ -144,7 +151,10 @@
       "completed_at": "2026-10-31T16:00:31+08:00",
       "status_source": "grading_closeout",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "orig_photos": [
+        "8135f25650576cc7.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-ENG",
@@ -161,7 +171,10 @@
       "completed_at": "2026-10-31T13:44:23+08:00",
       "status_source": "grading_closeout",
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "orig_photos": [
+        "60540aaae8e6db52.jpg"
+      ]
     },
     {
       "task_id": "REG-20261030-4E5D9D",
@@ -183,7 +196,17 @@
       "pending_corrections": 0,
       "corrections": [],
       "status_source": "grading_closeout",
-      "completed_at": "2026-10-31T16:34:39+08:00"
+      "completed_at": "2026-10-31T16:34:39+08:00",
+      "orig_photos": [
+        "88ea481676ca5a16.jpg",
+        "18f16635e1d938cd.jpg",
+        "a6ad045c43f4d1ab.jpg",
+        "2668da0fd1abd5d6.jpg",
+        "9ee2899adcd30b7a.jpg",
+        "ddc121cf97dba42c.jpg",
+        "2050bd71566bc62e.jpg",
+        "a24195583e62d654.jpg"
+      ]
     },
     {
       "task_id": "REG-20261030-F9C24F",
@@ -258,7 +281,14 @@
       "pending_corrections": 0,
       "corrections": [],
       "completed_at": "2026-10-31T16:03:35+08:00",
-      "status_source": "grading_closeout"
+      "status_source": "grading_closeout",
+      "orig_photos": [
+        "68556c5c6b530af9.jpg",
+        "32165eb6724325e4.jpg",
+        "284684d7b73f1380.jpg",
+        "2c3e4b671e9c8f3d.jpg",
+        "35a77b29325b8d69.jpg"
+      ]
     },
     {
       "task_id": "REG-20261030-0445BB",
@@ -286,7 +316,22 @@
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "completed_at": "2026-10-31T18:52:36+08:00"
+      "completed_at": "2026-10-31T18:52:36+08:00",
+      "orig_photos": [
+        "7e7e5ba1fb9e9739.jpg",
+        "0b164fd72212801c.jpg",
+        "ff1ceb0994f6d544.jpg",
+        "49590655f6142474.jpg",
+        "5b4cccb6a70fe002.jpg",
+        "2632260a6ebba3ca.jpg",
+        "e2363000254d015b.jpg",
+        "26172f70942b6460.jpg",
+        "52248d49288a5eb6.jpg",
+        "d92a359be694349a.jpg",
+        "04ac126863c867b9.jpg",
+        "c72f04e3c0a0dffd.jpg",
+        "d7e6bd50e52a59af.jpg"
+      ]
     },
     {
       "task_id": "PRACT-20261030-259397",
@@ -316,15 +361,24 @@
       "status_source": "grading_closeout",
       "corrections": [],
       "pending_corrections": 0,
-      "completed_at": "2026-10-31T18:46:40+08:00"
+      "completed_at": "2026-10-31T18:46:40+08:00",
+      "orig_photos": [
+        "6ecf040522c4a5e1.jpg",
+        "26d9803d3b431c87.jpg",
+        "835909a252023d24.jpg",
+        "4533ad279f6c0df9.jpg",
+        "09501ff5018980e6.jpg",
+        "1b328f40ef1b2886.jpg",
+        "abdd707dcdf3e29b.jpg"
+      ]
     }
   ],
   "counts": {
-    "total": 11,
+    "total": 13,
     "pending": 2,
     "in_progress": 1,
-    "done": 8,
+    "done": 10,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-10-31T22:00:00+08:00"
 }
