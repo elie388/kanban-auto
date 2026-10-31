@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-10-31T19:09:51+08:00",
+  "generated_at": "2026-10-31T19:24:51+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "10-31",
+      "time": "19:24",
+      "time_source": "entry",
+      "reason": "兑换2小时和平精英",
+      "pts": -250,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "19:20",
+      "time_source": "entry",
+      "reason": "针对性练习订正：错题反问改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "19:20",
+      "time_source": "entry",
+      "reason": "针对性练习订正：小数点右移改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "10-31",
+      "time": "19:20",
+      "time_source": "entry",
+      "reason": "针对性练习订正：语文小练笔改对",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "10-31",
       "time": "19:07",
