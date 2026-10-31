@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-10-31T10:16:21+08:00",
+ "generated_at": "2026-10-31T10:35:17+08:00",
  "items": [
+  {
+   "date": "2026-10-31",
+   "ts": "2026-10-31T10:35:00+08:00",
+   "kind": "feedback",
+   "time": "10月31日 10:35",
+   "title": "彦均·针对性练习订正反馈",
+   "html": "<p>你交的针对性练习订正我看到了，先表扬你：watch改成watches、fly改成flies、teach改成teaches、How选B都对了，5.08那题的判断和理由也对了，Does那句的方向也改对了。</p><p>还有5处要再订正，不用重交整卷，只交这5处：</p><p><b>再订正1：第(7)题错题反问</b><br>提示：①句子已经改对了，还缺什么？②Tom是第几人称单数？③把这句错因写出来：Tom是第三人称单数，play要加s。</p><img src=\"data/diagrams/pract_tomplays_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正2：第(8)题小数点左移</b><br>提示：①原数是几份，移动后是几份，差是几份？②22.5对应的是几份？③1份是多少，原数是多少？④份数图上标出9份=22.5。</p><img src=\"data/diagrams/pract_left_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正3：第(10)题小数点右移</b><br>提示：①原数是几份，移动后是几份，差是几份？②36对应的是几份？③原数是多少？④画图说明思路。</p><img src=\"data/diagrams/pract_right_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正4：第(16)题右移+3.25</b><br>提示：①差是几份？②49.5对应的是几份？③原数是多少？④原数加3.25是多少？</p><img src=\"data/diagrams/pract_right_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正5：第(19)题语文小练笔</b><br>提示：①只抓一个重点：加一句神态（眼神或面部表情）；②把“拖拖净了”改成“拖干净了”；③把重复啰嗦的两处改顺。本次这页没交，记得补交。</p><img src=\"data/diagrams/pract_xiaolianbi_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>计分：本批订正改对6题，+12分。这张是周五作业，按周六22:00截止，订正不算超时。</p>"
+  },
   {
    "date": "2026-10-31",
    "ts": "2026-10-31T10:17:00+08:00",
