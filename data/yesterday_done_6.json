@@ -29,6 +29,20 @@
    "subject": "语文",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "READ-20261030-G6",
+   "title": "每日读书",
+   "subject": "读书",
+   "source": "reading_daily",
+   "group": "study"
+  },
+  {
+   "task_id": "D53-2026-10-30-ENG",
+   "title": "53天天练·英语",
+   "subject": "英语",
+   "source": "daily_53",
+   "group": "study"
   }
  ]
 }
