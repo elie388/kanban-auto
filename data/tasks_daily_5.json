@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T00:17:53+08:00",
+  "updated_at": "2026-11-01T00:18:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -62,11 +62,29 @@
       "count_in_completion_rate": false,
       "created_at": "2026-11-01T00:17:53+08:00",
       "updated_at": "2026-11-01T00:17:53+08:00"
+    },
+    {
+      "task_id": "READ-20261101-G5",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-01T08:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-01T00:18:11+08:00",
+      "updated_at": "2026-11-01T00:18:11+08:00"
     }
   ],
   "counts": {
-    "total": 2,
-    "pending": 2,
+    "total": 3,
+    "pending": 3,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
