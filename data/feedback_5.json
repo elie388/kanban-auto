@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-10-31T08:48:34+08:00",
+ "generated_at": "2026-10-31T08:51:23+08:00",
  "items": [
+  {
+   "date": "2026-10-30",
+   "ts": "2026-10-31T08:51:00+08:00",
+   "kind": "feedback",
+   "time": "10月31日 08:51",
+   "title": "彦均·53天天练·英语批改反馈",
+   "html": "<p>你交的53天天练英语P24我都看到了，先表扬你：图片排序第1、2、5张、判断第1题、绿色生活食、世界环境日卡片4空都对了。</p><p>有7处要订正，不用重交整页，只交这7处：</p><p><b>要订正1、2：图片排序第3、4张写反了</b><br>提示：①材料第1步、第2步、第3步分别是什么动作？②剪刀那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍。</p><img src=\"data/diagrams/eng_d53_order_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正3：判断第2题</b><br>提示：①材料里plastic bag是单数还是复数？②除了方块袋子，还有没有一个彩色袋子？③一共用了几个袋子？</p><img src=\"data/diagrams/eng_d53_tf2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正4：判断第3题</b><br>提示：①旧袋子做新袋子，旧袋子是扔掉了还是再用了？②再用旧袋子，塑料垃圾是变多还是变少？③cut down是什么意思？</p><img src=\"data/diagrams/eng_d53_tf3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正5：绿色生活衣</b><br>提示：①clothes怎么拼，c-l-o-t-h-e-s；②clothers里多了一个什么字母？③把clothes抄三遍。</p><img src=\"data/diagrams/eng_d53_clothing_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正6：绿色生活住</b><br>提示：①water是可数还是不可数？②much和many分别跟什么名词？③刷牙时水龙头开着，用keep ... running怎么说？</p><img src=\"data/diagrams/eng_d53_housing_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正7：绿色生活行</b><br>提示：①by后面跟什么，by bus还是by take a bus？②take a bus to school里，take和to school怎么连？③选一种说法，把整句重写一遍。</p><img src=\"data/diagrams/eng_d53_transport_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>另外说明一句：英语任务里还有一张语文P25照片，和语文任务里那张P25是同一页、同一份答案，不是新的英语作业，不重复批改、不重复计分，语文P25的习作还在等补交，周六22:00前交齐不算超时。</p><p>计分：完成分+3、正确率档-2（16小题对9小题，56.25%，低于70%档）。</p>"
+  },
   {
    "date": "2026-10-30",
    "ts": "2026-10-31T08:47:00+08:00",
