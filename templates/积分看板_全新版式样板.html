@@ -373,7 +373,7 @@
   .task .corr-badge{
     align-self:flex-start;
     margin-top:10px;
-    font-size:13px; font-weight:700; font-family:inherit;
+    font-size:15px; font-weight:700; font-family:inherit;
     padding:5px 12px; border-radius:999px; border:none; cursor:pointer;
     display:inline-flex; align-items:center; justify-content:center; gap:5px;
     white-space:nowrap; min-height:36px;
@@ -441,19 +441,19 @@
   }
   .task.correcting .task-toggle{color:#C77700; font-weight:700;}
   span.corr-badge{cursor:default;}
-  .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
+  .corr-item{font-size:15.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
   .corr-item .corr-no{font-weight:700; color:#C2410C;}
-  .corr-item .corr-resubmit{display:inline-block; font-size:11.5px; color:#92400E; background:#FEF3C7; border:1px solid #FDE68A; border-radius:999px; padding:1px 7px; margin-left:6px; vertical-align:1px;}
+  .corr-item .corr-resubmit{display:inline-block; font-size:13.5px; color:#92400E; background:#FEF3C7; border:1px solid #FDE68A; border-radius:999px; padding:1px 7px; margin-left:6px; vertical-align:1px;}
   .corr-item .corr-q{color:#30343B; white-space:pre-line;}
-  .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
-  .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:13px; line-height:1.65; color:#5A5145; white-space:pre-line;}
+  .corr-item .corr-r{display:block; margin-top:1px; font-size:14.5px; color:#6B7280;}
+  .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:15px; line-height:1.65; color:#5A5145; white-space:pre-line;}
   .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
   .corr-item .corr-qimg{margin-top:8px;}
-  .corr-item .corr-cap{display:inline-block; font-size:11px; font-weight:700; color:#8A6D2B; background:#FFF3D6; border:1px solid #F0DFB8; border-radius:6px; padding:1px 7px; margin-bottom:4px;}
+  .corr-item .corr-cap{display:inline-block; font-size:13px; font-weight:700; color:#8A6D2B; background:#FFF3D6; border:1px solid #F0DFB8; border-radius:6px; padding:1px 7px; margin-bottom:4px;}
   .corr-item .corr-qimg .corr-img{margin-top:0;}
   .corr-item .corr-note{margin-top:8px;}
-  .corr-item .corr-note-t{display:block; color:#6B7280; font-size:12.5px; line-height:1.65;}
+  .corr-item .corr-note-t{display:block; color:#6B7280; font-size:14.5px; line-height:1.65;}
   .corr-item .corr-orig{display:block; color:#30343B; white-space:pre-line; line-height:1.65;}
   .corr-item.corr-qa{border-left:2px solid #D8C9A8; padding-left:10px; background:#FDFAF1;}
   .tfiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
@@ -498,10 +498,10 @@
   }
   .corr-item .corr-audios{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
   .corr-item .corr-audio{display:inline-flex;}
-  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 13px; border-radius:999px; border:1.5px solid #E09A45; background:#FFF4E3; color:#6B3F0E; font-size:14px; font-weight:600; line-height:1; cursor:pointer; flex:0 0 auto;}
+  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 13px; border-radius:999px; border:1.5px solid #E09A45; background:#FFF4E3; color:#6B3F0E; font-size:16px; font-weight:600; line-height:1; cursor:pointer; flex:0 0 auto;}
   /* 图标定宽（2026-10-22 家长报障修复）：▶ 与 ⏸ 字形宽度不同，播放时换图标会把按钮撑宽、
      三个按钮总宽正好卡在换行临界点上，一点播放按钮行就从两行跳成一行；图标盒定宽后两种状态同宽，不再跳行 */
-  .corr-item .corr-play .corr-ic{display:inline-block; width:15px; text-align:center; flex:0 0 auto; font-size:13px; color:#D97A2B;}
+  .corr-item .corr-play .corr-ic{display:inline-block; width:15px; text-align:center; flex:0 0 auto; font-size:15px; color:#D97A2B;}
   .corr-item .corr-play.orig{border-color:#5B8DB8; background:#EAF4FB; color:#1F4E79;}
   .corr-item .corr-play.orig .corr-ic{color:#3D77A8;}
   .corr-item .corr-play.playing{background:#D97A2B; border-color:#D97A2B; color:#fff;}
@@ -5469,7 +5469,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261031-photos-accum';
+  var KB_BUILD = '20261031-corr-plus2';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
