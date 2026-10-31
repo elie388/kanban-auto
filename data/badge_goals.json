@@ -479,8 +479,8 @@
     "key": "baifen",
     "obtained": true,
     "date": "2026-10-28",
-    "count": 1,
-    "total_count": 2,
+    "count": 3,
+    "total_count": 4,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W44",
- "generated_at": "2026-10-31T13:54:53+08:00"
+ "generated_at": "2026-10-31T13:59:52+08:00"
 }
