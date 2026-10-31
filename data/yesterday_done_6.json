@@ -29,13 +29,6 @@
       "subject": "语文",
       "source": "register_book",
       "group": "study"
-    },
-    {
-      "task_id": "PRACT-20261030-259397",
-      "title": "针对性练习（含口语+背诵）",
-      "subject": "综合",
-      "source": "targeted_practice",
-      "group": "study"
     }
   ]
 }

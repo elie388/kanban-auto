@@ -287,6 +287,36 @@
       "carried_from": "2026-10-30",
       "carry_count": 1,
       "completed_at": "2026-10-31T18:52:36+08:00"
+    },
+    {
+      "task_id": "PRACT-20261030-259397",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-10-30.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《石灰吟》（于谦）\n原文：千锤万凿出深山，烈火焚烧若等闲。粉骨碎身浑不怕，要留清白在人间。\n朗读要求：声音洪亮，吐字清晰，语速适中，前两句读出坚定与豪迈，后两句读出正气凛然与坚定不移的决心，注意停顿和节拍。\n英语口语：先读短文再用自己的话复述大意（5分钟内完成）。短文：Last Saturday, Lucy went to the city library. She wanted to find a book about science for her school project. When she walked into the library, it was quiet and clean. There were lots of books on the tall shelves. Lucy looked for a long time, but she couldn't find the right book. Suddenly, a friendly librarian came over and helped her. With the librarian's help, Lucy found a wonderful book quickly. She was very happy and thanked the librarian politely.\n提示问题：1. Where did Lucy go last Saturday? 2. What was she looking for? 3. Who helped her at last?\n口语要求：语音语调自然，包含图书馆、找科学书、管理员帮忙、感谢四个核心信息，尽量脱稿表达。",
+      "estimate_min": 30,
+      "status": "done",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-30.docx",
+      "file_hash": "df0b32e65d68687ff06c8276582c8215b17a885462cbca22a6431b3b23e966f5",
+      "created_at": "2026-10-30T19:03:15+08:00",
+      "updated_at": "2026-10-31T18:46:40+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-10-30.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1,
+      "status_source": "grading_closeout",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-10-31T18:46:40+08:00"
     }
   ],
   "counts": {
