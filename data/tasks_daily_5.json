@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T15:46:14+08:00",
+  "updated_at": "2026-10-31T15:51:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -42,32 +42,6 @@
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1
-    },
-    {
-      "task_id": "D53-2026-10-30-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "53天天练语文第25页：阅读二《海阳的地雷战》第1-5题全对（终审终审确认）；具体缺习作作答（400字左右，写印象深刻的同学），本批只有第25页照片，习作页未交，补交后结算。",
-      "estimate_min": 10,
-      "status": "done",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T11:17:36+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1,
-      "status_source": "grading_main",
-      "supplement_required": null,
-      "pending_note": "阅读二第1-5题已批全对，无待改正；待确认项为习作作答（400字左右，写印象深刻的同学）待补交，补交后结算。",
-      "completed_at": "2026-10-31T15:09:07+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "orig_photos": [
-        "40219b5c38d849e7.jpg",
-        "2eac82eead5d9cf3.jpg"
-      ]
     },
     {
       "task_id": "D53-2026-10-30-MATH",
@@ -361,56 +335,33 @@
       },
       "created_at": "2026-10-30T20:37:12+08:00",
       "updated_at": "2026-10-31T08:46:47+08:00",
-      "pending_corrections": 5,
+      "pending_corrections": 3,
       "corrections": [
         {
           "label": "三第8空",
           "question": "I feel happy to stay ___ her and that's why she is my best friend. 第8空填什么？",
-          "reason": "第8空是stay with her，第9空才是that's why，孩子两空都写了why，第8空错了。",
-          "hint": "①stay后面跟谁在一起，要用什么词？②第9空that's后面跟的是原因词，第8空跟的是人在一起的词；③把stay ___ her读一遍，哪个词读着顺？",
+          "reason": "最终答案写的是for，不是with",
+          "hint": "stay 是“待在一起”，后面跟人用什么介词？想想 stay ___ her，中间那个词是什么？for 是“为了”，不对。",
           "img": "eng_7adb44_s3_8_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "I feel happy to stay 8. ___ her and that's 9. ___ (为什么) she is my 10. ___ friend."
         },
         {
           "label": "五（一）第2题",
           "question": "We should wear a smile first when making friends. 判断正(T)误(F)。",
-          "reason": "短文原文：First, you should always wear a smile。先戴上微笑是第一步，孩子写F错了，应为T。",
-          "hint": "①短文第一步说的是什么？②wear a smile first和First, wear a smile是不是一个意思？③把短文那句找出来再判。",
+          "reason": "括号里仍是黑笔F，没有红笔改动",
+          "hint": "短文第一段怎么说的？First, you should always wear a smile. 所以这句话是对的还是错的？",
           "img": "eng_7adb44_r1_2_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "( )2. We should wear a smile first when making friends."
-        },
-        {
-          "label": "五（一）第3题",
-          "question": "Making the right friends can make our life more enjoyable. 判断正(T)误(F)。",
-          "reason": "短文原文：Making the right friends can make your life ten times more enjoyable。交对朋友确实让生活更愉快，孩子写F错了，应为T。",
-          "hint": "①短文说交对朋友会让生活怎么样？②ten times more enjoyable是更愉快还是不愉快？③把短文那句找出来再判。",
-          "img": "eng_7adb44_r1_3_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "( )3. Making the right friends can make our life more enjoyable."
-        },
-        {
-          "label": "五（一）第4题",
-          "question": "A good friend only makes a small talk with you. 判断正(T)误(F)。",
-          "reason": "短文原文：A good friend doesn't only make a small talk with you。好朋友不只是和你闲聊，only是关键，孩子写T错了，应为F。",
-          "hint": "①短文里有没有doesn't only？②only是只、仅仅的意思，有了doesn't only是不是就不只是闲聊？③把短文那句找出来再判。",
-          "img": "eng_7adb44_r1_4_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "( )4. A good friend only makes a small talk with you."
         },
         {
           "label": "六书面表达",
           "question": "介绍好朋友Lily，不少于5句话：She likes reading but ___ running. / We often ___ together. 两处动词形式改对。",
-          "reason": "内容齐全、6句、已达不少于5句；两处动词形式错：but后主语不明且like应与主语一致，often后用动词原形不用drawing。",
-          "hint": "①but后面是谁在跑步，主语写清楚了吗？②often后面跟动词的什么形式，play、read、draw怎么变？③把这两句按often + 动词原形重写一遍。",
+          "reason": "like running 未改动；drawing 改成 drow，拼写不对",
+          "hint": "She likes reading，but 后面那个 like 要不要加 s？想想前后要一致。often 后面跟动词原形，你写的 drow 拼写不对，draw 是哪四个字母？",
           "img": "eng_7adb44_writing_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "假如你是Xiaoxiao，请向大家介绍你的好朋友Lily。内容包括：1.朋友的基本信息。2.你们之间的相同点/不同点。3.你们经常在一起做的事情。4.语句通顺，并且不少于5句话。孩子原文：My best friend is Lily. She is tall. She likes reading but like running. We are friends because we both like drawing. We often drawing together. We are so happy."
         }
       ],
