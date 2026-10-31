@@ -204,7 +204,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 4,
+     "current": 5,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -239,7 +239,7 @@
      "target": 14,
      "unit": "天",
      "mode": "连续",
-     "detail": "睡觉通道"
+     "detail": "家务通道"
     }
    },
    {
@@ -430,14 +430,14 @@
    },
    {
     "key": "jiawuzhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 1,
+    "obtained": true,
+    "date": "2026-10-31",
+    "count": 1,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 4,
+     "current": 5,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W44",
- "generated_at": "2026-10-31T23:04:53+08:00"
+ "generated_at": "2026-11-01T06:00:16+08:00"
 }
