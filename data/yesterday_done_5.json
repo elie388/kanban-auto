@@ -1,83 +1,13 @@
 {
- "date": "2026-10-30",
+ "date": "2026-10-31",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "CHORE-20261030-G5",
+   "task_id": "CHORE-20261031-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-30",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261030-B54034",
-   "title": "口语易",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261030-7ADB44",
-   "title": "小试卷（打印）",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261030-8EC0A8",
-   "title": "试卷（不写作文）",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261030-9BE154",
-   "title": "思考题（四）",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-30-ENG",
-   "title": "53天天练·英语",
-   "subject": "英语",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-30-MATH",
-   "title": "53天天练·数学",
-   "subject": "数学",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "READ-20261030-G5",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-30-CHN",
-   "title": "53天天练·语文",
-   "subject": "语文",
-   "source": "daily_53",
-   "group": "study"
-  },
-  {
-   "task_id": "PRACT-20261030-79293B",
-   "title": "针对性练习（含口语+背诵）",
-   "subject": "综合",
-   "source": "targeted_practice",
-   "group": "study"
   }
  ]
 }
