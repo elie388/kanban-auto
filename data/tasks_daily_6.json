@@ -132,7 +132,7 @@
           "question": "环形铁片面积单位",
           "reason": "数值62.8算对了，面积单位应为平方米，写成米是单位错",
           "hint": "算面积时先看单位，面积单位是平方米",
-          "img": "",
+          "img": "g6_pract_q7_guide.png",
           "q_img": "",
           "orig_text": "(7)一个环形铁片，外圆直径12米，内圆直径8米，面积是多少平方米？"
         },
@@ -141,7 +141,7 @@
           "question": "半圆形花园周长算式",
           "reason": "弧长3.14×5应为15.7米不是25.7米，算式漏写了加直径10米一步，周长结果虽对、推导错",
           "hint": "先算弧长15.7米，再加直径10米，写全15.7+10=25.7",
-          "img": "",
+          "img": "g6_pract_q8_guide.png",
           "q_img": "",
           "orig_text": "(8)一个半圆形花园的直径是10米，求周长和面积"
         },
@@ -150,7 +150,7 @@
           "question": "mouse复数",
           "reason": "mouse的复数是不规则变化mice，不是加s",
           "hint": "先想mouse是不是规则复数，再写复数",
-          "img": "",
+          "img": "g6_pract_q11_guide.png",
           "q_img": "",
           "orig_text": "(11)用所给词的正确形式填空：The farmer has a lot of mouse in the old barn."
         },
@@ -159,7 +159,7 @@
           "question": "代词填空第2句第2空",
           "reason": "此处是名词性物主代词，作表语应为yours，不是you",
           "hint": "先看空后有没有名词，没有名词时用物主代词形式",
-          "img": "",
+          "img": "g6_pract_q12_guide.png",
           "q_img": "",
           "orig_text": "(12)用适当的代词填空：This is his pencil box. Where is you?"
         }
