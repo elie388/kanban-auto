@@ -15,6 +15,13 @@
    "subject": "登记本",
    "source": "meta",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261030-B54034",
+   "title": "口语易",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }
