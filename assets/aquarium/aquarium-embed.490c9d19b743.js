@@ -696,7 +696,7 @@ function revealFishName(f){
   const now=performance.now();f.nameShownAt=now;f.nameUntil=now+5000;if(clock>=(f.respondCooldown||0)){f.respondUntil=clock+1.1;f.respondCooldown=clock+2.5;}
 }
 function fishAtPoint(x,y){
- const candidates=[];for(const f of fish){const g=f.lastGeometry&&f.lastGeometry.clock===clock&&f.lastGeometry.width===W&&f.lastGeometry.height===H?f.lastGeometry.model:fishGeometry(f);let exact=false,near=Infinity;for(const face of g.faces){if(face.line||(face.alpha??1)<.1)continue;const poly=face.v;if(pointInsideFishPolygon(x,y,poly)){exact=true;near=0;break;}for(let j=0;j<poly.length;j++)near=Math.min(near,fishEdgeDistance(x,y,poly[j],poly[(j+1)%poly.length]));}if(exact||near<=Math.max(12,22-f.size*W*.1))candidates.push({f,exact,near,d:Math.hypot(x-f.x*W,y-projectedFishY(f)*H)});}
+ const candidates=[];for(const f of fish){const g=f.lastGeometry&&f.lastGeometry.clock===clock&&f.lastGeometry.width===W&&f.lastGeometry.height===H?f.lastGeometry.model:fishGeometry(f);let exact=false,near=Infinity;for(const face of g.faces){if(face.line||(face.alpha??1)<.1)continue;const poly=face.v;if(pointInsideFishPolygon(x,y,poly)){exact=true;near=0;break;}for(let j=0;j<poly.length;j++)near=Math.min(near,fishEdgeDistance(x,y,poly[j],poly[(j+1)%poly.length]));}if(exact||near<=40)candidates.push({f,exact,near,d:Math.hypot(x-f.x*W,y-projectedFishY(f)*H)});}
  candidates.sort((a,b)=>Number(b.exact)-Number(a.exact)||b.f.z-a.f.z||a.d-b.d);return candidates[0]?.f;
 }
 function pointInsideFishPolygon(x,y,p){let inside=false;for(let i=0,j=p.length-1;i<p.length;j=i++){const a=p[i],b=p[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])inside=!inside;}return inside;}
