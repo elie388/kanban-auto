@@ -707,7 +707,7 @@ function drawFishNames(){
     if(!Number.isFinite(f.nameUntil)||now>=f.nameUntil)continue;
     const alpha=Math.min(1,(now-f.nameShownAt)/140,(f.nameUntil-now)/400);
     if(alpha<=0)continue;
-    const text=document.documentElement.classList.contains('kb-locked') ? (f.id==='orange' ? '彦*的鱼' : '伟*的鱼') : f.name;
+    const text=(document.documentElement.classList.contains('kb-locked') ? (f.id==='orange' ? '彦*' : '伟*') : (f.id==='orange' ? '彦均' : '伟豪'))+'的'+(f.speciesName||'鱼');
     const fontSize=Math.max(11,Math.min(14,W*.025));ctx.save();ctx.font=`500 ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
     const width=Math.min(W-12,ctx.measureText(text).width+22),height=fontSize+16;
     const x=Math.max(6,Math.min(W-width-6,f.x*W-width/2));
