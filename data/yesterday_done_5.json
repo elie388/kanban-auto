@@ -36,6 +36,13 @@
    "subject": "语文",
    "source": "daily_53",
    "group": "study"
+  },
+  {
+   "task_id": "D53-2026-10-30-MATH",
+   "title": "53天天练·数学",
+   "subject": "数学",
+   "source": "daily_53",
+   "group": "study"
   }
  ]
 }
