@@ -1,48 +1,34 @@
 {
- "date": "2026-10-30",
- "grade": "六年级",
- "items": [
-  {
-   "task_id": "CHORE-20261030-G6",
-   "title": "家务打卡",
-   "subject": "家务",
-   "source": "chore",
-   "group": "chore"
-  },
-  {
-   "task_id": "META-REGISTER-2026-10-30",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261030-218789",
-   "title": "抄U1的单词和中文各4次，读10次",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261030-58BC55",
-   "title": "预习14课和读背P66日积月累",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "READ-20261030-G6",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
-   "group": "study"
-  },
-  {
-   "task_id": "D53-2026-10-30-ENG",
-   "title": "53天天练·英语",
-   "subject": "英语",
-   "source": "daily_53",
-   "group": "study"
-  }
- ]
+  "date": "2026-10-30",
+  "grade": "六年级",
+  "items": [
+    {
+      "task_id": "CHORE-20261030-G6",
+      "title": "家务打卡",
+      "subject": "家务",
+      "source": "chore",
+      "group": "chore"
+    },
+    {
+      "task_id": "META-REGISTER-2026-10-30",
+      "title": "提交作业登记本",
+      "subject": "登记本",
+      "source": "meta",
+      "group": "study"
+    },
+    {
+      "task_id": "REG-20261030-218789",
+      "title": "抄U1的单词和中文各4次，读10次",
+      "subject": "英语",
+      "source": "register_book",
+      "group": "study"
+    },
+    {
+      "task_id": "REG-20261030-58BC55",
+      "title": "预习14课和读背P66日积月累",
+      "subject": "语文",
+      "source": "register_book",
+      "group": "study"
+    }
+  ]
 }
