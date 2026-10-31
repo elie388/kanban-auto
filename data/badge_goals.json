@@ -182,14 +182,14 @@
    },
    {
     "key": "baifen",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 1,
+    "obtained": true,
+    "date": "2026-10-31",
+    "count": 1,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 85,
+     "current": 113,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -197,14 +197,14 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 1,
+    "obtained": true,
+    "date": "2026-10-31",
+    "count": 1,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 4,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -333,7 +333,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 5,
      "unit": "次",
      "mode": "连续"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W44",
- "generated_at": "2026-10-31T08:39:16+08:00"
+ "generated_at": "2026-10-31T08:49:57+08:00"
 }
