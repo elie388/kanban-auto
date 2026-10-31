@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T15:46:15+08:00",
+  "updated_at": "2026-10-31T16:00:31+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -74,14 +74,21 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
+      "updated_at": "2026-10-31T16:00:31+08:00",
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
-      "carry_count": 1
+      "carry_count": 1,
+      "completed_at": "2026-10-31T16:00:31+08:00",
+      "status_source": "grading_closeout",
+      "pending_corrections": 0,
+      "corrections": [],
+      "orig_photos": [
+        "0dbd03bd_1_8135f2565057.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-ENG",
@@ -397,10 +404,10 @@
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 5,
+    "total": 9,
+    "pending": 4,
     "in_progress": 4,
-    "done": 3,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null
