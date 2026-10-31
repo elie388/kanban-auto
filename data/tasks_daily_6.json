@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T16:00:31+08:00",
+  "updated_at": "2026-10-31T16:03:35+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -305,7 +305,7 @@
       "title": "读知识要点，做小测卷",
       "detail": "读第四单元知识要点：朗读录音8分54秒已收到，覆盖课文回顾（桥、穷人、金色的鱼钩）、字音词语、品析句子、小练笔正反方、颁奖词、感悟、说服家人养小狗，未发现跳段；转写同音误转多，错漏达标待进一步核对，不先定达标；具体缺小测卷作答（单面无手写作答），补交后定达标与结算。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
@@ -314,25 +314,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-31T11:17:36+08:00",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "朗读达标待核",
-          "question": "知识要点朗读达标核对（待原文核对）",
-          "reason": "Groq初稿同音误转多，待知识要点单原文核对，达标+3暂不结",
-          "hint": "待知识要点单原文核对后定达标与否",
-          "img": "",
-          "q_img": "",
-          "orig_text": "知识要点单全文朗读（8分54秒录音，待原文核对）"
-        }
-      ],
+      "updated_at": "2026-10-31T16:03:35+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "status_source": "grading_main",
+      "status_source": "grading_closeout",
       "supplement_required": null,
-      "pending_note": "朗读达标待核：8分54秒录音已覆盖全文无跳段，Groq初稿同音误转多，待知识要点单原文核对，达标+3暂不结"
+      "pending_note": "朗读达标待核：8分54秒录音已覆盖全文无跳段，Groq初稿同音误转多，待知识要点单原文核对，达标+3暂不结",
+      "completed_at": "2026-10-31T16:03:35+08:00"
     },
     {
       "task_id": "REG-20261030-B6A1FF",
@@ -404,9 +395,9 @@
     }
   ],
   "counts": {
-    "total": 9,
+    "total": 8,
     "pending": 4,
-    "in_progress": 4,
+    "in_progress": 3,
     "done": 0,
     "pending_review": 0
   },
