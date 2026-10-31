@@ -252,10 +252,10 @@ jobs:
       - name: 同步积分鱼缸 v21 资源到 Pages 产物
         run: |
           mkdir -p public/assets/aquarium
-          cp assets/aquarium/aquarium-embed.351913351797.js assets/aquarium/aquarium.5939e0cef9ec.css public/assets/aquarium/
-          test -s public/assets/aquarium/aquarium-embed.351913351797.js || { echo "::error::鱼缸 JS 缺失" ; exit 1; }
+          cp assets/aquarium/aquarium-embed.e0ca2ee5629b.js assets/aquarium/aquarium.5939e0cef9ec.css public/assets/aquarium/
+          test -s public/assets/aquarium/aquarium-embed.e0ca2ee5629b.js || { echo "::error::鱼缸 JS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium.5939e0cef9ec.css || { echo "::error::鱼缸 CSS 缺失" ; exit 1; }
-          echo "3519133517977734d3420c12abc215143115a3f0e0dfee129ab3fc302d9ea498  public/assets/aquarium/aquarium-embed.351913351797.js" | sha256sum -c -
+          echo "e0ca2ee5629ba7a75be7acc02dae880d55a1bd4d3ba71c3d931088aed66796dc  public/assets/aquarium/aquarium-embed.e0ca2ee5629b.js" | sha256sum -c -
           echo "5939e0cef9ecca8993a6cef8c13e349b1645c7f2389e6f1aa0ebf3184a79e01a  public/assets/aquarium/aquarium.5939e0cef9ec.css" | sha256sum -c -
           ls -la public/assets/aquarium/
 

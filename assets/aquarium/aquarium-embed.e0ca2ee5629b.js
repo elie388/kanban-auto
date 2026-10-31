@@ -192,7 +192,7 @@ function drawWeatherSky(sc){
  // Sky objects are decorative local-time approximations, not measured astronomy.
  const obscurity=clamp01(w.cover*.78+w.mist*.7+w.dust*.75),celestial=(1-obscurity)*(.85+.15*(1-w.cast));
  if(sc.night>.02&&obscurity<.9){for(let j=0;j<26;j++){const x=habitatNoise(j+1200)*W,y=habitatNoise(j+1300)*h;ctx.fillStyle=`rgba(237,247,255,${sc.night*(1-obscurity)*(.18+.25*Math.sin(time*.25+j)**2)})`;ctx.beginPath();ctx.arc(x,y,j%7===0?.9:.5,0,Math.PI*2);ctx.fill();}}
- const sx=W*(.78+.035*Math.sin(time*.002)),sy=h*(.38+sc.warmth*.42),radius=h*.18;
+ const sunHour=cachedFractionalHour,sunDay=sunHour>=6&&sunHour<18,sunT=sunDay?clamp01((sunHour-6)/12):0,moonT=sunDay?0:clamp01(((sunHour>=18?sunHour-18:sunHour+6))/12),sx=W*(sunDay?.12+sunT*.76:.12+moonT*.76),sy=h*(sunDay?.62-Math.sin(Math.PI*sunT)*.24:.38+sc.warmth*.42),radius=h*.18;
  if(sc.night<.995){ctx.save();ctx.globalAlpha=(1-sc.night)*celestial;const halo=ctx.createRadialGradient(sx,sy,0,sx,sy,h*1.6);halo.addColorStop(0,'rgba(255,229,169,.65)');halo.addColorStop(.22,'rgba(255,235,189,.18)');halo.addColorStop(1,'rgba(255,235,189,0)');ctx.fillStyle=halo;ctx.fillRect(0,0,W,h);ctx.fillStyle=mixHex('#fff6d6','#ffd1a0',sc.warmth);ctx.beginPath();ctx.arc(sx,sy,radius,0,Math.PI*2);ctx.fill();ctx.restore();}
  if(sc.night>.005){ctx.save();ctx.globalAlpha=sc.night*celestial;const my=h*.37,mr=h*.145;ctx.fillStyle='#e9eddf';ctx.beginPath();ctx.arc(sx,my,mr,0,Math.PI*2);ctx.fill();ctx.fillStyle=sc.palette[0];ctx.beginPath();ctx.arc(sx+mr*.47,my-mr*.20,mr*.89,0,Math.PI*2);ctx.fill();ctx.restore();}
  // Separate high veils and low billows; cached density textures only translate.
