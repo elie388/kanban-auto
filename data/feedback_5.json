@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-10-31T17:14:28+08:00",
+ "generated_at": "2026-10-31T17:22:02+08:00",
  "items": [
+  {
+   "date": "2026-10-31",
+   "ts": "2026-10-31T17:22:02+08:00",
+   "kind": "feedback",
+   "time": "17:30",
+   "title": "彦均·针对性练习反馈：5项还没改对，口算录音今晚22:00前补",
+   "html": "<p>这批5项都还没改对：(7)句子改对了（plays），但还缺一句话说出错因（Tom是第三人称单数，动词要加s）；(8)还是2.25，正确是25（22.5除以9等于2.5，乘10等于25）；(10)最后答36不对，正确是4（36除以9），还要画份数图；(16)最后答52.75不对，正确是8.75（49.5除以9等于5.5，再加3.25）；(19)重写字数够了，但还是没有一句神态描写（眼睛、眉头、嘴角），只加一句神态就好，全篇只写妈妈。另：口算5题语音答案还没交，今晚22:00前补录不算超时。</p>"
+  },
   {
    "date": "2026-10-31",
    "ts": "2026-10-31T17:14:28+08:00",
@@ -98,14 +106,6 @@
    "time": "10月31日 10:12",
    "title": "彦均·53天天练·数学订正反馈",
    "html": "<p>你交的53天天练数学订正我看到了，先表扬你：第4题改对了，从C改成D，很好。</p><p>还有4处要再订正，不用重交整页，只交这4处：</p><p><b>再订正1：第2题（1）涂色</b><br>提示：①你涂了左上和左下，左下那块对吗？②淘气算式里的第二块是哪个算式？③右下那块涂了没有？</p><img src=\"data/diagrams/math_d53_2_color_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正2：第3题第4小题</b><br>提示：①符号改成✓是对的，原来错的理由也划掉了；②现在还缺什么？③0.75是几分之几？4平均分成4份，取3份是多少？把这句理由写出来。</p><img src=\"data/diagrams/math_d53_3_4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正3：第6题X×Y</b><br>提示：①X在0和1之间，是大于1还是小于1？②一个数乘小于1的数，积和这个数比，谁小？③X×Y约是多少，在数轴哪个点附近？</p><img src=\"data/diagrams/math_d53_6_xy_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正4：第6题Y×Z</b><br>提示：①Z在1和2之间，是大于1还是小于1？②Y乘大于1的数，积和Y比，谁大？③Y×Z约是多少，在数轴哪个点附近？你改的④比正确的点大了多少？</p><img src=\"data/diagrams/math_d53_6_yz_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>计分：本批订正改对1题，+2分。这张是周五作业，按周六22:00截止，订正不算超时。</p>"
-  },
-  {
-   "date": "2026-10-30",
-   "ts": "2026-10-31T09:00:00+08:00",
-   "kind": "feedback",
-   "time": "10月31日 09:00",
-   "title": "彦均·针对性练习批改反馈",
-   "html": "<p>你交的针对性练习我都看到了，先表扬你：英语(1)makes、(4)has、语文(11)一丝一毫、(14)严厉、(15)bread、数学(13)找回6.7元都对了；英语口语三问都答了，背诵《泊船瓜洲》四句齐全，没有跳段，同音字按从宽不计错。</p><p>书面+口语背诵共19小题，对8小题，正确率42.1%。分科看：英语10题对3题，数学5题对1题，语文4题对3题。11处要订正：</p><p><b>要订正1：(2)watch</b><br>提示：①watch结尾是哪两个字母？②ch、sh结尾的动词加什么？③把watches抄一遍。</p><img src=\"data/diagrams/pract_watch_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正2：(3)fly</b><br>提示：①fly结尾是辅音+y还是元音+y？②辅音+y怎么变？③这句有没有is？</p><img src=\"data/diagrams/pract_fly_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正3：(5)teach</b><br>提示：①teach结尾是哪两个字母？②ch结尾加什么？③把teaches抄一遍。</p><img src=\"data/diagrams/pract_teach_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正4：(6)Does问句</b><br>提示：①Does里已经有没有第三人称单数的意思？②陈述句He plays里，plays加没加s？③问句里s在Does身上还是在play身上？</p><img src=\"data/diagrams/pract_does_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正5：(7)错题反问</b><br>提示：①Tom是第几人称、单数还是复数？②第三人称单数动词加什么？③his和he's哪个是'他的'？</p><img src=\"data/diagrams/pract_tomplays_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正6：(8)小数点左移</b><br>提示：①原数是几份，移动后是几份，差是几份？②22.5对应的是几份？③先算1份，再算原数10份。</p><img src=\"data/diagrams/pract_left_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正7：(9)5.08去小数点</b><br>提示：①5.08去掉点，数字是几个？②508是几位数？③整数部分几位，小数部分几位，加起来几位？</p><img src=\"data/diagrams/pract_508_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正8：(10)小数点右移</b><br>提示：①原数是几份，移动后是几份，差是几份？②36对应的是几份？③先算1份，就是原数，再把图画出来。</p><img src=\"data/diagrams/pract_right_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正9：(12)How</b><br>提示：①by bus回答的是方式、地点还是东西？②How、Where、What分别问什么？③by bus前面问句用哪个词？</p><img src=\"data/diagrams/pract_how_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正10：(16)右移+3.25</b><br>提示：①差是几份？②49.5对应几份？③先算原数，再加3.25。</p><img src=\"data/diagrams/pract_right_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正11：(19)语文小练笔重写</b><br>提示：①妈妈扫地时眼神是什么样，嘴角是什么样？②'拖拖净'多了一个什么字？③'把扫把扫起来'里，扫把出现了几次，能不能删一个？</p><img src=\"data/diagrams/pract_xiaolianbi_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>另外一件要补：口算5题（3.8×4、68+57、1.5×6+2.4、2.5×4.8×4、28.9×5.2估算）的语音答案在这段录音里没有听到，周六22:00前补录一次，不算超时、不计入上面19题的正确率。</p><p>计分：针对性练习按时提交+2。综合练习分三科，正确率只按科汇报，不单立一个总档结算。</p>"
   },
   {
    "date": "2026-10-30",
