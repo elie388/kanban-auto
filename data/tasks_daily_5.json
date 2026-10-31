@@ -44,6 +44,32 @@
       "carry_count": 1
     },
     {
+      "task_id": "D53-2026-10-30-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "53天天练语文第25页：阅读二《海阳的地雷战》第1-5题全对（终审终审确认）；具体缺习作作答（400字左右，写印象深刻的同学），本批只有第25页照片，习作页未交，补交后结算。",
+      "estimate_min": 10,
+      "status": "done",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-10-30T16:55:46+08:00",
+      "updated_at": "2026-10-31T11:17:36+08:00",
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-30",
+      "carry_count": 1,
+      "status_source": "grading_main",
+      "supplement_required": null,
+      "pending_note": "阅读二第1-5题已批全对，无待改正；待确认项为习作作答（400字左右，写印象深刻的同学）待补交，补交后结算。",
+      "completed_at": "2026-10-31T15:09:07+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "orig_photos": [
+        "40219b5c38d849e7.jpg",
+        "2eac82eead5d9cf3.jpg"
+      ]
+    },
+    {
       "task_id": "D53-2026-10-30-MATH",
       "source": "daily_53",
       "subject": "数学",
@@ -399,7 +425,8 @@
           "hint": "琦君是写文章的人，不是感情；桂花和灰汤粽让作者想起的是哪里？想起那个地方的感情叫什么之情？只改“琦君”两个字，其他不动。",
           "img": "",
           "q_img": "",
-          "orig_text": "3.梳理探究选文（一）（二），写下你的探究成果。发现1：我知道了无论是桂花还是灰汤粽都蕴含着（ ）之情。"
+          "orig_text": "3.梳理探究选文（一）（二），写下你的探究成果。发现1：我知道了无论是桂花还是灰汤粽都蕴含着（ ）之情。",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
         }
       ],
       "status_source": "realtime",
