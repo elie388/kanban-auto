@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T08:38:03+08:00",
+  "updated_at": "2026-10-31T08:47:27+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -67,15 +67,65 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T00:29:33+08:00",
+      "updated_at": "2026-10-31T08:46:47+08:00",
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "grading_closeout",
+      "pending_corrections": 5,
+      "corrections": [
+        {
+          "label": "第2题（1）涂色",
+          "question": "在面积图中用涂色部分表示淘气算式中计算的部分。",
+          "reason": "淘气算的是2×1和0.9×0.4两块，图中填空都对，但没有涂色，（1）未完成。",
+          "hint": "①淘气算式里是哪两块？②把这两块涂上颜色；③另外两块2×0.4和0.9×1是漏掉的，不要涂。",
+          "img": "math_d53_2_color_guide.png",
+          "q_img": "math_d53_2_orig.png",
+          "orig_text": "下面是淘气计算2.9×1.4的方法，笑笑看到后，发现淘气算错了，并用画图的方法帮他检验。（1）请你在上图中用涂色部分表示淘气算式中计算的部分，再补全检验的过程。（原题图为面积图原页裁切，图上填空为孩子本人填写，无法避开，特此说明。）"
+        },
+        {
+          "label": "第3题第4小题",
+          "question": "4.0×0.75=3，对的画√，错的画×，并说明理由。",
+          "reason": "4×0.75=3， exactly 3，孩子画×错了；理由大于3也不对，0.75是四分之三，4的四分之三就是3。",
+          "hint": "①0.75是几分之几？②4平均分成4份，取3份是多少？③4×0.75和3比，谁大谁小？",
+          "img": "math_d53_3_4_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "4.0×0.75=3"
+        },
+        {
+          "label": "第4题",
+          "question": "乐乐计算1.□6×4.□2得到3.4552，他说肯定算错了。这是因为正确的积一定（ ）。A.比1.□6小 B.比1.□6大 C.比4.□2小 D.比4.□2大",
+          "reason": "1.□6大于1，正确的积一定比4.□2大，孩子选C错了，应选D；3.4552比4.□2小，所以肯定算错了。",
+          "hint": "①1.□6是大于1还是小于1？②一个数乘大于1的数，积和这个数比，谁大？③正确的积和4.□2比，谁大？",
+          "img": "math_d53_4_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "乐乐计算1.□6×4.□2得到3.4552，他看到算出的结果想了想，说：“肯定算错了。”这是因为正确的积一定（ ）。"
+        },
+        {
+          "label": "第6题X×Y",
+          "question": "观察数轴，X×Y的结果最可能在（ ）处。",
+          "reason": "X约0.25，Y约0.9，X小于1，X×Y比Y小，约0.225，最可能在①处，孩子写③错了，两空写反了。",
+          "hint": "①X在0和1之间，是大于1还是小于1？②一个数乘小于1的数，积和这个数比，谁小？③X×Y约是多少，在数轴哪个点附近？",
+          "img": "math_d53_6_xy_guide.png",
+          "q_img": "math_d53_6_orig.png",
+          "orig_text": "观察下图，X×Y的结果最可能在（ ）处；Y×Z的结果最可能在（ ）处。（填序号）"
+        },
+        {
+          "label": "第6题Y×Z",
+          "question": "观察数轴，Y×Z的结果最可能在（ ）处。",
+          "reason": "Y约0.9，Z约1.3，Y×Z约1.17，在Y和Z之间，最可能在③处，孩子写①错了，两空写反了。",
+          "hint": "①Z在1和2之间，是大于1还是小于1？②Y乘大于1的数，积和Y比，谁大？③Y×Z约是多少，在数轴哪个点附近？",
+          "img": "math_d53_6_yz_guide.png",
+          "q_img": "math_d53_6_orig.png",
+          "orig_text": "观察下图，X×Y的结果最可能在（ ）处；Y×Z的结果最可能在（ ）处。（填序号）"
+        }
+      ]
     },
     {
       "task_id": "D53-2026-10-30-ENG",
@@ -243,7 +293,7 @@
       "title": "小试卷（打印）",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①小试卷（打印）；②口语易 → 待完成",
@@ -252,13 +302,64 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T20:37:12+08:00",
-      "updated_at": "2026-10-31T00:17:20+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-10-31T08:46:47+08:00",
+      "pending_corrections": 5,
+      "corrections": [
+        {
+          "label": "三第8空",
+          "question": "I feel happy to stay ___ her and that's why she is my best friend. 第8空填什么？",
+          "reason": "第8空是stay with her，第9空才是that's why，孩子两空都写了why，第8空错了。",
+          "hint": "①stay后面跟谁在一起，要用什么词？②第9空that's后面跟的是原因词，第8空跟的是人在一起的词；③把stay ___ her读一遍，哪个词读着顺？",
+          "img": "eng_7adb44_s3_8_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "I feel happy to stay 8. ___ her and that's 9. ___ (为什么) she is my 10. ___ friend."
+        },
+        {
+          "label": "五（一）第2题",
+          "question": "We should wear a smile first when making friends. 判断正(T)误(F)。",
+          "reason": "短文原文：First, you should always wear a smile。先戴上微笑是第一步，孩子写F错了，应为T。",
+          "hint": "①短文第一步说的是什么？②wear a smile first和First, wear a smile是不是一个意思？③把短文那句找出来再判。",
+          "img": "eng_7adb44_r1_2_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "( )2. We should wear a smile first when making friends."
+        },
+        {
+          "label": "五（一）第3题",
+          "question": "Making the right friends can make our life more enjoyable. 判断正(T)误(F)。",
+          "reason": "短文原文：Making the right friends can make your life ten times more enjoyable。交对朋友确实让生活更愉快，孩子写F错了，应为T。",
+          "hint": "①短文说交对朋友会让生活怎么样？②ten times more enjoyable是更愉快还是不愉快？③把短文那句找出来再判。",
+          "img": "eng_7adb44_r1_3_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "( )3. Making the right friends can make our life more enjoyable."
+        },
+        {
+          "label": "五（一）第4题",
+          "question": "A good friend only makes a small talk with you. 判断正(T)误(F)。",
+          "reason": "短文原文：A good friend doesn't only make a small talk with you。好朋友不只是和你闲聊，only是关键，孩子写T错了，应为F。",
+          "hint": "①短文里有没有doesn't only？②only是只、仅仅的意思，有了doesn't only是不是就不只是闲聊？③把短文那句找出来再判。",
+          "img": "eng_7adb44_r1_4_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "( )4. A good friend only makes a small talk with you."
+        },
+        {
+          "label": "六书面表达",
+          "question": "介绍好朋友Lily，不少于5句话：She likes reading but ___ running. / We often ___ together. 两处动词形式改对。",
+          "reason": "内容齐全、6句、已达不少于5句；两处动词形式错：but后主语不明且like应与主语一致，often后用动词原形不用drawing。",
+          "hint": "①but后面是谁在跑步，主语写清楚了吗？②often后面跟动词的什么形式，play、read、draw怎么变？③把这两句按often + 动词原形重写一遍。",
+          "img": "eng_7adb44_writing_guide.png",
+          "q_img": "",
+          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
+          "orig_text": "假如你是Xiaoxiao，请向大家介绍你的好朋友Lily。内容包括：1.朋友的基本信息。2.你们之间的相同点/不同点。3.你们经常在一起做的事情。4.语句通顺，并且不少于5句话。孩子原文：My best friend is Lily. She is tall. She likes reading but like running. We are friends because we both like drawing. We often drawing together. We are so happy."
+        }
+      ],
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "grading_closeout"
     },
     {
       "task_id": "REG-20261030-B54034",
@@ -355,7 +456,7 @@
   "counts": {
     "total": 10,
     "pending": 3,
-    "in_progress": 2,
+    "in_progress": 4,
     "done": 1,
     "pending_review": 0
   },
