@@ -5466,7 +5466,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261031-recguard';
+  var KB_BUILD = '20261031-recdefault';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6073,7 +6073,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function doSubmit(){
     if(busy) return;
     if($('up-go').textContent === '完成') return;
-    if(typeof recBlob !== 'undefined' && recBlob){ setMsg('还有一段录音还没点「用这段录音」，先点它加入文件列表再交，不然录音会丢', 'err'); return; }
+    if(typeof recBlob !== 'undefined' && recBlob && typeof recUse === 'function'){ recUse(); }
     var files = pickedFiles();
     if(!cur.grade){ setMsg('先选一下是哪个孩子哦', 'err'); return; }
     if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
