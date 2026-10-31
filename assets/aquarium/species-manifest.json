@@ -1,0 +1,702 @@
+[
+  {
+    "id": 0,
+    "name": "公子小丑鱼",
+    "archetype": "fish",
+    "file": "models/000.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 1,
+    "name": "霓虹灯鱼",
+    "archetype": "fish",
+    "file": "models/001.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 2,
+    "name": "蓝色孔雀鱼",
+    "archetype": "longfin",
+    "file": "models/002.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 3,
+    "name": "兰寿金鱼",
+    "archetype": "longfin",
+    "file": "models/003.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 4,
+    "name": "蓝魔鬼鱼",
+    "archetype": "fish",
+    "file": "models/004.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 5,
+    "name": "黄尾蓝魔鬼鱼",
+    "archetype": "fish",
+    "file": "models/005.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 6,
+    "name": "蝶鱼",
+    "archetype": "disc",
+    "file": "models/006.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 7,
+    "name": "蓝曼龙鱼",
+    "archetype": "fish",
+    "file": "models/007.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 8,
+    "name": "礼服孔雀鱼",
+    "archetype": "longfin",
+    "file": "models/008.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 9,
+    "name": "箱鲀",
+    "archetype": "puffer",
+    "file": "models/009.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 10,
+    "name": "蓝唐王鱼",
+    "archetype": "fish",
+    "file": "models/010.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 11,
+    "name": "雪花小丑鱼",
+    "archetype": "fish",
+    "file": "models/011.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 12,
+    "name": "黑冰小丑鱼",
+    "archetype": "fish",
+    "file": "models/012.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 13,
+    "name": "珍珠马甲鱼",
+    "archetype": "fish",
+    "file": "models/013.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 14,
+    "name": "海星",
+    "archetype": "star",
+    "file": "models/014.glb",
+    "meshParts": 6
+  },
+  {
+    "id": 15,
+    "name": "皇帝神仙鱼",
+    "archetype": "disc",
+    "file": "models/015.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 16,
+    "name": "火焰神仙鱼",
+    "archetype": "disc",
+    "file": "models/016.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 17,
+    "name": "铜带蝴蝶鱼",
+    "archetype": "disc",
+    "file": "models/017.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 18,
+    "name": "月光蝶鱼",
+    "archetype": "disc",
+    "file": "models/018.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 19,
+    "name": "蓝鲨",
+    "archetype": "shark",
+    "file": "models/019.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 20,
+    "name": "绿海龟",
+    "archetype": "turtle",
+    "file": "models/020.glb",
+    "meshParts": 6
+  },
+  {
+    "id": 21,
+    "name": "蓝色龙睛金鱼",
+    "archetype": "longfin",
+    "file": "models/021.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 22,
+    "name": "蝶尾金鱼",
+    "archetype": "longfin",
+    "file": "models/022.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 23,
+    "name": "黄箱鲀",
+    "archetype": "puffer",
+    "file": "models/023.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 24,
+    "name": "花斑尖嘴鱼",
+    "archetype": "fish",
+    "file": "models/024.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 25,
+    "name": "宽吻海豚",
+    "archetype": "whale",
+    "file": "models/025.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 26,
+    "name": "紫火鱼",
+    "archetype": "fish",
+    "file": "models/026.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 27,
+    "name": "火焰雷达鱼",
+    "archetype": "fish",
+    "file": "models/027.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 28,
+    "name": "法国神仙鱼",
+    "archetype": "disc",
+    "file": "models/028.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 29,
+    "name": "皇冠斗鱼",
+    "archetype": "longfin",
+    "file": "models/029.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 30,
+    "name": "黑鳍礁鲨",
+    "archetype": "shark",
+    "file": "models/030.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 31,
+    "name": "柠檬鲨",
+    "archetype": "shark",
+    "file": "models/031.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 32,
+    "name": "斑马鲨",
+    "archetype": "shark",
+    "file": "models/032.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 33,
+    "name": "狗头鱼",
+    "archetype": "puffer",
+    "file": "models/033.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 34,
+    "name": "皇冠狗头鱼",
+    "archetype": "puffer",
+    "file": "models/034.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 35,
+    "name": "半月斗鱼",
+    "archetype": "longfin",
+    "file": "models/035.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 36,
+    "name": "白金斗鱼",
+    "archetype": "longfin",
+    "file": "models/036.glb",
+    "meshParts": 10
+  },
+  {
+    "id": 37,
+    "name": "鸽子血七彩神仙鱼",
+    "archetype": "disc",
+    "file": "models/037.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 38,
+    "name": "红松石七彩神仙鱼",
+    "archetype": "disc",
+    "file": "models/038.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 39,
+    "name": "花枝",
+    "archetype": "octopus",
+    "file": "models/039.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 40,
+    "name": "巨型太平洋章鱼",
+    "archetype": "octopus",
+    "file": "models/040.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 41,
+    "name": "椰子章鱼",
+    "archetype": "octopus",
+    "file": "models/041.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 42,
+    "name": "蓝环章鱼",
+    "archetype": "octopus",
+    "file": "models/042.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 43,
+    "name": "刺鲀",
+    "archetype": "puffer",
+    "file": "models/043.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 44,
+    "name": "角箱鲀",
+    "archetype": "puffer",
+    "file": "models/044.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 45,
+    "name": "蓝宝石七彩神仙鱼",
+    "archetype": "disc",
+    "file": "models/045.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 46,
+    "name": "黄金七彩神仙鱼",
+    "archetype": "disc",
+    "file": "models/046.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 47,
+    "name": "女王神仙鱼",
+    "archetype": "disc",
+    "file": "models/047.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 48,
+    "name": "毕加索小丑鱼",
+    "archetype": "fish",
+    "file": "models/048.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 49,
+    "name": "玻璃猫鱼",
+    "archetype": "fish",
+    "file": "models/049.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 50,
+    "name": "虎鲸",
+    "archetype": "whale",
+    "file": "models/050.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 51,
+    "name": "双髻鲨",
+    "archetype": "shark",
+    "file": "models/051.glb",
+    "meshParts": 9
+  },
+  {
+    "id": 52,
+    "name": "虎鲨",
+    "archetype": "shark",
+    "file": "models/052.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 53,
+    "name": "鹰鳐",
+    "archetype": "ray",
+    "file": "models/053.glb",
+    "meshParts": 4
+  },
+  {
+    "id": 54,
+    "name": "玳瑁",
+    "archetype": "turtle",
+    "file": "models/054.glb",
+    "meshParts": 6
+  },
+  {
+    "id": 55,
+    "name": "长尾鲨",
+    "archetype": "shark",
+    "file": "models/055.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 56,
+    "name": "大白鲨",
+    "archetype": "shark",
+    "file": "models/056.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 57,
+    "name": "抹香鲸",
+    "archetype": "whale",
+    "file": "models/057.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 58,
+    "name": "飞旋海豚",
+    "archetype": "whale",
+    "file": "models/058.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 59,
+    "name": "棱皮龟",
+    "archetype": "turtle",
+    "file": "models/059.glb",
+    "meshParts": 6
+  },
+  {
+    "id": 60,
+    "name": "月亮水母",
+    "archetype": "jelly",
+    "file": "models/060.glb",
+    "meshParts": 15
+  },
+  {
+    "id": 61,
+    "name": "彩色海刺水母",
+    "archetype": "jelly",
+    "file": "models/061.glb",
+    "meshParts": 15
+  },
+  {
+    "id": 62,
+    "name": "狮鬃水母",
+    "archetype": "jelly",
+    "file": "models/062.glb",
+    "meshParts": 15
+  },
+  {
+    "id": 63,
+    "name": "海兔",
+    "archetype": "slug",
+    "file": "models/063.glb",
+    "meshParts": 2
+  },
+  {
+    "id": 64,
+    "name": "海天使",
+    "archetype": "angel",
+    "file": "models/064.glb",
+    "meshParts": 3
+  },
+  {
+    "id": 65,
+    "name": "麒麟鱼",
+    "archetype": "fish",
+    "file": "models/065.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 66,
+    "name": "五彩青蛙鱼",
+    "archetype": "fish",
+    "file": "models/066.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 67,
+    "name": "叶海龙",
+    "archetype": "seahorse",
+    "file": "models/067.glb",
+    "meshParts": 2
+  },
+  {
+    "id": 68,
+    "name": "草海龙",
+    "archetype": "seahorse",
+    "file": "models/068.glb",
+    "meshParts": 2
+  },
+  {
+    "id": 69,
+    "name": "拟态章鱼",
+    "archetype": "octopus",
+    "file": "models/069.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 70,
+    "name": "白鲸",
+    "archetype": "whale",
+    "file": "models/070.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 71,
+    "name": "独角鲸",
+    "archetype": "whale",
+    "file": "models/071.glb",
+    "meshParts": 9
+  },
+  {
+    "id": 72,
+    "name": "冰霜雪灵鱼",
+    "archetype": "fish",
+    "file": "models/072.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 73,
+    "name": "月影幻蝶鱼",
+    "archetype": "disc",
+    "file": "models/073.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 74,
+    "name": "翻车鱼",
+    "archetype": "sunfish",
+    "file": "models/074.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 75,
+    "name": "哥布林鲨",
+    "archetype": "shark",
+    "file": "models/075.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 76,
+    "name": "巨型乌贼",
+    "archetype": "octopus",
+    "file": "models/076.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 77,
+    "name": "深海幽灵鱼",
+    "archetype": "fish",
+    "file": "models/077.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 78,
+    "name": "鹦鹉螺",
+    "archetype": "nautilus",
+    "file": "models/078.glb",
+    "meshParts": 11
+  },
+  {
+    "id": 79,
+    "name": "电鳐",
+    "archetype": "ray",
+    "file": "models/079.glb",
+    "meshParts": 4
+  },
+  {
+    "id": 80,
+    "name": "烈焰朱雀鱼",
+    "archetype": "fish",
+    "file": "models/080.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 81,
+    "name": "翡翠森林鱼",
+    "archetype": "fish",
+    "file": "models/081.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 82,
+    "name": "黄金锦鲤王",
+    "archetype": "fish",
+    "file": "models/082.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 83,
+    "name": "斑马狮子鱼",
+    "archetype": "lionfish",
+    "file": "models/083.glb",
+    "meshParts": 14
+  },
+  {
+    "id": 84,
+    "name": "狮子鱼",
+    "archetype": "lionfish",
+    "file": "models/084.glb",
+    "meshParts": 14
+  },
+  {
+    "id": 85,
+    "name": "星河龙鱼",
+    "archetype": "fantasy",
+    "file": "models/085.glb",
+    "meshParts": 15
+  },
+  {
+    "id": 86,
+    "name": "极光凤凰鱼",
+    "archetype": "fish",
+    "file": "models/086.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 87,
+    "name": "琉璃水晶鱼",
+    "archetype": "fish",
+    "file": "models/087.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 88,
+    "name": "彩虹幻梦鱼",
+    "archetype": "fish",
+    "file": "models/088.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 89,
+    "name": "蓑鲉",
+    "archetype": "lionfish",
+    "file": "models/089.glb",
+    "meshParts": 14
+  },
+  {
+    "id": 90,
+    "name": "蓝鲸",
+    "archetype": "whale",
+    "file": "models/090.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 91,
+    "name": "座头鲸",
+    "archetype": "whale",
+    "file": "models/091.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 92,
+    "name": "鲸鲨",
+    "archetype": "shark",
+    "file": "models/092.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 93,
+    "name": "露脊鲸",
+    "archetype": "whale",
+    "file": "models/093.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 94,
+    "name": "中华白海豚",
+    "archetype": "whale",
+    "file": "models/094.glb",
+    "meshParts": 8
+  },
+  {
+    "id": 95,
+    "name": "皇后神仙鱼",
+    "archetype": "disc",
+    "file": "models/095.glb",
+    "meshParts": 7
+  },
+  {
+    "id": 96,
+    "name": "小飞象章鱼",
+    "archetype": "octopus",
+    "file": "models/096.glb",
+    "meshParts": 12
+  },
+  {
+    "id": 97,
+    "name": "帝王蟹",
+    "archetype": "crab",
+    "file": "models/097.glb",
+    "meshParts": 9
+  },
+  {
+    "id": 98,
+    "name": "蝠鲼",
+    "archetype": "ray",
+    "file": "models/098.glb",
+    "meshParts": 4
+  },
+  {
+    "id": 99,
+    "name": "彩色梦幻鱼",
+    "archetype": "fish",
+    "file": "models/099.glb",
+    "meshParts": 7
+  }
+]
