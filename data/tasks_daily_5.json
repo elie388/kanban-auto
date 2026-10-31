@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T16:41:54+08:00",
+  "updated_at": "2026-10-31T16:51:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -45,7 +45,13 @@
       "pending_corrections": 0,
       "corrections": [],
       "completed_at": "2026-10-31T16:41:54+08:00",
-      "status_source": "grading_closeout"
+      "status_source": "grading_closeout",
+      "orig_photos": [
+        "41b4fd46b42dbee6.jpg",
+        "ebadb58bb483ab1e.jpg",
+        "3bb7a2c88a37b583.jpg",
+        "3fe9132337696a95.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-10-30-CHN",
@@ -460,10 +466,10 @@
     }
   ],
   "counts": {
-    "total": 7,
+    "total": 9,
     "pending": 0,
     "in_progress": 6,
-    "done": 1,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": null
