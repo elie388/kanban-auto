@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T10:15:12+08:00",
+  "updated_at": "2026-10-31T10:34:41+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -205,116 +205,51 @@
       "carried_from": "2026-10-30",
       "carry_count": 1,
       "status_source": "grading_closeout",
-      "pending_corrections": 11,
+      "pending_corrections": 5,
       "corrections": [
-        {
-          "label": "(2) watch",
-          "question": "Tom ___ (watch) TV on Saturday afternoons. 用正确形式填空。",
-          "reason": "watch结尾是ch，要加es，变成watches，不是watchs。",
-          "hint": "①watch结尾是哪两个字母？②ch、sh结尾的动词加什么？③把watches抄一遍。",
-          "img": "pract_watch_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "Tom ___ (watch) TV on Saturday afternoons."
-        },
-        {
-          "label": "(3) fly",
-          "question": "The little girl ___ (fly) a kite in the park. 用正确形式填空。",
-          "reason": "fly是辅音+y，要变y为i再加es，变成flies；flying是正在进行时，这里没有is，不能用flying。",
-          "hint": "①fly结尾是辅音+y还是元音+y？②辅音+y怎么变？③这句有没有is？",
-          "img": "pract_fly_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "The little girl ___ (fly) a kite in the park."
-        },
-        {
-          "label": "(5) teach",
-          "question": "Miss Li ___ (teach) us English this term. 用正确形式填空。",
-          "reason": "teach结尾是ch，要加es，变成teaches，不是teachs。",
-          "hint": "①teach结尾是哪两个字母？②ch结尾加什么？③把teaches抄一遍。",
-          "img": "pract_teach_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "Miss Li ___ (teach) us English this term."
-        },
-        {
-          "label": "(6) Does问句",
-          "question": "句子 Does he play football after school? 中，动词play为什么用原形、不加s？用一句话说明。",
-          "reason": "Does已经带了第三人称单数，动词play就用原形；孩子写'因为he是单数，单数不加s'正好说反了，单数主语在陈述句里动词是要加s的。",
-          "hint": "①Does里已经有没有第三人称单数的意思？②陈述句He plays里，plays加没加s？③问句里s在Does身上还是在play身上？",
-          "img": "pract_does_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "Does he play football after school?"
-        },
         {
           "label": "(7) 错题反问",
           "question": "上次你写成了：Tom play chess with his grandpa on Sundays.（错）请改正，并用一句话说出出错原因。",
-          "reason": "Tom是第三人称单数，play要加s，变成Tom plays；孩子重写后还是play没改，还把his改成了he's，也没有写出错原因。",
-          "hint": "①Tom是第几人称、单数还是复数？②第三人称单数动词加什么？③his和he's哪个是'他的'？",
+          "reason": "订正不完全：句子本身已改对（Tom plays，his改回），但题目要求“改正并用一句话说出错因”，本次仍未见错因句，缺错因。",
+          "hint": "①Tom是第几人称单数？②第三人称单数主语，动词要怎么变？③把这句错因写出来：Tom是第三人称单数，play要加s。",
           "img": "pract_tomplays_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "Tom play chess with his grandpa on Sundays."
         },
         {
           "label": "(8) 小数点左移",
           "question": "一个数的小数点向左移动一位，比原数少22.5。求原来的数是多少？列式计算，写出过程，并按操作提示画份数图。",
-          "reason": "原数=10份，移动后=1份，差=9份，已知22.5对应9份，不是10份；孩子用22.5÷10算1份，答案2.25是移动后的数，不是原数，份数图也没有标出9份=22.5。",
-          "hint": "①原数是几份，移动后是几份，差是几份？②22.5对应的是几份？③先算1份，再算原数10份。",
+          "reason": "订正仍错：原数=10份，移动后=1份，差=9份，22.5对应9份，1份=2.5，原数应为25；孩子黑笔算出2.25，红笔最终答22.5，均不对，份数图也未标出9份=22.5。",
+          "hint": "①原数是几份，移动后是几份，差是几份？②22.5对应的是几份？③1份是多少，原数是多少？④份数图上标出9份=22.5。",
           "img": "pract_left_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "一个数的小数点向左移动一位，比原数少22.5。求原来的数是多少？"
-        },
-        {
-          "label": "(9) 5.08去小数点",
-          "question": "小明把5.08的小数点去掉后，认为'这个数变成了两位数'。请判断他说得对不对，并说明理由。",
-          "reason": "判断×是对的，但理由错了：5.08去掉小数点是508，是三位数，不是两位数，更不是孩子写的一位数；5.08整数部分1位、小数部分2位，加起来是3位。",
-          "hint": "①5.08去掉点，数字是几个？②508是几位数？③整数部分几位，小数部分几位，加起来几位？",
-          "img": "pract_508_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "小明把5.08的小数点去掉后，认为'这个数变成了两位数'。"
         },
         {
           "label": "(10) 小数点右移",
           "question": "一个数的小数点向右移动一位后，比原来大36，原来这个数是多少？列式计算，写出过程，并画图说明思路。",
-          "reason": "原数=1份，移动后=10份，差=9份，已知36对应9份，原数=36÷9；孩子用36×10=360、324÷10=32.4，答案32.4错了，而且没有画图。",
-          "hint": "①原数是几份，移动后是几份，差是几份？②36对应的是几份？③先算1份，就是原数，再把图画出来。",
+          "reason": "订正仍错：原数=1份，移动后=10份，差=9份，36对应9份，原数=36÷9=4；孩子黑笔答32.4，红笔改为32.4÷10=3.24，仍不对，而且没有画图。",
+          "hint": "①原数是几份，移动后是几份，差是几份？②36对应的是几份？③原数是多少？④画图说明思路。",
           "img": "pract_right_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "一个数的小数点向右移动一位后，比原来大36，原来这个数是多少？"
-        },
-        {
-          "label": "(12) How",
-          "question": "___ do you go to school? — I go to school by bus. A. What B. How C. Where 选择填空。",
-          "reason": "回答是by bus，问方式要用How，不是What；Where问地点，What问东西。",
-          "hint": "①by bus回答的是方式、地点还是东西？②How、Where、What分别问什么？③by bus前面问句用哪个词？",
-          "img": "pract_how_guide.png",
-          "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
-          "orig_text": "___ do you go to school? — I go to school by bus."
         },
         {
           "label": "(16) 右移+3.25",
           "question": "一个小数的小数点向右移动一位后，比原来大49.5，这个原数加上3.25是多少？列式计算并写出过程。",
-          "reason": "差=9份，已知49.5对应9份，原数=49.5÷9，再加3.25；孩子用49.5×10=495、445.5÷10=44.55，答案47.25错了，方法和第10题同一个错误。",
-          "hint": "①差是几份？②49.5对应几份？③先算原数，再加3.25。",
+          "reason": "订正仍错：差=9份，49.5对应9份，原数=49.5÷9=5.5，再加3.25应为8.75；孩子黑笔答47.25，红笔答4.95，均不对。",
+          "hint": "①差是几份？②49.5对应的是几份？③原数是多少？④原数加3.25是多少？",
           "img": "pract_right_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "一个小数的小数点向右移动一位后，比原来大49.5，这个原数加上3.25是多少？"
         },
         {
           "label": "(19) 语文小练笔",
           "question": "题目：写家里一位家人在做一件家务或手头小事时的动作与神态片段（100-200字）。",
-          "reason": "这篇缺了最关键的神态描写：全文只有扫、拖动作，没有一句眼神或面部表情；另外'拖拖净了'应为'拖干净了'，'把扫把扫起来''把拖把把拖把弄湿'重复啰嗦。重写时只抓一个重点：加一句神态，并把上面两处改顺。",
-          "hint": "①妈妈扫地时眼神是什么样，嘴角是什么样？②'拖拖净'多了一个什么字？③'把扫把扫起来'里，扫把出现了几次，能不能删一个？",
+          "reason": "本次订正未见小练笔重写页，仍未完成：仍缺最关键的神态描写一句，另外“拖拖净了”应为“拖干净了”，“把扫把扫起来”“把拖把把拖把弄湿”重复啰嗦未改顺。",
+          "hint": "①只抓一个重点：加一句神态（眼神或面部表情）；②把“拖拖净了”改成“拖干净了”；③把重复啰嗦的两处改顺。",
           "img": "pract_xiaolianbi_guide.png",
           "q_img": "",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。",
           "orig_text": "(19) 题目：写家里一位家人在做一件家务或手头小事时的动作与神态片段（100-200字）。写作小提示：1.动词要准确、连贯；2.写一写当时的眼神或面部表情，不能只写干巴巴的动作；3.字数在100至200字之间。"
         }
       ]
