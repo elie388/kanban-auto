@@ -1,8 +1,24 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-10-31T17:22:02+08:00",
+ "generated_at": "2026-10-31T17:33:17+08:00",
  "items": [
+  {
+   "date": "2026-10-31",
+   "ts": "2026-10-31T17:33:16+08:00",
+   "kind": "feedback",
+   "time": "17:35",
+   "title": "彦均·53数学反馈：4题全改对",
+   "html": "<p>这批4题全改对（+8分）：第2题（1）涂了2乘1与0.9乘0.4两块、补全等于4.06；第3题第4小题4.0乘0.75等于3是对的；第6题X乘Y约0.285在1号处、Y乘Z约1.33在3号处。53数学完成了。</p>"
+  },
+  {
+   "date": "2026-10-31",
+   "ts": "2026-10-31T17:33:16+08:00",
+   "kind": "feedback",
+   "time": "17:35",
+   "title": "彦均·53英语反馈：2题改对，还剩图片排序第4张和绿色生活住",
+   "html": "<p>这批2题改对（+4分）：图片排序剪刀图是第2步、绿色生活行go to school by bus。还剩2题：图片排序放平片图是第3步，你写成了1，同时压平图是第1步、你写成了3，两张又写反了，换回来就好；绿色生活住要按提示写Don't keep the water running!（不要让水一直流着），不要写use much water。</p>"
+  },
   {
    "date": "2026-10-31",
    "ts": "2026-10-31T17:22:02+08:00",
@@ -98,22 +114,6 @@
    "time": "10月31日 10:12",
    "title": "彦均·53天天练·数学订正反馈",
    "html": "<p>你交的53天天练数学订正我看到了，先表扬你：第4题改对了，从C改成D，很好。</p><p>还有4处要再订正，不用重交整页，只交这4处：</p><p><b>再订正1：第2题（1）涂色</b><br>提示：①你涂了左上和左下，左下那块对吗？②淘气算式里的第二块是哪个算式？③右下那块涂了没有？</p><img src=\"data/diagrams/math_d53_2_color_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正2：第3题第4小题</b><br>提示：①符号改成✓是对的，原来错的理由也划掉了；②现在还缺什么？③0.75是几分之几？4平均分成4份，取3份是多少？把这句理由写出来。</p><img src=\"data/diagrams/math_d53_3_4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正3：第6题X×Y</b><br>提示：①X在0和1之间，是大于1还是小于1？②一个数乘小于1的数，积和这个数比，谁小？③X×Y约是多少，在数轴哪个点附近？</p><img src=\"data/diagrams/math_d53_6_xy_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正4：第6题Y×Z</b><br>提示：①Z在1和2之间，是大于1还是小于1？②Y乘大于1的数，积和Y比，谁大？③Y×Z约是多少，在数轴哪个点附近？你改的④比正确的点大了多少？</p><img src=\"data/diagrams/math_d53_6_yz_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>计分：本批订正改对1题，+2分。这张是周五作业，按周六22:00截止，订正不算超时。</p>"
-  },
-  {
-   "date": "2026-10-31",
-   "ts": "2026-10-31T10:12:00+08:00",
-   "kind": "feedback",
-   "time": "10月31日 10:12",
-   "title": "彦均·53天天练·数学订正反馈",
-   "html": "<p>你交的53天天练数学订正我看到了，先表扬你：第4题改对了，从C改成D，很好。</p><p>还有4处要再订正，不用重交整页，只交这4处：</p><p><b>再订正1：第2题（1）涂色</b><br>提示：①你涂了左上和左下，左下那块对吗？②淘气算式里的第二块是哪个算式？③右下那块涂了没有？</p><img src=\"data/diagrams/math_d53_2_color_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正2：第3题第4小题</b><br>提示：①符号改成✓是对的，原来错的理由也划掉了；②现在还缺什么？③0.75是几分之几？4平均分成4份，取3份是多少？把这句理由写出来。</p><img src=\"data/diagrams/math_d53_3_4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正3：第6题X×Y</b><br>提示：①X在0和1之间，是大于1还是小于1？②一个数乘小于1的数，积和这个数比，谁小？③X×Y约是多少，在数轴哪个点附近？</p><img src=\"data/diagrams/math_d53_6_xy_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正4：第6题Y×Z</b><br>提示：①Z在1和2之间，是大于1还是小于1？②Y乘大于1的数，积和Y比，谁大？③Y×Z约是多少，在数轴哪个点附近？你改的④比正确的点大了多少？</p><img src=\"data/diagrams/math_d53_6_yz_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>计分：本批订正改对1题，+2分。这张是周五作业，按周六22:00截止，订正不算超时。</p>"
-  },
-  {
-   "date": "2026-10-30",
-   "ts": "2026-10-31T08:51:00+08:00",
-   "kind": "feedback",
-   "time": "10月31日 08:51",
-   "title": "彦均·53天天练·英语批改反馈",
-   "html": "<p>你交的53天天练英语P24我都看到了，先表扬你：图片排序第1、2、5张、判断第1题、绿色生活食、世界环境日卡片4空都对了。</p><p>有7处要订正，不用重交整页，只交这7处：</p><p><b>要订正1、2：图片排序第3、4张写反了</b><br>提示：①材料第1步、第2步、第3步分别是什么动作？②剪刀那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍。</p><img src=\"data/diagrams/eng_d53_order_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正3：判断第2题</b><br>提示：①材料里plastic bag是单数还是复数？②除了方块袋子，还有没有一个彩色袋子？③一共用了几个袋子？</p><img src=\"data/diagrams/eng_d53_tf2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正4：判断第3题</b><br>提示：①旧袋子做新袋子，旧袋子是扔掉了还是再用了？②再用旧袋子，塑料垃圾是变多还是变少？③cut down是什么意思？</p><img src=\"data/diagrams/eng_d53_tf3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正5：绿色生活衣</b><br>提示：①clothes怎么拼，c-l-o-t-h-e-s；②clothers里多了一个什么字母？③把clothes抄三遍。</p><img src=\"data/diagrams/eng_d53_clothing_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正6：绿色生活住</b><br>提示：①water是可数还是不可数？②much和many分别跟什么名词？③刷牙时水龙头开着，用keep ... running怎么说？</p><img src=\"data/diagrams/eng_d53_housing_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>要订正7：绿色生活行</b><br>提示：①by后面跟什么，by bus还是by take a bus？②take a bus to school里，take和to school怎么连？③选一种说法，把整句重写一遍。</p><img src=\"data/diagrams/eng_d53_transport_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>另外说明一句：英语任务里还有一张语文P25照片，和语文任务里那张P25是同一页、同一份答案，不是新的英语作业，不重复批改、不重复计分，语文P25的习作还在等补交，周六22:00前交齐不算超时。</p><p>计分：完成分+3、正确率档-2（16小题对9小题，56.25%，低于70%档）。</p>"
   },
   {
    "date": "2026-10-30",
