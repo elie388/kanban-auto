@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "五年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T16:55:34+08:00",
+  "updated_at": "2026-10-31T16:59:24+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,63 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "READ-20261030-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-10-31T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-10-30T00:17:32+08:00",
-      "updated_at": "2026-10-31T16:41:54+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1,
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-10-31T16:41:54+08:00",
-      "status_source": "grading_closeout",
-      "orig_photos": [
-        "41b4fd46b42dbee6.jpg",
-        "ebadb58bb483ab1e.jpg",
-        "3bb7a2c88a37b583.jpg",
-        "3fe9132337696a95.jpg"
-      ]
-    },
-    {
-      "task_id": "D53-2026-10-30-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "53天天练语文第25页：阅读二《海阳的地雷战》第1-5题全对（终审终审确认）；具体缺习作作答（400字左右，写印象深刻的同学），本批只有第25页照片，习作页未交，补交后结算。",
-      "estimate_min": 10,
-      "status": "done",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-10-30T16:55:46+08:00",
-      "updated_at": "2026-10-31T11:17:36+08:00",
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1,
-      "status_source": "grading_main",
-      "supplement_required": null,
-      "pending_note": "阅读二第1-5题已批全对，无待改正；待确认项为习作作答（400字左右，写印象深刻的同学）待补交，补交后结算。",
-      "completed_at": "2026-10-31T15:09:07+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "orig_photos": [
-        "40219b5c38d849e7.jpg",
-        "2eac82eead5d9cf3.jpg"
-      ]
-    },
     {
       "task_id": "D53-2026-10-30-MATH",
       "source": "daily_53",
@@ -375,33 +318,30 @@
       "corrections": [
         {
           "label": "三第8空",
-          "question": "I feel happy to stay ___ her and that's why she is my best friend. 第8空填什么？",
-          "reason": "最终答案写的是for，不是with",
-          "hint": "stay 是“待在一起”，后面跟人用什么介词？想想 stay ___ her，中间那个词是什么？for 是“为了”，不对。",
-          "img": "eng_7adb44_s3_8_guide.png",
+          "question": "三第8空：I feel happy to stay ___ her",
+          "reason": "仍未改对：第8空黑笔why已划掉、红笔改为for，最终答案for，正确是with。",
+          "hint": "第8空填with：stay with her是固定搭配，表示和她待在一起，不是for。",
+          "img": "",
           "q_img": "",
-          "orig_text": "I feel happy to stay 8. ___ her and that's 9. ___ (为什么) she is my 10. ___ friend.",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+          "orig_text": "I feel happy to stay 8. ___ her and that's 9. ___ (为什么) she is my 10. ___ friend."
         },
         {
           "label": "五（一）第2题",
-          "question": "We should wear a smile first when making friends. 判断正(T)误(F)。",
-          "reason": "括号里仍是黑笔F，没有红笔改动",
-          "hint": "短文第一段怎么说的？First, you should always wear a smile. 所以这句话是对的还是错的？",
-          "img": "eng_7adb44_r1_2_guide.png",
+          "question": "五（一）第2题：We should wear a smile first when making friends. 判断正误",
+          "reason": "仍未改对：括号内仍为黑笔F、无红笔改动，正确是T（短文说交朋友首先要常带微笑）。",
+          "hint": "这句是对的，改成T：短文里说交朋友首先要常带微笑，和这句话意思一致。",
+          "img": "",
           "q_img": "",
-          "orig_text": "( )2. We should wear a smile first when making friends.",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+          "orig_text": "( )2. We should wear a smile first when making friends."
         },
         {
           "label": "六书面表达",
-          "question": "介绍好朋友Lily，不少于5句话：She likes reading but ___ running. / We often ___ together. 两处动词形式改对。",
-          "reason": "like running 未改动；drawing 改成 drow，拼写不对",
-          "hint": "She likes reading，but 后面那个 like 要不要加 s？想想前后要一致。often 后面跟动词原形，你写的 drow 拼写不对，draw 是哪四个字母？",
-          "img": "eng_7adb44_writing_guide.png",
+          "question": "六书面表达：介绍好朋友Lily",
+          "reason": "仍未改对：like running未改动（正确likes running，第三人称单数要加s）；drawing未改成draw，下方红笔drow拼写错误（正确draw）。",
+          "hint": "两处都要改：She likes reading but likes running（likes要加s）；We often draw together（draw是动词原形，不是drawing，也不是drow）。",
+          "img": "",
           "q_img": "",
-          "orig_text": "假如你是Xiaoxiao，请向大家介绍你的好朋友Lily。内容包括：1.朋友的基本信息。2.你们之间的相同点/不同点。3.你们经常在一起做的事情。4.语句通顺，并且不少于5句话。孩子原文：My best friend is Lily. She is tall. She likes reading but like running. We are friends because we both like drawing. We often drawing together. We are so happy.",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+          "orig_text": "假如你是Xiaoxiao，请向大家介绍你的好朋友Lily。内容包括：1.朋友的基本信息。2.你们之间的相同点/不同点。3.你们经常在一起做的事情。4.语句通顺，并且不少于5句话。孩子原文：My best friend is Lily. She is tall. She likes reading but like running. We are friends because we both like drawing. We often drawing together. We are so happy."
         }
       ],
       "carry_first_date": "2026-10-30",
@@ -429,14 +369,13 @@
       "pending_corrections": 1,
       "corrections": [
         {
-          "label": "活动四探究成果发现1",
-          "question": "梳理探究选文（一）（二），写下探究成果：发现1",
-          "reason": "仍写琦君之情，琦君只被红笔圈出，没有替换成感情名",
-          "hint": "琦君是写文章的人，不是感情；桂花和灰汤粽让作者想起的是哪里？想起那个地方的感情叫什么之情？只改“琦君”两个字，其他不动。",
-          "img": "chn_8ec0a8_faxian1_guide.png",
+          "label": "活动四发现1",
+          "question": "活动四探究成果发现1：桂花与灰汤粽蕴含的感情",
+          "reason": "仍未改对：发现1仍写琦君之情，琦君仅被红笔圈出、未见替换成的感情名；即使按孩子留言把圈出的琦君当作不用写，句中也没有感情名，正确的思乡之情仍未出现。",
+          "hint": "把“琦君之情”改成“思乡之情”：桂花和灰汤粽让作者想起家乡，蕴含的是思乡之情，不是琦君之情。",
+          "img": "",
           "q_img": "",
-          "orig_text": "3.梳理探究选文（一）（二），写下你的探究成果。发现1：我知道了无论是桂花还是灰汤粽都蕴含着（ ）之情。",
-          "q_img_exempt": "原题无图：题面无图指示，图不是题意一部分，不附原题图。"
+          "orig_text": "发现1：我知道了无论是桂花还是灰汤粽都蕴含着琦君之情。"
         }
       ],
       "status_source": "realtime",
@@ -466,10 +405,10 @@
     }
   ],
   "counts": {
-    "total": 9,
+    "total": 7,
     "pending": 0,
     "in_progress": 6,
-    "done": 3,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
