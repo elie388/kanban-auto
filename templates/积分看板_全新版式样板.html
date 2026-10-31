@@ -166,7 +166,7 @@
     box-shadow:0 1px 2px rgba(48,52,59,.05), 0 10px 28px rgba(48,52,59,.10);
   }
   .sky-canvas{position:absolute; inset:0; width:100%; height:100%; z-index:0; display:block;}
-  .sky-spacer{flex:1 1 auto; min-height:14px; position:relative; z-index:1;}
+  .sky-spacer{flex:1 1 auto; min-height:14px; position:relative; z-index:1; pointer-events:none;}
   /* 严寒霜带（定版：顶边 ≤4px 薄霜带） */
   .sky-frost{
     position:absolute; top:0; left:0; right:0; height:4px; z-index:1; display:none; pointer-events:none;
@@ -5466,7 +5466,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261031-aquarium-sun1';
+  var KB_BUILD = '20261031-aquarium-click1';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
