@@ -67,8 +67,22 @@
     "icon": "💰",
     "date": "2026-10-28",
     "count": 1
+   },
+   {
+    "key": "zonghezhixing",
+    "name": "综合之星",
+    "icon": "🏅",
+    "date": "2026-10-31",
+    "count": 1
+   },
+   {
+    "key": "baifentupo",
+    "name": "满分之星",
+    "icon": "💯",
+    "date": "2026-10-31",
+    "count": 1
    }
   ]
  },
- "generated_at": "2026-10-31T08:49:57+08:00"
+ "generated_at": "2026-10-31T09:44:25+08:00"
 }

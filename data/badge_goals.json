@@ -466,10 +466,10 @@
    },
    {
     "key": "baifentupo",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 0,
+    "obtained": true,
+    "date": "2026-10-31",
+    "count": 1,
+    "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 158,
+     "current": 168,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -492,14 +492,14 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 1,
+    "obtained": true,
+    "date": "2026-10-31",
+    "count": 1,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 4,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W44",
- "generated_at": "2026-10-31T08:59:56+08:00"
+ "generated_at": "2026-10-31T09:44:25+08:00"
 }
