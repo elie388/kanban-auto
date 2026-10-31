@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-10-31T10:12:02+08:00",
+ "generated_at": "2026-10-31T10:16:21+08:00",
  "items": [
+  {
+   "date": "2026-10-31",
+   "ts": "2026-10-31T10:17:00+08:00",
+   "kind": "feedback",
+   "time": "10月31日 10:17",
+   "title": "彦均·53天天练·英语订正反馈",
+   "html": "<p>你交的53天天练英语订正我看到了，先表扬你：判断第2题改成F、第3题改成T都对了，衣服clothes拼对了。</p><p>还有4处要再订正，不用重交整页，只交这4处：</p><p><b>再订正1：图片排序剪刀图</b><br>提示：①材料第2步是什么动作，用的工具是什么？②剪刀那张是在剪东西，还是在放东西？③把五张图按动作重新排一遍。</p><img src=\"data/diagrams/eng_d53_order_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正2：图片排序放平片图</b><br>提示：①材料第3步是什么动作？②放平片那张是在剪东西，还是在放东西？③熨斗图这次被改成3也错了，应改回4。</p><img src=\"data/diagrams/eng_d53_order_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正3：绿色生活住</b><br>提示：①提示词是keep ... running，不是use；②刷牙时水龙头开着，用keep ... running怎么说？③把整句重写一遍，不要只改量词。</p><img src=\"data/diagrams/eng_d53_housing_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p><b>再订正4：绿色生活行</b><br>提示：①by后面跟什么，by bus还是by take a bus？②take a bus to school里，take和to school怎么连？③选一种说法，把整句重写一遍。</p><img src=\"data/diagrams/eng_d53_transport_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>计分：本批订正改对3题，+6分。这张是周五作业，按周六22:00截止，订正不算超时。</p>"
+  },
   {
    "date": "2026-10-31",
    "ts": "2026-10-31T10:12:00+08:00",
