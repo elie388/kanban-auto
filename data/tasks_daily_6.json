@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T15:15:48+08:00",
+  "updated_at": "2026-10-31T15:20:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -278,13 +278,13 @@
       "pending_corrections": 1,
       "corrections": [
         {
-          "label": "活动一1瞻",
-          "question": "用√画出加点字瞻的正确读音",
-          "reason": "瞻读zān，误勾zhàn",
-          "hint": "瞻字组词瞻仰，瞻仰时人们抬头向上看；结合这个意思想想它读第几声",
-          "img": "g6_1b2184_zhan_guide.png",
+          "label": "朗读达标待核",
+          "question": "知识要点朗读达标核对（待原文核对）",
+          "reason": "Groq初稿同音误转多，待知识要点单原文核对，达标+3暂不结",
+          "hint": "待知识要点单原文核对后定达标与否",
+          "img": "",
           "q_img": "",
-          "orig_text": "那枚金色的鱼钩值得所有人去瞻仰"
+          "orig_text": "知识要点单全文朗读（8分54秒录音，待原文核对）"
         }
       ],
       "carry_first_date": "2026-10-30",
