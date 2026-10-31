@@ -5466,7 +5466,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261031-aquarium-v21';
+  var KB_BUILD = '20261031-aquarium-fix1';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -7143,8 +7143,19 @@ function mapState(s){
   function readNum(id){
     var el = document.querySelector('#' + id + ' .bal-num');
     if(!el) return null;
-    var t = (el.textContent || '').replace(/[^\d\-]/g, '');
-    if(!/^-?\d+$/.test(t)) return null;
+    /* 2026-10-31 鱼不动根因修复：.bal-num 内是里程表条带，每个数字槽都含 0-9 十个数字，
+       textContent 会读成 0123456789 重复串（如 147 读成 30 位天文数字），推给鱼缸必判 invalid、
+       revision 永远到不了有效值，鱼缸按 external 模式一直停在暂停态。
+       正确来源是 __kanbanSetBalance 写在同一元素上的 data-target（负数也先写 data-target），
+       文本只作兜底，且只认纯数字短文本，条带串一律不认。 */
+    var dt = el.getAttribute('data-target');
+    if(dt && /^-?\d+$/.test(dt)){
+      var dn = parseInt(dt, 10);
+      if(isFinite(dn) && Math.abs(dn) <= 1000000) return dn;
+    }
+    var raw = (el.textContent || '').trim();
+    var t = raw.replace(/\u2212/g, '-').replace(/[^\d\-]/g, '');
+    if(!/^-?\d{1,7}$/.test(t)) return null;
     var n = parseInt(t, 10);
     return isFinite(n) ? n : null;
   }
@@ -7180,7 +7191,7 @@ function mapState(s){
     var obs = new MutationObserver(syncSoon);
     ['bal-jump-g5','bal-jump-g6'].forEach(function(id){
       var c = document.getElementById(id);
-      if(c) obs.observe(c, {childList:true, characterData:true, subtree:true});
+      if(c) obs.observe(c, {childList:true, characterData:true, attributes:true, subtree:true});
     });
     var clsObs = new MutationObserver(function(){ syncSoon(); });
     clsObs.observe(document.documentElement, {attributes:true, attributeFilter:['class']});
