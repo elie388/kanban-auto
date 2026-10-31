@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T13:49:57+08:00",
+  "updated_at": "2026-10-31T13:55:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -35,15 +35,14 @@
       "task_type": "reading",
       "count_in_completion_rate": true,
       "reading_duration_sec": 406,
-      "reading_wpm": null,
+      "reading_wpm": 239.8,
       "reading_pass": true,
       "created_at": "2026-10-30T00:17:32+08:00",
       "updated_at": "2026-10-31T13:49:57+08:00",
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "supplement_required": "audio_reading_3min",
-      "pending_note": "内容照片已收到（《最新作文精选大全》第3-4页），缺同批朗读录音（3-10分钟，不足180秒请重录）；周六22:00前补齐不算超时，补到后单独判朗读时长与达标，不直接置已完成、不结算。",
+      "pending_note": "朗读已达标：录音405.55秒（390-419秒档），语速239.8字/分钟，看社戏、尿床记录、捉月亮三篇顺序完整无跳段。",
       "pending_corrections": 0,
       "status_source": "grading_closeout",
       "completed_at": "2026-10-31T13:49:57+08:00"
@@ -416,10 +415,10 @@
     }
   ],
   "counts": {
-    "total": 13,
+    "total": 11,
     "pending": 5,
     "in_progress": 5,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null
