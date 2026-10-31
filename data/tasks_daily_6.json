@@ -412,56 +412,6 @@
       "count_in_completion_rate": false,
       "created_at": "2026-10-31T00:17:15+08:00",
       "updated_at": "2026-10-31T00:17:15+08:00"
-    },
-    {
-      "task_id": "REG-20261029-B61510",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "完成《三单》P44四、P45一到二",
-      "detail": "",
-      "estimate_min": null,
-      "status": "grading",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成《三单》P44四、P45一到二；②写U2单元试卷第一题中文；③背U3作文十次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-29T20:01:45+08:00",
-      "updated_at": "2026-10-31T14:02:11+08:00",
-      "status_source": "unretire",
-      "corrections": [
-        {
-          "label": "景点图片配对图3",
-          "question": "景点图片配对图3 完成《三单》P44四、P45一到二",
-          "reason": "图3是黄山云海，应选D不是B。",
-          "hint": "图3云雾缭绕像云海，黄山最出名的是什么？再选一次。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "基础作业1.选出匹配的景点图片。图3黄山。"
-        },
-        {
-          "label": "茂名以什么出名",
-          "question": "What is Maoming famous for",
-          "reason": "Maoming拼成Maomig，少了n。",
-          "hint": "茂名拼写是M-a-o-m-i-n-g，最后是n加g，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "四、海报素材征集。2.What is Maoming famous for?"
-        },
-        {
-          "label": "在茂名能做什么",
-          "question": "What can you do in Maoming",
-          "reason": "beaches拼成beachs，少了e。",
-          "hint": "沙滩复数是b-e-a-c-h-e-s，中间有个e，再写一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "四、海报素材征集。3.What can you do in Maoming?"
-        }
-      ],
-      "pending_corrections": 3,
-      "pending_note": "家长2026-10-31点选退回批改中（原2026-10-29已收口待改正3项、后被退休；等补拍再定稿）。"
     }
   ],
   "counts": {
