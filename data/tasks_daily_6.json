@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T09:50:14+08:00",
+  "updated_at": "2026-10-31T11:17:09+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -100,12 +100,12 @@
       "kousuan": [],
       "recite_text": "语文背诵：《石灰吟》（于谦）\n原文：千锤万凿出深山，烈火焚烧若等闲。粉骨碎身浑不怕，要留清白在人间。\n朗读要求：声音洪亮，吐字清晰，语速适中，前两句读出坚定与豪迈，后两句读出正气凛然与坚定不移的决心，注意停顿和节拍。\n英语口语：先读短文再用自己的话复述大意（5分钟内完成）。短文：Last Saturday, Lucy went to the city library. She wanted to find a book about science for her school project. When she walked into the library, it was quiet and clean. There were lots of books on the tall shelves. Lucy looked for a long time, but she couldn't find the right book. Suddenly, a friendly librarian came over and helped her. With the librarian's help, Lucy found a wonderful book quickly. She was very happy and thanked the librarian politely.\n提示问题：1. Where did Lucy go last Saturday? 2. What was she looking for? 3. Who helped her at last?\n口语要求：语音语调自然，包含图书馆、找科学书、管理员帮忙、感谢四个核心信息，尽量脱稿表达。",
       "estimate_min": 30,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-10-30.docx",
       "file_hash": "df0b32e65d68687ff06c8276582c8215b17a885462cbca22a6431b3b23e966f5",
       "created_at": "2026-10-30T19:03:15+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
+      "updated_at": "2026-10-31T11:17:09+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-10-30.pdf",
@@ -115,7 +115,8 @@
       ],
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
-      "carry_count": 1
+      "carry_count": 1,
+      "status_source": "realtime"
     },
     {
       "task_id": "EXAM-20261030-DF1F0A",
@@ -268,9 +269,9 @@
       "source": "register_book",
       "subject": "语文",
       "title": "读知识要点，做小测卷",
-      "detail": "",
+      "detail": "读第四单元知识要点：朗读录音8分54秒已收到，覆盖课文回顾（桥、穷人、金色的鱼钩）、字音词语、品析句子、小练笔正反方、颁奖词、感悟、说服家人养小狗，未发现跳段；转写同音误转多，错漏达标待进一步核对，不先定达标；具体缺小测卷作答（单面无手写作答），补交后定达标与结算。",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
@@ -279,13 +280,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-31T00:48:59+08:00",
+      "updated_at": "2026-10-31T11:17:36+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-30",
       "carry_count": 1,
-      "status_source": "realtime"
+      "status_source": "grading_main",
+      "supplement_required": "小测卷作答（知识要点单上的小练笔等手写作答）"
     },
     {
       "task_id": "REG-20261030-B6A1FF",
@@ -358,7 +360,7 @@
   ],
   "counts": {
     "total": 13,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 3,
     "done": 0,
     "pending_review": 0
