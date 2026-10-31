@@ -3,7 +3,7 @@
   "date": "2026-10-31",
   "grade": "六年级",
   "generated_at": "2026-10-31T00:09:14+08:00",
-  "updated_at": "2026-10-31T15:20:47+08:00",
+  "updated_at": "2026-10-31T15:27:23+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -206,59 +206,6 @@
       "carry_count": 1
     },
     {
-      "task_id": "REG-20261030-C57C86",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "背U2单词、对话",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：背U2单词、对话 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-10-31T00:09:14+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "Grey信now",
-          "question": "I am now shorter than my friends!",
-          "reason": "实词读错，改变句意，现在更短读成不更短",
-          "hint": "①灰色蜡笔为什么变短了？②now是什么意思？③再读一遍I'm now shorter。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "I'm now shorter than my friends!"
-        },
-        {
-          "label": "Duncan结尾all",
-          "question": "Duncan listens to them, and draws a picture they all like.",
-          "reason": "实词读错，改变句意，都喜欢读成将会喜欢",
-          "hint": "①这幅画大家都喜欢吗？②all是什么意思？③再读一遍they all like。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Duncan listens to them, and draws a picture they all like."
-        }
-      ],
-      "status_source": "grading_closeout_corrected",
-      "completed_at": null,
-      "orig_photos": [
-        "b6250f7d10f43b1c.jpg",
-        "d229a874142a14ac.jpg",
-        "ea8f6efe40d2b0bd.jpg",
-        "417fafb871d3b9d0.jpg",
-        "54e16716d4e0b5f2.jpg"
-      ],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-30",
-      "carry_count": 1
-    },
-    {
       "task_id": "REG-20261030-1B2184",
       "source": "register_book",
       "subject": "语文",
@@ -364,9 +311,9 @@
     }
   ],
   "counts": {
-    "total": 11,
+    "total": 10,
     "pending": 5,
-    "in_progress": 5,
+    "in_progress": 4,
     "done": 0,
     "pending_review": 0
   },

@@ -43,6 +43,13 @@
    "subject": "英语",
    "source": "daily_53",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261030-C57C86",
+   "title": "背U2单词、对话",
+   "subject": "英语早读",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }
