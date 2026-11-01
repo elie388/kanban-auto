@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "grade": "五年级",
-  "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-02T00:15:33+08:00",
+  "generated_at": "2026-11-02T00:17:18+08:00",
+  "updated_at": "2026-11-02T00:17:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-01T23:10:39+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -21,141 +21,13 @@
       "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261101-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-01T08:00:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-01T00:17:53+08:00",
-      "updated_at": "2026-11-02T00:08:12+08:00",
-      "completed_at": "2026-11-01T15:33:08+08:00",
-      "evidence": "家务判定通过——晾袜子；证据：看板家务上传批次 b179351817038140d55780315450c9（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "READ-20261101-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-01T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-01T00:18:11+08:00",
-      "updated_at": "2026-11-01T16:35:01+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-01T16:35:01+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "4ead553a76b95f2b.jpg",
-        "e7cb951529bd9e4c.jpg",
-        "9411a63ba08692e6.jpg"
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261101-001-SX",
-      "title": "周日数学试卷",
-      "subject": "数学",
-      "status": "done",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "五年级数学周试卷_2026-11-01.pdf",
-          "label": "数学周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T20:53:03+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-01T20:53:03+08:00",
-      "orig_photos": [
-        "4ce5499cd20d1813.jpg",
-        "71d143fb8627ffd6.jpg",
-        "84219eda0899a426.jpg",
-        "222a4aa813c97670.jpg",
-        "1776627fafcb5964.jpg",
-        "47fc9e9446446318.jpg",
-        "b76bed69513f8229.jpg",
-        "d7a595efde2cac6f.jpg",
-        "df3812a605abed2e.jpg",
-        "773defcf4fc4bab8.jpg",
-        "7d7e87ac31c0adde.jpg",
-        "5de47003ced62f75.jpg",
-        "af058ffc664a586a.jpg"
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261101-001-YY",
-      "title": "周日英语试卷",
-      "subject": "英语",
-      "status": "done",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "五年级英语周试卷_2026-11-01.pdf",
-          "label": "英语周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T20:44:01+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-01T20:44:01+08:00",
-      "orig_photos": [
-        "a6b6d81ee98e3489.jpg",
-        "5472662a5a80a120.jpg",
-        "48b86936dbcca1ee.jpg",
-        "6cb480e5fefb5669.jpg",
-        "c4e1a6b4f4f66486.jpg",
-        "c585e954e4ff02f2.jpg",
-        "86a6176b5b54bf62.jpg",
-        "bd2d0eb241c13081.jpg",
-        "4ee68bb0c48a1957.jpg",
-        "d6d96ef918096854.jpg",
-        "e63cb55c451fa526.jpg",
-        "c51d99539508d760.jpg",
-        "1a50decdeb9a16b3.jpg",
-        "9c09d1eb8822d2ed.jpg",
-        "b95667cceb19edde.jpg"
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 4,
+    "total": 0,
     "pending": 0,
     "in_progress": 0,
-    "done": 4,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-01T23:00:00+08:00"
+  "deadline_today": null
 }

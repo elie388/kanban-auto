@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "grade": "六年级",
-  "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-02T00:15:33+08:00",
+  "generated_at": "2026-11-02T00:17:18+08:00",
+  "updated_at": "2026-11-02T00:17:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-01T23:10:39+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -21,187 +21,13 @@
       "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "REG-20261030-B6A1FF",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "作文-①续写小说",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-11-01T20:09:09+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-10-30",
-      "carried_from": "2026-10-31",
-      "carry_count": 2,
-      "completed_at": "2026-11-01T20:09:09+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "7190a65301623fa3.jpg",
-        "6da72a601e35bdd5.jpg",
-        "c321beca2790becf.jpg"
-      ]
-    },
-    {
-      "task_id": "CHORE-20261101-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-01T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-01T00:17:53+08:00",
-      "updated_at": "2026-11-02T00:08:12+08:00",
-      "completed_at": "2026-11-01T21:15:10+08:00",
-      "evidence": "家务判定通过——整理桌面；证据：看板家务上传批次 b1793538847561578c7f2ebd0d40de（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "READ-20261101-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-01T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-01T00:18:11+08:00",
-      "updated_at": "2026-11-01T21:26:28+08:00",
-      "orig_photos": [
-        "a631981ca76474ee.jpg",
-        "a5a2a83c1d64306f.jpg"
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261101-001-YW",
-      "title": "周日语文试卷",
-      "subject": "语文",
-      "status": "done",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "六年级语文周试卷_2026-11-01.pdf",
-          "label": "语文周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T21:43:11+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-01T21:43:11+08:00",
-      "orig_photos": [
-        "d960f2e0c0a4ecc4.jpg",
-        "d199eb0c1a2e7e82.jpg",
-        "9c9f6deafeffac11.jpg",
-        "8802b261f5167d55.jpg",
-        "1d92e129b3b9e8b7.jpg",
-        "cc379ca1c43124e6.jpg",
-        "0996bc3686abe55b.jpg",
-        "373b5b5d66e31e45.jpg",
-        "1668a61446eb5edb.jpg",
-        "a5955a353ba68962.jpg",
-        "2162794f162e4675.jpg"
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261101-001-SX",
-      "title": "周日数学试卷",
-      "subject": "数学",
-      "status": "done",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "六年级数学周试卷_2026-11-01.pdf",
-          "label": "数学周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T15:48:43+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-01T15:48:43+08:00",
-      "orig_photos": [
-        "a3fd7a626f6ca1fd.jpg",
-        "23bea304ca3e88f4.jpg",
-        "042b688ba07d3bd0.jpg",
-        "d5113cad9ffe8cf5.jpg",
-        "d9df3b067028433d.jpg",
-        "5f938efe2a7f49c7.jpg",
-        "7527eb0c089be824.jpg"
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261101-001-YY",
-      "title": "周日英语试卷",
-      "subject": "英语",
-      "status": "done",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "六年级英语周试卷_2026-11-01.pdf",
-          "label": "英语周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T20:26:00+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "0cc2a04cf77abd06.jpg",
-        "84215b585e27528d.jpg",
-        "f467a5af3345478e.jpg",
-        "7c6dff4a20a5eba6.jpg",
-        "8b04c95e5551d85d.jpg",
-        "8f1c0cfe34bc9fab.jpg"
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 6,
+    "total": 0,
     "pending": 0,
     "in_progress": 0,
-    "done": 6,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-01T23:00:00+08:00"
+  "deadline_today": null
 }
