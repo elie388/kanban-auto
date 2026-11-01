@@ -1,358 +1,358 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-01",
-  "grade": "五年级",
-  "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T15:58:21+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": null,
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-01",
+ "grade": "五年级",
+ "generated_at": "2026-11-01T00:17:20+08:00",
+ "updated_at": "2026-11-01T15:58:21+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": null,
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "MANUAL-20261031-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第13期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "submitted",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-10-31T20:06:18+08:00",
-      "updated_at": "2026-11-01T15:21:06+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-10-31.pdf",
-          "label": "练习",
-          "pages": 2
-        }
-      ],
-      "carry_first_date": "2026-10-31",
-      "carried_from": "2026-10-31",
-      "carry_count": 1,
-      "corrections": [
-        {
-          "label": "阅读理解第5题",
-          "question": "问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together?",
-          "reason": "订正后仍为两个片段（on sunday. 重复两遍＋Lucy and Grandma eat yummy fish.），未合成一个完整句子回答 When，且主句未含 lunch together，时间",
-          "hint": "这次要写成一整句：谁、在什么时候、一起做什么，全放在一个句子里；时间不要单独成句、不要重复写两遍，句首字母要大写。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子答案：on Sunday（前有涂改的 in）",
-          "img_exempt": "图后补",
-          "q_img_exempt": "原题无图（纯文字题）"
-        },
-        {
-          "label": "写作",
-          "question": "写作：My Helpful Weekend（30-50词，第三人称主语，至少5个三单动词）",
-          "reason": "订正方向反了：主语改 he 是对的，但把原来对的动词 -s 划掉了（works/says/gets/washs 的 -s 被划），没加的 wash/open/feel/help 仍未加，正确三单动词不",
-          "hint": "主语改成 he 是对的，但动词不是去掉 -s、而是要加上 -s；划掉的几个改回去，没加的逐个补上，再查拼写。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
-          "img_exempt": "图后补",
-          "q_img_exempt": "原题无图（纯文字题）"
-        }
-      ],
-      "pending_corrections": 2,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "CHORE-20261101-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-01T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-01T00:17:53+08:00",
-      "updated_at": "2026-11-01T15:33:08+08:00",
-      "completed_at": "2026-11-01T15:33:08+08:00",
-      "evidence": "家务判定通过——晾袜子；证据：看板家务上传批次 b179351817038140d55780315450c9（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "READ-20261101-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-01T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-01T00:18:11+08:00",
-      "updated_at": "2026-11-01T00:18:11+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261101-001-YW",
-      "title": "周日语文试卷",
-      "subject": "语文",
-      "status": "in_progress",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "五年级语文周试卷_2026-11-01.pdf",
-          "label": "语文周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T15:36:05+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [
-        {
-          "label": "语文基础第2题téng kōng",
-          "question": "看拼音，写词语：téng kōng（）",
-          "reason": "括号里把同一个词写了两遍，答案不干净",
-          "hint": "填空括号里，一个词写一遍就够了，写两遍就多余了。再看看 téng kōng 那个括号，里面是不是多了一遍？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "2.看拼音，写词语：téng kōng（）",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文基础第3题湾",
-          "question": "语文基础第3题湾 五年级语文周试卷（2026-11-01，整卷 4 页，基础 40 分＋阅读 30 分＋习作 30 分）。基础 31/40，阅读 8/30，习作暂按 20/30 计（过程、感受、道理、题目、语言基本达标，字数不足扣 10 分），总分 59/100。小问 18/28 对。复测：qid14 通过（选词填空第 1、2 小题均对），qid15 未通过（修改病句第 1 小题未改对，第 2 小题已改对）。",
-          "reason": "括号里写了四个字，含两个湾，不是一个干净的组词",
-          "hint": "湾字组词，括号里应该只写一个词，不要把湾写两遍。再想想湾前面加哪个字，表示海边停船的地方，词里只含一个湾。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "3.比一比，再组词：湾（）",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文基础第3题欧",
-          "question": "语文基础第3题欧 五年级语文周试卷（2026-11-01，整卷 4 页，基础 40 分＋阅读 30 分＋习作 30 分）。基础 31/40，阅读 8/30，习作暂按 20/30 计（过程、感受、道理、题目、语言基本达标，字数不足扣 10 分），总分 59/100。小问 18/28 对。复测：qid14 通过（选词填空第 1、2 小题均对），qid15 未通过（修改病句第 1 小题未改对，第 2 小题已改对）。",
-          "reason": "组词不是课本里欧字的常用组词",
-          "hint": "欧字组词，想想课本里欧字常和哪个字组成表示大陆的词，欧后面跟的那个字要再想想。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "3.比一比，再组词：欧（）",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文基础第5题第1小题",
-          "question": "【复测】修改病句：通过这次劳动，使我懂得了坚持的意义",
-          "reason": "只把使换成让，句子还是缺主语，未去掉通过、未补主语",
-          "hint": "通过……使……的病句，改法是去掉通过或去掉使，再补上主语，不能只换一个同义词。再看看你的改句，主语补上了吗？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "5.【复测】修改病句：(1)通过这次劳动，使我懂得了坚持的意义。",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文基础第7题第2小题",
-          "question": "句子改写：把爸爸对妈妈说的话改为转述句",
-          "reason": "句尾多写了一个字，且下班后面少了一个表示时间的字",
-          "hint": "转述句人称对了，但检查一下句尾：孩子后面是不是多了一个字？下班后面是不是少了一个表示时间的字？原句下班后三个字在转述里要留着。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "7.句子改写：(2)把“爸爸对妈妈说：‘我下班后去接孩子。’”改为转述句。",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文阅读第2题",
-          "question": "短文写了哪些事物？请用文中的词语写出来",
-          "reason": "只写了一种事物，还缺两种",
-          "hint": "短文里写了树、花、点心三种事物，你只写了一种。再读短文找找另外两种，树上开的是什么花，奶奶用花做了什么点心？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "二、阅读理解：2.短文写了哪些事物？请用文中的词语写出来。",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文阅读第3题",
-          "question": "沁人心脾在文中是什么意思？它形容的是桂花的香气怎么样",
-          "reason": "解释不完整，只写了香气进心脾、很香，缺清新舒服的意思",
-          "hint": "沁是什么意思？香气闻起来除了香，还有什么感觉，让人觉得怎么样？再想想第一段香气扑面而来那句，香气给人的感觉不只是香。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "二、阅读理解：3.“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文阅读第4题",
-          "question": "文中把桂花比作什么？这样写有什么好处",
-          "reason": "答的是落花那个比喻，本题按答案要点应为远远望去那句的比喻",
-          "hint": "找找短文第一段远远望去后面，桂花被比作天上的什么？落花像雨是另一个比喻，本题要找的是第一段那个。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "二、阅读理解：4.文中把桂花比作什么？这样写有什么好处？",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文阅读第5题",
-          "question": "我为什么觉得桂花糕格外香甜？请用自己的话回答",
-          "reason": "只写了摘桂花，缺做成点心、为什么格外香甜",
-          "hint": "桂花糕是怎么来的？摘来的花做成了什么，吃起来为什么格外香甜，和自己亲手做的有什么关系？把这三个点连成一句话。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "二、阅读理解：5.“我”为什么觉得桂花糕格外香甜？请用自己的话回答。",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "语文习作",
-          "question": "习作：我学会了骑自行车，400字左右，过程清楚、有心情感受",
-          "reason": "正文约270字，离400字左右差约120字，过程、感受、道理已好，主因是字数不足",
-          "hint": "过程已经清楚了，扩写时不用重写，在每个步骤里加一句当时怎么想、怎么练的细节，比如第一次摔倒后怎么想、妈妈示范时你注意了什么、成功骑出一小段时什么感觉，往里加细节到400字左右。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "三、习作：题目：我学会了骑自行车（先把题目补充完整，再写习作）要求：1.写一篇400字左右的习作。2.把学会的过程写清楚，写出你当时的心情和感受。3.语句通顺，不写错别字，标点正确。",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        }
-      ],
-      "pending_corrections": 10,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "MANUAL-20261101-001-SX",
-      "title": "周日数学试卷",
-      "subject": "数学",
-      "status": "submitted",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "五年级数学周试卷_2026-11-01.pdf",
-          "label": "数学周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T15:21:06+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [
-        {
-          "label": "数学填空第2题（复测）",
-          "question": "填空第2题：一个数的小数点向左移动一位，得到的数比原来少72，原来这个数是（第二轮订正答：7.2）",
-          "reason": "第二轮订正仍错：把72直接除以10，没有先想清楚移动后的数是原数的几分之几、少的72是原数的几分之几",
-          "hint": "小数点向左移动一位后，这个数变成了原来的多少？它比原来少了多少？少的72是原来数的几分之几？先想清楚这两步，再算原来是多少",
-          "img": "",
-          "q_img": "",
-          "orig_text": "一个数的小数点向左移动一位，得到的数比原来少72，原来这个数是（　　）。 孩子答：79.2",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "MANUAL-20261101-001-YY",
-      "title": "周日英语试卷",
-      "subject": "英语",
-      "status": "in_progress",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "files": [
-        {
-          "name": "五年级英语周试卷_2026-11-01.pdf",
-          "label": "英语周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T14:10:41+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [
-        {
-          "label": "英语词汇第3题",
-          "question": "【英语】My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子原答：C，订正后：A",
-          "reason": "订正后红笔最终仍为 A（fly），hobby is 后面要用动词 -ing 形式作活动名，fly 是原形，不能直接放在 is 后面。 五年级周日英语试卷订正，批次 b179351462743413c1",
-          "hint": "My hobby is ___（做某事）时，动词要变什么形式？再想想 flies 是谁作主语时用的？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子答：C",
-          "img_exempt": "图后补",
-          "q_img_exempt": "原题无图（纯文字题）"
-        },
-        {
-          "label": "英语单选第20题",
-          "question": "【英语】We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子原答：A，订正后：字母字形不清（似 C 又似 G）",
-          "reason": "订正后红笔字母字形介于 C 与 G 之间（放大裁图仍无法确认为 C），无法确认为有效选项",
-          "hint": "last Saturday 是过去还是现在？go 的过去式是什么？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子答：A",
-          "img_exempt": "图后补",
-          "q_img_exempt": "原题无图（纯文字题）"
-        },
-        {
-          "label": "英语阅读第25题",
-          "question": "【英语】Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子原答：because Anna share her pictures with her f",
-          "reason": "红笔句改对了句首大写和 shares，但句子还是照抄短文里的原句，没有用自己的话说。 五年级周日英语试卷订正，批次 b179351462743413c16487b7e1f476，2026-11-01 ",
-          "hint": "先肯定：理由找对了。再想想：Anna 是第几人称、share 该变什么样？能不能不用原文原句、换自己的话说一遍？句首字母该大写吗？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子答：because Anna share her pictures with her friends.（An 已划掉）",
-          "img_exempt": "图后补",
-          "q_img_exempt": "原题无图（纯文字题）"
-        },
-        {
-          "label": "英语小短文写作",
-          "question": "【英语】My Good Friend（提示词：friend/kind/share/happy/together）孩子文：My good friend is Sam. He is kind. he li",
-          "reason": "订正只改了 with→give（改错了地方），原来错的 he、like、read、share、we 都没改",
-          "hint": "先数一数：He 后面有几个动词？He 是第几人称、动词该变什么样？再看看 with 后面该用人称的哪种形式（we 还是 us）？标题和句首大写检查一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "My Good Friend 孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
-          "img_exempt": "图后补",
-          "q_img_exempt": "原题无图（纯文字题）"
-        }
-      ],
-      "pending_corrections": 4,
-      "status_source": "closeout_writeback"
-    }
-  ],
-  "counts": {
-    "total": 6,
-    "pending": 1,
-    "in_progress": 2,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": "2026-11-01T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "MANUAL-20261031-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语阅读写作第13期",
+   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+   "estimate_min": null,
+   "status": "submitted",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-10-31T20:06:18+08:00",
+   "updated_at": "2026-11-01T15:21:06+08:00",
+   "files": [
+    {
+     "name": "五年级英语阅读写作_2026-10-31.pdf",
+     "label": "练习",
+     "pages": 2
+    }
+   ],
+   "carry_first_date": "2026-10-31",
+   "carried_from": "2026-10-31",
+   "carry_count": 1,
+   "corrections": [
+    {
+     "label": "阅读理解第5题",
+     "question": "问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together?",
+     "reason": "订正后仍为两个片段（on sunday. 重复两遍＋Lucy and Grandma eat yummy fish.），未合成一个完整句子回答 When，且主句未含 lunch together，时间",
+     "hint": "这次要写成一整句：谁、在什么时候、一起做什么，全放在一个句子里；时间不要单独成句、不要重复写两遍，句首字母要大写。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子答案：on Sunday（前有涂改的 in）",
+     "img_exempt": "图后补",
+     "q_img_exempt": "原题无图（纯文字题）"
+    },
+    {
+     "label": "写作",
+     "question": "写作：My Helpful Weekend（30-50词，第三人称主语，至少5个三单动词）",
+     "reason": "订正方向反了：主语改 he 是对的，但把原来对的动词 -s 划掉了（works/says/gets/washs 的 -s 被划），没加的 wash/open/feel/help 仍未加，正确三单动词不",
+     "hint": "主语改成 he 是对的，但动词不是去掉 -s、而是要加上 -s；划掉的几个改回去，没加的逐个补上，再查拼写。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
+     "img_exempt": "图后补",
+     "q_img_exempt": "原题无图（纯文字题）"
+    }
+   ],
+   "pending_corrections": 2,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "CHORE-20261101-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "appear_at": "2026-11-01T08:00:00+08:00",
+   "chore_done_count": 1,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-01T00:17:53+08:00",
+   "updated_at": "2026-11-01T15:33:08+08:00",
+   "completed_at": "2026-11-01T15:33:08+08:00",
+   "evidence": "家务判定通过——晾袜子；证据：看板家务上传批次 b179351817038140d55780315450c9（approved）；回写 chore_task_writeback。"
+  },
+  {
+   "task_id": "READ-20261101-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-01T08:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-01T00:18:11+08:00",
+   "updated_at": "2026-11-01T00:18:11+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261101-001-YW",
+   "title": "周日语文试卷",
+   "subject": "语文",
+   "status": "in_progress",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "files": [
+    {
+     "name": "五年级语文周试卷_2026-11-01.pdf",
+     "label": "语文周试卷",
+     "pages": 4
+    }
+   ],
+   "source": "manual",
+   "created_by": "user",
+   "created_at": "2026-11-01T10:12:20+08:00",
+   "updated_at": "2026-11-01T15:36:05+08:00",
+   "review_status": "approved",
+   "estimate_min": null,
+   "corrections": [
+    {
+     "label": "语文基础第2题téng kōng",
+     "question": "看拼音，写词语：téng kōng（）",
+     "reason": "括号里把同一个词写了两遍，答案不干净",
+     "hint": "填空括号里，一个词写一遍就够了，写两遍就多余了。再看看 téng kōng 那个括号，里面是不是多了一遍？",
+     "img": "",
+     "q_img": "",
+     "orig_text": "2.看拼音，写词语：téng kōng（）",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文基础第3题湾",
+     "question": "语文基础第3题湾 五年级语文周试卷（2026-11-01，整卷 4 页，基础 40 分＋阅读 30 分＋习作 30 分）。基础 31/40，阅读 8/30，习作暂按 20/30 计（过程、感受、道理、题目、语言基本达标，字数不足扣 10 分），总分 59/100。小问 18/28 对。复测：qid14 通过（选词填空第 1、2 小题均对），qid15 未通过（修改病句第 1 小题未改对，第 2 小题已改对）。",
+     "reason": "括号里写了四个字，含两个湾，不是一个干净的组词",
+     "hint": "湾字组词，括号里应该只写一个词，不要把湾写两遍。再想想湾前面加哪个字，表示海边停船的地方，词里只含一个湾。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "3.比一比，再组词：湾（）",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文基础第3题欧",
+     "question": "语文基础第3题欧 五年级语文周试卷（2026-11-01，整卷 4 页，基础 40 分＋阅读 30 分＋习作 30 分）。基础 31/40，阅读 8/30，习作暂按 20/30 计（过程、感受、道理、题目、语言基本达标，字数不足扣 10 分），总分 59/100。小问 18/28 对。复测：qid14 通过（选词填空第 1、2 小题均对），qid15 未通过（修改病句第 1 小题未改对，第 2 小题已改对）。",
+     "reason": "组词不是课本里欧字的常用组词",
+     "hint": "欧字组词，想想课本里欧字常和哪个字组成表示大陆的词，欧后面跟的那个字要再想想。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "3.比一比，再组词：欧（）",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文基础第5题第1小题",
+     "question": "【复测】修改病句：通过这次劳动，使我懂得了坚持的意义",
+     "reason": "只把使换成让，句子还是缺主语，未去掉通过、未补主语",
+     "hint": "通过……使……的病句，改法是去掉通过或去掉使，再补上主语，不能只换一个同义词。再看看你的改句，主语补上了吗？",
+     "img": "",
+     "q_img": "",
+     "orig_text": "5.【复测】修改病句：(1)通过这次劳动，使我懂得了坚持的意义。",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文基础第7题第2小题",
+     "question": "句子改写：把爸爸对妈妈说的话改为转述句",
+     "reason": "句尾多写了一个字，且下班后面少了一个表示时间的字",
+     "hint": "转述句人称对了，但检查一下句尾：孩子后面是不是多了一个字？下班后面是不是少了一个表示时间的字？原句下班后三个字在转述里要留着。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "7.句子改写：(2)把“爸爸对妈妈说：‘我下班后去接孩子。’”改为转述句。",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文阅读第2题",
+     "question": "短文写了哪些事物？请用文中的词语写出来",
+     "reason": "只写了一种事物，还缺两种",
+     "hint": "短文里写了树、花、点心三种事物，你只写了一种。再读短文找找另外两种，树上开的是什么花，奶奶用花做了什么点心？",
+     "img": "",
+     "q_img": "",
+     "orig_text": "二、阅读理解：2.短文写了哪些事物？请用文中的词语写出来。",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文阅读第3题",
+     "question": "沁人心脾在文中是什么意思？它形容的是桂花的香气怎么样",
+     "reason": "解释不完整，只写了香气进心脾、很香，缺清新舒服的意思",
+     "hint": "沁是什么意思？香气闻起来除了香，还有什么感觉，让人觉得怎么样？再想想第一段香气扑面而来那句，香气给人的感觉不只是香。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "二、阅读理解：3.“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文阅读第4题",
+     "question": "文中把桂花比作什么？这样写有什么好处",
+     "reason": "答的是落花那个比喻，本题按答案要点应为远远望去那句的比喻",
+     "hint": "找找短文第一段远远望去后面，桂花被比作天上的什么？落花像雨是另一个比喻，本题要找的是第一段那个。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "二、阅读理解：4.文中把桂花比作什么？这样写有什么好处？",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文阅读第5题",
+     "question": "我为什么觉得桂花糕格外香甜？请用自己的话回答",
+     "reason": "只写了摘桂花，缺做成点心、为什么格外香甜",
+     "hint": "桂花糕是怎么来的？摘来的花做成了什么，吃起来为什么格外香甜，和自己亲手做的有什么关系？把这三个点连成一句话。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "二、阅读理解：5.“我”为什么觉得桂花糕格外香甜？请用自己的话回答。",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    },
+    {
+     "label": "语文习作",
+     "question": "习作：我学会了骑自行车，400字左右，过程清楚、有心情感受",
+     "reason": "正文约270字，离400字左右差约120字，过程、感受、道理已好，主因是字数不足",
+     "hint": "过程已经清楚了，扩写时不用重写，在每个步骤里加一句当时怎么想、怎么练的细节，比如第一次摔倒后怎么想、妈妈示范时你注意了什么、成功骑出一小段时什么感觉，往里加细节到400字左右。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "三、习作：题目：我学会了骑自行车（先把题目补充完整，再写习作）要求：1.写一篇400字左右的习作。2.把学会的过程写清楚，写出你当时的心情和感受。3.语句通顺，不写错别字，标点正确。",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    }
+   ],
+   "pending_corrections": 10,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "MANUAL-20261101-001-SX",
+   "title": "周日数学试卷",
+   "subject": "数学",
+   "status": "in_progress",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "files": [
+    {
+     "name": "五年级数学周试卷_2026-11-01.pdf",
+     "label": "数学周试卷",
+     "pages": 4
+    }
+   ],
+   "source": "manual",
+   "created_by": "user",
+   "created_at": "2026-11-01T10:12:20+08:00",
+   "updated_at": "2026-11-01T15:21:06+08:00",
+   "review_status": "approved",
+   "estimate_min": null,
+   "corrections": [
+    {
+     "label": "数学填空第2题（复测）",
+     "question": "填空第2题：一个数的小数点向左移动一位，得到的数比原来少72，原来这个数是（第二轮订正答：7.2）",
+     "reason": "第二轮订正仍错：把72直接除以10，没有先想清楚移动后的数是原数的几分之几、少的72是原数的几分之几",
+     "hint": "小数点向左移动一位后，这个数变成了原来的多少？它比原来少了多少？少的72是原来数的几分之几？先想清楚这两步，再算原来是多少",
+     "img": "",
+     "q_img": "",
+     "orig_text": "一个数的小数点向左移动一位，得到的数比原来少72，原来这个数是（　　）。 孩子答：79.2",
+     "q_img_exempt": "原题无图（纯文字题）",
+     "img_exempt": "图后补"
+    }
+   ],
+   "pending_corrections": 1,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "MANUAL-20261101-001-YY",
+   "title": "周日英语试卷",
+   "subject": "英语",
+   "status": "in_progress",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "files": [
+    {
+     "name": "五年级英语周试卷_2026-11-01.pdf",
+     "label": "英语周试卷",
+     "pages": 4
+    }
+   ],
+   "source": "manual",
+   "created_by": "user",
+   "created_at": "2026-11-01T10:12:20+08:00",
+   "updated_at": "2026-11-01T14:10:41+08:00",
+   "review_status": "approved",
+   "estimate_min": null,
+   "corrections": [
+    {
+     "label": "英语词汇第3题",
+     "question": "【英语】My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子原答：C，订正后：A",
+     "reason": "订正后红笔最终仍为 A（fly），hobby is 后面要用动词 -ing 形式作活动名，fly 是原形，不能直接放在 is 后面。 五年级周日英语试卷订正，批次 b179351462743413c1",
+     "hint": "My hobby is ___（做某事）时，动词要变什么形式？再想想 flies 是谁作主语时用的？",
+     "img": "",
+     "q_img": "",
+     "orig_text": "My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子答：C",
+     "img_exempt": "图后补",
+     "q_img_exempt": "原题无图（纯文字题）"
+    },
+    {
+     "label": "英语单选第20题",
+     "question": "【英语】We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子原答：A，订正后：字母字形不清（似 C 又似 G）",
+     "reason": "订正后红笔字母字形介于 C 与 G 之间（放大裁图仍无法确认为 C），无法确认为有效选项",
+     "hint": "last Saturday 是过去还是现在？go 的过去式是什么？",
+     "img": "",
+     "q_img": "",
+     "orig_text": "We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子答：A",
+     "img_exempt": "图后补",
+     "q_img_exempt": "原题无图（纯文字题）"
+    },
+    {
+     "label": "英语阅读第25题",
+     "question": "【英语】Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子原答：because Anna share her pictures with her f",
+     "reason": "红笔句改对了句首大写和 shares，但句子还是照抄短文里的原句，没有用自己的话说。 五年级周日英语试卷订正，批次 b179351462743413c16487b7e1f476，2026-11-01 ",
+     "hint": "先肯定：理由找对了。再想想：Anna 是第几人称、share 该变什么样？能不能不用原文原句、换自己的话说一遍？句首字母该大写吗？",
+     "img": "",
+     "q_img": "",
+     "orig_text": "Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子答：because Anna share her pictures with her friends.（An 已划掉）",
+     "img_exempt": "图后补",
+     "q_img_exempt": "原题无图（纯文字题）"
+    },
+    {
+     "label": "英语小短文写作",
+     "question": "【英语】My Good Friend（提示词：friend/kind/share/happy/together）孩子文：My good friend is Sam. He is kind. he li",
+     "reason": "订正只改了 with→give（改错了地方），原来错的 he、like、read、share、we 都没改",
+     "hint": "先数一数：He 后面有几个动词？He 是第几人称、动词该变什么样？再看看 with 后面该用人称的哪种形式（we 还是 us）？标题和句首大写检查一遍。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "My Good Friend 孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
+     "img_exempt": "图后补",
+     "q_img_exempt": "原题无图（纯文字题）"
+    }
+   ],
+   "pending_corrections": 4,
+   "status_source": "closeout_writeback"
+  }
+ ],
+ "counts": {
+  "total": 6,
+  "pending": 1,
+  "in_progress": 2,
+  "done": 1,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-01T22:30:00+08:00"
 }
