@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T14:38:43+08:00",
+  "updated_at": "2026-11-01T14:56:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -46,34 +46,29 @@
       "carry_count": 1,
       "corrections": [
         {
-          "label": "阅读理解第4题",
-          "question": "翻译填空：Lucy ___ the dirty clothes on the weekend.（露西周末洗脏衣服）",
-          "reason": "主语 Lucy 是第三人称单数，动词要用三单形式，孩子写的 Wash 缺少词尾变化。 看板提交，任务 MANUAL-20261031-001（英语阅读写作第13期），2026-11-01 13:22:",
-          "hint": "想一想：主语是 Lucy（她，一个人），动词要用什么形式？回忆一下第三人称单数动词的变化规则，再检查你写的动词。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "4. 把下面的句子译成英文：露西周末洗脏衣服。Lucy ___ the dirty clothes on the weekend. 孩子答案：Wash"
-        },
-        {
           "label": "阅读理解第5题",
           "question": "问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together?",
-          "reason": "只写了时间短语，不是完整英文句子",
-          "hint": "时间找对了（Sunday）。现在把它写成一个完整句子：谁、在什么时候、一起做什么？主语加动词加时间，试着写一整句。",
+          "reason": "订正后仍为两个片段（on sunday. 重复两遍＋Lucy and Grandma eat yummy fish.），未合成一个完整句子回答 When，且主句未含 lunch together，时间首字母未大写",
+          "hint": "这次要写成一整句：谁、在什么时候、一起做什么，全放在一个句子里；时间不要单独成句、不要重复写两遍，句首字母要大写。",
           "img": "",
           "q_img": "",
-          "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子答案：on Sunday（前有涂改的 in）"
+          "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子订正：on sunday. on sunday. Lucy and Grandma eat yummy fish.（in、第二个 and、sfish 的 s 已划掉）",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "图后补"
         },
         {
           "label": "写作",
           "question": "写作：My Helpful Weekend（30-50词，第三人称主语，至少5个三单动词）",
-          "reason": "全文用第一人称 I 作主语，未达到第三人称主语要求",
-          "hint": "这次先只改一个大问题：把主角换成第三人称。想一想：如果主角不是“我”而是“妈妈”或一位朋友，句子里的 I 要换成什么？动词后面要加什么？先把每一句的主语都换成 She 或 He，再给动词加上 -s 或 -es；拼写问题下一轮再细抠。",
+          "reason": "订正方向反了：主语改 he 是对的，但把原来对的动词 -s 划掉了（works/says/gets/washs 的 -s 被划），没加的 wash/open/feel/help 仍未加，正确三单动词不足5个，拼写仍有误",
+          "hint": "主语改成 he 是对的，但动词不是去掉 -s、而是要加上 -s；划掉的几个改回去，没加的逐个补上，再查拼写。",
           "img": "",
           "q_img": "",
-          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs."
+          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。孩子订正：红笔在 I 上方补 he、划掉 is 与 works/says/gets/washs 的 -s，wash/open/feel/help 仍未加 -s",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "图后补"
         }
       ],
-      "pending_corrections": 3,
+      "pending_corrections": 2,
       "status_source": "closeout_writeback"
     },
     {
