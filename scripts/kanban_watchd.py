@@ -68,7 +68,7 @@ try:
     import sync_balance as _sb
     SILENT_WINDOW = tuple(_sb.BUILD_SILENT_WINDOW)  # 单点定义复用（R6）
 except Exception as _e:  # P2 修复（2026-10-20）：回退不再静默——留痕待启动时写日志
-    SILENT_WINDOW = (0, 6)  # 回退字面量（sync_balance 不可导入时）
+    SILENT_WINDOW = (0, 0)  # 回退字面量（sync_balance 不可导入时；2026-11-02 家长全天候令，同步取消静默）
     _SILENT_IMPORT_ERR = _e
 
 QBANK = Path(os.environ.get("QBANK_PATH", str(REPO_DIR.parent / "题目库.db")))
@@ -489,16 +489,17 @@ def selftest():
         rec("T1 指纹变更检测", False, str(e)[:200])
 
     # T2 软静默边界（常量单点来自 sync_balance；P2 修复：同时断言来源非回退）
+    # 2026-11-02 家长全天候令：静默窗口取消，(0, 0) 恒为非静默。
     try:
-        assert SILENT_WINDOW == (0, 6), "SILENT_WINDOW=%r" % (SILENT_WINDOW,)
+        assert SILENT_WINDOW == (0, 0), "SILENT_WINDOW=%r" % (SILENT_WINDOW,)
         assert _SILENT_IMPORT_ERR is None, \
             "SILENT_WINDOW 来自回退字面量（sync_balance 导入失败：%s）" % _SILENT_IMPORT_ERR
         assert tuple(_sb.BUILD_SILENT_WINDOW) == SILENT_WINDOW, "与单点定义不一致"
-        assert in_silent_window(datetime(2026, 10, 20, 0, 0, tzinfo=BEIJING)) is True
-        assert in_silent_window(datetime(2026, 10, 20, 5, 59, tzinfo=BEIJING)) is True
+        assert in_silent_window(datetime(2026, 10, 20, 0, 0, tzinfo=BEIJING)) is False
+        assert in_silent_window(datetime(2026, 10, 20, 5, 59, tzinfo=BEIJING)) is False
         assert in_silent_window(datetime(2026, 10, 20, 6, 0, tzinfo=BEIJING)) is False
         assert in_silent_window(datetime(2026, 10, 20, 12, 0, tzinfo=BEIJING)) is False
-        rec("T2 软静默边界", True, "SILENT_WINDOW=(0,6) 来源=sync_balance 单点定义，边界 [00:00,06:00) 正确")
+        rec("T2 软静默边界", True, "SILENT_WINDOW=(0,0) 来源=sync_balance 单点定义，全天候非静默")
     except Exception as e:
         rec("T2 软静默边界", False, str(e)[:200])
 

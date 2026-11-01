@@ -27,11 +27,12 @@ LOCK_FILE = Path("/tmp/sync_balance.lock")
 BEIJING = timezone(timedelta(hours=8))
 
 # 看板 build 软静默窗口（DeepSeek 终审 2026-10-20 看板全栏目实时同步）：
-# [00:00, 06:00) Asia/Shanghai，事件/兜底触发时记录 skip 日志后跳过，由 06:00 后首个事件或兜底 cron 收敛。
+# 原 [00:00, 06:00) Asia/Shanghai；2026-11-02 家长令“夜间也要实时刷新”“全天候”覆盖，
+# 静默窗口取消（全天候同步），(0, 0) 使判定恒为 False；快车道禁区 [23:30:00, 08:30:00) 不动。
 # 单点定义：看板脚本统一引用此常量，不得在各脚本内硬编码字面量。
 # 注意：此窗口与登记本快车道禁区 [23:30:00, 08:30:00) 是两种机制、两个用途（快车道管邮箱摄取，
 # 本窗口管看板 build），边界不一致不是 bug，禁止"对齐"（R6）。
-BUILD_SILENT_WINDOW = (0, 6)
+BUILD_SILENT_WINDOW = (0, 0)
 
 
 def in_build_silent_window(now=None):
