@@ -8,7 +8,7 @@
    "icon": "🕹️",
    "by_grade": {
     "g5": {
-     "balance": 76,
+     "balance": 82,
      "progress": 1.0,
      "redeemable": true
     },
@@ -26,8 +26,8 @@
    "icon": "🕹️",
    "by_grade": {
     "g5": {
-     "balance": 76,
-     "progress": 0.76,
+     "balance": 82,
+     "progress": 0.82,
      "redeemable": false
     },
     "g6": {
@@ -44,8 +44,8 @@
    "icon": "🎮",
    "by_grade": {
     "g5": {
-     "balance": 76,
-     "progress": 0.5067,
+     "balance": 82,
+     "progress": 0.5467,
      "redeemable": false
     },
     "g6": {
@@ -62,8 +62,8 @@
    "icon": "🎮",
    "by_grade": {
     "g5": {
-     "balance": 76,
-     "progress": 0.304,
+     "balance": 82,
+     "progress": 0.328,
      "redeemable": false
     },
     "g6": {
@@ -80,8 +80,8 @@
    "icon": "🌟",
    "by_grade": {
     "g5": {
-     "balance": 76,
-     "progress": 0.1267,
+     "balance": 82,
+     "progress": 0.1367,
      "redeemable": false
     },
     "g6": {
@@ -98,8 +98,8 @@
    "icon": "💫",
    "by_grade": {
     "g5": {
-     "balance": 76,
-     "progress": 0.076,
+     "balance": 82,
+     "progress": 0.082,
      "redeemable": false
     },
     "g6": {
@@ -110,5 +110,5 @@
    }
   }
  ],
- "generated_at": "2026-11-01T14:59:57+08:00"
+ "generated_at": "2026-11-01T15:24:55+08:00"
 }
