@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T18:12:10+08:00",
+  "updated_at": "2026-11-01T20:04:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -125,15 +125,15 @@
       "estimate_min": null,
       "corrections": [
         {
-          "label": "待补交：语文第 3–4 页",
-          "question": "六年级语文周试卷第 3–4 页尚未提交（待补交，非错题）",
-          "reason": "待补交提醒，非错题",
-          "hint": "语文第3-4页 22:30 前补交后单独判",
+          "label": "语文阅读第 3 题",
+          "question": "3. “我”刚开始学骑车时遇到了什么困难？后来怎么样了？（6分）",
+          "reason": "第 3 题错：困难只写了害怕摔倒，没写出车子摇摇晃晃、摔在草地上的困难；后来部分（不再死死盯车轮、目视前方、终于学会）是对的，但按小问全对才计分，本题仍判错。",
+          "hint": "第 3 题还要再改：你写了害怕摔倒和后来学会了，很好，但困难那部分还缺一点——刚开始骑的时候，车子本身怎么样了？又摔到哪了？再读读短文第一、二段，补上这一点发回来。",
           "img": "",
           "q_img": "",
-          "orig_text": "六年级语文周试卷第 3–4 页（待补交）",
-          "q_img_exempt": "待补交，无原题图",
-          "img_exempt": "待补交提醒，非错题，无需配图"
+          "orig_text": "“我”刚开始学骑车时遇到了什么困难？后来怎么样了？（6分）",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
         }
       ],
       "pending_corrections": 1,
@@ -193,15 +193,15 @@
       "estimate_min": null,
       "corrections": [
         {
-          "label": "待补交：英语其余部分",
-          "question": "六年级英语周试卷词汇第10题、单选第11-20题尚未提交（待补交，非错题）",
-          "reason": "待补交提醒，非错题",
-          "hint": "词汇第10题、单选第11-20题 22:30 前补交后单独判",
+          "label": "英语词汇第 10 题",
+          "question": "10. He ______ lovely pictures yesterday.（　　） A. draws B. drew C. drawing D. draw",
+          "reason": "第 10 题错：填 A draws，正确为 B drew；yesterday 表过去，动词须用过去式。",
+          "hint": "第 10 题还要再改：句里有个词告诉你这事是昨天发生的，昨天发生的事，动词要变成什么样子？再想想发回来。",
           "img": "",
           "q_img": "",
-          "orig_text": "待补交：英语词汇第10题、单选第11-20题（22:30前补交后单独判）",
-          "q_img_exempt": "待补交，无原题图",
-          "img_exempt": "待补交提醒，非错题，无需配图"
+          "orig_text": "10. He ______ lovely pictures yesterday.（　　） A. draws B. drew C. drawing D. draw",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
         }
       ],
       "pending_corrections": 1,
