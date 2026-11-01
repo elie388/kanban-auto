@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T16:26:50+08:00",
+  "updated_at": "2026-11-01T16:35:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -98,7 +98,7 @@
       "title": "每日读书",
       "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "appear_at": "2026-11-01T08:00:00+08:00",
       "task_type": "reading",
@@ -107,7 +107,16 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-01T00:18:11+08:00",
-      "updated_at": "2026-11-01T00:18:11+08:00"
+      "updated_at": "2026-11-01T16:35:01+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-01T16:35:01+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "4ead553a76b95f2b.jpg",
+        "e7cb951529bd9e4c.jpg",
+        "9411a63ba08692e6.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261101-001-YW",
@@ -261,9 +270,9 @@
   ],
   "counts": {
     "total": 6,
-    "pending": 1,
+    "pending": 0,
     "in_progress": 3,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-01T22:30:00+08:00"
