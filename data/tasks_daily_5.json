@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T20:44:05+08:00",
+  "updated_at": "2026-11-01T20:46:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -129,28 +129,17 @@
       "corrections": [
         {
           "label": "语文阅读第3题",
-          "question": "“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
-          "reason": "第三轮订正仍缺清新怡人：现写香气扑鼻、让人陶醉，仍未写出清新怡人",
-          "hint": "“沁人心脾”还要再改：你现在写了香气扑鼻、让人陶醉、很香，但形容香气还有一个更具体的说法没写出来，再读读第一段里写香气的句子，找找那个说法",
+          "question": "阅读理解：沁人心脾在文中是什么意思，它形容桂花的香气怎么样",
+          "reason": "第四轮订正仍缺清新怡人：现写香气进入人的心脾、让人陶醉、桂花很香，仍未写出清新怡人。",
+          "hint": "“沁人心脾”还要再改：意思和让人陶醉都写出来了，很好，但形容桂花香气还有一个更具体的说法没写出来，再读读第一段里写香气的句子，找找那个说法，改好发回来。",
           "img": "g5_sunday_yw_yuedu3_guide.png",
           "q_img": "",
           "orig_text": "二、阅读理解：3.“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": ""
-        },
-        {
-          "label": "语文阅读第4题",
-          "question": "文中把桂花比作什么？这样写有什么好处？",
-          "reason": "第三轮订正仍未改：仍答黄金雨（仅加金色的），金色的小星星仍未写出",
-          "hint": "文中把桂花比作什么还要再改：你现在写的是落花那个比喻，本题问的是桂花本身，再读读第一段，远远望去，桂花像什么？",
-          "img": "g5_sunday_yw_yuedu4_guide.png",
-          "q_img": "",
-          "orig_text": "二、阅读理解：4.文中把桂花比作什么？这样写有什么好处？",
-          "q_img_exempt": "原题无图（纯文字题）",
+          "q_img_exempt": "",
           "img_exempt": ""
         }
       ],
-      "pending_corrections": 2,
+      "pending_corrections": 1,
       "status_source": "closeout_writeback"
     },
     {
@@ -212,7 +201,6 @@
       "status_source": "closeout_writeback",
       "completed_at": "2026-11-01T20:44:01+08:00",
       "orig_photos": [
-        "b95667cceb19edde.jpg",
         "a6b6d81ee98e3489.jpg",
         "5472662a5a80a120.jpg",
         "48b86936dbcca1ee.jpg",
@@ -226,7 +214,8 @@
         "e63cb55c451fa526.jpg",
         "c51d99539508d760.jpg",
         "1a50decdeb9a16b3.jpg",
-        "9c09d1eb8822d2ed.jpg"
+        "9c09d1eb8822d2ed.jpg",
+        "b95667cceb19edde.jpg"
       ]
     }
   ],
