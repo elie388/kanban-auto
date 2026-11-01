@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T21:25:14+08:00",
+  "updated_at": "2026-11-01T21:43:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -126,13 +126,17 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-01T00:18:11+08:00",
-      "updated_at": "2026-11-01T21:26:28+08:00"
+      "updated_at": "2026-11-01T21:26:28+08:00",
+      "orig_photos": [
+        "a631981ca76474ee.jpg",
+        "a5a2a83c1d64306f.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261101-001-YW",
       "title": "周日语文试卷",
       "subject": "语文",
-      "status": "in_progress",
+      "status": "done",
       "detail": "今晚截止22:30，做完拍照交回",
       "files": [
         {
@@ -144,24 +148,26 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T21:26:28+08:00",
+      "updated_at": "2026-11-01T21:43:11+08:00",
       "review_status": "approved",
       "estimate_min": null,
-      "corrections": [
-        {
-          "label": "语文阅读第 3 题",
-          "question": "阅读理解：我刚开始学骑车时遇到了什么困难，后来怎么样了",
-          "reason": "再轮订正仍错：补上了车子摇摇晃晃、摔倒，但摔的地方只写了地上，短文里的草地上仍未写出；按小问全对才计分，本题仍判错。",
-          "hint": "第 3 题还要再改：车子摇摇晃晃补上了，很好；但摔倒的地方还差一点——短文第一、二段写的是哪种地面？再读读，补上那个地方发回来。",
-          "img": "g6_sunday_yw_yuedu3_guide.png",
-          "q_img": "",
-          "orig_text": "“我”刚开始学骑车时遇到了什么困难？后来怎么样了？（6分）",
-          "q_img_exempt": "",
-          "img_exempt": ""
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-01T21:43:11+08:00",
+      "orig_photos": [
+        "d960f2e0c0a4ecc4.jpg",
+        "d199eb0c1a2e7e82.jpg",
+        "9c9f6deafeffac11.jpg",
+        "8802b261f5167d55.jpg",
+        "1d92e129b3b9e8b7.jpg",
+        "cc379ca1c43124e6.jpg",
+        "0996bc3686abe55b.jpg",
+        "373b5b5d66e31e45.jpg",
+        "1668a61446eb5edb.jpg",
+        "a5955a353ba68962.jpg",
+        "2162794f162e4675.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261101-001-SX",
@@ -232,7 +238,7 @@
     "total": 7,
     "pending": 0,
     "in_progress": 0,
-    "done": 4,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-01T22:30:00+08:00"
