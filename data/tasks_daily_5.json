@@ -1,234 +1,234 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-01",
- "grade": "五年级",
- "generated_at": "2026-11-01T00:17:20+08:00",
- "updated_at": "2026-11-01T22:02:46+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-01T16:55:43+08:00",
-   "new_lines": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "MANUAL-20261031-001",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语阅读写作第13期",
-   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-10-31T20:06:18+08:00",
-   "updated_at": "2026-11-01T21:26:28+08:00",
-   "files": [
-    {
-     "name": "五年级英语阅读写作_2026-10-31.pdf",
-     "label": "练习",
-     "pages": 2
+  "schema_version": "1.0",
+  "date": "2026-11-01",
+  "grade": "五年级",
+  "generated_at": "2026-11-01T00:17:20+08:00",
+  "updated_at": "2026-11-01T22:45:57+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-01T16:55:43+08:00",
+      "new_lines": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
     }
-   ],
-   "carry_first_date": "2026-10-31",
-   "carried_from": "2026-10-31",
-   "carry_count": 1,
-   "corrections": [
-    {
-     "label": "写作",
-     "question": "My Helpful Weekend（30-50词）：第三人称主语，至少5个第三人称单数动词，注意拼写和标点。",
-     "reason": "第六轮（21:41新版）仍错：红笔重写版词数约33在30-50内，正确三单动词已有5个（works/says/gets/feels/helps），My mum句中is已涂掉；但第一人称I仍在（I start）、dishs通篇未改、结尾wishe仍错、句中washs或错拼或涂掉未成正确动词、After lunch./Open water./Because开头三处仍为碎句；页边与页末单写的washes未落入句中、未标明替换哪处，不作句中washs的改正。未同时满足第三人称、拼写、成句三项要求。",
-     "hint": "写作进步很大，正确的三单动词已经够5个了，词数也在范围内；再逐句查四处：①主语是不是都改成第三人称了（还有一处第一人称）；②词尾和拼写还要再查（碗盘那个词通篇、表希望的词、sh结尾的词在句中到底写对没有）；③不成句的三处要并进前后的整句里，不要单独成句；④单写在页边、页末的词要放进句子里、标明改的是哪一处，单写在外面不算改好。改好发回来。",
-     "img": "g5_readwrite13_writing.png",
-     "q_img": "",
-     "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
-     "q_img_exempt": "原题无图（纯文字题）",
-     "img_exempt": ""
-    }
-   ],
-   "pending_corrections": 1,
-   "status_source": "closeout_writeback"
   },
-  {
-   "task_id": "CHORE-20261101-G5",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "appear_at": "2026-11-01T08:00:00+08:00",
-   "chore_done_count": 1,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-01T00:17:53+08:00",
-   "updated_at": "2026-11-01T21:15:10+08:00",
-   "completed_at": "2026-11-01T15:33:08+08:00",
-   "evidence": "家务判定通过——晾袜子；证据：看板家务上传批次 b179351817038140d55780315450c9（approved）；回写 chore_task_writeback。"
-  },
-  {
-   "task_id": "READ-20261101-G5",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "appear_at": "2026-11-01T08:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-01T00:18:11+08:00",
-   "updated_at": "2026-11-01T16:35:01+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "completed_at": "2026-11-01T16:35:01+08:00",
-   "status_source": "closeout_writeback",
-   "orig_photos": [
-    "4ead553a76b95f2b.jpg",
-    "e7cb951529bd9e4c.jpg",
-    "9411a63ba08692e6.jpg"
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261101-001-YW",
-   "title": "周日语文试卷",
-   "subject": "语文",
-   "status": "submitted",
-   "detail": "今晚截止23:00，做完拍照交回",
-   "files": [
+  "tasks": [
     {
-     "name": "五年级语文周试卷_2026-11-01.pdf",
-     "label": "语文周试卷",
-     "pages": 4
-    }
-   ],
-   "source": "manual",
-   "created_by": "user",
-   "created_at": "2026-11-01T10:12:20+08:00",
-   "updated_at": "2026-11-01T22:40:00+08:00",
-   "review_status": "approved",
-   "estimate_min": null,
-   "corrections": [
+      "task_id": "MANUAL-20261031-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语阅读写作第13期",
+      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-10-31T20:06:18+08:00",
+      "updated_at": "2026-11-01T21:26:28+08:00",
+      "files": [
+        {
+          "name": "五年级英语阅读写作_2026-10-31.pdf",
+          "label": "练习",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-10-31",
+      "carried_from": "2026-10-31",
+      "carry_count": 1,
+      "corrections": [
+        {
+          "label": "写作",
+          "question": "My Helpful Weekend（30-50词）：第三人称主语，至少5个第三人称单数动词，注意拼写和标点。",
+          "reason": "第六轮（21:41新版）仍错：红笔重写版词数约33在30-50内，正确三单动词已有5个（works/says/gets/feels/helps），My mum句中is已涂掉；但第一人称I仍在（I start）、dishs通篇未改、结尾wishe仍错、句中washs或错拼或涂掉未成正确动词、After lunch./Open water./Because开头三处仍为碎句；页边与页末单写的washes未落入句中、未标明替换哪处，不作句中washs的改正。未同时满足第三人称、拼写、成句三项要求。",
+          "hint": "写作进步很大，正确的三单动词已经够5个了，词数也在范围内；再逐句查四处：①主语是不是都改成第三人称了（还有一处第一人称）；②词尾和拼写还要再查（碗盘那个词通篇、表希望的词、sh结尾的词在句中到底写对没有）；③不成句的三处要并进前后的整句里，不要单独成句；④单写在页边、页末的词要放进句子里、标明改的是哪一处，单写在外面不算改好。改好发回来。",
+          "img": "g5_readwrite13_writing.png",
+          "q_img": "",
+          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
+    },
     {
-     "label": "语文阅读第3题",
-     "question": "“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？（4分）",
-     "reason": "重拍订正仍缺清新怡人：现写芬芳的桂花香气直扑而来、扑鼻钻进人的心脾、让人陶醉、桂花香浓郁，仍未写出清新怡人。",
-     "hint": "“沁人心脾”还要再改：意思和让人陶醉都写出来了，很好，但形容桂花香气还有一个更具体的说法没写出来，再读读第一段里写香气的句子，找找那个说法；下次拍照请把订正纸整张露出来，不要让本子盖住，改好发回来。",
-     "img": "g5_sunday_yw_yuedu3_guide.png",
-     "q_img": "",
-     "orig_text": "二、阅读理解：3.“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
-     "q_img_exempt": "",
-     "img_exempt": ""
+      "task_id": "CHORE-20261101-G5",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-11-01T08:00:00+08:00",
+      "chore_done_count": 1,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-01T00:17:53+08:00",
+      "updated_at": "2026-11-01T21:15:10+08:00",
+      "completed_at": "2026-11-01T15:33:08+08:00",
+      "evidence": "家务判定通过——晾袜子；证据：看板家务上传批次 b179351817038140d55780315450c9（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "READ-20261101-G5",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-11-01T08:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-01T00:18:11+08:00",
+      "updated_at": "2026-11-01T16:35:01+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-01T16:35:01+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "4ead553a76b95f2b.jpg",
+        "e7cb951529bd9e4c.jpg",
+        "9411a63ba08692e6.jpg"
+      ]
+    },
+    {
+      "task_id": "MANUAL-20261101-001-YW",
+      "title": "周日语文试卷",
+      "subject": "语文",
+      "status": "submitted",
+      "detail": "今晚截止23:00，做完拍照交回",
+      "files": [
+        {
+          "name": "五年级语文周试卷_2026-11-01.pdf",
+          "label": "语文周试卷",
+          "pages": 4
+        }
+      ],
+      "source": "manual",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T22:40:00+08:00",
+      "review_status": "approved",
+      "estimate_min": null,
+      "corrections": [
+        {
+          "label": "语文阅读第3题",
+          "question": "“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？（4分）",
+          "reason": "第七轮仍错：红笔三遍均写香气扑鼻而来、钻进人的心脾、使人陶醉、香气浓郁（很香），仍未写出清新怡人。",
+          "hint": "三遍都写到了扑鼻、陶醉、香气浓郁，很认真；但还缺一个说法，再读读第一段里写香气的句子，找找那个说法，补进去再发回来。",
+          "img": "g5_sunday_yw_yuedu3_guide.png",
+          "q_img": "",
+          "orig_text": "二、阅读理解：3.“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
+          "q_img_exempt": "",
+          "img_exempt": ""
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
+    },
+    {
+      "task_id": "MANUAL-20261101-001-SX",
+      "title": "周日数学试卷",
+      "subject": "数学",
+      "status": "done",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "files": [
+        {
+          "name": "五年级数学周试卷_2026-11-01.pdf",
+          "label": "数学周试卷",
+          "pages": 4
+        }
+      ],
+      "source": "manual",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T20:53:03+08:00",
+      "review_status": "approved",
+      "estimate_min": null,
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-01T20:53:03+08:00",
+      "orig_photos": [
+        "4ce5499cd20d1813.jpg",
+        "71d143fb8627ffd6.jpg",
+        "84219eda0899a426.jpg",
+        "222a4aa813c97670.jpg",
+        "1776627fafcb5964.jpg",
+        "47fc9e9446446318.jpg",
+        "b76bed69513f8229.jpg",
+        "d7a595efde2cac6f.jpg",
+        "df3812a605abed2e.jpg",
+        "773defcf4fc4bab8.jpg",
+        "7d7e87ac31c0adde.jpg",
+        "5de47003ced62f75.jpg",
+        "af058ffc664a586a.jpg"
+      ]
+    },
+    {
+      "task_id": "MANUAL-20261101-001-YY",
+      "title": "周日英语试卷",
+      "subject": "英语",
+      "status": "done",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "files": [
+        {
+          "name": "五年级英语周试卷_2026-11-01.pdf",
+          "label": "英语周试卷",
+          "pages": 4
+        }
+      ],
+      "source": "manual",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T20:44:01+08:00",
+      "review_status": "approved",
+      "estimate_min": null,
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-01T20:44:01+08:00",
+      "orig_photos": [
+        "a6b6d81ee98e3489.jpg",
+        "5472662a5a80a120.jpg",
+        "48b86936dbcca1ee.jpg",
+        "6cb480e5fefb5669.jpg",
+        "c4e1a6b4f4f66486.jpg",
+        "c585e954e4ff02f2.jpg",
+        "86a6176b5b54bf62.jpg",
+        "bd2d0eb241c13081.jpg",
+        "4ee68bb0c48a1957.jpg",
+        "d6d96ef918096854.jpg",
+        "e63cb55c451fa526.jpg",
+        "c51d99539508d760.jpg",
+        "1a50decdeb9a16b3.jpg",
+        "9c09d1eb8822d2ed.jpg",
+        "b95667cceb19edde.jpg"
+      ]
     }
-   ],
-   "pending_corrections": 1,
-   "status_source": "closeout_writeback"
+  ],
+  "counts": {
+    "total": 6,
+    "pending": 0,
+    "in_progress": 1,
+    "done": 4,
+    "pending_review": 0
   },
-  {
-   "task_id": "MANUAL-20261101-001-SX",
-   "title": "周日数学试卷",
-   "subject": "数学",
-   "status": "done",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "files": [
-    {
-     "name": "五年级数学周试卷_2026-11-01.pdf",
-     "label": "数学周试卷",
-     "pages": 4
-    }
-   ],
-   "source": "manual",
-   "created_by": "user",
-   "created_at": "2026-11-01T10:12:20+08:00",
-   "updated_at": "2026-11-01T20:53:03+08:00",
-   "review_status": "approved",
-   "estimate_min": null,
-   "corrections": [],
-   "pending_corrections": 0,
-   "status_source": "closeout_writeback",
-   "completed_at": "2026-11-01T20:53:03+08:00",
-   "orig_photos": [
-    "4ce5499cd20d1813.jpg",
-    "71d143fb8627ffd6.jpg",
-    "84219eda0899a426.jpg",
-    "222a4aa813c97670.jpg",
-    "1776627fafcb5964.jpg",
-    "47fc9e9446446318.jpg",
-    "b76bed69513f8229.jpg",
-    "d7a595efde2cac6f.jpg",
-    "df3812a605abed2e.jpg",
-    "773defcf4fc4bab8.jpg",
-    "7d7e87ac31c0adde.jpg",
-    "5de47003ced62f75.jpg",
-    "af058ffc664a586a.jpg"
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261101-001-YY",
-   "title": "周日英语试卷",
-   "subject": "英语",
-   "status": "done",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "files": [
-    {
-     "name": "五年级英语周试卷_2026-11-01.pdf",
-     "label": "英语周试卷",
-     "pages": 4
-    }
-   ],
-   "source": "manual",
-   "created_by": "user",
-   "created_at": "2026-11-01T10:12:20+08:00",
-   "updated_at": "2026-11-01T20:44:01+08:00",
-   "review_status": "approved",
-   "estimate_min": null,
-   "corrections": [],
-   "pending_corrections": 0,
-   "status_source": "closeout_writeback",
-   "completed_at": "2026-11-01T20:44:01+08:00",
-   "orig_photos": [
-    "a6b6d81ee98e3489.jpg",
-    "5472662a5a80a120.jpg",
-    "48b86936dbcca1ee.jpg",
-    "6cb480e5fefb5669.jpg",
-    "c4e1a6b4f4f66486.jpg",
-    "c585e954e4ff02f2.jpg",
-    "86a6176b5b54bf62.jpg",
-    "bd2d0eb241c13081.jpg",
-    "4ee68bb0c48a1957.jpg",
-    "d6d96ef918096854.jpg",
-    "e63cb55c451fa526.jpg",
-    "c51d99539508d760.jpg",
-    "1a50decdeb9a16b3.jpg",
-    "9c09d1eb8822d2ed.jpg",
-    "b95667cceb19edde.jpg"
-   ]
-  }
- ],
- "counts": {
-  "total": 6,
-  "pending": 0,
-  "in_progress": 2,
-  "done": 4,
-  "pending_review": 0
- },
- "deadline_today": "2026-11-01T22:30:00+08:00"
+  "deadline_today": "2026-11-01T23:00:00+08:00"
 }
