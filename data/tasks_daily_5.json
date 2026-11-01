@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-02T00:08:12+08:00",
+  "updated_at": "2026-11-02T00:15:33+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,44 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "MANUAL-20261031-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第13期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-10-31T20:06:18+08:00",
-      "updated_at": "2026-11-01T21:26:28+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-10-31.pdf",
-          "label": "练习",
-          "pages": 2
-        }
-      ],
-      "carry_first_date": "2026-10-31",
-      "carried_from": "2026-10-31",
-      "carry_count": 1,
-      "corrections": [
-        {
-          "label": "写作",
-          "question": "My Helpful Weekend（30-50词）：第三人称主语，至少5个第三人称单数动词，注意拼写和标点。",
-          "reason": "第七轮仍错：词数约32在30-50内，第三人称已改对（无I），正确三单动词已达标（works/says/washes/gets/feels/helps），dishes/washes拼写已改对；但三处碎句仍在（After lunch.／Open water.／Because开头），且He Start未加-s、helps mum后washes应为原形，仍未改对。",
-          "hint": "词数够了，第三人称改过来了，拼写也进步了，很好；但还有三句话不完整，还有两处动词形式要再检查——对照第三人称动词加-s的规则和句子完整的标准，把这几处改好再发回来。",
-          "img": "g5_readwrite13_writing.png",
-          "q_img": "",
-          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": ""
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
     {
       "task_id": "CHORE-20261101-G5",
       "source": "chore",
@@ -106,41 +68,6 @@
         "e7cb951529bd9e4c.jpg",
         "9411a63ba08692e6.jpg"
       ]
-    },
-    {
-      "task_id": "MANUAL-20261101-001-YW",
-      "title": "周日语文试卷",
-      "subject": "语文",
-      "status": "in_progress",
-      "detail": "今晚截止23:00，做完拍照交回",
-      "files": [
-        {
-          "name": "五年级语文周试卷_2026-11-01.pdf",
-          "label": "语文周试卷",
-          "pages": 4
-        }
-      ],
-      "source": "manual",
-      "created_by": "user",
-      "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T23:13:29+08:00",
-      "review_status": "approved",
-      "estimate_min": null,
-      "corrections": [
-        {
-          "label": "语文阅读第3题",
-          "question": "“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？（4分）",
-          "reason": "第七轮仍错：红笔三遍均写香气扑鼻而来、钻进人的心脾、使人陶醉、香气浓郁（很香），仍未写出清新怡人。",
-          "hint": "三遍都写到了扑鼻、陶醉、香气浓郁，很认真；但还缺一个说法，再读读第一段里写香气的句子，找找那个说法，补进去再发回来。",
-          "img": "g5_sunday_yw_yuedu3_guide.png",
-          "q_img": "",
-          "orig_text": "二、阅读理解：3.“沁人心脾”在文中是什么意思？它形容的是桂花的香气怎么样？",
-          "q_img_exempt": "",
-          "img_exempt": ""
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
     },
     {
       "task_id": "MANUAL-20261101-001-SX",
@@ -224,9 +151,9 @@
     }
   ],
   "counts": {
-    "total": 6,
+    "total": 4,
     "pending": 0,
-    "in_progress": 2,
+    "in_progress": 0,
     "done": 4,
     "pending_review": 0
   },
