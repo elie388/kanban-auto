@@ -50,22 +50,20 @@
           "question": "问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together?",
           "reason": "订正后仍为两个片段（on sunday. 单独一句＋Lucy and Grandma eat yummy fish.），未合成一整句；时间首字母未大写（on/sunday 均小写）；主句未含 lunch together（只写 yummy fish）；首个 on sunday 与首个 fish 已划掉不计，and 是否重复因字迹重叠存疑不作主因",
           "hint": "这次还是两个小句子，没有合成一整句；时间还是单独一句、句首还是小写；再读读问题，时间、人物、一起做的事要放在一个句子里，时间只写一遍，句首大写，划掉的字就不要再算进去。",
-          "img": "",
+          "img": "g5_readwrite13_q5.png",
           "q_img": "",
           "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子答案：on Sunday（前有涂改的 in）",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "q_img_exempt": "原题无图（纯文字题）"
         },
         {
           "label": "写作",
           "question": "写作：My Helpful Weekend（30-50词，第三人称主语，至少5个三单动词）",
           "reason": "主语已改 he，但正确三单动词仍不足5个（仅 says/gets/helps 对，works 因 is works 句式不对不计，wash/start/feel/open 仍缺 -s，washs 拼写不对应为 washes）；拼写仍有误（dishs×3、kitcken、wish）；字数约33词在30-50内，但三单与拼写未达标",
           "hint": "主语改成 he 是对的，继续保持；动词有的还缺 -s，有的有拼写问题，再逐个查：每个 he 后面的动词都要加 -s，sh 结尾的要加 -es，is 和动词不要同时出现，碗盘和厨房那两个词再查查拼写，字数够了，重点改动词和拼写。",
-          "img": "",
+          "img": "g5_readwrite13_writing.png",
           "q_img": "",
           "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "q_img_exempt": "原题无图（纯文字题）"
         }
       ],
       "pending_corrections": 2,
@@ -257,11 +255,10 @@
           "question": "小短文写作：以 My Good Friend 为题，写 5—6 句话介绍你的好朋友",
           "reason": "第三轮红笔重写仍有三单错误：He like、He share 未加 -s，read/give 结构仍错，核心错误未改对",
           "hint": "小短文写作还要再改：缺一个 He 后面动词都对的版本，想想 He 后面的动词要加什么，read 和 give 要变成什么样子才能跟在 He 后面？再改一次发回来，我再帮你看",
-          "img": "",
+          "img": "g5_sunday_yy_writing.png",
           "q_img": "",
           "orig_text": "My Good Friend 孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "q_img_exempt": "原题无图（纯文字题）"
         }
       ],
       "pending_corrections": 1,
