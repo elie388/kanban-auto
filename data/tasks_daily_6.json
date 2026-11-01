@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T15:44:02+08:00",
+  "updated_at": "2026-11-01T15:48:44+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -176,7 +176,7 @@
       "task_id": "MANUAL-20261101-001-SX",
       "title": "周日数学试卷",
       "subject": "数学",
-      "status": "in_progress",
+      "status": "done",
       "detail": "今晚截止22:30，做完拍照交回",
       "files": [
         {
@@ -188,24 +188,22 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T14:24:32+08:00",
+      "updated_at": "2026-11-01T15:48:43+08:00",
       "review_status": "approved",
       "estimate_min": null,
-      "corrections": [
-        {
-          "label": "待补交：数学第 3、4 页",
-          "question": "待补交：数学第 3、4 页（圆第(2)(3)题与解决问题）",
-          "reason": "待补交提醒，非错题",
-          "hint": "第 3、4 页交上来后单独判",
-          "img": "",
-          "q_img": "",
-          "orig_text": "待补交：数学第 3、4 页（圆第(2)(3)题与解决问题）",
-          "q_img_exempt": "待补交，无原题图",
-          "img_exempt": "待补交提醒，非错题，无需配图"
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-01T15:48:43+08:00",
+      "orig_photos": [
+        "d9df3b067028433d.jpg",
+        "5f938efe2a7f49c7.jpg",
+        "7527eb0c089be824.jpg",
+        "a3fd7a626f6ca1fd.jpg",
+        "23bea304ca3e88f4.jpg",
+        "042b688ba07d3bd0.jpg",
+        "d5113cad9ffe8cf5.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261101-001-YY",
@@ -231,8 +229,8 @@
   "counts": {
     "total": 7,
     "pending": 5,
-    "in_progress": 2,
-    "done": 0,
+    "in_progress": 1,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-01T22:30:00+08:00"
