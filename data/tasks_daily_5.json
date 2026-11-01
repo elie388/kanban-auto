@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T14:56:04+08:00",
+  "updated_at": "2026-11-01T15:20:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -48,24 +48,20 @@
         {
           "label": "阅读理解第5题",
           "question": "问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together?",
-          "reason": "订正后仍为两个片段（on sunday. 重复两遍＋Lucy and Grandma eat yummy fish.），未合成一个完整句子回答 When，且主句未含 lunch together，时间首字母未大写",
+          "reason": "订正后仍为两个片段（on sunday. 重复两遍＋Lucy and Grandma eat yummy fish.），未合成一个完整句子回答 When，且主句未含 lunch together，时间",
           "hint": "这次要写成一整句：谁、在什么时候、一起做什么，全放在一个句子里；时间不要单独成句、不要重复写两遍，句首字母要大写。",
           "img": "",
           "q_img": "",
-          "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子订正：on sunday. on sunday. Lucy and Grandma eat yummy fish.（in、第二个 and、sfish 的 s 已划掉）",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子答案：on Sunday（前有涂改的 in）"
         },
         {
           "label": "写作",
           "question": "写作：My Helpful Weekend（30-50词，第三人称主语，至少5个三单动词）",
-          "reason": "订正方向反了：主语改 he 是对的，但把原来对的动词 -s 划掉了（works/says/gets/washs 的 -s 被划），没加的 wash/open/feel/help 仍未加，正确三单动词不足5个，拼写仍有误",
+          "reason": "订正方向反了：主语改 he 是对的，但把原来对的动词 -s 划掉了（works/says/gets/washs 的 -s 被划），没加的 wash/open/feel/help 仍未加，正确三单动词不",
           "hint": "主语改成 he 是对的，但动词不是去掉 -s、而是要加上 -s；划掉的几个改回去，没加的逐个补上，再查拼写。",
           "img": "",
           "q_img": "",
-          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。孩子订正：红笔在 I 上方补 he、划掉 is 与 works/says/gets/washs 的 -s，wash/open/feel/help 仍未加 -s",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs."
         }
       ],
       "pending_corrections": 2,
@@ -195,83 +191,50 @@
       "corrections": [
         {
           "label": "英语词汇第3题",
-          "question": "【英语】My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子答：C",
-          "reason": "hobby is 后面动词形式用错了（is 后面不能直接跟动词原形或三单形式）",
-          "hint": "My hobby is ___（做某事）时，动词要变什么形式？再想想 flies 是谁作主语时用的？",
+          "question": "【英语】My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子原答：C，订正后：A",
+          "reason": "订正后红笔最终仍为 A（fly），hobby is 后面要用动词 -ing 形式作活动名，fly 是原形，不能直接放在 is 后面。",
+          "hint": "hobby is 后面跟的是一个活动的名字，要用动词的 -ing 形式（比如 swimming、reading 这样的词）。想想 fly 变成活动名字时要怎么变，再看看四个选项哪个是这种形式。",
           "img": "",
           "q_img": "",
           "orig_text": "My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子答：C",
           "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "文字引导更清，配图不适用"
-        },
-        {
-          "label": "英语单选第11题",
-          "question": "【英语】She ______ books every night.（选项：A read B reads C reading D read） 孩子答：C",
-          "reason": "主语是 she、every night 表示习惯，动词形式用错了（reading 不能单独作谓语）",
-          "hint": "she 是第几人称？every night 说明是习惯还是正在做？动词该变什么样？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "She ______ books every night.（选项：A read B reads C reading D read） 孩子答：C",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "文字引导更清，配图不适用"
-        },
-        {
-          "label": "英语单选第16题",
-          "question": "【英语】______ your father like fishing?（选项：A Is B Does C Do D Are） 孩子答：C",
-          "reason": "主语是 your father（三单），疑问句开头助动词用错了（Do 是 I/you/we/they 用的）",
-          "hint": "主语是第几人称？一般现在时疑问句，助动词要不要跟主语的人称走？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "______ your father like fishing?（选项：A Is B Does C Do D Are） 孩子答：C",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "文字引导更清，配图不适用"
-        },
-        {
-          "label": "英语单选第19题",
-          "question": "【英语】Tom ______ a story now.（选项：A reads B is reading C read D reading） 孩子答：A",
-          "reason": "now 表示正在发生，时态用错了（习惯性动作的形式不能表示正在做）",
-          "hint": "now 是提醒你看正在发生的事，该用哪种时态？Tom 后面 be 动词该用哪个？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Tom ______ a story now.（选项：A reads B is reading C read D reading） 孩子答：A",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "文字引导更清，配图不适用"
+          "img_exempt": "图后补"
         },
         {
           "label": "英语单选第20题",
-          "question": "【英语】We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子答：A",
-          "reason": "last Saturday 是过去时间，动词时态用错了（现在时不能表示过去）",
-          "hint": "last Saturday 是过去还是现在？go 的过去式是什么？",
+          "question": "【英语】We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子原答：A，订正后：字母字形不清（似 C 又似 G）",
+          "reason": "订正后红笔字母字形介于 C 与 G 之间（放大裁图仍无法确认为 C），无法确认为有效选项；原 A 已划掉。",
+          "hint": "第20题的红笔字母重写清楚：开口的弧形字母不要带竖笔，写完自己先看看能不能一眼认清，再交回来。",
           "img": "",
           "q_img": "",
           "orig_text": "We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子答：A",
           "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "文字引导更清，配图不适用"
+          "img_exempt": "图后补"
         },
         {
           "label": "英语阅读第25题",
-          "question": "【英语】Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子答：because Anna share her pictures with her friends.（An 已划掉）",
-          "reason": "理由方向找对了（分享），但有两个问题：动词没变三单形式；直接抄了原文句子、没用自己的话，且 because 开头没大写",
-          "hint": "先肯定：理由找对了。再想想：Anna 是第几人称、share 该变什么样？能不能不用原文原句、换自己的话说一遍？句首字母该大写吗？",
+          "question": "【英语】Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子原答：because Anna share her pictures with her friends.，订正后：Because Anna shares her pictures with her friends.",
+          "reason": "红笔句改对了句首大写和 shares，但句子还是照抄短文里的原句，没有用自己的话说。",
+          "hint": "先肯定理由找对了，再用自己的话重新说一遍：不要照抄短文里的原句，换个说法，说说她是个什么样的人、为什么大家喜欢她，写一两句你自己的话。",
           "img": "",
           "q_img": "",
           "orig_text": "Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子答：because Anna share her pictures with her friends.（An 已划掉）",
           "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "文字引导更清，配图不适用"
+          "img_exempt": "图后补"
         },
         {
           "label": "英语小短文写作",
-          "question": "【英语】My Good Friend（提示词：friend/kind/share/happy/together）孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
-          "reason": "全文核心问题是三单动词没变形式（he 后面动词还是原形），另有 with 后面人称形式、句首大写、标题涂改潦草等小问题；提示词全用上了、5句结构完整，先肯定再改三单",
-          "hint": "先数一数：He 后面有几个动词？He 是第几人称、动词该变什么样？再看看 with 是介词，介词后面的人称该用主格还是宾格？标题和句首大写检查一遍。",
+          "question": "【英语】My Good Friend（提示词：friend/kind/share/happy/together）孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.，订正后：仅 with 划掉、下方红写 give，其余原错未改",
+          "reason": "订正只改了 with→give（改错了地方），原来错的 he、like、read、share、we 都没改；标题多写的 goo 仍在。",
+          "hint": "缺的地方：缺一个句首大写、缺两个动词加 -s、缺一个动词变 -ing 形式、缺一个介词后面的宾格、缺一个清楚的标题。with 改成 give 不对，原错不在 with，回去看看 with 后面那个词该怎么变。",
           "img": "",
           "q_img": "",
           "orig_text": "My Good Friend 孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
           "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "写作规则文字引导更清，配图不适用"
+          "img_exempt": "图后补"
         }
       ],
-      "pending_corrections": 7,
+      "pending_corrections": 4,
       "status_source": "closeout_writeback"
     }
   ],
