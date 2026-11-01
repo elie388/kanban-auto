@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T16:55:43+08:00",
+  "updated_at": "2026-11-01T18:12:10+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -193,30 +193,8 @@
       "estimate_min": null,
       "corrections": [
         {
-          "label": "英语词汇第5题",
-          "question": "词汇第5题：Please give me a ___ (reason) answer",
-          "reason": "a 后接名词 answer，空格处须填修饰名词的词，reason 原形是名词不能直接放在名词前面",
-          "hint": "a ___ answer 里，answer 是名词，想想空格里的词是起什么作用的，reason 原形能不能直接放在名词前面？它需要换成什么样子才能放在名词前面？",
-          "img": "g6_sunday_yy_cihui5_guide.png",
-          "q_img": "",
-          "orig_text": "5. Please give me a ___ (reason) answer. A. reason B. reasonable C. reasonably D. reasons",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": ""
-        },
-        {
-          "label": "英语词汇第8题",
-          "question": "词汇第8题：Which word is right? natarul/natural/natrual/naturall",
-          "reason": "单词字母顺序错了，选的词把两个字母换位了",
-          "hint": "第8题那个词你再读一读、拼一拼，看看哪两个字母的顺序换位了，按正确顺序再拼一遍",
-          "img": "g6_sunday_yy_cihui8_guide.png",
-          "q_img": "",
-          "orig_text": "8. Which word is right? A. natarul B. natural C. natrual D. naturall",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": ""
-        },
-        {
           "label": "待补交：英语其余部分",
-          "question": "待补交：英语词汇第10题、单选第11-20题",
+          "question": "六年级英语周试卷词汇第10题、单选第11-20题尚未提交（待补交，非错题）",
           "reason": "待补交提醒，非错题",
           "hint": "词汇第10题、单选第11-20题 22:30 前补交后单独判",
           "img": "",
@@ -226,7 +204,7 @@
           "img_exempt": "待补交提醒，非错题，无需配图"
         }
       ],
-      "pending_corrections": 3,
+      "pending_corrections": 1,
       "status_source": "closeout_writeback"
     }
   ],
