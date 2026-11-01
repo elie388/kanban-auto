@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T00:18:11+08:00",
+  "updated_at": "2026-11-01T10:12:20+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -103,14 +103,44 @@
       "reading_pass": null,
       "created_at": "2026-11-01T00:18:11+08:00",
       "updated_at": "2026-11-01T00:18:11+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261101-001",
+      "source": "manual",
+      "subject": "综合",
+      "title": "周日综合试卷（语文·数学·英语）",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T10:12:20+08:00",
+      "files": [
+        {
+          "name": "六年级语文周试卷_2026-11-01.pdf",
+          "label": "语文周试卷",
+          "pages": 4
+        },
+        {
+          "name": "六年级数学周试卷_2026-11-01.pdf",
+          "label": "数学周试卷",
+          "pages": 4
+        },
+        {
+          "name": "六年级英语周试卷_2026-11-01.pdf",
+          "label": "英语周试卷",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 5,
+    "pending": 5,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-01T22:30:00+08:00"
 }
