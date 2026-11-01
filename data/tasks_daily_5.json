@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T22:45:57+08:00",
+  "updated_at": "2026-11-01T22:51:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -48,8 +48,8 @@
         {
           "label": "写作",
           "question": "My Helpful Weekend（30-50词）：第三人称主语，至少5个第三人称单数动词，注意拼写和标点。",
-          "reason": "第六轮（21:41新版）仍错：红笔重写版词数约33在30-50内，正确三单动词已有5个（works/says/gets/feels/helps），My mum句中is已涂掉；但第一人称I仍在（I start）、dishs通篇未改、结尾wishe仍错、句中washs或错拼或涂掉未成正确动词、After lunch./Open water./Because开头三处仍为碎句；页边与页末单写的washes未落入句中、未标明替换哪处，不作句中washs的改正。未同时满足第三人称、拼写、成句三项要求。",
-          "hint": "写作进步很大，正确的三单动词已经够5个了，词数也在范围内；再逐句查四处：①主语是不是都改成第三人称了（还有一处第一人称）；②词尾和拼写还要再查（碗盘那个词通篇、表希望的词、sh结尾的词在句中到底写对没有）；③不成句的三处要并进前后的整句里，不要单独成句；④单写在页边、页末的词要放进句子里、标明改的是哪一处，单写在外面不算改好。改好发回来。",
+          "reason": "第七轮仍错：词数约32在30-50内，第三人称已改对（无I），正确三单动词已达标（works/says/washes/gets/feels/helps），dishes/washes拼写已改对；但三处碎句仍在（After lunch.／Open water.／Because开头），且He Start未加-s、helps mum后washes应为原形，仍未改对。",
+          "hint": "词数够了，第三人称改过来了，拼写也进步了，很好；但还有三句话不完整，还有两处动词形式要再检查——对照第三人称动词加-s的规则和句子完整的标准，把这几处改好再发回来。",
           "img": "g5_readwrite13_writing.png",
           "q_img": "",
           "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
@@ -226,7 +226,7 @@
   "counts": {
     "total": 6,
     "pending": 0,
-    "in_progress": 1,
+    "in_progress": 2,
     "done": 4,
     "pending_review": 0
   },
