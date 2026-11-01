@@ -258,12 +258,14 @@ jobs:
           cp assets/aquarium/aquarium-embed.9b37b4c38c90.js public/assets/aquarium/
           cp assets/aquarium/aquarium-embed.df2a02a496cf5bf8.js public/assets/aquarium/
           cp assets/aquarium/aquarium-embed.6a1608165419e80d.js public/assets/aquarium/
+          cp assets/aquarium/aquarium-embed.a126c628555a5cc6.js public/assets/aquarium/
           cp assets/aquarium/aquarium-embed.4444c12cb131.js assets/aquarium/ocean3d.js assets/aquarium/seabed-ecosystem.js assets/aquarium/habitat-stages.js assets/aquarium/species-manifest.json assets/aquarium/asset-quality-audit.json public/assets/aquarium/
           cp assets/aquarium/models/*.glb public/assets/aquarium/models/
           test -s public/assets/aquarium/aquarium-embed.4fd3d8c4c4c0.js || { echo "::error::鱼缸旧 JS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium-embed.9b37b4c38c90.js || { echo "::error::鱼缸新行为 JS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium-embed.df2a02a496cf5bf8.js || { echo "::error::鱼缸云修复 JS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium-embed.6a1608165419e80d.js || { echo "::error::鱼缸星月 JS 缺失" ; exit 1; }
+          test -s public/assets/aquarium/aquarium-embed.a126c628555a5cc6.js || { echo "::error::鱼缸星月云后 JS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium.5939e0cef9ec.css || { echo "::error::鱼缸 CSS 缺失" ; exit 1; }
           test -s public/assets/aquarium/aquarium-embed.4444c12cb131.js || { echo "::error::鱼缸新 embed 缺失" ; exit 1; }
           test -s public/assets/aquarium/ocean3d.js || { echo "::error::ocean3d.js 缺失" ; exit 1; }
@@ -275,6 +277,7 @@ jobs:
           echo "9b37b4c38c90a21477a52e189395fb588519e4f262223b10be846f6c3c5477a4  public/assets/aquarium/aquarium-embed.9b37b4c38c90.js" | sha256sum -c -
           echo "df2a02a496cf5bf8311c13c845b14dd5e4056f89e1aef77b3eb11989761db91b  public/assets/aquarium/aquarium-embed.df2a02a496cf5bf8.js" | sha256sum -c -
           echo "6a1608165419e80d7c009f46ec0a48639a1d758eb2d73f01313f24fd0b267215  public/assets/aquarium/aquarium-embed.6a1608165419e80d.js" | sha256sum -c -
+          echo "a126c628555a5cc6ca8c9a1f6f37be44fdad1fe90c0574f6721d508531183225  public/assets/aquarium/aquarium-embed.a126c628555a5cc6.js" | sha256sum -c -
           echo "5939e0cef9ecca8993a6cef8c13e349b1645c7f2389e6f1aa0ebf3184a79e01a  public/assets/aquarium/aquarium.5939e0cef9ec.css" | sha256sum -c -
           ls -la public/assets/aquarium/ | head -20
           ls public/assets/aquarium/models/ | wc -l
