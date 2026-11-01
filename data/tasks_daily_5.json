@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T10:12:20+08:00",
+  "updated_at": "2026-11-01T13:34:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -29,11 +29,11 @@
       "title": "英语阅读写作第13期",
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-10-31T20:06:18+08:00",
-      "updated_at": "2026-11-01T00:17:20+08:00",
+      "updated_at": "2026-11-01T13:34:04+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-10-31.pdf",
@@ -43,7 +43,44 @@
       ],
       "carry_first_date": "2026-10-31",
       "carried_from": "2026-10-31",
-      "carry_count": 1
+      "carry_count": 1,
+      "corrections": [
+        {
+          "label": "阅读理解第4题",
+          "question": "翻译填空：Lucy ___ the dirty clothes on the weekend.（露西周末洗脏衣服）",
+          "reason": "主语 Lucy 是第三人称单数，动词要用三单形式，孩子写的 Wash 缺少词尾变化。",
+          "hint": "想一想：主语是 Lucy（她，一个人），动词要用什么形式？回忆一下第三人称单数动词的变化规则，再检查你写的动词。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "4. 把下面的句子译成英文：露西周末洗脏衣服。Lucy ___ the dirty clothes on the weekend. 孩子答案：Wash",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "英语语法规则用文字三级提示引导，配图不适用"
+        },
+        {
+          "label": "阅读理解第5题",
+          "question": "问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together?",
+          "reason": "只写了时间短语，不是完整英文句子；题目要求用完整句子回答。",
+          "hint": "时间找对了（Sunday）。现在把它写成一个完整句子：谁、在什么时候、一起做什么？主语加动词加时间，试着写一整句。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "5. 问答（用完整英文句子回答）：When do Lucy and Grandma eat lunch together? 孩子答案：on Sunday（前有涂改的 in）",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "英语语法规则用文字三级提示引导，配图不适用"
+        },
+        {
+          "label": "写作",
+          "question": "写作：My Helpful Weekend（30-50词，第三人称主语，至少5个三单动词）",
+          "reason": "全文用第一人称 I 作主语，未达到第三人称主语要求；三单动词不足5个，且有拼写与语法错误。",
+          "hint": "这次先只改一个大问题：把主角换成第三人称。想一想：如果主角不是“我”而是“妈妈”或一位朋友，句子里的 I 要换成什么？动词后面要加什么？先把每一句的主语都换成 She 或 He，再给动词加上 -s 或 -es；拼写问题下一轮再细抠。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、写作。题目：My Helpful Weekend（30-50词）。以 My Helpful Weekend 为题，写一篇短文，写一写你（或一位朋友）周末帮家人做事的经历。写作要求：①第三人称主语；②至少用5个第三人称单数动词；③注意拼写和标点。字数30-50词。孩子原文：My Helpful weekend. My mum is work hard. After lunch, I say today, I wash dishs. I gets dish for kitcken. Open Water. I start washs dishs. I feel happy, because I help mum wish dishs.",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "英语写作规则用文字三级提示引导，配图不适用"
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "CHORE-20261101-G5",
@@ -114,8 +151,8 @@
   ],
   "counts": {
     "total": 4,
-    "pending": 4,
-    "in_progress": 0,
+    "pending": 3,
+    "in_progress": 1,
     "done": 0,
     "pending_review": 0
   },
