@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-01T06:05:19+08:00",
+ "updated_at": "2026-11-01T09:50:46+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-03",
@@ -64,7 +64,7 @@
     14.3,
     58.9,
     null,
-    null,
+    47.5,
     null
    ],
    "empty": false,
@@ -100,7 +100,7 @@
       null,
       100.0,
       null,
-      null,
+      60.0,
       null
      ],
      "weak": [
@@ -162,7 +162,7 @@
       null,
       55.6,
       null,
-      null,
+      46.9,
       null
      ],
      "weak": [
@@ -224,7 +224,7 @@
       14.3,
       58.8,
       null,
-      null,
+      46.2,
       null
      ],
      "weak": [
@@ -287,8 +287,8 @@
     null,
     null,
     90.5,
-    null,
-    null,
+    33.3,
+    83.0,
     null
    ],
    "empty": false,
@@ -324,7 +324,7 @@
       null,
       66.7,
       null,
-      null,
+      85.7,
       null
      ],
      "weak": [
@@ -386,7 +386,7 @@
       null,
       100.0,
       null,
-      null,
+      75.0,
       null
      ],
      "weak": [
@@ -447,8 +447,8 @@
       null,
       null,
       100.0,
-      null,
-      null,
+      33.3,
+      85.7,
       null
      ],
      "weak": [
@@ -535,6 +535,18 @@
      "pending_share": 0.0,
      "backfill_share": 0.0,
      "small_sample": false
+    },
+    "2026-10-30": {
+     "reason": "all_wrong",
+     "rules": [
+      "all_wrong"
+     ],
+     "judged": 9,
+     "correct": 0,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.0,
+     "small_sample": false
     }
    },
    "英语": {
@@ -590,6 +602,18 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.5,
+     "small_sample": false
+    },
+    "2026-10-30": {
+     "reason": "all_wrong",
+     "rules": [
+      "all_wrong"
+     ],
+     "judged": 11,
+     "correct": 0,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.0,
      "small_sample": false
     }
    },
@@ -702,6 +726,70 @@
    "subject": "英语",
    "mail_id": "1019_1",
    "judged": 9,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-30",
+   "grade": "六年级",
+   "subject": "数学",
+   "mail_id": "b179335813317640a8e8851c2fd317",
+   "judged": 8,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-30",
+   "grade": "六年级",
+   "subject": "数学",
+   "mail_id": "b179336635685546a7673d46f80d74",
+   "judged": 3,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-30",
+   "grade": "五年级",
+   "subject": "数学",
+   "mail_id": "b17933664696660b4dbdef1ee1553c",
+   "judged": 9,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-30",
+   "grade": "六年级",
+   "subject": "英语",
+   "mail_id": "b1793366795801637506beb0ee467c",
+   "judged": 4,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-31",
+   "grade": "五年级",
+   "subject": "综合",
+   "mail_id": "PRACT-20261030-79293B",
+   "judged": 5,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-31",
+   "grade": "五年级",
+   "subject": "综合",
+   "mail_id": "PRACT-20261030-79293B-R3",
+   "judged": 3,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-31",
+   "grade": "五年级",
+   "subject": "数学",
+   "mail_id": "PRACT-20261030-79293B-R4",
+   "judged": 3,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-10-31",
+   "grade": "五年级",
+   "subject": "英语",
+   "mail_id": "REG-20261030-7ADB44-R2",
+   "judged": 3,
    "alert": "batch_all_wrong_suspected_partial_ingest"
   }
  ]
