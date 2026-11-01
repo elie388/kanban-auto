@@ -127,9 +127,13 @@ def group_stats(db, date, grade, subject):
     if judged == 0:
         return None, info
     if correct == 0:
+        # 2026-11-01 家长令“你定就行”定夺：全错日不再显示为空格（空格会被
+        # 误读为缺数据），改为显示 0.0；all_wrong 标记保留，仍进
+        # isolation_reasons 备查（属实打实的 0 分，不是缺行）。
+        # 其余隔离（裁定隔离、无已判行、待确认占比、回填占比）不动。
         info["rules"].append("all_wrong")
         info["reason"] = "all_wrong"
-        return None, info
+        return 0.0, info
     if pend_share >= PENDING_RATIO_THRESHOLD:
         info["rules"].append(f"pending_ratio={pend_share:.2f}")
         info["reason"] = info["rules"][-1]
