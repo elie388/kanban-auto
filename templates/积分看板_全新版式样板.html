@@ -1866,8 +1866,30 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
               + '<span class="corr-h">' + esc(x.a || '') + '</span>'
               + '</div>';
           });
+          /* 待改正轮次徽标（2026-11-01 家长点选“写第3次”）：轮次取题目/错因里的“第x轮”，与题目现有轮次一致；无轮次文本或多题轮次不同时不显示数字，防误导。 */
+          var kbRoundNum = function(str){
+            var m = (str || '').match(/第([一二三四五六七八九十]+)轮/);
+            if(!m) return 0;
+            var map = {'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'七':7,'八':8,'九':9};
+            var t = m[1];
+            if(t === '十') return 10;
+            if(t.length === 2 && t.charAt(0) === '十') return 10 + (map[t.charAt(1)] || 0);
+            if(t.length === 2 && t.charAt(1) === '十') return (map[t.charAt(0)] || 0) * 10;
+            if(t.length === 3 && t.charAt(1) === '十') return (map[t.charAt(0)] || 0) * 10 + (map[t.charAt(2)] || 0);
+            return map[t] || 0;
+          };
+          var kbCorrRound = function(c){
+            return kbRoundNum(c.question) || kbRoundNum(c.reason);
+          };
+          var roundTxt = (function(){
+            var rs = corrList.map(kbCorrRound);
+            var first = rs[0] || 0;
+            if(!first) return '';
+            for(var i = 0; i < rs.length; i++){ if(rs[i] !== first) return ''; }
+            return ' · 第' + first + '次改正';
+          })();
           var badgeTxt = (pendN > 0)
-            ? ('待改正 ' + pendN + ' 题' + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
+            ? ('待改正 ' + pendN + ' 题' + roundTxt + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
             : ('\uD83D\uDCAC 留言回复 ' + qaList.length);
           corrBadge = '<span class="corr-badge">' + badgeTxt + '</span>';
           corrPanel = '<div class="corr-panel">' + items + '</div>';
@@ -1880,7 +1902,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var taskOpen = !!OPEN_TASK[t.task_id];
         /* 入口预告文案（2026-10-22 方案1）：收起时按钮先告诉家长里面有什么 */
         var previewTxt = (pendN > 0)
-          ? ('待改正 ' + pendN + ' 题' + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
+          ? ('待改正 ' + pendN + ' 题' + roundTxt + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
           : (qaList.length ? ('\uD83D\uDCAC 留言回复 ' + qaList.length) : '详情');
         var toggleBtn = '<button type="button" class="task-toggle" data-toggle-task="' + esc(t.task_id || '') + '"'
           + ' data-preview="' + esc(previewTxt) + '"'
@@ -5480,7 +5502,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261101-statuslabel';
+  var KB_BUILD = '20261101-roundlabel';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
