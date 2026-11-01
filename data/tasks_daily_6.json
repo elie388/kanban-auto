@@ -197,22 +197,22 @@
           "question": "词汇第5题：Please give me a ___ (reason) answer",
           "reason": "a 后接名词 answer，空格处须填修饰名词的词，reason 原形是名词不能直接放在名词前面",
           "hint": "a ___ answer 里，answer 是名词，想想空格里的词是起什么作用的，reason 原形能不能直接放在名词前面？它需要换成什么样子才能放在名词前面？",
-          "img": "",
+          "img": "g6_sunday_yy_cihui5_guide.png",
           "q_img": "",
           "orig_text": "5. Please give me a ___ (reason) answer. A. reason B. reasonable C. reasonably D. reasons",
           "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "img_exempt": ""
         },
         {
           "label": "英语词汇第8题",
           "question": "词汇第8题：Which word is right? natarul/natural/natrual/naturall",
           "reason": "单词字母顺序错了，选的词把两个字母换位了",
           "hint": "第8题那个词你再读一读、拼一拼，看看哪两个字母的顺序换位了，按正确顺序再拼一遍",
-          "img": "",
+          "img": "g6_sunday_yy_cihui8_guide.png",
           "q_img": "",
           "orig_text": "8. Which word is right? A. natarul B. natural C. natrual D. naturall",
           "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
+          "img_exempt": ""
         },
         {
           "label": "待补交：英语其余部分",
