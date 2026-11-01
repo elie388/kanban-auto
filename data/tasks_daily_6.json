@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T15:48:44+08:00",
+  "updated_at": "2026-11-01T15:52:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -196,20 +196,20 @@
       "status_source": "closeout_writeback",
       "completed_at": "2026-11-01T15:48:43+08:00",
       "orig_photos": [
-        "d9df3b067028433d.jpg",
-        "5f938efe2a7f49c7.jpg",
-        "7527eb0c089be824.jpg",
         "a3fd7a626f6ca1fd.jpg",
         "23bea304ca3e88f4.jpg",
         "042b688ba07d3bd0.jpg",
-        "d5113cad9ffe8cf5.jpg"
+        "d5113cad9ffe8cf5.jpg",
+        "d9df3b067028433d.jpg",
+        "5f938efe2a7f49c7.jpg",
+        "7527eb0c089be824.jpg"
       ]
     },
     {
       "task_id": "MANUAL-20261101-001-YY",
       "title": "周日英语试卷",
       "subject": "英语",
-      "status": "pending",
+      "status": "in_progress",
       "detail": "今晚截止22:30，做完拍照交回",
       "files": [
         {
@@ -221,15 +221,52 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T14:10:41+08:00",
+      "updated_at": "2026-11-01T15:52:28+08:00",
       "review_status": "approved",
-      "estimate_min": null
+      "estimate_min": null,
+      "corrections": [
+        {
+          "label": "英语词汇第5题",
+          "question": "词汇第5题：Please give me a ___ (reason) answer",
+          "reason": "a 后接名词 answer，空格处须填修饰名词的词，reason 原形是名词不能直接放在名词前面",
+          "hint": "a ___ answer 里，answer 是名词，想想空格里的词是起什么作用的，reason 原形能不能直接放在名词前面？它需要换成什么样子才能放在名词前面？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "5. Please give me a ___ (reason) answer. A. reason B. reasonable C. reasonably D. reasons",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "英语词汇第8题",
+          "question": "词汇第8题：Which word is right? natarul/natural/natrual/naturall",
+          "reason": "单词字母顺序错了，选的词把两个字母换位了",
+          "hint": "第8题那个词你再读一读、拼一拼，看看哪两个字母的顺序换位了，按正确顺序再拼一遍",
+          "img": "",
+          "q_img": "",
+          "orig_text": "8. Which word is right? A. natarul B. natural C. natrual D. naturall",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "待补交：英语其余部分",
+          "question": "待补交：英语词汇第10题及试卷其余部分",
+          "reason": "待补交提醒，非错题",
+          "hint": "词汇第10题及试卷其余部分 22:30 前补交后单独判",
+          "img": "",
+          "q_img": "",
+          "orig_text": "待补交：英语词汇第10题及试卷其余部分（22:30前补交后单独判）",
+          "q_img_exempt": "待补交，无原题图",
+          "img_exempt": "待补交提醒，非错题，无需配图"
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
     "total": 7,
-    "pending": 5,
-    "in_progress": 1,
+    "pending": 4,
+    "in_progress": 2,
     "done": 1,
     "pending_review": 0
   },
