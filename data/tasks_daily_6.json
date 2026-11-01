@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T20:22:20+08:00",
+  "updated_at": "2026-11-01T20:27:44+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -141,7 +141,7 @@
       "task_id": "MANUAL-20261101-001-YW",
       "title": "周日语文试卷",
       "subject": "语文",
-      "status": "in_progress",
+      "status": "submitted",
       "detail": "今晚截止22:30，做完拍照交回",
       "files": [
         {
@@ -153,7 +153,7 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T14:45:38+08:00",
+      "updated_at": "2026-11-01T20:27:44+08:00",
       "review_status": "approved",
       "estimate_min": null,
       "corrections": [
