@@ -1,240 +1,248 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-01",
- "grade": "六年级",
- "generated_at": "2026-11-01T00:17:20+08:00",
- "updated_at": "2026-11-01T20:34:54+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-01T16:55:43+08:00",
-   "new_lines": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "REG-20261030-B6A1FF",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "作文-①续写小说",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-10-30T21:09:04+08:00",
-   "updated_at": "2026-11-01T20:09:09+08:00",
-   "pending_corrections": 0,
-   "corrections": [],
-   "carry_first_date": "2026-10-30",
-   "carried_from": "2026-10-31",
-   "carry_count": 2,
-   "completed_at": "2026-11-01T20:09:09+08:00",
-   "status_source": "closeout_writeback",
-   "orig_photos": [
-    "7190a65301623fa3.jpg",
-    "6da72a601e35bdd5.jpg",
-    "c321beca2790becf.jpg"
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261031-001",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语阅读写作第13期",
-   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-   "estimate_min": null,
-   "status": "submitted",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-10-31T20:06:18+08:00",
-   "updated_at": "2026-11-01T20:30:29+08:00",
-   "files": [
-    {
-     "name": "六年级英语阅读写作_2026-10-31.pdf",
-     "label": "练习",
-     "pages": 2
+  "schema_version": "1.0",
+  "date": "2026-11-01",
+  "grade": "六年级",
+  "generated_at": "2026-11-01T00:17:20+08:00",
+  "updated_at": "2026-11-01T20:36:42+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-01T16:55:43+08:00",
+      "new_lines": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
     }
-   ],
-   "carry_first_date": "2026-10-31",
-   "carried_from": "2026-10-31",
-   "carry_count": 1,
-   "corrections": [
+  },
+  "tasks": [
     {
-     "label": "英语阅读第 5 题",
-     "question": "5. 问答（用过去时的完整英文句子回答）（只写食物和饮料名称得部分分）：What did the students eat and drink for lunch?",
-     "reason": "第 5 题错：写了 sandwich（单数）与 for dinner；短文是 sandwiches（复数）与 lunch（午餐）。",
-     "hint": "第 5 题还要再改：你写了食物和饮料的名字，很好，但再数数短文里那个食物是几个、那顿饭是午饭还是晚饭？改好发回来。",
-     "img": "g6_readwrite13_q5.png",
-     "q_img": "",
-     "orig_text": "5. 问答（用过去时的完整英文句子回答）（只写食物和饮料名称得部分分）：What did the students eat and drink for lunch?",
-     "q_img_exempt": "原题无图（纯文字题）",
-     "img_exempt": ""
+      "task_id": "REG-20261030-B6A1FF",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "作文-①续写小说",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-10-30T21:09:04+08:00",
+      "updated_at": "2026-11-01T20:09:09+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "carry_first_date": "2026-10-30",
+      "carried_from": "2026-10-31",
+      "carry_count": 2,
+      "completed_at": "2026-11-01T20:09:09+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "7190a65301623fa3.jpg",
+        "6da72a601e35bdd5.jpg",
+        "c321beca2790becf.jpg"
+      ]
     },
     {
-     "label": "英语写作 My School Trip to the Park",
-     "question": "二、写作：题目 My School Trip to the Park（60–80 词）；要求：全文一般过去时、注意冠词与名词复数、不许逗号粘连句、字数 60–80 词。",
-     "reason": "写作错：标题缺 Trip（写成 My School to the park）；正文 58 词，不足 60 词；开头 Last Friday. 为碎句（非完整句子）。过去时、冠词复数、无逗号粘连均符合要求。",
-     "hint": "写作还要再改三处小地方：①标题缺了一个词，对照题目补上；②全文数一数，现在差两词才到 60 词，加一句过去时的句子；③开头那个只有时间的短句，把它并进下一句，变成完整的一句。改好发回来。",
-     "img": "g6_readwrite13_writing.png",
-     "q_img": "",
-     "orig_text": "二、写作：题目 My School Trip to the Park（60–80 词）；要求：全文一般过去时、注意冠词与名词复数、不许逗号粘连句、字数 60–80 词。",
-     "q_img_exempt": "原题无图（纯文字题）",
-     "img_exempt": ""
-    }
-   ],
-   "pending_corrections": 2,
-   "status_source": "closeout_writeback"
-  },
-  {
-   "task_id": "CHORE-20261101-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-01T08:00:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-01T00:17:53+08:00",
-   "updated_at": "2026-11-01T15:33:08+08:00"
-  },
-  {
-   "task_id": "READ-20261101-G6",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-01T08:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-01T00:18:11+08:00",
-   "updated_at": "2026-11-01T00:18:11+08:00"
-  },
-  {
-   "task_id": "MANUAL-20261101-001-YW",
-   "title": "周日语文试卷",
-   "subject": "语文",
-   "status": "submitted",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "files": [
+      "task_id": "MANUAL-20261031-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语阅读写作第13期",
+      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "estimate_min": null,
+      "status": "submitted",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-10-31T20:06:18+08:00",
+      "updated_at": "2026-11-01T20:30:29+08:00",
+      "files": [
+        {
+          "name": "六年级英语阅读写作_2026-10-31.pdf",
+          "label": "练习",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-10-31",
+      "carried_from": "2026-10-31",
+      "carry_count": 1,
+      "corrections": [
+        {
+          "label": "英语阅读第 5 题",
+          "question": "5. 问答（用过去时的完整英文句子回答）（只写食物和饮料名称得部分分）：What did the students eat and drink for lunch?",
+          "reason": "第 5 题错：写了 sandwich（单数）与 for dinner；短文是 sandwiches（复数）与 lunch（午餐）。",
+          "hint": "第 5 题还要再改：你写了食物和饮料的名字，很好，但再数数短文里那个食物是几个、那顿饭是午饭还是晚饭？改好发回来。",
+          "img": "g6_readwrite13_q5.png",
+          "q_img": "",
+          "orig_text": "5. 问答（用过去时的完整英文句子回答）（只写食物和饮料名称得部分分）：What did the students eat and drink for lunch?",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
+        },
+        {
+          "label": "英语写作 My School Trip to the Park",
+          "question": "二、写作：题目 My School Trip to the Park（60–80 词）；要求：全文一般过去时、注意冠词与名词复数、不许逗号粘连句、字数 60–80 词。",
+          "reason": "写作错：标题缺 Trip（写成 My School to the park）；正文 58 词，不足 60 词；开头 Last Friday. 为碎句（非完整句子）。过去时、冠词复数、无逗号粘连均符合要求。",
+          "hint": "写作还要再改三处小地方：①标题缺了一个词，对照题目补上；②全文数一数，现在差两词才到 60 词，加一句过去时的句子；③开头那个只有时间的短句，把它并进下一句，变成完整的一句。改好发回来。",
+          "img": "g6_readwrite13_writing.png",
+          "q_img": "",
+          "orig_text": "二、写作：题目 My School Trip to the Park（60–80 词）；要求：全文一般过去时、注意冠词与名词复数、不许逗号粘连句、字数 60–80 词。",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
+        }
+      ],
+      "pending_corrections": 2,
+      "status_source": "closeout_writeback"
+    },
     {
-     "name": "六年级语文周试卷_2026-11-01.pdf",
-     "label": "语文周试卷",
-     "pages": 4
-    }
-   ],
-   "source": "manual",
-   "created_by": "user",
-   "created_at": "2026-11-01T10:12:20+08:00",
-   "updated_at": "2026-11-01T20:27:44+08:00",
-   "review_status": "approved",
-   "estimate_min": null,
-   "corrections": [
+      "task_id": "CHORE-20261101-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-01T08:00:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-01T00:17:53+08:00",
+      "updated_at": "2026-11-01T15:33:08+08:00"
+    },
     {
-     "label": "语文阅读第 3 题",
-     "question": "3. “我”刚开始学骑车时遇到了什么困难？后来怎么样了？（6分）",
-     "reason": "第 3 题错：困难只写了害怕摔倒，没写出车子摇摇晃晃、摔在草地上的困难；后来部分（不再死死盯车轮、目视前方、终于学会）是对的，但按小问全对才计分，本题仍判错。",
-     "hint": "第 3 题还要再改：你写了害怕摔倒和后来学会了，很好，但困难那部分还缺一点——刚开始骑的时候，车子本身怎么样了？又摔到哪了？再读读短文第一、二段，补上这一点发回来。",
-     "img": "g6_sunday_yw_yuedu3_guide.png",
-     "q_img": "",
-     "orig_text": "“我”刚开始学骑车时遇到了什么困难？后来怎么样了？（6分）",
-     "q_img_exempt": "原题无图（纯文字题）",
-     "img_exempt": ""
+      "task_id": "READ-20261101-G6",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-01T08:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-01T00:18:11+08:00",
+      "updated_at": "2026-11-01T00:18:11+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261101-001-YW",
+      "title": "周日语文试卷",
+      "subject": "语文",
+      "status": "submitted",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "files": [
+        {
+          "name": "六年级语文周试卷_2026-11-01.pdf",
+          "label": "语文周试卷",
+          "pages": 4
+        }
+      ],
+      "source": "manual",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T20:27:44+08:00",
+      "review_status": "approved",
+      "estimate_min": null,
+      "corrections": [
+        {
+          "label": "语文阅读第 3 题",
+          "question": "“我”刚开始学骑车时遇到了什么困难？后来怎么样了？",
+          "reason": "订正仍错：补上了车子摇摇晃晃，但摔在草地上仍未写出；按小问全对才计分，本题仍判错",
+          "hint": "第 3 题还要再改：车子摇摇晃晃补上了，很好；但困难那部分还差一点——刚开始骑的时候，又摔到哪了？再读读短文第一、二段，补上这一点发回来。",
+          "img": "g6_sunday_yw_yuedu3_guide.png",
+          "q_img": "",
+          "orig_text": "“我”刚开始学骑车时遇到了什么困难？后来怎么样了？（6分）",
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
+    },
+    {
+      "task_id": "MANUAL-20261101-001-SX",
+      "title": "周日数学试卷",
+      "subject": "数学",
+      "status": "done",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "files": [
+        {
+          "name": "六年级数学周试卷_2026-11-01.pdf",
+          "label": "数学周试卷",
+          "pages": 4
+        }
+      ],
+      "source": "manual",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T15:48:43+08:00",
+      "review_status": "approved",
+      "estimate_min": null,
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-01T15:48:43+08:00",
+      "orig_photos": [
+        "a3fd7a626f6ca1fd.jpg",
+        "23bea304ca3e88f4.jpg",
+        "042b688ba07d3bd0.jpg",
+        "d5113cad9ffe8cf5.jpg",
+        "d9df3b067028433d.jpg",
+        "5f938efe2a7f49c7.jpg",
+        "7527eb0c089be824.jpg"
+      ]
+    },
+    {
+      "task_id": "MANUAL-20261101-001-YY",
+      "title": "周日英语试卷",
+      "subject": "英语",
+      "status": "done",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "files": [
+        {
+          "name": "六年级英语周试卷_2026-11-01.pdf",
+          "label": "英语周试卷",
+          "pages": 4
+        }
+      ],
+      "source": "manual",
+      "created_by": "user",
+      "created_at": "2026-11-01T10:12:20+08:00",
+      "updated_at": "2026-11-01T20:26:00+08:00",
+      "review_status": "approved",
+      "estimate_min": null,
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "0cc2a04cf77abd06.jpg",
+        "84215b585e27528d.jpg",
+        "f467a5af3345478e.jpg",
+        "7c6dff4a20a5eba6.jpg",
+        "8b04c95e5551d85d.jpg",
+        "8f1c0cfe34bc9fab.jpg"
+      ]
     }
-   ],
-   "pending_corrections": 1,
-   "status_source": "closeout_writeback"
+  ],
+  "counts": {
+    "total": 7,
+    "pending": 2,
+    "in_progress": 0,
+    "done": 3,
+    "pending_review": 0
   },
-  {
-   "task_id": "MANUAL-20261101-001-SX",
-   "title": "周日数学试卷",
-   "subject": "数学",
-   "status": "done",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "files": [
-    {
-     "name": "六年级数学周试卷_2026-11-01.pdf",
-     "label": "数学周试卷",
-     "pages": 4
-    }
-   ],
-   "source": "manual",
-   "created_by": "user",
-   "created_at": "2026-11-01T10:12:20+08:00",
-   "updated_at": "2026-11-01T15:48:43+08:00",
-   "review_status": "approved",
-   "estimate_min": null,
-   "corrections": [],
-   "pending_corrections": 0,
-   "status_source": "closeout_writeback",
-   "completed_at": "2026-11-01T15:48:43+08:00",
-   "orig_photos": [
-    "a3fd7a626f6ca1fd.jpg",
-    "23bea304ca3e88f4.jpg",
-    "042b688ba07d3bd0.jpg",
-    "d5113cad9ffe8cf5.jpg",
-    "d9df3b067028433d.jpg",
-    "5f938efe2a7f49c7.jpg",
-    "7527eb0c089be824.jpg"
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261101-001-YY",
-   "title": "周日英语试卷",
-   "subject": "英语",
-   "status": "done",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "files": [
-    {
-     "name": "六年级英语周试卷_2026-11-01.pdf",
-     "label": "英语周试卷",
-     "pages": 4
-    }
-   ],
-   "source": "manual",
-   "created_by": "user",
-   "created_at": "2026-11-01T10:12:20+08:00",
-   "updated_at": "2026-11-01T20:26:00+08:00",
-   "review_status": "approved",
-   "estimate_min": null,
-   "corrections": [],
-   "pending_corrections": 0,
-   "status_source": "closeout_writeback"
-  }
- ],
- "counts": {
-  "total": 7,
-  "pending": 2,
-  "in_progress": 0,
-  "done": 2,
-  "pending_review": 0
- },
- "deadline_today": "2026-11-01T22:30:00+08:00"
+  "deadline_today": "2026-11-01T22:30:00+08:00"
 }
