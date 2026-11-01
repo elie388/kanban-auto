@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T19:14:36+08:00",
+  "updated_at": "2026-11-01T19:22:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -252,13 +252,14 @@
       "corrections": [
         {
           "label": "英语小短文写作",
-          "question": "小短文写作：以 My Good Friend 为题，写 5—6 句话介绍你的好朋友",
-          "reason": "第三轮红笔重写仍有三单错误：He like、He share 未加 -s，read/give 结构仍错，核心错误未改对",
-          "hint": "小短文写作还要再改：缺一个 He 后面动词都对的版本，想想 He 后面的动词要加什么，read 和 give 要变成什么样子才能跟在 He 后面？再改一次发回来，我再帮你看",
+          "question": "英语小短文写作：以 My Good Friend 为题，写 5—6 句话介绍你的好朋友",
+          "reason": "仍错：红笔全文重写仍有 6 处问题——标题 F 多写（Ffriend）；第 3 句 likes 后接 read 结构不对；第 4 句 oftens 多了 s、share 仍缺 -s、books give me 结构仍不通；第 5 句句首 we 未大写。第 1、2 句已对，likes 的 -s 已改对，但全文仍未达标。",
+          "hint": "这次改对了两句，likes 的 -s 也加上了，继续保持；还剩几处要再查：标题再拼一遍，有没有多写字母；likes 后面那个动词要变成什么样子才能跟在 likes 后面；often 需不需要加 s；He 后面的 share 要变吗；give 那句意思通不通；最后一句开头第一个字母要怎样？逐个查完再改一次发回来。",
           "img": "g5_sunday_yy_writing.png",
           "q_img": "",
           "orig_text": "My Good Friend 孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
-          "q_img_exempt": "原题无图（纯文字题）"
+          "q_img_exempt": "原题无图（纯文字题）",
+          "img_exempt": ""
         }
       ],
       "pending_corrections": 1,
@@ -268,7 +269,7 @@
   "counts": {
     "total": 6,
     "pending": 0,
-    "in_progress": 2,
+    "in_progress": 3,
     "done": 2,
     "pending_review": 0
   },
