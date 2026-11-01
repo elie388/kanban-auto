@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T16:09:03+08:00",
+  "updated_at": "2026-11-01T16:16:35+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -299,43 +299,10 @@
       "estimate_min": null,
       "corrections": [
         {
-          "label": "英语词汇第3题",
-          "question": "词汇第3题：My hobby is ___ kites",
-          "reason": "第二轮订正红笔仍为A（fly），hobby后须用动词-ing形式",
-          "hint": "My hobby is ___ kites，hobby 后面要接什么样的词？想想 fly 要变成什么样子才能放在 is 后面",
-          "img": "",
-          "q_img": "",
-          "orig_text": "My hobby is ______ kites.（选项：A fly B flying C flies D flew） 孩子答：C",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "英语单选第20题",
-          "question": "单选第20题：We ___ to the zoo last Saturday",
-          "reason": "第二轮订正括号内红笔仍为G，非选项字母，无法辨认为正确选项",
-          "hint": "单选第20题还要再改：缺一个写清楚的选项字母，括号里的红笔字母不是选项里的字母，重写一个清楚的选项字母",
-          "img": "",
-          "q_img": "",
-          "orig_text": "We ______ to the zoo last Saturday.（选项：A go B goes C went D going） 孩子答：A",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "英语阅读第25题",
-          "question": "阅读第25题：Why do friends like Anna?（用自己的话回答）",
-          "reason": "第二轮订正仍抄原句（Because Anna shares her pictures with her friends），未达用自己的话",
-          "hint": "阅读第25题还要再改：缺一句用自己的话说的原因，不要照抄短文里的句子，想想 Anna 有哪些地方让朋友喜欢，用你自己的话连成一句",
-          "img": "",
-          "q_img": "",
-          "orig_text": "Why do friends like Anna? 请用自己的话回答。（写一两句英文或中文均可） 孩子答：because Anna share her pictures with her friends.（An 已划掉）",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": "图后补"
-        },
-        {
           "label": "英语小短文写作",
           "question": "小短文写作：以 My Good Friend 为题，写 5—6 句话介绍你的好朋友",
-          "reason": "第二轮未交写作正文，仅见题目提示",
-          "hint": "小短文写作还要再改：缺一篇以 My Good Friend 为题的 5—6 句话，22:30 前交上来",
+          "reason": "第三轮红笔重写仍有三单错误：He like、He share 未加 -s，read/give 结构仍错，核心错误未改对",
+          "hint": "小短文写作还要再改：缺一个 He 后面动词都对的版本，想想 He 后面的动词要加什么，read 和 give 要变成什么样子才能跟在 He 后面？再改一次发回来，我再帮你看",
           "img": "",
           "q_img": "",
           "orig_text": "My Good Friend 孩子文：My good friend is Sam. He is kind. he like read books. He often share books with we. We are happy together.",
@@ -343,7 +310,7 @@
           "img_exempt": "图后补"
         }
       ],
-      "pending_corrections": 4,
+      "pending_corrections": 1,
       "status_source": "closeout_writeback"
     }
   ],
