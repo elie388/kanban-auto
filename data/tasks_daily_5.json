@@ -111,7 +111,7 @@
       "task_id": "MANUAL-20261101-001-YW",
       "title": "周日语文试卷",
       "subject": "语文",
-      "status": "submitted",
+      "status": "in_progress",
       "detail": "今晚截止23:00，做完拍照交回",
       "files": [
         {
@@ -123,7 +123,7 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T23:05:00+08:00",
+      "updated_at": "2026-11-01T23:13:29+08:00",
       "review_status": "approved",
       "estimate_min": null,
       "corrections": [
