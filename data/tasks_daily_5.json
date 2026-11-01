@@ -3,11 +3,11 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T22:51:18+08:00",
+  "updated_at": "2026-11-01T23:10:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-01T16:55:43+08:00",
+      "ingested_at": "2026-11-01T23:10:39+08:00",
       "new_lines": 0
     },
     "targeted_practice": {
@@ -226,7 +226,7 @@
   "counts": {
     "total": 6,
     "pending": 0,
-    "in_progress": 2,
+    "in_progress": 1,
     "done": 4,
     "pending_review": 0
   },
