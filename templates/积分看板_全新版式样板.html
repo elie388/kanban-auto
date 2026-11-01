@@ -441,13 +441,13 @@
   }
   .task.correcting .task-toggle{color:#C77700; font-weight:700;}
   span.corr-badge{cursor:default;}
-  .corr-item{font-size:17.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
+  .corr-item{font-size:19.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
   .corr-item .corr-no{font-weight:700; color:#C2410C;}
   .corr-item .corr-resubmit{display:inline-block; font-size:15.5px; color:#92400E; background:#FEF3C7; border:1px solid #FDE68A; border-radius:999px; padding:1px 7px; margin-left:6px; vertical-align:1px;}
   .corr-item .corr-q{color:#30343B; white-space:pre-line;}
-  .corr-item .corr-r{display:block; margin-top:1px; font-size:16.5px; color:#6B7280;}
-  .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:17px; line-height:1.65; color:#5A5145; white-space:pre-line;}
+  .corr-item .corr-r{display:block; margin-top:1px; font-size:18.5px; color:#6B7280;}
+  .corr-item .corr-h{display:block; border-left:2px solid #D8C9A8; padding-left:10px; margin-top:6px; margin-bottom:2px; font-size:19px; line-height:1.65; color:#5A5145; white-space:pre-line;}
   .corr-item .corr-img{display:block; max-width:100%; margin-top:8px; border-radius:8px; border:1px solid #EFE6D0;}
   .corr-item .corr-qimg{margin-top:8px;}
   .corr-item .corr-cap{display:inline-block; font-size:15px; font-weight:700; color:#8A6D2B; background:#FFF3D6; border:1px solid #F0DFB8; border-radius:6px; padding:1px 7px; margin-bottom:4px;}
@@ -5480,7 +5480,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261101-twinkle';
+  var KB_BUILD = '20261101-corrfont';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
