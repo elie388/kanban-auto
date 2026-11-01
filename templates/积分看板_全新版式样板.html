@@ -326,7 +326,7 @@
     display:inline-flex; align-items:center; justify-content:center; gap:4px;
     white-space:nowrap;
   }
-  /* 状态呼吸灯（2026-10-22 家长定）：待提交=红、改正中=橙、已完成=绿，徽章前圆点做呼吸脉冲 */
+  /* 状态呼吸灯（2026-10-22 家长定）：待提交=红、待改正=橙、已完成=绿，徽章前圆点做呼吸脉冲 */
   .task .st-dot{width:8px; height:8px; border-radius:50%; background:#98A2B3; flex:0 0 auto; animation:kbBreathe 2.8s ease-in-out infinite;}
   @keyframes kbBreathe{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.6; transform:scale(.88);}}
   @media (prefers-reduced-motion: reduce){ .task .st-dot{animation:none;} }
@@ -1619,7 +1619,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     pending:     {cls: 'pending',    badge: '📝 待提交'},
     submitted:   {cls: 'submitted',  badge: '📤 已提交·待批改'},
     grading:     {cls: 'grading',    badge: '🔍 批改中'},
-    in_progress: {cls: 'correcting', badge: '🔄 改正中'},
+    in_progress: {cls: 'correcting', badge: '🔄 待改正'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '', meta: '每日任务', exam_correction: '考试订正', exam: '学校考试', chore: '日常打卡', daily_53: '每日练习'};
@@ -1762,7 +1762,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     metas.forEach(function(t){
       visible.push(t);
     });
-    /* 状态排序（2026-10-22 家长定）：全部任务（含登记本卡）按状态排——待提交 → 改正中 → 已完成，
+    /* 状态排序（2026-10-22 家长定）：全部任务（含登记本卡）按状态排——待提交 → 待改正 → 已完成，
        同档保持原顺序（登记本未交时在待提交组靠前，交完沉入已完成组，30 分钟后按原规则隐藏） */
     function kbTaskRank(t){
       if(t.status === 'done') return 2;
@@ -1780,7 +1780,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
         var badgeText = sm.badge, miniPill = '';
-        /* 待确认徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3；2026-10-28家长令杜绝空改正中：in_progress且待改正数为0一律显待确认，不再要求pending_note；仅显示层，底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响）。 */
+        /* 待确认徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3；2026-10-28家长令杜绝空待改正：in_progress且待改正数为0一律显待确认，不再要求pending_note；仅显示层，底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响）。 */
         if(t.status === 'in_progress' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0){
           badgeText = '🔄 待确认';
         }
@@ -5480,7 +5480,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261101-corrfont';
+  var KB_BUILD = '20261101-statuslabel';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
