@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T10:12:20+08:00",
+  "updated_at": "2026-11-01T14:24:32+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -128,7 +128,7 @@
       "task_id": "MANUAL-20261101-001-SX",
       "title": "周日数学试卷",
       "subject": "数学",
-      "status": "pending",
+      "status": "in_progress",
       "detail": "今晚截止22:30，做完拍照交回",
       "files": [
         {
@@ -140,9 +140,24 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T14:10:41+08:00",
+      "updated_at": "2026-11-01T14:24:32+08:00",
       "review_status": "approved",
-      "estimate_min": null
+      "estimate_min": null,
+      "corrections": [
+        {
+          "label": "待补交：数学第 2–4 页",
+          "question": "六年级数学周试卷第 2–4 页尚未提交（待补交，非错题）",
+          "reason": "待补交（非错题）：数学第 2–4 页尚未提交，需在今晚 22:30 前补交",
+          "hint": "请在今晚 22:30 前补交数学周试卷第 2–4 页；语文、英语也请按时交。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "六年级数学周试卷第 2–4 页（待补交）",
+          "q_img_exempt": "待补交，无原题图",
+          "img_exempt": "待补交提醒，非错题，无需配图"
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "MANUAL-20261101-001-YY",
@@ -166,9 +181,9 @@
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
-    "in_progress": 0,
+    "total": 7,
+    "pending": 6,
+    "in_progress": 1,
     "done": 0,
     "pending_review": 0
   },
