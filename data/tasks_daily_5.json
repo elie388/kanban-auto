@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "五年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T20:46:08+08:00",
+  "updated_at": "2026-11-01T20:53:06+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -146,7 +146,7 @@
       "task_id": "MANUAL-20261101-001-SX",
       "title": "周日数学试卷",
       "subject": "数学",
-      "status": "in_progress",
+      "status": "done",
       "detail": "今晚截止22:30，做完拍照交回",
       "files": [
         {
@@ -158,24 +158,28 @@
       "source": "manual",
       "created_by": "user",
       "created_at": "2026-11-01T10:12:20+08:00",
-      "updated_at": "2026-11-01T20:25:00+08:00",
+      "updated_at": "2026-11-01T20:53:03+08:00",
       "review_status": "approved",
       "estimate_min": null,
-      "corrections": [
-        {
-          "label": "数学填空第2题（复测）",
-          "question": "一个数的小数点向左移动一位，得到的数比原来少72，原来这个数是多少？",
-          "reason": "第六轮订正仍错：括号内 79.2 划掉后仅剩 2，括号外多次涂改后最终未划掉的为 8，均不是 80（前序错答 7.2、72、64.8、0.8 均已划掉）",
-          "hint": "填空第 2 题还要再改：你这次涂改了多次，最后写的那个数还是不对。再读读题：小数点向左移动一位，得到的数是原数的十分之一，少的 72 对应原数的多少？画个图想想，再算一次发回来。",
-          "img": "g5_sunday_sx_q2.png",
-          "q_img": "",
-          "orig_text": "一个数的小数点向左移动一位，得到的数比原来少72，原来这个数是（　　）。 孩子答：79.2",
-          "q_img_exempt": "原题无图（纯文字题）",
-          "img_exempt": ""
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-01T20:53:03+08:00",
+      "orig_photos": [
+        "4ce5499cd20d1813.jpg",
+        "71d143fb8627ffd6.jpg",
+        "84219eda0899a426.jpg",
+        "222a4aa813c97670.jpg",
+        "1776627fafcb5964.jpg",
+        "47fc9e9446446318.jpg",
+        "b76bed69513f8229.jpg",
+        "d7a595efde2cac6f.jpg",
+        "df3812a605abed2e.jpg",
+        "773defcf4fc4bab8.jpg",
+        "7d7e87ac31c0adde.jpg",
+        "5de47003ced62f75.jpg",
+        "af058ffc664a586a.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261101-001-YY",
@@ -222,8 +226,8 @@
   "counts": {
     "total": 6,
     "pending": 0,
-    "in_progress": 3,
-    "done": 3,
+    "in_progress": 2,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-11-01T22:30:00+08:00"
