@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T20:08:53+08:00",
+  "updated_at": "2026-11-01T20:09:10+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -29,7 +29,7 @@
       "title": "作文-①续写小说",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读知识要点，做小测卷；②作文-①续写小说；③预习14课和读背P66日积月累；④每日看书1小时，并做记录 → 待完成",
@@ -38,12 +38,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-10-30T21:09:04+08:00",
-      "updated_at": "2026-11-01T00:17:20+08:00",
+      "updated_at": "2026-11-01T20:09:09+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-10-30",
       "carried_from": "2026-10-31",
-      "carry_count": 2
+      "carry_count": 2,
+      "completed_at": "2026-11-01T20:09:09+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "7190a65301623fa3.jpg",
+        "6da72a601e35bdd5.jpg",
+        "c321beca2790becf.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261031-001",
@@ -236,9 +243,9 @@
   ],
   "counts": {
     "total": 7,
-    "pending": 3,
+    "pending": 2,
     "in_progress": 3,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-01T22:30:00+08:00"
