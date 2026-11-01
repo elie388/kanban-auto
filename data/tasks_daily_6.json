@@ -3,7 +3,7 @@
   "date": "2026-11-01",
   "grade": "六年级",
   "generated_at": "2026-11-01T00:17:20+08:00",
-  "updated_at": "2026-11-01T21:49:08+08:00",
+  "updated_at": "2026-11-01T22:57:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -77,9 +77,9 @@
       "corrections": [
         {
           "label": "英语写作 My School Trip to the Park",
-          "question": "英语写作 My School Trip to the Park（订正第三轮）",
-          "reason": "第三轮仍错：词数64词已达标（标题不算、连字符词计1、划掉的不算），过去时、冠词、复数、标题均无新错；但‘We went to the park, we went there by bus’为逗号粘连句（两个完整句只用逗号连接），违反‘不许逗号粘连句’要求；把逗号改成句号即改对。",
-          "hint": "词数够了，很好；但有一句是两个完整句子只用逗号连着（逗号粘连句），找找是哪一句，想想两个完整句子中间应该用什么标点隔开？再改好发回来。",
+          "question": "My School Trip to the Park（60-80词）：全文一般过去时、注意冠词与名词复数、不许逗号粘连句、字数60-80词。",
+          "reason": "第四轮仍错：词数63在60-80内，过去时、冠词复数、标题Trip已补齐均无新错，新增句Then we ran on the grass.本身无错；但逗号粘连句未真正改对——park后的逗号仍在，只划掉了第二个We（和wen），未改成句号、也未加and，仍属逗号粘连。",
+          "hint": "增加的句子很好，过去时也对，值得表扬；但park后面那个逗号还没改对，光划掉后面的We不算改好，对照题目里的规则（句号分开，或逗号加and），把那一处改好再发回来。",
           "img": "g6_readwrite13_writing.png",
           "q_img": "",
           "orig_text": "二、写作：题目 My School Trip to the Park（60–80 词）；要求：全文一般过去时、注意冠词与名词复数、不许逗号粘连句、字数 60–80 词。",
@@ -237,9 +237,9 @@
   "counts": {
     "total": 7,
     "pending": 0,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 6,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-01T22:30:00+08:00"
+  "deadline_today": "2026-11-01T23:00:00+08:00"
 }
