@@ -118,7 +118,7 @@
       "task_id": "REG-20261102-FC9963",
       "source": "register_book",
       "subject": "数学",
-      "title": "校本3页",
+      "title": "校本34页",
       "detail": "原状态：待完成",
       "estimate_min": null,
       "status": "submitted",
@@ -130,14 +130,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T13:02:49.867758+00:00",
+      "updated_at": "2026-11-02T21:41:31.486036+08:00",
       "status_source": "kanban_upload_watch"
     },
     {
       "task_id": "REG-20261102-F8DCDC",
       "source": "register_book",
       "subject": "语文",
-      "title": "预习5课",
+      "title": "预习15课",
       "detail": "",
       "estimate_min": null,
       "status": "submitted",
@@ -149,7 +149,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T21:00:31.934599+08:00",
+      "updated_at": "2026-11-02T21:41:31.486036+08:00",
       "task_type": "reading",
       "status_source": "kanban_upload_intake"
     },
@@ -199,7 +199,7 @@
       "title": "练习本抄M3单词",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "done",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②练习本抄M3单词 → 待完成",
@@ -208,7 +208,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T21:33:36.146997+08:00",
+      "updated_at": "2026-11-02T21:41:31.486036+08:00",
       "status_source": "main_grading"
     }
   ],
