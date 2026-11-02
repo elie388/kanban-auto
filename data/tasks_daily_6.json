@@ -212,7 +212,7 @@
       "title": "试卷一张（不写作文）",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①试卷一张（不写作文）；②读背《送元二使安西》并默抄词本；③读作文作文15分钟，记录 → 待完成",
@@ -221,7 +221,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T20:49:48+08:00",
+      "updated_at": "2026-11-02T23:15:00+08:00",
       "pending_corrections": 0,
       "corrections": []
     },
