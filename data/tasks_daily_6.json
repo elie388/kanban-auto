@@ -99,7 +99,7 @@
       "title": "背U3单词，课文6次",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成试卷笔试部分，写语法；②背U3单词，课文6次 → 待完成",
@@ -108,8 +108,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T21:58:46.337386+08:00",
-      "status_source": "kanban_upload_intake"
+      "updated_at": "2026-11-02T22:10:37+08:00",
+      "status_source": "grading_closeout"
     },
     {
       "task_id": "REG-20261102-F346AB",
