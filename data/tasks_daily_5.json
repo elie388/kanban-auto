@@ -117,9 +117,9 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T23:35:00+08:00",
+      "updated_at": "2026-11-02T23:25:12+08:00",
       "pending_corrections": 2,
-      "pending_note": "小数乘法2个空要改：10题第1小题最后一空、11题估算，等孩子订正",
+      "pending_note": "53天天练数学订正反馈",
       "corrections": [
         {
           "label": "第1空",
