@@ -1,33 +1,47 @@
 {
- "date": "2026-11-01",
+ "date": "2026-11-02",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "CHORE-20261101-G5",
+   "task_id": "CHORE-20261102-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "READ-20261101-G5",
+   "task_id": "READ-20261102-G5",
    "title": "每日读书",
    "subject": "读书",
    "source": "reading_daily",
    "group": "study"
   },
   {
-   "task_id": "MANUAL-20261101-001-SX",
-   "title": "周日数学试卷",
-   "subject": "数学",
-   "source": "manual",
+   "task_id": "META-REGISTER-2026-11-02",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "MANUAL-20261101-001-YY",
-   "title": "周日英语试卷",
+   "task_id": "REG-20261102-F8DCDC",
+   "title": "预习15课",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261102-A01759",
+   "title": "口语易",
    "subject": "英语",
-   "source": "manual",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261102-104A37",
+   "title": "练习本抄M3单词",
+   "subject": "英语",
+   "source": "register_book",
    "group": "study"
   }
  ]
