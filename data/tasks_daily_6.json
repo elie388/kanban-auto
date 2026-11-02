@@ -3,7 +3,7 @@
   "date": "2026-11-02",
   "grade": "六年级",
   "generated_at": "2026-11-02T00:17:18+08:00",
-  "updated_at": "2026-11-02T23:10:36+08:00",
+  "updated_at": "2026-11-03T00:06:49+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -35,10 +35,10 @@
       "chore_done_count": 0,
       "chore_pending_review": 0,
       "chore_exempt": false,
-      "chore_missed": false,
+      "chore_missed": true,
       "count_in_completion_rate": false,
       "created_at": "2026-11-02T00:17:31+08:00",
-      "updated_at": "2026-11-02T21:05:10+08:00"
+      "updated_at": "2026-11-03T00:06:49+08:00"
     },
     {
       "task_id": "READ-20261102-G6",
@@ -278,7 +278,7 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 4,
+    "pending": 3,
     "in_progress": 0,
     "done": 3,
     "pending_review": 0
