@@ -171,10 +171,10 @@
    },
    {
     "key": "baifentupo",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 0,
+    "obtained": true,
+    "date": "2026-11-02",
+    "count": 1,
+    "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -204,7 +204,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W45",
- "generated_at": "2026-11-03T02:02:53+08:00"
+ "generated_at": "2026-11-03T02:08:41+08:00"
 }

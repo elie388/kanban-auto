@@ -98,7 +98,8 @@ def split_icon_name(desc):
 
 def extract_badge_events():
     """解析台账，返回 {g5: [event...], g6: [event...]}；event={key,date,icon,name}。
-    冲正（reverse_badge_ 为规范，冲正_ 为 2026-11-03 遗留兼容）按行序抵消：后发生的冲正取消对应徽章。今后冲正一律用 reverse_badge_，不得再用冲正_。"""
+    冲正（reverse_badge_ 为规范，冲正_ 为 2026-11-03 遗留兼容）按行序抵消：后发生的冲正取消对应徽章。今后冲正一律用 reverse_badge_，不得再用冲正_。
+    徽章落账键一律用 badge_ 规范键；历史中文键（如满分之星）经目录 aliases 归一认取，未来不得再用中文键落账。"""
     content = LEDGER.read_text(encoding="utf-8")
     result = {}
     for gk, grade in (("g5", "五年级"), ("g6", "六年级")):
@@ -119,9 +120,19 @@ def extract_badge_events():
                 active.pop(KEY_ALIAS.get(rev.group(1), rev.group(1)), None)
                 continue
             b = KEY_PAT.search(line)
-            if not b:
-                continue
-            key = KEY_ALIAS.get(b.group(1), b.group(1))
+            if b:
+                key = KEY_ALIAS.get(b.group(1), b.group(1))
+            else:
+                # 遗留兼容（2026-11-03 满分之星根治）：考试结算曾用中文键
+                # “满分之星”落账，未用 badge_ 规范键，台账 append-only 不反写，
+                # 故经目录 aliases 归一（映射只认 aliases 里已登记的历史变体，
+                # 不凭空认中文描述）。未来落账一律用 badge_ 规范键。
+                km0 = re.search(r"<!--\s*key:\s*(.*?)\s*-->", line)
+                full0 = km0.group(1).strip() if km0 else ""
+                legacy_keys = [t for t in full0.split("_") if t in KEY_ALIAS]
+                if not legacy_keys:
+                    continue
+                key = KEY_ALIAS[legacy_keys[0]]
             meta = BADGE_MAP.get(key)
             if meta:
                 icon, name = meta["icon"], meta["name"]
