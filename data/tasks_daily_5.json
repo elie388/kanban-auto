@@ -154,20 +154,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T22:49:40+08:00",
-      "pending_corrections": 1,
-      "pending_note": "笔试1处分组要改，听力等音频再核",
-      "corrections": [
-        {
-          "label": "分组",
-          "question": "use many plastic bags应该放进哪个组？",
-          "orig_text": "53天天练英语分组题：use many plastic bags",
-          "hint": "用许多塑料袋对环境是好还是坏？应该放进哪个组？改过来就好。",
-          "reason": "分组放错了",
-          "img": "",
-          "img_exempt": "图后补"
-        }
-      ]
+      "updated_at": "2026-11-02T23:20:00+08:00",
+      "pending_corrections": 0,
+      "pending_note": "分组已改对，听力等音频再核",
+      "corrections": []
     },
     {
       "task_id": "META-REGISTER-2026-11-02",
@@ -203,27 +193,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T22:49:40+08:00",
+      "updated_at": "2026-11-02T23:20:00+08:00",
       "status_source": "kanban_upload_watch",
-      "pending_corrections": 2,
-      "pending_note": "校本34页2处要改，等孩子订正",
+      "pending_corrections": 1,
+      "pending_note": "校本34页1处要改，等孩子订正",
       "corrections": [
         {
           "label": "第（4）题",
           "question": "基础练习第（4）题：举例验证乘除规律",
           "orig_text": "校本34页基础练习第（4）题：举例验证乘除规律",
-          "hint": "应该先写一个等式，再让等式两边同时乘一个数或者同时除以一个数，你写的例子是这个样子吗？改一改再发回给我。",
+          "hint": "这次用了减法（两边同时减1），但这题要验证的是乘除规律；先写一个等式，再让两边同时乘一个数或者同时除以一个数，你写的例子是这个样子吗？",
           "reason": "举的例子不符合要求",
-          "q_img_exempt": "原题无图",
-          "img": "",
-          "img_exempt": "图后补"
-        },
-        {
-          "label": "拓展第④题",
-          "question": "拓展第④题：a÷0=b÷0，判断对错",
-          "orig_text": "校本34页拓展第④题：a÷0=b÷0，判断对错",
-          "hint": "你前面自己写了除以同一个不为零的数才成立，再想想0能不能作除数？那这题该打什么？改对后告诉我。",
-          "reason": "0作除数的问题没想清楚",
           "q_img_exempt": "原题无图",
           "img": "",
           "img_exempt": "图后补"
