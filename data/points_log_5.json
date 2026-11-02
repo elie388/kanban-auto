@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-03T00:10:03+08:00",
+  "generated_at": "2026-11-03T01:30:03+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-03",
+      "time": "01:29",
+      "time_source": "entry",
+      "reason": "🌙熄灯小超人徽章",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-02",
       "time": "23:59",
