@@ -48,7 +48,7 @@ KEY_ALIAS = _catalog.key_alias()
 SHOP_TABLE = _catalog.shop_table()
 
 KEY_PAT = re.compile(r"key:[^|]*?badge_([a-z]+)_")
-REV_PAT = re.compile(r"key:[^|]*?reverse_badge_([a-z]+)_")
+REV_PAT = re.compile(r"key:[^|]*?(?:reverse_badge_|冲正_)([a-z]+)_")
 CYCLE_WEEK_RE = re.compile(r"cycle_week=(\d{4}-W\d{2})")
 LATE_CYCLE_RE = re.compile(r"late_cycle=(\d{4}-W\d{2})")
 BACKFILL_RE = re.compile(r"backfill=(\d{4}-\d{2}-\d{2})")
@@ -98,7 +98,7 @@ def split_icon_name(desc):
 
 def extract_badge_events():
     """解析台账，返回 {g5: [event...], g6: [event...]}；event={key,date,icon,name}。
-    冲正（reverse_badge_）按行序抵消：后发生的冲正取消对应徽章。"""
+    冲正（reverse_badge_ 为规范，冲正_ 为 2026-11-03 遗留兼容）按行序抵消：后发生的冲正取消对应徽章。今后冲正一律用 reverse_badge_，不得再用冲正_。"""
     content = LEDGER.read_text(encoding="utf-8")
     result = {}
     for gk, grade in (("g5", "五年级"), ("g6", "六年级")):
