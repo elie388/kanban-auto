@@ -117,7 +117,7 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T23:09:53+08:00",
+      "updated_at": "2026-11-02T23:35:00+08:00",
       "pending_corrections": 2,
       "pending_note": "小数乘法2个空要改：10题第1小题最后一空、11题估算，等孩子订正",
       "corrections": [
@@ -128,8 +128,7 @@
           "hint": "先算21×150得多少，再数一数0.21有几位小数，小数点该点在哪一位？",
           "reason": "小数点位置不对",
           "q_img_exempt": "原题无图",
-          "img": "",
-          "img_exempt": "图后补"
+          "img": "g5_corr_math_q10_1.png"
         },
         {
           "label": "第4空",
@@ -138,8 +137,7 @@
           "hint": "问够不够，要往大里估才保险，想想哪种估法是把单价和数量都往大里估的？",
           "reason": "估算方法不对",
           "q_img": "d53_math_q11_orig.jpg",
-          "img": "",
-          "img_exempt": "图后补"
+          "img": "g5_corr_math_q11.png"
         }
       ]
     },
@@ -193,7 +191,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T23:20:00+08:00",
+      "updated_at": "2026-11-02T23:35:00+08:00",
       "status_source": "kanban_upload_watch",
       "pending_corrections": 1,
       "pending_note": "校本34页1处要改，等孩子订正",
@@ -205,8 +203,7 @@
           "hint": "这次用了减法（两边同时减1），但这题要验证的是乘除规律；先写一个等式，再让两边同时乘一个数或者同时除以一个数，你写的例子是这个样子吗？",
           "reason": "举的例子不符合要求",
           "q_img_exempt": "原题无图",
-          "img": "",
-          "img_exempt": "图后补"
+          "img": "g5_corr_xb_q4.png"
         }
       ]
     },
