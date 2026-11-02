@@ -82,9 +82,29 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T22:30:00+08:00",
+      "updated_at": "2026-11-02T22:49:40+08:00",
       "pending_corrections": 2,
-      "pending_note": "少年中国说2处要改，等孩子订正"
+      "pending_note": "少年中国说2处要改，等孩子订正",
+      "corrections": [
+        {
+          "label": "第3题",
+          "question": "少年中国说第3题：地履其黄的履是什么意思？",
+          "orig_text": "53天天练语文《少年中国说》第3题：地履其黄的履是什么意思",
+          "hint": "是踩、踏，还是履行？想一想哪个解释才是错的。",
+          "reason": "对履的解释辨析不对",
+          "img": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "第5题第1小题",
+          "question": "少年中国说第5题第1小题：少年中国说应该读出什么感情？",
+          "orig_text": "53天天练语文《少年中国说》第5题第1小题：读出什么感情",
+          "hint": "是激昂豪迈，还是伤感？想想哪个说法跟这篇的感情不符。",
+          "reason": "对文章感情的把握不对",
+          "img": "",
+          "img_exempt": "图后补"
+        }
+      ]
     },
     {
       "task_id": "D53-2026-11-02-MATH",
@@ -97,9 +117,51 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T22:30:00+08:00",
+      "updated_at": "2026-11-02T22:49:40+08:00",
       "pending_corrections": 4,
-      "pending_note": "小数乘法4个空要改，等孩子订正"
+      "pending_note": "小数乘法4个空要改，等孩子订正",
+      "corrections": [
+        {
+          "label": "第1空",
+          "question": "10题第1小题最后一空：0.21×150=( )",
+          "orig_text": "53天天练数学10题第1小题：根据21×15=315填括号，0.21×150=( )",
+          "hint": "先算21×150得多少，再数一数0.21有几位小数，小数点该点在哪一位？",
+          "reason": "小数点位置不对",
+          "q_img_exempt": "原题无图",
+          "img": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "第2空",
+          "question": "10题第2小题中间那个空：根据164×35=5740填括号，(1.64)×( )=( )×( )=5.74",
+          "orig_text": "53天天练数学10题第2小题：根据164×35=5740，在括号里填出合适的数",
+          "hint": "1.64是对的，这个空小数点错了一位，想想给出的算式，要得5.74，这个数该缩小多少倍？",
+          "reason": "小数点错了一位",
+          "q_img_exempt": "原题无图",
+          "img": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "第3空",
+          "question": "10题第2小题最后一个空：根据164×35=5740填括号，(1.64)×( )=( )×( )=5.74",
+          "orig_text": "53天天练数学10题第2小题：根据164×35=5740，在括号里填出合适的数",
+          "hint": "这个空小数点也错了一位，想想给出的算式，要得5.74，这个数该缩小多少倍？",
+          "reason": "小数点错了一位",
+          "q_img_exempt": "原题无图",
+          "img": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "第4空",
+          "question": "11题：李老师要买248份奖品，每份奖品7.3元，准备了2000元，够吗？下面4名同学中，谁的估算方法能解决这个问题？",
+          "orig_text": "53天天练数学11题：李老师买248份奖品，每份7.3元，准备2000元，够吗",
+          "hint": "问够不够，要往大里估才保险，想想哪种估法是把单价和数量都往大里估的？",
+          "reason": "估算方法不对",
+          "q_img": "d53_math_q11_orig.jpg",
+          "img": "",
+          "img_exempt": "图后补"
+        }
+      ]
     },
     {
       "task_id": "D53-2026-11-02-ENG",
@@ -112,9 +174,20 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T22:30:00+08:00",
-      "pending_corrections": 0,
-      "pending_note": "笔试9对，听力等音频再核"
+      "updated_at": "2026-11-02T22:49:40+08:00",
+      "pending_corrections": 1,
+      "pending_note": "笔试1处分组要改，听力等音频再核",
+      "corrections": [
+        {
+          "label": "分组",
+          "question": "use many plastic bags应该放进哪个组？",
+          "orig_text": "53天天练英语分组题：use many plastic bags",
+          "hint": "用许多塑料袋对环境是好还是坏？应该放进哪个组？改过来就好。",
+          "reason": "分组放错了",
+          "img": "",
+          "img_exempt": "图后补"
+        }
+      ]
     },
     {
       "task_id": "META-REGISTER-2026-11-02",
@@ -150,11 +223,32 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T22:30:00+08:00",
+      "updated_at": "2026-11-02T22:49:40+08:00",
       "status_source": "kanban_upload_watch",
-      "pending_corrections": 0,
+      "pending_corrections": 2,
       "pending_note": "校本34页2处要改，等孩子订正",
-      "corrections": []
+      "corrections": [
+        {
+          "label": "第（4）题",
+          "question": "基础练习第（4）题：举例验证乘除规律",
+          "orig_text": "校本34页基础练习第（4）题：举例验证乘除规律",
+          "hint": "应该先写一个等式，再让等式两边同时乘一个数或者同时除以一个数，你写的例子是这个样子吗？改一改再发回给我。",
+          "reason": "举的例子不符合要求",
+          "q_img_exempt": "原题无图",
+          "img": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "拓展第④题",
+          "question": "拓展第④题：a÷0=b÷0，判断对错",
+          "orig_text": "校本34页拓展第④题：a÷0=b÷0，判断对错",
+          "hint": "你前面自己写了除以同一个不为零的数才成立，再想想0能不能作除数？那这题该打什么？改对后告诉我。",
+          "reason": "0作除数的问题没想清楚",
+          "q_img_exempt": "原题无图",
+          "img": "",
+          "img_exempt": "图后补"
+        }
+      ]
     },
     {
       "task_id": "REG-20261102-F8DCDC",
@@ -172,12 +266,22 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T22:30:00+08:00",
+      "updated_at": "2026-11-02T22:49:40+08:00",
       "task_type": "reading",
       "status_source": "kanban_upload_intake",
-      "pending_corrections": 0,
+      "pending_corrections": 1,
       "pending_note": "蒸的拼音要改，等孩子订正",
-      "corrections": []
+      "corrections": [
+        {
+          "label": "蒸的拼音",
+          "question": "《太阳》预习生字格：给生字蒸注音",
+          "orig_text": "《太阳》第67页生字格：给生字蒸注音",
+          "hint": "你写的比书上少了一个字母，对一下生字表，看看少了哪个字母，改对后告诉我。",
+          "reason": "拼音少了一个字母",
+          "img": "",
+          "img_exempt": "图后补"
+        }
+      ]
     },
     {
       "task_id": "REG-20261102-9AB5F5",
@@ -195,11 +299,21 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T22:30:00+08:00",
+      "updated_at": "2026-11-02T22:49:40+08:00",
       "status_source": "kanban_upload_intake",
-      "pending_corrections": 0,
+      "pending_corrections": 1,
       "pending_note": "抄词语1个词要改，等孩子订正",
-      "corrections": []
+      "corrections": [
+        {
+          "label": "抄词语",
+          "question": "12课词语抄写：抄写桂花香前面那个词",
+          "orig_text": "桂花雨12课词语抄写：桂花香前面那个词",
+          "hint": "你写成了笨笨的，对照一下课文，看看那个词到底是哪三个字，改对后告诉我。",
+          "reason": "词语写错了",
+          "img": "",
+          "img_exempt": "图后补"
+        }
+      ]
     },
     {
       "task_id": "REG-20261102-A01759",
