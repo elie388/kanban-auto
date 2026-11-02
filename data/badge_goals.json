@@ -189,7 +189,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 113,
+     "current": 118,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -204,7 +204,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -281,10 +281,10 @@
    },
    {
     "key": "xidengxiaochaoren",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 0,
+    "obtained": true,
+    "date": "2026-11-03",
+    "count": 1,
+    "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -499,7 +499,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 2,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -576,10 +576,10 @@
    },
    {
     "key": "xidengxiaochaoren",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 0,
+    "obtained": true,
+    "date": "2026-11-03",
+    "count": 1,
+    "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W45",
- "generated_at": "2026-11-03T00:10:07+08:00"
+ "generated_at": "2026-11-03T01:30:07+08:00"
 }
