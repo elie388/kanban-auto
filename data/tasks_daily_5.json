@@ -68,11 +68,13 @@
       "title": "53天天练·语文",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T20:56:58+08:00"
+      "updated_at": "2026-11-02T22:30:00+08:00",
+      "pending_corrections": 2,
+      "pending_note": "少年中国说2处要改，等孩子订正"
     },
     {
       "task_id": "D53-2026-11-02-MATH",
@@ -81,11 +83,13 @@
       "title": "53天天练·数学",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T20:56:58+08:00"
+      "updated_at": "2026-11-02T22:30:00+08:00",
+      "pending_corrections": 4,
+      "pending_note": "小数乘法4个空要改，等孩子订正"
     },
     {
       "task_id": "D53-2026-11-02-ENG",
@@ -94,11 +98,13 @@
       "title": "53天天练·英语",
       "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
       "estimate_min": 10,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T20:56:58+08:00"
+      "updated_at": "2026-11-02T22:30:00+08:00",
+      "pending_corrections": 0,
+      "pending_note": "笔试9对，听力等音频再核"
     },
     {
       "task_id": "META-REGISTER-2026-11-02",
@@ -122,7 +128,7 @@
       "title": "校本34页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：校本3页 → 待完成",
@@ -131,8 +137,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T21:41:31.486036+08:00",
-      "status_source": "kanban_upload_watch"
+      "updated_at": "2026-11-02T22:30:00+08:00",
+      "status_source": "kanban_upload_watch",
+      "pending_corrections": 2,
+      "pending_note": "校本34页2处要改，等孩子订正"
     },
     {
       "task_id": "REG-20261102-F8DCDC",
@@ -141,7 +149,7 @@
       "title": "预习15课",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①预习5课；②抄12课词语(2次)和12课日积月(2次) → 待完成",
@@ -150,9 +158,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T21:41:31.486036+08:00",
+      "updated_at": "2026-11-02T22:30:00+08:00",
       "task_type": "reading",
-      "status_source": "kanban_upload_intake"
+      "status_source": "kanban_upload_intake",
+      "pending_corrections": 1,
+      "pending_note": "蒸的拼音要改，等孩子订正"
     },
     {
       "task_id": "REG-20261102-9AB5F5",
@@ -161,7 +171,7 @@
       "title": "抄12课词语(2次)和12课日积月(2次)",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①预习5课；②抄12课词语(2次)和12课日积月(2次) → 待完成",
@@ -170,8 +180,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T21:00:31.934599+08:00",
-      "status_source": "kanban_upload_intake"
+      "updated_at": "2026-11-02T22:30:00+08:00",
+      "status_source": "kanban_upload_intake",
+      "pending_corrections": 1,
+      "pending_note": "抄词语1个词要改，等孩子订正"
     },
     {
       "task_id": "REG-20261102-A01759",
