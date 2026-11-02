@@ -82,7 +82,7 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T23:04:53+08:00",
+      "updated_at": "2026-11-02T23:46:57+08:00",
       "pending_corrections": 2,
       "pending_note": "彦均·53天天练语文反馈：少年中国说2处要改",
       "corrections": [
@@ -90,8 +90,8 @@
           "label": "第3题",
           "question": "少年中国说第3题：地履其黄的履是什么意思？",
           "orig_text": "53天天练语文《少年中国说》第3题：地履其黄的履是什么意思",
-          "hint": "是踩、踏，还是履行？想一想哪个解释才是错的。",
-          "reason": "对履的解释辨析不对",
+          "hint": "你这次选的这个选项，它的解释本身是对的，所以它不是‘有误’的那一项；再看一遍四个选项，哪个解释跟原意对不上？",
+          "reason": "第一轮：对履的解释辨析不对",
           "img": "",
           "img_exempt": "图后补"
         },
@@ -99,8 +99,8 @@
           "label": "第5题第1小题",
           "question": "少年中国说第5题第1小题：少年中国说应该读出什么感情？",
           "orig_text": "53天天练语文《少年中国说》第5题第1小题：读出什么感情",
-          "hint": "是激昂豪迈，还是伤感？想想哪个说法跟这篇的感情不符。",
-          "reason": "对文章感情的把握不对",
+          "hint": "你这次选的这个说法，读起来也是对的读法，所以它不是‘不正确’的那一项；再想想，哪个说法跟这篇的感情不符？",
+          "reason": "第一轮：对文章感情的把握不对",
           "img": "",
           "img_exempt": "图后补"
         }
@@ -117,7 +117,7 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-02T16:55:52+08:00",
-      "updated_at": "2026-11-02T23:25:12+08:00",
+      "updated_at": "2026-11-02T23:46:57+08:00",
       "pending_corrections": 2,
       "pending_note": "53天天练数学订正反馈",
       "corrections": [
@@ -126,7 +126,7 @@
           "question": "10题第1小题最后一空：0.21×150=( )",
           "orig_text": "53天天练数学10题第1小题：根据21×15=315填括号，0.21×150=( )",
           "hint": "先算21×150得多少，再数一数0.21有几位小数，小数点该点在哪一位？",
-          "reason": "小数点位置不对",
+          "reason": "第一轮：小数点位置不对",
           "q_img_exempt": "原题无图",
           "img": "g5_corr_math_q10_1.png"
         },
@@ -135,7 +135,7 @@
           "question": "11题：李老师要买248份奖品，每份奖品7.3元，准备了2000元，够吗？下面4名同学中，谁的估算方法能解决这个问题？",
           "orig_text": "53天天练数学11题：李老师买248份奖品，每份7.3元，准备2000元，够吗",
           "hint": "问够不够，要往大里估才保险，想想哪种估法是把单价和数量都往大里估的？",
-          "reason": "估算方法不对",
+          "reason": "第一轮：估算方法不对",
           "q_img": "d53_math_q11_orig.jpg",
           "img": "g5_corr_math_q11.png"
         }
@@ -191,7 +191,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T23:29:10+08:00",
+      "updated_at": "2026-11-02T23:46:57+08:00",
       "status_source": "kanban_upload_watch",
       "pending_corrections": 1,
       "pending_note": "彦均·校本34页订正反馈",
@@ -201,7 +201,7 @@
           "question": "基础练习第（4）题：举例验证乘除规律",
           "orig_text": "校本34页基础练习第（4）题：举例验证乘除规律",
           "hint": "这次用了减法（两边同时减1），但这题要验证的是乘除规律；先写一个等式，再让两边同时乘一个数或者同时除以一个数，你写的例子是这个样子吗？",
-          "reason": "举的例子不符合要求",
+          "reason": "第一轮：举的例子不符合要求",
           "q_img_exempt": "原题无图",
           "img": "g5_corr_xb_q4.png"
         }
@@ -214,7 +214,7 @@
       "title": "预习15课",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①预习5课；②抄12课词语(2次)和12课日积月(2次) → 待完成",
@@ -223,22 +223,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T23:36:04+08:00",
+      "updated_at": "2026-11-02T23:46:57+08:00",
       "task_type": "reading",
       "status_source": "kanban_upload_intake",
-      "pending_corrections": 1,
-      "pending_note": "彦均·语文预习反馈：《太阳》预习了，蒸的拼音改一下",
-      "corrections": [
-        {
-          "label": "蒸的拼音",
-          "question": "《太阳》预习生字格：给生字蒸注音",
-          "orig_text": "《太阳》第67页生字格：给生字蒸注音",
-          "hint": "你写的比书上少了一个字母，对一下生字表，看看少了哪个字母，改对后告诉我。",
-          "reason": "拼音少了一个字母",
-          "img": "",
-          "img_exempt": "图后补"
-        }
-      ]
+      "pending_corrections": 0,
+      "pending_note": "蒸的拼音已改对",
+      "corrections": []
     },
     {
       "task_id": "REG-20261102-9AB5F5",
@@ -256,17 +246,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-02T23:15:56+08:00",
+      "updated_at": "2026-11-02T23:46:57+08:00",
       "status_source": "kanban_upload_intake",
       "pending_corrections": 1,
-      "pending_note": "彦均·语文抄写反馈：1个词要改",
+      "pending_note": "抄词语1个词要改，等孩子订正",
       "corrections": [
         {
           "label": "抄词语",
           "question": "12课词语抄写：抄写桂花香前面那个词",
           "orig_text": "桂花雨12课词语抄写：桂花香前面那个词",
-          "hint": "你写成了笨笨的，对照一下课文，看看那个词到底是哪三个字，改对后告诉我。",
-          "reason": "词语写错了",
+          "hint": "整页重抄了很认真，但桂花香前面那个词还是原来的写法，对照课文再看一次那个词是哪三个字",
+          "reason": "第一轮：词语写错了",
           "img": "",
           "img_exempt": "图后补"
         }
