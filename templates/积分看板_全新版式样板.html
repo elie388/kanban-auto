@@ -5502,7 +5502,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261102-weathertriggers';
+  var KB_BUILD = '20261102-weathertriggers-realtime-port1';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -7641,12 +7641,59 @@ function mapState(s){
         var changed = lastManifest ? S2.changedFiles(lastManifest, newMan) : [];
         lastManifest = newMan;
         if(!changed.length) return;
-        var jobs = changed.map(function(name){
+        /* B-REALTIME: bundle-first data fetch (manifest already decided by pollOnce).
+           Bundle supplies DATA only; decide/lock/R-codes unchanged (pollOnce ran first,
+           tick already early-returns when locked, so bundle is never fetched locked).
+           Bundle manifest must match pollOnce manifest version, else discard (skew guard).
+           Any bundle failure -> existing per-file path; per-file failure -> existing
+           static fallback (unchanged). Bundle values are raw JSON strings (like
+           /kb-data/ raw bodies); parse each, parse/missing -> per-file for that file. */
+        var BUNDLE_FILES = ['tasks_daily_5.json','tasks_daily_6.json','feedback_5.json','feedback_6.json','shop.json'];
+        function isBundleFile(name){ return BUNDLE_FILES.indexOf(name) !== -1; }
+        function fetchOne(name){
           return client.fetchDynamicFile(name).then(function(d){
             if(d !== null) cache[name] = d;
           }, function(){});
-        });
-        Promise.all(jobs).then(function(){ refreshForFiles(changed); });
+        }
+        function fetchBundle(){
+          try{
+            var bundleBase = (window.location.hostname === 'whyjjf.lol') ? window.location.origin + '/hw-api' : 'https://homework-upload.whyjjf.workers.dev';
+            var url = bundleBase + '/realtime';
+            var ctrl = null, timer = null;
+            if(typeof AbortController !== 'undefined'){ ctrl = new AbortController(); timer = setTimeout(function(){ ctrl.abort(); }, 5000); }
+            var p = nativeFetch(url, ctrl ? {signal: ctrl.signal} : {});
+            return p.then(function(r){
+              if(timer) clearTimeout(timer);
+              if(!r.ok) throw new Error('bundle http ' + r.status);
+              return r.json();
+            }).then(function(b){
+              if(!b || b.ok !== true || typeof b.data !== 'object' || !b.manifest) throw new Error('bundle bad body');
+              return b;
+            }, function(e){ if(timer) clearTimeout(timer); throw e; });
+          }catch(e){ return Promise.reject(e); }
+        }
+        var bundleChanged = changed.filter(isBundleFile);
+        if(!bundleChanged.length){
+          var jobs0 = changed.map(fetchOne);
+          Promise.all(jobs0).then(function(){ refreshForFiles(changed); });
+        }else{
+          fetchBundle().then(function(bundle){
+            var bundleOk = !!(bundle.manifest && bundle.manifest.version === newMan.version);
+            var jobs = [];
+            changed.forEach(function(name){
+              if(bundleOk && isBundleFile(name)){
+                var raw = bundle.data ? bundle.data['kb:data:' + name] : undefined;
+                if(typeof raw === 'string'){
+                  try{ cache[name] = JSON.parse(raw); return; }catch(e){}
+                }
+              }
+              jobs.push(fetchOne(name));
+            });
+            return Promise.all(jobs);
+          }, function(){
+            return Promise.all(changed.map(fetchOne));
+          }).then(function(){ refreshForFiles(changed); });
+        }
       }).catch(function(){});
     }catch(e){}
     setTimeout(tick, 10000);
