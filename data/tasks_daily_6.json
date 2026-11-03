@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T21:06:05+08:00",
+  "updated_at": "2026-11-03T21:06:54+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -325,22 +325,8 @@
       },
       "created_at": "2026-11-03T20:14:48+08:00",
       "updated_at": "2026-11-03T21:02:00+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "六月二十七日望湖楼醉书默写",
-          "question": "望湖楼醉书4句默写，第二句第二个字错",
-          "reason": "第二句第二个字写错：写成了云，应为雨（黑云翻墨未遮山在先，第二句写的是雨）",
-          "hint": "望湖楼第二句第二个字错了：第一句是黑云，第二句写的是雨还是云？对仗着想一想，再把整句默写一遍",
-          "img": "",
-          "q_img": "",
-          "orig_text": "默写《六月二十七日望湖楼醉书》",
-          "q_img_exempt": "默写任务无印刷题面，课本原文照片已附在本批中",
-          "img_exempt": "默写订正类，文字引导已说清对仗线索，图讲不清",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
+      "corrections": [],
+      "pending_corrections": 0,
       "status_source": "manual"
     },
     {
