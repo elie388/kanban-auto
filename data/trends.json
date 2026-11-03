@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03T20:45:57+08:00",
+ "updated_at": "2026-11-03T21:00:41+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-05",
@@ -65,7 +65,7 @@
     47.5,
     61.1,
     null,
-    80.0
+    84.2
    ],
    "empty": false,
    "sparse": false,
@@ -101,7 +101,7 @@
       60.0,
       55.1,
       null,
-      null
+      100.0
      ],
      "weak": [
       {
@@ -225,7 +225,7 @@
       46.2,
       51.7,
       null,
-      null
+      100.0
      ],
      "weak": [
       {
@@ -289,7 +289,7 @@
     83.0,
     83.7,
     70.7,
-    33.3
+    66.7
    ],
    "empty": false,
    "sparse": false,
@@ -325,7 +325,7 @@
       85.7,
       79.3,
       59.5,
-      100.0
+      75.0
      ],
      "weak": [
       {
@@ -387,7 +387,7 @@
       75.0,
       100.0,
       100.0,
-      null
+      100.0
      ],
      "weak": [
       {
@@ -449,7 +449,7 @@
       85.7,
       73.8,
       80.6,
-      0.0
+      50.0
      ],
      "weak": [
       {
@@ -655,19 +655,6 @@
      "pending_share": 0.5,
      "backfill_share": 0.0,
      "small_sample": false
-    },
-    "2026-11-03": {
-     "reason": "all_wrong",
-     "rules": [
-      "small_sample",
-      "all_wrong"
-     ],
-     "judged": 2,
-     "correct": 0,
-     "pending": 0,
-     "pending_share": 0.0,
-     "backfill_share": 0.0,
-     "small_sample": true
     }
    }
   }
@@ -708,6 +695,17 @@
    "small_sample_flag": true
   },
   {
+   "date": "2026-11-03",
+   "grade": "五年级",
+   "subject": "语文",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 3,
+   "small_sample_flag": true
+  },
+  {
    "date": "2026-10-28",
    "grade": "五年级",
    "subject": "数学",
@@ -731,6 +729,17 @@
    "small_sample_flag": true
   },
   {
+   "date": "2026-11-03",
+   "grade": "五年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
+   "small_sample_flag": true
+  },
+  {
    "date": "2026-10-10",
    "grade": "六年级",
    "subject": "语文",
@@ -749,7 +758,7 @@
    "rules": [
     "small_sample"
    ],
-   "judged": 1,
+   "judged": 4,
    "small_sample_flag": true
   },
   {
@@ -772,6 +781,17 @@
     "small_sample"
    ],
    "judged": 2,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-11-03",
+   "grade": "六年级",
+   "subject": "数学",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
    "small_sample_flag": true
   },
   {
@@ -844,12 +864,11 @@
    "date": "2026-11-03",
    "grade": "六年级",
    "subject": "英语",
-   "reason": "all_wrong",
+   "reason": null,
    "rules": [
-    "small_sample",
-    "all_wrong"
+    "small_sample"
    ],
-   "judged": 2,
+   "judged": 4,
    "small_sample_flag": true
   }
  ],
