@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T22:35:31+08:00",
+  "updated_at": "2026-11-03T22:38:00+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -60,7 +60,14 @@
       "status_source": "manual",
       "corrections": [],
       "pending_corrections": 0,
-      "completed_at": "2026-11-03T22:35:31+08:00"
+      "completed_at": "2026-11-03T22:35:31+08:00",
+      "orig_photos": [
+        "b5121ffca5c47854.jpg",
+        "d3b0646aa97b0811.jpg",
+        "1fe4a2f420f17b4c.jpg",
+        "ac4aba928b82a895.jpg",
+        "a7210e21c6349a1c.jpg"
+      ]
     },
     {
       "task_id": "META-REGISTER-2026-11-03",
@@ -225,22 +232,8 @@
       "created_at": "2026-11-03T19:31:22+08:00",
       "updated_at": "2026-11-03T22:30:00+08:00",
       "status_source": "manual",
-      "corr_round": 3,
-      "corrections": [
-        {
-          "label": "小测练习(4)第9题再次订正",
-          "question": "各图形能不能密铺，能的打√",
-          "reason": "正六边形红笔补√已对，但正五边形黑笔√仍在未去掉",
-          "hint": "六边形这格补得对！再想想正五边形：正五边形一个角是多少度？几个角拼在一起能正好凑满360°？3个够吗？4个是不是又超了？拼一拼、算一算，再决定这格该不该打勾。",
-          "img": "g5_xiaoce4_q9_guide.png",
-          "q_img": "g5_xiaoce4_q9_orig.png",
-          "orig_text": "9、下面各图形能不能密铺？能的打√。正方形、圆形、长方形、三角形、正五边形、平行四边形、正六边形。",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 3
-        }
-      ],
-      "pending_corrections": 1
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261103-BD1D8C",
