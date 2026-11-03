@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T21:42:58+08:00",
+  "updated_at": "2026-11-03T21:53:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -295,7 +295,7 @@
       "title": "试卷（听力笔试部分，并改正）",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
@@ -304,24 +304,21 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T21:42:58+08:00",
-      "status_source": "manual",
-      "corr_round": 2,
-      "corrections": [
-        {
-          "label": "笔试十书面表达订正",
-          "question": "We can by bike in school一句（订正未改对）",
-          "reason": "by bike句仍未补动词、未改地点，无内容改动",
-          "hint": "这句话里by bike前面缺一个动词，“骑车”这个动作少了谁？再想想in school骑车合不合适，地点要不要改？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "十、书面表达。Protect Our School Environment：We can by bike in school.",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 2
-        }
-      ],
-      "pending_corrections": 1
+      "updated_at": "2026-11-03T21:53:10+08:00",
+      "status_source": "closeout_writeback",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-03T21:53:10+08:00",
+      "orig_photos": [
+        "576a56bc93cc23c7.jpg",
+        "e4e7b4a931f5819f.jpg",
+        "f136e252212a1297.jpg",
+        "1b15a7c7ddf2a450.jpg",
+        "b2d9cb2b969074f1.jpg",
+        "9a24fff0619abf4a.jpg",
+        "6e9d80691b0486e5.jpg",
+        "482ec44ad5d47db4.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261103-001",
@@ -347,8 +344,8 @@
   "counts": {
     "total": 12,
     "pending": 4,
-    "in_progress": 2,
-    "done": 6,
+    "in_progress": 1,
+    "done": 7,
     "pending_review": 0
   },
   "deadline_today": "2026-11-03T22:30:00+08:00"
