@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T20:28:54+08:00",
+  "updated_at": "2026-11-03T20:29:14+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -131,7 +131,7 @@
       "title": "抄U2单词和中文各4次，背10次",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
@@ -140,9 +140,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:26:25+08:00",
+      "updated_at": "2026-11-03T20:29:14+08:00",
       "task_type": "reading",
-      "status_source": "kanban_upload_intake",
+      "status_source": "closeout_pack_status_fix",
       "corr_round": 1,
       "corrections": [
         {
@@ -349,7 +349,7 @@
   "counts": {
     "total": 15,
     "pending": 11,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 3,
     "pending_review": 0
   },
