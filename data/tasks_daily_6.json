@@ -3,12 +3,12 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T23:05:00+08:00",
+  "updated_at": "2026-11-03T23:10:36+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-03T20:14:48+08:00",
-      "new_lines": 10
+      "ingested_at": "2026-11-03T23:10:36+08:00",
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
