@@ -530,7 +530,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 0,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W45",
- "generated_at": "2026-11-03T23:00:04+08:00"
+ "generated_at": "2026-11-04T00:00:07+08:00"
 }
