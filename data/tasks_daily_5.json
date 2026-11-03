@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T20:52:42+08:00",
+  "updated_at": "2026-11-03T21:01:13+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -187,7 +187,7 @@
       "title": "试卷签名①②③④",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
@@ -196,8 +196,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:24:10.158836+08:00",
-      "status_source": "kids_upload_watch:b1793708460848272d68a585aa2208"
+      "updated_at": "2026-11-03T21:01:13+08:00",
+      "status_source": "manual",
+      "completed_at": "2026-11-03T21:01:13+08:00"
     },
     {
       "task_id": "REG-20261103-EF2F90",
@@ -327,7 +328,7 @@
     "total": 12,
     "pending": 5,
     "in_progress": 1,
-    "done": 5,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-03T22:30:00+08:00"
