@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-03T22:18:29+08:00",
+ "generated_at": "2026-11-03T22:35:14+08:00",
  "items": [
   {
    "date": "2026-11-03",
@@ -50,6 +50,14 @@
    "time": "",
    "title": "11月3日英语批改反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语批改反馈</h2>\n<p>11月3日 21:49 提交订正</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>书面表达by bike那句改对了！“We can go to school by bike.”动词、by bike、地点都对了，笔试分升到60分满分，为你点赞！</li>\n</ul>\n<h3>一个小提醒</h3>\n<ul>\n<li>第二句“We can ride to school”也很好，记得句末补上句号，句子才完整。</li>\n</ul>\n<h3>听力说明</h3>\n<ul>\n<li>听力40分还不能独立核分（没有听力音频），等有音频或老师答案再核。</li>\n</ul>\n</body></html>"
+  },
+  {
+   "date": "2026-11-03",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月3日读书批改反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，读书批改反馈</h2>\n<p>11月3日 22:25 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>今天读了《瞬间的感动》和《包粽子》，录音408秒，读得完整、流利，没有跳段，为你点赞！连续读书第3天，再坚持1天就能拿到朗读之星，继续加油！</li>\n</ul>\n</body></html>"
   },
   {
    "date": "2026-11-02",
@@ -234,14 +242,6 @@
    "time": "2026-11-01 20:25",
    "title": "11月1日语文批改反馈",
    "html": "<p>你好呀，这次订正有进步：第 3 题把“香气扑鼻”写出来了，比上一轮更完整了，继续加油！</p><p>第 3 题：<span style=\"color:red;font-weight:bold;\">还缺一个更具体的说法</span>——你现在写了香气扑鼻、让人陶醉、很香，但形容香气还有一个更具体的说法没写出来，再读读第一段里写香气的句子，找找那个说法。</p><p>第 4 题：<span style=\"color:red;font-weight:bold;\">还缺第一段那个比喻</span>——你现在写的是落花那个比喻，本题问的是桂花本身，再读读第一段，远远望去，桂花像什么？</p><p>这次两题都还没改对，不加分。两题继续订正，今晚 22:30 前发回。</p>"
-  },
-  {
-   "date": "2026-11-01",
-   "ts": "2026-11-01T19:58:00+08:00",
-   "kind": "feedback",
-   "time": "2026-11-01 19:58",
-   "title": "数学周日卷订正（第五轮）",
-   "html": "<p>这次涂改了两次，态度很好，但这道题还要再改一次，本批没有加分，再改对就加分。</p><p>还剩 1 处要改：</p><ul><li>填空第 2 题：<span style=\"color:red;font-weight:bold;\">还缺最后那个得数没算对</span>，再读读题：小数点向左移动一位，得到的数是原数的十分之一，少的 72 对应原数的多少？画个图想想，再算一次发回来。</li></ul><p>再改一次发回来，我再帮你看！</p>"
   }
  ]
 }
