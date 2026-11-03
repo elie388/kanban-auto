@@ -1866,7 +1866,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
               + '<span class="corr-h">' + esc(x.a || '') + '</span>'
               + '</div>';
           });
-          /* 待改正轮次徽标（2026-11-01 家长点选“写第3次”）：轮次取题目/错因里的“第x轮”，与题目现有轮次一致；无轮次文本或多题轮次不同时不显示数字，防误导。 */
+          /* 待改正轮次徽标（2026-11-01 家长点选“写第3次”；2026-11-03 根治）：轮次优先读逐项结构化 round，次读题目/错因里的“第x轮”（遗留兼容），全缺时读任务级 corr_round；与题目现有轮次一致；无轮次或多题轮次不同时不显示数字，防误导。 */
           var kbRoundNum = function(str){
             var m = (str || '').match(/第([一二三四五六七八九十]+)轮/);
             if(!m) return 0;
@@ -1879,12 +1879,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             return map[t] || 0;
           };
           var kbCorrRound = function(c){
+            if(typeof c.round === 'number' && c.round > 0) return c.round;
             return kbRoundNum(c.question) || kbRoundNum(c.reason);
           };
           var roundTxt = (function(){
             var rs = corrList.map(kbCorrRound);
             var first = rs[0] || 0;
-            if(!first) return '';
+            if(!first){
+              /* 2026-11-03 待改正轮次根治：逐项轮次全缺时，任务级 corr_round
+                 兜底（同步剥离逐项 round 后仍能显示）；无任务级轮次则不显示，绝不硬编。 */
+              if(typeof t.corr_round === 'number' && t.corr_round > 0) return ' · 第' + t.corr_round + '次改正';
+              return '';
+            }
             for(var i = 0; i < rs.length; i++){ if(rs[i] !== first) return ''; }
             return ' · 第' + first + '次改正';
           })();
@@ -5502,7 +5508,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261102-fishinteract1';
+  var KB_BUILD = '20261103-roundfix1';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
