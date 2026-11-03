@@ -5508,7 +5508,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261103-fishinteract';
+  var KB_BUILD = '20261103-printfix';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6474,7 +6474,7 @@ function kbSharePdf(url, name){
   function openPdf(){ alert('当前浏览器不支持分享这份 PDF，请用 Safari 打开看板（whyjjf.lol）后再点打印。'); }
   try {
     if(navigator.canShare){
-      fetch(url).then(function(r){ return r.blob(); }).then(function(blob){
+      fetch(url).then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); }).then(function(blob){
         var f = new File([blob], name || 'file.pdf', { type: 'application/pdf' });
         if(navigator.canShare({ files: [f] })){ navigator.share({ files: [f] }).catch(function(err){ if(!err || err.name !== 'AbortError') openPdf(); }); }
         else openPdf();
@@ -6492,6 +6492,7 @@ function kbSharePdf(url, name){
    - 用户取消分享（AbortError）静默复位，不报错扰人。
    口令门与 kbOpenPrint 同一道（无设备令牌先过 kbAskPass，过了门再分享）。 */
 var KB_PDF_FILE_CACHE = {}; /* pdfUrl -> {file, promise, failed} */
+var KB_PDF_RETRY = {}; /* pdfUrl -> retry count (2026-11-03 print fix) */
 function kbPdfFileName(url, fallback){
   var n = fallback || '';
   if(!n && url){ try { n = decodeURIComponent(String(url).split('/').pop() || ''); } catch(e){ n = ''; } }
@@ -6544,7 +6545,17 @@ function kbPrintShareGo(name, pages, pdfUrl, fileName, gradeName, btn){
   function fallback(){ kbOpenPrint(name, pages, pdfUrl, fileName, gradeName); }
   if(!pdfUrl || typeof navigator === 'undefined' || !navigator.share || typeof navigator.canShare !== 'function'){ fallback(); return; }
   var ent = kbPrefetchPdf(pdfUrl, fileName);
-  if(ent && ent.failed){ fallback(); return; }
+  if(ent && ent.failed){
+    /* 2026-11-03 打印修复：预取失败曾被永久缓存（文件后补也一直走降级空白页）。失败后先重试一次（清缓存重取），仍失败才降级。 */
+    if((KB_PDF_RETRY[pdfUrl] || 0) < 1){
+      KB_PDF_RETRY[pdfUrl] = (KB_PDF_RETRY[pdfUrl] || 0) + 1;
+      delete KB_PDF_FILE_CACHE[pdfUrl];
+      kbPrefetchPdf(pdfUrl, fileName);
+      if(btn) kbPrintHint(btn, '打印文件准备中，请再点一次「打印」。');
+      return;
+    }
+    fallback(); return;
+  }
   var file = ent && ent.file;
   if(file && !file.size){ /* 缓存 File 失效（大小为 0，终审 备案提示①）：清缓存重新预取，走「准备中」路径 */
     delete KB_PDF_FILE_CACHE[pdfUrl];
@@ -6667,6 +6678,7 @@ function kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName){
     + '<button type="button" class="tfile" id="paClose">✕ 关闭</button></div>'
     + '<div class="pa-hint">点「打印 / 分享文件」：会调起系统分享菜单，请在菜单中选「打印」。</div>';
   pages.forEach(function(u){ h += '<img src="' + kbEscT(u) + '" alt="练习页">'; });
+  if((!pages || !pages.length) && pdfUrl){ h += '<embed src="' + kbEscT(pdfUrl) + '" type="application/pdf" style="width:100%;min-height:70vh">'; }
   pa.innerHTML = h;
   document.body.classList.add('kb-printing');
   pa.scrollTop = 0;
