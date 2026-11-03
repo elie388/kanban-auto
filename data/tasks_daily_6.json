@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T20:29:14+08:00",
+  "updated_at": "2026-11-03T20:52:42+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -143,34 +143,8 @@
       "updated_at": "2026-11-03T20:49:00+08:00",
       "task_type": "reading",
       "status_source": "closeout_pack_status_fix",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "抄U2单词和中文各4次",
-          "question": "抄写U2单词和中文，各4次",
-          "reason": "抄错单元：13个词里只有opinion、fact是U2的，其余11个是U1的词，等于把U1词表又抄了一遍",
-          "hint": "翻到课本U2词表开头（96页最下面opinion、fact起），往后一页一页对，把真正的U2单词和中文重新抄4次；抄之前先圈出U2的范围，别把U1的混进来",
-          "img": "",
-          "q_img": "",
-          "orig_text": "抄U2单词和中文各4次",
-          "q_img_exempt": "登记本抄写任务无印刷题面，课本词表页已在提交照片中",
-          "img_exempt": "抄写范围纠正类，文字引导已说清范围，图讲不清",
-          "round": 1
-        },
-        {
-          "label": "背U2单词10次",
-          "question": "背U2单词10次 登记本任务：抄U2单词和中文各4次，背10次",
-          "reason": "本批只有照片、没有录音，背没背无法确认",
-          "hint": "把U2单词背一遍，录一段音发回",
-          "img": "",
-          "q_img": "",
-          "orig_text": "背U2单词10次",
-          "q_img_exempt": "背诵类任务无印刷题面",
-          "img_exempt": "背诵类图讲不清，文字引导已说清",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 2
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261103-D8E3CB",
@@ -308,7 +282,7 @@
       "title": "抄词本默L3",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
@@ -317,7 +291,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:14:48+08:00"
+      "updated_at": "2026-11-03T20:51:45.147334+08:00"
     },
     {
       "task_id": "REG-20261103-BBDE56",
@@ -348,8 +322,8 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 11,
-    "in_progress": 1,
+    "pending": 10,
+    "in_progress": 0,
     "done": 3,
     "pending_review": 0
   },
