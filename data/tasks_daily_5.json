@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T18:55:26+08:00",
+  "updated_at": "2026-11-03T19:02:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-03T19:02:28+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -111,14 +111,43 @@
       "created_at": "2026-11-03T16:56:04+08:00",
       "updated_at": "2026-11-03T16:56:04+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "PRACT-20261103-289282",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-03.docx，按今日练习清单完成",
+      "kousuan": [
+        "2.6×5=",
+        "84+39=",
+        "4.2×3-5.8=",
+        "39.8×3.1≈（估算，结果取整数）",
+        "2.5×7.2×4="
+      ],
+      "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：声音洪亮，吐字清晰，注意“浣”读huàn、“歇”读xiē，以及停顿节奏。\n英语口语任务说明：想象一家人吃晚饭的情景，用英语说一说家人在做什么。提示问题：1. Who is at the table? 2. What do they eat for dinner? 3. Are they happy? Why? 口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-03.docx",
+      "file_hash": "eb90f3000e32614f0182c5c9124d3cda2affd2cc87fb4eccf3bbfd7b945f125d",
+      "created_at": "2026-11-03T19:02:23+08:00",
+      "updated_at": "2026-11-03T19:02:23+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-03.pdf",
+          "label": "练习",
+          "pages": 5
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 7,
+    "pending": 7,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-03T22:30:00+08:00"
 }
