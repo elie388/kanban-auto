@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03T09:20:28+08:00",
+ "updated_at": "2026-11-03T12:40:23+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-05",
@@ -513,6 +513,7 @@
     "2026-10-19": {
      "reason": "pending_ratio=0.43",
      "rules": [
+      "small_sample",
       "pending_ratio=0.43"
      ],
      "judged": 4,
@@ -520,13 +521,14 @@
      "pending": 3,
      "pending_share": 0.429,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": true
     }
    },
    "数学": {
     "2026-10-28": {
      "reason": "all_wrong",
      "rules": [
+      "small_sample",
       "all_wrong"
      ],
      "judged": 1,
@@ -534,7 +536,7 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": true
     },
     "2026-10-30": {
      "reason": "all_wrong",
@@ -659,14 +661,37 @@
  },
  "manual_review_queue": [
   {
+   "date": "2026-10-17",
+   "grade": "五年级",
+   "subject": "语文",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 3,
+   "small_sample_flag": true
+  },
+  {
    "date": "2026-10-19",
    "grade": "五年级",
    "subject": "语文",
    "reason": "pending_ratio=0.43",
    "rules": [
+    "small_sample",
     "pending_ratio=0.43"
    ],
    "judged": 4,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-29",
+   "grade": "五年级",
+   "subject": "语文",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
    "small_sample_flag": true
   },
   {
@@ -675,9 +700,32 @@
    "subject": "数学",
    "reason": "all_wrong",
    "rules": [
+    "small_sample",
     "all_wrong"
    ],
    "judged": 1,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-17",
+   "grade": "五年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 3,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-10",
+   "grade": "六年级",
+   "subject": "语文",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 4,
    "small_sample_flag": true
   },
   {
@@ -692,6 +740,17 @@
    "small_sample_flag": true
   },
   {
+   "date": "2026-11-02",
+   "grade": "六年级",
+   "subject": "数学",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 2,
+   "small_sample_flag": true
+  },
+  {
    "date": "2026-10-06",
    "grade": "六年级",
    "subject": "英语",
@@ -700,6 +759,61 @@
     "adjudicated_M1-pure"
    ],
    "judged": 4,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-10",
+   "grade": "六年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-12",
+   "grade": "六年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 4,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-19",
+   "grade": "六年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-20",
+   "grade": "六年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-10-29",
+   "grade": "六年级",
+   "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
    "small_sample_flag": true
   }
  ],
