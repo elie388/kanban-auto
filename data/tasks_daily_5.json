@@ -148,7 +148,7 @@
       "title": "背小练笔",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
@@ -157,7 +157,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T19:31:22+08:00"
+      "updated_at": "2026-11-03T20:46:07.423283+08:00",
+      "status_source": "kanban_upload_intake"
     },
     {
       "task_id": "REG-20261103-B7D597",
