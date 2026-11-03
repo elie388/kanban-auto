@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T13:34:11+08:00",
+  "updated_at": "2026-11-03T13:37:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -65,35 +65,29 @@
       "title": "【测试卡·家长验证】数学测试题（孩子不用做）",
       "detail": "家长全流程验证专用测试卡，孩子不用做。测试题：1）写出 3 的两倍是多少；2）把 12 平均分成 3 份，每份是多少。请家长用交作业按钮上传一张手写答案照片，即可走上传→批改→反馈全流程。测试产生的分数随后冲正，不计入真实余额。",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "done",
       "review_status": "approved",
       "appear_at": "2026-11-03T12:55:00+08:00",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "测试卡第2题",
-          "question": "测试卡第2题：把12平均分成3份，每份是多少（手写题）",
-          "reason": "除法算错了，份数没有算对",
-          "hint": "重新背一遍三的乘法口诀，想一想哪个数乘3等于12，写出你的思考过程（不直接给答案）",
-          "img": "",
-          "q_img": "",
-          "orig_text": "把12平均分成3份，每份是多少？",
-          "q_img_exempt": "家长验证测试卡无原题图，属测试豁免",
-          "img_exempt": "家长验证测试卡引导图豁免（非孩子真实作业）",
-          "round": 1
-        }
-      ],
+      "pending_corrections": 0,
+      "corrections": [],
       "created_at": "2026-11-03T12:56:52+08:00",
-      "updated_at": "2026-11-03T13:34:11+08:00",
+      "updated_at": "2026-11-03T13:37:37+08:00",
       "status_source": "closeout_writeback",
-      "corr_round": 1
+      "completed_at": "2026-11-03T13:37:37+08:00",
+      "orig_photos": [
+        "83f57870a5e9018b.jpg",
+        "fb123f6b4a6918f8.jpg",
+        "0d42d9cdb14c6f1a.jpg",
+        "320e19629adbf9a8.jpg",
+        "d73eeac3513279fd.jpg"
+      ]
     }
   ],
   "counts": {
     "total": 3,
     "pending": 2,
-    "in_progress": 1,
-    "done": 0,
+    "in_progress": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
