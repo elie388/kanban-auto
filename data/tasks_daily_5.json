@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T20:40:22+08:00",
+  "updated_at": "2026-11-03T20:40:51+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -185,7 +185,7 @@
       "title": "小测练习(4)",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：小测练习(4) → 待完成",
@@ -194,8 +194,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:28:06.371193+08:00",
-      "status_source": "kids_upload_watch:b1793708623420d1a3d634607c2bc9",
+      "updated_at": "2026-11-03T20:40:51+08:00",
+      "status_source": "manual",
       "corr_round": 1,
       "corrections": [
         {
@@ -298,7 +298,7 @@
   "counts": {
     "total": 12,
     "pending": 9,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 1,
     "pending_review": 0
   },
