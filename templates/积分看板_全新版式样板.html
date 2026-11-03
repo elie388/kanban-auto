@@ -5508,7 +5508,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261103-roundfix1';
+  var KB_BUILD = '20261103-uploadfix1';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6115,7 +6115,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         img.onload = function(){
           try{
             var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
-            var maxEdge = 2500;
+            var maxEdge = 1800; /* 2026-11-03 上传提速：2500→1800，实测同图 1.22MB→0.34MB、字迹仍清晰 */
             if(w <= maxEdge && h <= maxEdge && f.size <= 300*1024){ URL.revokeObjectURL(url); res(f); return; }
             var scale = Math.min(1, maxEdge / Math.max(w, h));
             var cw = Math.max(1, Math.round(w*scale)), ch = Math.max(1, Math.round(h*scale));
@@ -6146,6 +6146,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!files.length){ setMsg('还没有选照片/录音/视频哦', 'err'); return; }
     if(files.length > 10){ setMsg('一次最多交10个文件，可以分两次交', 'err'); return; }
     busy = true; $('up-go').disabled = true; setMsg(token() ? '正在准备…' : '正在验证口令…');
+    var __upNow = function(){ return (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now(); };
+    var __upT0 = __upNow(); var __upT = {};
     var pass = $('up-pass') ? $('up-pass').value.trim() : '';
     var ensureToken = token() ? Promise.resolve() :
       /* 双认（2026-10-23 方案 B）：上传面板也走 /auth-dual 一次校验；家长口令在此输对
@@ -6165,8 +6167,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var rows = null;
     ensureToken
       .then(function(){ setMsg('正在压缩照片…'); return Promise.all(files.map(compressImageFile)); })
-      .then(function(cf){ files = cf; rows = files.map(fileRow); return Promise.all(files.map(sha256Of)); })
+      .then(function(cf){ __upT.compress = __upNow(); files = cf; rows = files.map(fileRow); return Promise.all(files.map(sha256Of)); })
       .then(function(shas){
+        __upT.sha = __upNow();
         setMsg('正在准备上传…');
         var meta = files.map(function(f, i){
           var m = {ext: extOf(f), kind: kindOf(f), size: f.size};
@@ -6181,6 +6184,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           message: $('up-message').value.trim() || null, files: meta});
       })
       .then(function(r){
+        __upT.sign = __upNow();
         if(r.status === 401){ try { localStorage.removeItem(LS_TOKEN); } catch(e){}
           $('up-passrow').style.display = 'block';
           if(r.body && r.body.code === 'stale_token') throw new Error('登录已过期啦，请让爸爸或妈妈看一下新口令，输一次就能继续交');
@@ -6203,6 +6207,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         return chain.then(function(){ return sign; });
       })
       .then(function(sign){
+        __upT.put = __upNow();
         setMsg('都传上去了，正在确认…');
         return api('/upload/complete', {batch_id: sign.batch_id}).catch(function(){
           return new Promise(function(res){ setTimeout(res, 1200); }).then(function(){
@@ -6211,12 +6216,14 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         });
       })
       .then(function(r){
+        __upT.complete = __upNow();
         if(r.status === 409) throw new Error('有文件没传成功，看看上面哪一行是红的，重新选它再交一次');
         if(r.status !== 200) throw new Error((r.body && r.body.error) || '确认失败，再试一次');
         var rc = r.body;
         var when = '';
         try { when = new Date(rc.server_ts).toLocaleTimeString('zh-CN', {timeZone:'Asia/Shanghai', hour:'2-digit', minute:'2-digit', hour12:false}); } catch(e){}
-        setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。', 'good');
+        var __upSec = function(a, b){ var s = (a === 't0' ? __upT0 : __upT[a]); var e = __upT[b]; if(typeof s !== 'number' || typeof e !== 'number') return '?'; return ((e - s) / 1000).toFixed(1); };
+        setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。（本次：准备' + __upSec('t0', 'sign') + '秒，上传' + __upSec('sign', 'put') + '秒，确认' + __upSec('put', 'complete') + '秒）', 'good');
         if(cur.mode === 'task') markSubmitted(cur.key, rc.receipt_no);
         $('up-go').textContent = '完成';
         $('up-go').disabled = false;
