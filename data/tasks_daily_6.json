@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T19:02:30+08:00",
+  "updated_at": "2026-11-03T19:06:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,7 +12,7 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-03T19:02:30+08:00",
+      "ingested_at": "2026-11-03T19:06:02+08:00",
       "status": "done"
     },
     "daily_53": {
