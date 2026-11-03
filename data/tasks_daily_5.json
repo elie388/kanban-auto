@@ -1,92 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "grade": "五年级",
-  "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-04T00:07:13+08:00",
+  "generated_at": "2026-11-04T00:17:30+08:00",
+  "updated_at": "2026-11-04T00:17:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-03T23:10:36+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-03T19:10:49+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-03T18:55:26+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261103-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-03T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-03T00:17:31+08:00",
-      "updated_at": "2026-11-04T00:07:13+08:00"
-    },
-    {
-      "task_id": "READ-20261103-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-03T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-03T00:17:40+08:00",
-      "updated_at": "2026-11-03T22:35:31+08:00",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T22:35:31+08:00",
-      "orig_photos": [
-        "b5121ffca5c47854.jpg",
-        "d3b0646aa97b0811.jpg",
-        "1fe4a2f420f17b4c.jpg",
-        "ac4aba928b82a895.jpg",
-        "a7210e21c6349a1c.jpg"
-      ]
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-03",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-03T16:56:04+08:00",
-      "updated_at": "2026-11-03T19:31:22+08:00",
-      "completed_at": "2026-11-03T19:31:22+08:00",
-      "orig_photos": [
-        "0602fc84f61e0abf.jpg"
-      ]
-    },
     {
       "task_id": "PRACT-20261103-289282",
       "source": "targeted_practice",
@@ -107,7 +42,7 @@
       "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-03.docx",
       "file_hash": "eb90f3000e32614f0182c5c9124d3cda2affd2cc87fb4eccf3bbfd7b945f125d",
       "created_at": "2026-11-03T19:02:23+08:00",
-      "updated_at": "2026-11-03T23:19:39+08:00",
+      "updated_at": "2026-11-04T00:17:30+08:00",
       "files": [
         {
           "name": "五年级针对性练习_2026-11-03.pdf",
@@ -227,196 +162,10 @@
           "round": 1
         }
       ],
-      "pending_corrections": 9
-    },
-    {
-      "task_id": "REG-20261103-C9B412",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄4、5课词语",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:47:33+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:47:33+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "65c916df5fc7b8a6.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-A98B6B",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄书本32页(2次)",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:47:53+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:47:53+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "d66bb2271dd47cf6.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-FB6BF2",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "背小练笔",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:49:38+08:00",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:49:38+08:00",
-      "orig_photos": [
-        "0c6ca577e5be8602.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-B7D597",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "试卷签名①②③④",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T21:01:13+08:00",
-      "status_source": "manual",
-      "completed_at": "2026-11-03T21:01:13+08:00",
-      "orig_photos": [
-        "8c08947371c374d2.jpg"
-      ],
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261103-EF2F90",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小测练习(4)",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：小测练习(4) → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T22:38:22+08:00",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T22:38:22+08:00",
-      "orig_photos": [
-        "baac4e254484e125.jpg",
-        "567b0a273f031d9d.jpg",
-        "b7b7773a0b212fb4.jpg",
-        "37f7f87891dc00d6.jpg",
-        "ea136178c11b0376.jpg",
-        "46c79b76c46eb35b.jpg",
-        "fb8ed8cacacccf8b.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-BD1D8C",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:48:49+08:00",
-      "task_type": "reading",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:48:49+08:00",
-      "orig_photos": [
-        "e49a49fa428e07ff.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-1FC682",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "试卷（听力笔试部分，并改正）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T21:53:10+08:00",
-      "status_source": "closeout_writeback",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T21:53:10+08:00",
-      "orig_photos": [
-        "576a56bc93cc23c7.jpg",
-        "e4e7b4a931f5819f.jpg",
-        "f136e252212a1297.jpg",
-        "1b15a7c7ddf2a450.jpg",
-        "b2d9cb2b969074f1.jpg",
-        "9a24fff0619abf4a.jpg",
-        "6e9d80691b0486e5.jpg",
-        "482ec44ad5d47db4.jpg"
-      ]
+      "pending_corrections": 9,
+      "carry_first_date": "2026-11-03",
+      "carried_from": "2026-11-03",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261103-001",
@@ -429,22 +178,25 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-03T20:04:28+08:00",
-      "updated_at": "2026-11-03T20:04:28+08:00",
+      "updated_at": "2026-11-04T00:17:30+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-11-03.pdf",
           "label": "练习",
           "pages": 2
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-03",
+      "carried_from": "2026-11-03",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 2,
+    "total": 2,
+    "pending": 1,
     "in_progress": 0,
-    "done": 9,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-03T22:30:00+08:00"
+  "deadline_today": null
 }

@@ -1,39 +1,74 @@
 {
- "date": "2026-11-02",
+ "date": "2026-11-03",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-02",
+   "task_id": "CHORE-20261103-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-03",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261102-A50255",
-   "title": "背U3单词，课文6次",
+   "task_id": "REG-20261103-E1ED8F",
+   "title": "抄U2单词和中文各4次，背10次",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261102-204EBC",
-   "title": "读作文作文15分钟，记录",
-   "subject": "语文",
+   "task_id": "REG-20261103-D8E3CB",
+   "title": "抄“动词ing”笔记，明早抽背",
+   "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261102-CDEA96",
-   "title": "读背《送元二使安西》并默抄词本",
-   "subject": "语文",
+   "task_id": "REG-20261103-A938D1",
+   "title": "复习U1",
+   "subject": "英语早读",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261102-58CB89",
+   "task_id": "REG-20261103-FAE3F3",
    "title": "读背概念4.52",
    "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261103-9434F8",
+   "title": "课本P55.56 1-5（写在堂上作业本）",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261103-EB620E",
+   "title": "校本园地四",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261103-798C82",
+   "title": "抄词本默L3",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261103-BBDE56",
+   "title": "读课外书、记录",
+   "subject": "语文",
    "source": "register_book",
    "group": "study"
   }
