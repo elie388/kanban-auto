@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T21:27:06+08:00",
+  "updated_at": "2026-11-03T21:27:41+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -175,7 +175,10 @@
       "corrections": [],
       "pending_corrections": 0,
       "status_source": "manual",
-      "completed_at": "2026-11-03T21:12:25+08:00"
+      "completed_at": "2026-11-03T21:12:25+08:00",
+      "orig_photos": [
+        "8739699a17a823cf.jpg"
+      ]
     },
     {
       "task_id": "REG-20261103-A938D1",
@@ -240,23 +243,15 @@
       "created_at": "2026-11-03T20:14:48+08:00",
       "updated_at": "2026-11-03T21:27:06+08:00",
       "status_source": "manual",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "课本P55第2题",
-          "question": "去年24小时、现在18小时，现在比去年减少几分之几",
-          "reason": "除数用错：求比去年减少几分之几，整体1是去年（24小时），不应除以现在的18小时",
-          "hint": "现在比去年减少了几分之几，整体1是去年还是现在？问题里说比谁减少，整体1就是谁；先减法求出减少了几小时，再除以整体1的量。想想除数该用24还是18，再重做一遍",
-          "img": "g6_p5556_q2_guide.png",
-          "q_img": "g6_p5556_q2_orig.png",
-          "orig_text": "课本P55第2题：去年乘火车去姥姥家用了24小时，现在火车提速了，18小时就能到。现在用的时间比去年减少了几分之几？",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
-      "completed_at": "2026-11-03T21:27:06+08:00"
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-03T21:27:06+08:00",
+      "orig_photos": [
+        "67ad40142ca14e03.jpg",
+        "c604624e9bb12d7d.jpg",
+        "cb56658992b769e7.jpg",
+        "831c3a05e6374fe0.jpg"
+      ]
     },
     {
       "task_id": "REG-20261103-D0F863",
