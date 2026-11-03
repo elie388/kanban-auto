@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T20:21:45+08:00",
+  "updated_at": "2026-11-03T20:25:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -76,7 +76,10 @@
       "created_by": "system",
       "created_at": "2026-11-03T16:56:04+08:00",
       "updated_at": "2026-11-03T20:14:48+08:00",
-      "completed_at": "2026-11-03T20:14:48+08:00"
+      "completed_at": "2026-11-03T20:14:48+08:00",
+      "orig_photos": [
+        "294d3522c80e5fec.jpg"
+      ]
     },
     {
       "task_id": "PRACT-20261103-0DCA71",
@@ -304,7 +307,9 @@
       },
       "created_at": "2026-11-03T20:14:48+08:00",
       "updated_at": "2026-11-03T20:21:45+08:00",
-      "status_source": "kids_upload_watch:b17937083906641f44046dfb0690d1"
+      "status_source": "kids_upload_watch:b17937083906641f44046dfb0690d1",
+      "corrections": [],
+      "pending_corrections": 0
     }
   ],
   "counts": {
