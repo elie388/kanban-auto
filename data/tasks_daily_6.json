@@ -1,368 +1,368 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-03",
-  "grade": "六年级",
-  "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T21:07:03+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-03T20:14:48+08:00",
-      "new_lines": 10
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-03T19:10:49+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-03T18:55:26+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-03",
+ "grade": "六年级",
+ "generated_at": "2026-11-03T00:17:16+08:00",
+ "updated_at": "2026-11-03T21:07:03+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-03T20:14:48+08:00",
+   "new_lines": 10
   },
-  "tasks": [
-    {
-      "task_id": "READ-20261102-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-03T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-02T00:17:37+08:00",
-      "updated_at": "2026-11-03T00:17:40+08:00",
-      "carry_first_date": "2026-11-02",
-      "carried_from": "2026-11-02",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261103-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-03T17:30:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-03T00:17:31+08:00",
-      "updated_at": "2026-11-03T20:04:50+08:00",
-      "completed_at": "2026-11-03T19:48:41+08:00",
-      "evidence": "家务判定通过——扫地；证据：看板家务上传批次 b1793706430097e43c714fe180148d（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-03",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-03T16:56:04+08:00",
-      "updated_at": "2026-11-03T20:14:48+08:00",
-      "completed_at": "2026-11-03T20:14:48+08:00",
-      "orig_photos": [
-        "294d3522c80e5fec.jpg"
-      ]
-    },
-    {
-      "task_id": "PRACT-20261103-0DCA71",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "六年级针对性练习_2026-11-03.docx，按今日练习清单完成",
-      "kousuan": [],
-      "recite_text": "语文背诵：《竹石》（郑燮）\n原文：咬定青山不放松，立根原在破岩中。千磨万击还坚劲，任尔东西南北风。\n朗读要求：声音洪亮，吐字清晰，语调沉着有力，前半句读得稳重，后半句读出豪迈与顽强，注意停顿和节拍。\n英语口语任务说明：围绕“My school day”进行问答。提示问题：1. What time do you usually get up on school days? 2. What subjects did you study at school yesterday? 3. How did you feel about your school day last Friday? Why? 口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意：问题1用一般现在时回答，问题2、3用一般过去时回答。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-03.docx",
-      "file_hash": "7f4535da21448cd78144d53219527c1c7e9dcc3f14facb485f3ffafc175f4b96",
-      "created_at": "2026-11-03T19:02:28+08:00",
-      "updated_at": "2026-11-03T19:02:28+08:00",
-      "files": [
-        {
-          "name": "六年级针对性练习_2026-11-03.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261103-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第14期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-03T20:04:38+08:00",
-      "updated_at": "2026-11-03T20:04:38+08:00",
-      "files": [
-        {
-          "name": "六年级英语阅读写作_2026-11-03.pdf",
-          "label": "练习",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261103-E1ED8F",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄U2单词和中文各4次，背10次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:52:56+08:00",
-      "task_type": "reading",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:52:56+08:00",
-      "orig_photos": [
-        "8fbd490436a667da.jpg",
-        "993defc52299c5f2.jpg",
-        "e1b4a8b8c7a842ec.jpg",
-        "ebafc1c9b5757bc4.jpg",
-        "29a55c5949b4a8d5.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-D8E3CB",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄“动词ing”笔记，明早抽背",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "submitted",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T21:04:00+08:00",
-      "task_type": "reading"
-    },
-    {
-      "task_id": "REG-20261103-A938D1",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "复习U1",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：复习U1 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:58:57+08:00"
-    },
-    {
-      "task_id": "REG-20261103-FAE3F3",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念4.52",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:55:39+08:00",
-      "task_type": "reading",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "manual",
-      "completed_at": "2026-11-03T20:55:39+08:00",
-      "orig_photos": [
-        "a5517ef9f1c45e90.jpg",
-        "20255ccf31808f49.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-9434F8",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "课本P55.56 1-5（写在堂上作业本）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T21:06:05+08:00",
-      "status_source": "manual",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "课本P55第2题",
-          "question": "去年24小时、现在18小时，现在比去年减少几分之几",
-          "reason": "除数用错：求比去年减少几分之几，整体1是去年（24小时），不应除以现在的18小时",
-          "hint": "现在比去年减少了几分之几，整体1是去年还是现在？问题里说比谁减少，整体1就是谁；先减法求出减少了几小时，再除以整体1的量。想想除数该用24还是18，再重做一遍",
-          "img": "",
-          "q_img": "g6_p5556_q2_orig.png",
-          "orig_text": "课本P55第2题：去年乘火车去姥姥家用了24小时，现在火车提速了，18小时就能到。现在用的时间比去年减少了几分之几？",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1
-    },
-    {
-      "task_id": "REG-20261103-D0F863",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背科学十分钟",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:14:48+08:00",
-      "task_type": "reading"
-    },
-    {
-      "task_id": "REG-20261103-84DAA7",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "过关小测",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:14:48+08:00"
-    },
-    {
-      "task_id": "REG-20261103-EB620E",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本园地四",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:14:48+08:00"
-    },
-    {
-      "task_id": "REG-20261103-798C82",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄词本默L3",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T21:07:03+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "manual",
-      "completed_at": "2026-11-03T21:07:03+08:00"
-    },
-    {
-      "task_id": "REG-20261103-BBDE56",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读课外书、记录",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:25:44+08:00",
-      "status_source": "closeout_pack_status_fix",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:25:44+08:00",
-      "orig_photos": [
-        "8da7a7506b6e4723.jpg",
-        "e0d036d7db4635bc.jpg"
-      ]
-    }
-  ],
-  "counts": {
-    "total": 15,
-    "pending": 7,
-    "in_progress": 1,
-    "done": 6,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-03T19:10:49+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-03T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-03T18:55:26+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "READ-20261102-G6",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-03T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-02T00:17:37+08:00",
+   "updated_at": "2026-11-03T00:17:40+08:00",
+   "carry_first_date": "2026-11-02",
+   "carried_from": "2026-11-02",
+   "carry_count": 1
+  },
+  {
+   "task_id": "CHORE-20261103-G6",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "appear_at": "2026-11-03T17:30:00+08:00",
+   "chore_done_count": 2,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-03T00:17:31+08:00",
+   "updated_at": "2026-11-03T20:04:50+08:00",
+   "completed_at": "2026-11-03T19:48:41+08:00",
+   "evidence": "家务判定通过——扫地；证据：看板家务上传批次 b1793706430097e43c714fe180148d（approved）；回写 chore_task_writeback。"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-03",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-03T16:56:04+08:00",
+   "updated_at": "2026-11-03T20:14:48+08:00",
+   "completed_at": "2026-11-03T20:14:48+08:00",
+   "orig_photos": [
+    "294d3522c80e5fec.jpg"
+   ]
+  },
+  {
+   "task_id": "PRACT-20261103-0DCA71",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "六年级针对性练习_2026-11-03.docx，按今日练习清单完成",
+   "kousuan": [],
+   "recite_text": "语文背诵：《竹石》（郑燮）\n原文：咬定青山不放松，立根原在破岩中。千磨万击还坚劲，任尔东西南北风。\n朗读要求：声音洪亮，吐字清晰，语调沉着有力，前半句读得稳重，后半句读出豪迈与顽强，注意停顿和节拍。\n英语口语任务说明：围绕“My school day”进行问答。提示问题：1. What time do you usually get up on school days? 2. What subjects did you study at school yesterday? 3. How did you feel about your school day last Friday? Why? 口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意：问题1用一般现在时回答，问题2、3用一般过去时回答。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-03.docx",
+   "file_hash": "7f4535da21448cd78144d53219527c1c7e9dcc3f14facb485f3ffafc175f4b96",
+   "created_at": "2026-11-03T19:02:28+08:00",
+   "updated_at": "2026-11-03T19:02:28+08:00",
+   "files": [
+    {
+     "name": "六年级针对性练习_2026-11-03.pdf",
+     "label": "练习",
+     "pages": 4
+    }
+   ]
+  },
+  {
+   "task_id": "MANUAL-20261103-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语阅读写作第14期",
+   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-03T20:04:38+08:00",
+   "updated_at": "2026-11-03T20:04:38+08:00",
+   "files": [
+    {
+     "name": "六年级英语阅读写作_2026-11-03.pdf",
+     "label": "练习",
+     "pages": 2
+    }
+   ]
+  },
+  {
+   "task_id": "REG-20261103-E1ED8F",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄U2单词和中文各4次，背10次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:52:56+08:00",
+   "task_type": "reading",
+   "status_source": "manual",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-03T20:52:56+08:00",
+   "orig_photos": [
+    "8fbd490436a667da.jpg",
+    "993defc52299c5f2.jpg",
+    "e1b4a8b8c7a842ec.jpg",
+    "ebafc1c9b5757bc4.jpg",
+    "29a55c5949b4a8d5.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-D8E3CB",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄“动词ing”笔记，明早抽背",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "submitted",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T21:04:00+08:00",
+   "task_type": "reading"
+  },
+  {
+   "task_id": "REG-20261103-A938D1",
+   "source": "register_book",
+   "subject": "英语早读",
+   "title": "复习U1",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语早读：复习U1 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:58:57+08:00"
+  },
+  {
+   "task_id": "REG-20261103-FAE3F3",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读背概念4.52",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:55:39+08:00",
+   "task_type": "reading",
+   "corrections": [],
+   "pending_corrections": 0,
+   "status_source": "manual",
+   "completed_at": "2026-11-03T20:55:39+08:00",
+   "orig_photos": [
+    "a5517ef9f1c45e90.jpg",
+    "20255ccf31808f49.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-9434F8",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "课本P55.56 1-5（写在堂上作业本）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T21:06:05+08:00",
+   "status_source": "manual",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "课本P55第2题",
+     "question": "去年24小时、现在18小时，现在比去年减少几分之几",
+     "reason": "除数用错：求比去年减少几分之几，整体1是去年（24小时），不应除以现在的18小时",
+     "hint": "现在比去年减少了几分之几，整体1是去年还是现在？问题里说比谁减少，整体1就是谁；先减法求出减少了几小时，再除以整体1的量。想想除数该用24还是18，再重做一遍",
+     "img": "g6_p5556_q2_guide.png",
+     "q_img": "g6_p5556_q2_orig.png",
+     "orig_text": "课本P55第2题：去年乘火车去姥姥家用了24小时，现在火车提速了，18小时就能到。现在用的时间比去年减少了几分之几？",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 1
+  },
+  {
+   "task_id": "REG-20261103-D0F863",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读背科学十分钟",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:14:48+08:00",
+   "task_type": "reading"
+  },
+  {
+   "task_id": "REG-20261103-84DAA7",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "过关小测",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:14:48+08:00"
+  },
+  {
+   "task_id": "REG-20261103-EB620E",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本园地四",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:14:48+08:00"
+  },
+  {
+   "task_id": "REG-20261103-798C82",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "抄词本默L3",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T21:07:03+08:00",
+   "corrections": [],
+   "pending_corrections": 0,
+   "status_source": "manual",
+   "completed_at": "2026-11-03T21:07:03+08:00"
+  },
+  {
+   "task_id": "REG-20261103-BBDE56",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读课外书、记录",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T20:14:48+08:00",
+   "updated_at": "2026-11-03T20:25:44+08:00",
+   "status_source": "closeout_pack_status_fix",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-03T20:25:44+08:00",
+   "orig_photos": [
+    "8da7a7506b6e4723.jpg",
+    "e0d036d7db4635bc.jpg"
+   ]
+  }
+ ],
+ "counts": {
+  "total": 15,
+  "pending": 7,
+  "in_progress": 1,
+  "done": 6,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-03T22:30:00+08:00"
 }
