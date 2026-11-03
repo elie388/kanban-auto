@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T20:52:42+08:00",
+  "updated_at": "2026-11-03T20:52:56+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -131,7 +131,7 @@
       "title": "抄U2单词和中文各4次，背10次",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
@@ -140,11 +140,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:49:00+08:00",
+      "updated_at": "2026-11-03T20:52:56+08:00",
       "task_type": "reading",
-      "status_source": "closeout_pack_status_fix",
+      "status_source": "manual",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "completed_at": "2026-11-03T20:52:56+08:00"
     },
     {
       "task_id": "REG-20261103-D8E3CB",
@@ -190,7 +191,7 @@
       "title": "读背概念4.52",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
@@ -199,7 +200,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-03T20:14:48+08:00",
-      "updated_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:52:50+08:00",
       "task_type": "reading"
     },
     {
@@ -322,9 +323,9 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 10,
+    "pending": 9,
     "in_progress": 0,
-    "done": 3,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-11-03T22:30:00+08:00"
