@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T21:31:56+08:00",
+  "updated_at": "2026-11-03T21:42:42+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -306,82 +306,22 @@
       "created_at": "2026-11-03T19:31:22+08:00",
       "updated_at": "2026-11-03T21:38:33+08:00",
       "status_source": "kanban_upload_intake",
-      "corr_round": 1,
+      "corr_round": 2,
       "corrections": [
         {
-          "label": "笔试六选词填空",
-          "question": "笔试六选词填空 登记本任务：英语试卷（听力笔试部分，并改正），2026-11-03 21:25:31上传完成；试卷第2、3、4页照片各1张（缺第1页）",
-          "reason": "第10题介词用错：do与these things之间缺表示“用”的介词，误用了on",
-          "hint": "“用这些东西你能做什么”，“用”这个意思跟do连用时，中间缺一个介词；剩下的词里哪个表示“用、和”的意思？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "六、根据句意，选词填空，其中一个单词是多余的，注意单词的正确形式。10. What can you do ___ these things?",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "笔试七短文填空第1题",
-          "question": "Each of us ___ a box of milk every day",
-          "reason": "主语Each of us为单数，动词have未变第三人称单数形式",
-          "hint": "Each of us 是单数还是复数？主语是单数时，动词have要变什么形式？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "七、根据首字母或中文提示，写出所缺单词。Each of us 1. ___（有）a box of milk every day at school.",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "笔试八对话补全第2题",
-          "question": "Amy问句，Sam答Yes! I have some old milk boxes and plastic bottles.",
-          "reason": "答语Yes! I have some old milk boxes是在回答“家里有没有旧东西”，不是回答“会不会回收”",
-          "hint": "Sam回答“Yes! I have...”是在回答一个什么问题？是问“你会回收吗”，还是问“你家里有没有旧东西”？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "八、选择适当的句子补全对话。Amy: 2. ___ Sam: Yes! I have some old milk boxes and plastic bottles.",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "笔试九（二）第9题",
-          "question": "decompose的意思",
-          "reason": "decompose意为分解，误选消失",
-          "hint": "垃圾要很多年才能decompose，垃圾是慢慢不见了，还是慢慢被自然分解成小块？文中说需要很多年，说明这是一个慢慢变化的过程。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "九（二）9. What does the underlined word “decompose” mean? A.消失 B.融化 C.分解",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "笔试九（二）第10题",
-          "question": "笔试九（二）第10题 登记本任务：英语试卷（听力笔试部分，并改正），2026-11-03 21:25:31上传完成；试卷第2、3、4页照片各1张（缺第1页）",
-          "reason": "短文明确写回收有时也需要能量、不同地方规则不同，误选“完全不需要能量”",
-          "hint": "回到短文找三句话：回收有时也需要能量吗？不同地方的回收规则一样吗？回收对地球帮助大吗？三句里哪句和选项对得上？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "九（二）10. Which of the following is TRUE about recycling? A. It doesn't need energy at all. B. It can help the earth a lot. C. All places have the same recycling rules.",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "笔试十书面表达",
-          "question": "Protect Our School Environment短文，We can by bike in school一句缺动词",
-          "reason": "We can by bike in school一句缺动词，句子不完整；且in school骑车地点不当",
+          "label": "笔试十书面表达订正",
+          "question": "We can by bike in school一句（订正未改对）",
+          "reason": "by bike句仍未补动词、未改地点，无内容改动",
           "hint": "这句话里by bike前面缺一个动词，“骑车”这个动作少了谁？再想想in school骑车合不合适，地点要不要改？",
           "img": "",
           "q_img": "",
           "orig_text": "十、书面表达。Protect Our School Environment：We can by bike in school.",
           "q_img_exempt": "",
           "img_exempt": "图后补",
-          "round": 1
+          "round": 2
         }
       ],
-      "pending_corrections": 6
+      "pending_corrections": 1
     },
     {
       "task_id": "MANUAL-20261103-001",
@@ -407,7 +347,7 @@
   "counts": {
     "total": 12,
     "pending": 4,
-    "in_progress": 2,
+    "in_progress": 1,
     "done": 6,
     "pending_review": 0
   },
