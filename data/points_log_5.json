@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-03T13:45:03+08:00",
+  "generated_at": "2026-11-04T00:00:03+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -998,39 +998,6 @@
       "filtered": false
     },
     {
-      "date": "10-27",
-      "time": "10:24",
-      "time_source": "entry",
-      "reason": "写作文完成与涂改",
-      "pts": 8,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-28"
-    },
-    {
-      "date": "10-27",
-      "time": "10:24",
-      "time_source": "entry",
-      "reason": "12课第二段抄默完成与正确率",
-      "pts": 16,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-28"
-    },
-    {
-      "date": "10-27",
-      "time": "10:24",
-      "time_source": "entry",
-      "reason": "英语阅读写作练习完成",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false,
-      "backfill": true,
-      "posted_date": "10-28"
-    },
-    {
       "date": "10-28",
       "time": "08:42",
       "time_source": "entry",
@@ -1046,69 +1013,6 @@
       "reason": "不整理桌面",
       "pts": -10,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "23:17",
-      "time_source": "entry",
-      "reason": "晚上超11点睡觉",
-      "pts": -10,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "22:05",
-      "time_source": "entry",
-      "reason": "家务跑腿",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "21:15",
-      "time_source": "entry",
-      "reason": "小校本3页数学完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "21:15",
-      "time_source": "entry",
-      "reason": "小校本3页数学正确率80%档",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "21:15",
-      "time_source": "entry",
-      "reason": "校本21页英语完成分",
-      "pts": 10,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "20:20",
-      "time_source": "entry",
-      "reason": "英语口语按时发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "10-27",
-      "time": "19:56",
-      "time_source": "entry",
-      "reason": "家务",
-      "pts": 3,
-      "sign": "plus",
       "filtered": false
     }
   ],
