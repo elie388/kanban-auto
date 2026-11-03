@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T22:53:56+08:00",
+  "updated_at": "2026-11-03T22:59:05+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -122,7 +122,23 @@
           "label": "练习",
           "pages": 2
         }
-      ]
+      ],
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "英语写作My School Sports Day",
+          "question": "60-80词记述运动会经历",
+          "reason": "重点冠词两处：took the part多了the（take part in是固定短语不加the）、best jumper前缺the（最高级前要加the）。其余：sports day后day重复多写了一个；tried应为tired（拼写）；句号后单独and开头成残句（and不能单独成句）。",
+          "hint": "重点想冠词：take part in这个短语里要不要the？best是最高级，最高级前面要不要the？其余自己找一找：哪个词重复了？tired和tried哪个是“累”的意思？and前面已经用了句号，还能再单独起一句吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、写作 题目：My School Sports Day (60-80词)。以 'My School Sports Day' 为题，写一篇短文，记述你参加学校运动会的经历。写作要求：①全文一般过去时；②注意冠词 a / an / the 与名词复数；③不许逗号粘连句。孩子原文：Last Friday, my school had a sports day. day. All the teachers and students went to the playground early in the morning. There were many colourful flags everywhere. The games started at nine o'clock. First, Sam took the part in the long jump. He jumped very far. I think he is best jumper in our school. After that, I ran the 100-metre race. I ran very fast. and. won first place. We felt tried but very happy.",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 1
     },
     {
       "task_id": "REG-20261103-E1ED8F",
@@ -398,7 +414,7 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 3,
+    "pending": 2,
     "in_progress": 0,
     "done": 10,
     "pending_review": 0
