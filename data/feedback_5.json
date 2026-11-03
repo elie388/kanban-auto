@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-03T20:47:42+08:00",
+ "generated_at": "2026-11-03T20:48:39+08:00",
  "items": [
   {
    "date": "2026-11-03",
@@ -26,6 +26,14 @@
    "time": "",
    "title": "11月3日语文批改反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，抄书本32页批改反馈</h2>\n<p>11月3日 20:32 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>5句名言全部抄对了，每句都抄了2遍，两张照片合起来正好，为你点赞！</li>\n</ul>\n<h3>提醒一下（不用重写）</h3>\n<p>盛年那句里的晨字顶上有一小团墨迹，两遍都有，下次写晨字前先想好笔画，一笔写好就不用改了。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-03",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月3日英语批改反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易批改反馈</h2>\n<p>11月3日 20:40 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易今日任务已完成并提交，截图凭证齐全，为你点赞！</li>\n</ul>\n</body></html>"
   },
   {
    "date": "2026-11-02",
@@ -234,14 +242,6 @@
    "time": "2026-11-01 19:49",
    "title": "语文周日卷订正（第二轮）",
    "html": "<p>你好厉害！这次订正改对了 3 题：转述句、阅读第 2 题、习作都改对了，本批 +6 分。</p><p>习作新加的那一段写得很生动，过程和感受都有了，字数也够了。只有一个小提醒：新加的这一段有几个字写得有点潦草，下次写慢一点，把字写清楚。</p><p>还有 2 题要再改一次：</p><ul><li>阅读第 3 题：<span style=\"color:red;font-weight:bold;\">还缺一个形容香气更具体的说法</span>，再读读第一段里写香气的句子，找找那个说法。</li><li>阅读第 4 题：<span style=\"color:red;font-weight:bold;\">还缺桂花本身的比喻</span>，你现在写的是落花那个比喻，再读读第一段，远远望去，桂花像什么？</li></ul><p>再改一次发回来，我再帮你看！</p>"
-  },
-  {
-   "date": "2026-11-01",
-   "ts": "2026-11-01T19:23:26+08:00",
-   "kind": "feedback",
-   "time": "2026-11-01 19:23",
-   "title": "五年级英语小短文写作订正（第四轮）：1 处还要再改",
-   "html": "<p>这次订正还要再改一处，本批没有加分。</p><p>小短文写作：这次改对了两句，likes 的 -s 也加上了，继续保持。</p><p><span style=\"color:red;font-weight:bold\">还缺：标题再拼一遍有没有多写字母、likes 后面动词的样子、often 要不要加 s、He 后面 share 的样子、give 那句的意思、最后一句开头的字母。</span></p><p>逐个查完再改一次发回来，我再帮你看。</p>"
   }
  ]
 }
