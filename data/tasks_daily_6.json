@@ -90,12 +90,12 @@
       "kousuan": [],
       "recite_text": "语文背诵：《竹石》（郑燮）\n原文：咬定青山不放松，立根原在破岩中。千磨万击还坚劲，任尔东西南北风。\n朗读要求：声音洪亮，吐字清晰，语调沉着有力，前半句读得稳重，后半句读出豪迈与顽强，注意停顿和节拍。\n英语口语任务说明：围绕“My school day”进行问答。提示问题：1. What time do you usually get up on school days? 2. What subjects did you study at school yesterday? 3. How did you feel about your school day last Friday? Why? 口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意：问题1用一般现在时回答，问题2、3用一般过去时回答。",
       "estimate_min": 30,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-03.docx",
       "file_hash": "7f4535da21448cd78144d53219527c1c7e9dcc3f14facb485f3ffafc175f4b96",
       "created_at": "2026-11-03T19:02:28+08:00",
-      "updated_at": "2026-11-03T19:02:28+08:00",
+      "updated_at": "2026-11-03T22:54:51+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-11-03.pdf",
@@ -307,7 +307,7 @@
           "reason": "",
           "hint": "",
           "img": "",
-          "q_img": "",
+          "q_img": "g6_84daa7_q5_1_orig.png",
           "orig_text": "五、1.关于“有目的地阅读”的步骤，排列正确的是（ ）。①明确阅读文章的目的和任务。②查找其他资料，整合信息，解决问题，完成阅读任务。③大致浏览文章，根据阅读目的，确定相关段落和内容。④试读相关内容，选择合适的阅读方法，如找出关键词、提取关键信息，勾画关键词等。A.①③④② B.③①④② C.①③②④ D.④③②①",
           "q_img_exempt": "",
           "img_exempt": "图后补",
