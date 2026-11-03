@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T12:51:25+08:00",
+  "updated_at": "2026-11-03T12:20:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -57,39 +57,12 @@
       "reading_pass": null,
       "created_at": "2026-11-03T00:17:40+08:00",
       "updated_at": "2026-11-03T00:17:40+08:00"
-    },
-    {
-      "task_id": "TEST-SCHEMEB-FULL",
-      "title": "【测试】方案B完整收口验证（勿做）",
-      "status": "in_progress",
-      "review_status": "approved",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "测试题2",
-          "question": "测试用小题：把 12 平均分成 3 份，每份是多少（测试卡专用）",
-          "reason": "平均分的份数没有数清楚（测试用错因）",
-          "hint": "先想一想平均分是什么意思，再数一数一共分了几份，每份有几个，写出你的思路（测试用引导，不直接给答案）",
-          "img": "",
-          "q_img": "",
-          "orig_text": "测试原题：把 12 平均分成 3 份，每份是多少？",
-          "q_img_exempt": "测试卡无原题图，属测试豁免（非真实作业）",
-          "img_exempt": "测试卡引导图豁免（非真实作业，图后补不适用）",
-          "round": 1
-        }
-      ],
-      "source": "test",
-      "subject": "数学",
-      "created_at": "2026-11-03T12:55:00+08:00",
-      "updated_at": "2026-11-03T12:51:25+08:00",
-      "corr_round": 1,
-      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
-    "total": 3,
+    "total": 2,
     "pending": 2,
-    "in_progress": 1,
+    "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
