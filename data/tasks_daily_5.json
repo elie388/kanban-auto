@@ -1,338 +1,338 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-03",
-  "grade": "五年级",
-  "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T21:03:57+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-03T20:14:48+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-03T19:10:49+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-03T18:55:26+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-03",
+ "grade": "五年级",
+ "generated_at": "2026-11-03T00:17:15+08:00",
+ "updated_at": "2026-11-03T21:03:57+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-03T20:14:48+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261103-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-03T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-03T00:17:31+08:00",
-      "updated_at": "2026-11-03T20:04:50+08:00"
-    },
-    {
-      "task_id": "READ-20261103-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-03T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-03T00:17:40+08:00",
-      "updated_at": "2026-11-03T00:17:40+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-03",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-03T16:56:04+08:00",
-      "updated_at": "2026-11-03T19:31:22+08:00",
-      "completed_at": "2026-11-03T19:31:22+08:00",
-      "orig_photos": [
-        "0602fc84f61e0abf.jpg"
-      ]
-    },
-    {
-      "task_id": "PRACT-20261103-289282",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-03.docx，按今日练习清单完成",
-      "kousuan": [
-        "2.6×5=",
-        "84+39=",
-        "4.2×3-5.8=",
-        "39.8×3.1≈（估算，结果取整数）",
-        "2.5×7.2×4="
-      ],
-      "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：声音洪亮，吐字清晰，注意“浣”读huàn、“歇”读xiē，以及停顿节奏。\n英语口语任务说明：想象一家人吃晚饭的情景，用英语说一说家人在做什么。提示问题：1. Who is at the table? 2. What do they eat for dinner? 3. Are they happy? Why? 口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-03.docx",
-      "file_hash": "eb90f3000e32614f0182c5c9124d3cda2affd2cc87fb4eccf3bbfd7b945f125d",
-      "created_at": "2026-11-03T19:02:23+08:00",
-      "updated_at": "2026-11-03T19:02:23+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-03.pdf",
-          "label": "练习",
-          "pages": 5
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261103-C9B412",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄4、5课词语",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:47:33+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:47:33+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "65c916df5fc7b8a6.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-A98B6B",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄书本32页(2次)",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:47:53+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:47:53+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "d66bb2271dd47cf6.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-FB6BF2",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "背小练笔",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:49:38+08:00",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:49:38+08:00",
-      "orig_photos": [
-        "0c6ca577e5be8602.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-B7D597",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "试卷签名①②③④",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T21:01:13+08:00",
-      "status_source": "manual",
-      "completed_at": "2026-11-03T21:01:13+08:00",
-      "orig_photos": [
-        "8c08947371c374d2.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-EF2F90",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小测练习(4)",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：小测练习(4) → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:40:51+08:00",
-      "status_source": "manual",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "第6题",
-          "question": "已知三角形两条边是6cm和9cm，第三条边的长度要大于（ ）cm，小于（ ）cm。",
-          "reason": "把题目里已知的两条边长直接填进了括号，大于9又小于6，自相矛盾；第三边的范围要用两边之差和两边之和来算，不是抄已知数。",
-          "hint": "先想一想：第三边要比两边相减大、比两边相加小。算出差和和，再填进两个括号，填完检查一下：大于号后面的数是不是比小于号后面的数小？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "已知三角形两条边是6cm和9cm，第三条边的长度要大于（ ）cm，小于（ ）cm。",
-          "q_img_exempt": "原题无图（纯文字填空题）",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "第9题",
-          "question": "下面各图形能不能密铺？能的打√。（正方形、圆形、长方形、三角形、正五边形、平行四边形、正六边形）",
-          "reason": "正五边形打了勾、正六边形漏打了勾：密铺要看拼接点处能不能正好拼满一圈，这两处判断反了。",
-          "hint": "先算一算每个图形一个角是多少度，再想几个这样的角拼在一起能正好拼满360°的一圈：能拼满的打勾，拼不满的不打勾。按这个方法把七个图形再检查一遍，哪两个要改过来？",
-          "img": "",
-          "q_img": "g5_xiaoce4_q9_orig.png",
-          "orig_text": "下面各图形能不能密铺？能的打√。",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "第12题",
-          "question": "一捆彩带剪成了三段，其中最长的一段是29米，最短的一段是20.8米。估一估，这捆彩带的全长在（ ）之间。A.50~60米 B.60~70米 C.70~80米",
-          "reason": "只把最长和最短两段加起来估，漏了中间那段；中间那段比最短的长、比最长的短，三段都要算进去。",
-          "hint": "先估一估中间那段：它比最短的长、比最长的短，大约在什么范围？再把三段加起来估一估总数，看看总数落在哪个区间里。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "一捆彩带剪成了三段，其中最长的一段是29米，最短的一段是20.8米。估一估，这捆彩带的全长在（ ）之间。A.50~60米 B.60~70米 C.70~80米",
-          "q_img_exempt": "原题无图（纯文字估算题）",
-          "img_exempt": "图后补",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 3
-    },
-    {
-      "task_id": "REG-20261103-BD1D8C",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T20:48:49+08:00",
-      "task_type": "reading",
-      "status_source": "manual",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-03T20:48:49+08:00",
-      "orig_photos": [
-        "e49a49fa428e07ff.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261103-1FC682",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "试卷（听力笔试部分，并改正）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-03T19:31:22+08:00",
-      "updated_at": "2026-11-03T19:31:22+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261103-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第14期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-03T20:04:28+08:00",
-      "updated_at": "2026-11-03T20:04:28+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-11-03.pdf",
-          "label": "练习",
-          "pages": 2
-        }
-      ]
-    }
-  ],
-  "counts": {
-    "total": 12,
-    "pending": 5,
-    "in_progress": 1,
-    "done": 6,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-03T19:10:49+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-03T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-03T18:55:26+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261103-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-03T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-03T00:17:31+08:00",
+   "updated_at": "2026-11-03T20:04:50+08:00"
+  },
+  {
+   "task_id": "READ-20261103-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-03T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-03T00:17:40+08:00",
+   "updated_at": "2026-11-03T00:17:40+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-03",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-03T16:56:04+08:00",
+   "updated_at": "2026-11-03T19:31:22+08:00",
+   "completed_at": "2026-11-03T19:31:22+08:00",
+   "orig_photos": [
+    "0602fc84f61e0abf.jpg"
+   ]
+  },
+  {
+   "task_id": "PRACT-20261103-289282",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "五年级针对性练习_2026-11-03.docx，按今日练习清单完成",
+   "kousuan": [
+    "2.6×5=",
+    "84+39=",
+    "4.2×3-5.8=",
+    "39.8×3.1≈（估算，结果取整数）",
+    "2.5×7.2×4="
+   ],
+   "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：声音洪亮，吐字清晰，注意“浣”读huàn、“歇”读xiē，以及停顿节奏。\n英语口语任务说明：想象一家人吃晚饭的情景，用英语说一说家人在做什么。提示问题：1. Who is at the table? 2. What do they eat for dinner? 3. Are they happy? Why? 口语要求：时长30-45秒，语音语调自然，句子连贯，尽量使用完整的一般现在时句子回答。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-03.docx",
+   "file_hash": "eb90f3000e32614f0182c5c9124d3cda2affd2cc87fb4eccf3bbfd7b945f125d",
+   "created_at": "2026-11-03T19:02:23+08:00",
+   "updated_at": "2026-11-03T19:02:23+08:00",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-11-03.pdf",
+     "label": "练习",
+     "pages": 5
+    }
+   ]
+  },
+  {
+   "task_id": "REG-20261103-C9B412",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "抄4、5课词语",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T20:47:33+08:00",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-03T20:47:33+08:00",
+   "status_source": "closeout_writeback",
+   "orig_photos": [
+    "65c916df5fc7b8a6.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-A98B6B",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "抄书本32页(2次)",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T20:47:53+08:00",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-03T20:47:53+08:00",
+   "status_source": "closeout_writeback",
+   "orig_photos": [
+    "d66bb2271dd47cf6.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-FB6BF2",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "背小练笔",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T20:49:38+08:00",
+   "status_source": "manual",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-03T20:49:38+08:00",
+   "orig_photos": [
+    "0c6ca577e5be8602.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-B7D597",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "试卷签名①②③④",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①抄4、5课词语；②抄书本32页(2次)；③背小练笔；④试卷签名①②③④ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T21:01:13+08:00",
+   "status_source": "manual",
+   "completed_at": "2026-11-03T21:01:13+08:00",
+   "orig_photos": [
+    "8c08947371c374d2.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-EF2F90",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小测练习(4)",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：小测练习(4) → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T20:40:51+08:00",
+   "status_source": "manual",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "第6题",
+     "question": "已知三角形两条边是6cm和9cm，第三条边的长度要大于（ ）cm，小于（ ）cm。",
+     "reason": "把题目里已知的两条边长直接填进了括号，大于9又小于6，自相矛盾；第三边的范围要用两边之差和两边之和来算，不是抄已知数。",
+     "hint": "先想一想：第三边要比两边相减大、比两边相加小。算出差和和，再填进两个括号，填完检查一下：大于号后面的数是不是比小于号后面的数小？",
+     "img": "g5_xiaoce4_q6_guide.png",
+     "q_img": "",
+     "orig_text": "已知三角形两条边是6cm和9cm，第三条边的长度要大于（ ）cm，小于（ ）cm。",
+     "q_img_exempt": "原题无图（纯文字填空题）",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "第9题",
+     "question": "下面各图形能不能密铺？能的打√。（正方形、圆形、长方形、三角形、正五边形、平行四边形、正六边形）",
+     "reason": "正五边形打了勾、正六边形漏打了勾：密铺要看拼接点处能不能正好拼满一圈，这两处判断反了。",
+     "hint": "先算一算每个图形一个角是多少度，再想几个这样的角拼在一起能正好拼满360°的一圈：能拼满的打勾，拼不满的不打勾。按这个方法把七个图形再检查一遍，哪两个要改过来？",
+     "img": "g5_xiaoce4_q9_guide.png",
+     "q_img": "g5_xiaoce4_q9_orig.png",
+     "orig_text": "下面各图形能不能密铺？能的打√。",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "第12题",
+     "question": "一捆彩带剪成了三段，其中最长的一段是29米，最短的一段是20.8米。估一估，这捆彩带的全长在（ ）之间。A.50~60米 B.60~70米 C.70~80米",
+     "reason": "只把最长和最短两段加起来估，漏了中间那段；中间那段比最短的长、比最长的短，三段都要算进去。",
+     "hint": "先估一估中间那段：它比最短的长、比最长的短，大约在什么范围？再把三段加起来估一估总数，看看总数落在哪个区间里。",
+     "img": "g5_xiaoce4_q12_guide.png",
+     "q_img": "",
+     "orig_text": "一捆彩带剪成了三段，其中最长的一段是29米，最短的一段是20.8米。估一估，这捆彩带的全长在（ ）之间。A.50~60米 B.60~70米 C.70~80米",
+     "q_img_exempt": "原题无图（纯文字估算题）",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 3
+  },
+  {
+   "task_id": "REG-20261103-BD1D8C",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T20:48:49+08:00",
+   "task_type": "reading",
+   "status_source": "manual",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-03T20:48:49+08:00",
+   "orig_photos": [
+    "e49a49fa428e07ff.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261103-1FC682",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "试卷（听力笔试部分，并改正）",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②试卷（听力笔试部分，并改正） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-03T19:31:22+08:00",
+   "updated_at": "2026-11-03T19:31:22+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261103-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语阅读写作第14期",
+   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-03T20:04:28+08:00",
+   "updated_at": "2026-11-03T20:04:28+08:00",
+   "files": [
+    {
+     "name": "五年级英语阅读写作_2026-11-03.pdf",
+     "label": "练习",
+     "pages": 2
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "total": 12,
+  "pending": 5,
+  "in_progress": 1,
+  "done": 6,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-03T22:30:00+08:00"
 }
