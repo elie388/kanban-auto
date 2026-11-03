@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "五年级",
   "generated_at": "2026-11-03T00:17:15+08:00",
-  "updated_at": "2026-11-03T13:18:17+08:00",
+  "updated_at": "2026-11-03T13:19:06+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -68,11 +68,23 @@
       "status": "in_progress",
       "review_status": "approved",
       "appear_at": "2026-11-03T12:55:00+08:00",
-      "pending_corrections": 1,
+      "pending_corrections": 2,
       "corrections": [
         {
+          "label": "测试卡第2题",
+          "question": "测试卡第2题：把12平均分成3份，每份是多少（手写题）",
+          "reason": "除法算错了，份数没有算对",
+          "hint": "重新背一遍三的乘法口诀，想一想哪个数乘3等于12，写出你的思考过程（不直接给答案）",
+          "img": "",
+          "q_img": "",
+          "orig_text": "把12平均分成3份，每份是多少？",
+          "q_img_exempt": "家长验证测试卡无原题图，属测试豁免",
+          "img_exempt": "家长验证测试卡引导图豁免（非孩子真实作业）",
+          "round": 1
+        },
+        {
           "label": "计算第4题",
-          "question": "计算：3乘0.4等于多少（手写计算题，第一批订正）",
+          "question": "计算：3乘0.4等于多少（手写计算题，第一批订正后仍错）",
           "reason": "小数点位置错了一位",
           "hint": "先按整数算3乘4，再数一数因数一共有几位小数，小数点应该点在哪一位，写出你的思考过程（不直接给答案）",
           "img": "",
@@ -84,8 +96,7 @@
         }
       ],
       "created_at": "2026-11-03T12:56:52+08:00",
-      "updated_at": "2026-11-03T13:18:17+08:00",
-      "corr_round": 2,
+      "updated_at": "2026-11-03T13:19:06+08:00",
       "status_source": "closeout_writeback"
     }
   ],
