@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03T21:17:46+08:00",
+ "updated_at": "2026-11-03T21:36:44+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-05",
@@ -65,7 +65,7 @@
     47.5,
     61.1,
     null,
-    84.2
+    83.3
    ],
    "empty": false,
    "sparse": false,
@@ -225,7 +225,7 @@
       46.2,
       51.7,
       null,
-      100.0
+      null
      ],
      "weak": [
       {
@@ -289,7 +289,7 @@
     83.0,
     83.7,
     70.7,
-    77.8
+    78.9
    ],
    "empty": false,
    "sparse": false,
@@ -387,7 +387,7 @@
       75.0,
       100.0,
       100.0,
-      83.3
+      85.7
      ],
      "weak": [
       {
@@ -575,6 +575,18 @@
      "pending_share": 0.182,
      "backfill_share": 0.0,
      "small_sample": false
+    },
+    "2026-11-03": {
+     "reason": "pending_ratio=0.30",
+     "rules": [
+      "pending_ratio=0.30"
+     ],
+     "judged": 7,
+     "correct": 1,
+     "pending": 3,
+     "pending_share": 0.3,
+     "backfill_share": 0.0,
+     "small_sample": false
     }
    }
   },
@@ -726,17 +738,6 @@
     "small_sample"
    ],
    "judged": 3,
-   "small_sample_flag": true
-  },
-  {
-   "date": "2026-11-03",
-   "grade": "五年级",
-   "subject": "英语",
-   "reason": null,
-   "rules": [
-    "small_sample"
-   ],
-   "judged": 1,
    "small_sample_flag": true
   },
   {
@@ -934,6 +935,14 @@
    "subject": "英语",
    "mail_id": "B-20261101-1520-G5-YY-CORRECT2",
    "judged": 4,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-11-03",
+   "grade": "五年级",
+   "subject": "英语",
+   "mail_id": "b1793712320927f3c63cebfbb739c8",
+   "judged": 6,
    "alert": "batch_all_wrong_suspected_partial_ingest"
   }
  ]
