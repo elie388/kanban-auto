@@ -3,12 +3,12 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T20:04:50+08:00",
+  "updated_at": "2026-11-03T20:14:48+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-03T19:31:22+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-11-03T20:14:48+08:00",
+      "new_lines": 10
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -110,12 +110,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-03T16:56:04+08:00",
-      "updated_at": "2026-11-03T16:56:04+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-03T20:14:48+08:00",
+      "completed_at": "2026-11-03T20:14:48+08:00"
     },
     {
       "task_id": "PRACT-20261103-0DCA71",
@@ -159,13 +159,197 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "REG-20261103-E1ED8F",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄U2单词和中文各4次，背10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261103-D8E3CB",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄“动词ing”笔记，明早抽背",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄U2单词和中文各4次，背10次；②抄“动词ing”笔记，明早抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261103-A938D1",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "复习U1",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：复习U1 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00"
+    },
+    {
+      "task_id": "REG-20261103-FAE3F3",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念4.52",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261103-9434F8",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "课本P55.56 1-5（写在堂上作业本）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00"
+    },
+    {
+      "task_id": "REG-20261103-D0F863",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背科学十分钟",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念4.52；②课本P55.56 1-5（写在堂上作业本）；③读背科学十分钟 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261103-84DAA7",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "过关小测",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00"
+    },
+    {
+      "task_id": "REG-20261103-EB620E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本园地四",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00"
+    },
+    {
+      "task_id": "REG-20261103-798C82",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄词本默L3",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00"
+    },
+    {
+      "task_id": "REG-20261103-BBDE56",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读课外书、记录",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①过关小测；②校本园地四；③抄词本默L3；④读课外书、记录 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-03T20:14:48+08:00",
+      "updated_at": "2026-11-03T20:14:48+08:00"
     }
   ],
   "counts": {
-    "total": 8,
-    "pending": 7,
+    "total": 18,
+    "pending": 16,
     "in_progress": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-03T22:30:00+08:00"
