@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-03T22:54:06+08:00",
+ "generated_at": "2026-11-03T22:59:17+08:00",
  "items": [
   {
    "date": "2026-11-03",
@@ -106,6 +106,14 @@
    "time": "",
    "title": "11月3日语文批改反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，语文批改反馈</h2>\n<p>11月3日 22:37 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>第三单元过关小测56分（满分60分），拼音写词、读音选择、仿写、机场介绍、瘦身计划、感悟都做对了，很棒！</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>有目的地阅读步骤排序：你排的顺序里，查找资料整合放在了试读选方法前面。<span style=\"color:red;font-weight:bold\">缺一句话说出为什么试读选方法要在查找整合前面</span>。想一想：是不是要先试读、选好方法，才知道要找什么资料来整合呢？把四步是干什么的想清楚，再排一排。</li>\n</ul>\n</body></html>"
+  },
+  {
+   "date": "2026-11-03",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月3日英语批改反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语批改反馈</h2>\n<p>11月3日 22:38 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>阅读理解5题全对！写作过去时全对、字数在60-80词内、没有逗号粘连句，内容完整，很棒！</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>写作有5处小错误，重点是冠词：<span style=\"color:red;font-weight:bold\">缺一句话说出take part in要不要the、best前面要不要the</span>。想一想：take part in这个短语里要不要the？best是最高级，最高级前面要不要the？其余自己找一找：哪个词重复了？tired和tried哪个是“累”的意思？and前面已经用了句号，还能再单独起一句吗？</li>\n</ul>\n</body></html>"
   },
   {
    "date": "2026-11-02",
@@ -234,14 +242,6 @@
    "time": "2026-11-01 20:09",
    "title": "语文作文续写《钱》",
    "html": "<p>续写《钱》写得完整，很棒！情节一步接一步很清楚：菜市场拾钱、冒领的人被识破、老太太认领、谢礼、最后大家心里都暖暖的，结尾也完整，这篇不用改，任务完成了！</p>"
-  },
-  {
-   "date": "2026-11-01",
-   "ts": "2026-11-01T20:05:05+08:00",
-   "kind": "feedback",
-   "time": "2026-11-01 20:05",
-   "title": "英语周日卷补交",
-   "html": "<p>补交的 11 道，这次对了 10 道，单选第 11–20 题全对，很棒！只有 1 处要改：</p><ul><li>词汇第 10 题：<span style=\"color:red;font-weight:bold;\">还缺过去式的样子没写对</span>，句里有个词告诉你这事是昨天发生的，昨天发生的事，动词要变成什么样子？再想想发回来。</li></ul><p>改对这一题，英语卷就全齐了！</p>"
   }
  ]
 }
