@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T01:48:50+08:00",
+  "updated_at": "2026-11-03T08:37:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -50,7 +50,7 @@
       "title": "完成试卷笔试部分，写语法",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成试卷笔试部分，写语法；②背U3单词，课文6次 → 待完成",
@@ -59,10 +59,88 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-02T20:49:48+08:00",
-      "updated_at": "2026-11-03T00:17:16+08:00",
-      "status_source": "kanban_upload_intake",
-      "pending_corrections": 0,
-      "corrections": [],
+      "updated_at": "2026-11-03T08:37:18+08:00",
+      "status_source": "manual",
+      "pending_corrections": 7,
+      "corrections": [
+        {
+          "label": "六-短文填空第6空",
+          "question": "Good habits make us strong and 6. ______ (A. health B. healthy C. healthier)",
+          "reason": "词性错误：health 是名词，此处 strong 后面要并列形容词",
+          "hint": "strong 是形容词，后面 and 连接的词词性要和它一致，health、healthy、healthier 里哪个是形容词？想一想再选。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Good habits make us strong and 6. ______ (A. health B. healthy C. healthier)",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "七-单词第1空",
+          "question": "Lily 1. s______ goes to the library on Sunday morning",
+          "reason": "用词错误：sound 不能表示频率，此处需表示频率的副词",
+          "hint": "这个空在 goes 前面，要填一个表示频率的副词（多久去一次），首字母是 s，sound 表示声音，不能表示频率，你能想到哪个表示频率的 s 开头的词？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Lily 1. s______ goes to the library on Sunday morning",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "七-单词第3空",
+          "question": "It is very quiet and 3. ______ (干净的)",
+          "reason": "多余冠词：quiet and 后面直接跟形容词 clean，不加 the",
+          "hint": "quiet 是形容词，and 后面要跟一个和它词性一样的词，(干净的)对应的形容词是什么？前面还需要加 the 吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "It is very quiet and 3. ______ (干净的)",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "七-单词第4空",
+          "question": "The library has a big 4. m______ on the wall. It shows the streets of the city",
+          "reason": "未填写：墙上挂着、显示城市街道的是什么",
+          "hint": "墙上挂着一张很大的东西，上面画着城市的街道，首字母是 m，你能想到是什么吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "The library has a big 4. m______ on the wall. It shows the streets of the city",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "七-单词第6空",
+          "question": "She 6. s______ to her friend",
+          "reason": "主谓不一致：主语 She 是第三人称单数，动词要加 s",
+          "hint": "主语是 She，动词 say 后面要不要加 s？第三人称单数时动词有什么变化？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "She 6. s______ to her friend",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "七-单词第9空",
+          "question": "They 9. ______ it's better to go there next Sunday",
+          "reason": "用词错误：talk 后面不能直接跟句子，此处需表示‘觉得’的动词",
+          "hint": "They ___ it's better... 这里想说‘他们觉得下周日去更好’，表示‘觉得’的动词是哪个？talk 是‘谈话’，后面能直接跟一个句子吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "They 9. ______ it's better to go there next Sunday",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        },
+        {
+          "label": "十-书面表达",
+          "question": "以 My Opinion about Healthy Food 为题写一段话（不少于5句话）",
+          "reason": "拼写与动词错误较多：furits/lik/thing 拼写，can 后动词、比较级语序、句首小写",
+          "hint": "重点先改一个习惯：can 后面要跟动词原形（can make，不是 can a）。再自己读一遍，专查三处：拼写（fruits/like/think 有没有写对）、比较级语序（sweeter and healthier than... 中间有没有多余的词）、句首字母要不要大写。改完再发回。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "以 My Opinion about Healthy Food 为题写一段话（不少于5句话）",
+          "q_img_exempt": "",
+          "img_exempt": "图后补"
+        }
+      ],
       "carry_first_date": "2026-11-02",
       "carried_from": "2026-11-02",
       "carry_count": 1
@@ -211,7 +289,7 @@
   "counts": {
     "total": 8,
     "pending": 3,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 0,
     "pending_review": 0
   },
