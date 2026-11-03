@@ -263,14 +263,20 @@ def main():
             with open(out, encoding="utf-8") as f:
                 if FAIL_MARKER not in f.read():
                     preserved = True
-        if not preserved:
+        # fix2：dry-run 此前仍写盘——且写默认生产路径，会覆盖当日
+        # 真实候选清单（演练头标注的清单冒充正式清单进每日总结）。
+        # 现 dry-run 不写任何文件（失败标记亦只打印），清单只走 stdout。
+        if not preserved and not a.dry_run:
             with open(out, "w", encoding="utf-8") as f:
                 f.write(fail_text)
         msg = ("JUDGE FAILED（台账读取失败，已发累计未知，候选清单无效）："
                "%s" % e)
         print(msg, file=sys.stderr)
         print(msg)
-        if preserved:
+        if a.dry_run:
+            print("DRY-RUN：失败标记未写盘，仅 stdout 展示")
+            print(fail_text)
+        elif preserved:
             print("当日已有有效清单，未覆盖（保留原产物）：", out)
         else:
             print("WROTE failure marker:", out)
@@ -292,9 +298,13 @@ def main():
                 "仅依赖 [回补] 行且证据为口头/时刻未知的候选不予颁发（弱证据单独不成立，"
                 "与同批强证据并存时以强证据为准）；连做链行不计入任何项目类计数。")
     head.append("")
-    with open(out, "w", encoding="utf-8") as f:
-        f.write("\n".join(head + body) + "\n")
-    print("WROTE", out)
+    # fix2：dry-run 不写盘（见上：写默认生产路径会覆盖当日真实清单）。
+    if a.dry_run:
+        print("DRY-RUN：候选清单未写盘，仅 stdout 展示")
+    else:
+        with open(out, "w", encoding="utf-8") as f:
+            f.write("\n".join(head + body) + "\n")
+        print("WROTE", out)
     print("\n".join(body))
 
 

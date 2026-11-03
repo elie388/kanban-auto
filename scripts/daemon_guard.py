@@ -128,6 +128,13 @@ def daemon_alive():
         return "dead", {"pid": None, "dead_reason": "no_pid_file",
                         "detail": "no pid file"}
     pid = info["pid"]
+    # fix2：pid ≤ 0 不可判活——os.kill(0, 0) 测本进程组恒成功、
+    # os.kill(负数, 0) 测全系统（无权限→PermissionError 口径判活），
+    # /proc/0 亦不可读而落入“按存活”分支；pid 文件含 0/负数即
+    # 永判 alive、守护永不拉起。≤0 直接判 dead（无效 pid）。
+    if not isinstance(pid, int) or pid <= 0:
+        return "dead", {"pid": pid, "dead_reason": "invalid_pid",
+                        "detail": "pid=%s 无效（≤0），不判活" % (pid,)}
     cur_boot = _current_boot_id()
     if info.get("boot_id") and cur_boot != "unknown" \
             and info["boot_id"] != cur_boot:
@@ -180,10 +187,14 @@ def _load_state():
 
 
 def _save_state(state):
+    # fix2：tmp+replace 写状态，写失败时旧文件完好（旧 first_dead_ts 仍在，
+    # 下轮按旧时间戳计 900s 封顶、只会提前拉起）；此前直写失败会截断/写坏
+    # 状态文件，_load_state 读到 {} 即把死亡事件当新事件、封顶时钟重置。
     try:
         LOGS_DIR.mkdir(parents=True, exist_ok=True)
-        STATE_FILE.write_text(json.dumps(state, ensure_ascii=False),
-                              encoding="utf-8")
+        tmp = STATE_FILE.with_suffix(".tmp")
+        tmp.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+        os.replace(tmp, STATE_FILE)
     except OSError:
         pass
 
@@ -243,7 +254,11 @@ def _relaunch():
     except Exception as e:
         fail("拉起守护进程失败: %s" % e)
         log("relaunch_failed", str(e)[:200])
+        out.close()
         return 1
+    # fix2：父进程在 Popen 后即关闭自己的 out 副本（子进程已 dup 该 fd，
+    # 关闭父副本不影响子进程输出），此前三路返回均漏关。
+    out.close()
     # P2（DeepSeek 审查 2026-10-20）：复核由固定等 2s 改为轮询至多 10s——
     # 守护进程冷启动（解释器+导入+单例+状态恢复）偶尔超过 2s，固定等待会误报
     # 拉起失败并留下 fail 告警噪音。

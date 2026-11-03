@@ -652,9 +652,10 @@ def _strip_board_names(obj):
 
 
 def write_json_atomic(path, obj):
-    """写 JSON 后读回校验（§7.3 生成端）；失败 raise。"""
+    """写 JSON 后读回校验（§7.3 生成端）；失败 raise。
+    fix2：tmp 名加 pid，避免并发写同一 tmp 交错（与 build_trends 同款）。"""
     obj = _strip_board_names(obj)
-    tmp = path + ".tmp"
+    tmp = path + ".tmp.%d" % os.getpid()
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
         f.write("\n")

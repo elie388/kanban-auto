@@ -325,11 +325,14 @@ class Watcher:
         if new_sig != fire_sig:
             # 消费期间源文件又变了：以新指纹为基线并重新武装 pending，
             # 下一轮用最新内容再建一次（消费者幂等），不把新变更一并吞掉。
+            # fix2：已消费基线只能推进到实际建过的内容（fire_sig），不得
+            # 提前记为 new_sig——否则崩溃重启后 sigs 从 consumed 恢复为
+            # new_sig、与当前文件指纹相等，误判“无变更”，新内容永不建。
             log("change_during_consume", str(path), {"target": key})
-            self.sigs[key] = new_sig
+            self.sigs[key] = fire_sig
             self.pending[key] = time.monotonic() + DEBOUNCE_S
-            if new_sig is not None:
-                self._state.setdefault("consumed", {})[key] = [new_sig[0], new_sig[1]]
+            if fire_sig is not None:
+                self._state.setdefault("consumed", {})[key] = [fire_sig[0], fire_sig[1]]
             _save_state(self._state)
             return
         # 全部消费者成功且消费期间无新变更 → 消费本次变更，并写对账状态（F3）

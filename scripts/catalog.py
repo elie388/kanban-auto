@@ -44,9 +44,20 @@ def shop_table():
 
 
 def shop_tiers():
-    """build_stats 兼容形：[{pts, name, kind, short}, ...]（name 用 stats_name）"""
-    return [{"pts": t["cost"], "name": t["stats_name"], "kind": t["kind"],
-             "short": t["short"]} for t in shop_tiers_raw()]
+    """build_stats 兼容形：[{pts, name, kind, short}, ...]（name 用 stats_name）
+    fix2：与 shop_table 同款硬校验（cost 规则＋必需字段），否则 build_stats
+    路径上缺字段只会抛 KeyError、非法 cost 会静默流入统计。"""
+    out = []
+    for t in shop_tiers_raw():
+        cost = t.get("cost")
+        if not isinstance(cost, (int, float)) or isinstance(cost, bool) or cost <= 0:
+            raise ValueError("E2 商店 cost 配置错误：%s cost=%r" % (t.get("id"), cost))
+        for k in ("stats_name", "kind", "short"):
+            if k not in t:
+                raise ValueError("E2 商店字段缺失：%s 缺 %s" % (t.get("id"), k))
+        out.append({"pts": cost, "name": t["stats_name"], "kind": t["kind"],
+                    "short": t["short"]})
+    return out
 
 
 def badge_catalog():

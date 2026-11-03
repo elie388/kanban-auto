@@ -1030,6 +1030,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     var KEY = 'kanban_fold_state';
     var timerId = null;
     var lastTick = Date.now();
+    var remainingMs = REFRESH_MS; // fix2：切后台时剩余时间（#39：此前切回前台必重计满 5 分钟，频繁切 tab 则刷新永不触发）
     var tipEl = document.getElementById('auto-refresh-tip');
 
     function saveFoldState() {
@@ -1063,7 +1064,7 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     function reloadNow() { saveFoldState(); location.reload(); }
     function remainingText() {
       if (timerId === null) return null;
-      var left = Math.max(0, REFRESH_MS - (Date.now() - lastTick));
+      var left = Math.max(0, remainingMs - (Date.now() - lastTick));
       var m = Math.floor(left / 60000);
       var s = Math.floor((left % 60000) / 1000);
       if (m > 0) return m + '分' + s + '秒后自动更新';
@@ -1077,11 +1078,17 @@ tbody tr.row-in { animation: rowIn .3s both; animation-delay: calc(var(--i, 0) *
     function startTimer() {
       if (timerId !== null) return;
       lastTick = Date.now();
-      timerId = setInterval(function () { lastTick = Date.now(); reloadNow(); }, REFRESH_MS);
+      // fix2 #40：回调里不再先重置 lastTick（刷新在即、重置使 tip 失真且无意义）；
+      // fix2 #39：按剩余时间续计，不再每次重计满 5 分钟。
+      timerId = setInterval(function () { reloadNow(); }, remainingMs);
       updateTip();
     }
     function stopTimer() {
-      if (timerId !== null) { clearInterval(timerId); timerId = null; }
+      if (timerId !== null) {
+        clearInterval(timerId);
+        timerId = null;
+        remainingMs = Math.max(0, remainingMs - (Date.now() - lastTick));
+      }
       updateTip();
     }
     restoreFoldState(); // 须在折叠初始化脚本之后执行

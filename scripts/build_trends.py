@@ -126,6 +126,13 @@ def group_stats(db, date, grade, subject):
         return None, info
     if judged == 0:
         return None, info
+    # fix2：小样本标记此前只在回填占比分支内设——已判 1-4 题、
+    # 回填占比未超阈的组会以普通分数上板、无任何小样本标记。
+    # 现只要 0 < judged < 5 即标记（仅标记、不隔离，分数照常返回；
+    # 隔离与否是展示口径变更，须另定）。
+    if judged < SMALL_SAMPLE_JUDGED:
+        info["small_sample"] = True
+        info["rules"].append("small_sample")
     if correct == 0:
         # 2026-11-01 家长令“你定就行”定夺：全错日不再显示为空格（空格会被
         # 误读为缺数据），改为显示 0.0；all_wrong 标记保留，仍进
@@ -140,9 +147,6 @@ def group_stats(db, date, grade, subject):
         return None, info
     if bf_share >= BACKFILL_RATIO_THRESHOLD:
         info["rules"].append(f"backfill_ratio={bf_share:.2f}")
-        if judged < SMALL_SAMPLE_JUDGED:
-            info["small_sample"] = True
-            info["rules"].append("small_sample")
         info["reason"] = info["rules"][0]
         return None, info
     return round(correct / judged * 100, 1), info
@@ -171,8 +175,9 @@ def paper_batch_alerts(db, dates):
 
 def write_json_atomic(path, obj):
     """与 build_stats.write_json_atomic 同款（P1#6）：写 tmp → 读回校验 →
-    os.replace 原子替换；读回不一致 raise，不留半截/损坏文件。"""
-    tmp = str(path) + ".tmp"
+    os.replace 原子替换；读回不一致 raise，不留半截/损坏文件。
+    fix2：tmp 名加 pid，避免 watchd 与兜底 cron 并发写同一 tmp 交错。"""
+    tmp = str(path) + ".tmp.%d" % os.getpid()
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=1)
         f.write("\n")
@@ -222,7 +227,8 @@ def _commit_trends():
             print("[build_trends][WARN] git add 失败 rc=%d: %s"
                   % (r.returncode, (r.stderr or "")[:200]))
             return
-        cr = _git("commit", "-m", "chore(trends): sync trends [auto]")
+        cr = _git("commit", "-m", "chore(trends): sync trends [auto]",
+                  "--", "data/trends.json")
         if cr.returncode != 0:
             # 无变更判定与 P1#3 同口径：stdout+stderr 合并（裁定4 修正1 的兜底）
             merged = (cr.stdout or "") + (cr.stderr or "")
@@ -270,14 +276,18 @@ def main():
             for d in dates:
                 val, info = group_stats(db, d, g, s)
                 series.append(val)
-                if info["reason"] is not None:
-                    data["isolation_reasons"].setdefault(g, {}).setdefault(s, {})[d] = {
-                        "reason": info["reason"], "rules": info["rules"],
-                        "judged": info["judged"], "correct": info["correct"],
-                        "pending": info["pending"],
-                        "pending_share": info["pending_share"],
-                        "backfill_share": info["backfill_share"],
-                        "small_sample": info["small_sample"]}
+                # fix2：复核队列此前只收 reason 非空的隔离组——小样本
+                # 非隔离组（有分数、无 reason）永不进队。现 small_sample
+                # 亦进队（small_sample_flag=True，reason 可为 None）。
+                if info["reason"] is not None or info["small_sample"]:
+                    if info["reason"] is not None:
+                        data["isolation_reasons"].setdefault(g, {}).setdefault(s, {})[d] = {
+                            "reason": info["reason"], "rules": info["rules"],
+                            "judged": info["judged"], "correct": info["correct"],
+                            "pending": info["pending"],
+                            "pending_share": info["pending_share"],
+                            "backfill_share": info["backfill_share"],
+                            "small_sample": info["small_sample"]}
                     if info["judged"] < SMALL_SAMPLE_JUDGED:
                         data["manual_review_queue"].append({
                             "date": d, "grade": g, "subject": s,
