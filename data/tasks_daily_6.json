@@ -110,11 +110,11 @@
           "question": "dī yù、pái huái、jīng zhàn、cuò shǒu bù jí",
           "reason": "“徘徊”写成了“排徊”，“徘”字错。",
           "hint": "“徘徊”是什么意思（来回走）？“徘”字旁是什么？跟“排队”的“排”一样吗？",
-          "img": "",
+          "img": "g6_pract0dca71_q1_guide.png",
           "q_img": "g6_pract0dca71_q1_orig.png",
           "orig_text": "一、学科练习【语文·看拼音写词语】(1)看拼音写词语：dī yù、pái huái、jīng zhàn、cuò shǒu bù jí。",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -122,11 +122,11 @@
           "question": "针对性练习2形近字辨析 登记本任务：针对性练习PRACT-20261103-0DCA71，2026-11-03 22:52:49录音1段（背诵）＋22:58:16照片3张（学科练习）合并批改，整批完成于22:58:16；无孩子留言",
           "reason": "“墓”组词“爱墓”不成立（爱慕是“慕”不是“墓”）。",
           "hint": "“墓”是什么意思（埋死人的地方）？能组什么词？“爱慕”的“慕”和“墓”一样吗？",
-          "img": "",
+          "img": "g6_pract0dca71_q2_guide.png",
           "q_img": "g6_pract0dca71_q2_orig.png",
           "orig_text": "一、【语文·形近字辨析】(2)请辨析下列每组形近字并分别组词：辨/辫、墓/幕。",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -134,11 +134,11 @@
           "question": "学习成绩提高和进步语病修改",
           "reason": "“提高和进步”意思重复，修改后还留着两个词，没改掉重复。",
           "hint": "“提高”和“进步”意思是不是差不多？一个句子里两个意思差不多的词都留着，是不是重复了？删掉一个，句子是不是就通顺了？",
-          "img": "",
+          "img": "g6_pract0dca71_q4_guide.png",
           "q_img": "g6_pract0dca71_q4_orig.png",
           "orig_text": "一、(4)读下面的句子，指出其语病类型并进行修改：“在老师的帮助下，我的学习成绩有了很大的提高和进步。”",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -146,15 +146,27 @@
           "question": "针对性练习8半圆 登记本任务：针对性练习PRACT-20261103-0DCA71，2026-11-03 22:52:49录音1段（背诵）＋22:58:16照片3张（学科练习）合并批改，整批完成于22:58:16；无孩子留言",
           "reason": "半圆面积算成了整圆面积50.24，忘了除以2；周长20.56正确。",
           "hint": "半圆是圆的一半，面积是不是也要一半？整圆面积算出来后，还要做什么？",
-          "img": "",
+          "img": "g6_pract0dca71_q8_guide.png",
           "q_img": "g6_pract0dca71_q8_orig.png",
           "orig_text": "一、(8)列式计算：一个半圆形花园的直径是8米，求这个半圆形花园的周长和面积（半周周长包括弧长和直径）。（圆周率取3.14）",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "针对性练习13英语口语",
+          "question": "针对性练习13英语口语 围绕“My school day”进行问答，时长30-45秒。孩子录音30.87秒。",
+          "reason": "第3题时态错：问的是上周五（last Friday），回答用了现在时I feel和has，应为过去时。",
+          "hint": "说昨天的事用什么时态？feel的过去式是什么？has的过去式是什么？第3题问的是上周五，再录一遍第3题试试。",
+          "img": "g6_pract0dca71_q13_guide.png",
+          "q_img": "g6_pract0dca71_q13_orig.png",
+          "orig_text": "二、【英语·口语·问答】(13)任务说明：围绕“My school day”进行问答。提示问题：1. What time do you usually get up on school days? 2. What subjects did you study at school yesterday? 3. How did you feel about your school day last Friday? Why?口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意：问题1用一般现在时回答，问题2、3用一般过去时回答。（应用）",
+          "q_img_exempt": "",
+          "img_exempt": "",
           "round": 1
         }
       ],
-      "pending_corrections": 4
+      "pending_corrections": 5
     },
     {
       "task_id": "MANUAL-20261103-001",
