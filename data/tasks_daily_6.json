@@ -3,7 +3,7 @@
   "date": "2026-11-03",
   "grade": "六年级",
   "generated_at": "2026-11-03T00:17:16+08:00",
-  "updated_at": "2026-11-03T09:22:43+08:00",
+  "updated_at": "2026-11-03T09:27:34+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -72,7 +72,8 @@
           "q_img": "",
           "orig_text": "Good habits make us strong and 6. ______ (A. health B. healthy C. healthier)",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "七-单词第1空",
@@ -83,7 +84,8 @@
           "q_img": "",
           "orig_text": "Lily 1. s______ goes to the library on Sunday morning",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "七-单词第3空",
@@ -94,7 +96,8 @@
           "q_img": "",
           "orig_text": "It is very quiet and 3. ______ (干净的)",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "七-单词第4空",
@@ -105,7 +108,8 @@
           "q_img": "",
           "orig_text": "The library has a big 4. m______ on the wall. It shows the streets of the city",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "七-单词第6空",
@@ -116,7 +120,8 @@
           "q_img": "",
           "orig_text": "She 6. s______ to her friend",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "七-单词第9空",
@@ -127,7 +132,8 @@
           "q_img": "",
           "orig_text": "They 9. ______ it's better to go there next Sunday",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "十-书面表达",
@@ -138,12 +144,14 @@
           "q_img": "",
           "orig_text": "以 My Opinion about Healthy Food 为题写一段话（不少于5句话）",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         }
       ],
       "carry_first_date": "2026-11-02",
       "carried_from": "2026-11-02",
-      "carry_count": 1
+      "carry_count": 1,
+      "corr_round": 1
     },
     {
       "task_id": "REG-20261102-F346AB",
@@ -247,7 +255,8 @@
           "q_img": "",
           "orig_text": "语段中加点的'泗'字的第六笔是：A.丨 B.𠃌 C.𐃌 D.丿",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "一-读音挣扎",
@@ -258,7 +267,8 @@
           "q_img": "",
           "orig_text": "挣扎（加点字读音二选一），给加点字选择正确的读音打√",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "一-错别字第1行",
@@ -269,7 +279,8 @@
           "q_img": "",
           "orig_text": "第1行：A.清瘦 B.僵硬 C.费话 D.掀心。先圈出一个错别字，再改正在后面的括号里。",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "一-错别字第2行",
@@ -280,7 +291,8 @@
           "q_img": "",
           "orig_text": "第2行：A.发霉 B.肆意 C.熬夜 D.抱怨。先圈出一个错别字，再改正在后面的括号里。",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "一-错别字第3行",
@@ -291,7 +303,8 @@
           "q_img": "",
           "orig_text": "第3行：A.黎明 B.龃食 C.胸膛 D.拥带。先圈出一个错别字，再改正在后面的括号里。",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "二-呻吟与拟人",
@@ -302,7 +315,8 @@
           "q_img": "",
           "orig_text": "木桥开始发抖，开始痛苦地呻吟。（1）'呻吟'指的是木桥什么？这句话运用什么修辞手法，写出了木桥在水中的什么情况？",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "二-师傅文段",
@@ -313,7 +327,8 @@
           "q_img": "",
           "orig_text": "文段（曹小三与师傅）：这段话描写了谁的心理？这样写的好处是什么？",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "二-课文回顾小说",
@@ -324,7 +339,8 @@
           "q_img": "",
           "orig_text": "阅读小说时，留意人物的动作、神态、___描写，可以帮助我们深入地理解人物形象，我们还可以通过小说的___感受人物形象。小说还会借___描写来烘托人物形象，例如《___》文中，'水渐渐上来，放肆地___人们的腿'，运用___手法，描写出危急的形势，衬托出老汉___的形象。（按原文填空）",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "二-课文回顾穷人",
@@ -335,7 +351,8 @@
           "q_img": "",
           "orig_text": "《穷人》这篇课文记叙了一个___的夜晚，桑娜与渔夫___的故事，真实地反映了沙皇专制制度下___的悲惨生活，赞美了桑娜和渔夫___的高尚品质。（按原文填空）",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "二-课文回顾送元二",
@@ -346,7 +363,8 @@
           "q_img": "",
           "orig_text": "“渭城朝雨浥轻尘，客舍青青柳色新。”出自王维的《送元二使安西》中的诗句，其中写出了朋友之间___之情。劝君更尽一杯酒，西出阳关无故人是___句。（按原文填空）",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "二-推荐好书",
@@ -357,7 +375,8 @@
           "q_img": "",
           "orig_text": "请向同学推荐一本你读过的好书，结合书中的人物和情节，至少写出三点推荐理由。",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "三-画恶劣环境句",
@@ -368,7 +387,8 @@
           "q_img": "",
           "orig_text": "用波浪线画出选文B中描写恶劣环境的语句，这句话暗示渔夫出海打鱼的什么？",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "三-哨卡思维导图",
@@ -379,7 +399,8 @@
           "q_img": "",
           "orig_text": "从将军的角度梳理事情情节，把下面的思维导图补充完整：起因、发展、高潮、结局。",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "三-哨卡环境描写填空",
@@ -390,7 +411,8 @@
           "q_img": "",
           "orig_text": "选择恰当的词语填在横线上（填序号），体会文章中的环境描写的作用：怒号肆虐的狂风，___，夹杂冰块的暴雪，___，直插半空的山峰，___。A.挡不住军人前进的脚步 B.冻不坏军人坚强的体魄 C.吹不倒军人挺拔的身躯。我体会到文章中的环境描写的作用是：___",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         },
         {
           "label": "三-哨卡结尾理解",
@@ -401,13 +423,15 @@
           "q_img": "",
           "orig_text": "联系生活实际，谈谈你对文章结尾的理解。",
           "q_img_exempt": "",
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 1
         }
       ],
       "carry_first_date": "2026-11-02",
       "carried_from": "2026-11-02",
       "carry_count": 1,
-      "status_source": "manual"
+      "status_source": "manual",
+      "corr_round": 1
     },
     {
       "task_id": "CHORE-20261103-G6",
