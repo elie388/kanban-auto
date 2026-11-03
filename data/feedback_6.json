@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-03T22:59:17+08:00",
+ "generated_at": "2026-11-03T23:05:18+08:00",
  "items": [
   {
    "date": "2026-11-03",
@@ -114,6 +114,14 @@
    "time": "",
    "title": "11月3日英语批改反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语批改反馈</h2>\n<p>11月3日 22:38 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>阅读理解5题全对！写作过去时全对、字数在60-80词内、没有逗号粘连句，内容完整，很棒！</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>写作有5处小错误，重点是冠词：<span style=\"color:red;font-weight:bold\">缺一句话说出take part in要不要the、best前面要不要the</span>。想一想：take part in这个短语里要不要the？best是最高级，最高级前面要不要the？其余自己找一找：哪个词重复了？tired和tried哪个是“累”的意思？and前面已经用了句号，还能再单独起一句吗？</li>\n</ul>\n</body></html>"
+  },
+  {
+   "date": "2026-11-03",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月3日针对性练习批改反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，针对性练习批改反馈</h2>\n<p>11月3日 22:58 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>《竹石》全背出来了！数学圆面积、水池面积、环形面积都对，英语词形填空和代词填空全对，很棒！</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>看拼音写词语：<span style=\"color:red;font-weight:bold\">缺一句话说出“徘徊”的“徘”怎么写</span>。想一想“徘徊”是什么意思（来回走）？“徘”字旁是什么？跟“排队”的“排”一样吗？</li>\n<li>形近字：<span style=\"color:red;font-weight:bold\">缺一个“墓”的正确组词</span>。“墓”是什么意思？能组什么词？“爱慕”的“慕”和“墓”一样吗？</li>\n<li>病句修改：<span style=\"color:red;font-weight:bold\">缺一句话说出“提高和进步”为什么重复</span>。“提高”和“进步”意思是不是差不多？删掉一个，句子是不是就通顺了？</li>\n<li>半圆面积：<span style=\"color:red;font-weight:bold\">缺一步“除以2”</span>。半圆是圆的一半，面积是不是也要一半？整圆面积算出来后，还要做什么？</li>\n</ul>\n<h3>待补交（周六22:00前补齐不算超时）</h3>\n<ul>\n<li>缺英语口语录音（围绕My school day问答，30-45秒）。</li>\n<li>缺语文小练笔照片。</li>\n</ul>\n</body></html>"
   },
   {
    "date": "2026-11-02",
@@ -234,14 +242,6 @@
    "time": "2026-11-01 20:09",
    "title": "英语阅读写作第 13 期",
    "html": "<p>阅读第 1–4 题全对，很棒！只有 2 处要改：</p><ul><li>阅读第 5 题：<span style=\"color:red;font-weight:bold;\">还缺食物是几个、那顿饭是哪顿没写对</span>，你写了食物和饮料的名字，很好，但再数数短文里那个食物是几个、那顿饭是午饭还是晚饭？改好发回来。</li><li>写作：<span style=\"color:red;font-weight:bold;\">还缺标题一个词没补上、还差两词才到 60 词、开头那句没并完整</span>，标题对照题目补上；全文数一数，加一句过去时的句子；开头那个只有时间的短句，把它并进下一句，变成完整的一句。改好发回来。</li></ul><p>改对这两处，第 13 期就全齐了！</p>"
-  },
-  {
-   "date": "2026-11-01",
-   "ts": "2026-11-01T20:09:31+08:00",
-   "kind": "feedback",
-   "time": "2026-11-01 20:09",
-   "title": "语文作文续写《钱》",
-   "html": "<p>续写《钱》写得完整，很棒！情节一步接一步很清楚：菜市场拾钱、冒领的人被识破、老太太认领、谢礼、最后大家心里都暖暖的，结尾也完整，这篇不用改，任务完成了！</p>"
   }
  ]
 }
