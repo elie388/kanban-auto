@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "五年级",
   "generated_at": "2026-11-04T00:17:30+08:00",
-  "updated_at": "2026-11-04T23:23:50+08:00",
+  "updated_at": "2026-11-04T23:25:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -245,7 +245,7 @@
       "title": "口语易",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②试卷综合练习3（听力笔试做，并改正） → 待完成",
@@ -254,9 +254,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T21:24:54+08:00",
-      "status_source": "kanban_upload_intake",
-      "task_type": "reading"
+      "updated_at": "2026-11-04T23:25:59+08:00",
+      "status_source": "closeout_writeback",
+      "task_type": "reading",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-04T23:25:59+08:00",
+      "orig_photos": [
+        "422ca09af02a918a.jpg"
+      ]
     },
     {
       "task_id": "REG-20261104-C1CE5D",
@@ -383,7 +389,7 @@
     "total": 10,
     "pending": 4,
     "in_progress": 3,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-04T23:00:00+08:00"
