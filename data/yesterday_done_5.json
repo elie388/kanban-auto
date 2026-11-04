@@ -1,66 +1,24 @@
 {
- "date": "2026-11-03",
+ "date": "2026-11-04",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "READ-20261103-G5",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
-   "group": "study"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-03",
+   "task_id": "META-REGISTER-2026-11-04",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261103-C9B412",
-   "title": "抄4、5课词语",
+   "task_id": "REG-20261104-06A0E5",
+   "title": "预习16课",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261103-A98B6B",
-   "title": "抄书本32页(2次)",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261103-FB6BF2",
-   "title": "背小练笔",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261103-B7D597",
-   "title": "试卷签名①②③④",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261103-EF2F90",
-   "title": "小测练习(4)",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261103-BD1D8C",
+   "task_id": "REG-20261104-890ECE",
    "title": "口语易",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261103-1FC682",
-   "title": "试卷（听力笔试部分，并改正）",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
