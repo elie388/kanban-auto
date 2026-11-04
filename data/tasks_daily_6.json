@@ -85,11 +85,11 @@
           "question": "he ___ some mistakes in them",
           "reason": "短文讲的是过去的事，动词要用过去式；孩子用了现在时 finds。",
           "hint": "这篇短文讲的是过去的事，想一想，动词应该用什么时态？再读一读前后句，选一个过去式的词。",
-          "img": "",
+          "img": "g6_eng_pasttense_guide.png",
           "q_img": "",
           "orig_text": "He read many medical books, but he 3. ___ some mistakes in them. (A. finds B. find C. found)",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -97,11 +97,11 @@
           "question": "We ___ with each other and listen carefully",
           "reason": "第4空只写了一个字母 t，没有写出完整单词；每空只填一个完整单词。",
           "hint": "第4空只写了一个字母 t，后面没写完。想一想，我们互相做什么、认真听？把这个词写完整。",
-          "img": "",
+          "img": "g6_eng_fillblank_guide.png",
           "q_img": "",
           "orig_text": "We 4. ___ with each other and listen carefully.",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         }
       ],
