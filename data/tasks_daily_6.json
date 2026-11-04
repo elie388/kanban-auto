@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "六年级",
   "generated_at": "2026-11-04T00:17:31+08:00",
-  "updated_at": "2026-11-04T00:18:07+08:00",
+  "updated_at": "2026-11-04T14:04:34+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -250,10 +250,21 @@
       "count_in_completion_rate": false,
       "created_at": "2026-11-04T00:17:55+08:00",
       "updated_at": "2026-11-04T00:17:55+08:00"
+    },
+    {
+      "task_id": "TEST-20261104-001",
+      "title": "【测试】备份作业测试1（数学＋英语词形填空）",
+      "subject": "数学",
+      "status": "submitted",
+      "date": "2026-11-04",
+      "corrections": [],
+      "pending_corrections": 0,
+      "test_task": true,
+      "test_source": "attachments/2026-11-03/0a8e3ede_2_3270de11790d.jpg"
     }
   ],
   "counts": {
-    "total": 6,
+    "total": 7,
     "pending": 3,
     "in_progress": 0,
     "done": 0,
