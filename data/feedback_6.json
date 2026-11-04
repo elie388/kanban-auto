@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-04T20:48:04+08:00",
+ "generated_at": "2026-11-04T23:14:49+08:00",
  "items": [
   {
    "date": "2026-11-04",
@@ -26,6 +26,14 @@
    "time": "",
    "title": "11月4日读园地一试卷反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，读园地一试卷反馈</h2>\n<p>11月4日 19:56 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>园地一第 11、12 页朗读完整，梳理与交流、词句段运用、路牌拼音、日积月累都读到了。</li>\n<li>《江畔独步寻花》默写全对，标题、作者、四句诗一个字都没错。</li>\n</ul>\n<p>这项已完成。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日资料3、4页反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，资料 3、4 页反馈</h2>\n<p>11月4日 20:40 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>13 道里对了 10 道：第 3 题(2)、第 4 题三小题、补充条件、五 1 两小题、五 3、五 4、五 5 都对了。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>顶部第 1 题（分数混合运算）：括号里两个分数分母不一样，要先通分再加；括号算对了，再算除法（除以一个分数等于乘它的倒数）。上面哪一步算错了，对照通用例子再算一遍。<br><img src=\"data/diagrams/mat_e1ddd886_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>第 3 题(1)改正：改正时不要改运算符号（加号还是加号），只改算错的那一步：先算乘法，再算加法，加法分母不同要先通分。上面哪一步被改错了，对照通用例子再改一遍。<br><img src=\"data/diagrams/mat_e1ddd886_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>综合应用第 2 题（冰块化水）：求一个数的几分之几用乘法；30×1/12 先约分再算，算对了再用 30 减去减少的体积。上面哪一步算错了，对照通用例子再算一遍。<br><img src=\"data/diagrams/mat_e1ddd886_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>顶部第 2 题字迹不太清楚，这次不算，你下次写清楚一点就行。把这 3 道一次改全。</p>\n</body></html>"
   },
   {
    "date": "2026-11-03",
