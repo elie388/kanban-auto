@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "六年级",
   "generated_at": "2026-11-04T00:17:31+08:00",
-  "updated_at": "2026-11-04T14:08:08+08:00",
+  "updated_at": "2026-11-04T14:09:36+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -257,11 +257,37 @@
       "subject": "数学",
       "status": "submitted",
       "date": "2026-11-04",
-      "corrections": [],
-      "pending_corrections": 0,
+      "corrections": [
+        {
+          "label": "测试1第8题半圆面积",
+          "question": "半圆形花园直径8米，求周长和面积（圆周率取3.14），其中面积一问",
+          "reason": "半圆面积算成了整圆面积，没有取一半",
+          "hint": "半圆是圆的一半，面积是不是也要一半？整圆面积算出来后，还要做什么？",
+          "img": "",
+          "q_img": "test_20261104_001_q8_orig.png",
+          "orig_text": "（8）列式计算：一个半圆形花园的直径是8米，求这个半圆形花园的周长和面积（半圆周长包括弧长和直径）。（圆周率取3.14）（变式）",
+          "q_img_exempt": "",
+          "img_exempt": "测试任务，不生成正式引导图",
+          "round": 1
+        },
+        {
+          "label": "测试1第11题词形填空woman",
+          "question": "There are three ___ (man) and two ___ (woman) over there，用所给词的正确形式填空，其中 woman 一空",
+          "reason": "woman 的复数拼写不对，写成了 weman",
+          "hint": "man 变成 men 时，a 变成了 e；woman 变复数时，两个地方都要变，你只变了一个地方，再想想",
+          "img": "",
+          "q_img": "",
+          "orig_text": "（11）用所给词的正确形式填空：1. There are three ___ (man) and two ___ (woman) over there. 2. Look at those cute ___ (sheep) eating grass on the hill.（变式）",
+          "q_img_exempt": "原图区与手写重叠无法裁切",
+          "img_exempt": "测试任务，不生成正式引导图",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2,
       "test_task": true,
       "test_source": "attachments/2026-11-03/0a8e3ede_2_3270de11790d.jpg",
-      "review_status": "approved"
+      "review_status": "approved",
+      "corr_round": 1
     }
   ],
   "counts": {
