@@ -402,6 +402,9 @@
   .task[data-tid]:not(.open-task) .corr-badge{display:none;}
   /* 待批改角标（2026-10-23 B案）：昨日已交/批改中被携带到今日的任务，提示「交了、在等批改」 */
   .task .carry-tag{font-size:10.5px;color:#1D5FA8;background:#EAF2FB;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap;}
+  /* 2026-11-05 考试预测联动：豁免标签默认隐藏，仅家长版（body.kb-parent）显示，点标签回看预测 */
+  .task .exampred-pill{display:none;font-size:10.5px;color:#7A4A00;background:#FFF3D6;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap;cursor:pointer;}
+  body.kb-parent .task .exampred-pill{display:inline-block;}
   /* 昨日完成折叠区（2026-10-23 B案，终审 定案）：只读回顾、灰色淡出，本地时间12:00后不再渲染 */
   .yd-zone{margin-top:10px;}
   .yd-zone:empty{display:none;}
@@ -1736,7 +1739,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     /* 完成率分母口径（2026-10-23 家长改定，覆盖 2026-10-20/22 旧口径）：登记本（meta_register）与家务卡（chore，一卡=1 项）均计入分母，分子按 status==='done' 计；豁免家务卡（chore_exempt）不计入 */
     var metas = list.filter(function(t){ return t.task_type === 'meta_register'; });
     var normals = list.filter(function(t){ return t.task_type !== 'meta_register'; });
-    var counted = list.filter(function(t){ return !(t.source === 'chore' && t.chore_exempt); });
+    var counted = list.filter(function(t){ return !(t.source === 'chore' && t.chore_exempt) && !t.exam_pred_exempt; }); /* 2026-11-05 考试预测联动：豁免卡不计入分母，与 daily_full_completion_award.count_full100 同改 */
     var total = counted.length;
     var done = counted.filter(function(t){ return t.status === 'done'; }).length;
     var progText = sec.querySelector('.task-prog-text');
@@ -1961,8 +1964,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var ICO_ANIM = {'🔄':'st-ico-spin','🔍':'st-ico-pulse','📝':'st-ico-bob','📤':'st-ico-bob','✅':'st-ico-pulse','🌴':'st-ico-sway','🧹':'st-ico-sway'};
         var mIco = badgeText.match(/^(\S+)/);
         if(mIco && ICO_ANIM[mIco[1]]) badgeHtml = '<span class="st-ico ' + ICO_ANIM[mIco[1]] + '">' + mIco[1] + '</span>' + badgeText.slice(mIco[1].length);
+        var exampredPill = '';
+        if(t.exam_pred_exempt){ exampredPill = '<span class="exampred-pill" title="考试预测日豁免：点开回看预测">考试预测日豁免</span>'; }
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + (urgCls ? ' ' + urgCls : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
-          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeHtml + '</span>' + miniPill + carryTag + '</div>'
+          + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeHtml + '</span>' + miniPill + carryTag + exampredPill + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + ((t.urge && t.urge.text && t.status !== 'done') ? '<div class="task-urge">⏰ ' + esc(t.urge.text) + '<button type="button" class="urge-mute" data-urge-mute="' + esc(t.task_id || '') + '">暂停闪烁</button></div>' : '')
           + '<div class="task-progress">' + sub2 + '</div></div>'
@@ -3143,6 +3148,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var last = 0;
       try { last = parseInt(localStorage.getItem('hw-parent-last') || '0', 10); } catch (e) {}
       if(last > 0 && Date.now() - last > 30 * 24 * 3600 * 1000){ parentClear(); tok = ''; }
+    }
+    try { document.body.classList.toggle('kb-parent', !!tok); } catch (e) {}
+    if(!window.__exampredClickBound){ window.__exampredClickBound = true;
+      document.addEventListener('click', function(ev){
+        var el = ev.target && ev.target.closest ? ev.target.closest('.exampred-pill') : null;
+        if(!el) return;
+        var sec = document.getElementById('exam-pred-section');
+        if(sec && sec.scrollIntoView) sec.scrollIntoView();
+        var btn = document.getElementById('btn-exampred');
+        /* 预测栏按钮已在 GATE_PANELS 口令门内，未解锁时先弹口令框；已展开则只滚动不重复点 */
+        if(btn && btn.getAttribute('aria-expanded') !== 'true') btn.click();
+      }, true);
     }
     var zone = $('sum-parent');
     if(!tok){
@@ -5645,7 +5662,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261104-daigaizheng-label';
+  var KB_BUILD = '20261105-examlinkage';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
