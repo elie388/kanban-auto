@@ -1800,6 +1800,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if(t.status === 'in_progress' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0){
           badgeText = '🔄 待确认';
         }
+        /* 已批改待订正（2026-11-04 根治：submitted 且待改正数>0 说明已批改、等孩子订正，不再显示“待批改”误导家长以为批改卡住；待改正数为0的 submitted 才真正等批改）。 */
+        if(t.status === 'submitted' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) > 0){
+          badgeText = '✏️ 等孩子订正';
+        }
         if(t.source === 'chore'){
           if(t.chore_exempt) badgeText = '🌴 今日豁免';
           else if(t.chore_missed) badgeText = '当天未完成';
@@ -1938,11 +1942,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             badgeText += ' · ' + mRem[0].replace(/\s+/g, '');
           }
         }
-        /* 待批改角标（2026-10-23 B案）：被跨日携带的 submitted/grading 任务，提示孩子「交了、在等批改」；缺件提醒（2026-10-25 家长定）：pending_note 以【缺件提醒】开头时，提示改为「待补件」 */
+        /* 待批改角标（2026-10-23 B案）：被跨日携带的 submitted/grading 任务，提示孩子「交了、在等批改」；缺件提醒（2026-10-25 家长定）：pending_note 以【缺件提醒】开头时，提示改为「待补件」；2026-11-04 根治：待改正数>0 说明已批改、等孩子订正，角标改为「待订正」，不再用「待批改」误导。 */
         var carryTag = '';
         if((t.carry_count || t.carried_from) && (t.status === 'submitted' || t.status === 'grading')){
           var isMissing = t.pending_note && t.pending_note.indexOf('【缺件提醒】') === 0;
-          carryTag = '<span class="carry-tag">' + (isMissing ? '待补件' : '待批改') + '</span>';
+          carryTag = '<span class="carry-tag">' + (pendN > 0 ? '待订正' : (isMissing ? '待补件' : '待批改')) + '</span>';
         }
         /* 催促整卡闪烁（2026-10-23）：未完成才闪；单卡暂停（localStorage）与同屏上限在渲染时定格 */
         var urgCls = '';
@@ -5641,7 +5645,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261104-exampred-v2';
+  var KB_BUILD = '20261104-exampred-v2-label';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
