@@ -284,7 +284,7 @@
       "title": "预习16课",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
@@ -293,8 +293,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T18:29:16+08:00",
-      "task_type": "reading"
+      "updated_at": "2026-11-04T18:47:32+08:00",
+      "task_type": "reading",
+      "status_source": "kanban_upload_intake"
     },
     {
       "task_id": "REG-20261104-9B057F",
