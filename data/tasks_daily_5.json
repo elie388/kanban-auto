@@ -217,7 +217,7 @@
    "title": "口语易",
    "detail": "",
    "estimate_min": null,
-   "status": "pending",
+   "status": "submitted",
    "review_status": "approved",
    "ocr_confidence": null,
    "raw_text": "- 英语：①口语易；②试卷综合练习3（听力笔试做，并改正） → 待完成",
@@ -226,7 +226,8 @@
     "reviewed_by": null
    },
    "created_at": "2026-11-04T18:29:16+08:00",
-   "updated_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T21:24:54+08:00",
+   "status_source": "kanban_upload_intake",
    "task_type": "reading"
   },
   {
