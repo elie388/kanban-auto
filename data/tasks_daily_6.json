@@ -67,7 +67,7 @@
       "title": "完成发下的试卷笔试部分，写语法",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成发下的试卷笔试部分，写语法；②复习U2《知；③早读 → 待完成",
@@ -76,7 +76,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T19:14:48+08:00",
-      "updated_at": "2026-11-04T19:14:48+08:00"
+      "updated_at": "2026-11-04T23:01:21+08:00",
+      "status_source": "kanban_upload_intake"
     },
     {
       "task_id": "REG-20261104-4DFCE5",
