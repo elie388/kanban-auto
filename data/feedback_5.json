@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-04T20:38:32+08:00",
+ "generated_at": "2026-11-04T23:23:57+08:00",
  "items": [
   {
    "date": "2026-11-04",
@@ -18,6 +18,14 @@
    "time": "",
    "title": "11月4日期中模拟卷1.2页反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，期中模拟卷1.2页反馈</h2>\n<p>11月4日 18:43 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>这次交的第 1、2 页，大部分都做对了：填空里的单位换算、等式性质、正方形周长和面积都对；计算题 11 道全对，竖式也列得很清楚。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>填空第 4 题第 2 空（求第三个角）：三角形三个内角加起来是多少度？已经知道两个角，求第三个角该用什么算式？先算两个已知角的和，再用内角和去减，算的时候退位要小心。<br><img src=\"data/diagrams/g5_mathmock_anglesum.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>填空第 4 题第 3 空（按角分是哪种）：按角分三角形，看的是最大的那个角：三个角都比直角小是哪种？有一个角正好是直角是哪种？有一个角比直角大是哪种？你先把三个角都算出来，再比一比最大的角和直角谁大谁小。<br><img src=\"data/diagrams/g5_mathmock_classify.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>选择第 3 题（积最大）：要比积的大小，先把四个算式的结果都算出来，再比一比。1.1 比 1 大，乘出来会比 1 大还是比 1 小？把四个结果排一排再选。<br><img src=\"data/diagrams/g5_mathmock_product.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>选择第 6 题（年龄差）：年龄差会不会变？今年妈妈比明明大几岁，5 年后妈妈长了几岁、明明长了几岁，差变了没有？先算今年的差，再算 5 年后的差，比一比。<br><img src=\"data/diagrams/g5_mathmock_agediff.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>把这 4 道一次改全，订正全对后这项就完成了。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日生字15课反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，生字 15 课反馈</h2>\n<p>11月4日 20:55 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>13 个生字里 11 个全对：字、拼音、部首、组词都对了，字也写得很工整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>煤的拼音：再拼一遍，声母是 m，韵母呢？读一读，再写一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>菌的拼音：再拼一遍，细菌的菌，韵母后面有没有 n？声调是第几声？读一读细菌，再拼一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>另外，滴的第一个组词再想一想，是不是一个现成的词语？把这两处拼音一次改全。</p>\n</body></html>"
   },
   {
    "date": "2026-11-03",
