@@ -232,6 +232,17 @@ jobs:
           cp data/weekly_5.json data/weekly_6.json public/data/
           ls -la public/data/
 
+      # 考试预测数据通道（2026-11-04 家长逐一确认7件）：data/exam_predictions.json
+      # 同步进 Pages 产物，供考试预测栏目 fetch；默认空数组。硬断言防静默缺失
+      # （清单对账要求前端 fetch 的文件必须在部署拷贝清单内，否则构建失败）。
+      - name: 同步考试预测数据到 Pages 产物
+        run: |
+          mkdir -p public/data
+          test -s data/exam_predictions.json || { echo "::error::data/exam_predictions.json 缺失或为空"; exit 1; }
+          python3 -c "import json; d=json.load(open('data/exam_predictions.json', encoding='utf-8')); assert isinstance(d, list), '须为数组'"
+          cp data/exam_predictions.json public/data/
+          ls -la public/data/
+
       # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：
       # 跨周边界定值测试必跑，防止周界回归。失败则构建失败。
       - name: 全栏目跨周边界单测
