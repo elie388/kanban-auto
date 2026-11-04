@@ -1,360 +1,361 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-04",
-  "grade": "五年级",
-  "generated_at": "2026-11-04T00:17:30+08:00",
-  "updated_at": "2026-11-04T20:38:16+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-04T19:14:48+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-04T16:55:53+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-04",
+ "grade": "五年级",
+ "generated_at": "2026-11-04T00:17:30+08:00",
+ "updated_at": "2026-11-04T20:38:16+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-04T19:14:48+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261104-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-04T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-04T00:17:55+08:00",
-      "updated_at": "2026-11-04T00:17:55+08:00"
-    },
-    {
-      "task_id": "READ-20261104-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-04T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-04T00:18:07+08:00",
-      "updated_at": "2026-11-04T00:18:07+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-04",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-04T16:56:02+08:00",
-      "updated_at": "2026-11-04T18:29:16+08:00",
-      "completed_at": "2026-11-04T18:29:16+08:00",
-      "orig_photos": [
-        "fdd3c1f48e0d0651.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261104-F96E05",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "生字15课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T18:29:16+08:00"
-    },
-    {
-      "task_id": "REG-20261104-A356C3",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "第三单元小测（见群打卡）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T18:29:16+08:00"
-    },
-    {
-      "task_id": "REG-20261104-06A0E5",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习16课",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T20:14:38+08:00",
-      "task_type": "reading",
-      "status_source": "closeout-manual-fallback",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-04T20:14:38+08:00",
-      "orig_photos": [
-        "d9d3c8cbd9cf347a.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261104-9B057F",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "期中模拟卷1.2页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：期中模拟卷1.2页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T20:38:15+08:00",
-      "status_source": "closeout_writeback",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "填空4-第三个角",
-          "question": "三角形两内角35度和65度，求第三个角",
-          "reason": "内角和减法算错：180-35-65应得80，写成90。",
-          "hint": "三角形三个内角加起来是多少度？已经知道两个角，求第三个角该用什么算式？先算两个已知角的和，再用内角和去减，算的时候退位要小心。",
-          "img": "g5_mathmock_anglesum.png",
-          "q_img": "",
-          "orig_text": "三角形两内角35度和65度，求第三个角",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "填空4-按角分类",
-          "question": "35度、65度和第三个角的三角形按角分是哪种",
-          "reason": "按角分类看最大的角：三个角都小于90度时应为锐角，因前一空算错连带分类错。",
-          "hint": "按角分三角形，看的是最大的那个角：三个角都比直角小是哪种？有一个角正好是直角是哪种？有一个角比直角大是哪种？你先把三个角都算出来，再比一比最大的角和直角谁大谁小。",
-          "img": "g5_mathmock_classify.png",
-          "q_img": "",
-          "orig_text": "35度、65度和第三个角的三角形按角分是哪种",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "选择3-积最大",
-          "question": "四个小数乘法算式中积最大的是哪项",
-          "reason": "比积大小未先算出四个结果再比较，误选D。",
-          "hint": "要比积的大小，先把四个算式的结果都算出来，再比一比。1.1比1大，乘出来会比1大还是比1小？把四个结果排一排再选。",
-          "img": "g5_mathmock_product.png",
-          "q_img": "",
-          "orig_text": "四个小数乘法算式中积最大的是哪项",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "选择6-年龄差",
-          "question": "明明x岁妈妈是3倍，5年后两人相差几岁",
-          "reason": "年龄差不随时间变：今年差3x-x，5年后两人各长5岁，差不变，误选D。",
-          "hint": "年龄差会不会变？今年妈妈比明明大几岁，5年后妈妈长了几岁、明明长了几岁，差变了没有？先算今年的差，再算5年后的差，比一比。",
-          "img": "g5_mathmock_agediff.png",
-          "q_img": "",
-          "orig_text": "明明x岁妈妈是3倍，5年后两人相差几岁",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 4
-    },
-    {
-      "task_id": "REG-20261104-890ECE",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②试卷综合练习3（听力笔试做，并改正） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T18:29:16+08:00",
-      "task_type": "reading"
-    },
-    {
-      "task_id": "REG-20261104-C1CE5D",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "试卷综合练习3（听力笔试做，并改正）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②试卷综合练习3（听力笔试做，并改正） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T18:29:16+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261104-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语随堂练习（三）Unit 3",
-      "detail": "家务面板借交，2026-11-04 18:34到，2图，第1-4页齐全，卷面红笔91；随堂练习不按考试档位分",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-04T19:38:14+08:00",
-      "updated_at": "2026-11-04T19:57:41+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "英语随堂练习（三）六-8词库填空",
-          "question": "词库填空第8题：用方框中所给词填空",
-          "reason": "词库里的词长什么样就照抄什么样，不能自己改大小写、不能自己加复数。孩子把原词改成了大写并加了(s)。",
-          "hint": "词库里的词长什么样就照抄什么样：大小写、单复数都不能自己改。看看词库里这个词本来是大写还是小写、是单数还是复数，再想想你写的时候改了哪里。",
-          "img": "eng_73ee27b6_q1_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 六、词库填空第8题：用方框中所给词填空",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "英语随堂练习（三）七动词填空",
-          "question": "七、动词填空：like后接动词形式",
-          "reason": "like后面跟动词时，动词要用-ing形式，孩子直接用了原形。",
-          "hint": "like后面跟动词时，动词要变个形：想想是 like do 还是 like doing？动词后面要加什么？",
-          "img": "eng_73ee27b6_q2_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 七、动词填空：like后接动词形式",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "英语随堂练习（三）七单词拼写",
-          "question": "七、单词拼写：食物词",
-          "reason": "食物词拼写错误，中间字母组合不对。",
-          "hint": "这个食物词你拼成了 meot，读一读它的发音，想想中间两个字母应该是什么（提示：发长音的字母组合）。",
-          "img": "eng_73ee27b6_q3_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 七、单词拼写：食物词",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "英语随堂练习（三）九(一)-2阅读判断",
-          "question": "九、（一）阅读判断第2题：友谊的范围",
-          "reason": "短文说友谊不只在人与人之间，还在国家与文化之间；题干用了 only（只），说得太绝对，与短文不符。",
-          "hint": "再读一遍短文里讲友谊的那句：友谊只在人与人之间吗？还是也在别的地方之间？那个 only 是不是说得太绝对了？",
-          "img": "eng_73ee27b6_q4_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 九、（一）阅读判断第2题：友谊只在人与人之间",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "英语随堂练习（三）九(一)-4阅读判断",
-          "question": "九、（一）阅读判断第4题：朋友是否玩游戏",
-          "reason": "短文说有些朋友会一起玩游戏；题干用了 never（从不），说得太绝对，与短文不符。",
-          "hint": "短文里有没有说朋友会一起玩游戏？如果有，那个 never（从不）是不是说得太绝对了？",
-          "img": "eng_73ee27b6_q5_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 九、（一）阅读判断第4题：朋友从不玩游戏",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "英语随堂练习（三）十选词填空",
-          "question": "十、选词填空：矮",
-          "reason": "short（矮的，形容词）与 shorts（短裤，名词）混淆；这道题要填的是形容词（矮）。",
-          "hint": "short 和 shorts 长得很像，但意思完全不同：一个是形容词（矮的），一个是名词（短裤）。这道题要填的是形容词（矮），该用哪一个？",
-          "img": "eng_73ee27b6_q6_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 十、选词填空：矮",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "英语随堂练习（三）十选词填空",
-          "question": "十、选词填空：喜欢某人（宾语）",
-          "reason": "like后面跟的是动作的接受者（宾语），人称代词做宾语时要用宾格；孩子用了主格 He，且多写了一个 He。",
-          "hint": "like 后面跟的是动作的接受者（宾语），人称代词做宾语时要用宾格：He 做主语，He 做宾语时换成什么？句子里只需要一个宾语。",
-          "img": "eng_73ee27b6_q7_guide.png",
-          "q_img": "",
-          "orig_text": "英语随堂练习（三）Unit 3 十、选词填空：喜欢某人（宾语）",
-          "q_img_exempt": "原题无图",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 7,
-      "status_source": "closeout_writeback"
-    }
-  ],
-  "counts": {
-    "total": 10,
-    "pending": 6,
-    "in_progress": 2,
-    "done": 2,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": "2026-11-04T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-04T16:55:53+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261104-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-04T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-04T00:17:55+08:00",
+   "updated_at": "2026-11-04T00:17:55+08:00"
+  },
+  {
+   "task_id": "READ-20261104-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-04T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-04T00:18:07+08:00",
+   "updated_at": "2026-11-04T00:18:07+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-04",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-04T16:56:02+08:00",
+   "updated_at": "2026-11-04T18:29:16+08:00",
+   "completed_at": "2026-11-04T18:29:16+08:00",
+   "orig_photos": [
+    "fdd3c1f48e0d0651.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261104-F96E05",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "生字15课",
+   "detail": "",
+   "estimate_min": null,
+   "status": "submitted",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T20:59:47+08:00",
+   "status_source": "kanban_upload_intake"
+  },
+  {
+   "task_id": "REG-20261104-A356C3",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "第三单元小测（见群打卡）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T18:29:16+08:00"
+  },
+  {
+   "task_id": "REG-20261104-06A0E5",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "预习16课",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T20:14:38+08:00",
+   "task_type": "reading",
+   "status_source": "closeout-manual-fallback",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-04T20:14:38+08:00",
+   "orig_photos": [
+    "d9d3c8cbd9cf347a.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261104-9B057F",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "期中模拟卷1.2页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：期中模拟卷1.2页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T20:38:15+08:00",
+   "status_source": "closeout_writeback",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "填空4-第三个角",
+     "question": "三角形两内角35度和65度，求第三个角",
+     "reason": "内角和减法算错：180-35-65应得80，写成90。",
+     "hint": "三角形三个内角加起来是多少度？已经知道两个角，求第三个角该用什么算式？先算两个已知角的和，再用内角和去减，算的时候退位要小心。",
+     "img": "g5_mathmock_anglesum.png",
+     "q_img": "",
+     "orig_text": "三角形两内角35度和65度，求第三个角",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "填空4-按角分类",
+     "question": "35度、65度和第三个角的三角形按角分是哪种",
+     "reason": "按角分类看最大的角：三个角都小于90度时应为锐角，因前一空算错连带分类错。",
+     "hint": "按角分三角形，看的是最大的那个角：三个角都比直角小是哪种？有一个角正好是直角是哪种？有一个角比直角大是哪种？你先把三个角都算出来，再比一比最大的角和直角谁大谁小。",
+     "img": "g5_mathmock_classify.png",
+     "q_img": "",
+     "orig_text": "35度、65度和第三个角的三角形按角分是哪种",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "选择3-积最大",
+     "question": "四个小数乘法算式中积最大的是哪项",
+     "reason": "比积大小未先算出四个结果再比较，误选D。",
+     "hint": "要比积的大小，先把四个算式的结果都算出来，再比一比。1.1比1大，乘出来会比1大还是比1小？把四个结果排一排再选。",
+     "img": "g5_mathmock_product.png",
+     "q_img": "",
+     "orig_text": "四个小数乘法算式中积最大的是哪项",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "选择6-年龄差",
+     "question": "明明x岁妈妈是3倍，5年后两人相差几岁",
+     "reason": "年龄差不随时间变：今年差3x-x，5年后两人各长5岁，差不变，误选D。",
+     "hint": "年龄差会不会变？今年妈妈比明明大几岁，5年后妈妈长了几岁、明明长了几岁，差变了没有？先算今年的差，再算5年后的差，比一比。",
+     "img": "g5_mathmock_agediff.png",
+     "q_img": "",
+     "orig_text": "明明x岁妈妈是3倍，5年后两人相差几岁",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 4
+  },
+  {
+   "task_id": "REG-20261104-890ECE",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②试卷综合练习3（听力笔试做，并改正） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T18:29:16+08:00",
+   "task_type": "reading"
+  },
+  {
+   "task_id": "REG-20261104-C1CE5D",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "试卷综合练习3（听力笔试做，并改正）",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②试卷综合练习3（听力笔试做，并改正） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-04T18:29:16+08:00",
+   "updated_at": "2026-11-04T18:29:16+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261104-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语随堂练习（三）Unit 3",
+   "detail": "家务面板借交，2026-11-04 18:34到，2图，第1-4页齐全，卷面红笔91；随堂练习不按考试档位分",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-04T19:38:14+08:00",
+   "updated_at": "2026-11-04T19:57:41+08:00",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "英语随堂练习（三）六-8词库填空",
+     "question": "词库填空第8题：用方框中所给词填空",
+     "reason": "词库里的词长什么样就照抄什么样，不能自己改大小写、不能自己加复数。孩子把原词改成了大写并加了(s)。",
+     "hint": "词库里的词长什么样就照抄什么样：大小写、单复数都不能自己改。看看词库里这个词本来是大写还是小写、是单数还是复数，再想想你写的时候改了哪里。",
+     "img": "eng_73ee27b6_q1_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 六、词库填空第8题：用方框中所给词填空",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "英语随堂练习（三）七动词填空",
+     "question": "七、动词填空：like后接动词形式",
+     "reason": "like后面跟动词时，动词要用-ing形式，孩子直接用了原形。",
+     "hint": "like后面跟动词时，动词要变个形：想想是 like do 还是 like doing？动词后面要加什么？",
+     "img": "eng_73ee27b6_q2_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 七、动词填空：like后接动词形式",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "英语随堂练习（三）七单词拼写",
+     "question": "七、单词拼写：食物词",
+     "reason": "食物词拼写错误，中间字母组合不对。",
+     "hint": "这个食物词你拼成了 meot，读一读它的发音，想想中间两个字母应该是什么（提示：发长音的字母组合）。",
+     "img": "eng_73ee27b6_q3_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 七、单词拼写：食物词",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "英语随堂练习（三）九(一)-2阅读判断",
+     "question": "九、（一）阅读判断第2题：友谊的范围",
+     "reason": "短文说友谊不只在人与人之间，还在国家与文化之间；题干用了 only（只），说得太绝对，与短文不符。",
+     "hint": "再读一遍短文里讲友谊的那句：友谊只在人与人之间吗？还是也在别的地方之间？那个 only 是不是说得太绝对了？",
+     "img": "eng_73ee27b6_q4_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 九、（一）阅读判断第2题：友谊只在人与人之间",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "英语随堂练习（三）九(一)-4阅读判断",
+     "question": "九、（一）阅读判断第4题：朋友是否玩游戏",
+     "reason": "短文说有些朋友会一起玩游戏；题干用了 never（从不），说得太绝对，与短文不符。",
+     "hint": "短文里有没有说朋友会一起玩游戏？如果有，那个 never（从不）是不是说得太绝对了？",
+     "img": "eng_73ee27b6_q5_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 九、（一）阅读判断第4题：朋友从不玩游戏",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "英语随堂练习（三）十选词填空",
+     "question": "十、选词填空：矮",
+     "reason": "short（矮的，形容词）与 shorts（短裤，名词）混淆；这道题要填的是形容词（矮）。",
+     "hint": "short 和 shorts 长得很像，但意思完全不同：一个是形容词（矮的），一个是名词（短裤）。这道题要填的是形容词（矮），该用哪一个？",
+     "img": "eng_73ee27b6_q6_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 十、选词填空：矮",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "英语随堂练习（三）十选词填空",
+     "question": "十、选词填空：喜欢某人（宾语）",
+     "reason": "like后面跟的是动作的接受者（宾语），人称代词做宾语时要用宾格；孩子用了主格 He，且多写了一个 He。",
+     "hint": "like 后面跟的是动作的接受者（宾语），人称代词做宾语时要用宾格：He 做主语，He 做宾语时换成什么？句子里只需要一个宾语。",
+     "img": "eng_73ee27b6_q7_guide.png",
+     "q_img": "",
+     "orig_text": "英语随堂练习（三）Unit 3 十、选词填空：喜欢某人（宾语）",
+     "q_img_exempt": "原题无图",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 7,
+   "status_source": "closeout_writeback"
+  }
+ ],
+ "counts": {
+  "total": 10,
+  "pending": 6,
+  "in_progress": 2,
+  "done": 2,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-04T22:30:00+08:00"
 }
