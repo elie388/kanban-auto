@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "六年级",
   "generated_at": "2026-11-04T00:17:31+08:00",
-  "updated_at": "2026-11-04T23:14:38+08:00",
+  "updated_at": "2026-11-04T23:31:00+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -67,7 +67,7 @@
       "title": "完成发下的试卷笔试部分，写语法",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成发下的试卷笔试部分，写语法；②复习U2《知；③早读 → 待完成",
@@ -76,8 +76,36 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T19:14:48+08:00",
-      "updated_at": "2026-11-04T23:01:21+08:00",
-      "status_source": "kanban_upload_intake"
+      "updated_at": "2026-11-04T23:31:00+08:00",
+      "status_source": "closeout_writeback",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "六3短文选词",
+          "question": "he ___ some mistakes in them",
+          "reason": "短文讲的是过去的事，动词要用过去式；孩子用了现在时 finds。",
+          "hint": "这篇短文讲的是过去的事，想一想，动词应该用什么时态？再读一读前后句，选一个过去式的词。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "He read many medical books, but he 3. ___ some mistakes in them. (A. finds B. find C. found)",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "七4填词",
+          "question": "We ___ with each other and listen carefully",
+          "reason": "第4空只写了一个字母 t，没有写出完整单词；每空只填一个完整单词。",
+          "hint": "第4空只写了一个字母 t，后面没写完。想一想，我们互相做什么、认真听？把这个词写完整。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "We 4. ___ with each other and listen carefully.",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2
     },
     {
       "task_id": "REG-20261104-4DFCE5",
@@ -307,8 +335,8 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 5,
-    "in_progress": 1,
+    "pending": 4,
+    "in_progress": 2,
     "done": 3,
     "pending_review": 0
   },
