@@ -1297,6 +1297,21 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </div>
   </section>
 
+  <!-- 考试预测（2026-11-04 家长逐一确认7件）：平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示，否则不出现；内容：年级、科目、预测日期、信心、依据，并注明预测仅供参考；不写突击卷出卷时间；数据源 data/exam_predictions.json（默认空数组） -->
+  <section class="card collapse" aria-label="考试预测" id="exam-pred-section" hidden>
+    <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-exampred" id="btn-exampred">
+      <span class="emoji" aria-hidden="true">🔮</span>
+      <span class="cb-title">考试预测</span>
+      <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
+    </button>
+    <div class="collapse-body" id="panel-exampred" role="region" aria-labelledby="btn-exampred">
+      <div class="collapse-inner"><div class="collapse-pad">
+        <div id="exampred-items"><div style="color:var(--sub);font-size:13px;padding:4px 2px;">预测加载中…</div></div>
+        <div style="color:var(--sub);font-size:12px;padding:6px 2px 2px;">预测仅供参考</div>
+      </div></div>
+    </div>
+  </section>
+
   <!-- 学习小结（2026-10-23 家长拍板两版上看板，终审 五条件）：孩子版近3天（公开数据，2026-10-23晚家长改定不脱敏）；家长版凭独立家长令牌经 hw-api 私有拉取、不进公开仓库 -->
   <section class="card collapse" aria-label="学习小结">
     <span class="tag-demo" id="summary-tag">离线数据</span>
@@ -1513,7 +1528,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* 折叠栏目：点击按钮展开/收起详情 */
 (function(){
-  var ids = ['shop','achieve','trend','summary']; /* 2026-10-23 合并：bonus/deduct/log 三钮已并入商店为子块、lib 已并入本周徽章为子块、feedback 已并入学习小结为子块，顶层钮删除 */
+  var ids = ['shop','achieve','trend','summary','exampred']; /* 2026-11-04：考试预测栏加入折叠 wiring */ /* 2026-10-23 合并：bonus/deduct/log 三钮已并入商店为子块、lib 已并入本周徽章为子块、feedback 已并入学习小结为子块，顶层钮删除 */
   /* 2026-10-19：bal-jump-g5/g6 余额跳转按钮依赖此 click 的"幂等展开"行为（只开不收），改动折叠JS前请核对跳转逻辑 */
   ids.forEach(function(k){
     var btn = document.getElementById('btn-' + k);
@@ -4087,6 +4102,79 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </script>
 
 <script>
+/* ===== 考试预测（2026-11-04 家长逐一确认7件）=====
+   位置：学习小结上方；平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示。
+   内容：年级、科目、预测日期、信心、依据，并注明预测仅供参考；不写突击卷出卷时间。
+   数据源：data/exam_predictions.json（默认空数组）；信心等级：较低<中等≤较高≤高，未知等级按不显示处理。
+   日期以浏览器本地日期为准；非法日期按不显示处理。文本一律 textContent 渲染。 */
+(function(){
+  var CONF_RANK = { '较低': 0, '中等': 1, '较高': 2, '高': 3 };
+  function todayLocalStr(){
+    var d = new Date();
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day);
+  }
+  function dateToDay(str){
+    if(typeof str !== 'string') return null;
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(str);
+    if(!m) return null;
+    var t = Date.UTC(+m[1], +m[2] - 1, +m[3]);
+    var chk = new Date(t);
+    if(chk.getUTCFullYear() !== +m[1] || chk.getUTCMonth() !== +m[2] - 1 || chk.getUTCDate() !== +m[3]) return null;
+    return t / 86400000;
+  }
+  function examPredVisible(p, todayStr){
+    if(!p || typeof p !== 'object') return false;
+    var rank = CONF_RANK[p.confidence];
+    if(rank === undefined || rank < 1) return false;
+    var base = dateToDay(todayStr), day = dateToDay(p.date);
+    if(base === null || day === null) return false;
+    return day >= base && day <= base + 2;
+  }
+  function examPredFilter(items, todayStr){
+    if(!Array.isArray(items)) return [];
+    var out = [];
+    for(var i = 0; i < items.length; i++){
+      if(examPredVisible(items[i], todayStr)) out.push(items[i]);
+    }
+    return out;
+  }
+  function renderExamPredictions(d){
+    var sec = document.getElementById('exam-pred-section');
+    var box = document.getElementById('exampred-items');
+    if(!sec || !box) return;
+    var items = Array.isArray(d) ? d : (d && Array.isArray(d.items) ? d.items : []);
+    var show = examPredFilter(items, todayLocalStr());
+    if(!show.length){ sec.hidden = true; return; }
+    while(box.firstChild) box.removeChild(box.firstChild);
+    show.forEach(function(p){
+      var row = document.createElement('div');
+      row.style.cssText = 'padding:6px 2px;border-bottom:1px solid #eee;font-size:14px;line-height:1.6;';
+      var t1 = document.createElement('div');
+      t1.textContent = (p.grade || '') + ' ' + (p.subject || '') + ' · 预测 ' + (p.date || '') + ' · 信心' + (p.confidence || '');
+      var t2 = document.createElement('div');
+      t2.style.cssText = 'color:var(--sub);font-size:13px;';
+      t2.textContent = '依据：' + (p.basis || '');
+      row.appendChild(t1); row.appendChild(t2); box.appendChild(row);
+    });
+    sec.hidden = false;
+  }
+  function loadExamPredictions(){
+    try{
+      if(typeof fetchJson !== 'function') return;
+      fetchJson('exam_predictions.json').then(renderExamPredictions).catch(function(){ /* 默认空：拉取失败保持隐藏 */ });
+    }catch(e){}
+  }
+  window.__kanbanRefreshExamPred = loadExamPredictions;
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', loadExamPredictions, { once: true });
+  }else{
+    loadExamPredictions();
+  }
+})();
+</script>
+
+<script>
 /* 2026-10-19：5分钟自刷新 + 倒计时（终审方案，独立IIFE） */
 (function(){
   'use strict';
@@ -5508,7 +5596,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261103-printfix';
+  var KB_BUILD = '20261104-exampred';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6711,7 +6799,7 @@ document.addEventListener('click', function(e){
    - 收口只有一个实现 kbCollapseAll()，解锁/令牌恢复/巡检回锁三处共用。
    ================================================================ */
 (function(){
-  var GATE_PANELS = ['btn-summary', 'btn-trend', 'btn-achieve', 'btn-shop']; /* 2026-10-23 合并：btn-bonus/btn-deduct/btn-log 随四块并入商店删除、btn-lib 随目标榜并入本周徽章删除、btn-feedback 随批改反馈并入学习小结删除，子块一律归父栏目一口收口 */
+  var GATE_PANELS = ['btn-summary', 'btn-trend', 'btn-achieve', 'btn-shop', 'btn-exampred']; /* 2026-11-04：考试预测栏加入口令门拦截（新增可展开栏目须登记运行时清单） */ /* 2026-10-23 合并：btn-bonus/btn-deduct/btn-log 随四块并入商店删除、btn-lib 随目标榜并入本周徽章删除、btn-feedback 随批改反馈并入学习小结删除，子块一律归父栏目一口收口 */
   var KB_LOCKED = false;
   var KB_GATE_INTERNAL = false; /* 收口内部触发的 click 带此标志，拦截器放行，避免自拦 */
   var pendingReplay = null;     /* 被拦点击三元组 {el, type, isTrusted}，口令框打开期间只存一份 */
