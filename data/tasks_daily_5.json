@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "五年级",
   "generated_at": "2026-11-04T00:17:30+08:00",
-  "updated_at": "2026-11-04T23:16:20+08:00",
+  "updated_at": "2026-11-04T23:23:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -83,7 +83,7 @@
       "title": "生字15课",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字15课；②第三单元小测（见群打卡）；③预习16课 → 待完成",
@@ -92,8 +92,36 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T23:16:20+08:00",
-      "status_source": "grading-in-progress"
+      "updated_at": "2026-11-04T23:23:50+08:00",
+      "status_source": "closeout_writeback",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "生字15课·煤的拼音",
+          "question": "生字煤：拼音、部首、组词",
+          "reason": "煤的拼音韵母写错（写成 ai）。",
+          "hint": "煤的拼音再拼一遍：声母是 m，韵母呢？读一读，再写一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "生字：煤，拼音 mái，部首火，组词煤炭、煤气。",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "生字15课·菌的拼音",
+          "question": "生字菌：拼音、部首、组词",
+          "reason": "菌的拼音缺字母 n、声调也不对（写成 jū）。",
+          "hint": "菌的拼音再拼一遍：细菌的菌，韵母后面有没有 n？声调是第几声？读一读细菌，再拼一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "生字：菌，拼音 jū，部首艹，组词杀菌、细菌。",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2
     },
     {
       "task_id": "REG-20261104-A356C3",
@@ -354,7 +382,7 @@
   "counts": {
     "total": 10,
     "pending": 4,
-    "in_progress": 2,
+    "in_progress": 3,
     "done": 2,
     "pending_review": 0
   },
