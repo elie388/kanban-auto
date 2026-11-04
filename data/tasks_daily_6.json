@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "六年级",
   "generated_at": "2026-11-04T00:17:31+08:00",
-  "updated_at": "2026-11-04T20:46:17+08:00",
+  "updated_at": "2026-11-04T20:47:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -139,7 +139,7 @@
       "title": "读园地一试卷15分钟，默《江畔独步寻花》抄词本",
       "detail": "",
       "estimate_min": null,
-      "status": "submitted",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①做试卷一张（不写作文）；②读园地一试卷15分钟，默《江畔独步寻花》抄词本；③读作文，记录① → 待完成",
@@ -148,10 +148,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T19:14:48+08:00",
-      "updated_at": "2026-11-04T19:58:19+08:00",
-      "status_source": "kanban_upload_intake",
+      "updated_at": "2026-11-04T20:47:49+08:00",
+      "status_source": "closeout_writeback",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "completed_at": "2026-11-04T20:47:49+08:00",
+      "orig_photos": [
+        "ad5f2d1b49d3193e.jpg",
+        "fc758b1574b11b74.jpg",
+        "1e44e53213340da1.jpg",
+        "c060171b1422824d.jpg"
+      ]
     },
     {
       "task_id": "REG-20261104-A2288E",
@@ -260,7 +267,7 @@
     "total": 11,
     "pending": 6,
     "in_progress": 1,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-04T22:30:00+08:00"
