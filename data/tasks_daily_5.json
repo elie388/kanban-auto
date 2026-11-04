@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "五年级",
   "generated_at": "2026-11-04T00:17:30+08:00",
-  "updated_at": "2026-11-04T20:23:00+08:00",
+  "updated_at": "2026-11-04T20:38:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -133,7 +133,10 @@
       "status_source": "closeout-manual-fallback",
       "corrections": [],
       "pending_corrections": 0,
-      "completed_at": "2026-11-04T20:14:38+08:00"
+      "completed_at": "2026-11-04T20:14:38+08:00",
+      "orig_photos": [
+        "d9d3c8cbd9cf347a.jpg"
+      ]
     },
     {
       "task_id": "REG-20261104-9B057F",
@@ -142,7 +145,7 @@
       "title": "期中模拟卷1.2页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：期中模拟卷1.2页 → 待完成",
@@ -151,8 +154,60 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T18:29:16+08:00",
-      "updated_at": "2026-11-04T20:23:00+08:00",
-      "status_source": "grading-in-progress"
+      "updated_at": "2026-11-04T20:38:15+08:00",
+      "status_source": "closeout_writeback",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "填空4-第三个角",
+          "question": "三角形两内角35度和65度，求第三个角",
+          "reason": "内角和减法算错：180-35-65应得80，写成90。",
+          "hint": "三角形三个内角加起来是多少度？已经知道两个角，求第三个角该用什么算式？先算两个已知角的和，再用内角和去减，算的时候退位要小心。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "三角形两内角35度和65度，求第三个角",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "填空4-按角分类",
+          "question": "35度、65度和第三个角的三角形按角分是哪种",
+          "reason": "按角分类看最大的角：三个角都小于90度时应为锐角，因前一空算错连带分类错。",
+          "hint": "按角分三角形，看的是最大的那个角：三个角都比直角小是哪种？有一个角正好是直角是哪种？有一个角比直角大是哪种？你先把三个角都算出来，再比一比最大的角和直角谁大谁小。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "35度、65度和第三个角的三角形按角分是哪种",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "选择3-积最大",
+          "question": "四个小数乘法算式中积最大的是哪项",
+          "reason": "比积大小未先算出四个结果再比较，误选D。",
+          "hint": "要比积的大小，先把四个算式的结果都算出来，再比一比。1.1比1大，乘出来会比1大还是比1小？把四个结果排一排再选。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "四个小数乘法算式中积最大的是哪项",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "选择6-年龄差",
+          "question": "明明x岁妈妈是3倍，5年后两人相差几岁",
+          "reason": "年龄差不随时间变：今年差3x-x，5年后两人各长5岁，差不变，误选D。",
+          "hint": "年龄差会不会变？今年妈妈比明明大几岁，5年后妈妈长了几岁、明明长了几岁，差变了没有？先算今年的差，再算5年后的差，比一比。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "明明x岁妈妈是3倍，5年后两人相差几岁",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 4
     },
     {
       "task_id": "REG-20261104-890ECE",
@@ -297,7 +352,7 @@
   "counts": {
     "total": 10,
     "pending": 6,
-    "in_progress": 1,
+    "in_progress": 2,
     "done": 2,
     "pending_review": 0
   },
