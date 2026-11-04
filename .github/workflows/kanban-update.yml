@@ -241,6 +241,7 @@ jobs:
           test -s data/exam_predictions.json || { echo "::error::data/exam_predictions.json 缺失或为空"; exit 1; }
           python3 -c "import json; d=json.load(open('data/exam_predictions.json', encoding='utf-8')); assert isinstance(d, list), '须为数组'"
           cp data/exam_predictions.json public/data/
+          cp data/exam_predictions_meta.json public/data/ 2>/dev/null || true  # 元数据不存在时跳过（模板失败忽略）
           ls -la public/data/
 
       # 全栏目单测（KB-SECTIONS-AUTO-2026-10-19，DeepSeek终审建议）：

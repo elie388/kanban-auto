@@ -1297,17 +1297,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </div>
   </section>
 
-  <!-- 考试预测（2026-11-04 家长逐一确认7件）：平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示，否则不出现；内容：年级、科目、预测日期、信心、依据，并注明预测仅供参考；不写突击卷出卷时间；数据源 data/exam_predictions.json（默认空数组） -->
+  <!-- 考试预测（2026-11-04 家长逐一定 14 条后 v2）：平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示，否则不出现；内容：年级、科目、预测日期（今天/明天/后天双写）、信心、依据，并注明信心按规则封顶为中等、预测仅供参考；不写突击卷出卷时间；数据源 data/exam_predictions.json（默认空数组）＋元数据 data/exam_predictions_meta.json（仅滞后提示）；取数失败显示“预测暂时无法读取”，成功但为空保持隐藏 -->
   <section class="card collapse" aria-label="考试预测" id="exam-pred-section" hidden>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-exampred" id="btn-exampred">
       <span class="emoji" aria-hidden="true">🔮</span>
-      <span class="cb-title">考试预测</span>
+      <span class="cb-title">考试预测</span><span style="color:var(--sub);font-size:12px;margin-left:6px;">按日期、科目排序</span><span title="末尾指进度信号已标记到单元末尾（家长确认）" style="color:var(--sub);font-size:12px;margin-left:4px;cursor:help;">？</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-exampred" role="region" aria-labelledby="btn-exampred">
       <div class="collapse-inner"><div class="collapse-pad">
         <div id="exampred-items"><div style="color:var(--sub);font-size:13px;padding:4px 2px;">预测加载中…</div></div>
-        <div style="color:var(--sub);font-size:12px;padding:6px 2px 2px;">预测仅供参考</div>
+        <div id="exampred-meta-note" style="color:var(--sub);font-size:12px;padding:2px;"></div>
+        <div style="color:var(--sub);font-size:12px;padding:6px 2px 2px;">信心按规则封顶为中等；预测仅供参考</div>
       </div></div>
     </div>
   </section>
@@ -4102,10 +4103,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </script>
 
 <script>
-/* ===== 考试预测（2026-11-04 家长逐一确认7件）=====
+/* ===== 考试预测（2026-11-04 家长逐一定 14 条后 v2）=====
    位置：学习小结上方；平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示。
-   内容：年级、科目、预测日期、信心、依据，并注明预测仅供参考；不写突击卷出卷时间。
-   数据源：data/exam_predictions.json（默认空数组）；信心等级：较低<中等≤较高≤高，未知等级按不显示处理。
+   内容：年级、科目、预测日期（今天/明天/后天＋月日双写）、信心、依据；页脚注明信心按规则封顶为中等、预测仅供参考；不写突击卷出卷时间。
+   排序：按日期升序、同日按科目固定顺序，标题旁注明；当日行加粗。
+   数据源：data/exam_predictions.json（默认空数组）；元数据 data/exam_predictions_meta.json 仅作进度滞后提示、失败忽略。
+   取数失败显示“预测暂时无法读取”，不静默隐藏；成功但为空保持隐藏。
+   信心等级：较低<中等≤较高≤高，未知等级按不显示处理。
    日期以浏览器本地日期为准；非法日期按不显示处理。文本一律 textContent 渲染。 */
 (function(){
   var CONF_RANK = { '较低': 0, '中等': 1, '较高': 2, '高': 3 };
@@ -4139,6 +4143,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     return out;
   }
+  function examPredDateLabel(dateStr, todayStr){
+    var base = dateToDay(todayStr), day = dateToDay(dateStr);
+    if(base === null || day === null) return dateStr || '';
+    var diff = day - base;
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr);
+    var md = m ? (parseInt(m[2], 10) + '月' + parseInt(m[3], 10) + '日') : dateStr;
+    if(diff === 0) return '今天（' + md + '）';
+    if(diff === 1) return '明天（' + md + '）';
+    if(diff === 2) return '后天（' + md + '）';
+    return dateStr;
+  }
   function renderExamPredictions(d){
     var sec = document.getElementById('exam-pred-section');
     var box = document.getElementById('exampred-items');
@@ -4150,8 +4165,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     show.forEach(function(p){
       var row = document.createElement('div');
       row.style.cssText = 'padding:6px 2px;border-bottom:1px solid #eee;font-size:14px;line-height:1.6;';
+      var baseDay = dateToDay(todayLocalStr()), rowDay = dateToDay(p.date);
+      if(baseDay !== null && rowDay === baseDay) row.style.fontWeight = 'bold';
       var t1 = document.createElement('div');
-      t1.textContent = (p.grade || '') + ' ' + (p.subject || '') + ' · 预测 ' + (p.date || '') + ' · 信心' + (p.confidence || '');
+      t1.textContent = (p.grade || '') + ' ' + (p.subject || '') + ' · 预测 ' + examPredDateLabel(p.date, todayLocalStr()) + ' · 信心' + (p.confidence || '');
       var t2 = document.createElement('div');
       t2.style.cssText = 'color:var(--sub);font-size:13px;';
       t2.textContent = '依据：' + (p.basis || '');
@@ -4159,15 +4176,39 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     });
     sec.hidden = false;
   }
+  function renderExamPredError(){
+    var sec = document.getElementById('exam-pred-section');
+    var box = document.getElementById('exampred-items');
+    if(!sec || !box) return;
+    while(box.firstChild) box.removeChild(box.firstChild);
+    var tip = document.createElement('div');
+    tip.style.cssText = 'color:var(--sub);font-size:13px;padding:4px 2px;';
+    tip.textContent = '预测暂时无法读取';
+    box.appendChild(tip);
+    sec.hidden = false;
+  }
   function loadExamPredictions(){
+    /* 依赖声明（2026-11-04 v2）：本栏目自取 data/exam_predictions.json；
+       元数据 data/exam_predictions_meta.json 仅作进度滞后提示、失败忽略。
+       取数失败显示提示行、不静默隐藏；成功但为空保持隐藏。
+       2026-11-04 fix1 教训：不再借全局 fetchJson（全局无此函数、旧写法静默致栏目永藏）。 */
     try{
-      /* 2026-11-04 修：不再借全局 fetchJson（两处定义都在各自独立 IIFE 内、全局无此函数，
-         旧写法静默返回致栏目永藏）；本块自取 data/exam_predictions.json，失败保持隐藏。 */
       fetch('data/exam_predictions.json', {cache: 'no-cache'}).then(function(r){
         if(!r.ok) throw new Error('http ' + r.status);
         return r.json();
-      }).then(renderExamPredictions).catch(function(){ /* 默认空：拉取失败保持隐藏 */ });
-    }catch(e){}
+      }).then(function(d){
+        renderExamPredictions(d);
+        try{
+          fetch('data/exam_predictions_meta.json', {cache: 'no-cache'}).then(function(r){
+            if(!r.ok) throw new Error('http ' + r.status);
+            return r.json();
+          }).then(function(meta){
+            var note = document.getElementById('exampred-meta-note');
+            if(note && meta && meta.progress_stale) note.textContent = '进度数据可能滞后（超过3天未更新）';
+          }).catch(function(){});
+        }catch(e){}
+      }).catch(renderExamPredError);
+    }catch(e){ try{ renderExamPredError(); }catch(e2){} }
   }
   window.__kanbanRefreshExamPred = loadExamPredictions;
   if(document.readyState === 'loading'){
@@ -5600,7 +5641,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261104-exampred-fix1';
+  var KB_BUILD = '20261104-exampred-v2';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
