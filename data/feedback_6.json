@@ -1,16 +1,8 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-04T17:02:48+08:00",
+ "generated_at": "2026-11-04T17:04:57+08:00",
  "items": [
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "【测试】备份作业测试1批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>你好，这是测试反馈（备份作业复测，不计分）</h2>\n<h3>做得好的地方</h3>\n<ul>\n<li>环形面积、半圆周长、英语词形填空和代词填空大多都对，很棒！</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>半圆面积：<span style=\"color:red;font-weight:bold\">缺一步“取一半”</span>。半圆是圆的一半，面积是不是也要一半？整圆面积算出来后，还要做什么？</li>\n<li>词形填空 woman 复数：<span style=\"color:red;font-weight:bold\">缺一个正确的复数拼写</span>。man 变成 men 时，a 变成了 e；woman 变复数时，两个地方都要变，你只变了一个地方，再想想。</li>\n</ul>\n</body></html>"
-  },
   {
    "date": "2026-11-03",
    "ts": "2026-11-03T20:30:00+08:00",
