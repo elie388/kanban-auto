@@ -3,7 +3,7 @@
   "date": "2026-11-04",
   "grade": "六年级",
   "generated_at": "2026-11-04T00:17:31+08:00",
-  "updated_at": "2026-11-04T19:14:48+08:00",
+  "updated_at": "2026-11-04T19:44:00.541430+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -153,7 +153,7 @@
       "title": "读作文，记录①",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①做试卷一张（不写作文）；②读园地一试卷15分钟，默《江畔独步寻花》抄词本；③读作文，记录① → 待完成",
@@ -162,9 +162,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-04T19:14:48+08:00",
-      "updated_at": "2026-11-04T19:14:48+08:00",
+      "updated_at": "2026-11-04T19:44:00.541430+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "status_source": "kanban_upload_intake"
     },
     {
       "task_id": "REG-20261104-3E6B43",
@@ -225,9 +226,9 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 10,
+    "pending": 9,
     "in_progress": 0,
-    "done": 1,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": "2026-11-04T22:30:00+08:00"
