@@ -4161,8 +4161,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   function loadExamPredictions(){
     try{
-      if(typeof fetchJson !== 'function') return;
-      fetchJson('exam_predictions.json').then(renderExamPredictions).catch(function(){ /* 默认空：拉取失败保持隐藏 */ });
+      /* 2026-11-04 修：不再借全局 fetchJson（两处定义都在各自独立 IIFE 内、全局无此函数，
+         旧写法静默返回致栏目永藏）；本块自取 data/exam_predictions.json，失败保持隐藏。 */
+      fetch('data/exam_predictions.json', {cache: 'no-cache'}).then(function(r){
+        if(!r.ok) throw new Error('http ' + r.status);
+        return r.json();
+      }).then(renderExamPredictions).catch(function(){ /* 默认空：拉取失败保持隐藏 */ });
     }catch(e){}
   }
   window.__kanbanRefreshExamPred = loadExamPredictions;
@@ -5596,7 +5600,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261104-exampred';
+  var KB_BUILD = '20261104-exampred-fix1';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
