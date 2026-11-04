@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-04T23:31:08+08:00",
+ "generated_at": "2026-11-05T02:18:34+08:00",
  "items": [
   {
    "date": "2026-11-04",
@@ -42,6 +42,14 @@
    "time": "",
    "title": "11月4日英语试卷笔试部分反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语试卷笔试部分反馈</h2>\n<p>11月4日 21:54 提交，笔试部分 57/60 分</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>补全对话、阅读理解全对；书面表达 5 句话、4 个提示都写到了，写得很完整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>短文选词第 3 题：这篇短文讲的是过去的事，想一想，动词应该用什么时态？再读一读前后句，选一个过去式的词。<br><img src=\"data/diagrams/g6_eng_pasttense_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>填词第 4 空：只写了一个字母，后面没写完。想一想，我们互相做什么、认真听？把这个词写完整。<br><img src=\"data/diagrams/g6_eng_fillblank_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>另外，书面表达里“in north of”前面要不要加 the，再想一想。把这两处一次改全。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "做试卷一张（不写作文）",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，做试卷一张（不写作文）反馈</h2><p>11月4日 23:10 提交（比23:00截止晚了10分钟，下次早点交），已判68分中得52分（76.5%）。</p><h3>做得好的地方</h3><ul><li>读拼音写词语全对，仿写排比句格式和分号都用对了。</li><li>读音、选词填空、名句第①处、读书交流、口语正误、中心思想题都对了；横塘之战加点字意思和作战方法（选A声东击西）也对了。</li></ul><h3>要订正的地方（10项）</h3><ul><li>贯字笔画与释义：贯的第三笔写错了；查贯的笔顺（共8笔），数到第三笔，看看它是什么笔画，再对照通用例子改过来。<br><img src=\"data/diagrams/chn_d29dce_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>错别字选择：D组沉淀没有错别字，所以D不对；再逐字读A组、B组、C组，哪个字写错了（形近字最容易错）？<br><img src=\"data/diagrams/chn_d29dce_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>名句运用②：第②处空着没填；读一读第②处前后的句子，想想这里该用哪句名句（前后文在说什么？），再填上。<br><img src=\"data/diagrams/chn_d29dce_q3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>填写读书表：读书表两处要补：雨来那行“关于成长的发现”没看清，重新写清楚；阿廖沙那行“喜欢的原因”写成了故事简介，要写你为什么喜欢这个人物（他的哪个品质打动你？），不是复述故事。<br><img src=\"data/diagrams/chn_d29dce_q4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>口语交际仿写：仿写格式对了（一是、二是、三是都列了），但有两处要改：①有字写错／句子不通顺，逐句读一遍，改掉不通顺的地方；②最后“我保证不在…”那句没写完，补完整（保证什么？）。<br><img src=\"data/diagrams/chn_d29dce_q5_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>横塘之战图片想象：想象要贴着图片和文言写：先看清图片里是谁、在做什么，再想文言里那句讲的是什么场面，然后按“谁＋在哪里＋做什么＋结果怎样”写一段，句子要连贯，不要跳。<br><img src=\"data/diagrams/chn_d29dce_q6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/chn_d29dce_comic.png\" alt=\"原题连环画\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文情节图：情节图中间一格没写清；按故事顺序，拿50元买年货之后、发现百元大钞之前，发生了什么（女人付钱时怎么了？）？把那一步写清楚。<br><img src=\"data/diagrams/chn_d29dce_q7_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文填空修辞手法：再读第⑦段那句，对照修辞手法表（比喻、拟人、夸张、对比、排比……），逐个对，哪个最贴切？对比不全，再想想还有没有别的。<br><img src=\"data/diagrams/chn_d29dce_q8_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文评价女人：以身做则里有一个字写错了（做／作形近易混）；查词典，“以身□则”这个成语，方框里是“做”还是“作”？<br><img src=\"data/diagrams/chn_d29dce_q9_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文环境描写结尾：结尾的环境描写空着没写；想想故事最后女人归还失主后，心情怎样？写一句环境描写来衬托她的心情（比如天色、风、阳光怎样？），放在文末横线上。<br><img src=\"data/diagrams/chn_d29dce_q10_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul></body></html>"
   },
   {
    "date": "2026-11-03",
