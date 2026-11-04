@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-04T23:23:57+08:00",
+ "generated_at": "2026-11-04T23:26:11+08:00",
  "items": [
   {
    "date": "2026-11-04",
@@ -26,6 +26,14 @@
    "time": "",
    "title": "11月4日生字15课反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，生字 15 课反馈</h2>\n<p>11月4日 20:55 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>13 个生字里 11 个全对：字、拼音、部首、组词都对了，字也写得很工整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>煤的拼音：再拼一遍，声母是 m，韵母呢？读一读，再写一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>菌的拼音：再拼一遍，细菌的菌，韵母后面有没有 n？声调是第几声？读一读细菌，再拼一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>另外，滴的第一个组词再想一想，是不是一个现成的词语？把这两处拼音一次改全。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日口语易反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月4日 21:19 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 4 日的任务已经提交了，6 项都完成了，很好。</li>\n</ul>\n<p>继续保持每天按时完成口语练习。</p>\n</body></html>"
   },
   {
    "date": "2026-11-03",
