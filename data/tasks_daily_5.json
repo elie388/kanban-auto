@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "五年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T21:27:19+08:00",
+  "updated_at": "2026-11-05T21:55:41+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -278,7 +278,7 @@
       "title": "第四单元小测",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字16课；②第四单元小测；下周一期中考试 → 待完成",
@@ -287,9 +287,96 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00",
-      "pending_corrections": 0,
-      "corrections": []
+      "updated_at": "2026-11-05T21:55:41+08:00",
+      "pending_corrections": 7,
+      "corrections": [
+        {
+          "label": "一、看拼音写词语 第30题",
+          "question": "看拼音写词语：dǒu sǒu（ ）。孩子写的字潦草、第二个字涂黑、格外多写一个“数”字，不是清晰的词语。",
+          "reason": "字形潦草、涂黑、多写一字：写出的不是清晰的“抖擞”二字。",
+          "hint": "提示一：这个词是说人精神很好、很有干劲，课文里常用来形容战士和劳动者的精神状态。提示二：第一个字是提手旁，读dǒu，想想提手旁加个什么字？提示三：第二个字读sǒu，看看你写的第二个字，它的读音和字形对得上吗？格外那个字是不是多余的？",
+          "img": "g5_BCE08C_q1_dousou_guide.png",
+          "q_img": "",
+          "orig_text": "看拼音写词语：dǒu sǒu（ ）。孩子写：抖（涂黑）数",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "二、读句子，看拼音，写字词 第3题",
+          "question": "读句子，看拼音，写字词：将来守护祖国的每一寸 jiāng（ ）土。孩子写：（疆曼）。",
+          "reason": "多写一字：括号里只需要写一个字，孩子多写了一个“曼”字。",
+          "hint": "提示一：这个空只要填一个字，括号后面已经印着“土”字了，合起来是一个词。提示二：你写了两个字，读一读句子，顺吗？提示三：把多余的那个字去掉，再读一遍。",
+          "img": "g5_BCE08C_q2_jiang_guide.png",
+          "q_img": "",
+          "orig_text": "读句子，看拼音，写字词：将来守护祖国的每一寸 jiāng（ ）土。孩子写：（疆曼）",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "四、给下面加点的字注音 第1题",
+          "question": "给下面加点的字注音：官邸（ ）。孩子写：dī。",
+          "reason": "声调标错：“邸”读第三声，不是第一声。",
+          "hint": "提示一：查一查字典，“邸”字读第几声？提示二：“官邸”这个词，读起来是第几声？提示三：把声调改一改，再拼读一遍。",
+          "img": "g5_BCE08C_q3_di_guide.png",
+          "q_img": "",
+          "orig_text": "给下面加点的字注音：官邸（ ）。孩子写：dī",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "四、给下面加点的字注音 第5题",
+          "question": "给下面加点的字注音：潜龙（ ）。孩子写：qiáng。",
+          "reason": "拼音拼错：“潜”读qián，不是qiáng。",
+          "hint": "提示一：“潜水”的“潜”怎么读？提示二：qián和qiáng，韵母有什么不同？提示三：重新拼读“潜”字，声母是q，韵母是ian还是iang？",
+          "img": "g5_BCE08C_q4_qian_guide.png",
+          "q_img": "",
+          "orig_text": "给下面加点的字注音：潜龙（ ）。孩子写：qiáng",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "四、给下面加点的字注音 第7题",
+          "question": "给下面加点的字注音：租界（ ）。孩子写：zǔ。",
+          "reason": "声调标错：“租”读第一声，不是第三声。",
+          "hint": "提示一：“租”字读第几声？提示二：想想“租房”的“租”，读起来是第几声？提示三：把声调改一改，再拼读一遍。",
+          "img": "g5_BCE08C_q5_zu_guide.png",
+          "q_img": "",
+          "orig_text": "给下面加点的字注音：租界（ ）。孩子写：zǔ",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "四、给下面加点的字注音 第8题",
+          "question": "给下面加点的字注音：瑰宝（ ）。孩子写：guǎi。",
+          "reason": "拼音拼错：“瑰”读guī，不是guǎi。",
+          "hint": "提示一：“瑰宝”的“瑰”怎么读？提示二：guī和guǎi，韵母和声调有什么不同？提示三：重新拼读“瑰”字，声母是g，韵母是ui还是uai？",
+          "img": "g5_BCE08C_q6_gui_guide.png",
+          "q_img": "",
+          "orig_text": "给下面加点的字注音：瑰宝（ ）。孩子写：guǎi",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "四、给下面加点的字注音 第11题",
+          "question": "给下面加点的字注音：裁（ ）。孩子写：zāi。",
+          "reason": "声调和声母都错：“裁”读cái（c声母、二声），不是zāi。",
+          "hint": "提示一：“裁剪”的“裁”怎么读？提示二：c和z是不同的声母，“裁”是平舌音，读第几声？提示三：重新拼读“裁”字，声母是c还是z？是第几声？",
+          "img": "g5_BCE08C_q7_cai_guide.png",
+          "q_img": "",
+          "orig_text": "给下面加点的字注音：裁（ ）。孩子写：zāi",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "EXAM-20261105-989943",
@@ -307,8 +394,8 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 5,
-    "in_progress": 2,
+    "pending": 4,
+    "in_progress": 3,
     "done": 1,
     "pending_review": 0
   },
