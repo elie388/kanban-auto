@@ -1,344 +1,345 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-05",
-  "grade": "六年级",
-  "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T21:45:44+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-05T20:04:39+08:00",
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-05T16:55:41+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-05",
+ "grade": "六年级",
+ "generated_at": "2026-11-05T00:17:12+08:00",
+ "updated_at": "2026-11-05T21:45:44+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-05T20:04:39+08:00",
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261105-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-05T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-05T00:17:30+08:00",
-      "updated_at": "2026-11-05T00:17:30+08:00"
-    },
-    {
-      "task_id": "READ-20261105-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-05T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-05T00:17:43+08:00",
-      "updated_at": "2026-11-05T00:17:43+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-05",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-05T16:55:50+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00",
-      "completed_at": "2026-11-05T19:30:19+08:00",
-      "orig_photos": [
-        "0f251965e7dbc471.jpg",
-        "ddf2bf6286123de1.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261105-21180A",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄U3单词和中文各4次，背10次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T20:22:09+08:00",
-      "task_type": "reading",
-      "status_source": "reading_grading",
-      "completed_at": "2026-11-05T20:22:09+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "orig_photos": [
-        "9b84e67922f47b1a.jpg",
-        "cf2598a67a1a16bf.jpg",
-        "d471449c13b6d465.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261105-1336F4",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "读U3单词、对话提交小管家",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261105-261B68",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "（重点）写考试试卷第一题中文",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "submitted",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T21:14:57+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "kanban_upload_intake"
-    },
-    {
-      "task_id": "REG-20261105-C4D2B5",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读背课文25、26、36、43",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T21:24:41+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "reading_grading"
-    },
-    {
-      "task_id": "REG-20261105-F54F98",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本P36-37",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T21:27:38+08:00",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "计算-连乘",
-          "question": "2/7×3/16×14/15",
-          "reason": "连乘约分算错：三个分数连乘时约分或相乘出错，得数 2/35 不对",
-          "hint": "先把三个分数的分子、分母分别约一约：想想 14 和 7 可以约掉几？3 和 15 可以约掉几？约完再乘，看看得数是多少。",
-          "img": "g6_F54F98_q1_1_guide.png",
-          "q_img": "g6_F54F98_q1_1_orig.png",
-          "orig_text": "计算：2/7×3/16×14/15",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "计算-括号除法",
-          "question": "98÷(1/10+3/7)",
-          "reason": "括号里的加法和后面的除法都算错了：1/10+3/7 通分不对，除以分数也没有乘倒数",
-          "hint": "先算括号里的：1/10 + 3/7，先通分，分母变成几？再算 98 除以这个和——除以一个分数等于乘它的倒数，倒数是几？一步步来。",
-          "img": "g6_F54F98_q1_6_guide.png",
-          "q_img": "g6_F54F98_q1_6_orig.png",
-          "orig_text": "计算：98÷(1/10+3/7)",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "corr_round": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261105-8F0FCD",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄词本默写10一次前4单元的古诗词",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T21:45:44+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-11-05T21:45:44+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "c561c47939039d95.jpg",
-        "d1e619812a36c0cc.jpg",
-        "b94da0fc868d2ed4.jpg",
-        "8b78e1aa30727969.jpg",
-        "731945ef5a5db0bc.jpg",
-        "d6dc111c56befc45.jpg",
-        "92531892887e4d72.jpg",
-        "167a1aa3da3f7760.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261105-3D8E5B",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读作文10分钟、记录①",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T20:33:04+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "读作文，记录①-重读",
-          "question": "重读《时光机奇遇》全文（语文书 P54-55），读准 6 处词语，并写好“主要内容+阅读感受”。",
-          "reason": "6 处错读超达标线（错漏≤2处）：伸向、轻轻、泛出、沉醉、探寻、翼龙群展翅；“主要内容+阅读感受”未写。",
-          "hint": "重读前先看清词、放慢读这 6 处所在的句子；读完把主要内容和感受写在横线上。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "《时光机奇遇》（语文书 P54-55，全文 479 字）",
-          "q_img_exempt": "读背类，原文照片已附 orig_photos",
-          "img_exempt": "读背重读类，引导见文字提示与原文照片，无需配图",
-          "round": 1
-        }
-      ],
-      "status_source": "reading_grading_closeout",
-      "corr_round": 1
-    },
-    {
-      "task_id": "REG-20261105-AA9F5B",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "复习园地二至四单元，签名",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00",
-      "pending_corrections": 0,
-      "corrections": []
-    },
-    {
-      "task_id": "REG-20261105-7B5137",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背科学十分钟",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背科学十分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T21:04:45+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-11-05T21:04:45+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "289c4caeea2fdd88.jpg",
-        "447a8b77d668d304.jpg"
-      ]
-    }
-  ],
-  "counts": {
-    "total": 12,
-    "pending": 4,
-    "in_progress": 3,
-    "done": 4,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": "2026-11-05T22:00:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-05T16:55:41+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261105-G6",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-05T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-05T00:17:30+08:00",
+   "updated_at": "2026-11-05T00:17:30+08:00"
+  },
+  {
+   "task_id": "READ-20261105-G6",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-05T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-05T00:17:43+08:00",
+   "updated_at": "2026-11-05T00:17:43+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-05",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-05T16:55:50+08:00",
+   "updated_at": "2026-11-05T19:30:19+08:00",
+   "completed_at": "2026-11-05T19:30:19+08:00",
+   "orig_photos": [
+    "0f251965e7dbc471.jpg",
+    "ddf2bf6286123de1.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261105-21180A",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄U3单词和中文各4次，背10次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T20:22:09+08:00",
+   "task_type": "reading",
+   "status_source": "reading_grading",
+   "completed_at": "2026-11-05T20:22:09+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "orig_photos": [
+    "9b84e67922f47b1a.jpg",
+    "cf2598a67a1a16bf.jpg",
+    "d471449c13b6d465.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261105-1336F4",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "读U3单词、对话提交小管家",
+   "detail": "",
+   "estimate_min": null,
+   "status": "submitted",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T22:43:59+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": [],
+   "status_source": "kanban_upload_intake"
+  },
+  {
+   "task_id": "REG-20261105-261B68",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "（重点）写考试试卷第一题中文",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "submitted",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T21:14:57+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "status_source": "kanban_upload_intake"
+  },
+  {
+   "task_id": "REG-20261105-C4D2B5",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读背课文25、26、36、43",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T21:24:41+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": [],
+   "status_source": "reading_grading"
+  },
+  {
+   "task_id": "REG-20261105-F54F98",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本P36-37",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T21:27:38+08:00",
+   "pending_corrections": 2,
+   "corrections": [
+    {
+     "label": "计算-连乘",
+     "question": "2/7×3/16×14/15",
+     "reason": "连乘约分算错：三个分数连乘时约分或相乘出错，得数 2/35 不对",
+     "hint": "先把三个分数的分子、分母分别约一约：想想 14 和 7 可以约掉几？3 和 15 可以约掉几？约完再乘，看看得数是多少。",
+     "img": "g6_F54F98_q1_1_guide.png",
+     "q_img": "g6_F54F98_q1_1_orig.png",
+     "orig_text": "计算：2/7×3/16×14/15",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "计算-括号除法",
+     "question": "98÷(1/10+3/7)",
+     "reason": "括号里的加法和后面的除法都算错了：1/10+3/7 通分不对，除以分数也没有乘倒数",
+     "hint": "先算括号里的：1/10 + 3/7，先通分，分母变成几？再算 98 除以这个和——除以一个分数等于乘它的倒数，倒数是几？一步步来。",
+     "img": "g6_F54F98_q1_6_guide.png",
+     "q_img": "g6_F54F98_q1_6_orig.png",
+     "orig_text": "计算：98÷(1/10+3/7)",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "corr_round": 1,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "REG-20261105-8F0FCD",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "抄词本默写10一次前4单元的古诗词",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T21:45:44+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-11-05T21:45:44+08:00",
+   "status_source": "closeout_writeback",
+   "orig_photos": [
+    "c561c47939039d95.jpg",
+    "d1e619812a36c0cc.jpg",
+    "b94da0fc868d2ed4.jpg",
+    "8b78e1aa30727969.jpg",
+    "731945ef5a5db0bc.jpg",
+    "d6dc111c56befc45.jpg",
+    "92531892887e4d72.jpg",
+    "167a1aa3da3f7760.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261105-3D8E5B",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读作文10分钟、记录①",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T20:33:04+08:00",
+   "task_type": "reading",
+   "type_source": "regex_bao",
+   "pending_corrections": 1,
+   "corrections": [
+    {
+     "label": "读作文，记录①-重读",
+     "question": "重读《时光机奇遇》全文（语文书 P54-55），读准 6 处词语，并写好“主要内容+阅读感受”。",
+     "reason": "6 处错读超达标线（错漏≤2处）：伸向、轻轻、泛出、沉醉、探寻、翼龙群展翅；“主要内容+阅读感受”未写。",
+     "hint": "重读前先看清词、放慢读这 6 处所在的句子；读完把主要内容和感受写在横线上。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "《时光机奇遇》（语文书 P54-55，全文 479 字）",
+     "q_img_exempt": "读背类，原文照片已附 orig_photos",
+     "img_exempt": "读背重读类，引导见文字提示与原文照片，无需配图",
+     "round": 1
+    }
+   ],
+   "status_source": "reading_grading_closeout",
+   "corr_round": 1
+  },
+  {
+   "task_id": "REG-20261105-AA9F5B",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "复习园地二至四单元，签名",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T19:30:19+08:00",
+   "pending_corrections": 0,
+   "corrections": []
+  },
+  {
+   "task_id": "REG-20261105-7B5137",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读背科学十分钟",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背科学十分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-05T19:30:19+08:00",
+   "updated_at": "2026-11-05T21:04:45+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": [],
+   "completed_at": "2026-11-05T21:04:45+08:00",
+   "status_source": "reading_grading",
+   "orig_photos": [
+    "289c4caeea2fdd88.jpg",
+    "447a8b77d668d304.jpg"
+   ]
+  }
+ ],
+ "counts": {
+  "total": 12,
+  "pending": 4,
+  "in_progress": 3,
+  "done": 4,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-05T22:00:00+08:00"
 }
