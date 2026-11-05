@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "五年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T20:44:21+08:00",
+  "updated_at": "2026-11-05T20:50:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -144,7 +144,7 @@
       "title": "生字16课",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①生字16课；②第四单元小测；下周一期中考试 → 待完成",
@@ -153,9 +153,48 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00",
-      "pending_corrections": 0,
-      "corrections": []
+      "updated_at": "2026-11-05T20:50:39+08:00",
+      "pending_corrections": 3,
+      "corrections": [
+        {
+          "label": "生字16课·堆的拼音",
+          "question": "生字16课·堆：拼音、汉字5遍、组词（石块堆、一堆）",
+          "reason": "堆的拼音韵母写错（写成 duāi，正确是 duī）。",
+          "hint": "堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "生字16课·堆（拼音＋汉字5遍＋组词）",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "生字16课·基",
+          "question": "生字16课·基：拼音、汉字5遍、组词（塔基、基本）",
+          "reason": "基的第3个字上面多了一个草字头（写成了茎的样子），还涂改了。",
+          "hint": "基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "生字16课·基（拼音＋汉字5遍＋组词）",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "生字16课·狭的拼音",
+          "question": "生字16课·狭：拼音、汉字5遍、组词（狭长、狭窄）",
+          "reason": "狭的拼音韵母写错（写成 xiú，正确是 xiá）。",
+          "hint": "狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "生字16课·狭（拼音＋汉字5遍＋组词）",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261105-BCE08C",
@@ -193,8 +232,8 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 7,
-    "in_progress": 0,
+    "pending": 6,
+    "in_progress": 1,
     "done": 1,
     "pending_review": 0
   },
