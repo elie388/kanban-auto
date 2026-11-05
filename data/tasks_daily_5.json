@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "五年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T21:55:41+08:00",
+  "updated_at": "2026-11-05T22:06:40+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -384,18 +384,57 @@
       "title": "学校考试卷",
       "detail": "已改正",
       "subject": "",
-      "status": "grading",
-      "status_source": "exam_route",
-      "corrections": [],
-      "pending_corrections": 0,
+      "status": "in_progress",
+      "status_source": "closeout_writeback",
+      "corrections": [
+        {
+          "label": "选词填空·We need to ___ with our friends",
+          "question": "根据句意选词填空：We need to ___ with our friends.",
+          "reason": "划掉了多余的 Similar，但保留的 do 放进句子意思不通；We need to do with our friends 缺少一个表示“分享、一起”的动词。",
+          "hint": "这个空要填一个动词，表示和朋友一起做一件事。再想想，朋友之间常常会互相分东西、一起玩，哪个词是这个意思？读一遍句子，哪个词放进去意思才通？",
+          "img": "g5_EXAM989943_q6_3_guide.png",
+          "q_img": "",
+          "orig_text": "We need to ___ with our friends.（词库：happy、should、similar、do、make、share）",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "选词填空·Don't eat too many candies",
+          "question": "根据句意选词填空：Don't eat too ___ candies. They're bad for your teeth.（词库：over、sleepy、much、many、use、openly）",
+          "reason": "划掉了正确的 many，保留了错误的 much；candies 是复数、能一个一个数出来的东西，修饰它的词不能用 much。",
+          "hint": "candies 后面加了 s，是复数、能一个一个数出来的东西。修饰这种词的时候，用来表示“太多”的词和修饰水、米饭这种数不出来的东西的词是不一样的。你写的那个词是修饰数不出来的东西的，换一个试试？",
+          "img": "g5_EXAM989943_q6_10_guide.png",
+          "q_img": "",
+          "orig_text": "Don't eat too ___ candies. They're bad for your teeth.（词库：over、sleepy、much、many、use、openly）",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "书面表达·My best friend",
+          "question": "书面表达：根据提示写一写你的好朋友，不少于 5 句话。孩子写：My best friend is Tom. He like music. We often listen music. We both like reading. We openly talk with each other.",
+          "reason": "三处语法错未改：He like 应为 He likes（第三人称单数动词加 s）；listen music 缺 to，应为 listen to music；openly talk 语序错，应为 talk openly。照片中未见红笔改正。",
+          "hint": "这段话有三个小地方要改：① He 是第三人称单数，动词 like 要变一变，想想单三后面动词要加什么；② listen 这个词后面直接接 music 读起来少了点什么，想想“听音乐”这个动作，中间是不是少了一个表示方向的小词；③ openly 是副词，修饰 talk 这个动词，副词放在动词前面还是后面读起来更顺？你试着换个位置。",
+          "img": "g5_EXAM989943_q10_writing_guide.png",
+          "q_img": "",
+          "orig_text": "书面表达：请根据提示写一写你的好朋友。内容提示：1. Who is your best friend? 2. What is your friend like? 3. What do you like to do with your best friend? 4. How are you and your friend similar or different? 5. What are the rules of your friendship? 要求语句通顺，不少于 5 句话。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
       "created_at": "2026-11-05T20:44:21+08:00",
-      "updated_at": "2026-11-05T20:44:21+08:00"
+      "updated_at": "2026-11-05T22:06:40+08:00",
+      "review_status": "approved",
+      "corr_round": 1
     }
   ],
   "counts": {
     "total": 9,
     "pending": 4,
-    "in_progress": 3,
+    "in_progress": 4,
     "done": 1,
     "pending_review": 0
   },
