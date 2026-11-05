@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "六年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T20:04:39+08:00",
+  "updated_at": "2026-11-05T20:28:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -71,7 +71,11 @@
       "created_by": "system",
       "created_at": "2026-11-05T16:55:50+08:00",
       "updated_at": "2026-11-05T19:30:19+08:00",
-      "completed_at": "2026-11-05T19:30:19+08:00"
+      "completed_at": "2026-11-05T19:30:19+08:00",
+      "orig_photos": [
+        "0f251965e7dbc471.jpg",
+        "ddf2bf6286123de1.jpg"
+      ]
     },
     {
       "task_id": "REG-20261105-21180A",
@@ -80,7 +84,7 @@
       "title": "抄U3单词和中文各4次，背10次",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄U3单词和中文各4次，背10次；②读U3单词、对话提交小管家；③（重点）写考试试卷第一题中文 → 待完成",
@@ -89,8 +93,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00",
-      "task_type": "reading"
+      "updated_at": "2026-11-05T20:22:09+08:00",
+      "task_type": "reading",
+      "status_source": "reading_grading",
+      "completed_at": "2026-11-05T20:22:09+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
+      "orig_photos": [
+        "9b84e67922f47b1a.jpg",
+        "cf2598a67a1a16bf.jpg",
+        "d471449c13b6d465.jpg"
+      ]
     },
     {
       "task_id": "REG-20261105-1336F4",
@@ -109,7 +122,9 @@
       },
       "created_at": "2026-11-05T19:30:19+08:00",
       "updated_at": "2026-11-05T19:30:19+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-261B68",
@@ -127,7 +142,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00"
+      "updated_at": "2026-11-05T19:30:19+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-C4D2B5",
@@ -146,7 +163,9 @@
       },
       "created_at": "2026-11-05T19:30:19+08:00",
       "updated_at": "2026-11-05T19:30:19+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-F54F98",
@@ -164,7 +183,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00"
+      "updated_at": "2026-11-05T19:30:19+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-8F0FCD",
@@ -182,7 +203,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00"
+      "updated_at": "2026-11-05T19:30:19+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-3D8E5B",
@@ -191,7 +214,7 @@
       "title": "读作文10分钟、记录①",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
@@ -200,9 +223,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00",
+      "updated_at": "2026-11-05T20:28:15+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "kanban_upload"
     },
     {
       "task_id": "REG-20261105-AA9F5B",
@@ -220,7 +246,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T19:30:19+08:00"
+      "updated_at": "2026-11-05T19:30:19+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-7B5137",
@@ -239,14 +267,16 @@
       },
       "created_at": "2026-11-05T19:30:19+08:00",
       "updated_at": "2026-11-05T19:30:19+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     }
   ],
   "counts": {
     "total": 12,
-    "pending": 11,
+    "pending": 9,
     "in_progress": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-05T22:00:00+08:00"

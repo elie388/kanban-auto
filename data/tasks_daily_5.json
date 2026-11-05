@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "五年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T20:04:39+08:00",
+  "updated_at": "2026-11-05T20:24:46+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -53,7 +53,10 @@
       "created_by": "system",
       "created_at": "2026-11-05T16:55:50+08:00",
       "updated_at": "2026-11-05T20:04:39+08:00",
-      "completed_at": "2026-11-05T20:04:39+08:00"
+      "completed_at": "2026-11-05T20:04:39+08:00",
+      "orig_photos": [
+        "1fea1552c50f7220.jpg"
+      ]
     },
     {
       "task_id": "READ-20261105-G5",
@@ -90,7 +93,9 @@
       },
       "created_at": "2026-11-05T20:04:39+08:00",
       "updated_at": "2026-11-05T20:04:39+08:00",
-      "task_type": "reading"
+      "task_type": "reading",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-787B82",
@@ -108,7 +113,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00"
+      "updated_at": "2026-11-05T20:04:39+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-C97E4F",
@@ -126,7 +133,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00"
+      "updated_at": "2026-11-05T20:04:39+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-CD02B5",
@@ -144,7 +153,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00"
+      "updated_at": "2026-11-05T20:04:39+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261105-BCE08C",
@@ -162,12 +173,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00"
+      "updated_at": "2026-11-05T20:04:39+08:00",
+      "pending_corrections": 0,
+      "corrections": []
     }
   ],
   "counts": {
-    "total": 9,
-    "pending": 8,
+    "total": 8,
+    "pending": 7,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
