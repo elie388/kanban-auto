@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-05T21:30:39+08:00",
+ "generated_at": "2026-11-05T21:56:31+08:00",
  "items": [
   {
    "date": "2026-11-05",
@@ -18,6 +18,14 @@
    "time": "",
    "title": "生字16课",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，生字16课反馈</h2><p>11月5日 20:16 提交，7个生字对4个、错3个（57.1%），要订正3处。</p><h3>做得好的地方</h3><ul><li>塔、埃、墓、砌这4个字全对：拼音、字形、组词都写对了，很棒！</li><li>组词用得都对：金字塔、矮塔楼、埃及、古埃及、陵墓、墓室、塔基、基本、堆砌，都很好。</li></ul><h3>要订正的地方（3项）</h3><ul><li>堆的拼音：堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_dui_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_dui_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>基的字形：基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。<br><img src=\"data/diagrams/g5_shengzi16_ji_structure_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_ji_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>狭的拼音：狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_xia_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_xia_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul><p>订正完把改好的3个字再拍一张发回来，你一定能全对！</p></body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "第四单元小测",
+   "html": "<h2>第四单元小测反馈</h2>\n<p>这次小测 107 小问，你对了 100 个，正确率 93.5%，很棒！下面 7 处要改正，照着提示一步步想，自己改出来。</p>\n<h3>看拼音写词语：dǒu sǒu</h3>\n<p>提示一：这个词是说人精神很好、很有干劲，课文里常用来形容战士和劳动者的精神状态。提示二：第一个字是提手旁，读dǒu，想想提手旁加个什么字？提示三：第二个字读sǒu，看看你写的第二个字，它的读音和字形对得上吗？格外那个字是不是多余的？</p>\n<p><img src=\"diagrams/g5_BCE08C_q1_dousou_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>读句子写字词：jiāng（ ）土</h3>\n<p>提示一：这个空只要填一个字，括号后面已经印着“土”字了，合起来是一个词。提示二：你写了两个字，读一读句子，顺吗？提示三：把多余的那个字去掉，再读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q2_jiang_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：官邸</h3>\n<p>提示一：查一查字典，“邸”字读第几声？提示二：“官邸”这个词，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q3_di_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：潜龙</h3>\n<p>提示一：“潜水”的“潜”怎么读？提示二：qián和qiáng，韵母有什么不同？提示三：重新拼读“潜”字，声母是q，韵母是ian还是iang？</p>\n<p><img src=\"diagrams/g5_BCE08C_q4_qian_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：租界</h3>\n<p>提示一：“租”字读第几声？提示二：想想“租房”的“租”，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q5_zu_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：瑰宝</h3>\n<p>提示一：“瑰宝”的“瑰”怎么读？提示二：guī和guǎi，韵母和声调有什么不同？提示三：重新拼读“瑰”字，声母是g，韵母是ui还是uai？</p>\n<p><img src=\"diagrams/g5_BCE08C_q6_gui_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：裁</h3>\n<p>提示一：“裁剪”的“裁”怎么读？提示二：c和z是不同的声母，“裁”是平舌音，读第几声？提示三：重新拼读“裁”字，声母是c还是z？是第几声？</p>\n<p><img src=\"diagrams/g5_BCE08C_q7_cai_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<p>改完后拍照发回，老师会再看一遍。加油！</p>"
   },
   {
    "date": "2026-11-04",
