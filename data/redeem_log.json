@@ -13,17 +13,6 @@
     "revoked": false,
     "refunded": 0,
     "revoke_reason": ""
-   },
-   {
-    "date": "2026-10-22",
-    "item": "1小时和平精英",
-    "icon": "🎮",
-    "spent": 173,
-    "fee": 23,
-    "balance_after": 134,
-    "revoked": false,
-    "refunded": 0,
-    "revoke_reason": ""
    }
   ],
   "g6": [
@@ -40,5 +29,5 @@
    }
   ]
  },
- "generated_at": "2026-10-24T20:20:00+08:00"
+ "generated_at": "2026-11-06T00:00:06+08:00"
 }
