@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "六年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T20:28:15+08:00",
+  "updated_at": "2026-11-05T20:33:03+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -214,7 +214,7 @@
       "title": "读作文10分钟、记录①",
       "detail": "",
       "estimate_min": null,
-      "status": "grading",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①读背课文25、26、36、43；②校本P36-37；③抄词本默写10一次前4单元的古诗词；④读作文10分钟、记录①；⑤复习园地二至四单元，签名 → 待完成",
@@ -223,12 +223,26 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T19:30:19+08:00",
-      "updated_at": "2026-11-05T20:28:15+08:00",
+      "updated_at": "2026-11-05T20:33:04+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "kanban_upload"
+      "pending_corrections": 1,
+      "corrections": [
+        {
+          "label": "读作文，记录①-重读",
+          "question": "重读《时光机奇遇》全文（语文书 P54-55），读准 6 处词语，并写好“主要内容+阅读感受”。",
+          "reason": "6 处错读超达标线（错漏≤2处）：伸向、轻轻、泛出、沉醉、探寻、翼龙群展翅；“主要内容+阅读感受”未写。",
+          "hint": "重读前先看清词、放慢读这 6 处所在的句子；读完把主要内容和感受写在横线上。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "《时光机奇遇》（语文书 P54-55，全文 479 字）",
+          "q_img_exempt": "读背类，原文照片已附 orig_photos",
+          "img_exempt": "读背重读类，引导见文字提示与原文照片，无需配图",
+          "round": 1
+        }
+      ],
+      "status_source": "reading_grading_closeout",
+      "corr_round": 1
     },
     {
       "task_id": "REG-20261105-AA9F5B",
@@ -275,7 +289,7 @@
   "counts": {
     "total": 12,
     "pending": 9,
-    "in_progress": 0,
+    "in_progress": 1,
     "done": 2,
     "pending_review": 0
   },
