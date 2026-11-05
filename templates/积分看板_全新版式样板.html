@@ -5649,7 +5649,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <input class="up-pass" id="up-pass" type="text" autocomplete="off" placeholder="家庭口令">
     </div>
     <div class="up-row">
-      <label>选照片、录音或视频（可分多次选，拍一张加一张，累计最多10个）</label>
+      <label>选照片、录音或视频（可分多次选，拍一张加一张，累计最多20个）</label>
       <button class="up-pickbtn" id="up-pickbtn" type="button">📷 选取文件</button>
       <input type="file" id="up-files" multiple accept="image/*,audio/*,video/*" class="up-files-hidden">
       <div id="up-filelist"></div>
@@ -5692,7 +5692,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261105-closedlabels';
+  var KB_BUILD = '20261105-upload20';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6224,10 +6224,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var dup = upPicked.some(function(x){ return x.name === f.name && x.size === f.size && x.lastModified === f.lastModified; });
       if(!dup) upPicked.push(f);
     });
-    var room = 10 - recFiles.length;
+    var room = 20 - recFiles.length;
     if(upPicked.length > room){
       upPicked = upPicked.slice(0, Math.max(0, room));
-      setMsg('一次最多交10个文件，多出的先没加进来，删掉不要的再加', 'err');
+      setMsg('一次最多交20个文件，多出的先没加进来，删掉不要的再加', 'err');
     }
     paintPicked();
   }
@@ -6328,7 +6328,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!cur.grade){ setMsg('先选一下是哪个孩子哦', 'err'); return; }
     if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
     if(!files.length){ setMsg('还没有选照片/录音/视频哦', 'err'); return; }
-    if(files.length > 10){ setMsg('一次最多交10个文件，可以分两次交', 'err'); return; }
+    if(files.length > 20){ setMsg('一次最多交20个文件，可以分两次交', 'err'); return; }
     busy = true; $('up-go').disabled = true; setMsg(token() ? '正在准备…' : '正在验证口令…');
     var __upNow = function(){ return (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now(); };
     var __upT0 = __upNow(); var __upT = {};
