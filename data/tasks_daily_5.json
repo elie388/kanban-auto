@@ -163,24 +163,6 @@
       },
       "created_at": "2026-11-05T20:04:39+08:00",
       "updated_at": "2026-11-05T20:04:39+08:00"
-    },
-    {
-      "task_id": "REG-20261105-CF4AB6",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "下周一期中考试",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字16课；②第四单元小测；下周一期中考试 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00"
     }
   ],
   "counts": {
