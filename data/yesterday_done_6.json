@@ -1,24 +1,38 @@
 {
- "date": "2026-11-04",
+ "date": "2026-11-05",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-04",
+   "task_id": "META-REGISTER-2026-11-05",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261104-18FF5C",
-   "title": "读园地一试卷15分钟，默《江畔独步寻花》抄词本",
+   "task_id": "REG-20261105-21180A",
+   "title": "抄U3单词和中文各4次，背10次",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261105-1336F4",
+   "title": "读U3单词、对话提交小管家",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261105-8F0FCD",
+   "title": "抄词本默写10一次前4单元的古诗词",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261104-3E6B43",
-   "title": "读背概念4.52",
+   "task_id": "REG-20261105-7B5137",
+   "title": "读背科学十分钟",
    "subject": "数学",
    "source": "register_book",
    "group": "study"

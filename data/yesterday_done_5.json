@@ -1,23 +1,16 @@
 {
- "date": "2026-11-04",
+ "date": "2026-11-05",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-04",
+   "task_id": "META-REGISTER-2026-11-05",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261104-06A0E5",
-   "title": "预习16课",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261104-890ECE",
+   "task_id": "REG-20261105-366DAB",
    "title": "口语易",
    "subject": "英语",
    "source": "register_book",
