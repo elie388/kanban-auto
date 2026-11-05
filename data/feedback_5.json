@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-05T20:50:48+08:00",
+ "generated_at": "2026-11-05T21:30:39+08:00",
  "items": [
+  {
+   "date": "2026-11-05",
+   "ts": "2026-11-05T21:40:00+08:00",
+   "kind": "feedback",
+   "time": "21:40",
+   "title": "英语试卷（笔试部分）",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语试卷（笔试部分）反馈</h2>\n<p>11月5日 20:28 提交，笔试 51/60＝85%，要订正 6 处。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>八、九（一）两大题全对（各 10/10），阅读理解和判断题都稳。</li>\n<li>七、补全短文 9/10，只错 1 处。</li>\n<li>十、写作 8/10：6 句话符合要求，姓名、性格、外貌、共同爱好都写到了，很完整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>六-4：What do you think ___ this healthy food?——“你觉得这种健康食物怎么样？”这里“认为”用哪个介词搭配？想想 think 后面跟哪个小词表示“认为”，再看看第 5 题是不是也填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>六-5：What can you do ___ these things?——“你能用这些东西做什么？”这里“用”用哪个介词？想想 do 后面跟哪个小词表示“用”，再对照第 4 题看看两个词是不是填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>七-9：I always eat my food 9.s___.——“我吃饭总是吃得……”这里要填一个词说“吃得怎么样”，修饰动词 eat，应该用什么词性的词？首字母 s 已经给了，这个词完整拼出来是什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-7：再读一遍短文第二句：植树节那天，学校上课吗？短文里有没有一个表示“没有”的小词？学生那天在学校通常做什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-9：题干里问的是 first（首先）还是 last（最后）？再读短文里种树的三个步骤：First……Next……At last……，第一步是做什么？浇水是第几步？<br><img src=\"data/diagrams/eng_65a3bbf9_q5_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>十、写作：We are friend because we both like music.——这句话里 We 是几个人？两个人互为朋友，friend 这个词应该用单数还是复数？想想 We are ___ 后面跟几个人的称呼时要不要加 s。<br><img src=\"data/diagrams/eng_65a3bbf9_q6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>听力部分（40 分）还没交，等音频到了再一起核分。</p>\n</body></html>"
+  },
   {
    "date": "2026-11-05",
    "ts": "",

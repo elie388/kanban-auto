@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-05T21:24:00+08:00",
+ "generated_at": "2026-11-05T21:30:39+08:00",
  "items": [
+  {
+   "date": "2026-11-05",
+   "ts": "2026-11-05T21:40:00+08:00",
+   "kind": "feedback",
+   "time": "21:40",
+   "title": "数学校本P36-37",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，数学校本P36-37反馈</h2>\n<p>11月5日 20:05 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>16 小问做对了 14 道，正确率 87.5%。</li>\n<li>应用题全对了（第 2 到第 9 题），特别是 ※9 挑战题（露营分碗）也做对了，很厉害。</li>\n<li>第 5 题的画图画得很清楚，冰 10 段、水 9 段，一眼就能看出少了 1/10。</li>\n</ul>\n<h3>待改正 2 题</h3>\n<ul>\n<li>第 1 题第（1）小题：2/7×3/16×14/15。先把三个分数的分子、分母分别约一约：想想 14 和 7 可以约掉几？3 和 15 可以约掉几？约完再乘，看看得数是多少。<br><br><img src=\"data/diagrams/g6_F54F98_q1_1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g6_F54F98_q1_1_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>第 1 题第（6）小题：98÷(1/10+3/7)。先算括号里的：1/10 + 3/7，先通分，分母变成几？再算 98 除以这个和——除以一个分数等于乘它的倒数，倒数是几？一步步来。<br><br><img src=\"data/diagrams/g6_F54F98_q1_6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g6_F54F98_q1_6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>这次校本完成分 +10、正确率 +3、按时 +2、书写 +2，共 +17 分。</p>\n</body></html>\n"
+  },
   {
    "date": "2026-11-05",
    "ts": "",
