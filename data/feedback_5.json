@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-04T23:26:11+08:00",
+ "generated_at": "2026-11-05T20:50:48+08:00",
  "items": [
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "生字16课",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，生字16课反馈</h2><p>11月5日 20:16 提交，7个生字对4个、错3个（57.1%），要订正3处。</p><h3>做得好的地方</h3><ul><li>塔、埃、墓、砌这4个字全对：拼音、字形、组词都写对了，很棒！</li><li>组词用得都对：金字塔、矮塔楼、埃及、古埃及、陵墓、墓室、塔基、基本、堆砌，都很好。</li></ul><h3>要订正的地方（3项）</h3><ul><li>堆的拼音：堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_dui_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_dui_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>基的字形：基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。<br><img src=\"data/diagrams/g5_shengzi16_ji_structure_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_ji_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>狭的拼音：狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_xia_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_xia_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul><p>订正完把改好的3个字再拍一张发回来，你一定能全对！</p></body></html>"
+  },
   {
    "date": "2026-11-04",
    "ts": "",
@@ -98,86 +106,6 @@
    "time": "",
    "title": "11月3日针对性练习批改反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，针对性练习批改反馈</h2>\n<p>11月3日 23:16 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>《山居秋暝》全背出来了！英语第三人称单数、超市加法、可数名词都对，小练笔写和妈妈一起削土豆皮，动作、神态都齐，很棒！英语口语三问内容都对、一般现在时也对。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>第三人称单数（Tom）：<span style=\"color:red;font-weight:bold;\">缺一个正确的动词形式</span>。Tom是第几人称？every day说明是什么时态？doing能单独作谓语吗？</li>\n<li>第三人称单数（baby）：<span style=\"color:red;font-weight:bold;\">缺一个正确的动词形式</span>。以辅音字母加y结尾的动词，变第三人称单数时y要怎么变？crying是什么形式，能单独作谓语吗？</li>\n<li>小数点向左移动：<span style=\"color:red;font-weight:bold;\">缺一步“除以9”</span>。原数是几份？移动后是几份？差是几份？31.5对应的是哪几份，应该除以几？</li>\n<li>小数点向右移动：<span style=\"color:red;font-weight:bold;\">缺一个正确的原数</span>。原数是几份？移动后是几份？差是几份？45对应的是哪几份？画一份数图试试。</li>\n<li>辨和辩：<span style=\"color:red;font-weight:bold;\">缺两个字的区分</span>。辨别是什么意思（区分）？辩论是什么意思（说话讲道理）？哪个字带言字旁、跟说话有关？</li>\n<li>Does句型：<span style=\"color:red;font-weight:bold;\">缺一个正确的动词形式</span>。Does后面跟动词的什么形式？studies是什么形式？两个形式能同时出现吗？</li>\n<li>严格和严厉：<span style=\"color:red;font-weight:bold;\">缺一个正确的词</span>。严格是什么意思（标准高）？严厉是什么意思（态度厉害）？要求跟哪个搭配？批评跟哪个搭配？</li>\n<li>小数点移动综合：<span style=\"color:red;font-weight:bold;\">缺一步“除以9”再加</span>。原数是几份？移动后是几份？差是几份？40.5对应的是哪几份，应该除以几？原数求出来后还要做什么？</li>\n<li>英语口语时长：<span style=\"color:red;font-weight:bold;\">缺30秒时长</span>。内容三问都对，但录音只有20秒。说慢一点，每问多补充一句（比如每个人爱吃什么），再录一遍到30秒以上试试。</li>\n</ul>\n</body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T23:46:57+08:00",
-   "kind": "feedback",
-   "time": "11月2日",
-   "title": "53天天练语文订正反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，53天天练语文订正反馈</h2><p>23:21又交了一次，很认真，我都看到了。</p><h3>📝 再对一下</h3><p>第3题：<span style=\"color:red;font-weight:bold\">还差：你这次选的这个选项，它的解释本身是对的，所以它不是‘有误’的那一项；再看一遍四个选项，哪个解释跟原意对不上？</span></p><p>第5题第1小题：<span style=\"color:red;font-weight:bold\">还差：你这次选的这个说法，读起来也是对的读法，所以它不是‘不正确’的那一项；再想想，哪个说法跟这篇的感情不符？</span></p><p>两处还要再改，改对后告诉我。</p></body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T23:46:57+08:00",
-   "kind": "feedback",
-   "time": "11月2日",
-   "title": "彦均·语文预习订正反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，语文预习订正反馈</h2><h3>🌟 做得好的地方</h3><ul><li>蒸的拼音改对了，很好！</li></ul><p><b>本批订正加分 +2</b></p></body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T23:46:57+08:00",
-   "kind": "feedback",
-   "time": "11月2日",
-   "title": "彦均·语文抄写订正反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，语文抄写订正反馈</h2><p>整页重抄了，很认真。</p><h3>📝 再对一下</h3><p>抄词语：<span style=\"color:red;font-weight:bold\">还差：桂花香前面那个词还是原来的写法，对照课文再看一次那个词是哪三个字</span>，改对后告诉我。</p></body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T23:20:00+08:00",
-   "kind": "feedback",
-   "time": "11月2日",
-   "title": "彦均·53天天练英语订正反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，53天天练英语订正反馈</h2><h3>🌟 做得好的地方</h3><ul><li>分组改对了：use many plastic bags 现在放对组了，很好！</li></ul><p>笔试部分已经没问题了。听力部分等音频到了再帮你核，不用重交。</p><p><b>本批订正加分 +2</b></p></body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T23:20:00+08:00",
-   "kind": "feedback",
-   "time": "11月2日",
-   "title": "彦均·校本34页订正反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，校本34页订正反馈</h2><h3>🌟 做得好的地方</h3><ul><li>拓展第④题改对了，很好！</li></ul><h3>📝 再对一下</h3><p>第（4）题：<span style=\"color:red;font-weight:bold\">这次用了减法（两边同时减1），但这题要验证的是乘除规律；先写一个等式，再让两边同时乘一个数或者同时除以一个数，你写的例子是这个样子吗？</span>只改这一处，改对后告诉我。</p><p><b>本批订正加分 +2</b></p></body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T23:10:15+08:00",
-   "kind": "feedback",
-   "time": "11月2日 23:10",
-   "title": "53天天练数学订正反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，53天天练数学订正反馈</h2>\n<p>11月2日 23:10 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>10题第2小题两组都对了：0.164×35=5.74、164×0.035=5.74，两组都得5.74，很好！</li>\n<li>虽然第一组换了拆法，也算对，下次原来1.64是对的，不用改它，直接改中间那个空更省事。</li>\n</ul>\n<p><b>本批积分：+2（订正）</b></p>\n<h3>📝 再对一下</h3>\n<p>第1空：<span style=\"color:red;font-weight:bold\">还差0.21×150这一空：你写的是3.15，再算一算21×150是多少，再数0.21有几位小数</span>，不用重做整页，只改这一空。</p>\n<p>第4空：<span style=\"color:red;font-weight:bold\">还差11题：只要选一个，你写了AD，A和D不能都留，想想哪个是把7.3和248都往大里估的</span>，只留一个就对了。</p>\n<p>这页还差2个空，等你改对再标完成。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T22:21:00+08:00",
-   "kind": "feedback",
-   "time": "21:42",
-   "title": "彦均·英语抄写反馈：M3单词全对",
-   "html": "<p>你今天M3单词抄得很好：13个词每个都写了4遍，中文意思也都对，很好。</p><p>两个小提醒：musical的中文你写的是擅长音乐的意思，意思是对的；parent你只写了一个父字，下次写全两个字。都不用重抄。</p>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T22:20:53+08:00",
-   "kind": "feedback",
-   "time": "11月2日 22:20",
-   "title": "每日读书反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，每日读书反馈</h2>\n<p>11月2日 22:20 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>你今天一口气读了两篇作文，《我哭了》和《长大真烦》，从头读到了尾，读得很流利，为你点赞！</li>\n<li>书页照片和录音都交齐了，读书任务完成得很好，继续保持！</li>\n</ul>\n<p><b>本批积分：+7（每日读书达标，240.6秒档）</b></p>\n<h3>📝 再接再厉</h3>\n<p>每天坚持读，明天继续加油！</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T21:32:57+08:00",
-   "kind": "feedback",
-   "time": "21:32",
-   "title": "彦均·英语口语反馈：口语易已提交，分数没显示",
-   "html": "<p>你今天口语易已经提交了：截图里今天的任务显示已完成，4个小项都在，开始时间是今天下午，很好。</p><p>截图里今天的分数没有显示，只有查看得分的按钮，我先按提交算完成，不按分数算分，有空点一下查看得分，把分数发回给我，我再帮你核。</p>"
-  },
-  {
-   "date": "2026-11-02",
-   "ts": "2026-11-02T21:05:02+08:00",
-   "kind": "feedback",
-   "time": "21:05",
-   "title": "彦均·考试反馈：计算素养展示全对",
-   "html": "<p>你这次计算素养展示全对，100分，太稳了！直接写得数、竖式、简算三大题都拿满了。竖式数位对得齐，简便方法也用得对（凑整、结合律都用上了）。中间有几处涂改，下次落笔前先想一步再写，卷面会更干净。继续保持！</p>"
   }
  ]
 }
