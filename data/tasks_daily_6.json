@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "六年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T16:55:41+08:00",
+  "updated_at": "2026-11-05T16:55:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -458,11 +458,26 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-05T16:55:41+08:00",
       "updated_at": "2026-11-05T16:55:41+08:00"
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-05",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-05T16:55:50+08:00",
+      "updated_at": "2026-11-05T16:55:50+08:00",
+      "completed_at": null
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 8,
+    "total": 13,
+    "pending": 9,
     "in_progress": 4,
     "done": 0,
     "pending_review": 0
