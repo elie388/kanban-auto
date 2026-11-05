@@ -3,7 +3,7 @@
   "date": "2026-11-05",
   "grade": "五年级",
   "generated_at": "2026-11-05T00:17:12+08:00",
-  "updated_at": "2026-11-05T20:50:39+08:00",
+  "updated_at": "2026-11-05T21:27:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -104,7 +104,7 @@
       "title": "试卷（做笔试部分）",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②试卷（做笔试部分） → 待完成",
@@ -113,9 +113,84 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-05T20:04:39+08:00",
-      "updated_at": "2026-11-05T20:04:39+08:00",
-      "pending_corrections": 0,
-      "corrections": []
+      "updated_at": "2026-11-05T21:27:19+08:00",
+      "pending_corrections": 6,
+      "corrections": [
+        {
+          "label": "英语试卷笔试 六-4 选词填空",
+          "question": "六、选词填空第4题：What do you think ___ this healthy food?",
+          "reason": "think of 是固定搭配，表示“认为……”；孩子填了 With，与第5题的 of 位置互换了。",
+          "hint": "What do you think ___ this healthy food?——“你觉得这种健康食物怎么样？”这里“认为”用哪个介词搭配？想想 think 后面跟哪个小词表示“认为”，再看看第5题是不是也填反了。",
+          "img": "eng_65a3bbf9_q1_guide.png",
+          "q_img": "",
+          "orig_text": "六、根据句意，选词填空，其中一个单词是多余的，注意单词的正确形式：What do you think ___ this healthy food?（备选词：for, with, into, of, on, in）",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "英语试卷笔试 六-5 选词填空",
+          "question": "六、选词填空第5题：What can you do ___ these things?",
+          "reason": "What can you do with these things?（你能用这些东西做什么？）是固定搭配，用 with；孩子填了 of，与第4题的 with 互换了位置。",
+          "hint": "What can you do ___ these things?——“你能用这些东西做什么？”这里“用”用哪个介词？想想 do 后面跟哪个小词表示“用”，再对照第4题看看两个词是不是填反了。",
+          "img": "eng_65a3bbf9_q2_guide.png",
+          "q_img": "",
+          "orig_text": "六、根据句意，选词填空，其中一个单词是多余的，注意单词的正确形式：What can you do ___ these things?（备选词：for, with, into, of, on, in）",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "英语试卷笔试 七-9 短文填空",
+          "question": "七、补全短文第9题：I always eat my food 9.s___.",
+          "reason": "这里要填一个副词修饰动词 eat（吃得怎么样），应用 slowly（慢慢地）；孩子只写了 so，意思不完整、词性也不对。首字母 s 已给出，后面应补全。",
+          "hint": "I always eat my food 9.s___.——“我吃饭总是吃得……”这里要填一个词说“吃得怎么样”，修饰动词 eat，应该用什么词性的词？首字母 s 已经给了，这个词完整拼出来是什么？",
+          "img": "eng_65a3bbf9_q3_guide.png",
+          "q_img": "",
+          "orig_text": "七、根据句意与首字母提示，补全短文：I take my time when I eat. I always eat my food 9.s___. Healthy food makes me 10.s___.",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "英语试卷笔试 九(二)-7 阅读选择",
+          "question": "九、（二）阅读选择第7题：植树节学生在学校通常做什么？",
+          "reason": "短文原句是 Many schools have no classes on that day.（那天很多学校不上课），学生通常是 help plant trees at school（在学校帮忙种树）；孩子选了 A（Have classes，上课），与原文正好相反，是没看清 no 这个否定词。",
+          "hint": "再读一遍短文第二句：植树节那天，学校上课吗？短文里有没有一个表示“没有”的小词？学生那天在学校通常做什么？",
+          "img": "eng_65a3bbf9_q4_guide.png",
+          "q_img": "",
+          "orig_text": "九、（二）阅读短文，选择正确的答案：March 12th is Tree-Planting Day. Many schools have no classes on that day. Students usually help plant trees at school. 第7题：What do students usually do on Tree-Planting Day at school? A. Have classes. B. Help plant trees. C. Go out to play.",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "英语试卷笔试 九(二)-9 阅读选择",
+          "question": "九、（二）阅读选择第9题：种树时人们首先做什么？",
+          "reason": "题干问的是 first（首先）做什么；短文原句是 First, they dig holes.（首先，他们挖洞）；孩子选了 B（water the young trees，浇水），那是 At last（最后）才做的事，把顺序弄反了。",
+          "hint": "题干里问的是 first（首先）还是 last（最后）？再读短文里种树的三个步骤：First……Next……At last……，第一步是做什么？浇水是第几步？",
+          "img": "eng_65a3bbf9_q5_guide.png",
+          "q_img": "",
+          "orig_text": "九、（二）阅读短文，选择正确的答案：First, they dig holes and then they put the young trees into the holes. Next, they fill the holes with earth and push the earth back. At last, they water the young trees. 第9题：What do people do first when they plant trees? A. They fill the holes with earth. B. They water the young trees. C. They dig holes.",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "英语试卷笔试 十 写作 My Best Friend",
+          "question": "十、写作：以 My Best Friend 为题介绍好朋友（不少于5句）",
+          "reason": "We are friend 里 We 是两个人，互为朋友时 friend 要用复数 friends；孩子用了单数 friend。其余句子（姓名、性格、外貌、共同爱好）都写得很好，6句话符合要求。",
+          "hint": "We are friend because we both like music.——这句话里 We 是几个人？两个人互为朋友，friend 这个词应该用单数还是复数？想想 We are ___ 后面跟几个人的称呼时要不要加 s。",
+          "img": "eng_65a3bbf9_q6_guide.png",
+          "q_img": "",
+          "orig_text": "十、写作：请你以 My Best Friend 为题，介绍一下你的好朋友。要求：1. 包含朋友的姓名、性格、外貌等基本信息；2. 不少于5句话，语句通顺，书写美观。孩子原文：My best friend is Sally. She is kind. She is short but I'm tall. I have got short hair but she has long hair. We are friend because we both like music. We are happy together.",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261105-C97E4F",
@@ -232,8 +307,8 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 6,
-    "in_progress": 1,
+    "pending": 5,
+    "in_progress": 2,
     "done": 1,
     "pending_review": 0
   },
