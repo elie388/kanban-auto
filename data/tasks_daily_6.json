@@ -59,45 +59,6 @@
       "updated_at": "2026-11-05T00:17:43+08:00"
     },
     {
-      "task_id": "D53-2026-11-05-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-05T16:55:41+08:00",
-      "updated_at": "2026-11-05T16:55:41+08:00"
-    },
-    {
-      "task_id": "D53-2026-11-05-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-05T16:55:41+08:00",
-      "updated_at": "2026-11-05T16:55:41+08:00"
-    },
-    {
-      "task_id": "D53-2026-11-05-ENG",
-      "source": "daily_53",
-      "subject": "英语",
-      "title": "53天天练·英语",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-05T16:55:41+08:00",
-      "updated_at": "2026-11-05T16:55:41+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-05",
       "source": "meta",
       "task_type": "meta_register",
