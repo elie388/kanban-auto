@@ -81,6 +81,75 @@ def selftest(task_ingest):
     return 1 if n_fail else 0
 
 
+def derive_closed_set():
+    """②（2026-11-05）：从 grading_closed_batches.jsonl 派生已收口集合。
+
+    task_id 经 strip＋转大写去重（jsonl 追加写，同一 task 取最后一条的 ts），
+    原子写 kanban-deploy/data/closed_batches.json（{generated_at, task_ids 排序后,
+    closed_at, skipped}）；空 id 零容忍（出现即派生失败告警，不写出，旧文件不动）；
+    首次上线源空时仍写出 task_ids: [] 的合法文件，保证 workflow test -s 通过；
+    内容不变不复写（仅适用于文件已存在且内容一致时）。
+    返回 (ok, detail)。失败不阻断 do_push（旧文件保留，板面回落今日行为）。
+    """
+    import json as _json
+    from datetime import datetime as _dt, timezone as _tz, timedelta as _td
+    hidden = REPO_DIR.parent
+    src = hidden / "logs" / "grading_closed_batches.jsonl"
+    dst = REPO_DIR / "data" / "closed_batches.json"
+    closed_at = {}
+    skipped = 0
+    if src.exists():
+        try:
+            lines = src.read_text(encoding="utf-8").splitlines()
+        except OSError as e:
+            print(f"[derive_closed_set] 读源失败：{e}", flush=True)
+            return False, "读源失败"
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = _json.loads(line)
+            except Exception:
+                skipped += 1
+                continue
+            tid = rec.get("task_id") or ""
+            if not isinstance(tid, str):
+                tid = str(tid)
+            tid = tid.strip()
+            if not tid:
+                print("[derive_closed_set] 空 task_id 零容忍：派生失败，不写出", flush=True)
+                return False, "空 task_id"
+            closed_at[tid.upper()] = str(rec.get("ts") or rec.get("closed_at") or "")
+    now = _dt.now(_tz(_td(hours=8))).isoformat()
+    obj = {"generated_at": now,
+           "task_ids": sorted(closed_at.keys()),
+           "closed_at": closed_at,
+           "skipped": skipped}
+    text = _json.dumps(obj, ensure_ascii=False, indent=2)
+    try:
+        if dst.exists():
+            try:
+                old = _json.loads(dst.read_text(encoding="utf-8"))
+            except Exception:
+                old = None
+            # 内容不变不复写：只比 task_ids＋closed_at＋skipped（忽略 generated_at），
+            # 否则每次刷新时间戳都会触发 do_push 的 data/ 变化，造成推送风暴。
+            # generated_at 语义＝当前集合内容最后一次派生（即最后一次变化）的时间。
+            if (isinstance(old, dict) and old.get("task_ids") == obj["task_ids"]
+                    and old.get("closed_at") == obj["closed_at"]
+                    and old.get("skipped") == obj["skipped"]):
+                return True, "内容不变不复写"
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        tmp = dst.with_suffix(".json.tmp")
+        tmp.write_text(text, encoding="utf-8")
+        os.replace(tmp, dst)
+        return True, f"写出 {len(closed_at)} 条"
+    except OSError as e:
+        print(f"[derive_closed_set] 写出失败：{e}", flush=True)
+        return False, "写出失败"
+
+
 def main():
     sys.path.insert(0, str(HIDDEN_SCRIPTS))
     try:
@@ -90,6 +159,11 @@ def main():
         return 1
     if "--selftest" in sys.argv:
         return selftest(task_ingest)
+    try:
+        ok_derive, detail_derive = derive_closed_set()
+        print(f"[derive_closed_set] {detail_derive}", flush=True)
+    except Exception as e:
+        print(f"[derive_closed_set] 异常（不阻断推送）：{e}", flush=True)
     try:
         ok = task_ingest.do_push()
     except Exception as e:

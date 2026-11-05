@@ -1641,6 +1641,27 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     in_progress: {cls: 'correcting', badge: '🔄 待改正'},
     done:        {cls: 'done',       badge: '✅ 已完成'}
   };
+  /* 已收口集合（②，2026-11-05）：从 data/closed_batches.json 拉取已收口 task_id
+     集合（大写去重）；取不到/解析失败时为空集，回落今日行为，不阻塞渲染、不报错。 */
+  var closedSet = {};
+  function closedSetHas(id){
+    if(!id) return false;
+    return !!closedSet[String(id).trim().toUpperCase()];
+  }
+  function fetchClosed(){
+    var timeout = new Promise(function(resolve){ setTimeout(resolve, 5000); });
+    var req = fetch(DATA_BASE + 'closed_batches.json', { cache: 'no-cache' })
+      .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function(d){
+        var s = {};
+        if(d && Array.isArray(d.task_ids)){
+          d.task_ids.forEach(function(x){ if(x) s[String(x).trim().toUpperCase()] = true; });
+        }
+        closedSet = s;
+      })
+      .catch(function(e){ console.warn('已收口集合拉取失败，回落今日行为:', e); closedSet = {}; });
+    return Promise.race([req, timeout]);
+  }
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '', meta: '每日任务', exam_correction: '考试订正', exam: '学校考试', chore: '日常打卡', daily_53: '每日练习'};
   var OPEN_TASK = {}; /* 今日任务展开状态（按 task_id，软刷新后恢复）：2026-10-22 家长定每项任务默认收起、点击后才展开，不分状态；同日续定方案1：整卡可点＋入口带内容预告 */
   function toggleTaskCard(card){
@@ -1807,6 +1828,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if(t.status === 'submitted' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) > 0){
           badgeText = '✏️ 待改正';
         }
+        /* 已收口标签（②，2026-11-05）：submitted 且待改正数为 0 且在已收口集合内，
+           说明已收口但状态未翻，显示已完成；closedSet 取不到时为空集，回落今日行为。 */
+        if(t.status === 'submitted' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0 && closedSetHas(t.task_id)){
+          badgeText = '✅ 已完成';
+        }
         if(t.source === 'chore'){
           if(t.chore_exempt) badgeText = '🌴 今日豁免';
           else if(t.chore_missed) badgeText = '当天未完成';
@@ -1949,7 +1975,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var carryTag = '';
         if((t.carry_count || t.carried_from) && (t.status === 'submitted' || t.status === 'grading')){
           var isMissing = t.pending_note && t.pending_note.indexOf('【缺件提醒】') === 0;
-          carryTag = '<span class="carry-tag">' + (pendN > 0 ? '待订正' : (isMissing ? '待补件' : '待批改')) + '</span>';
+          carryTag = '<span class="carry-tag">' + (pendN > 0 ? '待订正' : (closedSetHas(t.task_id) ? '已完成' : (isMissing ? '待补件' : '待批改'))) + '</span>';
         }
         /* 催促整卡闪烁（2026-10-23）：未完成才闪；单卡暂停（localStorage）与同屏上限在渲染时定格 */
         var urgCls = '';
@@ -2043,6 +2069,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(taskLoading) return;
     taskLoading = true;
     var ok = 0, obtained = 0, anyCache = false, cacheTs = 0, settled = 0;
+    /* ②：先拉已收口集合（5 秒超时兜底，失败回落空集不阻塞），再拉任务并渲染，
+       首屏即用最新 closedSet，不靠下一轮 5 分钟刷新纠正。 */
+    fetchClosed().then(function(){
     [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
       fetchTask(pair[1])
         .then(function(res){
@@ -2073,6 +2102,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           }
         });
     });
+    }); /* ②：闭合 fetchClosed().then */
   }
   /* ================================================================
      年级段总折叠（2026-10-23 A 案，家长拍板）：两段默认全收起，点标题行展开/收起。
@@ -5662,7 +5692,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261105-examlinkage';
+  var KB_BUILD = '20261105-closedlabels';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
