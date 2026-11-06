@@ -3,12 +3,12 @@
   "date": "2026-11-06",
   "grade": "五年级",
   "generated_at": "2026-11-06T00:17:15+08:00",
-  "updated_at": "2026-11-06T18:55:23+08:00",
+  "updated_at": "2026-11-06T19:51:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-06T16:55:44+08:00",
-      "new_lines": 0
+      "ingested_at": "2026-11-06T19:51:47+08:00",
+      "new_lines": 9
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -417,20 +417,183 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-06T16:56:05+08:00",
-      "updated_at": "2026-11-06T16:56:05+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-06T19:51:47+08:00",
+      "completed_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-E8DD7D",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "第四单元综合卷（并改正，见班群）",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①第四单元综合卷（并改正，见班群） → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-A7BC21",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄M1单词",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-AE714E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261106-08D068",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "复习U1-U3单词和课文",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-1B1D18",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "把园一到园四的日积月累抄一次（用稿纸）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-FED046",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "默写11课和默12课1、3段（用稿纸）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-248496",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读一遍所有园地一、二、三、四（小管家）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-799EA9",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看作文一、二、三、四[涂黑]",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
+    },
+    {
+      "task_id": "REG-20261106-511C79",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "准备好考试用品",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T19:51:47+08:00",
+      "updated_at": "2026-11-06T19:51:47+08:00"
     }
   ],
   "counts": {
-    "total": 8,
-    "pending": 4,
+    "total": 17,
+    "pending": 12,
     "in_progress": 4,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-06T22:00:00+08:00"
 }
