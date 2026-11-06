@@ -200,7 +200,7 @@
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周期中 → 待完成",
+      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
@@ -218,7 +218,7 @@
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周期中 → 待完成",
+      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
@@ -231,13 +231,13 @@
       "task_id": "REG-20261106-8C201E",
       "source": "register_book",
       "subject": "英语",
-      "title": "复习U1到U3的所有试卷，下周期中",
+      "title": "复习U1到U3的所有试卷，下周一期中",
       "detail": "原状态：待完成",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周期中 → 待完成",
+      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
@@ -322,13 +322,13 @@
       "task_id": "REG-20261106-331308",
       "source": "register_book",
       "subject": "语文",
-      "title": "写期中试卷作文",
+      "title": "写期中考试作文",
       "detail": "",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中试卷作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录[末字待确认] → 待完成",
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
@@ -346,7 +346,7 @@
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中试卷作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录[末字待确认] → 待完成",
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
@@ -364,7 +364,7 @@
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中试卷作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录[末字待确认] → 待完成",
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
@@ -376,13 +376,13 @@
       "task_id": "REG-20261106-7AA54A",
       "source": "register_book",
       "subject": "语文",
-      "title": "每天读书1小时，记录[末字待确认]",
+      "title": "每天读书1小时，记录③",
       "detail": "原状态：待完成",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
       "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中试卷作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录[末字待确认] → 待完成",
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
       "evidence": {
         "extracted_by": "task_ingest_freetext",
         "reviewed_by": null
