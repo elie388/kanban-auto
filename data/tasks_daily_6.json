@@ -3,12 +3,12 @@
   "date": "2026-11-06",
   "grade": "六年级",
   "generated_at": "2026-11-06T00:17:16+08:00",
-  "updated_at": "2026-11-06T20:53:19+08:00",
+  "updated_at": "2026-11-06T23:10:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-06T20:11:07+08:00",
-      "new_lines": 11
+      "ingested_at": "2026-11-06T23:10:38+08:00",
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -301,11 +301,11 @@
     }
   ],
   "counts": {
-    "total": 17,
-    "pending": 12,
-    "in_progress": 3,
+    "total": 13,
+    "pending": 11,
+    "in_progress": 1,
     "done": 1,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-06T22:00:00+08:00"
+  "deadline_today": "2026-11-06T22:30:00+08:00"
 }
