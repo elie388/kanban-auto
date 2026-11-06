@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "grade": "六年级",
-  "generated_at": "2026-11-06T00:17:16+08:00",
-  "updated_at": "2026-11-07T00:08:33+08:00",
+  "generated_at": "2026-11-07T00:18:59+08:00",
+  "updated_at": "2026-11-07T00:18:59+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-06T23:10:38+08:00",
+      "ingested_at": null,
       "new_lines": 0
     },
     "targeted_practice": {
@@ -22,42 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261106-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-06T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-06T00:17:35+08:00",
-      "updated_at": "2026-11-07T00:08:33+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-06",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-06T16:56:05+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00",
-      "completed_at": "2026-11-06T20:11:07+08:00",
-      "orig_photos": [
-        "fc53959c07fea472.jpg"
-      ]
-    },
     {
       "task_id": "REG-20261106-853367",
       "source": "register_book",
@@ -74,7 +38,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:53:18+08:00",
+      "updated_at": "2026-11-07T00:18:59+08:00",
       "corr_round": 1,
       "corrections": [
         {
@@ -115,7 +79,10 @@
         }
       ],
       "pending_corrections": 3,
-      "status_source": "closeout_writeback"
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-234FE6",
@@ -133,8 +100,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00",
-      "task_type": "reading"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "task_type": "reading",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-8C201E",
@@ -152,7 +122,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-DB49EC",
@@ -170,7 +143,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-0B6B25",
@@ -188,8 +164,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00",
-      "task_type": "reading"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "task_type": "reading",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-B2E999",
@@ -207,7 +186,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-FA2690",
@@ -225,7 +207,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-331308",
@@ -243,7 +228,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-BE12FF",
@@ -261,7 +249,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-00AA2E",
@@ -279,7 +270,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261106-7AA54A",
@@ -297,15 +291,18 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-06T20:11:07+08:00"
+      "updated_at": "2026-11-07T00:18:59+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-06",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 11,
+    "total": 11,
+    "pending": 10,
     "in_progress": 1,
-    "done": 1,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-06T22:30:00+08:00"
+  "deadline_today": null
 }

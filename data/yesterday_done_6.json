@@ -1,54 +1,12 @@
 {
- "date": "2026-11-05",
+ "date": "2026-11-06",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-05",
+   "task_id": "META-REGISTER-2026-11-06",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261105-21180A",
-   "title": "抄U3单词和中文各4次，背10次",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261105-1336F4",
-   "title": "读U3单词、对话提交小管家",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261105-8F0FCD",
-   "title": "抄词本默写10一次前4单元的古诗词",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261105-7B5137",
-   "title": "读背科学十分钟",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261105-C4D2B5",
-   "title": "读背课文25、26、36、43",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261105-AA9F5B",
-   "title": "复习园地二至四单元，签名",
-   "subject": "语文",
-   "source": "register_book",
    "group": "study"
   }
  ]
