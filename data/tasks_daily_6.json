@@ -217,11 +217,11 @@
           "question": "Scan the QR code on the bike with a ___, and you can unlock the shared bike.",
           "reason": "把后半句已经出现的 unlock 提前填进了空里；空前是 with a + 工具，unlock 是动词、前面不能加 a，且与后半句重复。",
           "hint": "先读完整句话：扫二维码要用什么东西来扫？爸爸那段话里说，找车、扫码都要先有什么？空里要填的是一个东西的名字，不是动作。再想一想，句子的后半句已经有一个 unlock 了，空里还能再填一次吗？",
-          "img": "",
+          "img": "g6_853367_bike_guide.png",
           "q_img": "",
           "orig_text": "Scan the QR code on the bike with a ___ , and you can unlock the shared bike.",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -229,11 +229,11 @@
           "question": "The prince learns about love, friendship and grown-ups.",
           "reason": "短文 Story idea 原文明写 He learns about love, friendship and grown-ups，句子与原文一致，应判 T；孩子误判为 F。",
           "hint": "回到小王子那一栏，找 Story idea 那一行：王子在旅途中都学到了什么？题目里说的三样东西，原文里有没有？一句一句对一对，再决定这个句子是真是假。",
-          "img": "",
+          "img": "g6_853367_prince_guide.png",
           "q_img": "",
           "orig_text": "The prince learns about love, friendship and grown-ups.",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -241,11 +241,11 @@
           "question": "At the end of the story, Max cried, ___.",
           "reason": "只抓住了Max累、不想擦鞋的情绪，没看到故事首尾呼应：开头Max笑着说 It's easy to make money!，结尾的哭喊要与开头反过来、点出本篇启示。",
           "hint": "故事开头，Max 笑着说了句什么？他那时觉得赚钱怎么样？再读读结尾：他哭着喊的那句话，要跟开头那句反过来才对。三个选项里，哪一句是讲赚钱到底难不难的？",
-          "img": "",
+          "img": "g6_853367_max_guide.png",
           "q_img": "",
           "orig_text": "At the end of the story, Max cried, ___. A. I should make more signs! B. I don't want to shine shoes anymore! C. Making money is not easy at all!",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         }
       ],
