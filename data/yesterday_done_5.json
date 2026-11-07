@@ -8,6 +8,13 @@
    "subject": "登记本",
    "source": "meta",
    "group": "study"
+  },
+  {
+   "task_id": "REG-20261106-A7BC21",
+   "title": "抄M1单词",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
   }
  ]
 }
