@@ -3,7 +3,7 @@
   "date": "2026-11-07",
   "grade": "六年级",
   "generated_at": "2026-11-07T00:18:59+08:00",
-  "updated_at": "2026-11-07T19:59:22+08:00",
+  "updated_at": "2026-11-07T22:47:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -78,7 +78,7 @@
           "round": 1
         }
       ],
-      "pending_corrections": 3,
+      "pending_corrections": 0,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
@@ -104,7 +104,9 @@
       "task_type": "reading",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-8C201E",
@@ -125,7 +127,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-DB49EC",
@@ -146,7 +150,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-0B6B25",
@@ -168,7 +174,9 @@
       "task_type": "reading",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-B2E999",
@@ -189,7 +197,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-FA2690",
@@ -210,7 +220,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-331308",
@@ -231,7 +243,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-BE12FF",
@@ -252,7 +266,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-00AA2E",
@@ -273,7 +289,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "REG-20261106-7AA54A",
@@ -294,7 +312,9 @@
       "updated_at": "2026-11-07T00:18:59+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
-      "carry_count": 1
+      "carry_count": 1,
+      "pending_corrections": 0,
+      "corrections": []
     },
     {
       "task_id": "CHORE-20261107-G6",
