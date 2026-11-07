@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-05T22:55:37+08:00",
+ "generated_at": "2026-11-07T11:07:20+08:00",
  "items": [
+  {
+   "date": "2026-11-07",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月6日口语易反馈",
+   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月6日的口语易任务，11月7日 11:01 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 6 日的任务已经提交了，9 项都完成了，很好。</li>\n</ul>\n<p>下次争取在当天完成口语练习。</p>\n</body></html>"
+  },
   {
    "date": "2026-11-05",
    "ts": "2026-11-05T21:40:00+08:00",
@@ -74,70 +82,6 @@
    "time": "",
    "title": "11月4日口语易反馈",
    "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月4日 21:19 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 4 日的任务已经提交了，6 项都完成了，很好。</li>\n</ul>\n<p>继续保持每天按时完成口语练习。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日数学批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学批改反馈</h2>\n<p>11月3日 22:26 提交订正</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>密铺那题改对了！正五边形的勾划掉了、正六边形补上了勾，7个图形全对了，小测练习(4)的3道订正全部改对，为你点赞！</li>\n</ul>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日语文批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，抄4、5课词语批改反馈</h2>\n<p>11月3日 20:32 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>41个词语全部写对了，每个词都抄了2遍，字写得清楚，为你点赞！</li>\n<li>国君那一处自己发现写错又改过来了，改完的字是对的，值得表扬。</li>\n</ul>\n<h3>提醒一下（不用重写）</h3>\n<p>数一数国君写了几次，是不是比别的词多写了一次？下次抄之前先数好遍数，写的时候一口气写完，改动也会少一点。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日语文批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，抄书本32页批改反馈</h2>\n<p>11月3日 20:32 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>5句名言全部抄对了，每句都抄了2遍，两张照片合起来正好，为你点赞！</li>\n</ul>\n<h3>提醒一下（不用重写）</h3>\n<p>盛年那句里的晨字顶上有一小团墨迹，两遍都有，下次写晨字前先想好笔画，一笔写好就不用改了。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日英语批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易批改反馈</h2>\n<p>11月3日 20:40 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易今日任务已完成并提交，截图凭证齐全，为你点赞！</li>\n</ul>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日语文批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，背小练笔批改反馈</h2>\n<p>11月3日 20:43 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>小管家今日语文任务已完成并提交，还得了老师奖励的1朵小红花，为你点赞！</li>\n</ul>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日英语批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语批改反馈</h2>\n<p>11月3日 21:49 提交订正</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>书面表达by bike那句改对了！“We can go to school by bike.”动词、by bike、地点都对了，笔试分升到60分满分，为你点赞！</li>\n</ul>\n<h3>一个小提醒</h3>\n<ul>\n<li>第二句“We can ride to school”也很好，记得句末补上句号，句子才完整。</li>\n</ul>\n<h3>听力说明</h3>\n<ul>\n<li>听力40分还不能独立核分（没有听力音频），等有音频或老师答案再核。</li>\n</ul>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日读书批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，读书批改反馈</h2>\n<p>11月3日 22:25 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>今天读了《瞬间的感动》和《包粽子》，录音408秒，读得完整、流利，没有跳段，为你点赞！连续读书第3天，再坚持1天就能拿到朗读之星，继续加油！</li>\n</ul>\n</body></html>"
-  },
-  {
-   "date": "2026-11-03",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "11月3日针对性练习批改反馈",
-   "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，针对性练习批改反馈</h2>\n<p>11月3日 23:16 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>《山居秋暝》全背出来了！英语第三人称单数、超市加法、可数名词都对，小练笔写和妈妈一起削土豆皮，动作、神态都齐，很棒！英语口语三问内容都对、一般现在时也对。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>第三人称单数（Tom）：<span style=\"color:red;font-weight:bold;\">缺一个正确的动词形式</span>。Tom是第几人称？every day说明是什么时态？doing能单独作谓语吗？</li>\n<li>第三人称单数（baby）：<span style=\"color:red;font-weight:bold;\">缺一个正确的动词形式</span>。以辅音字母加y结尾的动词，变第三人称单数时y要怎么变？crying是什么形式，能单独作谓语吗？</li>\n<li>小数点向左移动：<span style=\"color:red;font-weight:bold;\">缺一步“除以9”</span>。原数是几份？移动后是几份？差是几份？31.5对应的是哪几份，应该除以几？</li>\n<li>小数点向右移动：<span style=\"color:red;font-weight:bold;\">缺一个正确的原数</span>。原数是几份？移动后是几份？差是几份？45对应的是哪几份？画一份数图试试。</li>\n<li>辨和辩：<span style=\"color:red;font-weight:bold;\">缺两个字的区分</span>。辨别是什么意思（区分）？辩论是什么意思（说话讲道理）？哪个字带言字旁、跟说话有关？</li>\n<li>Does句型：<span style=\"color:red;font-weight:bold;\">缺一个正确的动词形式</span>。Does后面跟动词的什么形式？studies是什么形式？两个形式能同时出现吗？</li>\n<li>严格和严厉：<span style=\"color:red;font-weight:bold;\">缺一个正确的词</span>。严格是什么意思（标准高）？严厉是什么意思（态度厉害）？要求跟哪个搭配？批评跟哪个搭配？</li>\n<li>小数点移动综合：<span style=\"color:red;font-weight:bold;\">缺一步“除以9”再加</span>。原数是几份？移动后是几份？差是几份？40.5对应的是哪几份，应该除以几？原数求出来后还要做什么？</li>\n<li>英语口语时长：<span style=\"color:red;font-weight:bold;\">缺30秒时长</span>。内容三问都对，但录音只有20秒。说慢一点，每问多补充一句（比如每个人爱吃什么），再录一遍到30秒以上试试。</li>\n</ul>\n</body></html>"
   }
  ]
 }
