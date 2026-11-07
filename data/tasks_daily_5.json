@@ -62,8 +62,8 @@
           "q_img": "",
           "orig_text": "组装n辆玩具小汽车需要几个车轮",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空6-大正方形面积",
@@ -158,8 +158,8 @@
           "q_img": "",
           "orig_text": "声音每秒340米，t秒听到回声，到山崖距离",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空9-听到回声时间",
@@ -170,8 +170,8 @@
           "q_img": "",
           "orig_text": "到山崖s米，从发出声音到听到回声的时间",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空10-2分球共得分",
@@ -182,8 +182,8 @@
           "q_img": "",
           "orig_text": "两人投进的2分球共获得多少分",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空12-摆3个八边形",
@@ -218,8 +218,8 @@
           "q_img": "",
           "orig_text": "运来a箱桃子每箱18千克，卖出b箱后还剩",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "选择8-6x+5写错",
