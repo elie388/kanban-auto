@@ -921,6 +921,33 @@ _BS_STATE = {"stashed": False, "stash_ref": None, "restored": False,
              "lock_fp": None}
 
 
+def _pop_stash_by_ref(ref):
+    """B2-205（2026-11-08 根治）：git 2.43 的 `stash pop <完整 SHA>` 报错
+    "'...' is not a stash reference"——pop 只认 stash@{n} 形式的引用，SHA
+    本身不是合法 stash 引用。B2-167 按 SHA 定位本意是防下标漂移错 pop 别人
+    的 stash，但 SHA 根本 pop 不了，致 62+ 条 build_stats-auto stash 堆积
+    （stash 日志：101 次 push、仅 8 次 popped、93 次 CONFLICT 全是此报错）。
+    本函数在 pop 时刻把 SHA 现查为 stash@{n} 再 pop：下标只在 list→pop 的
+    瞬间窗口内有效，漂移风险远小于 B2-167 之前全程用下标；若首次 pop 报
+    "not a stash reference"（窗口内他人 push/pop 改了下标），重查一次下标
+    再试一次；仍失败则返回 stderr，由调用方按原 CONFLICT 口径留痕，不放宽
+    任何守卫。返回 (ok, stderr)。"""
+    for _attempt in range(2):
+        _lst = git("stash", "list", "--format=%H")
+        _hashes = [ln.strip() for ln in (_lst.stdout or "").splitlines() if ln.strip()]
+        if ref not in _hashes:
+            return False, "stash ref not in list: %s" % ref
+        _idx = _hashes.index(ref)
+        _pr = git("stash", "pop", "stash@{%d}" % _idx)
+        if _pr.returncode == 0:
+            return True, ""
+        _err = _pr.stderr or ""
+        if "not a stash reference" in _err and _attempt == 0:
+            continue  # 下标在窗口内漂移，重查一次再试
+        return False, _err
+    return False, "stash pop 重试后仍失败"
+
+
 def _bs_restore_stash_fallback():
     """B2-181：main 异常退出时的 stash 恢复兜底（按 ref 直接 pop）。"""
     if not _BS_STATE.get("stashed") or _BS_STATE.get("restored"):
@@ -935,9 +962,11 @@ def _bs_restore_stash_fallback():
         if _ref not in _hashes:
             err_write("NEED-REVIEW B2-181 兜底恢复：stash 条目已不在 list（ref=%s）" % _ref)
             return
-        _pr = git("stash", "pop", _ref)
-        if _pr.returncode != 0:
-            err_write("NEED-REVIEW B2-181 兜底恢复 pop 失败：" + (_pr.stderr or "")[:200])
+        # B2-205：经 _pop_stash_by_ref 按现查 stash@{n} 弹出（SHA 直 pop 在
+        # git 2.43 上必报 'not a stash reference'）。
+        _ok, _err = _pop_stash_by_ref(_ref)
+        if not _ok:
+            err_write("NEED-REVIEW B2-181 兜底恢复 pop 失败：" + (_err or "")[:200])
     except Exception as _e:
         try:
             err_write("NEED-REVIEW B2-181 兜底恢复异常：%s" % _e)
@@ -1062,13 +1091,15 @@ def _main_impl():
             _stash_log("stash_missing", ref=_stash_ref)
             _orphan_alert("stash_missing", _stash_ref, msg)
             return
-        pop_r = git("stash", "pop", _stash_ref)
-        if pop_r.returncode != 0:
+        # B2-205：经 _pop_stash_by_ref 按现查 stash@{n} 弹出（SHA 直 pop 在
+        # git 2.43 上必报 'not a stash reference'，此为 62+ 条 stash 堆积根因）。
+        _pop_ok, _pop_err = _pop_stash_by_ref(_stash_ref)
+        if not _pop_ok:
             msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
             warn(msg)
-            err_write("NEED-REVIEW " + msg + " :: " + (pop_r.stderr or "")[:200])
+            err_write("NEED-REVIEW " + msg + " :: " + (_pop_err or "")[:200])
             _stash_log("CONFLICT", ref=_stash_ref,
-                       detail=(pop_r.stderr or "")[:200])
+                       detail=(_pop_err or "")[:200])
         else:
             _stash_log("popped", ref=_stash_ref)
 
@@ -1493,13 +1524,20 @@ def selftest():
 
     # --- T1 放行条件2：同日多条排序（日期倒序，同日按台账正序；KB-SORT-2026-10-20 后：
     # 本用例均为无时刻历史行，兼容新口径）---
+    # B2-205（2026-11-08 根治）：日期改相对 today（此前硬编码 10-17/10-18/10-19，
+    # 2026-10-26 后全部滑出 build_log 的近 7 天窗口 → items=[]、T1 假失败；
+    # 生产代码按 §1.2 窗口过滤无误，是测试本身过时）。annot_time 全行同值 19:30：
+    # 2026-10-19 后条目缺 @HH:MM 即触 G6 熔断；同值时刻不改变同日按台账正序的断言意图。
     try:
+        _d0 = today.strftime("%m-%d")
+        _d1 = (today - timedelta(days=1)).strftime("%m-%d")
+        _d2 = (today - timedelta(days=2)).strftime("%m-%d")
         rows = [
-            {"date": "10-17", "desc": "第一条", "pts": 1, "balance": 1},
-            {"date": "10-18", "desc": "第二条", "pts": 1, "balance": 2},
-            {"date": "10-17", "desc": "第三条", "pts": 1, "balance": 3},
-            {"date": "10-19", "desc": "第四条", "pts": 1, "balance": 4},
-            {"date": "10-17", "desc": "第五条", "pts": 1, "balance": 5},
+            {"date": _d2, "desc": "第一条", "pts": 1, "balance": 1, "annot_time": "19:30"},
+            {"date": _d1, "desc": "第二条", "pts": 1, "balance": 2, "annot_time": "19:30"},
+            {"date": _d2, "desc": "第三条", "pts": 1, "balance": 3, "annot_time": "19:30"},
+            {"date": _d0, "desc": "第四条", "pts": 1, "balance": 4, "annot_time": "19:30"},
+            {"date": _d2, "desc": "第五条", "pts": 1, "balance": 5, "annot_time": "19:30"},
         ]
         d = build_log(5, rows, today, gen)
         got = [it["reason"] for it in d["items"]]
@@ -1602,12 +1640,15 @@ def selftest():
             pass
 
     # --- T4 §7.5：敏感词命中 → 替换+计数，不阻断 ---
+    # B2-205（2026-11-08 根治）：与 T1 同因——硬编码 10-18/10-19 已滑出近 7 天窗口
+    # → filtered_count=0 假失败；日期改相对 today（复用 T1 的 _d0/_d1），annot_time
+    # 同值 19:30 避 G6 熔断；断言本身（替换为"学习记录"+计数 1）未动。
     try:
         rows = [
-            {"date": "10-19", "desc": "数学作业按时完成", "pts": 2, "balance": 10},
+            {"date": _d0, "desc": "数学作业按时完成", "pts": 2, "balance": 10, "annot_time": "19:30"},
             # "家长特批"在括号外，simplify_desc 去不掉，必须被 B5 断言捕获
-            {"date": "10-19", "desc": "晾衣服家长特批+3", "pts": 3, "balance": 13},
-            {"date": "10-18", "desc": "语文抄写迟交", "pts": -2, "balance": 11},
+            {"date": _d0, "desc": "晾衣服家长特批+3", "pts": 3, "balance": 13, "annot_time": "19:30"},
+            {"date": _d1, "desc": "语文抄写迟交", "pts": -2, "balance": 11, "annot_time": "19:30"},
         ]
         d = build_log(5, rows, today, gen)
         reasons = [(it["date"], it["reason"], it["filtered"]) for it in d["items"]]

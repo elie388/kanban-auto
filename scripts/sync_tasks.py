@@ -212,6 +212,99 @@ def derive_closed_set():
         return False, "写出失败"
 
 
+def push_closed_set_if_changed():
+    """K-05（2026-11-08）：closed_batches.json 的自动化提交路径。
+
+    背景：derive_closed_set() 派生出新收口集合后，do_push() 的 changed 只看
+    任务表/昨日表（＋PDF 补齐），仅收口集合变化时直接报“data 无变化，跳过 push”，
+    且 M-30 窄 git add 只加本轮写过的任务表与媒体目录，派生文件永不进提交，
+    板面已收口集合会滞留到下一次任务表变化（此前靠人工显式提交兜底）。
+    修复：do_push() 之后检查 data/closed_batches.json 是否与 HEAD 有未提交差异
+    （或已有未推送的提交触及该文件），有则显式 git add＋commit＋push；
+    与 do_push() 同一把 logs/git_push.lock（watchd 外层已持锁时 KANBAN_GIT_LOCK_HELD=1
+    不重复取锁），一次推送模式（KANBAN_NO_PUSH=1）只 commit 不 push。
+    返回 True=成功/无需提交，False=提交或推送失败（调用方返回 1，watchd 重试；
+    commit 已落盘但 push 失败时，下一次任务表变化的 do_push 推送会顺带推出本提交）。
+    """
+    import fcntl
+    import subprocess
+    rel = "data/closed_batches.json"
+    dst = REPO_DIR / rel
+    if not dst.exists():
+        return True
+    def _run(args, timeout=60):
+        return subprocess.run(args, cwd=str(REPO_DIR), capture_output=True, text=True, timeout=timeout)
+    # ① 未提交差异？
+    try:
+        r = _run(["git", "diff", "--quiet", "HEAD", "--", rel])
+        differs = (r.returncode == 1)
+        if r.returncode not in (0, 1):
+            print(f"[closed_batches] 与 HEAD 比对失败（rc={r.returncode}），本轮不提交", flush=True)
+            return True
+    except Exception as e:
+        print(f"[closed_batches] 与 HEAD 比对异常（不阻断）：{e}", flush=True)
+        return True
+    # ② 已提交未推送的提交是否触及该文件？
+    unpushed = False
+    try:
+        r = _run(["git", "log", "origin/master..HEAD", "--oneline", "--", rel])
+        if r.returncode == 0 and r.stdout.strip():
+            unpushed = True
+    except Exception:
+        pass
+    if not differs and not unpushed:
+        return True
+    print(f"[closed_batches] 需提交推送（未提交差异={differs}，未推送提交={unpushed}）", flush=True)
+    lf = None
+    held = os.environ.get("KANBAN_GIT_LOCK_HELD") == "1"
+    try:
+        if not held:
+            lock_p = REPO_DIR.parent / "logs" / "git_push.lock"
+            try:
+                lock_p.parent.mkdir(parents=True, exist_ok=True)
+                lf = open(lock_p, "a+")
+                fcntl.flock(lf, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                print("[closed_batches] git_push.lock 被占用，本轮不提交（下次重试）", flush=True)
+                return True
+            except OSError as e:
+                print(f"[closed_batches] 取锁失败（{e}），本轮不提交", flush=True)
+                return True
+        if differs:
+            r = _run(["git", "add", rel])
+            if r.returncode != 0:
+                print("[closed_batches] git add 失败: " + r.stderr[:500], file=sys.stderr)
+                return False
+            r = _run(["git", "diff", "--cached", "--quiet"])
+            if r.returncode == 0:
+                print("[closed_batches] 无 staged 变化，跳过 commit", flush=True)
+            else:
+                r = _run(["git", "commit", "-m", "看板：同步已收口集合（closed_batches.json）"])
+                if r.returncode != 0:
+                    print("[closed_batches] git commit 失败: " + r.stderr[:500], file=sys.stderr)
+                    return False
+                print("[closed_batches] 已 commit", flush=True)
+        if os.environ.get("KANBAN_NO_PUSH") == "1":
+            print("[closed_batches] 已 commit，未 push（一次推送模式）", flush=True)
+            return True
+        r = _run(["git", "push", "origin", "master"], timeout=180)
+        if r.returncode != 0:
+            print("[closed_batches] git push 失败，重试一次: " + r.stderr[:500], file=sys.stderr)
+            r = _run(["git", "push", "origin", "master"], timeout=180)
+        if r.returncode != 0:
+            print("[closed_batches] git push 失败: " + r.stderr[:500], file=sys.stderr)
+            return False
+        print("[closed_batches] 已 push（触发 Pages 部署）", flush=True)
+        return True
+    finally:
+        if lf is not None:
+            try:
+                fcntl.flock(lf, fcntl.LOCK_UN)
+                lf.close()
+            except Exception:
+                pass
+
+
 def main():
     # B2-072：HIDDEN_SCRIPTS 由 KANBAN_REPO_DIR 环境变量派生，插入前校验其为
     # 预期位置且含 task_ingest.py，防环境变量被控导致导入劫持。
@@ -238,7 +331,17 @@ def main():
     except Exception as e:
         print("do_push 异常：%s" % e, file=sys.stderr)
         return 1
-    return 0 if ok else 1
+    if not ok:
+        return 1
+    # K-05：do_push 不覆盖 closed_batches.json（见 push_closed_set_if_changed），
+    # 派生文件变化须在此显式提交推送，否则板面已收口集合滞留。
+    try:
+        if not push_closed_set_if_changed():
+            return 1
+    except Exception as e:
+        print(f"[closed_batches] 异常：{e}", file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

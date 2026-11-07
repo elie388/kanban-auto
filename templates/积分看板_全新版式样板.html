@@ -1302,18 +1302,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     </div>
   </section>
 
-  <!-- 考试预测（2026-11-04 家长逐一定 14 条后 v2）：平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示，否则不出现；内容：年级、科目、预测日期（今天/明天/后天双写）、信心、依据，并注明信心按规则封顶为中等、预测仅供参考；不写突击卷出卷时间；数据源 data/exam_predictions.json（默认空数组）＋元数据 data/exam_predictions_meta.json（仅滞后提示）；取数失败显示“预测暂时无法读取”，成功但为空保持隐藏 -->
+  <!-- 考试预测（2026-11-04 家长逐一定 14 条后 v2）：平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示，否则不出现；内容：年级、科目、预测日期（今天/明天/后天双写）、信心、依据，并注明信心按规则判定、预测仅供参考；不写突击卷出卷时间；数据源 data/exam_predictions.json（默认空数组）＋元数据 data/exam_predictions_meta.json（仅滞后提示）；取数失败显示“预测暂时无法读取”，成功但为空保持隐藏 -->
   <section class="card collapse" aria-label="考试预测" id="exam-pred-section" hidden>
     <button class="collapse-btn" type="button" aria-expanded="false" aria-controls="panel-exampred" id="btn-exampred">
       <span class="emoji" aria-hidden="true">🔮</span>
-      <span class="cb-title">考试预测</span>
+      <span class="cb-title">考试预测</span><span style="color:var(--sub);font-size:12px;font-weight:normal;">（按日期、科目排序）</span>
       <span class="cb-state"><span class="cb-text">点击查看</span><span class="cb-chev" aria-hidden="true">▼</span></span>
     </button>
     <div class="collapse-body" id="panel-exampred" role="region" aria-labelledby="btn-exampred">
       <div class="collapse-inner"><div class="collapse-pad">
         <div id="exampred-items"><div style="color:var(--sub);font-size:13px;padding:4px 2px;">预测加载中…</div></div>
         <div id="exampred-meta-note" style="color:var(--sub);font-size:12px;padding:2px;"></div>
-        <div style="color:var(--sub);font-size:12px;padding:6px 2px 2px;">信心按规则封顶为中等；预测仅供参考</div>
+        <div style="color:var(--sub);font-size:12px;padding:6px 2px 2px;">信心按规则判定；预测仅供参考</div>
       </div></div>
     </div>
   </section>
@@ -1646,22 +1646,29 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   /* 已收口集合（②，2026-11-05）：从 data/closed_batches.json 拉取已收口 task_id
      集合（大写去重）；取不到/解析失败时为空集，回落今日行为，不阻塞渲染、不报错。 */
   var closedSet = {};
+  var closedLoadFailed = false; /* K-04：拉取失败/超时后任务区弱提示用，不再静默回落 */
   function closedSetHas(id){
     if(!id) return false;
     return !!closedSet[String(id).trim().toUpperCase()];
   }
   function fetchClosed(){
-    var timeout = new Promise(function(resolve){ setTimeout(resolve, 5000); });
+    closedLoadFailed = false;
+    var settled = false;
+    var timeout = new Promise(function(resolve){ setTimeout(function(){
+      if(!settled){ closedLoadFailed = true; console.warn('已收口集合拉取超时(10s)，回落今日行为'); }
+      resolve();
+    }, 10000); });
     var req = fetch(DATA_BASE + 'closed_batches.json', { cache: 'no-cache' })
       .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function(d){
+        settled = true;
         var s = {};
         if(d && Array.isArray(d.task_ids)){
           d.task_ids.forEach(function(x){ if(x) s[String(x).trim().toUpperCase()] = true; });
         }
         closedSet = s;
       })
-      .catch(function(e){ console.warn('已收口集合拉取失败，回落今日行为:', e); closedSet = {}; });
+      .catch(function(e){ settled = true; closedLoadFailed = true; console.warn('已收口集合拉取失败，回落今日行为:', e); closedSet = {}; });
     return Promise.race([req, timeout]);
   }
   var SOURCE_LABEL = {register_book: '学校作业', targeted_practice: '针对性练习', manual: '', meta: '每日任务', exam_correction: '考试订正', exam: '学校考试', chore: '日常打卡', daily_53: '每日练习'};
@@ -2090,7 +2097,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(taskLoading) return;
     taskLoading = true;
     var ok = 0, obtained = 0, anyCache = false, cacheTs = 0, settled = 0, stale = 0;
-    /* ②：先拉已收口集合（5 秒超时兜底，失败回落空集不阻塞），再拉任务并渲染，
+    /* ②：先拉已收口集合（10 秒超时兜底，失败回落空集不阻塞），再拉任务并渲染，
        首屏即用最新 closedSet，不靠下一轮 5 分钟刷新纠正。 */
     fetchClosed().then(function(){
     [['tasks-g5', 'tasks_daily_5.json'], ['tasks-g6', 'tasks_daily_6.json']].forEach(function(pair){
@@ -2122,6 +2129,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             else if(ok === 2){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
             else if(obtained < 2){ tag.textContent = '部分数据更新失败'; tag.classList.remove('tag-live'); }
             else if(stale > 0){ tag.textContent = '今日数据未更新'; tag.classList.remove('tag-live'); }
+            /* K-04：已收口集合拉取失败/超时时弱提示（本轮渲染用的空集，“已完成”徽标可能缺失），下次刷新重试 */
+            if(closedLoadFailed && ok === 2){ tag.textContent += '（已收口状态暂未载入）'; }
           }
           /* 方案E慢速复查：有文件最终未取得（且无缓存兜底）或数据过期时 60 秒后重拉，单飞防堆叠 */
           if((obtained < 2 || stale > 0) && !taskRecheckTimer){
@@ -4183,16 +4192,17 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <script>
 /* ===== 考试预测（2026-11-04 家长逐一定 14 条后 v2）=====
    位置：学习小结上方；平时隐藏；仅当预测信心≥中等且预测日期在今天起3天内（含今天）时整栏显示。
-   内容：年级、科目、预测日期（今天/明天/后天＋月日双写）、信心、依据；页脚注明信心按规则封顶为中等、预测仅供参考；不写突击卷出卷时间。
+   内容：年级、科目、预测日期（今天/明天/后天＋月日双写）、信心、依据；页脚注明信心按规则判定、预测仅供参考；不写突击卷出卷时间。
    排序：按日期升序、同日按科目固定顺序，标题旁注明；当日行加粗。
    数据源：data/exam_predictions.json（默认空数组）；元数据 data/exam_predictions_meta.json 仅作进度滞后提示、失败忽略。
    取数失败显示“预测暂时无法读取”，不静默隐藏；成功但为空保持隐藏。
    信心等级：较低<中等≤较高≤高，未知等级按不显示处理。
-   日期以浏览器本地日期为准；非法日期按不显示处理。文本一律 textContent 渲染。 */
+   日期以北京时间为准，与生成器一致；非法日期按不显示处理。文本一律 textContent 渲染。 */
 (function(){
   var CONF_RANK = { '较低': 0, '中等': 1, '较高': 2, '高': 3 };
   function todayLocalStr(){
-    var d = new Date();
+    /* K-03：日期以北京时间为准，与生成器一致（此前用浏览器本地日期，异时区差一天） */
+    var d = new Date(Date.now() + (480 + new Date().getTimezoneOffset()) * 60000);
     var m = d.getMonth() + 1, day = d.getDate();
     return d.getFullYear() + '-' + (m < 10 ? '0' + m : m) + '-' + (day < 10 ? '0' + day : day);
   }
@@ -4238,6 +4248,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!sec || !box) return;
     var items = Array.isArray(d) ? d : (d && Array.isArray(d.items) ? d.items : []);
     var show = examPredFilter(items, todayLocalStr());
+    /* K-02：模板内按（日期升序，同日按科目固定顺序 语文/数学/英语，同科按年级）排一次再渲染，不依赖数据文件顺序 */
+    var SUBJ_ORDER = { '语文': 0, '数学': 1, '英语': 2 };
+    var GRADE_ORDER = { '五年级': 0, '六年级': 1 };
+    show.sort(function(a, b){
+      var da = dateToDay(a.date), db = dateToDay(b.date);
+      if(da !== db) return (da === null ? 0 : da) - (db === null ? 0 : db);
+      var sa = SUBJ_ORDER[a.subject], sb = SUBJ_ORDER[b.subject];
+      if(sa !== undefined && sb !== undefined && sa !== sb) return sa - sb;
+      var ga = GRADE_ORDER[a.grade], gb = GRADE_ORDER[b.grade];
+      if(ga !== undefined && gb !== undefined && ga !== gb) return ga - gb;
+      return String(a.subject || '') < String(b.subject || '') ? -1 : 1;
+    });
     if(!show.length){ sec.hidden = true; return; }
     while(box.firstChild) box.removeChild(box.firstChild);
     show.forEach(function(p){
@@ -5719,7 +5741,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261107-dlgfmt';
+  var KB_BUILD = '20261108-kfix';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
