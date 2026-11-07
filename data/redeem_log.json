@@ -2,32 +2,8 @@
  "schema_version": 1,
  "window_days": 15,
  "by_grade": {
-  "g5": [
-   {
-    "date": "2026-10-24",
-    "item": "1小时和平精英",
-    "icon": "🎮",
-    "spent": 150,
-    "fee": 0,
-    "balance_after": -5,
-    "revoked": false,
-    "refunded": 0,
-    "revoke_reason": ""
-   }
-  ],
-  "g6": [
-   {
-    "date": "2026-10-24",
-    "item": "2小时和平精英",
-    "icon": "🎮",
-    "spent": 250,
-    "fee": 0,
-    "balance_after": 299,
-    "revoked": false,
-    "refunded": 0,
-    "revoke_reason": ""
-   }
-  ]
+  "g5": [],
+  "g6": []
  },
- "generated_at": "2026-11-06T00:00:06+08:00"
+ "generated_at": "2026-11-08T00:00:04.810221+08:00"
 }
