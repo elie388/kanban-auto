@@ -1,357 +1,387 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-07",
-  "grade": "六年级",
-  "generated_at": "2026-11-07T00:18:59+08:00",
-  "updated_at": "2026-11-07T10:01:56+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": null,
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-07",
+ "grade": "六年级",
+ "generated_at": "2026-11-07T00:18:59+08:00",
+ "updated_at": "2026-11-07T10:38:55+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": null,
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "REG-20261106-853367",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "完成发下的试卷，划文章",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "共享单车填空7",
-          "question": "Scan the QR code on the bike with a ___, and you can unlock the shared bike.",
-          "reason": "把后半句已经出现的 unlock 提前填进了空里；空前是 with a + 工具，unlock 是动词、前面不能加 a，且与后半句重复。",
-          "hint": "先读完整句话：扫二维码要用什么东西来扫？爸爸那段话里说，找车、扫码都要先有什么？空里要填的是一个东西的名字，不是动作。再想一想，句子的后半句已经有一个 unlock 了，空里还能再填一次吗？",
-          "img": "g6_853367_bike_guide.png",
-          "q_img": "",
-          "orig_text": "Scan the QR code on the bike with a ___ , and you can unlock the shared bike.",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "好书推荐判断2",
-          "question": "The prince learns about love, friendship and grown-ups.",
-          "reason": "短文 Story idea 原文明写 He learns about love, friendship and grown-ups，句子与原文一致，应判 T；孩子误判为 F。",
-          "hint": "回到小王子那一栏，找 Story idea 那一行：王子在旅途中都学到了什么？题目里说的三样东西，原文里有没有？一句一句对一对，再决定这个句子是真是假。",
-          "img": "g6_853367_prince_guide.png",
-          "q_img": "",
-          "orig_text": "The prince learns about love, friendship and grown-ups.",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "Max故事选择5",
-          "question": "At the end of the story, Max cried, ___.",
-          "reason": "只抓住了Max累、不想擦鞋的情绪，没看到故事首尾呼应：开头Max笑着说 It's easy to make money!，结尾的哭喊要与开头反过来、点出本篇启示。",
-          "hint": "故事开头，Max 笑着说了句什么？他那时觉得赚钱怎么样？再读读结尾：他哭着喊的那句话，要跟开头那句反过来才对。三个选项里，哪一句是讲赚钱到底难不难的？",
-          "img": "g6_853367_max_guide.png",
-          "q_img": "",
-          "orig_text": "At the end of the story, Max cried, ___. A. I should make more signs! B. I don't want to shine shoes anymore! C. Making money is not easy at all!",
-          "q_img_exempt": "",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 3,
-      "status_source": "closeout_writeback",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-234FE6",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "重点参加“口语易”，周末扫码参加",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "task_type": "reading",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-8C201E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "复习U1到U3的所有试卷，下周一期中",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-DB49EC",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "复习U1-U3单词",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：复习U1-U3单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-0B6B25",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念5-19",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "task_type": "reading",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-B2E999",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本P34",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-FA2690",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读科学10分钟",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-331308",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "写期中考试作文",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-BE12FF",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄词本抄书P128-129 1至12课词语一次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-00AA2E",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "复习1-4单元试卷、校本及小练笔",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-7AA54A",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "每天读书1小时，记录③",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-07T00:18:59+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261107-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-07T08:00:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-07T00:19:53+08:00",
-      "updated_at": "2026-11-07T00:19:53+08:00"
-    },
-    {
-      "task_id": "READ-20261107-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-07T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-07T00:21:12+08:00",
-      "updated_at": "2026-11-07T00:21:12+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261107-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "兄弟英语对话第1期",
-      "detail": "兄弟英语对话第1期：Our Weekend Plan（我们的周末计划）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n\n对话脚本：\nA: Hi! The weekend is coming. Do you have any plans?\nB: Not yet. What about you?\nA: I want to go to the park on Saturday morning. Would you like to come with me?\nB: Sure! What can we do there?\nA: We can play football and have a picnic.\nB: Great idea! What food shall we bring?\nA: Sandwiches and apples. And some water.\nB: OK. What time shall we meet?\nA: At nine o'clock, at the park gate.\nB: Good. And what about Sunday?\nA: On Sunday morning, let's visit our grandparents.\nB: Good idea! We can read books with Grandma.\nA: And help Grandpa water the flowers.\nB: Sounds great! What about Sunday afternoon?\nA: Let's watch a cartoon movie at home.\nB: I love cartoons! What time shall we start?\nA: At three o'clock.\nB: OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.\nA: Yes! It's going to be a happy weekend!\nB: See you on Saturday!\n\n关键词：weekend 周末；plan 计划；picnic 野餐；sandwich 三明治；gate 大门；visit 拜访；water the flowers 浇花；cartoon 卡通片；shall we…? 我们……好吗？；be going to 将要。\n发音小贴士：一般疑问句句尾升调，陈述句句尾降调；注意 sandwich 的 /dʒ/ 音。\n\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。批改时按 joint 对话处理、分别点评。\n",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-07T10:01:55+08:00",
-      "updated_at": "2026-11-07T10:01:55+08:00"
-    }
-  ],
-  "counts": {
-    "total": 14,
-    "pending": 13,
-    "in_progress": 1,
-    "done": 0,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": null
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "REG-20261106-853367",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "完成发下的试卷，划文章",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "共享单车填空7",
+     "question": "Scan the QR code on the bike with a ___, and you can unlock the shared bike.",
+     "reason": "把后半句已经出现的 unlock 提前填进了空里；空前是 with a + 工具，unlock 是动词、前面不能加 a，且与后半句重复。",
+     "hint": "先读完整句话：扫二维码要用什么东西来扫？爸爸那段话里说，找车、扫码都要先有什么？空里要填的是一个东西的名字，不是动作。再想一想，句子的后半句已经有一个 unlock 了，空里还能再填一次吗？",
+     "img": "g6_853367_bike_guide.png",
+     "q_img": "",
+     "orig_text": "Scan the QR code on the bike with a ___ , and you can unlock the shared bike.",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "好书推荐判断2",
+     "question": "The prince learns about love, friendship and grown-ups.",
+     "reason": "短文 Story idea 原文明写 He learns about love, friendship and grown-ups，句子与原文一致，应判 T；孩子误判为 F。",
+     "hint": "回到小王子那一栏，找 Story idea 那一行：王子在旅途中都学到了什么？题目里说的三样东西，原文里有没有？一句一句对一对，再决定这个句子是真是假。",
+     "img": "g6_853367_prince_guide.png",
+     "q_img": "",
+     "orig_text": "The prince learns about love, friendship and grown-ups.",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "Max故事选择5",
+     "question": "At the end of the story, Max cried, ___.",
+     "reason": "只抓住了Max累、不想擦鞋的情绪，没看到故事首尾呼应：开头Max笑着说 It's easy to make money!，结尾的哭喊要与开头反过来、点出本篇启示。",
+     "hint": "故事开头，Max 笑着说了句什么？他那时觉得赚钱怎么样？再读读结尾：他哭着喊的那句话，要跟开头那句反过来才对。三个选项里，哪一句是讲赚钱到底难不难的？",
+     "img": "g6_853367_max_guide.png",
+     "q_img": "",
+     "orig_text": "At the end of the story, Max cried, ___. A. I should make more signs! B. I don't want to shine shoes anymore! C. Making money is not easy at all!",
+     "q_img_exempt": "",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 3,
+   "status_source": "closeout_writeback",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-234FE6",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "重点参加“口语易”，周末扫码参加",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "task_type": "reading",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-8C201E",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "复习U1到U3的所有试卷，下周一期中",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-DB49EC",
+   "source": "register_book",
+   "subject": "英语早读",
+   "title": "复习U1-U3单词",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语早读：复习U1-U3单词 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-0B6B25",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读背概念5-19",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "task_type": "reading",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-B2E999",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "校本P34",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-FA2690",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "读科学10分钟",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-331308",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "写期中考试作文",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-BE12FF",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "抄词本抄书P128-129 1至12课词语一次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-00AA2E",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "复习1-4单元试卷、校本及小练笔",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-7AA54A",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "每天读书1小时，记录③",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T20:11:07+08:00",
+   "updated_at": "2026-11-07T00:18:59+08:00",
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "CHORE-20261107-G6",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-07T08:00:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-07T00:19:53+08:00",
+   "updated_at": "2026-11-07T00:19:53+08:00"
+  },
+  {
+   "task_id": "READ-20261107-G6",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-07T08:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-07T00:21:12+08:00",
+   "updated_at": "2026-11-07T00:21:12+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261107-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "兄弟英语对话第1期",
+   "detail": "兄弟英语对话第1期：Our Weekend Plan（我们的周末计划）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n\n对话脚本：\nA: Hi! The weekend is coming. Do you have any plans?\nB: Not yet. What about you?\nA: I want to go to the park on Saturday morning. Would you like to come with me?\nB: Sure! What can we do there?\nA: We can play football and have a picnic.\nB: Great idea! What food shall we bring?\nA: Sandwiches and apples. And some water.\nB: OK. What time shall we meet?\nA: At nine o'clock, at the park gate.\nB: Good. And what about Sunday?\nA: On Sunday morning, let's visit our grandparents.\nB: Good idea! We can read books with Grandma.\nA: And help Grandpa water the flowers.\nB: Sounds great! What about Sunday afternoon?\nA: Let's watch a cartoon movie at home.\nB: I love cartoons! What time shall we start?\nA: At three o'clock.\nB: OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.\nA: Yes! It's going to be a happy weekend!\nB: See you on Saturday!\n\n关键词：weekend 周末；plan 计划；picnic 野餐；sandwich 三明治；gate 大门；visit 拜访；water the flowers 浇花；cartoon 卡通片；shall we…? 我们……好吗？；be going to 将要。\n发音小贴士：一般疑问句句尾升调，陈述句句尾降调；注意 sandwich 的 /dʒ/ 音。\n\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。批改时按 joint 对话处理、分别点评。\n",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-07T10:01:55+08:00",
+   "updated_at": "2026-11-07T10:01:55+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261107-002",
+   "source": "manual",
+   "subject": "综合",
+   "title": "周六综合试卷（语文·数学·英语）",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-07T10:38:55+08:00",
+   "updated_at": "2026-11-07T10:38:55+08:00",
+   "files": [
+    {
+     "name": "六年级语文周试卷_2026-11-07.pdf",
+     "label": "语文周试卷",
+     "pages": 4
+    },
+    {
+     "name": "六年级数学周试卷_2026-11-07.pdf",
+     "label": "数学周试卷",
+     "pages": 4
+    },
+    {
+     "name": "六年级英语周试卷_2026-11-07.pdf",
+     "label": "英语周试卷",
+     "pages": 4
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "total": 15,
+  "pending": 14,
+  "in_progress": 1,
+  "done": 0,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-07T22:30:00+08:00"
 }
