@@ -50,8 +50,8 @@
           "q_img": "",
           "orig_text": "汽车每小时a千米，1.5小时行驶路程",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空4-玩具小汽车轮子",
@@ -110,8 +110,8 @@
           "q_img": "",
           "orig_text": "小刚买3本笔记本每本a元，买笔记本花了",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空7-还剩多少钱",
@@ -122,8 +122,8 @@
           "q_img": "",
           "orig_text": "当a=4.5时，小刚还剩多少钱",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空8-6a表示",
@@ -134,8 +134,8 @@
           "q_img": "",
           "orig_text": "淘气每天看a页，6a表示",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空8-a+b表示",
@@ -146,8 +146,8 @@
           "q_img": "",
           "orig_text": "淘气每天a页笑笑每天b页，a+b表示",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空9-到山崖距离",
@@ -194,8 +194,8 @@
           "q_img": "",
           "orig_text": "摆3个八边形需要几根小棒",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空12-摆n个八边形",
@@ -206,8 +206,8 @@
           "q_img": "",
           "orig_text": "摆n个八边形需要几根小棒",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "选择6-剩下桃子",
@@ -242,8 +242,8 @@
           "q_img": "g5_u4_q44_orig.png",
           "orig_text": "日历框中正中间是x，左边的数",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "解决问题4-日历框数右边的数",
@@ -254,8 +254,8 @@
           "q_img": "g5_u4_q44_orig.png",
           "orig_text": "日历框中正中间是x，右边的数",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "解决问题4-日历框数左上角的数",
@@ -266,8 +266,8 @@
           "q_img": "g5_u4_q44_orig.png",
           "orig_text": "日历框中正中间是x，左上角的数",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "解决问题4-日历框数右下角的数",
@@ -278,8 +278,8 @@
           "q_img": "g5_u4_q44_orig.png",
           "orig_text": "日历框中正中间是x，右下角的数",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "解决问题4-9数之和与中间数关系",
@@ -290,8 +290,8 @@
           "q_img": "g5_u4_q44_orig.png",
           "orig_text": "框中9个数的和与正中间的数有什么关系",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         }
       ],
       "carry_first_date": "2026-11-06",
