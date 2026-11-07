@@ -78,7 +78,7 @@
           "round": 1
         }
       ],
-      "pending_corrections": 0,
+      "pending_corrections": 3,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-06",
