@@ -1,13 +1,5 @@
 {
- "date": "2026-11-06",
+ "date": "2026-11-07",
  "grade": "六年级",
- "items": [
-  {
-   "task_id": "META-REGISTER-2026-11-06",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  }
- ]
+ "items": []
 }

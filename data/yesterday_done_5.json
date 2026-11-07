@@ -1,31 +1,17 @@
 {
- "date": "2026-11-06",
+ "date": "2026-11-07",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-06",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261106-A7BC21",
-   "title": "抄M1单词",
+   "task_id": "REG-20261106-AE714E",
+   "title": "口语易",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261106-FED046",
-   "title": "默写11课和默12课1、3段（用稿纸）",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261106-511C79",
-   "title": "准备好考试用品",
+   "task_id": "REG-20261106-248496",
+   "title": "读一遍所有园地一、二、三、四（小管家）",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
