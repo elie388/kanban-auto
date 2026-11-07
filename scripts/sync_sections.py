@@ -54,6 +54,24 @@ LATE_CYCLE_RE = re.compile(r"late_cycle=(\d{4}-W\d{2})")
 BACKFILL_RE = re.compile(r"backfill=(\d{4}-\d{2}-\d{2})")
 
 
+def _sanitize_public_text(text):
+    """B2-081/B2-139：公开数据/日志文本脱敏。剥邮箱、手机号、内部路径；
+    转义 HTML 特殊字符，防存储型 XSS 与敏感信息进公开仓库。"""
+    if not isinstance(text, str):
+        return text
+    t = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[邮箱已脱敏]", text)
+    t = re.sub(r"1[3-9]\d{9}", "[手机号已脱敏]", t)
+    t = re.sub(r"/home/[\w./-]+", "[路径已脱敏]", t)
+    return t
+
+
+def _escape_html(text):
+    """B2-081：HTML 转义（icon/name 进公开 JSON，模板若以 innerHTML 渲染则防 XSS）。"""
+    if not isinstance(text, str):
+        return text
+    return (text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                .replace('"', "&quot;").replace("'", "&#39;"))
+
 def cycle_week_of(date_str):
     """日期字符串 YYYY-MM-DD -> ISO 周期标识 YYYY-Www（徽章周期清空机制，
     规则手册《徽章进度口径·徽章周期清空》子节）。"""
@@ -63,13 +81,20 @@ HTML_COMMENT = re.compile(r"<!--.*?-->")
 
 
 def log(status, reason="", extra=None):
-    LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
-    rec = {"ts": datetime.now(BEIJING).isoformat(timespec="seconds"),
-           "status": status, "reason": reason}
-    if extra:
-        rec.update(extra)
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    # B2-089：extra 不可覆盖 ts/status；B2-090：磁盘错误不中断主流程；
+    # B2-139：reason 脱敏（邮箱/手机号/内部路径不进本地日志原文）。
+    try:
+        LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        rec = {"ts": datetime.now(BEIJING).isoformat(timespec="seconds"),
+               "status": status, "reason": _sanitize_public_text(str(reason))[:500]}
+        if extra:
+            for _k, _v in extra.items():
+                if _k not in ("ts", "status"):
+                    rec[_k] = _v
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
     try:
         lines = LOG_FILE.read_text(encoding="utf-8").splitlines()
         if len(lines) > LOG_KEEP_LINES:
@@ -79,20 +104,34 @@ def log(status, reason="", extra=None):
 
 
 def fail(msg):
-    FAIL_LOG.parent.mkdir(parents=True, exist_ok=True)
-    with open(FAIL_LOG, "a", encoding="utf-8") as f:
-        f.write("%s %s\n" % (datetime.now(BEIJING).isoformat(timespec="seconds"), msg[:200]))
+    # B2-090：fail() 写失败不抛错（此前磁盘错误直接上抛，吞掉原始错误）；
+    # B2-139：msg 脱敏。
+    try:
+        FAIL_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with open(FAIL_LOG, "a", encoding="utf-8") as f:
+            f.write("%s %s\n" % (datetime.now(BEIJING).isoformat(timespec="seconds"),
+                                   _sanitize_public_text(str(msg))[:200]))
+    except OSError:
+        pass
 
 
 def split_icon_name(desc):
     """从事项文本提取图标与徽章名；兜底返回通用值。"""
     d = HTML_COMMENT.sub("", desc)
     i = 0
-    while i < len(d) and not ("\u4e00" <= d[i] <= "\u9fff" or d[i].isalnum()):
+    # B2-136：isalnum 已覆盖 CJK，冗余的 \u4e00-\u9fff 范围检查去掉。
+    while i < len(d) and not d[i].isalnum():
         i += 1
     icon = d[:i].strip() or "🏅"
     rest = re.split(r"[（(]", d[i:])[0].replace("徽章", "").strip()
-    name = rest[:8] if rest else "徽章"
+    # B2-135：按码点切片可切断 emoji/组合字符；截断时避开代理对与组合字符。
+    if rest:
+        _n = rest[:8]
+        while len(_n) > 0 and (0xD800 <= ord(_n[-1]) <= 0xDBFF or 0x200D == ord(_n[-1])):
+            _n = _n[:-1]
+        name = _n or "徽章"
+    else:
+        name = "徽章"
     return icon, name
 
 
@@ -108,7 +147,6 @@ def extract_badge_events():
             raise ValueError("section 缺失：" + grade)
         active = {}   # key -> [events]（净持有：同徽章多次获得逐条累积，不设上限）
         seen = set()  # (key, date, clean_desc)：同一考试只记一次（防重复录入）
-        earliest = {}  # key -> 最早发放日
         for line in m.group(1).split("\n"):
             mm = sb.ROW_PAT.match(line)
             if not mm:
@@ -117,7 +155,15 @@ def extract_badge_events():
             desc = mm.group(2)
             rev = REV_PAT.search(line)
             if rev:
-                active.pop(KEY_ALIAS.get(rev.group(1), rev.group(1)), None)
+                # B2-085：冲正按行序抵消一条（取最近一条），不再一次清空同一徽章全部历史。
+                _rk = KEY_ALIAS.get(rev.group(1), rev.group(1))
+                if active.get(_rk):
+                    active[_rk].pop()
+                    if not active[_rk]:
+                        del active[_rk]
+                else:
+                    # B2-086：冲正无对应获得时记日志（此前静默无操作，无法发现错冲正）。
+                    log("reverse_no_match", "冲正无对应获得：%s %s" % (date, _rk))
                 continue
             b = KEY_PAT.search(line)
             if b:
@@ -137,7 +183,9 @@ def extract_badge_events():
             if meta:
                 icon, name = meta["icon"], meta["name"]
             else:
-                icon, name = split_icon_name(desc)
+                icon, name = split_icon_name(_sanitize_public_text(desc))
+            # B2-081：icon/name 进公开数据前脱敏＋HTML 转义。
+            icon, name = _escape_html(_sanitize_public_text(icon)), _escape_html(_sanitize_public_text(name))
             # M2 修复（2026-10-20）：去重键纳入 HTML 注释完整 key。
             # clean_desc 会剥离 <!-- key:... -->，若同徽章同日同描述文本多次获得
             # （如"满分之星"不设上限），仅用 (key,date,clean_desc) 会误杀。
@@ -145,12 +193,13 @@ def extract_badge_events():
             km = re.search(r"<!--\s*key:\s*(.*?)\s*-->", line)
             full_key = km.group(1).strip() if km else ""
             # 去重键 = badge_key + 当周(date决定) + 考试标识(key+date+事项+完整key)
-            ident = (key, date, sb.clean_desc(desc), full_key)
+            # B2-087：缺 key（full_key 为空）的同日同描述行，去重键加行号，
+            # 防两条不同获得被误杀为一条。
+            ident = (key, date, sb.clean_desc(desc), full_key) if full_key else \
+                (key, date, sb.clean_desc(desc), "row:%d" % idx)
             if ident in seen:
                 continue
             seen.add(ident)
-            if key not in earliest or date < earliest[key]:
-                earliest[key] = date
             # cycle_week：优先读 key 注释中的落账字段（终审落账环节写入）；
             # 历史行无此字段 -> 按日期计算仅供展示归档，不参与周期重算/上限累计
             # （DeepSeek 二次终审执行解释：历史行留空＝不回填、不参与周期重算）。
@@ -158,7 +207,11 @@ def extract_badge_events():
             # late_cycle：补发标记（归属周早于落账周），由终审落账环节与
             # cycle_week 一并写入 key 注释；无此字段 -> 非补发条目。
             lcm = LATE_CYCLE_RE.search(line)
-            rec_cycle = cwm.group(1) if cwm else cycle_week_of(date)
+            # B2-088：补记行缺 cycle_week 时按 backfill 日（post_date）推算，
+            # 不再按名义日期推算致补发徽章误计入本周 count。
+            _bfm0 = BACKFILL_RE.search(line)
+            _post0 = _bfm0.group(1) if _bfm0 else date
+            rec_cycle = cwm.group(1) if cwm else cycle_week_of(_post0)
             late_c = lcm.group(1) if lcm else None
             late_rec = bool(lcm)
             # 补记字段缺口修复（DeepSeek 终审 2026-10-23，发现2）：带
@@ -191,10 +244,11 @@ def extract_badge_events():
 
 def week_bounds(now):
     """给定时刻 -> (week_start, week_end)；周一起始，Asia/Shanghai。
-    边界语义：周日 23:59:59 仍属本周；周一 00:00:00 起属下周。"""
+    边界语义：周日 23:59:59.999999 仍属本周；周一 00:00:00 起属下周。"""
+    # B2-132：周日 23:59:59 之后约 1 秒无归属，改为微秒级全覆盖。
     ws = (now - timedelta(days=now.weekday())).replace(
         hour=0, minute=0, second=0, microsecond=0)
-    we = ws + timedelta(days=6, hours=23, minutes=59, seconds=59)
+    we = ws + timedelta(days=6, hours=23, minutes=59, seconds=59, microseconds=999999)
     return ws, we
 
 
@@ -318,19 +372,6 @@ def _ledger_rows_full():
     return out
 
 
-def _is_chore(row):
-    # 旧台账家务口径：2026-10-20 起家务类进度改读家务记录.md，本函数已无调用方，保留备查。
-    if row["delta"] <= 0 or "badge" in row["key"] or "lianzuo" in row["key"]:
-        return False
-    if "连做" in row["desc"]:
-        return False
-    if row["cat"].startswith("chore"):
-        return True
-    if any(t in row["key"] for t in CHORE_KEY_TOKENS):
-        return True
-    return any(it in row["desc"] for it in CHORE_DESC_ITEMS)
-
-
 def _streak_from_dates(date_set, today):
     """连续天数：以 today（有记录）或 yesterday（有记录）为锚向回数；两日皆无 -> 0。"""
     def iso(d):
@@ -390,8 +431,13 @@ def _parse_progress_notes():
         if "wanshui_report" in line and gk:
             nm = re.search(r"(\d{1,2})-(\d{1,2})\s*晚", line)
             if nm:
-                year = d0[:4]
-                res["late_sleep"][gk].add("%s-%02d-%02d" % (year, int(nm.group(1)), int(nm.group(2))))
+                # B2-093：月日校验合法性（非法值不再拼成幽灵日期），跨年按行内日期年份取。
+                _mo, _da = int(nm.group(1)), int(nm.group(2))
+                try:
+                    _vd = _date(int(d0[:4]), _mo, _da)
+                except ValueError:
+                    continue
+                res["late_sleep"][gk].add(_vd.isoformat())
     return res
 
 
@@ -482,11 +528,14 @@ def _sleep_streak(late_dates, now):
     if last_conf < start:
         return 0
     n, d = 0, last_conf
-    while d >= start:
+    # B2-095：回溯上限 400 天（自 SLEEP_START 起最长约一年），防无界循环。
+    _cap = 0
+    while d >= start and _cap < 400:
         if d.isoformat() in late_dates:
             break
         n += 1
         d -= timedelta(days=1)
+        _cap += 1
     return n
 
 
@@ -499,8 +548,10 @@ def _writing_verdicts(rows, gk, now_iso, decide_lines):
     groups = {}
     order = []
     for r in wrows:
-        km = re.search(r"_([a-z]+)_writing_", r["key"])
-        subj = km.group(1) if km else "?"
+        # B2-096：subject 正则支持大写/多段（如 _Math_Writing_、_YU_WEN_writing_），
+        # 此前只认小写单段，含大写/多段的科目会被归入 "?" 误判。
+        km = re.search(r"_([A-Za-z]+(?:_[A-Za-z]+)*)_writing_", r["key"], re.IGNORECASE)
+        subj = km.group(1).lower() if km else "?"
         gkey = (r["date"], subj)
         if gkey not in groups:
             groups[gkey] = []
@@ -546,7 +597,8 @@ def _writing_verdicts(rows, gk, now_iso, decide_lines):
 
 def _writing_streak(verdicts):
     """正式计数（>= WRITING_EFFECTIVE）：时序尾部连续 zero 数；尾部是 deduct -> 0。"""
-    seq = [v for dstr, v in verdicts if dstr >= WRITING_EFFECTIVE]
+    # B2-098：verdict 取值域校验，非法值按 deduct（断连）处理，不再当有效值。
+    seq = [v if v in ("zero", "deduct") else "deduct" for dstr, v in verdicts if dstr >= WRITING_EFFECTIVE]
     n = 0
     for v in reversed(seq):
         if v != "zero":
@@ -559,7 +611,7 @@ def _writing_streak_after_award(verdicts, last_date):
     """书写之星颁发后重计（2026-10-26 家长定接通自动颁发）：
     只计上次颁发日之后的 verdict 尾部连续 zero 数；无上次颁发时
     等同 _writing_streak。颁发日以台账徽章行名义日期为准（非补记日）。"""
-    seq = [v for dstr, v in verdicts
+    seq = [v if v in ("zero", "deduct") else "deduct" for dstr, v in verdicts
            if dstr >= WRITING_EFFECTIVE and (last_date is None or dstr > last_date)]
     n = 0
     for v in reversed(seq):
@@ -582,6 +634,9 @@ def _load_daily_flags():
         try:
             rec = json.loads(line)
         except Exception:
+            continue
+        # B2-108：非 dict 合法 JSON 行跳过，不再抛 AttributeError 中断整函数。
+        if not isinstance(rec, dict):
             continue
         gk = gmap.get(rec.get("grade", ""))
         if gk and rec.get("date"):
@@ -609,23 +664,38 @@ def _tupo_progress(gk):
     if not QBANK_DB.exists():
         return None
     grade = "五年级" if gk == "g5" else "六年级"
+    # B2-100：连接用 try/finally 关闭，execute/fetchall 异常时也不泄漏。
+    con = None
     try:
-        con = _sqlite3.connect("file:%s?mode=ro" % QBANK_DB, uri=True)
+        # B2-103：用 Path.as_uri() 拼 sqlite URI（不直接 f-string 拼路径）。
+        con = _sqlite3.connect("%s?mode=ro" % QBANK_DB.as_uri(), uri=True)
         rows = con.execute(
             "SELECT 知识点, 状态, 更新时间 FROM questions WHERE 年级=?",
             (grade,)).fetchall()
-        con.close()
     except Exception as _qe:
         # P2（DeepSeek 审查 2026-10-20）：题库查询失败不再静默吞——留痕便于
         # 区分"真无数据"与"查询坏了"（返回值仍为 None 降级，不阻断同步）
         log("qbank_error", "_tupo_progress %s: %s" % (gk, str(_qe)[:150]))
         return None
+    finally:
+        if con is not None:
+            try:
+                con.close()
+            except Exception:
+                pass
     by_kp = {}
     for kp, status, upd in rows:
         by_kp.setdefault(kp, []).append((upd or "", status))
     best, best_kp = 0, ""
     for kp, lst in by_kp.items():
-        lst.sort(key=lambda x: x[0])
+        # B2-102：更新时间按解析后的 datetime 排序（字符串排序在格式混用时错位）；
+        # 无法解析的排在最前（视作最早）。
+        def _upd_key(x):
+            try:
+                return datetime.fromisoformat(str(x[0]).replace("Z", "+00:00"))
+            except Exception:
+                return datetime.min.replace(tzinfo=BEIJING)
+        lst.sort(key=_upd_key)
         n = 0
         for _, st in reversed(lst):
             if st == "已订正正确":
@@ -805,19 +875,31 @@ def compute_badge_progress(events, now=None):
     for d in {d for d, _ in ci5} & {d for d, _ in ci6}:
         if {x for dd, x in ci5 if dd == d} != {x for dd, x in ci6 if dd == d}:
             relay = True
-    prog = min(min(len(ci5), len(ci6)), 2)
+    # B2-104：接力动作须参与进度——无接力时 current 钳为 0（此前 relay 算出后未使用，
+    # 只看项数即算进度，"至少 1 次接力"未参与）。
+    prog = min(min(len(ci5), len(ci6)), 2) if relay else 0
     for gk in ("g5", "g6"):
         out[gk]["jiawujielishou"] = {"state": "ok", "current": prog,
                                      "target": 2, "unit": "项/人",
                                      "mode": "本周"}
     # 书写判定日志（草约 A-4 放行前置）
+    # B2-106：判定日志追加写加 flock 锁，写失败记日志不静默丢弃。
     try:
         WRITING_DECIDE_LOG.parent.mkdir(parents=True, exist_ok=True)
-        with open(WRITING_DECIDE_LOG, "a", encoding="utf-8") as f:
+        _lf = open(WRITING_DECIDE_LOG, "a", encoding="utf-8")
+        try:
+            fcntl.flock(_lf, fcntl.LOCK_EX)
             for ln in decide_lines:
-                f.write(ln + "\n")
-    except OSError:
-        pass
+                _lf.write(ln + "\n")
+            _lf.flush()
+            os.fsync(_lf.fileno())
+        finally:
+            try:
+                fcntl.flock(_lf, fcntl.LOCK_UN)
+            finally:
+                _lf.close()
+    except OSError as _e:
+        log("writing_decide_log_fail", "判定日志写入失败：%s" % _e)
     return out
 
 
@@ -840,11 +922,9 @@ def build_badge_goals(events, progress=None, now=None):
         cnt = {}
         total = {}
         late_held = {}
-        earliest = {}
+        # B2-134：earliest 死代码（只写不读，entries 用 held/late_held/cnt/total），删掉。
         for e in events.get(gk, []):
             total[e["key"]] = total.get(e["key"], 0) + 1
-            if e["key"] not in earliest or e["date"] < earliest[e["key"]]:
-                earliest[e["key"]] = e["date"]
             if (e.get("cycle_week") or cycle_week_of(e["date"])) != cur_cycle:
                 # 补发落账本周期（与 build_badges 同口径）：徽章带已同带展示，
                 # 目标榜"已获取"标签须一致（2026-10-21 用户报障修复）；仅影响
@@ -972,13 +1052,21 @@ def build_redeem_log(content, now=None):
 
 
 def build_shop(balances):
+    # B2-123：SHOP_TABLE 的 cost 须为正数；非数值/≤0 的档位跳过并记日志
+    # （此前 cost≤0 时 prog 静默为 0、redeemable 恒真；非数值 cost 抛 TypeError 走熔断）。
+    _SHOP_TABLE_OK = []
+    for _sid, _name, _cost, _icon in SHOP_TABLE:
+        if not isinstance(_cost, (int, float)) or isinstance(_cost, bool) or _cost <= 0:
+            log("shop_tier_skip", "商店档位 cost 非法已跳过：%s" % _sid)
+            continue
+        _SHOP_TABLE_OK.append((_sid, _name, _cost, _icon))
     # N1 方案A（DeepSeek终审定案 2026-10-20）：
     # progress 是展示量（用钳0后的余额计算，恒 ∈ [0.0, 1.0]）；
     # redeemable 是判定量（用真实余额，恒等式 redeemable == (balance >= cost)）；
     # balance 输出保留真实值（含负），前端显示"−N"。
     # 负余额 → 照常输出（与 build_stats §7.2"负余额照常输出"同口径），不构成熔断。
     items = []
-    for sid, name, cost, icon in SHOP_TABLE:
+    for sid, name, cost, icon in _SHOP_TABLE_OK:
         # E2：cost 配置错误视为真正数据异常（上游熔断分支校验）
         bg = {}
         for gk in ("g5", "g6"):
@@ -1117,23 +1205,38 @@ def check_no_pii(obj):
     """PII 熔断：序列化后不得含姓名模式。"""
     s = json.dumps(obj, ensure_ascii=False)
     if re.search(r"[\u4e00-\u9fff]{2,3}(同学|小朋友)", s):
-        raise ValueError("PII 熔断：检测到疑似姓名")
-    if "<!--" in s or "<script" in s.lower():
+        raise ValueError("PII �rose：检测到疑似姓名")
+    # B2-082：注入熔断扩展——除 <!-- 与 <script 外，<img onerror>/<iframe>/
+    # <object>/<embed>/<form>/javascript: 协议与 on* 事件属性一并拦截。
+    _low = s.lower()
+    if ("<!--" in s or "<script" in _low or "<iframe" in _low or "<object" in _low
+            or "<embed" in _low or "<form" in _low or "<link" in _low
+            or "javascript:" in _low or re.search(r"\son\w+\s*=", _low)):
         raise ValueError("注入熔断：检测到 HTML/脚本残留")
 
 
 def run_git(*args):
-    return subprocess.run(["git", "-C", str(REPO)] + list(args),
-                          capture_output=True, text=True, timeout=60)
+    # B2-121：超时返回 returncode=-1 的 CompletedProcess（此前 TimeoutExpired 上抛，
+    # 调用方无法区分超时与失败）。
+    try:
+        return subprocess.run(["git", "-C", str(REPO)] + list(args),
+                              capture_output=True, text=True, timeout=60)
+    except subprocess.TimeoutExpired as _te:
+        return subprocess.CompletedProcess(
+            ["git", "-C", str(REPO)] + list(args), -1,
+            stdout=_te.stdout.decode() if isinstance(_te.stdout, bytes) else (_te.stdout or ""),
+            stderr="git 超时（60s）: %s" % " ".join(args))
 
 
 def _ledger_fingerprint():
     """台账指纹（读入顺序保护，DeepSeek 终审 2026-10-23，发现2）：
     生成期间台账被追加（补记与同步同刻竞态，如 09:58 撞点）时指纹
     变化 -> main 以最新台账重跑一次，杜绝以半旧快照发布。"""
+    # B2-114：指纹加内容哈希（sha256 前 16 位），同纳秒等长改写也不漏检。
     try:
         st = LEDGER.stat()
-        return (st.st_mtime_ns, st.st_size)
+        _h = hashlib.sha256(LEDGER.read_bytes()).hexdigest()[:16]
+        return (st.st_mtime_ns, st.st_size, _h)
     except OSError:
         return None
 
@@ -1188,14 +1291,20 @@ def _strip_board_names(obj):
     """看板禁词（2026-10-24 家长令）：发布数据不得出现 deepseek/gemini 两词。
     递归做中性替换（终审/初审），只动发布副本，源文件原文不动。"""
     if isinstance(obj, str):
-        return re.sub(r'(?i)deepseek', '终审', re.sub(r'(?i)gemini', '初审', obj))
+        # B2-083：加词边界，deepseeker/geminis 这类子串不再被误伤；键也处理（见 B2-176 同类）。
+        return re.sub(r'(?i)(?<![A-Za-z])deepseek(?![A-Za-z])', '终审',
+                      re.sub(r'(?i)(?<![A-Za-z])gemini(?![A-Za-z])', '初审', obj))
     if isinstance(obj, list):
         return [_strip_board_names(x) for x in obj]
     if isinstance(obj, dict):
-        return {k: _strip_board_names(v) for k, v in obj.items()}
+        # B2-176：键含禁词也替换（此前只处理值，键漏网）。
+        return {_strip_board_names(k) if isinstance(k, str) else k: _strip_board_names(v)
+                for k, v in obj.items()}
     return obj
 
 def main():
+    # B2-122：_RACE_RETRIED 在 main 开头重置，同一进程第二次调 main 也能重跑。
+    _RACE_RETRIED[0] = False
     # 静默窗闸门（DeepSeek 裁定1 2026-10-20：静默窗全域生效，闸门落脚本层）：
     # [00:00,06:00) 内不 build、退出码 0；与 build_stats/build_trends 同口径，
     # 窗口边界只认 sync_balance.BUILD_SILENT_WINDOW 单点定义。
@@ -1310,7 +1419,8 @@ def main():
             pass
         return main()
 
-    now_iso = datetime.now(BEIJING).isoformat(timespec="seconds")
+    # B2-126：generated_at 用微秒，同秒重跑可区分。
+    now_iso = datetime.now(BEIJING).isoformat(timespec="microseconds")
     changed_files = []
     for path, doc in docs.items():
         fp = REPO / path
@@ -1340,7 +1450,11 @@ def main():
     # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
     # 提交前检查 scripts/ 是否有未提交改动；有则本次不提交 + 告警日志（fail-safe）。
     # 防 A类修复被功能提交卷入（程序异常台账 #1/#2）重演。
+    # B2-120：git status 查 returncode，非零即当脏处理（此前非零且 stdout 为空时被当干净）。
     _dirty = run_git("status", "--porcelain", "--", "scripts/")
+    if _dirty.returncode != 0:
+        log("commit_guard_skip", "git status 失败 rc=%d，按脏处理跳过本次提交" % _dirty.returncode)
+        return 0
     _dirty_out = (_dirty.stdout or "").strip()
     if _dirty_out:
         _dirty_files = "; ".join(l[:80] for l in _dirty_out.splitlines()[:10])
@@ -1350,8 +1464,9 @@ def main():
         try:
             with open(REPO / "logs" / "cron_commit_guard.log", "a", encoding="utf-8") as _f:
                 _f.write(_alert + "\n")
-        except Exception:
-            pass
+        except Exception as _ge:
+            # B2-091：副本写失败记主日志，不再静默丢弃。
+            log("commit_guard_copy_fail", "cron_commit_guard.log 副本写失败：%s" % _ge)
         return 0
 
     # c项串行化（2026-10-26）：git 区段持共享 git_push.lock（与 do_push/build_stats/watchd 同一把），
@@ -1376,7 +1491,9 @@ def main():
         # 判定必须严格匹配完整标准串（双子串合取），防 pre-commit hook 误输出子串被误判为无变更。
         # 注：依赖 git 英文标准输出（locale 需为 C/en）；若未来 git 措辞变化，安全降级走 rc=3 失败分支（fail-safe）。
         # rc!=0 且非标准无变更串 → 一律视为真失败（return 3，与 push 失败共用返回码）。
-        cr = run_git("commit", "-m",
+        # B2-118：commit 加 --only + pathspec，只提交本次 5 个文件，
+        # 不把 scripts/ 之外预先已暂存的无关改动一并提交。
+        cr = run_git("commit", "--only", *changed_files, "-m",
                 "chore(sections): sync badges/shop/rules @ " +
                 datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M"))
         if cr.returncode != 0:
@@ -1389,15 +1506,17 @@ def main():
                 return 0
             log("push_failed", "git commit 真失败 rc=%d: %s" % (cr.returncode, _err[:200]))
             return 3
+        # B2-116：push 重试指数退避（5s/15s/30s，总约 50s 而非 90s+），每次失败记日志。
         push_ok = False
         last_rc = None
-        for _ in range(3):
+        for _i, _wait in enumerate((5, 15, 30)):
             r = run_git("push")
             last_rc = r.returncode
             if r.returncode == 0:
                 push_ok = True
                 break
-            time.sleep(30)
+            log("push_retry", "push 第 %d 次失败 rc=%s，%ds 后重试" % (_i + 1, r.returncode, _wait))
+            time.sleep(_wait)
         if push_ok:
             log("pushed", "已推送", {"files": ",".join(changed_files)})
             return 0

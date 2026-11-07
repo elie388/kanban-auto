@@ -13,6 +13,7 @@ hidden_files/tasks_daily_{5,6}.json 有变化的拷贝到 kanban-deploy/data/，
 返回码：0=成功/无变化，1=失败（watchd 据此记 consumer_failed 并重试）。
 """
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -32,7 +33,13 @@ def selftest(task_ingest):
         print("[%s] %s :: %s" % ("PASS" if ok else "FAIL", name, detail), flush=True)
 
     results = []
+    # B2-074：mkdtemp 用后清理（shutil.rmtree），防 /tmp 堆积；
+    # B2-078：HIDDEN 恢复放在外层 finally，异常时也不污染本进程状态。
+    td = None
+    old_hidden = None
+    old_held = None
     try:
+        import shutil
         td = tempfile.mkdtemp()
         repo = os.path.join(td, "kanban-deploy")
         bare = os.path.join(td, "origin.git")
@@ -45,37 +52,55 @@ def selftest(task_ingest):
         old_hidden = task_ingest.HIDDEN
         task_ingest.HIDDEN = td
         old_held = os.environ.pop("KANBAN_GIT_LOCK_HELD", None)
-        try:
-            doc = {"date": "2026-10-21", "tasks": []}
-            with open(os.path.join(td, "tasks_daily_5.json"), "w", encoding="utf-8") as f:
-                json.dump(doc, f)
-            ok = task_ingest.do_push()
-            dst = os.path.join(repo, "data", "tasks_daily_5.json")
-            assert ok is True, "首轮有变化应返回 True"
-            assert os.path.exists(dst), "data 文件应已拷贝"
-            r = subprocess.run(["git", "-C", repo, "log", "--oneline"],
-                               capture_output=True, text=True)
-            assert r.stdout.strip(), "应已产生 commit"
-            ok2 = task_ingest.do_push()
-            assert ok2 is True, "无变化应返回 True"
-            r2 = subprocess.run(["git", "-C", repo, "rev-list", "--count", "HEAD"],
-                                capture_output=True, text=True)
-            n1 = r2.stdout.strip()
-            doc["tasks"] = [{"task_id": "T-1"}]
-            with open(os.path.join(td, "tasks_daily_5.json"), "w", encoding="utf-8") as f:
-                json.dump(doc, f)
-            ok3 = task_ingest.do_push()
-            r3 = subprocess.run(["git", "-C", repo, "rev-list", "--count", "HEAD"],
-                                capture_output=True, text=True)
-            assert ok3 is True and r3.stdout.strip() != n1, "变化后应新增 commit"
-            rec(results, "S1 拷贝+提交+幂等", True,
-                "有变化→拷贝+commit+push；无变化→True 空转；再变化→新 commit")
-        finally:
-            task_ingest.HIDDEN = old_hidden
-            if old_held is not None:
-                os.environ["KANBAN_GIT_LOCK_HELD"] = old_held
+        def _check(cond, msg):
+            # B2-077：不用 assert 做检查（python -O 下 assert 会被优化掉），改显式抛错。
+            if not cond:
+                raise AssertionError(msg)
+        doc = {"date": "2026-10-21", "tasks": []}
+        with open(os.path.join(td, "tasks_daily_5.json"), "w", encoding="utf-8") as f:
+            json.dump(doc, f)
+        # B2-076：同时写六年级表，覆盖六年级路径。
+        with open(os.path.join(td, "tasks_daily_6.json"), "w", encoding="utf-8") as f:
+            json.dump(doc, f)
+        ok = task_ingest.do_push()
+        dst = os.path.join(repo, "data", "tasks_daily_5.json")
+        _check(ok is True, "首轮有变化应返回 True")
+        _check(os.path.exists(dst), "data 文件应已拷贝")
+        _check(os.path.exists(os.path.join(repo, "data", "tasks_daily_6.json")), "六年级表应已拷贝")
+        r = subprocess.run(["git", "-C", repo, "log", "--oneline"],
+                           capture_output=True, text=True)
+        # B2-075：rev-list/log 查 returncode，不只比 stdout 计数。
+        _check(r.returncode == 0 and r.stdout.strip(), "应已产生 commit")
+        ok2 = task_ingest.do_push()
+        _check(ok2 is True, "无变化应返回 True")
+        r2 = subprocess.run(["git", "-C", repo, "rev-list", "--count", "HEAD"],
+                            capture_output=True, text=True)
+        _check(r2.returncode == 0, "rev-list 应成功")
+        n1 = r2.stdout.strip()
+        doc["tasks"] = [{"task_id": "T-1"}]
+        with open(os.path.join(td, "tasks_daily_5.json"), "w", encoding="utf-8") as f:
+            json.dump(doc, f)
+        ok3 = task_ingest.do_push()
+        r3 = subprocess.run(["git", "-C", repo, "rev-list", "--count", "HEAD"],
+                            capture_output=True, text=True)
+        _check(r3.returncode == 0, "rev-list 应成功")
+        _check(ok3 is True and r3.stdout.strip() != n1, "变化后应新增 commit")
+        rec(results, "S1 拷贝+提交+幂等", True,
+            "有变化→拷贝+commit+push；无变化→True 空转；再变化→新 commit")
     except Exception as e:
-        rec(results, "S1 拷贝+提交+幂等", False, str(e)[:200])
+        # B2-080：异常信息不截断 200 字，保留完整原因便于定位。
+        rec(results, "S1 拷贝+提交+幂等", False, str(e))
+    finally:
+        if old_hidden is not None:
+            task_ingest.HIDDEN = old_hidden
+        if old_held is not None:
+            os.environ["KANBAN_GIT_LOCK_HELD"] = old_held
+        if td:
+            try:
+                import shutil
+                shutil.rmtree(td, ignore_errors=True)
+            except Exception:
+                pass
     n_fail = sum(1 for x in results if not x)
     print("自测完成：%d 通过 / %d 失败" % (len(results) - n_fail, n_fail), flush=True)
     return 1 if n_fail else 0
@@ -98,6 +123,13 @@ def derive_closed_set():
     dst = REPO_DIR / "data" / "closed_batches.json"
     closed_at = {}
     skipped = 0
+    # B2-061：源缺失时区分“从未有过”与“已被删除”。源不存在且目标已存在
+    # （已有收口记录）时不覆盖旧文件，返回失败告警，防静默解收口；仅源与目标
+    # 均不存在（首次运行）时写出空文件供 workflow test -s 通过。
+    if not src.exists():
+        if dst.exists():
+            print("[derive_closed_set] 源缺失且旧文件已存在：不覆盖，旧收口集合保留", flush=True)
+            return False, "源缺失，旧文件保留"
     if src.exists():
         try:
             lines = src.read_text(encoding="utf-8").splitlines()
@@ -112,15 +144,32 @@ def derive_closed_set():
                 rec = _json.loads(line)
             except Exception:
                 skipped += 1
+                print(f"[derive_closed_set] 跳过坏行（JSON 解析失败）：{line[:120]}", flush=True)
                 continue
-            tid = rec.get("task_id") or ""
-            if not isinstance(tid, str):
-                tid = str(tid)
-            tid = tid.strip()
+            # B2-065：非 dict 行跳过该行，不中断整批。
+            if not isinstance(rec, dict):
+                skipped += 1
+                print(f"[derive_closed_set] 跳过坏行（非 dict）：{line[:120]}", flush=True)
+                continue
+            # B2-069：task_id 为数字 0 时 `or ""` 会误判为空；先取原始值再转字符串。
+            _tid_raw = rec.get("task_id")
+            if _tid_raw is None:
+                tid = ""
+            elif isinstance(_tid_raw, str):
+                tid = _tid_raw.strip()
+            else:
+                tid = str(_tid_raw).strip()
             if not tid:
                 print("[derive_closed_set] 空 task_id 零容忍：派生失败，不写出", flush=True)
                 return False, "空 task_id"
-            closed_at[tid.upper()] = str(rec.get("ts") or rec.get("closed_at") or "")
+            # B2-064：task_id/ts 格式校验，脏数据不进公开输出。
+            if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9\-_.]*", tid):
+                skipped += 1
+                print(f"[derive_closed_set] 跳过坏行（task_id 格式非法）：{tid[:80]}", flush=True)
+                continue
+            _ts = str(rec.get("ts") or rec.get("closed_at") or "")
+            _k = tid.upper()
+            closed_at[_k] = max(closed_at.get(_k, ""), _ts)
     now = _dt.now(_tz(_td(hours=8))).isoformat()
     obj = {"generated_at": now,
            "task_ids": sorted(closed_at.keys()),
@@ -141,9 +190,22 @@ def derive_closed_set():
                     and old.get("skipped") == obj["skipped"]):
                 return True, "内容不变不复写"
         dst.parent.mkdir(parents=True, exist_ok=True)
-        tmp = dst.with_suffix(".json.tmp")
-        tmp.write_text(text, encoding="utf-8")
-        os.replace(tmp, dst)
+        # B2-062：临时文件名带 pid，防两路并发用同一 .json.tmp 互相覆盖；
+        # B2-071：写后 fsync 再 replace，防系统崩溃丢数据。
+        tmp = dst.with_suffix(f".json.tmp.{os.getpid()}")
+        try:
+            with open(tmp, "w", encoding="utf-8") as _f:
+                _f.write(text)
+                _f.flush()
+                os.fsync(_f.fileno())
+            os.replace(tmp, dst)
+        except Exception:
+            try:
+                if tmp.exists():
+                    tmp.unlink()
+            except Exception:
+                pass
+            raise
         return True, f"写出 {len(closed_at)} 条"
     except OSError as e:
         print(f"[derive_closed_set] 写出失败：{e}", flush=True)
@@ -151,7 +213,14 @@ def derive_closed_set():
 
 
 def main():
-    sys.path.insert(0, str(HIDDEN_SCRIPTS))
+    # B2-072：HIDDEN_SCRIPTS 由 KANBAN_REPO_DIR 环境变量派生，插入前校验其为
+    # 预期位置且含 task_ingest.py，防环境变量被控导致导入劫持。
+    _hs = HIDDEN_SCRIPTS.resolve()
+    _expect = (REPO_DIR.parent / "scripts").resolve()
+    if _hs != _expect or not (_hs / "task_ingest.py").is_file():
+        print(f"导入路径校验失败：HIDDEN_SCRIPTS={_hs} 非预期 {_expect}，拒绝导入", file=sys.stderr)
+        return 1
+    sys.path.insert(0, str(_hs))
     try:
         import task_ingest
     except Exception as e:

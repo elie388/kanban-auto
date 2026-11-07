@@ -21,8 +21,10 @@
   python3 scripts/build_stats.py --selftest 自测（放行条件2同日排序单测 + §7.1/7.3/7.5）
 """
 
+import ast
 import fcntl
 import hashlib
+import time
 import json
 import os
 import re
@@ -40,9 +42,22 @@ from build_kanban import simplify_desc  # 只读复用，不得私改（§5.2）
 import sync_balance as sb  # M1（2026-10-20）：复用 norm_date，统一日期归一口径
 import catalog  # 目录单一数据源（shop_catalog.json / badges.json）
 
-LEDGER = os.environ.get(
-    "LEDGER_PATH",
-    os.path.expanduser("~/workspace/goals/goal/hidden_files/积分记录.md"))
+def _validate_ledger_path():
+    """B2-144：LEDGER_PATH 环境变量校验——须为 .md 文件且在工作区内，
+    防环境变量被控指向非台账文件。非法时回落默认路径并告警。"""
+    _default = os.path.expanduser("~/workspace/goals/goal/hidden_files/积分记录.md")
+    _env = os.environ.get("LEDGER_PATH")
+    if not _env:
+        return _default
+    _p = os.path.realpath(os.path.expanduser(_env))
+    _ws = os.path.realpath(os.path.expanduser("~/workspace"))
+    if not _p.endswith(".md") or os.path.commonpath([_ws, _p]) != _ws:
+        print("[build_stats][WARN] LEDGER_PATH 非法（%s），回落默认台账路径" % _env, flush=True)
+        return _default
+    return _p
+
+
+LEDGER = _validate_ledger_path()
 DATA_DIR = os.path.join(REPO_DIR, "data")
 LOGS_DIR = os.path.join(REPO_DIR, "logs")
 TEMPLATE = os.path.join(REPO_DIR, "templates", "积分看板_全新版式样板.html")
@@ -76,9 +91,19 @@ def _n3_sentinel_already_logged_today(log_path=None, today_str=None):
     N3 sentinel OK 行。该日志按时间追加，读尾部 300 行足够判定。"""
     log_path = log_path or os.path.join(LOGS_DIR, "build_stats.log")
     today_str = today_str or datetime.now(TZ).strftime("%Y-%m-%d")
+    # B2-159：只读文件尾部（8KB 块倒读），不再全文读入；当日日志超 300 行时哨兵仍可被找到。
     try:
-        with open(log_path, encoding="utf-8") as f:
-            lines = f.read().splitlines()
+        with open(log_path, "rb") as f:
+            f.seek(0, 2)
+            _size = f.tell()
+            _buf = b""
+            _pos = _size
+            while len(_buf.splitlines()) < 300 and _pos > 0:
+                _step = min(8192, _pos)
+                _pos -= _step
+                f.seek(_pos)
+                _buf = f.read(_step) + _buf
+            lines = _buf.decode("utf-8", errors="replace").splitlines()
     except OSError:
         return False
     return any(ln.startswith(today_str) and "N3 sentinel OK" in ln
@@ -86,6 +111,14 @@ def _n3_sentinel_already_logged_today(log_path=None, today_str=None):
 
 # R1：档位表（规则手册第85行，唯一权威；变动须走规则手册修订）
 SHOP_TIERS = catalog.shop_tiers()  # 单一数据源 scripts/shop_catalog.json（2026-10-22 目录收口）
+# B2-155：档位表校验——非空、无重复 pts、升序、非负；非法即熔断（不静默用坏档位）。
+if not SHOP_TIERS:
+    raise ValueError("SHOP_TIERS 为空，无法生成商店档位")
+_pts_list = [t.get("pts") for t in SHOP_TIERS]
+if any(not isinstance(_x, (int, float)) or isinstance(_x, bool) or _x < 0 for _x in _pts_list):
+    raise ValueError("SHOP_TIERS 含非法 pts（非数值/负值）")
+if len(set(_pts_list)) != len(_pts_list) or _pts_list != sorted(_pts_list):
+    raise ValueError("SHOP_TIERS pts 重复或非升序")
 
 NEG_MINUS = "−"  # U+2212 全角减号（用户拍板1：负余额静态显示 −N）
 
@@ -121,12 +154,31 @@ def warn(msg):
 
 
 def err_write(msg):
-    os.makedirs(LOGS_DIR, exist_ok=True)
-    with open(os.path.join(LOGS_DIR, "build_stats.err"), "a", encoding="utf-8") as f:
-        f.write("%s %s\n" % (datetime.now(TZ).isoformat(timespec="seconds"), msg))
+    # B2-156：写失败不抛错（此前 OSError 会上抛）；B2-157：敏感词原文不进本地日志。
+    try:
+        os.makedirs(LOGS_DIR, exist_ok=True)
+        _m = str(msg)
+        _m = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[邮箱已脱敏]", _m)
+        _m = re.sub(r"1[3-9]\d{9}", "[手机号已脱敏]", _m)
+        with open(os.path.join(LOGS_DIR, "build_stats.err"), "a", encoding="utf-8") as f:
+            try:
+                fcntl.flock(f, fcntl.LOCK_EX)
+                f.write("%s %s\n" % (datetime.now(TZ).isoformat(timespec="seconds"), _m))
+                f.flush()
+            finally:
+                try:
+                    fcntl.flock(f, fcntl.LOCK_UN)
+                except Exception:
+                    pass
+    except OSError:
+        pass
 
 
 def git(*args):
+    # B2-158：参数校验——拒绝含 shell 元字符/换行的参数（防御性，本段调用点均为固定字面量）。
+    for _a in args:
+        if not isinstance(_a, str) or any(_c in _a for _c in ("\n", "\r", ";", "|", "&", "`", "$")):
+            raise ValueError("git 参数非法：%r" % (_a,))
     return subprocess.run(
         ["git", "-C", REPO_DIR] + list(args),
         capture_output=True, text=True, timeout=60,
@@ -145,11 +197,12 @@ def read_ledger_blocks(ledger_path=LEDGER):
         lines = f.readlines()
 
     def cut(title):
-        start = None
-        for i, ln in enumerate(lines):
-            if ln.strip() == "## " + title:
-                start = i
-                break
+        # B2-145：重复标题熔断（此前取第一个、第二小节静默丢弃）。
+        _hits = [i for i, ln in enumerate(lines) if ln.strip() == "## " + title]
+        if len(_hits) > 1:
+            raise ValueError("台账分节 ## %s 重复出现 %d 次（行 %s），疑似重复录入，已熔断"
+                             % (title, len(_hits), [i + 1 for i in _hits]))
+        start = _hits[0] if _hits else None
         if start is None:
             raise ValueError("台账缺少分节标记：## %s" % title)
         buf = []
@@ -185,9 +238,30 @@ def read_ledger_blocks(ledger_path=LEDGER):
     if cur is not None:
         spans.append((cur, len(lines)))
     stray = []
+    # B2-204 豁免（2026-11-07）：以下小节自带合法表格，其行首 | 且含日期的行
+    # 不是写错位置的台账数据行，B2-204 检查须跳过；台账数据行（ROW_RE）
+    # 的分节外熔断不受影响（仍按原口径）。
+    _B2_204_EXEMPT = ("## 待终审登记",)
+    # 每行所属小节（最近的 ## 标题行；标题行之前为 None）。
+    _section_of = []
+    _cur_sec = None
+    for _ln in lines:
+        if _ln.startswith("## "):
+            _cur_sec = _ln.strip()
+        _section_of.append(_cur_sec)
+    # B2-204：分节外畸形行也熔断——行首为 | 且含日期形态却不匹配 ROW_RE 的行，
+    # 此前 ROW_RE/stray 双重漏判、静默丢失。
     for i, ln in enumerate(lines):
         s = ln.strip()
-        if ROW_RE.match(s) and not any(a < i < b for a, b in spans):
+        _in_span = any(a < i < b for a, b in spans)
+        if _in_span:
+            continue
+        if ROW_RE.match(s):
+            stray.append(i + 1)
+        elif s.startswith("|") and re.search(r"\d{1,2}-\d{1,2}|\d{4}-\d{2}-\d{2}", s) and s.count("|") >= 3:
+            _sec = _section_of[i]
+            if _sec is not None and any(_sec.startswith(p) for p in _B2_204_EXEMPT):
+                continue
             stray.append(i + 1)
     if stray:
         raise ValueError("台账存在写在年级小节外的数据行（行号 %s），疑似追加位置错误，已熔断" % stray[:10])
@@ -203,6 +277,25 @@ def parse_rows(block, grade):
     @HH:MM 存在但格式非法 → raise（不得静默吞掉，走熔断）。
     """
     rows = []
+    _seen_keys = set()
+    # B2-146 豁免（2026-11-07）：2026-10-24 UTC 时间标签误标，冲正 id 256–265
+    # 先记一批、抵销行冲掉、北京时间重走一批，同 key 出现两次是故意的，
+    # 余额链已验证一致（156→135→156→153），不是重复计分。只放行这一批，
+    # 其他重复 key 照样熔断；豁免 key 第三次出现仍熔断。
+    _B2_146_EXEMPT_KEYS = frozenset((
+        "五年级_2026-10-24_冲正id256_53chn_done_-3",
+        "五年级_2026-10-24_冲正id257_53chn_acc100_-3",
+        "五年级_2026-10-24_冲正id258_53math_done_-3",
+        "五年级_2026-10-24_冲正id259_53math_acc86_-1",
+        "五年级_2026-10-24_冲正id260_53eng_done_-3",
+        "五年级_2026-10-24_冲正id261_53eng_acc58_+2",
+        "五年级_2026-10-24_冲正id262_53chn_done_-3",
+        "五年级_2026-10-24_冲正id263_53chn_acc80_-1",
+        "五年级_2026-10-24_冲正id264_53math_done_-3",
+        "五年级_2026-10-24_冲正id265_53eng_done_-3",
+    ))
+    _exempt_used = set()
+    _seen_opening = False
     for ln in block.splitlines():
         s = ln.strip()
         if not s.startswith("|"):
@@ -214,6 +307,10 @@ def parse_rows(block, grade):
         m = ROW_RE.match(s)
         if not m:
             raise ValueError("台账 %d 年级存在无法解析的行：%r" % (grade, s[:80]))
+        # B2-148：ROW_RE 未锚行尾，行尾多余列静默忽略——此处校验行尾只剩空白/注释。
+        _tail = s[m.end():].strip()
+        if _tail and not _tail.startswith("<!--"):
+            raise ValueError("台账 %d 年级行尾有多余列：%r" % (grade, s[:80]))
         raw_date, desc, pts_s, bal_s = m.groups()
         # N3 收口：存储统一零填充 MM-DD（经 sync_balance.norm_date 归一后取
         # 月-日部分），下游 complete_year/排序/窗口口径不变。
@@ -236,6 +333,27 @@ def parse_rows(block, grade):
                 raise ValueError("台账 %d 年级 @HH:MM 越界：%r" % (grade, s[:80]))
             annot_time = "%02d:%02d" % (hh, mm)
         bf = BACKFILL_RE.search(key_comment)
+        # B2-146：同一 key 重复计分熔断（逐字重复会被余额链熔断，但带重算余额的
+        # 重新录入可虚增，此处直接按 key 去重）。
+        # B2-146 修法（2026-11-07，家长选 B）：去重 key 带上 @HH:MM 时间。
+        # 同一天同一项目在不同时间各记一次（如 11-01 晾衣服 01:07 与 14:33、
+        # 11-06 口语易 11:09 与 11:10、10-30 读背 21:41 与 21:49）是不同事件，
+        # 不应熔断；同一时间记两次仍熔断（真记重）。无时间标注的行沿用旧口径
+        # （纯 key 去重）。10-24 豁免（见上方 _B2_146_EXEMPT_KEYS）保留作
+        # 同时间撞 key 时的兜底。
+        dedup_key = (key + "@" + annot_time) if (key and annot_time) else key
+        if dedup_key and dedup_key in _seen_keys:
+            if key in _B2_146_EXEMPT_KEYS and key not in _exempt_used:
+                _exempt_used.add(key)
+            else:
+                raise ValueError("台账 %d 年级 key 重复：%r（%s）" % (grade, key[:40], mm_dd))
+        if dedup_key:
+            _seen_keys.add(dedup_key)
+        # B2-147：期初行多次出现时只第一次重置基线，后续期初行须符合余额链（见下）。
+        if "期初余额" in desc:
+            if _seen_opening:
+                warn("台账 %d 年级期初行多次出现（%s），仅第一次重置基线" % (grade, mm_dd))
+            _seen_opening = True
         rows.append({"date": mm_dd, "desc": desc, "pts": pts, "balance": bal,
                      "key": key, "annot_time": annot_time,
                      "backfill": bf.group(1) if bf else None,
@@ -245,8 +363,19 @@ def parse_rows(block, grade):
     # S3 修复（2026-10-20）：余额链断裂改为熔断（fail-closed），与 sync_balance.parse_ledger
     # 的链式校验对齐。期初行（desc 含"期初余额"）重置基线。DeepSeek 终审阻断项。
     prev = None
+    _opening_seen = False
     for r in rows:
+        # B2-147：首行非期初行时直接信任为基线——改为告警（基线未经期初行锚定）。
+        if prev is None and "期初余额" not in r["desc"] and r is rows[0]:
+            warn("台账 %d 年级首行非期初行，直接信任为基线（%s）" % (grade, r["date"]))
         if "期初余额" in r["desc"]:
+            if _opening_seen:
+                # 后续期初行不再重置基线，须符合余额链。
+                if prev is not None and r["balance"] != prev + r["pts"]:
+                    raise ValueError("余额链断裂（期初行重复，%s 年级 %s）：%d+%d != %d" % (
+                        grade, r["date"], prev, r["pts"], r["balance"]))
+            else:
+                _opening_seen = True
             prev = r["balance"]
             continue
         if prev is not None and r["balance"] != prev + r["pts"]:
@@ -266,12 +395,19 @@ def complete_year(mm_dd, today):
 
 def load_time_sources():
     """读 data_src/points_time_source.json（DeepSeek 终审记录）；缺失 → 空映射（新条目默认 entry）。"""
+    # B2-160：JSON 损坏/权限错误/非 dict 均返回空映射并告警，不再整轮熔断。
     try:
         with open(TIME_SOURCE_FILE, encoding="utf-8") as f:
             d = json.load(f)
+        if not isinstance(d, dict):
+            warn("时间源文件非 dict，已按空映射处理：%s" % TIME_SOURCE_FILE)
+            return {}
         src = d.get("sources", {})
         return src if isinstance(src, dict) else {}
     except FileNotFoundError:
+        return {}
+    except (OSError, ValueError) as _e:
+        warn("时间源文件读取失败（按空映射处理）：%s" % _e)
         return {}
 
 
@@ -288,6 +424,10 @@ def extract_desc_time(desc):
     # 其中的 HH:MM 多为截止时刻而非记录时间，提取会把日志时间记错——整条跳过。
     _d = desc or ""
     if any(_k in _d for _k in ("没交", "漏交", "未交", "截止")):
+        return None
+    # B2-154：描述中不含截止语义的 HH:MM 仍被误取为计分时间——须含时间语境词
+    # （提交/发回/照片/时间/交）才提取，否则不认。
+    if not any(_k in _d for _k in ("提交", "发回", "照片", "时间", "交", "上传", "发送")):
         return None
     m = DESC_TIME_RE.search(_d)
     if not m:
@@ -306,7 +446,8 @@ def resolve_log_time(r, grade, today, sources):
     返回 (time, time_source)，无时间 → (None, None)。
     触发熔断条件 → raise ValueError。
     """
-    key = r.get("key", "")
+    # B2-152：key 规范化（strip＋小写＋内部空格折叠），防大小写/空格差异绕过 G2 比对。
+    key = re.sub(r"\s+", " ", (r.get("key", "") or "").strip()).lower()
     annot_time = r.get("annot_time")
     full_date = complete_year(r["date"], today)
 
@@ -326,14 +467,18 @@ def resolve_log_time(r, grade, today, sources):
         raise ValueError("G1 熔断：time 格式非法 %r（%s）" % (annot_time, key[:40]))
 
     # time_source：终审记录优先；新条目默认 entry（@HH:MM 即入账时刻 T3）
-    rec = sources.get(key)
+    # sources 的 key 同样规范化后比对。
+    _norm_sources = {re.sub(r"\s+", " ", str(_k).strip()).lower(): _v
+                     for _k, _v in (sources or {}).items()}
+    rec = _norm_sources.get(key)
     if rec is not None:
         src = rec.get("source")
         if src not in TIME_SOURCE_ENUM:
             raise ValueError("G2 熔断：time_source 枚举外 %r（%s）" % (src, key[:40]))
-        if rec.get("time") != annot_time:
+        _rec_time = (rec.get("time") or "").strip()
+        if _rec_time != annot_time:
             raise ValueError("G2 熔断：台账 @%s 与终审记录 %s 不一致（%s），疑似事后改动"
-                             % (annot_time, rec.get("time"), key[:40]))
+                             % (annot_time, _rec_time, key[:40]))
     else:
         src = "entry"
 
@@ -389,7 +534,11 @@ def build_log(grade, rows, today, generated_at):
     300 条）；前端只展示最近 3 天、区域内滚动；同入账日有时刻者按时刻
     倒序在前、无时刻者随后保持台账正序；reason 经 simplify_desc + B5
     断言；time 精确到分钟（台账 @HH:MM），schema 1.3。"""
-    cutoff = today - timedelta(days=7)
+    # B2-197：窗口参数集中为常量（days/max_items），改一处即全改。
+    LOG_WINDOW_DAYS = 7
+    LOG_MAX_ITEMS = 300
+    # B2-150：cutoff 用 today-6（< 比较保留 7 天；此前 today-7 保留 8 天，与“近 7 天”差一天）。
+    cutoff = today - timedelta(days=LOG_WINDOW_DAYS - 1)
     sources = load_time_sources()
     dated = []
     for idx, r in enumerate(rows):
@@ -398,7 +547,14 @@ def build_log(grade, rows, today, generated_at):
             dt = datetime.strptime(full, "%Y-%m-%d").date()
         except ValueError:
             raise ValueError("非法日期：%s" % r["date"])
-        if dt < cutoff:
+        # B2-149：窗口过滤用入账日期 pdt（补记行 = backfill 日），而非名义日期 dt。
+        _pdt0 = dt
+        if r.get("backfill"):
+            try:
+                _pdt0 = datetime.strptime(r["backfill"], "%Y-%m-%d").date()
+            except ValueError:
+                raise ValueError("backfill 日期非法：%s" % r["backfill"])
+        if _pdt0 < cutoff:
             continue
         if "期初余额" in r["desc"]:
             continue  # 基线标记行，非积分变动，不进日志
@@ -437,28 +593,37 @@ def build_log(grade, rows, today, generated_at):
     # 额外保留）：7 天窗口全量输出、不再按条数截断（前端只展示最近 3 天、
     # 区域内滚动，见模板 LOG_DISPLAY_DAYS）；仅保留 300 条安全上限防异常
     # 数据膨胀。取消负分额外保留：3 天内全量可见，不存在被挤出。
-    selected = dated[:300]
-    truncated = len(dated) > len(selected)
-    items = []
+    # B2-151：先对全部窗口条目做敏感词过滤（filtered_count 含被截条目），再截断到上限；
+    # 超限时告警（此前先截断再过滤，filtered_count 失真且超限无告警）。
+    _all_items = []
     filtered_count = 0
-    for dt, pdt, t, t_src, idx, r in selected:
-        reason = simplify_desc(r["desc"])
-        if len(reason) > 40:
-            reason = reason[:40] + "…"  # 上限 40 字，超长截断加 …
+    for dt, pdt, t, t_src, idx, r in dated:
+        # B2-200：敏感词检查用完整 desc（此前先截断 40 字再检查，敏感词在第 40 字后可漏检）。
+        reason_full = simplify_desc(r["desc"])
         filtered = False
-        hits = _assert_lib.find_forbidden_terms(reason)
+        hits = _assert_lib.find_forbidden_terms(reason_full)
         if hits:
-            # B5：命中即替换，不阻断整体；明细打 WARN 供 DeepSeek 抽查
             warn("敏感词命中 grade=%d date=%s hits=%r → 替换为'学习记录'"
                  % (grade, r["date"], hits))
             err_write("FILTERED grade=%d date=%s hits=%s" % (grade, r["date"], ", ".join(hits)))
-            reason = "学习记录"
+            reason_full = "学习记录"
             filtered = True
             filtered_count += 1
+        reason = reason_full
+        if len(reason) > 40:
+            reason = reason[:40] + "…"  # 上限 40 字，超长截断加 …
+        _all_items.append((dt, pdt, t, t_src, idx, r, reason, filtered))
+    selected = _all_items[:LOG_MAX_ITEMS]
+    truncated = len(_all_items) > len(selected)
+    if truncated:
+        warn("积分日志超限：窗口内 %d 条，仅保留最新 %d 条" % (len(_all_items), len(selected)))
+    items = []
+    for dt, pdt, t, t_src, idx, r, reason, filtered in selected:
         pts = r["pts"]
         # KB-POST-2026-10-22：t/t_src 已在排序前解析并通过 G3 复核（见 dated 构建处）
         item = {
-            "date": r["date"],  # MM-DD（本期不跨年；跨年时 complete_year 输出 YYYY-MM-DD）
+            # B2-199：跨年时输出完整 YYYY-MM-DD，MM-DD 在跨年窗口内会错位。
+            "date": complete_year(r["date"], today) if complete_year(r["date"], today)[:4] != str(today.year) else r["date"],
             "time": t,  # HH:MM 或 null（无计分时间）
             "time_source": t_src,  # submit/parent_confirm/entry/deadline 或 null（溯源，不前端展示）
             "reason": reason,
@@ -476,7 +641,7 @@ def build_log(grade, rows, today, generated_at):
         "schema_version": POINTS_LOG_SCHEMA,
         "grade": grade,
         "generated_at": generated_at,
-        "window": {"days": 7, "max_items": 300},
+        "window": {"days": LOG_WINDOW_DAYS, "max_items": LOG_MAX_ITEMS},
         "items": items,
         "truncated": truncated,
         "filtered_count": filtered_count,
@@ -486,10 +651,18 @@ def build_log(grade, rows, today, generated_at):
 
 
 def build_shop(grade, balance, generated_at):
+    # B2-196：balance 须为数值，tiers 缺键即报错（此前缺键抛 KeyError 无上下文）。
+    if not isinstance(balance, (int, float)) or isinstance(balance, bool):
+        raise ValueError("build_shop balance 非数值：%r" % (balance,))
+    _tiers = []
+    for _t in SHOP_TIERS:
+        if not all(_k in _t for _k in ("pts", "name", "kind")):
+            raise ValueError("SHOP_TIERS 缺键：%r" % (_t,))
+        _tiers.append({"pts": _t["pts"], "name": _t["name"], "kind": _t["kind"]})
     d = {
         "schema_version": "1.0",
         "grade": grade,
-        "tiers": [{"pts": t["pts"], "name": t["name"], "kind": t["kind"]} for t in SHOP_TIERS],
+        "tiers": _tiers,
         "current_balance": balance,
         "generated_at": generated_at,
         "rule_source": "规则手册第85行",
@@ -518,28 +691,53 @@ def r4_diff_check(snapshot_before):
     cur = git("-c", "core.quotepath=false", "diff", "--stat")
     if cur.returncode != 0:
         raise ValueError("git diff --stat 执行失败")  # P2：校验禁用 assert（M1 原则）
-    allowed_data = {
-        "data/stats_grade_5.json", "data/stats_grade_6.json",
-        "data/points_log_5.json", "data/points_log_6.json",
-        "data/shop_grade_5.json", "data/shop_grade_6.json",
-    }
+    allowed_data = set(STASH_PATHS)
     template_name = "templates/积分看板_全新版式样板.html"
     changed = set()
     for ln in cur.stdout.splitlines():
         m = re.match(r"^\s*(.+?)\s+\|\s+(\d+)", ln)
         if m:
             changed.add(m.group(1).strip())
+        else:
+            # B2-162：--stat 二进制文件行（如 "x.bin | Bin 0 -> 123 bytes"）不匹配
+            # 数字正则，此前静默跳过致 R4 绕过；现一并计入 changed。
+            mb = re.match(r"^\s*(.+?)\s+\|\s+Bin\b", ln)
+            if mb:
+                changed.add(mb.group(1).strip())
+    # B2-161：snapshot_before 形参此前未使用——快照是构建前 diff，构建前已脏的
+    # 文件不是本次构建的改动，不计入 unexpected（本次构建只对新增变更负责）。
+    _before = set()
+    if snapshot_before:
+        for ln in str(snapshot_before).splitlines():
+            m = re.match(r"^\s*(.+?)\s+\|\s+(\d+)", ln)
+            if m:
+                _before.add(m.group(1).strip())
+            else:
+                mb = re.match(r"^\s*(.+?)\s+\|\s+Bin\b", ln)
+                if mb:
+                    _before.add(mb.group(1).strip())
     tolerated = sorted(changed & R4_TOLERATED_PATHS)
     if tolerated:
         err_write("R4 容忍：docs 程序异常台账有未提交变更，不阻断数据同步：%s"
                   % ",".join(tolerated))
-    unexpected = changed - allowed_data - {template_name} - R4_TOLERATED_PATHS
+    unexpected = changed - allowed_data - {template_name} - R4_TOLERATED_PATHS - _before
     if unexpected:
-        raise ValueError("R4 拦截：出现非预期变更文件 %r" % sorted(unexpected))
+        _e = ValueError("R4 拦截：出现非预期变更文件 %r" % sorted(unexpected))
+        _e.unexpected_files = sorted(unexpected)
+        raise _e
     if template_name in changed:
         numstat = git("-c", "core.quotepath=false", "diff", "--numstat", "--", template_name)
-        parts = numstat.stdout.split()
-        added, deleted = int(parts[0]), int(parts[1])
+        # B2-162：numstat 空 stdout 抛 IndexError、二进制返回 "-" 抛 ValueError——
+        # 空输出即无变更（放行），"-" 按 0 计（行数变动另由 --stat 兜底）。
+        parts = (numstat.stdout or "").split()
+        if len(parts) < 2:
+            raise ValueError("R4 拦截：模板 numstat 解析失败（输出为空）")
+        def _num(x):
+            return 0 if x == "-" else int(x)
+        try:
+            added, deleted = _num(parts[0]), _num(parts[1])
+        except ValueError:
+            raise ValueError("R4 拦截：模板 numstat 解析失败（非数字）")
         if added + deleted > 4:
             raise ValueError("R4 拦截：模板行数变动 %d 超限（≤4）" % (added + deleted))
     return True
@@ -552,11 +750,12 @@ def _r4_recovery_alert(kind, detail):
                "detail": detail[:300], "pid": os.getpid()}
         with open(os.path.join(LOGS_DIR, "r4_recovery_alert.log"), "a", encoding="utf-8") as _f:
             _f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-    except Exception:
-        pass
+    except Exception as _e:
+        # B2-177：告警落盘失败时打印到 stderr，不再 except: pass 静默丢弃。
+        print("[build_stats][WARN] r4_recovery_alert 落盘失败：%s" % _e, file=sys.stderr, flush=True)
 
 
-def _r4_try_recover(exc_msg):
+def _r4_try_recover(exc_msg, files=None):
     """c项 R4恢复：仅处理“全部非预期文件均为 data/*.json 自动化脏”的情形。
 
     返回 (recovered, detail)：
@@ -566,18 +765,19 @@ def _r4_try_recover(exc_msg):
       已写 logs/r4_recovery_alert.log 告警，不归档、不重置、不碰 stash，调用方走原流程。
     归档范围铁律：data/*.json（单层）才可归档——看板 data 均为可再生副本（源在 hidden_files），
     归档仅保全重置前字节；模板/css/docs/scripts/其它一律不可归档。stash 绝不触碰（不用 git stash）。
+    B2-165：文件列表由调用方直接传入，不再从异常文案正则 + ast.literal_eval 解析
+    （文案一改恢复即失效）；exc_msg 仅作告警文本。
     """
-    import ast as _ast
-    import re as _re
-    m = _re.search(r"非预期变更文件\s*(\[.*\])", exc_msg)
-    if not m:
-        _r4_recovery_alert("unparsed", exc_msg[:200])
-        return False, "非 R4 非预期文件异常，不恢复"
-    try:
-        files = _ast.literal_eval(m.group(1))
-    except Exception:
-        _r4_recovery_alert("unparsed", exc_msg[:200])
-        return False, "非预期文件列表解析失败，不恢复"
+    if files is None:
+        m = re.search(r"非预期变更文件\s*(\[.*\])", exc_msg)
+        if not m:
+            _r4_recovery_alert("unparsed", exc_msg[:200])
+            return False, "非 R4 非预期文件异常，不恢复"
+        try:
+            files = ast.literal_eval(m.group(1))
+        except Exception:
+            _r4_recovery_alert("unparsed", exc_msg[:200])
+            return False, "非预期文件列表解析失败，不恢复"
     if not isinstance(files, list) or not files or not all(isinstance(f, str) for f in files):
         _r4_recovery_alert("unparsed", exc_msg[:200])
         return False, "非预期文件列表非法，不恢复"
@@ -585,24 +785,37 @@ def _r4_try_recover(exc_msg):
     if set(files) & set(staged):
         _r4_recovery_alert("staged", ",".join(sorted(set(files) & set(staged)))[:200])
         return False, "含已暂存文件，不恢复"
-    non_data = [f for f in files if not _re.fullmatch(r"data/[^/]+\.json", f)]
+    non_data = [f for f in files if not re.fullmatch(r"data/[^/]+\.json", f)]
     if non_data:
         _r4_recovery_alert("non_data", ",".join(sorted(non_data))[:300])
         return False, "含不可归档改动：" + ",".join(sorted(non_data))
-    stamp = datetime.now(TZ).strftime("%Y%m%d-%H%M%S")
+    # B2-166：归档目录名加微秒，同秒多次恢复不再覆盖。
+    stamp = datetime.now(TZ).strftime("%Y%m%d-%H%M%S-%f")
     adir = os.path.join(LOGS_DIR, "dirty_archive", "%s_%d" % (stamp, os.getpid()))
     os.makedirs(adir, exist_ok=True)
     head = git("rev-parse", "HEAD").stdout.strip()
     manifest = {"ts": datetime.now(TZ).isoformat(timespec="seconds"), "pid": os.getpid(),
                 "head": head, "reason": "R4 data dirt recovery", "files": sorted(files),
-                "note": "data 均为可再生副本（源在 hidden_files）；归档仅保全重置前字节"}
+                "note": "data 均为可再生副本（源在 hidden_files）；归档仅保全重置前字节",
+                "sha256": {}, "missing": []}
     for f in sorted(files):
         src_p = os.path.join(REPO_DIR, f)
         if os.path.exists(src_p):
             with open(src_p, "rb") as _fi:
                 blob = _fi.read()
-            with open(os.path.join(adir, os.path.basename(f)), "wb") as _fo:
+            # B2-164：归档后读回校验字节完整性（sha256 存入 manifest）。
+            _dest = os.path.join(adir, os.path.basename(f))
+            with open(_dest, "wb") as _fo:
                 _fo.write(blob)
+            _h = hashlib.sha256(blob).hexdigest()
+            with open(_dest, "rb") as _fr:
+                if hashlib.sha256(_fr.read()).hexdigest() != _h:
+                    _r4_recovery_alert("archive_corrupt", f)
+                    return False, "归档校验失败（%s），不恢复" % f
+            manifest["sha256"][f] = _h
+        else:
+            # B2-164：已删除文件不静默跳过，在 manifest 里记 missing。
+            manifest["missing"].append(f)
     with open(os.path.join(adir, "manifest.json"), "w", encoding="utf-8") as _fm:
         _fm.write(json.dumps(manifest, ensure_ascii=False, indent=1))
     r = git("checkout", "--", *sorted(files))
@@ -627,15 +840,31 @@ def semantic_diff(old_obj, new_obj, generated_at):
     """
     if not isinstance(old_obj, dict):
         return True, "no_old"
-    _o = dict(old_obj)
-    _n = dict(new_obj)
-    _o.pop("generated_at", None)
-    _n.pop("generated_at", None)
+    # B2-175：递归移除嵌套 generated_at（此前只移除顶层，嵌套时间戳仍参与比较致无谓重写）；
+    # 时间戳解析为 datetime 比较（此前字符串比较在格式不一致时误判）。
+    def _strip_ga(o):
+        if isinstance(o, dict):
+            return {k: _strip_ga(v) for k, v in o.items() if k != "generated_at"}
+        if isinstance(o, list):
+            return [_strip_ga(x) for x in o]
+        return o
+    _o = _strip_ga(old_obj)
+    _n = _strip_ga(new_obj)
     if _o == _n:
         return False, "no_semantic_change"
-    _old_ga = old_obj.get("generated_at") or ""
-    if _old_ga > generated_at:
+    def _parse_ga(x):
+        try:
+            return datetime.fromisoformat(str(x).replace("Z", "+00:00"))
+        except Exception:
+            return None
+    _old_ga = _parse_ga(old_obj.get("generated_at") or "")
+    _new_ga = _parse_ga(generated_at)
+    if _old_ga is not None and _new_ga is not None and _old_ga > _new_ga:
         return False, "monotonic_guard"
+    if _old_ga is None or _new_ga is None:
+        # 无法解析时回落字符串比较（缺失时单调保护失效，告警）。
+        if (old_obj.get("generated_at") or "") > generated_at:
+            return False, "monotonic_guard"
     return True, "changed"
 
 
@@ -643,32 +872,74 @@ def _strip_board_names(obj):
     """看板禁词（2026-10-24 家长令）：发布数据不得出现 deepseek/gemini 两词。
     递归做中性替换（终审/初审），只动发布副本，源文件原文不动。"""
     if isinstance(obj, str):
-        return re.sub(r'(?i)deepseek', '终审', re.sub(r'(?i)gemini', '初审', obj))
+        # B2-176：词边界防误伤子串；键也替换（此前只处理值）。
+        return re.sub(r'(?i)(?<![A-Za-z])deepseek(?![A-Za-z])', '终审',
+                      re.sub(r'(?i)(?<![A-Za-z])gemini(?![A-Za-z])', '初审', obj))
     if isinstance(obj, list):
         return [_strip_board_names(x) for x in obj]
     if isinstance(obj, dict):
-        return {k: _strip_board_names(v) for k, v in obj.items()}
+        return {_strip_board_names(k) if isinstance(k, str) else k: _strip_board_names(v)
+                for k, v in obj.items()}
     return obj
 
 
 def write_json_atomic(path, obj):
     """写 JSON 后读回校验（§7.3 生成端）；失败 raise。
     fix2：tmp 名加 pid，避免并发写同一 tmp 交错（与 build_trends 同款）。"""
+    # B2-174：写后 fsync 再 replace；失败清理残留 .tmp.<pid> 文件（此前校验失败不清理）。
     obj = _strip_board_names(obj)
     tmp = path + ".tmp.%d" % os.getpid()
-    with open(tmp, "w", encoding="utf-8") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=2)
-        f.write("\n")
-    with open(tmp, encoding="utf-8") as f:
-        back = json.load(f)
-    if back != obj:
-        # P2：校验禁用 assert（M1 原则）；raise 前先写诊断日志，调用方按熔断处理
-        err_write("write_json_atomic 读回不一致：%s" % path)
-        raise ValueError("JSON 写后读回不一致：%s" % path)
-    os.replace(tmp, path)
+    try:
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False, indent=2)
+            f.write("\n")
+            f.flush()
+            os.fsync(f.fileno())
+        with open(tmp, encoding="utf-8") as f:
+            back = json.load(f)
+        if back != obj:
+            # P2：校验禁用 assert（M1 原则）；raise 前先写诊断日志，调用方按熔断处理
+            err_write("write_json_atomic 读回不一致：%s" % path)
+            raise ValueError("JSON 写后读回不一致：%s" % path)
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            if os.path.exists(tmp):
+                os.remove(tmp)
+        except Exception:
+            pass
+        raise
 
 
-def main():
+# B2-181/B2-170：main 级状态（stash 恢复与 build 锁关闭须在异常时也执行）。
+_BS_STATE = {"stashed": False, "stash_ref": None, "restored": False,
+             "lock_fp": None}
+
+
+def _bs_restore_stash_fallback():
+    """B2-181：main 异常退出时的 stash 恢复兜底（按 ref 直接 pop）。"""
+    if not _BS_STATE.get("stashed") or _BS_STATE.get("restored"):
+        return
+    _BS_STATE["restored"] = True
+    try:
+        _ref = _BS_STATE.get("stash_ref")
+        if not _ref:
+            return
+        _lst = git("stash", "list", "--format=%H")
+        _hashes = [ln.strip() for ln in (_lst.stdout or "").splitlines() if ln.strip()]
+        if _ref not in _hashes:
+            err_write("NEED-REVIEW B2-181 兜底恢复：stash 条目已不在 list（ref=%s）" % _ref)
+            return
+        _pr = git("stash", "pop", _ref)
+        if _pr.returncode != 0:
+            err_write("NEED-REVIEW B2-181 兜底恢复 pop 失败：" + (_pr.stderr or "")[:200])
+    except Exception as _e:
+        try:
+            err_write("NEED-REVIEW B2-181 兜底恢复异常：%s" % _e)
+        except Exception:
+            pass
+
+def _main_impl():
     if "--selftest" in sys.argv:
         return selftest()
 
@@ -691,16 +962,24 @@ def main():
     # 只有一个 build 写 data/*.json，防产物交错 + generated_at 乱序。
     # 抢不到锁 → 跳过本轮（fail-safe），不报错。
     _lock_fp = open("/tmp/build_stats.lock", "w")
+    _BS_STATE["lock_fp"] = _lock_fp  # B2-170：锁句柄登记，异常时由外层 finally 关闭。
     try:
         fcntl.flock(_lock_fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except OSError:
         log("skip: build lock held（另一 build 正在运行，本轮跳过）")
+        try:
+            _lock_fp.close()
+        except Exception:
+            pass
+        _BS_STATE["lock_fp"] = None
         return 0
 
     os.makedirs(DATA_DIR, exist_ok=True)
     os.makedirs(LOGS_DIR, exist_ok=True)
-    today = datetime.now(TZ).date()
-    generated_at = datetime.now(TZ).isoformat(timespec="seconds")
+    # B2-198：today 与 generated_at 用同一次 now（此前两次调用跨午夜可差一天）。
+    _now0 = datetime.now(TZ)
+    today = _now0.date()
+    generated_at = _now0.isoformat(timespec="seconds")
 
     # R4-1（2026-10-20根治，DeepSeek方案）：先自动 stash 未提交改动 → pull --ff-only。
     # R4-2（2026-10-20再根治，用户报障+DeepSeek裁决）：pop 延后到全流程结束
@@ -745,19 +1024,28 @@ def main():
 
     # A 方案（定案 T+1）：显式 pathspec——只 stash 本脚本 6 个产物文件，
     # STASH_PATHS 外的操作者改动全程留在工作区、永不被本脚本代收。
+    # B2-168：stash 判定不用 stdout 含 "Saved working directory"（locale 不同可误判），
+    # 改用 push 前后 stash list 对比（新增条目即 stashed）。
+    _stash_before = git("stash", "list", "--format=%H").stdout.split()
     stash_r = git("stash", "push", "-u", "-m", "build_stats-auto",
                   "--", *STASH_PATHS)
-    stashed = (stash_r.returncode == 0 and "Saved working directory" in stash_r.stdout)
+    _stash_after = git("stash", "list", "--format=%H").stdout.split()
+    _new_refs = [h for h in _stash_after if h not in _stash_before]
+    stashed = (stash_r.returncode == 0 and len(_new_refs) == 1)
     _stash_ref = None
     if stashed:
-        _stash_ref = git("rev-parse", "stash@{0}").stdout.strip()
+        _stash_ref = _new_refs[0]
+        _BS_STATE.update({"stashed": True, "stash_ref": _stash_ref, "restored": False})
         _stash_log("push", ref=_stash_ref, msg="build_stats-auto")
 
+    _restored = [False]  # B2-169：已恢复标志，重复调用不再误报 stash_missing。
     def _restore_stash():
-        if not stashed:
+        if not stashed or _restored[0]:
             return
-        # A 方案 1c（定案）：按 push 时记录的 ref 在 stash list 中定位下标，
-        # 只 pop 本次条目，防窗口内他人 push 后错 pop 别人的 stash。
+        _restored[0] = True
+        _BS_STATE["restored"] = True
+        # B2-167：按 push 时记录的 ref（commit hash）直接 pop，不再按下标定位
+        # （窗口内他人 stash 会使下标漂移、错 pop 别人的 stash）。
         lst = git("stash", "list", "--format=%H")
         hashes = [ln.strip() for ln in (lst.stdout or "").splitlines()
                   if ln.strip()]
@@ -769,7 +1057,7 @@ def main():
             _stash_log("stash_missing", ref=_stash_ref)
             _orphan_alert("stash_missing", _stash_ref, msg)
             return
-        pop_r = git("stash", "pop", "stash@{%d}" % hashes.index(_stash_ref))
+        pop_r = git("stash", "pop", _stash_ref)
         if pop_r.returncode != 0:
             msg = "R4 告警：stash pop 冲突，改动保留在 stash 中，待人工处理"
             warn(msg)
@@ -785,7 +1073,6 @@ def main():
     # 真分叉 exit 2 熔断）。校验全程在共享 git_push.lock 内（与 watchd /
     # task_ingest 串行）；瞬时失败重试 2 次（间隔 5s）再熔断。
     # R4"真分叉必须停"原则不变。
-    import time as _time
     _GIT_PUSH_LOCK = os.path.join(os.path.dirname(REPO_DIR), "logs",
                                   "git_push.lock")
 
@@ -793,34 +1080,41 @@ def main():
         # P1#5 配套（2026-10-20）：watchd 持 git_push.lock 运行消费者时经
         # KANBAN_GIT_LOCK_HELD=1 声明——本进程已在外层临界区内，不再重复取锁
         # （flock 跨进程互斥，重复取必然超时误判）。返回 /dev/null 句柄占位。
+        # B2-171：旁路使用时记日志（此前无日志、无二次校验）；锁文件打开失败捕获 OSError。
         if os.environ.get("KANBAN_GIT_LOCK_HELD") == "1":
+            warn("git 锁旁路：KANBAN_GIT_LOCK_HELD=1（外层已持锁），跳过取锁")
             return open(os.devnull, "w")
-        os.makedirs(os.path.dirname(_GIT_PUSH_LOCK), exist_ok=True)
-        fp = open(_GIT_PUSH_LOCK, "w")
-        t0 = _time.time()
+        try:
+            os.makedirs(os.path.dirname(_GIT_PUSH_LOCK), exist_ok=True)
+            fp = open(_GIT_PUSH_LOCK, "w")
+        except OSError as _e:
+            warn("git_push.lock 打开失败：%s" % _e)
+            return None
+        t0 = time.time()
         while True:
             try:
                 fcntl.flock(fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 return fp
             except OSError:
-                if _time.time() - t0 >= timeout:
+                if time.time() - t0 >= timeout:
                     fp.close()
                     return None
-                _time.sleep(0.5)
+                time.sleep(0.5)
 
     def _foreign_dirty_paths():
         """A 方案 1d（定案）：当前工作区脏路径中落在 STASH_PATHS 外的集合。
         显式路径 stash 后，本脚本产物恒干净；同步失败若与外部脏改动相关，
         绝不代人 stash——由调用方记 foreign_dirty_tree 跳过本轮。"""
-        st = git("-c", "core.quotepath=false", "status", "--porcelain")
+        # B2-173：用 --porcelain -z（NUL 分隔），重命名/引号/换行文件名不再错判。
+        st = git("-c", "core.quotepath=false", "status", "--porcelain", "-z")
         dirty = []
-        for ln in (st.stdout or "").splitlines():
-            if len(ln) < 4:
+        for entry in (st.stdout or "").split("\0"):
+            if len(entry) < 4:
                 continue
-            p = ln[3:].strip()
+            p = entry[3:].strip()
             if " -> " in p:
                 p = p.split(" -> ", 1)[1]
-            dirty.append(p.strip('"'))
+            dirty.append(p)
         return sorted(set(dirty) - set(STASH_PATHS))
 
     def _sync_once():
@@ -831,18 +1125,29 @@ def main():
             fr = git("fetch", "origin")
             if fr.returncode != 0:
                 return "fetch 失败：" + (fr.stderr or "")[:150]
-            head = git("rev-parse", "HEAD").stdout.strip()
-            remote = git("rev-parse", "origin/master").stdout.strip()
+            # B2-172：rev-parse 查 returncode，origin/master 缺失不再误判 DIVERGED。
+            _head_r = git("rev-parse", "HEAD")
+            _remote_r = git("rev-parse", "origin/master")
+            if _head_r.returncode != 0:
+                return "rev-parse HEAD 失败：" + (_head_r.stderr or "")[:150]
+            if _remote_r.returncode != 0:
+                return "rev-parse origin/master 失败（上游分支缺失）：" + (_remote_r.stderr or "")[:150]
+            head = _head_r.stdout.strip()
+            remote = _remote_r.stdout.strip()
             if head == remote:
                 return None
             anc = git("merge-base", "--is-ancestor", "HEAD", "origin/master")
             if anc.returncode == 0:
                 mg = git("merge", "--ff-only", "origin/master")
                 if mg.returncode != 0:
+                    # B2-172：merge 失败先查 FOREIGN_DIRTY，再区分冲突与其它失败，不再一律掩盖真因。
                     foreign = _foreign_dirty_paths()
                     if foreign:
                         return "FOREIGN_DIRTY:" + ",".join(foreign)
-                    return "ff 合并失败：" + (mg.stderr or "")[:150]
+                    _mg_err = (mg.stderr or "")[:150]
+                    if "CONFLICT" in (mg.stdout or "") + (mg.stderr or ""):
+                        return "ff 合并冲突：" + _mg_err
+                    return "ff 合并失败：" + _mg_err
                 return None
             # P1#4 修复（DeepSeek 审查 2026-10-20）：origin 是 HEAD 的祖先 = 本地
             # 领先（上次 push 失败遗留未推送提交），不是真分叉——放行走正常
@@ -863,7 +1168,7 @@ def main():
         if sync_err.startswith("FOREIGN_DIRTY:"):
             break  # 脏源在 STASH_PATHS 外：重试无意义，直接走跳过本轮
         if _attempt < 2:
-            _time.sleep(5)
+            time.sleep(5)
     if sync_err is not None and sync_err.startswith("FOREIGN_DIRTY:"):
         # A 方案 1d 落点（定案问题①：与 orphan 同源，记 stash 台账）：
         # 不代人 stash、不熔断，结构化留痕后跳过本轮（fail-safe exit 0）。
@@ -903,6 +1208,10 @@ def main():
     balances = {}
     for grade in (5, 6):
         rows = all_rows[grade]
+        # B2-188：空年级块时 rows[-1] 抛 IndexError 致 main 异常退出且 stash 未恢复——
+        # 此处显式熔断（parse_rows 已保证非空，此为防御性守卫）。
+        if not rows:
+            raise ValueError("台账 %d 年级行列表为空，无法取余额" % grade)
         bal = rows[-1]["balance"]
         balances[grade] = bal
         if bal < 0:
@@ -932,7 +1241,10 @@ def main():
                     datetime.now(TZ).isoformat(timespec="seconds"),
                     balances[5], balances[6]))
     except Exception as _e:
+        # B2-187：N3 对拍异常留完整 traceback（此前只截 120 字、无 traceback，排障困难）。
+        import traceback as _tb
         warn("N3 对拍自身异常（忽略，不影响产出）：%s" % str(_e)[:120])
+        err_write("N3_TRACEBACK\n" + _tb.format_exc())
 
     outputs = {}
     for grade in (5, 6):
@@ -953,11 +1265,16 @@ def main():
     for rel, obj in outputs.items():
         path = os.path.join(REPO_DIR, rel)
         old_obj = None
-        if os.path.exists(path):
+        # B2-180：was_new 区分“文件不存在”（True）与“文件存在但 JSON 损坏”（False，
+        # 旧文件损坏时 semantic_diff 误判为无旧文件、was_new 被误标 True，后续回滚
+        # 会 os.remove 删除旧文件）。损坏的旧文件记日志并按已存在处理。
+        _existed = os.path.exists(path)
+        if _existed:
             try:
                 with open(path, encoding="utf-8") as f:
                     old_obj = json.load(f)
-            except Exception:
+            except Exception as _je:
+                warn("旧文件 %s JSON 损坏（按已存在处理，回滚时 checkout 恢复）：%s" % (rel, _je))
                 old_obj = None
         should_write, reason = semantic_diff(old_obj, obj, generated_at)
         if not should_write:
@@ -966,9 +1283,25 @@ def main():
                 err_write("SKIP_WRITE %s reason=%s" % (rel, reason))
             continue
         write_json_atomic(path, obj)
-        changed_files.append((rel, old_obj is None))  # (路径, 是否为新建)
+        changed_files.append((rel, not _existed))  # (路径, 是否为新建)
 
     if not changed_files:
+        # B2-183：无语义变化时仍检查有无滞留未推提交（上次 push 失败遗留），有则推走，
+        # 不再因“无变化不 commit、不 push”让提交长期搁置。
+        _ahead = git("rev-list", "--count", "HEAD", "--not", "--remotes")
+        try:
+            _n_ahead = int((_ahead.stdout or "0").strip())
+        except Exception:
+            _n_ahead = 0
+        if _ahead.returncode == 0 and _n_ahead > 0:
+            _pp = git("push")
+            if _pp.returncode == 0:
+                log("幂等：无语义变化，但推走 %d 个滞留提交" % _n_ahead)
+            else:
+                warn("滞留提交 push 失败（下次重试）：%s" % (_pp.stderr or "")[:200])
+                err_write("滞留提交 push 失败")
+            _restore_stash()
+            return 0 if _pp.returncode == 0 else 3
         log("幂等：6 数据文件均无变化，不 commit")
         _restore_stash()
         return 0
@@ -985,7 +1318,7 @@ def main():
         # 不归档不重置，走原回滚+return 2。恢复绝不碰 stash（只 cp 归档 + checkout 指定文件）。
         _rec_done = False
         try:
-            _rec_done, _rec_detail = _r4_try_recover(str(e))
+            _rec_done, _rec_detail = _r4_try_recover(str(e), files=getattr(e, "unexpected_files", None))
         except Exception as _rec_e:
             warn("R4恢复异常（不阻断原流程）：%s" % _rec_e)
             _rec_done = False
@@ -1012,24 +1345,52 @@ def main():
                 err_write("NEED-REVIEW " + msg2)
                 _restore_stash()
                 return 2
-            # 回滚：模板 checkout；数据文件：新建的删除、已存在的 checkout
-            git("checkout", "--", TEMPLATE)
-            for rel, was_new in changed_files:
-                p = os.path.join(REPO_DIR, rel)
-                if was_new and os.path.exists(p):
-                    os.remove(p)
-                elif not was_new:
-                    git("checkout", "--", rel)
-            _restore_stash()
+            # 回滚：模板 checkout；数据文件：新建的删除、已存在的 checkout。
+            # B2-178：回滚 checkout 查 returncode，失败即告警（此前静默误判回滚完成）；
+            # B2-179：os.remove 前校验文件内容确为本次写入（防 was_new 误标误删旧文件）。
+            _rb_errs = []
+            try:
+                _rc = git("checkout", "--", TEMPLATE)
+                if _rc.returncode != 0:
+                    _rb_errs.append("模板 checkout 失败 rc=%d" % _rc.returncode)
+                for rel, was_new in changed_files:
+                    p = os.path.join(REPO_DIR, rel)
+                    if was_new and os.path.exists(p):
+                        # 校验：文件内容须与本次写入的 outputs[rel] 一致才删。
+                        try:
+                            with open(p, encoding="utf-8") as _f:
+                                _cur = json.load(_f)
+                            if _strip_board_names(_cur) != _strip_board_names(outputs[rel]):
+                                _rb_errs.append("%s 内容与本次写入不一致，跳过删除（防误删）" % rel)
+                                continue
+                        except Exception as _je:
+                            _rb_errs.append("%s 删除前校验失败，跳过删除：%s" % (rel, _je))
+                            continue
+                        os.remove(p)
+                    elif not was_new:
+                        _rc2 = git("checkout", "--", rel)
+                        if _rc2.returncode != 0:
+                            _rb_errs.append("%s checkout 失败 rc=%d" % (rel, _rc2.returncode))
+            finally:
+                if _rb_errs:
+                    warn("回滚不完整：%s" % "; ".join(_rb_errs))
+                    err_write("NEED-REVIEW 回滚不完整：" + "; ".join(_rb_errs))
+                _restore_stash()
             return 2
 
     # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
     # 提交前检查 scripts/ 是否有未提交改动；有则本次不提交 + 告警日志（fail-safe）。
     # 防 A类修复被功能提交卷入（程序异常台账 #1/#2）重演。
-    _dirty = git("status", "--porcelain", "--", "scripts/")
+    # B2-185：git status 查 returncode、加 -c core.quotepath=false（非 ASCII 文件名不再错判）。
+    _dirty = git("-c", "core.quotepath=false", "status", "--porcelain", "--", "scripts/")
+    if _dirty.returncode != 0:
+        warn("Q2 守卫 git status 失败 rc=%d，按脏处理跳过本次提交" % _dirty.returncode)
+        _restore_stash()
+        return 4
     _dirty_out = (_dirty.stdout or "").strip()
     if _dirty_out:
-        _dirty_files = "; ".join(l[:80] for l in _dirty_out.splitlines()[:10])
+        # B2-202：过滤空行，告警日志不再出现空条目。
+        _dirty_files = "; ".join(l[:80] for l in _dirty_out.splitlines()[:10] if l.strip())
         _alert = "%s | build_stats.py | scripts/ 脏，跳过本次提交 | %s" % (
             datetime.now(TZ).isoformat(timespec="seconds"), _dirty_files)
         warn(_alert)
@@ -1041,13 +1402,36 @@ def main():
         except Exception:
             pass
         _restore_stash()
-        return 0
+        # B2-186：脏守卫触发返回 4（此前返回 0，cron 无法区分“跳过”与“成功同步”）。
+        return 4
 
     # 提交（只加本方案的 6 数据文件；模板余额注入已废止，不再提交模板）
-    git("add", *outputs.keys())
+    # B2-184：git add 前校验 outputs 文件内容仍与本次写入一致（防写出后被手改卷入提交）。
+    for _rel, _obj in outputs.items():
+        _p = os.path.join(REPO_DIR, _rel)
+        try:
+            with open(_p, encoding="utf-8") as _f:
+                _cur = json.load(_f)
+            if _strip_board_names(_cur) != _strip_board_names(_obj):
+                warn("输出文件 %s 写出后被改动，跳过本次提交（防手改内容卷入）" % _rel)
+                err_write("NEED-REVIEW 输出文件写出后被改动：%s" % _rel)
+                _restore_stash()
+                return 2
+        except Exception as _e:
+            warn("输出文件 %s 校验失败，跳过本次提交：%s" % (_rel, _e))
+            _restore_stash()
+            return 2
+    _add_r = git("add", *outputs.keys())
+    if _add_r.returncode != 0:
+        warn("git add 失败 rc=%d：%s" % (_add_r.returncode, _add_r.stderr[:200]))
+        err_write("git add 失败：" + _add_r.stderr[:200])
+        _restore_stash()
+        return 3
     msg = "chore(balance): sync from ledger [auto]" 
     cp = git("commit", "-m", msg)
     if cp.returncode != 0:
+        # B2-182：commit 失败后 git reset HEAD，6 个产物不留在暂存区。
+        git("reset", "HEAD", "--", *outputs.keys())
         warn("git commit 失败：%s" % cp.stderr[:200])
         err_write("git commit 失败：" + cp.stderr[:200])
         _restore_stash()
@@ -1058,11 +1442,16 @@ def main():
         err_write("git push 失败：" + pp.stderr[:200])
         _restore_stash()
         return 3
-    log("已提交并推送：%s" % msg)
-    with open(os.path.join(LOGS_DIR, "build_stats.log"), "a", encoding="utf-8") as f:
-        f.write("%s ledger_sha256=%s balances=%s commit=%s\n" % (
-            generated_at, hashlib.sha256(ledger_bytes).hexdigest(),
-            balances, msg))
+    # B2-189：提交后日志写入加 OSError 保护（此前写失败会使已提交的运行以异常退出，
+    # 调用方误判为提交失败）；B2-203：一次写出，不再 log() 与 open().write() 两写。
+    _log_line = "%s 已提交并推送：%s ledger_sha256=%s balances=%s\n" % (
+        generated_at, msg, hashlib.sha256(ledger_bytes).hexdigest(), balances)
+    print("[build_stats] " + _log_line.strip(), flush=True)
+    try:
+        with open(os.path.join(LOGS_DIR, "build_stats.log"), "a", encoding="utf-8") as f:
+            f.write(_log_line)
+    except OSError as _e:
+        warn("build_stats.log 写入失败（提交已成功，不影响结果）：%s" % _e)
     _restore_stash()
     return 0
 
@@ -1071,7 +1460,7 @@ def main():
 # 自测：放行条件2（同日排序单测）+ §7.1 / §7.3 / §7.5
 # ---------------------------------------------------------------------------
 def selftest():
-    """自测 4 项，各录 1 段日志到 logs/build_stats_selftest.log。"""
+    """自测 11 组（T1–T11），各录 1 段日志到 logs/build_stats_selftest.log。"""
     os.makedirs(LOGS_DIR, exist_ok=True)
     slog = os.path.join(LOGS_DIR, "build_stats_selftest.log")
     results = []
@@ -1082,8 +1471,12 @@ def selftest():
             datetime.now(TZ).isoformat(timespec="seconds"),
             "PASS" if ok else "FAIL", name, detail)
         print(line, flush=True)
-        with open(slog, "a", encoding="utf-8") as f:
-            f.write(line + "\n")
+        # B2-201：自测日志写入加保护，LOGS_DIR 异常时自测整体不再异常退出。
+        try:
+            with open(slog, "a", encoding="utf-8") as f:
+                f.write(line + "\n")
+        except OSError:
+            pass
 
     today = datetime.now(TZ).date()
     gen = datetime.now(TZ).isoformat(timespec="seconds")
@@ -1175,6 +1568,28 @@ def selftest():
             rec("T3 §7.3 JSON损坏", True, "JSONDecodeError 正确抛出；前端按§7.3降级，生成端写后读回校验")
     except Exception as e:
         rec("T3 §7.3 JSON损坏", False, str(e)[:200])
+    # B2-195：T3b 真测 write_json_atomic 的读回校验（此前 T3 只测了 json.load 对坏 JSON
+    # 的反应，write_json_atomic 自身的写→读回→比对路径未覆盖）；固定路径文件用后清理。
+    _t3b_p = None
+    try:
+        import tempfile
+        _t3b_p = tempfile.mktemp(suffix=".json")
+        write_json_atomic(_t3b_p, {"x": 1, "y": [1, 2]})
+        with open(_t3b_p, encoding="utf-8") as _f:
+            assert json.load(_f) == {"x": 1, "y": [1, 2]}
+        rec("T3b 写后读回校验", True, "write_json_atomic 写→读回一致")
+    except Exception as e:
+        rec("T3b 写后读回校验", False, str(e)[:200])
+    finally:
+        if _t3b_p:
+            try:
+                os.unlink(_t3b_p)
+            except Exception:
+                pass
+        try:
+            os.unlink("/tmp/_selftest_json")
+        except Exception:
+            pass
 
     # --- T4 §7.5：敏感词命中 → 替换+计数，不阻断 ---
     try:
@@ -1298,22 +1713,30 @@ def selftest():
         rec("T9 A方案单点口径", False, str(e)[:200])
 
     # --- T10 N3 哨兵当日首轮判定（DeepSeek 定案问题④验收）---
+    # B2-192/B2-194：tp 预初始化为 None，unlink 放 finally（此前 unlink 在 try 末尾，
+    # 断言失败即残留临时文件；临时文件创建失败时 finally 的 unlink 也不抛 NameError）。
+    _t10_tp = None
     try:
         import tempfile
         with tempfile.NamedTemporaryFile("w", suffix=".log", delete=False, encoding="utf-8") as tf:
-            tp = tf.name
-        assert _n3_sentinel_already_logged_today(tp, "2026-10-20") is False, "空日志应为首轮"
-        with open(tp, "a", encoding="utf-8") as f:
+            _t10_tp = tf.name
+        assert _n3_sentinel_already_logged_today(_t10_tp, "2026-10-20") is False, "空日志应为首轮"
+        with open(_t10_tp, "a", encoding="utf-8") as f:
             f.write("2026-10-19T23:00:00+08:00 N3 sentinel OK g5=1 g6=2\n")
-        assert _n3_sentinel_already_logged_today(tp, "2026-10-20") is False, "只有昨日行应为首轮"
-        with open(tp, "a", encoding="utf-8") as f:
+        assert _n3_sentinel_already_logged_today(_t10_tp, "2026-10-20") is False, "只有昨日行应为首轮"
+        with open(_t10_tp, "a", encoding="utf-8") as f:
             f.write("2026-10-20T08:00:00+08:00 N3 sentinel OK g5=170 g6=274\n")
-        assert _n3_sentinel_already_logged_today(tp, "2026-10-20") is True, "今日已有行应非首轮"
-        assert _n3_sentinel_already_logged_today(tp + ".missing", "2026-10-20") is False, "文件缺失应为首轮"
-        os.unlink(tp)
+        assert _n3_sentinel_already_logged_today(_t10_tp, "2026-10-20") is True, "今日已有行应非首轮"
+        assert _n3_sentinel_already_logged_today(_t10_tp + ".missing", "2026-10-20") is False, "文件缺失应为首轮"
         rec("T10 N3首轮判定", True, "空/只有昨日行/文件缺失→首轮；今日已有行→非首轮")
     except Exception as e:
         rec("T10 N3首轮判定", False, str(e)[:200])
+    finally:
+        if _t10_tp:
+            try:
+                os.unlink(_t10_tp)
+            except Exception:
+                pass
 
     # --- T11 R4 容忍 docs/程序异常台账.md（2026-10-21 熔断根因修复验收）---
     try:
@@ -1335,16 +1758,20 @@ def selftest():
             globals()["git"] = _real_git
         globals()["git"] = lambda *a: _FR2()
         try:
+            # B2-191：SystemExit 显式捕获（此前外层只捕 Exception，SystemExit 可逃逸致
+            # rec FAIL 与 failed 汇总不执行）；mock 校验调用参数（此前 lambda 忽略参数）。
             try:
                 r4_diff_check("")
-                raise SystemExit("未知文件未被拦截")
             except ValueError as ve:
                 assert "R4 拦截" in str(ve), str(ve)
+            else:
+                raise AssertionError("未知文件未被拦截")
         finally:
             globals()["git"] = _real_git
         rec("T11 R4容忍docs", True,
             "docs/程序异常台账.md 未提交变更放行；未知文件仍 R4 拦截")
-    except Exception as e:
+    except BaseException as e:
+        # B2-191：BaseException 捕获 SystemExit，mock 恢复后记 FAIL。
         try:
             globals()["git"] = _real_git
         except Exception:
@@ -1354,6 +1781,29 @@ def selftest():
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
     return 1 if failed else 0
+
+
+def main():
+    """B2-181/B2-170：外层 try/finally——异常退出时也恢复 stash、关闭 build 锁。
+    _main_impl 内各 return 出口仍手动调 _restore_stash（正常路径）；本层只兜底异常路径。"""
+    try:
+        return _main_impl()
+    finally:
+        try:
+            _bs_restore_stash_fallback()
+        except Exception:
+            pass
+        _lf = _BS_STATE.get("lock_fp")
+        if _lf is not None:
+            try:
+                fcntl.flock(_lf, fcntl.LOCK_UN)
+            except Exception:
+                pass
+            try:
+                _lf.close()
+            except Exception:
+                pass
+            _BS_STATE["lock_fp"] = None
 
 
 if __name__ == "__main__":
