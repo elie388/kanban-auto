@@ -517,7 +517,9 @@
     font-size:16px; font-weight:700;
     overflow:visible; white-space:pre-line; word-break:break-word;
   }
-  .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
+  .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px; white-space:pre-line;}
+  .task-progress .dlg-a{color:#1F4E79;}
+  .task-progress .dlg-b{color:#2E7D32;}
   .task.done .task-name{color:#1E9E52;}
   .task.done{background:#F2F9F4; position:relative; padding-top:20px;}
   .task.is-exempt{background:#FAFBFC; border-style:dashed;}
@@ -1717,6 +1719,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
   }
+  /* 对话 A/B 着色（2026-11-07 家长令：看板对话与打印版同口径，A 深蓝、B 深绿）：
+     仅对行首为 A:/B: 且后有内容的行着色，其余行原样转义；配合 .task-progress 的 pre-line 换行。 */
+  function dlgColor(detail){
+    if(!detail) return '';
+    return String(detail).split('\n').map(function(line){
+      var e = esc(line);
+      if(/^[AB]:\s+\S/.test(line)) return '<span class="dlg-' + line.charAt(0).toLowerCase() + '">' + e + '</span>';
+      return e;
+    }).join('\n');
+  }
   function fmtQ(t){
     if(!t) return t;
     var ms = t.match(/[A-E][.、．]/g);
@@ -1845,7 +1857,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         /* 三态显示名（2026-10-20 家长定）：pending 统一显示"📝 待提交"，
            不再按 deadline_today 拆分显示（原 P1-B 拆分取消）。 */
         var sub2 = esc(t.subject || '') + (SOURCE_LABEL[t.source] ? ' · ' + esc(SOURCE_LABEL[t.source]) : '');
-        if(t.detail) sub2 += ' · ' + esc(t.detail);
+        if(t.detail) sub2 += ' · ' + dlgColor(t.detail);
         else if(t.estimate_min) sub2 += ' \u00B7 约' + t.estimate_min + '分钟';
         /* 待改正标记（2026-10-20 家长拍板）：待订正未清零的任务显示，
            与 done 新口径配套（还没完全改正不算已完成）。
@@ -5707,7 +5719,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261107-nopredsort';
+  var KB_BUILD = '20261107-dlgfmt';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
