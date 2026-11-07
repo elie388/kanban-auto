@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-07T18:02:40+08:00",
+  "generated_at": "2026-11-08T00:08:56+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-07",
+      "time": "23:59",
+      "time_source": "entry",
+      "reason": "家务连续4天未做",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-06",
       "time": "23:59",
@@ -383,105 +392,6 @@
       "reason": "12点没睡觉扣50",
       "pts": -50,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "23:59",
-      "time_source": "entry",
-      "reason": "整理桌面",
-      "pts": 1,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "21:43",
-      "time_source": "entry",
-      "reason": "语文阅读第3题订正第三轮改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "21:26",
-      "time_source": "entry",
-      "reason": "英语阅读写作第13期第5题订正改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "21:26",
-      "time_source": "entry",
-      "reason": "每日读书朗读达标",
-      "pts": 12,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "20:35",
-      "time_source": "entry",
-      "reason": "周日英语卷词汇第10题订正改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "18:13",
-      "time_source": "entry",
-      "reason": "周日英语订正改对：词汇第5题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "18:13",
-      "time_source": "entry",
-      "reason": "周日英语订正改对：词汇第8题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:13",
-      "time_source": "entry",
-      "reason": "周日语文订正改对：多音字第3题第1空",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:13",
-      "time_source": "entry",
-      "reason": "周日语文订正改对：病句第4题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:13",
-      "time_source": "entry",
-      "reason": "周日语文订正改对：选词填空第6题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "09:13",
-      "time_source": "entry",
-      "reason": "考试DF1F0A三单元满分额外+100",
-      "pts": 100,
-      "sign": "plus",
       "filtered": false
     }
   ],

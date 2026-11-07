@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-07T18:02:40+08:00",
+  "generated_at": "2026-11-08T00:08:56+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-07",
+      "time": "23:59",
+      "time_source": "entry",
+      "reason": "家务连续5天未做",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-07",
       "time": "14:15",
@@ -536,249 +545,6 @@
       "reason": "12点没睡觉扣50",
       "pts": -50,
       "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "23:59",
-      "time_source": "entry",
-      "reason": "晾袜子",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "20:53",
-      "time_source": "entry",
-      "reason": "周日数学填空第2题订正改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "20:46",
-      "time_source": "entry",
-      "reason": "周日语文阅读第4题订正改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "20:44",
-      "time_source": "entry",
-      "reason": "周日英语小短文写作订正改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "20:30",
-      "time_source": "entry",
-      "reason": "英语阅读写作第13期第5题订正改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "19:49",
-      "time_source": "entry",
-      "reason": "语文周日卷订正第二轮：基础第7题第2小题改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "19:49",
-      "time_source": "entry",
-      "reason": "语文周日卷订正第二轮：阅读第2题改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "19:49",
-      "time_source": "entry",
-      "reason": "语文周日卷订正第二轮：习作改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:36",
-      "time_source": "entry",
-      "reason": "每日读书达标 +6",
-      "pts": 6,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:28",
-      "time_source": "entry",
-      "reason": "周日语文试卷订正：基础第2题改对 +2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:28",
-      "time_source": "entry",
-      "reason": "周日语文试卷订正：基础第3题湾改对 +2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:28",
-      "time_source": "entry",
-      "reason": "周日语文试卷订正：基础第3题欧改对 +2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:28",
-      "time_source": "entry",
-      "reason": "周日语文试卷订正：基础第5题第1小题改对 +2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:28",
-      "time_source": "entry",
-      "reason": "周日语文试卷订正：阅读第5题改对 +2",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:17",
-      "time_source": "entry",
-      "reason": "周日英语订正改对：词汇第3题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:17",
-      "time_source": "entry",
-      "reason": "周日英语订正改对：单选第20题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "16:17",
-      "time_source": "entry",
-      "reason": "周日英语订正改对：阅读第25题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "15:59",
-      "time_source": "entry",
-      "reason": "周日数学第二轮订正改对_解决问题第3题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "15:21",
-      "time_source": "entry",
-      "reason": "周日英语订正改对_单选11",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "15:21",
-      "time_source": "entry",
-      "reason": "周日英语订正改对_单选16",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "15:21",
-      "time_source": "entry",
-      "reason": "周日英语订正改对_单选19",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "14:56",
-      "time_source": "entry",
-      "reason": "英语第13期订正第4题改对",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "14:35",
-      "time_source": "entry",
-      "reason": "数学周试卷订正改对：填空第4题第1空",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "14:35",
-      "time_source": "entry",
-      "reason": "数学周试卷订正改对：选择第13题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "14:35",
-      "time_source": "entry",
-      "reason": "数学周试卷订正改对：解决问题第1题",
-      "pts": 2,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "14:33",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-01",
-      "time": "01:07",
-      "time_source": "entry",
-      "reason": "晾衣服",
-      "pts": 3,
-      "sign": "plus",
       "filtered": false
     }
   ],

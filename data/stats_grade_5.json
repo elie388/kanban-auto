@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "grade": 5,
-  "balance": 332,
-  "today_delta": 71,
+  "balance": 322,
+  "today_delta": 0,
   "tier_prev": 250,
   "tier_next": 600,
   "tier_costs": [
@@ -14,7 +14,7 @@
     1000
   ],
   "ledger_date": "2026-11-07",
-  "generated_at": "2026-11-07T14:20:03+08:00",
+  "generated_at": "2026-11-08T00:08:56+08:00",
   "source": "hidden_files/积分记录.md",
-  "checksum": "2e67eeaafb26c1ee"
+  "checksum": "ed2c84bd5b315721"
 }
