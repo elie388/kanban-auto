@@ -3,7 +3,7 @@
   "date": "2026-11-07",
   "grade": "五年级",
   "generated_at": "2026-11-07T00:18:58+08:00",
-  "updated_at": "2026-11-07T14:12:35+08:00",
+  "updated_at": "2026-11-07T14:13:29+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -379,43 +379,6 @@
       "corr_round": 2
     },
     {
-      "task_id": "REG-20261106-FED046",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "默写11课和默12课1、3段（用稿纸）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 1,
-      "corrections": [
-        {
-          "label": "少年中国说第1段",
-          "question": "《少年中国说》第1段第6句（“少年自由则国自由”与“少年胜于欧洲”之间少写了一句）",
-          "reason": "默写《少年中国说》第1段时漏写了一句：“少年自由则国自由”后直接写了“少年胜于欧洲”，中间少了一句。",
-          "hint": "把第1段从头读一遍，边读边数“少年……则国……”这样的句子一共有几句，再数数你写了几句。对照课本第12课，找到没写上的那一句，把它补写在“少年自由则国自由”和“少年胜于欧洲”之间。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "故今日之责任，不在他人，而全在我少年。少年智则国智，少年富则国富；少年强则国强，少年独立则国独立；少年自由则国自由；【此处漏写一句】；少年胜于欧洲，则国胜于欧洲；少年雄于地球，则国雄于地球。",
-          "q_img_exempt": "",
-          "img_exempt": "默写类：漏写分句须对照课文自查补写，图画不出缺失的句子，画出即直接给答案",
-          "round": 1
-        }
-      ],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1,
-      "corr_round": 1
-    },
-    {
       "task_id": "REG-20261106-248496",
       "source": "register_book",
       "subject": "语文",
@@ -640,9 +603,9 @@
     }
   ],
   "counts": {
-    "total": 14,
+    "total": 13,
     "pending": 7,
-    "in_progress": 4,
+    "in_progress": 3,
     "done": 2,
     "pending_review": 0
   },
