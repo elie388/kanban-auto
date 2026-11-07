@@ -333,7 +333,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10  # 2026-11-07 根治：部署常需 2–4 分钟，5 分钟曾致 3290fe8 部署超时取消、看板任务卡加载中；放宽到 10 分钟
     permissions:
       pages: write      # 部署到 GitHub Pages 所需
       id-token: write   # deploy-pages OIDC 认证所需
