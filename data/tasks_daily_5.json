@@ -3,7 +3,7 @@
   "date": "2026-11-07",
   "grade": "五年级",
   "generated_at": "2026-11-07T00:18:58+08:00",
-  "updated_at": "2026-11-07T14:13:29+08:00",
+  "updated_at": "2026-11-07T14:21:05+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -428,30 +428,6 @@
       "carry_count": 1
     },
     {
-      "task_id": "REG-20261106-511C79",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "准备好考试用品",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "submitted",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T14:00:57+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1,
-      "status_source": "kanban_upload_intake"
-    },
-    {
       "task_id": "CHORE-20261107-G5",
       "source": "chore",
       "subject": "家务",
@@ -603,7 +579,7 @@
     }
   ],
   "counts": {
-    "total": 13,
+    "total": 12,
     "pending": 7,
     "in_progress": 3,
     "done": 2,
