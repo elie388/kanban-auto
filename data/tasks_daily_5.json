@@ -563,18 +563,19 @@
       "title": "周六综合试卷（数学）",
       "detail": "今晚截止22:30，做完拍照交回",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-07T10:38:54+08:00",
-      "updated_at": "2026-11-07T10:38:54+08:00",
+      "updated_at": "2026-11-07T13:26:22+08:00",
       "files": [
         {
           "name": "五年级数学周试卷_2026-11-07.pdf",
           "label": "数学周试卷",
           "pages": 4
         }
-      ]
+      ],
+      "status_source": "kanban_upload_intake"
     },
     {
       "task_id": "MANUAL-20261107-002-G5-YY",
