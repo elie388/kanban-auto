@@ -829,6 +829,17 @@ def _r4_try_recover(exc_msg, files=None):
 # ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
+def _strip_generated_at(o):
+    """递归移除嵌套 generated_at（B2-175；B2-184 根治 2026-11-08：
+    写决策（semantic_diff）与写后校验（B2-184 守卫）须用同一语义比较，
+    否则未重写文件因 generated_at 陈旧被守卫误判为“写出后被改动”。"""
+    if isinstance(o, dict):
+        return {k: _strip_generated_at(v) for k, v in o.items() if k != "generated_at"}
+    if isinstance(o, list):
+        return [_strip_generated_at(x) for x in o]
+    return o
+
+
 def semantic_diff(old_obj, new_obj, generated_at):
     """幂等 + R3 单调性判定（DeepSeek 终审 2026-10-20 看板全栏目实时同步）。
 
@@ -842,14 +853,8 @@ def semantic_diff(old_obj, new_obj, generated_at):
         return True, "no_old"
     # B2-175：递归移除嵌套 generated_at（此前只移除顶层，嵌套时间戳仍参与比较致无谓重写）；
     # 时间戳解析为 datetime 比较（此前字符串比较在格式不一致时误判）。
-    def _strip_ga(o):
-        if isinstance(o, dict):
-            return {k: _strip_ga(v) for k, v in o.items() if k != "generated_at"}
-        if isinstance(o, list):
-            return [_strip_ga(x) for x in o]
-        return o
-    _o = _strip_ga(old_obj)
-    _n = _strip_ga(new_obj)
+    _o = _strip_generated_at(old_obj)
+    _n = _strip_generated_at(new_obj)
     if _o == _n:
         return False, "no_semantic_change"
     def _parse_ga(x):
@@ -1357,10 +1362,11 @@ def _main_impl():
                     p = os.path.join(REPO_DIR, rel)
                     if was_new and os.path.exists(p):
                         # 校验：文件内容须与本次写入的 outputs[rel] 一致才删。
+                        # B2-184 根治 2026-11-08：与守卫同口径忽略 generated_at（语义一致即视为本次写入）。
                         try:
                             with open(p, encoding="utf-8") as _f:
                                 _cur = json.load(_f)
-                            if _strip_board_names(_cur) != _strip_board_names(outputs[rel]):
+                            if _strip_generated_at(_strip_board_names(_cur)) != _strip_generated_at(_strip_board_names(outputs[rel])):
                                 _rb_errs.append("%s 内容与本次写入不一致，跳过删除（防误删）" % rel)
                                 continue
                         except Exception as _je:
@@ -1407,12 +1413,16 @@ def _main_impl():
 
     # 提交（只加本方案的 6 数据文件；模板余额注入已废止，不再提交模板）
     # B2-184：git add 前校验 outputs 文件内容仍与本次写入一致（防写出后被手改卷入提交）。
+    # B2-184 根治 2026-11-08：比较须与 semantic_diff 同口径忽略 generated_at；
+    # 否则未重写文件（无语义变化、盘上 generated_at 陈旧）会被误判为“写出后被改动”，
+    # 部分变更运行（仅子集文件重写，如午夜 today_delta 翻转只改 stats/points_log）
+    # 必熔断 exit 2。外部手改仍因语义不同被拦截（见自测 T12）。
     for _rel, _obj in outputs.items():
         _p = os.path.join(REPO_DIR, _rel)
         try:
             with open(_p, encoding="utf-8") as _f:
                 _cur = json.load(_f)
-            if _strip_board_names(_cur) != _strip_board_names(_obj):
+            if _strip_generated_at(_strip_board_names(_cur)) != _strip_generated_at(_strip_board_names(_obj)):
                 warn("输出文件 %s 写出后被改动，跳过本次提交（防手改内容卷入）" % _rel)
                 err_write("NEED-REVIEW 输出文件写出后被改动：%s" % _rel)
                 _restore_stash()
@@ -1777,6 +1787,30 @@ def selftest():
         except Exception:
             pass
         rec("T11 R4容忍docs", False, str(e)[:200])
+
+    # --- T12 B2-184 根治 2026-11-08：写后校验守卫须与 semantic_diff 同口径忽略 generated_at ---
+    # 场景：午夜 today_delta 翻转只改 stats/points_log，shop 文件无语义变化未重写，
+    # 盘上 generated_at 陈旧；守卫若全量比较即误判“写出后被改动”exit 2。
+    try:
+        def _guard_eq(disk, mem):
+            # 与 B2-184 守卫、回滚校验同一比较表达式
+            return _strip_generated_at(_strip_board_names(disk)) == _strip_generated_at(_strip_board_names(mem))
+        _stale = {"schema_version": "1.0", "grade": 5, "current_balance": 332,
+                  "generated_at": "2026-11-07T14:20:03+08:00"}
+        _fresh = {"schema_version": "1.0", "grade": 5, "current_balance": 332,
+                  "generated_at": "2026-11-08T00:00:04+08:00"}
+        assert _guard_eq(_stale, _fresh), "仅 generated_at 不同应判相等（未重写文件不触发守卫）"
+        _tampered = dict(_fresh, current_balance=333)
+        assert not _guard_eq(_stale, _tampered), "余额被改仍须判不等（外部手改照常拦截）"
+        _nested_stale = {"items": [{"generated_at": "2026-11-07T14:20:03+08:00", "reason": "x"}],
+                         "generated_at": "2026-11-07T14:20:03+08:00"}
+        _nested_fresh = {"items": [{"generated_at": "2026-11-08T00:00:04+08:00", "reason": "x"}],
+                         "generated_at": "2026-11-08T00:00:04+08:00"}
+        assert _guard_eq(_nested_stale, _nested_fresh), "嵌套 generated_at 不同亦应判相等"
+        rec("T12 B2-184守卫语义比较", True,
+            "陈旧 generated_at 判相等不熔断；语义被改仍判不等拦截；嵌套时间戳亦忽略")
+    except Exception as e:
+        rec("T12 B2-184守卫语义比较", False, str(e)[:200])
 
     failed = [r for r in results if not r[1]]
     log("自测完成：%d 通过 / %d 失败" % (len(results) - len(failed), len(failed)))
