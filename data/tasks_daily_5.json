@@ -1,378 +1,378 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-07",
-  "grade": "五年级",
-  "generated_at": "2026-11-07T00:18:58+08:00",
-  "updated_at": "2026-11-07T12:03:07+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": null,
-      "new_lines": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-07",
+ "grade": "五年级",
+ "generated_at": "2026-11-07T00:18:58+08:00",
+ "updated_at": "2026-11-07T12:03:07+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": null,
+   "new_lines": 0
   },
-  "tasks": [
-    {
-      "task_id": "REG-20261106-E8DD7D",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "第四单元综合卷（并改正，见班群）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①第四单元综合卷（并改正，见班群） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-AE714E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "task_type": "reading",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-08D068",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "复习U1-U3单词和课文",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-A7BC21",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄M1单词",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T12:03:07+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1,
-      "completed_at": "2026-11-07T12:03:07+08:00"
-    },
-    {
-      "task_id": "REG-20261106-1B1D18",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "把园一到园四的日积月累抄一次（用稿纸）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "园二名言1",
-          "question": "抄写名言：不饱食以终日，不弃功于寸阴（葛洪）",
-          "reason": "园地二第一条没有抄，整句漏了。",
-          "hint": "翻开语文书园地二，找到第一条（葛洪的那句），对照课本再抄一次。注意：不要凭记忆写，要看课本原文。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "园二名言：不饱食以终日，不弃功于寸阴。——[晋]葛洪",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "园二名言5",
-          "question": "抄写名言：少年易老学难成（朱熹）",
-          "reason": "园地二最后一条写错了：写成了另一句“一寸光阴一寸金”，不是课本上的那句；还多写了一句课本上没有的“少壮不努力”。",
-          "hint": "翻开语文书园地二，找到最后一条（朱熹的那句），对照课本再抄一次。提示：这句开头是“少年易老”，不是“一寸光阴一寸金”；“少壮不努力”那句课本园二里没有，不用抄。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "园二名言：少年易老学难成，一寸光阴不可轻。——[宋]朱熹",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        }
-      ],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1,
-      "corr_round": 1
-    },
-    {
-      "task_id": "REG-20261106-FED046",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "默写11课和默12课1、3段（用稿纸）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-248496",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读一遍所有园地一、二、三、四（小管家）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-799EA9",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "看作文一、二、三、四[涂黑]",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261106-511C79",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "准备好考试用品",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-07T00:18:58+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-06",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261107-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-07T08:00:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-07T00:19:53+08:00",
-      "updated_at": "2026-11-07T00:19:53+08:00"
-    },
-    {
-      "task_id": "READ-20261107-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-07T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-07T00:21:12+08:00",
-      "updated_at": "2026-11-07T00:21:12+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261107-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "兄弟英语对话第1期",
-      "detail": "兄弟英语对话第1期：Our Weekend Plan（我们的周末计划）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n\n对话脚本：\nA: Hi! The weekend is coming. Do you have any plans?\nB: Not yet. What about you?\nA: I want to go to the park on Saturday morning. Would you like to come with me?\nB: Sure! What can we do there?\nA: We can play football and have a picnic.\nB: Great idea! What food shall we bring?\nA: Sandwiches and apples. And some water.\nB: OK. What time shall we meet?\nA: At nine o'clock, at the park gate.\nB: Good. And what about Sunday?\nA: On Sunday morning, let's visit our grandparents.\nB: Good idea! We can read books with Grandma.\nA: And help Grandpa water the flowers.\nB: Sounds great! What about Sunday afternoon?\nA: Let's watch a cartoon movie at home.\nB: I love cartoons! What time shall we start?\nA: At three o'clock.\nB: OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.\nA: Yes! It's going to be a happy weekend!\nB: See you on Saturday!\n\n关键词：weekend 周末；plan 计划；picnic 野餐；sandwich 三明治；gate 大门；visit 拜访；water the flowers 浇花；cartoon 卡通片；shall we…? 我们……好吗？；be going to 将要。\n发音小贴士：一般疑问句句尾升调，陈述句句尾降调；注意 sandwich 的 /dʒ/ 音。\n\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。批改时按 joint 对话处理、分别点评。\n",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-07T10:01:55+08:00",
-      "updated_at": "2026-11-07T10:01:55+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261107-002-G5-YW",
-      "source": "manual",
-      "subject": "语文",
-      "title": "周六综合试卷（语文）",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-07T10:38:54+08:00",
-      "updated_at": "2026-11-07T10:38:54+08:00",
-      "files": [
-        {
-          "name": "五年级语文周试卷_2026-11-07.pdf",
-          "label": "语文周试卷",
-          "pages": 4
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261107-002-G5-SX",
-      "source": "manual",
-      "subject": "数学",
-      "title": "周六综合试卷（数学）",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-07T10:38:54+08:00",
-      "updated_at": "2026-11-07T10:38:54+08:00",
-      "files": [
-        {
-          "name": "五年级数学周试卷_2026-11-07.pdf",
-          "label": "数学周试卷",
-          "pages": 4
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261107-002-G5-YY",
-      "source": "manual",
-      "subject": "英语",
-      "title": "周六综合试卷（英语）",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-07T10:38:54+08:00",
-      "updated_at": "2026-11-07T10:38:54+08:00",
-      "files": [
-        {
-          "name": "五年级英语周试卷_2026-11-07.pdf",
-          "label": "英语周试卷",
-          "pages": 4
-        }
-      ]
-    }
-  ],
-  "counts": {
-    "total": 15,
-    "pending": 11,
-    "in_progress": 0,
-    "done": 3,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": "2026-11-07T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "REG-20261106-E8DD7D",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "第四单元综合卷（并改正，见班群）",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①第四单元综合卷（并改正，见班群） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-AE714E",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "task_type": "reading",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-08D068",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "复习U1-U3单词和课文",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-A7BC21",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄M1单词",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T12:03:07+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1,
+   "completed_at": "2026-11-07T12:03:07+08:00"
+  },
+  {
+   "task_id": "REG-20261106-1B1D18",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "把园一到园四的日积月累抄一次（用稿纸）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T12:06:19+08:00",
+   "pending_corrections": 2,
+   "corrections": [
+    {
+     "label": "园二名言1",
+     "question": "抄写名言：不饱食以终日，不弃功于寸阴（葛洪）",
+     "reason": "园地二第一条没有抄，整句漏了。",
+     "hint": "翻开语文书园地二，找到第一条（葛洪的那句），对照课本再抄一次。注意：不要凭记忆写，要看课本原文。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "园二名言：不饱食以终日，不弃功于寸阴。——[晋]葛洪",
+     "q_img_exempt": "",
+     "img_exempt": "抄写类待改正：引导图无法画出文字内容而不直接给出课本原文（答案即原文），故豁免；文字引导已指明翻开语文书园地二对照课本再抄。",
+     "round": 1
+    },
+    {
+     "label": "园二名言5",
+     "question": "抄写名言：少年易老学难成（朱熹）",
+     "reason": "园地二最后一条写错了：写成了另一句“一寸光阴一寸金”，不是课本上的那句；还多写了一句课本上没有的“少壮不努力”。",
+     "hint": "翻开语文书园地二，找到最后一条（朱熹的那句），对照课本再抄一次。提示：这句开头是“少年易老”，不是“一寸光阴一寸金”；“少壮不努力”那句课本园二里没有，不用抄。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "园二名言：少年易老学难成，一寸光阴不可轻。——[宋]朱熹",
+     "q_img_exempt": "",
+     "img_exempt": "抄写类待改正：引导图无法画出文字内容而不直接给出课本原文（答案即原文），故豁免；文字引导已指明翻开语文书园地二对照课本再抄。",
+     "round": 1
+    }
+   ],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1,
+   "corr_round": 1
+  },
+  {
+   "task_id": "REG-20261106-FED046",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "默写11课和默12课1、3段（用稿纸）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-248496",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读一遍所有园地一、二、三、四（小管家）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-799EA9",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "看作文一、二、三、四[涂黑]",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "REG-20261106-511C79",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "准备好考试用品",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-06T19:51:47+08:00",
+   "updated_at": "2026-11-07T00:18:58+08:00",
+   "pending_corrections": 0,
+   "corrections": [],
+   "carry_first_date": "2026-11-06",
+   "carried_from": "2026-11-06",
+   "carry_count": 1
+  },
+  {
+   "task_id": "CHORE-20261107-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-07T08:00:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-07T00:19:53+08:00",
+   "updated_at": "2026-11-07T00:19:53+08:00"
+  },
+  {
+   "task_id": "READ-20261107-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-07T08:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-07T00:21:12+08:00",
+   "updated_at": "2026-11-07T00:21:12+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261107-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "兄弟英语对话第1期",
+   "detail": "兄弟英语对话第1期：Our Weekend Plan（我们的周末计划）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n\n对话脚本：\nA: Hi! The weekend is coming. Do you have any plans?\nB: Not yet. What about you?\nA: I want to go to the park on Saturday morning. Would you like to come with me?\nB: Sure! What can we do there?\nA: We can play football and have a picnic.\nB: Great idea! What food shall we bring?\nA: Sandwiches and apples. And some water.\nB: OK. What time shall we meet?\nA: At nine o'clock, at the park gate.\nB: Good. And what about Sunday?\nA: On Sunday morning, let's visit our grandparents.\nB: Good idea! We can read books with Grandma.\nA: And help Grandpa water the flowers.\nB: Sounds great! What about Sunday afternoon?\nA: Let's watch a cartoon movie at home.\nB: I love cartoons! What time shall we start?\nA: At three o'clock.\nB: OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.\nA: Yes! It's going to be a happy weekend!\nB: See you on Saturday!\n\n关键词：weekend 周末；plan 计划；picnic 野餐；sandwich 三明治；gate 大门；visit 拜访；water the flowers 浇花；cartoon 卡通片；shall we…? 我们……好吗？；be going to 将要。\n发音小贴士：一般疑问句句尾升调，陈述句句尾降调；注意 sandwich 的 /dʒ/ 音。\n\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。批改时按 joint 对话处理、分别点评。\n",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-07T10:01:55+08:00",
+   "updated_at": "2026-11-07T10:01:55+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261107-002-G5-YW",
+   "source": "manual",
+   "subject": "语文",
+   "title": "周六综合试卷（语文）",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-07T10:38:54+08:00",
+   "updated_at": "2026-11-07T10:38:54+08:00",
+   "files": [
+    {
+     "name": "五年级语文周试卷_2026-11-07.pdf",
+     "label": "语文周试卷",
+     "pages": 4
+    }
+   ]
+  },
+  {
+   "task_id": "MANUAL-20261107-002-G5-SX",
+   "source": "manual",
+   "subject": "数学",
+   "title": "周六综合试卷（数学）",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-07T10:38:54+08:00",
+   "updated_at": "2026-11-07T10:38:54+08:00",
+   "files": [
+    {
+     "name": "五年级数学周试卷_2026-11-07.pdf",
+     "label": "数学周试卷",
+     "pages": 4
+    }
+   ]
+  },
+  {
+   "task_id": "MANUAL-20261107-002-G5-YY",
+   "source": "manual",
+   "subject": "英语",
+   "title": "周六综合试卷（英语）",
+   "detail": "今晚截止22:30，做完拍照交回",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-07T10:38:54+08:00",
+   "updated_at": "2026-11-07T10:38:54+08:00",
+   "files": [
+    {
+     "name": "五年级英语周试卷_2026-11-07.pdf",
+     "label": "英语周试卷",
+     "pages": 4
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "total": 15,
+  "pending": 11,
+  "in_progress": 0,
+  "done": 3,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-07T22:30:00+08:00"
 }
