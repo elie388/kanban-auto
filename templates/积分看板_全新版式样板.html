@@ -2065,10 +2065,19 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     return tryOnce();
   }
   var taskLoading = false; /* B8（2026-10-22 三方审查修复）：load 单飞锁，防 visibilitychange/定时器并发重复拉取 */
+  /* 2026-11-07 根治：线上任务数据过期（部署滞留致 date 非今日）时明示 + 自动重试，\n     不再静默卡「加载中」。 */
+  function markTaskStale(secId, date){
+    var sec = document.getElementById(secId);
+    if(!sec) return;
+    var progText = sec.querySelector('.task-prog-text');
+    if(progText) progText.textContent = '数据未更新';
+    var list = sec.querySelector('.task-list');
+    if(list) list.innerHTML = '<div style="color:var(--sub);font-size:13px;padding:4px 2px;">今日任务数据还未更新（线上还是 ' + date + ' 的），正在自动重试…</div>';
+  }
   function load(){
     if(taskLoading) return;
     taskLoading = true;
-    var ok = 0, obtained = 0, anyCache = false, cacheTs = 0, settled = 0;
+    var ok = 0, obtained = 0, anyCache = false, cacheTs = 0, settled = 0, stale = 0;
     /* ②：先拉已收口集合（5 秒超时兜底，失败回落空集不阻塞），再拉任务并渲染，
        首屏即用最新 closedSet，不靠下一轮 5 分钟刷新纠正。 */
     fetchClosed().then(function(){
@@ -2082,6 +2091,11 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           obtained++;
           if(res.fromCache){ anyCache = true; if(!cacheTs || res.ts < cacheTs) cacheTs = res.ts; }
           if(renderOne(pair[0], res.data)) ok++;
+          else if(res.data && res.data.date && res.data.date !== todayStr()){
+            /* 2026-11-07 根治：数据已拉到但不是今天的（部署滞留），renderOne 拒渲染；\n               记为过期、明示并触发复查，不再静默卡「加载中」。 */
+            stale++;
+            markTaskStale(pair[0], res.data.date);
+          }
         })
         .catch(function(e){ console.warn('今日任务拉取失败:', pair[1], e); })
         .then(function(){
@@ -2095,9 +2109,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             if(ok === 2 && anyCache){ tag.textContent = '数据更新于 ' + taskFmtHHMM(cacheTs); tag.classList.remove('tag-live'); }
             else if(ok === 2){ tag.textContent = '实时数据'; tag.classList.add('tag-live'); /* 2026-10-19 KB-TAG-LIVE：绿色动效 */ }
             else if(obtained < 2){ tag.textContent = '部分数据更新失败'; tag.classList.remove('tag-live'); }
+            else if(stale > 0){ tag.textContent = '今日数据未更新'; tag.classList.remove('tag-live'); }
           }
-          /* 方案E慢速复查：有文件最终未取得（且无缓存兜底）时 60 秒后重拉，单飞防堆叠 */
-          if(obtained < 2 && !taskRecheckTimer){
+          /* 方案E慢速复查：有文件最终未取得（且无缓存兜底）或数据过期时 60 秒后重拉，单飞防堆叠 */
+          if((obtained < 2 || stale > 0) && !taskRecheckTimer){
             taskRecheckTimer = setTimeout(function(){ taskRecheckTimer = 0; load(); }, 60000);
           }
         });
@@ -5692,7 +5707,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261105-upload20';
+  var KB_BUILD = '20261107-stalefix';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
