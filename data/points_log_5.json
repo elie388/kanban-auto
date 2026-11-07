@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-07T13:55:03+08:00",
+  "generated_at": "2026-11-07T14:20:03+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-07",
+      "time": "14:15",
+      "time_source": "entry",
+      "reason": "语文默写11课和12课1、3段订正改对：第1段漏写句红笔补写正确",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-07",
+      "time": "14:15",
+      "time_source": "entry",
+      "reason": "语文默写11课和12课1、3段订正当天发回",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-07",
       "time": "13:53",
