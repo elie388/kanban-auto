@@ -74,8 +74,8 @@
           "q_img": "g5_u4_q6_orig.png",
           "orig_text": "大正方形边长a cm，面积",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空6-小正方形面积",
@@ -86,8 +86,8 @@
           "q_img": "g5_u4_q6_orig.png",
           "orig_text": "小正方形边长b cm，面积",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空6-阴影面积",
@@ -98,8 +98,8 @@
           "q_img": "g5_u4_q6_orig.png",
           "orig_text": "阴影部分的面积",
           "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "填空7-买笔记本花了",
@@ -230,8 +230,8 @@
           "q_img": "",
           "orig_text": "玲玲把6x+5写成6(x+5)，结果比原来",
           "q_img_exempt": "原题无图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "解决问题4-日历框数左边的数",
