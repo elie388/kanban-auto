@@ -3,11 +3,11 @@
   "date": "2026-11-07",
   "grade": "六年级",
   "generated_at": "2026-11-07T00:18:59+08:00",
-  "updated_at": "2026-11-07T10:38:55+08:00",
+  "updated_at": "2026-11-07T16:55:44+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": null,
+      "ingested_at": "2026-11-07T16:55:44+08:00",
       "new_lines": 0
     },
     "targeted_practice": {
@@ -414,8 +414,8 @@
     }
   ],
   "counts": {
-    "total": 15,
-    "pending": 14,
+    "total": 17,
+    "pending": 16,
     "in_progress": 1,
     "done": 0,
     "pending_review": 0
