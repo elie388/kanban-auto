@@ -1,144 +1,135 @@
 {
-  "schema_version": "1.0",
-  "grade": 5,
-  "generated_at": "2026-11-07T14:16:15+08:00",
-  "items": [
-    {
-      "date": "2026-11-07",
-      "ts": "2026-11-07T14:15:58.922657+08:00",
-      "kind": "correction",
-      "time": "14:15",
-      "title": "默写订正：11课和12课1、3段",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，默写订正反馈</h2>\n<p>11月7日 14:00 提交的订正，《少年中国说》第1段漏写的那一句，红笔补写对了，插的位置也对——就在“少年自由则国自由”后面、“少年胜于欧洲”前面。这一段现在完整了。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>补写的那一句 8 个字一个不错，红笔字迹清楚，还用红圈标出来了，一眼就能看到改在哪里。</li>\n<li>插入标记画得明白，箭头正好指在要补的位置，说明你读过原文、知道这句该放在哪里。</li>\n<li>当天就把订正发回来了，改得又快又对。</li>\n</ul>\n<p>这次订正改对 +2、当天发回 +2，共 +4 分。这篇默写现在全部改对了，任务已完成。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-07",
-      "ts": "2026-11-07T14:12:00+08:00",
-      "kind": "feedback",
-      "time": "14:12",
-      "title": "把园一到园四的日积月累抄一次（订正）",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，日积月累抄写订正反馈</h2>\n<p>11月7日 14:00 提交，第1轮订正。这次把园一到园四又认真抄了一遍，园一、园三、园四和园二的陶渊明、岳飞、毛泽东三条都写对了，值得表扬。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>园一16个成语全对，园三《乞巧》全对，园四16个成语全对。</li>\n<li>园二陶渊明、岳飞、毛泽东三条名言全对，一字不差。</li>\n</ul>\n<h3>待改正（2处，还是上次那两处）</h3>\n<ul>\n<li>园二第1条（葛洪）还是空着，没抄上。不要照老师笔记抄——老师笔记里没有这句。翻开语文书园地二，找到第一条（葛洪的那句），对照课本原文补抄一次。注意：不要凭记忆写，要看课本原文。</li>\n<li>园二第5条（朱熹）还是不对。你写的两句都不是课本园地二最后一条。不要照老师笔记抄——翻开语文书园地二，找到最后一条（朱熹的那句），对照课本原文再抄一次。提示：这句开头是“少年易老”，不是“一寸光阴一寸金”；“少壮不努力”那句课本园二里没有，不用抄。</li>\n</ul>\n<p>这次订正两处都还没改对，所以还是暂不结算。按上面说的翻开语文书园地二对照课本再抄一次，改对了就结算。</p>\n</body></html>\n"
-    },
-    {
-      "date": "2026-11-07",
-      "ts": "2026-11-07T13:43:00+08:00",
-      "kind": "feedback",
-      "time": "13:43",
-      "title": "周六综合试卷（数学）",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学周六综合试卷批改反馈</h2>\n<p>11月7日的数学周六综合试卷，11月7日 13:20 提交，40道小题做对37道（92.5%），得分87分。</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>选择题 4 道全对，分配律、积的变化规律、时间换算、单价乘数量都稳。</li>\n<li>直接写得数 8 道全对，简便计算 3 道全对。</li>\n<li>填空 17/18，解决问题 3/4，竖式 2/3。</li>\n</ul>\n<h3>📝 需要订正：3处</h3>\n<p>逐题想一想再改：</p>\n<p><b>填空2</b><br>\n<b>原题：</b>一个数缩小到原来的十分之一后，比原来少63，原来这个数是（ ）。<br>\n<b>错在哪：</b>求原数这一步算错了，少的63和原数之间的关系没想对。<br>\n这个数缩小后比原来少63，少的63占原来这个数的几分之几？先算一算63是原数的几分之几，再用63除以这个分率求原数。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_sx_fill2.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>列竖式计算 5.04×0.28</b><br>\n<b>原题：</b>列竖式计算：5.04×0.28=<br>\n<b>错在哪：</b>竖式里第二个部分积写错了，少了一个0，所以得数也不对。<br>\n竖式里第二个部分积是5.04乘2，先单独算一算5.04×2得多少；再把两个部分积对齐相加，最后数一数积应有几位小数。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_sx_vert3.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>解决问题2</b><br>\n<b>原题：</b>学校买练习本和铅笔盒各15个，练习本每本2.4元，铅笔盒每个9.6元，一共要付多少元？<br>\n<b>错在哪：</b>买练习本的钱算错了，15×2.4的得数不对，连带着总价也错了；铅笔盒的144元是对的。<br>\n先单独算一算买15本练习本要多少钱：2.4×15，可以把2.4看成24个0.1再算；铅笔盒的144元是对的，两样合起来一共是多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_sx_prob2.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>本批积分 +18（完成+10、正确率+6、按时+2）。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-07",
-      "ts": "2026-11-07T12:29:00+08:00",
-      "kind": "feedback",
-      "time": "12:29",
-      "title": "第四单元综合卷（并改正，见班群）",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学第四单元综合卷批改反馈</h2>\n<p>11月6日的第四单元综合卷，11月7日 11:04 提交，65道小题做对44道（67.7%），得分76分。</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>计算（三）32道小题全对，竖式、简便运算、直接写得数都稳。</li>\n<li>填空一1、一2、一5，选择二1、二2、二3、二4、二5、二7全对，用字母表示数的基础部分掌握得不错。</li>\n<li>解决问题四1、四2、四3、四5全对，日历框数和是153求中间数那道也做对了。</li>\n</ul>\n<h3>📝 需要订正：21处</h3>\n<p>错题都集中在“用字母表示数”和日历框数这两块，逐题想一想再改：</p>\n<p><b>一3-1 填空3-1.5小时路程</b><br>\n<b>原题：</b>汽车每小时a千米，1.5小时行驶路程<br>\n<b>错在哪：</b>路程=速度×时间，你用的速度字母和题目给的不一样。<br>\n汽车每小时行驶a千米，1.5小时行驶的路程该用哪个字母乘时间？路程=速度×时间，这里的速度是a还是x？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_speed.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一4-1 填空4-玩具小汽车轮子</b><br>\n<b>原题：</b>组装n辆玩具小汽车需要几个车轮<br>\n<b>错在哪：</b>把轮子数算成了辆数加4，轮子数和辆数不是加的关系。<br>\n1辆车要4个轮子，2辆车要8个，轮子数和辆数是什么关系？n辆车，轮子数是n的几倍？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_wheels.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一6-1 填空6-大正方形面积</b><br>\n<b>原题：</b>大正方形边长a cm，面积<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>正方形面积的算法弄错了，4a不是面积。<br>\n正方形面积=边长×边长，边长是a，面积该怎么表示？a×a可以简写成什么？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_squares.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一6-2 填空6-小正方形面积</b><br>\n<b>原题：</b>小正方形边长b cm，面积<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>小正方形的边长是b，面积不是ba。<br>\n小正方形的边长是b不是a，面积=边长×边长，b×b简写成什么？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_squares.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一6-3 填空6-阴影面积</b><br>\n<b>原题：</b>阴影部分的面积<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>阴影部分不是两个边长相乘，要想想阴影是怎么得到的。<br>\n阴影部分是大正方形里去掉小正方形剩下的部分，该用减法还是乘法？大正方形面积减去小正方形面积是多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_squares.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一7-1 填空7-买笔记本花了</b><br>\n<b>原题：</b>小刚买3本笔记本每本a元，买笔记本花了<br>\n<b>错在哪：</b>题目问的是买笔记本花了多少钱，你算的是还剩多少钱，答非所问。<br>\n题目问“买笔记本花了”多少钱，3本笔记本、每本a元，花了多少钱？你写的那个算式算的是什么？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_money.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一7-2 填空7-还剩多少钱</b><br>\n<b>原题：</b>当a=4.5时，小刚还剩多少钱<br>\n<b>错在哪：</b>计算过程有误，26-2不是正确的计算步骤。<br>\n还剩多少钱=48-3×4.5-12.7，先算3×4.5是多少，再从48里减，最后减12.7，一步一步算。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_money.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一8-1 填空8-6a表示</b><br>\n<b>原题：</b>淘气每天看a页，6a表示<br>\n<b>错在哪：</b>6a的单位写错了，不是“书”。<br>\n淘气每天看a页，6天看了多少页？6a的单位是什么，是“书”还是“页”？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_reading.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一8-2 填空8-a+b表示</b><br>\n<b>原题：</b>淘气每天a页笑笑每天b页，a+b表示<br>\n<b>错在哪：</b>a+b是一天还是六天的页数，时间范围弄错了。<br>\na是淘气一天看的页数，b是笑笑一天看的页数，a+b是两人一天一共看的页数，还是6天一共看的？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_reading.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一9-1 填空9-到山崖距离</b><br>\n<b>原题：</b>声音每秒340米，t秒听到回声，到山崖距离<br>\n<b>错在哪：</b>t×340算的是声音走个来回的总路程，不是天天到山崖的距离。<br>\n声音从天天这里到山崖再回来，一共走了340×t米，这段路是去和回两趟，天天到山崖只有一趟，该怎么算？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_echo.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一9-2 填空9-听到回声时间</b><br>\n<b>原题：</b>到山崖s米，从发出声音到听到回声的时间<br>\n<b>错在哪：</b>时间=路程÷速度，这里的路程不是s，是声音走个来回的总路程。<br>\n天天到山崖s米，声音要走去和回两趟才听到回声，一共走了多少米？时间=路程÷速度，这里的路程是多少、速度是多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_echo.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一10-1 填空10-2分球共得分</b><br>\n<b>原题：</b>两人投进的2分球共获得多少分<br>\n<b>错在哪：</b>a+b只是投进球的个数，不是得分，得分要把个数乘以每个球的分数。<br>\n两人一共投进(a+b)个2分球，每个2分球得2分，一共得了多少分？个数和分数是一回事吗？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_basketball.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一12-2 填空12-摆3个八边形</b><br>\n<b>原题：</b>摆3个八边形需要几根小棒<br>\n<b>错在哪：</b>摆3个的根数不是23，每多摆1个多用的根数不是8。<br>\n摆1个要8根，摆2个要15根，多1个八边形多了几根？摆3个比摆2个又多几根？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_octagon.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一12-3 填空12-摆n个八边形</b><br>\n<b>原题：</b>摆n个八边形需要几根小棒<br>\n<b>错在哪：</b>小棒数和八边形个数不是加7的关系，要找每多1个多几根的规律。<br>\n摆1个8根，摆2个15根，每多1个多几根？n个八边形比1个多摆了几次，每次多几根？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_octagon.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>二6-1 选择6-剩下桃子</b><br>\n<b>原题：</b>运来a箱桃子每箱18千克，卖出b箱后还剩<br>\n<b>错在哪：</b>剩下的桃子要按千克算，总千克减去卖出的千克，不是按箱数算。<br>\n运来a箱、每箱18千克，一共多少千克？卖出b箱、每箱18千克，卖了多少千克？剩下的=一共的-卖掉的，该怎么列式？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_peaches.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>二8-1 选择8-6x+5写错</b><br>\n<b>原题：</b>玲玲把6x+5写成6(x+5)，结果比原来<br>\n<b>错在哪：</b>把6x+5写成6(x+5)，结果变了，括号不能随便加。<br>\n6(x+5)展开是多少？和6x+5比一比，是多了还是少了，多（少）了多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_distributive.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-1 解决问题4-日历框数左边的数</b><br>\n<b>原题：</b>日历框中正中间是x，左边的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，左边的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-2 解决问题4-日历框数右边的数</b><br>\n<b>原题：</b>日历框中正中间是x，右边的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，右边的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-3 解决问题4-日历框数左上角的数</b><br>\n<b>原题：</b>日历框中正中间是x，左上角的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，左上角的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-4 解决问题4-日历框数右下角的数</b><br>\n<b>原题：</b>日历框中正中间是x，右下角的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，右下角的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-2 解决问题4-9数之和与中间数关系</b><br>\n<b>原题：</b>框中9个数的和与正中间的数有什么关系<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>只说“和比正中间的数大”没说清具体关系，和是正中间数的几倍？<br>\n9个数排成3行3列，把9个数都用x表示出来，加起来看看等于几个x？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>把这21处订正好发回，重点想想“用字母表示数”里每个字母代表什么，再动手写。加油！💪</p>\n<p>本次积分 +6（完成率93.8%完成分+6，正确率67.7%未达80%档不得分）。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-07",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月6日口语易反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月6日的口语易任务，11月7日 11:01 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 6 日的任务已经提交了，9 项都完成了，很好。</li>\n</ul>\n<p>下次争取在当天完成口语练习。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-07",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月6日小管家反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，小管家反馈</h2>\n<p>11月6日的语文任务，11月7日 11:47 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>小管家 11 月 6 日的语文任务已经提交了，园地一到园地四都读了一遍，录音 9 分 13 秒，还得了老师奖励的 1 朵小红花，很棒。</li>\n</ul>\n<p>这次小管家发回 +5 分。按时分等今天语文都交齐了再一起结。</p>\n<p>下次争取在当天完成。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-07",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月6日抄M1单词反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，抄M1单词反馈</h2>\n<p>11月6日的抄M1单词任务，11月7日 11:03 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>M1单词34个全部抄完了，每个词都抄了4遍，很完整。</li>\n<li>34个单词的拼写全部正确，一个都没错，太棒了！</li>\n<li>写错的地方你自己发现了，划掉重写，改过之后全是对的，这种自己检查、自己改的习惯特别好。</li>\n</ul>\n<h3>小提醒</h3>\n<ul>\n<li>这次有10处起笔写错了又划掉重写。下次写之前先在心里想一想单词的样子，争取一次写对，写得更干净。</li>\n</ul>\n<p>本次积分 +20（完成+10、正确率全对+10）。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-05",
-      "ts": "2026-11-05T21:40:00+08:00",
-      "kind": "feedback",
-      "time": "21:40",
-      "title": "英语试卷（笔试部分）",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语试卷（笔试部分）反馈</h2>\n<p>11月5日 20:28 提交，笔试 51/60＝85%，要订正 6 处。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>八、九（一）两大题全对（各 10/10），阅读理解和判断题都稳。</li>\n<li>七、补全短文 9/10，只错 1 处。</li>\n<li>十、写作 8/10：6 句话符合要求，姓名、性格、外貌、共同爱好都写到了，很完整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>六-4：What do you think ___ this healthy food?——“你觉得这种健康食物怎么样？”这里“认为”用哪个介词搭配？想想 think 后面跟哪个小词表示“认为”，再看看第 5 题是不是也填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>六-5：What can you do ___ these things?——“你能用这些东西做什么？”这里“用”用哪个介词？想想 do 后面跟哪个小词表示“用”，再对照第 4 题看看两个词是不是填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>七-9：I always eat my food 9.s___.——“我吃饭总是吃得……”这里要填一个词说“吃得怎么样”，修饰动词 eat，应该用什么词性的词？首字母 s 已经给了，这个词完整拼出来是什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-7：再读一遍短文第二句：植树节那天，学校上课吗？短文里有没有一个表示“没有”的小词？学生那天在学校通常做什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-9：题干里问的是 first（首先）还是 last（最后）？再读短文里种树的三个步骤：First……Next……At last……，第一步是做什么？浇水是第几步？<br><img src=\"data/diagrams/eng_65a3bbf9_q5_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>十、写作：We are friend because we both like music.——这句话里 We 是几个人？两个人互为朋友，friend 这个词应该用单数还是复数？想想 We are ___ 后面跟几个人的称呼时要不要加 s。<br><img src=\"data/diagrams/eng_65a3bbf9_q6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>听力部分（40 分）还没交，等音频到了再一起核分。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-05",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "生字16课",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，生字16课反馈</h2><p>11月5日 20:16 提交，7个生字对4个、错3个（57.1%），要订正3处。</p><h3>做得好的地方</h3><ul><li>塔、埃、墓、砌这4个字全对：拼音、字形、组词都写对了，很棒！</li><li>组词用得都对：金字塔、矮塔楼、埃及、古埃及、陵墓、墓室、塔基、基本、堆砌，都很好。</li></ul><h3>要订正的地方（3项）</h3><ul><li>堆的拼音：堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_dui_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_dui_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>基的字形：基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。<br><img src=\"data/diagrams/g5_shengzi16_ji_structure_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_ji_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>狭的拼音：狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_xia_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_xia_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul><p>订正完把改好的3个字再拍一张发回来，你一定能全对！</p></body></html>"
-    },
-    {
-      "date": "2026-11-05",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "第四单元小测",
-      "html": "<h2>第四单元小测反馈</h2>\n<p>这次小测 107 小问，你对了 100 个，正确率 93.5%，很棒！下面 7 处要改正，照着提示一步步想，自己改出来。</p>\n<h3>看拼音写词语：dǒu sǒu</h3>\n<p>提示一：这个词是说人精神很好、很有干劲，课文里常用来形容战士和劳动者的精神状态。提示二：第一个字是提手旁，读dǒu，想想提手旁加个什么字？提示三：第二个字读sǒu，看看你写的第二个字，它的读音和字形对得上吗？格外那个字是不是多余的？</p>\n<p><img src=\"diagrams/g5_BCE08C_q1_dousou_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>读句子写字词：jiāng（ ）土</h3>\n<p>提示一：这个空只要填一个字，括号后面已经印着“土”字了，合起来是一个词。提示二：你写了两个字，读一读句子，顺吗？提示三：把多余的那个字去掉，再读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q2_jiang_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：官邸</h3>\n<p>提示一：查一查字典，“邸”字读第几声？提示二：“官邸”这个词，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q3_di_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：潜龙</h3>\n<p>提示一：“潜水”的“潜”怎么读？提示二：qián和qiáng，韵母有什么不同？提示三：重新拼读“潜”字，声母是q，韵母是ian还是iang？</p>\n<p><img src=\"diagrams/g5_BCE08C_q4_qian_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：租界</h3>\n<p>提示一：“租”字读第几声？提示二：想想“租房”的“租”，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q5_zu_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：瑰宝</h3>\n<p>提示一：“瑰宝”的“瑰”怎么读？提示二：guī和guǎi，韵母和声调有什么不同？提示三：重新拼读“瑰”字，声母是g，韵母是ui还是uai？</p>\n<p><img src=\"diagrams/g5_BCE08C_q6_gui_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：裁</h3>\n<p>提示一：“裁剪”的“裁”怎么读？提示二：c和z是不同的声母，“裁”是平舌音，读第几声？提示三：重新拼读“裁”字，声母是c还是z？是第几声？</p>\n<p><img src=\"diagrams/g5_BCE08C_q7_cai_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<p>改完后拍照发回，老师会再看一遍。加油！</p>"
-    },
-    {
-      "date": "2026-11-05",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "英语随堂练习（四）订正",
-      "html": "<h2>彦均，英语随堂练习（四）订正反馈</h2><p>11月5日 20:14 提交，13处订正改对了10处（76.9%），还有3处要再改一改。这批订正得了 15 分。</p><h3>做得好的地方</h3><ul><li>听力判断改对了：Tom and John 的爱好不一样，你改成 F 是对的。</li><li>选词填空改对了两处：Don't eat too much chocolate、Friends should be happy together，都改对了。</li><li>首字母填空两处都改对了：We also help our earth、They are happy together。</li><li>阅读判断两处都改对了：Alice 不是到处都能看到塑料垃圾，绿俱乐部不是 16 个人。</li><li>阅读选择两处都改对了：狮子生气是因为小老鼠爬到它背上，几天后狮子在网里。</li></ul><h3>要再改的地方（3处）</h3><ol><li><b>选词填空第3题：We need to ___ with our friends.</b><br>你划掉了 Similar，保留了 do，但句子还是不通。想一想，这个空要填一个动词，表示和朋友一起做一件事。朋友之间常常会互相分东西、一起玩，哪个词是这个意思？读一遍句子，哪个词放进去意思才通？<br><p><img src=\"diagrams/g5_EXAM989943_q6_3_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li><li><b>选词填空第10题：Don't eat too ___ candies.</b><br>你划掉了 many，保留了 much，但 candies 是复数、能一个一个数出来的东西。修饰这种词的时候，用来表示“太多”的词和修饰水、米饭这种数不出来的东西的词是不一样的。你写的那个词是修饰数不出来的东西的，换一个试试？<br><p><img src=\"diagrams/g5_EXAM989943_q6_10_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li><li><b>书面表达：My best friend 一段有三个小地方要改。</b><br>① He 是第三人称单数，动词 like 要变一变，想想单三后面动词要加什么；② listen 这个词后面直接接 music 读起来少了点什么，想想“听音乐”这个动作，中间是不是少了一个表示方向的小词；③ openly 是副词，修饰 talk 这个动词，副词放在动词前面还是后面读起来更顺？你试着换个位置。<br><p><img src=\"diagrams/g5_EXAM989943_q10_writing_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li></ol><p>改完这3处再发回来，我再帮你看看。加油！</p>"
-    },
-    {
-      "date": "2026-11-05",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月5日口语易反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月5日 22:49 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 5 日的任务已经提交了，6 项都完成了，很好。</li>\n</ul>\n<p>这次超过今晚 22:00 的截止时间，下次争取早点完成口语练习。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-04",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月4日预习16课反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，预习16课反馈</h2>\n<p>11月4日 18:44 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>预习16课完成得很好！课文里狭、甬、黏的拼音都标出来了，生字表的字也一个一个注了音还组了词，预习做得很扎实。生字表的字下次再写清楚一点、词对齐格子就更好了。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>没有，预习全完成了。明天上课认真听，看看胡夫金字塔到底是怎么盖起来的。</li>\n</ul>\n</body></html>"
-    },
-    {
-      "date": "2026-11-04",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月4日期中模拟卷1.2页反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，期中模拟卷1.2页反馈</h2>\n<p>11月4日 18:43 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>这次交的第 1、2 页，大部分都做对了：填空里的单位换算、等式性质、正方形周长和面积都对；计算题 11 道全对，竖式也列得很清楚。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>填空第 4 题第 2 空（求第三个角）：三角形三个内角加起来是多少度？已经知道两个角，求第三个角该用什么算式？先算两个已知角的和，再用内角和去减，算的时候退位要小心。<br><img src=\"data/diagrams/g5_mathmock_anglesum.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>填空第 4 题第 3 空（按角分是哪种）：按角分三角形，看的是最大的那个角：三个角都比直角小是哪种？有一个角正好是直角是哪种？有一个角比直角大是哪种？你先把三个角都算出来，再比一比最大的角和直角谁大谁小。<br><img src=\"data/diagrams/g5_mathmock_classify.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>选择第 3 题（积最大）：要比积的大小，先把四个算式的结果都算出来，再比一比。1.1 比 1 大，乘出来会比 1 大还是比 1 小？把四个结果排一排再选。<br><img src=\"data/diagrams/g5_mathmock_product.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>选择第 6 题（年龄差）：年龄差会不会变？今年妈妈比明明大几岁，5 年后妈妈长了几岁、明明长了几岁，差变了没有？先算今年的差，再算 5 年后的差，比一比。<br><img src=\"data/diagrams/g5_mathmock_agediff.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>把这 4 道一次改全，订正全对后这项就完成了。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-04",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月4日生字15课反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，生字 15 课反馈</h2>\n<p>11月4日 20:55 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>13 个生字里 11 个全对：字、拼音、部首、组词都对了，字也写得很工整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>煤的拼音：再拼一遍，声母是 m，韵母呢？读一读，再写一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>菌的拼音：再拼一遍，细菌的菌，韵母后面有没有 n？声调是第几声？读一读细菌，再拼一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>另外，滴的第一个组词再想一想，是不是一个现成的词语？把这两处拼音一次改全。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-04",
-      "ts": "",
-      "kind": "feedback",
-      "time": "",
-      "title": "11月4日口语易反馈",
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月4日 21:19 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 4 日的任务已经提交了，6 项都完成了，很好。</li>\n</ul>\n<p>继续保持每天按时完成口语练习。</p>\n</body></html>"
-    },
-    {
-      "date": "2026-11-07",
-      "grade": 5,
-      "html": "<html><head><meta charset=\"utf-8\"></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，考试用品准备反馈</h2>\n<p>11月7日 13:55 提交，考试用品都准备好啦：深蓝色铅笔袋、黑色水笔、红笔、修正笔、削好的铅笔、固体胶、橡皮、涂改带，一样都不少。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>东西摆得整整齐齐，八样一件不少，铅笔也削尖了。</li>\n<li>黑笔、红笔、修正笔、涂改带都带了，考试的时候改错也方便。</li>\n</ul>\n<h3>提醒一下</h3>\n<ul>\n<li>照片里没看到直尺。数学考试要画图、量长度的话，记得把直尺放进铅笔袋，出门前再数一遍。</li>\n</ul>\n<p>这项任务完成了。按时分等今天语文都交齐了再一起结。</p>\n</body></html>",
-      "kind": "feedback",
-      "time": "14:03",
-      "title": "准备好考试用品",
-      "ts": "2026-11-07T14:03:00+08:00"
-    }
-  ]
+ "schema_version": "1.0",
+ "grade": 5,
+ "generated_at": "2026-11-08T14:51:53+08:00",
+ "items": [
+  {
+   "date": "2026-11-07",
+   "ts": "2026-11-07T14:15:58.922657+08:00",
+   "kind": "correction",
+   "time": "14:15",
+   "title": "默写订正：11课和12课1、3段",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，默写订正反馈</h2>\n<p>11月7日 14:00 提交的订正，《少年中国说》第1段漏写的那一句，红笔补写对了，插的位置也对——就在“少年自由则国自由”后面、“少年胜于欧洲”前面。这一段现在完整了。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>补写的那一句 8 个字一个不错，红笔字迹清楚，还用红圈标出来了，一眼就能看到改在哪里。</li>\n<li>插入标记画得明白，箭头正好指在要补的位置，说明你读过原文、知道这句该放在哪里。</li>\n<li>当天就把订正发回来了，改得又快又对。</li>\n</ul>\n<p>这次订正改对 +2、当天发回 +2，共 +4 分。这篇默写现在全部改对了，任务已完成。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "2026-11-07T14:12:00+08:00",
+   "kind": "feedback",
+   "time": "14:12",
+   "title": "把园一到园四的日积月累抄一次（订正）",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，日积月累抄写订正反馈</h2>\n<p>11月7日 14:00 提交，第1轮订正。这次把园一到园四又认真抄了一遍，园一、园三、园四和园二的陶渊明、岳飞、毛泽东三条都写对了，值得表扬。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>园一16个成语全对，园三《乞巧》全对，园四16个成语全对。</li>\n<li>园二陶渊明、岳飞、毛泽东三条名言全对，一字不差。</li>\n</ul>\n<h3>待改正（2处，还是上次那两处）</h3>\n<ul>\n<li>园二第1条（葛洪）还是空着，没抄上。不要照老师笔记抄——老师笔记里没有这句。翻开语文书园地二，找到第一条（葛洪的那句），对照课本原文补抄一次。注意：不要凭记忆写，要看课本原文。</li>\n<li>园二第5条（朱熹）还是不对。你写的两句都不是课本园地二最后一条。不要照老师笔记抄——翻开语文书园地二，找到最后一条（朱熹的那句），对照课本原文再抄一次。提示：这句开头是“少年易老”，不是“一寸光阴一寸金”；“少壮不努力”那句课本园二里没有，不用抄。</li>\n</ul>\n<p>这次订正两处都还没改对，所以还是暂不结算。按上面说的翻开语文书园地二对照课本再抄一次，改对了就结算。</p>\n</body></html>\n"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "2026-11-07T14:03:00+08:00",
+   "kind": "feedback",
+   "time": "14:03",
+   "title": "准备好考试用品",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，考试用品准备反馈</h2>\n<p>11月7日 13:55 提交，考试用品都准备好啦：深蓝色铅笔袋、黑色水笔、红笔、修正笔、削好的铅笔、固体胶、橡皮、涂改带，一样都不少。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>东西摆得整整齐齐，八样一件不少，铅笔也削尖了。</li>\n<li>黑笔、红笔、修正笔、涂改带都带了，考试的时候改错也方便。</li>\n</ul>\n<h3>提醒一下</h3>\n<ul>\n<li>照片里没看到直尺。数学考试要画图、量长度的话，记得把直尺放进铅笔袋，出门前再数一遍。</li>\n</ul>\n<p>这项任务完成了。按时分等今天语文都交齐了再一起结。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "2026-11-07T13:43:00+08:00",
+   "kind": "feedback",
+   "time": "13:43",
+   "title": "周六综合试卷（数学）",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学周六综合试卷批改反馈</h2>\n<p>11月7日的数学周六综合试卷，11月7日 13:20 提交，40道小题做对37道（92.5%），得分87分。</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>选择题 4 道全对，分配律、积的变化规律、时间换算、单价乘数量都稳。</li>\n<li>直接写得数 8 道全对，简便计算 3 道全对。</li>\n<li>填空 17/18，解决问题 3/4，竖式 2/3。</li>\n</ul>\n<h3>📝 需要订正：3处</h3>\n<p>逐题想一想再改：</p>\n<p><b>填空2</b><br>\n<b>原题：</b>一个数缩小到原来的十分之一后，比原来少63，原来这个数是（ ）。<br>\n<b>错在哪：</b>求原数这一步算错了，少的63和原数之间的关系没想对。<br>\n这个数缩小后比原来少63，少的63占原来这个数的几分之几？先算一算63是原数的几分之几，再用63除以这个分率求原数。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_sx_fill2.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>列竖式计算 5.04×0.28</b><br>\n<b>原题：</b>列竖式计算：5.04×0.28=<br>\n<b>错在哪：</b>竖式里第二个部分积写错了，少了一个0，所以得数也不对。<br>\n竖式里第二个部分积是5.04乘2，先单独算一算5.04×2得多少；再把两个部分积对齐相加，最后数一数积应有几位小数。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_sx_vert3.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>解决问题2</b><br>\n<b>原题：</b>学校买练习本和铅笔盒各15个，练习本每本2.4元，铅笔盒每个9.6元，一共要付多少元？<br>\n<b>错在哪：</b>买练习本的钱算错了，15×2.4的得数不对，连带着总价也错了；铅笔盒的144元是对的。<br>\n先单独算一算买15本练习本要多少钱：2.4×15，可以把2.4看成24个0.1再算；铅笔盒的144元是对的，两样合起来一共是多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_sx_prob2.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>本批积分 +18（完成+10、正确率+6、按时+2）。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "2026-11-07T12:29:00+08:00",
+   "kind": "feedback",
+   "time": "12:29",
+   "title": "第四单元综合卷（并改正，见班群）",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学第四单元综合卷批改反馈</h2>\n<p>11月6日的第四单元综合卷，11月7日 11:04 提交，65道小题做对44道（67.7%），得分76分。</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>计算（三）32道小题全对，竖式、简便运算、直接写得数都稳。</li>\n<li>填空一1、一2、一5，选择二1、二2、二3、二4、二5、二7全对，用字母表示数的基础部分掌握得不错。</li>\n<li>解决问题四1、四2、四3、四5全对，日历框数和是153求中间数那道也做对了。</li>\n</ul>\n<h3>📝 需要订正：21处</h3>\n<p>错题都集中在“用字母表示数”和日历框数这两块，逐题想一想再改：</p>\n<p><b>一3-1 填空3-1.5小时路程</b><br>\n<b>原题：</b>汽车每小时a千米，1.5小时行驶路程<br>\n<b>错在哪：</b>路程=速度×时间，你用的速度字母和题目给的不一样。<br>\n汽车每小时行驶a千米，1.5小时行驶的路程该用哪个字母乘时间？路程=速度×时间，这里的速度是a还是x？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_speed.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一4-1 填空4-玩具小汽车轮子</b><br>\n<b>原题：</b>组装n辆玩具小汽车需要几个车轮<br>\n<b>错在哪：</b>把轮子数算成了辆数加4，轮子数和辆数不是加的关系。<br>\n1辆车要4个轮子，2辆车要8个，轮子数和辆数是什么关系？n辆车，轮子数是n的几倍？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_wheels.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一6-1 填空6-大正方形面积</b><br>\n<b>原题：</b>大正方形边长a cm，面积<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>正方形面积的算法弄错了，4a不是面积。<br>\n正方形面积=边长×边长，边长是a，面积该怎么表示？a×a可以简写成什么？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_squares.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一6-2 填空6-小正方形面积</b><br>\n<b>原题：</b>小正方形边长b cm，面积<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>小正方形的边长是b，面积不是ba。<br>\n小正方形的边长是b不是a，面积=边长×边长，b×b简写成什么？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_squares.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一6-3 填空6-阴影面积</b><br>\n<b>原题：</b>阴影部分的面积<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>阴影部分不是两个边长相乘，要想想阴影是怎么得到的。<br>\n阴影部分是大正方形里去掉小正方形剩下的部分，该用减法还是乘法？大正方形面积减去小正方形面积是多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_squares.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一7-1 填空7-买笔记本花了</b><br>\n<b>原题：</b>小刚买3本笔记本每本a元，买笔记本花了<br>\n<b>错在哪：</b>题目问的是买笔记本花了多少钱，你算的是还剩多少钱，答非所问。<br>\n题目问“买笔记本花了”多少钱，3本笔记本、每本a元，花了多少钱？你写的那个算式算的是什么？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_money.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一7-2 填空7-还剩多少钱</b><br>\n<b>原题：</b>当a=4.5时，小刚还剩多少钱<br>\n<b>错在哪：</b>计算过程有误，26-2不是正确的计算步骤。<br>\n还剩多少钱=48-3×4.5-12.7，先算3×4.5是多少，再从48里减，最后减12.7，一步一步算。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_money.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一8-1 填空8-6a表示</b><br>\n<b>原题：</b>淘气每天看a页，6a表示<br>\n<b>错在哪：</b>6a的单位写错了，不是“书”。<br>\n淘气每天看a页，6天看了多少页？6a的单位是什么，是“书”还是“页”？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_reading.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一8-2 填空8-a+b表示</b><br>\n<b>原题：</b>淘气每天a页笑笑每天b页，a+b表示<br>\n<b>错在哪：</b>a+b是一天还是六天的页数，时间范围弄错了。<br>\na是淘气一天看的页数，b是笑笑一天看的页数，a+b是两人一天一共看的页数，还是6天一共看的？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_reading.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一9-1 填空9-到山崖距离</b><br>\n<b>原题：</b>声音每秒340米，t秒听到回声，到山崖距离<br>\n<b>错在哪：</b>t×340算的是声音走个来回的总路程，不是天天到山崖的距离。<br>\n声音从天天这里到山崖再回来，一共走了340×t米，这段路是去和回两趟，天天到山崖只有一趟，该怎么算？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_echo.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一9-2 填空9-听到回声时间</b><br>\n<b>原题：</b>到山崖s米，从发出声音到听到回声的时间<br>\n<b>错在哪：</b>时间=路程÷速度，这里的路程不是s，是声音走个来回的总路程。<br>\n天天到山崖s米，声音要走去和回两趟才听到回声，一共走了多少米？时间=路程÷速度，这里的路程是多少、速度是多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_echo.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一10-1 填空10-2分球共得分</b><br>\n<b>原题：</b>两人投进的2分球共获得多少分<br>\n<b>错在哪：</b>a+b只是投进球的个数，不是得分，得分要把个数乘以每个球的分数。<br>\n两人一共投进(a+b)个2分球，每个2分球得2分，一共得了多少分？个数和分数是一回事吗？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_basketball.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一12-2 填空12-摆3个八边形</b><br>\n<b>原题：</b>摆3个八边形需要几根小棒<br>\n<b>错在哪：</b>摆3个的根数不是23，每多摆1个多用的根数不是8。<br>\n摆1个要8根，摆2个要15根，多1个八边形多了几根？摆3个比摆2个又多几根？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_octagon.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>一12-3 填空12-摆n个八边形</b><br>\n<b>原题：</b>摆n个八边形需要几根小棒<br>\n<b>错在哪：</b>小棒数和八边形个数不是加7的关系，要找每多1个多几根的规律。<br>\n摆1个8根，摆2个15根，每多1个多几根？n个八边形比1个多摆了几次，每次多几根？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_octagon.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>二6-1 选择6-剩下桃子</b><br>\n<b>原题：</b>运来a箱桃子每箱18千克，卖出b箱后还剩<br>\n<b>错在哪：</b>剩下的桃子要按千克算，总千克减去卖出的千克，不是按箱数算。<br>\n运来a箱、每箱18千克，一共多少千克？卖出b箱、每箱18千克，卖了多少千克？剩下的=一共的-卖掉的，该怎么列式？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_peaches.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>二8-1 选择8-6x+5写错</b><br>\n<b>原题：</b>玲玲把6x+5写成6(x+5)，结果比原来<br>\n<b>错在哪：</b>把6x+5写成6(x+5)，结果变了，括号不能随便加。<br>\n6(x+5)展开是多少？和6x+5比一比，是多了还是少了，多（少）了多少？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_distributive.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-1 解决问题4-日历框数左边的数</b><br>\n<b>原题：</b>日历框中正中间是x，左边的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，左边的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-2 解决问题4-日历框数右边的数</b><br>\n<b>原题：</b>日历框中正中间是x，右边的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，右边的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-3 解决问题4-日历框数左上角的数</b><br>\n<b>原题：</b>日历框中正中间是x，左上角的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，左上角的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-1-4 解决问题4-日历框数右下角的数</b><br>\n<b>原题：</b>日历框中正中间是x，右下角的数<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>这4个空没写，日历里上下左右的数有规律，找找正中间的数和周围数的关系。<br>\n日历里上下相邻的数差几天？左右相邻的数差几天？正中间是x，右下角的数比x大几天还是小几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>四4-2 解决问题4-9数之和与中间数关系</b><br>\n<b>原题：</b>框中9个数的和与正中间的数有什么关系<br>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">原题图</div><img src=\"data/diagrams/g5_u4_q44_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<b>错在哪：</b>只说“和比正中间的数大”没说清具体关系，和是正中间数的几倍？<br>\n9个数排成3行3列，把9个数都用x表示出来，加起来看看等于几个x？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/g5_e8dd7d_calendar.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>把这21处订正好发回，重点想想“用字母表示数”里每个字母代表什么，再动手写。加油！💪</p>\n<p>本次积分 +6（完成率93.8%完成分+6，正确率67.7%未达80%档不得分）。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月6日抄M1单词反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，抄M1单词反馈</h2>\n<p>11月6日的抄M1单词任务，11月7日 11:03 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>M1单词34个全部抄完了，每个词都抄了4遍，很完整。</li>\n<li>34个单词的拼写全部正确，一个都没错，太棒了！</li>\n<li>写错的地方你自己发现了，划掉重写，改过之后全是对的，这种自己检查、自己改的习惯特别好。</li>\n</ul>\n<h3>小提醒</h3>\n<ul>\n<li>这次有10处起笔写错了又划掉重写。下次写之前先在心里想一想单词的样子，争取一次写对，写得更干净。</li>\n</ul>\n<p>本次积分 +20（完成+10、正确率全对+10）。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月6日小管家反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，小管家反馈</h2>\n<p>11月6日的语文任务，11月7日 11:47 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>小管家 11 月 6 日的语文任务已经提交了，园地一到园地四都读了一遍，录音 9 分 13 秒，还得了老师奖励的 1 朵小红花，很棒。</li>\n</ul>\n<p>这次小管家发回 +5 分。按时分等今天语文都交齐了再一起结。</p>\n<p>下次争取在当天完成。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-07",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月6日口语易反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月6日的口语易任务，11月7日 11:01 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 6 日的任务已经提交了，9 项都完成了，很好。</li>\n</ul>\n<p>下次争取在当天完成口语练习。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "2026-11-05T21:40:00+08:00",
+   "kind": "feedback",
+   "time": "21:40",
+   "title": "英语试卷（笔试部分）",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语试卷（笔试部分）反馈</h2>\n<p>11月5日 20:28 提交，笔试 51/60＝85%，要订正 6 处。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>八、九（一）两大题全对（各 10/10），阅读理解和判断题都稳。</li>\n<li>七、补全短文 9/10，只错 1 处。</li>\n<li>十、写作 8/10：6 句话符合要求，姓名、性格、外貌、共同爱好都写到了，很完整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>六-4：What do you think ___ this healthy food?——“你觉得这种健康食物怎么样？”这里“认为”用哪个介词搭配？想想 think 后面跟哪个小词表示“认为”，再看看第 5 题是不是也填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>六-5：What can you do ___ these things?——“你能用这些东西做什么？”这里“用”用哪个介词？想想 do 后面跟哪个小词表示“用”，再对照第 4 题看看两个词是不是填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>七-9：I always eat my food 9.s___.——“我吃饭总是吃得……”这里要填一个词说“吃得怎么样”，修饰动词 eat，应该用什么词性的词？首字母 s 已经给了，这个词完整拼出来是什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-7：再读一遍短文第二句：植树节那天，学校上课吗？短文里有没有一个表示“没有”的小词？学生那天在学校通常做什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-9：题干里问的是 first（首先）还是 last（最后）？再读短文里种树的三个步骤：First……Next……At last……，第一步是做什么？浇水是第几步？<br><img src=\"data/diagrams/eng_65a3bbf9_q5_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>十、写作：We are friend because we both like music.——这句话里 We 是几个人？两个人互为朋友，friend 这个词应该用单数还是复数？想想 We are ___ 后面跟几个人的称呼时要不要加 s。<br><img src=\"data/diagrams/eng_65a3bbf9_q6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>听力部分（40 分）还没交，等音频到了再一起核分。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "英语随堂练习（四）订正",
+   "html": "<h2>彦均，英语随堂练习（四）订正反馈</h2><p>11月5日 20:14 提交，13处订正改对了10处（76.9%），还有3处要再改一改。这批订正得了 15 分。</p><h3>做得好的地方</h3><ul><li>听力判断改对了：Tom and John 的爱好不一样，你改成 F 是对的。</li><li>选词填空改对了两处：Don't eat too much chocolate、Friends should be happy together，都改对了。</li><li>首字母填空两处都改对了：We also help our earth、They are happy together。</li><li>阅读判断两处都改对了：Alice 不是到处都能看到塑料垃圾，绿俱乐部不是 16 个人。</li><li>阅读选择两处都改对了：狮子生气是因为小老鼠爬到它背上，几天后狮子在网里。</li></ul><h3>要再改的地方（3处）</h3><ol><li><b>选词填空第3题：We need to ___ with our friends.</b><br>你划掉了 Similar，保留了 do，但句子还是不通。想一想，这个空要填一个动词，表示和朋友一起做一件事。朋友之间常常会互相分东西、一起玩，哪个词是这个意思？读一遍句子，哪个词放进去意思才通？<br><p><img src=\"diagrams/g5_EXAM989943_q6_3_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li><li><b>选词填空第10题：Don't eat too ___ candies.</b><br>你划掉了 many，保留了 much，但 candies 是复数、能一个一个数出来的东西。修饰这种词的时候，用来表示“太多”的词和修饰水、米饭这种数不出来的东西的词是不一样的。你写的那个词是修饰数不出来的东西的，换一个试试？<br><p><img src=\"diagrams/g5_EXAM989943_q6_10_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li><li><b>书面表达：My best friend 一段有三个小地方要改。</b><br>① He 是第三人称单数，动词 like 要变一变，想想单三后面动词要加什么；② listen 这个词后面直接接 music 读起来少了点什么，想想“听音乐”这个动作，中间是不是少了一个表示方向的小词；③ openly 是副词，修饰 talk 这个动词，副词放在动词前面还是后面读起来更顺？你试着换个位置。<br><p><img src=\"diagrams/g5_EXAM989943_q10_writing_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li></ol><p>改完这3处再发回来，我再帮你看看。加油！</p>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "第四单元小测",
+   "html": "<h2>第四单元小测反馈</h2>\n<p>这次小测 107 小问，你对了 100 个，正确率 93.5%，很棒！下面 7 处要改正，照着提示一步步想，自己改出来。</p>\n<h3>看拼音写词语：dǒu sǒu</h3>\n<p>提示一：这个词是说人精神很好、很有干劲，课文里常用来形容战士和劳动者的精神状态。提示二：第一个字是提手旁，读dǒu，想想提手旁加个什么字？提示三：第二个字读sǒu，看看你写的第二个字，它的读音和字形对得上吗？格外那个字是不是多余的？</p>\n<p><img src=\"diagrams/g5_BCE08C_q1_dousou_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>读句子写字词：jiāng（ ）土</h3>\n<p>提示一：这个空只要填一个字，括号后面已经印着“土”字了，合起来是一个词。提示二：你写了两个字，读一读句子，顺吗？提示三：把多余的那个字去掉，再读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q2_jiang_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：官邸</h3>\n<p>提示一：查一查字典，“邸”字读第几声？提示二：“官邸”这个词，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q3_di_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：潜龙</h3>\n<p>提示一：“潜水”的“潜”怎么读？提示二：qián和qiáng，韵母有什么不同？提示三：重新拼读“潜”字，声母是q，韵母是ian还是iang？</p>\n<p><img src=\"diagrams/g5_BCE08C_q4_qian_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：租界</h3>\n<p>提示一：“租”字读第几声？提示二：想想“租房”的“租”，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q5_zu_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：瑰宝</h3>\n<p>提示一：“瑰宝”的“瑰”怎么读？提示二：guī和guǎi，韵母和声调有什么不同？提示三：重新拼读“瑰”字，声母是g，韵母是ui还是uai？</p>\n<p><img src=\"diagrams/g5_BCE08C_q6_gui_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：裁</h3>\n<p>提示一：“裁剪”的“裁”怎么读？提示二：c和z是不同的声母，“裁”是平舌音，读第几声？提示三：重新拼读“裁”字，声母是c还是z？是第几声？</p>\n<p><img src=\"diagrams/g5_BCE08C_q7_cai_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<p>改完后拍照发回，老师会再看一遍。加油！</p>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "生字16课",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，生字16课反馈</h2><p>11月5日 20:16 提交，7个生字对4个、错3个（57.1%），要订正3处。</p><h3>做得好的地方</h3><ul><li>塔、埃、墓、砌这4个字全对：拼音、字形、组词都写对了，很棒！</li><li>组词用得都对：金字塔、矮塔楼、埃及、古埃及、陵墓、墓室、塔基、基本、堆砌，都很好。</li></ul><h3>要订正的地方（3项）</h3><ul><li>堆的拼音：堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_dui_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_dui_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>基的字形：基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。<br><img src=\"data/diagrams/g5_shengzi16_ji_structure_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_ji_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>狭的拼音：狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_xia_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_xia_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul><p>订正完把改好的3个字再拍一张发回来，你一定能全对！</p></body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日预习16课反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，预习16课反馈</h2>\n<p>11月4日 18:44 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>预习16课完成得很好！课文里狭、甬、黏的拼音都标出来了，生字表的字也一个一个注了音还组了词，预习做得很扎实。生字表的字下次再写清楚一点、词对齐格子就更好了。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>没有，预习全完成了。明天上课认真听，看看胡夫金字塔到底是怎么盖起来的。</li>\n</ul>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日生字15课反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，生字 15 课反馈</h2>\n<p>11月4日 20:55 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>13 个生字里 11 个全对：字、拼音、部首、组词都对了，字也写得很工整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>煤的拼音：再拼一遍，声母是 m，韵母呢？读一读，再写一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>菌的拼音：再拼一遍，细菌的菌，韵母后面有没有 n？声调是第几声？读一读细菌，再拼一遍。<br><img src=\"data/diagrams/g5_shengzi15_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>另外，滴的第一个组词再想一想，是不是一个现成的词语？把这两处拼音一次改全。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日期中模拟卷1.2页反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，期中模拟卷1.2页反馈</h2>\n<p>11月4日 18:43 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>这次交的第 1、2 页，大部分都做对了：填空里的单位换算、等式性质、正方形周长和面积都对；计算题 11 道全对，竖式也列得很清楚。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>填空第 4 题第 2 空（求第三个角）：三角形三个内角加起来是多少度？已经知道两个角，求第三个角该用什么算式？先算两个已知角的和，再用内角和去减，算的时候退位要小心。<br><img src=\"data/diagrams/g5_mathmock_anglesum.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>填空第 4 题第 3 空（按角分是哪种）：按角分三角形，看的是最大的那个角：三个角都比直角小是哪种？有一个角正好是直角是哪种？有一个角比直角大是哪种？你先把三个角都算出来，再比一比最大的角和直角谁大谁小。<br><img src=\"data/diagrams/g5_mathmock_classify.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>选择第 3 题（积最大）：要比积的大小，先把四个算式的结果都算出来，再比一比。1.1 比 1 大，乘出来会比 1 大还是比 1 小？把四个结果排一排再选。<br><img src=\"data/diagrams/g5_mathmock_product.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>选择第 6 题（年龄差）：年龄差会不会变？今年妈妈比明明大几岁，5 年后妈妈长了几岁、明明长了几岁，差变了没有？先算今年的差，再算 5 年后的差，比一比。<br><img src=\"data/diagrams/g5_mathmock_agediff.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>把这 4 道一次改全，订正全对后这项就完成了。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-04",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月4日口语易反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月4日 21:19 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 4 日的任务已经提交了，6 项都完成了，很好。</li>\n</ul>\n<p>继续保持每天按时完成口语练习。</p>\n</body></html>"
+  }
+ ]
 }
