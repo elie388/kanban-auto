@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "六年级",
   "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T16:10:21+08:00",
+  "updated_at": "2026-11-08T16:38:00+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -165,7 +165,7 @@
       "title": "读背概念5-19",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
@@ -174,13 +174,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T00:18:03+08:00",
+      "updated_at": "2026-11-08T16:38:00+08:00",
       "task_type": "reading",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-07",
       "carry_count": 2,
       "pending_corrections": 0,
-      "corrections": []
+      "corrections": [],
+      "status_source": "manual"
     },
     {
       "task_id": "REG-20261106-B2E999",
@@ -714,8 +715,8 @@
   ],
   "counts": {
     "total": 18,
-    "pending": 14,
-    "in_progress": 2,
+    "pending": 13,
+    "in_progress": 3,
     "done": 2,
     "pending_review": 0
   },
