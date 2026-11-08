@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T20:01:53+08:00",
+  "updated_at": "2026-11-08T20:02:26+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -510,31 +510,31 @@
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
       "carry_count": 1,
-      "corr_round": 1,
+      "corr_round": 2,
       "corrections": [
         {
-          "label": "阅读3 判断正误并写依据词组",
-          "question": "Tom cleans his room and helps his mum in the morning. (T/F) 依据词组",
-          "reason": "判断 T 是对的，但写错了位置：T 写在了依据词组横线上，(T/F)处是空的",
-          "hint": "第3题的判断你其实做对了，可是 T 写错了地方——T 应该写在 (T/F) 的括号里。依据词组那条横线上要写的，是短文里能证明这句话的那几个词：回短文里找一找，Tom 早上做了哪两件事？把那两件事连起来，抄到依据词组横线上。",
+          "label": "阅读5 问答 What do Tom and his friends do in the afternoon?",
+          "question": "What do Tom and his friends do in the afternoon?（用完整英文句子回答）",
+          "reason": "music 拼写错误：写成了 mugic（g 带下伸圈，与 games/together 的 g 同形，非 music 的 s）。第1轮时该题判对，本轮重写时新出现的拼写错。",
+          "hint": "第5题的回答里有一个词拼错了：'听音乐'那个词，你写的时候把一个字母写成了另一个字母。想一想，'音乐'这个词里，m-u 后面那个字母，写出来应该是不出头的，还是带一个小圈圈伸到下面去的？翻开短文，找到 'listen to music' 那一句，对照一下你写的那个词，看看哪个字母不一样。",
           "img": "",
           "q_img": "",
-          "orig_text": "判断正(T)误(F)，对照原文判断，并写出依据词组：Tom cleans his room and helps his mum in the morning. (T/F) 依据词组：______",
-          "q_img_exempt": "英语判断题无原题图",
-          "round": 1,
-          "img_exempt": "图后补"
+          "orig_text": "问答（用完整英文句子回答）：What do Tom and his friends do in the afternoon?",
+          "q_img_exempt": "英语问答无原题图",
+          "img_exempt": "图后补",
+          "round": 2
         },
         {
           "label": "写作 My Friend's Birthday（30-50词）",
           "question": "以 My Friend's Birthday 为题写短文，写 Tom 过生日的一天；第三人称主语 Tom；至少5个第三人称单数动词；30-50词",
-          "reason": "短文共43词（30-50词达标），第三人称主语 Tom 达标",
-          "hint": "先对照短文想一想：Tom 的生日到底是星期几？你第一句写的星期几和短文一样吗？再想一想：'Tom and his friends' 是几个人？主语是好几个人时，动词词尾还要加 -s 吗？找一找你短文里哪个动词加了不该加的 -s。'妈妈准备了很多好吃的'，'准备'这个动作应该用哪个动词？ready 能当动词吗？'放学后'英文该怎么说，After 后面应该直接跟什么？food 是数得出来的东西吗，前面该用 many 还是短文里的那个说法？最后数一数，你短文里用对的第三人称单数动词有几个，够 5 个吗？",
+          "reason": "短文共42词（30-50词达标），'much yummy food' 已改对；但仍未改对：星期仍是 Friday（短文是 Saturday，未改）；'Tom and his friends' 后动词仍带 -s：goes（划掉后红笔又重写 goes，等于没改）、sings、plays、feels——复数主语动词不应加 -s，方向改反了；'Tom's mum prepare' 缺 -s（应为 prepares，红笔 Prepare 首字母大写也不对）；正确使用的第三人称单数动词 0 个，未达至少 5 个要求。",
+          "hint": "先对照短文想一想：Tom 的生日到底是星期几？你第一句写的星期几和短文一样吗？再想一想：Tom and his friends 是好几个人，go/sing/play/feel 不要加 -s；只有 Tom/mum 一个人时才加 -s（prepares）。找一找你短文里哪个动词加了不该加的 -s，哪个动词少了该加的 -s。'妈妈准备了很多好吃的'，'准备'这个动作应该用哪个动词？ready 能当动词吗？最后数一数，你短文里用对的第三人称单数动词有几个，够 5 个吗？",
           "img": "",
           "q_img": "",
           "orig_text": "题目：My Friend's Birthday（30-50词）。以 'My Friend's Birthday' 为题，写一篇短文，写一写 Tom 过生日的一天。写作要求：①第三人称主语（Tom）；②至少用5个第三人称单数动词（如 gets, makes, sings, blows, eats，注意动词词尾加 -s / -es）；③注意拼写和标点。字数30-50词。",
           "q_img_exempt": "英语写作无原题图",
-          "round": 1,
-          "img_exempt": "图后补"
+          "img_exempt": "图后补",
+          "round": 2
         }
       ],
       "pending_corrections": 2,
