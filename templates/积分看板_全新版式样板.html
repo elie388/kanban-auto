@@ -5729,6 +5729,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       <div class="up-kousuan" id="up-kousuan" style="display:none"><div class="up-kousuan-cap">数学口算（看题语音作答，不用写）</div><div class="up-kousuan-list" id="up-kousuan-list"></div></div>
       <div id="up-rec" style="display:none">
         <div class="up-rechint" id="up-rec-hint" style="display:none">📖 这个要把<b>内容</b>一起交哦：先点上面的「📷 选取文件」把要读、要预习或要对话的内容拍照上传，再点下面的录音读一遍，一起交，老师会照着内容批改。</div>
+        <div class="up-rechint" id="up-rec-hint-read" style="display:none">先拍复习内容，读出来并录音，上传即算完成（不批改）。</div>
         <button class="up-recbtn" id="up-rec-start" type="button">🎤 直接录音</button>
         <div class="up-reclive" id="up-rec-live" style="display:none">
           <span class="up-recdot"></span><span class="up-rectime" id="up-rec-time">00:00 / 15:00</span>
@@ -5765,7 +5766,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261108-readrec';
+  var KB_BUILD = '20261108-readfmt';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -5962,12 +5963,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       cur.task_id = ctx.info.task_id; cur.task_source = ctx.info.task_source; cur.title = ctx.info.title;
       $('up-title').textContent = '交这一项';
       $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
-      if(cur.type === 'read'){
-        /* 已读完成（2026-11-08 家长纠正）：拍照＋录音入口。先拍复习内容、读出来并录音，上传即算完成（不批改、不出订正）。 */
-        $('up-title').textContent = '读完上传';
-        $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · 已读 · ' + (cur.title || '') + '：先拍复习内容，读出来并录音，上传即算完成（不批改）。';
-        go.textContent = '读完上传 ✅';
-      }
+      /* 2026-11-08 家长定：读面板格式与每日读书一致，走标准标题/副标题/按钮（交这一项＋短副标题＋全部交完 ✅），不再定制；说明句移到录音区提示（见 up-rec-hint-read）。 */
       var _ot = (window.__taskOrig || {})[cur.task_id];
       if(_ot){ $('up-orig-cap').textContent = '原文 · 照着读'; $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
       else { $('up-orig').style.display = 'none'; }
@@ -6086,6 +6082,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     b.style.display = recShouldShow() ? 'block' : 'none';
     var hint = $('up-rec-hint');
     if(hint) hint.style.display = (b.style.display !== 'none' && recNeedOrig()) ? 'block' : 'none';
+    /* 2026-11-08 读面板格式与每日读书一致：读任务专用提示（不含“老师批改”，读任务不批改），随录音区一起显示；标准提示对读任务仍隐藏（recNeedOrig 返 false）。 */
+    var hintRead = $('up-rec-hint-read');
+    if(hintRead) hintRead.style.display = (b.style.display !== 'none' && cur && cur.type === 'read') ? 'block' : 'none';
   }
   function recStopTracks(){
     if(recTimer){ clearInterval(recTimer); recTimer = null; }
