@@ -5631,8 +5631,6 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 .up-btn{margin-top:8px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid #b98a2f;background:#fdf6df;color:#7a5b12;font-size:14px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .up-btn:active{transform:scale(.97)}
 .up-btn.sent{border-color:#3d9970;background:#e8f7ef;color:#1e6b4a}
-.up-btn.read-btn{border-color:#2e7d32;background:#e8f5e9;color:#1b5e20} /* 已读完成入口（2026-11-08）：绿色系，与交作业金色区分 */
-.up-btn.read-btn:disabled{opacity:.75;cursor:default}
 .st-zone .up-btn{margin-top:0;min-width:44px;min-height:44px;font-size:13px;padding:5px 12px}
 .up-btn.busy{opacity:.55;pointer-events:none}
 .up-bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 2px 2px}
@@ -5766,7 +5764,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261108-readgrade';
+  var KB_BUILD = '20261108-readbtn';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -5864,7 +5862,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     try{
       var card = document.querySelector('.task[data-tid="' + taskId + '"]');
       if(!card) return;
-      var b = card.querySelector('.up-btn.read-btn');
+      var b = card.querySelector('.up-btn');
       if(b){ b.textContent = '✅ 已上传'; b.disabled = true; b.classList.add('sent'); }
     }catch(e){}
   }
@@ -5922,7 +5920,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         /* 读任务入口（2026-11-08 家长改定，批改）：拍照＋录音上传入口，复用读背上传通道/样式；上传后走批改流程。上传后本地记已交、按钮置灰，防重复传。 */
         var key = 'task:' + info.grade + ':' + info.task_id;
         var s = stateGet(); var it = s.items[key];
-        b.className = 'up-btn read-btn' + (it ? ' sent' : '');
+        b.className = 'up-btn' + (it ? ' sent' : '');
         b.textContent = it ? '✅ 已上传' : '📖 读完上传';
         if(it) b.disabled = true;
         b.addEventListener('click', function(){ openSheet({mode:'task', info: info, key: key}); });
