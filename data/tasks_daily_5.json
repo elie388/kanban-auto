@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T21:27:22+08:00",
+  "updated_at": "2026-11-08T21:29:40+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -335,7 +335,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-07T19:59:15+08:00",
-      "updated_at": "2026-11-08T18:17:45+08:00",
+      "updated_at": "2026-11-08T21:27:45.560546+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-11-07.pdf",
@@ -346,35 +346,23 @@
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
       "carry_count": 1,
-      "corr_round": 2,
       "corrections": [
-        {
-          "label": "阅读5 问答 What do Tom and his friends do in the afternoon?",
-          "question": "What do Tom and his friends do in the afternoon?（用完整英文句子回答）",
-          "reason": "music 拼写错误：写成了 mugic（g 带下伸圈，与 games/together 的 g 同形，非 music 的 s）。第1轮时该题判对，本轮重写时新出现的拼写错。",
-          "hint": "第5题的回答里有一个词拼错了：'听音乐'那个词，你写的时候把一个字母写成了另一个字母。想一想，'音乐'这个词里，m-u 后面那个字母，写出来应该是不出头的，还是带一个小圈圈伸到下面去的？翻开短文，找到 'listen to music' 那一句，对照一下你写的那个词，看看哪个字母不一样。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "问答（用完整英文句子回答）：What do Tom and his friends do in the afternoon?",
-          "q_img_exempt": "英语问答无原题图",
-          "img_exempt": "图后补",
-          "round": 2
-        },
         {
           "label": "写作 My Friend's Birthday（30-50词）",
           "question": "以 My Friend's Birthday 为题写短文，写 Tom 过生日的一天；第三人称主语 Tom；至少5个第三人称单数动词；30-50词",
-          "reason": "短文共42词（30-50词达标），'much yummy food' 已改对；但仍未改对：星期仍是 Friday（短文是 Saturday，未改）；'Tom and his friends' 后动词仍带 -s：goes（划掉后红笔又重写 goes，等于没改）、sings、plays、feels——复数主语动词不应加 -s，方向改反了；'Tom's mum prepare' 缺 -s（应为 prepares，红笔 Prepare 首字母大写也不对）；正确使用的第三人称单数动词 0 个，未达至少 5 个要求。",
-          "hint": "先对照短文想一想：Tom 的生日到底是星期几？你第一句写的星期几和短文一样吗？再想一想：Tom and his friends 是好几个人，go/sing/play/feel 不要加 -s；只有 Tom/mum 一个人时才加 -s（prepares）。找一找你短文里哪个动词加了不该加的 -s，哪个动词少了该加的 -s。'妈妈准备了很多好吃的'，'准备'这个动作应该用哪个动词？ready 能当动词吗？最后数一数，你短文里用对的第三人称单数动词有几个，够 5 个吗？",
+          "reason": "红笔重写共37词（30-50词达标），但仍未改对：星期仍是 Friday（短文是 Saturday，未改）；Tom and I goes（复数主语＋goes，应为 go，且第一人称违反第三人称要求）；Tom's mum prepare 缺 -s（应为 prepares）；We play games and Listens music（Listens 句中大写、We 后应为 listen）；We feels happy（We 后应为 feel）；正确使用的第三人称单数动词仅 is×2 个，未达至少 5 个要求；句中 My 首字母大写也不对。",
+          "hint": "先对照短文想一想：Tom 的生日到底是星期几？你重写里写的星期几和短文一样吗？再想一想：Tom and I 是两个人，goes 要改成什么？题目要求用第三人称写 Tom 的一天，I 和 We 能用吗？Tom's mum 只有一个人，prepare 后面要不要加 -s？We 是好几个人，Listens 和 feels 后面的 -s 该不该留？句中单词的首字母（My、Listens）该大写还是小写？最后数一数，你重写里用对的第三人称单数动词有几个，够 5 个吗？",
           "img": "",
           "q_img": "",
           "orig_text": "题目：My Friend's Birthday（30-50词）。以 'My Friend's Birthday' 为题，写一篇短文，写一写 Tom 过生日的一天。写作要求：①第三人称主语（Tom）；②至少用5个第三人称单数动词（如 gets, makes, sings, blows, eats，注意动词词尾加 -s / -es）；③注意拼写和标点。字数30-50词。",
           "q_img_exempt": "英语写作无原题图",
           "img_exempt": "图后补",
-          "round": 2
+          "round": 3
         }
       ],
-      "pending_corrections": 2,
-      "status_source": "closeout_writeback"
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback",
+      "corr_round": 3
     },
     {
       "task_id": "CHORE-20261108-G5",
@@ -424,18 +412,35 @@
       "title": "英语阅读写作第16期",
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-08T20:01:48+08:00",
-      "updated_at": "2026-11-08T20:01:53+08:00",
+      "updated_at": "2026-11-08T21:27:22+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-11-08.pdf",
           "label": "英语阅读写作练习",
           "pages": 2
         }
-      ]
+      ],
+      "corrections": [
+        {
+          "label": "写作 My Little Sister（30-50词）",
+          "question": "以 'My Little Sister' 为题写短文，写一写妹妹的一天；第三人称主语（She）；至少用5个第三人称单数动词；30-50词；一般现在时；注意拼写和标点。",
+          "reason": "短文共34词（30-50词达标），第三人称单数动词5个（gets、eats、drinks、plays、feels）达标；真实错误3处：go to park 缺冠词 the；句中 Sister/Little 大小写不一致；mum 小写（指人时应大写 Mum）。",
+          "hint": "这篇短文写得很好，34 个词、三单动词 5 个都达标了！还有 3 处小地方可以再想一想：第一处，“go to park”里，park 前面是不是少了一个小词？去某个地方的时候，前面通常要加哪个词呢？第二处，短文里有两个词，一个在“My little ___ is five”里，一个在“I and ___ sister go to park”里，它们写在句中却用了大写——想一想，普通名词写在句中时，应该用大写还是小写？标题里的大写和句中的大小写一样吗？第三处，“mum”这个词在句中出现了，你写的是小写——指家里的人时，应该用大写还是小写呢？",
+          "img": "rw16_writing_park_guide.png",
+          "q_img": "",
+          "orig_text": "题目：My Little Sister（30-50词）。以 'My Little Sister' 为题，写一篇短文，写一写妹妹的一天。写作要求：①第三人称主语（She）；②至少用5个第三人称单数动词（如 gets, eats, drinks, goes, plays，注意动词词尾加 -s / -es）；③用一般现在时；④注意拼写和标点。字数30-50词。",
+          "q_img_exempt": "英语写作无原题图",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback",
+      "corr_round": 1
     }
   ],
   "counts": {
