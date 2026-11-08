@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T18:57:44+08:00",
+  "updated_at": "2026-11-08T19:12:27+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -448,7 +448,47 @@
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
       "carry_count": 1,
-      "pending_note": "11月8日兄弟英语对话第1期反馈（4处要改）"
+      "pending_note": "11月8日兄弟英语对话第1期反馈（4处要改）",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "对话第9句 At nine o'clock, at the park gate.",
+          "question": "At nine o'clock, at the park gate.",
+          "reason": "漏读 gate；全量两遍＋分段两遍均无 gate",
+          "hint": "重读这句时，注意最后 gate 这个词不要漏掉，对照脚本把整句读完整。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "At nine o'clock, at the park gate.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第11句 On Sunday morning, let's visit our grandparents.",
+          "question": "On Sunday morning, let's visit our grandparents.",
+          "reason": "visit 读成 read；全量两遍均作 read，分段两遍一作 read 一作 be，均无 visit",
+          "hint": "重读这句时，注意 visit 这个词，对照脚本读准，不要读成 read。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "On Sunday morning, let's visit our grandparents.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第18句 OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.",
+          "question": "OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.",
+          "reason": "movie 含糊不清；四遍分别为 mole/mall/more/mole，均非 movie；同词第15句 v3 全量转写正确，可排除 Whisper 系统性误听",
+          "hint": "重读这句时，把 movie 这个词咬清楚，慢慢读，不要含糊带过。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3
     },
     {
       "task_id": "MANUAL-20261107-002-G5-YW",
