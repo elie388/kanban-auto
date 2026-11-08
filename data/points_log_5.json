@@ -1,12 +1,39 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-08T17:18:09+08:00",
+  "generated_at": "2026-11-08T17:33:09+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-08",
+      "time": "17:32",
+      "time_source": "entry",
+      "reason": "英语周试卷完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-08",
+      "time": "17:32",
+      "time_source": "entry",
+      "reason": "英语周试卷书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-08",
+      "time": "17:32",
+      "time_source": "entry",
+      "reason": "英语周试卷迟交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-08",
       "time": "17:15",
