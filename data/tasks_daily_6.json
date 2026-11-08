@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "grade": "六年级",
-  "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T23:10:37+08:00",
+  "generated_at": "2026-11-09T00:18:01+08:00",
+  "updated_at": "2026-11-09T00:18:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-08T23:10:37+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -22,204 +21,12 @@
       "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "REG-20261106-853367",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "完成发下的试卷，划文章",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T18:12:06+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "completed_at": "2026-11-08T18:12:06+08:00",
-      "orig_photos": [
-        "455c86b100f95e04.jpg",
-        "23d6f5f8dc3dedff.jpg",
-        "edc353ff4b863603.jpg",
-        "5cb7e5b614a59486.jpg",
-        "9ea775f32e6c5187.jpg",
-        "674e7c7538b202b8.jpg",
-        "b11e956a9c2a62bb.jpg",
-        "a428d4172290e951.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-DB49EC",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "复习U1-U3单词",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：复习U1-U3单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T17:38:32+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "pending_corrections": 0,
-      "corrections": [],
-      "task_type": "read",
-      "type_source": "regex_read",
-      "completed_at": "2026-11-08T17:38:32+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "915d209a18a406f9.jpg",
-        "430cf1fee435749d.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-B2E999",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本P34",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T14:51:38+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "pending_corrections": 0,
-      "corrections": [],
-      "completed_at": "2026-11-08T14:51:38+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "0b996256f63161d2.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-FA2690",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读科学10分钟",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T18:19:43+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "pending_corrections": 0,
-      "corrections": [],
-      "task_type": "read",
-      "type_source": "regex_read",
-      "completed_at": "2026-11-08T18:19:43+08:00",
-      "orig_photos": [
-        "56d606ac98737e95.jpg",
-        "d4762411aea9d13d.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-BE12FF",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄词本抄书P128-129 1至12课词语一次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T18:33:43+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "pending_corrections": 0,
-      "corrections": [],
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-08T18:33:43+08:00",
-      "orig_photos": [
-        "6e928fbed9804a9d.jpg",
-        "3767289e7498d14e.jpg",
-        "ece5b05258ecf7e9.jpg",
-        "cc45e1582baa606b.jpg",
-        "71602ea23179b74c.jpg",
-        "d3b3def58dc2b86a.jpg",
-        "9ca4e75c5709e59e.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-7AA54A",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "每天读书1小时，记录③",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T15:27:28+08:00",
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "pending_corrections": 0,
-      "corrections": [],
-      "pending_note": "每天读书1小时·记录③反馈",
-      "orig_photos": [
-        "ecb3013ca59b35a6.jpg",
-        "2efd0de9322e8574.jpg",
-        "99fcb31c10636c3d.jpg",
-        "c29608efb9f8d468.jpg",
-        "983fe542661972d3.jpg",
-        "291ab3f487f061b1.jpg"
-      ],
-      "completed_at": "2026-11-08T15:27:28+08:00"
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 6,
+    "total": 0,
     "pending": 0,
     "in_progress": 0,
-    "done": 6,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null

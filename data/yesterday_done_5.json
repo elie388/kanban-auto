@@ -1,34 +1,34 @@
 {
- "date": "2026-11-07",
+ "date": "2026-11-08",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "REG-20261106-AE714E",
-   "title": "口语易",
+   "task_id": "REG-20261106-08D068",
+   "title": "复习U1-U3单词和课文",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261106-248496",
-   "title": "读一遍所有园地一、二、三、四（小管家）",
+   "task_id": "REG-20261106-1B1D18",
+   "title": "把园一到园四的日积月累抄一次（用稿纸）",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "MANUAL-20261107-002-G5-YY",
-   "title": "周六综合试卷（英语）",
-   "subject": "英语",
-   "source": "manual",
+   "task_id": "REG-20261106-799EA9",
+   "title": "看作文一、二、三、四[涂黑]",
+   "subject": "语文",
+   "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "READ-20261107-G5",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
-   "group": "study"
+   "task_id": "CHORE-20261108-G5",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
   }
  ]
 }

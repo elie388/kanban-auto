@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "grade": "五年级",
-  "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-09T00:11:08+08:00",
+  "generated_at": "2026-11-09T00:18:01+08:00",
+  "updated_at": "2026-11-09T00:18:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-08T23:10:37+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -22,139 +21,12 @@
       "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "REG-20261106-08D068",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "复习U1-U3单词和课文",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-08T18:12:00+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "task_type": "read",
-      "type_source": "regex_read",
-      "completed_at": "2026-11-08T18:12:00+08:00",
-      "orig_photos": [
-        "302728299ac56cab.jpg",
-        "3bd57dfd9e0764dc.jpg",
-        "197b028d2ec17aeb.jpg",
-        "1f88825dc84b8596.jpg",
-        "b6d7786512ce43e6.jpg",
-        "5212601c3d0ebc57.jpg",
-        "61e5e326711529ef.jpg",
-        "876087a348121195.jpg",
-        "74dfaaa1fa7db289.jpg",
-        "1c207b4cde06b054.jpg",
-        "6be354d0e7505043.jpg",
-        "1872122c397c7b41.jpg",
-        "c21b87403e3f74b9.jpg",
-        "49ae06986c844955.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-1B1D18",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "把园一到园四的日积月累抄一次（用稿纸）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-08T20:11:42+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "completed_at": "2026-11-08T20:11:42+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "b42c30c8aff3723b.jpg",
-        "c84eed924860df28.jpg",
-        "670a4b78dee70d66.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261106-799EA9",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "看作文一、二、三、四[涂黑]",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-08T17:16:34+08:00",
-      "pending_corrections": 0,
-      "corrections": [],
-      "carry_first_date": "2026-11-06",
-      "carried_from": "2026-11-07",
-      "carry_count": 2,
-      "task_type": "read",
-      "type_source": "regex_read",
-      "completed_at": "2026-11-08T17:16:34+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "232597b8c3d3efc3.jpg",
-        "f38f13332309ba3c.jpg",
-        "fec3c584513664e4.jpg",
-        "77cabb8121599189.jpg",
-        "c43a186cfa60cb8d.jpg"
-      ]
-    },
-    {
-      "task_id": "CHORE-20261108-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-08T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-08T00:18:15+08:00",
-      "updated_at": "2026-11-09T00:11:08+08:00",
-      "completed_at": "2026-11-08T14:57:38+08:00",
-      "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b17941209197695868fc46154dff06（approved）；回写 chore_task_writeback。"
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 4,
+    "total": 0,
     "pending": 0,
     "in_progress": 0,
-    "done": 4,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null
