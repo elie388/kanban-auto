@@ -287,7 +287,7 @@
       "title": "复习U1-U3单词和课文",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄M1单词；②口语易；③复习U1-U3单词和课文 → 待完成",
@@ -296,14 +296,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-08T00:18:02+08:00",
+      "updated_at": "2026-11-08T18:12:00+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-07",
       "carry_count": 2,
       "task_type": "read",
-      "type_source": "regex_read"
+      "type_source": "regex_read",
+      "completed_at": "2026-11-08T18:12:00+08:00"
     },
     {
       "task_id": "REG-20261106-1B1D18",
