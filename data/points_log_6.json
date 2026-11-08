@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-08T18:56:15+08:00",
+  "generated_at": "2026-11-08T19:28:08+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-08",
+      "time": "19:25",
+      "time_source": "entry",
+      "reason": "英语阅读写作第15期完成分",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-08",
+      "time": "19:25",
+      "time_source": "entry",
+      "reason": "英语阅读写作第15期书写表扬",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-08",
+      "time": "19:25",
+      "time_source": "entry",
+      "reason": "英语阅读写作第15期超期",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "11-08",
+      "time": "19:25",
+      "time_source": "entry",
+      "reason": "英语阅读写作第15期写作涂改×9处",
+      "pts": -9,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-08",
       "time": "18:53",
