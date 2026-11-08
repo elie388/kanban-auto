@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T16:55:57+08:00",
+  "updated_at": "2026-11-08T17:16:34+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -361,7 +361,7 @@
       "title": "看作文一、二、三、四[涂黑]",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
@@ -370,14 +370,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-08T00:18:02+08:00",
+      "updated_at": "2026-11-08T17:16:34+08:00",
       "pending_corrections": 0,
       "corrections": [],
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-07",
       "carry_count": 2,
       "task_type": "read",
-      "type_source": "regex_read"
+      "type_source": "regex_read",
+      "completed_at": "2026-11-08T17:16:34+08:00",
+      "status_source": "reading_grading"
     },
     {
       "task_id": "READ-20261107-G5",
@@ -579,9 +581,9 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 7,
+    "pending": 6,
     "in_progress": 3,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": null
