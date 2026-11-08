@@ -5765,7 +5765,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261108-readcomplete';
+  var KB_BUILD = '20261108-readrec';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -5963,9 +5963,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       $('up-title').textContent = '交这一项';
       $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
       if(cur.type === 'read'){
-        /* 已读完成（2026-11-08）：拍照上传入口。先拍复习内容、读完上传即算完成（不批改、不出订正）。 */
+        /* 已读完成（2026-11-08 家长纠正）：拍照＋录音入口。先拍复习内容、读出来并录音，上传即算完成（不批改、不出订正）。 */
         $('up-title').textContent = '读完上传';
-        $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · 已读 · ' + (cur.title || '') + '：先拍复习内容，读完上传即算完成（不批改）。';
+        $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · 已读 · ' + (cur.title || '') + '：先拍复习内容，读出来并录音，上传即算完成（不批改）。';
         go.textContent = '读完上传 ✅';
       }
       var _ot = (window.__taskOrig || {})[cur.task_id];
@@ -6049,7 +6049,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   function recShouldShow(){
     if(!recSupported() || !cur) return false;
-    if(cur.type === 'read') return false; /* 已读完成（2026-11-08）：只拍照上传，不录音。 */
+    if(cur.type === 'read') return true; /* 已读完成（2026-11-08 家长纠正）：读出来并录音，与读背一样带录音区；复习类与看类同属 task_type='read'，一并覆盖。 */
     if(cur.type === 'reading') return true;
     if(cur.mode === 'task' && cur.title){
       var t = cur.title;
@@ -6066,6 +6066,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
      批改以同批上传的原文为准。系统针对性练习里的读背、已展示原文的待改正重读，不再提示。 */
   function recNeedOrig(){
     if(!recShouldShow() || !cur) return false;
+    if(cur.type === 'read') return false; /* 已读完成：照片即所读内容、不批改，不提示补原文（提示文案含“老师批改”，不适用）。 */
     if(cur.mode === 'task' && cur.task_source === 'targeted_practice') return false;
     if(cur.task_id && window.__taskOrig && window.__taskOrig[cur.task_id]) return false;
     return true;
@@ -6434,6 +6435,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(!cur.type){ setMsg('先选一下交的是什么哦', 'err'); return; }
     if(!files.length){ setMsg('还没有选照片/录音/视频哦', 'err'); return; }
     if(files.length > 20){ setMsg('一次最多交20个文件，可以分两次交', 'err'); return; }
+    if(cur.type === 'read'){
+      /* 已读完成（2026-11-08 家长纠正）：照片＋录音缺一不可，面板端即拦，不提交。录音可走录音区，也可直接选音频/视频文件。 */
+      var hasPhoto = upPicked.some(function(f){ return kindOf(f) === 'photo'; });
+      var hasRec = recFiles.length > 0 || upPicked.some(function(f){ return kindOf(f) === 'audio' || kindOf(f) === 'video'; });
+      if(!hasPhoto || !hasRec){ setMsg('读完上传要照片和录音都有哦：先拍复习内容，再录一段读的声音。', 'err'); return; }
+    }
     busy = true; $('up-go').disabled = true; setMsg(token() ? '正在准备…' : '正在验证口令…');
     var __upNow = function(){ return (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now(); };
     var __upT0 = __upNow(); var __upT = {};
@@ -6513,8 +6520,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         try { when = new Date(rc.server_ts).toLocaleTimeString('zh-CN', {timeZone:'Asia/Shanghai', hour:'2-digit', minute:'2-digit', hour12:false}); } catch(e){}
         var __upSec = function(a, b){ var s = (a === 't0' ? __upT0 : __upT[a]); var e = __upT[b]; if(typeof s !== 'number' || typeof e !== 'number') return '?'; return ((e - s) / 1000).toFixed(1); };
         if(cur.type === 'read'){
-          /* 已读完成（2026-11-08）：上传即算完成，不批改。照片留档，任务由后端标完成。 */
-          setMsg('✅ 读完啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + (cur.title || '') + '，照片已上传留档，' + when + '收到。回执号 ' + rc.receipt_no + '，任务已记为完成（不批改）。', 'good');
+          /* 已读完成（2026-11-08 家长纠正）：照片＋录音上传即算完成，不批改。照片与录音留档，任务由后端标完成。 */
+          setMsg('✅ 读完啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + (cur.title || '') + '，照片和录音已上传留档，' + when + '收到。回执号 ' + rc.receipt_no + '，任务已记为完成（不批改）。', 'good');
           if(cur.mode === 'task'){ markSubmitted(cur.key, rc.receipt_no); markReadDone(cur.task_id); }
         } else {
           setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。（本次：准备' + __upSec('t0', 'sign') + '秒，上传' + __upSec('sign', 'put') + '秒，确认' + __upSec('put', 'complete') + '秒）', 'good');
