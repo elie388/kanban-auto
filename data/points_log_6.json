@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-08T14:53:09+08:00",
+  "generated_at": "2026-11-08T15:28:09+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-08",
+      "time": "15:27",
+      "time_source": "entry",
+      "reason": "每天读书1小时记录③发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-08",
+      "time": "15:27",
+      "time_source": "entry",
+      "reason": "每天读书1小时记录③达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-08",
       "time": "14:52",
