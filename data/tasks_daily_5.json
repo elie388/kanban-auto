@@ -455,11 +455,11 @@
       "title": "周六综合试卷（英语）",
       "detail": "今晚截止22:30，做完拍照交回",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-07T10:38:54+08:00",
-      "updated_at": "2026-11-08T17:29:58+08:00",
+      "updated_at": "2026-11-08T20:02:34+08:00",
       "files": [
         {
           "name": "五年级英语周试卷_2026-11-07.pdf",
@@ -471,22 +471,10 @@
       "carried_from": "2026-11-07",
       "carry_count": 1,
       "corr_round": 2,
-      "corrections": [
-        {
-          "label": "小短文写作 My Last Weekend",
-          "question": "请以“My Last Weekend”为题，写 5—6 句话介绍你上个周末做了什么（用一般过去时）。提示词：went, played, happy, with, friends",
-          "reason": "本批未提交小作文，仍待补写。首轮未写（0/30）；本次3张照片为试卷第1-3页，未含第四大题小作文页。",
-          "hint": "请用一般过去时写 5—6 句话，说说上个周末做了什么。提示词已经给了：went（去了）、played（玩了）、happy（开心）、with（和……一起）、friends（朋友）。先想一想：上周末去了哪里？和谁一起？玩了什么？开不开心？一句一句写下来，每句都用过去式。",
-          "img": "g5yy_q13_my_last_weekend_guide.png",
-          "q_img": "",
-          "orig_text": "小短文写作：请以“My Last Weekend”为题，写 5—6 句话介绍你上个周末做了什么（用一般过去时）。",
-          "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "",
-          "round": 2
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-08T20:02:34+08:00"
     },
     {
       "task_id": "MANUAL-20261107-002",
