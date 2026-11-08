@@ -5631,6 +5631,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 .up-btn{margin-top:8px;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid #b98a2f;background:#fdf6df;color:#7a5b12;font-size:14px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .up-btn:active{transform:scale(.97)}
 .up-btn.sent{border-color:#3d9970;background:#e8f7ef;color:#1e6b4a}
+.up-btn.read-btn{border-color:#2e7d32;background:#e8f5e9;color:#1b5e20} /* 已读完成入口（2026-11-08）：绿色系，与交作业金色区分 */
+.up-btn.read-btn:disabled{opacity:.75;cursor:default}
 .st-zone .up-btn{margin-top:0;min-width:44px;min-height:44px;font-size:13px;padding:5px 12px}
 .up-btn.busy{opacity:.55;pointer-events:none}
 .up-bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 2px 2px}
@@ -5763,7 +5765,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261108-donetime';
+  var KB_BUILD = '20261108-readcomplete';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -5825,7 +5827,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     {v:'tian53', t:'53天天练'}, {v:'register_book', t:'登记本'}, {v:'reading', t:'读背录音/视频'},
     {v:'chore', t:'家务'}
   ];
-  var TYPE_NAME = {}; TYPES.forEach(function(x){ TYPE_NAME[x.v] = x.t; }); TYPE_NAME['exam'] = '考试卷'; /* 2026-10-26 家务面板考试卷入口（A方案）：考试卷类型名，成功提示用 */
+  var TYPE_NAME = {}; TYPES.forEach(function(x){ TYPE_NAME[x.v] = x.t; }); TYPE_NAME['exam'] = '考试卷'; /* 2026-10-26 家务面板考试卷入口（A方案）：考试卷类型名，成功提示用 */ TYPE_NAME['read'] = '已读'; /* 2026-11-08 已读完成：登记本复习/看/读类任务，拍照所读内容上传即算完成 */
   var SRC_TYPE = {daily_53:'tian53', targeted_practice:'practice', exam_correction:'correction', register_book:'homework', manual:'practice', exam:'correction'};
   var busy = false;
 
@@ -5856,6 +5858,16 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     var uv = $('up-ver'); if(uv) uv.textContent = '版本 ' + KB_BUILD;
     paintButtons();
   }
+  function markReadDone(taskId){
+    /* 已读完成（2026-11-08）：上传成功后立刻把卡片上的读完上传按钮置为已上传并禁用；
+       后端标 done＋数据刷新后卡片重渲染为完成态（无按钮）。 */
+    try{
+      var card = document.querySelector('.task[data-tid="' + taskId + '"]');
+      if(!card) return;
+      var b = card.querySelector('.up-btn.read-btn');
+      if(b){ b.textContent = '✅ 已上传'; b.disabled = true; b.classList.add('sent'); }
+    }catch(e){}
+  }
   function token(){ try { return localStorage.getItem(LS_TOKEN) || ''; } catch(e){ return ''; } }
 
   /* ---------- 入口：任务卡按钮 ---------- */
@@ -5884,6 +5896,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       if((card.getAttribute('data-status') || '') === 'done') return null;
       return {grade: grade, type: 'reading', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
     }
+    if(tt === 'read'){
+      /* 已读完成（2026-11-08 家长定）：登记本复习/看/读类任务，拍照所读内容并上传即算完成，
+         不批改、不出订正。入口复用读背上传通道（提交面板拍照上传），只不显示录音区。 */
+      if((card.getAttribute('data-status') || '') === 'done') return null;
+      return {grade: grade, type: 'read', task_id: card.getAttribute('data-tid'), task_source: src, title: title};
+    }
     var ty = SRC_TYPE[src];
     if(!ty) return null;
     var st = card.getAttribute('data-status') || '';
@@ -5901,6 +5919,15 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         b.className = 'up-btn';
         b.textContent = '🧹 交家务照片';
         b.addEventListener('click', function(){ openSheet({mode:'chore', grade: info.grade, key: 'chore'}); });
+      } else if(info.type === 'read'){
+        /* 已读完成入口（2026-11-08 家长定）：拍照上传入口，复用读背上传通道/样式；
+           先拍复习内容、读完上传即算完成（不批改）。上传后本地记已交、按钮置灰，防重复传。 */
+        var key = 'task:' + info.grade + ':' + info.task_id;
+        var s = stateGet(); var it = s.items[key];
+        b.className = 'up-btn read-btn' + (it ? ' sent' : '');
+        b.textContent = it ? '✅ 已上传' : '📖 读完上传';
+        if(it) b.disabled = true;
+        b.addEventListener('click', function(){ openSheet({mode:'task', info: info, key: key}); });
       } else {
         var key = 'task:' + info.grade + ':' + info.task_id;
         var s = stateGet(); var it = s.items[key];
@@ -5935,6 +5962,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       cur.task_id = ctx.info.task_id; cur.task_source = ctx.info.task_source; cur.title = ctx.info.title;
       $('up-title').textContent = '交这一项';
       $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · ' + TYPE_NAME[cur.type] + (cur.title ? ' · ' + cur.title : '');
+      if(cur.type === 'read'){
+        /* 已读完成（2026-11-08）：拍照上传入口。先拍复习内容、读完上传即算完成（不批改、不出订正）。 */
+        $('up-title').textContent = '读完上传';
+        $('up-subtitle').textContent = (cur.grade === 6 ? '伟豪' : '彦均') + ' · 已读 · ' + (cur.title || '') + '：先拍复习内容，读完上传即算完成（不批改）。';
+        go.textContent = '读完上传 ✅';
+      }
       var _ot = (window.__taskOrig || {})[cur.task_id];
       if(_ot){ $('up-orig-cap').textContent = '原文 · 照着读'; $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
       else { $('up-orig').style.display = 'none'; }
@@ -6016,6 +6049,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   function recShouldShow(){
     if(!recSupported() || !cur) return false;
+    if(cur.type === 'read') return false; /* 已读完成（2026-11-08）：只拍照上传，不录音。 */
     if(cur.type === 'reading') return true;
     if(cur.mode === 'task' && cur.title){
       var t = cur.title;
@@ -6478,8 +6512,14 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         var when = '';
         try { when = new Date(rc.server_ts).toLocaleTimeString('zh-CN', {timeZone:'Asia/Shanghai', hour:'2-digit', minute:'2-digit', hour12:false}); } catch(e){}
         var __upSec = function(a, b){ var s = (a === 't0' ? __upT0 : __upT[a]); var e = __upT[b]; if(typeof s !== 'number' || typeof e !== 'number') return '?'; return ((e - s) / 1000).toFixed(1); };
-        setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。（本次：准备' + __upSec('t0', 'sign') + '秒，上传' + __upSec('sign', 'put') + '秒，确认' + __upSec('put', 'complete') + '秒）', 'good');
-        if(cur.mode === 'task') markSubmitted(cur.key, rc.receipt_no);
+        if(cur.type === 'read'){
+          /* 已读完成（2026-11-08）：上传即算完成，不批改。照片留档，任务由后端标完成。 */
+          setMsg('✅ 读完啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + (cur.title || '') + '，照片已上传留档，' + when + '收到。回执号 ' + rc.receipt_no + '，任务已记为完成（不批改）。', 'good');
+          if(cur.mode === 'task'){ markSubmitted(cur.key, rc.receipt_no); markReadDone(cur.task_id); }
+        } else {
+          setMsg('✅ 交好啦！' + (cur.grade === 6 ? '伟豪' : '彦均') + '的' + TYPE_NAME[cur.type] + '，一共' + rc.count + '个文件，' + when + '收到。回执号 ' + rc.receipt_no + '，老师那边会按这个时间批改。（本次：准备' + __upSec('t0', 'sign') + '秒，上传' + __upSec('sign', 'put') + '秒，确认' + __upSec('put', 'complete') + '秒）', 'good');
+          if(cur.mode === 'task') markSubmitted(cur.key, rc.receipt_no);
+        }
         $('up-go').textContent = '完成';
         $('up-go').disabled = false;
         $('up-go').onclick = function(){ finishClose(); };
