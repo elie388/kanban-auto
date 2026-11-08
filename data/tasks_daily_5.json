@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T20:02:26+08:00",
+  "updated_at": "2026-11-08T20:11:43+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -134,7 +134,7 @@
       "title": "把园一到园四的日积月累抄一次（用稿纸）",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①把园一到园四的日积月累抄一次（用稿纸）；②默写11课和默12课1、3段（用稿纸）；③读一遍所有园地一、二、三、四（小管家）；④看作文一、二、三、四[涂黑]；⑤准备好考试用品 → 待完成",
@@ -143,38 +143,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T19:51:47+08:00",
-      "updated_at": "2026-11-08T00:18:02+08:00",
-      "pending_corrections": 2,
-      "corrections": [
-        {
-          "label": "园二名言1",
-          "question": "抄写名言：不饱食以终日，不弃功于寸阴（葛洪）",
-          "reason": "园地二第一条还是没有抄，整句仍漏了。本批孩子照老师笔记抄，但老师笔记里没有这句；须对照课本园地二原文补抄。",
-          "hint": "园地二第一条还是空着。不要照老师笔记抄——老师笔记里没有这句。翻开语文书园地二，找到第一条（葛洪的那句），对照课本原文补抄一次。注意：不要凭记忆写，要看课本原文。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "园二名言：不饱食以终日，不弃功于寸阴。——[晋]葛洪",
-          "q_img_exempt": "",
-          "img_exempt": "抄写类待改正：引导图无法画出文字内容而不直接给出课本原文（答案即原文），故豁免；文字引导已指明翻开语文书园地二对照课本再抄。",
-          "round": 2
-        },
-        {
-          "label": "园二名言5",
-          "question": "抄写名言：少年易老学难成（朱熹）",
-          "reason": "园地二最后一条仍写错：仍写成另一句“一寸光阴一寸金”，不是课本上的那句；仍多写一句课本上没有的“少壮不努力”。本批孩子照老师笔记抄，但这两句要以课本园地二原文为准；须对照课本园地二原文再抄。",
-          "hint": "园地二最后一条还是不对。你写的两句都不是课本园地二最后一条。不要照老师笔记抄——翻开语文书园地二，找到最后一条（朱熹的那句），对照课本原文再抄一次。提示：这句开头是“少年易老”，不是“一寸光阴一寸金”；“少壮不努力”那句课本园二里没有，不用抄。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "园二名言：少年易老学难成，一寸光阴不可轻。——[宋]朱熹",
-          "q_img_exempt": "",
-          "img_exempt": "抄写类待改正：引导图无法画出文字内容而不直接给出课本原文（答案即原文），故豁免；文字引导已指明翻开语文书园地二对照课本再抄。",
-          "round": 2
-        }
-      ],
+      "updated_at": "2026-11-08T20:11:42+08:00",
+      "pending_corrections": 0,
+      "corrections": [],
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-07",
       "carry_count": 2,
-      "corr_round": 2
+      "completed_at": "2026-11-08T20:11:42+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "b42c30c8aff3723b.jpg",
+        "c84eed924860df28.jpg",
+        "670a4b78dee70d66.jpg"
+      ]
     },
     {
       "task_id": "REG-20261106-799EA9",
@@ -449,34 +430,6 @@
       "carry_count": 1
     },
     {
-      "task_id": "MANUAL-20261107-002-G5-YY",
-      "source": "manual",
-      "subject": "英语",
-      "title": "周六综合试卷（英语）",
-      "detail": "今晚截止22:30，做完拍照交回",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-07T10:38:54+08:00",
-      "updated_at": "2026-11-08T20:02:34+08:00",
-      "files": [
-        {
-          "name": "五年级英语周试卷_2026-11-07.pdf",
-          "label": "英语周试卷",
-          "pages": 4
-        }
-      ],
-      "carry_first_date": "2026-11-07",
-      "carried_from": "2026-11-07",
-      "carry_count": 1,
-      "corr_round": 2,
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-08T20:02:34+08:00"
-    },
-    {
       "task_id": "MANUAL-20261107-002",
       "source": "manual",
       "subject": "英语",
@@ -591,10 +544,10 @@
     }
   ],
   "counts": {
-    "total": 13,
+    "total": 12,
     "pending": 3,
-    "in_progress": 7,
-    "done": 3,
+    "in_progress": 5,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": null

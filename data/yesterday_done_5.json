@@ -15,6 +15,13 @@
    "subject": "语文",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "MANUAL-20261107-002-G5-YY",
+   "title": "周六综合试卷（英语）",
+   "subject": "英语",
+   "source": "manual",
+   "group": "study"
   }
  ]
 }
