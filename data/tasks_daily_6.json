@@ -3,11 +3,11 @@
   "date": "2026-11-08",
   "grade": "六年级",
   "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T21:40:30+08:00",
+  "updated_at": "2026-11-08T23:10:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-08T16:55:57+08:00",
+      "ingested_at": "2026-11-08T23:10:37+08:00",
       "new_lines": 0,
       "flipped": 0
     },
@@ -216,9 +216,9 @@
     }
   ],
   "counts": {
-    "total": 20,
-    "pending": 8,
-    "in_progress": 6,
+    "total": 6,
+    "pending": 0,
+    "in_progress": 0,
     "done": 6,
     "pending_review": 0
   },
