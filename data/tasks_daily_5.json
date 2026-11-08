@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T18:17:47+08:00",
+  "updated_at": "2026-11-08T18:50:46+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -628,158 +628,158 @@
         {
           "label": "词汇1 turn into",
           "question": "Recycling can turn old bottles ____ new bags.",
-          "reason": "turn ... into ... 是固定搭配，表示“把……变成……”，不能用 for。孩子选了 C（for）。",
+          "reason": "turn ... into ... 是固定搭配，表示“把……变成……”，不能用 for。孩子选了 C（for）。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "turn 后面跟 into 才能表示“变成”：turn old bottles into new bags（把旧瓶子变成新袋子）。想一想，turn into 是一个固定搭配，就像 turn on（打开）、turn off（关掉）一样，into 不能换成 for。",
           "img": "",
           "q_img": "",
           "orig_text": "词汇第1题：Recycling can turn old bottles ____ new bags.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "词汇2 too many/much",
           "question": "We shouldn't waste ____ plastic bottles or ____ fresh air.",
-          "reason": "plastic bottles 是可数名词复数，用 too many；fresh air 是不可数名词，用 too much。孩子两处颠倒了。",
+          "reason": "plastic bottles 是可数名词复数，用 too many",
           "hint": "数一数：bottles 能数出来（一个、两个……），前面用 too many；air 数不出来，前面用 too much。口诀：many 管可数，much 管不可数。plastic bottles 用 too many，fresh air 用 too much。",
           "img": "",
           "q_img": "",
           "orig_text": "词汇第2题：We shouldn't waste ____ plastic bottles or ____ fresh air.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "词汇3 动名词作主语",
           "question": "____ stamps is my hobby.",
-          "reason": "动词作主语时要用动名词形式（动词-ing），Collecting stamps is my hobby。孩子用了原形 Collect。",
+          "reason": "动词作主语时要用动名词形式（动词-ing），Collecting stamps is my hobby。孩子用了原形 Collect。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 ",
           "hint": "一句话里动词想当主语，要先变成 -ing 形式：Collecting stamps is my hobby（集邮是我的爱好）。直接用 Collect 作主语是不对的。",
           "img": "",
           "q_img": "",
           "orig_text": "词汇第3题：____ stamps is my hobby.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选11 watched",
           "question": "They ____ a football match last Sunday.",
-          "reason": "last Sunday 是过去时间，动词要用过去式 watched。孩子用了现在时 watches。",
+          "reason": "last Sunday 是过去时间，动词要用过去式 watched。孩子用了现在时 watches。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "看到 last Sunday（上周日）、yesterday（昨天）、last week（上周）这些词，动作已经发生了，动词要变过去式：watch→watched。They watched a football match last Sunday。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第11题：They ____ a football match last Sunday.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选12 did",
           "question": "Where ____ you go last Sunday?",
-          "reason": "last Sunday 是过去时间，疑问句要用 did 提问。孩子用了 do。",
+          "reason": "last Sunday 是过去时间，疑问句要用 did 提问。孩子用了 do。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "问过去的事要用 did：Where did you go last Sunday?（上周日你去哪儿了？）do 是问现在的事，did 是问过去的事。看到 last Sunday 就想到 did。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第12题：Where ____ you go last Sunday?",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选13 did",
           "question": "What ____ she buy yesterday?",
-          "reason": "yesterday 是过去时间，疑问句要用 did。孩子用了 does。",
+          "reason": "yesterday 是过去时间，疑问句要用 did。孩子用了 does。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "问昨天买了什么，要用 did：What did she buy yesterday? does 是问现在的事，did 是问过去的事。看到 yesterday 就想到 did。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第13题：What ____ she buy yesterday?",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选14 bought",
           "question": "My mother ____ a new dress for me last week.",
-          "reason": "last week 是过去时间，buy 的过去式是 bought。孩子用了现在时 buys。",
+          "reason": "last week 是过去时间，buy 的过去式是 bought。孩子用了现在时 buys。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "buy 的过去式不规则，要记牢：buy→bought。last week（上周）是过去时间，所以 My mother bought a new dress for me last week。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第14题：My mother ____ a new dress for me last week.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选15 took",
           "question": "They ____ photos in the zoo last Saturday.",
-          "reason": "last Saturday 是过去时间，take 的过去式是 took。孩子用了现在时 takes。",
+          "reason": "last Saturday 是过去时间，take 的过去式是 took。孩子用了现在时 takes。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "take 的过去式不规则，要记牢：take→took。last Saturday（上周六）是过去时间，所以 They took photos in the zoo last Saturday。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第15题：They ____ photos in the zoo last Saturday.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选16 Did",
           "question": "____ your father come back yesterday?",
-          "reason": "yesterday 是过去时间，疑问句要用 Did 开头。孩子用了 Does。",
+          "reason": "yesterday 是过去时间，疑问句要用 Did 开头。孩子用了 Does。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "问昨天爸爸有没有回来，要用 Did 开头：Did your father come back yesterday? Does 是问现在的事，Did 是问过去的事。看到 yesterday 就想到 Did。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第16题：____ your father come back yesterday?",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选18 put",
           "question": "Please ____ the rubbish into the bin.",
-          "reason": "Please 开头的祈使句，动词用原形 put。孩子用了第三人称单数 puts。",
+          "reason": "Please 开头的祈使句，动词用原形 put。孩子用了第三人称单数 puts。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "Please 开头是请别人做事，动词不用加 s，直接用原形：Please put the rubbish into the bin.（请把垃圾扔进垃圾桶。）",
           "img": "",
           "q_img": "",
           "orig_text": "单选第18题：Please ____ the rubbish into the bin.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选19 read",
           "question": "Tom ____ a book yesterday evening.",
-          "reason": "yesterday evening 是过去时间，read 的过去式还是 read（拼写不变，读音变）。孩子用了现在时 reads。",
+          "reason": "yesterday evening 是过去时间，read 的过去式还是 read（拼写不变，读音变）。孩子用了现在时 reads。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "read 这个词很特别：过去式拼写还是 read，但读音从 /ri:d/ 变成 /red/。yesterday evening（昨天晚上）是过去时间，所以 Tom read a book yesterday evening。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第19题：Tom ____ a book yesterday evening.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "单选20 took",
           "question": "We ____ some photos in the park last Sunday.",
-          "reason": "last Sunday 是过去时间，take 的过去式是 took。孩子用了现在时 takes。",
+          "reason": "last Sunday 是过去时间，take 的过去式是 took。孩子用了现在时 takes。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "take→took 是不规则变化，要记牢。last Sunday（上周日）是过去时间，所以 We took some photos in the park last Sunday。",
           "img": "",
           "q_img": "",
           "orig_text": "单选第20题：We ____ some photos in the park last Sunday.",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "小短文写作 My Last Weekend",
           "question": "请以“My Last Weekend”为题，写 5—6 句话介绍你上个周末做了什么（用一般过去时）。提示词：went, played, happy, with, friends",
-          "reason": "第四大题小作文未写。家长已明确从未说不用写，孩子留言称家长说不用写未经家长确认，不得作为豁免依据。本题按缺件处理，需补写。",
+          "reason": "第四大题小作文未写。家长已明确从未说不用写，孩子留言称家长说不用写未经家长确认，不得作为豁免依据。本题按缺件处理，需补写。 五年级英语周试卷（2026-11-07），周六综合试卷英语，4 图",
           "hint": "请用一般过去时写 5—6 句话，说说上个周末做了什么。提示词已经给了：went（去了）、played（玩了）、happy（开心）、with（和……一起）、friends（朋友）。先想一想：上周末去了哪里？和谁一起？玩了什么？开不开心？一句一句写下来，每句都用过去式。",
           "img": "",
           "q_img": "",
           "orig_text": "小短文写作：请以“My Last Weekend”为题，写 5—6 句话介绍你上个周末做了什么（用一般过去时）。",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         }
       ],
       "pending_corrections": 13,
@@ -812,26 +812,26 @@
         {
           "label": "阅读3 判断正误并写依据词组",
           "question": "Tom cleans his room and helps his mum in the morning. (T/F) 依据词组",
-          "reason": "判断 T 是对的，但写错了位置：T 写在了依据词组横线上，(T/F)处是空的；依据词组本身没写。答案键要求 T＋依据词组 cleans his room and helps his mum。",
+          "reason": "判断 T 是对的，但写错了位置：T 写在了依据词组横线上，(T/F)处是空的",
           "hint": "第3题的判断你其实做对了，可是 T 写错了地方——T 应该写在 (T/F) 的括号里。依据词组那条横线上要写的，是短文里能证明这句话的那几个词：回短文里找一找，Tom 早上做了哪两件事？把那两件事连起来，抄到依据词组横线上。",
           "img": "",
           "q_img": "",
           "orig_text": "判断正(T)误(F)，对照原文判断，并写出依据词组：Tom cleans his room and helps his mum in the morning. (T/F) 依据词组：______",
           "q_img_exempt": "英语判断题无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         },
         {
           "label": "写作 My Friend's Birthday（30-50词）",
           "question": "以 My Friend's Birthday 为题写短文，写 Tom 过生日的一天；第三人称主语 Tom；至少5个第三人称单数动词；30-50词",
-          "reason": "短文共43词（30-50词达标），第三人称主语 Tom 达标；但未达到“至少用5个第三人称单数动词”：用对的只有 is、it's 两个；goes 已由孩子自己涂改成 go（改对了），feels 的主语是 Tom and his friends（复数）却用了 -s 形式；ready 是形容词不能当动词用（妈妈“准备”应用 makes/prepares 之类的动词）；第一句 Today is Friday 与短文 Today is Saturday 不符；After to school 句式不完整；many 修饰不可数名词 food 不当；sing to music 搭配别扭（短文是 listen to music / sings the birthday song）。",
+          "reason": "短文共43词（30-50词达标），第三人称主语 Tom 达标",
           "hint": "先对照短文想一想：Tom 的生日到底是星期几？你第一句写的星期几和短文一样吗？再想一想：'Tom and his friends' 是几个人？主语是好几个人时，动词词尾还要加 -s 吗？找一找你短文里哪个动词加了不该加的 -s。'妈妈准备了很多好吃的'，'准备'这个动作应该用哪个动词？ready 能当动词吗？'放学后'英文该怎么说，After 后面应该直接跟什么？food 是数得出来的东西吗，前面该用 many 还是短文里的那个说法？最后数一数，你短文里用对的第三人称单数动词有几个，够 5 个吗？",
           "img": "",
           "q_img": "",
           "orig_text": "题目：My Friend's Birthday（30-50词）。以 'My Friend's Birthday' 为题，写一篇短文，写一写 Tom 过生日的一天。写作要求：①第三人称主语（Tom）；②至少用5个第三人称单数动词（如 gets, makes, sings, blows, eats，注意动词词尾加 -s / -es）；③注意拼写和标点。字数30-50词。",
           "q_img_exempt": "英语写作无原题图",
-          "img_exempt": "图后补",
-          "round": 1
+          "round": 1,
+          "img_exempt": "图后补"
         }
       ],
       "pending_corrections": 2,
@@ -856,6 +856,27 @@
       "updated_at": "2026-11-08T14:57:38+08:00",
       "completed_at": "2026-11-08T14:57:38+08:00",
       "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b17941209197695868fc46154dff06（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "MANUAL-20261108-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "兄弟英语对话第2期",
+      "detail": "兄弟英语对话第2期：Helping Mom Cook Dinner（帮妈妈做晚饭）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-08T18:52:00+08:00",
+      "updated_at": "2026-11-08T18:52:00+08:00",
+      "appear_at": "2026-11-08T19:50:00+08:00",
+      "files": [
+        {
+          "name": "兄弟英语对话第2期_打印版.pdf",
+          "label": "对话打印版",
+          "pages": 2
+        }
+      ]
     }
   ],
   "counts": {
