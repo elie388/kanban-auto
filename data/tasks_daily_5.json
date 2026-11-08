@@ -488,7 +488,8 @@
           "round": 1
         }
       ],
-      "pending_corrections": 3
+      "pending_corrections": 3,
+      "task_type": "reading"
     },
     {
       "task_id": "MANUAL-20261107-002-G5-YW",
