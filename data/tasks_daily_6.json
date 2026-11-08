@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "六年级",
   "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T15:27:28+08:00",
+  "updated_at": "2026-11-08T16:05:29+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -259,7 +259,7 @@
       "title": "抄词本抄书P128-129 1至12课词语一次",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
@@ -268,12 +268,231 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-06T20:11:07+08:00",
-      "updated_at": "2026-11-08T00:18:03+08:00",
+      "updated_at": "2026-11-08T16:05:23+08:00",
       "carry_first_date": "2026-11-06",
       "carried_from": "2026-11-07",
       "carry_count": 2,
-      "pending_corrections": 0,
-      "corrections": []
+      "pending_corrections": 18,
+      "corrections": [
+        {
+          "label": "抄词本 1课-稍微",
+          "question": "抄词本第1课词语“稍微”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第1课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "稍微",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 1课-豆腐",
+          "question": "抄词本第1课词语“豆腐”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第1课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "豆腐",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 1课-马蹄",
+          "question": "抄词本第1课词语“马蹄”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第1课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "马蹄",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 1课-鞭子",
+          "question": "抄词本第1课词语“鞭子”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第1课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "鞭子",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 2课-点缀",
+          "question": "抄词本第2课词语“点缀”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第2课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "点缀",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 2课-窥视",
+          "question": "抄词本第2课词语“窥视”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第2课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "窥视",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 2课-龃龉",
+          "question": "抄词本第2课词语“龃龉”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第2课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "龃龉",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 2课-紫色屋檐",
+          "question": "抄词本第2课词语“紫色屋檐”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第2课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "紫色屋檐",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 2课-一簇",
+          "question": "抄词本第2课词语“一簇”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第2课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一簇",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 2课-恍然大悟",
+          "question": "抄词本第2课词语“恍然大悟”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第2课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "恍然大悟",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 5课-眺望",
+          "question": "抄词本第5课词语“眺望”抄写（多写一字）",
+          "reason": "多写了一个字",
+          "hint": "对照课本第128页第5课词表，数一数这个词是几个字、你抄的时候是不是多写了一个字，把多余的字去掉再抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "眺望",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 5课-围棋",
+          "question": "抄词本第5课词语“围棋”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第5课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "围棋",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 5课-砸破",
+          "question": "抄词本第5课词语“砸破”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第5课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "砸破",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 5课-冰雹",
+          "question": "抄词本第5课词语“冰雹”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第5课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "冰雹",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 6课-外宾",
+          "question": "抄词本第6课词语“外宾”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第6课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "外宾",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 6课-车辆",
+          "question": "抄词本第6课词语“车辆”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第6课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "车辆",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 7课-油液",
+          "question": "抄词本第7课词语“油液”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第128页第7课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "油液",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        },
+        {
+          "label": "抄词本 9课-谜团",
+          "question": "抄词本第9课词语“谜团”抄写（漏抄）",
+          "reason": "该词未抄",
+          "hint": "对照课本第129页第9课词表，把漏掉的这个词补抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "谜团",
+          "q_img_exempt": "",
+          "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
+          "round": 1
+        }
+      ],
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261106-00AA2E",
@@ -320,7 +539,15 @@
       "carry_count": 2,
       "pending_corrections": 0,
       "corrections": [],
-      "pending_note": "每天读书1小时·记录③反馈"
+      "pending_note": "每天读书1小时·记录③反馈",
+      "orig_photos": [
+        "ecb3013ca59b35a6.jpg",
+        "2efd0de9322e8574.jpg",
+        "99fcb31c10636c3d.jpg",
+        "c29608efb9f8d468.jpg",
+        "983fe542661972d3.jpg",
+        "291ab3f487f061b1.jpg"
+      ]
     },
     {
       "task_id": "READ-20261107-G6",
@@ -479,8 +706,8 @@
   ],
   "counts": {
     "total": 18,
-    "pending": 15,
-    "in_progress": 1,
+    "pending": 14,
+    "in_progress": 2,
     "done": 2,
     "pending_review": 0
   },
