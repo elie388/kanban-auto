@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T21:29:40+08:00",
+  "updated_at": "2026-11-08T21:34:49+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -266,7 +266,7 @@
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
       "carry_count": 1,
-      "corr_round": 1,
+      "corr_round": 2,
       "corrections": [
         {
           "label": "周六语文卷 一-5",
@@ -278,7 +278,7 @@
           "orig_text": "基础第5题：修改病句。（1）他看完了医生后就回家休息了。（2）通过这次秋游，使我增长了见识。",
           "q_img_exempt": "语文改写无原题图",
           "img_exempt": "",
-          "round": 1
+          "round": 2
         }
       ],
       "pending_corrections": 1,
