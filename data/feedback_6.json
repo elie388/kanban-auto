@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-08T17:38:57+08:00",
+ "generated_at": "2026-11-08T18:13:43+08:00",
  "items": [
+  {
+   "date": "2026-11-08",
+   "ts": "2026-11-08T18:13:00+08:00",
+   "kind": "feedback",
+   "time": "18:13",
+   "title": "英语 试卷订正",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语试卷订正反馈</h2>\n<p>这次订正，3 处全都改对了，很棒。</p>\n<h3>都改对了</h3>\n<ul>\n<li>共享单车那道填空（p20 任务二第 7 空）：你把原来填的词划掉，换了一个东西的名字——扫码要用的就是这件东西，爸爸的话里说过，找车、扫码都要先有它。<br><br><img src=\"data/diagrams/g6_853367_bike_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>好书推荐那道判断（p9 一、第 2 题）：你把原来的判断改过来了。小王子那一栏的 Story idea 里，三样东西都写着呢，你这次一句一句对上了。<br><br><img src=\"data/diagrams/g6_853367_prince_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>Max 那个故事的选择（p10 任务二第 5 题）：你把原来的选项改过来了。开头 Max 笑着说赚钱容易，结尾哭着说的话要跟开头反过来，你这次抓住了首尾呼应。<br><br><img src=\"data/diagrams/g6_853367_max_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<h3>还有一处要补</h3>\n<p>p10 任务一（给 8 张图排序）：这次 8 个序号都填上了，但是照片上的图还是太模糊了，看不清每张图画的是什么，没法核对顺序对不对。请重拍一张清晰的第 10 页第一题，补到后单独判、单独计分，不影响这次订正的分数。</p>\n<p>这次订正改对 +6 分（3 项，每项 +2）。</p>\n</body></html>"
+  },
   {
    "date": "2026-11-08",
    "ts": "2026-11-08T17:38:00+08:00",
