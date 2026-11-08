@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "六年级",
   "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T18:57:44+08:00",
+  "updated_at": "2026-11-08T19:12:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -379,7 +379,47 @@
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
       "carry_count": 1,
-      "pending_note": "11月8日兄弟英语对话第1期反馈（4处要改）"
+      "pending_note": "11月8日兄弟英语对话第1期反馈（4处要改）",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "对话第3句 I want to go to the park on Saturday morning. Would you like to come with me?",
+          "question": "I want to go to the park on Saturday morning. Would you like to come with me?",
+          "reason": "Saturday 读成 Thursday（全量两遍＋分段两遍均作 Thursday；五年级同句两遍均作 Saturday，可排除系统性误听）；Would 读成 Will（全量两遍均作 Will，分段两遍一作 Would 一作 Will，3:1 计错）",
+          "hint": "重读这句时，注意 Saturday 和 Would 两个词：Saturday 不要读成 Thursday，Would 不要读成 Will，对照脚本慢慢读。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "I want to go to the park on Saturday morning. Would you like to come with me?",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第15句 Let's watch a cartoon movie at home.",
+          "question": "Let's watch a cartoon movie at home.",
+          "reason": "movie 读成 mode；全量两遍＋分段两遍均作 mode，4/4",
+          "hint": "重读这句时，把 movie 这个词读清楚，不要读成 mode。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Let's watch a cartoon movie at home.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第18句 OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.",
+          "question": "OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.",
+          "reason": "movie 读成 move/moves；全量两遍作 move/moves，分段两遍均作 moves",
+          "hint": "重读这句时，把 movie 这个词读清楚，不要读成 move。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "OK. So: Saturday—park and picnic. Sunday—grandparents and a movie.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3
     },
     {
       "task_id": "MANUAL-20261107-002-G6-YW",
