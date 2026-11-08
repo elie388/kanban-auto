@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "六年级",
   "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T21:37:14+08:00",
+  "updated_at": "2026-11-08T21:40:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -493,11 +493,11 @@
       "title": "周六综合试卷（数学）",
       "detail": "今晚截止22:30，做完拍照交回",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-07T10:38:55+08:00",
-      "updated_at": "2026-11-08T00:18:03+08:00",
+      "updated_at": "2026-11-08T21:40:30+08:00",
       "files": [
         {
           "name": "六年级数学周试卷_2026-11-07.pdf",
@@ -507,7 +507,24 @@
       ],
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
-      "carry_count": 1
+      "carry_count": 1,
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "解决问题2 圆环形草坪面积",
+          "question": "一个圆环形草坪，内圆半径8米，环宽4米，这个草坪的面积是多少平方米？",
+          "reason": "方法全对：外半径8＋4＝12米、外圆面积减内圆面积、内圆面积200.96也对。唯一一处口算滑错：3.14×12²＝3.14×144＝452.16，不是451.96；因此得数251应为251.2。按考试初次核分“只认答案本身”口径，该题计错，0/8（终审终审2026-11-08裁定：部分给分6/8不成立）。",
+          "hint": "算圆环面积，先分别算外圆和内圆的面积再相减，这个思路你全做对了，只有一处乘法要验算：3.14×12²，先算12²是多少，再算3.14乘这个数。验算有个好办法：把3.14拆成3和0.14，分别乘一遍再相加，看看你写的那个得数对不对。想一想，用拆分法验算一遍，外圆面积应该是多少？再减去内圆面积，草坪面积又是多少？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "解决问题第2题：一个圆环形草坪，内圆半径8米，环宽4米，这个草坪的面积是多少平方米？",
+          "q_img_exempt": "原题无图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "MANUAL-20261107-002-G6-YY",
@@ -669,8 +686,8 @@
   ],
   "counts": {
     "total": 20,
-    "pending": 9,
-    "in_progress": 5,
+    "pending": 8,
+    "in_progress": 6,
     "done": 6,
     "pending_review": 0
   },
