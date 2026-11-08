@@ -1,67 +1,16 @@
 {
  "schema_version": 1,
  "week": {
-  "start": "2026-11-02",
-  "end": "2026-11-08",
+  "start": "2026-11-09",
+  "end": "2026-11-15",
   "tz": "Asia/Shanghai",
-  "cycle_week": "2026-W45",
-  "week_start": "2026-11-02T00:00:00+08:00",
-  "week_end": "2026-11-08T23:59:59+08:00"
+  "cycle_week": "2026-W46",
+  "week_start": "2026-11-09T00:00:00+08:00",
+  "week_end": "2026-11-15T23:59:59+08:00"
  },
  "by_grade": {
-  "g5": [
-   {
-    "key": "sanribuduan",
-    "name": "三日不断",
-    "icon": "📆",
-    "date": "2026-11-02",
-    "count": 1
-   },
-   {
-    "key": "baifen",
-    "name": "百分俱乐部",
-    "icon": "💰",
-    "date": "2026-11-02",
-    "count": 3
-   },
-   {
-    "key": "baifentupo",
-    "name": "满分之星",
-    "icon": "💯",
-    "date": "2026-11-02",
-    "count": 1
-   },
-   {
-    "key": "zonghezhixing",
-    "name": "综合之星",
-    "icon": "🏅",
-    "date": "2026-11-08",
-    "count": 1
-   },
-   {
-    "key": "shuxiezhixing",
-    "name": "书写之星",
-    "icon": "✍️",
-    "date": "2026-11-08",
-    "count": 1
-   }
-  ],
-  "g6": [
-   {
-    "key": "sanribuduan",
-    "name": "三日不断",
-    "icon": "📆",
-    "date": "2026-11-02",
-    "count": 1
-   },
-   {
-    "key": "baifen",
-    "name": "百分俱乐部",
-    "icon": "💰",
-    "date": "2026-11-08",
-    "count": 2
-   }
-  ]
+  "g5": [],
+  "g6": []
  },
- "generated_at": "2026-11-08T22:48:14.619401+08:00"
+ "generated_at": "2026-11-09T00:03:14.854564+08:00"
 }
