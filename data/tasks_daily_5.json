@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T17:16:34+08:00",
+  "updated_at": "2026-11-08T17:28:44+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -379,7 +379,14 @@
       "task_type": "read",
       "type_source": "regex_read",
       "completed_at": "2026-11-08T17:16:34+08:00",
-      "status_source": "reading_grading"
+      "status_source": "reading_grading",
+      "orig_photos": [
+        "232597b8c3d3efc3.jpg",
+        "f38f13332309ba3c.jpg",
+        "fec3c584513664e4.jpg",
+        "77cabb8121599189.jpg",
+        "c43a186cfa60cb8d.jpg"
+      ]
     },
     {
       "task_id": "READ-20261107-G5",
