@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "六年级",
   "generated_at": "2026-11-08T00:18:03+08:00",
-  "updated_at": "2026-11-08T20:01:53+08:00",
+  "updated_at": "2026-11-08T21:36:35+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -475,11 +475,11 @@
       "title": "周六综合试卷（英语）",
       "detail": "今晚截止22:30，做完拍照交回",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-07T10:38:55+08:00",
-      "updated_at": "2026-11-08T00:18:03+08:00",
+      "updated_at": "2026-11-08T21:36:35+08:00",
       "files": [
         {
           "name": "六年级英语周试卷_2026-11-07.pdf",
@@ -489,7 +489,24 @@
       ],
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
-      "carry_count": 1
+      "carry_count": 1,
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "阅读25 对长城的看法",
+          "question": "What did Daming think of the Great Wall? 请用自己的话回答。（写一两句英文或中文均可）",
+          "reason": "动词时态不对：问句是一般过去时（What did Daming think…），答句应用过去式 thought/was，孩子写了 think/is；内容上只写了长和美，漏了短文原句“very great、liked it very much”的意思。“very long”与短文第一段（more than twenty thousand kilometres long）相符。",
+          "hint": "问句里有 did，答句的动词也要用过去式。想一想，think 的过去式是什么？is 的过去式又是什么？再回短文最后一段找一找，Daming 自己是怎么说长城的？他说长城怎么样、他喜欢它吗？把这两层意思都写进回答里。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "阅读第25题：What did Daming think of the Great Wall? 请用自己的话回答。（写一两句英文或中文均可）",
+          "q_img_exempt": "英语阅读理解无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "MANUAL-20261107-002",
@@ -611,8 +628,8 @@
   ],
   "counts": {
     "total": 20,
-    "pending": 11,
-    "in_progress": 3,
+    "pending": 10,
+    "in_progress": 4,
     "done": 6,
     "pending_review": 0
   },
