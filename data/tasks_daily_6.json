@@ -1,502 +1,502 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-08",
- "grade": "六年级",
- "generated_at": "2026-11-08T00:18:03+08:00",
- "updated_at": "2026-11-08T18:12:07+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-08T16:55:57+08:00",
-   "new_lines": 0,
-   "flipped": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "REG-20261106-853367",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "完成发下的试卷，划文章",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T18:12:06+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "status_source": "closeout_writeback",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "completed_at": "2026-11-08T18:12:06+08:00",
-   "orig_photos": [
-    "455c86b100f95e04.jpg",
-    "23d6f5f8dc3dedff.jpg",
-    "edc353ff4b863603.jpg",
-    "5cb7e5b614a59486.jpg",
-    "9ea775f32e6c5187.jpg",
-    "674e7c7538b202b8.jpg",
-    "b11e956a9c2a62bb.jpg",
-    "a428d4172290e951.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261106-234FE6",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "重点参加“口语易”，周末扫码参加",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "task_type": "reading",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261106-8C201E",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "复习U1到U3的所有试卷，下周一期中",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "task_type": "read",
-   "type_source": "regex_read"
-  },
-  {
-   "task_id": "REG-20261106-DB49EC",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "复习U1-U3单词",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语早读：复习U1-U3单词 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T17:38:32+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "task_type": "read",
-   "type_source": "regex_read",
-   "completed_at": "2026-11-08T17:38:32+08:00",
-   "status_source": "reading_grading",
-   "orig_photos": [
-    "915d209a18a406f9.jpg",
-    "430cf1fee435749d.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261106-0B6B25",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念5-19",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T16:38:00+08:00",
-   "task_type": "reading",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "status_source": "manual"
-  },
-  {
-   "task_id": "REG-20261106-B2E999",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本P34",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T14:51:38+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-11-08T14:51:38+08:00",
-   "status_source": "closeout_writeback",
-   "orig_photos": [
-    "0b996256f63161d2.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261106-FA2690",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读科学10分钟",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T18:19:43+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "task_type": "read",
-   "type_source": "regex_read",
-   "completed_at": "2026-11-08T18:19:43+08:00"
-  },
-  {
-   "task_id": "REG-20261106-331308",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "写期中考试作文",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": []
-  },
-  {
-   "task_id": "REG-20261106-BE12FF",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "抄词本抄书P128-129 1至12课词语一次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T16:05:23+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 1,
-   "corrections": [
-    {
-     "label": "抄词本 2课-龃龉",
-     "question": "抄词本第2课词语“龃龉”抄写（漏抄），订正第1轮：本批未见",
-     "reason": "该词未抄（本批未见）",
-     "hint": "对照课本第128页第2课词表，把这个词补抄一遍。",
-     "img": "",
-     "q_img": "",
-     "orig_text": "龃龉",
-     "q_img_exempt": "",
-     "img_exempt": "抄写类：对照课本词表补抄字形，释义图无助于写对字形",
-     "round": 1
+  "schema_version": "1.0",
+  "date": "2026-11-08",
+  "grade": "六年级",
+  "generated_at": "2026-11-08T00:18:03+08:00",
+  "updated_at": "2026-11-08T18:33:44+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-08T16:55:57+08:00",
+      "new_lines": 0,
+      "flipped": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
     }
-   ],
-   "corr_round": 1,
-   "status_source": "closeout_writeback"
   },
-  {
-   "task_id": "REG-20261106-00AA2E",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "复习1-4单元试卷、校本及小练笔",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "task_type": "read",
-   "type_source": "regex_read"
-  },
-  {
-   "task_id": "REG-20261106-7AA54A",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "每天读书1小时，记录③",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-06T20:11:07+08:00",
-   "updated_at": "2026-11-08T15:27:28+08:00",
-   "carry_first_date": "2026-11-06",
-   "carried_from": "2026-11-07",
-   "carry_count": 2,
-   "pending_corrections": 0,
-   "corrections": [],
-   "pending_note": "每天读书1小时·记录③反馈",
-   "orig_photos": [
-    "ecb3013ca59b35a6.jpg",
-    "2efd0de9322e8574.jpg",
-    "99fcb31c10636c3d.jpg",
-    "c29608efb9f8d468.jpg",
-    "983fe542661972d3.jpg",
-    "291ab3f487f061b1.jpg"
-   ],
-   "completed_at": "2026-11-08T15:27:28+08:00"
-  },
-  {
-   "task_id": "READ-20261107-G6",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-08T08:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-07T00:21:12+08:00",
-   "updated_at": "2026-11-08T00:23:17+08:00",
-   "carry_first_date": "2026-11-07",
-   "carried_from": "2026-11-07",
-   "carry_count": 1
-  },
-  {
-   "task_id": "MANUAL-20261107-001",
-   "source": "manual",
-   "subject": "英语",
-   "title": "兄弟英语对话第1期",
-   "detail": "兄弟英语对话第1期：Our Weekend Plan（我们的周末计划）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-07T10:01:55+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "files": [
+  "tasks": [
     {
-     "name": "兄弟英语对话第1期_打印版.pdf",
-     "label": "对话打印版",
-     "pages": 2
-    }
-   ],
-   "carry_first_date": "2026-11-07",
-   "carried_from": "2026-11-07",
-   "carry_count": 1
-  },
-  {
-   "task_id": "MANUAL-20261107-002-G6-YW",
-   "source": "manual",
-   "subject": "语文",
-   "title": "周六综合试卷（语文）",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-07T10:38:55+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "files": [
+      "task_id": "REG-20261106-853367",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成发下的试卷，划文章",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T18:12:06+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "completed_at": "2026-11-08T18:12:06+08:00",
+      "orig_photos": [
+        "455c86b100f95e04.jpg",
+        "23d6f5f8dc3dedff.jpg",
+        "edc353ff4b863603.jpg",
+        "5cb7e5b614a59486.jpg",
+        "9ea775f32e6c5187.jpg",
+        "674e7c7538b202b8.jpg",
+        "b11e956a9c2a62bb.jpg",
+        "a428d4172290e951.jpg"
+      ]
+    },
     {
-     "name": "六年级语文周试卷_2026-11-07.pdf",
-     "label": "语文周试卷",
-     "pages": 4
-    }
-   ],
-   "carry_first_date": "2026-11-07",
-   "carried_from": "2026-11-07",
-   "carry_count": 1
-  },
-  {
-   "task_id": "MANUAL-20261107-002-G6-SX",
-   "source": "manual",
-   "subject": "数学",
-   "title": "周六综合试卷（数学）",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-07T10:38:55+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "files": [
+      "task_id": "REG-20261106-234FE6",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "重点参加“口语易”，周末扫码参加",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "task_type": "reading",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": []
+    },
     {
-     "name": "六年级数学周试卷_2026-11-07.pdf",
-     "label": "数学周试卷",
-     "pages": 4
-    }
-   ],
-   "carry_first_date": "2026-11-07",
-   "carried_from": "2026-11-07",
-   "carry_count": 1
-  },
-  {
-   "task_id": "MANUAL-20261107-002-G6-YY",
-   "source": "manual",
-   "subject": "英语",
-   "title": "周六综合试卷（英语）",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-07T10:38:55+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "files": [
+      "task_id": "REG-20261106-8C201E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "复习U1到U3的所有试卷，下周一期中",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成发下的试卷，划文章；②重点参加“口语易”，周末扫码参加；③复习U1到U3的所有试卷，下周一期中 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "task_type": "read",
+      "type_source": "regex_read"
+    },
     {
-     "name": "六年级英语周试卷_2026-11-07.pdf",
-     "label": "英语周试卷",
-     "pages": 4
-    }
-   ],
-   "carry_first_date": "2026-11-07",
-   "carried_from": "2026-11-07",
-   "carry_count": 1
-  },
-  {
-   "task_id": "MANUAL-20261107-002",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语阅读写作第15期",
-   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-07T19:59:15+08:00",
-   "updated_at": "2026-11-08T00:18:03+08:00",
-   "files": [
+      "task_id": "REG-20261106-DB49EC",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "复习U1-U3单词",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：复习U1-U3单词 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T17:38:32+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "task_type": "read",
+      "type_source": "regex_read",
+      "completed_at": "2026-11-08T17:38:32+08:00",
+      "status_source": "reading_grading",
+      "orig_photos": [
+        "915d209a18a406f9.jpg",
+        "430cf1fee435749d.jpg"
+      ]
+    },
     {
-     "name": "六年级英语阅读写作_2026-11-07.pdf",
-     "label": "英语阅读写作练习",
-     "pages": 2
+      "task_id": "REG-20261106-0B6B25",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念5-19",
+      "detail": "",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T16:38:00+08:00",
+      "task_type": "reading",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "manual"
+    },
+    {
+      "task_id": "REG-20261106-B2E999",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P34",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T14:51:38+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "completed_at": "2026-11-08T14:51:38+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "0b996256f63161d2.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261106-FA2690",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读科学10分钟",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念5-19；②校本P34；③读科学10分钟 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T18:19:43+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "task_type": "read",
+      "type_source": "regex_read",
+      "completed_at": "2026-11-08T18:19:43+08:00",
+      "orig_photos": [
+        "56d606ac98737e95.jpg",
+        "d4762411aea9d13d.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261106-331308",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "写期中考试作文",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": []
+    },
+    {
+      "task_id": "REG-20261106-BE12FF",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄词本抄书P128-129 1至12课词语一次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T18:33:43+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-08T18:33:43+08:00",
+      "orig_photos": [
+        "6e928fbed9804a9d.jpg",
+        "3767289e7498d14e.jpg",
+        "ece5b05258ecf7e9.jpg",
+        "cc45e1582baa606b.jpg",
+        "71602ea23179b74c.jpg",
+        "d3b3def58dc2b86a.jpg",
+        "9ca4e75c5709e59e.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261106-00AA2E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "复习1-4单元试卷、校本及小练笔",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "task_type": "read",
+      "type_source": "regex_read"
+    },
+    {
+      "task_id": "REG-20261106-7AA54A",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "每天读书1小时，记录③",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写期中考试作文；②抄词本抄书P128-129 1至12课词语一次；③复习1-4单元试卷、校本及小练笔；④每天读书1小时，记录③ → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-06T20:11:07+08:00",
+      "updated_at": "2026-11-08T15:27:28+08:00",
+      "carry_first_date": "2026-11-06",
+      "carried_from": "2026-11-07",
+      "carry_count": 2,
+      "pending_corrections": 0,
+      "corrections": [],
+      "pending_note": "每天读书1小时·记录③反馈",
+      "orig_photos": [
+        "ecb3013ca59b35a6.jpg",
+        "2efd0de9322e8574.jpg",
+        "99fcb31c10636c3d.jpg",
+        "c29608efb9f8d468.jpg",
+        "983fe542661972d3.jpg",
+        "291ab3f487f061b1.jpg"
+      ],
+      "completed_at": "2026-11-08T15:27:28+08:00"
+    },
+    {
+      "task_id": "READ-20261107-G6",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-08T08:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-07T00:21:12+08:00",
+      "updated_at": "2026-11-08T00:23:17+08:00",
+      "carry_first_date": "2026-11-07",
+      "carried_from": "2026-11-07",
+      "carry_count": 1
+    },
+    {
+      "task_id": "MANUAL-20261107-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "兄弟英语对话第1期",
+      "detail": "兄弟英语对话第1期：Our Weekend Plan（我们的周末计划）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-07T10:01:55+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "files": [
+        {
+          "name": "兄弟英语对话第1期_打印版.pdf",
+          "label": "对话打印版",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-11-07",
+      "carried_from": "2026-11-07",
+      "carry_count": 1
+    },
+    {
+      "task_id": "MANUAL-20261107-002-G6-YW",
+      "source": "manual",
+      "subject": "语文",
+      "title": "周六综合试卷（语文）",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-07T10:38:55+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "files": [
+        {
+          "name": "六年级语文周试卷_2026-11-07.pdf",
+          "label": "语文周试卷",
+          "pages": 4
+        }
+      ],
+      "carry_first_date": "2026-11-07",
+      "carried_from": "2026-11-07",
+      "carry_count": 1
+    },
+    {
+      "task_id": "MANUAL-20261107-002-G6-SX",
+      "source": "manual",
+      "subject": "数学",
+      "title": "周六综合试卷（数学）",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-07T10:38:55+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "files": [
+        {
+          "name": "六年级数学周试卷_2026-11-07.pdf",
+          "label": "数学周试卷",
+          "pages": 4
+        }
+      ],
+      "carry_first_date": "2026-11-07",
+      "carried_from": "2026-11-07",
+      "carry_count": 1
+    },
+    {
+      "task_id": "MANUAL-20261107-002-G6-YY",
+      "source": "manual",
+      "subject": "英语",
+      "title": "周六综合试卷（英语）",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-07T10:38:55+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "files": [
+        {
+          "name": "六年级英语周试卷_2026-11-07.pdf",
+          "label": "英语周试卷",
+          "pages": 4
+        }
+      ],
+      "carry_first_date": "2026-11-07",
+      "carried_from": "2026-11-07",
+      "carry_count": 1
+    },
+    {
+      "task_id": "MANUAL-20261107-002",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语阅读写作第15期",
+      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-07T19:59:15+08:00",
+      "updated_at": "2026-11-08T00:18:03+08:00",
+      "files": [
+        {
+          "name": "六年级英语阅读写作_2026-11-07.pdf",
+          "label": "英语阅读写作练习",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-11-07",
+      "carried_from": "2026-11-07",
+      "carry_count": 1
+    },
+    {
+      "task_id": "CHORE-20261108-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-08T08:00:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-08T00:18:15+08:00",
+      "updated_at": "2026-11-08T14:57:38+08:00"
     }
-   ],
-   "carry_first_date": "2026-11-07",
-   "carried_from": "2026-11-07",
-   "carry_count": 1
+  ],
+  "counts": {
+    "total": 18,
+    "pending": 11,
+    "in_progress": 1,
+    "done": 6,
+    "pending_review": 0
   },
-  {
-   "task_id": "CHORE-20261108-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-08T08:00:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-08T00:18:15+08:00",
-   "updated_at": "2026-11-08T14:57:38+08:00"
-  }
- ],
- "counts": {
-  "total": 18,
-  "pending": 12,
-  "in_progress": 2,
-  "done": 4,
-  "pending_review": 0
- },
- "deadline_today": null
+  "deadline_today": null
 }
