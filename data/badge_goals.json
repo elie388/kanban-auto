@@ -184,12 +184,12 @@
     "key": "baifen",
     "obtained": true,
     "date": "2026-11-02",
-    "count": 2,
-    "total_count": 5,
+    "count": 3,
+    "total_count": 6,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 306,
+     "current": 311,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W45",
- "generated_at": "2026-11-08T20:43:12.764471+08:00"
+ "generated_at": "2026-11-08T20:48:12.606781+08:00"
 }
