@@ -3,7 +3,7 @@
   "date": "2026-11-08",
   "grade": "五年级",
   "generated_at": "2026-11-08T00:18:02+08:00",
-  "updated_at": "2026-11-08T18:11:07+08:00",
+  "updated_at": "2026-11-08T18:17:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -304,7 +304,23 @@
       "carry_count": 2,
       "task_type": "read",
       "type_source": "regex_read",
-      "completed_at": "2026-11-08T18:12:00+08:00"
+      "completed_at": "2026-11-08T18:12:00+08:00",
+      "orig_photos": [
+        "302728299ac56cab.jpg",
+        "3bd57dfd9e0764dc.jpg",
+        "197b028d2ec17aeb.jpg",
+        "1f88825dc84b8596.jpg",
+        "b6d7786512ce43e6.jpg",
+        "5212601c3d0ebc57.jpg",
+        "61e5e326711529ef.jpg",
+        "876087a348121195.jpg",
+        "74dfaaa1fa7db289.jpg",
+        "1c207b4cde06b054.jpg",
+        "6be354d0e7505043.jpg",
+        "1872122c397c7b41.jpg",
+        "c21b87403e3f74b9.jpg",
+        "49ae06986c844955.jpg"
+      ]
     },
     {
       "task_id": "REG-20261106-1B1D18",
@@ -776,11 +792,11 @@
       "title": "英语阅读写作第15期",
       "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-07T19:59:15+08:00",
-      "updated_at": "2026-11-08T00:18:02+08:00",
+      "updated_at": "2026-11-08T18:17:45+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-11-07.pdf",
@@ -790,7 +806,36 @@
       ],
       "carry_first_date": "2026-11-07",
       "carried_from": "2026-11-07",
-      "carry_count": 1
+      "carry_count": 1,
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "阅读3 判断正误并写依据词组",
+          "question": "Tom cleans his room and helps his mum in the morning. (T/F) 依据词组",
+          "reason": "判断 T 是对的，但写错了位置：T 写在了依据词组横线上，(T/F)处是空的；依据词组本身没写。答案键要求 T＋依据词组 cleans his room and helps his mum。",
+          "hint": "第3题的判断你其实做对了，可是 T 写错了地方——T 应该写在 (T/F) 的括号里。依据词组那条横线上要写的，是短文里能证明这句话的那几个词：回短文里找一找，Tom 早上做了哪两件事？把那两件事连起来，抄到依据词组横线上。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "判断正(T)误(F)，对照原文判断，并写出依据词组：Tom cleans his room and helps his mum in the morning. (T/F) 依据词组：______",
+          "q_img_exempt": "英语判断题无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "写作 My Friend's Birthday（30-50词）",
+          "question": "以 My Friend's Birthday 为题写短文，写 Tom 过生日的一天；第三人称主语 Tom；至少5个第三人称单数动词；30-50词",
+          "reason": "短文共43词（30-50词达标），第三人称主语 Tom 达标；但未达到“至少用5个第三人称单数动词”：用对的只有 is、it's 两个；goes 已由孩子自己涂改成 go（改对了），feels 的主语是 Tom and his friends（复数）却用了 -s 形式；ready 是形容词不能当动词用（妈妈“准备”应用 makes/prepares 之类的动词）；第一句 Today is Friday 与短文 Today is Saturday 不符；After to school 句式不完整；many 修饰不可数名词 food 不当；sing to music 搭配别扭（短文是 listen to music / sings the birthday song）。",
+          "hint": "先对照短文想一想：Tom 的生日到底是星期几？你第一句写的星期几和短文一样吗？再想一想：'Tom and his friends' 是几个人？主语是好几个人时，动词词尾还要加 -s 吗？找一找你短文里哪个动词加了不该加的 -s。'妈妈准备了很多好吃的'，'准备'这个动作应该用哪个动词？ready 能当动词吗？'放学后'英文该怎么说，After 后面应该直接跟什么？food 是数得出来的东西吗，前面该用 many 还是短文里的那个说法？最后数一数，你短文里用对的第三人称单数动词有几个，够 5 个吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "题目：My Friend's Birthday（30-50词）。以 'My Friend's Birthday' 为题，写一篇短文，写一写 Tom 过生日的一天。写作要求：①第三人称主语（Tom）；②至少用5个第三人称单数动词（如 gets, makes, sings, blows, eats，注意动词词尾加 -s / -es）；③注意拼写和标点。字数30-50词。",
+          "q_img_exempt": "英语写作无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "CHORE-20261108-G5",
@@ -815,9 +860,9 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 4,
-    "in_progress": 5,
-    "done": 2,
+    "pending": 2,
+    "in_progress": 6,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": null
