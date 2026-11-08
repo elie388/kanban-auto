@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-08T20:53:54+08:00",
+ "generated_at": "2026-11-08T21:00:34+08:00",
  "items": [
+  {
+   "date": "2026-11-08",
+   "ts": "2026-11-08T21:00:00+08:00",
+   "kind": "feedback",
+   "time": "21:00",
+   "title": "数学 第四单元综合卷订正反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学第四单元综合卷订正反馈</h2>\n<p>11月8日 19:46 提交的订正（第 1 页），3 项待改正，改对了 1 项，还剩 2 项要继续改。</p>\n<h3>🌟 改对了的地方</h3>\n<ul>\n<li>填空 8（6a 表示什么）：你把“书”字划掉、改成了“淘气看了 6 天的页数”，对了。6a 就是淘气 6 天一共看的页数。</li>\n</ul>\n<h3>📝 还要再改：2处</h3>\n<p>逐题想一想再改：</p>\n<p><b>填空 7（还剩多少钱）</b><br>\n<b>原题：</b>当 a=4.5 时，小刚还剩多少钱（小刚有 48 元零花钱，买了 3 本笔记本，每本 a 元，然后买钢笔又用去 12.7 元）。<br>\n<b>这次的情况：</b>你写的 21.6 还不对，再算一算最后一步。<br>\n3×4.5=13.5，48−13.5=34.5，最后一步 34.5−12.7：小数部分 5 减 7 不够减，要向个位借 1，借 1 当 10，15 减 7 是几？再算整数部分，列竖式慢慢算一遍。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_e8dd7d_money.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>填空 8（a+b 表示什么）</b><br>\n<b>原题：</b>淘气每天看 a 页，笑笑每天看 b 页，a+b 表示什么。<br>\n<b>这次的情况：</b>你改成了“淘气和笑笑 6 天看的页数”，但 a+b 不是 6 天的总数。<br>\na 是淘气一天看的页数，b 是笑笑一天看的页数，a+b 是把两人同一天的页数加起来——是“一天”一共看的，还是“6 天”一共看的？你的答案里有没有写清楚是几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_e8dd7d_reading.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>本批积分 +0（改对 1 项；本任务今天的订正分已达 +8 上限，分批提交不叠加）。</p>\n</body></html>"
+  },
   {
    "date": "2026-11-08",
    "ts": "2026-11-08T20:55:00+08:00",
@@ -50,14 +58,6 @@
    "time": "11月8日 19:45",
    "title": "周六综合试卷（英语）·订正12道全对",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语周六综合试卷订正反馈</h2>\n<p>11月8日 19:35 交回的订正批改完了：12 道选择题全改对了。首轮得分是 44 分（满分 70 分，小作文已豁免不计分）。</p>\n<h3>🌟 订正全对的 12 道</h3>\n<ul>\n<li>词汇1：turn old bottles <b>into</b> new bags（把……变成……）。</li>\n<li>词汇2：too <b>many</b> plastic bottles，too <b>much</b> fresh air（能数出来的用 many，数不出来的用 much）。</li>\n<li>词汇3：<b>Collecting</b> stamps is my hobby（动词当主语要加 -ing）。</li>\n<li>单选11：They <b>watched</b> a football match last Sunday（上周日是过去，要用过去式）。</li>\n<li>单选12：Where <b>did</b> you go last Sunday?</li>\n<li>单选13：What <b>did</b> she buy yesterday?</li>\n<li>单选14：My mother <b>bought</b> a new dress for me last week.</li>\n<li>单选15：They <b>took</b> photos in the zoo last Saturday.</li>\n<li>单选16：<b>Did</b> your father come back yesterday?</li>\n<li>单选18：Please <b>put</b> the rubbish into the bin（Please 开头动词用原形）。</li>\n<li>单选19：Tom <b>read</b> a book yesterday evening（read 的过去式拼写不变）。</li>\n<li>单选20：We <b>took</b> some photos in the park last Sunday.</li>\n</ul>\n<p>这 12 道里，过去时是这次的重点：看到 last Sunday、yesterday、last week、last Saturday 这些词，动作已经发生了，动词要变过去式。你全改对了，这个规律已经掌握了。</p>\n<h3>📝 小作文不用写了</h3>\n<p>小作文 My Last Weekend 不用写了——过去时还没学到，等学到了再写。试卷上第四大题（小作文那道）也可以跳过，不用做。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T19:37:33+08:00",
-   "kind": "feedback",
-   "time": "19:37",
-   "title": "数学 第四单元综合卷订正",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，数学 第四单元综合卷 订正反馈</h2><p>这次订正，你把 21 道待改正的题改对了 18 道，很棒。改对的是：1.5小时行驶的路程、组装玩具小汽车的轮子数、大正方形面积、小正方形面积、阴影面积、买笔记本花了多少钱、到山崖的距离、听到回声的时间、2分球一共得了多少分、摆3个八边形的小棒数、摆n个八边形的小棒数、剩下桃子（选B）、6x+5写错的结果（选A）、日历框里左边的数、右边的数、左上角的数、右下角的数、9个数的和与正中间数的关系。</p><p>还有 3 道题要再想一想，改对了再发回来：</p><h3>还剩多少钱</h3><p>原题：小刚有 48 元零花钱，买了 3 本笔记本，每本 a 元，然后买钢笔又用去 12.7 元。当 a=4.5 时，他还有多少元零花钱？</p><p>想一想：3×4.5=13.5，48−13.5=34.5，最后一步 34.5−12.7：小数部分 5 减 7 不够减，要向个位借 1，借 1 当 10，15 减 7 是几？再算整数部分，列竖式慢慢算一遍。</p><p><img src=\"data/diagrams/g5_e8dd7d_money.png\"></p><h3>6a 表示什么</h3><p>原题：淘气和笑笑看同一本书，都看了 6 天。淘气每天看 a 页，笑笑每天看 b 页。6a 表示什么？</p><p>想一想：a 的单位是“页”，6a 是 6 个 a 加起来，单位还是“页”。“看了 6 天的书”说的是哪本书，没有说看了多少页——6a 要表示的是多少？把“书”换成表示数量的词再想想。</p><p><img src=\"data/diagrams/g5_e8dd7d_reading.png\"></p><h3>a+b 表示什么</h3><p>原题：淘气和笑笑看同一本书，都看了 6 天。淘气每天看 a 页，笑笑每天看 b 页。a+b 表示什么？</p><p>想一想：a 是淘气一天看的页数，b 是笑笑一天看的页数，a+b 是把两人同一天的页数加起来——是“一天”一共看的，还是“6 天”一共看的？你的答案里有没有写清楚是几天？</p><p><img src=\"data/diagrams/g5_e8dd7d_reading.png\"></p><p>这次订正改对 +8 分（作业日上限），本批共 +8 分。</p></body></html>"
   },
   {
    "date": "2026-11-08",
