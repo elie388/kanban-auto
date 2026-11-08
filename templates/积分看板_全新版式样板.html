@@ -442,6 +442,10 @@
     color:#536274; flex:0 0 auto; align-self:center;
     -webkit-tap-highlight-color:transparent;
   }
+  /* 完成时间（2026-11-08 家长定）：已完成卡在主行右侧、详情链左侧显示完成时间 */
+  .task .task-done-time{
+    font-size:12.5px; color:#6B7280; white-space:nowrap; flex:0 0 auto; align-self:center;
+  }
   .task.correcting .task-toggle{color:#C77700; font-weight:700;}
   span.corr-badge{cursor:default;}
   .corr-item{font-size:19.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
@@ -2011,11 +2015,29 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if(mIco && ICO_ANIM[mIco[1]]) badgeHtml = '<span class="st-ico ' + ICO_ANIM[mIco[1]] + '">' + mIco[1] + '</span>' + badgeText.slice(mIco[1].length);
         var exampredPill = '';
         if(t.exam_pred_exempt){ exampredPill = '<span class="exampred-pill" title="考试预测日豁免：点开回看预测">考试预测日豁免</span>'; }
+        /* 完成时间（2026-11-08 家长定）：已完成卡显示完成时间（completed_at），
+           当天只显 HH:MM，跨日显 M月D日 HH:MM；无 completed_at 不显示，不硬编。 */
+        var doneTimeHtml = '';
+        if(t.status === 'done' && t.completed_at){
+          var dtDone = new Date(t.completed_at);
+          if(!isNaN(dtDone.getTime())){
+            var hhmmDone = taskFmtHHMM(dtDone.getTime());
+            var isoDone = String(t.completed_at).slice(0, 10);
+            var todayIso = new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10);
+            var doneLabel = '完成于 ' + hhmmDone;
+            if(isoDone && isoDone !== todayIso){
+              var dp = isoDone.split('-');
+              if(dp.length === 3) doneLabel = '完成于 ' + (+dp[1]) + '月' + (+dp[2]) + '日 ' + hhmmDone;
+            }
+            doneTimeHtml = '<span class="task-done-time">' + esc(doneLabel) + '</span>';
+          }
+        }
         html += '<div class="task ' + sm.cls + (taskOpen ? ' open-task' : '') + (t.chore_exempt ? ' is-exempt' : '') + (urgCls ? ' ' + urgCls : '') + '" data-tid="' + esc(t.task_id || '') + '" data-src="' + esc(t.source || '') + '" data-ttype="' + esc(t.task_type || '') + '" data-status="' + esc(t.status || '') + '"><div class="task-main"><div class="task-info">'
           + '<div class="task-top"><span class="st-badge' + (t.chore_exempt ? ' is-calm' : '') + '"><span class="st-dot"></span>' + badgeHtml + '</span>' + miniPill + carryTag + exampredPill + '</div>'
           + '<div class="task-name">' + esc(dispTitle) + '</div>'
           + ((t.urge && t.urge.text && t.status !== 'done') ? '<div class="task-urge">⏰ ' + esc(t.urge.text) + '<button type="button" class="urge-mute" data-urge-mute="' + esc(t.task_id || '') + '">暂停闪烁</button></div>' : '')
           + '<div class="task-progress">' + sub2 + '</div></div>'
+          + doneTimeHtml
           + toggleBtn + '</div>'
           + noteHtml + corrBadge + corrPanel
           + '<div class=\"task-acts\"><span class=\"st-zone\"></span>' + filesRow + origRow + '</div></div>';
@@ -5741,7 +5763,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261108-prednote';
+  var KB_BUILD = '20261108-donetime';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
