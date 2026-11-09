@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "五年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T21:42:51+08:00",
+  "updated_at": "2026-11-09T22:27:51+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -198,17 +198,58 @@
       "title": "英语对话第2期",
       "detail": "英语对话第2期：Helping Mom Cook Dinner（帮妈妈做晚饭）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-09T18:38:21+08:00",
-      "updated_at": "2026-11-09T18:38:21+08:00",
+      "updated_at": "2026-11-09T22:27:51+08:00",
       "files": [
         {
           "name": "英语对话第2期_打印版.pdf",
           "label": "对话打印版"
         }
-      ]
+      ],
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "对话第2句 Sounds good! What is she cooking?",
+          "question": "Sounds good! What is she cooking?",
+          "reason": "Sounds 读成 So（全量两遍＋分段均作 So，漏了 -nds）",
+          "hint": "重读这句时，注意 Sounds 这个词，把 -nds 的音读出来，不要只读 So。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Sounds good! What is she cooking?",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第12句 How many bowls do we need?",
+          "question": "How many bowls do we need?",
+          "reason": "bowls 读不准（全量两遍作 brooks/blouses，分段两遍作 blows/blocks）",
+          "hint": "重读这句时，把 bowls 这个词咬清楚，注意中间的 l 音，慢慢读。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "How many bowls do we need?",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第14句 Let me get four bowls and four pairs of chopsticks.",
+          "question": "Let me get four bowls and four pairs of chopsticks.",
+          "reason": "bowls 读不准（全量两遍作 brooks/blouses，分段作 bronze）；chopsticks 读不准（全量两遍作 churpsis/chalice speaks，分段作 chosbeak）",
+          "hint": "重读这句时，把 bowls 和 chopsticks 两个词咬清楚，慢慢读，不要含糊带过。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Let me get four bowls and four pairs of chopsticks.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261109-B407025190B9",
@@ -365,8 +406,8 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 6,
-    "in_progress": 1,
+    "pending": 5,
+    "in_progress": 2,
     "done": 5,
     "pending_review": 0
   },
