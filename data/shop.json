@@ -13,7 +13,7 @@
      "redeemable": true
     },
     "g6": {
-     "balance": 770,
+     "balance": 773,
      "progress": 1.0,
      "redeemable": true
     }
@@ -31,7 +31,7 @@
      "redeemable": true
     },
     "g6": {
-     "balance": 770,
+     "balance": 773,
      "progress": 1.0,
      "redeemable": true
     }
@@ -49,7 +49,7 @@
      "redeemable": true
     },
     "g6": {
-     "balance": 770,
+     "balance": 773,
      "progress": 1.0,
      "redeemable": true
     }
@@ -67,7 +67,7 @@
      "redeemable": true
     },
     "g6": {
-     "balance": 770,
+     "balance": 773,
      "progress": 1.0,
      "redeemable": true
     }
@@ -85,7 +85,7 @@
      "redeemable": false
     },
     "g6": {
-     "balance": 770,
+     "balance": 773,
      "progress": 1.0,
      "redeemable": true
     }
@@ -103,12 +103,12 @@
      "redeemable": false
     },
     "g6": {
-     "balance": 770,
-     "progress": 0.77,
+     "balance": 773,
+     "progress": 0.773,
      "redeemable": false
     }
    }
   }
  ],
- "generated_at": "2026-11-09T22:18:18.254218+08:00"
+ "generated_at": "2026-11-09T22:28:18.442419+08:00"
 }
