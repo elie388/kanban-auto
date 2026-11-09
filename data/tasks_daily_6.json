@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T20:09:35+08:00",
+  "updated_at": "2026-11-09T20:14:24+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -141,7 +141,10 @@
       "created_by": "system",
       "created_at": "2026-11-09T16:56:19+08:00",
       "updated_at": "2026-11-09T20:09:35+08:00",
-      "completed_at": "2026-11-09T20:09:35+08:00"
+      "completed_at": "2026-11-09T20:09:35+08:00",
+      "orig_photos": [
+        "510b2e163b53e121.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261109-001",
