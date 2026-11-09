@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-09T19:43:08+08:00",
+  "generated_at": "2026-11-09T19:48:08+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-09",
+      "time": "19:47",
+      "time_source": "entry",
+      "reason": "每日读书发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "19:47",
+      "time_source": "entry",
+      "reason": "每日读书录音时长",
+      "pts": 7,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-09",
       "time": "19:38",
