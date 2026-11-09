@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T16:56:19+08:00",
+  "updated_at": "2026-11-09T18:38:24+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -142,11 +142,30 @@
       "created_at": "2026-11-09T16:56:19+08:00",
       "updated_at": "2026-11-09T16:56:19+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "MANUAL-20261109-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "兄弟英语对话第2期",
+      "detail": "兄弟英语对话第2期：Helping Mom Cook Dinner（帮妈妈做晚饭）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-09T18:38:24+08:00",
+      "updated_at": "2026-11-09T18:38:24+08:00",
+      "files": [
+        {
+          "name": "兄弟英语对话第2期_打印版.pdf",
+          "label": "对话打印版"
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 7,
+    "pending": 7,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
