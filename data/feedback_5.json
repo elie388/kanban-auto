@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-08T21:35:03+08:00",
+ "generated_at": "2026-11-09T19:13:12+08:00",
  "items": [
+  {
+   "date": "2026-11-09",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月9日口语易反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月9日 19:06 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 9 日的任务已经提交了，7 项都完成了，很好。</li>\n</ul>\n<p>今天按时完成了口语练习，继续保持。</p>\n</body></html>"
+  },
   {
    "date": "2026-11-08",
    "ts": "2026-11-08T21:34:42+08:00",
@@ -146,38 +154,6 @@
    "time": "",
    "title": "11月6日口语易反馈",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月6日的口语易任务，11月7日 11:01 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 6 日的任务已经提交了，9 项都完成了，很好。</li>\n</ul>\n<p>下次争取在当天完成口语练习。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-05",
-   "ts": "2026-11-05T21:40:00+08:00",
-   "kind": "feedback",
-   "time": "21:40",
-   "title": "英语试卷（笔试部分）",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语试卷（笔试部分）反馈</h2>\n<p>11月5日 20:28 提交，笔试 51/60＝85%，要订正 6 处。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>八、九（一）两大题全对（各 10/10），阅读理解和判断题都稳。</li>\n<li>七、补全短文 9/10，只错 1 处。</li>\n<li>十、写作 8/10：6 句话符合要求，姓名、性格、外貌、共同爱好都写到了，很完整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>六-4：What do you think ___ this healthy food?——“你觉得这种健康食物怎么样？”这里“认为”用哪个介词搭配？想想 think 后面跟哪个小词表示“认为”，再看看第 5 题是不是也填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>六-5：What can you do ___ these things?——“你能用这些东西做什么？”这里“用”用哪个介词？想想 do 后面跟哪个小词表示“用”，再对照第 4 题看看两个词是不是填反了。<br><img src=\"data/diagrams/eng_65a3bbf9_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>七-9：I always eat my food 9.s___.——“我吃饭总是吃得……”这里要填一个词说“吃得怎么样”，修饰动词 eat，应该用什么词性的词？首字母 s 已经给了，这个词完整拼出来是什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-7：再读一遍短文第二句：植树节那天，学校上课吗？短文里有没有一个表示“没有”的小词？学生那天在学校通常做什么？<br><img src=\"data/diagrams/eng_65a3bbf9_q4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>九（二）-9：题干里问的是 first（首先）还是 last（最后）？再读短文里种树的三个步骤：First……Next……At last……，第一步是做什么？浇水是第几步？<br><img src=\"data/diagrams/eng_65a3bbf9_q5_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>十、写作：We are friend because we both like music.——这句话里 We 是几个人？两个人互为朋友，friend 这个词应该用单数还是复数？想想 We are ___ 后面跟几个人的称呼时要不要加 s。<br><img src=\"data/diagrams/eng_65a3bbf9_q6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>听力部分（40 分）还没交，等音频到了再一起核分。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-05",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "英语随堂练习（四）订正",
-   "html": "<h2>彦均，英语随堂练习（四）订正反馈</h2><p>11月5日 20:14 提交，13处订正改对了10处（76.9%），还有3处要再改一改。这批订正得了 15 分。</p><h3>做得好的地方</h3><ul><li>听力判断改对了：Tom and John 的爱好不一样，你改成 F 是对的。</li><li>选词填空改对了两处：Don't eat too much chocolate、Friends should be happy together，都改对了。</li><li>首字母填空两处都改对了：We also help our earth、They are happy together。</li><li>阅读判断两处都改对了：Alice 不是到处都能看到塑料垃圾，绿俱乐部不是 16 个人。</li><li>阅读选择两处都改对了：狮子生气是因为小老鼠爬到它背上，几天后狮子在网里。</li></ul><h3>要再改的地方（3处）</h3><ol><li><b>选词填空第3题：We need to ___ with our friends.</b><br>你划掉了 Similar，保留了 do，但句子还是不通。想一想，这个空要填一个动词，表示和朋友一起做一件事。朋友之间常常会互相分东西、一起玩，哪个词是这个意思？读一遍句子，哪个词放进去意思才通？<br><p><img src=\"diagrams/g5_EXAM989943_q6_3_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li><li><b>选词填空第10题：Don't eat too ___ candies.</b><br>你划掉了 many，保留了 much，但 candies 是复数、能一个一个数出来的东西。修饰这种词的时候，用来表示“太多”的词和修饰水、米饭这种数不出来的东西的词是不一样的。你写的那个词是修饰数不出来的东西的，换一个试试？<br><p><img src=\"diagrams/g5_EXAM989943_q6_10_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li><li><b>书面表达：My best friend 一段有三个小地方要改。</b><br>① He 是第三人称单数，动词 like 要变一变，想想单三后面动词要加什么；② listen 这个词后面直接接 music 读起来少了点什么，想想“听音乐”这个动作，中间是不是少了一个表示方向的小词；③ openly 是副词，修饰 talk 这个动词，副词放在动词前面还是后面读起来更顺？你试着换个位置。<br><p><img src=\"diagrams/g5_EXAM989943_q10_writing_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p></li></ol><p>改完这3处再发回来，我再帮你看看。加油！</p>"
-  },
-  {
-   "date": "2026-11-05",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "第四单元小测",
-   "html": "<h2>第四单元小测反馈</h2>\n<p>这次小测 107 小问，你对了 100 个，正确率 93.5%，很棒！下面 7 处要改正，照着提示一步步想，自己改出来。</p>\n<h3>看拼音写词语：dǒu sǒu</h3>\n<p>提示一：这个词是说人精神很好、很有干劲，课文里常用来形容战士和劳动者的精神状态。提示二：第一个字是提手旁，读dǒu，想想提手旁加个什么字？提示三：第二个字读sǒu，看看你写的第二个字，它的读音和字形对得上吗？格外那个字是不是多余的？</p>\n<p><img src=\"diagrams/g5_BCE08C_q1_dousou_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>读句子写字词：jiāng（ ）土</h3>\n<p>提示一：这个空只要填一个字，括号后面已经印着“土”字了，合起来是一个词。提示二：你写了两个字，读一读句子，顺吗？提示三：把多余的那个字去掉，再读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q2_jiang_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：官邸</h3>\n<p>提示一：查一查字典，“邸”字读第几声？提示二：“官邸”这个词，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q3_di_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：潜龙</h3>\n<p>提示一：“潜水”的“潜”怎么读？提示二：qián和qiáng，韵母有什么不同？提示三：重新拼读“潜”字，声母是q，韵母是ian还是iang？</p>\n<p><img src=\"diagrams/g5_BCE08C_q4_qian_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：租界</h3>\n<p>提示一：“租”字读第几声？提示二：想想“租房”的“租”，读起来是第几声？提示三：把声调改一改，再拼读一遍。</p>\n<p><img src=\"diagrams/g5_BCE08C_q5_zu_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：瑰宝</h3>\n<p>提示一：“瑰宝”的“瑰”怎么读？提示二：guī和guǎi，韵母和声调有什么不同？提示三：重新拼读“瑰”字，声母是g，韵母是ui还是uai？</p>\n<p><img src=\"diagrams/g5_BCE08C_q6_gui_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<h3>给加点字注音：裁</h3>\n<p>提示一：“裁剪”的“裁”怎么读？提示二：c和z是不同的声母，“裁”是平舌音，读第几声？提示三：重新拼读“裁”字，声母是c还是z？是第几声？</p>\n<p><img src=\"diagrams/g5_BCE08C_q7_cai_guide.png\" alt=\"引导图\" style=\"max-width:100%\"></p>\n<p>改完后拍照发回，老师会再看一遍。加油！</p>"
-  },
-  {
-   "date": "2026-11-05",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "title": "生字16课",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，生字16课反馈</h2><p>11月5日 20:16 提交，7个生字对4个、错3个（57.1%），要订正3处。</p><h3>做得好的地方</h3><ul><li>塔、埃、墓、砌这4个字全对：拼音、字形、组词都写对了，很棒！</li><li>组词用得都对：金字塔、矮塔楼、埃及、古埃及、陵墓、墓室、塔基、基本、堆砌，都很好。</li></ul><h3>要订正的地方（3项）</h3><ul><li>堆的拼音：堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_dui_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_dui_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>基的字形：基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。<br><img src=\"data/diagrams/g5_shengzi16_ji_structure_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_ji_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>狭的拼音：狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_xia_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_xia_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul><p>订正完把改好的3个字再拍一张发回来，你一定能全对！</p></body></html>"
   }
  ]
 }
