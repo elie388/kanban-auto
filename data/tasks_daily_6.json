@@ -178,7 +178,13 @@
           "orig_text": "She is making tomato and egg soup.",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g6_dialogue2_s3_making_tomato.mp3"
+            }
+          ]
         },
         {
           "label": "对话第11句 Good. And I can get the bowls and chopsticks.",
@@ -190,7 +196,13 @@
           "orig_text": "Good. And I can get the bowls and chopsticks.",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g6_dialogue2_s11_bowls_chopsticks.mp3"
+            }
+          ]
         },
         {
           "label": "对话第13句 Four bowls. Mom, Dad, you and me.",
@@ -202,7 +214,13 @@
           "orig_text": "Four bowls. Mom, Dad, you and me.",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g6_dialogue2_s13_bowls_mom.mp3"
+            }
+          ]
         },
         {
           "label": "对话第21句 Mine, too. Let's go!",
@@ -214,7 +232,13 @@
           "orig_text": "Mine, too. Let's go!",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g6_dialogue2_s21_mine.mp3"
+            }
+          ]
         }
       ],
       "pending_corrections": 4,

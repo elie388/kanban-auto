@@ -187,7 +187,13 @@
           "orig_text": "Sounds good! What is she cooking?",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g5_dialogue2_s2_sounds.mp3"
+            }
+          ]
         },
         {
           "label": "对话第12句 How many bowls do we need?",
@@ -199,7 +205,13 @@
           "orig_text": "How many bowls do we need?",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g5_dialogue2_s12_bowls.mp3"
+            }
+          ]
         },
         {
           "label": "对话第14句 Let me get four bowls and four pairs of chopsticks.",
@@ -211,7 +223,13 @@
           "orig_text": "Let me get four bowls and four pairs of chopsticks.",
           "q_img_exempt": "口语对话无原题图",
           "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
-          "round": 1
+          "round": 1,
+          "audios": [
+            {
+              "label": "示范录音",
+              "src": "g5_dialogue2_s14_bowls_chopsticks.mp3"
+            }
+          ]
         }
       ],
       "pending_corrections": 3,
