@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T21:40:26+08:00",
+  "updated_at": "2026-11-09T21:42:51+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -257,7 +257,11 @@
       "type_source": "regex_oral",
       "pending_corrections": 0,
       "corrections": [],
-      "completed_at": "2026-11-09T20:53:00+08:00"
+      "completed_at": "2026-11-09T20:53:00+08:00",
+      "orig_photos": [
+        "37edf31d6d885141.jpg",
+        "e1adc1eb8c4fc8e3.jpg"
+      ]
     },
     {
       "task_id": "REG-20261109-2F6F7A81C407",
@@ -380,7 +384,13 @@
       },
       "created_at": "2026-11-09T20:09:35+08:00",
       "updated_at": "2026-11-09T21:40:26+08:00",
-      "pending_note": "11月9日数学校本P35反馈（8/8 全对）"
+      "pending_note": "11月9日数学校本P35反馈（8/8 全对）",
+      "completed_at": "2026-11-09T21:40:26+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "orig_photos": [
+        "6067a800666a30e6.jpg"
+      ]
     },
     {
       "task_id": "REG-20261109-8CD81F30BBA1",
@@ -403,7 +413,11 @@
       "type_source": "regex_oral",
       "pending_corrections": 0,
       "corrections": [],
-      "completed_at": "2026-11-09T21:06:00+08:00"
+      "completed_at": "2026-11-09T21:06:00+08:00",
+      "orig_photos": [
+        "4530df8b287bdf5c.jpg",
+        "1a5a087bd7e70924.jpg"
+      ]
     }
   ],
   "counts": {
