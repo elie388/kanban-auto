@@ -1,490 +1,490 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-09",
- "grade": "六年级",
- "generated_at": "2026-11-09T00:18:01+08:00",
- "updated_at": "2026-11-10T00:10:41+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-09T23:10:47+08:00",
-   "new_lines": 0,
-   "flipped": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": "2026-11-09T19:52:17+08:00",
-   "status": "done"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": "2026-11-09T18:57:34+08:00",
-   "status": "done"
-  }
- },
- "tasks": [
-  {
-   "task_id": "CHORE-20261109-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "23:11 晾衣服",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "appear_at": "2026-11-09T17:30:00+08:00",
-   "chore_done_count": 1,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-09T00:18:19+08:00",
-   "updated_at": "2026-11-10T00:10:41+08:00",
-   "completed_at": "2026-11-09T23:18:00+08:00",
-   "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17942370713697f71e99167139d2a（approved，23:11实拍）；补定案：20:29批已改属11-08，家长23:45点选按新情况办。"
-  },
-  {
-   "task_id": "READ-20261109-G6",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-09T17:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-09T00:18:34+08:00",
-   "updated_at": "2026-11-09T00:18:34+08:00"
-  },
-  {
-   "task_id": "D53-2026-11-09-CHN",
-   "source": "daily_53",
-   "subject": "语文",
-   "title": "53天天练·语文",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-11-09T16:56:08+08:00",
-   "updated_at": "2026-11-09T16:56:08+08:00",
-   "exam_pred_exempt": {
-    "prediction_date": "2026-11-09",
-    "prediction_subject": "语文",
-    "prediction_unit": "第四单元",
-    "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
-    "marked_at": "2026-11-09T18:29:52+08:00",
-    "marked_by": "exam_linkage",
-    "linkage_run_id": "LINK-20261109-G6-CHN",
-    "reversible": true
-   }
-  },
-  {
-   "task_id": "D53-2026-11-09-MATH",
-   "source": "daily_53",
-   "subject": "数学",
-   "title": "53天天练·数学",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-11-09T16:56:08+08:00",
-   "updated_at": "2026-11-09T16:56:08+08:00",
-   "exam_pred_exempt": {
-    "prediction_date": "2026-11-09",
-    "prediction_subject": "语文",
-    "prediction_unit": "第四单元",
-    "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
-    "marked_at": "2026-11-09T18:29:52+08:00",
-    "marked_by": "exam_linkage",
-    "linkage_run_id": "LINK-20261109-G6-CHN",
-    "reversible": true
-   }
-  },
-  {
-   "task_id": "D53-2026-11-09-ENG",
-   "source": "daily_53",
-   "subject": "英语",
-   "title": "53天天练·英语",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-11-09T16:56:08+08:00",
-   "updated_at": "2026-11-09T16:56:08+08:00",
-   "exam_pred_exempt": {
-    "prediction_date": "2026-11-09",
-    "prediction_subject": "语文",
-    "prediction_unit": "第四单元",
-    "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
-    "marked_at": "2026-11-09T18:29:52+08:00",
-    "marked_by": "exam_linkage",
-    "linkage_run_id": "LINK-20261109-G6-CHN",
-    "reversible": true
-   }
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-09",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "在看板上传登记本照片",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-11-09T16:56:19+08:00",
-   "updated_at": "2026-11-09T20:09:35+08:00",
-   "completed_at": "2026-11-09T20:09:35+08:00",
-   "orig_photos": [
-    "510b2e163b53e121.jpg"
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261109-001",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语对话第2期",
-   "detail": "英语对话第2期：Helping Mom Cook Dinner（帮妈妈做晚饭）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-09T18:38:24+08:00",
-   "updated_at": "2026-11-09T23:13:03+08:00",
-   "files": [
-    {
-     "name": "英语对话第2期_打印版.pdf",
-     "label": "对话打印版"
+  "schema_version": "1.0",
+  "date": "2026-11-09",
+  "grade": "六年级",
+  "generated_at": "2026-11-09T00:18:01+08:00",
+  "updated_at": "2026-11-10T00:10:41+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-09T23:10:47+08:00",
+      "new_lines": 0,
+      "flipped": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": "2026-11-09T19:52:17+08:00",
+      "status": "done"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": "2026-11-09T18:57:34+08:00",
+      "status": "done"
     }
-   ],
-   "corrections": [],
-   "pending_corrections": 0,
-   "status_source": "closeout_writeback",
-   "completed_at": "2026-11-09T23:13:03+08:00"
   },
-  {
-   "task_id": "PRACT-20261109-A804AA6A295B",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "针对性练习（含口语+背诵）",
-   "detail": "六年级针对性练习_2026-11-09.docx，按今日练习清单完成",
-   "kousuan": [],
-   "recite_text": "语文背诵：《观书有感·其一》（朱熹）\n原文：半亩方塘一鉴开，天光云影共徘徊。问渠那得清如许？为有源头活水来。\n朗读要求：声音洪亮，吐字清晰，语调沉着，前半句稳重，后半句读出感悟。\n英语口语任务说明：请看图说话。图片情景：图片上是星期一早上七点半，一个男孩背着书包走进校园，他先向老师问好，然后走进教室，放下书包，拿出课本开始早读。下午，他和同学们一起上体育课，踢足球，玩得很开心。提示问题：1. What time does the boy get to school in the morning? 2. What did he do in the afternoon? 3. How was his day at school?口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与一般过去时的区分。",
-   "estimate_min": 30,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-09.docx",
-   "file_hash": "af3fb61f876d5667e567f8d60e55be0f9c08f40f0d337fd507bb2d4fbcb4ae8b",
-   "created_at": "2026-11-09T19:11:26+08:00",
-   "updated_at": "2026-11-09T19:11:26+08:00",
-   "files": [
+  "tasks": [
     {
-     "name": "六年级针对性练习_2026-11-09.pdf",
-     "label": "练习",
-     "pages": 4
+      "task_id": "CHORE-20261109-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "23:11 晾衣服",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-11-09T17:30:00+08:00",
+      "chore_done_count": 1,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-09T00:18:19+08:00",
+      "updated_at": "2026-11-10T00:10:41+08:00",
+      "completed_at": "2026-11-09T23:18:00+08:00",
+      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17942370713697f71e99167139d2a（approved，23:11实拍）；补定案：20:29批已改属11-08，家长23:45点选按新情况办。"
+    },
+    {
+      "task_id": "READ-20261109-G6",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-09T17:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-09T00:18:34+08:00",
+      "updated_at": "2026-11-09T00:18:34+08:00"
+    },
+    {
+      "task_id": "D53-2026-11-09-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-11-09T16:56:08+08:00",
+      "updated_at": "2026-11-09T16:56:08+08:00",
+      "exam_pred_exempt": {
+        "prediction_date": "2026-11-09",
+        "prediction_subject": "语文",
+        "prediction_unit": "第四单元",
+        "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
+        "marked_at": "2026-11-09T18:29:52+08:00",
+        "marked_by": "exam_linkage",
+        "linkage_run_id": "LINK-20261109-G6-CHN",
+        "reversible": true
+      }
+    },
+    {
+      "task_id": "D53-2026-11-09-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-11-09T16:56:08+08:00",
+      "updated_at": "2026-11-09T16:56:08+08:00",
+      "exam_pred_exempt": {
+        "prediction_date": "2026-11-09",
+        "prediction_subject": "语文",
+        "prediction_unit": "第四单元",
+        "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
+        "marked_at": "2026-11-09T18:29:52+08:00",
+        "marked_by": "exam_linkage",
+        "linkage_run_id": "LINK-20261109-G6-CHN",
+        "reversible": true
+      }
+    },
+    {
+      "task_id": "D53-2026-11-09-ENG",
+      "source": "daily_53",
+      "subject": "英语",
+      "title": "53天天练·英语",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-11-09T16:56:08+08:00",
+      "updated_at": "2026-11-09T16:56:08+08:00",
+      "exam_pred_exempt": {
+        "prediction_date": "2026-11-09",
+        "prediction_subject": "语文",
+        "prediction_unit": "第四单元",
+        "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
+        "marked_at": "2026-11-09T18:29:52+08:00",
+        "marked_by": "exam_linkage",
+        "linkage_run_id": "LINK-20261109-G6-CHN",
+        "reversible": true
+      }
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-09",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-09T16:56:19+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00",
+      "completed_at": "2026-11-09T20:09:35+08:00",
+      "orig_photos": [
+        "510b2e163b53e121.jpg"
+      ]
+    },
+    {
+      "task_id": "MANUAL-20261109-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语对话第2期",
+      "detail": "英语对话第2期：Helping Mom Cook Dinner（帮妈妈做晚饭）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-09T18:38:24+08:00",
+      "updated_at": "2026-11-09T23:13:03+08:00",
+      "files": [
+        {
+          "name": "英语对话第2期_打印版.pdf",
+          "label": "对话打印版"
+        }
+      ],
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-09T23:13:03+08:00"
+    },
+    {
+      "task_id": "PRACT-20261109-A804AA6A295B",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-09.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《观书有感·其一》（朱熹）\n原文：半亩方塘一鉴开，天光云影共徘徊。问渠那得清如许？为有源头活水来。\n朗读要求：声音洪亮，吐字清晰，语调沉着，前半句稳重，后半句读出感悟。\n英语口语任务说明：请看图说话。图片情景：图片上是星期一早上七点半，一个男孩背着书包走进校园，他先向老师问好，然后走进教室，放下书包，拿出课本开始早读。下午，他和同学们一起上体育课，踢足球，玩得很开心。提示问题：1. What time does the boy get to school in the morning? 2. What did he do in the afternoon? 3. How was his day at school?口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与一般过去时的区分。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-09.docx",
+      "file_hash": "af3fb61f876d5667e567f8d60e55be0f9c08f40f0d337fd507bb2d4fbcb4ae8b",
+      "created_at": "2026-11-09T19:11:26+08:00",
+      "updated_at": "2026-11-09T19:11:26+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-09.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ],
+      "exam_pred_exempt": {
+        "prediction_date": "2026-11-09",
+        "prediction_subject": "语文",
+        "prediction_unit": "第四单元",
+        "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
+        "marked_at": "2026-11-09T19:11:39+08:00",
+        "marked_by": "exam_linkage",
+        "linkage_run_id": "LINK-20261109-G6-CHN",
+        "reversible": true
+      }
+    },
+    {
+      "task_id": "REG-20261109-E085ECB57DC7",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "第二单元小测",
+      "detail": "",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T22:36:00+08:00",
+      "corr_round": 2,
+      "corrections": [
+        {
+          "label": "仿写一段话",
+          "question": "用相同的修辞手法补写一段话：夏天来了，世界热闹起来了。____，____；____。",
+          "reason": "第二句补了主语“知了”（“知了在树上尖叫”），但第三句“蝴蝶在草地上”仍未写完（句末涂黑划掉、无可辨认的结尾）；“知了在给燕子伴奏”搭配未改。",
+          "hint": "第三句“蝴蝶在草地上”后面要写完：蝴蝶在草地上做什么？按“谁在干什么”把第三句写完整，再通读三句，看看三句是不是一样的结构。还有，“知了在给燕子伴奏”——知了的叫声配燕子的歌，换个更顺的说法试试？",
+          "img": "g6_xiaoce_20261109_metaphor.png",
+          "q_img": "",
+          "orig_text": "请你读下面文段，在方框内填入恰当的标点符号，再用相同的修辞手法补写一段话。春天来了，万物都苏醒了。柳树抽出嫩绿的枝条，在风中轻轻摇摆；花儿竞相开放，散发出淡淡的清香；小溪叮咚流淌，唱着欢快的歌奔向远方。仿写：夏天来了，世界热闹起来了。____，____；____。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "表格-步兵特点",
+          "question": "根据材料一完成表格：步兵的特点。",
+          "reason": "仍填“齐步行进”。这是动作不是特点；材料里步兵最特别的是阵型“列成方阵”。",
+          "hint": "再读一读材料一里写步兵的那一句：步兵是以什么为单位、排成什么队形前进的？表格要填的是每支队伍最特别的样子（阵型），不是它们都在做的动作。",
+          "img": "g6_xiaoce_20261109_formation.png",
+          "q_img": "",
+          "orig_text": "根据材料内容完成表格。材料一：接着是步兵一个师，以连为单位，列成方阵，齐步行进。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "表格-炮兵特点",
+          "question": "根据材料一完成表格：炮兵的特点。",
+          "reason": "仍填“横列前进”，漏了最关键的“一字形”；材料里炮兵的特点是“排成一字形的横列”。",
+          "hint": "材料一里炮是怎么排的？“一字形”这个词很关键——炮排成的横列有什么特别的形状？把形状也写出来。",
+          "img": "g6_xiaoce_20261109_formation.png",
+          "q_img": "",
+          "orig_text": "根据材料内容完成表格。材料一：接着是炮兵一个师，野炮、榴弹炮等各式各样的炮，都排成一字形的横列前进。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "表格-战车师特点",
+          "question": "根据材料一完成表格：战车师的特点。",
+          "reason": "仍填“整整齐齐”。这是每一支队伍都有的样子，不够特别；材料里战车师的特点是“两辆或三辆一排”。",
+          "hint": "材料一里战车是怎么排的？“整整齐齐”是每一支队伍都有的样子，不够特别。再找找：战车是几辆排成一排的？",
+          "img": "g6_xiaoce_20261109_formation.png",
+          "q_img": "",
+          "orig_text": "根据材料内容完成表格。材料一：接着是一个战车师，各种装甲车和坦克车两辆或三辆一排，整整齐齐地前进。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "点面结合-形式",
+          "question": "两则材料都用了点面结合中（一点一面/多点罗列）的手法。",
+          "reason": "仍选“多点罗列”，未改成“一点一面”。两则材料都是一处具体细节（点）＋整体场面（面），即“一点一面”。",
+          "hint": "数一数：每则材料里像“钢铁巨人”这样具体的细节描写有几处？整体场面（面）有几个？一个细节配一个整体场面，叫什么形式？",
+          "img": "g6_xiaoce_20261109_point_field.png",
+          "q_img": "",
+          "orig_text": "同学们正在分享学习收获，请结合自己的理解把对话补充完整。同学甲：两则材料都用了点面结合中（一点一面/多点罗列）的手法，画线句子是（点/面）的描写，阅兵方队是（点/面）的描写。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "点面结合-好处",
+          "question": "这样写的好处是：____。",
+          "reason": "手法名“多点罗列的手”涂黑了，但句内没写出可辨认的替换词（“点面结合”只写在框外空白处，未填入句内）；句意仍只说“壮观”（面的作用），没说“点”的作用。",
+          "hint": "点面结合有两个作用：“面”让场面显得壮观，“点”让描写显得怎么样（生动？具体？）？把“点面结合”四个字写进句子里，再把两方面的作用都说出来，才是点面结合的好处。",
+          "img": "g6_xiaoce_20261109_point_field.png",
+          "q_img": "",
+          "orig_text": "同学们正在分享学习收获，请结合自己的理解把对话补充完整。同学乙：这样写的好处是：____。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "变化与感受",
+          "question": "阅读材料，结合下面的资料，你能感受到哪些变化？有什么感受？写一写。",
+          "reason": "仍只笼统说“装备更多”，没结合资料里的具体数据（17架/百余架、进口缴获/自主、45个方队、上万名官兵），感受也只有一句空话。",
+          "hint": "再看一遍下面的资料：1949年飞机有几架？2025年有几架？装备从哪里来（进口/缴获）变成什么样了？受阅队伍有多少？挑两三个具体数字写进感受里，再说说你的感受。",
+          "img": "g6_xiaoce_20261109_change.png",
+          "q_img": "",
+          "orig_text": "阅读材料，结合下面的资料，你能感受到哪些变化？有什么感受？写一写。1949年，开国大典阅兵，装备多为进口或缴获的，空军飞行队伍，只有17架飞机通过天安门上空，接受检阅。2025年，9·3阅兵式正式受阅官兵有上万名，共编45个方（梯）队；受阅的地面装备有数百台（套），多种型号的战机有百余架。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        },
+        {
+          "label": "点面结合写场面",
+          "question": "结合图片，用上面结合的写法写一写9·3阅兵维和部队方队通过天安门广场的场面。",
+          "reason": "仍只写了整体场面（面），没有写一个具体细节（点）；且“就像用尺子量过一般”是抄材料二的原句。",
+          "hint": "题目要求用“点面结合”写。“面”是整个维和方队通过天安门，“点”呢？看图片：挑一个具体的细节来写（比如一位军人的神情、一排整齐的枪、一步落地的样子），先写整体，再写这个细节，两部分都要有。注意：不要直接抄材料二里的句子。",
+          "img": "g6_xiaoce_20261109_vanguard.png",
+          "q_img": "",
+          "orig_text": "结合图片，用上面结合的写法（点面结合）写一写9·3阅兵维和部队方队通过天安门广场的场面。",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 2
+        }
+      ],
+      "pending_corrections": 8,
+      "status_source": "closeout_writeback"
+    },
+    {
+      "task_id": "REG-20261109-5F2741FAB16B",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔：老师点名提问时的忐忑不安心情",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T22:07:59+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-09T22:07:59+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "2b274a54dd8dbf96.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261109-7CCE8134078F",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习14课，写反馈单",
+      "detail": "预习的是第几课看不清：登记本上写的好像是“214”，也可能是“414”或“L14”。请在看板留言告诉我到底是第几课，我再把标题改对。\n\n请注意（2026-11-09 20:53 批改，12/13 对，达标）：\n你预习14课做得很好：课前预习第4题提的问题很好（为什么郝副营长划火柴不是点烟而是看书呢？）；第一课时看拼音写词语 9 个全对；第二课时《热心肠的同桌》选 B 对；小练笔四项齐全（交警、忠于职守、笔直的竹子、两件事都扣题）。\n只有 1 处错：第一课时第2题《温暖的旧围巾》选材，你选了 A，正确答案是 C。A“冬天奶奶戴着围巾接送我上学”写的是围巾的温暖使用，是合适的；C“我戴着围巾参加运动会，取得跑步第一名”重心在比赛得第一名，围巾只是顺带一提，和“温暖”主题关系最弱，是不适合的。下次先想一想习作要写出什么（温暖），再逐项看哪一项和这个主题关系最弱。\n另：第一课时 Q1“聚精会神”处和小练笔事情2“越”字处有涂改，下次写之前先想好再落笔。\n",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:53:00+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "pending_corrections": 0,
+      "corrections": [],
+      "completed_at": "2026-11-09T20:53:00+08:00",
+      "orig_photos": [
+        "37edf31d6d885141.jpg",
+        "e1adc1eb8c4fc8e3.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261109-2F6F7A81C407",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读课外书，记录①",
+      "detail": "第2轮重读达标（错漏1处≤2达标线）；四仰八叉仍需多练；照片全黑，下次开灯重拍",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T23:56:06+08:00",
+      "task_type": "read",
+      "type_source": "regex_read",
+      "pending_corrections": 0,
+      "corr_round": 2,
+      "corrections": [],
+      "completed_at": "2026-11-09T23:56:06+08:00"
+    },
+    {
+      "task_id": "REG-20261109-EFB50F6738B5",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念29~31",
+      "detail": "【更正 22:28】第1轮更正达标：老师只要求读划线内容，划线部分已读对；原5处“漏读”为非划线内容不计。达标 +3 已补结（余额 773）。第2轮重读系因原结论误判而起，不另结算。",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念29~31；②校本P35 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T22:28:00+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "pending_corrections": 0,
+      "corr_round": 2,
+      "corrections": [],
+      "completed_at": "2026-11-09T22:28:00+08:00",
+      "orig_photos": [
+        "762185fb49c32e2c.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261109-A75BD9750821",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P35",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念29~31；②校本P35 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T21:40:26+08:00",
+      "pending_note": "11月9日数学校本P35反馈（8/8 全对）",
+      "completed_at": "2026-11-09T21:40:26+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "orig_photos": [
+        "6067a800666a30e6.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261109-8CD81F30BBA1",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "预习P40的中文，跟读小管家",
+      "detail": "请注意（2026-11-09 21:06 批改，达标）：\n小管家 11月9日英语任务已完成（提交 20:45，耗时 14 分钟，平均分三星，老师奖励 1 朵小红花）：Start up 课时词汇跟读 11 词三星、拼写 100%；Read and answer 跟读 16 句三星；In focus 跟读 4 句三星；Speed up 课时词汇跟读 5 词三星、拼写 100%。\nP40 中文已预习：课本 P40-41 对话《A watering bottle》及中文翻译照片齐全。",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①预习P40的中文，跟读小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T21:06:00+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "pending_corrections": 0,
+      "corrections": [],
+      "completed_at": "2026-11-09T21:06:00+08:00",
+      "orig_photos": [
+        "4530df8b287bdf5c.jpg",
+        "1a5a087bd7e70924.jpg"
+      ]
     }
-   ],
-   "exam_pred_exempt": {
-    "prediction_date": "2026-11-09",
-    "prediction_subject": "语文",
-    "prediction_unit": "第四单元",
-    "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
-    "marked_at": "2026-11-09T19:11:39+08:00",
-    "marked_by": "exam_linkage",
-    "linkage_run_id": "LINK-20261109-G6-CHN",
-    "reversible": true
-   }
+  ],
+  "counts": {
+    "total": 15,
+    "pending": 5,
+    "in_progress": 1,
+    "done": 9,
+    "pending_review": 0
   },
-  {
-   "task_id": "REG-20261109-E085ECB57DC7",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "第二单元小测",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T22:36:00+08:00",
-   "corr_round": 2,
-   "corrections": [
-    {
-     "label": "仿写一段话",
-     "question": "用相同的修辞手法补写一段话：夏天来了，世界热闹起来了。____，____；____。",
-     "reason": "第二句补了主语“知了”（“知了在树上尖叫”），但第三句“蝴蝶在草地上”仍未写完（句末涂黑划掉、无可辨认的结尾）；“知了在给燕子伴奏”搭配未改。",
-     "hint": "第三句“蝴蝶在草地上”后面要写完：蝴蝶在草地上做什么？按“谁在干什么”把第三句写完整，再通读三句，看看三句是不是一样的结构。还有，“知了在给燕子伴奏”——知了的叫声配燕子的歌，换个更顺的说法试试？",
-     "img": "g6_xiaoce_20261109_metaphor.png",
-     "q_img": "",
-     "orig_text": "请你读下面文段，在方框内填入恰当的标点符号，再用相同的修辞手法补写一段话。春天来了，万物都苏醒了。柳树抽出嫩绿的枝条，在风中轻轻摇摆；花儿竞相开放，散发出淡淡的清香；小溪叮咚流淌，唱着欢快的歌奔向远方。仿写：夏天来了，世界热闹起来了。____，____；____。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "表格-步兵特点",
-     "question": "根据材料一完成表格：步兵的特点。",
-     "reason": "仍填“齐步行进”。这是动作不是特点；材料里步兵最特别的是阵型“列成方阵”。",
-     "hint": "再读一读材料一里写步兵的那一句：步兵是以什么为单位、排成什么队形前进的？表格要填的是每支队伍最特别的样子（阵型），不是它们都在做的动作。",
-     "img": "g6_xiaoce_20261109_formation.png",
-     "q_img": "",
-     "orig_text": "根据材料内容完成表格。材料一：接着是步兵一个师，以连为单位，列成方阵，齐步行进。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "表格-炮兵特点",
-     "question": "根据材料一完成表格：炮兵的特点。",
-     "reason": "仍填“横列前进”，漏了最关键的“一字形”；材料里炮兵的特点是“排成一字形的横列”。",
-     "hint": "材料一里炮是怎么排的？“一字形”这个词很关键——炮排成的横列有什么特别的形状？把形状也写出来。",
-     "img": "g6_xiaoce_20261109_formation.png",
-     "q_img": "",
-     "orig_text": "根据材料内容完成表格。材料一：接着是炮兵一个师，野炮、榴弹炮等各式各样的炮，都排成一字形的横列前进。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "表格-战车师特点",
-     "question": "根据材料一完成表格：战车师的特点。",
-     "reason": "仍填“整整齐齐”。这是每一支队伍都有的样子，不够特别；材料里战车师的特点是“两辆或三辆一排”。",
-     "hint": "材料一里战车是怎么排的？“整整齐齐”是每一支队伍都有的样子，不够特别。再找找：战车是几辆排成一排的？",
-     "img": "g6_xiaoce_20261109_formation.png",
-     "q_img": "",
-     "orig_text": "根据材料内容完成表格。材料一：接着是一个战车师，各种装甲车和坦克车两辆或三辆一排，整整齐齐地前进。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "点面结合-形式",
-     "question": "两则材料都用了点面结合中（一点一面/多点罗列）的手法。",
-     "reason": "仍选“多点罗列”，未改成“一点一面”。两则材料都是一处具体细节（点）＋整体场面（面），即“一点一面”。",
-     "hint": "数一数：每则材料里像“钢铁巨人”这样具体的细节描写有几处？整体场面（面）有几个？一个细节配一个整体场面，叫什么形式？",
-     "img": "g6_xiaoce_20261109_point_field.png",
-     "q_img": "",
-     "orig_text": "同学们正在分享学习收获，请结合自己的理解把对话补充完整。同学甲：两则材料都用了点面结合中（一点一面/多点罗列）的手法，画线句子是（点/面）的描写，阅兵方队是（点/面）的描写。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "点面结合-好处",
-     "question": "这样写的好处是：____。",
-     "reason": "手法名“多点罗列的手”涂黑了，但句内没写出可辨认的替换词（“点面结合”只写在框外空白处，未填入句内）；句意仍只说“壮观”（面的作用），没说“点”的作用。",
-     "hint": "点面结合有两个作用：“面”让场面显得壮观，“点”让描写显得怎么样（生动？具体？）？把“点面结合”四个字写进句子里，再把两方面的作用都说出来，才是点面结合的好处。",
-     "img": "g6_xiaoce_20261109_point_field.png",
-     "q_img": "",
-     "orig_text": "同学们正在分享学习收获，请结合自己的理解把对话补充完整。同学乙：这样写的好处是：____。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "变化与感受",
-     "question": "阅读材料，结合下面的资料，你能感受到哪些变化？有什么感受？写一写。",
-     "reason": "仍只笼统说“装备更多”，没结合资料里的具体数据（17架/百余架、进口缴获/自主、45个方队、上万名官兵），感受也只有一句空话。",
-     "hint": "再看一遍下面的资料：1949年飞机有几架？2025年有几架？装备从哪里来（进口/缴获）变成什么样了？受阅队伍有多少？挑两三个具体数字写进感受里，再说说你的感受。",
-     "img": "g6_xiaoce_20261109_change.png",
-     "q_img": "",
-     "orig_text": "阅读材料，结合下面的资料，你能感受到哪些变化？有什么感受？写一写。1949年，开国大典阅兵，装备多为进口或缴获的，空军飞行队伍，只有17架飞机通过天安门上空，接受检阅。2025年，9·3阅兵式正式受阅官兵有上万名，共编45个方（梯）队；受阅的地面装备有数百台（套），多种型号的战机有百余架。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    },
-    {
-     "label": "点面结合写场面",
-     "question": "结合图片，用上面结合的写法写一写9·3阅兵维和部队方队通过天安门广场的场面。",
-     "reason": "仍只写了整体场面（面），没有写一个具体细节（点）；且“就像用尺子量过一般”是抄材料二的原句。",
-     "hint": "题目要求用“点面结合”写。“面”是整个维和方队通过天安门，“点”呢？看图片：挑一个具体的细节来写（比如一位军人的神情、一排整齐的枪、一步落地的样子），先写整体，再写这个细节，两部分都要有。注意：不要直接抄材料二里的句子。",
-     "img": "g6_xiaoce_20261109_vanguard.png",
-     "q_img": "",
-     "orig_text": "结合图片，用上面结合的写法（点面结合）写一写9·3阅兵维和部队方队通过天安门广场的场面。",
-     "q_img_exempt": "",
-     "img_exempt": "",
-     "round": 2
-    }
-   ],
-   "pending_corrections": 8,
-   "status_source": "closeout_writeback"
-  },
-  {
-   "task_id": "REG-20261109-5F2741FAB16B",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "小练笔：老师点名提问时的忐忑不安心情",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T22:07:59+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "completed_at": "2026-11-09T22:07:59+08:00",
-   "status_source": "closeout_writeback",
-   "orig_photos": [
-    "2b274a54dd8dbf96.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261109-7CCE8134078F",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "预习14课，写反馈单",
-   "detail": "预习的是第几课看不清：登记本上写的好像是“214”，也可能是“414”或“L14”。请在看板留言告诉我到底是第几课，我再把标题改对。\n\n请注意（2026-11-09 20:53 批改，12/13 对，达标）：\n你预习14课做得很好：课前预习第4题提的问题很好（为什么郝副营长划火柴不是点烟而是看书呢？）；第一课时看拼音写词语 9 个全对；第二课时《热心肠的同桌》选 B 对；小练笔四项齐全（交警、忠于职守、笔直的竹子、两件事都扣题）。\n只有 1 处错：第一课时第2题《温暖的旧围巾》选材，你选了 A，正确答案是 C。A“冬天奶奶戴着围巾接送我上学”写的是围巾的温暖使用，是合适的；C“我戴着围巾参加运动会，取得跑步第一名”重心在比赛得第一名，围巾只是顺带一提，和“温暖”主题关系最弱，是不适合的。下次先想一想习作要写出什么（温暖），再逐项看哪一项和这个主题关系最弱。\n另：第一课时 Q1“聚精会神”处和小练笔事情2“越”字处有涂改，下次写之前先想好再落笔。\n",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T20:53:00+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-11-09T20:53:00+08:00",
-   "orig_photos": [
-    "37edf31d6d885141.jpg",
-    "e1adc1eb8c4fc8e3.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261109-2F6F7A81C407",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "读课外书，记录①",
-   "detail": "第2轮重读达标（错漏1处≤2达标线）；四仰八叉仍需多练；照片全黑，下次开灯重拍",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T23:56:06+08:00",
-   "task_type": "read",
-   "type_source": "regex_read",
-   "pending_corrections": 0,
-   "corr_round": 2,
-   "corrections": [],
-   "completed_at": "2026-11-09T23:56:06+08:00"
-  },
-  {
-   "task_id": "REG-20261109-EFB50F6738B5",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念29~31",
-   "detail": "【更正 22:28】第1轮更正达标：老师只要求读划线内容，划线部分已读对；原5处“漏读”为非划线内容不计。达标 +3 已补结（余额 773）。第2轮重读系因原结论误判而起，不另结算。",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念29~31；②校本P35 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T22:28:00+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "pending_corrections": 0,
-   "corr_round": 2,
-   "corrections": [],
-   "completed_at": "2026-11-09T22:28:00+08:00",
-   "orig_photos": [
-    "762185fb49c32e2c.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261109-A75BD9750821",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本P35",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念29~31；②校本P35 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T21:40:26+08:00",
-   "pending_note": "11月9日数学校本P35反馈（8/8 全对）",
-   "completed_at": "2026-11-09T21:40:26+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "orig_photos": [
-    "6067a800666a30e6.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261109-8CD81F30BBA1",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "预习P40的中文，跟读小管家",
-   "detail": "请注意（2026-11-09 21:06 批改，达标）：\n小管家 11月9日英语任务已完成（提交 20:45，耗时 14 分钟，平均分三星，老师奖励 1 朵小红花）：Start up 课时词汇跟读 11 词三星、拼写 100%；Read and answer 跟读 16 句三星；In focus 跟读 4 句三星；Speed up 课时词汇跟读 5 词三星、拼写 100%。\nP40 中文已预习：课本 P40-41 对话《A watering bottle》及中文翻译照片齐全。",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①预习P40的中文，跟读小管家 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-09T20:09:35+08:00",
-   "updated_at": "2026-11-09T21:06:00+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "pending_corrections": 0,
-   "corrections": [],
-   "completed_at": "2026-11-09T21:06:00+08:00",
-   "orig_photos": [
-    "4530df8b287bdf5c.jpg",
-    "1a5a087bd7e70924.jpg"
-   ]
-  }
- ],
- "counts": {
-  "total": 15,
-  "pending": 5,
-  "in_progress": 1,
-  "done": 9,
-  "pending_review": 0
- },
- "deadline_today": "2026-11-09T22:00:00+08:00"
+  "deadline_today": "2026-11-09T22:00:00+08:00"
 }
