@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T21:53:21+08:00",
+  "updated_at": "2026-11-09T22:08:00+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -266,7 +266,7 @@
       "title": "小练笔：老师点名提问时的忐忑不安心情",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
@@ -275,7 +275,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-09T20:09:35+08:00",
-      "updated_at": "2026-11-09T20:09:35+08:00"
+      "updated_at": "2026-11-09T22:07:59+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-09T22:07:59+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "2b274a54dd8dbf96.jpg"
+      ]
     },
     {
       "task_id": "REG-20261109-7CCE8134078F",
@@ -527,9 +534,9 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 7,
+    "pending": 6,
     "in_progress": 3,
-    "done": 5,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-09T22:00:00+08:00"
