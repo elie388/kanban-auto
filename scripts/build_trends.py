@@ -147,7 +147,9 @@ def group_stats(db, date, grade, subject):
         return None, info
     if bf_share >= BACKFILL_RATIO_THRESHOLD:
         info["rules"].append(f"backfill_ratio={bf_share:.2f}")
-        info["reason"] = info["rules"][0]
+        # K-M1：回填分支 reason 取 rules[-1]（与待确认分支一致）。
+        # 原取 rules[0]，小样本时 rules[0] 是 small_sample，reason 被误标。
+        info["reason"] = info["rules"][-1]
         return None, info
     return round(correct / judged * 100, 1), info
 
