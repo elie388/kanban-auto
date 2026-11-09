@@ -236,7 +236,7 @@
       "source": "register_book",
       "subject": "语文",
       "title": "预习[课次待确认]，写反馈单",
-      "detail": "",
+      "detail": "预习的是第几课看不清：登记本上写的好像是“214”，也可能是“414”或“L14”。请在看板留言告诉我到底是第几课，我再把标题改对。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
