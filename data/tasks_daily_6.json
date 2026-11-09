@@ -3,12 +3,12 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T19:52:17+08:00",
+  "updated_at": "2026-11-09T20:09:35+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-09T18:40:56+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-09T20:09:35+08:00",
+      "new_lines": 7,
       "flipped": 0
     },
     "targeted_practice": {
@@ -136,12 +136,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-09T16:56:19+08:00",
-      "updated_at": "2026-11-09T16:56:19+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-09T20:09:35+08:00",
+      "completed_at": "2026-11-09T20:09:35+08:00"
     },
     {
       "task_id": "MANUAL-20261109-001",
@@ -194,13 +194,147 @@
         "linkage_run_id": "LINK-20261109-G6-CHN",
         "reversible": true
       }
+    },
+    {
+      "task_id": "REG-20261109-E085ECB57DC7",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "第二单元小测",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00"
+    },
+    {
+      "task_id": "REG-20261109-5F2741FAB16B",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔：老师点名提问时的忐忑不安心情",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00"
+    },
+    {
+      "task_id": "REG-20261109-7CCE8134078F",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习[课次待确认]，写反馈单",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261109-2F6F7A81C407",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读课外书，记录①",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①第二单元小测；②小练笔：老师点名提问时的忐忑不安心情；③预习[课次待确认]，写反馈单；④读课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00",
+      "task_type": "read",
+      "type_source": "regex_read"
+    },
+    {
+      "task_id": "REG-20261109-EFB50F6738B5",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念29~31",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念29~31；②校本P35 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261109-A75BD9750821",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P35",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念29~31；②校本P35 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00"
+    },
+    {
+      "task_id": "REG-20261109-8CD81F30BBA1",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "预习P40的中文，跟读小管家",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①预习P40的中文，跟读小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-09T20:09:35+08:00",
+      "updated_at": "2026-11-09T20:09:35+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
     }
   ],
   "counts": {
-    "total": 8,
-    "pending": 8,
+    "total": 15,
+    "pending": 14,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-09T22:00:00+08:00"
