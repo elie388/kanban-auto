@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "六年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T04:17:08+08:00",
+  "updated_at": "2026-11-10T04:28:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-10T04:28:37+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -331,11 +331,34 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "PRACT-20261110-DE822851D129",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-10.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《西江月·夜行黄沙道中》（辛弃疾）\n原文：明月别枝惊鹊，清风半夜鸣蝉。稻花香里说丰年，听取蛙声一片。七八个星天外，两三点雨山前。旧时茅店社林边，路转溪桥忽见。\n朗读要求：语速轻松、舒缓，带着闲适的心情。前四句节奏欢快一些，读出沉浸在丰收喜悦中的兴奋感；“七八个星天外，两三点雨山前”两句语调轻柔，读出山雨欲来时的意趣；最后两句“旧时茅店社林边，路转溪桥忽见”语气陡然上扬，读出“忽见”时的惊喜、意外和恍然大悟的情感。\n英语口语任务说明：请先大声朗读下面的短文一遍，注意语音语调；再合上短文，用自己的话复述昨天在学校发生的事情，要求使用一般过去时，说出事情经过与感受，5分钟内完成。短文：Yesterday was a busy and happy day at school. In the morning, we had an interesting science class. Mr. Li taught us how to make a small model plane. I worked hard with my good friend, Tom. We cut the paper and glued the parts together. Suddenly, my pencil fell down, and Tom helped me pick it up. We smiled at each other. In the afternoon, we played football on the playground. Our team won the game! I was very tired, but I felt so excited and proud. It was a really wonderful day!\n提示问题：1. What did you make in the science class yesterday morning? 2. What happened when you were making it? 3. How did you feel at the end of the day?",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-10.docx",
+      "file_hash": "6c55982e6619eba5ac5b91f9a9ef370fd51ae17fe2d43f8728239d845f4d822c",
+      "created_at": "2026-11-10T04:28:35+08:00",
+      "updated_at": "2026-11-10T04:28:35+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-10.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 9,
-    "pending": 8,
+    "total": 10,
+    "pending": 9,
     "in_progress": 1,
     "done": 0,
     "pending_review": 0
