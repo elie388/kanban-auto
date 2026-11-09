@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "五年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T22:27:51+08:00",
+  "updated_at": "2026-11-09T22:58:06+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -48,59 +48,25 @@
       "title": "每日读书",
       "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "appear_at": "2026-11-09T17:00:00+08:00",
       "task_type": "reading",
       "count_in_completion_rate": true,
       "reading_duration_sec": null,
       "reading_wpm": null,
-      "reading_pass": null,
+      "reading_pass": true,
       "created_at": "2026-11-09T00:18:34+08:00",
-      "updated_at": "2026-11-09T21:27:14+08:00",
-      "pending_corrections": 4,
-      "corr_round": 2,
-      "corrections": [
-        {
-          "label": "每日读书朗读-11 “功夫一”小标题未读出",
-          "question": "功夫一：“千里眼”\n刘老师的“千里眼”可厉害了。",
-          "orig_text": "功夫一：“千里眼”\n刘老师的“千里眼”可厉害了。",
-          "hint": "先读小标题“功夫一：‘千里眼’”，再读“刘老师的‘千里眼’可厉害了”。把这两句各读三遍。",
-          "reason": "小标题“功夫一：‘千里眼’”仍未读出（两遍转写均无“功夫一”；孩子读出了“功夫二”标题）。句子“刘老师的‘千里眼’可厉害了”已读清。",
-          "round": 2,
-          "img_exempt": "朗读类",
-          "q_img_exempt": "语文朗读无原题图"
-        },
-        {
-          "label": "每日读书朗读-12 “后头”读错",
-          "question": "绕到“神兽”后头",
-          "orig_text": "绕到“神兽”后头，突然一拍他的后背。",
-          "hint": "“后头”就是“后面”的意思。慢慢读“绕到‘神兽’后头”三遍。",
-          "reason": "“绕到‘神兽’后头”读成“绕到‘神兽’后方”——“后头”读成了“后方”。两遍Groq转写一致；初审照片转录确认原文为“后头”。",
-          "round": 2,
-          "img_exempt": "朗读类",
-          "q_img_exempt": "语文朗读无原题图"
-        },
-        {
-          "label": "每日读书朗读-13 “钦佩”读错",
-          "question": "让我们十分钦佩",
-          "orig_text": "让我们十分钦佩，那就是她神奇的“吸睛大法”。",
-          "hint": "“钦佩”是qīn pèi，很佩服的意思，不是xīn。慢慢读“让我们十分钦佩”三遍。",
-          "reason": "“让我们十分钦佩”读成“让我们十分欣佩”——“钦佩”读成了“欣佩”。两遍Groq转写一致；初审照片转录确认原文为“钦佩”。",
-          "round": 2,
-          "img_exempt": "朗读类",
-          "q_img_exempt": "语文朗读无原题图"
-        },
-        {
-          "label": "每日读书朗读-14 “千里眼”读错（功夫二）",
-          "question": "虽然刘老师的“千里眼”让人害怕",
-          "orig_text": "虽然刘老师的“千里眼”让人害怕，但是她还有一个有趣的绝招。",
-          "hint": "“千里眼”是眼睛的“眼”。慢慢读“虽然刘老师的‘千里眼’让人害怕”三遍。",
-          "reason": "“虽然刘老师的‘千里眼’让人害怕”读成“虽然刘老师的‘千里点’让人害怕”——“千里眼”读成了“千里点”。两遍Groq转写一致；初审照片转录确认原文为“千里眼”。其余两处“千里眼”均读对。",
-          "round": 2,
-          "img_exempt": "朗读类",
-          "q_img_exempt": "语文朗读无原题图"
-        }
+      "updated_at": "2026-11-09T22:55:00+08:00",
+      "pending_corrections": 0,
+      "corr_round": 3,
+      "corrections": [],
+      "completed_at": "2026-11-09T22:55:00+08:00",
+      "orig_photos": [
+        "7572256eabaf7d7a.jpg",
+        "f02bfdf623da9932.jpg",
+        "1c6ef8b545ece343.jpg",
+        "a5afae84d9c3f3ef.jpg"
       ]
     },
     {
@@ -407,8 +373,8 @@
   "counts": {
     "total": 12,
     "pending": 5,
-    "in_progress": 2,
-    "done": 5,
+    "in_progress": 1,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-09T22:00:00+08:00"
