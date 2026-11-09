@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-09T19:38:08+08:00",
+  "generated_at": "2026-11-09T19:43:08+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-09",
+      "time": "19:38",
+      "time_source": "entry",
+      "reason": "语文校本15课完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "19:38",
+      "time_source": "entry",
+      "reason": "写作涂改×3处",
+      "pts": -3,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "19:38",
+      "time_source": "entry",
+      "reason": "阅读答非所问×1题",
+      "pts": -2,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "19:38",
+      "time_source": "entry",
+      "reason": "表达不完整×1题",
+      "pts": -1,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-09",
       "time": "19:37",
