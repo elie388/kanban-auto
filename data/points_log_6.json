@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-09T22:28:15+08:00",
+  "generated_at": "2026-11-09T22:33:15+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-09",
+      "time": "22:31",
+      "time_source": "entry",
+      "reason": "英语对话第2期发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-09",
       "time": "22:28",
@@ -138,6 +147,15 @@
       "time": "20:49",
       "time_source": "entry",
       "reason": "读课外书，记录①录音182秒时长档",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "14:31",
+      "time_source": "entry",
+      "reason": "💰百分俱乐部徽章",
       "pts": 5,
       "sign": "plus",
       "filtered": false
