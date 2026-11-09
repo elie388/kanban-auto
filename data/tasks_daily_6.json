@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T18:57:34+08:00",
+  "updated_at": "2026-11-09T19:11:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -13,8 +13,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-09T19:11:28+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -161,14 +161,37 @@
           "label": "对话打印版"
         }
       ]
+    },
+    {
+      "task_id": "PRACT-20261109-A804AA6A295B",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-09.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《观书有感·其一》（朱熹）\n原文：半亩方塘一鉴开，天光云影共徘徊。问渠那得清如许？为有源头活水来。\n朗读要求：声音洪亮，吐字清晰，语调沉着，前半句稳重，后半句读出感悟。\n英语口语任务说明：请看图说话。图片情景：图片上是星期一早上七点半，一个男孩背着书包走进校园，他先向老师问好，然后走进教室，放下书包，拿出课本开始早读。下午，他和同学们一起上体育课，踢足球，玩得很开心。提示问题：1. What time does the boy get to school in the morning? 2. What did he do in the afternoon? 3. How was his day at school?口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与一般过去时的区分。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-09.docx",
+      "file_hash": "af3fb61f876d5667e567f8d60e55be0f9c08f40f0d337fd507bb2d4fbcb4ae8b",
+      "created_at": "2026-11-09T19:11:26+08:00",
+      "updated_at": "2026-11-09T19:11:26+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-09.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 7,
-    "pending": 7,
+    "total": 8,
+    "pending": 8,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-09T22:00:00+08:00"
 }

@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "五年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T18:57:34+08:00",
+  "updated_at": "2026-11-09T19:11:26+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -13,8 +13,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-09T19:11:26+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -237,14 +237,43 @@
       "updated_at": "2026-11-09T18:45:00+08:00",
       "task_type": "reading",
       "type_source": "regex_oral"
+    },
+    {
+      "task_id": "PRACT-20261109-45791C682230",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-09.docx，按今日练习清单完成",
+      "kousuan": [
+        "3.7×4=",
+        "67+58=",
+        "2.5×6-7.4=",
+        "2.5×3.8×4=",
+        "19.6×5.1≈（估算，结果取整数）"
+      ],
+      "recite_text": "语文背诵：《秋夜将晓出篱门迎凉有感》（陆游）\n原文：三万里河东入海，五千仞岳上摩天。遗民泪尽胡尘里，南望王师又一年。\n朗读要求：声音洪亮，吐字清晰，注意停顿与情感。\n英语口语任务说明：请复述下面的短文。短文：It is six o'clock in the evening. My family is having dinner in the dining room. My father likes meat and vegetables. He often drinks some tea. My mother likes fish and soup. She cooks nice food every day. I like noodles and fruit very much. My little brother eats a small bowl of rice. We are very happy together.提示问题：1. What time is it? 2. What does the father like to eat and drink? 3. What do you like to eat?口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-09.docx",
+      "file_hash": "5d10a19438ef2aefaf3ee41d7044ad52988ecb0bb487a944a2c472dfdb8fef25",
+      "created_at": "2026-11-09T19:11:22+08:00",
+      "updated_at": "2026-11-09T19:11:22+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-09.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 11,
-    "pending": 10,
+    "total": 12,
+    "pending": 11,
     "in_progress": 0,
     "done": 1,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-09T22:00:00+08:00"
 }
