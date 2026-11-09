@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-09T16:58:08+08:00",
+  "generated_at": "2026-11-09T20:53:15+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-09",
+      "time": "20:52",
+      "time_source": "entry",
+      "reason": "预习14课写反馈单发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "20:52",
+      "time_source": "entry",
+      "reason": "预习14课写反馈单达标",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "20:49",
+      "time_source": "entry",
+      "reason": "读课外书，记录①发回",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "20:49",
+      "time_source": "entry",
+      "reason": "读课外书，记录①录音182秒时长档",
+      "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-09",
       "time": "11:30",
