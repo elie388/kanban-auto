@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-09T23:46:27+08:00",
+  "generated_at": "2026-11-10T07:51:37+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-09",
+      "time": "23:59",
+      "time_source": "entry",
+      "reason": "晾衣服",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-09",
       "time": "23:45",
@@ -923,60 +932,6 @@
       "time": "23:26",
       "time_source": "entry",
       "reason": "口语易发回",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-03",
-      "time": "13:41",
-      "time_source": "entry",
-      "reason": "冲正：测试卡误触发当日全完成+20",
-      "pts": -20,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "11-03",
-      "time": "13:37",
-      "time_source": "entry",
-      "reason": "当日任务全部完成+20",
-      "pts": 20,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-03",
-      "time": "12:52",
-      "time_source": "entry",
-      "reason": "测试卡收口",
-      "pts": 5,
-      "sign": "plus",
-      "filtered": false
-    },
-    {
-      "date": "11-03",
-      "time": "12:52",
-      "time_source": "entry",
-      "reason": "测试卡冲正清零",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "11-03",
-      "time": "01:37",
-      "time_source": "entry",
-      "reason": "冲正：熄灯小超人误颁",
-      "pts": -5,
-      "sign": "minus",
-      "filtered": false
-    },
-    {
-      "date": "11-03",
-      "time": "01:29",
-      "time_source": "entry",
-      "reason": "🌙熄灯小超人徽章",
       "pts": 5,
       "sign": "plus",
       "filtered": false
