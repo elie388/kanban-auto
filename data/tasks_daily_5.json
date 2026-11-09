@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "五年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T00:18:43+08:00",
+  "updated_at": "2026-11-10T03:59:48+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -258,11 +258,26 @@
       "reading_pass": null,
       "created_at": "2026-11-10T00:18:43+08:00",
       "updated_at": "2026-11-10T00:18:43+08:00"
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-10",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-10T03:59:48+08:00",
+      "updated_at": "2026-11-10T03:59:48+08:00",
+      "completed_at": null
     }
   ],
   "counts": {
-    "total": 7,
-    "pending": 6,
+    "total": 8,
+    "pending": 7,
     "in_progress": 1,
     "done": 0,
     "pending_review": 0
