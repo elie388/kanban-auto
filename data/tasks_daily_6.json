@@ -28,7 +28,7 @@
       "source": "chore",
       "subject": "家务",
       "title": "家务打卡",
-      "detail": "20:29 晾衣服",
+      "detail": "23:11 晾衣服",
       "estimate_min": null,
       "status": "done",
       "review_status": "approved",
@@ -39,9 +39,9 @@
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-09T00:18:19+08:00",
-      "updated_at": "2026-11-09T23:21:06+08:00",
-      "completed_at": "2026-11-09T20:39:42+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17942273440631eed8e8eb7ff83e7（approved）；回写 chore_task_writeback。"
+      "updated_at": "2026-11-09T23:48:00+08:00",
+      "completed_at": "2026-11-09T23:18:00+08:00",
+      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17942370713697f71e99167139d2a（approved，23:11实拍）；补定案：20:29批已改属11-08，家长23:45点选按新情况办。"
     },
     {
       "task_id": "READ-20261109-G6",
