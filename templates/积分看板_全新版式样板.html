@@ -1778,6 +1778,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
     var list = (data.tasks || []).filter(function(t){
       if(t.appear_at){ var at = new Date(t.appear_at).getTime(); if(!isNaN(at) && at > Date.now()) return false; }
+      /* 2026-11-09 家长令：豁免的任务不在看板上显示（考试预测日豁免 exam_pred_exempt、家务豁免 chore_exempt） */
+      if(t.exam_pred_exempt) return false;
+      if(t.source === 'chore' && t.chore_exempt) return false;
       return t.review_status === 'approved';
     });
     /* 完成率分母口径（2026-10-23 家长改定，覆盖 2026-10-20/22 旧口径）：登记本（meta_register）与家务卡（chore，一卡=1 项）均计入分母，分子按 status==='done' 计；豁免家务卡（chore_exempt）不计入 */
@@ -5764,7 +5767,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261109-predclear';
+  var KB_BUILD = '20261109-noexempt';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
