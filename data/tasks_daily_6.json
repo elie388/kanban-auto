@@ -3,7 +3,7 @@
   "date": "2026-11-09",
   "grade": "六年级",
   "generated_at": "2026-11-09T00:18:01+08:00",
-  "updated_at": "2026-11-09T22:08:00+08:00",
+  "updated_at": "2026-11-09T22:30:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -155,17 +155,70 @@
       "title": "英语对话第2期",
       "detail": "英语对话第2期：Helping Mom Cook Dinner（帮妈妈做晚饭）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-09T18:38:24+08:00",
-      "updated_at": "2026-11-09T18:38:24+08:00",
+      "updated_at": "2026-11-09T22:30:18+08:00",
       "files": [
         {
           "name": "英语对话第2期_打印版.pdf",
           "label": "对话打印版"
         }
-      ]
+      ],
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "对话第3句 She is making tomato and egg soup.",
+          "question": "She is making tomato and egg soup.",
+          "reason": "making 读成 made；tomato 读成 tomatoes（单复数）；全量两遍＋分段两遍＋紧切复核均作 made/tomatoes",
+          "hint": "重读这句时，注意 making 和 tomato 两个词：making 不要读成 made，tomato 是单数、不要加 s，对照脚本慢慢读。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "She is making tomato and egg soup.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第11句 Good. And I can get the bowls and chopsticks.",
+          "question": "Good. And I can get the bowls and chopsticks.",
+          "reason": "bowls 读不准（全量两遍作 brooks/blouse，分段两遍作 boost）；chopsticks 读不准（全量两遍作 churpsis/chalice speaks，分段两遍作 chop space）",
+          "hint": "重读这句时，把 bowls 和 chopsticks 两个词咬清楚，慢慢读：bowls 注意中间的 l 音，chopsticks 注意中间的 st 音，不要含糊带过。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Good. And I can get the bowls and chopsticks.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第13句 Four bowls. Mom, Dad, you and me.",
+          "question": "Four bowls. Mom, Dad, you and me.",
+          "reason": "bowls 读不准（全量两遍作 brooks/blouses，分段作 blues）；Mom 读成 Meng/Monk（全量两遍均非 Mom）",
+          "hint": "重读这句时，注意 bowls 和 Mom 两个词：bowls 读准，Mom 不要读成 Meng，对照脚本读准。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Four bowls. Mom, Dad, you and me.",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        },
+        {
+          "label": "对话第21句 Mine, too. Let's go!",
+          "question": "Mine, too. Let's go!",
+          "reason": "Mine 读成 Me/Night（全量两遍分别为 Me、Night，均非 Mine）",
+          "hint": "重读这句时，注意 Mine 这个词，对照脚本读准，不要读成 Me。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Mine, too. Let's go!",
+          "q_img_exempt": "口语对话无原题图",
+          "img_exempt": "口语跟读类，错词靠听音对比纠正，配图讲不清",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 4,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "PRACT-20261109-A804AA6A295B",
@@ -417,7 +470,10 @@
       "pending_corrections": 0,
       "corr_round": 2,
       "corrections": [],
-      "completed_at": "2026-11-09T22:28:00+08:00"
+      "completed_at": "2026-11-09T22:28:00+08:00",
+      "orig_photos": [
+        "762185fb49c32e2c.jpg"
+      ]
     },
     {
       "task_id": "REG-20261109-A75BD9750821",
@@ -474,9 +530,9 @@
   ],
   "counts": {
     "total": 15,
-    "pending": 6,
+    "pending": 5,
     "in_progress": 3,
-    "done": 6,
+    "done": 7,
     "pending_review": 0
   },
   "deadline_today": "2026-11-09T22:00:00+08:00"
