@@ -1837,7 +1837,18 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       return 0;
     }
     visible = visible.concat(normals);
-    visible = visible.slice().sort(function(a, b){ return kbTaskRank(a) - kbTaskRank(b); });
+    /* 2026-11-09 家长令：已完成卡按完成时间倒序排（新的在前）；未完成组保持原顺序 */
+    visible = visible.slice().sort(function(a, b){
+      var r = kbTaskRank(a) - kbTaskRank(b);
+      if(r) return r;
+      if(kbTaskRank(a) === 2){
+        var ta = a.completed_at ? new Date(a.completed_at).getTime() : 0;
+        var tb = b.completed_at ? new Date(b.completed_at).getTime() : 0;
+        if(isNaN(ta)) ta = 0; if(isNaN(tb)) tb = 0;
+        if(ta !== tb) return tb - ta;
+      }
+      return 0;
+    });
     var html = '';
     if(visible.length === 0){
       html = '<div class="task done"><div class="task-main"><div class="task-info"><div class="task-top"><span class="st-badge"><span class="st-dot"></span>\u2705 已完成</span></div><div class="task-name">今日暂无任务</div>'
@@ -5767,7 +5778,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261109-readfix';
+  var KB_BUILD = '20261109-donesort';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
