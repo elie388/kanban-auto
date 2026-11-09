@@ -183,7 +183,17 @@
           "label": "练习",
           "pages": 4
         }
-      ]
+      ],
+      "exam_pred_exempt": {
+        "prediction_date": "2026-11-09",
+        "prediction_subject": "语文",
+        "prediction_unit": "第四单元",
+        "basis": "进度到第四单元末尾；登记本原文：写期中考试作文；复习1-4单元试卷（含'期中'，下周一）；另有信号：复习；预测11月9日语文第四单元期中",
+        "marked_at": "2026-11-09T19:11:39+08:00",
+        "marked_by": "exam_linkage",
+        "linkage_run_id": "LINK-20261109-G6-CHN",
+        "reversible": true
+      }
     }
   ],
   "counts": {
