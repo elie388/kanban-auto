@@ -1,12 +1,30 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-09T00:13:09+08:00",
+  "generated_at": "2026-11-09T12:57:49+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-09",
+      "time": "12:56",
+      "time_source": "entry",
+      "reason": "数学周六综合试卷正确率+6冲正",
+      "pts": -6,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "11-09",
+      "time": "12:56",
+      "time_source": "entry",
+      "reason": "数学周六综合试卷得分档87分",
+      "pts": 16,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-08",
       "time": "00:13",
