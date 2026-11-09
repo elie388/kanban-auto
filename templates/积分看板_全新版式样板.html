@@ -505,13 +505,13 @@
   }
   .corr-item .corr-audios{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
   .corr-item .corr-audio{display:inline-flex;}
-  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 13px; border-radius:999px; border:1.5px solid #E09A45; background:#FFF4E3; color:#6B3F0E; font-size:18px; font-weight:600; line-height:1; cursor:pointer; flex:0 0 auto;}
+  .corr-item .corr-play{display:inline-flex; align-items:center; gap:7px; min-height:40px; padding:6px 13px; border-radius:999px; border:1.5px solid #2E7D32; background:#2E7D32; color:#fff; font-size:18px; font-weight:600; line-height:1; cursor:pointer; flex:0 0 auto;}
   /* 图标定宽（2026-10-22 家长报障修复）：▶ 与 ⏸ 字形宽度不同，播放时换图标会把按钮撑宽、
      三个按钮总宽正好卡在换行临界点上，一点播放按钮行就从两行跳成一行；图标盒定宽后两种状态同宽，不再跳行 */
-  .corr-item .corr-play .corr-ic{display:inline-block; width:15px; text-align:center; flex:0 0 auto; font-size:17px; color:#D97A2B;}
+  .corr-item .corr-play .corr-ic{display:inline-block; width:15px; text-align:center; flex:0 0 auto; font-size:17px; color:#fff;}
   .corr-item .corr-play.orig{border-color:#5B8DB8; background:#EAF4FB; color:#1F4E79;}
   .corr-item .corr-play.orig .corr-ic{color:#3D77A8;}
-  .corr-item .corr-play.playing{background:#D97A2B; border-color:#D97A2B; color:#fff;}
+  .corr-item .corr-play.playing{background:#1B5E20; border-color:#1B5E20; color:#fff;}
   .corr-item .corr-play.playing .corr-ic{color:#fff;}
   .corr-item .corr-play.orig.playing{background:#2F6D9E; border-color:#2F6D9E; color:#fff;}
   .corr-item .corr-play.orig.playing .corr-ic{color:#fff;}
@@ -5778,7 +5778,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261109-donesort';
+  var KB_BUILD = '20261109-audiogreen';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
