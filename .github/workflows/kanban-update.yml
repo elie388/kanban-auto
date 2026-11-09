@@ -310,6 +310,9 @@ jobs:
           cp assets/aquarium/aquarium-embed.b89128d40e1cc3cc.js public/assets/aquarium/
           test -s public/assets/aquarium/aquarium-embed.b89128d40e1cc3cc.js
           echo "b89128d40e1cc3cc5930b53a0df1548ee97f5b5853656d383595602867792a45  public/assets/aquarium/aquarium-embed.b89128d40e1cc3cc.js" | sha256sum -c -
+          cp assets/aquarium/aquarium-embed.ac6465ac770453d1.js public/assets/aquarium/
+          test -s public/assets/aquarium/aquarium-embed.ac6465ac770453d1.js
+          echo "ac6465ac770453d1b98d1edc1f5d98fad5f4ff3da696e2230d485a9739591ede  public/assets/aquarium/aquarium-embed.ac6465ac770453d1.js" | sha256sum -c -
           cp assets/aquarium/aquarium-embed.4c6b6f930a6e58f6.js public/assets/aquarium/
           test -s public/assets/aquarium/aquarium-embed.4c6b6f930a6e58f6.js
           echo "4c6b6f930a6e58f6506d785faa83d90c765ae135baa29d7ae02aa0bfe3dbdaf7  public/assets/aquarium/aquarium-embed.4c6b6f930a6e58f6.js" | sha256sum -c -
