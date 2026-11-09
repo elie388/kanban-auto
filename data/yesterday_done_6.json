@@ -1,46 +1,67 @@
 {
- "date": "2026-11-08",
+ "date": "2026-11-09",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "REG-20261106-853367",
-   "title": "完成发下的试卷，划文章",
+   "task_id": "CHORE-20261109-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-09",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
+   "group": "study"
+  },
+  {
+   "task_id": "MANUAL-20261109-001",
+   "title": "英语对话第2期",
    "subject": "英语",
-   "source": "register_book",
+   "source": "manual",
    "group": "study"
   },
   {
-   "task_id": "REG-20261106-DB49EC",
-   "title": "复习U1-U3单词",
-   "subject": "英语早读",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261106-B2E999",
-   "title": "校本P34",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261106-FA2690",
-   "title": "读科学10分钟",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261106-BE12FF",
-   "title": "抄词本抄书P128-129 1至12课词语一次",
+   "task_id": "REG-20261109-5F2741FAB16B",
+   "title": "小练笔：老师点名提问时的忐忑不安心情",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261106-7AA54A",
-   "title": "每天读书1小时，记录③",
+   "task_id": "REG-20261109-7CCE8134078F",
+   "title": "预习14课，写反馈单",
    "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261109-2F6F7A81C407",
+   "title": "读课外书，记录①",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261109-EFB50F6738B5",
+   "title": "读背概念29~31",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261109-A75BD9750821",
+   "title": "校本P35",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261109-8CD81F30BBA1",
+   "title": "预习P40的中文，跟读小管家",
+   "subject": "英语",
    "source": "register_book",
    "group": "study"
   }

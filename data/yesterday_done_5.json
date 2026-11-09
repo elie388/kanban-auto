@@ -1,34 +1,55 @@
 {
- "date": "2026-11-08",
+ "date": "2026-11-09",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "REG-20261106-08D068",
-   "title": "复习U1-U3单词和课文",
+   "task_id": "CHORE-20261109-G5",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "READ-20261109-G5",
+   "title": "每日读书",
+   "subject": "读书",
+   "source": "reading_daily",
+   "group": "study"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-09",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261109-B407025190B9",
+   "title": "校本35页",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261109-24EF90F1488E",
+   "title": "口语易",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261106-1B1D18",
-   "title": "把园一到园四的日积月累抄一次（用稿纸）",
+   "task_id": "REG-20261109-5C93BD6EF61B",
+   "title": "校本15课",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261106-799EA9",
-   "title": "看作文一、二、三、四[涂黑]",
+   "task_id": "REG-20261109-145E92A2D872",
+   "title": "预习70页",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
-  },
-  {
-   "task_id": "CHORE-20261108-G5",
-   "title": "家务打卡",
-   "subject": "家务",
-   "source": "chore",
-   "group": "chore"
   }
  ]
 }
