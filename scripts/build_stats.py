@@ -973,6 +973,75 @@ def _bs_restore_stash_fallback():
         except Exception:
             pass
 
+# ---------------------------------------------------------------------------
+# 余额实时推送（2026-11-09 根治：余额不再等 Pages 部署）
+# 板上余额来自 data/stats_grade_*.json 静态文件，须走 Pages 全量部署（数分钟）
+# 才更新。根治：本脚本算出余额并提交推送后，另把余额 POST 到 Worker
+# /hw-api/balances（写 KV kb:balances），板子每次打开直接向 Worker 取最新数。
+# fail-soft：任何失败只记日志，绝不影响本次同步/提交/推送（静态文件仍是兜底）。
+# 密钥复用 KB_INGEST_KEY（与 /kb-data-ingest 同密钥），只从
+# ~/.kb-dynamic/credentials.env 读，值绝不打印。
+# ---------------------------------------------------------------------------
+_BALANCES_WORKER_BASE = "https://whyjjf.lol/hw-api"
+_BALANCES_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15"
+
+
+def _read_ingest_key():
+    try:
+        for line in open(os.path.expanduser("~/.kb-dynamic/credentials.env"), encoding="utf-8"):
+            line = line.strip()
+            if line.startswith("KB_INGEST_KEY="):
+                return line.split("=", 1)[1].strip()
+    except Exception:
+        pass
+    return None
+
+
+def _post_balances_to_worker(balances):
+    """把余额 POST 到 Worker /hw-api/balances（写 KV）。fail-soft，返回 True/False。"""
+    try:
+        key = _read_ingest_key()
+        if not key:
+            warn("余额实时推送跳过：~/.kb-dynamic/credentials.env 无 KB_INGEST_KEY")
+            return False
+        import tempfile
+        body = {"5": int(balances[5]), "6": int(balances[6])}
+        fd, tmp = tempfile.mkstemp(prefix="bs_bal_", suffix=".json")
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8") as f:
+                f.write(json.dumps(body))
+            cmd = ["curl", "-s", "--max-time", "30", "-w", "\n%{http_code}", "-X", "POST",
+                   "-H", "User-Agent: " + _BALANCES_UA,
+                   "-H", "Content-Type: application/json",
+                   "-H", "X-Ingest-Key: " + key,
+                   "--data", "@" + tmp,
+                   _BALANCES_WORKER_BASE + "/balances"]
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            out = r.stdout or ""
+            code = 0
+            if "\n" in out:
+                _btxt, _code = out.rsplit("\n", 1)
+                try:
+                    code = int(_code.strip())
+                except Exception:
+                    code = 0
+            if code == 200:
+                log("余额实时推送成功：g5=%d g6=%d" % (body["5"], body["6"]))
+                return True
+            warn("余额实时推送失败（不影响本次同步）：HTTP %s" % (code or "0"))
+            err_write("BALANCES_POST_FAIL http=%s" % (code or "0"))
+            return False
+        finally:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass
+    except Exception as _e:
+        warn("余额实时推送异常（不影响本次同步）：%s" % str(_e)[:120])
+        err_write("BALANCES_POST_EXC %s" % str(_e)[:120])
+        return False
+
+
 def _main_impl():
     if "--selftest" in sys.argv:
         return selftest()
@@ -1339,6 +1408,8 @@ def _main_impl():
             _restore_stash()
             return 0 if _pp.returncode == 0 else 3
         log("幂等：6 数据文件均无变化，不 commit")
+        # 余额实时推送（2026-11-09 根治）：无语义变化也推一次（冷启动/KV 被清空时补齐）。
+        _post_balances_to_worker(balances)
         _restore_stash()
         return 0
 
@@ -1493,6 +1564,9 @@ def _main_impl():
             f.write(_log_line)
     except OSError as _e:
         warn("build_stats.log 写入失败（提交已成功，不影响结果）：%s" % _e)
+    # 余额实时推送（2026-11-09 根治）：静态提交已成功，再把余额写进 Worker KV；
+    # fail-soft，推送失败不影响本次同步结果（静态文件仍是兜底）。
+    _post_balances_to_worker(balances)
     _restore_stash()
     return 0
 

@@ -2749,27 +2749,69 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function loadBalance(grade, cardId){
     var key = 'bal' + grade;
     var name = 'stats_grade_' + grade + '.json';
-    fetchJson(name, { onRetry: function(n){ setBalTag(cardId, '重试中（' + n + '/3)'); } }).then(function(d){
-      if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
-      if(typeof d.balance !== 'number' || !isFinite(d.balance)) throw new Error('balance');
-      d.balance = Math.trunc(d.balance); /* P1-6（2026-10-22 三方审查修复）：小数余额截整显示，不再整块降级为「暂时无法连接」 */
+    /* 余额实时读（2026-11-09 根治）：先问 Worker /hw-api/balances 要最新余额（不走 Pages 部署）。
+       成功则立即用实时余额写数（tag 翻“实时数据”）；再拉静态文件补 tier/today 等附加字段
+       （renderBalExtras 需要，余额仍以实时值为准，静态失败也不影响已显示的实时余额）。
+       实时失败/超时则走原静态路径（与今天完全一致）。 */
+    function liveFetchBalance(){
+      var fetchP = fetch('/hw-api/balances', { cache: 'no-store' }).then(function(r){
+        if(!r.ok) throw new Error('live http ' + r.status);
+        return r.json();
+      }).then(function(d){
+        var v = d && d[String(grade)];
+        if(typeof v !== 'number' || !isFinite(v)) throw new Error('live balance');
+        return Math.trunc(v);
+      });
+      var timeoutP = new Promise(function(_, rej){
+        setTimeout(function(){ rej(new Error('live timeout')); }, TIMEOUT_MS);
+      });
+      return Promise.race([fetchP, timeoutP]);
+    }
+    function fillExtras(liveBal){
+      fetchJson(name, { onRetry: function(n){} }).then(function(d){
+        if(!d || d.schema_version !== '1.0' || d.grade !== grade) return;
+        if(typeof d.balance !== 'number' || !isFinite(d.balance)) return;
+        var card = $(cardId);
+        if(!card) return;
+        d.balance = liveBal; /* 余额以实时值为准，静态文件只补 tier/today 等附加字段 */
+        renderBalExtras(card, d);
+      }).catch(function(){ /* 附加字段拉不到就不补，余额已是实时值 */ });
+    }
+    function loadBalanceStatic(){
+      fetchJson(name, { onRetry: function(n){ setBalTag(cardId, '重试中（' + n + '/3)'); } }).then(function(d){
+        if(!d || d.schema_version !== '1.0' || d.grade !== grade) throw new Error('schema');
+        if(typeof d.balance !== 'number' || !isFinite(d.balance)) throw new Error('balance');
+        d.balance = Math.trunc(d.balance); /* P1-6（2026-10-22 三方审查修复）：小数余额截整显示，不再整块降级为「暂时无法连接」 */
+        var card = $(cardId);
+        var num = card ? card.querySelector('.bal-num') : null;
+        if(!num) throw new Error('no bal-num');
+        window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
+        renderBalExtras(card, d);
+        var si = srcInfo[name];
+        if(si && si.fromCache){
+          setBalTag(cardId, '数据更新于 ' + fmtHHMM(si.ts)); /* 方案E：缓存渲染，明示数据时刻 */
+          startRecheck(key, function(){ loadBalance(grade, cardId); });
+        }else{
+          setBalTag(cardId, '实时数据'); /* §3.2：本区块成功即翻 */
+          stopRecheck(key);
+        }
+      }).catch(function(e){
+        setBalTag(cardId, '暂时无法连接'); /* 方案E：最终失败且无缓存，保留模板静态值 */
+        if(window.console && console.warn) console.warn('余额拉取失败，保留模板静态值:', e);
+        startRecheck(key, function(){ loadBalance(grade, cardId); });
+      });
+    }
+    liveFetchBalance().then(function(bal){
       var card = $(cardId);
       var num = card ? card.querySelector('.bal-num') : null;
-      if(!num) throw new Error('no bal-num');
-      window.__kanbanSetBalance(num, d.balance); /* 幂等直接写终值，不触发二次滚动（§4.1） */
-      renderBalExtras(card, d);
-      var si = srcInfo[name];
-      if(si && si.fromCache){
-        setBalTag(cardId, '数据更新于 ' + fmtHHMM(si.ts)); /* 方案E：缓存渲染，明示数据时刻 */
-        startRecheck(key, function(){ loadBalance(grade, cardId); });
-      }else{
-        setBalTag(cardId, '实时数据'); /* §3.2：本区块成功即翻 */
-        stopRecheck(key);
-      }
+      if(!num){ loadBalanceStatic(); return; }
+      window.__kanbanSetBalance(num, bal); /* 幂等直接写终值，不触发二次滚动（§4.1） */
+      setBalTag(cardId, '实时数据'); /* §3.2：本区块成功即翻 */
+      stopRecheck(key);
+      fillExtras(bal);
     }).catch(function(e){
-      setBalTag(cardId, '暂时无法连接'); /* 方案E：最终失败且无缓存，保留模板静态值 */
-      if(window.console && console.warn) console.warn('余额拉取失败，保留模板静态值:', e);
-      startRecheck(key, function(){ loadBalance(grade, cardId); });
+      if(window.console && console.warn) console.warn('实时余额拉取失败，走静态路径:', e);
+      loadBalanceStatic();
     });
   }
 
@@ -5778,7 +5820,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261109-audiogreen';
+  var KB_BUILD = '20261109-livebal';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
