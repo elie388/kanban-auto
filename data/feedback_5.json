@@ -1,8 +1,16 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-09T19:13:12+08:00",
+ "generated_at": "2026-11-09T19:37:42+08:00",
  "items": [
+  {
+   "date": "2026-11-09",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "title": "11月9日数学校本35页反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学校本35页反馈</h2>\n<p>11月9日 19:28 提交的数学校本35页（比较图形的面积），9道小题答对6道。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>第1题数图形面积全对：小船14、蜡烛10、飞机23，数方格数得很准。</li>\n<li>第2题、第3题、第4题都对了，面积比较和图形拼合都想明白了。</li>\n</ul>\n<h3>📝 还要再改：3处</h3>\n<p><b>拓展练习（1）长方形</b><br>\n<b>原题：</b>画出3个形状不同、面积都是15平方厘米的图形。（长方形）<br>\n<b>这次的情况：</b>你画的长方形长4厘米、宽5厘米，面积是20平方厘米，不是15平方厘米。<br>\n长方形的面积是长×宽。你画的长方形长是几格、宽是几格？乘出来是多少？要得到15，哪两个数相乘等于15？想一想，再画一个长和宽相乘等于15的长方形。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_xb35_ext_rect_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>拓展练习（2）平行四边形</b><br>\n<b>原题：</b>画出3个形状不同、面积都是15平方厘米的图形。（平行四边形）<br>\n<b>这次的情况：</b>你画的平行四边形底4厘米、高3厘米，面积是12平方厘米，不是15平方厘米。<br>\n平行四边形的面积是底×高。你画的平行四边形底是几格、高是几格？乘出来是多少？要得到15，底和高可以是哪两个数？想一想，再画一个底和高相乘等于15的平行四边形。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_xb35_ext_para_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>拓展练习（3）三角形</b><br>\n<b>原题：</b>画出3个形状不同、面积都是15平方厘米的图形。（三角形）<br>\n<b>这次的情况：</b>你画的三角形底6厘米、高4厘米，面积是6×4÷2=12平方厘米，不是15平方厘米。<br>\n三角形的面积是底×高÷2。你画的三角形底是几格、高是几格？算出来是多少？要得到15，底×高应该是多少？想一想，再画一个面积是15平方厘米的三角形。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_xb35_ext_tri_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>本批积分 +12（完成 +10、按时 +2）。</p>\n</body></html>"
+  },
   {
    "date": "2026-11-09",
    "ts": "",
