@@ -1,8 +1,7 @@
 {
- "updated_at": "2026-11-09T23:28:26+08:00",
+ "updated_at": "2026-11-10T09:42:07+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
-  "2026-10-11",
   "2026-10-12",
   "2026-10-13",
   "2026-10-14",
@@ -31,12 +30,12 @@
   "2026-11-06",
   "2026-11-07",
   "2026-11-08",
-  "2026-11-09"
+  "2026-11-09",
+  "2026-11-10"
  ],
  "grades": {
   "五年级": {
    "overall": [
-    87.1,
     null,
     85.2,
     87.9,
@@ -65,14 +64,14 @@
     95.2,
     81.7,
     72.7,
-    75.5
+    75.5,
+    null
    ],
    "empty": false,
    "sparse": false,
    "subjects": {
     "语文": {
      "days": [
-      92.9,
       null,
       null,
       91.2,
@@ -101,7 +100,8 @@
       95.1,
       33.3,
       68.2,
-      76.0
+      76.0,
+      null
      ],
      "weak": [
       {
@@ -134,7 +134,6 @@
     },
     "数学": {
      "days": [
-      90.2,
       null,
       100.0,
       86.5,
@@ -163,7 +162,8 @@
       null,
       77.1,
       77.8,
-      75.0
+      75.0,
+      null
      ],
      "weak": [
       {
@@ -196,7 +196,6 @@
     },
     "英语": {
      "days": [
-      78.6,
       null,
       81.0,
       85.5,
@@ -225,7 +224,8 @@
       100.0,
       100.0,
       72.3,
-      75.0
+      75.0,
+      null
      ],
      "weak": [
       {
@@ -260,7 +260,6 @@
   },
   "六年级": {
    "overall": [
-    89.3,
     100.0,
     79.6,
     86.6,
@@ -289,14 +288,14 @@
     90.9,
     null,
     89.5,
-    72.7
+    72.7,
+    null
    ],
    "empty": false,
    "sparse": false,
    "subjects": {
     "语文": {
      "days": [
-      96.2,
       null,
       55.6,
       78.3,
@@ -325,7 +324,8 @@
       null,
       null,
       88.1,
-      56.0
+      56.0,
+      null
      ],
      "weak": [
       {
@@ -358,7 +358,6 @@
     },
     "数学": {
      "days": [
-      100.0,
       null,
       94.2,
       86.8,
@@ -387,7 +386,8 @@
       null,
       null,
       97.4,
-      100.0
+      100.0,
+      null
      ],
      "weak": [
       {
@@ -420,7 +420,6 @@
     },
     "英语": {
      "days": [
-      82.6,
       100.0,
       67.9,
       90.2,
@@ -449,7 +448,8 @@
       90.9,
       null,
       88.7,
-      81.8
+      81.8,
+      null
      ],
      "weak": [
       {
@@ -496,7 +496,9 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.5,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": true,
+     "all_wrong": false
     },
     "2026-10-19": {
      "reason": "pending_ratio=0.43",
@@ -509,7 +511,9 @@
      "pending": 3,
      "pending_share": 0.429,
      "backfill_share": 0.0,
-     "small_sample": true
+     "small_sample": true,
+     "isolated": true,
+     "all_wrong": false
     }
    },
    "数学": {
@@ -524,7 +528,9 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.0,
-     "small_sample": true
+     "small_sample": true,
+     "isolated": false,
+     "all_wrong": true
     },
     "2026-10-30": {
      "reason": "all_wrong",
@@ -536,7 +542,9 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": false,
+     "all_wrong": true
     }
    },
    "英语": {
@@ -550,7 +558,9 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.25,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": true,
+     "all_wrong": false
     },
     "2026-10-19": {
      "reason": "adjudicated_group_isolation",
@@ -562,7 +572,9 @@
      "pending": 2,
      "pending_share": 0.182,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": true,
+     "all_wrong": false
     }
    }
   },
@@ -578,7 +590,9 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.5,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": true,
+     "all_wrong": false
     },
     "2026-10-30": {
      "reason": "all_wrong",
@@ -590,7 +604,9 @@
      "pending": 0,
      "pending_share": 0.0,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": false,
+     "all_wrong": true
     }
    },
    "英语": {
@@ -604,7 +620,9 @@
      "pending": 14,
      "pending_share": 0.583,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": true,
+     "all_wrong": false
     },
     "2026-10-24": {
      "reason": "pending_ratio=0.50",
@@ -616,7 +634,9 @@
      "pending": 10,
      "pending_share": 0.5,
      "backfill_share": 0.0,
-     "small_sample": false
+     "small_sample": false,
+     "isolated": true,
+     "all_wrong": false
     }
    }
   }
