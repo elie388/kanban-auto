@@ -73,55 +73,6 @@
       "created_at": "2026-11-10T03:59:48+08:00",
       "updated_at": "2026-11-10T03:59:48+08:00",
       "completed_at": null
-    },
-    {
-      "task_id": "MANUAL-20261110-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第17期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-10T04:16:51+08:00",
-      "updated_at": "2026-11-10T04:16:51+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-11-10.pdf",
-          "label": "英语阅读写作练习",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "PRACT-20261110-9FE91FDFB30F",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-10.docx，按今日练习清单完成",
-      "kousuan": [
-        "4.8×3=",
-        "76+58=",
-        "3.6×4+2.8=",
-        "41.3×2.9≈（估算，结果取整数）",
-        "2.5×4.6×4="
-      ],
-      "recite_text": "语文背诵：《长相思》（纳兰性德）\n原文：山一程，水一程，身向榆关那畔行，夜深千帐灯。风一更，雪一更，聒碎乡心梦不成，故园无此声。\n朗读要求：注意停顿和节奏，比如“山一程——，水一程——”，读出跋山涉水、一路奔波的感觉；下阕的“风一更，雪一更”语调要稍低沉，读出风雪交加的寒冷与凄清，把满腹的乡愁和思念读出来。\n英语口语任务说明：今晚的英语口语小任务只需5分钟：请用英语口语回答下面的3个日常问题，并把录音按看板任务按钮提交。回答时尽量用完整的句子（比如用 I like... 或 He goes...）；鼓励多用第三人称单数（He / She / My father / My mother / My friend）聊聊身边的人，例如：My father likes... 或者 She goes to school by...\n提示问题：1. What do you and your family usually do on weekends? 2. Can you tell me something about your school day? 3. What are your hobbies and what does your best friend like to do?",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-10.docx",
-      "file_hash": "50a15333fbd051367e64d750ca9fdb55672b5810bb9a8937dce9766e4876e947",
-      "created_at": "2026-11-10T04:28:33+08:00",
-      "updated_at": "2026-11-10T04:28:33+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-10.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
     }
   ],
   "counts": {
