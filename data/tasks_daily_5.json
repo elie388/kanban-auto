@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "五年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T21:19:50+08:00",
+  "updated_at": "2026-11-10T21:22:40+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -86,7 +86,7 @@
       "title": "校本26页",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①校本26页；②口语易；③练习本抄M4单词 → 待完成",
@@ -95,9 +95,60 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T19:47:38+08:00",
-      "corrections": [],
-      "pending_corrections": 0
+      "updated_at": "2026-11-10T21:22:40+08:00",
+      "corrections": [
+        {
+          "label": "短语填空第2题",
+          "question": "He is new here. He hopes to ___ in his class.",
+          "reason": "第2题短语用错位置：他是新来的，在班里最希望交新朋友，不是先谈成绩。",
+          "hint": "他是新来的，刚到一个新班级，最希望得到的是什么？再读读第5题：Tom 想要什么，才要努力学习、认真听讲？这两个短语是不是放反了？对调一下再读读句子通不通顺。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "短语填空：He is new here. He hopes to ___ in his class.",
+          "q_img_exempt": "英语校本练习原题为文字题，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "短语填空第5题",
+          "question": "Tom wants to ___ this year, so he is going to study hard and listen to the teacher carefully.",
+          "reason": "第5题短语用错位置：后文说要努力学习、认真听讲，目标是在学校取得更好成绩，不是交朋友。",
+          "hint": "Tom 今年打算努力学习、认真听讲，他想要达到的目标是什么？再读读第2题：新来的同学在班里最希望得到什么？这两个短语是不是放反了？对调一下再读读句子通不通顺。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "短语填空：Tom wants to ___ this year, so he is going to study hard and listen to the teacher carefully.",
+          "q_img_exempt": "英语校本练习原题为文字题，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "判断第1题",
+          "question": "图片与句子 I want to read more. 是否相符（T/F）",
+          "reason": "第1题判断错：图片是一个男孩坐在椅子上看书，与 I want to read more. 相符，应为 T。",
+          "hint": "仔细看看第1幅图：男孩手里拿着什么？他正在做什么？句子说 I want to read more.，图里的人是不是正在做这件事？再想想该选 T 还是 F。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "判断题：图片与句子 I want to read more. 是否相符",
+          "q_img_exempt": "英语校本练习原题为文字题，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "拓展作业第2条",
+          "question": "Tom's goal 第2条目标",
+          "reason": "拓展第2条拼写错：drind 应为 drink，少了字母 k。",
+          "hint": "第2条里 eat and ___ healthily 这个词，对照单词表逐个字母拼一遍，看看少了哪个字母，补上再写一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "拓展作业：写出 Tom 的五大目标之第2条",
+          "q_img_exempt": "英语校本练习原题为文字题，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 4,
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261110-4C850967ED1E",
@@ -286,8 +337,8 @@
   ],
   "counts": {
     "total": 10,
-    "pending": 3,
-    "in_progress": 3,
+    "pending": 2,
+    "in_progress": 4,
     "done": 4,
     "pending_review": 0
   },
