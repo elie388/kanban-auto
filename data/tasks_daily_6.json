@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "六年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T21:51:23+08:00",
+  "updated_at": "2026-11-10T22:26:22+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -379,9 +379,9 @@
       "source": "register_book",
       "subject": "数学",
       "title": "读背32、33",
-      "detail": "",
+      "detail": "读背未达标，第1轮：录音51.22秒，32条（祖冲之段）与33条（电子计算机段）已读出；漏读整段——32条与33条之间的过渡段“用正多边形逼近圆，计算量很大……求圆周率的方法也日新月异”未读，属跳段。重读要求：32、33从头到尾完整读一遍，漏读的过渡段读三遍；“祖冲之（zǔ chōng zhī）”“刘徽（huī）”注意咬字。发回+5已结，达标+3待重读达标后补结。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背32、33；②思[一字待确认]16~24 → 待完成",
@@ -390,11 +390,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T19:25:23+08:00",
+      "updated_at": "2026-11-10T22:26:06+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "status_source": "reading_grading",
+      "pending_note": "重读位置：过渡段“用正多边形逼近圆，计算量很大……求圆周率的方法也日新月异”读三遍；32、33全文完整重读一遍。"
     },
     {
       "task_id": "REG-20261110-586C3801DC77",
@@ -437,9 +439,9 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 8,
-    "in_progress": 1,
-    "done": 3,
+    "pending": 6,
+    "in_progress": 2,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-11-10T22:00:00+08:00"
