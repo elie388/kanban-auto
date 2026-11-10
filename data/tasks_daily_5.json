@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "五年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T22:14:42+08:00",
+  "updated_at": "2026-11-10T22:19:07+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -186,7 +186,7 @@
       "title": "练习本抄M4单词",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①校本26页；②口语易；③练习本抄M4单词 → 待完成",
@@ -195,48 +195,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T21:02:32+08:00",
-      "corrections": [
-        {
-          "label": "抄写 sentence 第3遍",
-          "question": "抄写M4单词：sentence（句子）第3遍",
-          "reason": "第3遍抄错：写成 stentence，与单词表 sentence 不一致。 五年级英语练习本抄M4单词（REG-20261110-E353A0294FEC），2张照片，2026-11-10 20:11",
-          "hint": "这个词第3遍、第4遍都有一个字母抄错了。对照单词表，从第一个字母开始逐个核对，看看哪一个字母写得不一样，找到后划掉重抄一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "抄写M4单词：sentence（句子）",
-          "img_exempt": "图后补",
-          "q_img_exempt": "英语抄写类无原题图",
-          "round": 1
-        },
-        {
-          "label": "抄写 sentence 第4遍",
-          "question": "抄写M4单词：sentence（句子）第4遍",
-          "reason": "第4遍抄错：写成 stentence，与单词表 sentence 不一致。 五年级英语练习本抄M4单词（REG-20261110-E353A0294FEC），2张照片，2026-11-10 20:11",
-          "hint": "这个词第3遍、第4遍都有一个字母抄错了。对照单词表，从第一个字母开始逐个核对，看看哪一个字母写得不一样，找到后划掉重抄一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "抄写M4单词：sentence（句子）",
-          "img_exempt": "图后补",
-          "q_img_exempt": "英语抄写类无原题图",
-          "round": 1
-        },
-        {
-          "label": "抄写 be late for school 第3遍",
-          "question": "抄写M4单词：be late for school（上学迟到）第3遍",
-          "reason": "第3遍抄错：写成 be be late for school，与单词表 be late for school 不一致。 五年级英语练习本抄M4单词（REG-20261110-E353A0294FEC）",
-          "hint": "这句话第3遍多写了一个词。对照单词表数一数，这句话应该以哪个词开头？多出来的那个词划掉，重抄一遍。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "抄写M4单词：be late for school（上学迟到）",
-          "img_exempt": "图后补",
-          "q_img_exempt": "英语抄写类无原题图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 3,
-      "corr_round": 1,
-      "status_source": "closeout_writeback"
+      "updated_at": "2026-11-10T22:19:05+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-10T22:19:05+08:00",
+      "orig_photos": [
+        "c17756cbc4be4b7c.jpg",
+        "676c07d47fbb28e6.jpg",
+        "c24215b5a6239a3f.jpg"
+      ]
     },
     {
       "task_id": "REG-20261110-482C575680D7",
@@ -355,8 +323,8 @@
   "counts": {
     "total": 10,
     "pending": 0,
-    "in_progress": 5,
-    "done": 5,
+    "in_progress": 4,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-10T22:00:00+08:00"
