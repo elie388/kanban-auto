@@ -470,7 +470,7 @@
   .task-acts .st-zone{flex:none; order:2;}
   .task-acts .tfiles{flex:1; min-width:0; order:1; margin-top:0;}
   .task .task-acts:not(:has(.tfile)){justify-content:flex-end;}
-  /* 已完成任务「查看原图」按钮＋全屏查看器（2026-10-22 家长定，三方定案） */
+  /* 已完成任务「查看原图」按钮＋全屏查看器（2026-10-22 家长定，三方定案；2026-11-10 家长令作废，改为「查看批改反馈」；查看器代码保留备用） */
   .tfile.torig{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#EEF4FA; border-color:#B9CFE4; color:#1F4E79;}
   #origViewer{position:fixed; inset:0; z-index:9990; background:rgba(12,14,18,.95); display:none; flex-direction:column;}
   #origViewer.open{display:flex;}
@@ -484,6 +484,16 @@
   #origViewer .ov-nav{display:flex; gap:10px; justify-content:center; padding:12px;}
   #origViewer .ov-nav button{flex:1; max-width:170px; min-height:46px; border-radius:12px; border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.08); color:#fff; font-size:15px; cursor:pointer;}
   #origViewer .ov-nav button:disabled{opacity:.35;}
+  /* 已完成任务「查看批改反馈」按钮＋全屏查看器（2026-11-10 家长令：作业练习完成后不再放照片，改为放对应的批改反馈） */
+  .tfile.tfeedback{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#E8F5E9; border-color:#A5D6A7; color:#2E7D32;}
+  #fbViewer{position:fixed; inset:0; z-index:9990; background:rgba(12,14,18,.92); display:none; flex-direction:column;}
+  #fbViewer.open{display:flex;}
+  #fbViewer .fv-bar{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background:#F5F3EB;}
+  #fbViewer .fv-title{font-size:16px; font-weight:700; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #fbViewer .fv-close{background:#fff; border:1px solid #ccc; color:#333; border-radius:999px; min-width:44px; min-height:44px; font-size:16px; cursor:pointer; flex:none;}
+  #fbViewer .fv-stage{flex:1; overflow:auto; padding:16px; background:#F5F3EB;}
+  #fbViewer .fv-body{max-width:720px; margin:0 auto; background:#FFFDF8; border:1px solid #E5E7EB; border-radius:12px; padding:16px; line-height:1.7; font-size:15px; color:#333;}
+  #fbViewer .fv-err{color:#B3261E; font-size:15px; padding:20px; text-align:center; line-height:1.7;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
   .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
@@ -1904,15 +1914,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
             }).join('') + '</div>';
           }
         }
-        /* 已完成任务「查看原图」（2026-10-22 家长定，三方定案）：仅 done＋学习类
-           任务（家务不纳入；登记本卡 2026-10-22晚家长要求纳入）且登记了 orig_photos 才渲染；照片清单
-           登记到 window.__taskOrigPhotos 供查看器取用，点击走口令门（kbOpenOriginals）。 */
+        /* 已完成任务「查看批改反馈」（2026-11-10 家长令：作业练习完成后不再放照片，改为放对应的批改反馈；原「查看原图」按钮作废）：
+           仅 done＋学习类任务（家务不纳入）渲染；点击走 kbOpenTaskFeedback，按 task_id 取反馈（反馈数据由 loadFeedback 登记到 window.__taskFeedback，未加载时按需拉取 feedback_<grade>.json）。 */
         var origRow = '';
-        if(t.status === 'done' && t.source !== 'chore'
-           && Array.isArray(t.orig_photos) && t.orig_photos.length){
-          window.__taskOrigPhotos = window.__taskOrigPhotos || {};
-          window.__taskOrigPhotos[t.task_id] = t.orig_photos;
-          origRow = '<div class="tfiles toris"><button type="button" class="tfile torig" data-tid="' + esc(t.task_id) + '">📷 查看原图（' + t.orig_photos.length + '张）</button></div>';
+        if(t.status === 'done' && t.source !== 'chore'){
+          var fbGradeNum = (wantGrade === '五年级') ? 5 : 6;
+          origRow = '<div class="tfiles tfbs"><button type="button" class="tfile tfeedback" data-tid="' + esc(t.task_id) + '" data-grade="' + fbGradeNum + '">📝 查看批改反馈</button></div>';
         }
         var qaList = Array.isArray(t.qa) ? t.qa : [];
         var pendN = (typeof t.pending_corrections === 'number') ? t.pending_corrections : 0;
@@ -3525,6 +3532,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function renderFeedback(grade, items){
     var wrap = document.querySelector('#fb-g' + grade + ' .fb-items');
     if(!wrap) return;
+    /* 2026-11-10：按 task_id 登记反馈，供已完成任务卡「查看批改反馈」按钮取用。 */
+    try{
+      window.__taskFeedback = window.__taskFeedback || {};
+      (items || []).forEach(function(it){
+        if(it && it.task_id) window.__taskFeedback[it.task_id] = it;
+      });
+    }catch(e){}
     if(!items || !items.length){
       wrap.innerHTML = '<div class="sum-empty">还没有批改反馈。今晚批改完成后会出现在这里。</div>';
       return;
@@ -5890,7 +5904,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261110-xssfix';
+  var KB_BUILD = '20261110-fbcard';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -7087,6 +7101,56 @@ function kbOpenOriginals(tid){
 document.addEventListener('click', function(e){
   var b = e.target && e.target.closest ? e.target.closest('.torig') : null;
   if(b) kbOpenOriginals(b.getAttribute('data-tid'));
+});
+/* 已完成任务「查看批改反馈」全屏查看器（2026-11-10 家长令）：按 task_id 取反馈，
+   先读 window.__taskFeedback（loadFeedback 登记），未命中则按需拉取 feedback_<grade>.json；
+   无反馈时提示“暂无批改反馈”。反馈正文走 kbSanitizeHtml，与学习小结反馈栏同口径。 */
+function kbFbViewerEnsure(){
+  if(document.getElementById('fbViewer')) return;
+  var div = document.createElement('div');
+  div.id = 'fbViewer';
+  div.innerHTML = '<div class="fv-bar"><span class="fv-title"></span><button type="button" class="fv-close" aria-label="关闭">✕</button></div>'
+    + '<div class="fv-stage"><div class="fv-body"></div><div class="fv-err" style="display:none"></div></div>';
+  document.body.appendChild(div);
+  div.querySelector('.fv-close').addEventListener('click', function(){ div.classList.remove('open'); });
+  div.addEventListener('click', function(e){ if(e.target === div) div.classList.remove('open'); });
+}
+function kbFbViewerShow(title, html){
+  kbFbViewerEnsure();
+  var div = document.getElementById('fbViewer');
+  div.querySelector('.fv-title').textContent = title || '批改反馈';
+  var body = div.querySelector('.fv-body'), err = div.querySelector('.fv-err');
+  if(html){
+    body.innerHTML = kbSanitizeHtml(html);
+    body.style.display = '';
+    err.style.display = 'none';
+  }else{
+    body.style.display = 'none';
+    err.textContent = '该任务暂无批改反馈';
+    err.style.display = '';
+  }
+  div.classList.add('open');
+}
+function kbOpenTaskFeedback(tid, gradeNum){
+  var it = (window.__taskFeedback || {})[tid];
+  if(it){ kbFbViewerShow(it.title || '批改反馈', it.html || ''); return; }
+  var g = gradeNum || 5;
+  fetchJson('feedback_' + g + '.json', {}).then(function(d){
+    var items = (d && d.items) || [];
+    var found = null;
+    items.forEach(function(x){ if(x && x.task_id === tid) found = x; });
+    if(found){
+      window.__taskFeedback = window.__taskFeedback || {};
+      window.__taskFeedback[tid] = found;
+      kbFbViewerShow(found.title || '批改反馈', found.html || '');
+    }else{
+      kbFbViewerShow('批改反馈', '');
+    }
+  }).catch(function(){ kbFbViewerShow('批改反馈', ''); });
+}
+document.addEventListener('click', function(e){
+  var b = e.target && e.target.closest ? e.target.closest('.tfeedback') : null;
+  if(b) kbOpenTaskFeedback(b.getAttribute('data-tid'), parseInt(b.getAttribute('data-grade') || '5', 10));
 });
 function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
   if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
