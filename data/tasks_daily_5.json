@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "五年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T20:16:25+08:00",
+  "updated_at": "2026-11-10T20:33:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -119,7 +119,10 @@
       "type_source": "regex_oral",
       "corrections": [],
       "pending_corrections": 0,
-      "pending_note": "11月10日口语易反馈"
+      "pending_note": "11月10日口语易反馈",
+      "orig_photos": [
+        "045f2e662507f6a8.jpg"
+      ]
     },
     {
       "task_id": "REG-20261110-E353A0294FEC",
