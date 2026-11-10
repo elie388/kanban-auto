@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T21:43:29+08:00",
+ "updated_at": "2026-11-10T22:08:41+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-12",
@@ -65,7 +65,7 @@
     81.7,
     72.7,
     75.5,
-    97.9
+    98.1
    ],
    "empty": false,
    "sparse": false,
@@ -289,7 +289,7 @@
     null,
     89.5,
     72.7,
-    null
+    47.8
    ],
    "empty": false,
    "sparse": false,
@@ -325,7 +325,7 @@
       null,
       88.1,
       56.0,
-      null
+      0.0
      ],
      "weak": [
       {
@@ -449,7 +449,7 @@
       null,
       88.7,
       81.8,
-      null
+      100.0
      ],
      "weak": [
       {
@@ -579,6 +579,22 @@
    }
   },
   "六年级": {
+   "语文": {
+    "2026-11-10": {
+     "reason": "all_wrong",
+     "rules": [
+      "all_wrong"
+     ],
+     "judged": 12,
+     "correct": 0,
+     "pending": 0,
+     "pending_share": 0.0,
+     "backfill_share": 0.0,
+     "small_sample": false,
+     "isolated": false,
+     "all_wrong": true
+    }
+   },
    "数学": {
     "2026-10-16": {
      "reason": "adjudicated_group_isolation",
@@ -937,6 +953,14 @@
    "subject": "英语",
    "mail_id": "b17938817243846c9678af65a3bbf9",
    "judged": 6,
+   "alert": "batch_all_wrong_suspected_partial_ingest"
+  },
+  {
+   "date": "2026-11-10",
+   "grade": "六年级",
+   "subject": "语文",
+   "mail_id": "b1794317200571332e692c553dd103",
+   "judged": 12,
    "alert": "batch_all_wrong_suspected_partial_ingest"
   }
  ]
