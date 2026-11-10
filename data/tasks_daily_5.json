@@ -3,12 +3,12 @@
   "date": "2026-11-10",
   "grade": "五年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T20:33:30+08:00",
+  "updated_at": "2026-11-10T20:42:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-10T19:47:38+08:00",
-      "new_lines": 7,
+      "ingested_at": "2026-11-10T20:42:01+08:00",
+      "new_lines": 0,
       "flipped": 0
     },
     "targeted_practice": {
@@ -213,7 +213,7 @@
       "title": "预习72-74页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本16.17课；②看作文71[涂黑内容不可读]页；③预习72-74页 → 待完成",
@@ -222,18 +222,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T19:47:38+08:00",
+      "updated_at": "2026-11-10T20:41:41+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "pending_note": "11月10日语文预习72-74页朗读反馈（达标）"
     }
   ],
   "counts": {
     "total": 10,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-10T22:00:00+08:00"
