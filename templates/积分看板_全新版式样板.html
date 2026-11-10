@@ -3142,6 +3142,8 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     } catch(e){ return ''; }
   }
   window.__kbSanitizeHtml = kbSanitizeHtml; /* 供回归测试调用 */
+  window.kbSanitizeHtml = kbSanitizeHtml; /* 2026-11-10 查看反馈按钮无反应根治：kbFbViewerShow（另一 script 块）裸调 kbSanitizeHtml，原仅 __ 别名暴露，裸引用抛 ReferenceError，查看器打不开 */
+  window.fetchJson = fetchJson; /* 2026-11-10 查看反馈按钮无反应根治：kbOpenTaskFeedback（另一 script 块）登记未命中时裸调 fetchJson，原为本 IIFE 局部函数，裸引用抛 ReferenceError；3736 块同名局部 fetchJson 不受影响（各块内部调用优先解析到本块局部函数） */
   function sumDateTitle(iso){
     var m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
     return m ? (parseInt(m[2], 10) + '月' + parseInt(m[3], 10) + '日小结') : '小结';
@@ -5904,7 +5906,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261110-fbcard';
+  var KB_BUILD = '20261110-fbviewer-fix';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -7121,7 +7123,10 @@ function kbFbViewerShow(title, html){
   div.querySelector('.fv-title').textContent = title || '批改反馈';
   var body = div.querySelector('.fv-body'), err = div.querySelector('.fv-err');
   if(html){
-    body.innerHTML = kbSanitizeHtml(html);
+    var safe = '';
+    try { safe = (typeof kbSanitizeHtml === 'function') ? kbSanitizeHtml(html) : ''; } catch(e){ safe = ''; }
+    if(safe){ body.innerHTML = safe; }
+    else { body.textContent = String(html).replace(/<[^>]*>/g, ''); } /* 2026-11-10 查看反馈按钮无反应根治：消毒失败时退化为去标签纯文本，查看器仍须打开，禁止静默无反应 */
     body.style.display = '';
     err.style.display = 'none';
   }else{
