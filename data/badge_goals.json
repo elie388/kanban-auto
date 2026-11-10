@@ -189,7 +189,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 78,
+     "current": 81,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -437,7 +437,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 1,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -455,10 +455,10 @@
   "g6": [
    {
     "key": "quanduizhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 0,
+    "obtained": true,
+    "date": "2026-11-10",
+    "count": 1,
+    "total_count": 1,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 13,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -499,7 +499,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -732,7 +732,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 1,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W46",
- "generated_at": "2026-11-09T23:48:19.283371+08:00"
+ "generated_at": "2026-11-10T09:01:44.502095+08:00"
 }
