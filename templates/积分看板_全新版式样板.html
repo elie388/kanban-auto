@@ -3065,6 +3065,76 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   function sumEsc(x){
     return String(x == null ? '' : x).replace(/[&<>"']/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
   }
+  /* 白名单 HTML 净化（2026-11-10 4区审计 M1）：反馈/周报/家长版小结的 html/a_html 来自服务端数据，
+     此前原样拼 innerHTML，恶意 script/事件处理器可执行。落盘前一律经 kbSanitizeHtml：
+     只留安全标签与属性，整棵去掉 script/style/iframe 等危险元素与全部 on* 处理器；先在惰性
+     <template> 里解析（脚本不执行、图片不加载），净化完再取 innerHTML。正常 <p>/<b>/<span>、
+     <img src="data/diagrams/…"> 与行内 style（仅安全属性）保留；整篇 <html><body> 文档只取其
+     子节点（与 innerHTML 现有解析行为一致，body 上的 style 本就丢弃）。 */
+  var KB_HTML_ALLOWED = { P:1, BR:1, B:1, STRONG:1, I:1, EM:1, U:1, S:1, SPAN:1, DIV:1, UL:1, OL:1, LI:1, H1:1, H2:1, H3:1, H4:1, H5:1, H6:1, A:1, IMG:1, BLOCKQUOTE:1, TABLE:1, THEAD:1, TBODY:1, TR:1, TD:1, TH:1, HR:1, CODE:1, PRE:1 };
+  var KB_HTML_DROP = { SCRIPT:1, STYLE:1, IFRAME:1, OBJECT:1, EMBED:1, FORM:1, INPUT:1, BUTTON:1, TEXTAREA:1, SELECT:1, SVG:1, MATH:1, LINK:1, META:1, TITLE:1, BASE:1, AUDIO:1, VIDEO:1, SOURCE:1, TRACK:1, CANVAS:1, NOSCRIPT:1 };
+  var KB_STYLE_PROPS = { 'color':1, 'background':1, 'background-color':1, 'font-size':1, 'font-family':1, 'font-weight':1, 'font-style':1, 'text-decoration':1, 'text-align':1, 'line-height':1, 'margin':1, 'margin-top':1, 'margin-bottom':1, 'margin-left':1, 'margin-right':1, 'padding':1, 'padding-top':1, 'padding-bottom':1, 'padding-left':1, 'padding-right':1, 'max-width':1, 'width':1, 'height':1, 'border':1, 'border-radius':1 };
+  function kbCleanStyle(v){
+    var out = [];
+    String(v || '').split(';').forEach(function(decl){
+      var i = decl.indexOf(':'); if(i < 0) return;
+      var prop = decl.slice(0, i).trim().toLowerCase();
+      var val = decl.slice(i + 1).trim();
+      if(!KB_STYLE_PROPS[prop]) return;
+      if(/url\s*\(|expression\s*\(|javascript\s*:|vbscript\s*:|behaviour|behavior|-moz-binding|[<>]/.test(val)) return;
+      out.push(prop + ':' + val);
+    });
+    return out.join(';');
+  }
+  function kbSafeUrl(v){
+    var u = String(v || '').replace(/[\x00-\x20]+/g, '').trim();
+    if(/^(javascript|data|vbscript)\s*:/i.test(u)) return '';
+    if(/^https:\/\//i.test(u)) return u;
+    if(/^\//.test(u) || /^\.\.?\//.test(u) || /^#/.test(u)) return u;
+    if(/^[A-Za-z0-9._~%\/-]+$/.test(u)) return u; /* 站内相对路径，如 data/diagrams/xxx.png */
+    return '';
+  }
+  function kbSanitizeNode(node){
+    var i, j, child, tag, names, name, val;
+    for(i = 0; i < node.childNodes.length; i++){
+      child = node.childNodes[i];
+      if(child.nodeType === 8){ node.removeChild(child); i--; continue; } /* 注释去掉 */
+      if(child.nodeType !== 1) continue; /* 文本节点保留 */
+      tag = String(child.tagName || '').toUpperCase();
+      if(KB_HTML_DROP[tag]){ node.removeChild(child); i--; continue; }
+      kbSanitizeNode(child); /* 先净化子树 */
+      if(!KB_HTML_ALLOWED[tag]){ /* 未知标签：拆包，只留已净化的子节点 */
+        while(child.firstChild){ node.insertBefore(child.firstChild, child); }
+        node.removeChild(child); i--; continue;
+      }
+      if(tag === 'IMG'){ /* src 不安全整张图去掉，不留无 src 的破图 */
+        val = child.getAttribute('src');
+        if(!kbSafeUrl(val)){ node.removeChild(child); i--; continue; }
+      }
+      names = [];
+      for(j = 0; j < child.attributes.length; j++){ names.push(child.attributes[j].name); }
+      for(j = 0; j < names.length; j++){
+        name = names[j].toLowerCase(); val = child.getAttribute(names[j]);
+        if(name === 'class' || name === 'alt' || name === 'title'){ continue; }
+        if(name === 'style'){ val = kbCleanStyle(val); if(val){ child.setAttribute('style', val); } else { child.removeAttribute(names[j]); } continue; }
+        if(name === 'href' && tag === 'A'){ val = kbSafeUrl(val); if(val){ child.setAttribute('href', val); } else { child.removeAttribute(names[j]); } continue; }
+        if(name === 'src' && tag === 'IMG'){ child.setAttribute('src', kbSafeUrl(val)); continue; }
+        child.removeAttribute(names[j]); /* 其余一律去掉，含全部 on* 事件处理器 */
+      }
+    }
+  }
+  function kbSanitizeHtml(input){
+    var s = String(input == null ? '' : input);
+    if(!s) return '';
+    var tpl;
+    try {
+      tpl = document.createElement('template');
+      tpl.innerHTML = s;
+      kbSanitizeNode(tpl.content);
+      return tpl.innerHTML;
+    } catch(e){ return ''; }
+  }
+  window.__kbSanitizeHtml = kbSanitizeHtml; /* 供回归测试调用 */
   function sumDateTitle(iso){
     var m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
     return m ? (parseInt(m[2], 10) + '月' + parseInt(m[3], 10) + '日小结') : '小结';
@@ -3356,7 +3426,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var wkItems = '';
       if(wk && Array.isArray(wk.weeks)){
         wk.weeks.filter(wkVisible).forEach(function(it){
-          wkItems += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+          wkItems += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + kbSanitizeHtml(it.html || '') + '</div></div></div>';
         });
       }
       if(wkItems) html += wkItems;
@@ -3370,12 +3440,12 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           /* 2026-10-24 家长令：家长版小结姓名亦加年级色 pill，与孩子版一致（此前为纯文本无底色） */
           html += '<div class="sum-p-grade sum-folded"><button class="sum-p-name sum-grade-toggle" type="button" aria-expanded="false"><span class="pill-grade ' + (g === 5 ? 'g5' : 'g6') + '">' + (g === 5 ? '彦均' : '伟豪') + '</span><span class="sum-grade-chev fb-chev" aria-hidden="true">展开 ▾</span></button>';
           gWeeks.filter(wkVisible).forEach(function(it){
-            html += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+            html += '<div class="sum-item sum-weekly"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(it.title || it.week) + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + kbSanitizeHtml(it.html || '') + '</div></div></div>';
           });
           items.forEach(function(it){
             var psumk = kbReadSumKey('parent', g, it);
             var psumUnread = !kbReadGet(psumk);
-            html += '<div class="sum-item" data-sumk="' + sumEsc(psumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (psumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + (it.html || '') + '</div></div></div>';
+            html += '<div class="sum-item" data-sumk="' + sumEsc(psumk) + '"><button class="sum-head" type="button" aria-expanded="false"><span class="sum-date">' + sumEsc(sumDateTitle(it.date)) + (psumUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</span><span class="sum-chev fb-chev" aria-hidden="true"><span class="sum-chev-txt">详情</span> <span class="sum-chev-caret" aria-hidden="true">▸</span></span></button><div class="sum-body" hidden><div class="sum-p-html">' + kbSanitizeHtml(it.html || '') + '</div></div></div>';
           });
           html += '</div>';
         }
@@ -3478,9 +3548,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         + '<div class="fb-body"' + (open ? '' : ' hidden') + '>';
       if(it.kind === 'qa'){
         html += '<div class="fb-qa-q"><span class="fb-qa-tag">你问：</span>' + sumEsc(it.q || '') + '</div>'
-          + '<div class="fb-qa-a"><span class="fb-qa-tag">回复：</span><div class="fb-html">' + (it.a_html || '') + '</div></div>';
+          + '<div class="fb-qa-a"><span class="fb-qa-tag">回复：</span><div class="fb-html">' + kbSanitizeHtml(it.a_html || '') + '</div></div>';
       } else {
-        html += '<div class="fb-html">' + (it.html || '') + '</div>';
+        html += '<div class="fb-html">' + kbSanitizeHtml(it.html || '') + '</div>';
       }
       html += '</div></div>';
     });
@@ -3516,7 +3586,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         + '<div class="fb-title">' + sumEsc(it.title || '本周学习周报') + (wkUnread ? '<span class="unread-dot" aria-hidden="true"></span>' : '') + '</div><div class="fb-time">' + sumEsc(it.time || '') + '</div>'
         + '</span><span class="fb-chev" aria-hidden="true"><span class="fb-chev-txt">' + (open ? '收起' : '详情') + '</span> <span class="fb-chev-caret" aria-hidden="true">▸</span></span></button>'
         + '<div class="fb-body"' + (open ? '' : ' hidden') + '>'
-        + '<div class="fb-html">' + (it.html || '') + '</div>'
+        + '<div class="fb-html">' + kbSanitizeHtml(it.html || '') + '</div>'
         + '</div></div>';
     });
     wrap.innerHTML = html;
@@ -5820,7 +5890,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261109-livebal';
+  var KB_BUILD = '20261110-xssfix';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
