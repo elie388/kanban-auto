@@ -271,7 +271,7 @@
       "title": "校本16.17课",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本16.17课；②看作文71[涂黑内容不可读]页；③预习72-74页 → 待完成",
@@ -280,9 +280,36 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T19:47:38+08:00",
-      "corrections": [],
-      "pending_corrections": 0
+      "updated_at": "2026-11-10T21:33:13+08:00",
+      "corrections": [
+        {
+          "label": "字音第1题",
+          "question": "字音第1题 五年级语文校本16课（40-41页，16.金字塔＋古罗马斗兽场，REG-20261110-C597E815C13C），2张照片，2026-11-10 21:00到达；孩子留言“是校本16课，不是17课”（本次只交16课，17课未交）；选择题5＋读句子2＋阅读3，共14小问",
+          "reason": "一1字音错：A项“澄澈”的“澄”应读chéng，不是dèng；C项四字全对。",
+          "hint": "“澄澈”的“澄”读什么？逐个核对四个选项里每个字的拼音，哪个选项四个字全都读对了？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "下面字音全都正确的一项：A.澄澈（dèng）铸成（zhù）不愧（kuì）熠熠发光（yì）",
+          "q_img_exempt": "语文校本练习原题为文字题，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "说明方法第4题(2)",
+          "question": "远远望去，金字塔像漂浮在沙海中的三座金山",
+          "reason": "一4(2)说明方法错：有“像”字，是把金字塔比作金山，应为打比方（D），不是举例子（C）。",
+          "hint": "“金字塔像漂浮在沙海中的三座金山”——“像”字提示这是什么修辞？再想想说明方法里，哪个是把一个事物比作另一个事物？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "远远望去，金字塔像漂浮在沙海中的三座金山。",
+          "q_img_exempt": "语文校本练习原题为文字题，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2,
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261110-32E6705083B0",
