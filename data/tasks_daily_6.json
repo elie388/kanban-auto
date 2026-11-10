@@ -94,9 +94,9 @@
       "source": "register_book",
       "subject": "英语",
       "title": "跟小管家读U4课文",
-      "detail": "原状态：待完成",
+      "detail": "小管家已完成：11月10日英语任务4子项全完成（词汇跟读3星、拼写100%、Read and answer 3星、In focus 3星），耗时14分钟。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄U4已学单词（invention 至 bird feeder）英文和中文各4次，背10次；②跟小管家读U4课文 → 待完成",
@@ -105,11 +105,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T19:25:23+08:00",
+      "updated_at": "2026-11-10T21:56:47+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "completed_at": "2026-11-10T21:56:47+08:00",
+      "orig_photos": [
+        "ef6946244730.jpg"
+      ]
     },
     {
       "task_id": "REG-20261110-9BAB0FFDC7CD",
