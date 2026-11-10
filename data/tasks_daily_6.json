@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "grade": "六年级",
   "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-10T16:55:55+08:00",
+  "updated_at": "2026-11-10T16:57:29+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -101,8 +101,8 @@
     }
   ],
   "counts": {
-    "total": 7,
-    "pending": 7,
+    "total": 4,
+    "pending": 4,
     "in_progress": 0,
     "done": 0,
     "pending_review": 0
