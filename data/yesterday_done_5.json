@@ -1,52 +1,52 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "CHORE-20261109-G5",
+   "task_id": "CHORE-20261110-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "READ-20261109-G5",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
-   "group": "study"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-09",
+   "task_id": "META-REGISTER-2026-11-10",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261109-B407025190B9",
-   "title": "校本35页",
-   "subject": "数学",
+   "task_id": "REG-20261110-8CAD61E59E32",
+   "title": "校本26页",
+   "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261109-24EF90F1488E",
+   "task_id": "REG-20261110-4C850967ED1E",
    "title": "口语易",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261109-5C93BD6EF61B",
-   "title": "校本15课",
-   "subject": "语文",
+   "task_id": "REG-20261110-E353A0294FEC",
+   "title": "练习本抄M4单词",
+   "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261109-145E92A2D872",
-   "title": "预习70页",
+   "task_id": "REG-20261110-482C575680D7",
+   "title": "校本36页",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261110-62E4D60B7F99",
+   "title": "预习72-74页",
    "subject": "语文",
    "source": "register_book",
    "group": "study"

@@ -1,67 +1,46 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "CHORE-20261109-G6",
+   "task_id": "CHORE-20261110-G6",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "META-REGISTER-2026-11-09",
+   "task_id": "META-REGISTER-2026-11-10",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "MANUAL-20261109-001",
-   "title": "英语对话第2期",
+   "task_id": "REG-20261110-F12954A32A2A",
+   "title": "抄U4已学单词（invention 至 bird feeder）英文和中文各4次，背10次",
    "subject": "英语",
-   "source": "manual",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261109-5F2741FAB16B",
-   "title": "小练笔：老师点名提问时的忐忑不安心情",
-   "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261109-7CCE8134078F",
-   "title": "预习14课，写反馈单",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261109-2F6F7A81C407",
-   "title": "读课外书，记录①",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261109-EFB50F6738B5",
-   "title": "读背概念29~31",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261109-A75BD9750821",
-   "title": "校本P35",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261109-8CD81F30BBA1",
-   "title": "预习P40的中文，跟读小管家",
+   "task_id": "REG-20261110-B3165EF91D51",
+   "title": "跟小管家读U4课文",
    "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261110-A3AAF0E55125",
+   "title": "读作文10分钟，记录①",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261110-4E3E9E63D385",
+   "title": "读背32、33",
+   "subject": "数学",
    "source": "register_book",
    "group": "study"
   }

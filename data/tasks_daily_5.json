@@ -1,48 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "grade": "五年级",
-  "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-11T00:12:22+08:00",
+  "generated_at": "2026-11-11T00:19:37+08:00",
+  "updated_at": "2026-11-11T00:19:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-10T23:10:45+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-10T04:29:31+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-10T16:55:55+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261110-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "20:44 拖地",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-10T17:30:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-10T00:18:30+08:00",
-      "updated_at": "2026-11-11T00:12:22+08:00",
-      "completed_at": "2026-11-10T21:25:29+08:00",
-      "evidence": "家务判定通过——拖地；证据：看板家务上传批次 b179431462158621cc9d92bce8fa75（approved）；回写 chore_task_writeback。"
-    },
     {
       "task_id": "READ-20261110-G5",
       "source": "reading_daily",
@@ -59,136 +38,11 @@
       "reading_wpm": null,
       "reading_pass": false,
       "created_at": "2026-11-10T00:18:43+08:00",
-      "updated_at": "2026-11-10T20:45:00+08:00",
-      "corr_round": 1
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-10",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-10T03:59:48+08:00",
-      "updated_at": "2026-11-10T19:47:38+08:00",
-      "completed_at": "2026-11-10T19:47:38+08:00",
-      "orig_photos": [
-        "c8f2024701b63f99.jpg",
-        "0f083f5241422ecf.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261110-8CAD61E59E32",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "校本26页",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①校本26页；②口语易；③练习本抄M4单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T22:20:22+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-10T22:20:22+08:00",
-      "orig_photos": [
-        "2ea846cf4ee816de.jpg",
-        "1d10db1033ccfdc5.jpg",
-        "453b526399c9bde6.jpg",
-        "29723de450bffa28.jpg",
-        "45235009cc096a48.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261110-4C850967ED1E",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①校本26页；②口语易；③练习本抄M4单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T20:16:25+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "pending_note": "11月10日口语易反馈",
-      "orig_photos": [
-        "045f2e662507f6a8.jpg"
-      ],
-      "completed_at": "2026-11-10T20:16:25+08:00"
-    },
-    {
-      "task_id": "REG-20261110-E353A0294FEC",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "练习本抄M4单词",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①校本26页；②口语易；③练习本抄M4单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T22:19:05+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-10T22:19:05+08:00",
-      "orig_photos": [
-        "c17756cbc4be4b7c.jpg",
-        "676c07d47fbb28e6.jpg",
-        "c24215b5a6239a3f.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261110-482C575680D7",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本36页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①校本36页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T21:19:50+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-10T21:19:50+08:00",
-      "status_source": "bank_writeback",
-      "orig_photos": [
-        "53cd1b74a7a08176.jpg",
-        "eb485490720b2c66.jpg"
-      ]
+      "updated_at": "2026-11-11T00:19:37+08:00",
+      "corr_round": 1,
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261110-C597E815C13C",
@@ -206,7 +60,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T22:46:17+08:00",
+      "updated_at": "2026-11-11T00:19:37+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "status_source": "closeout-partial-fix",
@@ -216,7 +70,10 @@
         "4da2e806af0b0c9a.jpg",
         "458d5a20489b4202.jpg"
       ],
-      "revoke_reason": "17课仍未交，部分提交；收口包按待改正清零误判done，按完成口径应为进行中"
+      "revoke_reason": "17课仍未交，部分提交；收口包按待改正清零误判done，按完成口径应为进行中",
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261110-32E6705083B0",
@@ -234,49 +91,23 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T20:50:13+08:00",
+      "updated_at": "2026-11-11T00:19:37+08:00",
       "task_type": "read",
       "type_source": "regex_read",
       "corrections": [],
       "pending_corrections": 0,
-      "pending_note": "11月10日看作文71页朗读反馈（3处要改，需重读）"
-    },
-    {
-      "task_id": "REG-20261110-62E4D60B7F99",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习72-74页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本16.17课；②看作文71[涂黑内容不可读]页；③预习72-74页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-10T20:41:41+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "pending_note": "11月10日语文预习72-74页朗读反馈（达标）",
-      "completed_at": "2026-11-10T20:41:41+08:00",
-      "orig_photos": [
-        "fee788fd41a563d8.jpg",
-        "8055b518d9033f47.jpg",
-        "4cb095d0eb7b7eb1.jpg"
-      ]
+      "pending_note": "11月10日看作文71页朗读反馈（3处要改，需重读）",
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 10,
+    "total": 3,
     "pending": 0,
     "in_progress": 3,
-    "done": 7,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-10T22:00:00+08:00"
+  "deadline_today": null
 }

@@ -1,122 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "grade": "六年级",
-  "generated_at": "2026-11-10T00:18:19+08:00",
-  "updated_at": "2026-11-11T00:12:22+08:00",
+  "generated_at": "2026-11-11T00:19:38+08:00",
+  "updated_at": "2026-11-11T00:19:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-10T23:10:45+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-10T04:29:31+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-10T16:55:55+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261110-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-10T17:30:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-10T00:18:30+08:00",
-      "updated_at": "2026-11-11T00:12:22+08:00",
-      "completed_at": "2026-11-11T00:12:22+08:00",
-      "evidence": "家务判定通过——洗鞋、跑腿买东西；证据：家务定案 家务定案/家务定案_2026-11-10.json（items_done）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-10",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-10T03:59:49+08:00",
-      "updated_at": "2026-11-10T19:25:23+08:00",
-      "completed_at": "2026-11-10T19:25:23+08:00",
-      "orig_photos": [
-        "6a78b0d9a358f763.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261110-F12954A32A2A",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄U4已学单词（invention 至 bird feeder）英文和中文各4次，背10次",
-      "detail": "背诵已交：录音21.23秒，11词全读到，确认错漏0处，背诵达标。抄写待补：英文＋中文各4次的抄写本照片未交（同批两张照片为课本原页），补拍清楚的抄写本照片后结案并补结达标+3。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U4已学单词（invention 至 bird feeder）英文和中文各4次，背10次；②跟小管家读U4课文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T21:45:01+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-10T21:45:01+08:00",
-      "orig_photos": [
-        "112e08601c002ad3.jpg",
-        "565e02e760f322cb.jpg",
-        "0221c9d34998985f.jpg",
-        "5c158a498f7e545d.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261110-B3165EF91D51",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "跟小管家读U4课文",
-      "detail": "小管家已完成：11月10日英语任务4子项全完成（词汇跟读3星、拼写100%、Read and answer 3星、In focus 3星），耗时14分钟。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄U4已学单词（invention 至 bird feeder）英文和中文各4次，背10次；②跟小管家读U4课文 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T21:56:47+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-10T21:56:47+08:00",
-      "orig_photos": [
-        "ef6946244730f553.jpg"
-      ]
-    },
     {
       "task_id": "REG-20261110-9BAB0FFDC7CD",
       "source": "register_book",
@@ -133,10 +38,13 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T22:01:08+08:00",
+      "updated_at": "2026-11-11T00:19:38+08:00",
       "task_type": "reading",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261110-5C02B63A05E1",
@@ -154,7 +62,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T21:51:21+08:00",
+      "updated_at": "2026-11-11T00:19:38+08:00",
       "corrections": [
         {
           "label": "生字14课·盏",
@@ -303,7 +211,10 @@
       ],
       "pending_corrections": 12,
       "corr_round": 1,
-      "status_source": "closeout_writeback"
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261110-40AD66BA2404",
@@ -321,9 +232,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T19:25:23+08:00",
+      "updated_at": "2026-11-11T00:19:38+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261110-CECF0A18DCBC",
@@ -341,71 +255,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T19:25:23+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261110-A3AAF0E55125",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读作文10分钟，记录①",
-      "detail": "朗读已交：录音154.45秒，全文读完，确认错漏0处，达标；摘录已抄：开头段抄写无误，日期2026年11月10日。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①写14课生字；②做14课校本；③预习15课（反馈单）；④读作文10分钟，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T21:33:08+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-10T21:33:08+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "7389104556d7b738.jpg",
-        "7e7c400992e87a31.jpg",
-        "474c4a7d1822342c.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261110-4E3E9E63D385",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背32、33",
-      "detail": "第1轮经终审改判达标2/2：32、33均读出，过渡段无编号不属于32、33计分范围，原判漏读属范围误判；达标+3已补结（台账第900行），重读要求取消，不另起第2轮。发回+5已结（台账第898行）。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背32、33；②思[一字待确认]16~24 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T23:58:46+08:00",
+      "updated_at": "2026-11-11T00:19:38+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
       "pending_corrections": 0,
-      "status_source": "dispute_ds_final",
-      "pending_note": "重读位置：过渡段“用正多边形逼近圆，计算量很大……求圆周率的方法也日新月异”读三遍；32、33全文完整重读一遍。",
-      "completed_at": "2026-11-10T23:58:46+08:00",
-      "qa": [
-        {
-          "q": "那段不是笔记，不用读",
-          "a": "你说得对，我们重新查了课本第 25 页：32 条和 33 条都有编号，中间那段“用正多边形逼近圆……”没有编号，不属于 32 条、也不属于 33 条，第一轮把它算成漏读是我们判错了。32 条和 33 条你都读出来了，难读的数字也都读对了，所以第一轮应该算达标，不用再重读那段了，达标奖励的 3 积分会补给你。\n\n另外提醒一下：你这次传的照片全黑，什么都看不见，应该是镜头被挡住了或者在太暗的地方拍的。这次改判不用这张照片，所以不用重拍；以后要拍照的话，记得在亮一点的地方拍。"
-        }
-      ]
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261110-586C3801DC77",
@@ -423,9 +280,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-10T19:25:23+08:00",
-      "updated_at": "2026-11-10T19:25:23+08:00",
+      "updated_at": "2026-11-11T00:19:38+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     },
     {
       "task_id": "READ-20261110-G6",
@@ -443,15 +303,18 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-10T19:34:22+08:00",
-      "updated_at": "2026-11-10T19:34:22+08:00"
+      "updated_at": "2026-11-11T00:19:38+08:00",
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 12,
+    "total": 6,
     "pending": 5,
     "in_progress": 1,
-    "done": 6,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-10T22:00:00+08:00"
+  "deadline_today": null
 }
