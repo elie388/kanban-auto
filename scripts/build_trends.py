@@ -7,11 +7,24 @@ weak: 每科错误次数前3知识点，带补练表单预填链接。
 
 正确率口径（DeepSeek 2026-10-20 两次裁定：调查终报 B+C+D 批准 + 紧急裁决 Q1乙/Q2乙/Q3）：
 - 已判行：是否正确 IS NOT NULL 且 状态 != '待确认'（待确认题不计分母，规则手册硬规则）。
-  分母全局单算此一定义：学科值与 overall 共用（overall = 未隔离学科已判行汇总）。
+  分母全局单算此一定义：学科值与 overall 共用（overall = 所有已判行汇总，
+  含全错组 0.0；pending／backfill 隔离组仍排除。K-M2 口径，与 main 的累加
+  逻辑一致：overall 只按 val 非 None 累加，0.0 非 None 故计入，隔离组
+  val 为 None 故排除）。
 - 回填行（来源='错题库回填'）计入分母（Q1 乙：不行级剔除，回填是错题的唯一记录）。
 - 隔离（该组输出 null）判定顺序：
   1) 裁定组级隔离清单 ADJUDICATED_ISOLATED（7 组，两次裁定确认）；
-  2) 全错组（已判>=1 且 correct=0）→ null（Q3 规则一，优先于占比规则）；
+  2) 全错组（已判>=1 且 correct=0）→ 返回 0.0（2026-11-01 家长令：全错日
+     显示 0.0 而非空格；家长定夺 A：all_wrong 优先于 pending／backfill
+     隔离判定——全错且 pending 占比>=25% 的组仍走 all_wrong，0.0 计入
+     overall，不走隔离。代码分支顺序与本条一致，见 group_stats 注释）。
+     all_wrong 是展示标记、非隔离原因：info["all_wrong"]=True、
+     info["isolated"]=False、info["reason"] 保留 "all_wrong" 仅供展示／
+     审计追溯；展示层禁止按“reason 非空=隔离”渲染，必须以
+     info["isolated"]（及 isolation_reasons 条目的 "isolated" 字段）
+     为准。isolation_reasons 里保留 all_wrong 条目备查（2026-11-01
+     定夺），但条目带 "isolated": false、"all_wrong": true，与真正
+     隔离的条目（isolated=true）在字段语义上区分。
   3) 待确认占比 >= 25% → null（Q2 乙的动态化）。占比公式（固化，审计可复现）：
      待确认占比 = 该组全部 状态='待确认' 行数 / (已判行数 + 待确认行数)。
      裁决两案代入：10-19 五语 3/7=42.9%、10-17 六英 14/24=58.3%，均触发；
@@ -118,11 +131,16 @@ def group_stats(db, date, grade, subject):
     info = {"judged": judged, "correct": correct, "pending": pending,
             "pending_share": round(pend_share, 3),
             "backfill_share": round(bf_share, 3),
-            "small_sample": False, "rules": [], "reason": None}
+            "small_sample": False, "rules": [], "reason": None,
+            # K-M2：all_wrong（展示标记）与隔离原因字段语义分离——
+            # isolated=True 仅指真正隔离（裁定隔离/pending/backfill，
+            # 输出 null）；all_wrong 组 isolated=False、输出 0.0。
+            "all_wrong": False, "isolated": False}
     key = (date, grade, subject)
     if key in ADJUDICATED_ISOLATED:
         info["rules"].append("adjudicated_" + ADJUDICATED_ISOLATED[key])
         info["reason"] = "adjudicated_group_isolation"
+        info["isolated"] = True
         return None, info
     if judged == 0:
         return None, info
@@ -137,19 +155,26 @@ def group_stats(db, date, grade, subject):
         # 2026-11-01 家长令“你定就行”定夺：全错日不再显示为空格（空格会被
         # 误读为缺数据），改为显示 0.0；all_wrong 标记保留，仍进
         # isolation_reasons 备查（属实打实的 0 分，不是缺行）。
-        # 其余隔离（裁定隔离、无已判行、待确认占比、回填占比）不动。
+        # K-M2（家长定夺 A）：本分支在 pending／backfill 隔离判定之前，
+        # 全错且 pending 占比>=25% 的组仍走 all_wrong（0.0 计入 overall），
+        # 不走隔离——分支顺序即优先级。reason 保留 "all_wrong" 仅供展示／
+        # 审计，字段语义上不是隔离原因（isolated=False、all_wrong=True）。
         info["rules"].append("all_wrong")
         info["reason"] = "all_wrong"
+        info["all_wrong"] = True
+        info["isolated"] = False
         return 0.0, info
     if pend_share >= PENDING_RATIO_THRESHOLD:
         info["rules"].append(f"pending_ratio={pend_share:.2f}")
         info["reason"] = info["rules"][-1]
+        info["isolated"] = True
         return None, info
     if bf_share >= BACKFILL_RATIO_THRESHOLD:
         info["rules"].append(f"backfill_ratio={bf_share:.2f}")
         # K-M1：回填分支 reason 取 rules[-1]（与待确认分支一致）。
         # 原取 rules[0]，小样本时 rules[0] 是 small_sample，reason 被误标。
         info["reason"] = info["rules"][-1]
+        info["isolated"] = True
         return None, info
     return round(correct / judged * 100, 1), info
 
@@ -264,7 +289,18 @@ def main():
         return
     today = datetime.now(BEIJING).date()
     dates = [(today - timedelta(days=DAYS - 1 - i)).isoformat() for i in range(DAYS)]
-    db = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
+    # K-M3（2026-11-10，DSFINAL-2026-11-08-AUDIT-1C-001 附条件闭环）：
+    # 定稿行为：记日志并退出码非 0（fail-closed，不产出可能被下游误当
+    # 真实数据的空趋势）。捕获范围只限 connect/DB 缺失类 OperationalError，
+    # 其他异常不吞。日志含 DB 路径与时间。回滚：恢复改前备份
+    # hidden_files/work/audit23_s_k_g_backup_20261110/build_trends.py.bak。
+    try:
+        db = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
+    except sqlite3.OperationalError as e:
+        print("[build_trends][FAIL] DB 缺失/无法打开：%s（%s）@ %s，"
+              "不生成趋势，退出码 1"
+              % (DB_PATH, e, datetime.now(BEIJING).isoformat(timespec="seconds")))
+        return 1
     data = {"updated_at": datetime.now(BEIJING).isoformat(timespec="seconds"),
             "practice_submit_url": SUBMIT_URL,
             "dates": dates, "grades": {},
@@ -281,6 +317,10 @@ def main():
                 # fix2：复核队列此前只收 reason 非空的隔离组——小样本
                 # 非隔离组（有分数、无 reason）永不进队。现 small_sample
                 # 亦进队（small_sample_flag=True，reason 可为 None）。
+                # K-M2：isolation_reasons 条目带 isolated/all_wrong 字段——
+                # all_wrong 组仍进本表备查（2026-11-01 定夺），但
+                # isolated=false、all_wrong=true，与真正隔离组区分；
+                # 展示层须以 isolated 为准，不得按 reason 非空=隔离渲染。
                 if info["reason"] is not None or info["small_sample"]:
                     if info["reason"] is not None:
                         data["isolation_reasons"].setdefault(g, {}).setdefault(s, {})[d] = {
@@ -289,7 +329,9 @@ def main():
                             "pending": info["pending"],
                             "pending_share": info["pending_share"],
                             "backfill_share": info["backfill_share"],
-                            "small_sample": info["small_sample"]}
+                            "small_sample": info["small_sample"],
+                            "isolated": info["isolated"],
+                            "all_wrong": info["all_wrong"]}
                     if info["judged"] < SMALL_SAMPLE_JUDGED:
                         data["manual_review_queue"].append({
                             "date": d, "grade": g, "subject": s,
@@ -309,6 +351,9 @@ def main():
             npts_s = sum(1 for v in series if v is not None)
             gdata["subjects"][s] = {"days": series, "weak": weak,
                                     "empty": npts_s == 0, "sparse": npts_s < 2}
+        # K-M2 overall 口径（与模块 docstring 一致）：所有已判行汇总——
+        # val 非 None 即计入已判行数与正确数，含全错组 0.0；pending／
+        # backfill 隔离组 val 为 None、排除。0.0 显示不变。
         overall = []
         for d in dates:
             tot_j = tot_c = 0
@@ -347,4 +392,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # K-M3：main() 返回非 0（DB 缺失 fail-closed）时退出码须为非 0，
+    # 成功/静默窗路径返回 None 仍为 0。
+    raise SystemExit(main() or 0)

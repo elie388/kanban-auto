@@ -6,7 +6,8 @@
 silent/wake。状态（连续失败计数/已报标记/已报 event_ts）存 logs/sync_duty_state.json。
 
 报告规则复刻来源：
-- kanban-stats-sync：exit0 静默 / exit2 立即报 / exit3 连续2次报一次；
+- kanban-stats-sync：exit0 静默 / exit2 立即报 / exit3 连续2次报一次 /
+  exit4（B2-186 commit guard 跳过提交，scripts/ 脏）连续3次报一次；
   同步对账：sync_state.last_event_ts 存在且 last_build_ts<last_event_ts 且滞后>600s 报一次，
   以 last_event_ts 去重。
   2026-10-29 修复：watchd 软静默窗 [00:00,06:00) 内事件本就不触发构建，
@@ -67,9 +68,11 @@ SYNC_STATE_PATH = os.path.join(LOGS, "sync_state.json")
 
 MSG_STATS_2 = "看板数据生成熔断（台账解析失败或模板异常变更），线上数据停留在上次成功值"
 MSG_STATS_3 = "看板数据推送连续失败（本地文件已保留，下次自动重试），需检查网络/PAT"
+MSG_STATS_4 = "看板数据生成连续跳过提交（scripts/ 有未提交改动），本地文件已保留，需人工检查"
 MSG_STATS_STALE = "看板同步对账异常：watchd 有未构建事件超10分钟"
 MSG_SEC_2 = "看板栏目数据解析失败，线上数据将停留在上次成功值，需人工检查规则手册或数据源格式"
 MSG_SEC_3 = "看板栏目数据 JSON 推送失败，本地文件已保留，需检查网络/PAT"
+MSG_SEC_5 = "看板栏目同步连续跳过提交（scripts/ 有未提交改动或 git 状态检查失败），本地文件已保留，需人工检查"
 
 
 def decide_stats(st, code, sync, now):
@@ -86,7 +89,12 @@ def decide_stats(st, code, sync, now):
     elif code == 0:
         st["stats3"] = 0
         st["stats3_reported"] = False
-    elif code is not None:
+    # 退出码 4=commit guard 跳过提交（B2-186：scripts/ 脏时跳过本次提交），
+    # 与 sync_sections 退出码 5 同口径：连续 3 次报一次，单次跳过静默；
+    # 不走未知码立即上报（否则每次跳过都吵醒家长）。
+    ev += _streak(st, "stats4", "stats4_reported", code, 4, 3,
+                  "build_stats", "exit4x3", MSG_STATS_4)
+    if code is not None and code not in (0, 2, 3, 4):
         ev.append({"script": "build_stats", "kind": "exit_unknown_%s" % code,
                    "msg": "看板数据生成脚本未知退出码 %s，需人工检查" % code})
     if sync and sync.get("last_event_ts"):
@@ -122,7 +130,12 @@ def decide_sections(st, code):
                   "sync_sections", "exit2x3", MSG_SEC_2)
     ev += _streak(st, "sec3", "sec3_reported", code, 3, 3,
                   "sync_sections", "exit3x3", MSG_SEC_3)
-    if code is not None and code not in (0, 2, 3, 4):
+    # H2（2026-11-10 4区审计）：退出码 5=commit guard 跳过提交，与 2/3
+    # 同款连续 3 次报一次；单次跳过静默（部署期 scripts/ 脏是常见暂态），
+    # 不走未知码立即上报（否则每次跳过都吵醒家长）。
+    ev += _streak(st, "sec5", "sec5_reported", code, 5, 3,
+                  "sync_sections", "exit5x3", MSG_SEC_5)
+    if code is not None and code not in (0, 2, 3, 4, 5):
         ev.append({"script": "sync_sections", "kind": "exit_unknown_%s" % code,
                    "msg": "看板栏目同步脚本未知退出码 %s，需人工检查" % code})
     return ev
@@ -293,6 +306,12 @@ def _scenarios():
         ("stats_exit3_single_silent", [(3, 0, None, now)], [[]]),
         ("stats_exit3_twice_report", [(3, 0, None, now), (3, 0, None, now)],
          [[], ["exit3x2"]]),
+        ("stats_exit4_single_silent", [(4, 0, None, now)], [[]]),
+        ("stats_exit4_x3", [(4, 0, None, now), (4, 0, None, now), (4, 0, None, now)],
+         [[], [], ["exit4x3"]]),
+        ("stats_exit4_streak_broken_by_0",
+         [(4, 0, None, now), (4, 0, None, now), (0, 0, None, now), (4, 0, None, now)],
+         [[], [], [], []]),
         ("stats_exit3_thrice_no_repeat",
          [(3, 0, None, now), (3, 0, None, now), (3, 0, None, now)],
          [[], ["exit3x2"], []]),
@@ -315,6 +334,12 @@ def _scenarios():
         ("sections_exit3_x3", [(0, 3, None, now), (0, 3, None, now), (0, 3, None, now)],
          [[], [], ["exit3x3"]]),
         ("sections_exit4_silent", [(0, 4, None, now)], [[]]),
+        ("sections_exit5_single_silent", [(0, 5, None, now)], [[]]),
+        ("sections_exit5_x3", [(0, 5, None, now), (0, 5, None, now), (0, 5, None, now)],
+         [[], [], ["exit5x3"]]),
+        ("sections_exit5_streak_broken_by_0",
+         [(0, 5, None, now), (0, 5, None, now), (0, 0, None, now), (0, 5, None, now)],
+         [[], [], [], []]),
         ("sections_streak_broken_by_0",
          [(0, 2, None, now), (0, 2, None, now), (0, 0, None, now), (0, 2, None, now)],
          [[], [], [], []]),

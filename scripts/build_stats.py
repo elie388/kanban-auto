@@ -1010,13 +1010,18 @@ def _post_balances_to_worker(balances):
         try:
             with os.fdopen(fd, "w", encoding="utf-8") as f:
                 f.write(json.dumps(body))
+            # H3（2026-11-10 4区审计，仿 scripts/kb_dualwrite.py S-M1）：
+            # 密钥经 stdin 传给 curl（--header "@-"），不进进程 argv、
+            # 不进 shell history、不落盘。--data 仍走 @tmp 文件，与 stdin
+            # 传 header 无冲突（body 不走 stdin）。
             cmd = ["curl", "-s", "--max-time", "30", "-w", "\n%{http_code}", "-X", "POST",
                    "-H", "User-Agent: " + _BALANCES_UA,
                    "-H", "Content-Type: application/json",
-                   "-H", "X-Ingest-Key: " + key,
+                   "--header", "@-",
                    "--data", "@" + tmp,
                    _BALANCES_WORKER_BASE + "/balances"]
-            r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+            r = subprocess.run(cmd, input="X-Ingest-Key: " + key + "\n",
+                               capture_output=True, text=True, timeout=60)
             out = r.stdout or ""
             code = 0
             if "\n" in out:

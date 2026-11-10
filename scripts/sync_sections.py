@@ -6,6 +6,8 @@ KB-SECTIONS-AUTO-2026-10-19，DeepSeek 条文级方案落地。
 data/shop.json、data/rules.json；不碰积分台账内容、point_ledger、broker。
 
 退出码：0=无变更或推送成功 / 2=解析失败（熔断，未推送）/ 3=推送失败 / 4=锁冲突
+  / 5=commit guard 跳过提交（H2：本地文件已保留，待下轮顺带提交；原 return 0，
+  cron 无法区分跳过与成功。sync_duty 对 5 按 2/3 同款连续 3 次报一次）
 """
 import fcntl
 import hashlib
@@ -1228,6 +1230,70 @@ def run_git(*args):
             stderr="git 超时（60s）: %s" % " ".join(args))
 
 
+# H2（2026-11-10 4区审计）：本轮写盘的 5 个栏目文件（与 main() 的 docs 键一致）。
+_SECTION_FILES = ["data/badges.json", "data/badge_goals.json", "data/shop.json",
+                  "data/rules.json", "data/redeem_log.json"]
+
+
+def _stranded_section_files():
+    """查 5 个栏目文件在 git 工作区的未提交改动（上轮写盘后因 commit guard
+    跳过而滞留者）。git status 失败时 fail-safe 返回 []，下轮再查。
+    返回 docs 键同款相对路径列表。"""
+    r = run_git("status", "--porcelain", "--", *_SECTION_FILES)
+    if r.returncode != 0:
+        log("stranded_check_fail", "git status 失败 rc=%d，滞留检查跳过本轮" % r.returncode)
+        return []
+    out = []
+    for _line in (r.stdout or "").splitlines():
+        _parts = _line.strip().split(None, 1)
+        if len(_parts) != 2:
+            continue
+        _p = _parts[1].strip().strip('"')
+        if _p in _SECTION_FILES and _p not in out:
+            out.append(_p)
+    return out
+
+
+def _push_stranded_commits(lock_timeout=60):
+    """H2 附条件 (a)（2026-11-10）：无语义变化时推走滞留未推提交（上次
+    push 失败遗留），仿 build_stats.py B2-183 的 rev-list 检查，但 push
+    本身纳入共享 git_push.lock，与本文件下方正常提交路径同纪律。
+
+    注意：build_stats 的 B2-183 是裸 push——其 git_push.lock 只覆盖
+    _sync_once 的 fetch/校验段，写盘+commit/push 段并不持锁。本处不仿
+    其裸推，改持锁；锁忙返 4（与正常路径锁忙口径一致，sync_duty 视 4
+    为中性）；rev-list 失败/无滞留提交返 None（调用方返 0）；push 成功
+    返 0、失败返 3（下轮重试）。commit guard 在此不适用：push 只推已
+    有提交、不产生新提交，不会把 scripts/ 脏改动卷入。
+    """
+    _ahead = run_git("rev-list", "--count", "HEAD", "--not", "--remotes")
+    try:
+        _n_ahead = int((_ahead.stdout or "0").strip())
+    except Exception:
+        _n_ahead = 0
+    if _ahead.returncode != 0 or _n_ahead <= 0:
+        return None
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import repo_lock as _repo_lock
+    except Exception as _rl_e:
+        log("repo_lock_import_fail", "repo_lock 导入失败，滞留 push 跳过本次：%s" % _rl_e)
+        return 4
+    _rl = _repo_lock.repo_lock(timeout=lock_timeout)
+    if not _rl.__enter__():
+        log("repo_lock_busy", "git_push.lock 未获得，滞留 push 跳过本次")
+        return 4
+    try:
+        _pp = run_git("push")
+    finally:
+        _rl.__exit__()
+    if _pp.returncode == 0:
+        log("stranded_push", "无语义变化，但推走 %d 个滞留提交" % _n_ahead)
+        return 0
+    log("push_failed", "滞留提交 push 失败 rc=%s（下次重试）" % _pp.returncode)
+    return 3
+
+
 def _ledger_fingerprint():
     """台账指纹（读入顺序保护，DeepSeek 终审 2026-10-23，发现2）：
     生成期间台账被追加（补记与同步同刻竞态，如 09:58 撞点）时指纹
@@ -1445,7 +1511,22 @@ def main():
 
     if not changed_files:
         log("no_change", "四文件均无变化")
-        return 0
+        # H2（2026-11-10 4区审计）：上轮写盘后因 commit guard 跳过而滞留的
+        # 未提交栏目文件，本轮无语义变化时顺带提交，不再永久搁置。
+        # 有滞留文件 → changed_files 置为滞留文件，走下方 commit guard +
+        # repo_lock + add/commit/push 既有流程（guard 仍拦 scripts/ 脏）。
+        _stranded = _stranded_section_files()
+        if _stranded:
+            changed_files = _stranded
+            log("stranded_commit", "发现滞留未提交文件，顺带提交：%s" % ",".join(_stranded))
+        else:
+            # 无滞留文件时推走滞留未推提交（上次 push 失败遗留）；
+            # _push_stranded_commits 内持 git_push.lock 推（H2 附条件 a，
+            # 不仿 build_stats B2-183 的裸推）。返 None=无滞留提交，返 0。
+            _rc = _push_stranded_commits()
+            if _rc is not None:
+                return _rc
+            return 0
 
     # Q2（DeepSeek终审 2026-10-20《自动同步cron提交范围限制》）：
     # 提交前检查 scripts/ 是否有未提交改动；有则本次不提交 + 告警日志（fail-safe）。
@@ -1454,7 +1535,7 @@ def main():
     _dirty = run_git("status", "--porcelain", "--", "scripts/")
     if _dirty.returncode != 0:
         log("commit_guard_skip", "git status 失败 rc=%d，按脏处理跳过本次提交" % _dirty.returncode)
-        return 0
+        return 5  # H2：guard 跳过返 5（原 0），cron 可区分跳过与成功
     _dirty_out = (_dirty.stdout or "").strip()
     if _dirty_out:
         _dirty_files = "; ".join(l[:80] for l in _dirty_out.splitlines()[:10])
@@ -1467,7 +1548,7 @@ def main():
         except Exception as _ge:
             # B2-091：副本写失败记主日志，不再静默丢弃。
             log("commit_guard_copy_fail", "cron_commit_guard.log 副本写失败：%s" % _ge)
-        return 0
+        return 5  # H2：guard 跳过返 5（原 0），cron 可区分跳过与成功
 
     # c项串行化（2026-10-26）：git 区段持共享 git_push.lock（与 do_push/build_stats/watchd 同一把），
     # 60s 未获得则跳过本次推送（fail-safe，本地文件保留待下次重试）；/tmp 本锁仍作本进程单例。

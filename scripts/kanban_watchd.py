@@ -48,6 +48,8 @@ RULEBOOK = Path(os.environ.get("RULEBOOK_PATH", str(REPO_DIR.parent / "规则手
 LOGS_DIR = REPO_DIR / "logs"
 PID_FILE = LOGS_DIR / "kanban_watchd.pid"
 LOCK_FILE = Path("/tmp/kanban_watchd.lock")
+_SINGLETON_LOCK_FP = None  # M1（2026-11-10 4区审计）：acquire_singleton 的 flock
+# 句柄须由模块级变量持有；原局部变量在函数返回即 GC 关闭 fd、释放 flock，单例失效。
 LOG_FILE = LOGS_DIR / "kanban_watchd.log"
 RATE_LOG = LOGS_DIR / "push_rate.log"
 STATE_FILE = LOGS_DIR / "sync_state.json"  # F3（2026-10-20 审计修复3）：事件/构建对账与已消费指纹持久化
@@ -383,12 +385,21 @@ def _pid_stale_takeover(stored_boot_id, current_boot_id=BOOT_ID):
 
 
 def acquire_singleton():
-    """PID 文件 + flock 单例。返回 (ok, reason)。"""
+    """PID 文件 + flock 单例。返回 (ok, reason)。
+    M1：flock 句柄由模块级 _SINGLETON_LOCK_FP 持有，进程存续期间一直
+    锁定；失败路径关闭本次打开的 fd（不留悬空句柄）。"""
+    global _SINGLETON_LOCK_FP
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    lock_fp = None
     try:
         lock_fp = open(LOCK_FILE, "w")
         fcntl.flock(lock_fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except OSError:
+        if lock_fp is not None:
+            try:
+                lock_fp.close()
+            except Exception:
+                pass
         return False, "another instance holds the lock"
     if PID_FILE.exists():
         try:
@@ -405,6 +416,11 @@ def acquire_singleton():
                 pid = None
             if pid is not None:
                 os.kill(pid, 0)
+                # 未接管即退出：释放本次 flock（全局句柄尚未接管，无影响）。
+                try:
+                    lock_fp.close()
+                except Exception:
+                    pass
                 return False, "pid file alive (pid=%d)" % pid
         except (ProcessLookupError, PermissionError, OSError):
             pass
@@ -430,6 +446,8 @@ def acquire_singleton():
     atexit.register(_cleanup)
     atexit.register(_record_exit)
     _install_signal_handlers()
+    # M1：句柄交模块级变量持有，函数返回后 fd 不关闭、flock 不释放。
+    _SINGLETON_LOCK_FP = lock_fp
     return True, ""
 
 
