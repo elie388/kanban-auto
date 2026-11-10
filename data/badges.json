@@ -23,6 +23,13 @@
     "icon": "💰",
     "date": "2026-11-09",
     "count": 1
+   },
+   {
+    "key": "jiawujielishou",
+    "name": "家务接力手",
+    "icon": "🔄",
+    "date": "2026-11-10",
+    "count": 1
    }
   ],
   "g6": [
@@ -41,6 +48,20 @@
     "count": 1
    },
    {
+    "key": "jiawujielishou",
+    "name": "家务接力手",
+    "icon": "🔄",
+    "date": "2026-11-10",
+    "count": 1
+   },
+   {
+    "key": "zonghezhixing",
+    "name": "综合之星",
+    "icon": "🏅",
+    "date": "2026-11-10",
+    "count": 1
+   },
+   {
     "key": "quanduizhixing",
     "name": "全对之星",
     "icon": "✅",
@@ -49,5 +70,5 @@
    }
   ]
  },
- "generated_at": "2026-11-10T09:01:44.502095+08:00"
+ "generated_at": "2026-11-10T20:43:21.368493+08:00"
 }

@@ -189,7 +189,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 100,
+     "current": 113,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -204,7 +204,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 3,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -296,10 +296,10 @@
    },
    {
     "key": "jiawujielishou",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 2,
+    "obtained": true,
+    "date": "2026-11-10",
+    "count": 1,
+    "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 25,
+     "current": 35,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -492,14 +492,14 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 2,
+    "obtained": true,
+    "date": "2026-11-10",
+    "count": 1,
+    "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 4,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -591,10 +591,10 @@
    },
    {
     "key": "jiawujielishou",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 2,
+    "obtained": true,
+    "date": "2026-11-10",
+    "count": 1,
+    "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W46",
- "generated_at": "2026-11-10T20:38:17.773722+08:00"
+ "generated_at": "2026-11-10T20:43:21.368493+08:00"
 }
