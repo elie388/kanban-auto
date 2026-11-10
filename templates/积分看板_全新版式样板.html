@@ -489,11 +489,11 @@
   #fbViewer{position:fixed; inset:0; z-index:9990; background:rgba(12,14,18,.92); display:none; flex-direction:column;}
   #fbViewer.open{display:flex;}
   #fbViewer .fv-bar{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background:#F5F3EB;}
-  #fbViewer .fv-title{font-size:16px; font-weight:700; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #fbViewer .fv-title{font-size:20px; font-weight:700; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   #fbViewer .fv-close{background:#fff; border:1px solid #ccc; color:#333; border-radius:999px; min-width:44px; min-height:44px; font-size:16px; cursor:pointer; flex:none;}
   #fbViewer .fv-stage{flex:1; overflow:auto; padding:16px; background:#F5F3EB;}
-  #fbViewer .fv-body{max-width:720px; margin:0 auto; background:#FFFDF8; border:1px solid #E5E7EB; border-radius:12px; padding:16px; line-height:1.7; font-size:15px; color:#333;}
-  #fbViewer .fv-err{color:#B3261E; font-size:15px; padding:20px; text-align:center; line-height:1.7;}
+  #fbViewer .fv-body{max-width:720px; margin:0 auto; background:#FFFDF8; border:1px solid #E5E7EB; border-radius:12px; padding:16px; line-height:1.7; font-size:20px; color:#333;} /* 2026-11-10 家长令：反馈查看器字体放大到 20px（原 15px） */
+  #fbViewer .fv-err{color:#B3261E; font-size:20px; padding:20px; text-align:center; line-height:1.7;}
   .tfile{display:inline-flex; align-items:center; min-height:42px; padding:8px 14px; border-radius:10px; background:#F3EFE3; border:1.5px solid #D8C9A8; color:#5A5145; font-size:14px; font-weight:600; text-decoration:none;}
   .tfile:active{background:#EAE2CC;}
   .tfile.tprint1{flex:1; justify-content:center; min-height:48px; font-size:15px; background:#2F7D4F; border-color:#2F7D4F; color:#fff;}
@@ -5906,7 +5906,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261110-fbviewer-fix';
+  var KB_BUILD = '20261110-fbfont20';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
