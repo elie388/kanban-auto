@@ -379,6 +379,7 @@
     white-space:nowrap; min-height:36px;
     background:#FFE9E0; color:#C2410C;
     -webkit-tap-highlight-color:transparent;
+    appearance:none; -webkit-appearance:none;
   }
   .task .corr-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
   .task.open-task .corr-caret{transform:rotate(90deg);}
@@ -447,7 +448,7 @@
     font-size:12.5px; color:#6B7280; white-space:nowrap; flex:0 0 auto; align-self:center;
   }
   .task.correcting .task-toggle{color:#C77700; font-weight:700;}
-  span.corr-badge{cursor:default;}
+  button.corr-badge{cursor:pointer;}
   .corr-item{font-size:19.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
   .corr-item:last-child{border-bottom:none;}
   .corr-item .corr-no{font-weight:700; color:#C2410C;}
@@ -1712,6 +1713,23 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     /* 展开后只点标题区才收起，点明细正文不收 */
     if(e.target.closest('.task-info')) toggleTaskCard(card);
   });
+  /* 留言回复徽标可点（2026-11-11 家长报“点不开”）：徽标原是 span、无点击处理，点它没反应。改 button 后点它即展开卡并滚到留言回复处；卡已展开时直接滚到回复处。 */
+  document.addEventListener('click', function(e){
+    var bd = e.target && e.target.closest ? e.target.closest('.corr-badge') : null;
+    if(!bd) return;
+    var card = bd.closest ? bd.closest('.task') : null;
+    if(!card) return;
+    var goQa = function(){
+      var qa = card.querySelector('.corr-qa') || card.querySelector('.corr-panel');
+      if(qa && qa.scrollIntoView) qa.scrollIntoView({behavior:'smooth', block:'start'});
+    };
+    if(!card.classList.contains('open-task')){
+      toggleTaskCard(card);
+      setTimeout(goQa, 120);
+    } else {
+      goQa();
+    }
+  });
   /* 待改正示范录音播放（2026-10-22）：委托切换，同时只播一个，播完复位 */
   function corrSetBtn(pb, playing){
     if(!pb) return;
@@ -1994,7 +2012,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           var badgeTxt = (pendN > 0)
             ? ('待改正 ' + pendN + ' 题' + roundTxt + (qaList.length ? ' · \uD83D\uDCAC ' + qaList.length : ''))
             : ('\uD83D\uDCAC 留言回复 ' + qaList.length);
-          corrBadge = '<span class="corr-badge">' + badgeTxt + '</span>';
+          corrBadge = '<button type="button" class="corr-badge">' + badgeTxt + '</button>';
           corrPanel = '<div class="corr-panel">' + items + '</div>';
         }
         /* 任务级待确认说明（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-2）：展开区顶部、明细区门条件之外，pending_note非空即渲染；收起态由CSS隐藏全文。 */
@@ -5936,7 +5954,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261111-regfb2';
+  var KB_BUILD = '20261111-qabadge';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
