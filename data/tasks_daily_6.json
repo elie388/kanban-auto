@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "六年级",
   "generated_at": "2026-11-11T00:19:38+08:00",
-  "updated_at": "2026-11-11T21:22:47+08:00",
+  "updated_at": "2026-11-11T21:40:43+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -204,9 +204,9 @@
       "source": "register_book",
       "subject": "数学",
       "title": "读背概念55",
-      "detail": "怎么交：\n照片加同一批朗读录音，一起交。\n\n【重读：第1轮，1处读错】\n重读概念55《兴趣小组有女生3人，男生4人》。\n“女生和男生的比是”这一句，比的两个数说反了。\n翻到第58页第4题，对照你写的那行答案，慢慢读这一句两遍，\n看清楚两个数哪个在前、哪个在后，再把概念55完整读一遍。\n照片加录音同一批交。\n\n1处读错：\n• 女生和男生的比（比的两个数说反了）",
+      "detail": "已完成：第2轮重读达标（比的顺序读对了，3比4）。",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
@@ -215,21 +215,23 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T21:22:47.703935+08:00",
+      "updated_at": "2026-11-11T21:40:43+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
-      "corr_round": 1,
-      "reading_pass": false,
-      "reading_duration_sec": 14.08
+      "corr_round": 2,
+      "reading_pass": true,
+      "reading_duration_sec": 12.35,
+      "completed_at": "2026-11-11T21:40:43+08:00",
+      "status_source": "closeout_reading_subagent"
     },
     {
       "task_id": "REG-20261111-19FB638D045F",
       "source": "register_book",
       "subject": "数学",
-      "title": "校[一字待确认]本P27、28",
-      "detail": "原状态：待完成。【字迹不清请孩子确认】数学第2条“校[一字待确认]本P27、28”中“校”和“本”之间的字看不清，请问是下面哪一个？①校本（“校”和“本”之间没有别的字）②校足本③校尽本④其他（请留言告诉我）。确认后按你说的改标题。",
+      "title": "校本P27、28",
+      "detail": "已确认：校本P27、28（孩子留言：中间没有字）。28页3题老师允许不写，反馈中有引导，孩子想学可自愿尝试。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
@@ -238,14 +240,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00"
+      "updated_at": "2026-11-11T21:39:59+08:00",
+      "pending_corrections": 0,
+      "completed_at": "2026-11-11T21:39:59+08:00",
+      "status_source": "closeout_manual_subagent"
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 8,
-    "in_progress": 1,
-    "done": 3,
+    "total": 11,
+    "pending": 6,
+    "in_progress": 0,
+    "done": 5,
     "pending_review": 0
   },
   "deadline_today": null
