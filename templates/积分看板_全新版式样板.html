@@ -1867,9 +1867,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       visible.forEach(function(t){
         var sm = STATUS_MAP[t.status] || STATUS_MAP.pending;
         var badgeText = sm.badge, miniPill = '';
-        /* 待确认徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3；2026-10-28家长令杜绝空待改正：in_progress且待改正数为0一律显待确认，不再要求pending_note；仅显示层，底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响）。 */
+        /* 等补交徽章映射（2026-10-25，DSFINAL-KB-PENDINGNOTE-20261024-01 C-3；2026-10-28家长令杜绝空待改正：in_progress且待改正数为0一律显等补交，不再要求pending_note；2026-11-11家长点选：标签由“待确认”改“等补交”；仅显示层，底层status/pending/corrections不动；家务卡后续家务分支覆盖，不受影响）。 */
         if(t.status === 'in_progress' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) === 0){
-          badgeText = '🔄 待确认';
+          badgeText = '🔄 等补交';
         }
         /* 已批改待订正（2026-11-04 根治：submitted 且待改正数>0 说明已批改、待改正，不再显示“待批改”误导家长以为批改卡住；待改正数为0的 submitted 才真正等批改）。 */
         if(t.status === 'submitted' && (typeof t.pending_corrections === 'number' ? t.pending_corrections : 0) > 0){
@@ -5931,7 +5931,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261111-bcfix';
+  var KB_BUILD = '20261111-pendlabel';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
