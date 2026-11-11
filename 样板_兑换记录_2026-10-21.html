@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>样板 · 积分商店＋兑换记录</title>
+<style>
+  :root{
+    --bg1:#FFE8C2; --bg2:#FFD1DC; --bg3:#C9E7FF;
+    --g5:#FF8A5B; --g6:#6C8EFF;
+    --gold:#FFC93C; --ok:#4CD07D; --warn:#FFB020; --wait:#9AA5B1;
+    --txt:#30343B; --sub:#6B7280;
+    --card:rgba(255,255,255,.96);
+    --radius:20px; --radius-sm:12px;
+    --shadow:0 6px 18px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0; overflow-x:hidden; -webkit-text-size-adjust:100%; text-size-adjust:100%;
+    touch-action:pan-y; -ms-touch-action:pan-y; overscroll-behavior-y:contain;} /* 2026-10-19：完全禁用缩放（双击+捏合），仅保留纵向滚动 */
+  img,svg,video,canvas,table{max-width:100%; height:auto;}
+  body{
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    color:var(--txt);
+    background:
+      radial-gradient(600px 320px at 12% -40px, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(520px 280px at 92% 60px, rgba(255,255,255,.38), transparent 60%),
+      linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg3) 100%);
+    line-height:1.6;
+    padding:max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:980px; margin:0 auto;}
+
+  /* 标题区 */
+  .hero{text-align:center; margin:6px 0 18px;}
+  .hero h1{
+    font-size:clamp(24px,6.5vw,30px); /* 2026-10-19：自适应字号，替代硬编码30px */
+    margin:0 0 4px;
+    color:#E2643A; /* 不支持 background-clip:text 时的回退色 */
+    background:linear-gradient(90deg,#FF8A5B,#6C8EFF);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    font-weight:900; letter-spacing:1px;
+    filter:drop-shadow(0 2px 6px rgba(255,138,91,.28));
+  }
+  .hero .date{font-size:14px; color:var(--sub);}
+
+  /* 卡片通用 */
+  .card{
+    background:var(--card);
+    background-image:linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0) 140px);
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:var(--radius);
+    box-shadow:0 1px 2px rgba(48,52,59,.05), 0 10px 28px rgba(48,52,59,.08);
+    padding:18px 16px;
+    margin-bottom:16px;
+    animation:fadeUp .4s ease both;
+    position:relative;
+  }
+  /* 2026-10-20 折叠卡片右上角实时数据标签（DeepSeek方案） */
+  .card.collapse > .tag-live{
+    position:absolute; top:8px; right:12px; z-index:2;
+  }
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+  .card h2{
+    font-size:22px; margin:0 0 14px; display:flex;
+    align-items:center; gap:8px;
+  }
+  .card h2::before{
+    content:""; width:5px; align-self:stretch; border-radius:3px; flex:0 0 auto;
+    background:linear-gradient(180deg,#FF8A5B,#FFC93C);
+  }
+  .card h2 .emoji{font-size:26px;}
+  .card h2 .tag-demo{
+    margin-left:auto; font-size:12px; font-weight:500;
+    color:var(--sub); background:#F1F3F5;
+    padding:2px 10px; border-radius:999px; white-space:nowrap;
+  }
+
+  /* 余额卡片区 */
+  .balance-grid{
+    display:grid; gap:14px;
+    grid-template-columns:1fr;
+    margin-bottom:16px;
+  }
+  @media(min-width:380px){
+    .balance-grid{grid-template-columns:1fr 1fr;}
+  }
+  .bal-card{
+    border-radius:var(--radius);
+    padding:18px;
+    color:#fff;
+    min-width:0;
+    box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:6px;
+    position:relative; overflow:hidden;
+    animation:fadeUp .4s ease backwards;
+    min-height:44px;
+  }
+  .bal-card::after{
+    content:""; position:absolute; right:-30px; top:-30px;
+    width:110px; height:110px; border-radius:50%;
+    background:rgba(255,255,255,.18);
+  }
+  .bal-card.g5{background:linear-gradient(135deg,#FF8A5B,#FFA96B);}
+  .bal-card.g6{background:linear-gradient(135deg,#6C8EFF,#8FA9FF);}
+  /* 2026-10-19：余额离线数据标记（KB-BALANCE-AUTO-2026-10-19） */
+  .bal-demo-tag{position:absolute;top:6px;right:8px;font-size:11px;line-height:1.4;
+    color:#fff;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:999px;opacity:.85;}
+  /* 2026-10-19：余额卡片可点击跳转（button重置，视觉零变化） */
+  button.bal-card{border:0; -webkit-appearance:none; appearance:none; font:inherit; color:#fff; text-align:center; cursor:pointer;}
+  button.bal-card:focus-visible{outline:2px solid #30343B; outline-offset:2px;}
+  #log-g5, #log-g6{scroll-margin-top:12px;}
+  .bal-name{font-size:16px; font-weight:700; opacity:.95;}
+  .bal-score{font-size:40px; font-weight:900; line-height:1.1; font-variant-numeric:tabular-nums;}
+  .bal-score small{font-size:16px; font-weight:600;}
+  /* 总分滚动动画用数字包层（2026-10-19，deepseek 方案 H1+C1）：固定最小宽度防位数变化抖动 */
+  .bal-num{display:inline-block; min-width:3ch; text-align:center; font-variant-numeric:tabular-nums;}
+  /* 余额卡片总分机械滚轮 v2（2026-10-19 重写，deepseek 方案）：纯 CSS transition 驱动，合成器动画。
+     只动 transform；单格 = 1em；逐位 transition-delay，低位先停（里程表视觉） */
+  .odo{display:inline-flex; font-variant-numeric:tabular-nums; contain:layout style paint;}
+  .odo--anim{will-change:transform;}
+  .odo-slot{position:relative; display:inline-block; width:1ch; height:1em; overflow:hidden; vertical-align:baseline;}
+  .odo-strip{position:absolute; top:0; left:0; display:block; transform:translate3d(0,0,0);}
+  .odo-strip > span{display:block; height:1em; line-height:1em; text-align:center;}
+  .odo--anim .odo-strip{transition-property:transform; transition-duration:720ms; transition-timing-function:cubic-bezier(0.22,1,0.36,1); transition-delay:var(--odo-delay,0ms); will-change:transform;}
+  @media (prefers-reduced-motion: reduce){ .odo--anim .odo-strip{transition:none;} }
+  .bal-sub{font-size:13px; opacity:.9;}
+
+  /* 今日任务 */
+  .task-section{margin-bottom:18px;}
+  .task-section:last-child{margin-bottom:0;}
+  .task-head{
+    font-size:16px; font-weight:800;
+    display:flex; align-items:center; gap:8px;
+    justify-content:space-between; /* 进度条右置 */
+    flex-wrap:nowrap; min-width:0; /* 小屏不换行、不溢出 */
+    margin-bottom:10px; padding-left:4px;
+  }
+  .pill-grade{
+    font-size:12px; padding:2px 10px; border-radius:999px;
+    color:#fff; font-weight:700; white-space:nowrap;
+  }
+  .pill-grade.g5{background:var(--g5);}
+  .pill-grade.g6{background:var(--g6);}
+
+  .task-list{display:flex; flex-direction:column; gap:10px;}
+  .task{
+    display:flex; flex-direction:column; align-items:stretch;
+    padding:12px 14px; border-radius:var(--radius-sm);
+    border:2px solid transparent;
+    background:#FAFBFC;
+    min-height:56px;
+    transition:transform .15s ease;
+  }
+  /* 卡片主行：文字左、状态徽章右（待改正徽标/明细面板在此行之下另起行，
+     不再挤压标题与副文案，2026-10-20 家长截图反馈后改） */
+  .task .task-main{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; width:100%;
+  }
+  .task:active{transform:scale(.98);}
+  .task .st-badge{
+    flex:0 0 auto;
+    margin-left:auto; /* 徽章右置双保险 */
+    min-width:44px; min-height:44px; /* 触摸目标 */
+    font-size:13px; font-weight:700;
+    padding:5px 12px; border-radius:999px;
+    display:inline-flex; align-items:center; justify-content:center; gap:4px;
+    white-space:nowrap;
+  }
+  .task.pending .st-badge{background:#F1F3F5; color:#6B7280;}
+  .task.correcting{border-color:#FFD97A;}
+  .task.correcting .st-badge{background:#FFF3D6; color:#C77700;}
+  .task.done .st-badge{background:#E4F8EC; color:#1E9E52;}
+  /* 待改正标记（2026-10-20 家长拍板）：pending_corrections>0 时显示。
+     点击展开明细（2026-10-20 续）：徽标独占一行（主行之下左对齐），
+     不再与状态徽章同行挤压；展开区逐题列题号/题目/错因。 */
+  .task .corr-badge{
+    align-self:flex-start;
+    margin-top:10px;
+    font-size:13px; font-weight:700; font-family:inherit;
+    padding:5px 12px; border-radius:999px; border:none; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center; gap:5px;
+    white-space:nowrap; min-height:36px;
+    background:#FFE9E0; color:#C2410C;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .task .corr-caret{display:inline-block; font-size:11px; transition:transform .18s ease;}
+  .task.open-corr .corr-caret{transform:rotate(90deg);}
+  .task .corr-panel{display:none; width:100%; margin-top:8px; border-top:1px dashed #F0C4A8; padding-top:4px;}
+  .task.open-corr .corr-panel{display:block;}
+  .corr-item{font-size:13.5px; line-height:1.55; padding:7px 2px; border-bottom:1px dashed #F6E3D3; word-break:break-word;}
+  .corr-item:last-child{border-bottom:none;}
+  .corr-item .corr-no{font-weight:700; color:#C2410C;}
+  .corr-item .corr-q{color:#30343B;}
+  .corr-item .corr-r{display:block; margin-top:1px; font-size:12.5px; color:#6B7280;}
+  .task .task-info{flex:1; min-width:0; text-align:left;}
+  .task .task-name{
+    font-size:16px; font-weight:700;
+    overflow:visible; white-space:pre-line; word-break:break-word;
+  }
+  .task .task-progress{font-size:13px; color:var(--sub); margin-top:2px;}
+  .task.done .task-name{color:#1E9E52;}
+  .task.done{background:#F3FCF6;}
+
+  /* 学习走势 */
+  .tr-legend{display:flex;gap:14px;margin:10px 0 4px;font-size:13px;align-items:center;flex-wrap:wrap;color:var(--sub)}
+  .tr-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+  .tr-tabs{margin-left:auto;display:flex;gap:6px}
+  .tr-tabs button{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
+  .tr-tabs button.on{background:#E8873A;border-color:#E8873A;color:#fff;font-weight:700}
+  .tr-filt{border:1px solid #E2DCC8;background:#FFF;border-radius:999px;padding:4px 12px;font-size:12px;color:#6B7280;cursor:pointer}
+  .tr-filt.on{background:#D64545;border-color:#D64545;color:#fff;font-weight:700}
+  #tr-tip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;min-height:18px}
+  .tr-note{background:#FFF7E6;border:1px solid #F0DFB8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px;color:#8A6D2B}
+  .tr-act{display:none;background:#FFF;border:1.5px dashed #E8873A;border-radius:12px;padding:10px 12px;margin-top:8px;font-size:13px}
+  .tr-inc{background:#F8F4E9;border-radius:12px;padding:10px 12px;margin-top:12px}
+  .tr-stat{flex:1;min-width:140px;background:#F8F4E9;border-radius:12px;padding:9px 12px;font-size:12.5px;color:#6B7280}
+  .tr-stat b{display:block;font-size:16px;color:#30343B;margin-top:2px}
+  .tr-up{color:#1E9E52}.tr-dn{color:#D64545}
+  .tr-mrow{display:flex;gap:10px;align-items:stretch;margin-top:10px}
+  .tr-mlab{writing-mode:vertical-rl;font-size:13px;font-weight:700;color:#6B7280;display:flex;align-items:center}
+  .tr-mini{flex:1;background:#F8F4E9;border-radius:12px;padding:8px 8px 2px;cursor:pointer;min-width:0}
+  .tr-mhd{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:2px}
+  .tr-mhd b{font-size:14px}
+  .tr-sec-t{font-size:15px;font-weight:800;margin:14px 0 2px}
+  .tr-sub{font-size:12px;color:#9AA0A6}
+  .tr-ft{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  circle.tr-pt{cursor:pointer}
+  circle.tr-bad{stroke:#D64545 !important}
+  .tr-wrow{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:12px 0;min-height:44px;box-sizing:border-box;border-bottom:1px dashed #EFD9CF;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .tr-wmain{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+  .tr-wname{font-weight:600;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tr-wmeta{font-size:12px;color:#9AA0A6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tr-wrow.open{background:#FBF3E7}
+  .tr-wrow .row-cta{flex:none;color:#E8873A;background:#FDF0E1;border:1px solid #F3C491;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:700;white-space:nowrap;margin-left:8px}
+  .weak-hint{font-size:12px;color:#9AA0A6;margin-bottom:6px}
+  .tr-wstrip{display:none;background:#FFF8EC;border-radius:10px;padding:9px 12px;margin:4px 0;font-size:12.5px}
+  .tr-wstrip a{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;text-decoration:none}
+  .tr-go-a{background:#E8873A;color:#fff}
+  .tr-go-b{background:#F1EAD8;color:#6B7280}
+  .tr-wstrip button{display:inline-block;padding:6px 16px;border-radius:999px;font-size:13px;font-weight:700;margin:4px 6px 4px 0;border:none;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .tr-wstrip button:disabled{opacity:.55;cursor:default}
+  .tr-submit-status{margin-top:4px;font-size:12.5px;color:#2E7D32;min-height:16px}
+  .tr-fallback a{display:inline;padding:0;margin:0;color:#B4552D;text-decoration:underline;font-size:11.5px}
+  .tr-subj{margin-top:12px;border-top:1px solid #EFEAD9;padding-top:4px}
+  #tr-stip{background:#30343B;color:#FFFDF8;border-radius:10px;padding:8px 12px;font-size:12.5px;margin-top:8px}
+
+  /* 荣耀徽章 */
+  .grade-block{margin-top:18px;}
+  .grade-block:first-of-type{margin-top:0;}
+  .grade-head{
+    display:flex; align-items:center; gap:10px;
+    font-size:18px; font-weight:800; color:var(--txt);
+    margin:0 0 12px; padding-left:4px;
+  }
+  /* 本周徽章：横向勋章带（2026-10-20 方案1，DeepSeek 终审放行）
+     大卡网格 → 64px 圆形勋章单行横滑；稀有度色环三档（金=普通/蓝=进阶/紫=稀有，仅颜色区分）；
+     BADGE_TIER / BADGE_BLURB 为展示层静态数据，仅决定色环与气泡文案，禁止被判定器/积分逻辑引用。 */
+  .badge-strip{
+    display:flex; flex-wrap:nowrap; gap:10px;
+    overflow-x:auto; overflow-y:hidden;
+    padding:8px 2px 10px;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(90deg,#000 93%,rgba(0,0,0,0));
+            mask-image:linear-gradient(90deg,#000 93%,rgba(0,0,0,0));
+  }
+  .badge-strip::-webkit-scrollbar{display:none;}
+  .medal{
+    flex:0 0 auto; width:76px; position:relative;
+    text-align:center; cursor:pointer; scroll-snap-align:start;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .medal-disc{
+    width:64px; height:64px; margin:0 auto; border-radius:50%;
+    box-sizing:border-box; border:3px solid #E8B04B;
+    background:radial-gradient(circle at 32% 28%, #FFF6D8, #FFE9A8 58%, #F6D47E);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+    box-shadow:0 2px 6px rgba(232,176,75,.25);
+  }
+  .medal-disc.ring-blue{border-color:#4EA1FF;}
+  .medal-disc.ring-purple{border-color:#B678F0;}
+  .medal-disc .ic{font-size:28px; line-height:1; filter:drop-shadow(0 1px 2px rgba(232,176,75,.4));}
+  .medal-name{font-size:11px; font-weight:700; color:var(--txt); margin-top:5px; line-height:1.25; white-space:nowrap;}
+  /* 同徽章当周多次获得次数角标（如 ×3），静态小圆点，无动效 */
+  .medal-count{
+    position:absolute; top:0; right:2px; z-index:2;
+    background:#D64545; color:#fff;
+    font-size:11px; font-weight:700; line-height:1;
+    padding:3px 6px; border-radius:999px;
+  }
+  /* 补发角标（2026-10-20 B方案）：左上，与右上 ×N 计数角标错开不冲突 */
+  .medal-late{
+    position:absolute; top:0; left:2px; z-index:2;
+    background:#E8862E; color:#fff;
+    font-size:11px; font-weight:700; line-height:1;
+    padding:3px 6px; border-radius:999px;
+  }
+  /* 已读徽章入带飞入（DeepSeek 终审 R2）：回弹曲线；stagger 由 JS 以 --fly-d 注入，单带前 6 枚，第 7 枚起不加此类（延迟硬归零） */
+  .medal.fly-in{animation:medalFly .55s cubic-bezier(.34,1.56,.64,1) both; animation-delay:var(--fly-d,0ms);}
+  @keyframes medalFly{
+    from{transform:translateX(26px) scale(.6); opacity:0;}
+    to{transform:translateX(0) scale(1); opacity:1;}
+  }
+  /* 新徽章动效 A+B（2026-10-20 沿用，载体由大卡改为勋章圆盘）：
+     A 呼吸光晕——未读新徽章金色光晕缓慢脉动，点开查看后停（localStorage 记已读，按周+年级+徽章区分）；
+     B 扫光掠过——首次渲染时一道高光斜扫过圆盘一次即停（会话内不重播，软刷新不重复打扰）。
+     合并规则 R1：未读只走光晕+扫光、不飞入；已读只飞入、不带光晕，二者互斥不同帧叠加。 */
+  .medal.is-new .medal-disc{animation:medalGlow 2.4s ease-in-out infinite alternate;}
+  @keyframes medalGlow{
+    from{box-shadow:0 2px 6px rgba(232,176,75,.25), 0 0 0 0 rgba(246,212,126,.45);}
+    to{box-shadow:0 2px 6px rgba(232,176,75,.25), 0 0 14px 4px rgba(246,212,126,.85);}
+  }
+  .medal.is-new .medal-disc::after{
+    content:''; position:absolute; top:0; bottom:0; left:0; width:55%;
+    background:linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0));
+    transform:translateX(-140%) skewX(-18deg);
+    animation:badgeShine 1.15s ease-out .3s 1 forwards;
+    pointer-events:none;
+  }
+  @keyframes badgeShine{ to{transform:translateX(340%) skewX(-18deg);} }
+  .medal.is-new.shine-done .medal-disc::after{display:none;}
+  @media (prefers-reduced-motion: reduce){
+    .medal.fly-in{animation:none;}
+    .medal.is-new .medal-disc{animation:none;}
+    .medal.is-new .medal-disc::after{display:none;}
+  }
+  /* 勋章详情气泡：点勋章展开（大图 + 点亮日期 + 一句童趣解释） */
+  .medal-pop{
+    display:flex; align-items:flex-start; gap:10px;
+    margin-top:6px; padding:10px 12px;
+    background:#FFFDF5; border:1.5px solid #FFD97A; border-radius:12px;
+  }
+  .medal-pop[hidden]{display:none;}
+  .medal-pop .pop-ic{font-size:34px; line-height:1.15;}
+  .medal-pop .pop-main{flex:1; min-width:0;}
+  .medal-pop .pop-name-t{font-size:14px; font-weight:800; color:var(--txt);}
+  .medal-pop .pop-date{font-size:12px; font-weight:600; color:var(--sub); margin-left:6px;}
+  .medal-pop .pop-blurb{font-size:13px; color:var(--txt); margin-top:2px;}
+  .medal-pop .pop-close{
+    background:none; border:none; padding:2px 4px;
+    font-size:16px; line-height:1; color:var(--sub); cursor:pointer;
+  }
+  /* 成就进度条（2026-10-19新增） */
+  .ach-prog{margin-top:8px; display:flex; align-items:center; gap:8px;}
+  .ach-prog-bar{flex:1; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
+  .ach-prog-bar > i{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+  .ach-prog-num{font-size:14px; color:var(--sub); font-variant-numeric:tabular-nums; white-space:nowrap;}
+
+  /* 今日任务进度条（2026-10-19新增）：复用 ach 视觉，右置收敛 */
+  .task-prog{display:inline-flex; align-items:center; gap:8px; flex:0 1 auto; min-width:0; margin-left:auto;}
+  .task-prog-text{font-size:13px; font-weight:700; color:var(--sub); white-space:nowrap; font-variant-numeric:tabular-nums; flex:0 0 auto;}
+  .task-prog-bar{width:96px; flex:1 1 64px; min-width:64px; height:8px; border-radius:4px; background:rgba(48,52,59,.12); overflow:hidden; box-shadow:inset 0 1px 2px rgba(48,52,59,.10);}
+  .task-prog-fill{display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,#E8B04B,#F6D47E);}
+
+
+  /* 积分商店 */
+  .shop-grid{
+    display:grid; gap:12px;
+    grid-template-columns:minmax(0,1fr);
+  }
+  @media(min-width:768px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  .shop-item{
+    border-radius:var(--radius-sm);
+    padding:14px; background:#FAFBFC;
+    border:1px solid #EEF1F4;
+    min-height:44px; min-width:0;
+  }
+  .shop-top{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+  .shop-top .ic{font-size:30px; flex:0 0 auto;}
+  .shop-top .nm{font-size:16px; font-weight:800; flex:1; min-width:0;
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2;
+    overflow:hidden; white-space:pre-line; text-overflow:clip; word-break:break-all;}
+  .shop-top .cost{
+    font-size:14px; font-weight:800; color:#E25C1D;
+    background:#FFEEDD; padding:2px 10px; border-radius:999px;
+    white-space:nowrap; flex:0 0 auto; flex-shrink:0;
+  }
+  .bar-track{
+    height:12px; border-radius:999px; background:#EDEFF2;
+    box-shadow:inset 0 1px 2px rgba(48,52,59,.10);
+    overflow:hidden; margin:8px 0 6px; width:100%;
+  }
+  .bar-fill{
+    height:100%; width:100%; display:block; border-radius:999px;
+    transform-origin:left center;
+    background:linear-gradient(90deg,#FFC93C,#FF8A5B);
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .bar-fill.g6{background:linear-gradient(90deg,#8FA9FF,#6C8EFF);}
+  .bar-fill.ready{background:linear-gradient(90deg,#4CD07D,#2FBF71);}
+  .shop-hint{font-size:13px; color:var(--sub); line-height:1.7; overflow-wrap:break-word; word-break:break-word;}
+  .shop-hint b{color:#E25C1D;}
+  .shop-hint .ok-line{color:#1E9E52; font-weight:700;}
+
+  /* 规则列表 */
+  .rule-list{list-style:none; margin:0; padding:0;}
+  .rule-list li{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:10px 0;
+    border-bottom:1px dashed #EDEFF2;
+    font-size:15px; min-height:44px;
+  }
+  .rule-list li:last-child{border-bottom:none;}
+  .rule-pts{
+    font-weight:800; font-size:14px;
+    padding:2px 10px; border-radius:999px; white-space:nowrap; flex:0 0 auto;
+  }
+  .rule-pts.plus{background:#E4F8EC; color:#1E9E52;}
+  .rule-pts.minus{background:#FFE9E9; color:#D64545;}
+  .rule-pts.note{background:#EFF1F3; color:#8A8F98;}
+  .rule-remark{font-size:12px; color:#9AA0A6; margin-left:6px;}
+  /* 2026-10-20：多档规则子项分行（用户要求"分开列，不要挤一起"） */
+  .rule-list li.rule-multi{display:block; padding:10px 0;}
+  .rule-head{font-weight:700;}
+  .rule-subs{list-style:none; margin:8px 0 2px 14px; padding:0;}
+  .rule-subs li{display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:6px 0; border-top:1px dashed #E8E4D8; border-bottom:none;
+    font-size:14px; min-height:0;}
+  .rule-note{font-size:13px; color:var(--sub); margin-top:10px; line-height:1.7;}
+
+  /* 徽章目标榜：获得条件小字 */
+  .lib-cond{display:block; font-size:13px; font-weight:400; color:var(--sub); margin-top:2px;}
+  .lib-prog{display:block; font-size:12.5px; font-weight:400; color:#5B6470; margin-top:3px;}
+  .lib-prog .prog-nodata{color:#B3B8BE;}
+  .lib-prog .prog-seg{display:block; margin-top:2px}
+  .lib-prog .prog-seg:first-child{margin-top:0}
+  .lib-detail{display:none}
+  li.open .lib-detail{display:block}
+  .lib-chev{font-size:12px; color:#9AA0A6; margin-left:6px; white-space:nowrap}
+  #panel-lib .rule-list li{cursor:pointer}
+
+  /* 日志时间线 */
+  .log-list{list-style:none; margin:0; padding:0;}
+  .log-item{
+    display:flex; gap:12px; padding:12px 0;
+    border-bottom:1px dashed #EDEFF2;
+    align-items:flex-start; min-height:44px;
+  }
+  .log-item:last-child{border-bottom:none;}
+  .log-dot{
+    flex:0 0 auto; width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:800;
+  }
+  .log-dot.plus{background:#E4F8EC; color:#1E9E52;}
+  .log-dot.minus{background:#FFE9E9; color:#D64545;}
+  .log-body{flex:1; min-width:0;}
+  .log-line1{display:flex; justify-content:space-between; gap:10px; align-items:baseline;}
+  .log-reason{font-size:15px; font-weight:600; word-break:break-word;}
+  .log-pts{font-size:15px; font-weight:800; flex:0 0 auto;}
+  .log-pts.plus{color:#1E9E52;}
+  .log-pts.minus{color:#D64545;}
+  .log-line2{font-size:12px; color:var(--sub); margin-top:2px;}
+
+  /* 页脚 */
+  .footer{
+    text-align:center; font-size:13px; color:#5A6169;
+    margin-top:10px; padding:14px;
+    background:rgba(255,255,255,.6); border-radius:var(--radius-sm);
+    line-height:1.8;
+  }
+
+  /* 2026-10-19：5分钟自刷新倒计时（DeepSeek方案） */
+  .footer .refresh-countdown{
+    margin-top:4px;
+    font-size:12px;
+    color:#8A929A;
+    text-align:center;
+    font-variant-numeric:tabular-nums; /* 数字等宽，防每秒跳动布局抖动 */
+    line-height:1.4;
+  }
+
+  /* === 2026-10-19 动效增补（DeepSeek方案，类名已按实际文件适配） === */
+  :root{
+    --ease-pop: cubic-bezier(.25,.8,.35,1);
+    --dur-fast: .18s;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    /* E1 余额数字淡入+落脚回弹（合并为单关键帧，避免transform双重动画冲突；scale峰值1.04） */
+    .bal-card .bal-score.is-in{ animation: numInPop .67s var(--ease-pop) both; }
+    @keyframes numInPop{
+      0%{ opacity:0; transform:translateY(4px) scale(1); }
+      67%{ opacity:1; transform:translateY(0) scale(1); }
+      82%{ opacity:1; transform:translateY(0) scale(1.04); }
+      100%{ opacity:1; transform:translateY(0) scale(1); }
+    }
+    /* D2 进度条生长（width型：task-prog-fill / ach-prog-bar>i） */
+    .task-prog-fill, .ach-prog-bar > i{ transform-origin: left center; }
+    .task-prog-bar.in > .task-prog-fill{ animation: barGrow .6s var(--ease-pop) both; }
+    .ach-prog-bar.in > i{ animation: barGrow .6s var(--ease-pop) both; }
+    @keyframes barGrow{ from{ transform: scaleX(0);} to{ transform: scaleX(1);} }
+    /* D3 卡片按压回弹（:active） */
+    .task, .shop-item, .medal{ -webkit-tap-highlight-color: transparent; }
+    .task:active, .shop-item:active, .medal:active{
+      transform: scale(.97);
+      transition: transform var(--dur-fast) var(--ease-pop);
+    }
+    /* D4 折叠头按压反馈 */
+    .collapse-btn:active{ transform: scale(.985); transition: transform var(--dur-fast) var(--ease-pop); }
+    /* D5 徽章呼吸微光：2026-10-20 随勋章带改造退役（未读光晕改由 .medal-disc 的 medalGlow 接管，避免全员呼吸与色环/扫光叠加打架） */
+    /* D6 今日任务错落淡入 */
+    .task-list.in .task{ animation: taskIn .4s var(--ease-pop) both; }
+    .task-list.in .task:nth-child(1){ animation-delay:0s; }
+    .task-list.in .task:nth-child(2){ animation-delay:.04s; }
+    .task-list.in .task:nth-child(3){ animation-delay:.08s; }
+    .task-list.in .task:nth-child(4){ animation-delay:.12s; }
+    @keyframes taskIn{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+    /* === 余额卡片动效 E1/E2/E3/E5/E8（2026-10-19，DeepSeek+Gemini联合方案，DeepSeek仲裁放行） === */
+    /* E2 卡片微抬升 + 装饰圆光晕呼应（hover限精确指针设备，focus-visible保证键盘可达） */
+    .bal-card{ transition:transform .18s var(--ease-pop), box-shadow .2s ease; }
+    .bal-card::after{ transition:opacity .2s ease, transform .2s ease; }
+    .bal-card:focus-visible{ transform:translateY(-3px); }
+    .bal-card:focus-visible::after{ opacity:.8; transform:scale(1.08); }
+    @media (hover:hover) and (pointer:fine){
+      .bal-card:hover{ transform:translateY(-3px); }
+      .bal-card:hover::after{ opacity:.8; transform:scale(1.08); }
+    }
+    /* E3 按压回弹（触屏/鼠标按下即时反馈） */
+    .bal-card:active{ transform:translateY(-1px) scale(.985); transition:transform .08s ease-out, box-shadow .2s ease; }
+    /* E5 两卡错峰入场（g6延迟120ms，复用fadeUp） */
+    .bal-card.g6{ animation-delay:.12s; }
+    /* E8 光泽扫过（一次性、首屏1s后触发、时长.55s；纯CSS，无JS；不循环） */
+    .bal-card::before{
+      content:""; position:absolute; top:-25%; bottom:-25%; left:0;
+      width:34%; pointer-events:none;
+      background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 50%, rgba(255,255,255,0) 100%);
+      transform:skewX(-18deg) translateX(-260%);
+      opacity:0;
+    }
+    .bal-card::before{ animation:balSheen .55s ease 1s both; }
+    @keyframes balSheen{
+      0%{ opacity:0; transform:skewX(-18deg) translateX(-260%); }
+      20%{ opacity:.9; }
+      80%{ opacity:.9; }
+      100%{ opacity:0; transform:skewX(-18deg) translateX(760%); }
+    }
+  }
+
+  /* 减少动效 */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation:none !important;
+      transition:none !important;
+    }
+  }
+
+  /* 折叠栏目：加分规则 / 扣分规则 / 积分日志（按钮点击展开） */
+  .collapse{padding:0;}
+  .collapse-btn{
+    display:flex; align-items:center; gap:8px;
+    width:100%; min-height:68px; padding:18px 16px;
+    margin-right:24px;
+    background:none; border:0; cursor:pointer; text-align:left;
+    font-family:inherit; color:var(--txt);
+    border-radius:var(--radius);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .collapse-btn .emoji{font-size:26px;}
+  .collapse-btn .cb-title{font-size:22px; font-weight:700;}
+  .collapse-btn .tag-demo{
+    font-size:12px; font-weight:500; color:var(--sub);
+    background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
+  }
+  /* 2026-10-19 KB-STATS-AUTO：日志区块标签/更新时间/商店进度 */
+  .grade-head .tag-demo{
+    font-size:12px; font-weight:500; color:var(--sub);
+    background:#F1F3F5; padding:2px 10px; border-radius:999px; white-space:nowrap;
+    margin-left:8px;
+  }
+  /* 2026-10-19 KB-TAG-LIVE v2：实时数据标签绿色呼吸动效（DeepSeek方案·终审版）
+     定位：绝对定位仅保留给余额卡（.bal-demo-tag 本身已 position:absolute）；
+          今日任务、积分日志标签留在文档流内，靠 flex margin 右置。
+     动效：仅 transform/opacity；reduced-motion 下只保留静态绿底。
+     扫光 ::after 已删除（违反 E8"一次性扫光不循环"规范）。 */
+  .tag-live{
+    position:relative; /* 2026-10-19 终审补：给 ::before 提供定位含块（Gemini初审发现，DeepSeek终审确认） */
+    background:#E6F9ED; color:#16A34A; opacity:1;
+    overflow:hidden; isolation:isolate;
+    animation:tagLiveBreathe 2.2s ease-in-out infinite;
+  }
+  /* 余额卡：沿用其自身绝对定位锚点（.bal-card 为 position:relative） */
+  .bal-demo-tag.tag-live{
+    position:absolute; top:6px; right:8px;
+  }
+  /* 今日任务 / 积分日志：文档流内 flex 右置（覆盖原 margin-left:8px 使其真正靠右） */
+  .card h2 .tag-demo.tag-live{ margin-left:auto; }
+  .grade-head .tag-demo.tag-live{ margin-left:auto; }
+
+  /* 2026-10-20 KB-TAG-LIVE-FONT10：栏目"实时数据"标签字号调小（DeepSeek方案，用户反馈"偏大"）
+     根因：第678/702/718/781行 4 处静态栏目标签(.card.collapse > .tag-live)原先无字号声明、继承 16px 偏大；
+     上版 override(.card h2 .tag-demo.tag-live)未命中这些元素，属选择器错配，本版纠正。
+     分治：4 处栏目标签 10px / 余额卡·今日任务·积分日志标签 11px 维持。
+     (Gemini初审意见已落实：今日任务标签不再波及，保持 11px；letter-spacing 删除，避免低分屏渲染劣化)
+     动效 scale(1.10) 峰值等效约 11px，不超改动前静息值。override 不改原规则，可回滚。 */
+  .card.collapse > .tag-live{
+    font-size:10px;
+    font-weight:400;
+    line-height:1.4;
+    padding:1px 7px;
+  }
+  /* 余额卡档(.bal-demo-tag 自带 11px)、今日任务档、积分日志档：维持 11px 不变 */
+  .card h2 .tag-demo.tag-live,
+  .grade-head .tag-demo.tag-live{
+    font-size:11px;
+    font-weight:400;
+    line-height:1.4;
+    padding:1px 8px;
+  }
+
+  .tag-live::before{
+    content:""; position:absolute; inset:0; border-radius:999px;
+    background:#16A34A; opacity:0; pointer-events:none;
+    animation:tagLiveGlow 2.2s ease-in-out infinite;
+  }
+  @keyframes tagLiveBreathe{
+    0%,100%{ transform:scale(1); opacity:1; }
+    50%{ transform:scale(1.10); opacity:.82; }
+  }
+  @keyframes tagLiveGlow{
+    0%,100%{ opacity:0; }
+    50%{ opacity:.28; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tag-live, .tag-live::before{ animation:none; }
+  }
+  .log-updated{font-size:12px; color:var(--sub); margin-left:8px; white-space:nowrap;}
+  #shop-progress{margin:0 0 12px;}
+  .shop-prog-line{font-size:14px; line-height:1.9;}
+  .shop-fee-note{font-size:12px; color:var(--sub); margin-top:6px;}
+  .collapse-btn .cb-state{
+    margin-left:auto; flex:0 0 auto;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:700; color:var(--sub);
+    background:#F1F3F5; padding:6px 12px; border-radius:999px; white-space:nowrap;
+  }
+  .collapse-btn .cb-chev{font-size:13px; transition:transform .25s ease;}
+  .collapse-btn[aria-expanded="true"] .cb-chev{transform:rotate(180deg);}
+  .collapse-btn:focus-visible{outline:3px solid var(--g6); outline-offset:-3px;}
+  .collapse-body{
+    display:grid; grid-template-rows:0fr;
+    grid-template-columns:minmax(0,1fr);
+    transition:grid-template-rows .3s ease;
+  }
+  .collapse.open .collapse-body{grid-template-rows:1fr;}
+  .collapse-inner{overflow:hidden; min-height:0; min-width:0;}
+  .collapse-pad{padding:0 16px 18px;}
+
+  /* 2026-10-19：D1 440px；iPhone 17 Pro Max 主力档 */
+  @media(min-width:440px){
+    .card{padding:20px 18px;}
+    .bal-card{padding:20px;}
+    .bal-score{font-size:clamp(38px,9vw,44px);}
+    .task{padding:14px 16px;}
+  }
+  /* 2026-10-19：D2 768px；iPad mini/老iPad竖屏 */
+  @media(min-width:768px){
+    .wrap{max-width:720px;}
+    .card{padding:22px 20px;}
+  }
+  /* 2026-10-19：D3 820px；iPad 10.9竖屏 */
+  @media(min-width:820px){
+    .wrap{max-width:780px;}
+  }
+  /* 2026-10-19：D4 834px；iPad Air竖屏 */
+  @media(min-width:834px){
+    .wrap{max-width:800px;}
+    .bal-score{font-size:46px;}
+  }
+  /* 桌面端增强（2026-10-19：≥1024px 宽屏自适应） */
+  @media(min-width:1024px){
+    .wrap{max-width:980px;}
+    .bal-card{padding:22px;}
+    .collapse-btn .cb-title{font-size:24px;}
+    /* iPad横屏/桌面：今日任务两年级并排 */
+    section[aria-label="今日任务"]{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+    section[aria-label="今日任务"] > h2{grid-column:1/-1;}
+    section[aria-label="今日任务"] > .task-section{margin-bottom:0;}
+  }
+  /* 2026-10-19：D6 1280px；桌面宽屏封顶 */
+  @media(min-width:1280px){
+    .wrap{max-width:1100px;}
+  }
+  /* 2026-10-19：精致悬停态（仅精确指针设备，触屏不受影响；transform被fadeUp填充占用处只改阴影） */
+  @media (hover:hover) and (pointer:fine){
+    .card:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.12);}
+    .ach:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(232,176,75,.28);}
+    .bal-card:hover{box-shadow:0 2px 4px rgba(48,52,59,.06), 0 16px 38px rgba(48,52,59,.14);}
+    .task:hover{background:#FFFFFF; box-shadow:0 4px 14px rgba(48,52,59,.08);}
+    .collapse-btn:hover .cb-state{background:#E7EAEE;}
+  }
+
+  /* 小屏微调 */
+  @media (max-width:420px){
+    .task{gap:10px;} /* 窄屏收紧行内间距 */
+    .task .st-badge{padding:5px 8px; font-size:13px;} /* 窄屏徽章轻微收紧 */
+    .task .task-name{
+      white-space:pre-line; word-break:break-word; overflow:visible; /* 窄屏亦多行完整展示，与主样式同口径 */
+    }
+    .task-prog{gap:6px;}
+    .task-prog-bar{width:64px; flex:1 1 56px; min-width:56px;}
+    .task-prog-text{font-size:12px;}
+  }
+  @media (max-width:379px){
+    .bal-score{font-size:34px;}
+    .card h2{font-size:20px;}
+    .task .task-name{font-size:15px;}
+  }
+
+  /* 兑换记录（样板 2026-10-21，deepseek 方案） */
+  .redeem-wrap{margin-top:16px;border-top:2px dashed #E8E4D8;padding-top:12px;}
+  .redeem-head{font-size:16px;font-weight:800;margin-bottom:2px;}
+  .redeem-sub{font-size:12px;color:var(--sub);font-weight:400;margin-left:6px;}
+  .redeem-grade{font-size:14px;font-weight:800;margin:12px 0 2px;}
+  .redeem-row{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px dashed #E8E4D8;font-size:14px;}
+  .redeem-date{color:var(--sub);flex:0 0 46px;font-size:13px;}
+  .redeem-name{flex:1;min-width:0;}
+  .redeem-cost{font-weight:800;white-space:nowrap;}
+  .redeem-fee{font-weight:400;font-size:12px;color:var(--sub);}
+  .redeem-bal{color:var(--sub);font-size:12px;flex:0 0 78px;text-align:right;white-space:nowrap;}
+  .redeem-rev .redeem-name,.redeem-rev .redeem-cost{text-decoration:line-through;color:var(--sub);}
+  .redeem-rev-note{font-size:12px;color:var(--sub);margin:2px 0 8px 54px;}
+  .redeem-empty{font-size:13px;color:var(--sub);padding:6px 0 2px;}
+</style></head>
+<body style="background:#F5F3EB;">
+<div style="max-width:760px;margin:0 auto;padding:12px;">
+<div style="background:#FFF3D6;border:1px solid #F0D48A;border-radius:10px;padding:8px 12px;font-size:13px;margin-bottom:12px;">样板预览：商店是真实数据（余额 五年级 238 / 六年级 394）；<b>兑换记录是示例数据</b>，正式上线时从空态开始，有真兑换才出现。</div>
+<section class="card" aria-label="积分商店" style="padding:16px;">
+  <div style="font-size:18px;font-weight:800;margin-bottom:12px;">积分商店</div>
+  <div class="shop-grid"><div class="shop-item"><div class="shop-top"><span class="ic">🕹️</span><span class="nm">30分钟Minecraft</span><span class="cost">70 分</span></div><div class="bar-track"><div class="bar-fill" style="transform:scaleX(1.0000)"></div></div><div class="shop-hint"><span class="ok-line">积分已足够 ✅ 五年级可立即兑换</span><br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div></div>
+<div class="shop-item"><div class="shop-top"><span class="ic">🕹️</span><span class="nm">1小时Minecraft</span><span class="cost">100 分</span></div><div class="bar-track"><div class="bar-fill" style="transform:scaleX(1.0000)"></div></div><div class="shop-hint"><span class="ok-line">积分已足够 ✅ 五年级可立即兑换</span><br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div></div>
+<div class="shop-item"><div class="shop-top"><span class="ic">🎮</span><span class="nm">1小时和平精英
+或2小时Minecraft</span><span class="cost">150 分</span></div><div class="bar-track"><div class="bar-fill" style="transform:scaleX(1.0000)"></div></div><div class="shop-hint"><span class="ok-line">积分已足够 ✅ 五年级可立即兑换</span><br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div></div>
+<div class="shop-item"><div class="shop-top"><span class="ic">🎮</span><span class="nm">2小时和平精英</span><span class="cost">250 分</span></div><div class="bar-track"><div class="bar-fill" style="transform:scaleX(1.0000)"></div></div><div class="shop-hint">五年级：还差 <b>12 分</b> 就可以兑换2小时和平精英<br><span class="ok-line">积分已足够 ✅ 六年级可立即兑换</span></div></div>
+<div class="shop-item"><div class="shop-top"><span class="ic">🌟</span><span class="nm">达成愿望一次
+等额50元</span><span class="cost">600 分</span></div><div class="bar-track"><div class="bar-fill" style="transform:scaleX(0.6567)"></div></div><div class="shop-hint">五年级：还差 <b>362 分</b> 就可以兑换达成愿望一次 等额50元<br>六年级：还差 <b>206 分</b> 就可以兑换达成愿望一次 等额50元</div></div>
+<div class="shop-item"><div class="shop-top"><span class="ic">💫</span><span class="nm">达成愿望一次
+等额100元</span><span class="cost">1000 分</span></div><div class="bar-track"><div class="bar-fill" style="transform:scaleX(0.3940)"></div></div><div class="shop-hint">五年级：还差 <b>762 分</b> 就可以兑换达成愿望一次 等额100元<br>六年级：还差 <b>606 分</b> 就可以兑换达成愿望一次 等额100元</div></div>
+</div>
+  <div class="shop-fee-note" style="text-align:center;color:var(--sub);font-size:12px;margin-top:8px;">（上学日/周末超22点兑换手续费15%）</div>
+  <div class="redeem-wrap">
+    <div class="redeem-head">兑换记录<span class="redeem-sub">最近 15 天</span></div>
+    <div class="redeem-grade">五年级</div>
+    <div class="redeem-row"><span class="redeem-date">10-18</span><span class="redeem-name">30分钟 Minecraft</span><span class="redeem-cost">70 分</span><span class="redeem-bal">兑后 168 分</span></div><div class="redeem-row"><span class="redeem-date">10-12</span><span class="redeem-name">1小时 Minecraft</span><span class="redeem-cost">115 分<span class="redeem-fee">（含手续费15）</span></span><span class="redeem-bal">兑后 96 分</span></div><div class="redeem-row redeem-rev"><span class="redeem-date">10-05</span><span class="redeem-name">1小时和平精英</span><span class="redeem-cost">150 分</span><span class="redeem-bal"></span></div><div class="redeem-rev-note">已撤销（选错档位）· +150 分已退回</div>
+    <div class="redeem-grade">六年级</div>
+    <div class="redeem-empty">还没有兑换过哦～</div>
+  </div>
+</section>
+</div></body></html>
