@@ -3,12 +3,12 @@
  "date": "2026-11-11",
  "grade": "五年级",
  "generated_at": "2026-11-11T00:19:37+08:00",
- "updated_at": "2026-11-11T17:05:36+08:00",
+ "updated_at": "2026-11-11T18:51:41+08:00",
  "sources": {
   "register_book": {
    "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-11T16:55:25+08:00",
-   "new_lines": 0,
+   "ingested_at": "2026-11-11T18:51:41+08:00",
+   "new_lines": 4,
    "flipped": 0
   },
   "targeted_practice": {
@@ -71,19 +71,93 @@
    "title": "提交作业登记本",
    "detail": "在看板上传登记本照片",
    "estimate_min": null,
-   "status": "pending",
+   "status": "done",
    "review_status": "approved",
    "created_by": "system",
    "created_at": "2026-11-11T16:55:40+08:00",
-   "updated_at": "2026-11-11T16:55:40+08:00",
-   "completed_at": null
+   "updated_at": "2026-11-11T18:51:41+08:00",
+   "completed_at": "2026-11-11T18:51:41+08:00"
+  },
+  {
+   "task_id": "REG-20261111-1A898A9D4B19",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小校本3页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①小校本3页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-11T18:51:41+08:00",
+   "updated_at": "2026-11-11T18:51:41+08:00"
+  },
+  {
+   "task_id": "REG-20261111-A3D4E79EF410",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "小写作文（第五单元）标旁批、说明方法画好",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①小写作文（第五单元）标旁批、说明方法画好 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-11T18:51:41+08:00",
+   "updated_at": "2026-11-11T18:51:41+08:00"
+  },
+  {
+   "task_id": "REG-20261111-1A3DE8D00FC7",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "小口语易 2.2",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-11T18:51:41+08:00",
+   "updated_at": "2026-11-11T18:51:41+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral"
+  },
+  {
+   "task_id": "REG-20261111-BAA3F1B84AC7",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "标本27页[二字待确认]",
+   "detail": "原状态：待完成。【字迹不清请孩子确认】英语第2条“标本27页[二字待确认]”中“标本”两个字看不清，请问是哪两个字？①标本 ②课本 ③其他（请留言告诉我）。确认后按你说的改标题。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-11T18:51:41+08:00",
+   "updated_at": "2026-11-11T18:51:41+08:00"
   }
  ],
  "counts": {
-  "total": 5,
-  "pending": 2,
-  "in_progress": 3,
-  "done": 0,
+  "total": 7,
+  "pending": 5,
+  "in_progress": 1,
+  "done": 1,
   "pending_review": 0
  },
  "deadline_today": null
