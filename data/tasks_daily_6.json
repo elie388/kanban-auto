@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "六年级",
   "generated_at": "2026-11-11T00:19:38+08:00",
-  "updated_at": "2026-11-11T20:30:08+08:00",
+  "updated_at": "2026-11-11T21:22:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -222,10 +222,10 @@
       "task_id": "REG-20261111-A645ED998F44",
       "source": "register_book",
       "subject": "数学",
-      "title": "读背概念35",
-      "detail": "",
+      "title": "读背概念55",
+      "detail": "怎么交：\n照片加同一批朗读录音，一起交。\n\n【重读：第1轮，1处读错】\n重读概念55《兴趣小组有女生3人，男生4人》。\n“女生和男生的比是”这一句，比的两个数说反了。\n翻到第58页第4题，对照你写的那行答案，慢慢读这一句两遍，\n看清楚两个数哪个在前、哪个在后，再把概念55完整读一遍。\n照片加录音同一批交。\n\n1处读错：\n• 女生和男生的比（比的两个数说反了）",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
@@ -234,9 +234,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T21:22:47.703935+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corr_round": 1,
+      "reading_pass": false,
+      "reading_duration_sec": 14.08
     },
     {
       "task_id": "REG-20261111-19FB638D045F",
@@ -259,8 +262,8 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 9,
-    "in_progress": 0,
+    "pending": 8,
+    "in_progress": 1,
     "done": 3,
     "pending_review": 0
   },
