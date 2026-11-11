@@ -1919,9 +1919,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
           }
         }
         /* 已完成任务「查看批改反馈」（2026-11-10 家长令：作业练习完成后不再放照片，改为放对应的批改反馈；原「查看原图」按钮作废）：
-           仅 done＋学习类任务（家务、登记本不纳入）渲染；登记本任务只摄取不批改、无批改反馈（2026-11-10 家长令：提交作业登记本任务卡不用批改反馈）；点击走 kbOpenTaskFeedback，按 task_id 取反馈（反馈数据由 loadFeedback 登记到 window.__taskFeedback，未加载时按需拉取 feedback_<grade>.json）。 */
+           仅 done＋学习类任务（家务不纳入）渲染；登记本提交卡（task_type='meta_register'）只摄取不批改、无批改反馈（2026-11-10 家长令）；登记本派生的 REG 任务（作业/读背）照常批改、有反馈，须显示按钮（2026-11-11 根治：此前按 source='register_book' 一刀切，致已批改的登记本读任务看不到反馈按钮）；点击走 kbOpenTaskFeedback，按 task_id 取反馈（反馈数据由 loadFeedback 登记到 window.__taskFeedback，未加载时按需拉取 feedback_<grade>.json）。 */
         var origRow = '';
-        if(t.status === 'done' && t.source !== 'chore' && t.source !== 'register_book' && t.task_type !== 'meta_register'){
+        if(t.status === 'done' && t.source !== 'chore' && t.task_type !== 'meta_register'){
           var fbGradeNum = (wantGrade === '五年级') ? 5 : 6;
           origRow = '<div class="tfiles tfbs"><button type="button" class="tfile tfeedback" data-tid="' + esc(t.task_id) + '" data-grade="' + fbGradeNum + '">📝 查看批改反馈</button></div>';
         }
@@ -5936,7 +5936,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261111-updetail';
+  var KB_BUILD = '20261111-regfb2';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
