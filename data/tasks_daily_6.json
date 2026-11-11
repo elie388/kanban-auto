@@ -1,256 +1,258 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-11",
- "grade": "六年级",
- "generated_at": "2026-11-11T00:19:38+08:00",
- "updated_at": "2026-11-11T19:45:20+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-11T19:45:20+08:00",
-   "new_lines": 0,
-   "flipped": 0
+  "schema_version": "1.0",
+  "date": "2026-11-11",
+  "grade": "六年级",
+  "generated_at": "2026-11-11T00:19:38+08:00",
+  "updated_at": "2026-11-11T20:03:38+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-11T19:45:20+08:00",
+      "new_lines": 0,
+      "flipped": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
+    }
   },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
+  "tasks": [
+    {
+      "task_id": "READ-20261110-G6",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-11T17:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-10T19:34:22+08:00",
+      "updated_at": "2026-11-11T17:05:36+08:00",
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
+    },
+    {
+      "task_id": "CHORE-20261111-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-11T17:30:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-11T00:25:45+08:00",
+      "updated_at": "2026-11-11T00:25:45+08:00"
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-11",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-11T16:55:40+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "completed_at": "2026-11-11T19:44:16+08:00"
+    },
+    {
+      "task_id": "REG-20261111-1F24C4C3120A",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄P40重点句和中文各2次，读P40句子5次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00"
+    },
+    {
+      "task_id": "REG-20261111-FBDF257F0936",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "写试卷第一题中文，更正试卷错题",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00"
+    },
+    {
+      "task_id": "REG-20261111-C10928D66BBF",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3单词，P40句子",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U3单词，P40句子 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "task_type": "reading"
+    },
+    {
+      "task_id": "REG-20261111-FDB7D21210F1",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄15课生字",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00"
+    },
+    {
+      "task_id": "REG-20261111-1CB2BE6038C3",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00"
+    },
+    {
+      "task_id": "REG-20261111-CA1A8E9BAE2E",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本15课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00"
+    },
+    {
+      "task_id": "REG-20261111-20DF7BCE74B7",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看课外书，记录①",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T20:03:38+08:00",
+      "task_type": "read",
+      "type_source": "regex_read",
+      "completed_at": "2026-11-11T20:03:38+08:00",
+      "status_source": "reading_grading"
+    },
+    {
+      "task_id": "REG-20261111-A645ED998F44",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念35",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261111-19FB638D045F",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校[一字待确认]本P27、28",
+      "detail": "原状态：待完成。【字迹不清请孩子确认】数学第2条“校[一字待确认]本P27、28”中“校”和“本”之间的字看不清，请问是下面哪一个？①校本（“校”和“本”之间没有别的字）②校足本③校尽本④其他（请留言告诉我）。确认后按你说的改标题。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T19:44:16+08:00"
+    }
+  ],
+  "counts": {
+    "total": 12,
+    "pending": 10,
+    "in_progress": 0,
+    "done": 2,
+    "pending_review": 0
   },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "READ-20261110-G6",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-11T17:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-10T19:34:22+08:00",
-   "updated_at": "2026-11-11T17:05:36+08:00",
-   "carry_first_date": "2026-11-10",
-   "carried_from": "2026-11-10",
-   "carry_count": 1
-  },
-  {
-   "task_id": "CHORE-20261111-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-11T17:30:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-11T00:25:45+08:00",
-   "updated_at": "2026-11-11T00:25:45+08:00"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-11",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "在看板上传登记本照片",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-11-11T16:55:40+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00",
-   "completed_at": "2026-11-11T19:44:16+08:00"
-  },
-  {
-   "task_id": "REG-20261111-1F24C4C3120A",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "抄P40重点句和中文各2次，读P40句子5次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00"
-  },
-  {
-   "task_id": "REG-20261111-FBDF257F0936",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "写试卷第一题中文，更正试卷错题",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00"
-  },
-  {
-   "task_id": "REG-20261111-C10928D66BBF",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "U3单词，P40句子",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语早读：U3单词，P40句子 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00",
-   "task_type": "reading"
-  },
-  {
-   "task_id": "REG-20261111-FDB7D21210F1",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "抄15课生字",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00"
-  },
-  {
-   "task_id": "REG-20261111-1CB2BE6038C3",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "小练笔",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00"
-  },
-  {
-   "task_id": "REG-20261111-CA1A8E9BAE2E",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "校本15课",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00"
-  },
-  {
-   "task_id": "REG-20261111-20DF7BCE74B7",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "看课外书，记录①",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00",
-   "task_type": "read",
-   "type_source": "regex_read"
-  },
-  {
-   "task_id": "REG-20261111-A645ED998F44",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念35",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral"
-  },
-  {
-   "task_id": "REG-20261111-19FB638D045F",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校[一字待确认]本P27、28",
-   "detail": "原状态：待完成。【字迹不清请孩子确认】数学第2条“校[一字待确认]本P27、28”中“校”和“本”之间的字看不清，请问是下面哪一个？①校本（“校”和“本”之间没有别的字）②校足本③校尽本④其他（请留言告诉我）。确认后按你说的改标题。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T19:44:16+08:00",
-   "updated_at": "2026-11-11T19:44:16+08:00"
-  }
- ],
- "counts": {
-  "total": 12,
-  "pending": 11,
-  "in_progress": 0,
-  "done": 1,
-  "pending_review": 0
- },
- "deadline_today": null
+  "deadline_today": null
 }
