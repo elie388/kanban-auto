@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-11T20:40:50+08:00",
+ "generated_at": "2026-11-11T20:45:56+08:00",
  "items": [
+  {
+   "date": "2026-11-11",
+   "ts": "2026-11-11T20:49:00+08:00",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261111-1A3DE8D00FC7",
+   "title": "11月11日口语易反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，口语易反馈</h2><p>11月11日 20:41 提交</p><h3>做得好的地方</h3><ul><li>口语易 11 月 11 日的任务已经提交了，两项口语练习都做完了，很好。</li></ul><p>这项任务完成了，两项口语练习都按时做完了，继续保持。</p><p>本批积分 +5（发回分）。</p></body></html>"
+  },
   {
    "date": "2026-11-11",
    "ts": "2026-11-11T20:40:00+08:00",
