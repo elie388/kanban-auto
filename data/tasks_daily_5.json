@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "五年级",
   "generated_at": "2026-11-11T00:19:37+08:00",
-  "updated_at": "2026-11-11T21:34:21+08:00",
+  "updated_at": "2026-11-11T22:46:46+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -104,7 +104,12 @@
       "pending_corrections": 0,
       "status_source": "closeout_manual_subagent",
       "corr_round": 1,
-      "completed_at": "2026-11-11T21:30:38+08:00"
+      "completed_at": "2026-11-11T21:30:38+08:00",
+      "orig_photos": [
+        "b1be2a837ba7c61e.jpg",
+        "9cb602d2a3f8595f.jpg",
+        "cf869b1200fac286.jpg"
+      ]
     },
     {
       "task_id": "REG-20261111-A3D4E79EF410",
@@ -122,7 +127,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T18:51:41+08:00",
-      "updated_at": "2026-11-11T18:51:41+08:00"
+      "updated_at": "2026-11-11T18:51:41+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-1A3DE8D00FC7",
@@ -147,7 +154,10 @@
       "status_source": "reading_grade_kouyuyi",
       "pending_note": "11月11日口语易反馈",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "orig_photos": [
+        "eb0bedd97e8f858a.jpg"
+      ]
     },
     {
       "task_id": "REG-20261111-BAA3F1B84AC7",
@@ -170,7 +180,13 @@
       "corrections": [],
       "pending_corrections": 0,
       "status_source": "closeout_manual_subagent",
-      "completed_at": "2026-11-11T21:34:21+08:00"
+      "completed_at": "2026-11-11T21:34:21+08:00",
+      "orig_photos": [
+        "b1933cd5314360cb.jpg",
+        "fb5454ea7d33c930.jpg",
+        "43f763d1283f63f6.jpg",
+        "719d4970afa2b2bd.jpg"
+      ]
     }
   ],
   "counts": {

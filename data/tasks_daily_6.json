@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "六年级",
   "generated_at": "2026-11-11T00:19:38+08:00",
-  "updated_at": "2026-11-11T22:31:06+08:00",
+  "updated_at": "2026-11-11T22:46:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -98,7 +98,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00"
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-FBDF257F0936",
@@ -116,7 +118,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00"
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-FDB7D21210F1",
@@ -134,7 +138,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00"
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-1CB2BE6038C3",
@@ -152,7 +158,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00"
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-CA1A8E9BAE2E",
@@ -170,7 +178,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00"
+      "updated_at": "2026-11-11T19:44:16+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-20DF7BCE74B7",
@@ -197,7 +207,9 @@
         "4fdf6ae2ac93640b.jpg",
         "cd822be698661bc7.jpg",
         "c45a264b2a6a66f0.jpg"
-      ]
+      ],
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261111-A645ED998F44",
@@ -222,7 +234,18 @@
       "reading_pass": true,
       "reading_duration_sec": 12.35,
       "completed_at": "2026-11-11T21:40:43+08:00",
-      "status_source": "closeout_reading_subagent"
+      "status_source": "closeout_reading_subagent",
+      "corrections": [],
+      "pending_corrections": 0,
+      "qa": [
+        {
+          "q": "是读背概念55，不是读背概念35。",
+          "a": "收到，任务标题已按你说的改成读背概念55，批改按概念55原文比对。"
+        }
+      ],
+      "orig_photos": [
+        "3d1ce0f9de98bb4e.jpg"
+      ]
     },
     {
       "task_id": "REG-20261111-19FB638D045F",
@@ -243,7 +266,18 @@
       "updated_at": "2026-11-11T21:39:59+08:00",
       "pending_corrections": 0,
       "completed_at": "2026-11-11T21:39:59+08:00",
-      "status_source": "closeout_manual_subagent"
+      "status_source": "closeout_manual_subagent",
+      "corrections": [],
+      "qa": [
+        {
+          "q": "中间没有字。老师说有一些不会的可以不写，在28页，我有三道题不会写，请你教我怎么写。",
+          "a": "28页这三道题老师说可以不写，不强制。想学的话可以试试：第3题，调查对象就是你要调查的人——想想你要调查谁的用水情况？用水行为就是这些人平时怎么用水——洗手、刷牙、洗脸，哪个是你平时做的？第4题，想想你怎么知道别人用了多少水——问一问他们？看一看水表？记下来？哪两种办法你能做到？第6题，先算用口杯一天用几升水：每次1升，每天刷2次牙，一共几升？再用原来每天的6升减去这个数，就是节约的。"
+        }
+      ],
+      "orig_photos": [
+        "2fbe49c119509381.jpg",
+        "2801e044b7920096.jpg"
+      ]
     }
   ],
   "counts": {
