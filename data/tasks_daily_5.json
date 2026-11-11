@@ -1,166 +1,169 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-11",
- "grade": "五年级",
- "generated_at": "2026-11-11T00:19:37+08:00",
- "updated_at": "2026-11-11T20:06:34+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-11T19:45:20+08:00",
-   "new_lines": 0,
-   "flipped": 0
+  "schema_version": "1.0",
+  "date": "2026-11-11",
+  "grade": "五年级",
+  "generated_at": "2026-11-11T00:19:37+08:00",
+  "updated_at": "2026-11-11T20:30:08+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-11T19:45:20+08:00",
+      "new_lines": 0,
+      "flipped": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
+    }
   },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
+  "tasks": [
+    {
+      "task_id": "READ-20261110-G5",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。 【重读：第1轮，11处错漏】重读《第一次当旗手》《第一次刷卡》：11处错句每句读三遍，读准字，再把两篇完整重读一遍，照片加录音同一批交。11处：甭（béng）、旗杆（gǎn）、绳子一端（读清）、仿佛、嘱托（zhǔ tuō）、叮咛（dīng níng）、许多、乘车、停稳、投币（bì）、疑惑（yí huò）、辉煌（huī huáng）、捂着肚子（wǔ zhe dù zi）。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "appear_at": "2026-11-11T17:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": 259.99,
+      "reading_wpm": null,
+      "reading_pass": false,
+      "created_at": "2026-11-10T00:18:43+08:00",
+      "updated_at": "2026-11-11T17:05:36+08:00",
+      "corr_round": 1,
+      "carry_first_date": "2026-11-10",
+      "carried_from": "2026-11-10",
+      "carry_count": 1
+    },
+    {
+      "task_id": "CHORE-20261111-G5",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "19:59 晾衣服\n20:04 洗衣服",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-11-11T17:30:00+08:00",
+      "chore_done_count": 2,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-11T00:25:45+08:00",
+      "updated_at": "2026-11-11T20:06:34+08:00",
+      "completed_at": "2026-11-11T20:06:34+08:00",
+      "evidence": "家务判定通过——晾衣服、洗衣服；证据：看板家务上传批次 b17943983271540cb36f61496ab76c、b179439867383558862e9a3a3cc08e（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-11",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-11T16:55:40+08:00",
+      "updated_at": "2026-11-11T18:51:41+08:00",
+      "completed_at": "2026-11-11T18:51:41+08:00",
+      "orig_photos": [
+        "8c41c52812df1237.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261111-1A898A9D4B19",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "小校本3页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①小校本3页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T18:51:41+08:00",
+      "updated_at": "2026-11-11T18:51:41+08:00"
+    },
+    {
+      "task_id": "REG-20261111-A3D4E79EF410",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小写作文（第五单元）标旁批、说明方法画好",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小写作文（第五单元）标旁批、说明方法画好 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T18:51:41+08:00",
+      "updated_at": "2026-11-11T18:51:41+08:00"
+    },
+    {
+      "task_id": "REG-20261111-1A3DE8D00FC7",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "小口语易 2.2",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T18:51:41+08:00",
+      "updated_at": "2026-11-11T18:51:41+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261111-BAA3F1B84AC7",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "校本27页",
+      "detail": "原状态：待完成。【已确认：校本】英语第2条是“校本27页”——孩子在校本练习第27页页眉手写“校本27页”，与登记本涂改后文字一致；任务为五年级英语上册 Unit 4 校本练习（第二课时 Start up）第27页。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T18:51:41+08:00",
+      "updated_at": "2026-11-11T20:23:14.736186+08:00"
+    }
+  ],
+  "counts": {
+    "total": 7,
+    "pending": 3,
+    "in_progress": 2,
+    "done": 2,
+    "pending_review": 0
   },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "READ-20261110-G5",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。 【重读：第1轮，11处错漏】重读《第一次当旗手》《第一次刷卡》：11处错句每句读三遍，读准字，再把两篇完整重读一遍，照片加录音同一批交。11处：甭（béng）、旗杆（gǎn）、绳子一端（读清）、仿佛、嘱托（zhǔ tuō）、叮咛（dīng níng）、许多、乘车、停稳、投币（bì）、疑惑（yí huò）、辉煌（huī huáng）、捂着肚子（wǔ zhe dù zi）。",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "appear_at": "2026-11-11T17:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": 259.99,
-   "reading_wpm": null,
-   "reading_pass": false,
-   "created_at": "2026-11-10T00:18:43+08:00",
-   "updated_at": "2026-11-11T17:05:36+08:00",
-   "corr_round": 1,
-   "carry_first_date": "2026-11-10",
-   "carried_from": "2026-11-10",
-   "carry_count": 1
-  },
-  {
-   "task_id": "CHORE-20261111-G5",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "19:59 晾衣服\n20:04 洗衣服",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "appear_at": "2026-11-11T17:30:00+08:00",
-   "chore_done_count": 2,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-11T00:25:45+08:00",
-   "updated_at": "2026-11-11T20:06:34+08:00",
-   "completed_at": "2026-11-11T20:06:34+08:00",
-   "evidence": "家务判定通过——晾衣服、洗衣服；证据：看板家务上传批次 b17943983271540cb36f61496ab76c、b179439867383558862e9a3a3cc08e（approved）；回写 chore_task_writeback。"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-11",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "在看板上传登记本照片",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-11-11T16:55:40+08:00",
-   "updated_at": "2026-11-11T18:51:41+08:00",
-   "completed_at": "2026-11-11T18:51:41+08:00"
-  },
-  {
-   "task_id": "REG-20261111-1A898A9D4B19",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "小校本3页",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①小校本3页 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T18:51:41+08:00",
-   "updated_at": "2026-11-11T18:51:41+08:00"
-  },
-  {
-   "task_id": "REG-20261111-A3D4E79EF410",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "小写作文（第五单元）标旁批、说明方法画好",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①小写作文（第五单元）标旁批、说明方法画好 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T18:51:41+08:00",
-   "updated_at": "2026-11-11T18:51:41+08:00"
-  },
-  {
-   "task_id": "REG-20261111-1A3DE8D00FC7",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "小口语易 2.2",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T18:51:41+08:00",
-   "updated_at": "2026-11-11T18:51:41+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral"
-  },
-  {
-   "task_id": "REG-20261111-BAA3F1B84AC7",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "校本27页",
-   "detail": "原状态：待完成。【已确认：校本】英语第2条是“校本27页”——孩子在校本练习第27页页眉手写“校本27页”，与登记本涂改后文字一致；任务为五年级英语上册 Unit 4 校本练习（第二课时 Start up）第27页。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-11T18:51:41+08:00",
-   "updated_at": "2026-11-11T20:23:14.736186+08:00"
-  }
- ],
- "counts": {
-  "total": 7,
-  "pending": 4,
-  "in_progress": 1,
-  "done": 2,
-  "pending_review": 0
- },
- "deadline_today": null
+  "deadline_today": null
 }
