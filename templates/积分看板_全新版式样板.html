@@ -1761,6 +1761,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     catch(e){ return ''; }
   }
   window.__taskOrig = window.__taskOrig || {};
+  window.__taskDetail = window.__taskDetail || {};
   window.__taskKousuan = window.__taskKousuan || {};
   function renderOne(secId, data){
     try{ (data.tasks || []).forEach(function(t){
@@ -1773,6 +1774,9 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       /* 2026-10-24 读背原文回落：任务无待改正原文时，用任务 recite_text 填原文区；有待改正原文时仍以待改正为准 */
       else if((t.recite_text || '').trim()) window.__taskOrig[t.task_id] = t.recite_text.trim();
       else delete window.__taskOrig[t.task_id];
+      /* 2026-11-11 家长令：提交面板也要注明补交内容——任务 detail 登记到 __taskDetail，交这一项面板里显示（与卡面说明同一来源）。 */
+      if((t.detail || '').trim()) window.__taskDetail[t.task_id] = t.detail.trim();
+      else delete window.__taskDetail[t.task_id];
       var kq = (t.kousuan || []).filter(function(x){ return x && String(x).trim(); });
       if(kq.length) window.__taskKousuan[t.task_id] = kq.map(function(x, i){ return (i + 1) + '）' + x; }).join('\n');
       else delete window.__taskKousuan[t.task_id];
@@ -5871,6 +5875,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     <h3 id="up-title">交作业</h3>
     <div class="up-sub" id="up-subtitle"></div>
     <div class="up-orig" id="up-orig" style="display:none"><div class="up-orig-cap" id="up-orig-cap">原文 · 照着读</div><div class="up-orig-text" id="up-orig-text"></div></div>
+    <div class="up-orig" id="up-detail" style="display:none"><div class="up-orig-cap" id="up-detail-cap">这次要交什么</div><div class="up-orig-text" id="up-detail-text"></div></div>
     <div class="up-row" id="up-childrow" style="display:none">
       <label>哪个孩子</label>
       <div class="up-pick" id="up-children"></div>
@@ -5931,7 +5936,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261111-regfb';
+  var KB_BUILD = '20261111-updetail';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6122,7 +6127,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     busy = false; var go = $('up-go'); go.disabled = false; go.textContent = '全部交完 ✅'; go.onclick = null;
     $('up-msg').textContent = ''; $('up-msg').className = 'up-msg';
     $('up-filelist').innerHTML = ''; $('up-files').value = ''; $('up-message').value = '';
-    $('up-orig').style.display = 'none';
+    $('up-orig').style.display = 'none'; $('up-detail').style.display = 'none';
     upPicked = []; recFiles = []; recSet = new Set();
     $('up-childrow').style.display = 'none'; $('up-typerow').style.display = 'none'; $('up-examrow').style.display = 'none'; if($('up-is-exam')) $('up-is-exam').checked = false;
     if(ctx.mode === 'task'){
@@ -6134,6 +6139,10 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       var _ot = (window.__taskOrig || {})[cur.task_id];
       if(_ot){ $('up-orig-cap').textContent = '原文 · 照着读'; $('up-orig-text').textContent = _ot; $('up-orig').style.display = 'block'; }
       else { $('up-orig').style.display = 'none'; }
+      /* 2026-11-11 家长令：提交面板显示任务 detail（这次要交什么），补交内容卡面与面板一致。 */
+      var _dt = (window.__taskDetail || {})[cur.task_id];
+      if(_dt){ $('up-detail-text').textContent = _dt; $('up-detail').style.display = 'block'; }
+      else { $('up-detail').style.display = 'none'; }
     } else if(ctx.mode === 'chore'){
       cur.type = 'chore'; $('up-examrow').style.display = 'block';
       $('up-title').textContent = '交家务照片';
