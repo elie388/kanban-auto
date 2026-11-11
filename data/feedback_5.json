@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-11T14:59:13+08:00",
+ "generated_at": "2026-11-11T20:40:50+08:00",
  "items": [
+  {
+   "date": "2026-11-11",
+   "ts": "2026-11-11T20:40:00+08:00",
+   "kind": "feedback",
+   "time": "11月11日 20:40",
+   "task_id": "REG-20261111-BAA3F1B84AC7",
+   "title": "11月11日英语校本27页反馈（6处要改）",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，英语校本27页反馈</h2><p>你今天把英语校本27页的17道小题都做完了，对11题，正确率64.7%。这次要订正6处。</p><h3>做得好的地方</h3><ul><li>首字母填空5题对了4题，exercise、October、top、November 都写对了。</li><li>短语填空5题对了3题，have a test、do better、next time 都用对了。</li><li>单项选择5题对了3题，because、work 这些地方都选对了。</li><li>写作第2句 Zhang Peng is going to swim 写对了。</li></ul><h3>要订正的地方</h3><ol><li>第一大题第2小题：这个单词是“喝”的意思，你写的最后一个字母不对。读一读它的发音，最后一个音是什么字母？对照课本里的单词，看看最后一个字母写对了吗？</li><li>第二大题第1小题：Tom 想在英语上取得好成绩，他应该怎么做？“努力”用哪个短语？再想想 try again 是什么意思，放在“在英语上”后面通顺吗？和第五题对照看看，是不是放错位置了？</li><li>第二大题第5小题：这句话是说“如果现在做不对，就……以后再做”，哪个短语表示“再试一次”？work hard 是什么意思，放在这里合适吗？和第一题对照看看，是不是放错位置了？</li><li>第三大题第1小题：Lily 是第三人称单数，主语是 he、she、it 时，动词要有什么变化？practise 后面要加什么？再看看三个选项，哪个符合？</li><li>第三大题第3小题：something 被形容词修饰时，形容词放在前面还是后面？想想 something nice、something new 这样的说法，再看看三个选项。</li><li>第四大题第1句：Feifei and Lele 是两个人，主语是单数还是复数？主语是复数时，be 动词用 is 还是 are？想想 We are、They are 的说法。</li></ol><p>本批积分 -1（写作涂改 1 处）。</p></body></html>"
+  },
   {
    "date": "2026-11-10",
    "ts": "2026-11-10T22:50:00+08:00",
@@ -164,105 +173,6 @@
    "task_id": "REG-20261109-24EF90F1488E",
    "title": "11月9日口语易反馈",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月9日 19:06 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 9 日的任务已经提交了，7 项都完成了，很好。</li>\n</ul>\n<p>今天按时完成了口语练习，继续保持。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T21:34:42+08:00",
-   "kind": "feedback",
-   "time": "11月08日 21:34",
-   "task_id": "MANUAL-20261107-002-G5-YW",
-   "title": "周六综合试卷（语文）·订正反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，语文周六综合试卷订正反馈</h2>\n<p>11月8日 20:38 提交的订正，基础第 5 题第（1）句还要再想一想。</p>\n<h3>📝 还要再改：1处</h3>\n<p><b>基础第 5 题 改病句（1）</b><br>\n<b>原题：</b>基础第5题：修改病句。（1）他看完了医生后就回家休息了。（2）通过这次秋游，使我增长了见识。<br>\n<b>这次的情况：</b>你现在写的是“他看完医生后就回家休息了”，“看完”还是跟错了对象。<br>\n“他看完医生”读起来别扭，是因为“完”跟错了对象。想一想，去看医生，看完的是医生这个人，还是身上的病？把“医生”换成那个词，再读一遍句子通不通顺。（2）已经改对了，这次只改（1）。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5yw_q2_bingju.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>另外，习作“二十年后的家乡”正文这批照片里还没拍到，记得把第 4 页（习作正文）也拍回来。</p>\n<p>本批积分 +2（订正改对 +0、当天发回 +2）。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T21:31:00+08:00",
-   "kind": "feedback",
-   "time": "11月08日 21:31",
-   "task_id": "MANUAL-20261107-002",
-   "title": "英语阅读写作第15期反馈",
-   "html": "<p>彦均，阅读第 5 题改对了：music 这个词现在拼对了，做得很好！下次记得把原来写错的那个词划掉，再在旁边写上正确的拼写。</p>\n<p>还剩 1 处要改一改：</p>\n<p><b>写作《My Friend's Birthday》：</b>你用红笔重写了一遍，很好，但还有几处要再改一改：第一句的星期，短文里说今天是星期几？再想一想：Tom and I 是两个人，goes 要改成什么？题目要求用第三人称写 Tom 的一天，I 和 We 能用吗？Tom's mum 只有一个人，prepare 后面要不要加 -s？We 是好几个人，Listens 和 feels 后面的 -s 该不该留？句中单词的首字母（My、Listens）该大写还是小写？最后数一数，你重写里用对的第三人称单数动词有几个，够 5 个吗？</p>\n<img src=\"data/diagrams/g5rw15_writing_plural_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>改好这一处就完成啦，加油！</p>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T21:27:15+08:00",
-   "kind": "feedback",
-   "time": "11月08日 21:27",
-   "task_id": "MANUAL-20261108-002",
-   "title": "英语阅读写作第16期反馈",
-   "html": "<p>彦均，阅读 5 道题全对了，真棒！短文里的鱼、红球、蝴蝶都找对了，问答句也写得完整。</p>\n<p>第 4 题的译句也写对了，不过有个小提醒：你写的 'is' 里，S 写成了大写，写在句中的小词记得用小写哦。</p>\n<p><b>写作《My Little Sister》：</b>短文 34 个词，第三人称单数动词用了 5 个，都达标了，写得很好！还有 3 处小地方再想一想：'go to park' 里 park 前面是不是少了一个小词？短文里有两个词在句中用了大写，普通名词在句中应该用大写还是小写？'mum' 指家里的人时，应该用大写还是小写？</p>\n<img src=\"data/diagrams/rw16_writing_park_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>改好这 3 处再拍回来，你一定行！</p>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T21:00:00+08:00",
-   "kind": "feedback",
-   "time": "21:00",
-   "task_id": "REG-20261106-E8DD7D",
-   "title": "数学 第四单元综合卷订正反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学第四单元综合卷订正反馈</h2>\n<p>11月8日 19:46 提交的订正（第 1 页），3 项待改正，改对了 1 项，还剩 2 项要继续改。</p>\n<h3>🌟 改对了的地方</h3>\n<ul>\n<li>填空 8（6a 表示什么）：你把“书”字划掉、改成了“淘气看了 6 天的页数”，对了。6a 就是淘气 6 天一共看的页数。</li>\n</ul>\n<h3>📝 还要再改：2处</h3>\n<p>逐题想一想再改：</p>\n<p><b>填空 7（还剩多少钱）</b><br>\n<b>原题：</b>当 a=4.5 时，小刚还剩多少钱（小刚有 48 元零花钱，买了 3 本笔记本，每本 a 元，然后买钢笔又用去 12.7 元）。<br>\n<b>这次的情况：</b>你写的 21.6 还不对，再算一算最后一步。<br>\n3×4.5=13.5，48−13.5=34.5，最后一步 34.5−12.7：小数部分 5 减 7 不够减，要向个位借 1，借 1 当 10，15 减 7 是几？再算整数部分，列竖式慢慢算一遍。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_e8dd7d_money.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p><b>填空 8（a+b 表示什么）</b><br>\n<b>原题：</b>淘气每天看 a 页，笑笑每天看 b 页，a+b 表示什么。<br>\n<b>这次的情况：</b>你改成了“淘气和笑笑 6 天看的页数”，但 a+b 不是 6 天的总数。<br>\na 是淘气一天看的页数，b 是笑笑一天看的页数，a+b 是把两人同一天的页数加起来——是“一天”一共看的，还是“6 天”一共看的？你的答案里有没有写清楚是几天？</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_e8dd7d_reading.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>本批积分 +0（改对 1 项；本任务今天的订正分已达 +8 上限，分批提交不叠加）。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T20:55:00+08:00",
-   "kind": "feedback",
-   "time": "20:55",
-   "task_id": "MANUAL-20261107-002-G5-SX",
-   "title": "周六综合试卷（数学）·订正反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，数学周六综合试卷订正反馈</h2>\n<p>11月8日 20:00 提交的订正，3 项待改正，改对了 2 项，还剩 1 项要继续改。</p>\n<h3>🌟 改对了的地方</h3>\n<ul>\n<li>列竖式 5.04×0.28：重写的竖式部分积 4032、1008，得数 1.4112，对了。</li>\n<li>解决问题 2：15×2.4=36、144+36=180、答共付 180 元，都对了。记得下次把旧的算式和旧的答句（144+40=184、答 184 元）一并划掉。</li>\n</ul>\n<h3>📝 还要再改：1处</h3>\n<p>逐题想一想再改：</p>\n<p><b>填空 2</b><br>\n<b>原题：</b>一个数缩小到原来的十分之一后，比原来少63，原来这个数是（ ）。<br>\n<b>这次的情况：</b>括号里还是 567，括号下方那个单独的 7 不是完整的得数。<br>\n这个数缩小后比原来少63，少的63占原来这个数的几分之几？先算一算63是原数的几分之几，再用63除以这个分率求原数。请把完整的得数写进括号里，并把旧的得数划掉。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_sx_fill2.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>本批积分 +4（订正改对 +4）。</p>\n<h3>📝 11月11日新增待改正：1处</h3>\n<p>复核发现，周六数学卷还有一处要改：</p>\n<p><b>解决问题 4</b><br>\n<b>原题：</b>学校礼堂每排坐56人，一共坐了32排，一共能坐多少人？<br>\n<b>这次的情况：</b>算式是对的，但答句的单位写错了。<br>\n答句单位与问题所问不一致，请检查并改正。</p>\n<div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div>\n<img src=\"data/diagrams/g5_sx_prob4.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T20:26:52+08:00",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "READ-20261107-G5",
-   "title": "11月8日每日读书反馈（两篇都读完啦）",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，每日读书反馈</h2>\n<p>11月8日 20:12 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>两篇范文都读完了：《我的心爱之物——可乐》《围巾——我的最爱》，一篇都没落下。</li>\n<li>《可乐》里小狗和海浪玩、喝咸咸的海水那段读得很生动，小狗暖脚的温馨也读出来了。</li>\n<li>《围巾》里外婆半夜织围巾、第二天早上送围巾的惊喜，读得很顺，结尾“走过以后每个寒冷的冬天”读出了感情。</li>\n<li>录音 290.52 秒，语速正常，一次读完两篇，中间没有停下来。</li>\n</ul>\n<h3>下次可以更好的地方</h3>\n<ul>\n<li>继续保持一次读完的好习惯；读长文章时，在段落之间稍停一下再读下一段，听起来会更顺。</li>\n</ul>\n<p>这次读书发回 +5，读完读对达标 +3，录音 290.52 秒（270–299 秒档）+8；今天 20:12 提交，没有迟交。本批合计 +16。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T20:11:00+08:00",
-   "kind": "feedback",
-   "time": "20:11",
-   "task_id": "REG-20261106-1B1D18",
-   "title": "把园一到园四的日积月累抄一次（订正）",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，日积月累抄写订正反馈</h2>\n<p>11月8日 19:48 提交，第2轮订正。园二的两句名言都改对了，家长也确认了，这次的订正完成了。</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>园二第1条（葛洪）：不饱食以终日，不弃功于寸阴——对了。</li>\n<li>园二第5条（朱熹）：少年易老学难成——对了。</li>\n</ul>\n<p>这两句都记住了：第一句是葛洪说的，最后一句是朱熹说的。对照课本园地二再读一遍，把作者和句子对应起来。</p>\n</body></html>\n"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T19:45:00+08:00",
-   "kind": "feedback",
-   "time": "11月8日 19:45",
-   "task_id": "MANUAL-20261107-002-G5-YY",
-   "title": "周六综合试卷（英语）·订正12道全对",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语周六综合试卷订正反馈</h2>\n<p>11月8日 19:35 交回的订正批改完了：12 道选择题全改对了。首轮得分是 44 分（满分 70 分，小作文已豁免不计分）。</p>\n<h3>🌟 订正全对的 12 道</h3>\n<ul>\n<li>词汇1：turn old bottles <b>into</b> new bags（把……变成……）。</li>\n<li>词汇2：too <b>many</b> plastic bottles，too <b>much</b> fresh air（能数出来的用 many，数不出来的用 much）。</li>\n<li>词汇3：<b>Collecting</b> stamps is my hobby（动词当主语要加 -ing）。</li>\n<li>单选11：They <b>watched</b> a football match last Sunday（上周日是过去，要用过去式）。</li>\n<li>单选12：Where <b>did</b> you go last Sunday?</li>\n<li>单选13：What <b>did</b> she buy yesterday?</li>\n<li>单选14：My mother <b>bought</b> a new dress for me last week.</li>\n<li>单选15：They <b>took</b> photos in the zoo last Saturday.</li>\n<li>单选16：<b>Did</b> your father come back yesterday?</li>\n<li>单选18：Please <b>put</b> the rubbish into the bin（Please 开头动词用原形）。</li>\n<li>单选19：Tom <b>read</b> a book yesterday evening（read 的过去式拼写不变）。</li>\n<li>单选20：We <b>took</b> some photos in the park last Sunday.</li>\n</ul>\n<p>这 12 道里，过去时是这次的重点：看到 last Sunday、yesterday、last week、last Saturday 这些词，动作已经发生了，动词要变过去式。你全改对了，这个规律已经掌握了。</p>\n<h3>📝 小作文不用写了</h3>\n<p>小作文 My Last Weekend 不用写了——过去时还没学到，等学到了再写。试卷上第四大题（小作文那道）也可以跳过，不用做。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T18:11:00+08:00",
-   "kind": "feedback",
-   "time": "11月8日 18:11",
-   "task_id": "REG-20261106-08D068",
-   "title": "11月8日英语复习U1-U3读任务反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，英语复习U1-U3读任务反馈</h2>\n<p>11月8日 17:19 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>U1到U3的单词、课文、故事和儿歌全都读完了，没有漏段，声音清楚。</li>\n<li>录音5分半钟，能坚持一口气读完，很棒。</li>\n<li>牛奶盒那封信和Duoduo交朋友的故事读得很顺。</li>\n<li>单词表从头读到尾，读得很完整。</li>\n</ul>\n<h3>需要再注意的地方</h3>\n<ul>\n<li>小鸟和小狗交朋友那个故事（Friends with differences那两页），有两处听着不太确定，请翻到那两页，慢慢对照课本再读一遍，读的时候留意书上的原话，和你读出来的对一对。</li>\n</ul>\n<p>这次读任务发回 +5、达标 +3、录音330秒 +10；这次17:19提交，迟于周六22:00截止，迟交 -3。本批共 +15。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "2026-11-08T17:16:00+08:00",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261106-799EA9",
-   "title": "11月8日语文看作文反馈（四篇都读完啦）",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，语文看作文反馈</h2>\n<p>11月8日 17:01 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>四篇作文都读完了：《我家的爱心猫咪》《体育老师的绝招》《孟姜女哭长城》《二十年后的家乡》，一篇都没落下。</li>\n<li>《体育老师的绝招》里“示威招”“游戏招”“故事招”三招读得很顺，听得出老师的幽默。</li>\n<li>《孟姜女哭长城》这么长的故事，你一口气读完了，中间没有停下来。</li>\n<li>《二十年后的家乡》最后一段读出了对家乡的喜欢，结尾很有感情。</li>\n</ul>\n<h3>下次可以更好的地方</h3>\n<ul>\n<li>读到每篇的最后一句时放慢一点、读清楚再翻页，这次第一篇的最后一句听得不太清楚。</li>\n</ul>\n<p>这次读背发回 +5，读完读对达标 +3，录音 533.85 秒（480–600 秒档）+15；周五的作业周六 22:00 截止，你周日 17:01 才提交，迟交 -3。本批合计 +20。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-08",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "MANUAL-20261107-001",
-   "title": "11月8日兄弟英语对话第1期反馈（3处要改）",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，兄弟英语对话第1期反馈</h2>\n<p>11月8日 18:31 提交，录音 70.02 秒</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>20 句对话都读下来了，声音清楚，没有漏句。</li><li>第 1–8 句读得很顺，问答接得自然。</li><li>第 15 句 cartoon movie 读对了。</li>\n</ul>\n<h3>需要再注意的地方</h3>\n<ul>\n<li>第 9 句 At nine o'clock, at the park gate.——你漏读了最后 gate 这个词，重读这句时把 gate 读出来，对照脚本把整句读完整。</li><li>第 11 句 On Sunday morning, let's visit our grandparents.——visit 这个词你读成了 read，重读时对照脚本把 visit 读准。</li><li>第 18 句 Sunday—grandparents and a movie.——movie 这个词读得含糊，重读时把 movie 咬清楚，慢慢读。</li>\n</ul>\n<p>这次对话发回 +5；这次18:31提交，迟交 -3；这次有 3 处错词，未达标——把上面几句单独重读一遍，读对了再发回来，达标再 +3。下次可以读两遍，或者读完再加几句自由对话，录够 3 分钟更好。</p>\n</body></html>"
   }
  ]
 }
