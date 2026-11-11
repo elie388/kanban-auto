@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "六年级",
   "generated_at": "2026-11-11T00:19:38+08:00",
-  "updated_at": "2026-11-11T22:46:47+08:00",
+  "updated_at": "2026-11-11T23:44:14+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -107,9 +107,9 @@
       "source": "register_book",
       "subject": "英语",
       "title": "写试卷第一题中文，更正试卷错题",
-      "detail": "原状态：待完成",
+      "detail": "已完成：听力一10题30个中文全写完，写对29个（正确率96.7%）；错1个：national写成了传统的（反馈里有引导）。更正错题：七-5原答案shorter已正确，无错题可更正。本批+18。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
@@ -118,9 +118,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-11T23:44:14+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "completed_at": "2026-11-11T23:44:14+08:00",
+      "status_source": "grading-orphan-FBDF257F0936"
     },
     {
       "task_id": "REG-20261111-FDB7D21210F1",
@@ -282,9 +284,9 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 5,
+    "pending": 4,
     "in_progress": 1,
-    "done": 5,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": null
