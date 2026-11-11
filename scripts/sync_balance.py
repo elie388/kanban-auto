@@ -248,7 +248,8 @@ def main():
         new_doc["generated_at"] = datetime.now(BEIJING).isoformat(timespec="seconds")
         new_doc["source_mtime"] = mtime
         new_doc["source_sha256"] = sha
-        tmp = DATA_FILE.with_suffix(".json.tmp")
+        # B-10（2026-11-11）：临时文件名加 pid——固定名两进程同写会互相覆盖。
+        tmp = DATA_FILE.with_suffix(".json.tmp.%d" % os.getpid())
         DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
         tmp.write_text(json.dumps(new_doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         os.replace(tmp, DATA_FILE)

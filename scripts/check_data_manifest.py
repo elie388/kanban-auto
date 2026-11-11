@@ -22,8 +22,14 @@ def frontend_set(tpl: str) -> set:
     out = set()
     out |= set(re.findall(r"data/([a-z0-9_]+\.json)", tpl))
     out |= set(re.findall(r"'([a-z][a-z0-9_]*\.json)'", tpl))
+    # B-12（2026-11-11）：双引号字面量与双引号动态拼名亦计入——原只认单引号，
+    # 模板改用双引号写法时该文件会被误判“前端不用”。
+    out |= set(re.findall(r'"([a-z][a-z0-9_]*\.json)"', tpl))
     # 动态拼名：'stats_grade_' + grade / 'points_log_' + grade
     for prefix in re.findall(r"'([a-z][a-z0-9_]*_)' \+ [a-zA-Z_]+", tpl):
+        for g in ("5", "6"):
+            out.add(f"{prefix}{g}.json")
+    for prefix in re.findall(r'"([a-z][a-z0-9_]*_)" \+ [a-zA-Z_]+', tpl):
         for g in ("5", "6"):
             out.add(f"{prefix}{g}.json")
     return out

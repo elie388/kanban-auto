@@ -1024,17 +1024,24 @@ def _post_balances_to_worker(balances):
                                capture_output=True, text=True, timeout=60)
             out = r.stdout or ""
             code = 0
+            _btxt = ""
             if "\n" in out:
                 _btxt, _code = out.rsplit("\n", 1)
                 try:
                     code = int(_code.strip())
                 except Exception:
                     code = 0
+            else:
+                _btxt = out
             if code == 200:
                 log("余额实时推送成功：g5=%d g6=%d" % (body["5"], body["6"]))
                 return True
-            warn("余额实时推送失败（不影响本次同步）：HTTP %s" % (code or "0"))
-            err_write("BALANCES_POST_FAIL http=%s" % (code or "0"))
+            # B-18（2026-11-11）：失败时记响应体（截断）——Worker 侧 500 的
+            # 错误信息在响应体里，不记就永远不知道 Worker 哪一行抛错。
+            warn("余额实时推送失败（不影响本次同步）：HTTP %s body=%s" % (
+                code or "0", (_btxt or "")[:500]))
+            err_write("BALANCES_POST_FAIL http=%s body=%s" % (
+                code or "0", (_btxt or "")[:300]))
             return False
         finally:
             try:
@@ -1404,7 +1411,26 @@ def _main_impl():
         except Exception:
             _n_ahead = 0
         if _ahead.returncode == 0 and _n_ahead > 0:
-            _pp = git("push")
+            # B-04（2026-11-11）：滞留 push 亦持 git_push.lock——原 _sync_once
+            # 的锁只覆盖 fetch/校验段，写盘+commit/push 段裸推会与 task_ingest
+            # 推送交错。锁忙则跳过本次（下次重试），不裸推。
+            _glock = _acquire_git_lock(timeout=30)
+            if _glock is None:
+                warn("git_push.lock 30s 未获得，滞留提交本次不推（下次重试）")
+                err_write("滞留提交 push 跳过：git_push.lock 未获得")
+                _restore_stash()
+                return 3
+            try:
+                _pp = git("push")
+            finally:
+                try:
+                    fcntl.flock(_glock, fcntl.LOCK_UN)
+                except Exception:
+                    pass
+                try:
+                    _glock.close()
+                except Exception:
+                    pass
             if _pp.returncode == 0:
                 log("幂等：无语义变化，但推走 %d 个滞留提交" % _n_ahead)
             else:
@@ -1538,37 +1564,59 @@ def _main_impl():
             warn("输出文件 %s 校验失败，跳过本次提交：%s" % (_rel, _e))
             _restore_stash()
             return 2
-    _add_r = git("add", *outputs.keys())
-    if _add_r.returncode != 0:
-        warn("git add 失败 rc=%d：%s" % (_add_r.returncode, _add_r.stderr[:200]))
-        err_write("git add 失败：" + _add_r.stderr[:200])
+    # B-04（2026-11-11）：git 写段（add/commit/push）持共享 git_push.lock——
+    # 原 _sync_once 的锁只覆盖 fetch/校验段，写段裸推会与 task_ingest 推送
+    # 交错。锁只覆盖 git 区段，不横跨整个构建（构建长、会堵 do_push/watchd）。
+    # 锁忙则跳过本次提交（下次重试）。余额 POST 在锁外（fail-soft 网络调用，
+    # 不占 git 锁）。
+    _glock = _acquire_git_lock(timeout=30)
+    if _glock is None:
+        warn("git_push.lock 30s 未获得，跳过本次提交（下次重试）")
+        err_write("git_push.lock 未获得，跳过提交")
         _restore_stash()
         return 3
-    msg = "chore(balance): sync from ledger [auto]" 
-    cp = git("commit", "-m", msg)
-    if cp.returncode != 0:
-        # B2-182：commit 失败后 git reset HEAD，6 个产物不留在暂存区。
-        git("reset", "HEAD", "--", *outputs.keys())
-        warn("git commit 失败：%s" % cp.stderr[:200])
-        err_write("git commit 失败：" + cp.stderr[:200])
-        _restore_stash()
-        return 3
-    pp = git("push")
-    if pp.returncode != 0:
-        warn("git push 失败（本地文件已保留，下次重试）：%s" % pp.stderr[:200])
-        err_write("git push 失败：" + pp.stderr[:200])
-        _restore_stash()
-        return 3
-    # B2-189：提交后日志写入加 OSError 保护（此前写失败会使已提交的运行以异常退出，
-    # 调用方误判为提交失败）；B2-203：一次写出，不再 log() 与 open().write() 两写。
-    _log_line = "%s 已提交并推送：%s ledger_sha256=%s balances=%s\n" % (
-        generated_at, msg, hashlib.sha256(ledger_bytes).hexdigest(), balances)
-    print("[build_stats] " + _log_line.strip(), flush=True)
     try:
-        with open(os.path.join(LOGS_DIR, "build_stats.log"), "a", encoding="utf-8") as f:
-            f.write(_log_line)
-    except OSError as _e:
-        warn("build_stats.log 写入失败（提交已成功，不影响结果）：%s" % _e)
+        _add_r = git("add", *outputs.keys())
+        if _add_r.returncode != 0:
+            warn("git add 失败 rc=%d：%s" % (_add_r.returncode, _add_r.stderr[:200]))
+            err_write("git add 失败：" + _add_r.stderr[:200])
+            _restore_stash()
+            return 3
+        msg = "chore(balance): sync from ledger [auto]" 
+        cp = git("commit", "-m", msg)
+        if cp.returncode != 0:
+            # B2-182：commit 失败后 git reset HEAD，6 个产物不留在暂存区。
+            git("reset", "HEAD", "--", *outputs.keys())
+            warn("git commit 失败：%s" % cp.stderr[:200])
+            err_write("git commit 失败：" + cp.stderr[:200])
+            _restore_stash()
+            return 3
+        pp = git("push")
+        if pp.returncode != 0:
+            warn("git push 失败（本地文件已保留，下次重试）：%s" % pp.stderr[:200])
+            err_write("git push 失败：" + pp.stderr[:200])
+            _restore_stash()
+            return 3
+        # B2-189：提交后日志写入加 OSError 保护（此前写失败会使已提交的运行以异常退出，
+        # 调用方误判为提交失败）；B2-203：一次写出，不再 log() 与 open().write() 两写。
+        _log_line = "%s 已提交并推送：%s ledger_sha256=%s balances=%s\n" % (
+            generated_at, msg, hashlib.sha256(ledger_bytes).hexdigest(), balances)
+        print("[build_stats] " + _log_line.strip(), flush=True)
+        try:
+            with open(os.path.join(LOGS_DIR, "build_stats.log"), "a", encoding="utf-8") as f:
+                f.write(_log_line)
+        except OSError as _e:
+            warn("build_stats.log 写入失败（提交已成功，不影响结果）：%s" % _e)
+    finally:
+        # B-04：任何出口（成功/失败/异常）都放锁。
+        try:
+            fcntl.flock(_glock, fcntl.LOCK_UN)
+        except Exception:
+            pass
+        try:
+            _glock.close()
+        except Exception:
+            pass
     # 余额实时推送（2026-11-09 根治）：静态提交已成功，再把余额写进 Worker KV；
     # fail-soft，推送失败不影响本次同步结果（静态文件仍是兜底）。
     _post_balances_to_worker(balances)

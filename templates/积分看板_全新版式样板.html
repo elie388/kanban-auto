@@ -2102,16 +2102,28 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
   }
   function fetchTask(name){
     var attempt = 0;
+    /* B-07（2026-11-11）：每轮尝试 5 秒超时（与 fetchOnce 同口径）——原无超时，
+       网络挂起时整批任务拉取卡住，重试与缓存兜底都走不到。 */
     function tryOnce(){
       attempt++;
-      return fetch(DATA_BASE + name + (taskVer[name] ? '?v=' + encodeURIComponent(taskVer[name]) : ''), { cache: 'no-cache' })
-        .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      var ctrl = null, timer = 0;
+      try{
+        if('AbortController' in window){
+          ctrl = new AbortController();
+          timer = setTimeout(function(){ try{ ctrl.abort(); }catch(e){} }, 5000);
+        }
+      }catch(e){}
+      var opts = { cache: 'no-cache' };
+      if(ctrl) opts.signal = ctrl.signal;
+      return fetch(DATA_BASE + name + (taskVer[name] ? '?v=' + encodeURIComponent(taskVer[name]) : ''), opts)
+        .then(function(r){ if(timer) clearTimeout(timer); if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(function(d){
           if(d && d.generated_at) taskVer[name] = d.generated_at;
           taskCacheWrite(name, d);
           return { data: d, fromCache: false, ts: 0 };
         })
         .catch(function(e){
+          if(timer) clearTimeout(timer);
           if(attempt <= 3){
             var delay = TASK_RETRY_DELAYS[attempt - 1] * (0.8 + Math.random() * 0.4);
             return new Promise(function(resolve){ setTimeout(resolve, delay); }).then(tryOnce);
@@ -5657,6 +5669,19 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     }
   }catch(e){ /* 计数失败仅影响成败提示文案，不影响刷新本身 */ }
 
+  /* B-14（2026-11-11）：供动态缓存命中分支（块20）上报——缓存命中不走网络
+     fetch、不计 started，PTR 会等满 15 秒才报“刷新失败”。上报只加 started/ok，
+     不动 inflight（无在途请求）。 */
+  window.__kbPtrNoteData = function(url, ok){
+    try{
+      var u = String(url || '');
+      var isData = /\/data\/[^/?#]+\.json(\?|#|$)/.test(u) || /^data\/[^/?#]+\.json(\?|#|$)/.test(u);
+      if(!isData) return;
+      act.started++;
+      if(ok) act.ok++;
+    }catch(e){}
+  };
+
   function setBar(y, anim){
     bar.classList.toggle('ptr-anim', !!anim);
     bar.style.transform = 'translate(-50%,' + y + 'px)';
@@ -5906,7 +5931,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261110-fbnoreg';
+  var KB_BUILD = '20261111-bcfix';
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -6712,6 +6737,13 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 <!-- ===== 交作业上传模块 结束 ===== -->
 
 <script>
+/* B-15（2026-11-11）：反馈查看按钮委托绑定放块首——原在块尾，块内前置 IIFE
+   抛错即绑定不到、反馈按钮点之无应；kbOpenTaskFeedback 为块内函数声明
+   （提升），点击时才执行，不受定义位置影响。 */
+document.addEventListener('click', function(e){
+  var b = e.target && e.target.closest ? e.target.closest('.tfeedback') : null;
+  if(b) kbOpenTaskFeedback(b.getAttribute('data-tid'), parseInt(b.getAttribute('data-grade') || '5', 10));
+});
 /* 自动滚动引擎（2026-10-22 家长定、终审 定版口径）：
    适用 .auto-scroll 区域（积分日志两区 + 加分/扣分规则区 + 兑换记录两区，
    兑换记录 2026-10-22 家长追加，独立开关 redeem）。
@@ -7153,10 +7185,6 @@ function kbOpenTaskFeedback(tid, gradeNum){
     }
   }).catch(function(){ kbFbViewerShow('批改反馈', ''); });
 }
-document.addEventListener('click', function(e){
-  var b = e.target && e.target.closest ? e.target.closest('.tfeedback') : null;
-  if(b) kbOpenTaskFeedback(b.getAttribute('data-tid'), parseInt(b.getAttribute('data-grade') || '5', 10));
-});
 function kbOpenPrint(name, pages, pdfUrl, fileName, gradeName){
   if(window.kbPracticeToken && window.kbAskPass && !window.kbPracticeToken()){
     window.kbAskPass(function(){ kbOpenPrintReal(name, pages, pdfUrl, fileName, gradeName); }, null, 'print');
@@ -8105,6 +8133,9 @@ function mapState(s){
         var dec = client.state && client.state.lastDecision;
         if(dec && dec.source === 'dynamic'){
           var body = JSON.stringify(cache[name]);
+          /* B-14（2026-11-11）：缓存命中不走网络 fetch，须向块12的 PTR 计数
+             上报一次，否则 started 恒为 0、下拉刷新等满 15 秒才报“刷新失败”。 */
+          try{ if(typeof window.__kbPtrNoteData === 'function') window.__kbPtrNoteData(url, true); }catch(e){}
           return Promise.resolve(new Response(body, {status: 200, headers: {'Content-Type': 'application/json'}}));
         }
       }

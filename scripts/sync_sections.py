@@ -1259,9 +1259,9 @@ def _push_stranded_commits(lock_timeout=60):
     push 失败遗留），仿 build_stats.py B2-183 的 rev-list 检查，但 push
     本身纳入共享 git_push.lock，与本文件下方正常提交路径同纪律。
 
-    注意：build_stats 的 B2-183 是裸 push——其 git_push.lock 只覆盖
-    _sync_once 的 fetch/校验段，写盘+commit/push 段并不持锁。本处不仿
-    其裸推，改持锁；锁忙返 4（与正常路径锁忙口径一致，sync_duty 视 4
+    注意：build_stats 的 B2-183 原为裸 push（B-04，2026-11-11 已修：
+    写盘+commit/push 段亦持 git_push.lock，见 build_stats.py）。
+    本处不仿其旧裸推，改持锁；锁忙返 4（与正常路径锁忙口径一致，sync_duty 视 4
     为中性）；rev-list 失败/无滞留提交返 None（调用方返 0）；push 成功
     返 0、失败返 3（下轮重试）。commit guard 在此不适用：push 只推已
     有提交、不产生新提交，不会把 scripts/ 脏改动卷入。
@@ -1502,7 +1502,8 @@ def main():
             old_cmp.pop("generated_at", None)
         if old_cmp != new_cmp:
             doc["generated_at"] = now_iso
-            tmp = fp.with_suffix(".json.tmp")
+            # B-10（2026-11-11）：临时文件名加 pid——固定名两进程同写会互相覆盖。
+            tmp = fp.with_suffix(".json.tmp.%d" % os.getpid())
             DATA_DIR.mkdir(parents=True, exist_ok=True)
             tmp.write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n",
                            encoding="utf-8")

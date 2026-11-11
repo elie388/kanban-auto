@@ -218,9 +218,13 @@ def _load_state():
 
 
 def _save_state(state):
+    # B-11（2026-11-11）：原子写（tmp+replace）——原直写，写一半崩溃会留
+    # 截断 JSON，下次 _load_state 失败丢全部已消费指纹。
     try:
         LOGS_DIR.mkdir(parents=True, exist_ok=True)
-        STATE_FILE.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+        _tmp = STATE_FILE.with_suffix(".json.tmp.%d" % os.getpid())
+        _tmp.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+        os.replace(_tmp, STATE_FILE)
     except OSError:
         pass
 

@@ -239,11 +239,13 @@ def push_closed_set_if_changed():
         r = _run(["git", "diff", "--quiet", "HEAD", "--", rel])
         differs = (r.returncode == 1)
         if r.returncode not in (0, 1):
+            # B-05（2026-11-11）：比对失败是失败，不是“无需提交”——原返回 True
+            # 让调用方报成功、watchd 不重试，差异永久滞留。按函数契约返 False。
             print(f"[closed_batches] 与 HEAD 比对失败（rc={r.returncode}），本轮不提交", flush=True)
-            return True
+            return False
     except Exception as e:
-        print(f"[closed_batches] 与 HEAD 比对异常（不阻断）：{e}", flush=True)
-        return True
+        print(f"[closed_batches] 与 HEAD 比对异常：{e}", flush=True)
+        return False
     # ② 已提交未推送的提交是否触及该文件？
     unpushed = False
     try:
@@ -265,11 +267,12 @@ def push_closed_set_if_changed():
                 lf = open(lock_p, "a+")
                 fcntl.flock(lf, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
+                # B-05：锁忙是失败（调用方返 1，watchd 重试），不是成功。
                 print("[closed_batches] git_push.lock 被占用，本轮不提交（下次重试）", flush=True)
-                return True
+                return False
             except OSError as e:
                 print(f"[closed_batches] 取锁失败（{e}），本轮不提交", flush=True)
-                return True
+                return False
         if differs:
             r = _run(["git", "add", rel])
             if r.returncode != 0:
