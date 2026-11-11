@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-11T21:43:45+08:00",
+  "generated_at": "2026-11-11T22:22:20+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-11",
+      "time": "22:21",
+      "time_source": "entry",
+      "reason": "数学单元测试98分，90分以上档；EXAM-20261111-G6-SX-01；…",
+      "pts": 30,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-11",
+      "time": "22:21",
+      "time_source": "entry",
+      "reason": "英语单元测试88分，80分以上档；EXAM-20261111-G6-YY-01；…",
+      "pts": 16,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-11",
+      "time": "22:21",
+      "time_source": "entry",
+      "reason": "数学校本27、28页完成分调整",
+      "pts": 4,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-11",
+      "time": "22:21",
+      "time_source": "entry",
+      "reason": "数学校本27、28页正确率档调整",
+      "pts": 7,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-11",
       "time": "21:40",
