@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "五年级",
   "generated_at": "2026-11-11T00:19:37+08:00",
-  "updated_at": "2026-11-11T23:53:46+08:00",
+  "updated_at": "2026-11-12T00:15:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -61,7 +61,7 @@
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-11T00:25:45+08:00",
-      "updated_at": "2026-11-11T20:06:34+08:00",
+      "updated_at": "2026-11-12T00:15:18+08:00",
       "completed_at": "2026-11-11T20:06:34+08:00",
       "evidence": "家务判定通过——晾衣服、洗衣服；证据：看板家务上传批次 b17943983271540cb36f61496ab76c、b179439867383558862e9a3a3cc08e（approved）；回写 chore_task_writeback。"
     },
