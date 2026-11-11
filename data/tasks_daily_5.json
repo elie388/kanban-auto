@@ -3,7 +3,7 @@
   "date": "2026-11-11",
   "grade": "五年级",
   "generated_at": "2026-11-11T00:19:37+08:00",
-  "updated_at": "2026-11-11T20:30:20+08:00",
+  "updated_at": "2026-11-11T20:35:57+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -90,7 +90,7 @@
       "title": "小校本3页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①小校本3页 → 待完成",
@@ -99,7 +99,36 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T18:51:41+08:00",
-      "updated_at": "2026-11-11T18:51:41+08:00"
+      "updated_at": "2026-11-11T20:30:06+08:00",
+      "corrections": [
+        {
+          "label": "应用题花圃面积",
+          "question": "底5.4米、高3.5米的平行四边形花圃面积",
+          "reason": "应用题答句面积单位错：得数18.9算对，但答句写成“18.90米”，面积单位应为“平方米”，不是长度单位“米”；算式里“米²”写法亦不规范，应为“平方米”或“m²”。",
+          "hint": "面积的单位和长度的单位一样吗？花圃的面积是18.9，后面的单位应该带“平方”两个字，想想面积单位怎么写，再把答句改一改。",
+          "img": "",
+          "q_img": "0ab5a4df_q4_stem.jpg",
+          "orig_text": "一块平行四边形的花圃，底是5.4米，高是3.5米，它的面积是多少？",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "拓展练习",
+          "question": "平行四边形割补拼成长7cm宽4cm的长方形，求原平行四边形面积",
+          "reason": "拓展练习错：平行四边形割补拼成长方形后面积不变，长方形面积是7×4=28平方厘米，孩子填35错。",
+          "hint": "剪拼前后，图形的面积变了没有？先算一算拼成的长方形面积是多少，再想想平行四边形的面积和它有什么关系？",
+          "img": "",
+          "q_img": "0ab5a4df_ext_stem.jpg",
+          "orig_text": "如下图，这样一个平行四边形割补后拼成一个长为7cm，宽为4cm的长方形，这个平行四边形的面积是（）平方厘米。",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2,
+      "status_source": "closeout_writeback",
+      "corr_round": 1
     },
     {
       "task_id": "REG-20261111-A3D4E79EF410",
@@ -146,7 +175,7 @@
       "title": "校本27页",
       "detail": "原状态：待完成。【已确认：校本】英语第2条是“校本27页”——孩子在校本练习第27页页眉手写“校本27页”，与登记本涂改后文字一致；任务为五年级英语上册 Unit 4 校本练习（第二课时 Start up）第27页。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①小口语易 2.2；②标本27页[二字待确认] → 待完成",
@@ -155,13 +184,90 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T18:51:41+08:00",
-      "updated_at": "2026-11-11T20:23:14.736186+08:00"
+      "updated_at": "2026-11-11T20:35:57+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "首字母填空第2小题",
+          "question": "根据首字母提示写出所缺单词：喝",
+          "reason": "孩子写成 drind，末字母应为 k，不是 d；drink 是“喝”的意思。",
+          "hint": "这个单词是“喝水”的“喝”，读一读它的发音，最后一个音是什么字母？对照课本里的单词，看看最后一个字母写对了吗？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "We should eat and dr______ healthily. So we should eat more vegetables and drink less cola.",
+          "q_img_exempt": "英语文字题，原题为纯文字，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "短语填空第1小题",
+          "question": "用方框内短语填空：Tom 在英语上努力",
+          "reason": "“try again”不与“at his English”搭配；表示“在英语上努力”应用“work hard”。与二5互换。",
+          "hint": "Tom 想在英语上取得好成绩，他应该怎么做？“努力”用哪个短语？再想想 try again 是什么意思，放在“在英语上”后面通顺吗？和第五题对照看看，是不是放错位置了？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Tom ______ at his English to get good grades.",
+          "q_img_exempt": "英语文字题，原题为纯文字，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "短语填空第5小题",
+          "question": "用方框内短语填空：做不对就再试一次",
+          "reason": "此处应为“try again later”（再试一次）；“work hard later”搭配不当。与二1互换。",
+          "hint": "这句话是说“如果现在做不对，就……以后再做”，哪个短语表示“再试一次”？work hard 是什么意思，放在这里合适吗？和第一题对照看看，是不是放错位置了？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "If you can't do it right now, just ______ later.",
+          "q_img_exempt": "英语文字题，原题为纯文字，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "单项选择第1小题",
+          "question": "Lily 每天读英语，动词形式",
+          "reason": "Lily 是第三人称单数，动词应用 practises（B），不是 practise。",
+          "hint": "Lily 是第三人称单数，主语是 he、she、it 时，动词要有什么变化？practise 后面要加什么？再看看三个选项，哪个符合？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Lily ______ reading English every day. A. practise B. practises C. practising",
+          "q_img_exempt": "英语文字题，原题为纯文字，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "单项选择第3小题",
+          "question": "保持健康应该吃什么，形容词位置",
+          "reason": "形容词修饰 something 时应后置，用 something healthy（C），不是 healthy something。",
+          "hint": "something 被形容词修饰时，形容词放在前面还是后面？想想 something nice、something new 这样的说法，再看看三个选项。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "To keep healthy, I should eat ______. A. something health B. healthy something C. something healthy",
+          "q_img_exempt": "英语文字题，原题为纯文字，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "写作第1句",
+          "question": "根据记录表写 Feifei and Lele 的放学后计划",
+          "reason": "Feifei and Lele 是两个人，主语复数，be 动词应用 are，不是 is。",
+          "hint": "Feifei and Lele 是两个人，主语是单数还是复数？主语是复数时，be 动词用 is 还是 are？想想 We are、They are 的说法。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Feifei and Lele ______ play basketball.",
+          "q_img_exempt": "英语文字题，原题为纯文字，无可裁切的独立原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 6,
+      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
     "total": 7,
-    "pending": 3,
-    "in_progress": 2,
+    "pending": 2,
+    "in_progress": 3,
     "done": 2,
     "pending_review": 0
   },
