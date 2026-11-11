@@ -119,25 +119,6 @@
       "updated_at": "2026-11-11T19:44:16+08:00"
     },
     {
-      "task_id": "REG-20261111-C10928D66BBF",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "U3单词，P40句子",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：U3单词，P40句子 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
-      "task_type": "reading"
-    },
-    {
       "task_id": "REG-20261111-FDB7D21210F1",
       "source": "register_book",
       "subject": "语文",
