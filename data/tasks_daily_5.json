@@ -1,147 +1,90 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-11",
-  "grade": "五年级",
-  "generated_at": "2026-11-11T00:19:37+08:00",
-  "updated_at": "2026-11-11T17:05:36+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-11T16:55:25+08:00",
-      "new_lines": 0,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-11",
+ "grade": "五年级",
+ "generated_at": "2026-11-11T00:19:37+08:00",
+ "updated_at": "2026-11-11T17:05:36+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-11T16:55:25+08:00",
+   "new_lines": 0,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "READ-20261110-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "appear_at": "2026-11-11T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": 259.99,
-      "reading_wpm": null,
-      "reading_pass": false,
-      "created_at": "2026-11-10T00:18:43+08:00",
-      "updated_at": "2026-11-11T17:05:36+08:00",
-      "corr_round": 1,
-      "carry_first_date": "2026-11-10",
-      "carried_from": "2026-11-10",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261110-C597E815C13C",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本16.17课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本16.17课；②看作文71[涂黑内容不可读]页；③预习72-74页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-11T00:19:37+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout-partial-fix",
-      "orig_photos": [
-        "f4301c333a227cba.jpg",
-        "f1c8ab733504a1e9.jpg",
-        "4da2e806af0b0c9a.jpg",
-        "458d5a20489b4202.jpg"
-      ],
-      "revoke_reason": "17课仍未交，部分提交；收口包按待改正清零误判done，按完成口径应为进行中",
-      "carry_first_date": "2026-11-10",
-      "carried_from": "2026-11-10",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261110-32E6705083B0",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "看作文71[涂黑内容不可读]页",
-      "detail": "已确认：只看作文71页（孩子提交的照片即为71页单页，已全文读完）。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本16.17课；②看作文71[涂黑内容不可读]页；③预习72-74页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-10T19:47:38+08:00",
-      "updated_at": "2026-11-11T00:19:37+08:00",
-      "task_type": "read",
-      "type_source": "regex_read",
-      "corrections": [],
-      "pending_corrections": 0,
-      "pending_note": "11月10日看作文71页朗读反馈（3处要改，需重读）",
-      "carry_first_date": "2026-11-10",
-      "carried_from": "2026-11-10",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261111-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-11T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-11T00:25:45+08:00",
-      "updated_at": "2026-11-11T00:25:45+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-11",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-11T16:55:40+08:00",
-      "updated_at": "2026-11-11T16:55:40+08:00",
-      "completed_at": null
-    }
-  ],
-  "counts": {
-    "total": 5,
-    "pending": 2,
-    "in_progress": 3,
-    "done": 0,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": null
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "READ-20261110-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "appear_at": "2026-11-11T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": 259.99,
+   "reading_wpm": null,
+   "reading_pass": false,
+   "created_at": "2026-11-10T00:18:43+08:00",
+   "updated_at": "2026-11-11T17:05:36+08:00",
+   "corr_round": 1,
+   "carry_first_date": "2026-11-10",
+   "carried_from": "2026-11-10",
+   "carry_count": 1
+  },
+  {
+   "task_id": "CHORE-20261111-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-11T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-11T00:25:45+08:00",
+   "updated_at": "2026-11-11T00:25:45+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-11",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-11T16:55:40+08:00",
+   "updated_at": "2026-11-11T16:55:40+08:00",
+   "completed_at": null
+  }
+ ],
+ "counts": {
+  "total": 5,
+  "pending": 2,
+  "in_progress": 3,
+  "done": 0,
+  "pending_review": 0
+ },
+ "deadline_today": null
 }
