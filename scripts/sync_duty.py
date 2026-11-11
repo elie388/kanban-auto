@@ -320,15 +320,23 @@ def _scenarios():
          [["sync_stale"], []]),
         ("stats_stale_not_yet", [(0, 0, {"last_event_ts": now - 300,
                                           "last_build_ts": now - 400}, now)], [[]]),
+        # 以下三场景验静默窗抑制/收敛逻辑，须在有窗 (0,6) 下跑（时间戳为 2026-10-29
+        # 03:40 事件：窗内 03:55 不报、窗后收敛期内 06:10 不报、收敛期后 06:20 报）；
+        # 生产窗口已是 (0,0)，无覆盖跑会误报，故显式带 window。
         ("stats_stale_silent_window_no_report",
          [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
-           1793216403 + 900)], [[]]),
+           1793216403 + 900)], [[]], (0, 6)),
         ("stats_stale_silent_grace_no_report",
          [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
-           1793226000 - 600)], [[]]),
+           1793226000 - 600)], [[]], (0, 6)),
         ("stats_stale_after_silent_grace_report",
          [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
-           1793226000)], [["sync_stale"]]),
+           1793226000)], [["sync_stale"]], (0, 6)),
+        # 生产窗口 (0,0)：同一 03:40 事件、03:55 判定，无静默窗可抑制，必须报
+        #（锁 2026-11-02 家长令“取消夜间静默窗、全天候同步”；窗口若改回有窗，此项即失败告警）。
+        ("stats_stale_no_silent_window_reports",
+         [(0, 0, {"last_event_ts": 1793216403, "last_build_ts": 1793200000},
+           1793216403 + 900)], [["sync_stale"]]),
         ("sections_exit2_x3", [(0, 2, None, now), (0, 2, None, now), (0, 2, None, now)],
          [[], [], ["exit2x3"]]),
         ("sections_exit3_x3", [(0, 3, None, now), (0, 3, None, now), (0, 3, None, now)],
@@ -347,14 +355,28 @@ def _scenarios():
 
 
 def run_scenarios(scenarios):
+    # 场景可带第 4 元 window=(start, end)：该场景临时覆盖全局 BUILD_SILENT_WINDOW，
+    # 跑完恢复。用途：静默窗抑制逻辑仍需在有窗时验证，但生产窗口已是 (0,0)
+    #（2026-11-02 家长令取消夜间静默窗），无覆盖的场景一律按生产窗口跑。
+    global BUILD_SILENT_WINDOW
     results = []
     all_ok = True
-    for name, steps, expected in scenarios:
-        st = {}
-        got = []
-        for (sc, se, sync, now) in steps:
-            ev = decide(st, sc, se, sync, now)
-            got.append([e["kind"] for e in ev])
+    for item in scenarios:
+        if len(item) == 4:
+            name, steps, expected, window = item
+        else:
+            name, steps, expected, window = item[0], item[1], item[2], None
+        saved = BUILD_SILENT_WINDOW
+        try:
+            if window is not None:
+                BUILD_SILENT_WINDOW = tuple(window)
+            st = {}
+            got = []
+            for (sc, se, sync, now) in steps:
+                ev = decide(st, sc, se, sync, now)
+                got.append([e["kind"] for e in ev])
+        finally:
+            BUILD_SILENT_WINDOW = saved
         ok = (got == expected)
         all_ok = all_ok and ok
         results.append({"case": name, "ok": ok, "expected": expected, "got": got})
@@ -461,7 +483,10 @@ def replay(path):
         steps = [(step.get("stats"), step.get("sections"),
                   step.get("sync"), step.get("now", 1_800_000_000.0))
                  for step in s["steps"]]
-        parsed.append((s["name"], steps, s["expected"]))
+        if "window" in s:
+            parsed.append((s["name"], steps, s["expected"], tuple(s["window"])))
+        else:
+            parsed.append((s["name"], steps, s["expected"]))
     ok, results = run_scenarios(parsed)
     print(json.dumps({"all_ok": ok, "results": results}, ensure_ascii=False, indent=1))
     return 0 if ok else 1
