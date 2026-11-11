@@ -3,12 +3,12 @@
   "date": "2026-11-11",
   "grade": "六年级",
   "generated_at": "2026-11-11T00:19:38+08:00",
-  "updated_at": "2026-11-11T23:44:14+08:00",
+  "updated_at": "2026-11-11T23:53:46+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-11T19:45:20+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-11T23:53:46+08:00",
+      "new_lines": 1,
       "flipped": 0
     },
     "targeted_practice": {
@@ -280,11 +280,29 @@
         "2fbe49c119509381.jpg",
         "2801e044b7920096.jpg"
       ]
+    },
+    {
+      "task_id": "REG-20261111-C10928D66BBF",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U3单词，P40句子",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U3单词，P40句子 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-11T23:53:46+08:00",
+      "updated_at": "2026-11-11T23:53:46+08:00"
     }
   ],
   "counts": {
-    "total": 11,
-    "pending": 4,
+    "total": 12,
+    "pending": 5,
     "in_progress": 1,
     "done": 6,
     "pending_review": 0
