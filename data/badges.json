@@ -32,6 +32,13 @@
     "count": 1
    },
    {
+    "key": "zonghezhixing",
+    "name": "综合之星",
+    "icon": "🏅",
+    "date": "2026-11-11",
+    "count": 1
+   },
+   {
     "key": "quanduizhixing",
     "name": "全对之星",
     "icon": "✅",
@@ -77,5 +84,5 @@
    }
   ]
  },
- "generated_at": "2026-11-11T22:48:49.251214+08:00"
+ "generated_at": "2026-11-11T22:53:49.540618+08:00"
 }
