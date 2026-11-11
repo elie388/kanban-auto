@@ -1,53 +1,39 @@
 {
- "date": "2026-11-10",
+ "date": "2026-11-11",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "CHORE-20261110-G5",
+   "task_id": "CHORE-20261111-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "META-REGISTER-2026-11-10",
+   "task_id": "META-REGISTER-2026-11-11",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261110-8CAD61E59E32",
-   "title": "校本26页",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261110-4C850967ED1E",
-   "title": "口语易",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261110-E353A0294FEC",
-   "title": "练习本抄M4单词",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261110-482C575680D7",
-   "title": "校本36页",
+   "task_id": "REG-20261111-1A898A9D4B19",
+   "title": "小校本3页",
    "subject": "数学",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261110-62E4D60B7F99",
-   "title": "预习72-74页",
-   "subject": "语文",
+   "task_id": "REG-20261111-1A3DE8D00FC7",
+   "title": "小口语易 2.2",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261111-BAA3F1B84AC7",
+   "title": "校本27页",
+   "subject": "英语",
    "source": "register_book",
    "group": "study"
   }

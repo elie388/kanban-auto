@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "grade": "六年级",
-  "generated_at": "2026-11-11T00:19:38+08:00",
-  "updated_at": "2026-11-12T00:15:18+08:00",
+  "generated_at": "2026-11-12T00:18:04+08:00",
+  "updated_at": "2026-11-12T00:18:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-11T23:53:46+08:00",
-      "new_lines": 1,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -39,48 +38,10 @@
       "reading_wpm": null,
       "reading_pass": false,
       "created_at": "2026-11-10T19:34:22+08:00",
-      "updated_at": "2026-11-11T17:05:36+08:00",
+      "updated_at": "2026-11-12T00:18:04+08:00",
       "carry_first_date": "2026-11-10",
-      "carried_from": "2026-11-10",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261111-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "19:59 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-11T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-11T00:25:45+08:00",
-      "updated_at": "2026-11-12T00:15:18+08:00",
-      "completed_at": "2026-11-11T20:06:34+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1794398358325cc2b3f5e43a1f5f8（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-11",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-11T16:55:40+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
-      "completed_at": "2026-11-11T19:44:16+08:00",
-      "orig_photos": [
-        "b5d64f9034e0f8af.jpg"
-      ]
+      "carried_from": "2026-11-11",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261111-1F24C4C3120A",
@@ -98,31 +59,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261111-FBDF257F0936",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "写试卷第一题中文，更正试卷错题",
-      "detail": "已完成：听力一10题30个中文全写完，写对29个（正确率96.7%）；错1个：national写成了传统的（反馈里有引导）。更正错题：七-5原答案shorter已正确，无错题可更正。本批+18。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T23:44:14+08:00",
+      "updated_at": "2026-11-12T00:18:04+08:00",
       "corrections": [],
       "pending_corrections": 0,
-      "completed_at": "2026-11-11T23:44:14+08:00",
-      "status_source": "grading-orphan-FBDF257F0936"
+      "carry_first_date": "2026-11-11",
+      "carried_from": "2026-11-11",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261111-FDB7D21210F1",
@@ -140,9 +82,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-12T00:18:04+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-11",
+      "carried_from": "2026-11-11",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261111-1CB2BE6038C3",
@@ -160,9 +105,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
+      "updated_at": "2026-11-12T00:18:04+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-11",
+      "carried_from": "2026-11-11",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261111-CA1A8E9BAE2E",
@@ -180,106 +128,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T19:44:16+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261111-20DF7BCE74B7",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "看课外书，记录①",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T20:03:38+08:00",
-      "task_type": "read",
-      "type_source": "regex_read",
-      "completed_at": "2026-11-11T20:03:38+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "4fdf6ae2ac93640b.jpg",
-        "cd822be698661bc7.jpg",
-        "c45a264b2a6a66f0.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261111-A645ED998F44",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念55",
-      "detail": "已完成：第2轮重读达标（比的顺序读对了，3比4）。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T21:40:43+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corr_round": 2,
-      "reading_pass": true,
-      "reading_duration_sec": 12.35,
-      "completed_at": "2026-11-11T21:40:43+08:00",
-      "status_source": "closeout_reading_subagent",
+      "updated_at": "2026-11-12T00:18:04+08:00",
       "corrections": [],
       "pending_corrections": 0,
-      "qa": [
-        {
-          "q": "是读背概念55，不是读背概念35。",
-          "a": "收到，任务标题已按你说的改成读背概念55，批改按概念55原文比对。"
-        }
-      ],
-      "orig_photos": [
-        "3d1ce0f9de98bb4e.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261111-19FB638D045F",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本P27、28",
-      "detail": "已确认：校本P27、28（孩子留言：中间没有字）。28页3题老师允许不写，反馈中有引导，孩子想学可自愿尝试。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念35；②校[一字待确认]本P27、28 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-11T21:39:59+08:00",
-      "pending_corrections": 0,
-      "completed_at": "2026-11-11T21:39:59+08:00",
-      "status_source": "closeout_manual_subagent",
-      "corrections": [],
-      "qa": [
-        {
-          "q": "中间没有字。老师说有一些不会的可以不写，在28页，我有三道题不会写，请你教我怎么写。",
-          "a": "28页这三道题老师说可以不写，不强制。想学的话可以试试：第3题，调查对象就是你要调查的人——想想你要调查谁的用水情况？用水行为就是这些人平时怎么用水——洗手、刷牙、洗脸，哪个是你平时做的？第4题，想想你怎么知道别人用了多少水——问一问他们？看一看水表？记下来？哪两种办法你能做到？第6题，先算用口杯一天用几升水：每次1升，每天刷2次牙，一共几升？再用原来每天的6升减去这个数，就是节约的。"
-        }
-      ],
-      "orig_photos": [
-        "2fbe49c119509381.jpg",
-        "2801e044b7920096.jpg"
-      ]
+      "carry_first_date": "2026-11-11",
+      "carried_from": "2026-11-11",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261111-C10928D66BBF",
@@ -297,14 +151,17 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-11T23:53:46+08:00",
-      "updated_at": "2026-11-11T23:53:46+08:00"
+      "updated_at": "2026-11-12T00:18:04+08:00",
+      "carry_first_date": "2026-11-11",
+      "carried_from": "2026-11-11",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 12,
+    "total": 6,
     "pending": 5,
     "in_progress": 1,
-    "done": 6,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null

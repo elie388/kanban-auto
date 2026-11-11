@@ -1,45 +1,45 @@
 {
- "date": "2026-11-10",
+ "date": "2026-11-11",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "CHORE-20261110-G6",
+   "task_id": "CHORE-20261111-G6",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "META-REGISTER-2026-11-10",
+   "task_id": "META-REGISTER-2026-11-11",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261110-F12954A32A2A",
-   "title": "抄U4已学单词（invention 至 bird feeder）英文和中文各4次，背10次",
+   "task_id": "REG-20261111-FBDF257F0936",
+   "title": "写试卷第一题中文，更正试卷错题",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261110-B3165EF91D51",
-   "title": "跟小管家读U4课文",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261110-A3AAF0E55125",
-   "title": "读作文10分钟，记录①",
+   "task_id": "REG-20261111-20DF7BCE74B7",
+   "title": "看课外书，记录①",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261110-4E3E9E63D385",
-   "title": "读背32、33",
+   "task_id": "REG-20261111-A645ED998F44",
+   "title": "读背概念55",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261111-19FB638D045F",
+   "title": "校本P27、28",
    "subject": "数学",
    "source": "register_book",
    "group": "study"
