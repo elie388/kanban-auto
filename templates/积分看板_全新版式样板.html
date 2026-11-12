@@ -492,8 +492,8 @@
   #fbViewer.open{display:flex;}
   #fbViewer .fv-bar{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background:#F5F3EB;}
   #fbViewer .fv-title{font-size:20px; font-weight:700; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  #fbViewer .fv-close{background:#2E7D32; border:1px solid #2E7D32; color:#fff; border-radius:8px; min-width:88px; min-height:48px; font-size:18px; font-weight:700; cursor:pointer; flex:none; padding:0 14px;} /* 2026-11-12 家长报“打开反馈后没有关闭按钮”根治：原白底小圆 ✕ 在米色栏上太不起眼，家长看不到；改绿底白字“✕ 关闭”文字按钮，加大加粗 */
-  #fbViewer .fv-close-bottom{display:block; margin:18px auto 8px; background:#2E7D32; border:1px solid #2E7D32; color:#fff; border-radius:8px; min-width:140px; min-height:52px; font-size:18px; font-weight:700; cursor:pointer;} /* 底部再放一个关闭按钮，长反馈滑到底不用翻回顶部 */
+  #fbViewer .fv-close{background:#555; border:none; color:#fff; border-radius:50%; width:36px; height:36px; min-width:36px; min-height:36px; font-size:20px; line-height:1; cursor:pointer; flex:none; padding:0;} /* 2026-11-12 家长令“右上角一个关闭按钮就行”：删底部按钮，只留右上角一个简洁圆形 ✕（深灰底白字，米色栏上可见又不扎眼） */
+
   #fbViewer .fv-stage{flex:1; overflow:auto; padding:16px; background:#F5F3EB;}
   #fbViewer .fv-body{max-width:720px; margin:0 auto; background:#FFFDF8; border:1px solid #E5E7EB; border-radius:12px; padding:16px; line-height:1.7; font-size:20px; color:#333;} /* 2026-11-10 家长令：反馈查看器字体放大到 20px（原 15px） */
   #fbViewer .fv-err{color:#B3261E; font-size:20px; padding:20px; text-align:center; line-height:1.7;}
@@ -5956,7 +5956,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261112-fbclose'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
+  var KB_BUILD = '20261112-fbclose1'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -7183,11 +7183,10 @@ function kbFbViewerEnsure(){
   if(document.getElementById('fbViewer')) return;
   var div = document.createElement('div');
   div.id = 'fbViewer';
-  div.innerHTML = '<div class="fv-bar"><span class="fv-title"></span><button type="button" class="fv-close" aria-label="关闭">✕ 关闭</button></div>'
-    + '<div class="fv-stage"><div class="fv-body"></div><div class="fv-err" style="display:none"></div><button type="button" class="fv-close-bottom">✕ 关闭反馈</button></div>';
+  div.innerHTML = '<div class="fv-bar"><span class="fv-title"></span><button type="button" class="fv-close" aria-label="关闭">✕</button></div>'
+    + '<div class="fv-stage"><div class="fv-body"></div><div class="fv-err" style="display:none"></div></div>';
   document.body.appendChild(div);
   div.querySelector('.fv-close').addEventListener('click', function(){ div.classList.remove('open'); });
-  div.querySelector('.fv-close-bottom').addEventListener('click', function(){ div.classList.remove('open'); });
   div.addEventListener('click', function(e){ if(e.target === div) div.classList.remove('open'); });
 }
 function kbFbViewerShow(title, html){
