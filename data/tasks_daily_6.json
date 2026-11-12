@@ -3,7 +3,7 @@
   "date": "2026-11-12",
   "grade": "六年级",
   "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T22:03:58+08:00",
+  "updated_at": "2026-11-12T22:19:20+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -90,7 +90,7 @@
       "title": "完成P40的练习，提交小管家",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄试卷第二、七题2次，读5次；②完成P40的练习，提交小管家 → 待完成",
@@ -99,7 +99,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-12T21:15:26+08:00",
-      "updated_at": "2026-11-12T21:15:26+08:00"
+      "updated_at": "2026-11-12T22:19:15+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-12T22:19:15+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "8b5a747a12681481.jpg"
+      ]
     },
     {
       "task_id": "REG-20261112-2F2DE09DD685",
@@ -238,9 +245,9 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 9,
+    "pending": 8,
     "in_progress": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": null
