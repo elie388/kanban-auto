@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-12T22:20:10+08:00",
+ "updated_at": "2026-11-12T23:14:11+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-14",
@@ -325,7 +325,7 @@
       56.0,
       0.0,
       null,
-      null
+      100.0
      ],
      "weak": [
       {
@@ -387,7 +387,7 @@
       100.0,
       null,
       null,
-      null
+      100.0
      ],
      "weak": [
       {
@@ -727,6 +727,17 @@
    "date": "2026-11-06",
    "grade": "五年级",
    "subject": "英语",
+   "reason": null,
+   "rules": [
+    "small_sample"
+   ],
+   "judged": 1,
+   "small_sample_flag": true
+  },
+  {
+   "date": "2026-11-12",
+   "grade": "六年级",
+   "subject": "语文",
    "reason": null,
    "rules": [
     "small_sample"
