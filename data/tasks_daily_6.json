@@ -3,7 +3,7 @@
   "date": "2026-11-12",
   "grade": "六年级",
   "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T23:06:34+08:00",
+  "updated_at": "2026-11-12T23:17:05+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -81,7 +81,9 @@
       "created_at": "2026-11-12T21:15:26+08:00",
       "updated_at": "2026-11-12T21:15:26+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261112-9C8F60A9C008",
@@ -126,7 +128,9 @@
       "created_at": "2026-11-12T21:15:26+08:00",
       "updated_at": "2026-11-12T21:15:26+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261112-F49E1913669C",
@@ -144,7 +148,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-12T21:15:26+08:00",
-      "updated_at": "2026-11-12T21:15:26+08:00"
+      "updated_at": "2026-11-12T21:15:26+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261112-F2646BDF2DB8",
@@ -170,7 +176,9 @@
         "f6a2cf67276a2388.jpg",
         "c7c8aabfc91afb3f.jpg",
         "89f5f07d4a3c57e1.jpg"
-      ]
+      ],
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261112-BA4A6DBFFCCE",
@@ -188,7 +196,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-12T21:15:26+08:00",
-      "updated_at": "2026-11-12T21:15:26+08:00"
+      "updated_at": "2026-11-12T21:15:26+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261112-CDFF9F43BA82",
@@ -236,7 +246,9 @@
       "updated_at": "2026-11-12T22:54:51+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
-      "status_source": "manual"
+      "status_source": "manual",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261112-17BE149A7498",
