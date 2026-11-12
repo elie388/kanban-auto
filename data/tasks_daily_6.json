@@ -3,7 +3,7 @@
   "date": "2026-11-12",
   "grade": "六年级",
   "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T00:18:35+08:00",
+  "updated_at": "2026-11-12T15:32:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,140 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "READ-20261110-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "这次要重读什么：6处仍读错的句子各读三遍（只读错句，不用整篇重读）。\n错句：很逗人喜欢、黑葡萄般的大眼睛、哒地啪哒啪哒直响、稳稳当当地在树上爬来爬去、在塑料布上面扎几个小孔、它吸树汁是它的祖先传下来的。\n拍照读的内容照片加同一批朗读录音同批提交；录音时长3-10分钟，录音要录到180秒以上；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "appear_at": "2026-11-12T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": false,
-      "created_at": "2026-11-10T19:34:22+08:00",
-      "updated_at": "2026-11-12T00:18:35+08:00",
-      "carry_first_date": "2026-11-10",
-      "carried_from": "2026-11-11",
-      "carry_count": 2
-    },
-    {
-      "task_id": "REG-20261111-1F24C4C3120A",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄P40重点句和中文各2次，读P40句子5次",
-      "detail": "今晚交的照片全黑看不清，无法批改。明天补交：抄P40重点句和中文各2次（拍照要清晰），读P40句子5次（录音同批交）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄P40重点句和中文各2次，读P40句子5次；②写试卷第一题中文，更正试卷错题 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-12T00:18:04+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-11",
-      "carried_from": "2026-11-11",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261111-FDB7D21210F1",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄15课生字",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-12T00:18:04+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-11",
-      "carried_from": "2026-11-11",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261111-1CB2BE6038C3",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小练笔",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-12T00:18:04+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-11",
-      "carried_from": "2026-11-11",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261111-CA1A8E9BAE2E",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本15课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①抄15课生字；②小练笔；③校本15课；④看课外书，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T19:44:16+08:00",
-      "updated_at": "2026-11-12T00:18:04+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-11",
-      "carried_from": "2026-11-11",
-      "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261111-C10928D66BBF",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "U3单词，P40句子",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：U3单词，P40句子 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T23:53:46+08:00",
-      "updated_at": "2026-11-12T00:18:04+08:00",
-      "carry_first_date": "2026-11-11",
-      "carried_from": "2026-11-11",
-      "carry_count": 1
-    },
     {
       "task_id": "CHORE-20261112-G6",
       "source": "chore",
@@ -176,11 +42,7 @@
     }
   ],
   "counts": {
-    "total": 7,
-    "pending": 6,
-    "in_progress": 1,
-    "done": 0,
-    "pending_review": 0
+    "pending": 1
   },
   "deadline_today": null
 }

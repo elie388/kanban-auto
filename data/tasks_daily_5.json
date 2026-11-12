@@ -3,7 +3,7 @@
   "date": "2026-11-12",
   "grade": "五年级",
   "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T00:18:35+08:00",
+  "updated_at": "2026-11-12T15:32:30+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,51 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "READ-20261110-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "怎么交：\n拍照读的内容照片 + 同一批朗读录音，一起交。\n\n录音要求：\n3-10分钟，语速正常（慢速不算），不足180秒请重录。\n每日朗读达标+15。\n\n【重读：第1轮，11处错漏】\n重读《第一次当旗手》《第一次刷卡》。\n11处错句，每句读三遍，读准字（只读错句，不用整篇重读）。\n照片加录音同一批交。\n\n11处错句：\n• 甭（béng）\n• 旗杆（gǎn）\n• 绳子一端（读清）\n• 仿佛\n• 嘱托（zhǔ tuō）\n• 叮咛（dīng níng）\n• 许多\n• 乘车\n• 停稳\n• 投币（bì）\n• 疑惑（yí huò）\n• 辉煌（huī huáng）\n• 捂着肚子（wǔ zhe dù zi）",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "appear_at": "2026-11-12T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": 259.99,
-      "reading_wpm": null,
-      "reading_pass": false,
-      "created_at": "2026-11-10T00:18:43+08:00",
-      "updated_at": "2026-11-12T00:18:35+08:00",
-      "corr_round": 1,
-      "carry_first_date": "2026-11-10",
-      "carried_from": "2026-11-11",
-      "carry_count": 2
-    },
-    {
-      "task_id": "REG-20261111-A3D4E79EF410",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小写作文（第五单元）标旁批、说明方法画好",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小写作文（第五单元）标旁批、说明方法画好 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-11T18:51:41+08:00",
-      "updated_at": "2026-11-12T00:18:04+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-11",
-      "carried_from": "2026-11-11",
-      "carry_count": 1
-    },
     {
       "task_id": "CHORE-20261112-G5",
       "source": "chore",
@@ -87,11 +42,7 @@
     }
   ],
   "counts": {
-    "total": 3,
-    "pending": 2,
-    "in_progress": 1,
-    "done": 0,
-    "pending_review": 0
+    "pending": 1
   },
   "deadline_today": null
 }
