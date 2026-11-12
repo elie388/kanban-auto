@@ -491,7 +491,7 @@
   #fbViewer{position:fixed; inset:0; z-index:9990; background:rgba(12,14,18,.92); display:none; flex-direction:column;}
   #fbViewer.open{display:flex;}
   #fbViewer .fv-bar{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background:#F5F3EB;}
-  #fbViewer .fv-title{font-size:20px; font-weight:700; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #fbViewer .fv-title{font-size:20px; font-weight:700; color:#333; min-width:0; line-height:1.4; overflow-wrap:break-word;} /* 2026-11-12 家长指反馈标题排版：原 nowrap+省略号致长标题左端被裁、右端截断；改允许多行换行＋min-width:0 使 flex 内可收缩，标题完整显示 */
   #fbViewer .fv-close{background:#2E7D32; border:none; color:#fff; border-radius:50%; width:36px; height:36px; min-width:36px; min-height:36px; font-size:20px; line-height:1; cursor:pointer; flex:none; padding:0;} /* 2026-11-12 家长令“风格和看板统一”：关闭按钮改看板主绿 #2E7D32（与示范录音/反馈按钮同色），仍为右上角单个圆形 ✕ */
 
   #fbViewer .fv-stage{flex:1; overflow:auto; padding:16px; background:#F5F3EB;}
@@ -5956,7 +5956,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261112-fbclose2'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
+  var KB_BUILD = '20261112-fbtitle'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
