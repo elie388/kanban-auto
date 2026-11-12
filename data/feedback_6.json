@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-12T20:39:15+08:00",
+ "generated_at": "2026-11-12T22:21:11+08:00",
  "items": [
+  {
+   "date": "2026-11-12",
+   "ts": "2026-11-12T22:20:00+08:00",
+   "kind": "feedback",
+   "time": "22:20",
+   "task_id": "REG-20261112-9C8F60A9C008",
+   "title": "11月12日英语P40练习反馈（小管家全满分）",
+   "html": "<p>你今天把英语 P40 的练习都做完了，小管家显示已完成，四个小任务都拿到了满分，太棒了！</p><p>做得好的地方：课时词汇跟读 11 个词得了 3 颗星，读得很流利；课时词汇拼写 11 个单词正确率 100%，一个都没错；Read and answer 跟读 16 个句子得了 3 颗星；In focus 跟读 4 个句子也得了 3 颗星。老师还奖励了你 1 朵小红花。10 分钟就做完了，效率很高！</p><p>本批积分：发回 +5，达标 +3，共 +8。</p>"
+  },
   {
    "date": "2026-11-11",
    "ts": "2026-11-11T23:12:00+08:00",
@@ -362,60 +371,6 @@
    "task_id": "REG-20261105-1336F4",
    "title": "11月5日英语U3单词对话小管家反馈",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语U3单词对话小管家反馈</h2>\n<p>11月5日 19:57 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>U3 单词和对话 8 个小项都拿到了 3 颗星，拼写正确率 100%，老师还奖励了 1 朵小红花。</li>\n<li>跟读很完整，从 Start up 到 Hit it big 每一项都完成了，没有落下。</li>\n</ul>\n<h3>一个小提醒</h3>\n<ul>\n<li>这次一共用了 107 分钟，时间有点长，下次可以分成两段读，中间歇一歇再继续，读起来会更轻松。</li>\n</ul>\n<p>这次读背发回 +5 分。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261104-D29DCE",
-   "title": "做试卷一张（不写作文）",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，做试卷一张（不写作文）反馈</h2><p>11月4日 23:10 提交（比23:00截止晚了10分钟，下次早点交），已判68分中得52分（76.5%）。</p><h3>做得好的地方</h3><ul><li>读拼音写词语全对，仿写排比句格式和分号都用对了。</li><li>读音、选词填空、名句第①处、读书交流、口语正误、中心思想题都对了；横塘之战加点字意思和作战方法（选A声东击西）也对了。</li></ul><h3>要订正的地方（10项）</h3><ul><li>贯字笔画与释义：贯的第三笔写错了；查贯的笔顺（共8笔），数到第三笔，看看它是什么笔画，再对照通用例子改过来。<br><img src=\"data/diagrams/chn_d29dce_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>错别字选择：D组沉淀没有错别字，所以D不对；再逐字读A组、B组、C组，哪个字写错了（形近字最容易错）？<br><img src=\"data/diagrams/chn_d29dce_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>名句运用②：第②处空着没填；读一读第②处前后的句子，想想这里该用哪句名句（前后文在说什么？），再填上。<br><img src=\"data/diagrams/chn_d29dce_q3_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>填写读书表：读书表两处要补：雨来那行“关于成长的发现”没看清，重新写清楚；阿廖沙那行“喜欢的原因”写成了故事简介，要写你为什么喜欢这个人物（他的哪个品质打动你？），不是复述故事。<br><img src=\"data/diagrams/chn_d29dce_q4_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>口语交际仿写：仿写格式对了（一是、二是、三是都列了），但有两处要改：①有字写错／句子不通顺，逐句读一遍，改掉不通顺的地方；②最后“我保证不在…”那句没写完，补完整（保证什么？）。<br><img src=\"data/diagrams/chn_d29dce_q5_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>横塘之战图片想象：想象要贴着图片和文言写：先看清图片里是谁、在做什么，再想文言里那句讲的是什么场面，然后按“谁＋在哪里＋做什么＋结果怎样”写一段，句子要连贯，不要跳。<br><img src=\"data/diagrams/chn_d29dce_q6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/chn_d29dce_comic.png\" alt=\"原题连环画\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文情节图：情节图中间一格没写清；按故事顺序，拿50元买年货之后、发现百元大钞之前，发生了什么（女人付钱时怎么了？）？把那一步写清楚。<br><img src=\"data/diagrams/chn_d29dce_q7_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文填空修辞手法：再读第⑦段那句，对照修辞手法表（比喻、拟人、夸张、对比、排比……），逐个对，哪个最贴切？对比不全，再想想还有没有别的。<br><img src=\"data/diagrams/chn_d29dce_q8_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文评价女人：以身做则里有一个字写错了（做／作形近易混）；查词典，“以身□则”这个成语，方框里是“做”还是“作”？<br><img src=\"data/diagrams/chn_d29dce_q9_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>阅读短文环境描写结尾：结尾的环境描写空着没写；想想故事最后女人归还失主后，心情怎样？写一句环境描写来衬托她的心情（比如天色、风、阳光怎样？），放在文末横线上。<br><img src=\"data/diagrams/chn_d29dce_q10_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul></body></html>"
-  },
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261104-37E76B",
-   "title": "11月4日资料3、4页反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，资料 3、4 页反馈</h2>\n<p>11月4日 20:40 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>13 道里对了 10 道：第 3 题(2)、第 4 题三小题、补充条件、五 1 两小题、五 3、五 4、五 5 都对了。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>顶部第 1 题（分数混合运算）：括号里两个分数分母不一样，要先通分再加；括号算对了，再算除法（除以一个分数等于乘它的倒数）。上面哪一步算错了，对照通用例子再算一遍。<br><img src=\"data/diagrams/mat_e1ddd886_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>第 3 题(1)改正：改正时不要改运算符号（加号还是加号），只改算错的那一步：先算乘法，再算加法，加法分母不同要先通分。上面哪一步被改错了，对照通用例子再改一遍。<br><img src=\"data/diagrams/mat_e1ddd886_q1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>综合应用第 2 题（冰块化水）：求一个数的几分之几用乘法；30×1/12 先约分再算，算对了再用 30 减去减少的体积。上面哪一步算错了，对照通用例子再算一遍。<br><img src=\"data/diagrams/mat_e1ddd886_q2_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>顶部第 2 题字迹不太清楚，这次不算，你下次写清楚一点就行。把这 3 道一次改全。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261104-3E6B43",
-   "title": "11月4日读背概念4.52反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，读背概念 4.52 反馈</h2>\n<p>11月4日 19:45 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>概念 4（解答分数应用题）和概念 52（求多几分之几或少几分之几）都背对了：找整体 1 的方法、确定乘除的方法、减法求出多的或少的再除以整体 1 的量，步骤都齐全。</li>\n</ul>\n<p>这次读背发回 +5、达标 +3。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261104-18FF5C",
-   "title": "11月4日读园地一试卷反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，读园地一试卷反馈</h2>\n<p>11月4日 19:56 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>园地一第 11、12 页朗读完整，梳理与交流、词句段运用、路牌拼音、日积月累都读到了。</li>\n<li>《江畔独步寻花》默写全对，标题、作者、四句诗一个字都没错。</li>\n</ul>\n<p>这项已完成。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261104-A2288E",
-   "title": "11月4日读作文，记录①反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，读作文，记录①反馈</h2>\n<p>11月4日 19:41 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>范文《火星家园》全文朗读准确，163 秒一遍读下来，文章内容都读对了，很好。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>摘录第 1 段有 3 处要改，正确的字词自己对照原文补齐，不要只补一个字：<br>第 1 处：“漫天黄沙”后面少了三个字（写的是什么地方的样子），对照原文补上；<br>第 2 处：“静静”后面的那个字写错了，是个形近字，对照原文改过来；<br>第 3 处：“这”和“火星家园”之间少了五个字，对照原文补上。<br>方法：摘录要逐字对照原文，不跳字、不换字，抄完自己逐字对一遍，重点检查容易漏的小词和形近字。<br><img src=\"data/diagrams/chn_09b95f90_excerpt_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>摘录把这 3 处一次改全，朗读不用重录。</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-04",
-   "ts": "",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261104-4A8E77",
-   "title": "11月4日英语试卷笔试部分反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语试卷笔试部分反馈</h2>\n<p>11月4日 21:54 提交，笔试部分 57/60 分</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>补全对话、阅读理解全对；书面表达 5 句话、4 个提示都写到了，写得很完整。</li>\n</ul>\n<h3>要订正的地方</h3>\n<ul>\n<li>短文选词第 3 题：这篇短文讲的是过去的事，想一想，动词应该用什么时态？再读一读前后句，选一个过去式的词。<br><img src=\"data/diagrams/g6_eng_pasttense_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>填词第 4 空：只写了一个字母，后面没写完。想一想，我们互相做什么、认真听？把这个词写完整。<br><img src=\"data/diagrams/g6_eng_fillblank_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>另外，书面表达里“in north of”前面要不要加 the，再想一想。把这两处一次改全。</p>\n</body></html>"
   }
  ]
 }
