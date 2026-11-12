@@ -1,166 +1,166 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-12",
-  "grade": "五年级",
-  "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T20:09:37+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-12T19:59:39+08:00",
-      "new_lines": 5,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-12",
+ "grade": "五年级",
+ "generated_at": "2026-11-12T00:18:04+08:00",
+ "updated_at": "2026-11-12T20:09:37+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-12T19:59:39+08:00",
+   "new_lines": 5,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261112-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "19:40 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-12T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-12T00:18:24+08:00",
-      "updated_at": "2026-11-12T20:01:34+08:00",
-      "completed_at": "2026-11-12T19:41:04+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17944835399242d1bc92146dbed24（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-12",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-12T16:55:58+08:00",
-      "updated_at": "2026-11-12T19:59:39+08:00",
-      "completed_at": "2026-11-12T19:59:39+08:00"
-    },
-    {
-      "task_id": "REG-20261112-B74913FC251A",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-12T19:59:39+08:00",
-      "updated_at": "2026-11-12T20:09:37+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-12T20:09:37+08:00",
-      "status_source": "reading_grading"
-    },
-    {
-      "task_id": "REG-20261112-04016C1751E8",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小试卷",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-12T19:59:39+08:00",
-      "updated_at": "2026-11-12T19:59:39+08:00"
-    },
-    {
-      "task_id": "REG-20261112-5FE424B6DBAB",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "期中试卷（签名）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-12T19:59:39+08:00",
-      "updated_at": "2026-11-12T19:59:39+08:00"
-    },
-    {
-      "task_id": "REG-20261112-D73D1A12169C",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习17课",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-12T19:59:39+08:00",
-      "updated_at": "2026-11-12T19:59:39+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral"
-    },
-    {
-      "task_id": "REG-20261112-AEFE8E572953",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本38页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①校本38页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-12T19:59:39+08:00",
-      "updated_at": "2026-11-12T19:59:39+08:00"
-    }
-  ],
-  "counts": {
-    "total": 7,
-    "pending": 4,
-    "in_progress": 0,
-    "done": 3,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": null
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261112-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "19:40 晾衣服",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "appear_at": "2026-11-12T17:30:00+08:00",
+   "chore_done_count": 1,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-12T00:18:24+08:00",
+   "updated_at": "2026-11-12T20:01:34+08:00",
+   "completed_at": "2026-11-12T19:41:04+08:00",
+   "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17944835399242d1bc92146dbed24（approved）；回写 chore_task_writeback。"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-12",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-12T16:55:58+08:00",
+   "updated_at": "2026-11-12T19:59:39+08:00",
+   "completed_at": "2026-11-12T19:59:39+08:00"
+  },
+  {
+   "task_id": "REG-20261112-B74913FC251A",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-12T19:59:39+08:00",
+   "updated_at": "2026-11-12T20:09:37+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral",
+   "completed_at": "2026-11-12T20:09:37+08:00",
+   "status_source": "reading_grading"
+  },
+  {
+   "task_id": "REG-20261112-04016C1751E8",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "小试卷",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-12T19:59:39+08:00",
+   "updated_at": "2026-11-12T19:59:39+08:00"
+  },
+  {
+   "task_id": "REG-20261112-5FE424B6DBAB",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "期中试卷（签名）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-12T19:59:39+08:00",
+   "updated_at": "2026-11-12T19:59:39+08:00"
+  },
+  {
+   "task_id": "REG-20261112-D73D1A12169C",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "预习17课",
+   "detail": "原状态：待完成\n【需补交】请补录一段朗读录音：把17课《慈母情深》读出来再交一次；照片已收到不用重拍，只补录音就行。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-12T19:59:39+08:00",
+   "updated_at": "2026-11-12T20:16:00+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral"
+  },
+  {
+   "task_id": "REG-20261112-AEFE8E572953",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "校本38页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①校本38页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-12T19:59:39+08:00",
+   "updated_at": "2026-11-12T19:59:39+08:00"
+  }
+ ],
+ "counts": {
+  "total": 7,
+  "pending": 4,
+  "in_progress": 0,
+  "done": 3,
+  "pending_review": 0
+ },
+ "deadline_today": null
 }
