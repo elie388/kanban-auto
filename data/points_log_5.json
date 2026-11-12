@@ -1,12 +1,39 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-12T23:16:07+08:00",
+  "generated_at": "2026-11-12T23:18:46+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-12",
+      "time": "23:18",
+      "time_source": "entry",
+      "reason": "打闹",
+      "pts": -50,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "11-12",
+      "time": "23:17",
+      "time_source": "entry",
+      "reason": "叫不听两次，共扣60，已扣50，补扣10",
+      "pts": -10,
+      "sign": "minus",
+      "filtered": false
+    },
+    {
+      "date": "11-12",
+      "time": "23:16",
+      "time_source": "entry",
+      "reason": "多次叫不听，扣分由10提至50，补扣40",
+      "pts": -40,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-12",
       "time": "23:15",
