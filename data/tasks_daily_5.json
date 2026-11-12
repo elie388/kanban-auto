@@ -3,12 +3,12 @@
   "date": "2026-11-12",
   "grade": "五年级",
   "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T19:41:04+08:00",
+  "updated_at": "2026-11-12T19:59:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-12T16:55:35+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-12T19:59:39+08:00",
+      "new_lines": 5,
       "flipped": 0
     },
     "targeted_practice": {
@@ -51,19 +51,113 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-12T16:55:58+08:00",
-      "updated_at": "2026-11-12T16:55:58+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-12T19:59:39+08:00",
+      "completed_at": "2026-11-12T19:59:39+08:00"
+    },
+    {
+      "task_id": "REG-20261112-B74913FC251A",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T19:59:39+08:00",
+      "updated_at": "2026-11-12T19:59:39+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261112-04016C1751E8",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小试卷",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T19:59:39+08:00",
+      "updated_at": "2026-11-12T19:59:39+08:00"
+    },
+    {
+      "task_id": "REG-20261112-5FE424B6DBAB",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "期中试卷（签名）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T19:59:39+08:00",
+      "updated_at": "2026-11-12T19:59:39+08:00"
+    },
+    {
+      "task_id": "REG-20261112-D73D1A12169C",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习17课",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小试卷；②期中试卷（签名）；③预习17课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T19:59:39+08:00",
+      "updated_at": "2026-11-12T19:59:39+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261112-AEFE8E572953",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本38页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本38页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T19:59:39+08:00",
+      "updated_at": "2026-11-12T19:59:39+08:00"
     }
   ],
   "counts": {
-    "total": 2,
-    "pending": 1,
+    "total": 7,
+    "pending": 5,
     "in_progress": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": null
