@@ -92,7 +92,7 @@
           "q_img": "",
           "orig_text": "抄写：month",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "",
+          "img_exempt": "图后补",
           "round": 1
         },
         {
@@ -104,7 +104,7 @@
           "q_img": "",
           "orig_text": "抄写：So they wrote letters for Duncan",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "",
+          "img_exempt": "图后补",
           "round": 1
         },
         {
@@ -116,7 +116,7 @@
           "q_img": "",
           "orig_text": "抄写：After Duncan",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "",
+          "img_exempt": "图后补",
           "round": 1
         },
         {
@@ -128,7 +128,7 @@
           "q_img": "",
           "orig_text": "抄写：Black crayon",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "",
+          "img_exempt": "图后补",
           "round": 1
         },
         {
@@ -140,7 +140,7 @@
           "q_img": "",
           "orig_text": "朗读：第二题＋第七题全文5次",
           "q_img_exempt": "朗读类无原题图",
-          "img_exempt": "",
+          "img_exempt": "图后补",
           "round": 1
         }
       ],
