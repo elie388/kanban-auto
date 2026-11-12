@@ -92,7 +92,7 @@
           "q_img": "",
           "orig_text": "抄写：month",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -104,7 +104,7 @@
           "q_img": "",
           "orig_text": "抄写：So they wrote letters for Duncan",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -116,7 +116,7 @@
           "q_img": "",
           "orig_text": "抄写：After Duncan",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -128,7 +128,7 @@
           "q_img": "",
           "orig_text": "抄写：Black crayon",
           "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -140,7 +140,7 @@
           "q_img": "",
           "orig_text": "朗读：第二题＋第七题全文5次",
           "q_img_exempt": "朗读类无原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         }
       ],
@@ -222,7 +222,7 @@
           "q_img": "",
           "orig_text": "选出下列词语中的“靡”字与“风靡”的意思相同的一项",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -234,7 +234,7 @@
           "q_img": "",
           "orig_text": "下列每组词语中，有一个加点字的读音是错的，选出来：一绺 liǔ / 绷紧 běng",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -246,7 +246,7 @@
           "q_img": "",
           "orig_text": "下列每组词语中，有一个加点字的读音是错的，选出来：拧成 níng",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -258,7 +258,7 @@
           "q_img": "",
           "orig_text": "《观书有感》（其二）中使用比喻的诗句",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -270,7 +270,7 @@
           "q_img": "",
           "orig_text": "《七律·长征》“金沙水拍云崖暖，大渡桥横铁索寒”列举的两个战役",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -282,7 +282,7 @@
           "q_img": "",
           "orig_text": "读以上情节，猜猜他是谁？再结合具体的情节，分析他的人物特点",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -294,7 +294,7 @@
           "q_img": "",
           "orig_text": "格纸古诗：昨夜江边春水生，艨艟巨舰一毛轻",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -306,7 +306,7 @@
           "q_img": "",
           "orig_text": "格纸古诗：巧渡金沙江、飞夺泸定桥",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -318,7 +318,7 @@
           "q_img": "",
           "orig_text": "格纸短文：读书的好处（约400字）",
           "q_img_exempt": "语文文字题，无可裁切的独立原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         }
       ],
