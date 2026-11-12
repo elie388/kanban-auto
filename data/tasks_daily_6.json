@@ -1,261 +1,261 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-12",
- "grade": "六年级",
- "generated_at": "2026-11-12T00:18:04+08:00",
- "updated_at": "2026-11-12T22:46:48+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-12T21:15:26+08:00",
-   "new_lines": 9,
-   "flipped": 0
+  "schema_version": "1.0",
+  "date": "2026-11-12",
+  "grade": "六年级",
+  "generated_at": "2026-11-12T00:18:04+08:00",
+  "updated_at": "2026-11-12T22:59:09+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-12T21:15:26+08:00",
+      "new_lines": 9,
+      "flipped": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
+    }
   },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
+  "tasks": [
+    {
+      "task_id": "CHORE-20261112-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "20:01 洗碗",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-11-12T17:30:00+08:00",
+      "chore_done_count": 1,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-12T00:18:24+08:00",
+      "updated_at": "2026-11-12T22:59:09+08:00",
+      "completed_at": "2026-11-12T20:01:34+08:00",
+      "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1794484826695b60b0167a7685164（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-12",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-12T16:55:58+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00",
+      "completed_at": "2026-11-12T21:15:26+08:00",
+      "orig_photos": [
+        "7cd1c8cbec95faf7.jpg",
+        "6f384ce1db1d7de0.jpg",
+        "45adbf82df48aca7.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261112-DA870E6D791A",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄试卷第二、七题2次，读5次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄试卷第二、七题2次，读5次；②完成P40的练习，提交小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261112-9C8F60A9C008",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成P40的练习，提交小管家",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄试卷第二、七题2次，读5次；②完成P40的练习，提交小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T22:19:15+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-12T22:19:15+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "8b5a747a12681481.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261112-2F2DE09DD685",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U1单词、P40对话",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U1单词、P40对话 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00",
+      "task_type": "reading",
+      "type_source": "regex_bao"
+    },
+    {
+      "task_id": "REG-20261112-F49E1913669C",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "格纸打√题目",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00"
+    },
+    {
+      "task_id": "REG-20261112-F2646BDF2DB8",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读15分钟第5单元作文，记录①",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T22:38:15.007350+08:00",
+      "task_type": "reading",
+      "type_source": "regex_bao",
+      "completed_at": "2026-11-12T22:38:15.007350+08:00",
+      "orig_photos": [
+        "f6a2cf67276a2388.jpg",
+        "c7c8aabfc91afb3f.jpg",
+        "89f5f07d4a3c57e1.jpg"
+      ]
+    },
+    {
+      "task_id": "REG-20261112-BA4A6DBFFCCE",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔：写期中成绩反思",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00"
+    },
+    {
+      "task_id": "REG-20261112-CDFF9F43BA82",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "每天看书20页，签",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00",
+      "task_type": "reading",
+      "type_source": "look_book"
+    },
+    {
+      "task_id": "REG-20261112-1DA4E33B5891",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念53、54",
+      "detail": "第2轮已批：概念53“写作6比4，读作6比4”顺序已读对，很好！但开头“像上面那样”5个字还是没读（第1轮也漏了）。第3轮只补读“像上面那样”5个字，读完就达标。概念54已读对，不用重读。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念53、54；②校本P38 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T22:54:51+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "status_source": "manual"
+    },
+    {
+      "task_id": "REG-20261112-17BE149A7498",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P38",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念53、54；②校本P38 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T21:15:26+08:00"
+    }
+  ],
+  "counts": {
+    "total": 11,
+    "pending": 6,
+    "in_progress": 1,
+    "done": 4,
+    "pending_review": 0
   },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "CHORE-20261112-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "20:01 洗碗",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "appear_at": "2026-11-12T17:30:00+08:00",
-   "chore_done_count": 1,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-12T00:18:24+08:00",
-   "updated_at": "2026-11-12T20:01:34+08:00",
-   "completed_at": "2026-11-12T20:01:34+08:00",
-   "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1794484826695b60b0167a7685164（approved）；回写 chore_task_writeback。"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-12",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "在看板上传登记本照片",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-11-12T16:55:58+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00",
-   "completed_at": "2026-11-12T21:15:26+08:00",
-   "orig_photos": [
-    "7cd1c8cbec95faf7.jpg",
-    "6f384ce1db1d7de0.jpg",
-    "45adbf82df48aca7.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261112-DA870E6D791A",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "抄试卷第二、七题2次，读5次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄试卷第二、七题2次，读5次；②完成P40的练习，提交小管家 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral"
-  },
-  {
-   "task_id": "REG-20261112-9C8F60A9C008",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "完成P40的练习，提交小管家",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄试卷第二、七题2次，读5次；②完成P40的练习，提交小管家 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T22:19:15+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "completed_at": "2026-11-12T22:19:15+08:00",
-   "status_source": "closeout_writeback",
-   "orig_photos": [
-    "8b5a747a12681481.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261112-2F2DE09DD685",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "U1单词、P40对话",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语早读：U1单词、P40对话 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00",
-   "task_type": "reading",
-   "type_source": "regex_bao"
-  },
-  {
-   "task_id": "REG-20261112-F49E1913669C",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "格纸打√题目",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00"
-  },
-  {
-   "task_id": "REG-20261112-F2646BDF2DB8",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "读15分钟第5单元作文，记录①",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T22:38:15.007350+08:00",
-   "task_type": "reading",
-   "type_source": "regex_bao",
-   "completed_at": "2026-11-12T22:38:15.007350+08:00",
-   "orig_photos": [
-    "f6a2cf67276a2388.jpg",
-    "c7c8aabfc91afb3f.jpg",
-    "89f5f07d4a3c57e1.jpg"
-   ]
-  },
-  {
-   "task_id": "REG-20261112-BA4A6DBFFCCE",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "小练笔：写期中成绩反思",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00"
-  },
-  {
-   "task_id": "REG-20261112-CDFF9F43BA82",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "每天看书20页，签",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①格纸打√题目；②读15分钟第5单元作文，记录①；③小练笔：写期中成绩反思；④每天看书20页，签 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00",
-   "task_type": "reading",
-   "type_source": "look_book"
-  },
-  {
-   "task_id": "REG-20261112-1DA4E33B5891",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念53、54",
-   "detail": "第2轮已批：概念53“写作6比4，读作6比4”顺序已读对，很好！但开头“像上面那样”5个字还是没读（第1轮也漏了）。第3轮只补读“像上面那样”5个字，读完就达标。概念54已读对，不用重读。",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念53、54；②校本P38 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T22:54:51+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "status_source": "manual"
-  },
-  {
-   "task_id": "REG-20261112-17BE149A7498",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本P38",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念53、54；②校本P38 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-12T21:15:26+08:00",
-   "updated_at": "2026-11-12T21:15:26+08:00"
-  }
- ],
- "counts": {
-  "total": 11,
-  "pending": 6,
-  "in_progress": 1,
-  "done": 4,
-  "pending_review": 0
- },
- "deadline_today": null
+  "deadline_today": null
 }
