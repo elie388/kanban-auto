@@ -22,6 +22,7 @@
     --shadow:0 6px 18px rgba(0,0,0,.08);
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{background-color:#FFE8C2;} /* 2026-11-12 黑屏修复：整页重载等待时显示浅色底（与看板底色 --bg1 一致），而非浏览器默认黑底 */
   html,body{margin:0; padding:0; overflow-x:hidden; -webkit-text-size-adjust:100%; text-size-adjust:100%;
     touch-action:pan-y; -ms-touch-action:pan-y; overscroll-behavior-y:contain;} /* 2026-10-19：完全禁用缩放（双击+捏合），仅保留纵向滚动 */
   img,svg,video,canvas,table{max-width:100%; height:auto;}
@@ -5954,7 +5955,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261111-qabadge';
+  var KB_BUILD = '20261112-blackfix'; /* 2026-11-12 黑屏修复：data/version.json 须同步改同一值，否则版本检查失效 */
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
@@ -5968,16 +5969,30 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
       return true;
     } catch(e){ return false; }
   }
+  /* 轻量版本拉取（2026-11-12 黑屏修复）：只拉 data/version.json（几十字节）＋ 5 秒超时；
+     原口径每次拉整页 HTML（约 500KB），慢速移动网络下拉取耗时、随后整页重载又卡几分钟，
+     期间浏览器露出黑底。超时/失败/404 一律跳过本次复查、不强制重载。 */
+  function __kbFetchVersion(timeoutMs){
+    var ctrl = null;
+    var signal = undefined;
+    if(window.AbortController){ ctrl = new AbortController(); signal = ctrl.signal; }
+    var timer = null;
+    var timeoutP = new Promise(function(resolve){
+      timer = setTimeout(function(){ try { if(ctrl) ctrl.abort(); } catch(e){} resolve(null); }, timeoutMs);
+    });
+    var fetchP = fetch('/data/version.json?_cb=' + Date.now(), {cache: 'no-store', signal: signal})
+      .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function(d){ return (d && d.build) ? String(d.build) : null; })
+      .catch(function(){ return null; });
+    return Promise.race([fetchP, timeoutP]).then(function(v){ if(timer) clearTimeout(timer); return v; });
+  }
   try {
-    fetch(location.pathname + '?_cb=' + Date.now(), {cache: 'no-store'})
-      .then(function(r){ return r.text(); })
-      .then(function(t){
-        var m = t.match(/KB_BUILD = '([^']+)'/);
-        if(m && m[1] !== KB_BUILD && !__kbForceReload(m[1])){
-          var bar = document.getElementById('kb-upd-bar');
-          if(bar){ bar.style.display = 'block'; bar.onclick = function(){ location.reload(); }; }
-        }
-      }).catch(function(){});
+    __kbFetchVersion(5000).then(function(ver){
+      if(ver && ver !== KB_BUILD && !__kbForceReload(ver)){
+        var bar = document.getElementById('kb-upd-bar');
+        if(bar){ bar.style.display = 'block'; bar.onclick = function(){ location.reload(); }; }
+      }
+    });
   } catch(e){}
   /* 软刷新构建号复查（2026-10-30 家长令改定）：与页面 5 分钟软刷新同周期复查，含回前台复查。
      以前不一致只显示顶部提示条、等手动点；现在与打开时同口径，直接强制重载（交作业面板正开或已强制过仍读旧版时除外，改显示提示条兜底）。 */
@@ -5988,22 +6003,19 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
     if(now - _kbLastCheck < 4 * 60 * 1000) return;
     _kbLastCheck = now;
     try {
-      fetch(location.pathname + '?_cb=' + now, {cache: 'no-store'})
-        .then(function(r){ return r.text(); })
-        .then(function(t){
-          var m = t.match(/KB_BUILD = '([^']+)'/);
-          if(!m) return;
-          var bar = document.getElementById('kb-upd-bar');
-          if(!bar) return;
-          if(m[1] !== KB_BUILD){
-            if(!__kbForceReload(m[1])){
-              bar.style.display = 'block';
-              bar.onclick = function(){ location.reload(); };
-            }
-          } else {
-            bar.style.display = 'none';
+      __kbFetchVersion(5000).then(function(ver){
+        if(!ver) return;
+        var bar = document.getElementById('kb-upd-bar');
+        if(!bar) return;
+        if(ver !== KB_BUILD){
+          if(!__kbForceReload(ver)){
+            bar.style.display = 'block';
+            bar.onclick = function(){ location.reload(); };
           }
-        }).catch(function(){});
+        } else {
+          bar.style.display = 'none';
+        }
+      });
     } catch(e){}
   };
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) window.__kbBuildCheck(); });

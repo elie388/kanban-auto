@@ -78,6 +78,16 @@ jobs:
           cp data/closed_batches.json public/data/
           ls -la public/data/
 
+      # 轻量版本文件通道（2026-11-12 黑屏修复）：模板版本检查只拉 data/version.json
+      # （几十字节）而非整页 HTML；硬断言防静默缺失（缺失则版本检查永远不触发重载）。
+      - name: 同步轻量版本文件到 Pages 产物
+        run: |
+          mkdir -p public/data
+          test -s data/version.json || { echo "::error::data/version.json 缺失或为空" ; exit 1; }
+          python3 -c "import json; d=json.load(open('data/version.json', encoding='utf-8')); assert isinstance(d.get('build'), str) and d['build'], 'build 须为非空字符串'"
+          cp data/version.json public/data/
+          ls -la public/data/
+
       # 待改正配图通道（2026-10-22 家长定）：待改正明细的画图引导图
       # data/diagrams/ 同步进 Pages 产物，供明细里的 <img> 引用；
       # 目录不存在或为空时跳过（不阻断构建）。
