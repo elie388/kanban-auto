@@ -492,7 +492,7 @@
   #fbViewer.open{display:flex;}
   #fbViewer .fv-bar{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; background:#F5F3EB;}
   #fbViewer .fv-title{font-size:20px; font-weight:700; color:#333; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  #fbViewer .fv-close{background:#555; border:none; color:#fff; border-radius:50%; width:36px; height:36px; min-width:36px; min-height:36px; font-size:20px; line-height:1; cursor:pointer; flex:none; padding:0;} /* 2026-11-12 家长令“右上角一个关闭按钮就行”：删底部按钮，只留右上角一个简洁圆形 ✕（深灰底白字，米色栏上可见又不扎眼） */
+  #fbViewer .fv-close{background:#2E7D32; border:none; color:#fff; border-radius:50%; width:36px; height:36px; min-width:36px; min-height:36px; font-size:20px; line-height:1; cursor:pointer; flex:none; padding:0;} /* 2026-11-12 家长令“风格和看板统一”：关闭按钮改看板主绿 #2E7D32（与示范录音/反馈按钮同色），仍为右上角单个圆形 ✕ */
 
   #fbViewer .fv-stage{flex:1; overflow:auto; padding:16px; background:#F5F3EB;}
   #fbViewer .fv-body{max-width:720px; margin:0 auto; background:#FFFDF8; border:1px solid #E5E7EB; border-radius:12px; padding:16px; line-height:1.7; font-size:20px; color:#333;} /* 2026-11-10 家长令：反馈查看器字体放大到 20px（原 15px） */
@@ -5956,7 +5956,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261112-fbclose1'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
+  var KB_BUILD = '20261112-fbclose2'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
