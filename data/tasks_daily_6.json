@@ -70,7 +70,7 @@
       "title": "抄试卷第二、七题2次，读5次",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄试卷第二、七题2次，读5次；②完成P40的练习，提交小管家 → 待完成",
@@ -79,11 +79,74 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-12T21:15:26+08:00",
-      "updated_at": "2026-11-12T21:15:26+08:00",
+      "updated_at": "2026-11-12T23:28:42+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
+      "corrections": [
+        {
+          "label": "抄写第二题",
+          "question": "抄写第二题 看板提交抄写照片5张＋朗读录音1段（92.2秒）；孩子留言：括号里面的不用抄。第二题10句＋第七题11句，各抄2次，共42份。",
+          "reason": "month 写成 mouth",
+          "hint": "一级提示：这个词是“月份”的意思，开头是 m，中间是 on；想一想，“月”和“嘴”发音像但拼写不一样。二级提示：month 里没有 u，mouth 里有 u。三级提示：把 month 这个词抄 3 遍，边抄边读。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写：month",
+          "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "抄写第七题",
+          "question": "So they wrote letters for Duncan",
+          "reason": "for 写成 to（试卷红笔已改 C→B，正确为 for）",
+          "hint": "一级提示：这句话是“他们给邓肯写信”，“给”这个词是 for 还是 to？想一想，写信“给”某人用哪个词。二级提示：for 在这里表示“为了、给”，to 表示“向、到”。三级提示：把 for Duncan 这个短语抄 3 遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写：So they wrote letters for Duncan",
+          "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "抄写第七题",
+          "question": "After Duncan",
+          "reason": "After 写成 Aftere（第一份，裁图核实）",
+          "hint": "一级提示：After 这个词最后没有 e，想一想，“在……之后”这个词怎么拼。二级提示：Aftere 多了一个 e，把它划掉。三级提示：把 After 这个词抄 3 遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写：After Duncan",
+          "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "抄写第七题",
+          "question": "Black crayon",
+          "reason": "crayon 写成 cray（第二份，裁图核实）",
+          "hint": "一级提示：crayon 是“蜡笔”，这个词比较长，结尾是 on；想一想，蜡笔的英文怎么拼。二级提示：cray 后面少了 on，把 on 补上。三级提示：把 crayon 这个词抄 3 遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写：Black crayon",
+          "q_img_exempt": "抄写为纯文字题，无可裁切的独立原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "朗读第二题＋第七题",
+          "question": "朗读第二题＋第七题 看板提交抄写照片5张＋朗读录音1段（92.2秒）；孩子留言：括号里面的不用抄。第二题10句＋第七题11句，各抄2次，共42份。",
+          "reason": "任务要求读5次，实际只读1遍，需再读4遍",
+          "hint": "一级提示：第二题和第七题全文再读4遍，读完就达标。二级提示：每次读的时候注意发音，读错的地方重读一遍。三级提示：读完4遍后把录音发回来。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "朗读：第二题＋第七题全文5次",
+          "q_img_exempt": "朗读类无原题图",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 5,
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261112-9C8F60A9C008",
