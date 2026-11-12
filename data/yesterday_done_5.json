@@ -1,39 +1,53 @@
 {
- "date": "2026-11-11",
+ "date": "2026-11-12",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "CHORE-20261111-G5",
+   "task_id": "CHORE-20261112-G5",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "META-REGISTER-2026-11-11",
+   "task_id": "META-REGISTER-2026-11-12",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261111-1A898A9D4B19",
-   "title": "小校本3页",
+   "task_id": "REG-20261112-B74913FC251A",
+   "title": "口语易",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261112-04016C1751E8",
+   "title": "小试卷",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261112-5FE424B6DBAB",
+   "title": "期中试卷（签名）",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261112-D73D1A12169C",
+   "title": "预习17课",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261112-AEFE8E572953",
+   "title": "校本38页",
    "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261111-1A3DE8D00FC7",
-   "title": "小口语易 2.2",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261111-BAA3F1B84AC7",
-   "title": "校本27页",
-   "subject": "英语",
    "source": "register_book",
    "group": "study"
   }
