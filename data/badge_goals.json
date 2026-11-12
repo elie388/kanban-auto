@@ -288,7 +288,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 1,
      "target": 5,
      "unit": "天",
      "mode": "连续"
@@ -457,8 +457,8 @@
     "key": "quanduizhixing",
     "obtained": true,
     "date": "2026-11-10",
-    "count": 1,
-    "total_count": 1,
+    "count": 2,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 128,
+     "current": 133,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -583,7 +583,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 0,
+     "current": 1,
      "target": 5,
      "unit": "天",
      "mode": "连续"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W46",
- "generated_at": "2026-11-12T22:48:52.560661+08:00"
+ "generated_at": "2026-11-12T23:01:22.024651+08:00"
 }
