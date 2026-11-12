@@ -3,7 +3,7 @@
   "date": "2026-11-12",
   "grade": "六年级",
   "generated_at": "2026-11-12T00:18:04+08:00",
-  "updated_at": "2026-11-12T19:59:39+08:00",
+  "updated_at": "2026-11-12T20:01:34+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -28,18 +28,20 @@
       "source": "chore",
       "subject": "家务",
       "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "detail": "20:01 洗碗",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "appear_at": "2026-11-12T17:30:00+08:00",
-      "chore_done_count": 0,
+      "chore_done_count": 1,
       "chore_pending_review": 0,
       "chore_exempt": false,
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-12T00:18:24+08:00",
-      "updated_at": "2026-11-12T19:41:04+08:00"
+      "updated_at": "2026-11-12T20:01:34+08:00",
+      "completed_at": "2026-11-12T20:01:34+08:00",
+      "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1794484826695b60b0167a7685164（approved）；回写 chore_task_writeback。"
     },
     {
       "task_id": "META-REGISTER-2026-11-12",
@@ -59,9 +61,9 @@
   ],
   "counts": {
     "total": 2,
-    "pending": 2,
+    "pending": 1,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
