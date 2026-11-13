@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-13T23:26:18+08:00",
+ "generated_at": "2026-11-13T23:45:22+08:00",
  "items": [
+  {
+   "date": "2026-11-13",
+   "ts": "2026-11-13T23:45:06+08:00",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261113-37EBD2213C54",
+   "title": "11月13日抄cloth到fan单词反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，抄单词反馈</h2><p>11月13日 22:52 提交</p><h3>做得好的地方</h3><ul><li>抄写 4 遍都写完了，cloth、string、glue、fold、fan 五个词拼写全对，中文意思也全对，很好。</li></ul><p>还要补一下：背诵只读了 cloth 和 string，glue、fold、fan 这三个词还没读到。请只重读这三个词，不用重读 cloth 和 string，也不用重抄。</p><p>小提醒：第 4 遍 cloth 前面多写了一个“at”，记得划掉。</p><p>本批积分 +5（发回分）。达标分等你重读达标后再结。</p></body></html>"
+  },
   {
    "date": "2026-11-13",
    "ts": "2026-11-13T23:25:54.979281+08:00",
