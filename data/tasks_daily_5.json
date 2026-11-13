@@ -1,196 +1,196 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-13",
-  "grade": "五年级",
-  "generated_at": "2026-11-13T00:18:03+08:00",
-  "updated_at": "2026-11-13T18:50:08+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-13T18:50:07+08:00",
-      "new_lines": 6,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": null,
-      "status": "pending"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-13",
+ "grade": "五年级",
+ "generated_at": "2026-11-13T00:18:03+08:00",
+ "updated_at": "2026-11-13T18:50:08+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-13T18:50:07+08:00",
+   "new_lines": 6,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261113-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-13T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-13T00:18:25+08:00",
-      "updated_at": "2026-11-13T00:18:25+08:00"
-    },
-    {
-      "task_id": "READ-20261113-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-13T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-13T00:18:43+08:00",
-      "updated_at": "2026-11-13T00:18:43+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-13",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-13T16:55:57+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00",
-      "completed_at": "2026-11-13T18:50:07+08:00"
-    },
-    {
-      "task_id": "REG-20261113-834C2A89E1EB",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小校本39、40页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①小校本39、40页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00"
-    },
-    {
-      "task_id": "REG-20261113-041A31F67B90",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral"
-    },
-    {
-      "task_id": "REG-20261113-E8CF59625272",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00"
-    },
-    {
-      "task_id": "REG-20261113-3B3D9D6FA354",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "试卷签名",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00"
-    },
-    {
-      "task_id": "REG-20261113-BE31BF71E61D",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "生字17课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00"
-    },
-    {
-      "task_id": "REG-20261113-74AE41CA6824",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "写第五单元作文（风向袋的制作，*例文见群）画好，写旁批",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00"
-    }
-  ],
-  "counts": {
-    "total": 9,
-    "pending": 8,
-    "in_progress": 0,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": null,
+   "status": "pending"
   },
-  "deadline_today": null
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": null,
+   "status": "pending"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261113-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-13T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-13T00:18:25+08:00",
+   "updated_at": "2026-11-13T00:18:25+08:00"
+  },
+  {
+   "task_id": "READ-20261113-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-13T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-13T00:18:43+08:00",
+   "updated_at": "2026-11-13T00:18:43+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-13",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-13T16:55:57+08:00",
+   "updated_at": "2026-11-13T18:50:07+08:00",
+   "completed_at": "2026-11-13T18:50:07+08:00"
+  },
+  {
+   "task_id": "REG-20261113-834C2A89E1EB",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小校本39、40页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①小校本39、40页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-13T18:50:07+08:00",
+   "updated_at": "2026-11-13T18:50:07+08:00"
+  },
+  {
+   "task_id": "REG-20261113-041A31F67B90",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-13T18:50:07+08:00",
+   "updated_at": "2026-11-13T18:50:07+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral"
+  },
+  {
+   "task_id": "REG-20261113-E8CF59625272",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
+   "detail": "登记本上这一项⑩后面有两个字被涂黑了，看不清写的是什么。请告诉我被涂掉的是哪几个字，我就把任务标题改清楚。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-13T18:50:07+08:00",
+   "updated_at": "2026-11-13T18:52:00+08:00"
+  },
+  {
+   "task_id": "REG-20261113-3B3D9D6FA354",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "试卷签名",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-13T18:50:07+08:00",
+   "updated_at": "2026-11-13T18:50:07+08:00"
+  },
+  {
+   "task_id": "REG-20261113-BE31BF71E61D",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "生字17课",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-13T18:50:07+08:00",
+   "updated_at": "2026-11-13T18:50:07+08:00"
+  },
+  {
+   "task_id": "REG-20261113-74AE41CA6824",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "写第五单元作文（风向袋的制作，*例文见群）画好，写旁批",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-13T18:50:07+08:00",
+   "updated_at": "2026-11-13T18:50:07+08:00"
+  }
+ ],
+ "counts": {
+  "total": 9,
+  "pending": 8,
+  "in_progress": 0,
+  "done": 1,
+  "pending_review": 0
+ },
+ "deadline_today": null
 }
