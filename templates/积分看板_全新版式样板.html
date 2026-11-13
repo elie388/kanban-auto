@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover"><!-- 2026-10-19：按用户要求完全禁用缩放（双击+捏合），viewport-fit=cover配合安全区 -->
+<meta name="color-scheme" content="light"><!-- 2026-11-13 黑屏 P0 补齐：声明浅色模式，导航/重载未绘制时 WebView 不露黑底 -->
 <title>积分看板</title>
 <!-- 主屏幕图标（2026-10-20 用户提供图标，用户批准实施）：iOS 添加到主屏幕用 apple-touch-icon.png（180x180，非透明底）；favicon 为浏览器标签页小图标 -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -5956,7 +5957,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261112-fbtitle'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
+  var KB_BUILD = '20261113-blackscreen'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
