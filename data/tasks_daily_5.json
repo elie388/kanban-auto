@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "grade": "五年级",
-  "generated_at": "2026-11-13T00:18:03+08:00",
-  "updated_at": "2026-11-14T00:08:48+08:00",
+  "generated_at": "2026-11-14T00:18:02+08:00",
+  "updated_at": "2026-11-14T00:18:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-13T23:53:56+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -23,26 +22,6 @@
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261113-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "23:31 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-13T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-13T00:18:25+08:00",
-      "updated_at": "2026-11-14T00:08:48+08:00",
-      "completed_at": "2026-11-13T23:47:48+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b17945838534471af844cd71a16b31（approved）；回写 chore_task_writeback。"
-    },
     {
       "task_id": "READ-20261113-G5",
       "source": "reading_daily",
@@ -59,25 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-13T00:18:43+08:00",
-      "updated_at": "2026-11-13T00:18:43+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-13",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-13T16:55:57+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00",
-      "completed_at": "2026-11-13T18:50:07+08:00",
-      "orig_photos": [
-        "adcf08a9ebd742f2.jpg"
-      ]
+      "updated_at": "2026-11-14T00:18:02+08:00",
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261113-834C2A89E1EB",
@@ -95,7 +59,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T21:23:31+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
       "corrections": [
         {
           "label": "拼正方形的三角形",
@@ -135,34 +99,10 @@
         }
       ],
       "pending_corrections": 3,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261113-041A31F67B90",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T20:38:32+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-13T20:38:32+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "4e908ae385c8b4fd.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261113-E8CF59625272",
@@ -180,9 +120,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:52:00+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261113-3B3D9D6FA354",
@@ -200,9 +143,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261113-BE31BF71E61D",
@@ -220,9 +166,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261113-74AE41CA6824",
@@ -240,16 +189,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 9,
+    "total": 6,
     "pending": 5,
     "in_progress": 1,
-    "done": 3,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": null

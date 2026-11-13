@@ -1,60 +1,25 @@
 {
- "date": "2026-11-12",
+ "date": "2026-11-13",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "CHORE-20261112-G6",
+   "task_id": "CHORE-20261113-G6",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "META-REGISTER-2026-11-12",
+   "task_id": "META-REGISTER-2026-11-13",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261112-9C8F60A9C008",
-   "title": "完成P40的练习，提交小管家",
+   "task_id": "REG-20261113-2B9AC30A6796",
+   "title": "完成校本P26、27练习，写语法",
    "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261112-F2646BDF2DB8",
-   "title": "读15分钟第5单元作文，记录①",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261112-BA4A6DBFFCCE",
-   "title": "小练笔：写期中成绩反思",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261112-CDFF9F43BA82",
-   "title": "每天看书20页，签",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261112-1DA4E33B5891",
-   "title": "读背概念53、54",
-   "subject": "数学",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261112-17BE149A7498",
-   "title": "校本P38",
-   "subject": "数学",
    "source": "register_book",
    "group": "study"
   }
