@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 9,
+     "current": 12,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W46",
- "generated_at": "2026-11-14T00:23:20.877310+08:00"
+ "generated_at": "2026-11-14T00:33:50.020930+08:00"
 }
