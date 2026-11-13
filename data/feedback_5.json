@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-13T20:38:47+08:00",
+ "generated_at": "2026-11-13T21:26:08+08:00",
  "items": [
+  {
+   "date": "2026-11-13",
+   "ts": "2026-11-13T21:25:40.458858+08:00",
+   "kind": "feedback",
+   "time": "21:25",
+   "task_id": "REG-20261113-834C2A89E1EB",
+   "title": "11月13日数学小校本39、40页反馈（18/21，85.7%）",
+   "html": "<p>彦均，你今天交了数学小校本 39、40 页，一共 21 小题，对了 18 题，正确率 85.7%，很棒！</p><p>做得好的地方：三角形面积的计算都对了，底乘高除以 2 用得很熟；方格纸上画的两个三角形面积都和给出的三角形相等；正方形剪角那道拓展题思路清晰、算得对。</p><p>有 3 处要订正：</p><p>1. 39页第2题：两个完全相同的（ ）三角形可以拼成一个正方形。你选了 B（直角）。<span style=\"color:red;font-weight:bold\">两个一样的直角三角形拼出来是长方形，不一定是正方形</span>。拿两个一样的直角三角形拼一拼，拼出来是长方形还是正方形？再想想，什么样的三角形两条短边一样长？用两个这样的三角形拼一拼，看看拼出来的是什么形状。</p><img src=\"data/diagrams/g5_math_834C_Q2_isosceles_right_square.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>2. 39页拓展题：两个长方形面积相等，比较这两个三角形的面积。你选了 C（甲&gt;乙）。<span style=\"color:red;font-weight:bold\">甲、乙两个三角形都只占各自长方形面积的一半</span>。甲占左边长方形的几分之几？乙占右边长方形的几分之几？两个长方形面积一样大，两个三角形各占一半，面积谁大谁小？</p><img src=\"data/diagrams/g5_math_834C_ext_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><img src=\"data/diagrams/g5_math_834C_ext_rect_tri_half.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>3. 40页第1题(1)：计算图形的面积，底 4.5cm、高 2cm。你写的是 4.5×2÷2=4.5cm²。<span style=\"color:red;font-weight:bold\">图上的图形有四条边，是平行四边形，不是三角形</span>。先数一数图上的图形有几条边——三角形有 3 条边，这个图形有几条边？平行四边形的面积怎么算，要不要除以 2？再算一算。</p><img src=\"data/diagrams/g5_math_834C_Q1_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><img src=\"data/diagrams/g5_math_834C_Q1_parallelogram_vs_triangle.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>另外，这次有 4 处涂改（40页第1题(2)、第2题、拓展题和39页第3题(3)），下次写之前先想清楚再下笔，错了划掉重写就好，字迹会更清楚。</p><p>本批积分：完成 +10、正确率 +3、书写 +2，共 +15。</p>"
+  },
   {
    "date": "2026-11-13",
    "ts": "2026-11-13T20:38:39+08:00",
