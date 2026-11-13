@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 5,
- "generated_at": "2026-11-12T22:49:13+08:00",
+ "generated_at": "2026-11-13T12:31:11+08:00",
  "items": [
   {
    "date": "2026-11-12",
@@ -452,6 +452,15 @@
    "task_id": "REG-20261105-CD02B5",
    "title": "生字16课",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>彦均，生字16课反馈</h2><p>11月5日 20:16 提交，7个生字对4个、错3个（57.1%），要订正3处。</p><h3>做得好的地方</h3><ul><li>塔、埃、墓、砌这4个字全对：拼音、字形、组词都写对了，很棒！</li><li>组词用得都对：金字塔、矮塔楼、埃及、古埃及、陵墓、墓室、塔基、基本、堆砌，都很好。</li></ul><h3>要订正的地方（3项）</h3><ul><li>堆的拼音：堆的拼音里，韵母是 u+i 还是 u+a+i？先读一读 tuī（通用例子），再读一读你写的 duāi，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_dui_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_dui_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>基的字形：基的第3个字，对照第1、2、4、5个基，看看第3个上面多了什么？多的那个小部件是不是不应该有？把它去掉，再写一遍基。<br><img src=\"data/diagrams/g5_shengzi16_ji_structure_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_ji_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li><li>狭的拼音：狭的拼音里，韵母是 i+a 还是 i+u？先读一读 jiā（通用例子），再读一读你写的 xiú，哪个发音对？声调标在哪个字母上？想一想再写一遍。<br><img src=\"data/diagrams/g5_shengzi16_xia_pinyin_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g5_shengzi16_xia_q.png\" alt=\"你写的原图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li></ul><p>订正完把改好的3个字再拍一张发回来，你一定能全对！</p></body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261105-366DAB",
+   "title": "11月5日口语易反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>彦均，口语易反馈</h2>\n<p>11月5日 22:49 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>口语易 11 月 5 日的任务已经提交了，6 项都完成了，很好。</li>\n</ul>\n<p>这次超过今晚 22:00 的截止时间，下次争取早点完成口语练习。</p>\n</body></html>"
   }
  ]
 }

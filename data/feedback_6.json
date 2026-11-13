@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-13T12:03:49+08:00",
+ "generated_at": "2026-11-13T12:31:11+08:00",
  "items": [
   {
    "date": "2026-11-12",
@@ -440,9 +440,63 @@
    "ts": "",
    "kind": "feedback",
    "time": "",
+   "task_id": "REG-20261105-3D8E5B",
+   "title": "11月5日语文读作文反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，语文读作文反馈</h2><p>11月5日 23:24 提交</p><h3>还需要补的地方</h3><ul><li>这次只发回了一张书页照片，“主要内容+阅读感受”后面的横线还是空的，也没有重读的录音，这样还不能算完成。</li><li>你留言说“主要内容+阅读记录不用写”——这两样还是要写的，不能跳过：①把《时光机奇遇》全文重读一遍录音发回，注意上次反馈里的6处词语；②把“主要内容+阅读感受”写在横线上再拍照发回。</li></ul><p>这两样补齐了才算完成，达标分到时再加。</p></body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261105-AA9F5B",
+   "title": "11月5日语文复习反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，语文复习反馈</h2><p>11月5日 23:21 提交</p><h3>做得好的地方</h3><ul><li>古诗词默写全对了，《论语》、曹植、李纲、陆游、朱熹、王维六首/六句都写对了。</li><li>“已复习二至四单元”写了，家长也签了名。</li></ul><p>这项任务完成了。</p></body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261105-21180A",
+   "title": "11月5日英语U3单词背诵反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语U3单词背诵反馈</h2>\n<p>11月5日 20:07 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>U3 的 14 个单词都读对了，每个词英文和中文都读了两遍，不用重读。</li>\n<li>抄写 4 遍齐了，14 个单词拼写全对。</li>\n</ul>\n<h3>两个小提醒</h3>\n<ul>\n<li>waterfall 和 young 的中文，有两遍多写了一笔，下次落笔前先在心里念一遍中文再写。</li>\n<li>你在词表上补写的 nature 这个词，这次抄写和背诵里都没有它，下次一起抄一遍、读一遍。</li>\n</ul>\n<p>这次读背发回 +5、达标 +3，共 +8 分。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
    "task_id": "REG-20261105-1336F4",
    "title": "11月5日英语U3单词对话小管家反馈",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语U3单词对话小管家反馈</h2>\n<p>11月5日 19:57 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>U3 单词和对话 8 个小项都拿到了 3 颗星，拼写正确率 100%，老师还奖励了 1 朵小红花。</li>\n<li>跟读很完整，从 Start up 到 Hit it big 每一项都完成了，没有落下。</li>\n</ul>\n<h3>一个小提醒</h3>\n<ul>\n<li>这次一共用了 107 分钟，时间有点长，下次可以分成两段读，中间歇一歇再继续，读起来会更轻松。</li>\n</ul>\n<p>这次读背发回 +5 分。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261105-7B5137",
+   "title": "11月5日科学读背反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，科学读背反馈</h2>\n<p>11月5日 20:49 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>三课的内容全都读下来了，从第一课生长发育的信息一直读到第三课营养要均衡，40 小问全部读出，中间没有漏段。</li>\n<li>读的时候声音清楚、不断句，继续保持。</li>\n</ul>\n<h3>一个小提醒</h3>\n<ul>\n<li>第三课里有一句讲女生、男生分别在几岁左右进入青春期——你读到的男生年龄，和书上写的是不是同一个数？自己翻到那一页再读一遍确认一下。</li>\n</ul>\n<p>这次读背发回 +5、达标 +3，共 +8 分。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261105-C4D2B5",
+   "title": "11月5日数学读背反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，数学读背反馈</h2>\n<p>11月5日 23:25 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>第26、36、43条都读对了，43条的r平方也读出来了。</li>\n</ul>\n<h3>需要再注意的地方</h3>\n<ul>\n<li>第25条前面那句话还是没读出来——“如果用C表示圆的周长，那么”，下次从头把整条读一遍就完整了。</li>\n</ul>\n<p>这次重读达标 +3；这次23:25提交，迟于22:00截止，迟交 -3。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-05",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261105-F54F98",
+   "title": "11月5日数学校本P36-37订正反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，数学校本P36-37订正反馈</h2>\n<p>11月5日 23:18 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>两道题都用红笔重新算了一遍，步骤写得很清楚。</li>\n<li>第（6）小题括号里那一步，你写的 7/30 是对的。</li>\n</ul>\n<h3>还需要再改的地方</h3>\n<ul>\n<li>第 1 题第（1）小题：2/7×3/16×14/15。你红笔第二步写的是 1/15 × 3/16——先回头算一算 2/7 × 14/15 等于几，14 和 7 可以约掉几？约完再乘，得数再核对一遍。<br><br><img src=\"data/diagrams/g6_F54F98_q1_1_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g6_F54F98_q1_1_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>第 1 题第（6）小题：98÷(1/10÷3/7)。先说清一点：上次反馈里把括号里的符号说错了，括号里是除法不是加法——1/10 ÷ 3/7 这一步你算对了。再往下想：98 除以这个结果等于几？最后一步的字写清楚一点再发回。<br><br><img src=\"data/diagrams/g6_F54F98_q1_6_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><br><img src=\"data/diagrams/g6_F54F98_q1_6_orig.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<p>这次订正两题都还没改对，订正分暂不加；改对后每题 +2。</p>\n</body></html>"
   }
  ]
 }
