@@ -162,8 +162,8 @@
     "key": "quanduizhixing",
     "obtained": true,
     "date": "2026-11-11",
-    "count": 1,
-    "total_count": 1,
+    "count": 2,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -189,7 +189,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 120,
+     "current": 125,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W46",
- "generated_at": "2026-11-13T00:18:51.265838+08:00"
+ "generated_at": "2026-11-13T09:38:50.420215+08:00"
 }
