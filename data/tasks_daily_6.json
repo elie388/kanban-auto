@@ -3,11 +3,11 @@
   "date": "2026-11-13",
   "grade": "六年级",
   "generated_at": "2026-11-13T00:18:03+08:00",
-  "updated_at": "2026-11-13T18:50:08+08:00",
+  "updated_at": "2026-11-13T21:38:45+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-13T18:50:08+08:00",
+      "ingested_at": "2026-11-13T21:38:45+08:00",
       "new_lines": 0,
       "flipped": 0
     },
@@ -67,19 +67,151 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-13T16:55:57+08:00",
-      "updated_at": "2026-11-13T16:55:57+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-13T21:38:16+08:00",
+      "completed_at": "2026-11-13T21:38:16+08:00"
+    },
+    {
+      "task_id": "REG-20261113-37EBD2213C54",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄cloth到fan的单词中文各4次，背10次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄cloth到fan的单词中文各4次，背10次；②完成校本P26、27练习，写语法；③做一个bird feeder → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261113-2B9AC30A6796",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成校本P26、27练习，写语法",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄cloth到fan的单词中文各4次，背10次；②完成校本P26、27练习，写语法；③做一个bird feeder → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00"
+    },
+    {
+      "task_id": "REG-20261113-2295927876B8",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "做一个bird feeder",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄cloth到fan的单词中文各4次，背10次；②完成校本P26、27练习，写语法；③做一个bird feeder → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00"
+    },
+    {
+      "task_id": "REG-20261113-B6B96466FDAA",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U4单词、P40、41、42",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U4单词、P40、41、42 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00"
+    },
+    {
+      "task_id": "REG-20261113-C3503CA6C055",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小作文①写“思”",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00"
+    },
+    {
+      "task_id": "REG-20261113-940F641C1FD3",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习新16课反馈单",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261113-02818DDEC0E0",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看作文一小时以上",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T21:38:16+08:00",
+      "updated_at": "2026-11-13T21:38:16+08:00",
+      "task_type": "read",
+      "type_source": "regex_read"
     }
   ],
   "counts": {
-    "total": 3,
-    "pending": 3,
+    "total": 10,
+    "pending": 9,
     "in_progress": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": null
