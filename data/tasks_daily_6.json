@@ -3,7 +3,7 @@
   "date": "2026-11-14",
   "grade": "六年级",
   "generated_at": "2026-11-14T00:18:02+08:00",
-  "updated_at": "2026-11-14T21:53:37+08:00",
+  "updated_at": "2026-11-14T21:55:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -147,16 +147,16 @@
       "title": "家务打卡",
       "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "appear_at": "2026-11-14T08:00:00+08:00",
       "chore_done_count": 0,
-      "chore_pending_review": 0,
+      "chore_pending_review": 1,
       "chore_exempt": false,
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-14T00:18:12+08:00",
-      "updated_at": "2026-11-14T21:31:31+08:00"
+      "updated_at": "2026-11-14T21:55:50+08:00"
     },
     {
       "task_id": "MANUAL-20261114-002-G6-YW",
@@ -250,9 +250,9 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 1,
-    "submitted": 0,
+    "submitted": 1,
     "grading": 0,
     "done": 0,
     "pending_review": 0
