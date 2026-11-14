@@ -3,7 +3,7 @@
   "date": "2026-11-14",
   "grade": "六年级",
   "generated_at": "2026-11-14T00:18:02+08:00",
-  "updated_at": "2026-11-14T21:59:01+08:00",
+  "updated_at": "2026-11-14T22:17:00+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -224,11 +224,11 @@
           "question": "There ______ some water in the bottle. A.is B.are C.was D.were",
           "reason": "water 是不可数名词，There be 句型后接不可数名词时 be 动词用 is，不用 are；孩子选了 B (are)。",
           "hint": "water 能数吗？一瓶水里有多少“个”water？想一想，不可数名词前面，There be 句型里的 be 动词该用 is 还是 are？再看一遍第9题的四个选项，哪一个和 water 搭配？",
-          "img": "",
+          "img": "g6_yy_20261114_vocab9_water.png",
           "q_img": "",
           "orig_text": "词汇第9题：There ______ some water in the bottle.（ ）A. is B. are C. was D. were",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         },
         {
@@ -236,11 +236,11 @@
           "question": "Look at the clouds! It ______ rain soon. A.is going to B.goes to C.will go D.is going",
           "reason": "看云预测将要下雨，表“按已有迹象推测将要发生”用 be going to；C 项 will go 后面不能直接跟 rain，It will go rain 结构不对。",
           "hint": "天上乌云密布，你觉得马上要下雨了——这是根据眼前迹象做的预测，一般将来时里哪种说法专门表示“根据迹象推测将要发生”？再把 C 项连起来读一读：It will go rain，句子通顺吗？",
-          "img": "",
+          "img": "g6_yy_20261114_q17_clouds.png",
           "q_img": "",
           "orig_text": "单选第17题：Look at the clouds! It ______ rain soon.（ ）A. is going to B. goes to C. will go D. is going",
           "q_img_exempt": "英语选择题无原题图",
-          "img_exempt": "图后补",
+          "img_exempt": "",
           "round": 1
         }
       ],
