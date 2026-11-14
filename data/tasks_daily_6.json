@@ -3,7 +3,7 @@
   "date": "2026-11-14",
   "grade": "六年级",
   "generated_at": "2026-11-14T00:18:02+08:00",
-  "updated_at": "2026-11-14T16:58:14+08:00",
+  "updated_at": "2026-11-14T17:05:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -39,37 +39,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-13T00:18:43+08:00",
-      "updated_at": "2026-11-14T00:18:21+08:00",
+      "updated_at": "2026-11-14T17:05:37+08:00",
       "carry_first_date": "2026-11-13",
       "carried_from": "2026-11-13",
       "carry_count": 1
-    },
-    {
-      "task_id": "REG-20261113-37EBD2213C54",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄cloth到fan的单词中文各4次，背10次",
-      "detail": "第2轮重读达标：glue、fold、fan 都读到了（11-14 00:26 提交）。抄写20处全对。第4遍cloth前多写的“at”记得划掉。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄cloth到fan的单词中文各4次，背10次；②完成校本P26、27练习，写语法；③做一个bird feeder → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-14T00:32:37+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "reading_pass2_37EBD",
-      "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1,
-      "completed_at": "2026-11-14T00:32:37+08:00"
     },
     {
       "task_id": "REG-20261113-2295927876B8",
@@ -270,10 +243,10 @@
     }
   ],
   "counts": {
-    "total": 11,
+    "total": 10,
     "pending": 10,
     "in_progress": 0,
-    "done": 1,
+    "done": 0,
     "pending_review": 0
   },
   "deadline_today": "2026-11-14T22:30:00+08:00"
