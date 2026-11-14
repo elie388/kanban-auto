@@ -1,17 +1,8 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-14T22:18:29+08:00",
+ "generated_at": "2026-11-14T22:19:15+08:00",
  "items": [
-  {
-   "date": "2026-11-14",
-   "ts": "2026-11-14T22:18:22+08:00",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "b17946636411087f0425d6f7774823",
-   "title": "11月14日英语批改反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，11月14日英语周六综合卷批改反馈</h2>\n<p>11月14日 21:40 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>26道题对了24道，95分，正确率92.3%，很棒！</li>\n<li>词汇和单选大部分都对了，只错了2道，基础很扎实。</li>\n</ul>\n<h3>📝 需要订正：2处</h3>\n<p>1. 词汇第9题：There ______ some water in the bottle.（ ）A. is B. are C. was D. were。你选了 B（are）。<span style=\"color:red;font-weight:bold\">water 是不可数名词，不能数个数，are 是复数形式，不能和 water 搭配</span>。water 能数吗？一瓶水里有多少\"个\"water？想一想，不可数名词前面，There be 句型里的 be 动词该用 is 还是 are？再看一遍第9题的四个选项，哪一个和 water 搭配？</p><img src=\"data/diagrams/g6_yy_20261114_vocab9_water.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>2. 单选第17题：Look at the clouds! It ______ rain soon.（ ）A. is going to B. goes to C. will go D. is going。你选了 C（will go）。<span style=\"color:red;font-weight:bold\">It will go rain 这样说不对，will go 后面不能直接跟 rain</span>。天上乌云密布，你觉得马上要下雨了——这是根据眼前迹象做的预测，一般将来时里哪种说法专门表示\"根据迹象推测将要发生\"？再把 C 项连起来读一读：It will go rain，句子通顺吗？</p><img src=\"data/diagrams/g6_yy_20261114_q17_clouds.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>把这两处想一想、改好拍照发回（点任务卡\"交这一项\"上传），继续加油！💪</p>\n</body></html>"
-  },
   {
    "date": "2026-11-13",
    "ts": "2026-11-14T00:32:51+08:00",
@@ -443,6 +434,15 @@
    "task_id": "MANUAL-20261107-001",
    "title": "11月8日兄弟英语对话第1期反馈（4处要改）",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，兄弟英语对话第1期反馈</h2>\n<p>11月8日 18:33 提交，录音 65.84 秒</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>20 句对话都读下来了，声音清楚，没有漏句。</li><li>第 1–2 句、第 4–14 句读得很顺。</li><li>第 17 句以外的句子都读全了。</li>\n</ul>\n<h3>需要再注意的地方</h3>\n<ul>\n<li>第 3 句 I want to go to the park on Saturday morning. Would you like to come with me?——Saturday 不要读成 Thursday，Would 不要读成 Will，对照脚本慢慢读。</li><li>第 15 句 Let's watch a cartoon movie at home.——movie 这个词你读成了 mode，重读时把 movie 读清楚。</li><li>第 18 句 Sunday—grandparents and a movie.——movie 这个词你读成了 move，重读时把 movie 读清楚。</li><li>第 17 句 At half past three.——这次没听清你读的是什么，请把这句单独重读一遍，慢慢读清楚。</li>\n</ul>\n<p>这次对话发回 +5；这次18:33提交，迟交 -3；这次有 4 处错词，未达标——把上面几句单独重读一遍，读对了再发回来，达标再 +3。下次可以读两遍，或者读完再加几句自由对话，录够 3 分钟更好。</p>\n</body></html>"
+  },
+  {
+   "date": "2026-11-06",
+   "ts": "",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261106-853367",
+   "title": "11月6日英语试卷订正反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，英语试卷订正反馈</h2>\n<p>11月6日 20:45 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>33 道题全部作答，30 道做对，正确率 90.9%，很棒。</li>\n<li>整张卷子大部分题目都做对了，只有 3 处要再想一想。</li>\n</ul>\n<h3>还需要再改的地方</h3>\n<ul>\n<li>第 1 题（p20 任务二第 7 空）：Scan the QR code on the bike with a ___ , and you can unlock the shared bike.先读完整句话：扫二维码要用什么东西来扫？爸爸那段话里说，找车、扫码都要先有什么？空里要填的是一个东西的名字，不是动作。再想一想，句子的后半句已经有一个 unlock 了，空里还能再填一次吗？<br><br><img src=\"data/diagrams/g6_853367_bike_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>第 2 题（p9 一、第 2 题）：The prince learns about love, friendship and grown-ups.回到小王子那一栏，找 Story idea 那一行：王子在旅途中都学到了什么？题目里说的三样东西，原文里有没有？一句一句对一对，再决定这个句子是真是假。<br><br><img src=\"data/diagrams/g6_853367_prince_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n<li>第 3 题（p10 任务二第 5 题）：At the end of the story, Max cried, ___.故事开头，Max 笑着说了句什么？他那时觉得赚钱怎么样？再读读结尾：他哭着喊的那句话，要跟开头那句反过来才对。三个选项里，哪一句是讲赚钱到底难不难的？<br><br><img src=\"data/diagrams/g6_853367_max_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></li>\n</ul>\n<h3>还有一处要补</h3>\n<p>p10 任务一（给 8 张图排序）：你只填了 2 个序号，其余 6 空没填，照片上的图太模糊了，看不清。请重拍一张清晰的第 10 页第一题，或者看清原图后把 6 个序号补上；补到后单独判，不影响这次的分数。周六 22:00 前补齐不算超时。</p>\n<p>这次批改 +16 分（完成 +10，正确率 +6）。按时 +2 等英语组齐套后补。</p>\n</body></html>"
   }
  ]
 }
