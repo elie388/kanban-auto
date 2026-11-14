@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "grade": "五年级",
-  "generated_at": "2026-11-14T00:18:02+08:00",
-  "updated_at": "2026-11-15T00:14:00+08:00",
+  "generated_at": "2026-11-15T00:18:02+08:00",
+  "updated_at": "2026-11-15T00:18:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-14T23:54:07+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -18,8 +17,8 @@
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-14T16:58:14+08:00",
-      "status": "skipped"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
@@ -39,10 +38,10 @@
       "reading_wpm": 217,
       "reading_pass": false,
       "created_at": "2026-11-13T00:18:43+08:00",
-      "updated_at": "2026-11-14T17:05:37+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261113-834C2A89E1EB",
@@ -60,7 +59,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "corrections": [
         {
           "label": "拼正方形的三角形",
@@ -102,8 +101,8 @@
       "pending_corrections": 3,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261113-E8CF59625272",
@@ -121,12 +120,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261113-BE31BF71E61D",
@@ -144,7 +143,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-14T22:04:48+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "corrections": [
         {
           "label": "生字17课·恿",
@@ -197,8 +196,8 @@
       ],
       "pending_corrections": 4,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1,
+      "carried_from": "2026-11-14",
+      "carry_count": 2,
       "corr_round": 1,
       "status_source": "closeout_writeback"
     },
@@ -218,32 +217,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261114-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "20:35 晾衣服\n21:51 洗衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-14T08:00:00+08:00",
-      "chore_done_count": 2,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-14T00:18:12+08:00",
-      "updated_at": "2026-11-15T00:14:00+08:00",
-      "completed_at": "2026-11-14T20:37:27+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b179465968823699313751e62a4fde（approved）；回写 chore_task_writeback。"
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "MANUAL-20261114-002-G5-YW",
@@ -256,14 +235,17 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "files": [
         {
           "name": "五年级语文周试卷_2026-11-14.pdf",
           "label": "语文周试卷",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-14",
+      "carried_from": "2026-11-14",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261114-002-G5-SX",
@@ -276,7 +258,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-14T22:42:15+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "files": [
         {
           "name": "五年级数学周试卷_2026-11-14.pdf",
@@ -291,7 +273,10 @@
           "q": "右图圆的半径是3厘米，它的直径是多少？我还没有学过这一道题。",
           "a": "彦均，你问得很好——没学过的题先问明白再做，这就是会学习的样子。\n\n先讲两个词的意思，你记一下：\n\n半径：从圆心到圆上任意一点的线段，叫半径。\n\n直径：通过圆心、两端都在圆上的线段，叫直径。同一圆里，直径正好是半径的 2 倍长。\n\n举个例子：假如一个圆的半径是 4 厘米，它的直径就是 4＋4＝8 厘米。\n\n留一个小问题给你自己验证：你这道题里，圆的半径是 3 厘米，你按“直径＝半径×2”算一算，直径是多少厘米？算出来后想一想：为什么直径一定是半径的 2 倍？\n\n另外，你这次交上来的照片全是黑的，题目和图都看不清，没法帮你看这页试卷。请你在光线亮的地方把这页重新拍一张清楚的照片再交一次，今晚 22:30 前交回就可以。"
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-14",
+      "carried_from": "2026-11-14",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261114-002-G5-YY",
@@ -304,24 +289,27 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "files": [
         {
           "name": "五年级英语周试卷_2026-11-14.pdf",
           "label": "英语周试卷",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-14",
+      "carried_from": "2026-11-14",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 9,
+    "total": 8,
     "pending": 4,
     "in_progress": 4,
     "submitted": 0,
     "grading": 0,
-    "done": 1,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-14T22:30:00+08:00"
+  "deadline_today": null
 }

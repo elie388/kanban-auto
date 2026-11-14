@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "grade": "六年级",
-  "generated_at": "2026-11-14T00:18:02+08:00",
-  "updated_at": "2026-11-15T00:14:00+08:00",
+  "generated_at": "2026-11-15T00:18:02+08:00",
+  "updated_at": "2026-11-15T00:18:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-14T23:54:07+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -18,8 +17,8 @@
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-14T16:58:14+08:00",
-      "status": "skipped"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
@@ -39,12 +38,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261113-C3503CA6C055",
@@ -62,12 +61,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261113-940F641C1FD3",
@@ -85,14 +84,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261113-02818DDEC0E0",
@@ -110,32 +109,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-14T00:18:02+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "task_type": "read",
       "type_source": "regex_read",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-13",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261114-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "submitted",
-      "review_status": "approved",
-      "appear_at": "2026-11-14T08:00:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-14T00:18:12+08:00",
-      "updated_at": "2026-11-15T00:14:00+08:00"
+      "carried_from": "2026-11-14",
+      "carry_count": 2
     },
     {
       "task_id": "MANUAL-20261114-002-G6-YW",
@@ -148,14 +129,17 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "files": [
         {
           "name": "六年级语文周试卷_2026-11-14.pdf",
           "label": "语文周试卷",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-14",
+      "carried_from": "2026-11-14",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261114-002-G6-SX",
@@ -168,14 +152,17 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "files": [
         {
           "name": "六年级数学周试卷_2026-11-14.pdf",
           "label": "数学周试卷",
           "pages": 4
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-14",
+      "carried_from": "2026-11-14",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261114-002-G6-YY",
@@ -188,7 +175,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-14T21:53:27+08:00",
+      "updated_at": "2026-11-15T00:18:02+08:00",
       "files": [
         {
           "name": "六年级英语周试卷_2026-11-14.pdf",
@@ -224,17 +211,20 @@
         }
       ],
       "pending_corrections": 2,
-      "status_source": "closeout_writeback"
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-14",
+      "carried_from": "2026-11-14",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 8,
+    "total": 7,
     "pending": 6,
     "in_progress": 1,
-    "submitted": 1,
+    "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-14T22:30:00+08:00"
+  "deadline_today": null
 }

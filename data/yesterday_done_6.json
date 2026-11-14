@@ -1,41 +1,5 @@
 {
- "date": "2026-11-13",
+ "date": "2026-11-14",
  "grade": "六年级",
- "items": [
-  {
-   "task_id": "CHORE-20261113-G6",
-   "title": "家务打卡",
-   "subject": "家务",
-   "source": "chore",
-   "group": "chore"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-13",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261113-2B9AC30A6796",
-   "title": "完成校本P26、27练习，写语法",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261113-37EBD2213C54",
-   "title": "抄cloth到fan的单词中文各4次，背10次",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "READ-20261113-G6",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
-   "group": "study"
-  }
- ]
+ "items": []
 }
