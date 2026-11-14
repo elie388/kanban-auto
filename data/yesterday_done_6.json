@@ -29,6 +29,13 @@
    "subject": "英语",
    "source": "register_book",
    "group": "study"
+  },
+  {
+   "task_id": "READ-20261113-G6",
+   "title": "每日读书",
+   "subject": "读书",
+   "source": "reading_daily",
+   "group": "study"
   }
  ]
 }
