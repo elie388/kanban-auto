@@ -1,286 +1,287 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-14",
- "grade": "五年级",
- "generated_at": "2026-11-14T00:18:02+08:00",
- "updated_at": "2026-11-14T12:35:20+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": null,
-   "new_lines": 0
+  "schema_version": "1.0",
+  "date": "2026-11-14",
+  "grade": "五年级",
+  "generated_at": "2026-11-14T00:18:02+08:00",
+  "updated_at": "2026-11-14T12:35:20+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": null,
+      "new_lines": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
+    }
   },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "READ-20261113-G5",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "第1轮不达标，需重读（第1次重读机会，每任务最多3次）。只重读下面9处，对照书慢慢读，不用全文重读：1）《桂花糯米糕》“制作”读成“制造”（3处）；2）《肠粉的自述》“制作”读成“制造”（2处）；3）《桂花糯米糕》“糯米糕”读成“桂花糕”（2处）；4）《桂花糯米糕》“还可以在最外层再点缀上几朵桂花瓣”没读清；5）《桂花糯米糕》“桂花糯米糕的种类繁多”漏读“糯米”；6）《肠粉的自述》“虽然具体起源我不甚了了”没读清；7）《肠粉的自述》“蒸”读成“煎”。重读达标后另结达标分+时长分。",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "appear_at": "2026-11-14T08:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": 313.54,
-   "reading_wpm": 217,
-   "reading_pass": false,
-   "created_at": "2026-11-13T00:18:43+08:00",
-   "updated_at": "2026-11-14T00:24:20.850011+08:00",
-   "carry_first_date": "2026-11-13",
-   "carried_from": "2026-11-13",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261113-834C2A89E1EB",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "小校本39、40页",
-   "detail": "已批改（18/21，85.7%）。需订正 3 题：①39页第2题——两个完全相同的三角形拼成正方形，选哪种三角形；②39页拓展——两个长方形面积相等，比较里面两个三角形的面积；③40页第1题(1)——底4.5cm、高2cm的平行四边形面积。订正方法：看反馈里的提示，一步一步想，不直接抄答案；改对每题 +2。",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①小校本39、40页 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-13T18:50:07+08:00",
-   "updated_at": "2026-11-14T00:18:02+08:00",
-   "corrections": [
+  "tasks": [
     {
-     "label": "拼正方形的三角形",
-     "question": "两个完全相同的三角形拼成一个正方形，选哪种三角形",
-     "reason": "两个完全相同的直角三角形拼成的是长方形，不一定是正方形；只有两条直角边相等的等腰直角三角形，拼起来四条边才都相等，才能拼成正方形。",
-     "hint": "拿两个一样的直角三角形拼一拼，拼出来是长方形还是正方形？再想想，什么样的三角形两条短边一样长？用两个这样的三角形拼一拼，看看拼出来的是什么形状。",
-     "img": "g5_math_834C_Q2_isosceles_right_square.png",
-     "q_img": "",
-     "orig_text": "两个完全相同的（ ）三角形可以拼成一个正方形。A.等腰 B.直角 C.等腰直角 D.钝角",
-     "img_exempt": "",
-     "q_img_exempt": "选择题，无原题图",
-     "round": 1
+      "task_id": "READ-20261113-G5",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "第1轮不达标，需重读（第1次重读机会，每任务最多3次）。只重读下面9处，对照书慢慢读，不用全文重读：1）《桂花糯米糕》“制作”读成“制造”（3处）；2）《肠粉的自述》“制作”读成“制造”（2处）；3）《桂花糯米糕》“糯米糕”读成“桂花糕”（2处）；4）《桂花糯米糕》“还可以在最外层再点缀上几朵桂花瓣”没读清；5）《桂花糯米糕》“桂花糯米糕的种类繁多”漏读“糯米”；6）《肠粉的自述》“虽然具体起源我不甚了了”没读清；7）《肠粉的自述》“蒸”读成“煎”。重读达标后另结达标分+时长分。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "appear_at": "2026-11-14T08:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": 313.54,
+      "reading_wpm": 217,
+      "reading_pass": false,
+      "created_at": "2026-11-13T00:18:43+08:00",
+      "updated_at": "2026-11-14T00:24:20.850011+08:00",
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
-     "label": "等面积长方形里的三角形",
-     "question": "两个长方形面积相等，比较里面两个三角形的面积",
-     "reason": "甲、乙两个三角形都占各自长方形面积的一半：甲的底是左边长方形的底边、高是长方形的高；乙的底是右边长方形的侧边、高是长方形的宽。两个长方形面积相等，两个三角形各占一半，所以面积相等。",
-     "hint": "甲占左边长方形的几分之几？乙占右边长方形的几分之几？两个长方形面积一样大，两个三角形各占一半，面积谁大谁小？",
-     "img": "g5_math_834C_ext_rect_tri_half.png",
-     "q_img": "g5_math_834C_ext_orig.png",
-     "orig_text": "如图所示，两个长方形面积相等，比较这两个三角形的面积（ ）。A.相等 B.甲<乙 C.甲>乙 D.无法判断",
-     "img_exempt": "",
-     "q_img_exempt": "",
-     "round": 1
+      "task_id": "REG-20261113-834C2A89E1EB",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "小校本39、40页",
+      "detail": "已批改（18/21，85.7%）。需订正 3 题：①39页第2题——两个完全相同的三角形拼成正方形，选哪种三角形；②39页拓展——两个长方形面积相等，比较里面两个三角形的面积；③40页第1题(1)——底4.5cm、高2cm的平行四边形面积。订正方法：看反馈里的提示，一步一步想，不直接抄答案；改对每题 +2。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①小校本39、40页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
+      "corrections": [
+        {
+          "label": "拼正方形的三角形",
+          "question": "两个完全相同的三角形拼成一个正方形，选哪种三角形",
+          "reason": "两个完全相同的直角三角形拼成的是长方形，不一定是正方形；只有两条直角边相等的等腰直角三角形，拼起来四条边才都相等，才能拼成正方形。",
+          "hint": "拿两个一样的直角三角形拼一拼，拼出来是长方形还是正方形？再想想，什么样的三角形两条短边一样长？用两个这样的三角形拼一拼，看看拼出来的是什么形状。",
+          "img": "g5_math_834C_Q2_isosceles_right_square.png",
+          "q_img": "",
+          "orig_text": "两个完全相同的（ ）三角形可以拼成一个正方形。A.等腰 B.直角 C.等腰直角 D.钝角",
+          "img_exempt": "",
+          "q_img_exempt": "选择题，无原题图",
+          "round": 1
+        },
+        {
+          "label": "等面积长方形里的三角形",
+          "question": "两个长方形面积相等，比较里面两个三角形的面积",
+          "reason": "甲、乙两个三角形都占各自长方形面积的一半：甲的底是左边长方形的底边、高是长方形的高；乙的底是右边长方形的侧边、高是长方形的宽。两个长方形面积相等，两个三角形各占一半，所以面积相等。",
+          "hint": "甲占左边长方形的几分之几？乙占右边长方形的几分之几？两个长方形面积一样大，两个三角形各占一半，面积谁大谁小？",
+          "img": "g5_math_834C_ext_rect_tri_half.png",
+          "q_img": "g5_math_834C_ext_orig.png",
+          "orig_text": "如图所示，两个长方形面积相等，比较这两个三角形的面积（ ）。A.相等 B.甲<乙 C.甲>乙 D.无法判断",
+          "img_exempt": "",
+          "q_img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "计算图形的面积",
+          "question": "底4.5cm、高2cm的平行四边形面积",
+          "reason": "图上是平行四边形（四条边），不是三角形；平行四边形面积=底×高，不用除以2。孩子把平行四边形当成三角形，多除了一个2。",
+          "hint": "先数一数图上的图形有几条边——三角形有3条边，这个图形有几条边？平行四边形的面积怎么算，要不要除以2？再算一算。",
+          "img": "g5_math_834C_Q1_parallelogram_vs_triangle.png",
+          "q_img": "g5_math_834C_Q1_orig.png",
+          "orig_text": "计算下面各图形的面积。(1)底4.5cm、高2cm的平行四边形",
+          "img_exempt": "",
+          "q_img_exempt": "",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
     },
     {
-     "label": "计算图形的面积",
-     "question": "底4.5cm、高2cm的平行四边形面积",
-     "reason": "图上是平行四边形（四条边），不是三角形；平行四边形面积=底×高，不用除以2。孩子把平行四边形当成三角形，多除了一个2。",
-     "hint": "先数一数图上的图形有几条边——三角形有3条边，这个图形有几条边？平行四边形的面积怎么算，要不要除以2？再算一算。",
-     "img": "g5_math_834C_Q1_parallelogram_vs_triangle.png",
-     "q_img": "g5_math_834C_Q1_orig.png",
-     "orig_text": "计算下面各图形的面积。(1)底4.5cm、高2cm的平行四边形",
-     "img_exempt": "",
-     "q_img_exempt": "",
-     "round": 1
-    }
-   ],
-   "pending_corrections": 3,
-   "status_source": "closeout_writeback",
-   "carry_first_date": "2026-11-13",
-   "carried_from": "2026-11-13",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261113-E8CF59625272",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
-   "detail": "登记本上这一项⑩后面有两个字被涂黑了，看不清写的是什么。请告诉我被涂掉的是哪几个字，我就把任务标题改清楚。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-13T18:50:07+08:00",
-   "updated_at": "2026-11-14T00:18:02+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "carry_first_date": "2026-11-13",
-   "carried_from": "2026-11-13",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261113-3B3D9D6FA354",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "试卷签名",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-13T18:50:07+08:00",
-   "updated_at": "2026-11-14T00:18:02+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "carry_first_date": "2026-11-13",
-   "carried_from": "2026-11-13",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261113-BE31BF71E61D",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "生字17课",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-13T18:50:07+08:00",
-   "updated_at": "2026-11-14T00:18:02+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "carry_first_date": "2026-11-13",
-   "carried_from": "2026-11-13",
-   "carry_count": 1
-  },
-  {
-   "task_id": "REG-20261113-74AE41CA6824",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "写第五单元作文（风向袋的制作，*例文见群）画好，写旁批",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-13T18:50:07+08:00",
-   "updated_at": "2026-11-14T00:18:02+08:00",
-   "corrections": [],
-   "pending_corrections": 0,
-   "carry_first_date": "2026-11-13",
-   "carried_from": "2026-11-13",
-   "carry_count": 1
-  },
-  {
-   "task_id": "CHORE-20261114-G5",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-14T08:00:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-14T00:18:12+08:00",
-   "updated_at": "2026-11-14T00:18:12+08:00"
-  },
-  {
-   "task_id": "MANUAL-20261114-002-G5-YW",
-   "source": "manual",
-   "subject": "语文",
-   "title": "周六综合试卷（语文）",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-14T12:35:20+08:00",
-   "updated_at": "2026-11-14T12:35:20+08:00",
-   "files": [
+      "task_id": "REG-20261113-E8CF59625272",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
+      "detail": "登记本上这一项⑩后面有两个字被涂黑了，看不清写的是什么。请告诉我被涂掉的是哪几个字，我就把任务标题改清楚。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
+    },
     {
-     "name": "五年级语文周试卷_2026-11-14.pdf",
-     "label": "语文周试卷",
-     "pages": 4
-    }
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261114-002-G5-SX",
-   "source": "manual",
-   "subject": "数学",
-   "title": "周六综合试卷（数学）",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-14T12:35:20+08:00",
-   "updated_at": "2026-11-14T12:35:20+08:00",
-   "files": [
+      "task_id": "REG-20261113-3B3D9D6FA354",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "试卷签名",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
+    },
     {
-     "name": "五年级数学周试卷_2026-11-14.pdf",
-     "label": "数学周试卷",
-     "pages": 4
-    }
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261114-002-G5-YY",
-   "source": "manual",
-   "subject": "英语",
-   "title": "周六综合试卷（英语）",
-   "detail": "今晚截止22:30，做完拍照交回",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-14T12:35:20+08:00",
-   "updated_at": "2026-11-14T12:35:20+08:00",
-   "files": [
+      "task_id": "REG-20261113-BE31BF71E61D",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字17课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
+    },
     {
-     "name": "五年级英语周试卷_2026-11-14.pdf",
-     "label": "英语周试卷",
-     "pages": 4
+      "task_id": "REG-20261113-74AE41CA6824",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "写第五单元作文（风向袋的制作，*例文见群）画好，写旁批",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字17课；②写第五单元作文（风向袋的制作，*例文见群）画好，写旁批 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-13T18:50:07+08:00",
+      "updated_at": "2026-11-14T00:18:02+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-13",
+      "carried_from": "2026-11-13",
+      "carry_count": 1
+    },
+    {
+      "task_id": "CHORE-20261114-G5",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-14T08:00:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-14T00:18:12+08:00",
+      "updated_at": "2026-11-14T00:18:12+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261114-002-G5-YW",
+      "source": "manual",
+      "subject": "语文",
+      "title": "周六综合试卷（语文）",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-14T12:35:20+08:00",
+      "files": [
+        {
+          "name": "五年级语文周试卷_2026-11-14.pdf",
+          "label": "语文周试卷",
+          "pages": 4
+        }
+      ]
+    },
+    {
+      "task_id": "MANUAL-20261114-002-G5-SX",
+      "source": "manual",
+      "subject": "数学",
+      "title": "周六综合试卷（数学）",
+      "detail": "今晚截止22:30，做完拍照交回【11-14 14:06】本次上传的照片全黑无法辨认，请在光线亮处重拍整页再交。",
+      "estimate_min": null,
+      "status": "submitted",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-14T14:08:12+08:00",
+      "files": [
+        {
+          "name": "五年级数学周试卷_2026-11-14.pdf",
+          "label": "数学周试卷",
+          "pages": 4
+        }
+      ],
+      "status_source": "kanban_upload_intake"
+    },
+    {
+      "task_id": "MANUAL-20261114-002-G5-YY",
+      "source": "manual",
+      "subject": "英语",
+      "title": "周六综合试卷（英语）",
+      "detail": "今晚截止22:30，做完拍照交回",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-14T12:35:20+08:00",
+      "updated_at": "2026-11-14T12:35:20+08:00",
+      "files": [
+        {
+          "name": "五年级英语周试卷_2026-11-14.pdf",
+          "label": "英语周试卷",
+          "pages": 4
+        }
+      ]
     }
-   ]
-  }
- ],
- "counts": {
-  "total": 10,
-  "pending": 8,
-  "in_progress": 2,
-  "done": 0,
-  "pending_review": 0
- },
- "deadline_today": "2026-11-14T22:30:00+08:00"
+  ],
+  "counts": {
+    "total": 10,
+    "pending": 8,
+    "in_progress": 2,
+    "done": 0,
+    "pending_review": 0
+  },
+  "deadline_today": "2026-11-14T22:30:00+08:00"
 }
