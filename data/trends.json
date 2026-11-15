@@ -1,8 +1,7 @@
 {
- "updated_at": "2026-11-15T21:54:23+08:00",
+ "updated_at": "2026-11-16T00:02:21+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
-  "2026-10-17",
   "2026-10-18",
   "2026-10-19",
   "2026-10-20",
@@ -31,12 +30,12 @@
   "2026-11-12",
   "2026-11-13",
   "2026-11-14",
-  "2026-11-15"
+  "2026-11-15",
+  "2026-11-16"
  ],
  "grades": {
   "五年级": {
    "overall": [
-    56.2,
     76.4,
     50.0,
     87.0,
@@ -65,14 +64,14 @@
     100.0,
     83.3,
     83.3,
-    100.0
+    100.0,
+    null
    ],
    "empty": false,
    "sparse": false,
    "subjects": {
     "语文": {
      "days": [
-      66.7,
       57.1,
       null,
       94.0,
@@ -101,6 +100,7 @@
       100.0,
       null,
       83.3,
+      null,
       null
      ],
      "weak": [
@@ -134,7 +134,6 @@
     },
     "数学": {
      "days": [
-      60.0,
       87.1,
       50.0,
       80.0,
@@ -163,7 +162,8 @@
       100.0,
       83.3,
       null,
-      100.0
+      100.0,
+      null
      ],
      "weak": [
       {
@@ -196,7 +196,6 @@
     },
     "英语": {
      "days": [
-      33.3,
       63.3,
       null,
       84.8,
@@ -225,7 +224,8 @@
       null,
       null,
       null,
-      100.0
+      100.0,
+      null
      ],
      "weak": [
       {
@@ -260,7 +260,6 @@
   },
   "六年级": {
    "overall": [
-    85.7,
     92.5,
     93.3,
     85.7,
@@ -289,14 +288,14 @@
     100.0,
     100.0,
     100.0,
-    100.0
+    100.0,
+    null
    ],
    "empty": false,
    "sparse": false,
    "subjects": {
     "语文": {
      "days": [
-      81.0,
       83.3,
       87.5,
       null,
@@ -325,7 +324,8 @@
       100.0,
       null,
       null,
-      100.0
+      100.0,
+      null
      ],
      "weak": [
       {
@@ -358,7 +358,6 @@
     },
     "数学": {
      "days": [
-      92.9,
       92.1,
       100.0,
       83.3,
@@ -385,6 +384,7 @@
       null,
       null,
       100.0,
+      null,
       null,
       null,
       null
@@ -420,7 +420,6 @@
     },
     "英语": {
      "days": [
-      null,
       96.7,
       100.0,
       100.0,
@@ -449,7 +448,8 @@
       100.0,
       100.0,
       100.0,
-      100.0
+      100.0,
+      null
      ],
      "weak": [
       {
@@ -584,20 +584,6 @@
     }
    },
    "英语": {
-    "2026-10-17": {
-     "reason": "pending_ratio=0.58",
-     "rules": [
-      "pending_ratio=0.58"
-     ],
-     "judged": 10,
-     "correct": 10,
-     "pending": 14,
-     "pending_share": 0.583,
-     "backfill_share": 0.0,
-     "small_sample": false,
-     "isolated": true,
-     "all_wrong": false
-    },
     "2026-10-24": {
      "reason": "pending_ratio=0.50",
      "rules": [
@@ -616,17 +602,6 @@
   }
  },
  "manual_review_queue": [
-  {
-   "date": "2026-10-17",
-   "grade": "五年级",
-   "subject": "语文",
-   "reason": null,
-   "rules": [
-    "small_sample"
-   ],
-   "judged": 3,
-   "small_sample_flag": true
-  },
   {
    "date": "2026-10-19",
    "grade": "五年级",
@@ -682,17 +657,6 @@
     "all_wrong"
    ],
    "judged": 1,
-   "small_sample_flag": true
-  },
-  {
-   "date": "2026-10-17",
-   "grade": "五年级",
-   "subject": "英语",
-   "reason": null,
-   "rules": [
-    "small_sample"
-   ],
-   "judged": 3,
    "small_sample_flag": true
   },
   {
@@ -807,14 +771,6 @@
   }
  ],
  "paper_batch_alerts": [
-  {
-   "date": "2026-10-17",
-   "grade": "六年级",
-   "subject": "语文",
-   "mail_id": "1a1487bd506a2e87",
-   "judged": 3,
-   "alert": "batch_all_wrong_suspected_partial_ingest"
-  },
   {
    "date": "2026-10-19",
    "grade": "五年级",
