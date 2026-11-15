@@ -79,7 +79,7 @@
       "source": "register_book",
       "subject": "语文",
       "title": "预习新16课反馈单",
-      "detail": "",
+      "detail": "原状态：待完成【11-15 18:29】本次提交无法确认：本批只有反馈单的两张照片、没有录音，读任务要凭录音核对读完读对，没录音没法确认。不扣分、不算不达标。请补交：把16课课文《只有一个地球》平铺拍清楚，再读出来录音，照片＋录音一起交（反馈单的照片已经收到了，不用重拍）。反馈单两页照片都清楚、题都答完了。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
@@ -90,7 +90,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-15T18:29:00+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
