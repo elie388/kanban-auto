@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "grade": "六年级",
-  "generated_at": "2026-11-15T00:18:02+08:00",
-  "updated_at": "2026-11-16T00:12:59+08:00",
+  "generated_at": "2026-11-16T00:18:04+08:00",
+  "updated_at": "2026-11-16T00:18:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-15T23:54:17+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -24,138 +23,6 @@
   },
   "tasks": [
     {
-      "task_id": "REG-20261113-2295927876B8",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "做一个bird feeder",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄cloth到fan的单词中文各4次，背10次；②完成校本P26、27练习，写语法；③做一个bird feeder → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T18:17:53+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2,
-      "completed_at": "2026-11-15T18:17:53+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "3bc50dc65761c47e.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261113-C3503CA6C055",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小作文①写“思”",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T21:02:52+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-15T21:02:52+08:00",
-      "orig_photos": [
-        "40ea9baf67f7d2be.jpg",
-        "4f4706d8fc12d522.jpg",
-        "399a78774b447df9.jpg",
-        "38f6ad5ad658a4a8.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261113-940F641C1FD3",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习新16课反馈单",
-      "detail": "【11-15 19:58】爸爸妈妈定了：要把《只有一个地球》读出来，录音交上来。反馈单的答案已经收到了，不用再交照片；你读完录音交上来就行。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T20:52:13+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2,
-      "completed_at": "2026-11-15T20:52:13+08:00",
-      "status_source": "reading_pass_b1794746222599643d19e389f294cc",
-      "orig_photos": [
-        "a1548e3395a25c50.jpg",
-        "f2e4de37fbce4a71.jpg",
-        "a6c0f8e70a942cf3.jpg",
-        "31214e958f646bdf.jpg",
-        "550e5baaa2450bfa.jpg"
-      ],
-      "qa": [
-        {
-          "q": "这个不用读",
-          "a": "伟豪，你说的我记下了。先说两点：第一，你这次交上来的照片是全黑的，什么都看不到，如果你是想让我看什么东西，请在光线亮的地方重拍一张清楚的再交；第二，16课预习反馈单是你已经填好的书面作业，答案我们都收到了。登记本上这项只写了“预习新16课反馈单”，没有写要把课文读出来，朗读是我这边按读任务给你加的要求。在爸爸妈妈定下来之前，你先不用重读，也不用再交照片，我去问爸爸妈妈定一下这张反馈单是按书面作业改，还是要读出来。"
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261113-02818DDEC0E0",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "看作文一小时以上",
-      "detail": "【11-15 19:23】已达标：读完《丁香花丛的秘密》全文（超级作文本六年级上册58-59页），无漏读、无读错关键词；录音184.8秒。本批+10（发回+5、达标+3、录音时长+5、迟交-3）。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T19:23:54+08:00",
-      "task_type": "read",
-      "type_source": "regex_read",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2,
-      "completed_at": "2026-11-15T19:23:54+08:00",
-      "orig_photos": [
-        "acd5fb9a66a21b53.jpg",
-        "3eb958e831c51c7d.jpg",
-        "e2bda2982b58aad5.jpg",
-        "93647d90b9722f3a.jpg",
-        "b285656ffbc3ead4.jpg"
-      ]
-    },
-    {
       "task_id": "MANUAL-20261114-002-G6-YW",
       "source": "manual",
       "subject": "语文",
@@ -166,7 +33,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "files": [
         {
           "name": "六年级语文周试卷_2026-11-14.pdf",
@@ -175,8 +42,8 @@
         }
       ],
       "carry_first_date": "2026-11-14",
-      "carried_from": "2026-11-14",
-      "carry_count": 1
+      "carried_from": "2026-11-15",
+      "carry_count": 2
     },
     {
       "task_id": "MANUAL-20261114-002-G6-SX",
@@ -189,7 +56,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "files": [
         {
           "name": "六年级数学周试卷_2026-11-14.pdf",
@@ -198,62 +65,18 @@
         }
       ],
       "carry_first_date": "2026-11-14",
-      "carried_from": "2026-11-14",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261115-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "14:55 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-15T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-15T00:18:18+08:00",
-      "updated_at": "2026-11-16T00:12:59+08:00",
-      "completed_at": "2026-11-15T15:01:47+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1794725670134149c88d0d601a67f（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "READ-20261115-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-15T08:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-15T00:18:32+08:00",
-      "updated_at": "2026-11-15T19:16:52+08:00",
-      "completed_at": "2026-11-15T19:16:52+08:00",
-      "status_source": "reading_grading",
-      "orig_photos": [
-        "5a26d632d970a89f.jpg",
-        "2b90782751900d37.jpg"
-      ]
+      "carried_from": "2026-11-15",
+      "carry_count": 2
     }
   ],
   "counts": {
-    "total": 8,
+    "total": 2,
     "pending": 2,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 6,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-15T22:30:00+08:00"
+  "deadline_today": null
 }

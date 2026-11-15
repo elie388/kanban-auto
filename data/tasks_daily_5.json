@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-15",
+  "date": "2026-11-16",
   "grade": "五年级",
-  "generated_at": "2026-11-15T00:18:02+08:00",
-  "updated_at": "2026-11-16T00:12:59+08:00",
+  "generated_at": "2026-11-16T00:18:04+08:00",
+  "updated_at": "2026-11-16T00:18:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-15T23:54:17+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -39,10 +38,10 @@
       "reading_wpm": 217,
       "reading_pass": false,
       "created_at": "2026-11-13T00:18:43+08:00",
-      "updated_at": "2026-11-15T17:05:50+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2
+      "carried_from": "2026-11-15",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261113-834C2A89E1EB",
@@ -60,7 +59,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "corrections": [
         {
           "label": "拼正方形的三角形",
@@ -102,42 +101,8 @@
       "pending_corrections": 3,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2
-    },
-    {
-      "task_id": "REG-20261113-E8CF59625272",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
-      "detail": "登记本上这一项⑩后面有两个字被涂黑了，看不清写的是什么。请告诉我被涂掉的是哪几个字，我就把任务标题改清楚。",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-15T19:56:58+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-15T19:56:58+08:00",
-      "orig_photos": [
-        "4ef22ef7c2d0e2bb.jpg",
-        "8b28757e5e012ce2.jpg",
-        "c51a03cddfc9316a.jpg",
-        "32d472b465fc5ec7.jpg",
-        "f0f498fdfd5213f6.jpg",
-        "0acff3b4ba3cbc0e.jpg",
-        "a9e29580e1a5dd07.jpg"
-      ]
+      "carried_from": "2026-11-15",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261113-BE31BF71E61D",
@@ -155,7 +120,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "corrections": [
         {
           "label": "生字17课·恿",
@@ -168,8 +133,8 @@
       ],
       "pending_corrections": 1,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2,
+      "carried_from": "2026-11-15",
+      "carry_count": 3,
       "status_source": "closeout_writeback"
     },
     {
@@ -188,12 +153,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
-      "carried_from": "2026-11-14",
-      "carry_count": 2
+      "carried_from": "2026-11-15",
+      "carry_count": 3
     },
     {
       "task_id": "MANUAL-20261114-002-G5-YW",
@@ -206,7 +171,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "files": [
         {
           "name": "五年级语文周试卷_2026-11-14.pdf",
@@ -215,8 +180,8 @@
         }
       ],
       "carry_first_date": "2026-11-14",
-      "carried_from": "2026-11-14",
-      "carry_count": 1
+      "carried_from": "2026-11-15",
+      "carry_count": 2
     },
     {
       "task_id": "MANUAL-20261114-002-G5-SX",
@@ -229,7 +194,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "files": [
         {
           "name": "五年级数学周试卷_2026-11-14.pdf",
@@ -246,8 +211,8 @@
         }
       ],
       "carry_first_date": "2026-11-14",
-      "carried_from": "2026-11-14",
-      "carry_count": 1,
+      "carried_from": "2026-11-15",
+      "carry_count": 2,
       "corr_round": 1,
       "corrections": [
         {
@@ -359,7 +324,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-14T12:35:20+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
+      "updated_at": "2026-11-16T00:18:04+08:00",
       "files": [
         {
           "name": "五年级英语周试卷_2026-11-14.pdf",
@@ -368,38 +333,18 @@
         }
       ],
       "carry_first_date": "2026-11-14",
-      "carried_from": "2026-11-14",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261115-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "14:54 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-15T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-15T00:18:18+08:00",
-      "updated_at": "2026-11-16T00:12:59+08:00",
-      "completed_at": "2026-11-15T14:56:21+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b179472562391024df7f4baffaff6c（approved）；回写 chore_task_writeback。"
+      "carried_from": "2026-11-15",
+      "carry_count": 2
     }
   ],
   "counts": {
-    "total": 9,
+    "total": 7,
     "pending": 3,
     "in_progress": 4,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-15T22:30:00+08:00"
+  "deadline_today": null
 }

@@ -1,12 +1,47 @@
 {
- "date": "2026-11-14",
+ "date": "2026-11-15",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "MANUAL-20261114-002-G6-YY",
-   "title": "周六综合试卷（英语）",
+   "task_id": "REG-20261113-2295927876B8",
+   "title": "做一个bird feeder",
    "subject": "英语",
-   "source": "manual",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261113-C3503CA6C055",
+   "title": "小作文①写“思”",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261113-940F641C1FD3",
+   "title": "预习新16课反馈单",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261113-02818DDEC0E0",
+   "title": "看作文一小时以上",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "CHORE-20261115-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
+  },
+  {
+   "task_id": "READ-20261115-G6",
+   "title": "每日读书",
+   "subject": "读书",
+   "source": "reading_daily",
    "group": "study"
   }
  ]
