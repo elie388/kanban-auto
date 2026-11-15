@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "grade": "五年级",
   "generated_at": "2026-11-16T00:18:04+08:00",
-  "updated_at": "2026-11-16T06:13:21+08:00",
+  "updated_at": "2026-11-16T06:27:29+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-16T06:27:29+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -412,16 +412,45 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "PRACT-20261116-648962D37C78",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-16.docx，按今日练习清单完成",
+      "kousuan": [
+        "3.9×4=",
+        "85+47=",
+        "2.6×5+3.8=",
+        "2.5×4.4×4=",
+        "48.7×3.2≈（估算，结果取整数）"
+      ],
+      "recite_text": "语文背诵：《枫桥夜泊》（张继）\n原文：月落乌啼霜满天，江枫渔火对愁眠。\n姑苏城外寒山寺，夜半钟声到客船。\n朗读要求：语速稍慢，语气低沉舒缓，读出江南水乡深秋夜晚的宁静与淡淡的愁绪；注意诗句停顿，如“月落/乌啼/霜满天”，“姑苏/城外/寒山寺”，把“夜半钟声到客船”的悠远读出来。\n英语口语任务说明：今晚的英语口语小任务只需 5 分钟：请看着自己的房间（或我家小区的一张照片），用英语说一段话，30-45 秒，尽量用完整句子，录完后按看板任务按钮提交。\n提示问题：1. What is your favorite thing in your room?  2. What do you usually do here? 3. Why do you like it?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-16.docx",
+      "file_hash": "2eee970206c7be88802e78e7dad4bd8a1a913f06bfe1951e2f6b8d01a8b990e6",
+      "created_at": "2026-11-16T06:27:27+08:00",
+      "updated_at": "2026-11-16T06:27:27+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-16.pdf",
+          "label": "练习",
+          "pages": 5
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 8,
+    "total": 13,
+    "pending": 9,
     "in_progress": 4,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-16T22:30:00+08:00"
 }
