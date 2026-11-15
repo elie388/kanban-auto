@@ -3,7 +3,7 @@
   "date": "2026-11-15",
   "grade": "六年级",
   "generated_at": "2026-11-15T00:18:02+08:00",
-  "updated_at": "2026-11-15T20:52:13+08:00",
+  "updated_at": "2026-11-15T21:02:54+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -58,7 +58,7 @@
       "title": "小作文①写“思”",
       "detail": "",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
@@ -67,27 +67,20 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T19:33:00+08:00",
-      "corrections": [
-        {
-          "label": "小作文①写“思”——《桂香里的思念》",
-          "question": "写一篇以“思”为主题的小作文",
-          "reason": "结尾最后一句未写完，意思没收住",
-          "hint": "你的作文写得很好，桂花的香味、奶奶的样子、桂花糕的甜味都写活了，读着读着就能闻到香味。只有一个地方要改：结尾最后一句没写完。“它正帮我期盼”——期盼什么呢？这句话没收住，整篇的“思念”就没落到实处。重写的时候，把最后一句写完整：回到香包、回到月亮，把“我想奶奶”这句话用你自己的话写出来，让结尾和开头的香包呼应上。比如：闻着香包的香味，我就想起奶奶做的桂花糕、想起那个满是金桂的小院，奶奶虽然去了很远的地方，但香味还在，我的思念也在。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "写一篇以\"思\"为主题的小作文",
-          "q_img_exempt": "作文无原题图",
-          "img_exempt": "作文结尾的结构指导以文字示例为主，图难以表达结尾如何收束，豁免引导图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
+      "updated_at": "2026-11-15T21:02:52+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
       "carried_from": "2026-11-14",
       "carry_count": 2,
-      "corr_round": 1,
-      "status_source": "closeout_writeback"
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-15T21:02:52+08:00",
+      "orig_photos": [
+        "40ea9baf67f7d2be.jpg",
+        "4f4706d8fc12d522.jpg",
+        "399a78774b447df9.jpg",
+        "38f6ad5ad658a4a8.jpg"
+      ]
     },
     {
       "task_id": "REG-20261113-940F641C1FD3",
@@ -114,7 +107,14 @@
       "carried_from": "2026-11-14",
       "carry_count": 2,
       "completed_at": "2026-11-15T20:52:13+08:00",
-      "status_source": "reading_pass_b1794746222599643d19e389f294cc"
+      "status_source": "reading_pass_b1794746222599643d19e389f294cc",
+      "orig_photos": [
+        "a1548e3395a25c50.jpg",
+        "f2e4de37fbce4a71.jpg",
+        "a6c0f8e70a942cf3.jpg",
+        "31214e958f646bdf.jpg",
+        "550e5baaa2450bfa.jpg"
+      ]
     },
     {
       "task_id": "REG-20261113-02818DDEC0E0",
@@ -243,10 +243,10 @@
   "counts": {
     "total": 8,
     "pending": 2,
-    "in_progress": 1,
+    "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 5,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-15T22:30:00+08:00"
