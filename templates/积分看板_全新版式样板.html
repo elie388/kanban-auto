@@ -5331,7 +5331,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         slot.style.display = 'block'; OPEN_WEAK = w.kp; r.classList.add('open'); if(cta) cta.textContent = '收起';
         slot.innerHTML = '<div style="font-weight:700;margin-bottom:6px">✏️ 我要巩固「' + escHtml(w.kp) + '」· 共 <b style="color:#E8873A">' + w.n + '</b> 道变式练习题</div>'
           + '<div style="color:#6B7280;margin-bottom:6px">题源：本题知识点错题本（去重/改编&lt;80%相似度）</div>'
-          + '<button type="button" class="tr-go-a" data-pmode="tonight">明晚19:00随练习发</button>'
+          + '<button type="button" class="tr-go-a" data-pmode="tonight">明早04:40随练习发</button>'
           + '<button type="button" class="tr-go-b" data-pmode="now">现在单独发</button>'
           + '<div class="tr-submit-status"></div>'
           + '<div class="tr-fallback" style="display:none;color:#9AA0A6;font-size:11.5px">自动提交没成功？也可以 <a href="' + escHtml(/^https:\/\//i.test(w.link_tonight || '') ? w.link_tonight : '#') + '" target="_blank" rel="noopener">打开表单手动提交</a>（在表里记得选好发送方式哦）</div>'
@@ -5515,7 +5515,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
         if(j && j.ok){
           lsSet();
           var msg = j.duplicate ? '✅ 已收到（今天这个知识点已经提交过啦）'
-            : (mode === 'tonight' ? '✅ 已收到，明晚19:00随练习一起发' : '✅ 已收到，马上单独发');
+            : (mode === 'tonight' ? '✅ 已收到，明早04:40随练习一起发' : '✅ 已收到，马上单独发');
           markDone(msg);
           kbToast(msg);
         } else { markFail(); kbToast('提交没成功，再试一次或用下面的表单'); }
@@ -5957,7 +5957,7 @@ try { if (!localStorage.getItem('hw-dev-token')) document.documentElement.classL
 </div>
 <script>
 (function(){
-  var KB_BUILD = '20261113-blackscreen'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
+  var KB_BUILD = '20261115-pmode0440'; /* 2026-11-12 反馈查看器关闭按钮根治：data/version.json 须同步改同一值，否则版本检查失效 */
   /* 版本自检（2026-10-30 家长令，覆盖 2026-10-22 旧口径）：打开页面发现新版本，直接强制重载载入，不用手动点。
      旧口径用 sessionStorage 防循环，结果主屏幕常驻页面复用同一会话、旧版只尝试一次就不再重载，是之前“手动重载才换版”的根因之一。
      新口径只用版本本身防循环：当前地址已带 kbforced=新版本、却仍读到旧版时才停手并显示提示条（说明服务端仍在发旧版，再重载只会死循环），其余情况一律 location.replace 强制换版。
