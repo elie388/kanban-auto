@@ -3,7 +3,7 @@
   "date": "2026-11-15",
   "grade": "六年级",
   "generated_at": "2026-11-15T00:18:02+08:00",
-  "updated_at": "2026-11-15T19:32:21+08:00",
+  "updated_at": "2026-11-15T20:52:13+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -96,7 +96,7 @@
       "title": "预习新16课反馈单",
       "detail": "【11-15 19:58】爸爸妈妈定了：要把《只有一个地球》读出来，录音交上来。反馈单的答案已经收到了，不用再交照片；你读完录音交上来就行。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①小作文①写“思”；②预习新16课反馈单；③看作文一小时以上 → 待完成",
@@ -105,14 +105,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T21:38:16+08:00",
-      "updated_at": "2026-11-15T19:59:08+08:00",
+      "updated_at": "2026-11-15T20:52:13+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-13",
       "carried_from": "2026-11-14",
-      "carry_count": 2
+      "carry_count": 2,
+      "completed_at": "2026-11-15T20:52:13+08:00",
+      "status_source": "reading_pass_b1794746222599643d19e389f294cc"
     },
     {
       "task_id": "REG-20261113-02818DDEC0E0",
@@ -240,11 +242,11 @@
   ],
   "counts": {
     "total": 8,
-    "pending": 3,
+    "pending": 2,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 4,
+    "done": 5,
     "pending_review": 0
   },
   "deadline_today": "2026-11-15T22:30:00+08:00"
