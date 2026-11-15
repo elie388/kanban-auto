@@ -3,7 +3,7 @@
   "date": "2026-11-15",
   "grade": "五年级",
   "generated_at": "2026-11-15T00:18:02+08:00",
-  "updated_at": "2026-11-15T17:05:50+08:00",
+  "updated_at": "2026-11-15T19:32:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -112,7 +112,7 @@
       "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
       "detail": "登记本上这一项⑩后面有两个字被涂黑了，看不清写的是什么。请告诉我被涂掉的是哪几个字，我就把任务标题改清楚。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）；③试卷签名 → 待完成",
@@ -121,12 +121,27 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-13T18:50:07+08:00",
-      "updated_at": "2026-11-15T00:18:02+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
+      "updated_at": "2026-11-15T19:32:18+08:00",
+      "corrections": [
+        {
+          "label": "抄写第13词：October（⑧组）",
+          "question": "抄写 October（十月）英文和中文各4次",
+          "reason": "第4遍 October 首字母小写，应大写；月份首字母须大写。",
+          "hint": "月份的名字有什么特别？看看 October 这一行，第4遍和前3遍比，第一个字母有什么不一样？再想想，写月份的时候，第一个字母应该大写还是小写？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写 October（十月）英文和中文各4次",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 1,
       "carry_first_date": "2026-11-13",
       "carried_from": "2026-11-14",
-      "carry_count": 2
+      "carry_count": 2,
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261113-BE31BF71E61D",
@@ -325,8 +340,8 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 4,
-    "in_progress": 4,
+    "pending": 3,
+    "in_progress": 5,
     "submitted": 0,
     "grading": 0,
     "done": 1,

@@ -3,7 +3,7 @@
   "date": "2026-11-15",
   "grade": "六年级",
   "generated_at": "2026-11-15T00:18:02+08:00",
-  "updated_at": "2026-11-15T19:16:52+08:00",
+  "updated_at": "2026-11-15T19:32:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -123,7 +123,14 @@
       "carry_first_date": "2026-11-13",
       "carried_from": "2026-11-14",
       "carry_count": 2,
-      "completed_at": "2026-11-15T19:23:54+08:00"
+      "completed_at": "2026-11-15T19:23:54+08:00",
+      "orig_photos": [
+        "acd5fb9a66a21b53.jpg",
+        "3eb958e831c51c7d.jpg",
+        "e2bda2982b58aad5.jpg",
+        "93647d90b9722f3a.jpg",
+        "b285656ffbc3ead4.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261114-002-G6-YW",
@@ -209,16 +216,20 @@
       "created_at": "2026-11-15T00:18:32+08:00",
       "updated_at": "2026-11-15T19:16:52+08:00",
       "completed_at": "2026-11-15T19:16:52+08:00",
-      "status_source": "reading_grading"
+      "status_source": "reading_grading",
+      "orig_photos": [
+        "5a26d632d970a89f.jpg",
+        "2b90782751900d37.jpg"
+      ]
     }
   ],
   "counts": {
     "total": 8,
-    "pending": 4,
+    "pending": 3,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 3,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-11-15T22:30:00+08:00"
