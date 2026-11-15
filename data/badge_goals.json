@@ -160,9 +160,9 @@
   "g5": [
    {
     "key": "quanduizhixing",
-    "obtained": true,
-    "date": "2026-11-11",
-    "count": 2,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 2,
     "via_late": false,
     "progress": {
@@ -182,14 +182,14 @@
    },
    {
     "key": "baifen",
-    "obtained": true,
-    "date": "2026-11-09",
-    "count": 2,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 8,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 0,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -197,14 +197,14 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": true,
-    "date": "2026-11-11",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 4,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -296,14 +296,14 @@
    },
    {
     "key": "jiawujielishou",
-    "obtained": true,
-    "date": "2026-11-10",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 0,
      "target": 2,
      "unit": "项/人",
      "mode": "本周"
@@ -311,9 +311,9 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": true,
-    "date": "2026-11-09",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 4,
     "via_late": false,
     "progress": {
@@ -430,14 +430,14 @@
    },
    {
     "key": "jiawuzhixing",
-    "obtained": true,
-    "date": "2026-11-13",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -455,9 +455,9 @@
   "g6": [
    {
     "key": "quanduizhixing",
-    "obtained": true,
-    "date": "2026-11-10",
-    "count": 3,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 3,
     "via_late": false,
     "progress": {
@@ -477,14 +477,14 @@
    },
    {
     "key": "baifen",
-    "obtained": true,
-    "date": "2026-11-09",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 7,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 80,
+     "current": 0,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -492,14 +492,14 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": true,
-    "date": "2026-11-10",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -530,7 +530,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 6,
+     "current": 0,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -591,14 +591,14 @@
    },
    {
     "key": "jiawujielishou",
-    "obtained": true,
-    "date": "2026-11-10",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 3,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 0,
      "target": 2,
      "unit": "项/人",
      "mode": "本周"
@@ -606,9 +606,9 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": true,
-    "date": "2026-11-09",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 4,
     "via_late": false,
     "progress": {
@@ -725,14 +725,14 @@
    },
    {
     "key": "jiawuzhixing",
-    "obtained": true,
-    "date": "2026-11-13",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 0,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -748,6 +748,6 @@
    }
   ]
  },
- "cycle_week": "2026-W46",
- "generated_at": "2026-11-15T21:58:56.765814+08:00"
+ "cycle_week": "2026-W47",
+ "generated_at": "2026-11-16T00:03:56.429786+08:00"
 }

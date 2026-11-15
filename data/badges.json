@@ -1,102 +1,16 @@
 {
  "schema_version": 1,
  "week": {
-  "start": "2026-11-09",
-  "end": "2026-11-15",
+  "start": "2026-11-16",
+  "end": "2026-11-22",
   "tz": "Asia/Shanghai",
-  "cycle_week": "2026-W46",
-  "week_start": "2026-11-09T00:00:00+08:00",
-  "week_end": "2026-11-15T23:59:59+08:00"
+  "cycle_week": "2026-W47",
+  "week_start": "2026-11-16T00:00:00+08:00",
+  "week_end": "2026-11-22T23:59:59+08:00"
  },
  "by_grade": {
-  "g5": [
-   {
-    "key": "sanribuduan",
-    "name": "三日不断",
-    "icon": "📆",
-    "date": "2026-11-09",
-    "count": 1
-   },
-   {
-    "key": "baifen",
-    "name": "百分俱乐部",
-    "icon": "💰",
-    "date": "2026-11-09",
-    "count": 2
-   },
-   {
-    "key": "jiawujielishou",
-    "name": "家务接力手",
-    "icon": "🔄",
-    "date": "2026-11-10",
-    "count": 1
-   },
-   {
-    "key": "zonghezhixing",
-    "name": "综合之星",
-    "icon": "🏅",
-    "date": "2026-11-11",
-    "count": 1
-   },
-   {
-    "key": "quanduizhixing",
-    "name": "全对之星",
-    "icon": "✅",
-    "date": "2026-11-11",
-    "count": 2
-   },
-   {
-    "key": "jiawuzhixing",
-    "name": "家务之星",
-    "icon": "🏆",
-    "date": "2026-11-13",
-    "count": 1
-   }
-  ],
-  "g6": [
-   {
-    "key": "sanribuduan",
-    "name": "三日不断",
-    "icon": "📆",
-    "date": "2026-11-09",
-    "count": 1
-   },
-   {
-    "key": "baifen",
-    "name": "百分俱乐部",
-    "icon": "💰",
-    "date": "2026-11-09",
-    "count": 1
-   },
-   {
-    "key": "jiawujielishou",
-    "name": "家务接力手",
-    "icon": "🔄",
-    "date": "2026-11-10",
-    "count": 1
-   },
-   {
-    "key": "zonghezhixing",
-    "name": "综合之星",
-    "icon": "🏅",
-    "date": "2026-11-10",
-    "count": 1
-   },
-   {
-    "key": "quanduizhixing",
-    "name": "全对之星",
-    "icon": "✅",
-    "date": "2026-11-10",
-    "count": 3
-   },
-   {
-    "key": "jiawuzhixing",
-    "name": "家务之星",
-    "icon": "🏆",
-    "date": "2026-11-13",
-    "count": 1
-   }
-  ]
+  "g5": [],
+  "g6": []
  },
- "generated_at": "2026-11-14T23:06:41.498682+08:00"
+ "generated_at": "2026-11-16T00:03:56.429786+08:00"
 }
