@@ -1,317 +1,317 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-16",
- "grade": "六年级",
- "generated_at": "2026-11-16T00:18:04+08:00",
- "updated_at": "2026-11-16T20:50:40+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-16T19:21:41+08:00",
-   "new_lines": 8,
-   "flipped": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": "2026-11-16T06:27:32+08:00",
-   "status": "done"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": "2026-11-16T16:55:55+08:00",
-   "status": "done"
-  }
- },
- "tasks": [
-  {
-   "task_id": "CHORE-20261116-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-16T17:30:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-16T00:18:22+08:00",
-   "updated_at": "2026-11-16T00:18:22+08:00"
-  },
-  {
-   "task_id": "READ-20261116-G6",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-16T17:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-16T00:18:35+08:00",
-   "updated_at": "2026-11-16T00:18:35+08:00"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-16",
-   "source": "meta",
-   "task_type": "meta_register",
-   "subject": "登记本",
-   "title": "提交作业登记本",
-   "detail": "在看板上传登记本照片",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "created_by": "system",
-   "created_at": "2026-11-16T06:01:25+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00",
-   "completed_at": "2026-11-16T19:21:41+08:00"
-  },
-  {
-   "task_id": "D53-2026-11-16-CHN",
-   "source": "daily_53",
-   "subject": "语文",
-   "title": "53天天练·语文",
-   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-   "estimate_min": 10,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "固定日常（规则手册·53天天练）",
-   "created_at": "2026-11-16T06:01:25+08:00",
-   "updated_at": "2026-11-16T06:01:25+08:00"
-  },
-  {
-   "task_id": "MANUAL-20261116-001",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语对话第11月10日",
-   "detail": "英语对话第11月10日：At the Library（去图书馆）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-16T06:13:13+08:00",
-   "updated_at": "2026-11-16T06:13:13+08:00",
-   "files": [
-    {
-     "name": "英语对话第11月10日_打印版.pdf",
-     "label": "对话打印版",
-     "pages": 2
+  "schema_version": "1.0",
+  "date": "2026-11-16",
+  "grade": "六年级",
+  "generated_at": "2026-11-16T00:18:04+08:00",
+  "updated_at": "2026-11-16T20:50:40+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-16T19:21:41+08:00",
+      "new_lines": 8,
+      "flipped": 0
+    },
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": "2026-11-16T06:27:32+08:00",
+      "status": "done"
+    },
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": "2026-11-16T16:55:55+08:00",
+      "status": "done"
     }
-   ]
   },
-  {
-   "task_id": "PRACT-20261116-7CF31BB00992",
-   "source": "targeted_practice",
-   "subject": "综合",
-   "title": "针对性练习（含口语+背诵）",
-   "detail": "六年级针对性练习_2026-11-16.docx，按今日练习清单完成",
-   "kousuan": [],
-   "recite_text": "语文背诵：《宿建德江》（孟浩然）\n原文：移舟泊烟渚，日暮客愁新。野旷天低树，江清月近人。\n朗读要求：语速缓慢、低沉，读出日暮时分的孤寂与淡淡的愁绪；“野旷天低树，江清月近人”两句语调放轻、放缓，读出江边夜色的开阔与宁静；最后一句“江清月近人”稍作停顿，读出月光相伴的慰藉感。\n英语口语任务说明：请围绕“你最喜欢的季节”回答下面的问题，用完整句子说 30-45 秒，注意时态（说喜欢用一般现在时，说做过的事用一般过去时），5 分钟内完成。\n提示问题：1. What is your favourite season? Why do you like it? 2. What do you usually do in this season? 3. What did you do in this season last year? Tell us one happy thing.\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答。",
-   "estimate_min": 30,
-   "status": "pending",
-   "review_status": "approved",
-   "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-16.docx",
-   "file_hash": "5ee8f25ded6b55775dcab177bcbb2a0e3af550cda2d53ec93b1ee72b477bbabd",
-   "created_at": "2026-11-16T06:27:30+08:00",
-   "updated_at": "2026-11-16T06:27:30+08:00",
-   "files": [
+  "tasks": [
     {
-     "name": "六年级针对性练习_2026-11-16.pdf",
-     "label": "练习",
-     "pages": 5
-    }
-   ]
-  },
-  {
-   "task_id": "MANUAL-20261116-002",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语阅读写作第18期",
-   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-16T06:32:40+08:00",
-   "updated_at": "2026-11-16T06:32:40+08:00",
-   "files": [
+      "task_id": "CHORE-20261116-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-16T17:30:00+08:00",
+      "chore_done_count": 0,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-16T00:18:22+08:00",
+      "updated_at": "2026-11-16T00:18:22+08:00"
+    },
     {
-     "name": "六年级英语阅读写作_2026-11-16.pdf",
-     "label": "英语阅读写作练习",
-     "pages": 2
+      "task_id": "READ-20261116-G6",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-16T17:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-16T00:18:35+08:00",
+      "updated_at": "2026-11-16T00:18:35+08:00"
+    },
+    {
+      "task_id": "META-REGISTER-2026-11-16",
+      "source": "meta",
+      "task_type": "meta_register",
+      "subject": "登记本",
+      "title": "提交作业登记本",
+      "detail": "在看板上传登记本照片",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "created_by": "system",
+      "created_at": "2026-11-16T06:01:25+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00",
+      "completed_at": "2026-11-16T19:21:41+08:00"
+    },
+    {
+      "task_id": "D53-2026-11-16-CHN",
+      "source": "daily_53",
+      "subject": "语文",
+      "title": "53天天练·语文",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-11-16T06:01:25+08:00",
+      "updated_at": "2026-11-16T06:01:25+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261116-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语对话第11月10日",
+      "detail": "英语对话第11月10日：At the Library（去图书馆）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-16T06:13:13+08:00",
+      "updated_at": "2026-11-16T06:13:13+08:00",
+      "files": [
+        {
+          "name": "英语对话第11月10日_打印版.pdf",
+          "label": "对话打印版",
+          "pages": 2
+        }
+      ]
+    },
+    {
+      "task_id": "PRACT-20261116-7CF31BB00992",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-16.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《宿建德江》（孟浩然）\n原文：移舟泊烟渚，日暮客愁新。野旷天低树，江清月近人。\n朗读要求：语速缓慢、低沉，读出日暮时分的孤寂与淡淡的愁绪；“野旷天低树，江清月近人”两句语调放轻、放缓，读出江边夜色的开阔与宁静；最后一句“江清月近人”稍作停顿，读出月光相伴的慰藉感。\n英语口语任务说明：请围绕“你最喜欢的季节”回答下面的问题，用完整句子说 30-45 秒，注意时态（说喜欢用一般现在时，说做过的事用一般过去时），5 分钟内完成。\n提示问题：1. What is your favourite season? Why do you like it? 2. What do you usually do in this season? 3. What did you do in this season last year? Tell us one happy thing.\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-16.docx",
+      "file_hash": "5ee8f25ded6b55775dcab177bcbb2a0e3af550cda2d53ec93b1ee72b477bbabd",
+      "created_at": "2026-11-16T06:27:30+08:00",
+      "updated_at": "2026-11-16T06:27:30+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-16.pdf",
+          "label": "练习",
+          "pages": 5
+        }
+      ]
+    },
+    {
+      "task_id": "MANUAL-20261116-002",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语阅读写作第18期",
+      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-16T06:32:40+08:00",
+      "updated_at": "2026-11-16T06:32:40+08:00",
+      "files": [
+        {
+          "name": "六年级英语阅读写作_2026-11-16.pdf",
+          "label": "英语阅读写作练习",
+          "pages": 2
+        }
+      ]
+    },
+    {
+      "task_id": "REG-20261116-EDE106B46180",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "P42的中文，读10次",
+      "detail": "第2轮（21:06交）不达标：录音2.48秒、只有三个英文词，没读中文；孩子留言说老师说的是写不是读，正在跟家长确认，确认好之前先不用重读。原要求：把P42页上手写的中文翻译读10遍，重新录音提交。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①P42的中文，读10次；②完成《校本》P28的练习，写语法 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T21:33:35+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "status_source": "kids-upload-watch"
+    },
+    {
+      "task_id": "REG-20261116-4581D6F425A4",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成《校本》P28的练习，写语法",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①P42的中文，读10次；②完成《校本》P28的练习，写语法 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00"
+    },
+    {
+      "task_id": "REG-20261116-7E63C5AD622C",
+      "source": "register_book",
+      "subject": "英语早读",
+      "title": "U4单词、P40、41、42对话",
+      "detail": "照片全黑看不清，请把 U4 单词、P40、41、42 对话那几页重新拍一张清楚的照片发回；早读明天回校再读。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语早读：U4单词、P40、41、42对话 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T20:53:00+08:00",
+      "task_type": "reading",
+      "type_source": "regex_bao"
+    },
+    {
+      "task_id": "REG-20261116-07408F340362",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "试卷（不写作文）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00"
+    },
+    {
+      "task_id": "REG-20261116-F1D13E1F1D93",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "听写14课词在作文顶头",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00"
+    },
+    {
+      "task_id": "REG-20261116-62CB764691FC",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读第5单元15分钟在小管家",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00",
+      "task_type": "read",
+      "type_source": "regex_read"
+    },
+    {
+      "task_id": "REG-20261116-DEC7BFA52CEE",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念62、63、64",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念62、63、64；②校本P40 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261116-D924F7BAA2B9",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P40",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念62、63、64；②校本P40 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T19:21:41+08:00"
     }
-   ]
+  ],
+  "counts": {
+    "total": 15,
+    "pending": 13,
+    "in_progress": 1,
+    "submitted": 0,
+    "grading": 0,
+    "done": 1,
+    "pending_review": 0
   },
-  {
-   "task_id": "REG-20261116-EDE106B46180",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "P42的中文，读10次",
-   "detail": "重读：把 P42 页上手写的中文翻译读 10 遍，重新录音提交；英文故事里 head、ran、had 三处读错了，下次读准。",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①P42的中文，读10次；②完成《校本》P28的练习，写语法 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T20:51:00+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "status_source": "kids-upload-watch"
-  },
-  {
-   "task_id": "REG-20261116-4581D6F425A4",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "完成《校本》P28的练习，写语法",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①P42的中文，读10次；②完成《校本》P28的练习，写语法 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00"
-  },
-  {
-   "task_id": "REG-20261116-7E63C5AD622C",
-   "source": "register_book",
-   "subject": "英语早读",
-   "title": "U4单词、P40、41、42对话",
-   "detail": "照片全黑看不清，请把 U4 单词、P40、41、42 对话那几页重新拍一张清楚的照片发回；早读明天回校再读。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语早读：U4单词、P40、41、42对话 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T20:53:00+08:00",
-   "task_type": "reading",
-   "type_source": "regex_bao"
-  },
-  {
-   "task_id": "REG-20261116-07408F340362",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "试卷（不写作文）",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00"
-  },
-  {
-   "task_id": "REG-20261116-F1D13E1F1D93",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "听写14课词在作文顶头",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00"
-  },
-  {
-   "task_id": "REG-20261116-62CB764691FC",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "读第5单元15分钟在小管家",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00",
-   "task_type": "read",
-   "type_source": "regex_read"
-  },
-  {
-   "task_id": "REG-20261116-DEC7BFA52CEE",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念62、63、64",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念62、63、64；②校本P40 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral"
-  },
-  {
-   "task_id": "REG-20261116-D924F7BAA2B9",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本P40",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念62、63、64；②校本P40 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-16T19:21:41+08:00",
-   "updated_at": "2026-11-16T19:21:41+08:00"
-  }
- ],
- "counts": {
-  "total": 15,
-  "pending": 13,
-  "in_progress": 1,
-  "submitted": 0,
-  "grading": 0,
-  "done": 1,
-  "pending_review": 0
- },
- "deadline_today": "2026-11-16T22:00:00+08:00"
+  "deadline_today": "2026-11-16T22:00:00+08:00"
 }
