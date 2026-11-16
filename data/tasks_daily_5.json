@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "grade": "五年级",
   "generated_at": "2026-11-16T00:18:04+08:00",
-  "updated_at": "2026-11-16T19:21:41+08:00",
+  "updated_at": "2026-11-16T20:45:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -22,131 +22,7 @@
       "status": "done"
     }
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261116-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-16T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-16T00:18:22+08:00",
-      "updated_at": "2026-11-16T00:18:22+08:00"
-    },
-    {
-      "task_id": "D53-2026-11-16-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-16T06:01:25+08:00",
-      "updated_at": "2026-11-16T06:01:25+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261116-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月10日",
-      "detail": "英语对话第11月10日：At the Library（去图书馆）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-16T06:13:07+08:00",
-      "updated_at": "2026-11-16T06:13:07+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月10日_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "PRACT-20261116-648962D37C78",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-16.docx，按今日练习清单完成",
-      "kousuan": [
-        "3.9×4=",
-        "85+47=",
-        "2.6×5+3.8=",
-        "2.5×4.4×4=",
-        "48.7×3.2≈（估算，结果取整数）"
-      ],
-      "recite_text": "语文背诵：《枫桥夜泊》（张继）\n原文：月落乌啼霜满天，江枫渔火对愁眠。\n姑苏城外寒山寺，夜半钟声到客船。\n朗读要求：语速稍慢，语气低沉舒缓，读出江南水乡深秋夜晚的宁静与淡淡的愁绪；注意诗句停顿，如“月落/乌啼/霜满天”，“姑苏/城外/寒山寺”，把“夜半钟声到客船”的悠远读出来。\n英语口语任务说明：今晚的英语口语小任务只需 5 分钟：请看着自己的房间（或我家小区的一张照片），用英语说一段话，30-45 秒，尽量用完整句子，录完后按看板任务按钮提交。\n提示问题：1. What is your favorite thing in your room?  2. What do you usually do here? 3. Why do you like it?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-16.docx",
-      "file_hash": "2eee970206c7be88802e78e7dad4bd8a1a913f06bfe1951e2f6b8d01a8b990e6",
-      "created_at": "2026-11-16T06:27:27+08:00",
-      "updated_at": "2026-11-16T06:27:27+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-16.pdf",
-          "label": "练习",
-          "pages": 5
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261116-002",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第18期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-16T06:32:40+08:00",
-      "updated_at": "2026-11-16T06:32:40+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-11-16.pdf",
-          "label": "英语阅读写作练习",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-16",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-16T16:56:16+08:00",
-      "updated_at": "2026-11-16T16:56:16+08:00",
-      "completed_at": null
-    }
-  ],
-  "counts": {
-    "total": 6,
-    "pending": 6,
-    "in_progress": 0,
-    "submitted": 0,
-    "grading": 0,
-    "done": 0,
-    "pending_review": 0
-  },
+  "tasks": [],
+  "counts": {},
   "deadline_today": "2026-11-16T22:00:00+08:00"
 }
