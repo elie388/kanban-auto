@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "六年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T04:00:11+08:00",
+  "updated_at": "2026-11-17T04:32:32+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-17T04:32:32+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -85,16 +85,39 @@
       "created_at": "2026-11-17T04:00:11+08:00",
       "updated_at": "2026-11-17T04:00:11+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "PRACT-20261117-2E4A08D1165E",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-17.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《西江月·夜行黄沙道中》（辛弃疾）\n原文：明月别枝惊鹊，清风半夜鸣蝉。稻花香里说丰年，听取蛙声一片。七八个星天外，两三点雨山前。旧时茅店社林边，路转溪桥忽见。\n朗读要求：朗读时要读出夏夜乡村的明朗、轻快与闲适的心情；注意“别枝”“鸣蝉”“蛙声一片”的语气，语调要抑扬顿挫、充满生机；熟练背诵后请录音发回。\n英语口语任务说明：请先听读下面的短文两遍，再合上书用自己的话复述。短文：Last Sunday, I went to the park with my mom. On my way, I saw a little boy crying near a big tree. He lost his way and could not find his parents. I went up to him and asked how to help. He told me his mother's phone number. I used my mom's phone to call her. Soon, his mother came and thanked me a lot. I felt very happy because helping others is helping ourselves.\n口语要求：先听读两遍短文，注意语音语调；合上书用自己的话复述，不必逐字背诵但关键信息不能漏；请录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-17.docx",
+      "file_hash": "8139ac78283a0a152b89873b3c8e9b218681871f8e98a5746e3b54fcd02d9ff9",
+      "created_at": "2026-11-17T04:32:28+08:00",
+      "updated_at": "2026-11-17T04:32:28+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-17.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 5,
+    "pending": 5,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-17T22:00:00+08:00"
 }

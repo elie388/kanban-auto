@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "五年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T04:00:11+08:00",
+  "updated_at": "2026-11-17T04:32:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-17T04:32:28+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -72,16 +72,45 @@
       "created_at": "2026-11-17T04:00:11+08:00",
       "updated_at": "2026-11-17T04:00:11+08:00",
       "completed_at": null
+    },
+    {
+      "task_id": "PRACT-20261117-B822AE818A84",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-17.docx，按今日练习清单完成",
+      "kousuan": [
+        "4.2×3=",
+        "73+58=",
+        "3.5×4-6.2=",
+        "29.8×5.1≈（估算：两个因数都取整到个位后再相乘）",
+        "2.5×6.8×4="
+      ],
+      "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：语速舒缓，整体慢而稳，读出山中宁静、悠闲的意境，不要读得急躁；声音轻柔优美，特别是中间写景的句子，要读出清幽、纯净的感觉；最后两句读出深情与留恋，读出诗人寄情山水、淡泊名利的心境。\n英语口语任务说明：今晚的英语口语小任务只需 5 分钟：请回答下面日常生活和学校生活的问题，任选至少两个问题回答，30-45 秒，尽量用完整句子，录完后按看板任务按钮提交。\n提示问题：1. What do you usually do after school? 2. What is your favorite subject at school, and why do you like it? 3. Can you describe what you eat for breakfast every day? 4. How do you usually get to school?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-17.docx",
+      "file_hash": "25148a81d1a1f93f1c1beca23756b4e515f82982a8bd406d286442d6f8475da7",
+      "created_at": "2026-11-17T04:32:24+08:00",
+      "updated_at": "2026-11-17T04:32:24+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-17.pdf",
+          "label": "练习",
+          "pages": 4
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 3,
-    "pending": 3,
+    "total": 4,
+    "pending": 4,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-17T22:00:00+08:00"
 }
