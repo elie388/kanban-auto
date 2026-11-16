@@ -108,6 +108,77 @@
           "pages": 4
         }
       ]
+    },
+    {
+      "task_id": "REG-20261116-4581D6F425A4",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成《校本》P28的练习，写语法",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①P42的中文，读10次；②完成《校本》P28的练习，写语法 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T22:15:06+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "单词填空-strings",
+          "question": "拉这些线，木偶的手脚会动",
+          "reason": "these 后面要跟复数，string 是单数",
+          "hint": "想一想：these 是什么意思？它后面跟的单词是单数还是复数？线有好几根，是一根还是多根？这个单词要不要加 s？",
+          "img": "guide_20261116_4581_strings.png",
+          "q_img": "",
+          "orig_text": "When you pull these s_____ (线), the puppet's arms and legs move.",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "单词填空-gluing",
+          "question": "琳达正在把纸星星粘到墙上",
+          "reason": "is 后面要跟动词 -ing 形式，glue 是原形",
+          "hint": "看一看：Linda is 后面跟的是什么？is 加动词表示正在做某事，动词要变成什么形式？glue 加上 -ing 该怎么写？",
+          "img": "guide_20261116_4581_gluing.png",
+          "q_img": "",
+          "orig_text": "Linda is g_____ paper stars to the wall.",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "课文填空-raining",
+          "question": "课文填空-raining 六年级英语校本P28语法（REG-20261116-4581D6F425A4），1张照片，2026-11-16 20:32:29到达（server_ts 2026-11-16T12:32:29Z）",
+          "reason": "It was 后面缺表示下雨的动词，was 后面不能直接跟 heavily",
+          "hint": "读一读这句：It was heavily。was 后面是不是少了一个动词？下大雨应该用什么词？这个词是 -ing 形式，想一想下雨的英文怎么说？",
+          "img": "guide_20261116_4581_raining.png",
+          "q_img": "",
+          "orig_text": "It 2. was heavily, and he wanted to keep off the rain.",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "课文填空-clever hands",
+          "question": "课文填空-clever hands 六年级英语校本P28语法（REG-20261116-4581D6F425A4），1张照片，2026-11-16 20:32:29到达（server_ts 2026-11-16T12:32:29Z）",
+          "reason": "hand 是单数，鲁班有两只手，要用复数 hands",
+          "hint": "数一数：鲁班有几只手？是一只还是一双？hand 这个单词表示两只手的时候，要不要加 s？",
+          "img": "guide_20261116_4581_hands.png",
+          "q_img": "",
+          "orig_text": "He had great ideas and 10. clever hand.",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 4,
+      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
