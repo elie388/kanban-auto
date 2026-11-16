@@ -454,6 +454,35 @@
         "ed93fe20f3d7da0b.jpg",
         "0d706f49eb7eb498.jpg"
       ]
+    },
+    {
+      "task_id": "EXAM-20261116-822a6e",
+      "source": "exam_correction",
+      "subject": "语文",
+      "title": "语文·单元测试（第五单元）订正（剩6题）",
+      "detail": "卷面分81.4（57/70，不写作文）；挂起合计+16（档位分，错题全部订正改对＋终审后结算）；考试日期2026-11-16；错题：错别字、语病、排序、排比、双重否定、仿写语法。订正每改对一处+2（上限+8）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "",
+      "evidence": {
+        "extracted_by": "exam_closeout_S1"
+      },
+      "created_at": "2026-11-16T23:45:00+08:00",
+      "updated_at": "2026-11-16T23:45:00+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "exam_tracking_id": "EXAM-20261116-G6-YW-01",
+      "question_ids": [
+        "一-（三）",
+        "一-（五）",
+        "二-（三）",
+        "三-（一）1",
+        "三-（二）2",
+        "三-（一）2"
+      ],
+      "carry_first_date": "2026-11-16"
     }
   ],
   "counts": {
