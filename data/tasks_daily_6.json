@@ -3,7 +3,7 @@
   "date": "2026-11-16",
   "grade": "六年级",
   "generated_at": "2026-11-16T00:18:04+08:00",
-  "updated_at": "2026-11-16T23:38:16+08:00",
+  "updated_at": "2026-11-16T23:47:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -371,7 +371,7 @@
       "title": "听写14课词在作文顶头",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
@@ -380,9 +380,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-16T19:21:41+08:00",
-      "updated_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-16T23:46:59+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "completed_at": "2026-11-16T23:46:59+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "2ab78b3e26111d08.jpg",
+        "8ab93f5214374b26.jpg"
+      ]
     },
     {
       "task_id": "REG-20261116-62CB764691FC",
@@ -486,12 +492,12 @@
     }
   ],
   "counts": {
-    "total": 15,
+    "total": 16,
     "pending": 10,
     "in_progress": 3,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-16T22:00:00+08:00"
