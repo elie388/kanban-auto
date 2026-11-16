@@ -3,12 +3,13 @@
   "date": "2026-11-16",
   "grade": "五年级",
   "generated_at": "2026-11-16T00:18:04+08:00",
-  "updated_at": "2026-11-16T06:44:13+08:00",
+  "updated_at": "2026-11-16T16:55:43+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": null,
-      "new_lines": 0
+      "ingested_at": "2026-11-16T16:55:43+08:00",
+      "new_lines": 0,
+      "flipped": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -124,7 +125,13 @@
     }
   ],
   "counts": {
-    "pending": 7
+    "total": 5,
+    "pending": 5,
+    "in_progress": 0,
+    "submitted": 0,
+    "grading": 0,
+    "done": 0,
+    "pending_review": 0
   },
   "deadline_today": "2026-11-16T22:30:00+08:00"
 }
