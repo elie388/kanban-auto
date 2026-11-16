@@ -455,10 +455,10 @@
   "g6": [
    {
     "key": "quanduizhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 3,
+    "obtained": true,
+    "date": "2026-11-16",
+    "count": 1,
+    "total_count": 4,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 34,
+     "current": 39,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -499,7 +499,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 2,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W47",
- "generated_at": "2026-11-16T22:22:01.244853+08:00"
+ "generated_at": "2026-11-16T22:48:58.743242+08:00"
 }
