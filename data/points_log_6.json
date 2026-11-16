@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-16T20:53:52+08:00",
+  "generated_at": "2026-11-16T22:21:55+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-16",
+      "time": "22:19",
+      "time_source": "entry",
+      "reason": "数学校本P40完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-16",
+      "time": "22:19",
+      "time_source": "entry",
+      "reason": "数学校本P40正确率100%",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-16",
+      "time": "22:19",
+      "time_source": "entry",
+      "reason": "英语校本P28语法完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-16",
+      "time": "22:19",
+      "time_source": "entry",
+      "reason": "英语校本P28语法正确率83.3%",
+      "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-16",
       "time": "20:50",
