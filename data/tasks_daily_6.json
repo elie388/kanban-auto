@@ -1,121 +1,35 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "grade": "六年级",
-  "generated_at": "2026-11-16T00:18:04+08:00",
-  "updated_at": "2026-11-17T00:17:57+08:00",
+  "generated_at": "2026-11-17T00:18:03+08:00",
+  "updated_at": "2026-11-17T00:18:03+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-16T23:53:36+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-16T06:27:32+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-16T16:55:55+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261116-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-16T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-16T00:18:22+08:00",
-      "updated_at": "2026-11-17T00:09:53+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-16",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-16T06:01:25+08:00",
-      "updated_at": "2026-11-16T19:21:41+08:00",
-      "completed_at": "2026-11-16T19:21:41+08:00",
-      "orig_photos": [
-        "8afc636063ecbb8e.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261116-F1D13E1F1D93",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "听写14课词在作文顶头",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-16T19:21:41+08:00",
-      "updated_at": "2026-11-16T23:46:59+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-16T23:46:59+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "2ab78b3e26111d08.jpg",
-        "8ab93f5214374b26.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261116-D924F7BAA2B9",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本P40",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念62、63、64；②校本P40 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-16T19:21:41+08:00",
-      "updated_at": "2026-11-16T22:15:44+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-16T22:15:44+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "46dc52b404f8f330.jpg",
-        "ed93fe20f3d7da0b.jpg",
-        "0d706f49eb7eb498.jpg"
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "pending": 1,
-    "done": 3
+    "total": 0,
+    "pending": 0,
+    "in_progress": 0,
+    "submitted": 0,
+    "grading": 0,
+    "done": 0,
+    "pending_review": 0
   },
-  "deadline_today": "2026-11-16T22:00:00+08:00"
+  "deadline_today": null
 }

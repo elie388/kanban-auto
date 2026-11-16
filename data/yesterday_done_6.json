@@ -1,47 +1,26 @@
 {
- "date": "2026-11-15",
+ "date": "2026-11-16",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "REG-20261113-2295927876B8",
-   "title": "做一个bird feeder",
-   "subject": "英语",
-   "source": "register_book",
+   "task_id": "META-REGISTER-2026-11-16",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261113-C3503CA6C055",
-   "title": "小作文①写“思”",
+   "task_id": "REG-20261116-F1D13E1F1D93",
+   "title": "听写14课词在作文顶头",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261113-940F641C1FD3",
-   "title": "预习新16课反馈单",
-   "subject": "语文",
+   "task_id": "REG-20261116-D924F7BAA2B9",
+   "title": "校本P40",
+   "subject": "数学",
    "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261113-02818DDEC0E0",
-   "title": "看作文一小时以上",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "CHORE-20261115-G6",
-   "title": "家务打卡",
-   "subject": "家务",
-   "source": "chore",
-   "group": "chore"
-  },
-  {
-   "task_id": "READ-20261115-G6",
-   "title": "每日读书",
-   "subject": "读书",
-   "source": "reading_daily",
    "group": "study"
   }
  ]

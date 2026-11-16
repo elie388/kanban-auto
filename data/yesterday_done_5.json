@@ -1,20 +1,5 @@
 {
- "date": "2026-11-15",
+ "date": "2026-11-16",
  "grade": "五年级",
- "items": [
-  {
-   "task_id": "REG-20261113-E8CF59625272",
-   "title": "单词本抄⑦⑧⑨⑩（涂黑，不可读）的单词（见群95页）",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "CHORE-20261115-G5",
-   "title": "家务打卡",
-   "subject": "家务",
-   "source": "chore",
-   "group": "chore"
-  }
- ]
+ "items": []
 }
