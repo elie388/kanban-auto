@@ -179,15 +179,39 @@
       ],
       "pending_corrections": 4,
       "status_source": "closeout_writeback"
+    },
+    {
+      "task_id": "REG-20261116-EDE106B46180",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "写P42的中文",
+      "detail": "家长已确认（2026-11-16 22:46）：这项是写中文、不是读。把P42页上手写的中文翻译抄写下来，拍照片提交。不用录音。写对了就完成。",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①P42的中文，读10次；②完成《校本》P28的练习，写语法 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-17T07:07:17+08:00",
+      "task_type": null,
+      "type_source": "parent_decision_write_20261116",
+      "status_source": "parent_restore_20261117",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-17T00:16:28+08:00"
     }
   ],
   "counts": {
-    "total": 5,
+    "total": 7,
     "pending": 5,
-    "in_progress": 0,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-17T22:00:00+08:00"
