@@ -259,7 +259,7 @@
       "title": "L19生字",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①小测一张；②读背49，默一次抄词本；③L19生字；④读作文15分钟在小管家 → 待完成",
@@ -268,7 +268,24 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00"
+      "updated_at": "2026-11-17T22:46:31+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "牵（qiān）",
+          "question": "L19生字：拼音4遍、汉字4遍、结构、部首、笔画数、组词2个",
+          "reason": "笔画数写6，数错了：牵一共11画，部首牛是4画，除去部首还有7画（若按部首大3画计则为8画），6都不对",
+          "hint": "牵的拼音、字形、组词都对，只错了笔画数。先数一数牵一共有几画，再数一数部首有几画，减一减，除去部首还有几画？再想一想，牵的部首是哪一部分？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "L19生字：牵（qiān），拼音4遍、汉字4遍、结构、部首、笔画数、组词2个。牵的笔画数写错了。",
+          "q_img_exempt": "",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261117-7ED36066C5D6",
