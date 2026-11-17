@@ -3,12 +3,12 @@
   "date": "2026-11-17",
   "grade": "五年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T16:55:49+08:00",
+  "updated_at": "2026-11-17T17:56:53+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-17T16:55:23+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-17T17:56:53+08:00",
+      "new_lines": 5,
       "flipped": 0
     },
     "targeted_practice": {
@@ -67,12 +67,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-17T04:00:11+08:00",
-      "updated_at": "2026-11-17T04:00:11+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-17T17:56:53+08:00",
+      "completed_at": "2026-11-17T17:56:53+08:00"
     },
     {
       "task_id": "PRACT-20261117-B822AE818A84",
@@ -115,15 +115,107 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-17T04:34:28+08:00",
       "updated_at": "2026-11-17T04:34:28+08:00"
+    },
+    {
+      "task_id": "REG-20261117-FDF13E676880",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "小练笔79页（200~300字）",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-17T17:56:53+08:00",
+      "updated_at": "2026-11-17T17:56:53+08:00"
+    },
+    {
+      "task_id": "REG-20261117-0EB802D53965",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本17课",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-17T17:56:53+08:00",
+      "updated_at": "2026-11-17T17:56:53+08:00"
+    },
+    {
+      "task_id": "REG-20261117-9E073018291F",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本42页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本42页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-17T17:56:53+08:00",
+      "updated_at": "2026-11-17T17:56:53+08:00"
+    },
+    {
+      "task_id": "REG-20261117-9E6DA50E189C",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-17T17:56:53+08:00",
+      "updated_at": "2026-11-17T17:56:53+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261117-DD0101BD418A",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "校本30页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-17T17:56:53+08:00",
+      "updated_at": "2026-11-17T17:56:53+08:00"
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 10,
+    "pending": 9,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-17T22:00:00+08:00"
