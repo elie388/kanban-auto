@@ -408,36 +408,13 @@
       "status_source": "",
       "raw_text": "",
       "ocr_confidence": 0
-    },
-    {
-      "task_id": "REG-20261117-EE7C45485CDF",
-      "source": "register_book",
-      "subject": "英语早读",
-      "title": "41、42、43句子（明早读早读任务）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语早读：41、42、43句子（明早读早读任务） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T23:54:18+08:00",
-      "updated_at": "2026-11-17T23:54:18+08:00",
-      "task_type": "read",
-      "type_source": "regex_read"
     }
   ],
   "counts": {
-    "total": 17,
-    "pending": 11,
-    "in_progress": 3,
-    "submitted": 0,
-    "grading": 0,
+    "pending": 10,
     "done": 3,
-    "pending_review": 0
+    "in_progress": 3
   },
-  "deadline_today": "2026-11-17T22:00:00+08:00"
+  "deadline_today": "2026-11-17T22:00:00+08:00",
+  "total": 16
 }
