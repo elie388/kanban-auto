@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "五年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T18:57:07+08:00",
+  "updated_at": "2026-11-17T19:08:45+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -72,7 +72,10 @@
       "created_by": "system",
       "created_at": "2026-11-17T04:00:11+08:00",
       "updated_at": "2026-11-17T17:56:53+08:00",
-      "completed_at": "2026-11-17T17:56:53+08:00"
+      "completed_at": "2026-11-17T17:56:53+08:00",
+      "orig_photos": [
+        "e42e9b9b315cb6e9.jpg"
+      ]
     },
     {
       "task_id": "PRACT-20261117-B822AE818A84",
@@ -191,7 +194,10 @@
       "task_type": "reading",
       "type_source": "regex_oral",
       "completed_at": "2026-11-17T18:41:39+08:00",
-      "status_source": "reading_grading:kouluyi_screenshot"
+      "status_source": "reading_grading:kouluyi_screenshot",
+      "orig_photos": [
+        "43e64309a1130f51.jpg"
+      ]
     },
     {
       "task_id": "REG-20261117-DD0101BD418A",
@@ -200,7 +206,7 @@
       "title": "校本30页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
@@ -209,13 +215,54 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T17:56:53+08:00"
+      "updated_at": "2026-11-17T19:08:43+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "阅读理解-爱迪生为何说没有失败",
+          "question": "爱迪生说他没有失败的原因",
+          "reason": "孩子选A（因为他很快发明了电灯）。短文里爱迪生自己说：I have not failed. I've just found 10,000 ways that won't work——他是试了1万多次、发现了1万种行不通的方法，不是一次就很快成功，对应选项B。",
+          "hint": "回到短文里找一找爱迪生自己说的话：他说他刚刚发现了什么？再看一看选项A里的“很快”和选项B里的“行不通的方法”，哪一个和他说的话对得上？爱迪生是试了一次就成功，还是试了很多次才成功？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Why does Thomas Edison say he has not failed? A. Because he invents the electric light quickly. B. Because he finds 10,000 ways that won't work. C. Because people don't laugh at him.",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "阅读理解-勾践如何提醒自己",
+          "question": "勾践用什么办法提醒自己不要忘记失败",
+          "reason": "孩子选B（每天刻苦训练）。短文里写勾践回国后睡柴草、尝苦胆to remind himself of the failure——提醒自己不要忘记失败用的是睡柴草、尝苦胆，对应选项A；刻苦训练是他提醒自己之后做的事，不是提醒的办法。",
+          "hint": "短文里说勾践回国后每天做哪两件事来提醒自己不要忘记失败？“刻苦训练”是他提醒自己的办法，还是他提醒自己之后做的事？把to remind himself前面的句子再读一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "What does Gou Jian do to remind himself of the failure? A. He sleeps on firewood and tastes bitter gall. B. He trains hard every day. C. He feels sad every day.",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "小练笔-介绍自己擅长的运动",
+          "question": "假设是Fred，写短文介绍擅长的运动、做得好的地方、不足与提升计划，不少于40词",
+          "reason": "全文45词，达到不少于40词的要求；内容四点都写到了（擅长篮球、每天早上打球、朋友一起打、不擅长游泳、放学后每天学游泳）。语言有6处错误：①第一句I good at缺be动词；②good at后动词应用-ing形式（play应为playing，swim应为swimming）；③every day morning搭配不当，应用every morning；④friend应为复数friends，且have many friends play结构不对；⑤I can learn swim与⑥I am going to learn swim两处，learn后应接to swim。",
+          "hint": "写完先自己读三遍：①第一句里I后面是不是少了个小词？参考句型第一条是怎么写的？②good at后面跟动作的时候，这个动作要变成什么形式？③“早上”除了every day morning，我们平时学过哪个更地道的说法？④“朋友”不止一个的时候，friend要不要加s？⑤learn后面跟另一个动作，中间是不是少了个连接的小词？按这五处把短文重写一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "假设你是Fred，你擅长哪一项体育运动？针对这一项运动，你有哪些地方做得好？你有哪些不足的地方呢？你想在哪些方面再提升自己？请你写一篇小短文，向大家介绍一下吧！要求：词数不少于40。参考词汇：good at, play basketball, catch the ball, pass the ball... 参考句型：1. I am good at ... 2. I can ... 3. I am going to ...",
+          "q_img_exempt": "原题印在作业照片内，无单独原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
     "total": 10,
-    "pending": 7,
-    "in_progress": 0,
+    "pending": 6,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 1,
     "done": 2,
