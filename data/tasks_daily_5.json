@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "五年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T17:56:53+08:00",
+  "updated_at": "2026-11-17T18:41:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -177,7 +177,7 @@
       "title": "口语易",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
@@ -186,9 +186,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T17:56:53+08:00",
+      "updated_at": "2026-11-17T18:41:39+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "completed_at": "2026-11-17T18:41:39+08:00",
+      "status_source": "reading_grading:kouluyi_screenshot"
     },
     {
       "task_id": "REG-20261117-DD0101BD418A",
