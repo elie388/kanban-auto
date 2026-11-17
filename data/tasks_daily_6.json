@@ -163,7 +163,7 @@
    "source": "register_book",
    "subject": "英语",
    "title": "小抄后的制扇子的作文，抄3次，读3次",
-   "detail": "重读：第3句（Next, make holes and put a string in）中间那个词读错了，请看着课本慢慢重读这句，录一次交上来。",
+   "detail": "重读：第3句（Next, make holes and put a string in）里 holes 这个词读成了 small hole，请看着课本慢慢重读这句，录一次交上来。make 已经读对了。",
    "estimate_min": null,
    "status": "in_progress",
    "review_status": "approved",
@@ -174,7 +174,7 @@
     "reviewed_by": null
    },
    "created_at": "2026-11-17T19:47:06+08:00",
-   "updated_at": "2026-11-17T20:25:26+08:00",
+   "updated_at": "2026-11-17T13:35:51+00:00",
    "task_type": "reading",
    "type_source": "regex_oral"
   },
