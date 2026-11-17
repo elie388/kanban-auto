@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "六年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T23:54:18+08:00",
+  "updated_at": "2026-11-18T00:06:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -24,55 +24,6 @@
   },
   "tasks": [
     {
-      "task_id": "CHORE-20261117-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-17T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-17T00:18:24+08:00",
-      "updated_at": "2026-11-17T00:18:24+08:00"
-    },
-    {
-      "task_id": "READ-20261117-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-17T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-17T00:18:41+08:00",
-      "updated_at": "2026-11-17T00:18:41+08:00"
-    },
-    {
-      "task_id": "D53-2026-11-17-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-17T04:00:11+08:00",
-      "updated_at": "2026-11-17T04:00:11+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-17",
       "source": "meta",
       "task_type": "meta_register",
@@ -88,29 +39,6 @@
       "completed_at": "2026-11-17T19:47:06+08:00",
       "orig_photos": [
         "31dbe921ba7358d7.jpg"
-      ]
-    },
-    {
-      "task_id": "PRACT-20261117-2E4A08D1165E",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "六年级针对性练习_2026-11-17.docx，按今日练习清单完成",
-      "kousuan": [],
-      "recite_text": "语文背诵：《西江月·夜行黄沙道中》（辛弃疾）\n原文：明月别枝惊鹊，清风半夜鸣蝉。稻花香里说丰年，听取蛙声一片。七八个星天外，两三点雨山前。旧时茅店社林边，路转溪桥忽见。\n朗读要求：朗读时要读出夏夜乡村的明朗、轻快与闲适的心情；注意“别枝”“鸣蝉”“蛙声一片”的语气，语调要抑扬顿挫、充满生机；熟练背诵后请录音发回。\n英语口语任务说明：请先听读下面的短文两遍，再合上书用自己的话复述。短文：Last Sunday, I went to the park with my mom. On my way, I saw a little boy crying near a big tree. He lost his way and could not find his parents. I went up to him and asked how to help. He told me his mother's phone number. I used my mom's phone to call her. Soon, his mother came and thanked me a lot. I felt very happy because helping others is helping ourselves.\n口语要求：先听读两遍短文，注意语音语调；合上书用自己的话复述，不必逐字背诵但关键信息不能漏；请录音发回。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-17.docx",
-      "file_hash": "8139ac78283a0a152b89873b3c8e9b218681871f8e98a5746e3b54fcd02d9ff9",
-      "created_at": "2026-11-17T04:32:28+08:00",
-      "updated_at": "2026-11-17T04:32:28+08:00",
-      "files": [
-        {
-          "name": "六年级针对性练习_2026-11-17.pdf",
-          "label": "练习",
-          "pages": 4
-        }
       ]
     },
     {
@@ -142,127 +70,6 @@
       ]
     },
     {
-      "task_id": "MANUAL-20261117-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月17日",
-      "detail": "英语对话第11月17日：At the Fruit Market（去水果市场）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-17T19:28:58+08:00",
-      "updated_at": "2026-11-17T19:28:58+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月17日_去水果市场_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261117-3DDDA494EF33",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "小抄后的制扇子的作文，抄3次，读3次",
-      "detail": "重读：第3句（Next, make holes and put a string in）里 holes 这个词读成了 host，请看着课本慢慢重读这句，录一次交上来。make 已经读对了。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①小抄后的制扇子的作文，抄3次，读3次；②提交小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T21:37:06+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261117-E260D99A639F",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "提交小管家",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①小抄后的制扇子的作文，抄3次，读3次；②提交小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261117-7FAE1E637E41",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小测一张",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小测一张；②读背49，默一次抄词本；③L19生字；④读作文15分钟在小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T22:58:41+08:00",
-      "corrections": [
-        {
-          "label": "用“√”画出语段中加点字的正确读音，并根据拼音写词语（7+10=17分）",
-          "question": "《灯光》语段：“我认识了郝副营长这位英雄。”《盼》语段：“玛瑙”。用“√”画出语段中加点字的正确读音，并根据拼音写词语（读音7分＋词语10分，共17分）。",
-          "reason": "郝的读音选错：郝读第三声hǎo，孩子选了第四声hè",
-          "hint": "郝是一个姓氏，读第三声。想一想，课文《灯光》里那位英雄叫什么名字？再读一遍这个字。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "《灯光》语段：我认识了郝副营长这位英雄。郝的正确读音是哪个？（选项：hǎo / hè）",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "以“夏天是炎热的”为中心句，写一写某些动物或植物在炎热夏天的不同状态（8分）",
-          "question": "第二大题第5小题：以“夏天是炎热的”为中心句，写一写某些动物或植物在炎热夏天的不同状态，要求围绕中心句展开，语句通顺，写一段话（8分）。",
-          "reason": "“玩耍的小朋友，也不敢再跑出来玩了”前后小矛盾：正在玩耍的小朋友，怎么会“不敢再跑出来玩”？",
-          "hint": "知了和小狗写得很好。再读一读最后一句：“玩耍的小朋友”已经在玩了，怎么会“不敢再跑出来玩”？想一想，小朋友在最热的时候会在哪里？把这句改通顺。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "以“夏天是炎热的”为中心句，写一写某些动物或植物在炎热夏天的不同状态。",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        },
-        {
-          "label": "阅读短文最后一段，想想还有什么会让人感受到年味，写在横线处（4分）",
-          "question": "第三大题第4小题：阅读《年味浓浓》短文最后一段，想想还有什么会让人感受到年味，写在横线处，写一句能让人感受到年味的内容（4分）。",
-          "reason": "空白未作答",
-          "hint": "这道题空着没写。读一读短文最后一段，年夜饭的时候，全家人围坐在一起，还会有什么让你感受到年味？比如贴春联、放鞭炮、穿新衣，想一想再写一句。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "《年味浓浓》最后一段：阅读短文最后一段，想想还有什么会让人感受到年味，写在横线处。",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 3,
-      "corr_round": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
       "task_id": "REG-20261117-B081EBA72BF2",
       "source": "register_book",
       "subject": "语文",
@@ -290,130 +97,10 @@
       ],
       "corrections": [],
       "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261117-31CB7DA68879",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "L19生字",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小测一张；②读背49，默一次抄词本；③L19生字；④读作文15分钟在小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T22:46:31+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "牵（qiān）",
-          "question": "L19生字：拼音4遍、汉字4遍、结构、部首、笔画数、组词2个",
-          "reason": "笔画数写6，数错了：牵一共11画，部首牛是4画，除去部首还有7画（若按部首大3画计则为8画），6都不对",
-          "hint": "牵的拼音、字形、组词都对，只错了笔画数。先数一数牵一共有几画，再数一数部首有几画，减一减，除去部首还有几画？再想一想，牵的部首是哪一部分？",
-          "img": "",
-          "q_img": "",
-          "orig_text": "L19生字：牵（qiān），拼音4遍、汉字4遍、结构、部首、笔画数、组词2个。牵的笔画数写错了。",
-          "q_img_exempt": "",
-          "img_exempt": "图后补",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261117-7ED36066C5D6",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读作文15分钟在小管家",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小测一张；②读背49，默一次抄词本；③L19生字；④读作文15分钟在小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261117-7C4D25048E98",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背58-60",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背58-60；②思1-10 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261117-227060391097",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "思1-10",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背58-60；②思1-10 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "EXAM-20261117-7FAE1E637E41",
-      "title": "语文第五单元小测试订正（3题）",
-      "subject": "语文",
-      "source": "exam_correction",
-      "status": "pending",
-      "detail": "小测得了54分（满分60分），90分，有3道题要改。改对了，30分就到账：\n1. 一-1：郝这个字的读音选错了。郝是一个姓氏，读第几声？想一想，课文《灯光》里那位英雄叫什么名字？再读一遍这个字。\n2. 二-5：夏天那段话，最后一句再读一读：“玩耍的小朋友”已经在玩了，怎么会“不敢再跑出来玩”？想一想，小朋友在最热的时候会在哪里？把这句改通顺。\n3. 三-4：这道题空着没写。读一读短文最后一段，年夜饭的时候，全家人围坐在一起，还会有什么让你感受到年味？比如贴春联、放鞭炮、穿新衣，想一想再写一句。\n改完把订正拍上来（对应原卷 REG-20261117-7FAE1E637E41）。",
-      "corrections": [],
-      "corr_round": 0,
-      "created_at": "2026-11-17T23:16:21+08:00",
-      "updated_at": "2026-11-17T23:16:21+08:00",
-      "estimate_min": 15,
-      "evidence": [],
-      "pending_corrections": 0,
-      "review_status": "",
-      "status_source": "",
-      "raw_text": "",
-      "ocr_confidence": 0
     }
   ],
   "counts": {
-    "pending": 10,
-    "done": 3,
-    "in_progress": 3
+    "done": 3
   },
   "deadline_today": "2026-11-17T22:00:00+08:00",
   "total": 16

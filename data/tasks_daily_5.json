@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "五年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T23:54:18+08:00",
+  "updated_at": "2026-11-18T00:06:39+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -24,42 +24,6 @@
   },
   "tasks": [
     {
-      "task_id": "CHORE-20261117-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-17T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-17T00:18:24+08:00",
-      "updated_at": "2026-11-17T00:18:24+08:00"
-    },
-    {
-      "task_id": "READ-20261117-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-17T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-17T00:18:41+08:00",
-      "updated_at": "2026-11-17T00:18:41+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-17",
       "source": "meta",
       "task_type": "meta_register",
@@ -76,129 +40,6 @@
       "orig_photos": [
         "e42e9b9b315cb6e9.jpg"
       ]
-    },
-    {
-      "task_id": "PRACT-20261117-B822AE818A84",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-17.docx，按今日练习清单完成",
-      "kousuan": [
-        "4.2×3=",
-        "73+58=",
-        "3.5×4-6.2=",
-        "29.8×5.1≈（估算：两个因数都取整到个位后再相乘）",
-        "2.5×6.8×4="
-      ],
-      "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：语速舒缓，整体慢而稳，读出山中宁静、悠闲的意境，不要读得急躁；声音轻柔优美，特别是中间写景的句子，要读出清幽、纯净的感觉；最后两句读出深情与留恋，读出诗人寄情山水、淡泊名利的心境。\n英语口语任务说明：今晚的英语口语小任务只需 5 分钟：请回答下面日常生活和学校生活的问题，任选至少两个问题回答，30-45 秒，尽量用完整句子，录完后按看板任务按钮提交。\n提示问题：1. What do you usually do after school? 2. What is your favorite subject at school, and why do you like it? 3. Can you describe what you eat for breakfast every day? 4. How do you usually get to school?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-17.docx",
-      "file_hash": "25148a81d1a1f93f1c1beca23756b4e515f82982a8bd406d286442d6f8475da7",
-      "created_at": "2026-11-17T04:32:24+08:00",
-      "updated_at": "2026-11-17T04:32:24+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-17.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
-    },
-    {
-      "task_id": "D53-2026-11-17-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-17T04:34:28+08:00",
-      "updated_at": "2026-11-17T04:34:28+08:00"
-    },
-    {
-      "task_id": "REG-20261117-FDF13E676880",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小练笔79页（200~300字）",
-      "detail": "这次要交什么：全文重写这篇小练笔，补一个细节写到200字以上（现在152字，还差48字）。重写时一起改掉：开头俗语用错的字、顿号、惭愧缺的地、一把雨伞重复、分两三段。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:09:19+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "小练笔79页（200~300字）",
-          "question": "小练笔79页，200~300字",
-          "reason": "字数152字（不含标点）未达200字要求；开头惯用语'肚子都悔青了'用词不当",
-          "hint": "写得很好，妈妈把伞往你这边遮、自己淋雨那个细节很打动人，读着就能感到你的感动。这次只抓一个重点：字数还不够——现在152字（不数标点），还差48字才到200字。重写时补一个细节，不要凑字：比如妈妈是从哪里冒雨赶来的、她跑过来的时候是什么样子，或者你站在校门口等的时候心里在想什么，挑一个写具体，字数就够了。另外几个小地方，重写时一起改掉：开头那句俗语里，你写的那个身体部位的字不对，想一想'悔青了'的到底是身体里哪个部位；'低下头、鼻子一酸'中间那个顿号想一想该不该用，顿号是用在并列词语中间的，这里前后是两个动作；'惭愧低下头'里，'惭愧'后面接动词时中间少了个字；'一把雨伞'在文章里出现了两次，第二处换个说法；全文只有一段，重写时分成两三段（开头、妈妈来接、你的感受），读起来更清楚。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "小练笔79页（200~300字）",
-          "q_img_exempt": "语文小练笔无原题图",
-          "img_exempt": "小练笔重写类，字数与用词问题靠文字引导，引导图讲不清，豁免配图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261117-0EB802D53965",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本17课",
-      "detail": "这次要交什么：继续订正这2道题，改完重新拍照上传。1）阅读第2题——重答连用三个“奋力地”的作用（不是脱粒的目的，是写妈妈干活很吃力），并重写仿写句（“打在河面上”说不通，动词想好了再落笔）；2）阅读第4题——只剩一个字：“别别人家”里多了一个“别”字，划掉它。（选择题第1题已改对。）",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T22:00:00+08:00",
-      "corrections": [
-        {
-          "label": "连用三次“奋力地”是为了什么？仿写一句",
-          "question": "选文第5自然段画线句中，连用三次“奋力地”来描写母亲打麦子的场景是为了什么？请再仿写一句。（6分）",
-          "reason": "第一问仍答成脱粒的目的，未改；仿写“打在河面上”仍搭配不当，红笔改动后句子仍不通顺",
-          "hint": "第一问要答的是三个“奋力地”写出了妈妈什么样——妈妈一个人干这么重的活，很吃力、很不容易，不是脱粒这件事的目的。仿写再想一想：“打在河面上”说得通吗？动词和它后面的东西要配得上，想好了再落笔。",
-          "img": "guide_20261117_0EB802_damai.png",
-          "q_img": "",
-          "orig_text": "选文第5自然段画线句中，连用三次“奋力地”来描写母亲打麦子的场景是为了什么？请再仿写一句。（6分）",
-          "q_img_exempt": "语文校本无原题图",
-          "img_exempt": "",
-          "round": 2
-        },
-        {
-          "label": "哪一个场景让你印象深刻？理由",
-          "question": "选文中详细描写了“母亲月下脱谷粒”和“母亲为我做鸡蛋手擀面”的场景。哪一个场景让你印象深刻？把你的理由写在下面横线上。（3分）",
-          "reason": "“走工”已改成“赶工”；但“别别人家”仍多一个“别”字，未改",
-          "hint": "“走工”改成“赶工”改对了，很好。还剩一个字：“别别人家”里“别”字写了两个，多了一个，划掉一个“别”字就全对了。",
-          "img": "guide_20261117_0EB802_taimu.png",
-          "q_img": "",
-          "orig_text": "选文中详细描写了“母亲月下脱谷粒”和“母亲为我做鸡蛋手擀面”的场景。哪一个场景让你印象深刻？把你的理由写在下面横线上。（3分）",
-          "q_img_exempt": "语文校本无原题图",
-          "img_exempt": "",
-          "round": 2
-        }
-      ],
-      "pending_corrections": 2,
-      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261117-9E073018291F",
@@ -251,71 +92,10 @@
       ],
       "corrections": [],
       "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261117-DD0101BD418A",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "校本30页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:08:43+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "介绍自己擅长的运动（Fred，篮球）",
-          "question": "假设你是Fred，你擅长哪一项体育运动？针对这一项运动，你有哪些地方做得好？你有哪些不足的地方呢？你想在哪些方面再提升自己？请你写一篇小短文。要求：词数不少于40。",
-          "reason": "订正未改对：每天早上、朋友复数两处已改对；但 I good at 仍缺 be 动词、good at 后 play/swim 仍未改成动名词形式、I can learn swim 中 swim 划掉后未补正确形式、I am going to learn swim 中 swim 仍在、句末红笔 swimming 位置不明不能算改对。须把这几处改对、全文重写一遍再交。",
-          "hint": "这次改对了两处：每天早上、朋友复数。还剩几处动词要改，再想一想：第一句 I 后面跟 good at 时，中间少了什么词？good at 后面跟动词时，动词要变成什么形式？learn 后面跟 swim 时，中间要加什么小词？I can learn 后面把 swim 划掉之后，句子还缺什么？句末的 swimming 应该放在哪个动词后面？按这几处把短文重写一遍再交。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "假设你是Fred，你擅长哪一项体育运动？针对这一项运动，你有哪些地方做得好？你有哪些不足的地方呢？你想在哪些方面再提升自己？请你写一篇小短文，向大家介绍一下吧！要求：词数不少于40。参考词汇：good at, play basketball, catch the ball, pass the ball... 参考句型：1. I am good at ... 2. I can ... 3. I am going to...",
-          "q_img_exempt": "英语校本无原题图",
-          "img_exempt": "小练笔重写类，字数与用词问题靠文字引导，引导图讲不清，豁免配图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "MANUAL-20261117-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月17日",
-      "detail": "英语对话第11月17日：At the Fruit Market（去水果市场）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-17T19:28:57+08:00",
-      "updated_at": "2026-11-17T19:28:57+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月17日_去水果市场_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
-      ]
     }
   ],
   "counts": {
-    "total": 11,
-    "pending": 5,
-    "in_progress": 3,
-    "submitted": 0,
-    "grading": 0,
-    "done": 3,
-    "pending_review": 0
+    "done": 3
   },
   "deadline_today": "2026-11-17T22:00:00+08:00"
 }
