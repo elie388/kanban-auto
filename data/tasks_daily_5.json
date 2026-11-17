@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "五年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T18:41:39+08:00",
+  "updated_at": "2026-11-17T18:57:07+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -159,7 +159,7 @@
       "title": "校本42页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "grading",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①校本42页 → 待完成",
@@ -168,7 +168,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T17:56:53+08:00"
+      "updated_at": "2026-11-17T18:57:07+08:00",
+      "status_source": "upload-watch"
     },
     {
       "task_id": "REG-20261117-9E6DA50E189C",
@@ -213,11 +214,11 @@
   ],
   "counts": {
     "total": 10,
-    "pending": 9,
+    "pending": 7,
     "in_progress": 0,
     "submitted": 0,
-    "grading": 0,
-    "done": 1,
+    "grading": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-17T22:00:00+08:00"
