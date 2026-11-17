@@ -1,356 +1,343 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-17",
-  "grade": "五年级",
-  "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T21:58:10+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-17T19:50:32+08:00",
-      "new_lines": 0,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-17T04:32:28+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-17T16:55:38+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-17",
+ "grade": "五年级",
+ "generated_at": "2026-11-17T00:18:03+08:00",
+ "updated_at": "2026-11-17T21:58:10+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-17T19:50:32+08:00",
+   "new_lines": 0,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261117-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-17T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-17T00:18:24+08:00",
-      "updated_at": "2026-11-17T00:18:24+08:00"
-    },
-    {
-      "task_id": "READ-20261117-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-17T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-17T00:18:41+08:00",
-      "updated_at": "2026-11-17T00:18:41+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-17",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-17T04:00:11+08:00",
-      "updated_at": "2026-11-17T17:56:53+08:00",
-      "completed_at": "2026-11-17T17:56:53+08:00",
-      "orig_photos": [
-        "e42e9b9b315cb6e9.jpg"
-      ]
-    },
-    {
-      "task_id": "PRACT-20261117-B822AE818A84",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-17.docx，按今日练习清单完成",
-      "kousuan": [
-        "4.2×3=",
-        "73+58=",
-        "3.5×4-6.2=",
-        "29.8×5.1≈（估算：两个因数都取整到个位后再相乘）",
-        "2.5×6.8×4="
-      ],
-      "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：语速舒缓，整体慢而稳，读出山中宁静、悠闲的意境，不要读得急躁；声音轻柔优美，特别是中间写景的句子，要读出清幽、纯净的感觉；最后两句读出深情与留恋，读出诗人寄情山水、淡泊名利的心境。\n英语口语任务说明：今晚的英语口语小任务只需 5 分钟：请回答下面日常生活和学校生活的问题，任选至少两个问题回答，30-45 秒，尽量用完整句子，录完后按看板任务按钮提交。\n提示问题：1. What do you usually do after school? 2. What is your favorite subject at school, and why do you like it? 3. Can you describe what you eat for breakfast every day? 4. How do you usually get to school?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-17.docx",
-      "file_hash": "25148a81d1a1f93f1c1beca23756b4e515f82982a8bd406d286442d6f8475da7",
-      "created_at": "2026-11-17T04:32:24+08:00",
-      "updated_at": "2026-11-17T04:32:24+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-17.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
-    },
-    {
-      "task_id": "D53-2026-11-17-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-17T04:34:28+08:00",
-      "updated_at": "2026-11-17T04:34:28+08:00"
-    },
-    {
-      "task_id": "REG-20261117-FDF13E676880",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小练笔79页（200~300字）",
-      "detail": "这次要交什么：全文重写这篇小练笔，补一个细节写到200字以上（现在152字，还差48字）。重写时一起改掉：开头俗语用错的字、顿号、惭愧缺的地、一把雨伞重复、分两三段。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:09:19+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "小练笔79页（200~300字）",
-          "question": "小练笔79页，200~300字",
-          "reason": "字数152字（不含标点）未达200字要求；开头惯用语'肚子都悔青了'用词不当",
-          "hint": "写得很好，妈妈把伞往你这边遮、自己淋雨那个细节很打动人，读着就能感到你的感动。这次只抓一个重点：字数还不够——现在152字（不数标点），还差48字才到200字。重写时补一个细节，不要凑字：比如妈妈是从哪里冒雨赶来的、她跑过来的时候是什么样子，或者你站在校门口等的时候心里在想什么，挑一个写具体，字数就够了。另外几个小地方，重写时一起改掉：开头那句俗语里，你写的那个身体部位的字不对，想一想'悔青了'的到底是身体里哪个部位；'低下头、鼻子一酸'中间那个顿号想一想该不该用，顿号是用在并列词语中间的，这里前后是两个动作；'惭愧低下头'里，'惭愧'后面接动词时中间少了个字；'一把雨伞'在文章里出现了两次，第二处换个说法；全文只有一段，重写时分成两三段（开头、妈妈来接、你的感受），读起来更清楚。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "小练笔79页（200~300字）",
-          "q_img_exempt": "语文小练笔无原题图",
-          "img_exempt": "小练笔重写类，字数与用词问题靠文字引导，引导图讲不清，豁免配图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261117-0EB802D53965",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本17课",
-      "detail": "这次要交什么：订正这3道题，改完重新拍照上传。1）选择题第1题——重新选出读音、字形完全正确的一项（“耽误”的读音和“烦躁”的字形再想一想）；2）阅读第2题——重答连用三个“奋力地”的作用，并重写仿写句（动词想好了再落笔，不要写了又涂黑）；3）阅读第4题——只改两个字（多写的“别”、用错的“走”）。",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:19:55+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "下列读音、字形完全正确的一项",
-          "question": "下列读音、字形完全正确的一项是（ ）。A.失魂落魄（pò）机械（jiè）怂勇 B.疲惫（bèi）耽误（dāng）烦燥 C.衣兜（dōu）皲裂（jūn）脊背 D.缝纫机（yín）褐色（hè）抑制",
-          "reason": "B项“耽误（dāng）”应读dān、“烦燥”应为“烦躁”；正确选项是C（衣兜dōu、皲裂jūn、脊背全对）",
-          "hint": "这道题要一个选项一个选项慢慢查：先查每个词的读音对不对，再查字形有没有错别字。你选的B里面，有两个地方不对——一个是“耽误”的读音，一个是“烦躁”的字形，你再读一读、想一想，这两个地方应该是什么？另外，C选项里那个“皮字旁+军”的字，你认识吗？它读什么？",
-          "img": "guide_20261117_0EB802_junlie.png",
-          "q_img": "",
-          "orig_text": "下列读音、字形完全正确的一项是（ ）。A.失魂落魄（pò）机械（jiè）怂勇 B.疲惫（bèi）耽误（dāng）烦燥 C.衣兜（dōu）皲裂（jūn）脊背 D.缝纫机（yín）褐色（hè）抑制",
-          "q_img_exempt": "语文校本无原题图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "连用三次“奋力地”是为了什么？仿写一句",
-          "question": "选文第5自然段画线句中，连用三次“奋力地”来描写母亲打麦子的场景是为了什么？请再仿写一句。（6分）",
-          "reason": "第一问答非所问：写的是脱粒的目的，不是连用“奋力地”的表达效果；仿写动词搭配不当（“拿起杈树根”“打在河面上”语义不通），第二处动词涂黑无法辨认",
-          "hint": "这道题问的是：妈妈打麦子时，作者为什么要连用三个“奋力地”？想一想，妈妈一个人干这么重的活，连着写三个“奋力地”，写出了妈妈干活时怎样的状态？（是轻松，还是很吃力、很不容易？）你第一问写的“赶在入秋时脱粒归仓”是脱粒这件事的目的，不是这三个词的作用。仿写的时候，先想一个劳动的场景，再想想动词和它后面的东西配不配——比如“杈”是用来干什么的、“打在河面上”说得通吗？动词想好了再落笔，不要写了又涂黑。",
-          "img": "guide_20261117_0EB802_damai.png",
-          "q_img": "",
-          "orig_text": "选文第5自然段画线句中，连用三次“奋力地”来描写母亲打麦子的场景是为了什么？请再仿写一句。（6分）",
-          "q_img_exempt": "语文校本无原题图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "哪一个场景让你印象深刻？理由",
-          "question": "选文中详细描写了“母亲月下脱谷粒”和“母亲为我做鸡蛋手擀面”的场景。哪一个场景让你印象深刻？把你的理由写在下面横线上。（3分）",
-          "reason": "“别别人的”多一“别”字、“走工”应为“赶工”，2处语言错误",
-          "hint": "你选的场景和理由都很好——别人家是两个人赶工，妈妈却一个人，这正是让人印象最深的地方。只改两个字：一个字多写了（“别别人的”里哪个字是多余的？），一个字用错了（“走工”这个说法对吗？妈妈一个人干活，那个动词应该是什么？）。改对这两个字，这道题就全对了。",
-          "img": "guide_20261117_0EB802_taimu.png",
-          "q_img": "",
-          "orig_text": "选文中详细描写了“母亲月下脱谷粒”和“母亲为我做鸡蛋手擀面”的场景。哪一个场景让你印象深刻？把你的理由写在下面横线上。（3分）",
-          "q_img_exempt": "语文校本无原题图",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 3,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261117-9E073018291F",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本42页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①校本42页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:24:47+08:00",
-      "status_source": "closeout_writeback",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-17T19:24:47+08:00",
-      "orig_photos": [
-        "0fd93a6d5018ff2c.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261117-9E6DA50E189C",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T18:41:39+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-17T18:41:39+08:00",
-      "status_source": "reading_grading:kouluyi_screenshot",
-      "orig_photos": [
-        "43e64309a1130f51.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261117-DD0101BD418A",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "校本30页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:08:43+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "阅读理解-爱迪生为何说没有失败",
-          "question": "爱迪生说他没有失败的原因",
-          "reason": "孩子选A（因为他很快发明了电灯）。短文里爱迪生自己说：I have not failed. I've just found 10,000 ways that won't work——他是试了1万多次、发现了1万种行不通的方法，不是一次就很快成功，对应选项B。",
-          "hint": "回到短文里找一找爱迪生自己说的话：他说他刚刚发现了什么？再看一看选项A里的“很快”和选项B里的“行不通的方法”，哪一个和他说的话对得上？爱迪生是试了一次就成功，还是试了很多次才成功？",
-          "img": "guide_20261117_DD0101_aidisheng.png",
-          "q_img": "",
-          "orig_text": "Why does Thomas Edison say he has not failed? A. Because he invents the electric light quickly. B. Because he finds 10,000 ways that won't work. C. Because people don't laugh at him.",
-          "q_img_exempt": "原题印在作业照片内，无单独原题图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "阅读理解-勾践如何提醒自己",
-          "question": "勾践用什么办法提醒自己不要忘记失败",
-          "reason": "孩子选B（每天刻苦训练）。短文里写勾践回国后睡柴草、尝苦胆to remind himself of the failure——提醒自己不要忘记失败用的是睡柴草、尝苦胆，对应选项A；刻苦训练是他提醒自己之后做的事，不是提醒的办法。",
-          "hint": "短文里说勾践回国后每天做哪两件事来提醒自己不要忘记失败？“刻苦训练”是他提醒自己的办法，还是他提醒自己之后做的事？把to remind himself前面的句子再读一遍。",
-          "img": "guide_20261117_DD0101_goujian.png",
-          "q_img": "",
-          "orig_text": "What does Gou Jian do to remind himself of the failure? A. He sleeps on firewood and tastes bitter gall. B. He trains hard every day. C. He feels sad every day.",
-          "q_img_exempt": "原题印在作业照片内，无单独原题图",
-          "img_exempt": "",
-          "round": 1
-        },
-        {
-          "label": "小练笔-介绍自己擅长的运动",
-          "question": "假设是Fred，写短文介绍擅长的运动、做得好的地方、不足与提升计划，不少于40词",
-          "reason": "全文45词，达到不少于40词的要求；内容四点都写到了（擅长篮球、每天早上打球、朋友一起打、不擅长游泳、放学后每天学游泳）。语言有6处错误：①第一句I good at缺be动词；②good at后动词应用-ing形式（play应为playing，swim应为swimming）；③every day morning搭配不当，应用every morning；④friend应为复数friends，且have many friends play结构不对；⑤I can learn swim与⑥I am going to learn swim两处，learn后应接to swim。",
-          "hint": "写完先自己读三遍：①第一句里I后面是不是少了个小词？参考句型第一条是怎么写的？②good at后面跟动作的时候，这个动作要变成什么形式？③“早上”除了every day morning，我们平时学过哪个更地道的说法？④“朋友”不止一个的时候，friend要不要加s？⑤learn后面跟另一个动作，中间是不是少了个连接的小词？按这五处把短文重写一遍。",
-          "img": "guide_20261117_DD0101_lanqiu.png",
-          "q_img": "",
-          "orig_text": "假设你是Fred，你擅长哪一项体育运动？针对这一项运动，你有哪些地方做得好？你有哪些不足的地方呢？你想在哪些方面再提升自己？请你写一篇小短文，向大家介绍一下吧！要求：词数不少于40。参考词汇：good at, play basketball, catch the ball, pass the ball... 参考句型：1. I am good at ... 2. I can ... 3. I am going to ...",
-          "q_img_exempt": "原题印在作业照片内，无单独原题图",
-          "img_exempt": "",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 3,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "MANUAL-20261117-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月17日",
-      "detail": "英语对话第11月17日：At the Fruit Market（去水果市场）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-17T19:28:57+08:00",
-      "updated_at": "2026-11-17T19:28:57+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月17日_去水果市场_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
-      ]
-    }
-  ],
-  "counts": {
-    "total": 11,
-    "pending": 5,
-    "in_progress": 3,
-    "submitted": 0,
-    "grading": 0,
-    "done": 3,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-17T04:32:28+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-17T22:00:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-17T16:55:38+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261117-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-17T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-17T00:18:24+08:00",
+   "updated_at": "2026-11-17T00:18:24+08:00"
+  },
+  {
+   "task_id": "READ-20261117-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-17T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-17T00:18:41+08:00",
+   "updated_at": "2026-11-17T00:18:41+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-17",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-17T04:00:11+08:00",
+   "updated_at": "2026-11-17T17:56:53+08:00",
+   "completed_at": "2026-11-17T17:56:53+08:00",
+   "orig_photos": [
+    "e42e9b9b315cb6e9.jpg"
+   ]
+  },
+  {
+   "task_id": "PRACT-20261117-B822AE818A84",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "五年级针对性练习_2026-11-17.docx，按今日练习清单完成",
+   "kousuan": [
+    "4.2×3=",
+    "73+58=",
+    "3.5×4-6.2=",
+    "29.8×5.1≈（估算：两个因数都取整到个位后再相乘）",
+    "2.5×6.8×4="
+   ],
+   "recite_text": "语文背诵：《山居秋暝》（王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：语速舒缓，整体慢而稳，读出山中宁静、悠闲的意境，不要读得急躁；声音轻柔优美，特别是中间写景的句子，要读出清幽、纯净的感觉；最后两句读出深情与留恋，读出诗人寄情山水、淡泊名利的心境。\n英语口语任务说明：今晚的英语口语小任务只需 5 分钟：请回答下面日常生活和学校生活的问题，任选至少两个问题回答，30-45 秒，尽量用完整句子，录完后按看板任务按钮提交。\n提示问题：1. What do you usually do after school? 2. What is your favorite subject at school, and why do you like it? 3. Can you describe what you eat for breakfast every day? 4. How do you usually get to school?\n口语要求：时长30-45秒，语音语调自然，句子连贯，尽量用完整句子回答；注意一般现在时与第三人称单数动词加s。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-17.docx",
+   "file_hash": "25148a81d1a1f93f1c1beca23756b4e515f82982a8bd406d286442d6f8475da7",
+   "created_at": "2026-11-17T04:32:24+08:00",
+   "updated_at": "2026-11-17T04:32:24+08:00",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-11-17.pdf",
+     "label": "练习",
+     "pages": 4
+    }
+   ]
+  },
+  {
+   "task_id": "D53-2026-11-17-MATH",
+   "source": "daily_53",
+   "subject": "数学",
+   "title": "53天天练·数学",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-11-17T04:34:28+08:00",
+   "updated_at": "2026-11-17T04:34:28+08:00"
+  },
+  {
+   "task_id": "REG-20261117-FDF13E676880",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "小练笔79页（200~300字）",
+   "detail": "这次要交什么：全文重写这篇小练笔，补一个细节写到200字以上（现在152字，还差48字）。重写时一起改掉：开头俗语用错的字、顿号、惭愧缺的地、一把雨伞重复、分两三段。",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-17T17:56:53+08:00",
+   "updated_at": "2026-11-17T19:09:19+08:00",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "小练笔79页（200~300字）",
+     "question": "小练笔79页，200~300字",
+     "reason": "字数152字（不含标点）未达200字要求；开头惯用语'肚子都悔青了'用词不当",
+     "hint": "写得很好，妈妈把伞往你这边遮、自己淋雨那个细节很打动人，读着就能感到你的感动。这次只抓一个重点：字数还不够——现在152字（不数标点），还差48字才到200字。重写时补一个细节，不要凑字：比如妈妈是从哪里冒雨赶来的、她跑过来的时候是什么样子，或者你站在校门口等的时候心里在想什么，挑一个写具体，字数就够了。另外几个小地方，重写时一起改掉：开头那句俗语里，你写的那个身体部位的字不对，想一想'悔青了'的到底是身体里哪个部位；'低下头、鼻子一酸'中间那个顿号想一想该不该用，顿号是用在并列词语中间的，这里前后是两个动作；'惭愧低下头'里，'惭愧'后面接动词时中间少了个字；'一把雨伞'在文章里出现了两次，第二处换个说法；全文只有一段，重写时分成两三段（开头、妈妈来接、你的感受），读起来更清楚。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "小练笔79页（200~300字）",
+     "q_img_exempt": "语文小练笔无原题图",
+     "img_exempt": "小练笔重写类，字数与用词问题靠文字引导，引导图讲不清，豁免配图",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 1,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "REG-20261117-0EB802D53965",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本17课",
+   "detail": "这次要交什么：继续订正这2道题，改完重新拍照上传。1）阅读第2题——重答连用三个“奋力地”的作用（不是脱粒的目的，是写妈妈干活很吃力），并重写仿写句（“打在河面上”说不通，动词想好了再落笔）；2）阅读第4题——只剩一个字：“别别人家”里多了一个“别”字，划掉它。（选择题第1题已改对。）",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①小练笔79页（200~300字）；②校本17课 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-17T17:56:53+08:00",
+   "updated_at": "2026-11-17T22:00:00+08:00",
+   "corrections": [
+    {
+     "label": "连用三次“奋力地”是为了什么？仿写一句",
+     "question": "选文第5自然段画线句中，连用三次“奋力地”来描写母亲打麦子的场景是为了什么？请再仿写一句。（6分）",
+     "reason": "第一问仍答成脱粒的目的，未改；仿写“打在河面上”仍搭配不当，红笔改动后句子仍不通顺",
+     "hint": "第一问要答的是三个“奋力地”写出了妈妈什么样——妈妈一个人干这么重的活，很吃力、很不容易，不是脱粒这件事的目的。仿写再想一想：“打在河面上”说得通吗？动词和它后面的东西要配得上，想好了再落笔。",
+     "img": "guide_20261117_0EB802_damai.png",
+     "q_img": "",
+     "orig_text": "选文第5自然段画线句中，连用三次“奋力地”来描写母亲打麦子的场景是为了什么？请再仿写一句。（6分）",
+     "q_img_exempt": "语文校本无原题图",
+     "img_exempt": "",
+     "round": 2
+    },
+    {
+     "label": "哪一个场景让你印象深刻？理由",
+     "question": "选文中详细描写了“母亲月下脱谷粒”和“母亲为我做鸡蛋手擀面”的场景。哪一个场景让你印象深刻？把你的理由写在下面横线上。（3分）",
+     "reason": "“走工”已改成“赶工”；但“别别人家”仍多一个“别”字，未改",
+     "hint": "“走工”改成“赶工”改对了，很好。还剩一个字：“别别人家”里“别”字写了两个，多了一个，划掉一个“别”字就全对了。",
+     "img": "guide_20261117_0EB802_taimu.png",
+     "q_img": "",
+     "orig_text": "选文中详细描写了“母亲月下脱谷粒”和“母亲为我做鸡蛋手擀面”的场景。哪一个场景让你印象深刻？把你的理由写在下面横线上。（3分）",
+     "q_img_exempt": "语文校本无原题图",
+     "img_exempt": "",
+     "round": 2
+    }
+   ],
+   "pending_corrections": 2,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "REG-20261117-9E073018291F",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "校本42页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①校本42页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-17T17:56:53+08:00",
+   "updated_at": "2026-11-17T19:24:47+08:00",
+   "status_source": "closeout_writeback",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-17T19:24:47+08:00",
+   "orig_photos": [
+    "0fd93a6d5018ff2c.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261117-9E6DA50E189C",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-17T17:56:53+08:00",
+   "updated_at": "2026-11-17T18:41:39+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral",
+   "completed_at": "2026-11-17T18:41:39+08:00",
+   "status_source": "reading_grading:kouluyi_screenshot",
+   "orig_photos": [
+    "43e64309a1130f51.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261117-DD0101BD418A",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "校本30页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-17T17:56:53+08:00",
+   "updated_at": "2026-11-17T19:08:43+08:00",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "阅读理解-爱迪生为何说没有失败",
+     "question": "爱迪生说他没有失败的原因",
+     "reason": "孩子选A（因为他很快发明了电灯）。短文里爱迪生自己说：I have not failed. I've just found 10,000 ways that won't work——他是试了1万多次、发现了1万种行不通的方法，不是一次就很快成功，对应选项B。",
+     "hint": "回到短文里找一找爱迪生自己说的话：他说他刚刚发现了什么？再看一看选项A里的“很快”和选项B里的“行不通的方法”，哪一个和他说的话对得上？爱迪生是试了一次就成功，还是试了很多次才成功？",
+     "img": "guide_20261117_DD0101_aidisheng.png",
+     "q_img": "",
+     "orig_text": "Why does Thomas Edison say he has not failed? A. Because he invents the electric light quickly. B. Because he finds 10,000 ways that won't work. C. Because people don't laugh at him.",
+     "q_img_exempt": "原题印在作业照片内，无单独原题图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "阅读理解-勾践如何提醒自己",
+     "question": "勾践用什么办法提醒自己不要忘记失败",
+     "reason": "孩子选B（每天刻苦训练）。短文里写勾践回国后睡柴草、尝苦胆to remind himself of the failure——提醒自己不要忘记失败用的是睡柴草、尝苦胆，对应选项A；刻苦训练是他提醒自己之后做的事，不是提醒的办法。",
+     "hint": "短文里说勾践回国后每天做哪两件事来提醒自己不要忘记失败？“刻苦训练”是他提醒自己的办法，还是他提醒自己之后做的事？把to remind himself前面的句子再读一遍。",
+     "img": "guide_20261117_DD0101_goujian.png",
+     "q_img": "",
+     "orig_text": "What does Gou Jian do to remind himself of the failure? A. He sleeps on firewood and tastes bitter gall. B. He trains hard every day. C. He feels sad every day.",
+     "q_img_exempt": "原题印在作业照片内，无单独原题图",
+     "img_exempt": "",
+     "round": 1
+    },
+    {
+     "label": "小练笔-介绍自己擅长的运动",
+     "question": "假设是Fred，写短文介绍擅长的运动、做得好的地方、不足与提升计划，不少于40词",
+     "reason": "全文45词，达到不少于40词的要求；内容四点都写到了（擅长篮球、每天早上打球、朋友一起打、不擅长游泳、放学后每天学游泳）。语言有6处错误：①第一句I good at缺be动词；②good at后动词应用-ing形式（play应为playing，swim应为swimming）；③every day morning搭配不当，应用every morning；④friend应为复数friends，且have many friends play结构不对；⑤I can learn swim与⑥I am going to learn swim两处，learn后应接to swim。",
+     "hint": "写完先自己读三遍：①第一句里I后面是不是少了个小词？参考句型第一条是怎么写的？②good at后面跟动作的时候，这个动作要变成什么形式？③“早上”除了every day morning，我们平时学过哪个更地道的说法？④“朋友”不止一个的时候，friend要不要加s？⑤learn后面跟另一个动作，中间是不是少了个连接的小词？按这五处把短文重写一遍。",
+     "img": "guide_20261117_DD0101_lanqiu.png",
+     "q_img": "",
+     "orig_text": "假设你是Fred，你擅长哪一项体育运动？针对这一项运动，你有哪些地方做得好？你有哪些不足的地方呢？你想在哪些方面再提升自己？请你写一篇小短文，向大家介绍一下吧！要求：词数不少于40。参考词汇：good at, play basketball, catch the ball, pass the ball... 参考句型：1. I am good at ... 2. I can ... 3. I am going to ...",
+     "q_img_exempt": "原题印在作业照片内，无单独原题图",
+     "img_exempt": "",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 3,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "MANUAL-20261117-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语对话第11月17日",
+   "detail": "英语对话第11月17日：At the Fruit Market（去水果市场）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-17T19:28:57+08:00",
+   "updated_at": "2026-11-17T19:28:57+08:00",
+   "files": [
+    {
+     "name": "英语对话第11月17日_去水果市场_打印版.pdf",
+     "label": "对话打印版",
+     "pages": 2
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "total": 11,
+  "pending": 5,
+  "in_progress": 3,
+  "submitted": 0,
+  "grading": 0,
+  "done": 3,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-17T22:00:00+08:00"
 }
