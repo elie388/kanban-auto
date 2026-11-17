@@ -200,7 +200,7 @@
       "task_id": "REG-20261117-AE995ED092C4",
       "source": "register_book",
       "subject": "英语早读",
-      "title": "42、43句子（明早读早读任务）",
+      "title": "41、42、43句子（明早读早读任务）",
       "detail": "原状态：待完成",
       "estimate_min": null,
       "status": "pending",
@@ -212,7 +212,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00",
+      "updated_at": "2026-11-17T19:49:59+08:00",
       "task_type": "read",
       "type_source": "regex_read"
     },
