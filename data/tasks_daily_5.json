@@ -1,101 +1,35 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "grade": "五年级",
-  "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-18T00:06:39+08:00",
+  "generated_at": "2026-11-18T00:18:03+08:00",
+  "updated_at": "2026-11-18T00:18:03+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-17T23:54:18+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-17T04:32:28+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-17T16:55:38+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "META-REGISTER-2026-11-17",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-17T04:00:11+08:00",
-      "updated_at": "2026-11-17T17:56:53+08:00",
-      "completed_at": "2026-11-17T17:56:53+08:00",
-      "orig_photos": [
-        "e42e9b9b315cb6e9.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261117-9E073018291F",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本42页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①校本42页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T19:24:47+08:00",
-      "status_source": "closeout_writeback",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-17T19:24:47+08:00",
-      "orig_photos": [
-        "0fd93a6d5018ff2c.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261117-9E6DA50E189C",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本30页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-17T17:56:53+08:00",
-      "updated_at": "2026-11-17T18:41:39+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-17T18:41:39+08:00",
-      "status_source": "reading_grading:kouluyi_screenshot",
-      "orig_photos": [
-        "43e64309a1130f51.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "done": 3
+    "total": 0,
+    "pending": 0,
+    "in_progress": 0,
+    "submitted": 0,
+    "grading": 0,
+    "done": 0,
+    "pending_review": 0
   },
-  "deadline_today": "2026-11-17T22:00:00+08:00"
+  "deadline_today": null
 }

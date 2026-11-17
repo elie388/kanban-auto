@@ -1,25 +1,25 @@
 {
- "date": "2026-11-16",
+ "date": "2026-11-17",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-16",
+   "task_id": "META-REGISTER-2026-11-17",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261116-F1D13E1F1D93",
-   "title": "听写14课词在作文顶头",
-   "subject": "语文",
+   "task_id": "REG-20261116-EDE106B46180",
+   "title": "写P42的中文",
+   "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261116-D924F7BAA2B9",
-   "title": "校本P40",
-   "subject": "数学",
+   "task_id": "REG-20261117-B081EBA72BF2",
+   "title": "读背49，默一次抄词本",
+   "subject": "语文",
    "source": "register_book",
    "group": "study"
   }
