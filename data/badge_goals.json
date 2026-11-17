@@ -457,8 +457,8 @@
     "key": "quanduizhixing",
     "obtained": true,
     "date": "2026-11-16",
-    "count": 1,
-    "total_count": 4,
+    "count": 2,
+    "total_count": 5,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W47",
- "generated_at": "2026-11-17T19:34:19.731930+08:00"
+ "generated_at": "2026-11-17T22:49:18.951965+08:00"
 }
