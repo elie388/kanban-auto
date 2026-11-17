@@ -3,7 +3,7 @@
   "date": "2026-11-17",
   "grade": "六年级",
   "generated_at": "2026-11-17T00:18:03+08:00",
-  "updated_at": "2026-11-17T22:46:42+08:00",
+  "updated_at": "2026-11-17T22:48:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -179,7 +179,9 @@
       "created_at": "2026-11-17T19:47:06+08:00",
       "updated_at": "2026-11-17T21:37:06+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261117-E260D99A639F",
@@ -197,7 +199,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00"
+      "updated_at": "2026-11-17T19:47:06+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261117-7FAE1E637E41",
@@ -215,7 +219,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00"
+      "updated_at": "2026-11-17T19:47:06+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261117-B081EBA72BF2",
@@ -242,7 +248,9 @@
         "9d3623913e7ed0ca.jpg",
         "d2ae6c3b0c16b1e9.jpg",
         "6472418f1c25501a.jpg"
-      ]
+      ],
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261117-31CB7DA68879",
@@ -280,7 +288,9 @@
       "created_at": "2026-11-17T19:47:06+08:00",
       "updated_at": "2026-11-17T19:47:06+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261117-7C4D25048E98",
@@ -300,7 +310,9 @@
       "created_at": "2026-11-17T19:47:06+08:00",
       "updated_at": "2026-11-17T19:47:06+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261117-227060391097",
@@ -318,7 +330,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-17T19:47:06+08:00",
-      "updated_at": "2026-11-17T19:47:06+08:00"
+      "updated_at": "2026-11-17T19:47:06+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     }
   ],
   "counts": {
