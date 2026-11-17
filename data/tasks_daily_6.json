@@ -203,12 +203,35 @@
       "corrections": [],
       "pending_corrections": 0,
       "completed_at": "2026-11-17T00:16:28+08:00"
+    },
+    {
+      "task_id": "REG-20261116-62CB764691FC",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读第5单元15分钟在小管家",
+      "detail": "这次要交什么：重新读第5单元，满15分钟，在小管家录好完整的15分钟朗读录音再交。前面两次交的不对：一次是5秒视频片尾语，一次是5秒歌曲片段，小管家截图只读了6分49秒，不够15分钟。这次要录满15分钟再交。",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①试卷（不写作文）；②听写14课词在作文顶头；③读第5单元15分钟在小管家 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-16T19:21:41+08:00",
+      "updated_at": "2026-11-17T11:25:31+08:00",
+      "task_type": "read",
+      "type_source": "regex_read",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "parent_restore_20261117"
     }
   ],
   "counts": {
-    "total": 7,
+    "total": 8,
     "pending": 5,
-    "in_progress": 1,
+    "in_progress": 2,
     "submitted": 0,
     "grading": 0,
     "done": 1,
