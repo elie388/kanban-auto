@@ -3,7 +3,7 @@
   "date": "2026-11-18",
   "grade": "五年级",
   "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T04:18:04+08:00",
+  "updated_at": "2026-11-18T04:25:06+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-18T04:25:06+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -105,16 +105,45 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "PRACT-20261118-39CF4783C3FB",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-18.docx，按今日练习清单完成",
+      "kousuan": [
+        "3.6×5=",
+        "86+49=",
+        "2.8×4+3.6=",
+        "2.5×3.4×4=",
+        "21.9×4.8≈（估算：两个因数都取整到个位后再相乘）"
+      ],
+      "recite_text": "语文背诵：《秋思》（张籍）\n原文：洛阳城里见秋风，欲作家书意万重。复恐匆匆说不尽，行人临发又开封。\n朗读要求：读出绵绵的思乡之情；注意“秋风”、“家书”等词语处的适当停顿与深沉的语气。\n英语口语任务说明：先跟读下面的短文两遍，再用自己的话复述大意（3-4句话），录音发回。短文：Last Sunday, my family and I went to the park. The weather was fine. We had a happy picnic under a big green tree. After lunch, my father and I flew a colourful kite high in the sky. My mother sat on the grass and read a book quietly. We felt very happy and relaxed.\n提示问题：1. Where did they go? 2. What did they do in the park? 3. How did they feel?\n口语要求：先跟读短文两遍，再用自己的话复述大意（3-4句话），录音发回；注意一般现在时与第三人称单数动词加s。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-18.docx",
+      "file_hash": "5527fd19f18240be6e1a4bad293a3ae196aee1623d736b0c8fa36807a46d6742",
+      "created_at": "2026-11-18T04:25:00+08:00",
+      "updated_at": "2026-11-18T04:25:00+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-18.pdf",
+          "label": "练习",
+          "pages": 5
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 5,
-    "pending": 5,
+    "total": 6,
+    "pending": 6,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-18T22:00:00+08:00"
 }
