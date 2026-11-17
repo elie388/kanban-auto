@@ -1,12 +1,21 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-17T22:49:14+08:00",
+  "generated_at": "2026-11-17T22:54:14+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-17",
+      "time": "22:56",
+      "time_source": "entry",
+      "reason": "L19生字抄写完成",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
     {
       "date": "11-17",
       "time": "21:21",
