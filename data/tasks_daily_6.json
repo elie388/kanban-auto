@@ -3,7 +3,7 @@
   "date": "2026-11-18",
   "grade": "六年级",
   "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T21:18:40+08:00",
+  "updated_at": "2026-11-18T21:35:41+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -44,24 +44,6 @@
       "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b179500098941754d468bfc1f9056d（approved）；回写 chore_task_writeback。"
     },
     {
-      "task_id": "READ-20261118-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-18T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-18T00:18:24+08:00",
-      "updated_at": "2026-11-18T00:18:24+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-18",
       "source": "meta",
       "task_type": "meta_register",
@@ -77,26 +59,6 @@
       "completed_at": "2026-11-18T19:32:51+08:00",
       "orig_photos": [
         "3ff6adca69ed2a1c.jpg"
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261118-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第19期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-18T04:17:07+08:00",
-      "updated_at": "2026-11-18T04:18:04+08:00",
-      "files": [
-        {
-          "name": "六年级英语阅读写作_2026-11-18.pdf",
-          "label": "英语阅读写作练习",
-          "pages": 2
-        }
       ]
     },
     {
@@ -224,8 +186,8 @@
     }
   ],
   "counts": {
-    "total": 10,
-    "pending": 6,
+    "total": 8,
+    "pending": 4,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
