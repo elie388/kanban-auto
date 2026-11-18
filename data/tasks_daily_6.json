@@ -228,7 +228,7 @@
       "title": "读作文15分钟，记录①（5行以上）",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
@@ -237,18 +237,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T19:32:51+08:00",
+      "updated_at": "2026-11-18T21:12:08+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "completed_at": "2026-11-18T21:12:08+08:00"
     }
   ],
   "counts": {
     "total": 11,
-    "pending": 8,
+    "pending": 7,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 3,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-11-18T22:30:00+08:00"
