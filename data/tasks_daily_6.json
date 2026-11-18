@@ -243,8 +243,13 @@
     }
   ],
   "counts": {
+    "total": 11,
+    "pending": 8,
+    "in_progress": 0,
+    "submitted": 0,
+    "grading": 0,
     "done": 3,
-    "pending": 8
+    "pending_review": 0
   },
   "deadline_today": "2026-11-18T22:30:00+08:00"
 }
