@@ -3,7 +3,7 @@
   "date": "2026-11-18",
   "grade": "六年级",
   "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T19:32:51+08:00",
+  "updated_at": "2026-11-18T19:56:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -87,7 +87,10 @@
       "created_by": "system",
       "created_at": "2026-11-18T03:59:33+08:00",
       "updated_at": "2026-11-18T19:32:51+08:00",
-      "completed_at": "2026-11-18T19:32:51+08:00"
+      "completed_at": "2026-11-18T19:32:51+08:00",
+      "orig_photos": [
+        "3ff6adca69ed2a1c.jpg"
+      ]
     },
     {
       "task_id": "MANUAL-20261118-001",
@@ -139,7 +142,7 @@
       "title": "完成校本P29、30的练习，写法",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①完成校本P29、30的练习，写法；②读小管家，读P45作文5次 → 待完成",
@@ -148,7 +151,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T19:32:51+08:00"
+      "updated_at": "2026-11-18T19:56:00+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-18T19:56:00+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "95dd784c109a1309.jpg",
+        "e9e87fea0264459a.jpg"
+      ]
     },
     {
       "task_id": "REG-20261118-D0946CD14F93",
@@ -269,11 +280,11 @@
   ],
   "counts": {
     "total": 13,
-    "pending": 11,
+    "pending": 10,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-18T22:30:00+08:00"
