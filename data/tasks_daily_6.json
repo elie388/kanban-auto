@@ -3,7 +3,7 @@
   "date": "2026-11-18",
   "grade": "六年级",
   "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T20:08:27+08:00",
+  "updated_at": "2026-11-18T20:13:52+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -62,19 +62,6 @@
       "updated_at": "2026-11-18T00:18:24+08:00"
     },
     {
-      "task_id": "D53-2026-11-18-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-18T03:59:32+08:00",
-      "updated_at": "2026-11-18T03:59:32+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-18",
       "source": "meta",
       "task_type": "meta_register",
@@ -109,29 +96,6 @@
           "name": "六年级英语阅读写作_2026-11-18.pdf",
           "label": "英语阅读写作练习",
           "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "PRACT-20261118-6F8064989B33",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "六年级针对性练习_2026-11-18.docx，按今日练习清单完成",
-      "kousuan": [],
-      "recite_text": "语文背诵：《江南春》（杜牧）\n原文：千里莺啼绿映红，水村山郭酒旗风。南朝四百八十寺，多少楼台烟雨中。\n朗读要求：前两句语调要读得明快、热烈，读出春天的勃勃生机；后两句语调转为舒缓、悠远，特别是“千里”和“烟雨中”要读出空间感和历史的深沉感。\n英语口语任务说明：请描述一幅家庭野餐图（爸爸、妈妈和孩子在公园的草地上野餐，有风筝、足球和野餐篮）。用英语说5-6句话，内容包括：他们在哪里？他们在做什么？他们感觉怎么样？录音发回。\n提示问题：1. Where are they? 2. What are they doing? 3. How do they feel?\n口语要求：用英语说5-6句话，录音发回。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-18.docx",
-      "file_hash": "06c67e54ec6731e1b761b97ae726e3dc8c68098110a3dc50b74f868207a1b481",
-      "created_at": "2026-11-18T04:25:06+08:00",
-      "updated_at": "2026-11-18T04:25:06+08:00",
-      "files": [
-        {
-          "name": "六年级针对性练习_2026-11-18.pdf",
-          "label": "练习",
-          "pages": 4
         }
       ]
     },
@@ -279,13 +243,8 @@
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 10,
-    "in_progress": 0,
-    "submitted": 0,
-    "grading": 0,
     "done": 3,
-    "pending_review": 0
+    "pending": 8
   },
   "deadline_today": "2026-11-18T22:30:00+08:00"
 }
