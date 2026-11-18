@@ -1,203 +1,204 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-18",
-  "grade": "六年级",
-  "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T21:51:18+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-18T19:32:51+08:00",
-      "new_lines": 7,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-18T04:25:10+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-18T16:55:41+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-18",
+ "grade": "六年级",
+ "generated_at": "2026-11-18T00:18:03+08:00",
+ "updated_at": "2026-11-18T21:51:18+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-18T19:32:51+08:00",
+   "new_lines": 7,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261118-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "19:23 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-18T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-18T00:18:17+08:00",
-      "updated_at": "2026-11-18T21:51:18+08:00",
-      "completed_at": "2026-11-18T19:26:27+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b179500098941754d468bfc1f9056d（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-18",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-18T03:59:33+08:00",
-      "updated_at": "2026-11-18T19:32:51+08:00",
-      "completed_at": "2026-11-18T19:32:51+08:00",
-      "orig_photos": [
-        "3ff6adca69ed2a1c.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261118-210AFC5C98C1",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "完成校本P29、30的练习，写法",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成校本P29、30的练习，写法；②读小管家，读P45作文5次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T19:56:00+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-18T19:56:00+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "95dd784c109a1309.jpg",
-        "e9e87fea0264459a.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261118-D0946CD14F93",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "读小管家，读P45作文5次",
-      "detail": "原状态：待完成\n这次要补交：P45 作文原文照片（拍课本 P45 作文那页）＋读 5 次的录音；或者在小管家里完成 P45 作文朗读，截图要能看到 P45 作文这一项。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①完成校本P29、30的练习，写法；②读小管家，读P45作文5次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T21:26:52+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao"
-    },
-    {
-      "task_id": "REG-20261118-336012F8A89F",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本园地五",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T19:32:51+08:00"
-    },
-    {
-      "task_id": "REG-20261118-1A9F21D041C6",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "修改作文（至少要有八处点评）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T19:32:51+08:00"
-    },
-    {
-      "task_id": "REG-20261118-0D9CCD4F55DE",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "复习第5单元，准备考试",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T19:32:51+08:00",
-      "task_type": "read",
-      "type_source": "regex_read"
-    },
-    {
-      "task_id": "REG-20261118-348C68B567BA",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读作文15分钟，记录①（5行以上）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T19:32:51+08:00",
-      "updated_at": "2026-11-18T21:12:08+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "completed_at": "2026-11-18T21:12:08+08:00",
-      "orig_photos": [
-        "5ec6eb97553b9e8e.jpg",
-        "d7a67ae448414978.jpg",
-        "c94d1f8d5df3b2c5.jpg"
-      ]
-    }
-  ],
-  "counts": {
-    "total": 8,
-    "pending": 4,
-    "in_progress": 0,
-    "submitted": 0,
-    "grading": 0,
-    "done": 4,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-18T04:25:10+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-18T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-18T16:55:41+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261118-G6",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "19:23 晾衣服",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "appear_at": "2026-11-18T17:30:00+08:00",
+   "chore_done_count": 1,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-18T00:18:17+08:00",
+   "updated_at": "2026-11-18T21:51:18+08:00",
+   "completed_at": "2026-11-18T19:26:27+08:00",
+   "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b179500098941754d468bfc1f9056d（approved）；回写 chore_task_writeback。"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-18",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-18T03:59:33+08:00",
+   "updated_at": "2026-11-18T19:32:51+08:00",
+   "completed_at": "2026-11-18T19:32:51+08:00",
+   "orig_photos": [
+    "3ff6adca69ed2a1c.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261118-210AFC5C98C1",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "完成校本P29、30的练习，写法",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①完成校本P29、30的练习，写法；②读小管家，读P45作文5次 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-18T19:32:51+08:00",
+   "updated_at": "2026-11-18T19:56:00+08:00",
+   "corrections": [],
+   "pending_corrections": 0,
+   "completed_at": "2026-11-18T19:56:00+08:00",
+   "status_source": "closeout_writeback",
+   "orig_photos": [
+    "95dd784c109a1309.jpg",
+    "e9e87fea0264459a.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261118-D0946CD14F93",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "读小管家，读P45作文5次",
+   "detail": "原状态：待完成\n这次要补交：P45 作文原文照片（拍课本 P45 作文那页）＋读 5 次的录音；或者在小管家里完成 P45 作文朗读，截图要能看到 P45 作文这一项。",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①完成校本P29、30的练习，写法；②读小管家，读P45作文5次 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-18T19:32:51+08:00",
+   "updated_at": "2026-11-18T22:06:29+08:00",
+   "task_type": "reading",
+   "type_source": "regex_bao",
+   "completed_at": "2026-11-18T22:06:29+08:00"
+  },
+  {
+   "task_id": "REG-20261118-336012F8A89F",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本园地五",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-18T19:32:51+08:00",
+   "updated_at": "2026-11-18T19:32:51+08:00"
+  },
+  {
+   "task_id": "REG-20261118-1A9F21D041C6",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "修改作文（至少要有八处点评）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-18T19:32:51+08:00",
+   "updated_at": "2026-11-18T19:32:51+08:00"
+  },
+  {
+   "task_id": "REG-20261118-0D9CCD4F55DE",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "复习第5单元，准备考试",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-18T19:32:51+08:00",
+   "updated_at": "2026-11-18T19:32:51+08:00",
+   "task_type": "read",
+   "type_source": "regex_read"
+  },
+  {
+   "task_id": "REG-20261118-348C68B567BA",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读作文15分钟，记录①（5行以上）",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本园地五；②修改作文（至少要有八处点评）；③复习第5单元，准备考试；④读作文15分钟，记录①（5行以上） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-18T19:32:51+08:00",
+   "updated_at": "2026-11-18T21:12:08+08:00",
+   "task_type": "reading",
+   "type_source": "regex_bao",
+   "completed_at": "2026-11-18T21:12:08+08:00",
+   "orig_photos": [
+    "5ec6eb97553b9e8e.jpg",
+    "d7a67ae448414978.jpg",
+    "c94d1f8d5df3b2c5.jpg"
+   ]
+  }
+ ],
+ "counts": {
+  "total": 8,
+  "pending": 3,
+  "in_progress": 0,
+  "submitted": 0,
+  "grading": 0,
+  "done": 5,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-18T22:30:00+08:00"
 }
