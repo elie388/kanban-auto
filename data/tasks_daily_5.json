@@ -3,7 +3,7 @@
   "date": "2026-11-18",
   "grade": "五年级",
   "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T18:25:16+08:00",
+  "updated_at": "2026-11-18T18:51:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -72,7 +72,10 @@
       "created_by": "system",
       "created_at": "2026-11-18T03:59:32+08:00",
       "updated_at": "2026-11-18T18:25:16+08:00",
-      "completed_at": "2026-11-18T18:25:16+08:00"
+      "completed_at": "2026-11-18T18:25:16+08:00",
+      "orig_photos": [
+        "3779ebc4f19971e1.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-11-18-MATH",
@@ -163,7 +166,7 @@
       "title": "小试卷",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
@@ -172,7 +175,156 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-18T18:25:16+08:00",
-      "updated_at": "2026-11-18T18:25:16+08:00"
+      "updated_at": "2026-11-18T18:51:48+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "get better at English 分类（2）",
+          "question": "根据例子将词汇分类。2. get better at English",
+          "reason": "画画、跳舞、做饭是学新本领，应归“学新东西”；带 English 的读英语书、听英语歌才是“把英语学得更好”",
+          "hint": "看看这三个短语里有没有 English 这个词？没有 English 的本领，应该归到哪一类？哪一类是“学新东西”？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、同学们在互相分享着自己的目标。读一读，根据所给例子将下列词汇分类。2. get better at English",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "learn something new 分类（3）",
+          "question": "根据例子将词汇分类。3. learn something new",
+          "reason": "这两个短语里都有 English，是学英语的内容，应归“把英语学得更好”；学画画、跳舞、做饭才是学新东西",
+          "hint": "这两个短语里都有哪个词？带这个词的短语，应该和“英语”归在一类，还是和“学新东西”归在一类？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一、同学们在互相分享着自己的目标。读一读，根据所给例子将下列词汇分类。3. learn something new",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "should 后动词形式（1）",
+          "question": "用所给词的适当形式填空。1. We should ______ (eat) more vegetables.",
+          "reason": "情态动词 should 后面跟动词原形，不能加 -s",
+          "hint": "should 后面跟的动词要用什么形式？想一想 can 后面的动词加不加 -s？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、同学们正在写愿望清单，他们边写边聊。用所给词的适当形式填空，补全句子。1. We should ______ (eat) more vegetables. They can make us healthy.",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "be going to 后动词形式（2）",
+          "question": "用所给词的适当形式填空。2. I'm going to ______ (listen) to English songs every day.",
+          "reason": "be going to 后面跟动词原形，不能加 -s",
+          "hint": "“be going to”后面跟的动词要变第几人称，还是保持原形？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、同学们正在写愿望清单，他们边写边聊。用所给词的适当形式填空，补全句子。2. I'm going to ______ (listen) to English songs every day.",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "want to do 结构（3）",
+          "question": "用所给词的适当形式填空。3. Lucy wants ______ (get) better at English.",
+          "reason": "want 后面接动词要用 want to do 结构，缺 to，且动词写错",
+          "hint": "“想要做某事”这个固定搭配中间缺了一个小词，是哪一个？括号里给的动词是哪个？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、同学们正在写愿望清单，他们边写边聊。用所给词的适当形式填空，补全句子。3. Lucy wants ______ (get) better at English.",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "补全对话：John 学什么（1）",
+          "question": "根据图片提示补全对话。1. —What is John going to learn? —He ______",
+          "reason": "答句缺 be 动词 is，句子结构不完整",
+          "hint": "问句里“is John going to…”有 is，答句主语换成 He，前面也要有哪个小词？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "三、Lele 正在询问其他同学的愿望。请根据图片提示补全对话。1. —What is John going to learn? —He ______",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "补全对话：吃什么（2）",
+          "question": "根据图片提示补全对话。2. —What are you going to eat? —We ______",
+          "reason": "主语 We，缺 be 动词 are",
+          "hint": "主语是 We，be 动词应该用哪一个？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "三、Lele 正在询问其他同学的愿望。请根据图片提示补全对话。2. —What are you going to eat? —We ______",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "补全对话：怎样学好英语（3）",
+          "question": "根据图片提示补全对话。3. —How can we get better at English? —We can ______",
+          "reason": "情态动词 can 后面跟动词原形，singing 应为 sing；and 前后动词形式须一致",
+          "hint": "can 后面的动词用什么形式？and 前面那个动词改过来后，和后面的 read 形式就一致了。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "三、Lele 正在询问其他同学的愿望。请根据图片提示补全对话。3. —How can we get better at English? —We can ______",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "补全对话：Betty 做什么运动（4）",
+          "question": "根据图片提示补全对话。4. —What sports does Betty do? —She ______",
+          "reason": "一般现在时，主语 She 第三人称单数，动词须加 -s",
+          "hint": "问句里有 does，主语是 She，动词 play 后面要加什么？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "三、Lele 正在询问其他同学的愿望。请根据图片提示补全对话。4. —What sports does Betty do? —She ______",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "短文填空 goes（3）",
+          "question": "在短文中选择填空。3. Every morning, Jim gets up early and ______ to the swimming pool. A. go B. goes C. going",
+          "reason": "gets up 与 and 后动词并列，都用一般现在时第三人称单数，应为 goes",
+          "hint": "前面 gets up 的动词加了 -s，and 后面那个动词也应该是什么形式？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "四、在短文中选择填空。Every morning, Jim gets up early and ______ to the swimming pool. A. go B. goes C. going",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "选词填空 sell（4）",
+          "question": "根据句意，选词填空。4. At the school flea market, Jim wants to ______ his old things.",
+          "reason": "跳蚤市场上旧东西是拿来卖的，不是“匆忙”；hurry 是第 5 题的词",
+          "hint": "在跳蚤市场上，人们把旧东西拿来做什么？备选词里哪个词是这个意思？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、根据句意，选词填空，注意单词的适当形式。4. At the school flea market, Jim wants to ______ his old things.",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "选词填空 hurry（5）",
+          "question": "根据句意，选词填空。5. The bus is leaving. I ______ to the bus.",
+          "reason": "公交车要开了，应“赶快”去赶车，buy（买）语义不通",
+          "hint": "公交车都要开走了，这个时候应该“赶快”做什么？备选词里哪个词表示“赶快”？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "二、根据句意，选词填空，注意单词的适当形式。5. The bus is leaving. I ______ to the bus.",
+          "q_img_exempt": "英语小试卷无原题图",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 12,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261118-282198AA5FFB",
@@ -251,8 +403,8 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 11,
-    "in_progress": 0,
+    "pending": 10,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 1,
