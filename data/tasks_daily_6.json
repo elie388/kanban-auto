@@ -3,7 +3,7 @@
   "date": "2026-11-19",
   "grade": "六年级",
   "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T04:00:36+08:00",
+  "updated_at": "2026-11-19T04:34:45+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-19T04:34:45+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -85,16 +85,39 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-19T04:00:36+08:00",
       "updated_at": "2026-11-19T04:00:36+08:00"
+    },
+    {
+      "task_id": "PRACT-20261119-789074CBD97D",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-19.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《夏日绝句》（李清照）\n原文：生当作人杰，死亦为鬼雄。至今思项羽，不肯过江东。\n朗读要求：前两句要读出顶天立地的豪迈气势与坚定语气；后两句要读出对历史英雄的敬仰以及对当权者的愤慨与痛惜之情。\n英语口语任务说明：请用完整的英文句子回答以下4个问题，录音发回。\n提示问题：1. What is your favorite subject at school, and why? 2. How many classes do you have every day? 3. What do you usually do with your friends after class? 4. Can you describe your English teacher in two sentences?\n口语要求：用完整的英文句子回答，录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-19.docx",
+      "file_hash": "be4d120a33464b816570daded176a63d2883e7767a6e4f3f2c2e35969a3ee15c",
+      "created_at": "2026-11-19T04:34:43+08:00",
+      "updated_at": "2026-11-19T04:34:43+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-19.pdf",
+          "label": "练习",
+          "pages": 3
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 5,
+    "pending": 5,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-19T22:00:00+08:00"
 }
