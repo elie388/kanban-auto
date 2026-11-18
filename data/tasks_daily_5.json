@@ -1,130 +1,35 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "grade": "五年级",
-  "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-19T00:16:07+08:00",
+  "generated_at": "2026-11-19T00:18:01+08:00",
+  "updated_at": "2026-11-19T00:18:01+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-18T23:54:09+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-18T04:25:06+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-18T16:55:40+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261118-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "20:06 晾衣服",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-18T17:30:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-18T00:18:17+08:00",
-      "updated_at": "2026-11-19T00:11:38+08:00",
-      "completed_at": "2026-11-18T20:08:27+08:00",
-      "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1795003552893fa34a9533b12bd0d（approved）；回写 chore_task_writeback。"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-18",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-18T03:59:32+08:00",
-      "updated_at": "2026-11-18T18:25:16+08:00",
-      "completed_at": "2026-11-18T18:25:16+08:00",
-      "orig_photos": [
-        "3779ebc4f19971e1.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261118-EFF3C2B4CEA7",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T18:25:16+08:00",
-      "updated_at": "2026-11-18T19:07:00+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-18T19:07:00+08:00",
-      "orig_photos": [
-        "0898db32ed6763a6.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261118-14E0C7B1ECDA",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习19课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①生字18课；②预习19课；③校本18课 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-18T18:25:16+08:00",
-      "updated_at": "2026-11-18T20:37:52+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-18T20:37:52+08:00",
-      "status_source": "reading_grade",
-      "orig_photos": [
-        "8f3b13d5304279e7.jpg",
-        "1eea444dd46a229c.jpg",
-        "a0c71fe90dc38a71.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 4,
+    "total": 0,
     "pending": 0,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 4,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-18T22:30:00+08:00"
+  "deadline_today": null
 }
