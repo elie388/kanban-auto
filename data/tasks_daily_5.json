@@ -3,12 +3,12 @@
   "date": "2026-11-18",
   "grade": "五年级",
   "generated_at": "2026-11-18T00:18:03+08:00",
-  "updated_at": "2026-11-18T16:56:02+08:00",
+  "updated_at": "2026-11-18T18:25:16+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-18T16:55:28+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-18T18:25:16+08:00",
+      "new_lines": 6,
       "flipped": 0
     },
     "targeted_practice": {
@@ -67,12 +67,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-18T03:59:32+08:00",
-      "updated_at": "2026-11-18T03:59:32+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-18T18:25:16+08:00",
+      "completed_at": "2026-11-18T18:25:16+08:00"
     },
     {
       "task_id": "D53-2026-11-18-MATH",
@@ -135,15 +135,127 @@
           "pages": 5
         }
       ]
+    },
+    {
+      "task_id": "REG-20261118-EFF3C2B4CEA7",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-18T18:25:16+08:00",
+      "updated_at": "2026-11-18T18:25:16+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261118-CDAC9893463F",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "小试卷",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②小试卷 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-18T18:25:16+08:00",
+      "updated_at": "2026-11-18T18:25:16+08:00"
+    },
+    {
+      "task_id": "REG-20261118-282198AA5FFB",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本43页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①校本43页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-18T18:25:16+08:00",
+      "updated_at": "2026-11-18T18:25:16+08:00"
+    },
+    {
+      "task_id": "REG-20261118-A4A3F2C1C9A1",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字18课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字18课；②预习19课；③校本18课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-18T18:25:16+08:00",
+      "updated_at": "2026-11-18T18:25:16+08:00"
+    },
+    {
+      "task_id": "REG-20261118-14E0C7B1ECDA",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习19课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字18课；②预习19课；③校本18课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-18T18:25:16+08:00",
+      "updated_at": "2026-11-18T18:25:16+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261118-F51AC3EC52E3",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本18课",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①生字18课；②预习19课；③校本18课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-18T18:25:16+08:00",
+      "updated_at": "2026-11-18T18:25:16+08:00"
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 12,
+    "pending": 11,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-18T22:00:00+08:00"
