@@ -1,198 +1,199 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-19",
-  "grade": "五年级",
-  "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T18:33:02+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-19T18:33:02+08:00",
-      "new_lines": 6,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-19T04:34:43+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-19T04:00:36+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-19",
+ "grade": "五年级",
+ "generated_at": "2026-11-19T00:18:01+08:00",
+ "updated_at": "2026-11-19T18:33:02+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-19T18:33:02+08:00",
+   "new_lines": 6,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261119-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-19T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-19T00:18:15+08:00",
-      "updated_at": "2026-11-19T00:18:15+08:00"
-    },
-    {
-      "task_id": "READ-20261119-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-19T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-19T00:18:30+08:00",
-      "updated_at": "2026-11-19T00:18:30+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-19",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-19T03:59:59+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00",
-      "completed_at": "2026-11-19T18:33:02+08:00"
-    },
-    {
-      "task_id": "REG-20261119-4B10D8DAF52B",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral"
-    },
-    {
-      "task_id": "REG-20261119-05E4A214D177",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "校本29页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00"
-    },
-    {
-      "task_id": "REG-20261119-DEFD10BDAB2D",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小校本44页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①小校本44页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00"
-    },
-    {
-      "task_id": "REG-20261119-1830731D877E",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "第五单元试卷（签名）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00"
-    },
-    {
-      "task_id": "REG-20261119-EA7993CE8EDF",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "第五单元说明文练习",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00"
-    },
-    {
-      "task_id": "REG-20261119-64867703B9E9",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "核对15-18课校本",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00"
-    }
-  ],
-  "counts": {
-    "total": 9,
-    "pending": 8,
-    "in_progress": 0,
-    "submitted": 0,
-    "grading": 0,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-19T04:34:43+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-19T22:00:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-19T04:00:36+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261119-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-19T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-19T00:18:15+08:00",
+   "updated_at": "2026-11-19T00:18:15+08:00"
+  },
+  {
+   "task_id": "READ-20261119-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-19T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-19T00:18:30+08:00",
+   "updated_at": "2026-11-19T00:18:30+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-19",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-19T03:59:59+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00",
+   "completed_at": "2026-11-19T18:33:02+08:00"
+  },
+  {
+   "task_id": "REG-20261119-4B10D8DAF52B",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:43:00+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral",
+   "completed_at": "2026-11-19T18:43:00+08:00"
+  },
+  {
+   "task_id": "REG-20261119-05E4A214D177",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "校本29页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00"
+  },
+  {
+   "task_id": "REG-20261119-DEFD10BDAB2D",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小校本44页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①小校本44页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00"
+  },
+  {
+   "task_id": "REG-20261119-1830731D877E",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "第五单元试卷（签名）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00"
+  },
+  {
+   "task_id": "REG-20261119-EA7993CE8EDF",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "第五单元说明文练习",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00"
+  },
+  {
+   "task_id": "REG-20261119-64867703B9E9",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "核对15-18课校本",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00"
+  }
+ ],
+ "counts": {
+  "total": 9,
+  "pending": 7,
+  "in_progress": 0,
+  "submitted": 0,
+  "grading": 0,
+  "done": 2,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-19T22:00:00+08:00"
 }
