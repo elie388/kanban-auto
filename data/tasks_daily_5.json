@@ -3,7 +3,7 @@
   "date": "2026-11-19",
   "grade": "五年级",
   "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T19:54:47+08:00",
+  "updated_at": "2026-11-19T21:56:43+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -155,7 +155,7 @@
       "title": "小校本44页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "in_progress",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①小校本44页 → 待完成",
@@ -164,24 +164,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:53:32+08:00",
-      "corr_round": 2,
-      "corrections": [
-        {
-          "label": "1平方千米的正方形边长",
-          "question": "边长是（ ）的正方形，面积是（ ）km²。",
-          "reason": "订正只补了单位“米”，数字仍是100；边长100 m的正方形面积是1公顷，不是1 km²；边长1000 m（1 km）的正方形面积才是1 km²",
-          "hint": "单位写对了！数字再想想：1千米等于多少米？100米到1千米还差几个100米？边长要是1千米，该写几个100米？",
-          "img": "DEFD10BDAB2D_guide_yi2a.png",
-          "q_img": "",
-          "orig_text": "2. 边长是（ ）的正方形，面积是（ ）km²。",
-          "q_img_exempt": "纯文字题，题干全文见 orig_text",
-          "img_exempt": "",
-          "round": 2
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
+      "updated_at": "2026-11-19T21:56:40+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback",
+      "completed_at": "2026-11-19T21:56:40+08:00",
+      "orig_photos": [
+        "aec570b4fbb1b62d.jpg",
+        "05a42220b6b989a7.jpg",
+        "beced9916347a159.jpg"
+      ]
     },
     {
       "task_id": "REG-20261119-1830731D877E",
@@ -245,10 +237,10 @@
   "counts": {
     "total": 9,
     "pending": 4,
-    "in_progress": 2,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 3,
+    "done": 4,
     "pending_review": 0
   },
   "deadline_today": "2026-11-19T22:30:00+08:00"
