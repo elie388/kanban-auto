@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-19T21:51:28+08:00",
+ "generated_at": "2026-11-19T22:08:37+08:00",
  "items": [
+  {
+   "date": "2026-11-19",
+   "ts": "2026-11-19T22:08:24+08:00",
+   "kind": "feedback",
+   "time": "",
+   "task_id": "REG-20261119-304280087FBA",
+   "title": "11月19日三单习反馈",
+   "html": "<p><b>11月19日三单习反馈</b></p><p>共39题，对35题、错4题，要订正。</p><p>英语 三单习 P48 第1题-找单词 leafcatcher：再数一数 leafcatcher 这个单词有几个字母，你圈到第几个了？圈单词要把整个单词都圈进去。</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题：仔细观察字母方阵，找出 4 件展品对应的英文单词，用笔圈出找到的单词。</p><p>英语 三单习 P48 第4题-短文填空4：works 是动词，修饰动词的词应该用什么词性？想一想 quick 的副词形式是什么。</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题：It works very ___.（词库：help clean carry make quick，用其正确形式填空，每词限用一次）</p><p>英语 三单习 P50 思维导图6：瓶子最后是放进什么容器里？想一想装花的那个容器叫什么。</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题：Finally: put it in the ___.</p><p>英语 三单习 P50 思维导图8：瓶子是一个工具，说工具好用、管用，常用的说法是什么？</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题：It works ___.</p>"
+  },
   {
    "date": "2026-11-19",
    "ts": "2026-11-19T21:18:41+08:00",
