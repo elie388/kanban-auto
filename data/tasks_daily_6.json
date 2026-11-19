@@ -3,7 +3,7 @@
   "date": "2026-11-19",
   "grade": "六年级",
   "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T20:48:28+08:00",
+  "updated_at": "2026-11-19T21:17:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -142,7 +142,7 @@
       "title": "校本P42",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念54、55；②校本P42 → 待完成",
@@ -151,7 +151,48 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T19:41:59+08:00",
-      "updated_at": "2026-11-19T19:41:59+08:00"
+      "updated_at": "2026-11-19T21:17:11+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "数学 整理与复习 第5题-路程与时间的比",
+          "question": "汽车行驶的路程与时间的比",
+          "reason": "把题里的 8 小时看成了 5 小时，比写错了",
+          "hint": "再读一遍题：汽车到底是几小时行驶了 400 千米？路程比时间，时间是几就写几，不要凭印象写。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一辆汽车 8 时行驶了 400km，这辆汽车行驶的路程与时间的比是( )，比值是( )，这个比值表示的意义是( )。",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "数学 整理与复习 第5题-比值",
+          "question": "数学 整理与复习 第5题-比值 六年级数学校本 P42 整理与复习（第五单元 比的认识）第 1-9 题；看板上传批次 b1795092458149f233e626e567483a，1 图；任务 REG-20261119-62F7C060BEA3；提交 2026-11-19 20:47:43（server_ts 12:47:43Z）。",
+          "reason": "比写错了，比值是跟着比算的；比改对后比值要重算",
+          "hint": "先把比改对，再用比的前项除以后项，重新算一算比值是多少。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "一辆汽车 8 时行驶了 400km，这辆汽车行驶的路程与时间的比是( )，比值是( )，这个比值表示的意义是( )。",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "图后补",
+          "round": 1
+        },
+        {
+          "label": "数学 整理与复习 第8题-求比值 42:14",
+          "question": "数学 整理与复习 第8题-求比值 42:14 六年级数学校本 P42 整理与复习（第五单元 比的认识）第 1-9 题；看板上传批次 b1795092458149f233e626e567483a，1 图；任务 REG-20261119-62F7C060BEA3；提交 2026-11-19 20:47:43（server_ts 12:47:43Z）。",
+          "reason": "42 除以 14 算错了",
+          "hint": "想一想：14 乘几等于 42？再算一遍 42 除以 14。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "求比值：42:14=( )",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "图后补",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261119-6FFB44759D22",
@@ -201,8 +242,8 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 7,
-    "in_progress": 0,
+    "pending": 6,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 2,
