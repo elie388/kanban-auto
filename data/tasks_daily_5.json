@@ -1,348 +1,349 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-19",
-  "grade": "五年级",
-  "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T22:01:28+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-19T19:41:59+08:00",
-      "new_lines": 0,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-19T04:34:43+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-19T04:00:36+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-19",
+ "grade": "五年级",
+ "generated_at": "2026-11-19T00:18:01+08:00",
+ "updated_at": "2026-11-19T22:01:28+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-19T19:41:59+08:00",
+   "new_lines": 0,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261119-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-19T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-19T00:18:15+08:00",
-      "updated_at": "2026-11-19T00:18:15+08:00"
-    },
-    {
-      "task_id": "READ-20261119-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-19T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-19T00:18:30+08:00",
-      "updated_at": "2026-11-19T00:18:30+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-19",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-19T03:59:59+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00",
-      "completed_at": "2026-11-19T18:33:02+08:00",
-      "orig_photos": [
-        "852d65a7d7aaa51f.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261119-4B10D8DAF52B",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:43:00+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-19T18:43:00+08:00",
-      "orig_photos": [
-        "131e710d80b399b8.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261119-05E4A214D177",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "校本29页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:52:13+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "be going to 填空（5）",
-          "question": "用 be going to 补全短文。5. (you, take up)",
-          "reason": "订正未改对：红笔在 be going to 前补了 you，写成 you be going to take up，但这句句末是问号，是一般疑问句，句首须用 Are 倒装，正确形式是 Are you going to take up；只补 you、不用 Are、语序仍是陈述句，仍不对。",
-          "hint": "这次你把 you 补上了，有进步。再看一句末的问号：这是一个问句，问句不能直接用 be going to 开头。想一想：be 动词开头的问句，第一个词应该是什么？you 应该放在它的后面还是前面？把你红笔写的句子读一遍，再按这个顺序读一遍，听听哪个顺，再改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "5. ______ (you, take up) a new hobby this vacation to be better too?",
-          "q_img_exempt": "英语校本29页无原题图",
-          "img_exempt": "英语填空/阅读题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "阅读填空（5）",
-          "question": "阅读材料，填写正确的答案。5. There are ___ ways",
-          "reason": "订正未改对：红笔在横线下方写了 fourth，但短文里只用 First、Second、Third 列了三种办法，没有第四种；这道题问的是有几种办法，空里应填数字 three。fourth 是序数词“第四”，不是数量 three。",
-          "hint": "这次你换了一个词，说明你知道空里要填的是数词。再数一数短文：First 是一种，Second 是第二种，Third 是第三种，一共是几种？fourth 是第几个的意思？短文里有没有第四种办法？空里要填的是“有几种”，还是“第几个”？再数一遍，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "5. There are ______ ways of learning English well in the text.",
-          "q_img_exempt": "英语校本29页无原题图",
-          "img_exempt": "英语填空/阅读题，文字引导已讲清，不配引导图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 2,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261119-DEFD10BDAB2D",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小校本44页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①小校本44页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T21:56:40+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback",
-      "completed_at": "2026-11-19T21:56:40+08:00",
-      "orig_photos": [
-        "aec570b4fbb1b62d.jpg",
-        "05a42220b6b989a7.jpg",
-        "beced9916347a159.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261119-1830731D877E",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "第五单元试卷（签名）",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T19:35:31+08:00",
-      "completed_at": "2026-11-19T19:35:31+08:00",
-      "orig_photos": [
-        "ac986587073a9192.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261119-EA7993CE8EDF",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "第五单元说明文练习",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T22:01:16+08:00",
-      "corr_round": 1,
-      "corrections": [
-        {
-          "label": "说明方法判断（4）",
-          "question": "判断句子运用的说明方法：松鼠不像山鼠那样冬眠",
-          "reason": "把“松鼠不像山鼠那样”误判为下定义；“不像……那样”是拿松鼠和山鼠作比较，不是给松鼠下定义。",
-          "hint": "这句话里有“不像……那样”，它在拿松鼠和谁放在一起说？下定义是要一句话讲清楚一个东西是什么，这句话是在讲松鼠是什么，还是在讲松鼠和山鼠有什么不一样？再读一读，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "松鼠不像山鼠那样，一到冬天就蛰伏不动。",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "说明方法判断（7）",
-          "question": "判断句子运用的说明方法：农民常说瑞雪兆丰年",
-          "reason": "把引用农谚“瑞雪兆丰年”误判为举例子；引号里是引用别人的话，应为引用说明。",
-          "hint": "这句话里引号里是一句农民常说的话。想一想：引用别人说的话来说明，属于哪种说明方法？举例子是举具体的事例，这句话举了具体的事例吗？再读一读，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "农民们常说：“瑞雪兆丰年。”",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "说明方法判断（9）",
-          "question": "判断句子运用的说明方法：鲸舌头有十几头大肥猪重",
-          "reason": "把“鲸舌头有十几头大肥猪那么重”误判为举例子；这是拿舌头重量和大肥猪比，应为作比较。",
-          "hint": "这句话把鲸的舌头和十几头大肥猪的重量放在一起说，是为了让你一下子知道舌头有多重。想一想：拿两个东西比轻重，是哪种说明方法？举例子是举一个具体事例，这句话是在举事例，还是在比重量？再读一读，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "鲸的舌头就有十几头大肥猪那么重。",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "说明方法判断（12）",
-          "question": "判断句子运用的说明方法：鲸鼻孔呼气形成水柱是呼吸方式",
-          "reason": "把陈述鲸呼吸方式误判为下定义；这句只是在解释鼻孔的作用、鲸怎么呼吸，没有揭示概念本质，应为作诠释。",
-          "hint": "下定义是要一句话讲清楚一个东西是什么。这句话是在讲鲸的鼻孔是什么，还是在讲鲸是怎么呼吸的？讲清楚“怎么呼吸”，和给一个东西下定义是一回事吗？再读一读，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "鲸的鼻孔长在脑袋顶上，呼气时形成水柱，这是它呼吸的方式。",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "说明方法判断（16）",
-          "question": "判断句子运用的说明方法：古人云清明前后种瓜点豆",
-          "reason": "把引用古语“清明前后，种瓜点豆”误判为举例子；引号里是引用别人的话，应为引用说明，与第7题同类。",
-          "hint": "这句话里引号里是古人说的话。想一想：引用古人的话来说明，属于哪种说明方法？和上一道农民常说的那句比一比，两句用的方法一样吗？再读一读，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "古人云：“清明前后，种瓜点豆。”",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "港珠澳大桥画线句方法",
-          "question": "③段画线句用什么说明方法，有什么好处",
-          "reason": "把画线句“最重的一节沉管，重量甚至相当于一艘满载的辽宁舰”误判为打比方；这是拿沉管重量和辽宁舰作比较，突出沉管重，应为作比较。",
-          "hint": "画线句把沉管的重量和一艘满载的辽宁舰放在一起说，是为了让你一下子感受到沉管有多重。想一想：拿两个东西的重量放在一起比，是哪种说明方法？打比方是把一个东西说成另一个东西，这句话里有“像”吗？再读一读画线句，改一改。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "第③段画横线句子（最重的一节沉管，重量甚至相当于一艘满载的“辽宁舰”。）使用了什么说明方法？有什么好处？",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "天舟飞船画线句方法好处",
-          "question": "④段画线句用什么说明方法，有什么好处",
-          "reason": "方法答对（打比方），好处没说清：“写出天舟货运飞船有垃圾的地方”表述不清，没有说出把飞船比作忠诚卫士是生动写出它默默守护太空清洁。",
-          "hint": "方法你答对了，是打比方。好处要说清楚这句话把飞船比作什么、让你感受到什么：“忠诚的卫士”让你想到什么？它默默守护的是什么？把这两点连起来，再写一遍好处。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "请分析第④段中画横线句子（它就像一位忠诚的卫士，默默守护着太空的清洁。）使用了什么说明方法？有什么好处？",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
-          "round": 1
-        },
-        {
-          "label": "天舟飞船仿写介绍",
-          "question": "用一句话向幼儿园小朋友介绍天舟飞船能装多少",
-          "reason": "仿写比较对象不当：40立方米是体积，足球场是面积，体积和面积不能放在一起比；须换一个体积相当的东西作比较。",
-          "hint": "40立方米是体积，足球场是平面的大小，体积和面积不能放在一起比。想一想：家里哪个装东西的东西，大小和40立方米差不多？用它来比一比，再写一遍句子。",
-          "img": "",
-          "q_img": "",
-          "orig_text": "结合②段的内容，如果你用一句话向幼儿园的小朋友介绍天舟飞船能装多少东西，你会用哪种说明方法？请试着写一写。",
-          "q_img_exempt": "五上第五单元说明文练习无原题图",
-          "img_exempt": "语文阅读理解题，文字引导已讲清，不配引导图",
-          "round": 1
-        }
-      ],
-      "pending_corrections": 8,
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261119-64867703B9E9",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "核对15-18课校本",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-19T18:33:02+08:00"
-    }
-  ],
-  "counts": {
-    "total": 9,
-    "pending": 3,
-    "in_progress": 2,
-    "submitted": 0,
-    "grading": 0,
-    "done": 4,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-19T04:34:43+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-19T22:30:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-19T04:00:36+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261119-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-19T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-19T00:18:15+08:00",
+   "updated_at": "2026-11-19T00:18:15+08:00"
+  },
+  {
+   "task_id": "READ-20261119-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-19T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-19T00:18:30+08:00",
+   "updated_at": "2026-11-19T00:18:30+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-19",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-19T03:59:59+08:00",
+   "updated_at": "2026-11-19T18:33:02+08:00",
+   "completed_at": "2026-11-19T18:33:02+08:00",
+   "orig_photos": [
+    "852d65a7d7aaa51f.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261119-4B10D8DAF52B",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:43:00+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral",
+   "completed_at": "2026-11-19T18:43:00+08:00",
+   "orig_photos": [
+    "131e710d80b399b8.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261119-05E4A214D177",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "校本29页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①口语易；②校本29页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T18:52:13+08:00",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "be going to 填空（5）",
+     "question": "用 be going to 补全短文。5. (you, take up)",
+     "reason": "订正未改对：红笔在 be going to 前补了 you，写成 you be going to take up，但这句句末是问号，是一般疑问句，句首须用 Are 倒装，正确形式是 Are you going to take up；只补 you、不用 Are、语序仍是陈述句，仍不对。",
+     "hint": "这次你把 you 补上了，有进步。再看一句末的问号：这是一个问句，问句不能直接用 be going to 开头。想一想：be 动词开头的问句，第一个词应该是什么？you 应该放在它的后面还是前面？把你红笔写的句子读一遍，再按这个顺序读一遍，听听哪个顺，再改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "5. ______ (you, take up) a new hobby this vacation to be better too?",
+     "q_img_exempt": "英语校本29页无原题图",
+     "img_exempt": "英语填空/阅读题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "阅读填空（5）",
+     "question": "阅读材料，填写正确的答案。5. There are ___ ways",
+     "reason": "订正未改对：红笔在横线下方写了 fourth，但短文里只用 First、Second、Third 列了三种办法，没有第四种；这道题问的是有几种办法，空里应填数字 three。fourth 是序数词“第四”，不是数量 three。",
+     "hint": "这次你换了一个词，说明你知道空里要填的是数词。再数一数短文：First 是一种，Second 是第二种，Third 是第三种，一共是几种？fourth 是第几个的意思？短文里有没有第四种办法？空里要填的是“有几种”，还是“第几个”？再数一遍，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "5. There are ______ ways of learning English well in the text.",
+     "q_img_exempt": "英语校本29页无原题图",
+     "img_exempt": "英语填空/阅读题，文字引导已讲清，不配引导图",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 2,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "REG-20261119-DEFD10BDAB2D",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小校本44页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①小校本44页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T21:56:40+08:00",
+   "corrections": [],
+   "pending_corrections": 0,
+   "status_source": "closeout_writeback",
+   "completed_at": "2026-11-19T21:56:40+08:00",
+   "orig_photos": [
+    "aec570b4fbb1b62d.jpg",
+    "05a42220b6b989a7.jpg",
+    "beced9916347a159.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261119-1830731D877E",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "第五单元试卷（签名）",
+   "detail": "",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T19:35:31+08:00",
+   "completed_at": "2026-11-19T19:35:31+08:00",
+   "orig_photos": [
+    "ac986587073a9192.jpg"
+   ]
+  },
+  {
+   "task_id": "REG-20261119-EA7993CE8EDF",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "第五单元说明文练习",
+   "detail": "",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T22:01:16+08:00",
+   "corr_round": 1,
+   "corrections": [
+    {
+     "label": "说明方法判断（4）",
+     "question": "判断句子运用的说明方法：松鼠不像山鼠那样冬眠",
+     "reason": "把“松鼠不像山鼠那样”误判为下定义；“不像……那样”是拿松鼠和山鼠作比较，不是给松鼠下定义。",
+     "hint": "这句话里有“不像……那样”，它在拿松鼠和谁放在一起说？下定义是要一句话讲清楚一个东西是什么，这句话是在讲松鼠是什么，还是在讲松鼠和山鼠有什么不一样？再读一读，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "松鼠不像山鼠那样，一到冬天就蛰伏不动。",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "说明方法判断（7）",
+     "question": "判断句子运用的说明方法：农民常说瑞雪兆丰年",
+     "reason": "把引用农谚“瑞雪兆丰年”误判为举例子；引号里是引用别人的话，应为引用说明。",
+     "hint": "这句话里引号里是一句农民常说的话。想一想：引用别人说的话来说明，属于哪种说明方法？举例子是举具体的事例，这句话举了具体的事例吗？再读一读，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "农民们常说：“瑞雪兆丰年。”",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "说明方法判断（9）",
+     "question": "判断句子运用的说明方法：鲸舌头有十几头大肥猪重",
+     "reason": "把“鲸舌头有十几头大肥猪那么重”误判为举例子；这是拿舌头重量和大肥猪比，应为作比较。",
+     "hint": "这句话把鲸的舌头和十几头大肥猪的重量放在一起说，是为了让你一下子知道舌头有多重。想一想：拿两个东西比轻重，是哪种说明方法？举例子是举一个具体事例，这句话是在举事例，还是在比重量？再读一读，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "鲸的舌头就有十几头大肥猪那么重。",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "说明方法判断（12）",
+     "question": "判断句子运用的说明方法：鲸鼻孔呼气形成水柱是呼吸方式",
+     "reason": "把陈述鲸呼吸方式误判为下定义；这句只是在解释鼻孔的作用、鲸怎么呼吸，没有揭示概念本质，应为作诠释。",
+     "hint": "下定义是要一句话讲清楚一个东西是什么。这句话是在讲鲸的鼻孔是什么，还是在讲鲸是怎么呼吸的？讲清楚“怎么呼吸”，和给一个东西下定义是一回事吗？再读一读，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "鲸的鼻孔长在脑袋顶上，呼气时形成水柱，这是它呼吸的方式。",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "说明方法判断（16）",
+     "question": "判断句子运用的说明方法：古人云清明前后种瓜点豆",
+     "reason": "把引用古语“清明前后，种瓜点豆”误判为举例子；引号里是引用别人的话，应为引用说明，与第7题同类。",
+     "hint": "这句话里引号里是古人说的话。想一想：引用古人的话来说明，属于哪种说明方法？和上一道农民常说的那句比一比，两句用的方法一样吗？再读一读，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "古人云：“清明前后，种瓜点豆。”",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "港珠澳大桥画线句方法",
+     "question": "③段画线句用什么说明方法，有什么好处",
+     "reason": "把画线句“最重的一节沉管，重量甚至相当于一艘满载的辽宁舰”误判为打比方；这是拿沉管重量和辽宁舰作比较，突出沉管重，应为作比较。",
+     "hint": "画线句把沉管的重量和一艘满载的辽宁舰放在一起说，是为了让你一下子感受到沉管有多重。想一想：拿两个东西的重量放在一起比，是哪种说明方法？打比方是把一个东西说成另一个东西，这句话里有“像”吗？再读一读画线句，改一改。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "第③段画横线句子（最重的一节沉管，重量甚至相当于一艘满载的“辽宁舰”。）使用了什么说明方法？有什么好处？",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "天舟飞船画线句方法好处",
+     "question": "④段画线句用什么说明方法，有什么好处",
+     "reason": "方法答对（打比方），好处没说清：“写出天舟货运飞船有垃圾的地方”表述不清，没有说出把飞船比作忠诚卫士是生动写出它默默守护太空清洁。",
+     "hint": "方法你答对了，是打比方。好处要说清楚这句话把飞船比作什么、让你感受到什么：“忠诚的卫士”让你想到什么？它默默守护的是什么？把这两点连起来，再写一遍好处。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "请分析第④段中画横线句子（它就像一位忠诚的卫士，默默守护着太空的清洁。）使用了什么说明方法？有什么好处？",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文说明方法辨析题，文字引导已讲清，不配引导图",
+     "round": 1
+    },
+    {
+     "label": "天舟飞船仿写介绍",
+     "question": "用一句话向幼儿园小朋友介绍天舟飞船能装多少",
+     "reason": "仿写比较对象不当：40立方米是体积，足球场是面积，体积和面积不能放在一起比；须换一个体积相当的东西作比较。",
+     "hint": "40立方米是体积，足球场是平面的大小，体积和面积不能放在一起比。想一想：家里哪个装东西的东西，大小和40立方米差不多？用它来比一比，再写一遍句子。",
+     "img": "",
+     "q_img": "",
+     "orig_text": "结合②段的内容，如果你用一句话向幼儿园的小朋友介绍天舟飞船能装多少东西，你会用哪种说明方法？请试着写一写。",
+     "q_img_exempt": "五上第五单元说明文练习无原题图",
+     "img_exempt": "语文阅读理解题，文字引导已讲清，不配引导图",
+     "round": 1
+    }
+   ],
+   "pending_corrections": 8,
+   "status_source": "closeout_writeback"
+  },
+  {
+   "task_id": "REG-20261119-64867703B9E9",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "核对15-18课校本",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "grading",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①第五单元试卷（签名）；②第五单元说明文练习；③核对15-18课校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-19T18:33:02+08:00",
+   "updated_at": "2026-11-19T22:11:11+08:00",
+   "status_source": "kanban_upload"
+  }
+ ],
+ "counts": {
+  "total": 9,
+  "pending": 3,
+  "in_progress": 2,
+  "submitted": 0,
+  "grading": 0,
+  "done": 4,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-19T22:30:00+08:00"
 }
