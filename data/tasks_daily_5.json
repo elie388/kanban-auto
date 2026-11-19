@@ -3,7 +3,7 @@
   "date": "2026-11-19",
   "grade": "五年级",
   "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T19:49:16+08:00",
+  "updated_at": "2026-11-19T19:54:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -123,8 +123,8 @@
         {
           "label": "be going to 填空（5）",
           "question": "用 be going to 补全短文。5. (you, take up)",
-          "reason": "句末是问号，应为一般疑问句，须用 Are you going to take up；孩子只写了 be going to take up，缺 Are you，未用倒装。",
-          "hint": "先看句末的标点：这是问句还是陈述句？问句里 be going to 不能直接放在句首。再看括号里的 (you, take up)，you 应该放在哪个位置？先把你写的句子读一遍，听听顺不顺，再改一改。",
+          "reason": "订正未改对：红笔在 be going to 前补了 you，写成 you be going to take up，但这句句末是问号，是一般疑问句，句首须用 Are 倒装，正确形式是 Are you going to take up；只补 you、不用 Are、语序仍是陈述句，仍不对。",
+          "hint": "这次你把 you 补上了，有进步。再看一句末的问号：这是一个问句，问句不能直接用 be going to 开头。想一想：be 动词开头的问句，第一个词应该是什么？you 应该放在它的后面还是前面？把你红笔写的句子读一遍，再按这个顺序读一遍，听听哪个顺，再改一改。",
           "img": "",
           "q_img": "",
           "orig_text": "5. ______ (you, take up) a new hobby this vacation to be better too?",
@@ -135,8 +135,8 @@
         {
           "label": "阅读填空（5）",
           "question": "阅读材料，填写正确的答案。5. There are ___ ways",
-          "reason": "短文里用 First、Second、Third 列了三种学英语的好办法，这道题问的是有几种，空里应填数字 three；better 是形容词比较级，填入后句意不通。",
-          "hint": "短文里介绍了几种学英语的好办法？数一数 First、Second、Third 是几个。再看这道题问的是什么：There are ___ ways，空里要填的是数字还是形容词？better 能放在这里数数吗？",
+          "reason": "订正未改对：红笔在横线下方写了 fourth，但短文里只用 First、Second、Third 列了三种办法，没有第四种；这道题问的是有几种办法，空里应填数字 three。fourth 是序数词“第四”，不是数量 three。",
+          "hint": "这次你换了一个词，说明你知道空里要填的是数词。再数一数短文：First 是一种，Second 是第二种，Third 是第三种，一共是几种？fourth 是第几个的意思？短文里有没有第四种办法？空里要填的是“有几种”，还是“第几个”？再数一遍，改一改。",
           "img": "",
           "q_img": "",
           "orig_text": "5. There are ______ ways of learning English well in the text.",
