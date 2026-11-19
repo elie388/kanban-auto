@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-18T22:44:23+08:00",
+ "generated_at": "2026-11-19T20:50:58+08:00",
  "items": [
+  {
+   "date": "2026-11-19",
+   "ts": "2026-11-19T20:56:00+08:00",
+   "kind": "feedback",
+   "time": "2026-11-19 20:56",
+   "task_id": "REG-20261119-F95D17238EA9",
+   "title": "11月19日默写19课《古诗三首》反馈",
+   "html": "<p>伟豪，19课《古诗三首》默写全对！三首诗一共15处（3个诗题和作者、12句诗），一字不错，标点也全对。</p><p>容易写错的字都写对了：刘禹锡的“禹”、风簸的“簸”、茅檐的“檐”、无苔的“苔”、成畦的“畦”、排闼的“闼”，还有莺啼的“莺”、山郭的“郭”，都很稳。继续保持！</p>"
+  },
   {
    "date": "2026-11-18",
    "ts": "2026-11-18T22:44:00+08:00",
@@ -218,87 +227,6 @@
    "task_id": "REG-20261113-2B9AC30A6796",
    "title": "11月13日英语校本P26、27反馈（37/37，100%）",
    "html": "<p>伟豪，你今天交了英语校本 P26、27，一共 37 小题，全对了，正确率 100%，太棒了！</p><p>做得好的地方：P26 选词填空都对了；P27 动物书签那篇阅读三道题都选对了；“Finally I can fly the kite in the park”这句也写对了。</p><p>另外，这次有 1 处涂改（P27 一-4，Fold 划掉改成 Finally），改对了。下次写之前先想清楚再下笔，字迹会更清楚。</p><p>本批积分：完成 +10、正确率 +10、书写 +2，共 +22。</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-13T00:16:00+08:00",
-   "kind": "feedback",
-   "time": "00:16",
-   "task_id": "REG-20261112-17BE149A7498_CORR",
-   "title": "11月12日数学校本P38订正反馈（1项改对）",
-   "html": "<p>校本 P38 第 3 题（1）订正改对了！</p><p>“中韩足球友谊赛的比分是 1:0，1:0 也是一个比”——你把 Y 改成了 N，改对了。体育比赛的比分只是记分的方式，不是数学里的比，因为比的后项不能是 0。</p><p>这道题 11 小问全对了，任务完成。</p><p>本批积分：订正 +2。</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-13T00:07:00+08:00",
-   "kind": "feedback",
-   "time": "00:07",
-   "task_id": "REG-20261112-BA4A6DBFFCCE",
-   "title": "11月12日小练笔期中成绩反思反馈（104字，基本达标）",
-   "html": "<p>期中成绩反思写完了，104 个字，符合 100–200 字的要求，基本达标！</p><p>写得好的地方：找准了薄弱点（阅读理解和作文），目标也明确（稳定在 80 至 90 分），结构清楚。</p><p>重点想一想：语文不是数学，没有万能公式。阅读理解要靠多读、多想、多积累，作文要靠多观察、多练笔。想一想：你阅读丢分最多的是哪类题（是找不准答案，还是理解错了意思）？作文是字数不够，还是写偏了题？把这两个问题想清楚，写进重写版里。</p><p>小问题：①“练习阅读阅读理解”里“阅读”重复了，删一个；②“把我的分数提高了”改成“提高我的成绩”更书面。</p><p>请全文重写一遍，把上面的问题改掉。</p><p>本批积分：发回 +5、达标 +3。</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T23:48:00+08:00",
-   "kind": "feedback",
-   "time": "23:48",
-   "task_id": "REG-20261112-F49E1913669C",
-   "title": "11月12日语文格纸打√反馈（22/31，71.0%）",
-   "html": "<p>你今天交了期中校本练习（第1-3页）和格纸手写页，一共 31 小题，对了 22 题，正确率 71%。老师卷面打了 74 分，咱们自己一题一题核下来也是这个水平，基本一致。</p><p>做得好的地方：田字格 7 个词语全对；读音词、错别字词抄写全对；黑云、渭城两首古诗全对；三国演义、路牌、演讲三道选择题全对；读书的好处列举思路是对的。</p><p>有 7 处要订正：</p><p>1. “靡”：<span style=\"color:red;font-weight:bold\">“风靡”的“靡”是“随风倒、盛行”的意思</span>，和“望风披靡”的“靡”（倒、溃散）是一样的，不是“奢靡”的奢侈浪费。把“风靡”和“望风披靡”各抄 3 遍。</p><img src=\"data/diagrams/g6_chn_mi_wind_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>2. “绷紧”：<span style=\"color:red;font-weight:bold\">印的 běng（三声）是错的，应为 bēng（一声）</span>。把“绷紧 bēng”抄 3 遍，边抄边读。</p><img src=\"data/diagrams/g6_chn_beng_rope_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>3. “拧成”：<span style=\"color:red;font-weight:bold\">印的 níng（二声）是错的，应为 nǐng（三声）</span>。拧螺丝读 níng，拧成读 nǐng。把“拧成 nǐng”抄 3 遍。</p><img src=\"data/diagrams/g6_chn_ning_towel_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>4. 《观书有感》：<span style=\"color:red;font-weight:bold\">用春水比大量阅读、用行舟比学习的诗句是“昨夜江边春水生，艨艟巨舰一毛轻”</span>，不是“向来枉费推移力”。把这句诗抄 3 遍，记住“艨艟”两个字都带舟字旁。</p><img src=\"data/diagrams/g6_chn_spring_river_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><img src=\"data/diagrams/g6_chn_mengchong_ship_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>5. 《七律·长征》：<span style=\"color:red;font-weight:bold\">“大渡桥横铁索寒”对应的是“强渡大渡河”</span>，不是“飞夺泸定桥”。把“巧渡金沙江、强渡大渡河”抄 3 遍。</p><img src=\"data/diagrams/g6_chn_dadu_bridge_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><img src=\"data/diagrams/g6_chn_river_boat_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>6. 《童年》人物：<span style=\"color:red;font-weight:bold\">外号是“好事情”，不是“好事儿”</span>。把“好事情”抄 3 遍。</p><img src=\"data/diagrams/g6_chn_childhood_lab_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>7. 读书好处短文：<span style=\"color:red;font-weight:bold\">“籍提高”的“籍”是错的，应为“借”（借以提高）</span>。把“借以提高”抄 3 遍。</p><img src=\"data/diagrams/g6_chn_jie_book_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>另外，月球阅读那几道题照片右侧被裁掉了，看不清，这次没法核，等你方便时再补拍一下。</p><p>本批积分：发回 +5、完成 +10。（达标 +3 待订正完成后结。）</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T23:29:00+08:00",
-   "kind": "feedback",
-   "time": "23:29",
-   "task_id": "REG-20261112-DA870E6D791A",
-   "title": "11月12日英语抄试卷反馈（36/42，85.7%）",
-   "html": "<p>你今天把试卷第二、七题各抄了 2 次，共 42 份，对了 36 份，正确率 85.7%，很棒！</p><p>做得好的地方：大部分句子都抄对了，字迹工整；括号里面的按要求没有抄，很细心。</p><p>有 4 处抄写要订正：</p><p>1. month：你写成了 mouth。想一想，“月份”和“嘴”发音像但拼写不一样，month 里没有 u。把 month 抄 3 遍，边抄边读。</p><img src=\"data/diagrams/g6_eng_month_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>2. So they wrote letters for Duncan：你写成了 to。这句话是“他们给邓肯写信”，“给”用 for。把 for Duncan 抄 3 遍。</p><img src=\"data/diagrams/g6_eng_letter_for_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>3. After Duncan：你写成了 Aftere。After 最后没有 e，把多余的 e 划掉。把 After 抄 3 遍。</p><img src=\"data/diagrams/g6_eng_after_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>4. Black crayon：你写成了 cray。crayon 是“蜡笔”，结尾是 on，把 on 补上。把 crayon 抄 3 遍。</p><img src=\"data/diagrams/g6_eng_crayon_20261112_guide.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>朗读：全文通读了 1 遍，读得对；任务要求读 5 次，还要再读 4 遍，读完就达标。</p><p>本批积分：发回 +5。（达标 +3 待订正和重读完成后结。）</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T23:23:00+08:00",
-   "kind": "feedback",
-   "time": "23:23",
-   "task_id": "REG-20261112-1DA4E33B5891",
-   "title": "11月12日读背概念53、54反馈（第3轮补读达标）",
-   "html": "<p>读背概念 53、54 第 3 轮读对了，达标！</p><p>“像上面那样”这 5 个字补读出来了，读得很清楚；6 比 4 的顺序也对，概念 54 也对，全文都读完了。</p><p>本批积分：达标 +3。（发回 +5 已在第 1 轮记过，不重复。）</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T23:09:47+08:00",
-   "kind": "feedback",
-   "time": "23:09",
-   "task_id": "REG-20261112-CDFF9F43BA82",
-   "title": "11月12日每天看书20页反馈（已签到）",
-   "html": "<p>你今天看书签到啦，照片里你正捧着书认真读，读的是《工人运动》和十九路军相关的内容，很专注，特别棒！</p><p>每天看书20页，坚持就是进步，继续保持哦！</p><p>本批积分：发回 +5。</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T23:06:00+08:00",
-   "kind": "feedback",
-   "time": "23:06",
-   "task_id": "REG-20261112-17BE149A7498",
-   "title": "11月12日数学校本P38反馈（10/11，90.9%）",
-   "html": "<p>你今天把校本 P38《生活中的比（一）》做完了，共 11 小问，对了 10 问，正确率 90.9%，很棒！</p><p>做得好的地方：长方形长与宽的比、化简比、求比值都做对了；生活中的比找得很准。</p><p>有 1 道判断题要订正：中韩足球友谊赛的比分是 1:0，1:0 也是一个比。（对的写 Y，错的写 N）</p><p>想一想：比和除法、分数是一家人，比的前项相当于被除数，后项相当于除数。除法里除数可以是 0 吗？体育比赛里的 1:0 是在记录两队各进了几个球，它只是在借用冒号的样子，不是在算比。数学里的比，后项有一样东西绝对不能是，你还记得吗？把比写成除法算式 1÷0，这个算式能算吗？为什么？</p><p>本批积分：完成 +6、正确率 +6、书写 +2，共 +14。</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T22:38:40+08:00",
-   "kind": "feedback",
-   "time": "22:38",
-   "task_id": "REG-20261112-F2646BDF2DB8",
-   "title": "11月12日读15分钟第5单元作文反馈（全文读完读对，达标）",
-   "html": "<p>《一只垃圾桶的自述》全文读完了，读得很顺，没有漏读、没有读错，达标！</p><p>这次读得完整又清楚，继续保持。</p><p>本批积分：发回 +5、达标 +3、录音时长 +5，共 +13。</p>"
-  },
-  {
-   "date": "2026-11-12",
-   "ts": "2026-11-12T22:20:00+08:00",
-   "kind": "feedback",
-   "time": "22:20",
-   "task_id": "REG-20261112-9C8F60A9C008",
-   "title": "11月12日英语P40练习反馈（小管家全满分）",
-   "html": "<p>你今天把英语 P40 的练习都做完了，小管家显示已完成，四个小任务都拿到了满分，太棒了！</p><p>做得好的地方：课时词汇跟读 11 个词得了 3 颗星，读得很流利；课时词汇拼写 11 个单词正确率 100%，一个都没错；Read and answer 跟读 16 个句子得了 3 颗星；In focus 跟读 4 个句子也得了 3 颗星。老师还奖励了你 1 朵小红花。10 分钟就做完了，效率很高！</p><p>本批积分：发回 +5，达标 +3，共 +8。</p>"
   }
  ]
 }
