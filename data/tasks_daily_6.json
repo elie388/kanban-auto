@@ -3,7 +3,7 @@
   "date": "2026-11-19",
   "grade": "六年级",
   "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T22:50:35+08:00",
+  "updated_at": "2026-11-19T22:54:47+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -255,7 +255,7 @@
       "title": "修改三篇作文",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①修改三篇作文；②把抄写本默19课 → 待完成",
@@ -264,9 +264,48 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T19:41:59+08:00",
-      "updated_at": "2026-11-19T19:41:59+08:00",
-      "corrections": [],
-      "pending_corrections": 0
+      "updated_at": "2026-11-19T22:54:47+08:00",
+      "corrections": [
+        {
+          "label": "语文 修改三篇作文 作文二“三大”改“三大家”",
+          "question": "作文二“三大”改“三大家”仍不通",
+          "reason": "“三大家”不通，量词搭配错误",
+          "hint": "数蚂蚁的时候，“三”后面跟什么词才通顺？读一读“三大家人”，顺不顺？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "作文二“我们三大[人]来到了一位小朋友的书桌上”，“大”字被划掉，红笔改写。",
+          "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
+          "img_exempt": "语文修改类（量词搭配），文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "语文 修改三篇作文 作文一“夕阳的照射”缺“下”未改",
+          "question": "作文一“夕阳的照射”缺“下”未改",
+          "reason": "缺介词“下”",
+          "hint": "“夕阳的照射”后面少了个字，阳光是从上面照下来的，加个表示“在下面”的字试试。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "作文一“夕阳的照射闪闪发光”缺介词，未改。",
+          "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
+          "img_exempt": "语文修改类（介词搭配），文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "语文 修改三篇作文 作文一“还在挂在”重复未改",
+          "question": "作文一“还在挂在”重复未改",
+          "reason": "“还在”与“挂在”重复",
+          "hint": "“却还在挂在我心上”里有两个意思差不多的词，读一读，哪个是多余的？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "作文一“然而有一件事却还在挂在我心上”中“还在”与“挂在”重复，未改。",
+          "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
+          "img_exempt": "语文修改类（语句简练），文字引导已讲清，不配引导图",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "corr_round": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261119-F95D17238EA9",
@@ -298,8 +337,8 @@
   ],
   "counts": {
     "total": 9,
-    "pending": 5,
-    "in_progress": 2,
+    "pending": 4,
+    "in_progress": 3,
     "submitted": 0,
     "grading": 0,
     "done": 2,
