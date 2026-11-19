@@ -1,38 +1,17 @@
 {
- "date": "2026-11-18",
+ "date": "2026-11-19",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "CHORE-20261118-G6",
-   "title": "家务打卡",
-   "subject": "家务",
-   "source": "chore",
-   "group": "chore"
-  },
-  {
-   "task_id": "META-REGISTER-2026-11-18",
+   "task_id": "META-REGISTER-2026-11-19",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261118-210AFC5C98C1",
-   "title": "完成校本P29、30的练习，写法",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261118-D0946CD14F93",
-   "title": "读小管家，读P45作文5次",
-   "subject": "英语",
-   "source": "register_book",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261118-348C68B567BA",
-   "title": "读作文15分钟，记录①（5行以上）",
+   "task_id": "REG-20261119-F95D17238EA9",
+   "title": "把抄写本默19课",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
