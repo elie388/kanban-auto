@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-20T00:14:32+08:00",
+  "generated_at": "2026-11-20T02:01:38+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -114,6 +114,24 @@
       "time_source": "entry",
       "reason": "英语口语易发回",
       "pts": 5,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-19",
+      "time": "02:01",
+      "time_source": "entry",
+      "reason": "校本课核对正确率94%，90%以上档+6",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-19",
+      "time": "02:01",
+      "time_source": "entry",
+      "reason": "校本课核对完成率100% A档完成分+10",
+      "pts": 10,
       "sign": "plus",
       "filtered": false
     },
