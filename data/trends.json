@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-19T19:11:52+08:00",
+ "updated_at": "2026-11-19T20:00:34+08:00",
  "practice_submit_url": "https://practice-req-relay.whyjjf.workers.dev/submit",
  "dates": [
   "2026-10-21",
@@ -65,7 +65,7 @@
     null,
     90.3,
     65.1,
-    82.9
+    79.2
    ],
    "empty": false,
    "sparse": false,
@@ -163,7 +163,7 @@
       null,
       100.0,
       62.5,
-      76.2
+      76.9
      ],
      "weak": [
       {
@@ -225,7 +225,7 @@
       null,
       88.9,
       72.7,
-      90.0
+      81.8
      ],
      "weak": [
       {
