@@ -3,7 +3,7 @@
   "date": "2026-11-19",
   "grade": "五年级",
   "generated_at": "2026-11-19T00:18:01+08:00",
-  "updated_at": "2026-11-19T04:34:43+08:00",
+  "updated_at": "2026-11-19T09:02:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -237,53 +237,11 @@
       "created_at": "2026-11-19T03:59:59+08:00",
       "updated_at": "2026-11-19T03:59:59+08:00",
       "completed_at": null
-    },
-    {
-      "task_id": "D53-2026-11-19-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-19T04:00:36+08:00",
-      "updated_at": "2026-11-19T04:00:36+08:00"
-    },
-    {
-      "task_id": "PRACT-20261119-CD3A95F2E83B",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-19.docx，按今日练习清单完成",
-      "kousuan": [
-        "4.7×3=",
-        "67+85=",
-        "3.4×5+2.6=",
-        "38.6×4.9≈（估算：两个因数都取整到个位后再相乘）",
-        "2.5×5.6×4="
-      ],
-      "recite_text": "语文背诵：《长相思》（纳兰性德）\n原文：山一程，水一程，身向榆关那畔行，夜深千帐灯。风一更，雪一更，聒碎乡心梦不成，故园无此声。\n朗读要求：读出绵绵的思乡之情，注意“山一程，水一程”的舒缓深沉；“风一更，雪一更”读出风雪交加的急促感，整体读出浓浓的思乡之情。\n英语口语任务说明：请大声朗读下面的短文2遍，再用自己的话复述大意（3-4句话），录音发回。短文：Last Sunday was sunny and warm. My parents and I went to the People's Park by bike. It was so beautiful! There were green trees, colorful flowers and a clean lake. First, we flew a kite high in the sky. My kite flew the highest! Then, we sat under a big tree and ate some delicious sandwiches and fruit. We felt a little tired, but we were very happy. It was a wonderful weekend!\n提示问题：1. Where did they go last Sunday? 2. What did they eat under the big tree?\n口语要求：大声朗读短文2遍，再用自己的话复述大意（3-4句话），录音发回。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-19.docx",
-      "file_hash": "d1dd43d23454b61c3e8427c6c9697db83fdc32c263c5c42be737792e6e5cb6d5",
-      "created_at": "2026-11-19T04:34:41+08:00",
-      "updated_at": "2026-11-19T04:34:41+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-19.pdf",
-          "label": "练习",
-          "pages": 4
-        }
-      ]
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 5,
+    "total": 4,
+    "pending": 3,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
