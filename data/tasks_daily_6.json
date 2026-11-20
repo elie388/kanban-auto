@@ -3,7 +3,7 @@
   "date": "2026-11-20",
   "grade": "六年级",
   "generated_at": "2026-11-20T00:18:17+08:00",
-  "updated_at": "2026-11-20T17:05:48+08:00",
+  "updated_at": "2026-11-20T18:51:45+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -291,14 +291,26 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "EXAM-20261120-DF648E2AF5CB",
+      "source": "exam",
+      "title": "学校考试卷",
+      "detail": "家务面板考试卷入口提交",
+      "subject": "",
+      "status": "grading",
+      "status_source": "exam_route",
+      "corrections": [],
+      "pending_corrections": 0,
+      "created_at": "2026-11-20T18:51:45+08:00"
     }
   ],
   "counts": {
-    "total": 7,
+    "total": 8,
     "pending": 4,
     "in_progress": 3,
     "submitted": 0,
-    "grading": 0,
+    "grading": 1,
     "done": 0,
     "pending_review": 0
   },
