@@ -3,7 +3,7 @@
   "date": "2026-11-20",
   "grade": "六年级",
   "generated_at": "2026-11-20T00:18:17+08:00",
-  "updated_at": "2026-11-20T22:28:12+08:00",
+  "updated_at": "2026-11-20T22:29:03+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -250,12 +250,12 @@
       "review_status": "approved",
       "appear_at": "2026-11-20T17:30:00+08:00",
       "chore_done_count": 1,
-      "chore_pending_review": 1,
+      "chore_pending_review": 0,
       "chore_exempt": false,
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-20T00:18:32+08:00",
-      "updated_at": "2026-11-20T22:28:12+08:00",
+      "updated_at": "2026-11-20T22:29:03+08:00",
       "completed_at": "2026-11-20T22:28:12+08:00",
       "evidence": "家务判定通过——晾衣服；证据：看板家务上传批次 b1795184792041d786b247a1e9047f（approved）；回写 chore_task_writeback。"
     },
