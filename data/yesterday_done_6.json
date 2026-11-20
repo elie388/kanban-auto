@@ -1,20 +1,13 @@
 {
- "date": "2026-11-19",
+ "date": "2026-11-20",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-19",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261119-F95D17238EA9",
-   "title": "把抄写本默19课",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
+   "task_id": "CHORE-20261120-G6",
+   "title": "家务打卡",
+   "subject": "家务",
+   "source": "chore",
+   "group": "chore"
   }
  ]
 }
