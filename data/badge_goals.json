@@ -649,8 +649,8 @@
     "key": "moxiezhixing",
     "obtained": true,
     "date": "2026-11-18",
-    "count": 1,
-    "total_count": 1,
+    "count": 2,
+    "total_count": 2,
     "via_late": false,
     "progress": {
      "state": "event"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W47",
- "generated_at": "2026-11-20T19:04:47.955351+08:00"
+ "generated_at": "2026-11-20T22:53:15.372913+08:00"
 }
