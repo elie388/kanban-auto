@@ -1,422 +1,424 @@
 {
- "schema_version": "1.0",
- "date": "2026-11-21",
- "grade": "六年级",
- "generated_at": "2026-11-21T00:18:03+08:00",
- "updated_at": "2026-11-21T19:49:36+08:00",
- "sources": {
-  "register_book": {
-   "file": "作业登记本跟踪.md",
-   "ingested_at": "2026-11-21T18:51:41+08:00",
-   "new_lines": 0,
-   "flipped": 0
-  },
-  "targeted_practice": {
-   "file": "今日练习清单.json",
-   "ingested_at": null,
-   "status": "pending"
-  },
-  "daily_53": {
-   "file": "固定日常",
-   "ingested_at": null,
-   "status": "pending"
-  }
- },
- "tasks": [
-  {
-   "task_id": "READ-20261119-G6",
-   "source": "reading_daily",
-   "subject": "读书",
-   "title": "每日读书",
-   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-21T08:00:00+08:00",
-   "task_type": "reading",
-   "count_in_completion_rate": true,
-   "reading_duration_sec": null,
-   "reading_wpm": null,
-   "reading_pass": null,
-   "created_at": "2026-11-19T00:18:30+08:00",
-   "updated_at": "2026-11-21T17:05:54+08:00",
-   "carry_first_date": "2026-11-19",
-   "carried_from": "2026-11-20",
-   "carry_count": 2
-  },
-  {
-   "task_id": "REG-20261119-304280087FBA",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "完成《三单习》P48全部，P49的（二）、三的（二），P50的三、五，写语法",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①完成《三单习》P48全部，P49的（二）、三的（二），P50的三、五，写语法；②背P42对话10次，提交小管家作业 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-19T19:41:59+08:00",
-   "updated_at": "2026-11-21T00:18:03+08:00",
-   "corr_round": 1,
-   "corrections": [
-    {
-     "label": "英语 三单习 P48 第1题-找单词 leafcatcher",
-     "question": "字母方阵里圈出 leafcatcher",
-     "reason": "只圈了 leafcat，没有把 leafcatcher 整个单词圈完整，少了 cher",
-     "hint": "再数一数 leafcatcher 这个单词有几个字母，你圈到第几个了？圈单词要把整个单词都圈进去。",
-     "img": "",
-     "q_img": "",
-     "orig_text": "仔细观察字母方阵，找出 4 件展品对应的英文单词，用笔圈出找到的单词。",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
-     "round": 1
+  "schema_version": "1.0",
+  "date": "2026-11-21",
+  "grade": "六年级",
+  "generated_at": "2026-11-21T00:18:03+08:00",
+  "updated_at": "2026-11-21T22:40:51+08:00",
+  "sources": {
+    "register_book": {
+      "file": "作业登记本跟踪.md",
+      "ingested_at": "2026-11-21T18:51:41+08:00",
+      "new_lines": 0,
+      "flipped": 0
     },
-    {
-     "label": "英语 三单习 P48 第4题-短文填空4",
-     "question": "It works very ___.",
-     "reason": "works 是动词，修饰动词要用副词，quick 是形容词，没有改成副词形式",
-     "hint": "works 是动词，修饰动词的词应该用什么词性？想一想 quick 的副词形式是什么。",
-     "img": "",
-     "q_img": "",
-     "orig_text": "It works very ___.（词库：help clean carry make quick，用其正确形式填空，每词限用一次）",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
-     "round": 1
+    "targeted_practice": {
+      "file": "今日练习清单.json",
+      "ingested_at": null,
+      "status": "pending"
     },
-    {
-     "label": "英语 三单习 P50 思维导图6",
-     "question": "Finally: put it in the ___.",
-     "reason": "这一步是把瓶子放进花盆（pot）里，plant 是植物，不是花盆",
-     "hint": "瓶子最后是放进什么容器里？想一想装花的那个容器叫什么。",
-     "img": "",
-     "q_img": "",
-     "orig_text": "Finally: put it in the ___.",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
-     "round": 1
-    },
-    {
-     "label": "英语 三单习 P50 思维导图8",
-     "question": "It works ___.",
-     "reason": "说一个工具好用要用 works well，works hard 是说人或动物卖力干活，不适合说瓶子",
-     "hint": "瓶子是一个工具，说工具好用、管用，常用的说法是什么？",
-     "img": "",
-     "q_img": "",
-     "orig_text": "It works ___.",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
-     "round": 1
+    "daily_53": {
+      "file": "固定日常",
+      "ingested_at": null,
+      "status": "pending"
     }
-   ],
-   "pending_corrections": 4,
-   "status_source": "closeout_writeback",
-   "carry_first_date": "2026-11-19",
-   "carried_from": "2026-11-20",
-   "carry_count": 2
   },
-  {
-   "task_id": "REG-20261119-62F7C060BEA3",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本P42",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念54、55；②校本P42 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-19T19:41:59+08:00",
-   "updated_at": "2026-11-21T00:18:03+08:00",
-   "corr_round": 1,
-   "corrections": [
+  "tasks": [
     {
-     "label": "数学 整理与复习 第5题-路程与时间的比",
-     "question": "汽车行驶的路程与时间的比",
-     "reason": "把题里的 8 小时看成了 5 小时，比写错了",
-     "hint": "再读一遍题：汽车到底是几小时行驶了 400 千米？路程比时间，时间是几就写几，不要凭印象写。",
-     "img": "62F7C060BEA3_guide_wu1.png",
-     "q_img": "",
-     "orig_text": "一辆汽车 8 时行驶了 400km，这辆汽车行驶的路程与时间的比是( )，比值是( )，这个比值表示的意义是( )。",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "round": 1
+      "task_id": "READ-20261119-G6",
+      "source": "reading_daily",
+      "subject": "读书",
+      "title": "每日读书",
+      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "appear_at": "2026-11-21T08:00:00+08:00",
+      "task_type": "reading",
+      "count_in_completion_rate": true,
+      "reading_duration_sec": null,
+      "reading_wpm": null,
+      "reading_pass": null,
+      "created_at": "2026-11-19T00:18:30+08:00",
+      "updated_at": "2026-11-21T17:05:54+08:00",
+      "carry_first_date": "2026-11-19",
+      "carried_from": "2026-11-20",
+      "carry_count": 2
     },
     {
-     "label": "数学 整理与复习 第5题-比值",
-     "question": "数学 整理与复习 第5题-比值 六年级数学校本 P42 整理与复习（第五单元 比的认识）第 1-9 题；看板上传批次 b1795092458149f233e626e567483a，1 图；任务 REG-20261119-62F7C060BEA3；提交 2026-11-19 20:47:43（server_ts 12:47:43Z）。",
-     "reason": "比写错了，比值是跟着比算的；比改对后比值要重算",
-     "hint": "先把比改对，再用比的前项除以后项，重新算一算比值是多少。",
-     "img": "62F7C060BEA3_guide_wu2.png",
-     "q_img": "",
-     "orig_text": "一辆汽车 8 时行驶了 400km，这辆汽车行驶的路程与时间的比是( )，比值是( )，这个比值表示的意义是( )。",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "round": 1
+      "task_id": "REG-20261119-304280087FBA",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "完成《三单习》P48全部，P49的（二）、三的（二），P50的三、五，写语法",
+      "detail": "",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①完成《三单习》P48全部，P49的（二）、三的（二），P50的三、五，写语法；②背P42对话10次，提交小管家作业 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-19T19:41:59+08:00",
+      "updated_at": "2026-11-21T00:18:03+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "英语 三单习 P48 第1题-找单词 leafcatcher",
+          "question": "字母方阵里圈出 leafcatcher",
+          "reason": "只圈了 leafcat，没有把 leafcatcher 整个单词圈完整，少了 cher",
+          "hint": "再数一数 leafcatcher 这个单词有几个字母，你圈到第几个了？圈单词要把整个单词都圈进去。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "仔细观察字母方阵，找出 4 件展品对应的英文单词，用笔圈出找到的单词。",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "英语 三单习 P48 第4题-短文填空4",
+          "question": "It works very ___.",
+          "reason": "works 是动词，修饰动词要用副词，quick 是形容词，没有改成副词形式",
+          "hint": "works 是动词，修饰动词的词应该用什么词性？想一想 quick 的副词形式是什么。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "It works very ___.（词库：help clean carry make quick，用其正确形式填空，每词限用一次）",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "英语 三单习 P50 思维导图6",
+          "question": "Finally: put it in the ___.",
+          "reason": "这一步是把瓶子放进花盆（pot）里，plant 是植物，不是花盆",
+          "hint": "瓶子最后是放进什么容器里？想一想装花的那个容器叫什么。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "Finally: put it in the ___.",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "英语 三单习 P50 思维导图8",
+          "question": "It works ___.",
+          "reason": "说一个工具好用要用 works well，works hard 是说人或动物卖力干活，不适合说瓶子",
+          "hint": "瓶子是一个工具，说工具好用、管用，常用的说法是什么？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "It works ___.",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "img_exempt": "英语语法填空类，文字引导已讲清，不配引导图",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 4,
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-19",
+      "carried_from": "2026-11-20",
+      "carry_count": 2
     },
     {
-     "label": "数学 整理与复习 第8题-求比值 42:14",
-     "question": "数学 整理与复习 第8题-求比值 42:14 六年级数学校本 P42 整理与复习（第五单元 比的认识）第 1-9 题；看板上传批次 b1795092458149f233e626e567483a，1 图；任务 REG-20261119-62F7C060BEA3；提交 2026-11-19 20:47:43（server_ts 12:47:43Z）。",
-     "reason": "42 除以 14 算错了",
-     "hint": "想一想：14 乘几等于 42？再算一遍 42 除以 14。",
-     "img": "62F7C060BEA3_guide_ba6.png",
-     "q_img": "",
-     "orig_text": "求比值：42:14=( )",
-     "q_img_exempt": "纯文字题，题干全文见 orig_text",
-     "round": 1
-    }
-   ],
-   "pending_corrections": 3,
-   "status_source": "closeout_writeback",
-   "carry_first_date": "2026-11-19",
-   "carried_from": "2026-11-20",
-   "carry_count": 2
-  },
-  {
-   "task_id": "REG-20261119-6FFB44759D22",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "修改三篇作文",
-   "detail": "",
-   "estimate_min": null,
-   "status": "in_progress",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①修改三篇作文；②把抄写本默19课 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-19T19:41:59+08:00",
-   "updated_at": "2026-11-21T00:18:03+08:00",
-   "corrections": [
-    {
-     "label": "语文 修改三篇作文 作文二“三大”改“三大家”",
-     "question": "作文二“三大”改“三大家”仍不通",
-     "reason": "“三大家”不通，量词搭配错误",
-     "hint": "数蚂蚁的时候，“三”后面跟什么词才通顺？读一读“三大家人”，顺不顺？",
-     "img": "",
-     "q_img": "",
-     "orig_text": "作文二“我们三大[人]来到了一位小朋友的书桌上”，“大”字被划掉，红笔改写。",
-     "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
-     "img_exempt": "语文修改类（量词搭配），文字引导已讲清，不配引导图",
-     "round": 1
+      "task_id": "REG-20261119-62F7C060BEA3",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P42",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念54、55；②校本P42 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-19T19:41:59+08:00",
+      "updated_at": "2026-11-21T00:18:03+08:00",
+      "corr_round": 1,
+      "corrections": [
+        {
+          "label": "数学 整理与复习 第5题-路程与时间的比",
+          "question": "汽车行驶的路程与时间的比",
+          "reason": "把题里的 8 小时看成了 5 小时，比写错了",
+          "hint": "再读一遍题：汽车到底是几小时行驶了 400 千米？路程比时间，时间是几就写几，不要凭印象写。",
+          "img": "62F7C060BEA3_guide_wu1.png",
+          "q_img": "",
+          "orig_text": "一辆汽车 8 时行驶了 400km，这辆汽车行驶的路程与时间的比是( )，比值是( )，这个比值表示的意义是( )。",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "round": 1
+        },
+        {
+          "label": "数学 整理与复习 第5题-比值",
+          "question": "数学 整理与复习 第5题-比值 六年级数学校本 P42 整理与复习（第五单元 比的认识）第 1-9 题；看板上传批次 b1795092458149f233e626e567483a，1 图；任务 REG-20261119-62F7C060BEA3；提交 2026-11-19 20:47:43（server_ts 12:47:43Z）。",
+          "reason": "比写错了，比值是跟着比算的；比改对后比值要重算",
+          "hint": "先把比改对，再用比的前项除以后项，重新算一算比值是多少。",
+          "img": "62F7C060BEA3_guide_wu2.png",
+          "q_img": "",
+          "orig_text": "一辆汽车 8 时行驶了 400km，这辆汽车行驶的路程与时间的比是( )，比值是( )，这个比值表示的意义是( )。",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "round": 1
+        },
+        {
+          "label": "数学 整理与复习 第8题-求比值 42:14",
+          "question": "数学 整理与复习 第8题-求比值 42:14 六年级数学校本 P42 整理与复习（第五单元 比的认识）第 1-9 题；看板上传批次 b1795092458149f233e626e567483a，1 图；任务 REG-20261119-62F7C060BEA3；提交 2026-11-19 20:47:43（server_ts 12:47:43Z）。",
+          "reason": "42 除以 14 算错了",
+          "hint": "想一想：14 乘几等于 42？再算一遍 42 除以 14。",
+          "img": "62F7C060BEA3_guide_ba6.png",
+          "q_img": "",
+          "orig_text": "求比值：42:14=( )",
+          "q_img_exempt": "纯文字题，题干全文见 orig_text",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-19",
+      "carried_from": "2026-11-20",
+      "carry_count": 2
     },
     {
-     "label": "语文 修改三篇作文 作文一“夕阳的照射”缺“下”未改",
-     "question": "作文一“夕阳的照射”缺“下”未改",
-     "reason": "缺介词“下”",
-     "hint": "“夕阳的照射”后面少了个字，阳光是从上面照下来的，加个表示“在下面”的字试试。",
-     "img": "",
-     "q_img": "",
-     "orig_text": "作文一“夕阳的照射闪闪发光”缺介词，未改。",
-     "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
-     "img_exempt": "语文修改类（介词搭配），文字引导已讲清，不配引导图",
-     "round": 1
+      "task_id": "REG-20261119-6FFB44759D22",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "修改三篇作文",
+      "detail": "",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①修改三篇作文；②把抄写本默19课 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-19T19:41:59+08:00",
+      "updated_at": "2026-11-21T00:18:03+08:00",
+      "corrections": [
+        {
+          "label": "语文 修改三篇作文 作文二“三大”改“三大家”",
+          "question": "作文二“三大”改“三大家”仍不通",
+          "reason": "“三大家”不通，量词搭配错误",
+          "hint": "数蚂蚁的时候，“三”后面跟什么词才通顺？读一读“三大家人”，顺不顺？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "作文二“我们三大[人]来到了一位小朋友的书桌上”，“大”字被划掉，红笔改写。",
+          "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
+          "img_exempt": "语文修改类（量词搭配），文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "语文 修改三篇作文 作文一“夕阳的照射”缺“下”未改",
+          "question": "作文一“夕阳的照射”缺“下”未改",
+          "reason": "缺介词“下”",
+          "hint": "“夕阳的照射”后面少了个字，阳光是从上面照下来的，加个表示“在下面”的字试试。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "作文一“夕阳的照射闪闪发光”缺介词，未改。",
+          "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
+          "img_exempt": "语文修改类（介词搭配），文字引导已讲清，不配引导图",
+          "round": 1
+        },
+        {
+          "label": "语文 修改三篇作文 作文一“还在挂在”重复未改",
+          "question": "作文一“还在挂在”重复未改",
+          "reason": "“还在”与“挂在”重复",
+          "hint": "“却还在挂在我心上”里有两个意思差不多的词，读一读，哪个是多余的？",
+          "img": "",
+          "q_img": "",
+          "orig_text": "作文一“然而有一件事却还在挂在我心上”中“还在”与“挂在”重复，未改。",
+          "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
+          "img_exempt": "语文修改类（语句简练），文字引导已讲清，不配引导图",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 3,
+      "corr_round": 1,
+      "status_source": "closeout_writeback",
+      "carry_first_date": "2026-11-19",
+      "carried_from": "2026-11-20",
+      "carry_count": 2
     },
     {
-     "label": "语文 修改三篇作文 作文一“还在挂在”重复未改",
-     "question": "作文一“还在挂在”重复未改",
-     "reason": "“还在”与“挂在”重复",
-     "hint": "“却还在挂在我心上”里有两个意思差不多的词，读一读，哪个是多余的？",
-     "img": "",
-     "q_img": "",
-     "orig_text": "作文一“然而有一件事却还在挂在我心上”中“还在”与“挂在”重复，未改。",
-     "q_img_exempt": "修改作文类，无原题图，题干全文见 orig_text",
-     "img_exempt": "语文修改类（语句简练），文字引导已讲清，不配引导图",
-     "round": 1
-    }
-   ],
-   "pending_corrections": 3,
-   "corr_round": 1,
-   "status_source": "closeout_writeback",
-   "carry_first_date": "2026-11-19",
-   "carried_from": "2026-11-20",
-   "carry_count": 2
-  },
-  {
-   "task_id": "MANUAL-20261120-001",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语阅读写作第20期",
-   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-20T04:09:29+08:00",
-   "updated_at": "2026-11-21T00:18:03+08:00",
-   "files": [
+      "task_id": "MANUAL-20261120-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语阅读写作第20期",
+      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-20T04:09:29+08:00",
+      "updated_at": "2026-11-21T00:18:03+08:00",
+      "files": [
+        {
+          "name": "六年级英语阅读写作_2026-11-20.pdf",
+          "label": "英语阅读写作练习",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-11-20",
+      "carried_from": "2026-11-20",
+      "carry_count": 1
+    },
     {
-     "name": "六年级英语阅读写作_2026-11-20.pdf",
-     "label": "英语阅读写作练习",
-     "pages": 2
-    }
-   ],
-   "carry_first_date": "2026-11-20",
-   "carried_from": "2026-11-20",
-   "carry_count": 1
-  },
-  {
-   "task_id": "MANUAL-20261120-002",
-   "source": "manual",
-   "subject": "英语",
-   "title": "英语对话第11月20日",
-   "detail": "英语对话第11月20日：At the Birthday Party（生日聚会）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "created_by": "user",
-   "created_at": "2026-11-20T19:28:19+08:00",
-   "updated_at": "2026-11-21T00:18:03+08:00",
-   "files": [
+      "task_id": "MANUAL-20261120-002",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语对话第11月20日",
+      "detail": "英语对话第11月20日：At the Birthday Party（生日聚会）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-20T19:28:19+08:00",
+      "updated_at": "2026-11-21T00:18:03+08:00",
+      "files": [
+        {
+          "name": "英语对话第11月20日_生日聚会_打印版.pdf",
+          "label": "对话打印版",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-11-20",
+      "carried_from": "2026-11-20",
+      "carry_count": 1
+    },
     {
-     "name": "英语对话第11月20日_生日聚会_打印版.pdf",
-     "label": "对话打印版",
-     "pages": 2
+      "task_id": "CHORE-20261121-G6",
+      "source": "chore",
+      "subject": "家务",
+      "title": "家务打卡",
+      "detail": "22:39 洗碗",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "appear_at": "2026-11-21T08:00:00+08:00",
+      "chore_done_count": 1,
+      "chore_pending_review": 0,
+      "chore_exempt": false,
+      "chore_missed": false,
+      "count_in_completion_rate": false,
+      "created_at": "2026-11-21T00:18:22+08:00",
+      "updated_at": "2026-11-21T22:40:51+08:00",
+      "completed_at": "2026-11-21T22:40:51+08:00",
+      "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1795271936650a0e288628780efd8（approved）；回写 chore_task_writeback。"
+    },
+    {
+      "task_id": "REG-20261121-350535BE1B38",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄《知识清单》U4短语，单词和中文各4次",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《知识清单》U4短语，单词和中文各4次；②提交小管家。背书P42对话，抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-21T18:49:33+08:00",
+      "corrections": [],
+      "pending_corrections": 0
+    },
+    {
+      "task_id": "REG-20261121-5F63F606A346",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "提交小管家。背书P42对话，抽背",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《知识清单》U4短语，单词和中文各4次；②提交小管家。背书P42对话，抽背 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-21T18:49:33+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
+    },
+    {
+      "task_id": "REG-20261121-01A1D560E750",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念62、63、64",
+      "detail": "",
+      "estimate_min": null,
+      "status": "done",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念62、63、64；②校本P41、43 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-21T20:31:39+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-21T20:31:39+08:00"
+    },
+    {
+      "task_id": "REG-20261121-D3B58496C0A0",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P41、43",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念62、63、64；②校本P41、43 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-21T18:49:33+08:00",
+      "corrections": [],
+      "pending_corrections": 0
+    },
+    {
+      "task_id": "REG-20261121-FEF49084B385",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "写作文（例庄稼）",
+      "detail": "作文题目括号里的三个字看不清，请你确认一下：是“例庄稼”吗？还是“班群”或“王群”？请在留言里告诉我正确的三个字，确认后我会改卡。",
+      "estimate_min": null,
+      "status": "submitted",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①写作文（例庄稼）；②修改三篇作文 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-21T20:27:47+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     }
-   ],
-   "carry_first_date": "2026-11-20",
-   "carried_from": "2026-11-20",
-   "carry_count": 1
+  ],
+  "counts": {
+    "total": 12,
+    "pending": 6,
+    "in_progress": 3,
+    "submitted": 1,
+    "grading": 0,
+    "done": 2,
+    "pending_review": 0
   },
-  {
-   "task_id": "CHORE-20261121-G6",
-   "source": "chore",
-   "subject": "家务",
-   "title": "家务打卡",
-   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "appear_at": "2026-11-21T08:00:00+08:00",
-   "chore_done_count": 0,
-   "chore_pending_review": 0,
-   "chore_exempt": false,
-   "chore_missed": false,
-   "count_in_completion_rate": false,
-   "created_at": "2026-11-21T00:18:22+08:00",
-   "updated_at": "2026-11-21T00:18:22+08:00"
-  },
-  {
-   "task_id": "REG-20261121-350535BE1B38",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "抄《知识清单》U4短语，单词和中文各4次",
-   "detail": "",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄《知识清单》U4短语，单词和中文各4次；②提交小管家。背书P42对话，抽背 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-21T18:49:33+08:00",
-   "updated_at": "2026-11-21T18:49:33+08:00",
-   "corrections": [],
-   "pending_corrections": 0
-  },
-  {
-   "task_id": "REG-20261121-5F63F606A346",
-   "source": "register_book",
-   "subject": "英语",
-   "title": "提交小管家。背书P42对话，抽背",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 英语：①抄《知识清单》U4短语，单词和中文各4次；②提交小管家。背书P42对话，抽背 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-21T18:49:33+08:00",
-   "updated_at": "2026-11-21T18:49:33+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "corrections": [],
-   "pending_corrections": 0
-  },
-  {
-   "task_id": "REG-20261121-01A1D560E750",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "读背概念62、63、64",
-   "detail": "",
-   "estimate_min": null,
-   "status": "done",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念62、63、64；②校本P41、43 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-21T18:49:33+08:00",
-   "updated_at": "2026-11-21T20:31:39+08:00",
-   "task_type": "reading",
-   "type_source": "regex_oral",
-   "corrections": [],
-   "pending_corrections": 0,
-   "completed_at": "2026-11-21T20:31:39+08:00"
-  },
-  {
-   "task_id": "REG-20261121-D3B58496C0A0",
-   "source": "register_book",
-   "subject": "数学",
-   "title": "校本P41、43",
-   "detail": "原状态：待完成",
-   "estimate_min": null,
-   "status": "pending",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 数学：①读背概念62、63、64；②校本P41、43 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-21T18:49:33+08:00",
-   "updated_at": "2026-11-21T18:49:33+08:00",
-   "corrections": [],
-   "pending_corrections": 0
-  },
-  {
-   "task_id": "REG-20261121-FEF49084B385",
-   "source": "register_book",
-   "subject": "语文",
-   "title": "写作文（例庄稼）",
-   "detail": "作文题目括号里的三个字看不清，请你确认一下：是“例庄稼”吗？还是“班群”或“王群”？请在留言里告诉我正确的三个字，确认后我会改卡。",
-   "estimate_min": null,
-   "status": "submitted",
-   "review_status": "approved",
-   "ocr_confidence": null,
-   "raw_text": "- 语文：①写作文（例庄稼）；②修改三篇作文 → 待完成",
-   "evidence": {
-    "extracted_by": "task_ingest_freetext",
-    "reviewed_by": null
-   },
-   "created_at": "2026-11-21T18:49:33+08:00",
-   "updated_at": "2026-11-21T20:27:47+08:00",
-   "corrections": [],
-   "pending_corrections": 0
-  }
- ],
- "counts": {
-  "total": 12,
-  "pending": 7,
-  "in_progress": 3,
-  "submitted": 1,
-  "grading": 0,
-  "done": 1,
-  "pending_review": 0
- },
- "deadline_today": "2026-11-21T22:30:00+08:00"
+  "deadline_today": "2026-11-21T22:30:00+08:00"
 }
