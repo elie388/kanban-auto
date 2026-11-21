@@ -3,7 +3,7 @@
   "date": "2026-11-21",
   "grade": "五年级",
   "generated_at": "2026-11-21T00:18:03+08:00",
-  "updated_at": "2026-11-21T19:34:27+08:00",
+  "updated_at": "2026-11-21T19:49:37+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -382,7 +382,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00"
+      "updated_at": "2026-11-21T18:51:41+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261121-2A0FD903372E",
@@ -400,7 +402,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00"
+      "updated_at": "2026-11-21T18:51:41+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261121-DF7951204A74",
@@ -418,7 +422,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00"
+      "updated_at": "2026-11-21T18:51:41+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261121-F30FA5669255",
@@ -581,7 +587,9 @@
       "created_at": "2026-11-21T18:51:41+08:00",
       "updated_at": "2026-11-21T18:51:41+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261121-AA9C0B5F64B2",
@@ -599,7 +607,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00"
+      "updated_at": "2026-11-21T18:51:41+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     }
   ],
   "counts": {
