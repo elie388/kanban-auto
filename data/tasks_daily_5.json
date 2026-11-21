@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-21",
+  "date": "2026-11-22",
   "grade": "五年级",
-  "generated_at": "2026-11-21T00:18:03+08:00",
-  "updated_at": "2026-11-22T00:11:56+08:00",
+  "generated_at": "2026-11-22T00:18:02+08:00",
+  "updated_at": "2026-11-22T00:18:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-21T23:59:09+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -39,10 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-19T00:18:30+08:00",
-      "updated_at": "2026-11-21T17:05:53+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261119-05E4A214D177",
@@ -60,7 +59,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corr_round": 1,
       "corrections": [
         {
@@ -91,8 +90,8 @@
       "pending_corrections": 2,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261119-EA7993CE8EDF",
@@ -110,7 +109,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corr_round": 1,
       "corrections": [
         {
@@ -213,8 +212,8 @@
       "pending_corrections": 8,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261119-64867703B9E9",
@@ -232,7 +231,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T18:33:02+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "status_source": "kanban_upload",
       "corrections": [
         {
@@ -298,8 +297,8 @@
       ],
       "pending_corrections": 5,
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2,
+      "carried_from": "2026-11-21",
+      "carry_count": 3,
       "corr_round": 1
     },
     {
@@ -313,7 +312,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-20T04:09:29+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "files": [
         {
           "name": "五年级英语阅读写作_2026-11-20.pdf",
@@ -322,8 +321,8 @@
         }
       ],
       "carry_first_date": "2026-11-20",
-      "carried_from": "2026-11-20",
-      "carry_count": 1
+      "carried_from": "2026-11-21",
+      "carry_count": 2
     },
     {
       "task_id": "MANUAL-20261120-002",
@@ -336,7 +335,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-20T19:28:19+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "files": [
         {
           "name": "英语对话第11月20日_生日聚会_打印版.pdf",
@@ -345,26 +344,8 @@
         }
       ],
       "carry_first_date": "2026-11-20",
-      "carried_from": "2026-11-20",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261121-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-21T08:00:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-21T00:18:22+08:00",
-      "updated_at": "2026-11-22T00:11:56+08:00"
+      "carried_from": "2026-11-21",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261121-68B2737295F5",
@@ -382,9 +363,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261121-2A0FD903372E",
@@ -402,9 +386,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261121-DF7951204A74",
@@ -422,9 +409,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T18:51:41+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261121-F30FA5669255",
@@ -442,7 +432,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T19:34:15+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corr_round": 1,
       "corrections": [
         {
@@ -573,69 +563,20 @@
           "q": "最后一题我不会写，你能教教我吗？",
           "a": "彦均，最后一题是想让你自己动手发现三角形面积公式是怎么来的，咱们一步一步想。\n\n先拿两个一模一样的三角形，把它们反过来拼在一起，你发现拼成了一个什么图形？这个图形的底和高，跟原来三角形的底和高一样吗？\n\n再想一想：拼成的这个图形的面积，是一个三角形的几倍？那一个三角形的面积，就是拼成的图形面积的几分之几？\n\n举个小例子：一个三角形的底是4厘米、高是3厘米，先算一算拼成的平行四边形面积是多少，再想想三角形的面积是多少。\n\n你自己也画一画、拼一拼，再把你发现的过程写下来，写完告诉我你拼成了什么图形，好吗？"
         }
-      ]
-    },
-    {
-      "task_id": "REG-20261121-001B178902A1",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②练习本抄M5单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T19:50:14+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-21T19:50:14+08:00",
-      "status_source": "kids-upload-watch",
-      "orig_photos": [
-        "012b144fe0d97d3e.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261121-AA9C0B5F64B2",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "练习本抄M5单词",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①口语易；②练习本抄M5单词 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-21T18:51:41+08:00",
-      "updated_at": "2026-11-21T23:27:01+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-21T23:27:01+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "14762e731fd0b627.jpg"
-      ]
+      ],
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 7,
+    "total": 10,
+    "pending": 6,
     "in_progress": 4,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-21T22:30:00+08:00"
+  "deadline_today": null
 }

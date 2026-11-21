@@ -1,15 +1,14 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-21",
+  "date": "2026-11-22",
   "grade": "六年级",
-  "generated_at": "2026-11-21T00:18:03+08:00",
-  "updated_at": "2026-11-22T00:11:56+08:00",
+  "generated_at": "2026-11-22T00:18:02+08:00",
+  "updated_at": "2026-11-22T00:18:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-21T23:59:09+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
@@ -39,10 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-19T00:18:30+08:00",
-      "updated_at": "2026-11-21T17:05:54+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261119-304280087FBA",
@@ -60,7 +59,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T19:41:59+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corr_round": 1,
       "corrections": [
         {
@@ -115,8 +114,8 @@
       "pending_corrections": 4,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261119-62F7C060BEA3",
@@ -134,7 +133,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T19:41:59+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corr_round": 1,
       "corrections": [
         {
@@ -174,8 +173,8 @@
       "pending_corrections": 3,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "REG-20261119-6FFB44759D22",
@@ -193,7 +192,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-19T19:41:59+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [
         {
           "label": "语文 修改三篇作文 作文二“三大”改“三大家”",
@@ -236,8 +235,8 @@
       "corr_round": 1,
       "status_source": "closeout_writeback",
       "carry_first_date": "2026-11-19",
-      "carried_from": "2026-11-20",
-      "carry_count": 2
+      "carried_from": "2026-11-21",
+      "carry_count": 3
     },
     {
       "task_id": "MANUAL-20261120-001",
@@ -250,7 +249,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-20T04:09:29+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "files": [
         {
           "name": "六年级英语阅读写作_2026-11-20.pdf",
@@ -259,8 +258,8 @@
         }
       ],
       "carry_first_date": "2026-11-20",
-      "carried_from": "2026-11-20",
-      "carry_count": 1
+      "carried_from": "2026-11-21",
+      "carry_count": 2
     },
     {
       "task_id": "MANUAL-20261120-002",
@@ -273,7 +272,7 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-20T19:28:19+08:00",
-      "updated_at": "2026-11-21T00:18:03+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "files": [
         {
           "name": "英语对话第11月20日_生日聚会_打印版.pdf",
@@ -282,28 +281,8 @@
         }
       ],
       "carry_first_date": "2026-11-20",
-      "carried_from": "2026-11-20",
-      "carry_count": 1
-    },
-    {
-      "task_id": "CHORE-20261121-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "22:39 洗碗",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "appear_at": "2026-11-21T08:00:00+08:00",
-      "chore_done_count": 1,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-21T00:18:22+08:00",
-      "updated_at": "2026-11-22T00:11:56+08:00",
-      "completed_at": "2026-11-21T22:40:51+08:00",
-      "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b1795271936650a0e288628780efd8（approved）；回写 chore_task_writeback。"
+      "carried_from": "2026-11-21",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261121-350535BE1B38",
@@ -321,9 +300,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261121-5F63F606A346",
@@ -341,37 +323,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-21T18:49:33+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261121-01A1D560E750",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念62、63、64",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念62、63、64；②校本P41、43 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-21T20:31:39+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
       "pending_corrections": 0,
-      "completed_at": "2026-11-21T20:31:39+08:00",
-      "orig_photos": [
-        "08210a5292c58956.jpg"
-      ]
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261121-D3B58496C0A0",
@@ -389,9 +348,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-21T18:49:33+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261121-FEF49084B385",
@@ -409,7 +371,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-21T20:27:47+08:00",
+      "updated_at": "2026-11-22T00:18:02+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "qa": [
@@ -421,17 +383,20 @@
           "q": "班群",
           "a": "伟豪，你说的收到了——你说题目括号里的三个字是“班群”，我把你说的这个答案记下来了；作文要不要写，还是等爸爸确认后告诉你。\n\n不过你这次交上来的照片还是全黑的，一个字都看不清，没法帮你看。不管是作文还是培优试卷，照片全黑都看不清。你在光线亮的地方重新拍一张清楚的照片再交一次，今晚 22:30 前交回就可以。\n\n留一个小问题给你：你拍完照片自己先看一眼——照片里的字你自己能不能看清楚？能看清楚再交，就不容易白跑一趟了。"
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-21",
+      "carried_from": "2026-11-21",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 12,
+    "total": 10,
     "pending": 6,
     "in_progress": 3,
     "submitted": 1,
     "grading": 0,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-21T22:30:00+08:00"
+  "deadline_today": null
 }

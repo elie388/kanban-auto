@@ -1,12 +1,19 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "grade": "五年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-20",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
+   "task_id": "REG-20261121-001B178902A1",
+   "title": "口语易",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261121-AA9C0B5F64B2",
+   "title": "练习本抄M5单词",
+   "subject": "英语",
+   "source": "register_book",
    "group": "study"
   }
  ]

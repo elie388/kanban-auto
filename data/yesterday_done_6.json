@@ -1,19 +1,19 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-21",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "CHORE-20261120-G6",
+   "task_id": "CHORE-20261121-G6",
    "title": "家务打卡",
    "subject": "家务",
    "source": "chore",
    "group": "chore"
   },
   {
-   "task_id": "META-REGISTER-2026-11-20",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
+   "task_id": "REG-20261121-01A1D560E750",
+   "title": "读背概念62、63、64",
+   "subject": "数学",
+   "source": "register_book",
    "group": "study"
   }
  ]
