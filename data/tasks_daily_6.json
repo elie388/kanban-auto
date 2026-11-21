@@ -3,7 +3,7 @@
   "date": "2026-11-22",
   "grade": "六年级",
   "generated_at": "2026-11-22T00:18:02+08:00",
-  "updated_at": "2026-11-22T01:48:36+08:00",
+  "updated_at": "2026-11-22T02:28:35+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -291,7 +291,7 @@
       "title": "抄《知识清单》U4短语，单词和中文各4次",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①抄《知识清单》U4短语，单词和中文各4次；②提交小管家。背书P42对话，抽背 → 待完成",
@@ -300,12 +300,122 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-22T00:18:02+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
+      "updated_at": "2026-11-22T02:28:31+08:00",
+      "corrections": [
+        {
+          "label": "抄写 bottle cap 第3遍",
+          "question": "抄写U4短语：bottle cap（瓶盖）第3遍",
+          "reason": "中文多写了一个字",
+          "hint": "中文多写了一个字，对照知识清单，把多余的字划掉，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：bottle cap（瓶盖）第3遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 use A to make B 第3遍",
+          "question": "抄写U4短语：use A to make B（用A来做B）第3遍",
+          "reason": "中文多写了一个字",
+          "hint": "中文多写了一个字，对照知识清单，把多余的字划掉，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：use A to make B（用A来做B）第3遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 at the top/bottom 第4遍",
+          "question": "抄写U4短语：at the top/bottom（在顶部/底部）第4遍",
+          "reason": "中文有一个字写错了",
+          "hint": "中文有一个字写错了，对照知识清单，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：at the top/bottom（在顶部/底部）第4遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 get the idea of doing sth 第4遍",
+          "question": "抄写U4短语：get the idea of doing sth（想到做某事的主意）第4遍",
+          "reason": "英文漏写了一个小词",
+          "hint": "英文漏了一个小词，对照知识清单，补上再抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：get the idea of doing sth（想到做某事的主意）第4遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 on the way home 第3遍",
+          "question": "抄写U4短语：on the way home（在回家路上）第3遍",
+          "reason": "中文多写了一个字",
+          "hint": "中文多写了一个字，对照知识清单，把多余的字划掉，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：on the way home（在回家路上）第3遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 musical instrument 第1遍",
+          "question": "抄写U4短语：musical instrument（乐器）第1遍",
+          "reason": "英文单词漏写了两个字母",
+          "hint": "英文单词漏了两个字母，对照知识清单，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：musical instrument（乐器）第1遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 musical instrument 第2遍",
+          "question": "抄写U4短语：musical instrument（乐器）第2遍",
+          "reason": "英文单词漏写了两个字母",
+          "hint": "英文单词漏了两个字母，对照知识清单，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：musical instrument（乐器）第2遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 musical instrument 第3遍",
+          "question": "抄写U4短语：musical instrument（乐器）第3遍",
+          "reason": "英文单词漏写了两个字母",
+          "hint": "英文单词漏了两个字母，对照知识清单，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：musical instrument（乐器）第3遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        },
+        {
+          "label": "抄写 musical instrument 第4遍",
+          "question": "抄写U4短语：musical instrument（乐器）第4遍",
+          "reason": "英文单词漏写了两个字母",
+          "hint": "英文单词漏了两个字母，对照知识清单，重抄一遍。",
+          "img": "",
+          "q_img": "",
+          "orig_text": "抄写U4短语：musical instrument（乐器）第4遍",
+          "q_img_exempt": "英语抄写类无原题图",
+          "img_exempt": "抄写类：错处是字母/汉字抄写有误，对照知识清单重抄即可，引导图讲不清",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 9,
       "carry_first_date": "2026-11-21",
       "carried_from": "2026-11-21",
-      "carry_count": 1
+      "carry_count": 1,
+      "corr_round": 1
     },
     {
       "task_id": "REG-20261121-5F63F606A346",
@@ -449,8 +559,8 @@
   ],
   "counts": {
     "total": 11,
-    "pending": 7,
-    "in_progress": 4,
+    "pending": 6,
+    "in_progress": 5,
     "submitted": 0,
     "grading": 0,
     "done": 0,
