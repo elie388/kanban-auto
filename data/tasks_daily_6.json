@@ -394,7 +394,7 @@
       "title": "写作文（例庄稼）",
       "detail": "作文题目括号里的三个字看不清，请你确认一下：是“例庄稼”吗？还是“班群”或“王群”？请在留言里告诉我正确的三个字，确认后我会改卡。",
       "estimate_min": null,
-      "status": "pending",
+      "status": "submitted",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①写作文（例庄稼）；②修改三篇作文 → 待完成",
@@ -403,16 +403,16 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-21T18:49:33+08:00",
-      "updated_at": "2026-11-21T18:53:10+08:00",
+      "updated_at": "2026-11-21T20:27:47+08:00",
       "corrections": [],
       "pending_corrections": 0
     }
   ],
   "counts": {
     "total": 12,
-    "pending": 9,
+    "pending": 8,
     "in_progress": 3,
-    "submitted": 0,
+    "submitted": 1,
     "grading": 0,
     "done": 0,
     "pending_review": 0
