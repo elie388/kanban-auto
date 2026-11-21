@@ -3,7 +3,7 @@
   "date": "2026-11-22",
   "grade": "六年级",
   "generated_at": "2026-11-22T00:18:02+08:00",
-  "updated_at": "2026-11-22T00:49:09+08:00",
+  "updated_at": "2026-11-22T00:49:48+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -372,11 +372,22 @@
       "count_in_completion_rate": false,
       "created_at": "2026-11-22T00:18:18+08:00",
       "updated_at": "2026-11-22T00:18:18+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261122-001-G6-YW",
+      "source": "manual",
+      "subject": "语文",
+      "title": "写培优试卷",
+      "detail": "老师改让写培优试卷，不用写那篇作文了。请把培优试卷做完，拍照上传。",
+      "status": "pending",
+      "created_at": "2026-11-22T00:49:48+08:00",
+      "updated_at": "2026-11-22T00:49:48+08:00",
+      "completed_at": null
     }
   ],
   "counts": {
-    "total": 10,
-    "pending": 7,
+    "total": 11,
+    "pending": 8,
     "in_progress": 3,
     "submitted": 0,
     "grading": 0,
