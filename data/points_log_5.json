@@ -1,12 +1,34 @@
 {
   "schema_version": "1.3",
   "grade": 5,
-  "generated_at": "2026-11-22T00:14:55+08:00",
+  "generated_at": "2026-11-22T01:37:28+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-21",
+      "time": "01:37",
+      "time_source": "entry",
+      "reason": "小校本19课完成分",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "11-22"
+    },
+    {
+      "date": "11-21",
+      "time": "01:37",
+      "time_source": "entry",
+      "reason": "小校本19课迟交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false,
+      "backfill": true,
+      "posted_date": "11-22"
+    },
     {
       "date": "11-21",
       "time": "00:12",
