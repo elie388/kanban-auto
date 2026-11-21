@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-19T22:56:07+08:00",
+ "generated_at": "2026-11-21T20:27:35+08:00",
  "items": [
+  {
+   "date": "2026-11-21",
+   "ts": "2026-11-21T20:27:34+08:00",
+   "kind": "qa",
+   "time": "",
+   "task_id": "REG-20261121-FEF49084B385-QA",
+   "q": "老师说我写那个培优试卷，不用写这个作文",
+   "a_html": "<p>伟豪，你说的收到了——老师说写培优试卷、不用写这个作文，我已经记下来了，作文要不要写，等爸爸确认后告诉你。</p><p>不过你这次交上来的照片全是黑的，培优试卷一个字都看不清，没法帮你看。你在光线亮的地方把培优试卷重新拍一张清楚的照片再交一次，今晚 22:30 前交回就可以。</p><p>留一个小问题给你：你拍完照片自己先看一眼——照片里的字你自己能不能看清楚？能看清楚再交，就不容易白跑一趟了。</p>"
+  },
   {
    "date": "2026-11-19",
    "ts": "2026-11-19T22:57:00+08:00",
@@ -236,24 +245,6 @@
    "task_id": "MANUAL-20261114-002-G6-YY",
    "title": "11月14日英语批改反馈",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，11月14日英语周六综合卷批改反馈</h2>\n<p>11月14日 21:40 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>26道题对了24道，95分，正确率92.3%，很棒！</li>\n<li>词汇和单选大部分都对了，只错了2道，基础很扎实。</li>\n</ul>\n<h3>📝 需要订正：2处</h3>\n<p>1. 词汇第9题：There ______ some water in the bottle.（ ）A. is B. are C. was D. were。你选了 B（are）。<span style=\"color:red;font-weight:bold\">water 是不可数名词，不能数个数，are 是复数形式，不能和 water 搭配</span>。water 能数吗？一瓶水里有多少\"个\"water？想一想，不可数名词前面，There be 句型里的 be 动词该用 is 还是 are？再看一遍第9题的四个选项，哪一个和 water 搭配？</p><img src=\"data/diagrams/g6_yy_20261114_vocab9_water.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>2. 单选第17题：Look at the clouds! It ______ rain soon.（ ）A. is going to B. goes to C. will go D. is going。你选了 C（will go）。<span style=\"color:red;font-weight:bold\">It will go rain 这样说不对，will go 后面不能直接跟 rain</span>。天上乌云密布，你觉得马上要下雨了——这是根据眼前迹象做的预测，一般将来时里哪种说法专门表示\"根据迹象推测将要发生\"？再把 C 项连起来读一读：It will go rain，句子通顺吗？</p><img src=\"data/diagrams/g6_yy_20261114_q17_clouds.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>把这两处想一想、改好拍照发回（点任务卡\"交这一项\"上传），继续加油！💪</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-13",
-   "ts": "2026-11-14T00:32:51+08:00",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "REG-20261113-37EBD2213C54",
-   "title": "11月13日抄cloth到fan单词反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，抄单词反馈</h2><p>11月14日 00:26 提交的重读</p><h3>做得好的地方</h3><ul><li>重读的三个词 glue、fold、fan 都读到了，五个词这下齐了，背诵达标。</li><li>抄写 4 遍都写完了，五个词拼写和中文意思全对，保持得很好。</li></ul><p>本批积分 +3（达标分）。第 1 轮发回分 +5 已经结过了。</p><p>小提醒：第 4 遍 cloth 前面多写了一个“at”，记得划掉。</p></body></html>"
-  },
-  {
-   "date": "2026-11-13",
-   "ts": "2026-11-13T23:25:54.979281+08:00",
-   "kind": "feedback",
-   "time": "23:25",
-   "task_id": "REG-20261113-2B9AC30A6796",
-   "title": "11月13日英语校本P26、27反馈（37/37，100%）",
-   "html": "<p>伟豪，你今天交了英语校本 P26、27，一共 37 小题，全对了，正确率 100%，太棒了！</p><p>做得好的地方：P26 选词填空都对了；P27 动物书签那篇阅读三道题都选对了；“Finally I can fly the kite in the park”这句也写对了。</p><p>另外，这次有 1 处涂改（P27 一-4，Fold 划掉改成 Finally），改对了。下次写之前先想清楚再下笔，字迹会更清楚。</p><p>本批积分：完成 +10、正确率 +10、书写 +2，共 +22。</p>"
   }
  ]
 }
