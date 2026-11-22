@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T03:59:57+08:00",
+  "updated_at": "2026-11-23T04:18:25+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-23T04:18:25+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -85,16 +85,45 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-23T03:59:57+08:00",
       "updated_at": "2026-11-23T03:59:57+08:00"
+    },
+    {
+      "task_id": "PRACT-20261123-94D19F5A3446",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-23.docx，按今日练习清单完成",
+      "kousuan": [
+        "5.2×3=",
+        "79+46=",
+        "4.6×3-5.9=",
+        "2.5×4.2×4=",
+        "26.4×3.8≈（估算：两个因数都取整到个位后再相乘）"
+      ],
+      "recite_text": "语文背诵：《村晚》（宋·雷震）\n原文：草满池塘水满陂，山衔落日浸寒漪。牧童归去横牛背，短笛无腔信口吹。\n朗读要求：语气要轻快、悠闲，读出对乡村晚景的喜爱和赞美之情；“满”、“衔”、“浸”等动词要读得饱满有力，“横”、“信口吹”要读得轻松自然，语速稍慢。\n英语口语任务说明：请依次回答下面4个问题，每个问题先用英文回答，再自由补充2-3句话，录音发回。\n提示问题：1. What is your best friend's name? 2. What does he or she look like? 3. What do you often do together? 4. Why do you like him or her so much?\n口语要求：每个问题先用英文回答，再自由补充2-3句话，录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-23.docx",
+      "file_hash": "a73256098ff4fd5ed0a406d602423bebd3037a16c5e5fb7595455ec167d4bad5",
+      "created_at": "2026-11-23T04:18:22+08:00",
+      "updated_at": "2026-11-23T04:18:22+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-23.pdf",
+          "label": "练习",
+          "pages": 5
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 5,
+    "pending": 5,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-23T22:00:00+08:00"
 }

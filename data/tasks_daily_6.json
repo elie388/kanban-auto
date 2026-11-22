@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "六年级",
   "generated_at": "2026-11-23T00:18:05+08:00",
-  "updated_at": "2026-11-23T03:59:57+08:00",
+  "updated_at": "2026-11-23T04:18:28+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-23T04:18:28+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -85,16 +85,39 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-23T03:59:57+08:00",
       "updated_at": "2026-11-23T03:59:57+08:00"
+    },
+    {
+      "task_id": "PRACT-20261123-23C32F25FA02",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-23.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《竹石》（清·郑燮）\n原文：咬定青山不放松，立根原在破岩中。千磨万击还坚劲，任尔东西南北风。\n朗读要求：语气坚定有力；注意停顿：咬定/青山/不放松，立根/原在/破岩中。千磨/万击/还坚劲，任尔/东西/南北风。背下来，录音发回。\n英语口语任务说明：请用自己的话复述下面的短文，说清时间、地点、人物和经过，录音发回。短文：Last Saturday morning, sunny weather made me feel very happy. My friends and I walked to the green park near our school. We brought a big colorful bird kite. We ran fast on the soft grass, holding the long string tightly. Soon, the wind blew strongly, and our kite flew high up into the blue sky. We jumped and cheered together happily. It was a wonderful outdoor activity for us, and we learned the true meaning of teamwork that day.\n提示问题：时间、地点、人物和经过。\n口语要求：用自己的话复述，说清时间、地点、人物和经过，录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-23.docx",
+      "file_hash": "ffb074ef3aa9047acc6142e43b9e26f836e3fbbce5f9cfbe6c6344d68cbd8126",
+      "created_at": "2026-11-23T04:18:25+08:00",
+      "updated_at": "2026-11-23T04:18:25+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-23.pdf",
+          "label": "练习",
+          "pages": 3
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 5,
+    "pending": 5,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-23T22:00:00+08:00"
 }
