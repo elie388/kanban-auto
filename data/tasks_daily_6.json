@@ -3,7 +3,7 @@
   "date": "2026-11-22",
   "grade": "六年级",
   "generated_at": "2026-11-22T00:18:02+08:00",
-  "updated_at": "2026-11-22T04:12:39+08:00",
+  "updated_at": "2026-11-22T11:41:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -543,7 +543,7 @@
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-22T00:18:18+08:00",
-      "updated_at": "2026-11-22T00:18:18+08:00"
+      "updated_at": "2026-11-22T11:41:18+08:00"
     },
     {
       "task_id": "MANUAL-20261122-001-G6-YW",
