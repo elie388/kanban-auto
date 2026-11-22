@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-22T01:56:33+08:00",
+  "generated_at": "2026-11-22T10:12:29+08:00",
   "window": {
     "days": 7,
     "max_items": 300
@@ -64,6 +64,24 @@
       "time_source": "entry",
       "reason": "读背概念62、63、64达标",
       "pts": 3,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-21",
+      "time": "10:12",
+      "time_source": "entry",
+      "reason": "抄U4短语完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-21",
+      "time": "10:12",
+      "time_source": "entry",
+      "reason": "抄U4短语正确率93.38%",
+      "pts": 6,
       "sign": "plus",
       "filtered": false
     },
