@@ -160,9 +160,9 @@
   "g5": [
    {
     "key": "quanduizhixing",
-    "obtained": true,
-    "date": "2026-11-18",
-    "count": 2,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 4,
     "via_late": false,
     "progress": {
@@ -204,7 +204,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 2,
+     "current": 0,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -303,7 +303,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 0,
      "target": 2,
      "unit": "项/人",
      "mode": "本周"
@@ -311,9 +311,9 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": true,
-    "date": "2026-11-16",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 5,
     "via_late": false,
     "progress": {
@@ -437,7 +437,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 0,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -455,9 +455,9 @@
   "g6": [
    {
     "key": "quanduizhixing",
-    "obtained": true,
-    "date": "2026-11-16",
-    "count": 3,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 6,
     "via_late": false,
     "progress": {
@@ -499,7 +499,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 0,
      "target": 4,
      "unit": "类",
      "mode": "本周"
@@ -598,7 +598,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 1,
+     "current": 0,
      "target": 2,
      "unit": "项/人",
      "mode": "本周"
@@ -606,14 +606,14 @@
    },
    {
     "key": "sanribuduan",
-    "obtained": true,
-    "date": "2026-11-16",
-    "count": 1,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 5,
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 0,
      "target": 3,
      "unit": "天",
      "mode": "连续"
@@ -647,9 +647,9 @@
    },
    {
     "key": "moxiezhixing",
-    "obtained": true,
-    "date": "2026-11-18",
-    "count": 2,
+    "obtained": false,
+    "date": "",
+    "count": 0,
     "total_count": 2,
     "via_late": false,
     "progress": {
@@ -732,7 +732,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 3,
+     "current": 0,
      "target": 5,
      "unit": "天",
      "mode": "本周"
@@ -748,6 +748,6 @@
    }
   ]
  },
- "cycle_week": "2026-W47",
- "generated_at": "2026-11-22T23:04:58.845250+08:00"
+ "cycle_week": "2026-W48",
+ "generated_at": "2026-11-23T00:05:00.621549+08:00"
 }

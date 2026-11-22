@@ -1,53 +1,16 @@
 {
  "schema_version": 1,
  "week": {
-  "start": "2026-11-16",
-  "end": "2026-11-22",
+  "start": "2026-11-23",
+  "end": "2026-11-29",
   "tz": "Asia/Shanghai",
-  "cycle_week": "2026-W47",
-  "week_start": "2026-11-16T00:00:00+08:00",
-  "week_end": "2026-11-22T23:59:59+08:00"
+  "cycle_week": "2026-W48",
+  "week_start": "2026-11-23T00:00:00+08:00",
+  "week_end": "2026-11-29T23:59:59+08:00"
  },
  "by_grade": {
-  "g5": [
-   {
-    "key": "sanribuduan",
-    "name": "三日不断",
-    "icon": "📆",
-    "date": "2026-11-16",
-    "count": 1
-   },
-   {
-    "key": "quanduizhixing",
-    "name": "全对之星",
-    "icon": "✅",
-    "date": "2026-11-18",
-    "count": 2
-   }
-  ],
-  "g6": [
-   {
-    "key": "sanribuduan",
-    "name": "三日不断",
-    "icon": "📆",
-    "date": "2026-11-16",
-    "count": 1
-   },
-   {
-    "key": "quanduizhixing",
-    "name": "全对之星",
-    "icon": "✅",
-    "date": "2026-11-16",
-    "count": 3
-   },
-   {
-    "key": "moxiezhixing",
-    "name": "默写之星",
-    "icon": "📝",
-    "date": "2026-11-18",
-    "count": 2
-   }
-  ]
+  "g5": [],
+  "g6": []
  },
- "generated_at": "2026-11-22T22:49:09.770755+08:00"
+ "generated_at": "2026-11-23T00:05:00.621549+08:00"
 }
