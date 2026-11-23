@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T23:12:17+08:00",
+  "updated_at": "2026-11-23T23:13:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -42,24 +42,6 @@
       "updated_at": "2026-11-23T00:18:19+08:00"
     },
     {
-      "task_id": "READ-20261123-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-23T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-23T00:18:37+08:00",
-      "updated_at": "2026-11-23T00:18:37+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-23",
       "source": "meta",
       "task_type": "meta_register",
@@ -75,68 +57,6 @@
       "completed_at": "2026-11-23T21:43:11+08:00",
       "orig_photos": [
         "66a7b957445b4123.jpg"
-      ]
-    },
-    {
-      "task_id": "D53-2026-11-23-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-23T03:59:57+08:00",
-      "updated_at": "2026-11-23T03:59:57+08:00"
-    },
-    {
-      "task_id": "PRACT-20261123-94D19F5A3446",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-23.docx，按今日练习清单完成",
-      "kousuan": [
-        "5.2×3=",
-        "79+46=",
-        "4.6×3-5.9=",
-        "2.5×4.2×4=",
-        "26.4×3.8≈（估算：两个因数都取整到个位后再相乘）"
-      ],
-      "recite_text": "语文背诵：《村晚》（宋·雷震）\n原文：草满池塘水满陂，山衔落日浸寒漪。牧童归去横牛背，短笛无腔信口吹。\n朗读要求：语气要轻快、悠闲，读出对乡村晚景的喜爱和赞美之情；“满”、“衔”、“浸”等动词要读得饱满有力，“横”、“信口吹”要读得轻松自然，语速稍慢。\n英语口语任务说明：请依次回答下面4个问题，每个问题先用英文回答，再自由补充2-3句话，录音发回。\n提示问题：1. What is your best friend's name? 2. What does he or she look like? 3. What do you often do together? 4. Why do you like him or her so much?\n口语要求：每个问题先用英文回答，再自由补充2-3句话，录音发回。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-23.docx",
-      "file_hash": "a73256098ff4fd5ed0a406d602423bebd3037a16c5e5fb7595455ec167d4bad5",
-      "created_at": "2026-11-23T04:18:22+08:00",
-      "updated_at": "2026-11-23T04:18:22+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-23.pdf",
-          "label": "练习",
-          "pages": 5
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261123-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月23日",
-      "detail": "英语对话第11月23日：At the Supermarket（去超市买文具）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。批改时按两人合录的对话处理、分别点评。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-23T19:29:06+08:00",
-      "updated_at": "2026-11-23T19:29:06+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月23日_去超市买文具_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
       ]
     },
     {
@@ -178,47 +98,6 @@
       "updated_at": "2026-11-23T21:43:11+08:00",
       "corrections": [],
       "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-05345DC96B9A",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "看园六作文例文3篇",
-      "detail": "原状态：待完成\n问你一个问题：“看园六作文例文3篇”里的“园六”，是不是“语文园地六”的简写？请在看板留言告诉我：选A：是，应该是“看语文园地六作文例文3篇”；选B：不是，就是“园六”。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-4C9E445F2508",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小校本45页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①小校本45页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T22:45:48+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261123-EB108164A38E",
@@ -269,9 +148,9 @@
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 8,
-    "in_progress": 2,
+    "total": 6,
+    "pending": 3,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 2,

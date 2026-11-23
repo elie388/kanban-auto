@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "六年级",
   "generated_at": "2026-11-23T00:18:05+08:00",
-  "updated_at": "2026-11-23T22:45:50+08:00",
+  "updated_at": "2026-11-23T23:13:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -42,24 +42,6 @@
       "updated_at": "2026-11-23T00:18:19+08:00"
     },
     {
-      "task_id": "READ-20261123-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-23T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-23T00:18:37+08:00",
-      "updated_at": "2026-11-23T00:18:37+08:00"
-    },
-    {
       "task_id": "META-REGISTER-2026-11-23",
       "source": "meta",
       "task_type": "meta_register",
@@ -76,146 +58,6 @@
       "orig_photos": [
         "6115cc7d992496ca.jpg"
       ]
-    },
-    {
-      "task_id": "D53-2026-11-23-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-23T03:59:57+08:00",
-      "updated_at": "2026-11-23T03:59:57+08:00"
-    },
-    {
-      "task_id": "PRACT-20261123-23C32F25FA02",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "六年级针对性练习_2026-11-23.docx，按今日练习清单完成",
-      "kousuan": [],
-      "recite_text": "语文背诵：《竹石》（清·郑燮）\n原文：咬定青山不放松，立根原在破岩中。千磨万击还坚劲，任尔东西南北风。\n朗读要求：语气坚定有力；注意停顿：咬定/青山/不放松，立根/原在/破岩中。千磨/万击/还坚劲，任尔/东西/南北风。背下来，录音发回。\n英语口语任务说明：请用自己的话复述下面的短文，说清时间、地点、人物和经过，录音发回。短文：Last Saturday morning, sunny weather made me feel very happy. My friends and I walked to the green park near our school. We brought a big colorful bird kite. We ran fast on the soft grass, holding the long string tightly. Soon, the wind blew strongly, and our kite flew high up into the blue sky. We jumped and cheered together happily. It was a wonderful outdoor activity for us, and we learned the true meaning of teamwork that day.\n提示问题：时间、地点、人物和经过。\n口语要求：用自己的话复述，说清时间、地点、人物和经过，录音发回。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-23.docx",
-      "file_hash": "ffb074ef3aa9047acc6142e43b9e26f836e3fbbce5f9cfbe6c6344d68cbd8126",
-      "created_at": "2026-11-23T04:18:25+08:00",
-      "updated_at": "2026-11-23T04:18:25+08:00",
-      "files": [
-        {
-          "name": "六年级针对性练习_2026-11-23.pdf",
-          "label": "练习",
-          "pages": 3
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261123-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月23日",
-      "detail": "英语对话第11月23日：At the Supermarket（去超市买文具）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。批改时按两人合录的对话处理、分别点评。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-23T19:29:06+08:00",
-      "updated_at": "2026-11-23T19:29:06+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月23日_去超市买文具_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261123-BC48D04AB9DA",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄《课本》P30制做风筝的作文，背5次，抽背",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄《课本》P30制做风筝的作文，背5次，抽背；②提交小管家，复习课本P40、41的笔记，读5次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-DDEF0DBDC7F7",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "提交小管家，复习课本P40、41的笔记，读5次",
-      "detail": "原状态：待完成\n这次要交什么：小管家已完成，不用重做；再补一段课本 P40、41 笔记的朗读录音（读 5 次），录完重新上传就行。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①抄《课本》P30制做风筝的作文，背5次，抽背；②提交小管家，复习课本P40、41的笔记，读5次 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-EAF962B23A1A",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本16课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-2755A95DCBB2",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "生字16课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
-      "corrections": [],
-      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-AA264D50F1C0",
@@ -244,55 +86,12 @@
         "f9953bf31af120a8.jpg",
         "fe69960f50def00d.jpg"
       ]
-    },
-    {
-      "task_id": "REG-20261123-1172D969514B",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念60、61",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念60、61；②校本P44、45 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-D221146E9802",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "校本P44、45",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念60、61；②校本P44、45 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T21:38:24+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
-    "total": 13,
-    "pending": 10,
-    "in_progress": 1,
+    "total": 3,
+    "pending": 1,
+    "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 2,
