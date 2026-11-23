@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T23:19:46+08:00",
+  "updated_at": "2026-11-23T23:24:20+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -62,60 +62,6 @@
       ]
     },
     {
-      "task_id": "REG-20261123-EF092C0F5319",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "P89页的生字字",
-      "detail": "问你一个问题：标题“P89页的生字字”里，最后一个“字”是不是多写了？应该是“P89页的生字”吗？请在看板留言告诉我：选A：是，应该是“P89页的生字”；选B：不是，原样就是“P89页的生字字”。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00",
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261123-CFDB4DF152A7",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "抄P89页的词语抄2篇",
-      "detail": "",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T23:12:05+08:00",
-      "corrections": [
-        {
-          "label": "抄写心浮气躁第2遍",
-          "question": "抄写P89页词语：心浮气躁第2遍",
-          "reason": "第2遍把“心浮气躁”写成了“心海浮躁”：第2格写成了“海”（应为“浮”），第3格写成了“浮”（应为“气”），漏写了“气”。",
-          "hint": "① 先想一想这个词是什么意思：心里像水面起了波纹，静不下来、很急躁。② 打开课本P89，再看一遍这个词的四个字。③ 一个字一个字对照着抄：先看书上的字，再写，写完回头对一遍，重点看第2遍的第二、三个字跟书上一样不一样。",
-          "img": "g5_cfdb_xinfuqizao_guide.png",
-          "q_img": "",
-          "orig_text": "抄写P89页词语：心浮气躁第2遍",
-          "q_img_exempt": "语文抄写类无原题图",
-          "img_exempt": "",
-          "round": 0
-        }
-      ],
-      "pending_corrections": 1,
-      "status_source": "closeout_writeback"
-    },
-    {
       "task_id": "REG-20261123-EB108164A38E",
       "source": "register_book",
       "subject": "英语",
@@ -169,9 +115,9 @@
     }
   ],
   "counts": {
-    "total": 6,
+    "total": 4,
     "pending": 0,
-    "in_progress": 2,
+    "in_progress": 0,
     "submitted": 0,
     "grading": 0,
     "done": 4,
