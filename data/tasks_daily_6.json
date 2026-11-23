@@ -158,7 +158,7 @@
       "source": "register_book",
       "subject": "英语",
       "title": "提交小管家，复习课本P40、41的笔记，读5次",
-      "detail": "原状态：待完成",
+      "detail": "原状态：待完成\n这次要交什么：小管家已完成，不用重做；再补一段课本 P40、41 笔记的朗读录音（读 5 次），录完重新上传就行。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
