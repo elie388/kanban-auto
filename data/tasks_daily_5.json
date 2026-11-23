@@ -3,7 +3,7 @@
   "date": "2026-11-24",
   "grade": "五年级",
   "generated_at": "2026-11-24T00:18:04+08:00",
-  "updated_at": "2026-11-24T04:21:30+08:00",
+  "updated_at": "2026-11-24T06:43:57+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -21,123 +21,10 @@
       "status": "done"
     }
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261124-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-24T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-24T00:18:17+08:00",
-      "updated_at": "2026-11-24T00:18:17+08:00"
-    },
-    {
-      "task_id": "READ-20261124-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-24T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-24T00:18:30+08:00",
-      "updated_at": "2026-11-24T00:18:30+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-24",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-24T03:59:09+08:00",
-      "updated_at": "2026-11-24T03:59:09+08:00",
-      "completed_at": null
-    },
-    {
-      "task_id": "D53-2026-11-24-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-24T03:59:29+08:00",
-      "updated_at": "2026-11-24T03:59:29+08:00"
-    },
-    {
-      "task_id": "PRACT-20261124-DE8A2E8126EE",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-24.docx，按今日练习清单完成",
-      "kousuan": [
-        "4.7×4=",
-        "87+35=",
-        "3.8×5+2.6=",
-        "31.6×4.9≈（估算：两个因数都取整到个位后再相乘）",
-        "2.5×5.4×4="
-      ],
-      "recite_text": "语文背诵：《稚子弄冰》（宋·杨万里）\n原文：稚子金盆脱晓冰，彩丝穿取当银钲。敲成玉磬穿林响，忽作玻璃碎地声。\n朗读要求：语气要轻快、活泼，读出孩子的天真顽皮；“稚子”“彩丝”“玉磬”要读得轻巧，“忽作玻璃碎地声”要读出突然、惊喜的感觉，语速稍快。背下来，录音发回。\n英语口语任务说明：请仔细读一读下面的短文，再用自己的话复述一遍，说清时间、地点、人物和经过，录音发回。短文：Last Sunday morning, I stayed at home with my mother. First, I washed my hands carefully in the kitchen. Then, my mother made the dough, and I helped roll the wrappers. Next, we worked together to make dumplings of different shapes. After that, Mom boiled them in a big pot. Soon, the delicious dumplings were ready. My father joined us, and our whole family sat around the table, enjoying the warm meal happily together.\n提示问题：时间、地点、人物和经过。\n口语要求：用自己的话复述，说清时间（上周日早上）、地点（家里厨房）、人物（我和妈妈、爸爸）、经过（洗手、擀皮、包饺子、煮饺子、全家人一起吃），录音发回。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-24.docx",
-      "file_hash": "e1a9bbe261f11f1834d625da581329d073168ca9a1a65f0268f06bd4d4b65b8f",
-      "created_at": "2026-11-24T04:15:04+08:00",
-      "updated_at": "2026-11-24T04:15:04+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-24.pdf",
-          "label": "练习"
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261124-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第22期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-24T04:21:20+08:00",
-      "updated_at": "2026-11-24T04:21:20+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-11-24.pdf",
-          "label": "英语阅读写作练习",
-          "pages": 2
-        }
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 0,
+    "pending": 0,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
