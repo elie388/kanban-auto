@@ -3,12 +3,12 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T20:40:10+08:00",
+  "updated_at": "2026-11-23T21:43:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-23T20:40:10+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-23T21:43:11+08:00",
+      "new_lines": 6,
       "flipped": 0
     },
     "targeted_practice": {
@@ -67,12 +67,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-23T03:59:44+08:00",
-      "updated_at": "2026-11-23T03:59:44+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-23T21:43:11+08:00",
+      "completed_at": "2026-11-23T21:43:11+08:00"
     },
     {
       "task_id": "D53-2026-11-23-MATH",
@@ -135,15 +135,125 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "REG-20261123-EF092C0F5319",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "P89页的生字字",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T21:43:11+08:00"
+    },
+    {
+      "task_id": "REG-20261123-CFDB4DF152A7",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "抄P89页的词语抄2篇",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T21:43:11+08:00"
+    },
+    {
+      "task_id": "REG-20261123-05345DC96B9A",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "看园六作文例文3篇",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T21:43:11+08:00"
+    },
+    {
+      "task_id": "REG-20261123-4C9E445F2508",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "小校本45页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①小校本45页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T21:43:11+08:00"
+    },
+    {
+      "task_id": "REG-20261123-EB108164A38E",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②校本34页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T21:43:11+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261123-78CBA8EF7BBD",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "校本34页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①口语易；②校本34页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T21:43:11+08:00"
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 12,
+    "pending": 11,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-23T22:00:00+08:00"
