@@ -1,8 +1,17 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-22T02:30:42+08:00",
+ "generated_at": "2026-11-23T22:04:02+08:00",
  "items": [
+  {
+   "date": "2026-11-23",
+   "ts": "2026-11-23T22:03:00+08:00",
+   "kind": "feedback",
+   "time": "11月23日 22:03",
+   "task_id": "REG-20261123-AA264D50F1C0",
+   "title": "11月23日读第六单元作文《金耳环》反馈",
+   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，11月23日读第六单元作文《金耳环》批改反馈</h2>\n<p>11月23日 21:54 提交</p>\n<h3>做得好的地方</h3>\n<ul>\n<li>整篇《金耳环》从头读到尾，19段一段没落，读得很完整！</li>\n<li>手抄的开头段抄得很认真，跟书上一个字都不差。</li>\n<li>录音171秒，读得流利，停顿和语气都自然。</li>\n<li>这篇读完+8分（交上来+5，读完读对+3；录音171秒，不到180秒，时长档这次+0）。</li>\n</ul>\n<h3>下次注意：1处小地方</h3>\n<p>第11段里，邻居凑到丈夫耳边说的那句话，录音里听得不太清楚。下次读到这句放慢一点，一个字一个字读清楚，再往下读。</p>\n<p>今天读得很棒，继续加油！</p>\n</body></html>"
+  },
   {
    "date": "2026-11-21",
    "ts": "2026-11-22T02:30:31.755749+08:00",
@@ -263,24 +272,6 @@
    "task_id": "MANUAL-20261114-002-G6-YY",
    "title": "11月15日英语订正反馈",
    "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，11月15日英语订正反馈</h2>\n<p>11月15日 15:08 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>两处订正都改对了，词汇第9题和单选第17题现在都对了！</li>\n<li>红笔改得很清楚，一眼就能看出你把原来的答案改过来了。</li>\n</ul>\n<h3>📝 这次订正</h3>\n<p>1. 词汇第9题：There ______ some water in the bottle.（ ）A. is B. are C. was D. were。你原来选了 B（are），这次改对了。<span style=\"color:red;font-weight:bold\">water 是不可数名词，不能数个数，are 是复数形式，不能和 water 搭配</span>。</p>\n<p>2. 单选第17题：Look at the clouds! It ______ rain soon.（ ）A. is going to B. goes to C. will go D. is going。你原来选了 C（will go），这次改对了。<span style=\"color:red;font-weight:bold\">It will go rain 这样说不对，will go 后面不能直接跟 rain</span>。</p>\n<p>这张卷子的两处订正全部完成了，继续加油！💪</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-14",
-   "ts": "2026-11-14T22:33:00+08:00",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "READ-20261113-G6",
-   "title": "11月14日每日读书批改反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，11月14日每日读书批改反馈</h2>\n<p>11月14日 22:07 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>两篇作文都读完了，《酸》和《银杏树下》，一篇没落，读得很完整！</li>\n<li>录音 313 秒（5 分多钟），语速正常，读得很流利。</li>\n<li>这篇读完 +14 分（交上来 +5，读满 5 分钟 +9）。</li>\n</ul>\n<h3>📝 下次注意：3 个词</h3>\n<p>这三个词读的时候多留意一下，读之前先认一认：<br>\n① 金灿灿——金色的光，闪闪发亮的样子。<br>\n② 嗅嗅——用鼻子闻一闻。<br>\n③ 尝一口——用嘴试一试味道。<br>\n下次读到这几个词，放慢一点，读准了再往下读。</p>\n<p>今天读得很棒，继续加油！💪</p>\n</body></html>"
-  },
-  {
-   "date": "2026-11-14",
-   "ts": "2026-11-14T22:18:22+08:00",
-   "kind": "feedback",
-   "time": "",
-   "task_id": "MANUAL-20261114-002-G6-YY",
-   "title": "11月14日英语批改反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\">\n<h2>伟豪，11月14日英语周六综合卷批改反馈</h2>\n<p>11月14日 21:40 提交</p>\n<h3>🌟 做得好的地方</h3>\n<ul>\n<li>26道题对了24道，95分，正确率92.3%，很棒！</li>\n<li>词汇和单选大部分都对了，只错了2道，基础很扎实。</li>\n</ul>\n<h3>📝 需要订正：2处</h3>\n<p>1. 词汇第9题：There ______ some water in the bottle.（ ）A. is B. are C. was D. were。你选了 B（are）。<span style=\"color:red;font-weight:bold\">water 是不可数名词，不能数个数，are 是复数形式，不能和 water 搭配</span>。water 能数吗？一瓶水里有多少\"个\"water？想一想，不可数名词前面，There be 句型里的 be 动词该用 is 还是 are？再看一遍第9题的四个选项，哪一个和 water 搭配？</p><img src=\"data/diagrams/g6_yy_20261114_vocab9_water.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>2. 单选第17题：Look at the clouds! It ______ rain soon.（ ）A. is going to B. goes to C. will go D. is going。你选了 C（will go）。<span style=\"color:red;font-weight:bold\">It will go rain 这样说不对，will go 后面不能直接跟 rain</span>。天上乌云密布，你觉得马上要下雨了——这是根据眼前迹象做的预测，一般将来时里哪种说法专门表示\"根据迹象推测将要发生\"？再把 C 项连起来读一读：It will go rain，句子通顺吗？</p><img src=\"data/diagrams/g6_yy_20261114_q17_clouds.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">\n<p>把这两处想一想、改好拍照发回（点任务卡\"交这一项\"上传），继续加油！💪</p>\n</body></html>"
   }
  ]
 }
