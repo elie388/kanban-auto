@@ -216,7 +216,7 @@
       "title": "读第六单元作文，记录①",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
@@ -225,9 +225,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T22:03:26+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "completed_at": "2026-11-23T22:03:26+08:00"
     },
     {
       "task_id": "REG-20261123-1172D969514B",
