@@ -3,7 +3,7 @@
   "date": "2026-11-24",
   "grade": "六年级",
   "generated_at": "2026-11-24T00:18:04+08:00",
-  "updated_at": "2026-11-24T03:59:29+08:00",
+  "updated_at": "2026-11-24T04:15:08+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-24T04:15:08+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -85,11 +85,33 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-24T03:59:29+08:00",
       "updated_at": "2026-11-24T03:59:29+08:00"
+    },
+    {
+      "task_id": "PRACT-20261124-A67FC8A94486",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-24.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "语文背诵：《石灰吟》（明·于谦）\n原文：千锤万凿出深山，烈火焚烧若等闲。粉骨碎身浑不怕，要留清白在人间。\n朗读要求：语气坚定有力，字字铿锵；注意停顿：千锤/万凿/出深山，烈火/焚烧/若等闲。粉骨/碎身/浑不怕，要留/清白/在人间。背下来，录音发回。\n英语口语任务说明：请依次回答下面4个问题，每个问题先用英文回答，再自由补充2-3句话，录音发回。\n提示问题：1. What is your favorite season? 2. What is the weather like in that season? 3. What do you usually do in that season? 4. Why do you like this season best?\n口语要求：每个问题先用英文回答，再自由补充2-3句话，录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-24.docx",
+      "file_hash": "4a9dd7e815569fbd057c0b3596f98e20690658b22ac89597f89412ffa6a9ef2f",
+      "created_at": "2026-11-24T04:15:07+08:00",
+      "updated_at": "2026-11-24T04:15:07+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-24.pdf",
+          "label": "练习"
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 4,
-    "pending": 4,
+    "total": 5,
+    "pending": 5,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
