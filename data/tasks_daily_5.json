@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T23:13:21+08:00",
+  "updated_at": "2026-11-23T23:16:26+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -86,7 +86,7 @@
       "title": "抄P89页的词语抄2篇",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①P89页的生字字；②抄P89页的词语抄2篇；③看园六作文例文3篇 → 待完成",
@@ -95,9 +95,23 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00",
-      "corrections": [],
-      "pending_corrections": 0
+      "updated_at": "2026-11-23T23:12:05+08:00",
+      "corrections": [
+        {
+          "label": "抄写心浮气躁第2遍",
+          "question": "抄写P89页词语：心浮气躁第2遍",
+          "reason": "第2遍把“心浮气躁”写成了“心海浮躁”：第2格写成了“海”（应为“浮”），第3格写成了“浮”（应为“气”），漏写了“气”。",
+          "hint": "① 先想一想这个词是什么意思：心里像水面起了波纹，静不下来、很急躁。② 打开课本P89，再看一遍这个词的四个字。③ 一个字一个字对照着抄：先看书上的字，再写，写完回头对一遍，重点看第2遍的第二、三个字跟书上一样不一样。",
+          "img": "g5_cfdb_xinfuqizao_guide.png",
+          "q_img": "",
+          "orig_text": "抄写P89页词语：心浮气躁第2遍",
+          "q_img_exempt": "语文抄写类无原题图",
+          "img_exempt": "",
+          "round": 0
+        }
+      ],
+      "pending_corrections": 1,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261123-EB108164A38E",
@@ -133,7 +147,7 @@
       "title": "校本34页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①口语易；②校本34页 → 待完成",
@@ -142,18 +156,23 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00",
+      "updated_at": "2026-11-23T23:16:24+08:00",
       "corrections": [],
-      "pending_corrections": 0
+      "pending_corrections": 0,
+      "completed_at": "2026-11-23T23:16:24+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "62984b05e4b18f0d.jpg"
+      ]
     }
   ],
   "counts": {
     "total": 6,
-    "pending": 3,
+    "pending": 2,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-23T22:00:00+08:00"
