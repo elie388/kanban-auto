@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T22:39:25+08:00",
+  "updated_at": "2026-11-23T22:45:49+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -72,7 +72,10 @@
       "created_by": "system",
       "created_at": "2026-11-23T03:59:44+08:00",
       "updated_at": "2026-11-23T21:43:11+08:00",
-      "completed_at": "2026-11-23T21:43:11+08:00"
+      "completed_at": "2026-11-23T21:43:11+08:00",
+      "orig_photos": [
+        "66a7b957445b4123.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-11-23-MATH",
@@ -152,7 +155,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00"
+      "updated_at": "2026-11-23T21:43:11+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-CFDB4DF152A7",
@@ -170,7 +175,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00"
+      "updated_at": "2026-11-23T21:43:11+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-05345DC96B9A",
@@ -188,7 +195,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00"
+      "updated_at": "2026-11-23T21:43:11+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-4C9E445F2508",
@@ -197,7 +206,7 @@
       "title": "小校本45页",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①小校本45页 → 待完成",
@@ -206,7 +215,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00"
+      "updated_at": "2026-11-23T22:45:48+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261123-EB108164A38E",
@@ -228,7 +240,12 @@
       "task_type": "reading",
       "type_source": "regex_oral",
       "completed_at": "2026-11-23T22:39:23+08:00",
-      "status_source": "closeout_reading"
+      "status_source": "closeout_reading",
+      "corrections": [],
+      "pending_corrections": 0,
+      "orig_photos": [
+        "0cfc2c0485530be4.jpg"
+      ]
     },
     {
       "task_id": "REG-20261123-78CBA8EF7BBD",
@@ -246,13 +263,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T21:43:11+08:00",
-      "updated_at": "2026-11-23T21:43:11+08:00"
+      "updated_at": "2026-11-23T21:43:11+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     }
   ],
   "counts": {
     "total": 12,
-    "pending": 10,
-    "in_progress": 0,
+    "pending": 9,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 2,

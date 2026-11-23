@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "六年级",
   "generated_at": "2026-11-23T00:18:05+08:00",
-  "updated_at": "2026-11-23T21:43:11+08:00",
+  "updated_at": "2026-11-23T22:45:50+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -151,7 +151,9 @@
       "created_at": "2026-11-23T20:40:10+08:00",
       "updated_at": "2026-11-23T20:40:10+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-DDEF0DBDC7F7",
@@ -171,7 +173,9 @@
       "created_at": "2026-11-23T20:40:10+08:00",
       "updated_at": "2026-11-23T20:40:10+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-EAF962B23A1A",
@@ -189,7 +193,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00"
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-2755A95DCBB2",
@@ -207,7 +213,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00"
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-AA264D50F1C0",
@@ -228,7 +236,14 @@
       "updated_at": "2026-11-23T22:03:26+08:00",
       "task_type": "reading",
       "type_source": "regex_bao",
-      "completed_at": "2026-11-23T22:03:26+08:00"
+      "completed_at": "2026-11-23T22:03:26+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "orig_photos": [
+        "4a8a540d942452a8.jpg",
+        "f9953bf31af120a8.jpg",
+        "fe69960f50def00d.jpg"
+      ]
     },
     {
       "task_id": "REG-20261123-1172D969514B",
@@ -248,7 +263,9 @@
       "created_at": "2026-11-23T20:40:10+08:00",
       "updated_at": "2026-11-23T20:40:10+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261123-D221146E9802",
@@ -257,7 +274,7 @@
       "title": "校本P44、45",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念60、61；②校本P44、45 → 待完成",
@@ -266,16 +283,19 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00"
+      "updated_at": "2026-11-23T21:38:24+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback"
     }
   ],
   "counts": {
     "total": 13,
-    "pending": 11,
+    "pending": 10,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-23T22:00:00+08:00"
