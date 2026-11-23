@@ -3,12 +3,12 @@
   "date": "2026-11-23",
   "grade": "六年级",
   "generated_at": "2026-11-23T00:18:05+08:00",
-  "updated_at": "2026-11-23T19:29:06+08:00",
+  "updated_at": "2026-11-23T20:40:10+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-23T16:55:46+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-23T20:40:10+08:00",
+      "new_lines": 7,
       "flipped": 0
     },
     "targeted_practice": {
@@ -67,12 +67,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-23T03:59:45+08:00",
-      "updated_at": "2026-11-23T03:59:45+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "completed_at": "2026-11-23T20:40:10+08:00"
     },
     {
       "task_id": "D53-2026-11-23-CHN",
@@ -129,15 +129,149 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "REG-20261123-BC48D04AB9DA",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄《课本》P30制做风筝的作文，背5次，抽背",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《课本》P30制做风筝的作文，背5次，抽背；②提交小管家，复习课本P40、41的笔记，读5次 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261123-DDEF0DBDC7F7",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "提交小管家，复习课本P40、41的笔记，读5次",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①抄《课本》P30制做风筝的作文，背5次，抽背；②提交小管家，复习课本P40、41的笔记，读5次 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261123-EAF962B23A1A",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本16课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00"
+    },
+    {
+      "task_id": "REG-20261123-2755A95DCBB2",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "生字16课",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00"
+    },
+    {
+      "task_id": "REG-20261123-AA264D50F1C0",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "读第六单元作文，记录①",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "task_type": "reading",
+      "type_source": "regex_bao"
+    },
+    {
+      "task_id": "REG-20261123-1172D969514B",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "读背概念60、61",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念60、61；②校本P44、45 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261123-D221146E9802",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "校本P44、45",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①读背概念60、61；②校本P44、45 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-23T20:40:10+08:00",
+      "updated_at": "2026-11-23T20:40:10+08:00"
     }
   ],
   "counts": {
-    "total": 6,
-    "pending": 6,
+    "total": 13,
+    "pending": 12,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-23T22:00:00+08:00"
