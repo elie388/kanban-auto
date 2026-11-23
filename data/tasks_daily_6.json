@@ -1,83 +1,35 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "grade": "六年级",
-  "generated_at": "2026-11-23T00:18:05+08:00",
-  "updated_at": "2026-11-23T23:55:26+08:00",
+  "generated_at": "2026-11-24T00:18:04+08:00",
+  "updated_at": "2026-11-24T00:18:04+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-23T23:55:26+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-23T04:18:28+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-23T16:56:05+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "META-REGISTER-2026-11-23",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-23T03:59:45+08:00",
-      "updated_at": "2026-11-23T20:40:10+08:00",
-      "completed_at": "2026-11-23T20:40:10+08:00",
-      "orig_photos": [
-        "6115cc7d992496ca.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261123-AA264D50F1C0",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读第六单元作文，记录①",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本16课；②生字16课；③读第六单元作文，记录① → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-23T20:40:10+08:00",
-      "updated_at": "2026-11-23T22:03:26+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "completed_at": "2026-11-23T22:03:26+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "orig_photos": [
-        "4a8a540d942452a8.jpg",
-        "f9953bf31af120a8.jpg",
-        "fe69960f50def00d.jpg"
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 2,
+    "total": 0,
     "pending": 0,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-23T22:00:00+08:00"
+  "deadline_today": null
 }
