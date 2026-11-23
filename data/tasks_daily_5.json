@@ -3,7 +3,7 @@
   "date": "2026-11-23",
   "grade": "五年级",
   "generated_at": "2026-11-23T00:18:04+08:00",
-  "updated_at": "2026-11-23T23:55:25+08:00",
+  "updated_at": "2026-11-24T00:12:27+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -39,7 +39,7 @@
       "chore_missed": false,
       "count_in_completion_rate": false,
       "created_at": "2026-11-23T00:18:19+08:00",
-      "updated_at": "2026-11-23T23:43:48+08:00",
+      "updated_at": "2026-11-24T00:12:27+08:00",
       "completed_at": "2026-11-23T23:19:46+08:00",
       "evidence": "家务判定通过——洗碗；证据：看板家务上传批次 b17954448295810f4f03e3cc037deb（approved）；回写 chore_task_writeback。"
     },
