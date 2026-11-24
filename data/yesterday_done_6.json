@@ -1,20 +1,5 @@
 {
- "date": "2026-11-23",
+ "date": "2026-11-24",
  "grade": "六年级",
- "items": [
-  {
-   "task_id": "META-REGISTER-2026-11-23",
-   "title": "提交作业登记本",
-   "subject": "登记本",
-   "source": "meta",
-   "group": "study"
-  },
-  {
-   "task_id": "REG-20261123-AA264D50F1C0",
-   "title": "读第六单元作文，记录①",
-   "subject": "语文",
-   "source": "register_book",
-   "group": "study"
-  }
- ]
+ "items": []
 }

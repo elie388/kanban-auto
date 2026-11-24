@@ -1,25 +1,24 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "grade": "六年级",
-  "generated_at": "2026-11-24T00:18:04+08:00",
-  "updated_at": "2026-11-24T23:54:25+08:00",
+  "generated_at": "2026-11-25T00:18:05+08:00",
+  "updated_at": "2026-11-25T00:18:05+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-24T23:54:25+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-24T04:15:08+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-24T16:55:50+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [],
@@ -32,5 +31,5 @@
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-24T22:00:00+08:00"
+  "deadline_today": null
 }
