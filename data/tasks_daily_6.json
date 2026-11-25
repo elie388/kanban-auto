@@ -1,253 +1,253 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-25",
-  "grade": "六年级",
-  "generated_at": "2026-11-25T00:18:05+08:00",
-  "updated_at": "2026-11-25T19:58:55+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-25T19:58:55+08:00",
-      "new_lines": 6,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-25T04:21:18+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-25T16:55:57+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-25",
+ "grade": "六年级",
+ "generated_at": "2026-11-25T00:18:05+08:00",
+ "updated_at": "2026-11-25T19:58:55+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-25T19:58:55+08:00",
+   "new_lines": 6,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261125-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-25T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-25T00:18:21+08:00",
-      "updated_at": "2026-11-25T00:18:21+08:00"
-    },
-    {
-      "task_id": "READ-20261125-G6",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-25T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-25T00:18:38+08:00",
-      "updated_at": "2026-11-25T00:18:38+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-25",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-25T03:59:33+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00",
-      "completed_at": "2026-11-25T19:58:55+08:00"
-    },
-    {
-      "task_id": "D53-2026-11-25-CHN",
-      "source": "daily_53",
-      "subject": "语文",
-      "title": "53天天练·语文",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-25T03:59:53+08:00",
-      "updated_at": "2026-11-25T03:59:53+08:00"
-    },
-    {
-      "task_id": "PRACT-20261125-A2D77957C2D0",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "六年级针对性练习_2026-11-25.docx，按今日练习清单完成",
-      "kousuan": [],
-      "recite_text": "语文背诵：《宿建德江》（唐·孟浩然）\n原文：移舟泊烟渚，日暮客愁新。野旷天低树，江清月近人。\n朗读要求：1. 语速要稍慢，读出宁静、孤单又带着思乡的忧愁。2. 注意诗句中的停顿，例如：移舟／泊／烟渚，日暮／客／愁新。野旷／天／低树，江清／月／近人。背下来，录音发回。\n英语口语任务说明：跟读下面的英语短文，录音发回，5分钟内完成。短文：Last Friday afternoon, I went to the school library with my good friend, Tom. We got there at four o'clock. The library was very quiet and clean. There were many interesting books on the shelves. I found a great book about animals and sat down at a wooden desk to read it. Tom read a storybook. We stayed there for an hour and learned a lot of new things. We had a wonderful time in the library.\n提示问题：1. 短文讲的是什么时候、和谁去了哪里？ 2. 他们在图书馆里各读了什么书？\n口语要求：1. 请先认真听一遍范读，注意语音语调，然后再进行跟读。2. 注意动词过去式（如went, got, found, sat, had）的发音要准确、自然。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-25.docx",
-      "file_hash": "f4cd1c9a9fd6e01562a93c3fbc3a142d82e056a8e6ed4cc0e2649d120333ee0c",
-      "created_at": "2026-11-25T04:21:16+08:00",
-      "updated_at": "2026-11-25T04:21:16+08:00",
-      "files": [
-        {
-          "name": "六年级针对性练习_2026-11-25.pdf",
-          "label": "练习"
-        }
-      ]
-    },
-    {
-      "task_id": "MANUAL-20261125-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语对话第11月24日",
-      "detail": "英语对话第11月24日：Making Dumplings（包饺子）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。批改时按两人合录的对话处理、分别点评。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-25T19:28:53+08:00",
-      "updated_at": "2026-11-25T19:28:53+08:00",
-      "files": [
-        {
-          "name": "英语对话第11月24日_包饺子_打印版.pdf",
-          "label": "对话打印版",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261125-82D205D09152",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "写P32的中文，抄P30增加的单和中文各4次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①写P32的中文，抄P30增加的单和中文各4次；②提交小管家的内容 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
-    },
-    {
-      "task_id": "REG-20261125-75B38F9B1DA7",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "提交小管家的内容",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①写P32的中文，抄P30增加的单和中文各4次；②提交小管家的内容 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
-    },
-    {
-      "task_id": "REG-20261125-0868BAF66A18",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本19课",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
-    },
-    {
-      "task_id": "REG-20261125-ED03C9BEB6EE",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小练笔写生活不文明现象及建议",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
-    },
-    {
-      "task_id": "REG-20261125-333979AE7859",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读20课3次，抄一次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
-    },
-    {
-      "task_id": "REG-20261125-B36678B93AB5",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习书例做一次，读三次）",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral"
-    }
-  ],
-  "counts": {
-    "total": 12,
-    "pending": 11,
-    "in_progress": 0,
-    "submitted": 0,
-    "grading": 0,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-25T04:21:18+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-25T22:00:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-25T16:55:57+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261125-G6",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-25T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-25T00:18:21+08:00",
+   "updated_at": "2026-11-25T00:18:21+08:00"
+  },
+  {
+   "task_id": "READ-20261125-G6",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-25T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-25T00:18:38+08:00",
+   "updated_at": "2026-11-25T00:18:38+08:00"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-25",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-25T03:59:33+08:00",
+   "updated_at": "2026-11-25T19:58:55+08:00",
+   "completed_at": "2026-11-25T19:58:55+08:00"
+  },
+  {
+   "task_id": "D53-2026-11-25-CHN",
+   "source": "daily_53",
+   "subject": "语文",
+   "title": "53天天练·语文",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-11-25T03:59:53+08:00",
+   "updated_at": "2026-11-25T03:59:53+08:00"
+  },
+  {
+   "task_id": "PRACT-20261125-A2D77957C2D0",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "六年级针对性练习_2026-11-25.docx，按今日练习清单完成",
+   "kousuan": [],
+   "recite_text": "语文背诵：《宿建德江》（唐·孟浩然）\n原文：移舟泊烟渚，日暮客愁新。野旷天低树，江清月近人。\n朗读要求：1. 语速要稍慢，读出宁静、孤单又带着思乡的忧愁。2. 注意诗句中的停顿，例如：移舟／泊／烟渚，日暮／客／愁新。野旷／天／低树，江清／月／近人。背下来，录音发回。\n英语口语任务说明：跟读下面的英语短文，录音发回，5分钟内完成。短文：Last Friday afternoon, I went to the school library with my good friend, Tom. We got there at four o'clock. The library was very quiet and clean. There were many interesting books on the shelves. I found a great book about animals and sat down at a wooden desk to read it. Tom read a storybook. We stayed there for an hour and learned a lot of new things. We had a wonderful time in the library.\n提示问题：1. 短文讲的是什么时候、和谁去了哪里？ 2. 他们在图书馆里各读了什么书？\n口语要求：1. 请先认真听一遍范读，注意语音语调，然后再进行跟读。2. 注意动词过去式（如went, got, found, sat, had）的发音要准确、自然。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-25.docx",
+   "file_hash": "f4cd1c9a9fd6e01562a93c3fbc3a142d82e056a8e6ed4cc0e2649d120333ee0c",
+   "created_at": "2026-11-25T04:21:16+08:00",
+   "updated_at": "2026-11-25T04:21:16+08:00",
+   "files": [
+    {
+     "name": "六年级针对性练习_2026-11-25.pdf",
+     "label": "练习"
+    }
+   ]
+  },
+  {
+   "task_id": "MANUAL-20261125-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语对话第11月24日",
+   "detail": "英语对话第11月24日：Making Dumplings（包饺子）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。批改时按两人合录的对话处理、分别点评。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-25T19:28:53+08:00",
+   "updated_at": "2026-11-25T19:28:53+08:00",
+   "files": [
+    {
+     "name": "英语对话第11月24日_包饺子_打印版.pdf",
+     "label": "对话打印版",
+     "pages": 2
+    }
+   ]
+  },
+  {
+   "task_id": "REG-20261125-82D205D09152",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "写P32的中文，抄P30增加的单和中文各4次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①写P32的中文，抄P30增加的单和中文各4次；②提交小管家的内容 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T19:58:55+08:00",
+   "updated_at": "2026-11-25T19:58:55+08:00"
+  },
+  {
+   "task_id": "REG-20261125-75B38F9B1DA7",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "提交小管家的内容",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①写P32的中文，抄P30增加的单和中文各4次；②提交小管家的内容 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T19:58:55+08:00",
+   "updated_at": "2026-11-25T19:58:55+08:00"
+  },
+  {
+   "task_id": "REG-20261125-0868BAF66A18",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本19课",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T19:58:55+08:00",
+   "updated_at": "2026-11-25T19:58:55+08:00"
+  },
+  {
+   "task_id": "REG-20261125-ED03C9BEB6EE",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "小练笔写生活不文明现象及建议",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T19:58:55+08:00",
+   "updated_at": "2026-11-25T19:58:55+08:00"
+  },
+  {
+   "task_id": "REG-20261125-333979AE7859",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "读20课3次，抄一次",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T19:58:55+08:00",
+   "updated_at": "2026-11-25T19:58:55+08:00"
+  },
+  {
+   "task_id": "REG-20261125-B36678B93AB5",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "预习书例做一次，读三次）",
+   "detail": "原状态：待完成\n\n问你一个小问题：这项作业里的“书例”是什么意思？老师写的是“预习书例做一次，读三次”，我没看懂“书例”是指什么。你在下面留言告诉我，选一个就行：\n1. 书上的例题（做书上的例题一次，读三次）\n2. 书里的例子\n3. 不是上面两个，是______（你写出来）\n你回了我就按你说的改这项作业。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T19:58:55+08:00",
+   "updated_at": "2026-11-25T20:01:00+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral"
+  }
+ ],
+ "counts": {
+  "total": 12,
+  "pending": 11,
+  "in_progress": 0,
+  "submitted": 0,
+  "grading": 0,
+  "done": 1,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-25T22:00:00+08:00"
 }
