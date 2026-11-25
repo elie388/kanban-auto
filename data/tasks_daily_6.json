@@ -3,7 +3,7 @@
   "date": "2026-11-25",
   "grade": "六年级",
   "generated_at": "2026-11-25T00:18:05+08:00",
-  "updated_at": "2026-11-25T20:43:34+08:00",
+  "updated_at": "2026-11-25T21:33:14+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -72,7 +72,10 @@
       "created_by": "system",
       "created_at": "2026-11-25T03:59:33+08:00",
       "updated_at": "2026-11-25T19:58:55+08:00",
-      "completed_at": "2026-11-25T19:58:55+08:00"
+      "completed_at": "2026-11-25T19:58:55+08:00",
+      "orig_photos": [
+        "d14a838b8de86371.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-11-25-CHN",
@@ -154,7 +157,7 @@
       "title": "提交小管家的内容",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①写P32的中文，抄P30增加的单和中文各4次；②提交小管家的内容 → 待完成",
@@ -163,7 +166,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
+      "updated_at": "2026-11-25T21:33:12+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-25T21:33:12+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "4f691616dbbea387.jpg"
+      ]
     },
     {
       "task_id": "REG-20261125-0868BAF66A18",
@@ -242,11 +252,11 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 11,
+    "pending": 10,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-25T22:00:00+08:00"
