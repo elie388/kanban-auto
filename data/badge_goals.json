@@ -235,7 +235,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 6,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -530,7 +530,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 5,
+     "current": 6,
      "target": 14,
      "unit": "天",
      "mode": "连续",
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W48",
- "generated_at": "2026-11-25T21:57:22.201879+08:00"
+ "generated_at": "2026-11-25T23:00:01.083950+08:00"
 }
