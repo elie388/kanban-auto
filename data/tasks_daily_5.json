@@ -3,12 +3,12 @@
   "date": "2026-11-25",
   "grade": "五年级",
   "generated_at": "2026-11-25T00:18:05+08:00",
-  "updated_at": "2026-11-25T22:46:07+08:00",
+  "updated_at": "2026-11-25T23:54:21+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-25T20:43:33+08:00",
-      "new_lines": 2,
+      "ingested_at": "2026-11-25T23:54:21+08:00",
+      "new_lines": 0,
       "flipped": 0
     },
     "targeted_practice": {
