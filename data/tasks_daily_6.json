@@ -218,7 +218,7 @@
       "title": "读20课3次，抄一次",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
@@ -227,7 +227,8 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00"
+      "updated_at": "2026-11-25T21:57:30+08:00",
+      "completed_at": "2026-11-25T21:57:30+08:00"
     },
     {
       "task_id": "REG-20261125-B36678B93AB5",
@@ -252,11 +253,11 @@
   ],
   "counts": {
     "total": 12,
-    "pending": 10,
+    "pending": 9,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-25T22:00:00+08:00"
