@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "五年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T00:18:41+08:00",
+  "updated_at": "2026-11-26T00:43:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -57,12 +57,107 @@
       "reading_pass": null,
       "created_at": "2026-11-26T00:18:41+08:00",
       "updated_at": "2026-11-26T00:18:41+08:00"
+    },
+    {
+      "task_id": "D53-2026-11-25-MATH",
+      "source": "daily_53",
+      "subject": "数学",
+      "title": "53天天练·数学",
+      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+      "estimate_min": 10,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "固定日常（规则手册·53天天练）",
+      "created_at": "2026-11-25T03:59:53+08:00",
+      "updated_at": "2026-11-26T00:43:02+08:00",
+      "carry_first_date": "2026-11-25",
+      "carried_from": "2026-11-25",
+      "carry_count": 1
+    },
+    {
+      "task_id": "PRACT-20261125-0E5AA45334AB",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-25.docx，按今日练习清单完成",
+      "kousuan": [
+        "2.8×6=",
+        "94+38=",
+        "4.3×4-6.5=",
+        "2.5×6.4×4=",
+        "33.6×4.8≈（估算：两个因数都取整到个位后再相乘）"
+      ],
+      "recite_text": "语文背诵：《示儿》（宋·陆游）\n原文：死去元知万事空，但悲不见九州同。王师北定中原日，家祭无忘告乃翁。\n朗读要求：朗读时声音要饱满、坚定，语速由悲伤转为激昂；重音要落在“万事空”、“不见”、“北定”和“无忘”等词上，读出诗人深沉的爱国之情。背下来，录音发回。\n英语口语任务说明：看图说话任务说明全文：请看下面这幅图（图上是学校运动会上，同学们正在进行接力赛跑：跑道上，一名同学手握接力棒奋力向前跑，身后的队友们在跑道边大声加油，操场四周彩旗飘扬），用英文说一说图上发生了什么，录音发回，5分钟内。\n提示问题：1. What are the students doing in the picture? 2. What is the runner holding in his hand? 3. What are his classmates doing beside the track? 4. How do you think the runner feels now?\n口语要求：先看图想一想，再按提示问题的顺序说，每题至少说一句话；句子要完整，遇到不会的词可以用已经学过的简单说法代替，不要停下来太久。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-25.docx",
+      "file_hash": "9e7a54dc098b76a0aa8a2e55fe6cedc224cd0785304ac7461c760f0d210ada90",
+      "created_at": "2026-11-25T04:21:14+08:00",
+      "updated_at": "2026-11-26T00:43:02+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-25.pdf",
+          "label": "练习"
+        }
+      ],
+      "carry_first_date": "2026-11-25",
+      "carried_from": "2026-11-25",
+      "carry_count": 1
+    },
+    {
+      "task_id": "MANUAL-20261125-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语对话第11月24日",
+      "detail": "英语对话第11月24日：Making Dumplings（包饺子）\n两人一起录3-5分钟，一次录完；角色A/B两人自行分配，不用报年级/不用说自己是谁，自然语速、发音清楚。\n对话脚本见打印版：点下方“打印”按钮打印出来读。\n录音提交：录音走看板任务按钮交（不走邮箱，邮箱已停扫）。两人一起录的同一段录音，可由两人各自从自己的卡提交。批改时按两人合录的对话处理、分别点评。\n积分按口语/背诵标准：按时发回+5、完成达标+3（达标标准：错词≤2且不改句意，同篇目达标只计一次）。",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-25T19:28:50+08:00",
+      "updated_at": "2026-11-26T00:43:02+08:00",
+      "files": [
+        {
+          "name": "英语对话第11月24日_包饺子_打印版.pdf",
+          "label": "对话打印版",
+          "pages": 2
+        }
+      ],
+      "carry_first_date": "2026-11-25",
+      "carried_from": "2026-11-25",
+      "carry_count": 1
+    },
+    {
+      "task_id": "REG-20261125-FC9FA8D10D3F",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "预习口语交际和园地六",
+      "detail": "需重读：口语交际第三个事例整段（开头人名读错、后半句读得含糊）＋补读识字加油站云形提示句一句；不必全文重读。原状态：待完成",
+      "estimate_min": null,
+      "status": "in_progress",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①预习口语交际和园地六 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-25T20:43:33+08:00",
+      "updated_at": "2026-11-26T00:43:02+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral",
+      "corrections": [],
+      "pending_corrections": 0,
+      "carry_first_date": "2026-11-25",
+      "carried_from": "2026-11-25",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 2,
-    "pending": 2,
-    "in_progress": 0,
+    "total": 6,
+    "pending": 5,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 0,
