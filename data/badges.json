@@ -23,9 +23,24 @@
     "icon": "✅",
     "date": "2026-11-24",
     "count": 1
+   },
+   {
+    "key": "xidengxiaochaoren",
+    "name": "熄灯小超人",
+    "icon": "🌙",
+    "date": "2026-11-25",
+    "count": 1
    }
   ],
-  "g6": []
+  "g6": [
+   {
+    "key": "xidengxiaochaoren",
+    "name": "熄灯小超人",
+    "icon": "🌙",
+    "date": "2026-11-25",
+    "count": 1
+   }
+  ]
  },
- "generated_at": "2026-11-24T22:49:19.821530+08:00"
+ "generated_at": "2026-11-25T16:59:59.328134+08:00"
 }
