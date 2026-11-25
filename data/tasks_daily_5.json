@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "五年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T04:12:41+08:00",
+  "updated_at": "2026-11-26T04:19:09+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-26T04:19:09+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -200,11 +200,39 @@
           "pages": 2
         }
       ]
+    },
+    {
+      "task_id": "PRACT-20261126-8F1EE8DFA5A3",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-26.docx，按今日练习清单完成",
+      "kousuan": [
+        "3.6×7",
+        "76+58",
+        "6.4×5-7.9",
+        "42.7×5.9≈（估算：两个因数都取整到个位后再相乘）",
+        "1.25×3.8×8"
+      ],
+      "recite_text": "语文背诵：《乡村四月》（宋·翁卷）\n绿遍山原白满川，子规声里雨如烟。乡村四月闲人少，才了蚕桑又插田。\n朗读要求：语速适中、声音清亮；重音要落在“绿遍”、“白满”、“闲人少”和“又插田”上，读出田野的生机和农忙的节奏感。\n英语口语（问答·我的日常生活）：请按下面4个问题，用英文说一说你的日常生活，录音发回，5分钟内。\n1. What time do you get up every morning?\n2. How do you go to school?\n3. What is your favorite subject at school, and why?\n4. What do you usually do on weekends to help your parents?\n口语要求：先想一想再说，每题至少说一句话；句子要完整，遇到不会的词可以用已经学过的简单说法代替，不要停下来太久。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-26.docx",
+      "file_hash": "f6cf5701efe252003242654abd15657a59e4ecd6409e2e76ac3c1e420583698b",
+      "created_at": "2026-11-26T04:19:07+08:00",
+      "updated_at": "2026-11-26T04:19:07+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-26.pdf",
+          "label": "练习"
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 9,
-    "pending": 8,
+    "total": 10,
+    "pending": 9,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
