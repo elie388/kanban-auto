@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "五年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T03:59:51+08:00",
+  "updated_at": "2026-11-26T04:12:41+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -180,16 +180,36 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-26T03:59:51+08:00",
       "updated_at": "2026-11-26T03:59:51+08:00"
+    },
+    {
+      "task_id": "MANUAL-20261126-001",
+      "source": "manual",
+      "subject": "英语",
+      "title": "英语阅读写作第23期",
+      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "created_by": "user",
+      "created_at": "2026-11-26T04:12:34+08:00",
+      "updated_at": "2026-11-26T04:12:34+08:00",
+      "files": [
+        {
+          "name": "五年级英语阅读写作_2026-11-26.pdf",
+          "label": "英语阅读写作练习",
+          "pages": 2
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 8,
-    "pending": 7,
+    "total": 9,
+    "pending": 8,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-26T22:00:00+08:00"
 }
