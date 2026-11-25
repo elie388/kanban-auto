@@ -1,5 +1,34 @@
 {
- "date": "2026-11-24",
+ "date": "2026-11-25",
  "grade": "六年级",
- "items": []
+ "items": [
+  {
+   "task_id": "META-REGISTER-2026-11-25",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261125-75B38F9B1DA7",
+   "title": "提交小管家的内容",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261125-ED03C9BEB6EE",
+   "title": "小练笔写生活不文明现象及建议",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261125-333979AE7859",
+   "title": "读20课3次，抄一次",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  }
+ ]
 }

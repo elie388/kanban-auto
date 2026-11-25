@@ -1,5 +1,27 @@
 {
- "date": "2026-11-24",
+ "date": "2026-11-25",
  "grade": "五年级",
- "items": []
+ "items": [
+  {
+   "task_id": "READ-20261125-G5",
+   "title": "每日读书",
+   "subject": "读书",
+   "source": "reading_daily",
+   "group": "study"
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-25",
+   "title": "提交作业登记本",
+   "subject": "登记本",
+   "source": "meta",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261125-4ACB068224EF",
+   "title": "口语易",
+   "subject": "英语",
+   "source": "register_book",
+   "group": "study"
+  }
+ ]
 }

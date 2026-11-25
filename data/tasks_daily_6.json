@@ -1,147 +1,35 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "grade": "六年级",
-  "generated_at": "2026-11-25T00:18:05+08:00",
-  "updated_at": "2026-11-26T00:17:46+08:00",
+  "generated_at": "2026-11-26T00:18:13+08:00",
+  "updated_at": "2026-11-26T00:18:13+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-25T23:54:21+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-25T04:21:18+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-25T16:55:57+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261125-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-25T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-25T00:18:21+08:00",
-      "updated_at": "2026-11-26T00:07:48+08:00"
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-25",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-25T03:59:33+08:00",
-      "updated_at": "2026-11-25T19:58:55+08:00",
-      "completed_at": "2026-11-25T19:58:55+08:00",
-      "orig_photos": [
-        "d14a838b8de86371.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261125-75B38F9B1DA7",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "提交小管家的内容",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①写P32的中文，抄P30增加的单和中文各4次；②提交小管家的内容 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T21:33:12+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-25T21:33:12+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "4f691616dbbea387.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261125-ED03C9BEB6EE",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小练笔写生活不文明现象及建议",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-26T00:08:46+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-26T00:08:46+08:00",
-      "status_source": "closeout_writeback"
-    },
-    {
-      "task_id": "REG-20261125-333979AE7859",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读20课3次，抄一次",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本19课；②小练笔写生活不文明现象及建议；③读20课3次，抄一次；④预习书例做一次，读三次） → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-25T21:57:30+08:00",
-      "completed_at": "2026-11-25T21:57:30+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "orig_photos": [
-        "35adbd6876011f3f.jpg",
-        "41a61fd32cd9bb58.jpg",
-        "ff36a092afae5a50.jpg",
-        "9aaa69b6f6d096f3.jpg"
-      ]
-    }
-  ],
+  "tasks": [],
   "counts": {
-    "total": 5,
-    "pending": 1,
+    "total": 0,
+    "pending": 0,
     "in_progress": 0,
     "submitted": 0,
     "grading": 0,
-    "done": 4,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-25T22:00:00+08:00"
+  "deadline_today": null
 }
