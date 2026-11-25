@@ -3,7 +3,7 @@
   "date": "2026-11-25",
   "grade": "五年级",
   "generated_at": "2026-11-25T00:18:05+08:00",
-  "updated_at": "2026-11-25T21:33:14+08:00",
+  "updated_at": "2026-11-25T22:05:19+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -143,9 +143,9 @@
       "source": "register_book",
       "subject": "语文",
       "title": "预习口语交际和园地六",
-      "detail": "原状态：待完成",
+      "detail": "需重读：口语交际第三个事例整段（开头人名读错、后半句读得含糊）＋补读识字加油站云形提示句一句；不必全文重读。原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①预习口语交际和园地六 → 待完成",
@@ -154,7 +154,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-25T20:43:33+08:00",
-      "updated_at": "2026-11-25T20:43:33+08:00",
+      "updated_at": "2026-11-25T22:05:19+08:00",
       "task_type": "reading",
       "type_source": "regex_oral"
     },
@@ -185,8 +185,8 @@
   ],
   "counts": {
     "total": 8,
-    "pending": 6,
-    "in_progress": 0,
+    "pending": 5,
+    "in_progress": 1,
     "submitted": 0,
     "grading": 0,
     "done": 2,
