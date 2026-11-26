@@ -3,7 +3,7 @@
   "date": "2026-11-27",
   "grade": "五年级",
   "generated_at": "2026-11-27T00:18:01+08:00",
-  "updated_at": "2026-11-27T04:00:11+08:00",
+  "updated_at": "2026-11-27T04:25:14+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-27T04:25:14+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -247,16 +247,44 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-27T04:00:11+08:00",
       "updated_at": "2026-11-27T04:00:11+08:00"
+    },
+    {
+      "task_id": "PRACT-20261127-EC6814175E1D",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "五年级针对性练习_2026-11-27.docx，按今日练习清单完成",
+      "kousuan": [
+        "6.3×4",
+        "64+59",
+        "2.9×5+4.7",
+        "1.25×5.2×8",
+        "24.8×5.1≈（估算：两个因数都取整到个位后再相乘）"
+      ],
+      "recite_text": "【语文背诵】《山居秋暝》（唐·王维）\n原文：空山新雨后，天气晚来秋。明月松间照，清泉石上流。竹喧归浣女，莲动下渔舟。随意春芳歇，王孙自可留。\n朗读要求：朗读时语速要稍慢，语气轻松舒缓。读到“明月松间照，清泉石上流”时声音要轻柔，读出画面的美感；最后两句要读得深情，表现出对大自然和安宁生活的喜爱。\n【英语口语·复述】请先读两遍下面的短文，再合上书用自己的话把短文内容复述出来，录音发回，5分钟内。\n短文：Last Sunday, the weather was sunny and warm. My family and I went to the green park for a nice picnic. We brought a big basket of delicious food. I ate two sandwiches and some fresh apples. My little brother played with a red ball on the grass. My parents sat under a tall tree and read books. We had a really wonderful time together and went home at four o'clock.\n复述后回答：1. Where did you go and what was the weather like? 2. What did you and your family do at the park?\n要求：先读两遍短文，再合上书用自己的话复述，可以换简单的说法，5分钟内录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-27.docx",
+      "file_hash": "a2a01c099c26b94b4acba60eec9b389fa19507a22a24e560f7a29a977105e6e4",
+      "created_at": "2026-11-27T04:25:07+08:00",
+      "updated_at": "2026-11-27T04:25:07+08:00",
+      "files": [
+        {
+          "name": "五年级针对性练习_2026-11-27.pdf",
+          "label": "练习"
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 10,
-    "pending": 8,
+    "total": 11,
+    "pending": 9,
     "in_progress": 2,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-27T22:30:00+08:00"
 }

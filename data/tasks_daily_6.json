@@ -3,7 +3,7 @@
   "date": "2026-11-27",
   "grade": "六年级",
   "generated_at": "2026-11-27T00:18:02+08:00",
-  "updated_at": "2026-11-27T04:00:11+08:00",
+  "updated_at": "2026-11-27T04:25:18+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -12,8 +12,8 @@
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": null,
-      "status": "pending"
+      "ingested_at": "2026-11-27T04:25:18+08:00",
+      "status": "done"
     },
     "daily_53": {
       "file": "固定日常",
@@ -420,16 +420,38 @@
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-27T04:00:11+08:00",
       "updated_at": "2026-11-27T04:00:11+08:00"
+    },
+    {
+      "task_id": "PRACT-20261127-F7344E98962F",
+      "source": "targeted_practice",
+      "subject": "综合",
+      "title": "针对性练习（含口语+背诵）",
+      "detail": "六年级针对性练习_2026-11-27.docx，按今日练习清单完成",
+      "kousuan": [],
+      "recite_text": "【语文背诵】《江南春》（唐·杜牧）\n原文：千里莺啼绿映红，水村山郭酒旗风。南朝四百八十寺，多少楼台烟雨中。\n朗读要求：1. 注意诗句中的停顿，例如：千里／莺啼绿映红，水村／山郭酒旗风。南朝／四百八十寺，多少／楼台烟雨中。2. 前两句语速稍快、读出春天的生机，后两句语速放慢、读出烟雨迷蒙的意境。背下来，录音发回。\n【英语口语·问答】请根据提示词回答以下3个英语问题，每题说2-3句英语句子，5分钟内完成，录音发回。\n1. What are you going to do this weekend?（提示：play sports、do homework）\n2. What is your favorite school activity?（提示：art class、sports day）\n3. What do you usually do with your family on the weekend?（提示：go shopping、watch a movie）\n要求：每题说2-3句英语句子，5分钟内完成，录音发回。",
+      "estimate_min": 30,
+      "status": "pending",
+      "review_status": "approved",
+      "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-27.docx",
+      "file_hash": "0d23e72a235c909ba1d1ad24a7b59c78a64e4cff75213b1082db458042a138cb",
+      "created_at": "2026-11-27T04:25:15+08:00",
+      "updated_at": "2026-11-27T04:25:15+08:00",
+      "files": [
+        {
+          "name": "六年级针对性练习_2026-11-27.pdf",
+          "label": "练习"
+        }
+      ]
     }
   ],
   "counts": {
-    "total": 12,
-    "pending": 7,
+    "total": 13,
+    "pending": 8,
     "in_progress": 5,
     "submitted": 0,
     "grading": 0,
     "done": 0,
     "pending_review": 0
   },
-  "deadline_today": null
+  "deadline_today": "2026-11-27T22:30:00+08:00"
 }
