@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "六年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T22:41:31+08:00",
+  "updated_at": "2026-11-26T22:45:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -276,7 +276,9 @@
         "e0177c063887b932.jpg",
         "11185e8adb9e5a85.jpg",
         "0fad09de147f12b5.jpg"
-      ]
+      ],
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261126-2567CC5D54F1",
@@ -294,7 +296,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00"
+      "updated_at": "2026-11-26T20:06:06+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261126-0360E8B7B240",
@@ -312,7 +316,9 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00"
+      "updated_at": "2026-11-26T20:06:06+08:00",
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261126-E0D89CDC42BD",
@@ -346,7 +352,7 @@
       "title": "校本园地六",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
@@ -355,7 +361,10 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00"
+      "updated_at": "2026-11-26T22:40:28+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "status_source": "closeout_writeback"
     },
     {
       "task_id": "REG-20261126-2C7CA8FBF16C",
@@ -407,7 +416,9 @@
       "orig_photos": [
         "dd74c2f419e92f33.jpg",
         "4a5645ee66c6793c.jpg"
-      ]
+      ],
+      "corrections": [],
+      "pending_corrections": 0
     },
     {
       "task_id": "REG-20261126-DE7437FD0700",
@@ -435,7 +446,9 @@
         "ece9e0b567ab4ab5.jpg",
         "3adc2275421a73fd.jpg",
         "6d591a1153d530ca.jpg"
-      ]
+      ],
+      "corrections": [],
+      "pending_corrections": 0
     }
   ],
   "counts": {
