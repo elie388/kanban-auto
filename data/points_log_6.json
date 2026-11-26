@@ -1,12 +1,48 @@
 {
   "schema_version": "1.3",
   "grade": 6,
-  "generated_at": "2026-11-26T22:54:58+08:00",
+  "generated_at": "2026-11-26T23:09:58+08:00",
   "window": {
     "days": 7,
     "max_items": 300
   },
   "items": [
+    {
+      "date": "11-26",
+      "time": "23:09",
+      "time_source": "entry",
+      "reason": "数学校本P48、49完成分",
+      "pts": 10,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-26",
+      "time": "23:09",
+      "time_source": "entry",
+      "reason": "数学校本P48、49正确率92.5%",
+      "pts": 6,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-26",
+      "time": "23:09",
+      "time_source": "entry",
+      "reason": "数学校本P48、49书写",
+      "pts": 2,
+      "sign": "plus",
+      "filtered": false
+    },
+    {
+      "date": "11-26",
+      "time": "23:09",
+      "time_source": "entry",
+      "reason": "数学校本P48、49迟交",
+      "pts": -5,
+      "sign": "minus",
+      "filtered": false
+    },
     {
       "date": "11-26",
       "time": "22:51",
