@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "五年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T20:55:14+08:00",
+  "updated_at": "2026-11-26T21:10:46+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -188,7 +188,7 @@
       "title": "抄M5单词",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
@@ -197,7 +197,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00"
+      "updated_at": "2026-11-26T21:10:44+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-26T21:10:44+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "45aeb5fc18b92d94.jpg"
+      ]
     },
     {
       "task_id": "REG-20261126-FFF37844F530",
@@ -281,11 +288,11 @@
   ],
   "counts": {
     "total": 13,
-    "pending": 10,
+    "pending": 9,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-26T22:00:00+08:00"
