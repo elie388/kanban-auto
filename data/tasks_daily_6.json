@@ -287,7 +287,7 @@
       "title": "校本 P48、49",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "done",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念 46、47、48；②校本 P48、49 → 待完成",
@@ -296,11 +296,49 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T23:10:43+08:00",
-      "corrections": [],
+      "updated_at": "2026-11-26T23:18:53+08:00",
+      "corrections": [
+        {
+          "label": "第1题",
+          "question": "电影院在书店（ ）偏（ ）（ ）度的方向，距离书店（ ）千米",
+          "reason": "图里标的55°是连线与南北线的夹角；“东偏北”的角度要从东边那条线开始数，55°换算成与东西线的夹角是35°，不是55°。",
+          "hint": "① 先看图里标的55°是夹在哪两条线之间的：是和东西方向的线夹的，还是和南北方向的线夹的？② “东偏北”这个说法，是从东往北偏，角度要从东边那条线开始数；图里标的55°是从哪条线开始数的？③ 东西线和南北线是互相垂直的（90°），如果一个角和南北线夹55°，那它和东西线夹多少度？自己算一算。",
+          "img": "guide_angle_convert.png",
+          "q_img": "2567CC5D54F1_q1.png",
+          "orig_text": "电影院在书店（ ）偏（ ）（ ）度的方向，距离书店（ ）千米",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "第3(2)题",
+          "question": "如果这艘快船每小时航行50海里，从甲港到乙港共____",
+          "reason": "空白未答：没有先把三段路程加起来算总路程，再用总路程÷速度求时间。",
+          "hint": "① 先把三段路程加起来：甲港到A、A到B、B到乙港一共走了多少海里？② 快船每小时走50海里，走完全程要几小时？想一想：总路程÷每小时走的路程=？③ 把算式列出来，再算一算得数。",
+          "img": "guide_speed_time.png",
+          "q_img": "2567CC5D54F1_q3.png",
+          "orig_text": "如果这艘快船每小时航行50海里，从甲港到乙港共____",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "第6(1)题",
+          "question": "学校在小华家的（ ）偏（ ）（ ）度的方向上",
+          "reason": "图里标的是34°，孩子写成了36°，角度读数有误。",
+          "hint": "① 回到图上找一找：学校到小华家的那条线，和水平线夹的角，图里标的是多少度？② 你写的36°，和图里标的度数一样吗？③ 再读一遍小青的话：学校在小华家的南偏西多少度？对照图里标的数写。",
+          "img": "guide_read_angle.png",
+          "q_img": "2567CC5D54F1_q6.png",
+          "orig_text": "学校在小华家的（ ）偏（ ）（ ）度的方向上",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
       "pending_corrections": 3,
-      "status_source": "closeout",
-      "completed_at": "2026-11-26T23:10:43+08:00"
+      "status_source": "main_revert_corrections",
+      "corr_round": 1,
+      "revoke_reason": "收口后待改正明细未写入 corrections 字段、任务被误翻 done；补齐 3 项待改正后按“部分订正为 in_progress”口径撤回 done，待孩子订正。"
     },
     {
       "task_id": "REG-20261126-0360E8B7B240",
