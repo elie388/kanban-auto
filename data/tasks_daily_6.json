@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "六年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T20:46:38+08:00",
+  "updated_at": "2026-11-26T20:55:15+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -191,7 +191,10 @@
       "created_by": "system",
       "created_at": "2026-11-26T03:59:43+08:00",
       "updated_at": "2026-11-26T20:06:07+08:00",
-      "completed_at": "2026-11-26T20:06:07+08:00"
+      "completed_at": "2026-11-26T20:06:07+08:00",
+      "orig_photos": [
+        "f855b44bb670de58.jpg"
+      ]
     },
     {
       "task_id": "D53-2026-11-26-CHN",
@@ -311,7 +314,7 @@
       "title": "小管家",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①英语书 P79、80、81 练习，P81 第 5 写在书本；②小管家 → 待完成",
@@ -320,7 +323,14 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00"
+      "updated_at": "2026-11-26T20:55:13+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-26T20:55:13+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "0ddbb36acc486b88.jpg"
+      ]
     },
     {
       "task_id": "REG-20261126-E658116E55CD",
@@ -398,16 +408,22 @@
       "task_type": "reading",
       "type_source": "regex_oral",
       "completed_at": "2026-11-26T20:46:38+08:00",
-      "status_source": "reading_grading_pass"
+      "status_source": "reading_grading_pass",
+      "orig_photos": [
+        "d9ed7fb829ffafbb.jpg",
+        "ece9e0b567ab4ab5.jpg",
+        "3adc2275421a73fd.jpg",
+        "6d591a1153d530ca.jpg"
+      ]
     }
   ],
   "counts": {
     "total": 17,
-    "pending": 13,
+    "pending": 12,
     "in_progress": 2,
     "submitted": 0,
     "grading": 0,
-    "done": 2,
+    "done": 3,
     "pending_review": 0
   },
   "deadline_today": "2026-11-26T22:00:00+08:00"
