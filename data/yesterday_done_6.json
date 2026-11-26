@@ -1,31 +1,45 @@
 {
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "grade": "六年级",
  "items": [
   {
-   "task_id": "META-REGISTER-2026-11-25",
+   "task_id": "META-REGISTER-2026-11-26",
    "title": "提交作业登记本",
    "subject": "登记本",
    "source": "meta",
    "group": "study"
   },
   {
-   "task_id": "REG-20261125-75B38F9B1DA7",
-   "title": "提交小管家的内容",
+   "task_id": "REG-20261126-6E11D24DE8DF",
+   "title": "读背概念 46、47、48",
+   "subject": "数学",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261126-E0D89CDC42BD",
+   "title": "小管家",
    "subject": "英语",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261125-ED03C9BEB6EE",
-   "title": "小练笔写生活不文明现象及建议",
+   "task_id": "REG-20261126-2C7CA8FBF16C",
+   "title": "小练笔写 P93 事例一",
    "subject": "语文",
    "source": "register_book",
    "group": "study"
   },
   {
-   "task_id": "REG-20261125-333979AE7859",
-   "title": "读20课3次，抄一次",
+   "task_id": "REG-20261126-24CB894CDDA4",
+   "title": "读第六单元作文 15 分钟",
+   "subject": "语文",
+   "source": "register_book",
+   "group": "study"
+  },
+  {
+   "task_id": "REG-20261126-DE7437FD0700",
+   "title": "读背 L3 和 L49 古诗",
    "subject": "语文",
    "source": "register_book",
    "group": "study"

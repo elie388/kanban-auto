@@ -1,46 +1,27 @@
 {
   "schema_version": "1.0",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "grade": "六年级",
-  "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-27T00:09:31+08:00",
+  "generated_at": "2026-11-27T00:18:02+08:00",
+  "updated_at": "2026-11-27T00:18:02+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-26T23:53:14+08:00",
-      "new_lines": 0,
-      "flipped": 0
+      "ingested_at": null,
+      "new_lines": 0
     },
     "targeted_practice": {
       "file": "今日练习清单.json",
-      "ingested_at": "2026-11-26T04:19:12+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     },
     "daily_53": {
       "file": "固定日常",
-      "ingested_at": "2026-11-26T16:56:14+08:00",
-      "status": "done"
+      "ingested_at": null,
+      "status": "pending"
     }
   },
   "tasks": [
-    {
-      "task_id": "CHORE-20261126-G6",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-26T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": true,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-26T00:18:29+08:00",
-      "updated_at": "2026-11-27T00:09:31+08:00"
-    },
     {
       "task_id": "READ-20261126-G6",
       "source": "reading_daily",
@@ -57,7 +38,10 @@
       "reading_wpm": null,
       "reading_pass": null,
       "created_at": "2026-11-26T00:18:41+08:00",
-      "updated_at": "2026-11-26T00:18:41+08:00"
+      "updated_at": "2026-11-27T00:18:02+08:00",
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261125-82D205D09152",
@@ -75,12 +59,12 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-26T23:02:31+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-25",
-      "carried_from": "2026-11-25",
-      "carry_count": 1
+      "carried_from": "2026-11-26",
+      "carry_count": 2
     },
     {
       "task_id": "REG-20261125-0868BAF66A18",
@@ -168,33 +152,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-26T22:21:00+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "task_type": "reading",
       "type_source": "regex_oral",
       "corrections": [],
       "pending_corrections": 0,
       "status_source": "manual_closeout",
       "carry_first_date": "2026-11-25",
-      "carried_from": "2026-11-25",
-      "carry_count": 1
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-26",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-26T03:59:43+08:00",
-      "updated_at": "2026-11-26T20:06:07+08:00",
-      "completed_at": "2026-11-26T20:06:07+08:00",
-      "orig_photos": [
-        "f855b44bb670de58.jpg"
-      ]
+      "carried_from": "2026-11-26",
+      "carry_count": 2
     },
     {
       "task_id": "D53-2026-11-26-CHN",
@@ -207,7 +173,10 @@
       "review_status": "approved",
       "file_ref": "固定日常（规则手册·53天天练）",
       "created_at": "2026-11-26T03:59:51+08:00",
-      "updated_at": "2026-11-26T03:59:51+08:00"
+      "updated_at": "2026-11-27T00:18:02+08:00",
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     },
     {
       "task_id": "MANUAL-20261126-001",
@@ -220,14 +189,17 @@
       "review_status": "approved",
       "created_by": "user",
       "created_at": "2026-11-26T04:12:34+08:00",
-      "updated_at": "2026-11-26T04:12:34+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "files": [
         {
           "name": "六年级英语阅读写作_2026-11-26.pdf",
           "label": "英语阅读写作练习",
           "pages": 2
         }
-      ]
+      ],
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     },
     {
       "task_id": "PRACT-20261126-2602EAAC63D6",
@@ -243,42 +215,16 @@
       "file_ref": "今日练习清单.json#files/六年级针对性练习_2026-11-26.docx",
       "file_hash": "e17c4421c637e4c95fa092b96c29d599190e48d85d8d0f7be95103feb33a3414",
       "created_at": "2026-11-26T04:19:10+08:00",
-      "updated_at": "2026-11-26T04:19:10+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "files": [
         {
           "name": "六年级针对性练习_2026-11-26.pdf",
           "label": "练习"
         }
-      ]
-    },
-    {
-      "task_id": "REG-20261126-6E11D24DE8DF",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "读背概念 46、47、48",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①读背概念 46、47、48；②校本 P48、49 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T21:38:11+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-26T21:38:11+08:00",
-      "status_source": "kids-homework-watch-2130",
-      "orig_photos": [
-        "e0177c063887b932.jpg",
-        "11185e8adb9e5a85.jpg",
-        "0fad09de147f12b5.jpg"
       ],
-      "corrections": [],
-      "pending_corrections": 0
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261126-2567CC5D54F1",
@@ -296,7 +242,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T23:18:53+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "corrections": [
         {
           "label": "第1题",
@@ -338,7 +284,10 @@
       "pending_corrections": 3,
       "status_source": "main_revert_corrections",
       "corr_round": 1,
-      "revoke_reason": "收口后待改正明细未写入 corrections 字段、任务被误翻 done；补齐 3 项待改正后按“部分订正为 in_progress”口径撤回 done，待孩子订正。"
+      "revoke_reason": "收口后待改正明细未写入 corrections 字段、任务被误翻 done；补齐 3 项待改正后按“部分订正为 in_progress”口径撤回 done，待孩子订正。",
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261126-0360E8B7B240",
@@ -356,7 +305,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T22:55:42+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "corrections": [
         {
           "label": "P81-4-3",
@@ -385,32 +334,10 @@
       ],
       "pending_corrections": 2,
       "status_source": "closeout_writeback",
-      "corr_round": 1
-    },
-    {
-      "task_id": "REG-20261126-E0D89CDC42BD",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "小管家",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①英语书 P79、80、81 练习，P81 第 5 写在书本；②小管家 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:55:13+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-26T20:55:13+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "0ddbb36acc486b88.jpg"
-      ]
+      "corr_round": 1,
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     },
     {
       "task_id": "REG-20261126-E658116E55CD",
@@ -428,7 +355,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T22:40:28+08:00",
+      "updated_at": "2026-11-27T00:18:02+08:00",
       "corrections": [
         {
           "label": "选择题第1题",
@@ -481,101 +408,20 @@
       ],
       "pending_corrections": 4,
       "status_source": "closeout_writeback",
-      "corr_round": 1
-    },
-    {
-      "task_id": "REG-20261126-2C7CA8FBF16C",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "小练笔写 P93 事例一",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T21:43:28+08:00",
-      "corrections": [],
-      "pending_corrections": 0,
-      "completed_at": "2026-11-26T21:43:28+08:00",
-      "status_source": "closeout_writeback",
-      "orig_photos": [
-        "5249da759e9efc81.jpg",
-        "d5012c72e299ad3f.jpg"
-      ]
-    },
-    {
-      "task_id": "REG-20261126-24CB894CDDA4",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读第六单元作文 15 分钟",
-      "detail": "",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T21:38:11+08:00",
-      "task_type": "reading",
-      "type_source": "regex_bao",
-      "completed_at": "2026-11-26T21:38:11+08:00",
-      "status_source": "kids-homework-watch-2130",
-      "orig_photos": [
-        "dd74c2f419e92f33.jpg",
-        "4a5645ee66c6793c.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
-    },
-    {
-      "task_id": "REG-20261126-DE7437FD0700",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "读背 L3 和 L49 古诗",
-      "detail": "原状态：待完成\n【问孩子】登记本上写的是“读背 L3 和 L49 古诗”，但你拍的照片是第 19 课的古诗词三首（浪淘沙、江南春、书湖阴先生壁）。“L49”是不是写错了、其实是“L19”？请在看板留言告诉我：1. 是的，就是 L19，写错了 2. 不是，L49 是别的意思（请写清楚是什么）",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:46:38+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "completed_at": "2026-11-26T20:46:38+08:00",
-      "status_source": "reading_grading_pass",
-      "orig_photos": [
-        "d9ed7fb829ffafbb.jpg",
-        "ece9e0b567ab4ab5.jpg",
-        "3adc2275421a73fd.jpg",
-        "6d591a1153d530ca.jpg"
-      ],
-      "corrections": [],
-      "pending_corrections": 0
+      "corr_round": 1,
+      "carry_first_date": "2026-11-26",
+      "carried_from": "2026-11-26",
+      "carry_count": 1
     }
   ],
   "counts": {
-    "total": 17,
-    "pending": 6,
+    "total": 10,
+    "pending": 5,
     "in_progress": 5,
     "submitted": 0,
     "grading": 0,
-    "done": 6,
+    "done": 0,
     "pending_review": 0
   },
-  "deadline_today": "2026-11-26T22:00:00+08:00"
+  "deadline_today": null
 }
