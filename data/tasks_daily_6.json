@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "六年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T21:38:11+08:00",
+  "updated_at": "2026-11-26T21:43:31+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -271,7 +271,12 @@
       "task_type": "reading",
       "type_source": "regex_oral",
       "completed_at": "2026-11-26T21:38:11+08:00",
-      "status_source": "kids-homework-watch-2130"
+      "status_source": "kids-homework-watch-2130",
+      "orig_photos": [
+        "e0177c063887b932.jpg",
+        "11185e8adb9e5a85.jpg",
+        "0fad09de147f12b5.jpg"
+      ]
     },
     {
       "task_id": "REG-20261126-2567CC5D54F1",
@@ -359,7 +364,7 @@
       "title": "小练笔写 P93 事例一",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
@@ -368,7 +373,15 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00"
+      "updated_at": "2026-11-26T21:43:28+08:00",
+      "corrections": [],
+      "pending_corrections": 0,
+      "completed_at": "2026-11-26T21:43:28+08:00",
+      "status_source": "closeout_writeback",
+      "orig_photos": [
+        "5249da759e9efc81.jpg",
+        "d5012c72e299ad3f.jpg"
+      ]
     },
     {
       "task_id": "REG-20261126-24CB894CDDA4",
@@ -390,7 +403,11 @@
       "task_type": "reading",
       "type_source": "regex_bao",
       "completed_at": "2026-11-26T21:38:11+08:00",
-      "status_source": "kids-homework-watch-2130"
+      "status_source": "kids-homework-watch-2130",
+      "orig_photos": [
+        "dd74c2f419e92f33.jpg",
+        "4a5645ee66c6793c.jpg"
+      ]
     },
     {
       "task_id": "REG-20261126-DE7437FD0700",
@@ -423,11 +440,11 @@
   ],
   "counts": {
     "total": 17,
-    "pending": 10,
+    "pending": 9,
     "in_progress": 2,
     "submitted": 0,
     "grading": 0,
-    "done": 5,
+    "done": 6,
     "pending_review": 0
   },
   "deadline_today": "2026-11-26T22:00:00+08:00"
