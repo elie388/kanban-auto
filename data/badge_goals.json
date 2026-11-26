@@ -189,7 +189,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 105,
+     "current": 48,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -197,10 +197,10 @@
    },
    {
     "key": "zonghezhixing",
-    "obtained": false,
-    "date": "",
-    "count": 0,
-    "total_count": 4,
+    "obtained": true,
+    "date": "2026-11-26",
+    "count": 1,
+    "total_count": 5,
     "via_late": false,
     "progress": {
      "state": "ok",
@@ -484,7 +484,7 @@
     "via_late": false,
     "progress": {
      "state": "ok",
-     "current": 86,
+     "current": 26,
      "target": 100,
      "unit": "分",
      "mode": "本周"
@@ -749,5 +749,5 @@
   ]
  },
  "cycle_week": "2026-W48",
- "generated_at": "2026-11-27T00:10:05.571976+08:00"
+ "generated_at": "2026-11-27T00:15:04.005619+08:00"
 }
