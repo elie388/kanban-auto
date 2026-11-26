@@ -64,7 +64,7 @@
       "source": "register_book",
       "subject": "英语",
       "title": "写P32的中文，抄P30增加的单和中文各4次",
-      "detail": "",
+      "detail": "这页（英语书 Unit 5 首页）昨天晚上已经收到啦，不用再发了。现在还缺 P32 的中文那页，请把 P32 中文那页拍下来发来。等 P32 中文到了，抄写部分（7 个词各抄 4 遍，昨天已经全对）就一起结算。",
       "estimate_min": null,
       "status": "pending",
       "review_status": "approved",
@@ -75,7 +75,7 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-25T19:58:55+08:00",
-      "updated_at": "2026-11-26T00:43:02+08:00",
+      "updated_at": "2026-11-26T23:02:31+08:00",
       "corrections": [],
       "pending_corrections": 0,
       "carry_first_date": "2026-11-25",
