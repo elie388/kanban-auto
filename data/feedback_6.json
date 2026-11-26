@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0",
  "grade": 6,
- "generated_at": "2026-11-26T23:09:58+08:00",
+ "generated_at": "2026-11-26T23:23:02+08:00",
  "items": [
   {
    "date": "2026-11-26",
@@ -10,7 +10,7 @@
    "time": "11月26日 23:06",
    "task_id": "REG-20261126-2567CC5D54F1",
    "title": "11月26日校本P48、49反馈",
-   "html": "<html><head></head><body style=\"background:#F5F3EB;padding:20px;font-family:sans-serif;\"><h2>伟豪，11月26日校本P48、49批改反馈</h2><p>11月26日 22:08 提交</p><h3>做得好的地方</h3><ul><li>40道小题对了37道，正确率92.5%，大部分都掌握得不错。方向和位置描述、路程计算都做得很好。</li></ul><p><b>本批积分：+13（完成+10、正确率+6、书写+2、迟交-5）。订正分等你订正完后另结（上限+4）。</b></p><h3>需要订正：3处</h3><p>下面 3 处要订正。订正时先看引导、想一想，再写，不要直接抄答案。</p><ol><li><b>一、1 电影院在书店的方向（角度）</b><br><b>原题：</b>电影院在书店（ ）偏（ ）（ ）度的方向，距离书店（ ）千米<br><b>错在哪：</b>这一格你写了55°。图里标的55°是连线与南北线的夹角，“东偏北”的角度要从东边那条线开始数，你再想一想55°该换成多少度。<br>第一步：先看图里标的55°是夹在哪两条线之间的：是和东西方向的线夹的，还是和南北方向的线夹的？第二步：再想一想，“东偏北”这个说法，是从东往北偏，角度要从东边那条线开始数；图里标的55°是从哪条线开始数的？第三步：东西线和南北线是互相垂直的（90°），如果一个角和南北线夹55°，那它和东西线夹多少度？自己算一算。</li><div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/guide_angle_convert.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><li><b>三、2 甲港到乙港共需时间</b><br><b>原题：</b>如果这艘快船每小时航行50海里，从甲港到乙港共（ ）<br><b>错在哪：</b>这一格你空着没写。先把三段路程加起来算总路程，再用总路程除以速度求时间。<br>第一步：先把三段路程加起来：甲港到A、A到B、B到乙港一共走了多少海里？第二步：快船每小时走50海里，走完全程要几小时？想一想：总路程÷每小时走的路程=？第三步：把算式列出来，再算一算得数。</li><div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/guide_speed_time.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><li><b>六、1 小青：学校在小华家的方向（角度）</b><br><b>原题：</b>学校在小华家的（ ）偏（ ）（ ）度的方向上<br><b>错在哪：</b>这一格你写了36°。回到图上再读一遍：学校到小华家的那条线，和水平线夹的角，图里标的是多少度？你写的数和图里标的数一样吗？<br>第一步：回到图上找一找：学校到小华家的那条线，和水平线夹的角，图里标的是多少度？第二步：你写的36°，和图里标的度数一样吗？第三步：再读一遍小青的话：学校在小华家的南偏西多少度？对照图里标的数写。</li><div style=\"font-size:13px;color:#999;margin-top:8px;\">引导图</div><img src=\"data/diagrams/guide_read_angle.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"></ol><p>订正完把照片发上来，改对了加分（每题+2，上限+4）。</p></body></html>"
+   "html": "<p><b>11月26日校本P48、49反馈</b></p><p>共40题，对37题、错3题，要订正。</p><p>第1题：① 先看图里标的55°是夹在哪两条线之间的：是和东西方向的线夹的，还是和南北方向的线夹的？② “东偏北”这个说法，是从东往北偏，角度要从东边那条线开始数；图里标的55°是从哪条线开始数的？③ 东西线和南北线是互相垂直的（90°），如果一个角和南北线夹55°，那它和东西线夹多少度？自己算一算。</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题图</p><img src=\"data/diagrams/2567CC5D54F1_q1.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:2px 0 8px;\"><img src=\"data/diagrams/guide_angle_convert.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>第3(2)题：① 先把三段路程加起来：甲港到A、A到B、B到乙港一共走了多少海里？② 快船每小时走50海里，走完全程要几小时？想一想：总路程÷每小时走的路程=？③ 把算式列出来，再算一算得数。</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题图</p><img src=\"data/diagrams/2567CC5D54F1_q3.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:2px 0 8px;\"><img src=\"data/diagrams/guide_speed_time.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\"><p>第6(1)题：① 回到图上找一找：学校到小华家的那条线，和水平线夹的角，图里标的是多少度？② 你写的36°，和图里标的度数一样吗？③ 再读一遍小青的话：学校在小华家的南偏西多少度？对照图里标的数写。</p><p style=\"color:#8a8378;font-size:13px;margin:2px 0 2px;\">原题图</p><img src=\"data/diagrams/2567CC5D54F1_q6.png\" alt=\"原题图\" style=\"max-width:100%;border-radius:8px;margin:2px 0 8px;\"><img src=\"data/diagrams/guide_read_angle.png\" alt=\"引导图\" style=\"max-width:100%;border-radius:8px;margin:4px 0 10px;\">"
   },
   {
    "date": "2026-11-26",
