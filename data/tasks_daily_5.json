@@ -1,284 +1,286 @@
 {
-  "schema_version": "1.0",
-  "date": "2026-11-26",
-  "grade": "五年级",
-  "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T20:11:12+08:00",
-  "sources": {
-    "register_book": {
-      "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-26T20:11:12+08:00",
-      "new_lines": 6,
-      "flipped": 0
-    },
-    "targeted_practice": {
-      "file": "今日练习清单.json",
-      "ingested_at": "2026-11-26T04:19:09+08:00",
-      "status": "done"
-    },
-    "daily_53": {
-      "file": "固定日常",
-      "ingested_at": "2026-11-26T16:56:14+08:00",
-      "status": "done"
-    }
+ "schema_version": "1.0",
+ "date": "2026-11-26",
+ "grade": "五年级",
+ "generated_at": "2026-11-26T00:18:13+08:00",
+ "updated_at": "2026-11-26T20:11:12+08:00",
+ "sources": {
+  "register_book": {
+   "file": "作业登记本跟踪.md",
+   "ingested_at": "2026-11-26T20:11:12+08:00",
+   "new_lines": 6,
+   "flipped": 0
   },
-  "tasks": [
-    {
-      "task_id": "CHORE-20261126-G5",
-      "source": "chore",
-      "subject": "家务",
-      "title": "家务打卡",
-      "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-26T17:30:00+08:00",
-      "chore_done_count": 0,
-      "chore_pending_review": 0,
-      "chore_exempt": false,
-      "chore_missed": false,
-      "count_in_completion_rate": false,
-      "created_at": "2026-11-26T00:18:29+08:00",
-      "updated_at": "2026-11-26T00:18:29+08:00"
-    },
-    {
-      "task_id": "READ-20261126-G5",
-      "source": "reading_daily",
-      "subject": "读书",
-      "title": "每日读书",
-      "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "appear_at": "2026-11-26T17:00:00+08:00",
-      "task_type": "reading",
-      "count_in_completion_rate": true,
-      "reading_duration_sec": null,
-      "reading_wpm": null,
-      "reading_pass": null,
-      "created_at": "2026-11-26T00:18:41+08:00",
-      "updated_at": "2026-11-26T00:18:41+08:00"
-    },
-    {
-      "task_id": "REG-20261125-FC9FA8D10D3F",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "预习口语交际和园地六",
-      "detail": "需重读：口语交际第三个事例整段（开头人名读错、后半句读得含糊）＋补读识字加油站云形提示句一句；不必全文重读。原状态：待完成",
-      "estimate_min": null,
-      "status": "in_progress",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①预习口语交际和园地六 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-25T20:43:33+08:00",
-      "updated_at": "2026-11-26T00:43:02+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral",
-      "corrections": [],
-      "pending_corrections": 0,
-      "carry_first_date": "2026-11-25",
-      "carried_from": "2026-11-25",
-      "carry_count": 1
-    },
-    {
-      "task_id": "META-REGISTER-2026-11-26",
-      "source": "meta",
-      "task_type": "meta_register",
-      "subject": "登记本",
-      "title": "提交作业登记本",
-      "detail": "在看板上传登记本照片",
-      "estimate_min": null,
-      "status": "done",
-      "review_status": "approved",
-      "created_by": "system",
-      "created_at": "2026-11-26T03:59:43+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00",
-      "completed_at": "2026-11-26T20:11:12+08:00"
-    },
-    {
-      "task_id": "D53-2026-11-26-MATH",
-      "source": "daily_53",
-      "subject": "数学",
-      "title": "53天天练·数学",
-      "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
-      "estimate_min": 10,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "固定日常（规则手册·53天天练）",
-      "created_at": "2026-11-26T03:59:51+08:00",
-      "updated_at": "2026-11-26T03:59:51+08:00"
-    },
-    {
-      "task_id": "MANUAL-20261126-001",
-      "source": "manual",
-      "subject": "英语",
-      "title": "英语阅读写作第23期",
-      "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "created_by": "user",
-      "created_at": "2026-11-26T04:12:34+08:00",
-      "updated_at": "2026-11-26T04:12:34+08:00",
-      "files": [
-        {
-          "name": "五年级英语阅读写作_2026-11-26.pdf",
-          "label": "英语阅读写作练习",
-          "pages": 2
-        }
-      ]
-    },
-    {
-      "task_id": "PRACT-20261126-8F1EE8DFA5A3",
-      "source": "targeted_practice",
-      "subject": "综合",
-      "title": "针对性练习（含口语+背诵）",
-      "detail": "五年级针对性练习_2026-11-26.docx，按今日练习清单完成",
-      "kousuan": [
-        "3.6×7",
-        "76+58",
-        "6.4×5-7.9",
-        "42.7×5.9≈（估算：两个因数都取整到个位后再相乘）",
-        "1.25×3.8×8"
-      ],
-      "recite_text": "语文背诵：《乡村四月》（宋·翁卷）\n绿遍山原白满川，子规声里雨如烟。乡村四月闲人少，才了蚕桑又插田。\n朗读要求：语速适中、声音清亮；重音要落在“绿遍”、“白满”、“闲人少”和“又插田”上，读出田野的生机和农忙的节奏感。\n英语口语（问答·我的日常生活）：请按下面4个问题，用英文说一说你的日常生活，录音发回，5分钟内。\n1. What time do you get up every morning?\n2. How do you go to school?\n3. What is your favorite subject at school, and why?\n4. What do you usually do on weekends to help your parents?\n口语要求：先想一想再说，每题至少说一句话；句子要完整，遇到不会的词可以用已经学过的简单说法代替，不要停下来太久。",
-      "estimate_min": 30,
-      "status": "pending",
-      "review_status": "approved",
-      "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-26.docx",
-      "file_hash": "f6cf5701efe252003242654abd15657a59e4ecd6409e2e76ac3c1e420583698b",
-      "created_at": "2026-11-26T04:19:07+08:00",
-      "updated_at": "2026-11-26T04:19:07+08:00",
-      "files": [
-        {
-          "name": "五年级针对性练习_2026-11-26.pdf",
-          "label": "练习"
-        }
-      ]
-    },
-    {
-      "task_id": "REG-20261126-2FE5CB529B47",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "校本35页",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00"
-    },
-    {
-      "task_id": "REG-20261126-874CE2B4C9DD",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "抄M5单词",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00"
-    },
-    {
-      "task_id": "REG-20261126-FFF37844F530",
-      "source": "register_book",
-      "subject": "英语",
-      "title": "口语易",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00",
-      "task_type": "reading",
-      "type_source": "regex_oral"
-    },
-    {
-      "task_id": "REG-20261126-D9E7B113AE7A",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "园地六练习",
-      "detail": "",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①园地六练习；②校本园地六，并改正19课和P园六校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00"
-    },
-    {
-      "task_id": "REG-20261126-7A45F4A79DDB",
-      "source": "register_book",
-      "subject": "语文",
-      "title": "校本园地六，并改正19课和P园六校本",
-      "detail": "原状态：待完成\n【问孩子】任务标题里的“P园六校本”，“P”是什么意思？登记本上写的是“P园六校本”，“P”看不清是指什么。请在看板留言告诉我：1. 是页码的意思 2. 是篇目标记 3. 是别的（请写清楚是什么）",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 语文：①园地六练习；②校本园地六，并改正19课和P园六校本 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00"
-    },
-    {
-      "task_id": "REG-20261126-6D446DB5137F",
-      "source": "register_book",
-      "subject": "数学",
-      "title": "小校本47页",
-      "detail": "原状态：待完成",
-      "estimate_min": null,
-      "status": "pending",
-      "review_status": "approved",
-      "ocr_confidence": null,
-      "raw_text": "- 数学：①小校本47页 → 待完成",
-      "evidence": {
-        "extracted_by": "task_ingest_freetext",
-        "reviewed_by": null
-      },
-      "created_at": "2026-11-26T20:11:12+08:00",
-      "updated_at": "2026-11-26T20:11:12+08:00"
-    }
-  ],
-  "counts": {
-    "total": 13,
-    "pending": 11,
-    "in_progress": 1,
-    "submitted": 0,
-    "grading": 0,
-    "done": 1,
-    "pending_review": 0
+  "targeted_practice": {
+   "file": "今日练习清单.json",
+   "ingested_at": "2026-11-26T04:19:09+08:00",
+   "status": "done"
   },
-  "deadline_today": "2026-11-26T22:00:00+08:00"
+  "daily_53": {
+   "file": "固定日常",
+   "ingested_at": "2026-11-26T16:56:14+08:00",
+   "status": "done"
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "CHORE-20261126-G5",
+   "source": "chore",
+   "subject": "家务",
+   "title": "家务打卡",
+   "detail": "拍照交家务照片（洗碗/扫地/拖地/晾衣服/整理桌面等），识别通过后计数；积分晚间定案统一结算",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-26T17:30:00+08:00",
+   "chore_done_count": 0,
+   "chore_pending_review": 0,
+   "chore_exempt": false,
+   "chore_missed": false,
+   "count_in_completion_rate": false,
+   "created_at": "2026-11-26T00:18:29+08:00",
+   "updated_at": "2026-11-26T00:18:29+08:00"
+  },
+  {
+   "task_id": "READ-20261126-G5",
+   "source": "reading_daily",
+   "subject": "读书",
+   "title": "每日读书",
+   "detail": "拍照读的内容照片加同一批朗读录音同批提交；内容不限；录音时长3-10分钟，每日朗读达标+15；语速须正常，慢速不算；时长不足180秒请重录，不加分。",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "appear_at": "2026-11-26T17:00:00+08:00",
+   "task_type": "reading",
+   "count_in_completion_rate": true,
+   "reading_duration_sec": null,
+   "reading_wpm": null,
+   "reading_pass": null,
+   "created_at": "2026-11-26T00:18:41+08:00",
+   "updated_at": "2026-11-26T00:18:41+08:00"
+  },
+  {
+   "task_id": "REG-20261125-FC9FA8D10D3F",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "预习口语交际和园地六",
+   "detail": "需重读：口语交际第三个事例整段（开头人名读错、后半句读得含糊）＋补读识字加油站云形提示句一句；不必全文重读。原状态：待完成",
+   "estimate_min": null,
+   "status": "in_progress",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①预习口语交际和园地六 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-25T20:43:33+08:00",
+   "updated_at": "2026-11-26T00:43:02+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral",
+   "corrections": [],
+   "pending_corrections": 0,
+   "carry_first_date": "2026-11-25",
+   "carried_from": "2026-11-25",
+   "carry_count": 1
+  },
+  {
+   "task_id": "META-REGISTER-2026-11-26",
+   "source": "meta",
+   "task_type": "meta_register",
+   "subject": "登记本",
+   "title": "提交作业登记本",
+   "detail": "在看板上传登记本照片",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "created_by": "system",
+   "created_at": "2026-11-26T03:59:43+08:00",
+   "updated_at": "2026-11-26T20:11:12+08:00",
+   "completed_at": "2026-11-26T20:11:12+08:00"
+  },
+  {
+   "task_id": "D53-2026-11-26-MATH",
+   "source": "daily_53",
+   "subject": "数学",
+   "title": "53天天练·数学",
+   "detail": "每人每天1页，写当天日期；完成情况以批改记录为准",
+   "estimate_min": 10,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "固定日常（规则手册·53天天练）",
+   "created_at": "2026-11-26T03:59:51+08:00",
+   "updated_at": "2026-11-26T03:59:51+08:00"
+  },
+  {
+   "task_id": "MANUAL-20261126-001",
+   "source": "manual",
+   "subject": "英语",
+   "title": "英语阅读写作第23期",
+   "detail": "已挂看板任务卡（PDF），当晚完成、拍照发回；含阅读理解＋写作",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "created_by": "user",
+   "created_at": "2026-11-26T04:12:34+08:00",
+   "updated_at": "2026-11-26T04:12:34+08:00",
+   "files": [
+    {
+     "name": "五年级英语阅读写作_2026-11-26.pdf",
+     "label": "英语阅读写作练习",
+     "pages": 2
+    }
+   ]
+  },
+  {
+   "task_id": "PRACT-20261126-8F1EE8DFA5A3",
+   "source": "targeted_practice",
+   "subject": "综合",
+   "title": "针对性练习（含口语+背诵）",
+   "detail": "五年级针对性练习_2026-11-26.docx，按今日练习清单完成",
+   "kousuan": [
+    "3.6×7",
+    "76+58",
+    "6.4×5-7.9",
+    "42.7×5.9≈（估算：两个因数都取整到个位后再相乘）",
+    "1.25×3.8×8"
+   ],
+   "recite_text": "语文背诵：《乡村四月》（宋·翁卷）\n绿遍山原白满川，子规声里雨如烟。乡村四月闲人少，才了蚕桑又插田。\n朗读要求：语速适中、声音清亮；重音要落在“绿遍”、“白满”、“闲人少”和“又插田”上，读出田野的生机和农忙的节奏感。\n英语口语（问答·我的日常生活）：请按下面4个问题，用英文说一说你的日常生活，录音发回，5分钟内。\n1. What time do you get up every morning?\n2. How do you go to school?\n3. What is your favorite subject at school, and why?\n4. What do you usually do on weekends to help your parents?\n口语要求：先想一想再说，每题至少说一句话；句子要完整，遇到不会的词可以用已经学过的简单说法代替，不要停下来太久。",
+   "estimate_min": 30,
+   "status": "pending",
+   "review_status": "approved",
+   "file_ref": "今日练习清单.json#files/五年级针对性练习_2026-11-26.docx",
+   "file_hash": "f6cf5701efe252003242654abd15657a59e4ecd6409e2e76ac3c1e420583698b",
+   "created_at": "2026-11-26T04:19:07+08:00",
+   "updated_at": "2026-11-26T04:19:07+08:00",
+   "files": [
+    {
+     "name": "五年级针对性练习_2026-11-26.pdf",
+     "label": "练习"
+    }
+   ]
+  },
+  {
+   "task_id": "REG-20261126-2FE5CB529B47",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "校本35页",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-26T20:11:12+08:00",
+   "updated_at": "2026-11-26T20:11:12+08:00"
+  },
+  {
+   "task_id": "REG-20261126-874CE2B4C9DD",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "抄M5单词",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-26T20:11:12+08:00",
+   "updated_at": "2026-11-26T20:11:12+08:00"
+  },
+  {
+   "task_id": "REG-20261126-FFF37844F530",
+   "source": "register_book",
+   "subject": "英语",
+   "title": "口语易",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "done",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-26T20:11:12+08:00",
+   "updated_at": "2026-11-26T20:38:42+08:00",
+   "task_type": "reading",
+   "type_source": "regex_oral",
+   "completed_at": "2026-11-26T20:38:42+08:00",
+   "status_source": "reading_grading"
+  },
+  {
+   "task_id": "REG-20261126-D9E7B113AE7A",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "园地六练习",
+   "detail": "",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①园地六练习；②校本园地六，并改正19课和P园六校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-26T20:11:12+08:00",
+   "updated_at": "2026-11-26T20:11:12+08:00"
+  },
+  {
+   "task_id": "REG-20261126-7A45F4A79DDB",
+   "source": "register_book",
+   "subject": "语文",
+   "title": "校本园地六，并改正19课和P园六校本",
+   "detail": "原状态：待完成\n【问孩子】任务标题里的“P园六校本”，“P”是什么意思？登记本上写的是“P园六校本”，“P”看不清是指什么。请在看板留言告诉我：1. 是页码的意思 2. 是篇目标记 3. 是别的（请写清楚是什么）",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 语文：①园地六练习；②校本园地六，并改正19课和P园六校本 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-26T20:11:12+08:00",
+   "updated_at": "2026-11-26T20:11:12+08:00"
+  },
+  {
+   "task_id": "REG-20261126-6D446DB5137F",
+   "source": "register_book",
+   "subject": "数学",
+   "title": "小校本47页",
+   "detail": "原状态：待完成",
+   "estimate_min": null,
+   "status": "pending",
+   "review_status": "approved",
+   "ocr_confidence": null,
+   "raw_text": "- 数学：①小校本47页 → 待完成",
+   "evidence": {
+    "extracted_by": "task_ingest_freetext",
+    "reviewed_by": null
+   },
+   "created_at": "2026-11-26T20:11:12+08:00",
+   "updated_at": "2026-11-26T20:11:12+08:00"
+  }
+ ],
+ "counts": {
+  "total": 13,
+  "pending": 11,
+  "in_progress": 1,
+  "submitted": 0,
+  "grading": 0,
+  "done": 1,
+  "pending_review": 0
+ },
+ "deadline_today": "2026-11-26T22:00:00+08:00"
 }
