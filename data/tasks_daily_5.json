@@ -3,12 +3,12 @@
   "date": "2026-11-26",
   "grade": "五年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T20:06:07+08:00",
+  "updated_at": "2026-11-26T20:11:12+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
-      "ingested_at": "2026-11-26T20:06:06+08:00",
-      "new_lines": 0,
+      "ingested_at": "2026-11-26T20:11:12+08:00",
+      "new_lines": 6,
       "flipped": 0
     },
     "targeted_practice": {
@@ -92,12 +92,12 @@
       "title": "提交作业登记本",
       "detail": "在看板上传登记本照片",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "created_by": "system",
       "created_at": "2026-11-26T03:59:43+08:00",
-      "updated_at": "2026-11-26T03:59:43+08:00",
-      "completed_at": null
+      "updated_at": "2026-11-26T20:11:12+08:00",
+      "completed_at": "2026-11-26T20:11:12+08:00"
     },
     {
       "task_id": "D53-2026-11-26-MATH",
@@ -159,15 +159,125 @@
           "label": "练习"
         }
       ]
+    },
+    {
+      "task_id": "REG-20261126-2FE5CB529B47",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "校本35页",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-26T20:11:12+08:00",
+      "updated_at": "2026-11-26T20:11:12+08:00"
+    },
+    {
+      "task_id": "REG-20261126-874CE2B4C9DD",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "抄M5单词",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-26T20:11:12+08:00",
+      "updated_at": "2026-11-26T20:11:12+08:00"
+    },
+    {
+      "task_id": "REG-20261126-FFF37844F530",
+      "source": "register_book",
+      "subject": "英语",
+      "title": "口语易",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 英语：①校本35页；②抄M5单词；③口语易 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-26T20:11:12+08:00",
+      "updated_at": "2026-11-26T20:11:12+08:00",
+      "task_type": "reading",
+      "type_source": "regex_oral"
+    },
+    {
+      "task_id": "REG-20261126-D9E7B113AE7A",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "园地六练习",
+      "detail": "",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①园地六练习；②校本园地六，并改正19课和P园六校本 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-26T20:11:12+08:00",
+      "updated_at": "2026-11-26T20:11:12+08:00"
+    },
+    {
+      "task_id": "REG-20261126-7A45F4A79DDB",
+      "source": "register_book",
+      "subject": "语文",
+      "title": "校本园地六，并改正19课和P园六校本",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 语文：①园地六练习；②校本园地六，并改正19课和P园六校本 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-26T20:11:12+08:00",
+      "updated_at": "2026-11-26T20:11:12+08:00"
+    },
+    {
+      "task_id": "REG-20261126-6D446DB5137F",
+      "source": "register_book",
+      "subject": "数学",
+      "title": "小校本47页",
+      "detail": "原状态：待完成",
+      "estimate_min": null,
+      "status": "pending",
+      "review_status": "approved",
+      "ocr_confidence": null,
+      "raw_text": "- 数学：①小校本47页 → 待完成",
+      "evidence": {
+        "extracted_by": "task_ingest_freetext",
+        "reviewed_by": null
+      },
+      "created_at": "2026-11-26T20:11:12+08:00",
+      "updated_at": "2026-11-26T20:11:12+08:00"
     }
   ],
   "counts": {
-    "total": 7,
-    "pending": 6,
+    "total": 13,
+    "pending": 11,
     "in_progress": 1,
     "submitted": 0,
     "grading": 0,
-    "done": 0,
+    "done": 1,
     "pending_review": 0
   },
   "deadline_today": "2026-11-26T22:00:00+08:00"
