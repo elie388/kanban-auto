@@ -347,7 +347,7 @@
       "title": "英语书 P79、80、81 练习，P81 第 5 写在书本",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "in_progress",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 英语：①英语书 P79、80、81 练习，P81 第 5 写在书本；②小管家 → 待完成",
@@ -356,9 +356,36 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00",
-      "corrections": [],
-      "pending_corrections": 0
+      "updated_at": "2026-11-26T22:55:42+08:00",
+      "corrections": [
+        {
+          "label": "P81-4-3",
+          "question": "What does Wenwen think about this place?",
+          "reason": "两处问题：①主语She是一个人的时候，动词没有跟着变；②“最…”的后面缺了一个东西的名字，句子不完整。",
+          "hint": "① 先看主语是谁：She是一个人还是好几个人？② 一个人做事的时候，动词的样子和好几个人做事时一样吗？想想平时说的 He runs / They run。③ “最…”的后面还缺一个东西的名字：最 wonderful 的什么？回短文里找，Wenwen原话是怎么说的？",
+          "img": "0360E8B7B240_q4_3.png",
+          "q_img": "",
+          "orig_text": "What does Wenwen think about this place?",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        },
+        {
+          "label": "P81-5",
+          "question": "Write about a natural place you visited.",
+          "reason": "只写了一句话，而且写的是“想再去”，没有写去的时候看到了什么、做了什么；题目要写的是去过的地方，不是想去的地方；revisit写成了两个词。",
+          "hint": "① 题目要你写的是“去过的地方”，先想想你去的是哪里、什么时候去的。② 一句话只说了“想再去”，还没讲你去的时候看到了什么、做了什么。③ 用过去时写三四句：先写什么时候去的，再写看到了什么、做了什么，最后写感觉怎么样。",
+          "img": "0360E8B7B240_q5.png",
+          "q_img": "",
+          "orig_text": "Write about a natural place you visited.",
+          "q_img_exempt": "",
+          "img_exempt": "",
+          "round": 1
+        }
+      ],
+      "pending_corrections": 2,
+      "status_source": "closeout_writeback",
+      "corr_round": 1
     },
     {
       "task_id": "REG-20261126-E0D89CDC42BD",
