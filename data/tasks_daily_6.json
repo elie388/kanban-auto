@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "六年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T20:55:27+08:00",
+  "updated_at": "2026-11-26T21:38:11+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -258,7 +258,7 @@
       "title": "读背概念 46、47、48",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 数学：①读背概念 46、47、48；②校本 P48、49 → 待完成",
@@ -267,9 +267,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00",
+      "updated_at": "2026-11-26T21:38:11+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "completed_at": "2026-11-26T21:38:11+08:00",
+      "status_source": "kids-homework-watch-2130"
     },
     {
       "task_id": "REG-20261126-2567CC5D54F1",
@@ -375,7 +377,7 @@
       "title": "读第六单元作文 15 分钟",
       "detail": "",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
@@ -384,9 +386,11 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00",
+      "updated_at": "2026-11-26T21:38:11+08:00",
       "task_type": "reading",
-      "type_source": "regex_bao"
+      "type_source": "regex_bao",
+      "completed_at": "2026-11-26T21:38:11+08:00",
+      "status_source": "kids-homework-watch-2130"
     },
     {
       "task_id": "REG-20261126-DE7437FD0700",
@@ -419,11 +423,11 @@
   ],
   "counts": {
     "total": 17,
-    "pending": 12,
+    "pending": 10,
     "in_progress": 2,
     "submitted": 0,
     "grading": 0,
-    "done": 3,
+    "done": 5,
     "pending_review": 0
   },
   "deadline_today": "2026-11-26T22:00:00+08:00"
