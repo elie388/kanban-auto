@@ -3,7 +3,7 @@
   "date": "2026-11-26",
   "grade": "六年级",
   "generated_at": "2026-11-26T00:18:13+08:00",
-  "updated_at": "2026-11-26T20:11:12+08:00",
+  "updated_at": "2026-11-26T20:46:38+08:00",
   "sources": {
     "register_book": {
       "file": "作业登记本跟踪.md",
@@ -385,7 +385,7 @@
       "title": "读背 L3 和 L49 古诗",
       "detail": "原状态：待完成",
       "estimate_min": null,
-      "status": "pending",
+      "status": "done",
       "review_status": "approved",
       "ocr_confidence": null,
       "raw_text": "- 语文：①校本园地六；②小练笔写 P93 事例一；③读第六单元作文 15 分钟；④读背 L3 和 L49 古诗 → 待完成",
@@ -394,18 +394,20 @@
         "reviewed_by": null
       },
       "created_at": "2026-11-26T20:06:06+08:00",
-      "updated_at": "2026-11-26T20:06:06+08:00",
+      "updated_at": "2026-11-26T20:46:38+08:00",
       "task_type": "reading",
-      "type_source": "regex_oral"
+      "type_source": "regex_oral",
+      "completed_at": "2026-11-26T20:46:38+08:00",
+      "status_source": "reading_grading_pass"
     }
   ],
   "counts": {
     "total": 17,
-    "pending": 14,
+    "pending": 13,
     "in_progress": 2,
     "submitted": 0,
     "grading": 0,
-    "done": 1,
+    "done": 2,
     "pending_review": 0
   },
   "deadline_today": "2026-11-26T22:00:00+08:00"
